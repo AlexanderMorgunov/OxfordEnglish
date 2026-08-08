@@ -21,7 +21,8 @@ export function GapFillExercise({ exercise, onSolved }: Props) {
       checkAnswer(value, exercise.answers, {
         caseSensitive: exercise.caseSensitive,
       }),
-      value
+      value,
+      { front: exercise.prompt, back: exercise.answers[0] ?? '' }
     );
   };
 

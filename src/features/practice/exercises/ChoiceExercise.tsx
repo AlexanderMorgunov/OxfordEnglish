@@ -28,7 +28,10 @@ export function ChoiceExercise({ exercise, onSolved }: Props) {
   const pick = (i: number) => {
     if (status === 'correct') return;
     setChosen(i);
-    submit(i === exercise.correctIndex, exercise.options[i] ?? '');
+    submit(i === exercise.correctIndex, exercise.options[i] ?? '', {
+      front: exercise.prompt,
+      back: exercise.options[exercise.correctIndex] ?? '',
+    });
   };
 
   return (

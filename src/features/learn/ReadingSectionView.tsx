@@ -4,6 +4,8 @@ import { packMediaUrl } from '@/content/loader';
 import { Button, PixelImage, Popover } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import { useVocabStore } from '@/features/vocab/vocabStore';
+import { canPronounce, pronounce } from '@/features/vocab/pronounce';
+import { addWordCard } from '@/features/srs/service';
 
 type ReadingSection = Extract<Section, { type: 'reading' }>;
 type Gloss = { ru?: string; ipa?: string };
@@ -31,11 +33,30 @@ function WordToken({ word, gloss }: { word: string; gloss?: Gloss }) {
         </button>
       }
     >
-      <p className="font-mono text-sm text-content">{word}</p>
+      <div className="flex items-center gap-2">
+        <p className="font-mono text-sm text-content">{word}</p>
+        {canPronounce() && (
+          <button
+            type="button"
+            aria-label={`Pronounce ${word}`}
+            className="text-teal transition-opacity hover:opacity-80"
+            onClick={() => pronounce(word)}
+          >
+            🔊
+          </button>
+        )}
+      </div>
       {gloss?.ipa && <p className="font-mono text-xs text-muted">{gloss.ipa}</p>}
       {gloss?.ru && <p className="mt-1 text-sm text-content">{gloss.ru}</p>}
       <div className="mt-2.5 flex gap-1.5">
-        <Button size="sm" variant="ghost" onClick={() => void setStatus(word, 'learning')}>
+        <Button
+          size="sm"
+          variant="ghost"
+          onClick={() => {
+            void setStatus(word, 'learning');
+            void addWordCard(word, gloss?.ru ?? word, undefined);
+          }}
+        >
           learning
         </Button>
         <Button size="sm" variant="ghost" onClick={() => void setStatus(word, 'known')}>
@@ -124,6 +145,16 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
             {section.glossary.map((g) => (
               <div key={g.word} className="flex flex-wrap items-baseline gap-2">
                 <dt className="font-mono text-sm text-content">{g.word}</dt>
+                {canPronounce() && (
+                  <button
+                    type="button"
+                    aria-label={`Pronounce ${g.word}`}
+                    className="text-teal transition-opacity hover:opacity-80"
+                    onClick={() => pronounce(g.word)}
+                  >
+                    🔊
+                  </button>
+                )}
                 {g.ipa && <span className="font-mono text-xs text-muted">{g.ipa}</span>}
                 {g.ru && <dd className="text-sm text-muted">— {g.ru}</dd>}
               </div>

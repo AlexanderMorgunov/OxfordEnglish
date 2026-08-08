@@ -86,7 +86,8 @@ direct load and refresh instead of 404-ing.
 - [x] **M2** — content as data (Zod schemas, pack loader, validator, demo pack)
 - [x] **M3** — exercise engine (7 types, answer normalization, attempts)
 - [x] **M4** — grammar + reading (EN/RU toggle, word popover + status)
-- [ ] **M5** — listening · **M6** — SRS (FSRS)
+- [x] **M5** — listening (player, A-B loop, transcript, dictation)
+- [x] **M6** — SRS (ts-fsrs review queue; cards from words + mistakes)
 - [ ] **M7** — progress & checkpoints · **M8** — AI layer (BYOK) · **M9** — offline & release
 
 See `DESIGN_DOC.md` §10 for the full plan.

@@ -16,7 +16,10 @@ export function TranslateExercise({ exercise, onSolved }: Props) {
 
   const check = () => {
     if (!value.trim() || status === 'correct') return;
-    submit(checkAnswer(value, exercise.answers), value);
+    submit(checkAnswer(value, exercise.answers), value, {
+      front: exercise.prompt,
+      back: exercise.answers[0] ?? '',
+    });
   };
 
   return (

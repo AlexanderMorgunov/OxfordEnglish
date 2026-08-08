@@ -1,4 +1,5 @@
 import Dexie, { type EntityTable } from 'dexie';
+import type { Card } from 'ts-fsrs';
 
 export interface ExerciseAttempt {
   id?: number;
@@ -21,14 +22,29 @@ export interface WordStatus {
   encounters: number;
 }
 
+export interface SrsCard {
+  id: string;
+  kind: 'word' | 'phrase' | 'grammar-pattern';
+  front: string;
+  back: string;
+  contextSentence?: string;
+  sourceDayId?: string;
+  tags: string[];
+  fromError?: boolean;
+  due: Date;
+  card: Card;
+}
+
 const db = new Dexie('oxford-english') as Dexie & {
   attempts: EntityTable<ExerciseAttempt, 'id'>;
   wordStatus: EntityTable<WordStatus, 'word'>;
+  srsCards: EntityTable<SrsCard, 'id'>;
 };
 
 db.version(1).stores({
   attempts: '++id, exerciseId, timestamp, *tags',
   wordStatus: 'word, status',
+  srsCards: 'id, due, *tags',
 });
 
 export { db };
