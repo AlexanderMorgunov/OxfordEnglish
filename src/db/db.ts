@@ -22,6 +22,12 @@ export interface WordStatus {
   encounters: number;
 }
 
+export interface WordTranslation {
+  word: string;
+  ru: string;
+  source: string;
+}
+
 export interface SrsCard {
   id: string;
   kind: 'word' | 'phrase' | 'grammar-pattern';
@@ -35,16 +41,29 @@ export interface SrsCard {
   card: Card;
 }
 
+export interface CheckpointResult {
+  id?: number;
+  unitId: string;
+  timestamp: number;
+  score: number;
+  total: number;
+  tagBreakdown: { tag: string; correct: number; total: number }[];
+}
+
 const db = new Dexie('oxford-english') as Dexie & {
   attempts: EntityTable<ExerciseAttempt, 'id'>;
   wordStatus: EntityTable<WordStatus, 'word'>;
   srsCards: EntityTable<SrsCard, 'id'>;
+  checkpoints: EntityTable<CheckpointResult, 'id'>;
+  translations: EntityTable<WordTranslation, 'word'>;
 };
 
 db.version(1).stores({
   attempts: '++id, exerciseId, timestamp, *tags',
   wordStatus: 'word, status',
   srsCards: 'id, due, *tags',
+  checkpoints: '++id, unitId, timestamp',
+  translations: 'word',
 });
 
 export { db };

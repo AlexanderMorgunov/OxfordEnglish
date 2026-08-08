@@ -5,6 +5,7 @@ import { Button, PixelImage, Popover, SegmentedToggle } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import { canSpeak, playClip, speakWord } from '@/shared/lib/audio';
+import { translateWord } from '@/features/vocab/translate';
 import { addWordCard } from '@/features/srs/service';
 
 type ReadingSection = Extract<Section, { type: 'reading' }>;
@@ -13,13 +14,28 @@ type Gloss = { ru?: string; ipa?: string };
 function WordToken({ word, gloss }: { word: string; gloss?: Gloss }) {
   const status = useVocabStore((s) => s.statuses.get(word.toLowerCase()));
   const setStatus = useVocabStore((s) => s.setStatus);
+  const [fetched, setFetched] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
 
+  const openLookup = () => {
+    if (gloss?.ru || done) return;
+    setDone(true);
+    setLoading(true);
+    void translateWord(word).then((ru) => {
+      setFetched(ru);
+      setLoading(false);
+    });
+  };
+  const translation = gloss?.ru ?? fetched ?? undefined;
   const marked = status === 'learning' || status === 'unknown';
+
   return (
     <Popover
       trigger={
         <button
           type="button"
+          onClick={openLookup}
           className={cn(
             'cursor-pointer rounded-[2px]',
             marked
@@ -47,7 +63,8 @@ function WordToken({ word, gloss }: { word: string; gloss?: Gloss }) {
         )}
       </div>
       {gloss?.ipa && <p className="font-mono text-xs text-muted">{gloss.ipa}</p>}
-      {gloss?.ru && <p className="mt-1 text-sm text-content">{gloss.ru}</p>}
+      {translation && <p className="mt-1 text-sm text-content">{translation}</p>}
+      {loading && <p className="mt-1 font-mono text-2xs text-faint">translating…</p>}
       <div className="mt-2.5 flex gap-1.5">
         <Button
           size="sm"
