@@ -8,6 +8,7 @@ import { tatoebaSearch } from './lib/tatoeba.ts';
 import { dictLookup } from './lib/dictionary.ts';
 import { cefrjLevel, levelCheck, ngslRank } from './lib/level.ts';
 import { openverseSearch, voaList, librivoxSearch } from './lib/sources.ts';
+import { ttsSynthesize } from './lib/tts.ts';
 import { writeDay } from './lib/writer.ts';
 
 const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -109,6 +110,18 @@ server.tool(
     limit: z.number().int().positive().max(20).default(5),
   },
   async (args) => guardAsync(() => librivoxSearch(args))
+);
+
+server.tool(
+  'tts_synthesize',
+  'Generate American-English speech (Piper, local) for our OWN text — writes a WAV into ' +
+    'the pack and returns a MediaRef src with license "original". Use for listening scripts, ' +
+    'reading-block audio, and dictation phrases.',
+  {
+    text: z.string(),
+    filename: z.string().regex(/^[a-z0-9_.-]+$/, 'lowercase slug, no extension').optional(),
+  },
+  async (args) => guard(() => ttsSynthesize(args))
 );
 
 server.tool(

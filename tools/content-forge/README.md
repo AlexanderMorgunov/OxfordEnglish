@@ -38,8 +38,27 @@ npm run smoke
 
 Local corpora: `tatoeba_search`, `dict_lookup`, `level_check`, `ngsl_rank`.
 Network sourcing (each stitches its own license): `image_search` (Openverse),
-`voa_list` (VOA RSS), `librivox_search` (LibriVox). Assembly: `pack_write_day`
+`voa_list` (VOA RSS), `librivox_search` (LibriVox). Speech: `tts_synthesize`
+(Piper, our own text → WAV, license "original"). Assembly: `pack_write_day`
 (schema-validated, downloads remote media, registers the day), `pack_validate`.
+
+## TTS (Piper) setup
+
+`tts_synthesize` shells out to a local Piper binary + voice. The binaries and
+model live in `vendor/` (gitignored — re-download per machine):
+
+```bash
+cd tools/content-forge
+mkdir -p vendor/piper vendor/voices
+# Piper (Windows amd64; pick the right asset for your OS)
+curl -sL -o vendor/p.zip https://github.com/rhasspy/piper/releases/download/2023.11.14-2/piper_windows_amd64.zip
+cd vendor && unzip -oq p.zip && rm p.zip && cd ..
+# American-English voice
+curl -sL -o vendor/voices/en_US-lessac-medium.onnx https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx
+curl -sL -o vendor/voices/en_US-lessac-medium.onnx.json https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json
+```
+
+Paths default to those locations; override with `PIPER_BIN` / `PIPER_VOICE`.
 
 Registered in the repo-root `.mcp.json` as `content-forge`; run `/mcp` in Claude
 Code to connect after importing the data above.
@@ -50,5 +69,5 @@ Code to connect after importing the data above.
 - Data/cache (`data/*.sqlite`, `data/wordlists.json`, `.cache/`) are gitignored.
 - `pack_write_day` reuses the app's `src/content/schema.ts` (`Day.parse`) so the
   SkillTag registry and media-license checks are the single source of truth.
-- Not yet wired (see plan P4): TTS (Kokoro MCP) and ASR/alignment (faster-whisper
-  MCP) for generating our own listening audio + timed transcripts.
+- Not yet wired (see plan P4): ASR/forced alignment (faster-whisper) to auto-time
+  transcripts. Until then, TTS audio uses hand-authored cue timings.

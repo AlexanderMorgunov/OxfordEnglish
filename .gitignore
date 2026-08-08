@@ -21,3 +21,4 @@ tools/content-forge/node_modules/
 tools/content-forge/.cache/
 tools/content-forge/data/*.sqlite
 tools/content-forge/data/wordlists.json
+tools/content-forge/vendor/
