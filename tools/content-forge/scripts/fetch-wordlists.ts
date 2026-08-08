@@ -60,8 +60,9 @@ async function main(): Promise<void> {
   const ngsl = ngslRaw
     ? (parseCsv(ngslRaw, 0, 1, (v) => Number(v) || 9999) as Record<string, number>)
     : sample.ngsl;
+  // CEFR-J CSV columns: headword(0), pos(1), CEFR(2).
   const cefrj = cefrjRaw
-    ? (parseCsv(cefrjRaw, 0, 1, (v) => v) as Record<string, string>)
+    ? (parseCsv(cefrjRaw, 0, 2, (v) => v) as Record<string, string>)
     : sample.cefrj;
 
   writeFileSync(OUT, JSON.stringify({ ngsl, cefrj }));
