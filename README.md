@@ -88,6 +88,7 @@ direct load and refresh instead of 404-ing.
 - [x] **M4** — grammar + reading (EN/RU toggle, word popover + status)
 - [x] **M5** — listening (player, A-B loop, transcript, dictation)
 - [x] **M6** — SRS (ts-fsrs review queue; cards from words + mistakes)
-- [ ] **M7** — progress & checkpoints · **M8** — AI layer (BYOK) · **M9** — offline & release
+- [x] **M7** — progress (skill map by tag) + interleaved checkpoints with review plan
+- [ ] **M8** — AI layer (BYOK) · **M9** — offline & release
 
 See `DESIGN_DOC.md` §10 for the full plan.

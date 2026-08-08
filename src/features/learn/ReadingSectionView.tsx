@@ -71,7 +71,7 @@ function WordToken({ word, gloss }: { word: string; gloss?: Gloss }) {
           variant="ghost"
           onClick={() => {
             void setStatus(word, 'learning');
-            void addWordCard(word, gloss?.ru ?? word, undefined);
+            void addWordCard(word, translation ?? word, undefined);
           }}
         >
           learning

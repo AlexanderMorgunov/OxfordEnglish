@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import type { Grade } from 'ts-fsrs';
 import type { SrsCard } from '@/db/db';
 import { Button, Card, Eyebrow } from '@/shared/ui';
+import { canSpeak, speakWord } from '@/shared/lib/audio';
+import { translateWord } from '@/features/vocab/translate';
 import { gradeCard, getDueCards, Rating } from '@/features/srs/service';
 
 const GRADES = [
@@ -15,6 +17,7 @@ export function ReviewPage() {
   const [queue, setQueue] = useState<SrsCard[] | null>(null);
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
+  const [extra, setExtra] = useState<string | null>(null);
 
   useEffect(() => {
     void getDueCards().then(setQueue);
@@ -22,10 +25,18 @@ export function ReviewPage() {
 
   const card = queue?.[index];
 
+  const reveal = () => {
+    setRevealed(true);
+    if (card && card.kind === 'word' && card.back === card.front) {
+      void translateWord(card.front).then(setExtra);
+    }
+  };
+
   const grade = async (rating: Grade) => {
     if (!card) return;
     await gradeCard(card.id, rating);
     setRevealed(false);
+    setExtra(null);
     setIndex((i) => i + 1);
   };
 
@@ -52,10 +63,26 @@ export function ReviewPage() {
             {queue.length - index} due · {card.fromError ? 'mistake' : card.kind}
           </p>
           <Card className="min-h-40">
-            <p className="font-mono text-2xl text-content">{card.front}</p>
+            <div className="flex items-center gap-2.5">
+              <p className="font-mono text-2xl text-content">{card.front}</p>
+              {card.kind === 'word' && canSpeak() && (
+                <button
+                  type="button"
+                  aria-label={`Pronounce ${card.front}`}
+                  className="text-xl text-teal transition-opacity hover:opacity-80"
+                  onClick={() => speakWord(card.front)}
+                >
+                  🔊
+                </button>
+              )}
+            </div>
             {revealed && (
               <div className="mt-4 border-t border-line pt-4">
-                <p className="text-lg text-content">{card.back}</p>
+                <p className="text-lg text-content">
+                  {card.back !== card.front
+                    ? card.back
+                    : (extra ?? '—')}
+                </p>
                 {card.contextSentence && (
                   <p className="mt-2 text-sm text-muted">{card.contextSentence}</p>
                 )}
@@ -76,7 +103,7 @@ export function ReviewPage() {
               ))}
             </div>
           ) : (
-            <Button onClick={() => setRevealed(true)}>Show answer</Button>
+            <Button onClick={reveal}>Show answer</Button>
           )}
         </div>
       )}
