@@ -1,0 +1,138 @@
+{
+  "id": "u01.d05",
+  "title": {
+    "en": "Listening — catch the phrase",
+    "ru": "Аудирование — поймай фразу"
+  },
+  "estimatedMinutes": 20,
+  "tags": [
+    "listening.gist",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "grammar",
+      "id": "u01.d05.grammar",
+      "title": {
+        "en": "Listen in chunks",
+        "ru": "Слушай кусками"
+      },
+      "rule": {
+        "en": "Catch whole phrases, not single words — meaning lives in the chunk.",
+        "ru": "Лови целые фразы, а не отдельные слова — смысл в куске."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Chunk over words",
+            "ru": "Кусок важнее слов"
+          },
+          "formula": "phrase > word",
+          "examples": [
+            {
+              "en": "Let's try something.",
+              "ru": "Давай попробуем что-нибудь."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u01.d05.reading",
+      "title": {
+        "en": "Before you listen",
+        "ru": "Перед прослушиванием"
+      },
+      "blocks": [
+        {
+          "id": "u01.d05.reading.b1",
+          "en": "You will hear a short phrase. Read it once, then close your eyes and listen for the whole chunk.",
+          "ru": "Ты услышишь короткую фразу. Прочитай её раз, затем закрой глаза и слушай целый кусок."
+        }
+      ],
+      "glossary": [
+        {
+          "word": "try",
+          "ru": "пробовать",
+          "ipa": "/traɪ/"
+        },
+        {
+          "word": "something",
+          "ru": "что-нибудь",
+          "ipa": "/ˈsʌmθɪŋ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u01.d05.listening",
+      "title": {
+        "en": "Catch the phrase",
+        "ru": "Поймай фразу"
+      },
+      "audio": {
+        "src": "media/audio/7ba737827e15a102.mp3",
+        "license": {
+          "type": "CC-BY",
+          "attribution": "Tatoeba (sentence #1276), CC BY 2.0 FR",
+          "sourceUrl": "https://tatoeba.org/en/sentences/show/1276"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Let's try something.",
+          "ru": "Давай попробуем что-нибудь."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u01.d05.ex.choice.01",
+          "instruction": {
+            "en": "What did you hear?",
+            "ru": "Что ты услышал?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "I heard: ___",
+          "options": [
+            "Let's try something.",
+            "Let us go home.",
+            "We tried something."
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u01.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "translate",
+          "id": "u01.d05.ex.tr.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Давай попробуем что-нибудь.",
+          "answers": [
+            "Let's try something."
+          ]
+        }
+      ]
+    }
+  ]
+}

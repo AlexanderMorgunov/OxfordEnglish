@@ -4,6 +4,7 @@ import { useContentStore } from '@/content/store';
 import { PracticeSectionView } from '@/features/practice/PracticeSectionView';
 import { GrammarSectionView } from '@/features/learn/GrammarSectionView';
 import { ReadingSectionView } from '@/features/learn/ReadingSectionView';
+import { ListeningSectionView } from '@/features/listen/ListeningSectionView';
 import { Eyebrow, PageStub } from '@/shared/ui';
 
 const SECTION_LABEL: Record<string, string> = {
@@ -57,12 +58,10 @@ export function DayPage() {
               <GrammarSectionView section={section} />
             ) : section.type === 'reading' ? (
               <ReadingSectionView section={section} />
-            ) : section.type === 'practice' ? (
-              <PracticeSectionView section={section} />
+            ) : section.type === 'listening' ? (
+              <ListeningSectionView section={section} />
             ) : (
-              <p className="text-muted">
-                Listening renders in M5.
-              </p>
+              <PracticeSectionView section={section} />
             )}
           </section>
         ))}
