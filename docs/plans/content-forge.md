@@ -1,6 +1,6 @@
 # Plan — Content Forge (automated content authoring)
 
-**Status:** planned · **Owner:** author · **Source of truth:** `docs/content-forge-design.md`
+**Status:** P1–P3 done (samples wired, E2E green) · P4–P6 pending · **Owner:** author · **Source of truth:** `docs/content-forge-design.md`
 (design), this file (implementation plan). Reference implementation studied:
 `~/Downloads/files/mcp-server.ts`. Source stack revised after a free-sources
 research pass (2026-08, primary-source-verified) — see "Source stack" below.
