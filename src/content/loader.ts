@@ -1,6 +1,11 @@
 import { CourseIndex, Day, PackManifest, type UnitIndex } from './schema';
 
-const PUBLIC_PACK_BASE = '/packs/dev-english-a2';
+export const PUBLIC_PACK_BASE = '/packs/dev-english-a2';
+
+/** Resolve a pack-relative MediaRef.src to a fetchable URL. */
+export function packMediaUrl(src: string): string {
+  return `${PUBLIC_PACK_BASE}/${src.replace(/^\//, '')}`;
+}
 
 export type LoadedUnit = UnitIndex & { days: Day[] };
 
