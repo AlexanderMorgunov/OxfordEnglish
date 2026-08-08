@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { Section } from '@/content/schema';
 import { packMediaUrl } from '@/content/loader';
-import { Button, PixelImage, Popover } from '@/shared/ui';
+import { Button, PixelImage, Popover, SegmentedToggle } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import { useVocabStore } from '@/features/vocab/vocabStore';
-import { canPronounce, pronounce } from '@/features/vocab/pronounce';
+import { canSpeak, playClip, speakWord } from '@/shared/lib/audio';
 import { addWordCard } from '@/features/srs/service';
 
 type ReadingSection = Extract<Section, { type: 'reading' }>;
@@ -35,12 +35,12 @@ function WordToken({ word, gloss }: { word: string; gloss?: Gloss }) {
     >
       <div className="flex items-center gap-2">
         <p className="font-mono text-sm text-content">{word}</p>
-        {canPronounce() && (
+        {canSpeak() && (
           <button
             type="button"
             aria-label={`Pronounce ${word}`}
             className="text-teal transition-opacity hover:opacity-80"
-            onClick={() => pronounce(word)}
+            onClick={() => speakWord(word)}
           >
             🔊
           </button>
@@ -71,11 +71,13 @@ function ReadingBlock({
   en,
   ru,
   audioUrl,
+  rate,
   glossary,
 }: {
   en: string;
   ru?: string;
   audioUrl?: string;
+  rate: number;
   glossary: Map<string, Gloss>;
 }) {
   const [showRu, setShowRu] = useState(false);
@@ -89,7 +91,7 @@ function ReadingBlock({
             type="button"
             aria-label="Play paragraph"
             className="mr-1.5 align-middle text-teal transition-opacity hover:opacity-80"
-            onClick={() => void new Audio(audioUrl).play()}
+            onClick={() => playClip(audioUrl, rate)}
           >
             ▶
           </button>
@@ -121,8 +123,12 @@ function ReadingBlock({
   );
 }
 
+const READING_RATES = { '0.75': 0.75, '1': 1, '1.25': 1.25 } as const;
+type ReadingRateKey = keyof typeof READING_RATES;
+
 export function ReadingSectionView({ section }: { section: ReadingSection }) {
   const load = useVocabStore((s) => s.load);
+  const [rateKey, setRateKey] = useState<ReadingRateKey>('0.75');
   useEffect(() => {
     void load();
   }, [load]);
@@ -131,6 +137,7 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
     () => new Map(section.glossary.map((g) => [g.word.toLowerCase(), { ru: g.ru, ipa: g.ipa }])),
     [section.glossary]
   );
+  const hasAudio = section.blocks.some((b) => b.audio);
 
   return (
     <div className="flex flex-col gap-4">
@@ -142,6 +149,24 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
         />
       )}
 
+      {hasAudio && canSpeak() && (
+        <div className="flex items-center gap-2.5">
+          <span className="font-mono text-2xs uppercase tracking-[0.08em] text-muted">
+            audio speed
+          </span>
+          <SegmentedToggle
+            ariaLabel="Reading audio speed"
+            value={rateKey}
+            onChange={setRateKey}
+            segments={[
+              { value: '0.75', label: '0.75×' },
+              { value: '1', label: '1×' },
+              { value: '1.25', label: '1.25×' },
+            ]}
+          />
+        </div>
+      )}
+
       <div className="flex flex-col gap-4">
         {section.blocks.map((block) => (
           <ReadingBlock
@@ -149,6 +174,7 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
             en={block.en}
             ru={block.ru}
             audioUrl={block.audio ? packMediaUrl(block.audio.src) : undefined}
+            rate={READING_RATES[rateKey]}
             glossary={glossary}
           />
         ))}
@@ -163,12 +189,12 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
             {section.glossary.map((g) => (
               <div key={g.word} className="flex flex-wrap items-baseline gap-2">
                 <dt className="font-mono text-sm text-content">{g.word}</dt>
-                {canPronounce() && (
+                {canSpeak() && (
                   <button
                     type="button"
                     aria-label={`Pronounce ${g.word}`}
                     className="text-teal transition-opacity hover:opacity-80"
-                    onClick={() => pronounce(g.word)}
+                    onClick={() => speakWord(g.word)}
                   >
                     🔊
                   </button>
