@@ -84,8 +84,9 @@ direct load and refresh instead of 404-ing.
 - [x] **M0** — engine shell (build, routing, tokens, CI)
 - [x] **M1** — design system (`shared/ui` kit + `/kitchen-sink`)
 - [x] **M2** — content as data (Zod schemas, pack loader, validator, demo pack)
-- [ ] **M3** — exercise engine (7 types, answer normalization, attempts)
-- [ ] **M4** — grammar + reading · **M5** — listening · **M6** — SRS (FSRS)
+- [x] **M3** — exercise engine (7 types, answer normalization, attempts)
+- [x] **M4** — grammar + reading (EN/RU toggle, word popover + status)
+- [ ] **M5** — listening · **M6** — SRS (FSRS)
 - [ ] **M7** — progress & checkpoints · **M8** — AI layer (BYOK) · **M9** — offline & release
 
 See `DESIGN_DOC.md` §10 for the full plan.

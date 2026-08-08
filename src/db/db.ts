@@ -12,12 +12,23 @@ export interface ExerciseAttempt {
   usedAI: boolean;
 }
 
+export type WordStatusValue = 'unknown' | 'learning' | 'known' | 'ignored';
+
+export interface WordStatus {
+  word: string;
+  status: WordStatusValue;
+  firstSeenAt: number;
+  encounters: number;
+}
+
 const db = new Dexie('oxford-english') as Dexie & {
   attempts: EntityTable<ExerciseAttempt, 'id'>;
+  wordStatus: EntityTable<WordStatus, 'word'>;
 };
 
 db.version(1).stores({
   attempts: '++id, exerciseId, timestamp, *tags',
+  wordStatus: 'word, status',
 });
 
 export { db };

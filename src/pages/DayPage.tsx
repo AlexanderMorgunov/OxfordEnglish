@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useContentStore } from '@/content/store';
 import { PracticeSectionView } from '@/features/practice/PracticeSectionView';
+import { GrammarSectionView } from '@/features/learn/GrammarSectionView';
+import { ReadingSectionView } from '@/features/learn/ReadingSectionView';
 import { Eyebrow, PageStub } from '@/shared/ui';
 
 const SECTION_LABEL: Record<string, string> = {
@@ -51,11 +53,15 @@ export function DayPage() {
                 {section.title.en}
               </h2>
             </div>
-            {section.type === 'practice' ? (
+            {section.type === 'grammar' ? (
+              <GrammarSectionView section={section} />
+            ) : section.type === 'reading' ? (
+              <ReadingSectionView section={section} />
+            ) : section.type === 'practice' ? (
               <PracticeSectionView section={section} />
             ) : (
               <p className="text-muted">
-                This section renders in a later milestone (M4–M5).
+                Listening renders in M5.
               </p>
             )}
           </section>
