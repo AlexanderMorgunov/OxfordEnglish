@@ -1,5 +1,7 @@
 # English for Developers · A2 → B1
 
+**Live:** https://oxford-english.vercel.app/ — auto-deploys on merge to `main`.
+
 An **offline-first PWA** for systematically learning English from A2 to B1, built
 around the idea of a **learning day**: a daily route of grammar → reading →
 listening → practice, closed by a unit checkpoint. Grammar is taught on material
@@ -69,6 +71,13 @@ validator fails CI if a public pack contains any `license.type: "local-only"`
 object. Details in `DESIGN_DOC.md` §1 and (from M9) `CONTENT_LICENSING.md`.
 
 Planned project licensing: code under MIT, public-pack content under CC BY-SA.
+
+## Deployment
+
+Hosted on **Vercel** — every merge to `main` triggers an automatic production
+deploy to https://oxford-english.vercel.app/. `vercel.json` rewrites all paths to
+`index.html` so client-side routes (`/kitchen-sink`, `/progress`, …) resolve on
+direct load and refresh instead of 404-ing.
 
 ## Roadmap status
 
