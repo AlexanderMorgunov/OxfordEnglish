@@ -59,7 +59,7 @@
       "id": "u01.d01.reading",
       "title": { "en": "Yesterday's commits", "ru": "Вчерашние коммиты" },
       "image": {
-        "src": "media/images/terminal-yesterday.svg",
+        "src": "media/images/reading-yesterday.png",
         "license": { "type": "original", "attribution": "Project authors" },
         "alt": {
           "en": "A terminal showing yesterday's git log",

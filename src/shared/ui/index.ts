@@ -5,6 +5,7 @@ export { Eyebrow } from './Eyebrow';
 export { Input } from './Input';
 export { Option } from './Option';
 export { PageStub } from './PageStub';
+export { PixelImage } from './PixelImage';
 export { Popover } from './Popover';
 export { ProgressBar } from './ProgressBar';
 export { SegmentedToggle } from './SegmentedToggle';
