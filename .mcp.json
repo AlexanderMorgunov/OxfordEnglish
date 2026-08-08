@@ -5,6 +5,12 @@
       "command": "npx",
       "args": ["-y", "chrome-devtools-mcp@latest"],
       "env": {}
+    },
+    "content-forge": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["tsx", "tools/content-forge/src/server.ts"],
+      "env": {}
     }
   }
 }

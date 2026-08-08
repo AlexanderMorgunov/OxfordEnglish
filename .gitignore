@@ -15,3 +15,9 @@ npm-debug.log*
 # The root packs/ dir is the BYOC drop zone for LOCAL packs only and is
 # ignored entirely, so a user's licensed material can never reach git.
 /packs/
+
+# --- Content Forge authoring tool: large/derived data, never committed ---
+tools/content-forge/node_modules/
+tools/content-forge/.cache/
+tools/content-forge/data/*.sqlite
+tools/content-forge/data/wordlists.json

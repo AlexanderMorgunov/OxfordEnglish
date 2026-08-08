@@ -1,0 +1,22 @@
+{
+  "name": "content-forge",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Authoring-time MCP server that assembles learning days from free, correctly-licensed sources.",
+  "scripts": {
+    "server": "tsx src/server.ts",
+    "import:tatoeba": "tsx scripts/import-tatoeba.ts",
+    "import:dict": "tsx scripts/import-dictionary.ts",
+    "fetch:wordlists": "tsx scripts/fetch-wordlists.ts",
+    "smoke": "tsx scripts/smoke.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "tsx": "^4.19.3"
+  }
+}

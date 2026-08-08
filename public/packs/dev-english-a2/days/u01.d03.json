@@ -1,0 +1,147 @@
+{
+  "id": "u01.d03",
+  "title": {
+    "en": "Past Simple at work",
+    "ru": "Past Simple на работе"
+  },
+  "estimatedMinutes": 25,
+  "sections": [
+    {
+      "type": "grammar",
+      "id": "u01.d03.grammar",
+      "title": {
+        "en": "Talking about a finished day",
+        "ru": "Рассказываем о завершённом дне"
+      },
+      "rule": {
+        "en": "Use the Past Simple to report what happened — finished actions at a known time.",
+        "ru": "Past Simple — чтобы рассказать, что произошло: завершённые действия в известное время."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Statement",
+            "ru": "Утверждение"
+          },
+          "formula": "subject + past verb",
+          "examples": [
+            {
+              "en": "We merged the branch.",
+              "ru": "Мы влили ветку."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u01.d03.reading",
+      "title": {
+        "en": "A normal day",
+        "ru": "Обычный день"
+      },
+      "blocks": [
+        {
+          "id": "u01.d03.reading.b1",
+          "en": "Yesterday was a normal work day. I fixed a bug, wrote a test, and my teammate reviewed the pull request. We merged the branch and went home."
+        }
+      ],
+      "glossary": [
+        {
+          "word": "deploy",
+          "ipa": "/dɪˈplɔɪ/"
+        },
+        {
+          "word": "merge",
+          "ipa": "/mɜːdʒ/"
+        },
+        {
+          "word": "revert",
+          "ipa": "/rɪˈvɜːt/"
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u01.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "id": "u01.d03.ex.tr.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.past-simple"
+          ],
+          "type": "translate",
+          "direction": "ru-en",
+          "prompt": "Вчера я починил баг.",
+          "answers": [
+            "Yesterday I fixed the bug."
+          ]
+        },
+        {
+          "id": "u01.d03.ex.tr.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.past-simple"
+          ],
+          "type": "translate",
+          "direction": "ru-en",
+          "prompt": "Мы влили ветку сегодня утром.",
+          "answers": [
+            "We merged the branch this morning."
+          ]
+        },
+        {
+          "id": "u01.d03.ex.tr.03",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.past-simple"
+          ],
+          "type": "translate",
+          "direction": "ru-en",
+          "prompt": "Ты посмотрел мой пул-реквест?",
+          "answers": [
+            "Did you review my pull request?"
+          ]
+        },
+        {
+          "id": "u01.d03.ex.tr.04",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.past-simple"
+          ],
+          "type": "translate",
+          "direction": "ru-en",
+          "prompt": "Он задеплоил приложение в продакшн.",
+          "answers": [
+            "He deployed the app to production."
+          ]
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "grammar.past-simple",
+    "vocab.dev"
+  ]
+}

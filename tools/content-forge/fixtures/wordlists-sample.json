@@ -1,0 +1,21 @@
+{
+  "ngsl": {
+    "the": 1, "be": 2, "and": 3, "a": 4, "of": 5, "to": 6, "in": 7, "i": 8,
+    "you": 9, "it": 10, "have": 11, "we": 12, "they": 13, "he": 14, "she": 15,
+    "on": 16, "do": 17, "this": 18, "not": 19, "at": 20, "my": 21, "did": 22,
+    "was": 23, "is": 24, "for": 25, "before": 118, "after": 120, "when": 88,
+    "why": 205, "what": 42, "last": 150, "change": 210, "found": 300, "find": 305,
+    "went": 250, "go": 60, "down": 180, "ran": 260, "run": 265, "green": 500,
+    "pass": 450, "test": 640, "tests": 640, "review": 1300, "request": 1100,
+    "build": 1000, "server": 1400, "morning": 700, "night": 410, "yesterday": 820,
+    "fix": 610, "fixed": 610, "write": 560, "wrote": 560, "pull": 350, "app": 1350,
+    "production": 1500, "branch": 1600, "bug": 1700, "login": 2200, "flow": 1520,
+    "merge": 1800, "merged": 1800, "deploy": 2500, "deployed": 2500
+  },
+  "cefrj": {
+    "before": "A1", "after": "A1", "when": "A1", "what": "A1", "morning": "A1",
+    "night": "A1", "last": "A1", "change": "A2", "find": "A1", "run": "A1",
+    "test": "A2", "review": "B1", "request": "B1", "build": "A2", "server": "B1",
+    "production": "B1", "branch": "B1", "deploy": "B2"
+  }
+}

@@ -1,0 +1,11 @@
+id	en	ru	audio_license	audio_author
+1001	Yesterday I fixed the bug.	Вчера я починил баг.	CC BY 4.0	devspeaker
+1002	She wrote the tests before the standup.	Она написала тесты перед стендапом.
+1003	We merged the branch this morning.	Мы влили ветку сегодня утром.	CC BY 4.0	devspeaker
+1004	The build did not pass on CI.	Сборка не прошла на CI.
+1005	Did you review my pull request?	Ты посмотрел мой пул-реквест?
+1006	He deployed the app to production.	Он задеплоил приложение в продакшн.	CC BY 4.0	devspeaker
+1007	The server went down at night.	Сервер упал ночью.
+1008	I found a bug in the login flow.	Я нашёл баг в логине.
+1009	They reverted the last change.	Они откатили последнее изменение.
+1010	The tests passed and the pipeline ran green.	Тесты прошли, и пайплайн стал зелёным.

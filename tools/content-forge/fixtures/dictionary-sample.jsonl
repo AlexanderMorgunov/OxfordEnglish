@@ -1,0 +1,9 @@
+{"word":"deploy","pos":"verb","sounds":[{"ipa":"/dɪˈplɔɪ/"}],"senses":[{"glosses":["To bring resources into action; to put software into use on a server."],"examples":[{"text":"They deploy the app every Friday."}]}]}
+{"word":"commit","pos":"noun","sounds":[{"ipa":"/kəˈmɪt/"}],"senses":[{"glosses":["A recorded change in a version-control system."],"examples":[{"text":"The last commit broke the build."}]}]}
+{"word":"revert","pos":"verb","sounds":[{"ipa":"/rɪˈvɜːt/"}],"senses":[{"glosses":["To return to a previous state; to undo a change."]}]}
+{"word":"review","pos":"verb","sounds":[{"ipa":"/rɪˈvjuː/"}],"senses":[{"glosses":["To examine or check work, such as code, before it is accepted."]}]}
+{"word":"merge","pos":"verb","sounds":[{"ipa":"/mɜːdʒ/"}],"senses":[{"glosses":["To combine two branches of code into one."]}]}
+{"word":"build","pos":"noun","sounds":[{"ipa":"/bɪld/"}],"senses":[{"glosses":["A compiled version of a program produced from source code."]}]}
+{"word":"bug","pos":"noun","sounds":[{"ipa":"/bʌɡ/"}],"senses":[{"glosses":["An error or flaw in a program."]}]}
+{"word":"server","pos":"noun","sounds":[{"ipa":"/ˈsɜːvə/"}],"senses":[{"glosses":["A computer that provides data or services to other computers."]}]}
+{"word":"standup","pos":"noun","sounds":[{"ipa":"/ˈstændʌp/"}],"senses":[{"glosses":["A short daily team meeting."]}]}
