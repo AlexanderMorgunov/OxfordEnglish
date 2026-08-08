@@ -12,14 +12,26 @@ export const SKILL_TAGS = [
   'grammar.past-simple.negative',
   'grammar.past-simple.question',
   'grammar.present-simple',
+  'grammar.present-continuous',
+  'grammar.countable-uncountable',
+  'grammar.some-any',
+  'grammar.would-like',
+  'grammar.comparatives',
   'grammar.articles',
   'grammar.word-order',
 
-  // vocabulary (developer-life themes)
+  // functions (everyday communication)
+  'functions.ordering',
+  'functions.small-talk',
+  'functions.directions',
+
+  // vocabulary (developer-life + everyday themes)
   'vocab.work',
   'vocab.dev',
   'vocab.travel',
   'vocab.daily',
+  'vocab.food',
+  'vocab.cafe',
 
   // reading
   'reading.gist',

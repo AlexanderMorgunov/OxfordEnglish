@@ -32,6 +32,25 @@
         "drawFromPreviousUnits": 0,
         "questionCount": 15
       }
+    },
+    {
+      "id": "u02",
+      "title": {
+        "en": "File 2 — Everyday life",
+        "ru": "Юнит 2 — Повседневная жизнь"
+      },
+      "dayIds": [
+        "u02.d01",
+        "u02.d02"
+      ],
+      "checkpoint": {
+        "id": "u02.checkpoint",
+        "title": {
+          "en": "Unit 2 checkpoint",
+          "ru": "Чекпоинт юнита 2"
+        },
+        "questionCount": 12
+      }
     }
   ]
 }

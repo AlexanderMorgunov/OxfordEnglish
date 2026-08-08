@@ -1,0 +1,193 @@
+{
+  "id": "u02.d02",
+  "title": {
+    "en": "Countable or uncountable?",
+    "ru": "Исчисляемое или нет?"
+  },
+  "estimatedMinutes": 30,
+  "tags": [
+    "grammar.countable-uncountable",
+    "vocab.food"
+  ],
+  "sections": [
+    {
+      "type": "grammar",
+      "id": "u02.d02.grammar",
+      "title": {
+        "en": "Some, any, much, many",
+        "ru": "Some, any, much, many"
+      },
+      "rule": {
+        "en": "Countable nouns have a plural (one egg, two eggs). Uncountable nouns do not (water, rice, bread). Use \"some\" in statements, \"any\" in questions and negatives.",
+        "ru": "Исчисляемые существительные имеют мн. число (one egg, two eggs). Неисчисляемые — нет (water, rice, bread). \"some\" — в утверждениях, \"any\" — в вопросах и отрицаниях."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "some / any",
+            "ru": "some / any"
+          },
+          "formula": "some (+) · any (− ?)",
+          "examples": [
+            {
+              "en": "I have some bread, but I don't have any butter.",
+              "ru": "У меня есть хлеб, но нет масла."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "how much / how many",
+            "ru": "how much / how many"
+          },
+          "formula": "how much + uncountable · how many + countable",
+          "examples": [
+            {
+              "en": "How much sugar? How many eggs?",
+              "ru": "Сколько сахара? Сколько яиц?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"bread, water, money, advice, information\" are uncountable — no \"a bread\", no \"informations\".",
+          "ru": "\"bread, water, money, advice, information\" неисчисляемые — нельзя \"a bread\" или \"informations\"."
+        },
+        {
+          "en": "Use \"much\" with uncountable, \"many\" with countable: \"much water\", \"many apples\".",
+          "ru": "\"much\" с неисчисляемыми, \"many\" с исчисляемыми: \"much water\", \"many apples\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u02.d02.reading",
+      "title": {
+        "en": "Food shopping",
+        "ru": "Покупаем еду"
+      },
+      "blocks": [
+        {
+          "id": "u02.d02.reading.b1",
+          "en": "On Saturday I went shopping for food. I bought some milk, some bread, and a dozen eggs.",
+          "ru": "В субботу я пошёл за продуктами. Я купил молока, хлеба и дюжину яиц.",
+          "audio": {
+            "src": "media/audio/u02.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u02.d02.reading.b2",
+          "en": "I didn't buy any sugar because we still have some at home. How much coffee do we need? Not much — just one bag.",
+          "ru": "Я не купил сахар, потому что дома ещё есть. Сколько кофе нам нужно? Немного — всего один пакет.",
+          "audio": {
+            "src": "media/audio/u02.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "bread",
+          "ru": "хлеб",
+          "ipa": "/bred/"
+        },
+        {
+          "word": "sugar",
+          "ru": "сахар",
+          "ipa": "/ˈʃʊɡər/"
+        },
+        {
+          "word": "dozen",
+          "ru": "дюжина",
+          "ipa": "/ˈdʌzn/"
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u02.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u02.d02.ex.choice.01",
+          "instruction": {
+            "en": "some or any?",
+            "ru": "some или any?"
+          },
+          "tags": [
+            "grammar.some-any"
+          ],
+          "prompt": "We don't have ___ milk.",
+          "options": [
+            "any",
+            "some",
+            "much",
+            "a"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d02.ex.gap.01",
+          "instruction": {
+            "en": "much or many?",
+            "ru": "much или many?"
+          },
+          "tags": [
+            "grammar.countable-uncountable"
+          ],
+          "prompt": "How ___ eggs do we need?",
+          "answers": [
+            "many"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u02.d02.ex.spot.01",
+          "instruction": {
+            "en": "Which line is correct?",
+            "ru": "Какая строка верна?"
+          },
+          "tags": [
+            "grammar.countable-uncountable"
+          ],
+          "variants": [
+            "I bought two breads.",
+            "I bought two loaves of bread."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u02.d02.ex.tr.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.some-any",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У нас есть немного хлеба.",
+          "answers": [
+            "We have some bread.",
+            "We have got some bread."
+          ]
+        }
+      ]
+    }
+  ]
+}
