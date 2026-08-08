@@ -1,4 +1,3 @@
-import { readFileSync, writeFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -81,21 +80,11 @@ const day = {
 const report = levelCheck(readingText, 1500);
 console.log(`level_check: ${report.verdict} (offenders: ${report.offenders.map((o) => o.word).join(', ') || 'none'})`);
 
-// 5. Write via the enforcing writer.
-const result = writeDay(JSON.stringify(day), FILE);
-console.log(`✓ ${result.written}`);
+// 5. Write via the enforcing writer (validates, localizes remote media, registers).
+const result = await writeDay(JSON.stringify(day), FILE);
+console.log(`✓ ${result.written}${result.registered ? ' (registered in course.json)' : ''}`);
 
-// 6. Register the day in course.json (else validate:packs flags an orphan file).
-const coursePath = join(REPO_ROOT, 'public/packs/dev-english-a2/course.json');
-const course = JSON.parse(readFileSync(coursePath, 'utf8'));
-const unit = course.units.find((u: { id: string }) => u.id === 'u01');
-if (unit && !unit.dayIds.includes(DAY_ID)) {
-  unit.dayIds.push(DAY_ID);
-  writeFileSync(coursePath, JSON.stringify(course, null, 2) + '\n');
-  console.log(`✓ registered ${DAY_ID} in course.json`);
-}
-
-// 7. Prove the whole pack still validates.
+// 6. Prove the whole pack still validates.
 const v = spawnSync('npm', ['run', 'validate:packs'], {
   cwd: REPO_ROOT,
   encoding: 'utf8',

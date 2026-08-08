@@ -25,6 +25,13 @@ const guard = <T>(fn: () => T) => {
     return fail((e as Error).message);
   }
 };
+const guardAsync = async <T>(fn: () => Promise<T>) => {
+  try {
+    return ok(await fn());
+  } catch (e) {
+    return fail((e as Error).message);
+  }
+};
 
 const server = new McpServer({ name: 'content-forge', version: '0.1.0' });
 
@@ -77,7 +84,7 @@ server.tool(
     dayJson: z.string(),
     filename: z.string().regex(/^u\d+\.d\d+\.json$/, 'expected uXX.dYY.json'),
   },
-  async ({ dayJson, filename }) => guard(() => writeDay(dayJson, filename))
+  async ({ dayJson, filename }) => guardAsync(() => writeDay(dayJson, filename))
 );
 
 server.tool(
