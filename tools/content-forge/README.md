@@ -36,9 +36,13 @@ npm run smoke
 
 ## MCP tools
 
-`tatoeba_search`, `dict_lookup`, `level_check`, `ngsl_rank`, `pack_write_day`,
-`pack_validate`. Registered in the repo-root `.mcp.json` as `content-forge`; run
-`/mcp` in Claude Code to connect after importing the data above.
+Local corpora: `tatoeba_search`, `dict_lookup`, `level_check`, `ngsl_rank`.
+Network sourcing (each stitches its own license): `image_search` (Openverse),
+`voa_list` (VOA RSS), `librivox_search` (LibriVox). Assembly: `pack_write_day`
+(schema-validated, downloads remote media, registers the day), `pack_validate`.
+
+Registered in the repo-root `.mcp.json` as `content-forge`; run `/mcp` in Claude
+Code to connect after importing the data above.
 
 ## Notes
 
@@ -46,5 +50,5 @@ npm run smoke
 - Data/cache (`data/*.sqlite`, `data/wordlists.json`, `.cache/`) are gitignored.
 - `pack_write_day` reuses the app's `src/content/schema.ts` (`Day.parse`) so the
   SkillTag registry and media-license checks are the single source of truth.
-- Not yet wired (see plan P4–P6): remote-media download into the pack, TTS/ASR via
-  existing MCP servers, VOA/Openverse/LibriVox network adapters.
+- Not yet wired (see plan P4): TTS (Kokoro MCP) and ASR/alignment (faster-whisper
+  MCP) for generating our own listening audio + timed transcripts.

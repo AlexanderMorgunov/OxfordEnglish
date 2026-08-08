@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { tatoebaSearch } from './lib/tatoeba.ts';
 import { dictLookup } from './lib/dictionary.ts';
 import { cefrjLevel, levelCheck, ngslRank } from './lib/level.ts';
+import { openverseSearch, voaList, librivoxSearch } from './lib/sources.ts';
 import { writeDay } from './lib/writer.ts';
 
 const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -74,6 +75,40 @@ server.tool(
     guard(() =>
       words.map((word) => ({ word, rank: ngslRank(word), cefr: cefrjLevel(word) }))
     )
+);
+
+server.tool(
+  'image_search',
+  'Search openly-licensed images on Openverse (anonymous). Returns URLs with a ready ' +
+    'attribution string; defaults to cc0/by so downstream use stays unencumbered.',
+  {
+    query: z.string(),
+    license: z.string().default('cc0,by'),
+    limit: z.number().int().positive().max(20).default(6),
+  },
+  async (args) => guardAsync(() => openverseSearch(args))
+);
+
+server.tool(
+  'voa_list',
+  'List recent VOA Learning English items from an RSS feed (public domain; credit ' +
+    'learningenglish.voanews.com). Returns title, link, audio URL, each licensed.',
+  {
+    feedUrl: z.string().url(),
+    limit: z.number().int().positive().max(30).default(10),
+  },
+  async (args) => guardAsync(() => voaList(args))
+);
+
+server.tool(
+  'librivox_search',
+  'Search LibriVox public-domain audiobooks (JSON API). Pair with level_check to pick ' +
+    'suitable excerpts for extended listening.',
+  {
+    title: z.string().optional(),
+    limit: z.number().int().positive().max(20).default(5),
+  },
+  async (args) => guardAsync(() => librivoxSearch(args))
 );
 
 server.tool(
