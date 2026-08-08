@@ -19,7 +19,8 @@
       "dayIds": [
         "u01.d01",
         "u01.d02",
-        "u01.d03"
+        "u01.d03",
+        "u01.d04"
       ],
       "checkpoint": {
         "id": "u01.checkpoint",
