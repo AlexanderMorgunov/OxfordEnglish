@@ -1,6 +1,15 @@
 import { useState, type ReactNode } from 'react';
 import type { LocalizedText } from '@/content/schema';
+import { AiAction } from '@/features/ai/AiAction';
+import { explainError, hint as aiHint } from '@/features/ai/functions';
 import type { ExerciseStatus } from './shared';
+
+export type AiContext = {
+  prompt: string;
+  userAnswer: string;
+  correct: string;
+  topic: string;
+};
 
 type ExerciseShellProps = {
   instruction: LocalizedText;
@@ -10,6 +19,7 @@ type ExerciseShellProps = {
   onRevealHint?: () => void;
   children: ReactNode;
   feedback?: ReactNode;
+  aiContext?: AiContext;
 };
 
 export function ExerciseShell({
@@ -20,6 +30,7 @@ export function ExerciseShell({
   onRevealHint,
   children,
   feedback,
+  aiContext,
 }: ExerciseShellProps) {
   const [showHint, setShowHint] = useState(false);
   return (
@@ -46,6 +57,24 @@ export function ExerciseShell({
       {feedback}
       {status === 'correct' && explanation && (
         <p className="mt-3 text-sm text-muted">{explanation.en}</p>
+      )}
+      {aiContext && status !== 'correct' && (
+        <div className="mt-3 flex flex-col gap-2">
+          {status === 'idle' && (
+            <AiAction
+              label="hint (AI)"
+              run={(config) =>
+                aiHint(config, { prompt: aiContext.prompt, topic: aiContext.topic })
+              }
+            />
+          )}
+          {status === 'incorrect' && (
+            <AiAction
+              label="why is it wrong? (AI)"
+              run={(config) => explainError(config, aiContext)}
+            />
+          )}
+        </div>
       )}
     </div>
   );

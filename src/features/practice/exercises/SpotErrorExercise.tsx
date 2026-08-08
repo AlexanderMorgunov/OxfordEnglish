@@ -40,6 +40,12 @@ export function SpotErrorExercise({ exercise, onSolved }: Props) {
       explanation={exercise.explanation}
       status={status}
       onRevealHint={revealHint}
+      aiContext={{
+        prompt: `Which line is correct? ${exercise.variants.join(' / ')}`,
+        userAnswer: chosen !== null ? (exercise.variants[chosen] ?? '') : '',
+        correct: exercise.variants[exercise.correctIndex] ?? '',
+        topic: exercise.tags[0] ?? 'grammar',
+      }}
       feedback={
         status !== 'idle' && (
           <Console status={status === 'correct' ? 'pass' : 'fail'}>

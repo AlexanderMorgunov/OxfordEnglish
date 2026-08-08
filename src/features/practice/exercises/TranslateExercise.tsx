@@ -29,6 +29,12 @@ export function TranslateExercise({ exercise, onSolved }: Props) {
       explanation={exercise.explanation}
       status={status}
       onRevealHint={revealHint}
+      aiContext={{
+        prompt: `Translate (${exercise.direction}): ${exercise.prompt}`,
+        userAnswer: value,
+        correct: exercise.answers[0] ?? '',
+        topic: exercise.tags[0] ?? 'writing.translation',
+      }}
       feedback={
         status !== 'idle' && (
           <Console status={status === 'correct' ? 'pass' : 'fail'}>

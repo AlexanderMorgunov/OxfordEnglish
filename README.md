@@ -89,6 +89,7 @@ direct load and refresh instead of 404-ing.
 - [x] **M5** — listening (player, A-B loop, transcript, dictation)
 - [x] **M6** — SRS (ts-fsrs review queue; cards from words + mistakes)
 - [x] **M7** — progress (skill map by tag) + interleaved checkpoints with review plan
-- [ ] **M8** — AI layer (BYOK) · **M9** — offline & release
+- [x] **M8** — AI layer (BYOK): explain-error + hint, OpenAI-compatible providers
+- [ ] **M9** — offline & release (PWA, export/import, licensing docs)
 
 See `DESIGN_DOC.md` §10 for the full plan.

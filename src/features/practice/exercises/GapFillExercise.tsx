@@ -33,6 +33,12 @@ export function GapFillExercise({ exercise, onSolved }: Props) {
       explanation={exercise.explanation}
       status={status}
       onRevealHint={revealHint}
+      aiContext={{
+        prompt: exercise.prompt,
+        userAnswer: value,
+        correct: exercise.answers[0] ?? '',
+        topic: exercise.tags[0] ?? 'grammar',
+      }}
       feedback={
         status !== 'idle' && (
           <Console status={status === 'correct' ? 'pass' : 'fail'}>

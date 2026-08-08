@@ -41,6 +41,12 @@ export function ChoiceExercise({ exercise, onSolved }: Props) {
       explanation={exercise.explanation}
       status={status}
       onRevealHint={revealHint}
+      aiContext={{
+        prompt: exercise.prompt,
+        userAnswer: chosen !== null ? (exercise.options[chosen] ?? '') : '',
+        correct: exercise.options[exercise.correctIndex] ?? '',
+        topic: exercise.tags[0] ?? 'grammar',
+      }}
       feedback={
         status !== 'idle' && (
           <Console status={status === 'correct' ? 'pass' : 'fail'}>
