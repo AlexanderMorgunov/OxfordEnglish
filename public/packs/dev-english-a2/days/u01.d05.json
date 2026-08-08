@@ -48,7 +48,14 @@
         {
           "id": "u01.d05.reading.b1",
           "en": "You will hear a short phrase. Read it once, then close your eyes and listen for the whole chunk.",
-          "ru": "Ты услышишь короткую фразу. Прочитай её раз, затем закрой глаза и слушай целый кусок."
+          "ru": "Ты услышишь короткую фразу. Прочитай её раз, затем закрой глаза и слушай целый кусок.",
+          "audio": {
+            "src": "media/audio/u01.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
         }
       ],
       "glossary": [

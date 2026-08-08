@@ -5,6 +5,10 @@
     "ru": "Past Simple на работе"
   },
   "estimatedMinutes": 25,
+  "tags": [
+    "grammar.past-simple",
+    "vocab.dev"
+  ],
   "sections": [
     {
       "type": "grammar",
@@ -43,7 +47,14 @@
       "blocks": [
         {
           "id": "u01.d03.reading.b1",
-          "en": "Yesterday was a normal work day. I fixed a bug, wrote a test, and my teammate reviewed the pull request. We merged the branch and went home."
+          "en": "Yesterday was a normal work day. I fixed a bug, wrote a test, and my teammate reviewed the pull request. We merged the branch and went home.",
+          "audio": {
+            "src": "media/audio/u01.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
         }
       ],
       "glossary": [
@@ -70,6 +81,7 @@
       },
       "exercises": [
         {
+          "type": "translate",
           "id": "u01.d03.ex.tr.01",
           "instruction": {
             "en": "Translate into English.",
@@ -79,7 +91,6 @@
             "writing.translation",
             "grammar.past-simple"
           ],
-          "type": "translate",
           "direction": "ru-en",
           "prompt": "Вчера я починил баг.",
           "answers": [
@@ -87,6 +98,7 @@
           ]
         },
         {
+          "type": "translate",
           "id": "u01.d03.ex.tr.02",
           "instruction": {
             "en": "Translate into English.",
@@ -96,7 +108,6 @@
             "writing.translation",
             "grammar.past-simple"
           ],
-          "type": "translate",
           "direction": "ru-en",
           "prompt": "Мы влили ветку сегодня утром.",
           "answers": [
@@ -104,6 +115,7 @@
           ]
         },
         {
+          "type": "translate",
           "id": "u01.d03.ex.tr.03",
           "instruction": {
             "en": "Translate into English.",
@@ -113,7 +125,6 @@
             "writing.translation",
             "grammar.past-simple"
           ],
-          "type": "translate",
           "direction": "ru-en",
           "prompt": "Ты посмотрел мой пул-реквест?",
           "answers": [
@@ -121,6 +132,7 @@
           ]
         },
         {
+          "type": "translate",
           "id": "u01.d03.ex.tr.04",
           "instruction": {
             "en": "Translate into English.",
@@ -130,7 +142,6 @@
             "writing.translation",
             "grammar.past-simple"
           ],
-          "type": "translate",
           "direction": "ru-en",
           "prompt": "Он задеплоил приложение в продакшн.",
           "answers": [
@@ -139,9 +150,5 @@
         }
       ]
     }
-  ],
-  "tags": [
-    "grammar.past-simple",
-    "vocab.dev"
   ]
 }

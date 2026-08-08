@@ -1,30 +1,51 @@
 {
   "id": "u01.d02",
-  "title": { "en": "Questions about the past", "ru": "Вопросы о прошлом" },
+  "title": {
+    "en": "Questions about the past",
+    "ru": "Вопросы о прошлом"
+  },
   "estimatedMinutes": 30,
-  "tags": ["grammar.past-simple.question", "vocab.work"],
+  "tags": [
+    "grammar.past-simple.question",
+    "vocab.work"
+  ],
   "sections": [
     {
       "type": "grammar",
       "id": "u01.d02.grammar",
-      "title": { "en": "Asking what happened", "ru": "Спрашиваем, что произошло" },
+      "title": {
+        "en": "Asking what happened",
+        "ru": "Спрашиваем, что произошло"
+      },
       "rule": {
         "en": "To ask about a finished action, start with Did (or a question word) and keep the main verb in its base form.",
         "ru": "Чтобы спросить о завершённом действии, начни с Did (или вопросительного слова), а основной глагол оставь в начальной форме."
       },
       "patterns": [
         {
-          "label": { "en": "Yes/No question", "ru": "Общий вопрос" },
+          "label": {
+            "en": "Yes/No question",
+            "ru": "Общий вопрос"
+          },
           "formula": "Did + subject + base ?",
           "examples": [
-            { "en": "Did the tests pass?", "ru": "Тесты прошли?" }
+            {
+              "en": "Did the tests pass?",
+              "ru": "Тесты прошли?"
+            }
           ]
         },
         {
-          "label": { "en": "Wh- question", "ru": "Специальный вопрос" },
+          "label": {
+            "en": "Wh- question",
+            "ru": "Специальный вопрос"
+          },
           "formula": "When / Why / What + did + subject + base ?",
           "examples": [
-            { "en": "When did the app crash — before or after the deploy?", "ru": "Когда приложение упало — до или после деплоя?" }
+            {
+              "en": "When did the app crash — before or after the deploy?",
+              "ru": "Когда приложение упало — до или после деплоя?"
+            }
           ]
         }
       ],
@@ -38,44 +59,91 @@
     {
       "type": "reading",
       "id": "u01.d02.reading",
-      "title": { "en": "Standup", "ru": "Стендап" },
+      "title": {
+        "en": "Standup",
+        "ru": "Стендап"
+      },
       "blocks": [
         {
           "id": "u01.d02.reading.b1",
           "en": "At the standup my manager asked, \"Did you finish the report task?\" I said yes, and I explained what I did.",
-          "ru": "На стендапе менеджер спросил: «Ты закончил задачу с отчётом?» Я сказал да и объяснил, что сделал."
+          "ru": "На стендапе менеджер спросил: «Ты закончил задачу с отчётом?» Я сказал да и объяснил, что сделал.",
+          "audio": {
+            "src": "media/audio/u01.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
         },
         {
           "id": "u01.d02.reading.b2",
           "en": "Then a teammate asked when the server went down. It happened at night, so nobody noticed it until the morning.",
-          "ru": "Потом коллега спросил, когда упал сервер. Это случилось ночью, поэтому никто не заметил до утра."
+          "ru": "Потом коллега спросил, когда упал сервер. Это случилось ночью, поэтому никто не заметил до утра.",
+          "audio": {
+            "src": "media/audio/u01.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
         }
       ],
       "glossary": [
-        { "word": "standup", "ru": "стендап (планёрка)", "ipa": "/ˈstændʌp/" },
-        { "word": "task", "ru": "задача", "ipa": "/tæsk/" },
-        { "word": "server", "ru": "сервер", "ipa": "/ˈsɜːrvər/" }
+        {
+          "word": "standup",
+          "ru": "стендап (планёрка)",
+          "ipa": "/ˈstændʌp/"
+        },
+        {
+          "word": "task",
+          "ru": "задача",
+          "ipa": "/tæsk/"
+        },
+        {
+          "word": "server",
+          "ru": "сервер",
+          "ipa": "/ˈsɜːrvər/"
+        }
       ]
     },
     {
       "type": "practice",
       "id": "u01.d02.practice",
-      "title": { "en": "Practice", "ru": "Практика" },
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
       "exercises": [
         {
           "type": "choice",
           "id": "u01.d02.ex.choice.01",
-          "instruction": { "en": "Pick the right word.", "ru": "Выбери правильное слово." },
-          "tags": ["grammar.past-simple.question"],
+          "instruction": {
+            "en": "Pick the right word.",
+            "ru": "Выбери правильное слово."
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
           "prompt": "When ___ the app crash — before or after the deploy?",
-          "options": ["did", "was", "does", "done"],
+          "options": [
+            "did",
+            "was",
+            "does",
+            "done"
+          ],
           "correctIndex": 0
         },
         {
           "type": "spot-error",
           "id": "u01.d02.ex.spot.01",
-          "instruction": { "en": "Which line is correct?", "ru": "Какая строка верна?" },
-          "tags": ["grammar.past-simple.question"],
+          "instruction": {
+            "en": "Which line is correct?",
+            "ru": "Какая строка верна?"
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
           "variants": [
             "Did you merged the branch already?",
             "Did you merge the branch already?"
@@ -85,19 +153,46 @@
         {
           "type": "order-words",
           "id": "u01.d02.ex.order.01",
-          "instruction": { "en": "Put the words in order.", "ru": "Расставь слова по порядку." },
-          "tags": ["grammar.past-simple.question"],
-          "tokens": ["When", "did", "the", "server", "go", "down"],
-          "correctOrder": [0, 1, 2, 3, 4, 5]
+          "instruction": {
+            "en": "Put the words in order.",
+            "ru": "Расставь слова по порядку."
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "tokens": [
+            "When",
+            "did",
+            "the",
+            "server",
+            "go",
+            "down"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
         },
         {
           "type": "translate",
           "id": "u01.d02.ex.translate.01",
-          "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
-          "tags": ["writing.translation", "grammar.past-simple.question"],
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.past-simple.question"
+          ],
           "direction": "ru-en",
           "prompt": "Тесты прошли?",
-          "answers": ["Did the tests pass?"]
+          "answers": [
+            "Did the tests pass?"
+          ]
         }
       ]
     }

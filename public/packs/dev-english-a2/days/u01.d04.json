@@ -48,7 +48,14 @@
         {
           "id": "u01.d04.reading.b1",
           "en": "At standup I reported my day. I fixed a bug, merged a branch, and deployed the app. The server went down once, but we reverted the change.",
-          "ru": "На стендапе я рассказал про свой день. Я починил баг, влил ветку и задеплоил приложение. Сервер один раз упал, но мы откатили изменение."
+          "ru": "На стендапе я рассказал про свой день. Я починил баг, влил ветку и задеплоил приложение. Сервер один раз упал, но мы откатили изменение.",
+          "audio": {
+            "src": "media/audio/u01.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
         }
       ],
       "glossary": [

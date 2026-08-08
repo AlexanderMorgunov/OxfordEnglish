@@ -70,10 +70,12 @@ function WordToken({ word, gloss }: { word: string; gloss?: Gloss }) {
 function ReadingBlock({
   en,
   ru,
+  audioUrl,
   glossary,
 }: {
   en: string;
   ru?: string;
+  audioUrl?: string;
   glossary: Map<string, Gloss>;
 }) {
   const [showRu, setShowRu] = useState(false);
@@ -82,6 +84,16 @@ function ReadingBlock({
   return (
     <div className="border-b border-line pb-4 last:border-b-0">
       <p className="text-lg leading-relaxed">
+        {audioUrl && (
+          <button
+            type="button"
+            aria-label="Play paragraph"
+            className="mr-1.5 align-middle text-teal transition-opacity hover:opacity-80"
+            onClick={() => void new Audio(audioUrl).play()}
+          >
+            ▶
+          </button>
+        )}
         {tokens.map((tok, i) =>
           /^[a-zA-Z']+$/.test(tok) ? (
             <WordToken key={i} word={tok} gloss={glossary.get(tok.toLowerCase())} />
@@ -132,7 +144,13 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
 
       <div className="flex flex-col gap-4">
         {section.blocks.map((block) => (
-          <ReadingBlock key={block.id} en={block.en} ru={block.ru} glossary={glossary} />
+          <ReadingBlock
+            key={block.id}
+            en={block.en}
+            ru={block.ru}
+            audioUrl={block.audio ? packMediaUrl(block.audio.src) : undefined}
+            glossary={glossary}
+          />
         ))}
       </div>
 
