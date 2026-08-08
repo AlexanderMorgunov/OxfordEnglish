@@ -1,4 +1,10 @@
-export type AiProviderId = 'gemini' | 'groq' | 'openrouter' | 'openai' | 'custom';
+export type AiProviderId =
+  | 'groq'
+  | 'openrouter'
+  | 'cerebras'
+  | 'gemini'
+  | 'openai'
+  | 'custom';
 
 export type AiConfig = {
   provider: AiProviderId;
@@ -7,34 +13,61 @@ export type AiConfig = {
   baseUrl?: string;
 };
 
-type Preset = { label: string; baseUrl: string; model: string; browserSafe: boolean };
+type Preset = {
+  label: string;
+  baseUrl: string;
+  model: string;
+  browserSafe: boolean;
+  noCard: boolean;
+  keyUrl?: string;
+};
 
 export const PROVIDERS: Record<AiProviderId, Preset> = {
-  gemini: {
-    label: 'Google AI Studio (Gemini)',
-    baseUrl: 'https://generativelanguage.googleapis.com/v1beta/openai',
-    model: 'gemini-2.5-flash',
-    browserSafe: true,
-  },
   groq: {
     label: 'Groq',
     baseUrl: 'https://api.groq.com/openai/v1',
     model: 'llama-3.3-70b-versatile',
     browserSafe: true,
+    noCard: true,
+    keyUrl: 'https://console.groq.com/keys',
   },
   openrouter: {
     label: 'OpenRouter',
     baseUrl: 'https://openrouter.ai/api/v1',
     model: 'meta-llama/llama-3.3-70b-instruct:free',
     browserSafe: true,
+    noCard: true,
+    keyUrl: 'https://openrouter.ai/keys',
+  },
+  cerebras: {
+    label: 'Cerebras',
+    baseUrl: 'https://api.cerebras.ai/v1',
+    model: 'llama-3.3-70b',
+    browserSafe: true,
+    noCard: true,
+    keyUrl: 'https://cloud.cerebras.ai',
+  },
+  gemini: {
+    label: 'Google AI Studio (Gemini)',
+    baseUrl: 'https://generativelanguage.googleapis.com/v1beta/openai',
+    model: 'gemini-2.5-flash',
+    browserSafe: true,
+    noCard: false,
   },
   openai: {
-    label: 'OpenAI (may need a proxy — CORS)',
+    label: 'OpenAI',
     baseUrl: 'https://api.openai.com/v1',
     model: 'gpt-4o-mini',
     browserSafe: false,
+    noCard: false,
   },
-  custom: { label: 'Custom (OpenAI-compatible)', baseUrl: '', model: '', browserSafe: true },
+  custom: {
+    label: 'Custom (OpenAI-compatible)',
+    baseUrl: '',
+    model: '',
+    browserSafe: true,
+    noCard: true,
+  },
 };
 
 export type ChatMessage = { role: 'system' | 'user'; content: string };

@@ -90,6 +90,7 @@ direct load and refresh instead of 404-ing.
 - [x] **M6** — SRS (ts-fsrs review queue; cards from words + mistakes)
 - [x] **M7** — progress (skill map by tag) + interleaved checkpoints with review plan
 - [x] **M8** — AI layer (BYOK): explain-error + hint, OpenAI-compatible providers
-- [ ] **M9** — offline & release (PWA, export/import, licensing docs)
+- [x] **M9** — offline & release: PWA (installable, precached), progress
+  export/import, `CONTENT_LICENSING.md`
 
 See `DESIGN_DOC.md` §10 for the full plan.

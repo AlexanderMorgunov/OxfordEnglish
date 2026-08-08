@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { Button, Card, Eyebrow, Input, Option } from '@/shared/ui';
 import { PROVIDERS, type AiProviderId } from '@/features/ai/provider';
 import { isConfigured, useAiStore } from '@/features/ai/store';
+import { exportData, importData } from '@/features/progress/backup';
 
 const PROVIDER_IDS = Object.keys(PROVIDERS) as AiProviderId[];
 
 export function SettingsPage() {
   const { config, setConfig } = useAiStore();
-  const [provider, setProvider] = useState<AiProviderId>(config?.provider ?? 'gemini');
+  const [provider, setProvider] = useState<AiProviderId>(config?.provider ?? 'groq');
   const [apiKey, setApiKey] = useState(config?.apiKey ?? '');
-  const [model, setModel] = useState(config?.model ?? PROVIDERS.gemini.model);
+  const [model, setModel] = useState(config?.model ?? PROVIDERS.groq.model);
   const [baseUrl, setBaseUrl] = useState(config?.baseUrl ?? '');
   const [saved, setSaved] = useState(false);
 
@@ -36,6 +37,25 @@ export function SettingsPage() {
     setSaved(false);
   };
 
+  const [dataMsg, setDataMsg] = useState('');
+  const doExport = async () => {
+    const blob = new Blob([await exportData()], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'oxford-progress.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+  const doImport = async (file: File) => {
+    try {
+      await importData(await file.text());
+      setDataMsg('✓ imported — reload to see it');
+    } catch (e) {
+      setDataMsg(`✕ ${(e as Error).message}`);
+    }
+  };
+
   return (
     <section aria-label="Settings" className="max-w-prose">
       <Eyebrow className="mb-3.5">config · ai (byok)</Eyebrow>
@@ -52,8 +72,9 @@ export function SettingsPage() {
         <p className="text-sm leading-relaxed text-pretty">
           Free tiers almost always mean your requests may be used to train the
           provider's models. For learning sentences that's usually fine — but you
-          should know. Prefer a browser-friendly provider (Gemini, Groq,
-          OpenRouter); OpenAI blocks direct browser calls (CORS).
+          should know. <b className="text-content">No card needed:</b> Groq,
+          OpenRouter, Cerebras. Gemini now asks for a card, and OpenAI blocks
+          direct browser calls (CORS).
         </p>
       </Card>
 
@@ -69,9 +90,22 @@ export function SettingsPage() {
               onClick={() => pick(id)}
             >
               {PROVIDERS[id].label}
+              {PROVIDERS[id].noCard && id !== 'custom' && (
+                <span className="ml-2 text-2xs text-teal">no card</span>
+              )}
             </Option>
           ))}
         </div>
+        {PROVIDERS[provider].keyUrl && (
+          <a
+            href={PROVIDERS[provider].keyUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2 inline-block font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
+          >
+            get a free key →
+          </a>
+        )}
       </div>
 
       <div className="mb-4 flex flex-col gap-3">
@@ -116,6 +150,34 @@ export function SettingsPage() {
           </Button>
         )}
         {saved && <span className="font-mono text-2xs text-teal">✓ saved</span>}
+      </div>
+
+      <div className="mt-10 border-t border-line pt-8">
+        <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
+          your data
+        </p>
+        <p className="mb-4 text-sm text-muted text-pretty">
+          Progress, SRS cards and word status live only in this browser. Export a
+          backup or move it to another device.
+        </p>
+        <div className="flex flex-wrap items-center gap-3">
+          <Button variant="ghost" onClick={() => void doExport()}>
+            Export JSON
+          </Button>
+          <label className="cursor-pointer rounded-sm border border-line bg-ink px-4 py-2.5 font-mono text-sm text-content transition-colors hover:border-teal-dim">
+            Import JSON
+            <input
+              type="file"
+              accept="application/json"
+              className="hidden"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) void doImport(file);
+              }}
+            />
+          </label>
+          {dataMsg && <span className="font-mono text-2xs text-teal">{dataMsg}</span>}
+        </div>
       </div>
     </section>
   );
