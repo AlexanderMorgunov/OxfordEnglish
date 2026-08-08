@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="A terminal window showing yesterday's git log">
+  <rect width="640" height="360" rx="14" fill="#1a1d29"/>
+  <rect x="0" y="0" width="640" height="40" rx="14" fill="#222636"/>
+  <rect x="0" y="26" width="640" height="14" fill="#222636"/>
+  <circle cx="24" cy="20" r="6" fill="#e8706a"/>
+  <circle cx="46" cy="20" r="6" fill="#e9a94b"/>
+  <circle cx="68" cy="20" r="6" fill="#57c9bd"/>
+  <g font-family="'JetBrains Mono', monospace" font-size="15">
+    <text x="24" y="80" fill="#8a90a6">$ git log --since=yesterday --oneline</text>
+    <text x="24" y="120" fill="#57c9bd">a1f9c2e <tspan fill="#ece8dd">deployed the new build to production</tspan></text>
+    <text x="24" y="150" fill="#57c9bd">7b3d418 <tspan fill="#ece8dd">wrote the missing unit tests</tspan></text>
+    <text x="24" y="180" fill="#57c9bd">c04e9a1 <tspan fill="#ece8dd">fixed the login bug from the standup</tspan></text>
+    <text x="24" y="210" fill="#57c9bd">e52af00 <tspan fill="#ece8dd">merged the feature branch</tspan></text>
+    <text x="24" y="240" fill="#e8706a">d9c1b7a <tspan fill="#ece8dd">reverted — the build did not pass</tspan></text>
+    <text x="24" y="290" fill="#e9a94b">yesterday</text>
+    <text x="120" y="290" fill="#8a90a6">— what you shipped, fixed, and broke.</text>
+  </g>
+</svg>

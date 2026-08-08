@@ -1,29 +1,67 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useContentStore } from '@/content/store';
+import { Card } from '@/shared/ui';
 
 export function DashboardPage() {
+  const { status, pack, error, load } = useContentStore();
+
+  useEffect(() => {
+    void load();
+  }, [load]);
+
   return (
     <section aria-label="Dashboard">
-      <p className="eyebrow mb-3.5">today · day 01</p>
-      <h1 className="mb-2 text-3xl font-bold tracking-tight">
+      <p className="eyebrow mb-3.5">today</p>
+      <h1 className="mb-2 text-3xl font-bold tracking-tight text-balance">
         English for <span className="text-amber">developers</span>
       </h1>
-      <p className="mb-8 max-w-prose text-lg text-muted">
+      <p className="mb-8 max-w-prose text-lg text-muted text-pretty">
         A structured daily route from A2 to B1 — grammar, reading, listening and
         practice, in the language you already think in: commits.
       </p>
 
-      <div className="card-exercise">
-        <p className="mb-1 font-mono text-xs uppercase tracking-[0.14em] text-muted">
-          next up
-        </p>
-        <p className="mb-4 text-lg">Unit 01 · Day 01 — The Past Simple</p>
-        <Link
-          to="/course/u01/day/u01.d01"
-          className="inline-block rounded-sm bg-teal px-4 py-2.5 font-mono text-sm font-semibold text-ink transition-opacity hover:opacity-90"
-        >
-          Start the day →
-        </Link>
-      </div>
+      {status === 'loading' && (
+        <p className="font-mono text-sm text-muted">loading pack…</p>
+      )}
+
+      {status === 'error' && (
+        <Card className="border-coral">
+          <p className="font-mono text-sm text-coral">
+            ✕ failed to load content pack
+          </p>
+          <p className="mt-2 text-sm text-muted">{error}</p>
+        </Card>
+      )}
+
+      {status === 'ready' && pack && (
+        <div className="flex flex-col gap-6">
+          {pack.units.map((unit) => (
+            <div key={unit.id}>
+              <p className="mb-3 font-mono text-xs uppercase tracking-[0.14em] text-muted">
+                {unit.title.en}
+              </p>
+              <div className="flex flex-col gap-2.5">
+                {unit.days.map((day) => (
+                  <Link
+                    key={day.id}
+                    to={`/course/${unit.id}/day/${day.id}`}
+                    className="group flex items-center justify-between rounded-md border border-line bg-surface px-4 py-3.5 transition-colors hover:border-teal-dim"
+                  >
+                    <span className="flex items-baseline gap-3">
+                      <span className="font-mono text-xs text-teal">{day.id}</span>
+                      <span className="text-base">{day.title.en}</span>
+                    </span>
+                    <span className="font-mono text-2xs tabular-nums text-muted">
+                      ~{day.estimatedMinutes} min · {day.sections.length} sections
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

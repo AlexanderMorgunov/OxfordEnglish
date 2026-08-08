@@ -8,10 +8,10 @@ coverage/
 *.tsbuildinfo
 *.log
 npm-debug.log*
+.env
 
 # --- Content packs: safety model from DESIGN_DOC §1.3 ---
-# Everything under packs/ is ignored by default; ONLY the public pack is
-# whitelisted. Local (BYOC) packs never reach git. Add each new public pack
-# here explicitly — never loosen this to a name pattern.
-packs/*
-!packs/dev-english-a2/
+# The public pack is served from public/packs/ (tracked normally).
+# The root packs/ dir is the BYOC drop zone for LOCAL packs only and is
+# ignored entirely, so a user's licensed material can never reach git.
+/packs/

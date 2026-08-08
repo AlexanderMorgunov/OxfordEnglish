@@ -2,11 +2,11 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { DashboardPage } from './DashboardPage';
 
-test('dashboard renders the start-of-day CTA', () => {
+test('dashboard renders the hero heading', () => {
   render(
     <MemoryRouter>
       <DashboardPage />
     </MemoryRouter>
   );
-  expect(screen.getByText(/start the day/i)).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /english for developers/i })).toBeInTheDocument();
 });

@@ -16,6 +16,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
+      - run: npm run validate:packs
       - run: npm run build
       - run: npm test
-      # - run: npm run validate:packs   # enabled in M2

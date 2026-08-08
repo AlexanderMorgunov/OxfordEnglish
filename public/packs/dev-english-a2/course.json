@@ -1,0 +1,25 @@
+{
+  "id": "dev-english-a2",
+  "title": {
+    "en": "English for Developers",
+    "ru": "Английский для разработчиков"
+  },
+  "level": "A2",
+  "license": { "type": "original", "attribution": "Project authors" },
+  "units": [
+    {
+      "id": "u01",
+      "title": {
+        "en": "File 1 — Talking about yesterday",
+        "ru": "Юнит 1 — Рассказываем о вчера"
+      },
+      "dayIds": ["u01.d01", "u01.d02"],
+      "checkpoint": {
+        "id": "u01.checkpoint",
+        "title": { "en": "Unit 1 checkpoint", "ru": "Чекпоинт юнита 1" },
+        "drawFromPreviousUnits": 0,
+        "questionCount": 15
+      }
+    }
+  ]
+}
