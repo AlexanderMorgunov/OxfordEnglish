@@ -1,0 +1,127 @@
+@import 'tailwindcss';
+
+/* ================================================================
+   Design tokens — DESIGN_DOC §8.2. Semantic names (--color-ink, not
+   --color-black) so a light theme can slot in via data-theme in v2.
+   ================================================================ */
+@theme {
+  /* ---------- surfaces ---------- */
+  --color-ink: #12141c;
+  --color-surface: #1a1d29;
+  --color-surface-2: #222636;
+  --color-line: #2e3346;
+
+  /* ---------- text ---------- */
+  --color-content: #ece8dd;
+  --color-muted: #8a90a6;
+  --color-faint: #5c6178;
+
+  /* ---------- accents ---------- */
+  --color-teal: #57c9bd;
+  --color-teal-dim: #2b5d5a;
+  --color-amber: #e9a94b;
+  --color-amber-dim: #4a3a20;
+  --color-coral: #e8706a;
+  --color-coral-dim: #4a2b2c;
+  --color-violet: #9b8cf0;
+  --color-violet-dim: #33305c;
+
+  /* ---------- word status (LingQ mechanic) ---------- */
+  --color-word-unknown: #e9a94b;
+  --color-word-learning: #57c9bd;
+  --color-word-known: transparent;
+
+  /* ---------- typography ---------- */
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-lg: 1.0625rem;
+  --text-xl: 1.3125rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.875rem;
+
+  --tracking-eyebrow: 0.14em;
+  --tracking-tight: -0.02em;
+
+  /* ---------- shape & motion ---------- */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 0.875rem;
+  --radius-full: 9999px;
+
+  --ease-out-soft: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 500ms;
+}
+
+/* ================================================================
+   Base
+   ================================================================ */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-content);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ================================================================
+   Semantic component layer — DESIGN_DOC §8.4
+   ================================================================ */
+@layer components {
+  .card-exercise {
+    @apply bg-surface border border-line rounded-md p-5 mb-3.5;
+  }
+  .console {
+    @apply font-mono text-sm mt-3.5 px-3.5 py-2.5 rounded-sm bg-ink border-l-[3px] border-line text-muted leading-relaxed;
+  }
+  .console--pass {
+    @apply border-l-teal text-teal;
+  }
+  .console--fail {
+    @apply border-l-coral text-coral;
+  }
+  .opt {
+    @apply font-mono text-base bg-ink border border-line text-content px-3.5 py-2.5 rounded-sm cursor-pointer transition-colors;
+  }
+  .opt--chosen {
+    @apply border-teal bg-surface-2;
+  }
+  .opt--correct {
+    @apply border-teal bg-teal-dim;
+  }
+  .opt--wrong {
+    @apply border-coral bg-coral-dim;
+  }
+  .eyebrow {
+    @apply font-mono text-xs uppercase text-teal;
+    letter-spacing: var(--tracking-eyebrow);
+  }
+}

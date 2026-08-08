@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Simple — for developers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12141c;
+    --surface:#1a1d29;
+    --surface-2:#222636;
+    --line:#2e3346;
+    --text:#ece8dd;
+    --muted:#8a90a6;
+    --teal:#57c9bd;
+    --teal-dim:#2b5d5a;
+    --amber:#e9a94b;
+    --coral:#e8706a;
+    --coral-dim:#4a2b2c;
+    --sans:'Space Grotesk',system-ui,-apple-system,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.55;
+    padding:32px 20px 80px;
+    min-height:100vh;
+  }
+  .wrap{max-width:760px;margin:0 auto}
+
+  /* ---------- header ---------- */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin-bottom:14px;
+  }
+  h1{
+    font-size:clamp(30px,7vw,46px);
+    font-weight:700;
+    letter-spacing:-.02em;
+    line-height:1.05;
+    margin-bottom:10px;
+  }
+  h1 .past{color:var(--amber)}
+  .sub{color:var(--muted);font-size:15px;max-width:52ch}
+
+  /* progress */
+  .progress-shell{
+    margin:26px 0 40px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px 18px;
+    display:flex;align-items:center;gap:16px;
+  }
+  .progress-track{flex:1;height:8px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+  .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--teal-dim),var(--teal));border-radius:99px;transition:width .5s cubic-bezier(.2,.7,.3,1)}
+  .score{font-family:var(--mono);font-size:14px;color:var(--muted);white-space:nowrap}
+  .score b{color:var(--teal)}
+
+  /* ---------- sections ---------- */
+  section{margin-bottom:44px}
+  .section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+  .section-num{font-family:var(--mono);font-size:13px;color:var(--amber)}
+  h2{font-size:21px;font-weight:600;letter-spacing:-.01em}
+
+  /* grammar card */
+  .grammar{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .grammar-row{padding:18px 20px;border-bottom:1px solid var(--line)}
+  .grammar-row:last-child{border-bottom:none}
+  .grammar-row .label{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+  .pat{font-family:var(--mono);font-size:14px;color:var(--text)}
+  .pat .kw{color:var(--amber)}
+  .pat .base{color:var(--teal)}
+  .ex{margin-top:8px;font-size:15px;color:var(--muted)}
+  .ex em{color:var(--text);font-style:normal;border-bottom:1.5px solid var(--teal-dim);padding-bottom:1px}
+
+  /* flashcards */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:20px 14px;
+    text-align:center;
+    cursor:pointer;
+    font-family:var(--mono);
+    transition:transform .18s ease,border-color .18s ease,background .18s ease;
+    user-select:none;
+    min-height:96px;
+    display:flex;flex-direction:column;justify-content:center;gap:6px;
+  }
+  .card:hover{transform:translateY(-2px);border-color:var(--teal-dim)}
+  .card:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+  .card .base-w{font-size:17px;color:var(--text)}
+  .card .hint{font-size:11px;color:var(--muted);letter-spacing:.05em}
+  .card.flipped{background:var(--surface-2);border-color:var(--teal)}
+  .card.flipped .base-w{color:var(--teal);font-size:18px}
+  .card .tag{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+
+  /* exercises */
+  .q{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:18px 20px;
+    margin-bottom:14px;
+  }
+  .q .prompt{font-size:15.5px;margin-bottom:14px;line-height:1.6}
+  .q .prompt code{font-family:var(--mono);color:var(--amber);font-size:14px}
+  .blank{color:var(--muted)}
+
+  .input-line{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  input[type=text]{
+    font-family:var(--mono);
+    background:var(--ink);
+    border:1px solid var(--line);
+    color:var(--text);
+    border-radius:8px;
+    padding:10px 12px;
+    font-size:15px;
+    width:180px;
+    transition:border-color .15s;
+  }
+  input[type=text]:focus{outline:none;border-color:var(--teal)}
+
+  .opts{display:flex;flex-wrap:wrap;gap:8px}
+  .opt{
+    font-family:var(--mono);
+    font-size:14px;
+    background:var(--ink);
+    border:1px solid var(--line);
+    color:var(--text);
+    padding:9px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:border-color .15s,background .15s;
+  }
+  .opt:hover{border-color:var(--teal-dim)}
+  .opt:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+  .opt.chosen{border-color:var(--teal);background:var(--surface-2)}
+  .opt.correct{border-color:var(--teal);background:var(--teal-dim);color:var(--text)}
+  .opt.wrong{border-color:var(--coral);background:var(--coral-dim)}
+  .opt[disabled]{cursor:default;opacity:.85}
+
+  .btn{
+    font-family:var(--mono);
+    font-size:13px;
+    background:var(--teal);
+    color:var(--ink);
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+    letter-spacing:.02em;
+    transition:opacity .15s,transform .1s;
+  }
+  .btn:hover{opacity:.9}
+  .btn:active{transform:translateY(1px)}
+  .btn:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+  .btn[disabled]{opacity:.4;cursor:default}
+
+  /* console feedback (signature element) */
+  .console{
+    font-family:var(--mono);
+    font-size:13px;
+    margin-top:14px;
+    padding:11px 14px;
+    border-radius:8px;
+    border-left:3px solid var(--line);
+    background:var(--ink);
+    color:var(--muted);
+    display:none;
+    line-height:1.6;
+  }
+  .console.show{display:block;animation:pop .2s ease}
+  .console.pass{border-left-color:var(--teal);color:var(--teal)}
+  .console.fail{border-left-color:var(--coral);color:var(--coral)}
+  .console .meta{color:var(--muted)}
+  @keyframes pop{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+
+  footer{
+    margin-top:40px;text-align:center;color:var(--muted);
+    font-family:var(--mono);font-size:12px;line-height:1.7;
+    border-top:1px solid var(--line);padding-top:24px;
+  }
+  footer b{color:var(--text)}
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">File 2 · A2 → B1 · lesson 01</div>
+    <h1>The <span class="past">Past</span> Simple</h1>
+    <p class="sub">Talk about finished actions — what you shipped, fixed, and broke yesterday. Learn it the way you already think: in commits.</p>
+  </header>
+
+  <div class="progress-shell">
+    <div class="progress-track"><div class="progress-fill" id="fill"></div></div>
+    <div class="score" id="score"><b>0</b> / 12 solved</div>
+  </div>
+
+  <!-- 1. GRAMMAR -->
+  <section>
+    <div class="section-head"><span class="section-num">01</span><h2>How it works</h2></div>
+    <div class="grammar">
+      <div class="grammar-row">
+        <div class="label">Regular verbs — add <span style="color:var(--amber)">-ed</span></div>
+        <div class="pat"><span class="base">deploy</span> → deploy<span class="kw">ed</span> &nbsp;·&nbsp; <span class="base">merge</span> → merg<span class="kw">ed</span> &nbsp;·&nbsp; <span class="base">ship</span> → shi<span class="kw">pped</span></div>
+        <div class="ex">Yesterday I <em>deployed</em> the new build to production.</div>
+      </div>
+      <div class="grammar-row">
+        <div class="label">Irregular verbs — memorize them</div>
+        <div class="pat"><span class="base">write</span> → <span class="kw">wrote</span> &nbsp;·&nbsp; <span class="base">build</span> → <span class="kw">built</span> &nbsp;·&nbsp; <span class="base">break</span> → <span class="kw">broke</span> &nbsp;·&nbsp; <span class="base">run</span> → <span class="kw">ran</span></div>
+        <div class="ex">She <em>wrote</em> the tests and the pipeline <em>ran</em> green.</div>
+      </div>
+      <div class="grammar-row">
+        <div class="label">Negative — didn't + base form</div>
+        <div class="pat"><span class="kw">didn't</span> <span class="base">push</span> &nbsp;·&nbsp; <span class="kw">didn't</span> <span class="base">pass</span></div>
+        <div class="ex">The build <em>didn't pass</em>, so I <em>didn't push</em> to main.</div>
+      </div>
+      <div class="grammar-row">
+        <div class="label">Question — Did + subject + base form</div>
+        <div class="pat"><span class="kw">Did</span> you <span class="base">merge</span>…? &nbsp;·&nbsp; <span class="kw">Did</span> the tests <span class="base">pass</span>…?</div>
+        <div class="ex"><em>Did you review</em> my pull request?</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. FLASHCARDS -->
+  <section>
+    <div class="section-head"><span class="section-num">02</span><h2>Verb flashcards</h2></div>
+    <p class="sub" style="margin-bottom:18px">Tap a card to reveal the past form.</p>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <!-- 3. TYPE THE FORM -->
+  <section>
+    <div class="section-head"><span class="section-num">03</span><h2>Type the past form</h2></div>
+    <div id="fill-ex"></div>
+  </section>
+
+  <!-- 4. CHOOSE -->
+  <section>
+    <div class="section-head"><span class="section-num">04</span><h2>Pick the right word</h2></div>
+    <div id="choice-ex"></div>
+  </section>
+
+  <!-- 5. SPOT THE BUG -->
+  <section>
+    <div class="section-head"><span class="section-num">05</span><h2>Which line is correct?</h2></div>
+    <div id="bug-ex"></div>
+  </section>
+
+  <footer>
+    prototype · lesson concept for <b>American English File 2</b> level<br>
+    all sentences original — swap in your own topics to scale this up
+  </footer>
+
+</div>
+
+<script>
+/* ---------------- state ---------------- */
+const TOTAL = 12;              // 5 fill + 4 choice + 3 bug
+let solved = new Set();
+
+function markSolved(id){
+  solved.add(id);
+  const n = solved.size;
+  document.getElementById('score').innerHTML = `<b>${n}</b> / ${TOTAL} solved`;
+  document.getElementById('fill').style.width = (n/TOTAL*100)+'%';
+}
+
+/* ---------------- flashcards ---------------- */
+const VERBS = [
+  {base:'deploy', past:'deployed', type:'reg'},
+  {base:'merge',  past:'merged',   type:'reg'},
+  {base:'ship',   past:'shipped',  type:'reg'},
+  {base:'fix',    past:'fixed',    type:'reg'},
+  {base:'review', past:'reviewed', type:'reg'},
+  {base:'write',  past:'wrote',    type:'irreg'},
+  {base:'build',  past:'built',    type:'irreg'},
+  {base:'break',  past:'broke',    type:'irreg'},
+  {base:'run',    past:'ran',      type:'irreg'},
+  {base:'find',   past:'found',    type:'irreg'},
+];
+const cardsEl = document.getElementById('cards');
+VERBS.forEach(v=>{
+  const c=document.createElement('div');
+  c.className='card';c.tabIndex=0;c.setAttribute('role','button');
+  const front=`<span class="base-w">${v.base}</span><span class="hint">tap →</span>`;
+  const back=`<span class="tag">${v.type}</span><span class="base-w">${v.past}</span>`;
+  c.innerHTML=front;
+  let flipped=false;
+  const flip=()=>{flipped=!flipped;c.classList.toggle('flipped',flipped);c.innerHTML=flipped?back:front;};
+  c.addEventListener('click',flip);
+  c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
+  cardsEl.appendChild(c);
+});
+
+/* ---------------- ex 1: type the form ---------------- */
+const FILL=[
+  {id:'f1', pre:'Yesterday I', verb:'deploy', post:'the new version to production.', answer:'deployed'},
+  {id:'f2', pre:'She', verb:'write', post:'the unit tests before the standup.', answer:'wrote'},
+  {id:'f3', pre:'The last commit', verb:'break', post:'the build.', answer:'broke'},
+  {id:'f4', pre:'We', verb:'merge', post:'the feature branch this morning.', answer:'merged'},
+  {id:'f5', pre:'I', verb:'find', post:'a nasty bug in the checkout flow.', answer:'found'},
+];
+const fillWrap=document.getElementById('fill-ex');
+FILL.forEach(q=>{
+  const el=document.createElement('div');el.className='q';
+  el.innerHTML=`
+    <div class="prompt">${q.pre} <span class="blank">____</span> <code>(${q.verb})</code> ${q.post}</div>
+    <div class="input-line">
+      <input type="text" placeholder="past form…" autocomplete="off" spellcheck="false">
+      <button class="btn">Run check</button>
+    </div>
+    <div class="console"></div>`;
+  const input=el.querySelector('input');
+  const btn=el.querySelector('button');
+  const con=el.querySelector('.console');
+  const check=()=>{
+    const val=input.value.trim().toLowerCase();
+    if(!val){return;}
+    if(val===q.answer){
+      con.className='console show pass';
+      con.innerHTML=`✓ test passed<br><span class="meta">"${q.pre} <b style="color:var(--text)">${q.answer}</b> ${q.post}"</span>`;
+      input.disabled=true;btn.disabled=true;markSolved(q.id);
+    }else{
+      con.className='console show fail';
+      con.innerHTML=`✕ assertion failed<br><span class="meta">expected the past form of <b style="color:var(--text)">${q.verb}</b> — try again</span>`;
+    }
+  };
+  btn.addEventListener('click',check);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')check();});
+  fillWrap.appendChild(el);
+});
+
+/* ---------------- ex 2: multiple choice ---------------- */
+const CHOICE=[
+  {id:'c1', prompt:'____ you fix the login bug last night?', opts:['Did','Do','Was','Does'], answer:'Did'},
+  {id:'c2', prompt:'The tests ____ pass, so I had to debug for an hour.', opts:["didn't","weren't","don't","not"], answer:"didn't"},
+  {id:'c3', prompt:'He ____ the pull request an hour ago.', opts:['reviewed','review','reviews','reviewing'], answer:'reviewed'},
+  {id:'c4', prompt:'When ____ the app crash — before or after the deploy?', opts:['did','was','does','done'], answer:'did'},
+];
+const choiceWrap=document.getElementById('choice-ex');
+CHOICE.forEach(q=>{
+  const el=document.createElement('div');el.className='q';
+  el.innerHTML=`<div class="prompt">${q.prompt.replace('____','<span class="blank">____</span>')}</div><div class="opts"></div><div class="console"></div>`;
+  const opts=el.querySelector('.opts');
+  const con=el.querySelector('.console');
+  q.opts.forEach(o=>{
+    const b=document.createElement('button');b.className='opt';b.textContent=o;
+    b.addEventListener('click',()=>{
+      if(el.dataset.done)return;
+      const all=opts.querySelectorAll('.opt');
+      if(o===q.answer){
+        b.classList.add('correct');el.dataset.done='1';
+        all.forEach(x=>x.disabled=true);
+        con.className='console show pass';
+        con.innerHTML=`✓ passed <span class="meta">— correct answer: ${q.answer}</span>`;
+        markSolved(q.id);
+      }else{
+        b.classList.add('wrong');b.disabled=true;
+        con.className='console show fail';
+        con.innerHTML=`✕ not quite <span class="meta">— "${o}" doesn't fit here, keep going</span>`;
+      }
+    });
+    opts.appendChild(b);
+  });
+  choiceWrap.appendChild(el);
+});
+
+/* ---------------- ex 3: spot the bug ---------------- */
+const BUGS=[
+  {id:'b1', a:'Yesterday she push the code to main.', b:'Yesterday she pushed the code to main.', answer:'b'},
+  {id:'b2', a:'Did you merged the branch already?', b:'Did you merge the branch already?', answer:'b'},
+  {id:'b3', a:"The build didn't passed on CI.", b:"The build didn't pass on CI.", answer:'b'},
+];
+const bugWrap=document.getElementById('bug-ex');
+BUGS.forEach(q=>{
+  const el=document.createElement('div');el.className='q';
+  el.innerHTML=`<div class="prompt">Which line compiles?</div><div class="opts" style="flex-direction:column;align-items:stretch"></div><div class="console"></div>`;
+  const opts=el.querySelector('.opts');
+  const con=el.querySelector('.console');
+  [['a',q.a],['b',q.b]].forEach(([key,text])=>{
+    const b=document.createElement('button');
+    b.className='opt';b.style.textAlign='left';b.textContent=text;
+    b.addEventListener('click',()=>{
+      if(el.dataset.done)return;
+      if(key===q.answer){
+        b.classList.add('correct');el.dataset.done='1';
+        opts.querySelectorAll('.opt').forEach(x=>x.disabled=true);
+        con.className='console show pass';
+        con.innerHTML='✓ passed <span class="meta">— clean syntax</span>';
+        markSolved(q.id);
+      }else{
+        b.classList.add('wrong');b.disabled=true;
+        con.className='console show fail';
+        con.innerHTML='✕ syntax error <span class="meta">— check the verb form, then pick the other line</span>';
+      }
+    });
+    opts.appendChild(b);
+  });
+  bugWrap.appendChild(el);
+});
+</script>
+</body>
+</html>
