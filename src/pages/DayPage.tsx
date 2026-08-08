@@ -5,7 +5,7 @@ import { PracticeSectionView } from '@/features/practice/PracticeSectionView';
 import { GrammarSectionView } from '@/features/learn/GrammarSectionView';
 import { ReadingSectionView } from '@/features/learn/ReadingSectionView';
 import { ListeningSectionView } from '@/features/listen/ListeningSectionView';
-import { Eyebrow, PageStub } from '@/shared/ui';
+import { Eyebrow, PageStub, PixelImage } from '@/shared/ui';
 
 const SECTION_LABEL: Record<string, string> = {
   grammar: 'grammar',
@@ -46,7 +46,12 @@ export function DayPage() {
       <div className="flex flex-col gap-12">
         {day.sections.map((section) => (
           <section key={section.id} aria-label={section.title.en}>
-            <div className="mb-4 flex items-baseline gap-3 border-b border-line pb-2">
+            <div className="mb-4 flex items-center gap-2.5 border-b border-line pb-2">
+              <PixelImage
+                src={`/assets/pixel/sections/${section.type}.png`}
+                alt=""
+                className="h-6 w-6 shrink-0"
+              />
               <span className="font-mono text-sm text-amber">
                 {SECTION_LABEL[section.type] ?? section.type}
               </span>
