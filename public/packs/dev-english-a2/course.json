@@ -51,6 +51,24 @@
         },
         "questionCount": 12
       }
+    },
+    {
+      "id": "u03",
+      "title": {
+        "en": "File 3 — Small talk",
+        "ru": "Юнит 3 — Small talk"
+      },
+      "dayIds": [
+        "u03.d01"
+      ],
+      "checkpoint": {
+        "id": "u03.checkpoint",
+        "title": {
+          "en": "Unit 3 checkpoint",
+          "ru": "Чекпоинт юнита 3"
+        },
+        "questionCount": 12
+      }
     }
   ]
 }

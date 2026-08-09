@@ -1,0 +1,180 @@
+{
+  "id": "u03.d01",
+  "title": {
+    "en": "What are you doing?",
+    "ru": "Что ты делаешь?"
+  },
+  "estimatedMinutes": 30,
+  "tags": [
+    "grammar.present-continuous",
+    "functions.small-talk"
+  ],
+  "sections": [
+    {
+      "type": "grammar",
+      "id": "u03.d01.grammar",
+      "title": {
+        "en": "Happening now",
+        "ru": "Происходит сейчас"
+      },
+      "rule": {
+        "en": "For something happening right now, use am / is / are + verb-ing.",
+        "ru": "Для действия, которое происходит прямо сейчас, используй am / is / are + глагол-ing."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Statement",
+            "ru": "Утверждение"
+          },
+          "formula": "subject + am/is/are + verb-ing",
+          "examples": [
+            {
+              "en": "She is waving.",
+              "ru": "Она машет."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Question",
+            "ru": "Вопрос"
+          },
+          "formula": "What + am/is/are + subject + verb-ing ?",
+          "examples": [
+            {
+              "en": "What are you doing?",
+              "ru": "Что ты делаешь?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Present continuous = now. Present simple = habits: \"I work every day\" vs \"I am working now\".",
+          "ru": "Present continuous — сейчас. Present simple — привычки: \"I work every day\" против \"I am working now\"."
+        },
+        {
+          "en": "Spelling of -ing: wave → waving (drop e), sit → sitting (double the t).",
+          "ru": "Написание -ing: wave → waving (убираем e), sit → sitting (удваиваем t)."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u03.d01.reading",
+      "title": {
+        "en": "What are you doing?",
+        "ru": "Что ты делаешь?"
+      },
+      "attribution": "Nina Orange, African Storybook (global-asp), CC-BY",
+      "blocks": [
+        {
+          "id": "u03.d01.reading.b1",
+          "en": "I am singing. She is waving. I am clapping. She is stretching.",
+          "ru": "Я пою. Она машет. Я хлопаю. Она потягивается.",
+          "audio": {
+            "src": "media/audio/u03.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u03.d01.reading.b2",
+          "en": "He is calling. I am answering. She is listening. What are you doing?",
+          "ru": "Он зовёт. Я отвечаю. Она слушает. Что ты делаешь?",
+          "audio": {
+            "src": "media/audio/u03.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "wave",
+          "ru": "махать",
+          "ipa": "/weɪv/"
+        },
+        {
+          "word": "clap",
+          "ru": "хлопать",
+          "ipa": "/klæp/"
+        },
+        {
+          "word": "listen",
+          "ru": "слушать",
+          "ipa": "/ˈlɪsn/"
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u03.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u03.d01.ex.gap.01",
+          "instruction": {
+            "en": "Present continuous — now.",
+            "ru": "Present continuous — сейчас."
+          },
+          "tags": [
+            "grammar.present-continuous"
+          ],
+          "prompt": "Look! She ___ at us.",
+          "cue": "(wave)",
+          "answers": [
+            "is waving",
+            "iswaving"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u03.d01.ex.choice.01",
+          "instruction": {
+            "en": "Pick the right form.",
+            "ru": "Выбери правильную форму."
+          },
+          "tags": [
+            "grammar.present-continuous"
+          ],
+          "prompt": "What ___ you doing?",
+          "options": [
+            "are",
+            "do",
+            "is",
+            "does"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u03.d01.ex.tr.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я слушаю.",
+          "answers": [
+            "I am listening.",
+            "I'm listening."
+          ]
+        }
+      ]
+    }
+  ]
+}

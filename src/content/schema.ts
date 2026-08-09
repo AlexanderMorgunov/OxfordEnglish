@@ -128,6 +128,8 @@ export const ReadingSection = z.object({
   image: MediaRef.optional(),
   blocks: z.array(ReadingBlock).min(1),
   glossary: z.array(GlossaryEntry),
+  // Credit for sourced (non-original) passage text, e.g. a CC-BY story.
+  attribution: z.string().optional(),
 });
 
 export const GrammarSection = z.object({

@@ -7,13 +7,25 @@
   "version": "0.1.0",
   "level": "A2",
   "visibility": "public",
-  "license": { "type": "original", "attribution": "Project authors" },
+  "license": {
+    "type": "original",
+    "attribution": "Project authors"
+  },
   "attributions": [
     {
       "source": "VOA Learning English",
       "license": "public-domain",
       "url": "https://learningenglish.voanews.com"
     },
-    { "source": "Tatoeba", "license": "CC-BY-2.0-FR", "url": "https://tatoeba.org" }
+    {
+      "source": "Tatoeba",
+      "license": "CC-BY-2.0-FR",
+      "url": "https://tatoeba.org"
+    },
+    {
+      "source": "African Storybook",
+      "license": "CC-BY-4.0",
+      "url": "https://www.africanstorybook.org"
+    }
   ]
 }

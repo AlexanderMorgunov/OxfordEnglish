@@ -197,6 +197,10 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
         ))}
       </div>
 
+      {section.attribution && (
+        <p className="font-mono text-2xs text-faint">source: {section.attribution}</p>
+      )}
+
       {section.glossary.length > 0 && (
         <div className="rounded-lg border border-line bg-surface p-5">
           <p className="mb-3 font-mono text-2xs uppercase tracking-[0.08em] text-muted">
