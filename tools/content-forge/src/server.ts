@@ -8,6 +8,7 @@ import { tatoebaSearch } from './lib/tatoeba.ts';
 import { dictLookup } from './lib/dictionary.ts';
 import { cefrjLevel, levelCheck, ngslRank } from './lib/level.ts';
 import { openverseSearch, voaList, librivoxSearch } from './lib/sources.ts';
+import { storybookSearch, storybookFetch } from './lib/storybooks.ts';
 import { ttsSynthesize } from './lib/tts.ts';
 import { writeDay } from './lib/writer.ts';
 
@@ -110,6 +111,23 @@ server.tool(
     limit: z.number().int().positive().max(20).default(5),
   },
   async (args) => guardAsync(() => librivoxSearch(args))
+);
+
+server.tool(
+  'storybook_search',
+  'Search openly-licensed leveled English stories (African Storybook / global-asp). ' +
+    'Returns story paths + titles; fetch one with storybook_fetch.',
+  { query: z.string().optional(), limit: z.number().int().positive().max(30).default(15) },
+  async (args) => guardAsync(() => storybookSearch(args))
+);
+
+server.tool(
+  'storybook_fetch',
+  'Fetch one story: title, pages, author, and a stitched license. Refuses ' +
+    'non-redistributable (NC/ND) titles. Adapt pages into reading blocks; author ' +
+    'grammar + exercises on top.',
+  { path: z.string() },
+  async ({ path }) => guardAsync(() => storybookFetch(path))
 );
 
 server.tool(
