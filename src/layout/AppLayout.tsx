@@ -1,24 +1,24 @@
 import { NavLink, Outlet } from 'react-router-dom';
 
 const NAV = [
-  { to: '/', label: 'today', end: true },
-  { to: '/review', label: 'review', end: false },
-  { to: '/progress', label: 'progress', end: false },
-  { to: '/vocabulary', label: 'vocab', end: false },
-  { to: '/settings', label: 'settings', end: false },
-  { to: '/kitchen-sink', label: 'kit', end: false },
+  { to: '/', label: 'today', end: true, devOnly: false },
+  { to: '/review', label: 'review', end: false, devOnly: false },
+  { to: '/progress', label: 'progress', end: false, devOnly: false },
+  { to: '/vocabulary', label: 'vocab', end: false, devOnly: false },
+  { to: '/settings', label: 'settings', end: false, devOnly: false },
+  { to: '/kitchen-sink', label: 'kit', end: false, devOnly: true },
 ] as const;
 
 export function AppLayout() {
   return (
     <div className="min-h-screen">
       <header className="border-b border-line bg-surface/60 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-5 py-3">
-          <NavLink to="/" className="flex items-baseline gap-2">
+        <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 py-3">
+          <NavLink to="/" className="flex shrink-0 items-baseline gap-2 whitespace-nowrap">
             <span className="eyebrow">en/dev</span>
             <span className="font-mono text-sm text-muted">A2 → B1</span>
           </NavLink>
-          <nav className="flex items-center gap-1">
+          <nav className="flex flex-wrap items-center gap-1">
             {NAV.map((item) => (
               <NavLink
                 key={item.to}
@@ -27,6 +27,7 @@ export function AppLayout() {
                 className={({ isActive }) =>
                   [
                     'font-mono text-xs rounded-sm px-2.5 py-1.5 transition-colors',
+                    item.devOnly ? 'hidden sm:inline-block' : '',
                     isActive
                       ? 'bg-surface-2 text-teal'
                       : 'text-muted hover:text-content',
