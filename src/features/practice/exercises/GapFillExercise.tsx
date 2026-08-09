@@ -60,7 +60,7 @@ export function GapFillExercise({ exercise, onSolved }: Props) {
       <div className="flex flex-wrap items-center gap-2.5">
         <Input
           className="w-48"
-          placeholder="past form…"
+          placeholder="type your answer…"
           value={value}
           disabled={status === 'correct'}
           onChange={(e) => setValue(e.target.value)}

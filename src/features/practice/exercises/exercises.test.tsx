@@ -27,7 +27,7 @@ const choice: Extract<Exercise, { type: 'choice' }> = {
 test('gap-fill allows retry after a wrong answer, then passes', async () => {
   const onSolved = vi.fn();
   render(<GapFillExercise exercise={gap} onSolved={onSolved} />);
-  const input = screen.getByPlaceholderText(/past form/i);
+  const input = screen.getByPlaceholderText(/your answer/i);
 
   await userEvent.type(input, 'deploy');
   await userEvent.click(screen.getByRole('button', { name: /run check/i }));

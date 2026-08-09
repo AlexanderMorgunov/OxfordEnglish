@@ -1,6 +1,43 @@
 import type { ExerciseAttempt } from '@/db/db';
-import type { Day } from '@/content/schema';
+import type { Day, LocalizedText } from '@/content/schema';
 import type { LoadedUnit } from '@/content/loader';
+import type { ExerciseResult } from './sessionResults';
+
+export type DayExercise = { id: string; tags: string[]; instruction: LocalizedText };
+
+/** Practice + listening exercises, in the order they appear in the day. */
+export function dayExercises(day: Day): DayExercise[] {
+  const out: DayExercise[] = [];
+  for (const section of day.sections) {
+    if (section.type === 'practice' || section.type === 'listening') {
+      for (const e of section.exercises) out.push({ id: e.id, tags: e.tags, instruction: e.instruction });
+    }
+  }
+  return out;
+}
+
+/** Per-exercise outcome from stored attempts — first attempt fixes correctness. */
+export function resultsFromAttempts(
+  attempts: ExerciseAttempt[]
+): { id: string; result: ExerciseResult }[] {
+  const byId = new Map<string, ExerciseAttempt[]>();
+  for (const a of attempts) {
+    const list = byId.get(a.exerciseId) ?? [];
+    list.push(a);
+    byId.set(a.exerciseId, list);
+  }
+  return [...byId.entries()].map(([id, list]) => {
+    const sorted = [...list].sort((a, b) => a.attemptNumber - b.attemptNumber);
+    return {
+      id,
+      result: {
+        firstCorrect: sorted[0]?.correct ?? false,
+        attempts: list.length,
+        tags: sorted[0]?.tags ?? [],
+      },
+    };
+  });
+}
 
 export type CompletionState = 'new' | 'in-progress' | 'done';
 

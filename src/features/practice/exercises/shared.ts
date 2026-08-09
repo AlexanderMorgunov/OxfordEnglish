@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { recordAttempt } from '@/db/db';
 import { addErrorCard } from '@/features/srs/service';
+import { useSessionResults } from '@/features/progress/sessionResults';
 import type { LocalizedText } from '@/content/schema';
 
 export type ExerciseStatus = 'idle' | 'correct' | 'incorrect';
@@ -25,6 +26,7 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
     if (status === 'correct') return;
     const n = attemptNumber + 1;
     setAttemptNumber(n);
+    useSessionResults.getState().record(exercise.id, correct, exercise.tags);
     void recordAttempt({
       exerciseId: exercise.id,
       tags: exercise.tags,

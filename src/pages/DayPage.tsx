@@ -6,7 +6,19 @@ import { GrammarSectionView } from '@/features/learn/GrammarSectionView';
 import { ReadingSectionView } from '@/features/learn/ReadingSectionView';
 import { VocabularySectionView } from '@/features/learn/VocabularySectionView';
 import { ListeningSectionView } from '@/features/listen/ListeningSectionView';
+import { DaySummary, type NextDay } from '@/features/learn/DaySummary';
+import { loadAttempts } from '@/features/progress/queries';
+import { resultsFromAttempts } from '@/features/progress/completion';
+import { useSessionResults } from '@/features/progress/sessionResults';
 import { Eyebrow, PageStub, PixelImage } from '@/shared/ui';
+import type { LoadedPack } from '@/content/loader';
+
+function nextDayOf(pack: LoadedPack, dayId: string): NextDay | null {
+  const ordered = pack.units.flatMap((u) => u.days.map((d) => ({ unitId: u.id, day: d })));
+  const idx = ordered.findIndex((o) => o.day.id === dayId);
+  const nxt = idx >= 0 ? ordered[idx + 1] : undefined;
+  return nxt ? { unitId: nxt.unitId, dayId: nxt.day.id, title: nxt.day.title.en } : null;
+}
 
 const SECTION_LABEL: Record<string, string> = {
   grammar: 'grammar',
@@ -19,10 +31,15 @@ const SECTION_LABEL: Record<string, string> = {
 export function DayPage() {
   const { dayId } = useParams();
   const { status, pack, load } = useContentStore();
+  const hydrate = useSessionResults((s) => s.hydrate);
 
   useEffect(() => {
     void load();
   }, [load]);
+
+  useEffect(() => {
+    void loadAttempts().then((attempts) => hydrate(resultsFromAttempts(attempts)));
+  }, [hydrate]);
 
   if (status === 'idle' || status === 'loading') {
     return <p className="font-mono text-sm text-muted">loading day…</p>;
@@ -74,6 +91,8 @@ export function DayPage() {
             )}
           </section>
         ))}
+
+        <DaySummary day={day} next={pack ? nextDayOf(pack, day.id) : null} />
       </div>
     </article>
   );
