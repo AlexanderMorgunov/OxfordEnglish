@@ -1,0 +1,199 @@
+{
+  "id": "u04.d01",
+  "title": {
+    "en": "Where is it?",
+    "ru": "Где это?"
+  },
+  "estimatedMinutes": 25,
+  "tags": [
+    "functions.directions",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "grammar",
+      "id": "u04.d01.grammar",
+      "title": {
+        "en": "There is / there are · Where is…?",
+        "ru": "There is / there are · Where is…?"
+      },
+      "rule": {
+        "en": "Use \"there is\" for one thing, \"there are\" for many. Ask \"Where is…?\" to find something.",
+        "ru": "Используй \"there is\" для одного, \"there are\" для многих. Спрашивай \"Where is…?\", чтобы что-то найти."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "there is / are",
+            "ru": "there is / are"
+          },
+          "formula": "there is + singular · there are + plural",
+          "examples": [
+            {
+              "en": "There is a shop near here. There are two cafés.",
+              "ru": "Рядом есть магазин. Есть два кафе."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Where…?",
+            "ru": "Где…?"
+          },
+          "formula": "Where is / are + noun ?",
+          "examples": [
+            {
+              "en": "Where is the water?",
+              "ru": "Где вода?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Match the verb to the noun: \"there is one apple\", \"there are three apples\".",
+          "ru": "Согласуй глагол с существительным: \"there is one apple\", \"there are three apples\"."
+        },
+        {
+          "en": "Prepositions of place: at, in, on, near, next to, between.",
+          "ru": "Предлоги места: at, in, on, near, next to, between."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u04.d01.reading",
+      "title": {
+        "en": "Looking for water",
+        "ru": "Ищем воду"
+      },
+      "attribution": "Augustine Napagi, African Storybook (global-asp), CC-BY",
+      "blocks": [
+        {
+          "id": "u04.d01.reading.b1",
+          "en": "Where can I get water.",
+          "audio": {
+            "src": "media/audio/u04.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u04.d01.reading.b2",
+          "en": "There is some water in the pot.",
+          "audio": {
+            "src": "media/audio/u04.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u04.d01.reading.b3",
+          "en": "It is too hot.",
+          "audio": {
+            "src": "media/audio/u04.d01.reading.b3.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u04.d01.reading.b4",
+          "en": "Can this water be cold.",
+          "audio": {
+            "src": "media/audio/u04.d01.reading.b4.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "water",
+          "ru": "вода",
+          "ipa": "/ˈwɔːtər/"
+        },
+        {
+          "word": "near",
+          "ru": "рядом",
+          "ipa": "/nɪr/"
+        },
+        {
+          "word": "where",
+          "ru": "где",
+          "ipa": "/wer/"
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u04.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u04.d01.ex.choice.01",
+          "instruction": {
+            "en": "is or are?",
+            "ru": "is или are?"
+          },
+          "tags": [
+            "grammar.word-order"
+          ],
+          "prompt": "There ___ two shops on this street.",
+          "options": [
+            "are",
+            "is",
+            "be",
+            "have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d01.ex.gap.01",
+          "instruction": {
+            "en": "Ask where.",
+            "ru": "Спроси где."
+          },
+          "tags": [
+            "functions.directions"
+          ],
+          "prompt": "___ is the station?",
+          "answers": [
+            "Where",
+            "where"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u04.d01.ex.tr.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.directions",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Рядом есть магазин.",
+          "answers": [
+            "There is a shop near here.",
+            "There is a shop nearby."
+          ]
+        }
+      ]
+    }
+  ]
+}

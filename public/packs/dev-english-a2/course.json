@@ -69,6 +69,24 @@
         },
         "questionCount": 12
       }
+    },
+    {
+      "id": "u04",
+      "title": {
+        "en": "File 4 — Getting around",
+        "ru": "Юнит 4 — Ориентируемся в городе"
+      },
+      "dayIds": [
+        "u04.d01"
+      ],
+      "checkpoint": {
+        "id": "u04.checkpoint",
+        "title": {
+          "en": "Unit 4 checkpoint",
+          "ru": "Чекпоинт юнита 4"
+        },
+        "questionCount": 12
+      }
     }
   ]
 }

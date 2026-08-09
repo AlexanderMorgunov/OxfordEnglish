@@ -5,8 +5,10 @@ import { politeFetch } from '../src/lib/net.ts';
 const OUT = process.env.WORDLISTS_PATH ?? './data/wordlists.json';
 const SAMPLE = './fixtures/wordlists-sample.json';
 
-// Correct, still-owned domain (the .org variant was hijacked).
-const NGSL_CSV = 'https://www.newgeneralservicelist.com/s/NGSL-101-by-band.csv';
+// Frequency rank = line number. A reliable, fetchable ranked list (MIT) — a
+// practical stand-in for NGSL, which has no stable programmatic CSV URL.
+const FREQ_URL =
+  'https://raw.githubusercontent.com/first20hours/google-10000-english/master/google-10000-english-usa-no-swears.txt';
 const CEFRJ_CSV =
   'https://raw.githubusercontent.com/openlanguageprofiles/olp-en-cefrj/master/cefrj-vocabulary-profile-1.5.csv';
 
@@ -19,20 +21,23 @@ async function tryFetch(url: string): Promise<string | null> {
   }
 }
 
-/** Parse a CSV column pair into a record, skipping the header row. */
-function parseCsv(
-  text: string,
-  wordCol: number,
-  valueCol: number,
-  transform: (v: string) => string | number
-): Record<string, string | number> {
-  const out: Record<string, string | number> = {};
-  const lines = text.split(/\r?\n/).slice(1);
-  for (const line of lines) {
+function parseFrequency(text: string): Record<string, number> {
+  const out: Record<string, number> = {};
+  const words = text.split(/\r?\n/).map((w) => w.trim().toLowerCase()).filter(Boolean);
+  words.forEach((word, i) => {
+    if (!(word in out)) out[word] = i + 1;
+  });
+  return out;
+}
+
+/** CEFR-J CSV columns: headword(0), pos(1), CEFR(2). */
+function parseCefrj(text: string): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const line of text.split(/\r?\n/).slice(1)) {
     const cols = line.split(',');
-    const word = cols[wordCol]?.trim().toLowerCase();
-    const value = cols[valueCol]?.trim();
-    if (word && value) out[word] = transform(value);
+    const word = cols[0]?.trim().toLowerCase();
+    const cefr = cols[2]?.trim();
+    if (word && cefr) out[word] = cefr;
   }
   return out;
 }
@@ -40,15 +45,12 @@ function parseCsv(
 async function main(): Promise<void> {
   mkdirSync(dirname(OUT), { recursive: true });
 
-  const ngslRaw = await tryFetch(NGSL_CSV);
+  const freqRaw = await tryFetch(FREQ_URL);
   const cefrjRaw = await tryFetch(CEFRJ_CSV);
 
-  if (!ngslRaw && !cefrjRaw) {
+  if (!freqRaw && !cefrjRaw) {
     copyFileSync(SAMPLE, OUT);
-    console.log(
-      `! could not reach the wordlist sources — wrote the bundled sample to ${OUT}.\n` +
-        `  Re-run with network access to fetch the full NGSL + CEFR-J lists.`
-    );
+    console.log(`! could not reach the wordlist sources — wrote the bundled sample to ${OUT}.`);
     return;
   }
 
@@ -56,18 +58,12 @@ async function main(): Promise<void> {
     ngsl: Record<string, number>;
     cefrj: Record<string, string>;
   };
-
-  const ngsl = ngslRaw
-    ? (parseCsv(ngslRaw, 0, 1, (v) => Number(v) || 9999) as Record<string, number>)
-    : sample.ngsl;
-  // CEFR-J CSV columns: headword(0), pos(1), CEFR(2).
-  const cefrj = cefrjRaw
-    ? (parseCsv(cefrjRaw, 0, 2, (v) => v) as Record<string, string>)
-    : sample.cefrj;
+  const ngsl = freqRaw ? parseFrequency(freqRaw) : sample.ngsl;
+  const cefrj = cefrjRaw ? parseCefrj(cefrjRaw) : sample.cefrj;
 
   writeFileSync(OUT, JSON.stringify({ ngsl, cefrj }));
   console.log(
-    `✓ wrote ${OUT} — ngsl: ${Object.keys(ngsl).length}, cefrj: ${Object.keys(cefrj).length}`
+    `✓ wrote ${OUT} — freq: ${Object.keys(ngsl).length}, cefrj: ${Object.keys(cefrj).length}`
   );
 }
 
