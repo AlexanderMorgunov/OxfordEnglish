@@ -56,7 +56,13 @@
         "en": "Every day",
         "ru": "Каждый день"
       },
-      "dayIds": [],
+      "dayIds": [
+        "u02.d01",
+        "u02.d02",
+        "u02.d03",
+        "u02.d04",
+        "u02.d05"
+      ],
       "checkpoint": {
         "id": "u02.checkpoint",
         "title": {

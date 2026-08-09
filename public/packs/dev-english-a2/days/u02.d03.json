@@ -1,0 +1,467 @@
+{
+  "id": "u02.d03",
+  "title": {
+    "en": "How often?",
+    "ru": "Как часто?"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "grammar.adverbs-frequency",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u02.d03.vocab",
+      "title": {
+        "en": "Time & days",
+        "ru": "Время и дни"
+      },
+      "words": [
+        {
+          "word": "usually",
+          "ru": "обычно",
+          "ipa": "/ˈjuːʒuəli/",
+          "example": "I usually walk to work.",
+          "exampleRu": "Я обычно хожу на работу пешком.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.usually.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "often",
+          "ru": "часто",
+          "ipa": "/ˈɒfn/",
+          "example": "She often works late.",
+          "exampleRu": "Она часто работает допоздна.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.often.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sometimes",
+          "ru": "иногда",
+          "ipa": "/ˈsʌmtaɪmz/",
+          "example": "We sometimes eat out.",
+          "exampleRu": "Иногда мы едим вне дома.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.sometimes.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "never",
+          "ru": "никогда",
+          "ipa": "/ˈnevər/",
+          "example": "He never drinks coffee.",
+          "exampleRu": "Он никогда не пьёт кофе.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.never.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "morning",
+          "ru": "утро",
+          "ipa": "/ˈmɔːnɪŋ/",
+          "example": "In the morning I run.",
+          "exampleRu": "Утром я бегаю.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.morning.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "afternoon",
+          "ru": "день (после полудня)",
+          "ipa": "/ˌɑːftəˈnuːn/",
+          "example": "In the afternoon I study.",
+          "exampleRu": "Днём я учусь.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.afternoon.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "night",
+          "ru": "ночь",
+          "ipa": "/naɪt/",
+          "example": "At night I sleep.",
+          "exampleRu": "Ночью я сплю.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.night.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "Monday",
+          "ru": "понедельник",
+          "ipa": "/ˈmʌndeɪ/",
+          "example": "On Monday I have a meeting.",
+          "exampleRu": "В понедельник у меня совещание.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.monday.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "weekend",
+          "ru": "выходные",
+          "ipa": "/ˌwiːkˈend/",
+          "example": "At the weekend I relax.",
+          "exampleRu": "На выходных я отдыхаю.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.weekend.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "month",
+          "ru": "месяц",
+          "ipa": "/mʌnθ/",
+          "example": "Once a month.",
+          "exampleRu": "Раз в месяц.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.month.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "quarter",
+          "ru": "четверть",
+          "ipa": "/ˈkwɔːtər/",
+          "example": "It's a quarter past nine.",
+          "exampleRu": "Сейчас четверть десятого.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.quarter.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "half past",
+          "ru": "половина (времени)",
+          "ipa": "/hɑːf pɑːst/",
+          "example": "It's half past six.",
+          "exampleRu": "Сейчас половина седьмого.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.halfpast.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u02.d03.grammar",
+      "title": {
+        "en": "Adverbs of frequency & at/in/on",
+        "ru": "Наречия частоты и at/in/on"
+      },
+      "rule": {
+        "en": "Adverbs of frequency (always, usually, often, sometimes, never) go before the main verb, but after \"be\". Time: at + clock, in + parts of day/months, on + days.",
+        "ru": "Наречия частоты (always, usually, often, sometimes, never) — перед основным глаголом, но после \"be\". Время: at + часы, in + части дня/месяцы, on + дни."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Position",
+            "ru": "Позиция"
+          },
+          "formula": "subject + adverb + verb",
+          "examples": [
+            {
+              "en": "She often works late.",
+              "ru": "Она часто работает допоздна."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "at / in / on",
+            "ru": "at / in / on"
+          },
+          "formula": "at 7 · in the morning · on Monday",
+          "examples": [
+            {
+              "en": "On Monday, at nine, in the morning.",
+              "ru": "В понедельник, в девять, утром."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Adverb goes after \"be\": \"She is always late\", not \"She always is late\".",
+          "ru": "Наречие после \"be\": \"She is always late\", а не \"She always is late\"."
+        },
+        {
+          "en": "\"at the weekend\", \"in the morning\", \"on Sunday\" — fixed prepositions.",
+          "ru": "\"at the weekend\", \"in the morning\", \"on Sunday\" — фиксированные предлоги."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u02.d03.reading",
+      "title": {
+        "en": "My week",
+        "ru": "Моя неделя"
+      },
+      "blocks": [
+        {
+          "id": "u02.d03.reading.b1",
+          "en": "I usually get up early in the morning. On Monday I always have a meeting at nine.",
+          "ru": "Обычно я встаю рано утром. В понедельник у меня всегда совещание в девять.",
+          "audio": {
+            "src": "media/audio/u02.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u02.d03.reading.b2",
+          "en": "At the weekend I never work. I sometimes meet friends in the afternoon, and we often have dinner together.",
+          "ru": "На выходных я никогда не работаю. Иногда днём встречаюсь с друзьями, и мы часто ужинаем вместе.",
+          "audio": {
+            "src": "media/audio/u02.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "week",
+          "ru": "неделя",
+          "ipa": "/wiːk/"
+        },
+        {
+          "word": "friends",
+          "ru": "друзья",
+          "ipa": "/frendz/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u02.d03.listening",
+      "title": {
+        "en": "Free time",
+        "ru": "Свободное время"
+      },
+      "audio": {
+        "src": "media/audio/u02.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "How often do you exercise? I usually run in the morning.",
+          "ru": "Как часто ты занимаешься спортом? Обычно бегаю утром."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Do you work on Saturday? No, at the weekend I never work.",
+          "ru": "Ты работаешь в субботу? Нет, на выходных никогда."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u02.d03.ex.l.01",
+          "instruction": {
+            "en": "When does she run?",
+            "ru": "Когда она бегает?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "In the ___.",
+          "options": [
+            "morning",
+            "afternoon",
+            "evening"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u02.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u02.d03.ex.c.01",
+          "instruction": {
+            "en": "at, in or on?",
+            "ru": "at, in или on?"
+          },
+          "tags": [
+            "grammar.prepositions-time"
+          ],
+          "prompt": "I have a meeting ___ Monday.",
+          "options": [
+            "on",
+            "in",
+            "at",
+            "to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u02.d03.ex.c.02",
+          "instruction": {
+            "en": "at, in or on?",
+            "ru": "at, in или on?"
+          },
+          "tags": [
+            "grammar.prepositions-time"
+          ],
+          "prompt": "She runs ___ the morning.",
+          "options": [
+            "in",
+            "on",
+            "at",
+            "by"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u02.d03.ex.o.01",
+          "instruction": {
+            "en": "Put the adverb in the right place.",
+            "ru": "Поставь наречие на место."
+          },
+          "tags": [
+            "grammar.adverbs-frequency"
+          ],
+          "tokens": [
+            "She",
+            "often",
+            "works",
+            "late"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u02.d03.ex.sp.01",
+          "instruction": {
+            "en": "Which line is correct?",
+            "ru": "Какая строка верна?"
+          },
+          "tags": [
+            "grammar.adverbs-frequency"
+          ],
+          "variants": [
+            "She always is late.",
+            "She is always late."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u02.d03.ex.m.01",
+          "instruction": {
+            "en": "Match.",
+            "ru": "Сопоставь."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "never",
+              "right": "никогда"
+            },
+            {
+              "left": "often",
+              "right": "часто"
+            },
+            {
+              "left": "usually",
+              "right": "обычно"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u02.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate.",
+            "ru": "Переведи."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.adverbs-frequency"
+          ],
+          "direction": "ru-en",
+          "prompt": "На выходных я никогда не работаю.",
+          "answers": [
+            "At the weekend I never work.",
+            "I never work at the weekend."
+          ]
+        }
+      ]
+    }
+  ]
+}

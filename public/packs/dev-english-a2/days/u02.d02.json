@@ -1,0 +1,461 @@
+{
+  "id": "u02.d02",
+  "title": {
+    "en": "Do you work here?",
+    "ru": "Ты здесь работаешь?"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "grammar.present-simple",
+    "vocab.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u02.d02.vocab",
+      "title": {
+        "en": "Work",
+        "ru": "Работа"
+      },
+      "words": [
+        {
+          "word": "study",
+          "ru": "учиться",
+          "ipa": "/ˈstʌdi/",
+          "example": "I study English.",
+          "exampleRu": "Я учу английский.",
+          "audio": {
+            "src": "media/audio/u02.d02.vocab.study.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "teach",
+          "ru": "преподавать",
+          "ipa": "/tiːtʃ/",
+          "example": "She teaches maths.",
+          "exampleRu": "Она преподаёт математику.",
+          "audio": {
+            "src": "media/audio/u02.d02.vocab.teach.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "drive",
+          "ru": "водить",
+          "ipa": "/draɪv/",
+          "example": "He drives a bus.",
+          "exampleRu": "Он водит автобус.",
+          "audio": {
+            "src": "media/audio/u02.d02.vocab.drive.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "office",
+          "ru": "офис",
+          "ipa": "/ˈɒfɪs/",
+          "example": "I work in an office.",
+          "exampleRu": "Я работаю в офисе.",
+          "audio": {
+            "src": "media/audio/u02.d02.vocab.office.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "company",
+          "ru": "компания",
+          "ipa": "/ˈkʌmpəni/",
+          "example": "A big company.",
+          "exampleRu": "Большая компания.",
+          "audio": {
+            "src": "media/audio/u02.d02.vocab.company.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "meeting",
+          "ru": "встреча/совещание",
+          "ipa": "/ˈmiːtɪŋ/",
+          "example": "We have a meeting.",
+          "exampleRu": "У нас совещание.",
+          "audio": {
+            "src": "media/audio/u02.d02.vocab.meeting.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "break",
+          "ru": "перерыв",
+          "ipa": "/breɪk/",
+          "example": "I take a break.",
+          "exampleRu": "Я делаю перерыв.",
+          "audio": {
+            "src": "media/audio/u02.d02.vocab.break.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "weekend",
+          "ru": "выходные",
+          "ipa": "/ˌwiːkˈend/",
+          "example": "I don't work at the weekend.",
+          "exampleRu": "Я не работаю на выходных.",
+          "audio": {
+            "src": "media/audio/u02.d02.vocab.weekend.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "early",
+          "ru": "рано",
+          "ipa": "/ˈɜːli/",
+          "example": "He starts early.",
+          "exampleRu": "Он начинает рано.",
+          "audio": {
+            "src": "media/audio/u02.d02.vocab.early.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "late",
+          "ru": "поздно",
+          "ipa": "/leɪt/",
+          "example": "She finishes late.",
+          "exampleRu": "Она заканчивает поздно.",
+          "audio": {
+            "src": "media/audio/u02.d02.vocab.late.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "help",
+          "ru": "помогать",
+          "ipa": "/help/",
+          "example": "I help my team.",
+          "exampleRu": "Я помогаю команде.",
+          "audio": {
+            "src": "media/audio/u02.d02.vocab.help.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "boss",
+          "ru": "начальник",
+          "ipa": "/bɒs/",
+          "example": "My boss is nice.",
+          "exampleRu": "Мой начальник приятный.",
+          "audio": {
+            "src": "media/audio/u02.d02.vocab.boss.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u02.d02.grammar",
+      "title": {
+        "en": "do / does questions",
+        "ru": "Вопросы с do / does"
+      },
+      "rule": {
+        "en": "Make questions and negatives with do/does. \"Do you…?\", \"Does she…?\", \"I don't…\", \"He doesn't…\". The main verb stays base (no -s).",
+        "ru": "Вопросы и отрицания — с do/does. \"Do you…?\", \"Does she…?\", \"I don't…\", \"He doesn't…\". Основной глагол в начальной форме (без -s)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Question",
+            "ru": "Вопрос"
+          },
+          "formula": "Do/Does + subject + verb ?",
+          "examples": [
+            {
+              "en": "Does she work here?",
+              "ru": "Она здесь работает?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Short answer",
+            "ru": "Краткий ответ"
+          },
+          "formula": "Yes, I do. / No, she doesn't.",
+          "examples": [
+            {
+              "en": "Do you drive? — Yes, I do.",
+              "ru": "Ты водишь? — Да."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After do/does the verb loses -s: \"Does she work?\", not \"Does she works?\".",
+          "ru": "После do/does глагол теряет -s: \"Does she work?\", а не \"Does she works?\"."
+        },
+        {
+          "en": "\"doesn't\" for he/she/it, \"don't\" for the rest.",
+          "ru": "\"doesn't\" — для he/she/it, \"don't\" — для остальных."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u02.d02.reading",
+      "title": {
+        "en": "Different jobs",
+        "ru": "Разные работы"
+      },
+      "blocks": [
+        {
+          "id": "u02.d02.reading.b1",
+          "en": "My sister teaches at a school, and my brother drives a bus. They both start early and finish late.",
+          "ru": "Моя сестра преподаёт в школе, а брат водит автобус. Оба начинают рано и заканчивают поздно.",
+          "audio": {
+            "src": "media/audio/u02.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u02.d02.reading.b2",
+          "en": "I work in an office for a big company. I don't work at the weekend, but my boss often does.",
+          "ru": "Я работаю в офисе в большой компании. По выходным я не работаю, а мой начальник часто работает.",
+          "audio": {
+            "src": "media/audio/u02.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "school",
+          "ru": "школа",
+          "ipa": "/skuːl/"
+        },
+        {
+          "word": "both",
+          "ru": "оба",
+          "ipa": "/bəʊθ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u02.d02.listening",
+      "title": {
+        "en": "At the office",
+        "ru": "В офисе"
+      },
+      "audio": {
+        "src": "media/audio/u02.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Do you work here? Yes, I do.",
+          "ru": "Ты здесь работаешь? Да."
+        },
+        {
+          "start": 3,
+          "end": 7,
+          "en": "Does your team work at the weekend? No, we don't.",
+          "ru": "Твоя команда работает по выходным? Нет."
+        },
+        {
+          "start": 7,
+          "end": 9,
+          "en": "But the boss does.",
+          "ru": "А начальник — да."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u02.d02.ex.l.01",
+          "instruction": {
+            "en": "Who works at the weekend?",
+            "ru": "Кто работает по выходным?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "The ___.",
+          "options": [
+            "boss",
+            "team",
+            "speaker"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u02.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u02.d02.ex.c.01",
+          "instruction": {
+            "en": "Do or Does?",
+            "ru": "Do или Does?"
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "___ she teach at a school?",
+          "options": [
+            "Does",
+            "Do",
+            "Is",
+            "Are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d02.ex.g.01",
+          "instruction": {
+            "en": "don't or doesn't?",
+            "ru": "don't или doesn't?"
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "He ___ work at the weekend.",
+          "answers": [
+            "doesn't",
+            "does not"
+          ]
+        },
+        {
+          "type": "transform",
+          "id": "u02.d02.ex.tf.01",
+          "instruction": {
+            "en": "Make it a question.",
+            "ru": "Сделай вопрос."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "You drive a bus.",
+          "answers": [
+            "Do you drive a bus?"
+          ]
+        },
+        {
+          "type": "transform",
+          "id": "u02.d02.ex.tf.02",
+          "instruction": {
+            "en": "Make it negative.",
+            "ru": "Сделай отрицание."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "She works here.",
+          "answers": [
+            "She doesn't work here.",
+            "She does not work here."
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u02.d02.ex.m.01",
+          "instruction": {
+            "en": "Match.",
+            "ru": "Сопоставь."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "teach",
+              "right": "преподавать"
+            },
+            {
+              "left": "drive",
+              "right": "водить"
+            },
+            {
+              "left": "office",
+              "right": "офис"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u02.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate.",
+            "ru": "Переведи."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.present-simple"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты здесь работаешь?",
+          "answers": [
+            "Do you work here?"
+          ]
+        }
+      ]
+    }
+  ]
+}

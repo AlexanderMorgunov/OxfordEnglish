@@ -1,0 +1,463 @@
+{
+  "id": "u02.d04",
+  "title": {
+    "en": "There's a shop",
+    "ru": "Здесь есть магазин"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "grammar.there-is",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u02.d04.vocab",
+      "title": {
+        "en": "Places nearby",
+        "ru": "Места рядом"
+      },
+      "words": [
+        {
+          "word": "shop",
+          "ru": "магазин",
+          "ipa": "/ʃɒp/",
+          "example": "There's a shop near my house.",
+          "exampleRu": "Рядом с домом есть магазин.",
+          "audio": {
+            "src": "media/audio/u02.d04.vocab.shop.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "park",
+          "ru": "парк",
+          "ipa": "/pɑːk/",
+          "example": "The park is big.",
+          "exampleRu": "Парк большой.",
+          "audio": {
+            "src": "media/audio/u02.d04.vocab.park.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "station",
+          "ru": "станция/вокзал",
+          "ipa": "/ˈsteɪʃn/",
+          "example": "The station is near.",
+          "exampleRu": "Станция близко.",
+          "audio": {
+            "src": "media/audio/u02.d04.vocab.station.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "market",
+          "ru": "рынок",
+          "ipa": "/ˈmɑːkɪt/",
+          "example": "I go to the market.",
+          "exampleRu": "Я хожу на рынок.",
+          "audio": {
+            "src": "media/audio/u02.d04.vocab.market.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "street",
+          "ru": "улица",
+          "ipa": "/striːt/",
+          "example": "A quiet street.",
+          "exampleRu": "Тихая улица.",
+          "audio": {
+            "src": "media/audio/u02.d04.vocab.street.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "near",
+          "ru": "рядом",
+          "ipa": "/nɪər/",
+          "example": "The shop is near.",
+          "exampleRu": "Магазин рядом.",
+          "audio": {
+            "src": "media/audio/u02.d04.vocab.near.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "far",
+          "ru": "далеко",
+          "ipa": "/fɑː/",
+          "example": "The park is not far.",
+          "exampleRu": "Парк недалеко.",
+          "audio": {
+            "src": "media/audio/u02.d04.vocab.far.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "corner",
+          "ru": "угол",
+          "ipa": "/ˈkɔːnər/",
+          "example": "On the corner.",
+          "exampleRu": "На углу.",
+          "audio": {
+            "src": "media/audio/u02.d04.vocab.corner.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "city",
+          "ru": "город",
+          "ipa": "/ˈsɪti/",
+          "example": "I live in a city.",
+          "exampleRu": "Я живу в городе.",
+          "audio": {
+            "src": "media/audio/u02.d04.vocab.city.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "building",
+          "ru": "здание",
+          "ipa": "/ˈbɪldɪŋ/",
+          "example": "A tall building.",
+          "exampleRu": "Высокое здание.",
+          "audio": {
+            "src": "media/audio/u02.d04.vocab.building.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "people",
+          "ru": "люди",
+          "ipa": "/ˈpiːpl/",
+          "example": "There are a lot of people.",
+          "exampleRu": "Тут много людей.",
+          "audio": {
+            "src": "media/audio/u02.d04.vocab.people.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "place",
+          "ru": "место",
+          "ipa": "/pleɪs/",
+          "example": "A nice place.",
+          "exampleRu": "Приятное место.",
+          "audio": {
+            "src": "media/audio/u02.d04.vocab.place.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u02.d04.grammar",
+      "title": {
+        "en": "a/the & there is/are",
+        "ru": "a/the и there is/are"
+      },
+      "rule": {
+        "en": "Use \"a/an\" for a new thing, \"the\" for a known one, no article for general plurals. \"There is\" for one, \"there are\" for many.",
+        "ru": "\"a/an\" — для нового, \"the\" — для известного, без артикля для общих множественных. \"There is\" — для одного, \"there are\" — для многих."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "a → the",
+            "ru": "a → the"
+          },
+          "formula": "There's a shop. The shop is open.",
+          "examples": [
+            {
+              "en": "There's a park. The park is big.",
+              "ru": "Есть парк. Парк большой."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "there is / are",
+            "ru": "there is / are"
+          },
+          "formula": "There is + one · There are + many",
+          "examples": [
+            {
+              "en": "There are two shops on the street.",
+              "ru": "На улице два магазина."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Match the verb: \"there is one park\", \"there are two parks\".",
+          "ru": "Согласуй глагол: \"there is one park\", \"there are two parks\"."
+        },
+        {
+          "en": "Use \"some/any\" with plurals: \"there are some shops\", \"there aren't any parks\".",
+          "ru": "С множественным — \"some/any\": \"there are some shops\", \"there aren't any parks\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u02.d04.reading",
+      "title": {
+        "en": "My street",
+        "ru": "Моя улица"
+      },
+      "blocks": [
+        {
+          "id": "u02.d04.reading.b1",
+          "en": "I live in a small city. There is a shop on the corner and a park near my house.",
+          "ru": "Я живу в маленьком городе. На углу есть магазин, а рядом с домом — парк.",
+          "audio": {
+            "src": "media/audio/u02.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u02.d04.reading.b2",
+          "en": "There are two cafés on my street, but there aren't any big buildings. It is a quiet place with friendly people.",
+          "ru": "На моей улице два кафе, но нет больших зданий. Это тихое место с дружелюбными людьми.",
+          "audio": {
+            "src": "media/audio/u02.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "small",
+          "ru": "маленький",
+          "ipa": "/smɔːl/"
+        },
+        {
+          "word": "quiet",
+          "ru": "тихий",
+          "ipa": "/ˈkwaɪət/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u02.d04.listening",
+      "title": {
+        "en": "Is there a shop?",
+        "ru": "Здесь есть магазин?"
+      },
+      "audio": {
+        "src": "media/audio/u02.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Excuse me, is there a shop near here? Yes, there is one on the corner.",
+          "ru": "Извините, здесь есть магазин? Да, на углу."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Are there any cafés? Yes, there are two.",
+          "ru": "А кафе есть? Да, два."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u02.d04.ex.l.01",
+          "instruction": {
+            "en": "How many cafés?",
+            "ru": "Сколько кафе?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "There are ___.",
+          "options": [
+            "two",
+            "one",
+            "three"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u02.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u02.d04.ex.c.01",
+          "instruction": {
+            "en": "is or are?",
+            "ru": "is или are?"
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "prompt": "There ___ two shops.",
+          "options": [
+            "are",
+            "is",
+            "be",
+            "have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d04.ex.g.01",
+          "instruction": {
+            "en": "a or the?",
+            "ru": "a или the?"
+          },
+          "tags": [
+            "grammar.articles"
+          ],
+          "prompt": "There's ___ park near my house.",
+          "answers": [
+            "a"
+          ]
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u02.d04.ex.mp.01",
+          "instruction": {
+            "en": "Which word do you hear?",
+            "ru": "Какое слово ты слышишь?"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u02.d04.mp.works.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "work",
+            "works"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "transform",
+          "id": "u02.d04.ex.tf.01",
+          "instruction": {
+            "en": "Make it plural.",
+            "ru": "Сделай множественным."
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "prompt": "There is a shop.",
+          "answers": [
+            "There are two shops.",
+            "There are shops."
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u02.d04.ex.m.01",
+          "instruction": {
+            "en": "Match.",
+            "ru": "Сопоставь."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "shop",
+              "right": "магазин"
+            },
+            {
+              "left": "near",
+              "right": "рядом"
+            },
+            {
+              "left": "street",
+              "right": "улица"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u02.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate.",
+            "ru": "Переведи."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.there-is"
+          ],
+          "direction": "ru-en",
+          "prompt": "На углу есть магазин.",
+          "answers": [
+            "There is a shop on the corner.",
+            "There's a shop on the corner."
+          ]
+        }
+      ]
+    }
+  ]
+}

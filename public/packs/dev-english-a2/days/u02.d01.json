@@ -1,0 +1,469 @@
+{
+  "id": "u02.d01",
+  "title": {
+    "en": "A normal day",
+    "ru": "Обычный день"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "grammar.present-simple",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u02.d01.vocab",
+      "title": {
+        "en": "Daily routine",
+        "ru": "Распорядок дня"
+      },
+      "words": [
+        {
+          "word": "get up",
+          "ru": "вставать",
+          "ipa": "/ɡet ʌp/",
+          "example": "I get up at seven.",
+          "exampleRu": "Я встаю в семь.",
+          "audio": {
+            "src": "media/audio/u02.d01.vocab.getup.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wake up",
+          "ru": "просыпаться",
+          "ipa": "/weɪk ʌp/",
+          "example": "She wakes up early.",
+          "exampleRu": "Она просыпается рано.",
+          "audio": {
+            "src": "media/audio/u02.d01.vocab.wakeup.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "breakfast",
+          "ru": "завтрак",
+          "ipa": "/ˈbrekfəst/",
+          "example": "I have breakfast at home.",
+          "exampleRu": "Я завтракаю дома.",
+          "audio": {
+            "src": "media/audio/u02.d01.vocab.breakfast.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "work",
+          "ru": "работа; работать",
+          "ipa": "/wɜːk/",
+          "example": "I go to work by bus.",
+          "exampleRu": "Я езжу на работу на автобусе.",
+          "audio": {
+            "src": "media/audio/u02.d01.vocab.work.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "start",
+          "ru": "начинать",
+          "ipa": "/stɑːt/",
+          "example": "I start work at nine.",
+          "exampleRu": "Я начинаю работу в девять.",
+          "audio": {
+            "src": "media/audio/u02.d01.vocab.start.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "finish",
+          "ru": "заканчивать",
+          "ipa": "/ˈfɪnɪʃ/",
+          "example": "She finishes at five.",
+          "exampleRu": "Она заканчивает в пять.",
+          "audio": {
+            "src": "media/audio/u02.d01.vocab.finish.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lunch",
+          "ru": "обед",
+          "ipa": "/lʌntʃ/",
+          "example": "We have lunch together.",
+          "exampleRu": "Мы обедаем вместе.",
+          "audio": {
+            "src": "media/audio/u02.d01.vocab.lunch.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dinner",
+          "ru": "ужин",
+          "ipa": "/ˈdɪnər/",
+          "example": "I cook dinner.",
+          "exampleRu": "Я готовлю ужин.",
+          "audio": {
+            "src": "media/audio/u02.d01.vocab.dinner.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "watch",
+          "ru": "смотреть",
+          "ipa": "/wɒtʃ/",
+          "example": "They watch TV.",
+          "exampleRu": "Они смотрят телевизор.",
+          "audio": {
+            "src": "media/audio/u02.d01.vocab.watch.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "go to bed",
+          "ru": "ложиться спать",
+          "ipa": "/ɡəʊ tə bed/",
+          "example": "I go to bed late.",
+          "exampleRu": "Я ложусь спать поздно.",
+          "audio": {
+            "src": "media/audio/u02.d01.vocab.gotobed.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "always",
+          "ru": "всегда",
+          "ipa": "/ˈɔːlweɪz/",
+          "example": "She is always busy.",
+          "exampleRu": "Она всегда занята.",
+          "audio": {
+            "src": "media/audio/u02.d01.vocab.always.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "every day",
+          "ru": "каждый день",
+          "ipa": "/ˈevri deɪ/",
+          "example": "I read every day.",
+          "exampleRu": "Я читаю каждый день.",
+          "audio": {
+            "src": "media/audio/u02.d01.vocab.everyday.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u02.d01.grammar",
+      "title": {
+        "en": "Present simple",
+        "ru": "Present simple"
+      },
+      "rule": {
+        "en": "Use the present simple for habits and routines. Add -s for he/she/it: I work → she works.",
+        "ru": "Present simple — для привычек и распорядка. Для he/she/it добавляем -s: I work → she works."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "I/you/we/they",
+            "ru": "I/you/we/they"
+          },
+          "formula": "subject + verb",
+          "examples": [
+            {
+              "en": "I get up at seven.",
+              "ru": "Я встаю в семь."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "he/she/it (+s)",
+            "ru": "he/she/it (+s)"
+          },
+          "formula": "subject + verb-s",
+          "examples": [
+            {
+              "en": "She finishes at five.",
+              "ru": "Она заканчивает в пять."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Don't forget -s for he/she/it: \"she works\", not \"she work\".",
+          "ru": "Не забывай -s для he/she/it: \"she works\", а не \"she work\"."
+        },
+        {
+          "en": "Spelling: -es after -sh/-ch/-s/-x/-o: \"finishes\", \"watches\", \"goes\".",
+          "ru": "Написание: -es после -sh/-ch/-s/-x/-o: \"finishes\", \"watches\", \"goes\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u02.d01.reading",
+      "title": {
+        "en": "My day",
+        "ru": "Мой день"
+      },
+      "blocks": [
+        {
+          "id": "u02.d01.reading.b1",
+          "en": "I get up at seven and have breakfast at home. I start work at nine and finish at five.",
+          "ru": "Я встаю в семь и завтракаю дома. Начинаю работу в девять и заканчиваю в пять.",
+          "audio": {
+            "src": "media/audio/u02.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u02.d01.reading.b2",
+          "en": "In the evening I cook dinner and watch TV. My wife always reads a book, and we go to bed late.",
+          "ru": "Вечером я готовлю ужин и смотрю телевизор. Жена всегда читает книгу, и мы поздно ложимся спать.",
+          "audio": {
+            "src": "media/audio/u02.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "evening",
+          "ru": "вечер",
+          "ipa": "/ˈiːvnɪŋ/"
+        },
+        {
+          "word": "book",
+          "ru": "книга",
+          "ipa": "/bʊk/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u02.d01.listening",
+      "title": {
+        "en": "Your routine",
+        "ru": "Твой распорядок"
+      },
+      "audio": {
+        "src": "media/audio/u02.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "What time do you get up? I get up at seven.",
+          "ru": "Во сколько ты встаёшь? В семь."
+        },
+        {
+          "start": 3,
+          "end": 7,
+          "en": "And what time do you start work? At nine.",
+          "ru": "А во сколько начинаешь работу? В девять."
+        },
+        {
+          "start": 7,
+          "end": 9,
+          "en": "I finish at five.",
+          "ru": "Заканчиваю в пять."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u02.d01.ex.l.01",
+          "instruction": {
+            "en": "What time does she start work?",
+            "ru": "Во сколько она начинает работу?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "At ___.",
+          "options": [
+            "nine",
+            "seven",
+            "five"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u02.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u02.d01.ex.g.01",
+          "instruction": {
+            "en": "Add -s if needed.",
+            "ru": "Добавь -s, если нужно."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "She ___ at five.",
+          "cue": "(finish)",
+          "answers": [
+            "finishes"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d01.ex.g.02",
+          "instruction": {
+            "en": "Add -s if needed.",
+            "ru": "Добавь -s, если нужно."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "They ___ dinner at home.",
+          "cue": "(have)",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u02.d01.ex.m.01",
+          "instruction": {
+            "en": "Match.",
+            "ru": "Сопоставь."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "breakfast",
+              "right": "завтрак"
+            },
+            {
+              "left": "dinner",
+              "right": "ужин"
+            },
+            {
+              "left": "work",
+              "right": "работа"
+            }
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u02.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "tokens": [
+            "She",
+            "gets",
+            "up",
+            "at",
+            "seven"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u02.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate.",
+            "ru": "Переведи."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.present-simple"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я встаю в семь.",
+          "answers": [
+            "I get up at seven."
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u02.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate.",
+            "ru": "Переведи."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.present-simple"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она заканчивает в пять.",
+          "answers": [
+            "She finishes at five."
+          ]
+        }
+      ]
+    }
+  ]
+}

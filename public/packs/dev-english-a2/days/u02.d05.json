@@ -1,0 +1,399 @@
+{
+  "id": "u02.d05",
+  "title": {
+    "en": "How are you?",
+    "ru": "Как дела?"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "functions.small-talk",
+    "grammar.present-simple"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u02.d05.vocab",
+      "title": {
+        "en": "Small talk",
+        "ru": "Small talk"
+      },
+      "words": [
+        {
+          "word": "fine",
+          "ru": "нормально",
+          "ipa": "/faɪn/",
+          "example": "I'm fine, thanks.",
+          "exampleRu": "Нормально, спасибо.",
+          "audio": {
+            "src": "media/audio/u02.d05.vocab.fine.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "busy",
+          "ru": "занятой",
+          "ipa": "/ˈbɪzi/",
+          "example": "I'm very busy today.",
+          "exampleRu": "Я сегодня очень занят.",
+          "audio": {
+            "src": "media/audio/u02.d05.vocab.busy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tired",
+          "ru": "усталый",
+          "ipa": "/ˈtaɪəd/",
+          "example": "I'm a bit tired.",
+          "exampleRu": "Я немного устал.",
+          "audio": {
+            "src": "media/audio/u02.d05.vocab.tired.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "free",
+          "ru": "свободный",
+          "ipa": "/friː/",
+          "example": "Are you free tonight?",
+          "exampleRu": "Ты свободен вечером?",
+          "audio": {
+            "src": "media/audio/u02.d05.vocab.free.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "plans",
+          "ru": "планы",
+          "ipa": "/plænz/",
+          "example": "Any plans for the weekend?",
+          "exampleRu": "Есть планы на выходные?",
+          "audio": {
+            "src": "media/audio/u02.d05.vocab.plans.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "later",
+          "ru": "позже",
+          "ipa": "/ˈleɪtər/",
+          "example": "See you later.",
+          "exampleRu": "Увидимся позже.",
+          "audio": {
+            "src": "media/audio/u02.d05.vocab.later.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "meet",
+          "ru": "встречаться",
+          "ipa": "/miːt/",
+          "example": "Let's meet for coffee.",
+          "exampleRu": "Давай встретимся на кофе.",
+          "audio": {
+            "src": "media/audio/u02.d05.vocab.meet.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "coffee",
+          "ru": "кофе",
+          "ipa": "/ˈkɒfi/",
+          "example": "A cup of coffee.",
+          "exampleRu": "Чашка кофе.",
+          "audio": {
+            "src": "media/audio/u02.d05.vocab.coffee.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "weekend",
+          "ru": "выходные",
+          "ipa": "/ˌwiːkˈend/",
+          "example": "Have a nice weekend!",
+          "exampleRu": "Хороших выходных!",
+          "audio": {
+            "src": "media/audio/u02.d05.vocab.weekend.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "take care",
+          "ru": "береги себя",
+          "ipa": "/teɪk keər/",
+          "example": "Bye, take care!",
+          "exampleRu": "Пока, береги себя!",
+          "audio": {
+            "src": "media/audio/u02.d05.vocab.takecare.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u02.d05.grammar",
+      "title": {
+        "en": "Review: routines & questions",
+        "ru": "Повтор: распорядок и вопросы"
+      },
+      "rule": {
+        "en": "Put it together: talk about your day and ask about theirs. \"What do you do? / How often…? / Are you free…?\"",
+        "ru": "Соедини всё: расскажи про свой день и спроси про их. \"What do you do? / How often…? / Are you free…?\""
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Small talk",
+            "ru": "Small talk"
+          },
+          "formula": "How are you? · Any plans? · Let's meet.",
+          "examples": [
+            {
+              "en": "How are you? — Fine, a bit busy. Any plans?",
+              "ru": "Как дела? — Нормально, немного занят. Планы есть?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"How are you?\" ≠ \"How old are you?\" — the first asks about your day.",
+          "ru": "\"How are you?\" ≠ \"How old are you?\" — первое про состояние/дела."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u02.d05.reading",
+      "title": {
+        "en": "Two colleagues",
+        "ru": "Два коллеги"
+      },
+      "blocks": [
+        {
+          "id": "u02.d05.reading.b1",
+          "en": "Hi, how are you? I'm fine, thanks, but a bit busy. And you?",
+          "ru": "Привет, как дела? Нормально, спасибо, но немного занят. А ты?",
+          "audio": {
+            "src": "media/audio/u02.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u02.d05.reading.b2",
+          "en": "I'm a bit tired. Any plans for the weekend? Not really. Let's meet for coffee on Saturday! Great, see you later.",
+          "ru": "Я немного устал. Планы на выходные? Не особо. Давай в субботу встретимся на кофе! Отлично, увидимся.",
+          "audio": {
+            "src": "media/audio/u02.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "really",
+          "ru": "действительно",
+          "ipa": "/ˈrɪəli/"
+        },
+        {
+          "word": "Saturday",
+          "ru": "суббота",
+          "ipa": "/ˈsætədeɪ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u02.d05.listening",
+      "title": {
+        "en": "Making plans",
+        "ru": "Строим планы"
+      },
+      "audio": {
+        "src": "media/audio/u02.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Hey, how are you? Good, thanks.",
+          "ru": "Привет, как дела? Хорошо, спасибо."
+        },
+        {
+          "start": 3,
+          "end": 7,
+          "en": "Are you free on Sunday? Yes, I am. Let's meet for coffee.",
+          "ru": "Ты свободен в воскресенье? Да. Давай на кофе."
+        },
+        {
+          "start": 7,
+          "end": 10,
+          "en": "Perfect, see you then!",
+          "ru": "Отлично, до встречи!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u02.d05.ex.l.01",
+          "instruction": {
+            "en": "When do they meet?",
+            "ru": "Когда они встречаются?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "On ___.",
+          "options": [
+            "Sunday",
+            "Saturday",
+            "Monday"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u02.d05.practice",
+      "title": {
+        "en": "Practice & write",
+        "ru": "Практика и письмо"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u02.d05.ex.c.01",
+          "instruction": {
+            "en": "Reply to small talk.",
+            "ru": "Ответь на small talk."
+          },
+          "tags": [
+            "functions.small-talk"
+          ],
+          "prompt": "\"How are you?\" — \"___\"",
+          "options": [
+            "I'm fine, thanks.",
+            "I'm twenty.",
+            "Yes, I do.",
+            "It's Monday."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u02.d05.ex.o.01",
+          "instruction": {
+            "en": "Make a suggestion.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "functions.small-talk"
+          ],
+          "tokens": [
+            "Let's",
+            "meet",
+            "for",
+            "coffee"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "transform",
+          "id": "u02.d05.ex.tf.01",
+          "instruction": {
+            "en": "Ask about routine.",
+            "ru": "Спроси про распорядок."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "You get up early.",
+          "answers": [
+            "Do you get up early?"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u02.d05.ex.t.01",
+          "instruction": {
+            "en": "Write it in English.",
+            "ru": "Напиши по-английски."
+          },
+          "tags": [
+            "writing.translation",
+            "functions.small-talk"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты свободен в субботу?",
+          "answers": [
+            "Are you free on Saturday?"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u02.d05.ex.t.02",
+          "instruction": {
+            "en": "Write it in English (about you).",
+            "ru": "Напиши по-английски (о себе)."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.present-simple"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я обычно встаю рано и работаю в офисе.",
+          "answers": [
+            "I usually get up early and work in an office."
+          ]
+        }
+      ]
+    }
+  ]
+}
