@@ -157,6 +157,22 @@ export const GrammarSection = z.object({
   pitfalls: z.array(LocalizedText).optional(),
 });
 
+export const VocabEntry = z.object({
+  word: z.string().min(1),
+  ru: z.string().min(1),
+  ipa: z.string().optional(),
+  example: z.string().optional(),
+  exampleRu: z.string().optional(),
+  audio: MediaRef.optional(),
+});
+
+export const VocabularySection = z.object({
+  type: z.literal('vocabulary'),
+  id: z.string().min(1),
+  title: LocalizedText,
+  words: z.array(VocabEntry).min(1),
+});
+
 export const PracticeSection = z.object({
   type: z.literal('practice'),
   id: z.string().min(1),
@@ -176,6 +192,7 @@ export const ListeningSection = z.object({
 export const Section = z.discriminatedUnion('type', [
   ReadingSection,
   GrammarSection,
+  VocabularySection,
   PracticeSection,
   ListeningSection,
 ]);
@@ -238,6 +255,8 @@ export type Exercise = z.infer<typeof Exercise>;
 export type Section = z.infer<typeof Section>;
 export type ReadingSection = z.infer<typeof ReadingSection>;
 export type GrammarSection = z.infer<typeof GrammarSection>;
+export type VocabEntry = z.infer<typeof VocabEntry>;
+export type VocabularySection = z.infer<typeof VocabularySection>;
 export type PracticeSection = z.infer<typeof PracticeSection>;
 export type ListeningSection = z.infer<typeof ListeningSection>;
 export type Day = z.infer<typeof Day>;

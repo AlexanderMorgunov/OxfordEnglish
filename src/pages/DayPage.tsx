@@ -4,11 +4,13 @@ import { useContentStore } from '@/content/store';
 import { PracticeSectionView } from '@/features/practice/PracticeSectionView';
 import { GrammarSectionView } from '@/features/learn/GrammarSectionView';
 import { ReadingSectionView } from '@/features/learn/ReadingSectionView';
+import { VocabularySectionView } from '@/features/learn/VocabularySectionView';
 import { ListeningSectionView } from '@/features/listen/ListeningSectionView';
 import { Eyebrow, PageStub, PixelImage } from '@/shared/ui';
 
 const SECTION_LABEL: Record<string, string> = {
   grammar: 'grammar',
+  vocabulary: 'vocabulary',
   reading: 'reading',
   listening: 'listening',
   practice: 'practice',
@@ -61,6 +63,8 @@ export function DayPage() {
             </div>
             {section.type === 'grammar' ? (
               <GrammarSectionView section={section} />
+            ) : section.type === 'vocabulary' ? (
+              <VocabularySectionView section={section} />
             ) : section.type === 'reading' ? (
               <ReadingSectionView section={section} />
             ) : section.type === 'listening' ? (
