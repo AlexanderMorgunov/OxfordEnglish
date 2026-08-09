@@ -7,7 +7,7 @@ import { z } from 'zod';
 import { tatoebaSearch } from './lib/tatoeba.ts';
 import { dictLookup } from './lib/dictionary.ts';
 import { cefrjLevel, levelCheck, ngslRank } from './lib/level.ts';
-import { openverseSearch, voaList, librivoxSearch } from './lib/sources.ts';
+import { openverseSearch, voaList, voaFetch, librivoxSearch } from './lib/sources.ts';
 import { storybookSearch, storybookFetch } from './lib/storybooks.ts';
 import { ttsSynthesize } from './lib/tts.ts';
 import { writeDay } from './lib/writer.ts';
@@ -100,6 +100,15 @@ server.tool(
     limit: z.number().int().positive().max(30).default(10),
   },
   async (args) => guardAsync(() => voaList(args))
+);
+
+server.tool(
+  'voa_fetch',
+  'Fetch a VOA Learning English article — transcript paragraphs + audio URL ' +
+    '(public domain). Adapt into a listening/reading section; strip any embedded ' +
+    'AP/Reuters media.',
+  { url: z.string().url() },
+  async (args) => guardAsync(() => voaFetch(args))
 );
 
 server.tool(

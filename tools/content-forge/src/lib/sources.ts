@@ -1,6 +1,50 @@
 import { cached, politeFetch } from './net.ts';
 import type { LicenseInfo } from './license.ts';
 
+const BROWSER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)';
+
+const decode = (s: string) =>
+  s
+    .replace(/<[^>]+>/g, '')
+    .replace(/&amp;/g, '&')
+    .replace(/&#39;|&rsquo;|&#8217;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+/**
+ * Fetch a VOA Learning English article: transcript paragraphs + audio URL.
+ * Public domain (credit learningenglish.voanews.com). Needs a browser UA.
+ * Strip any embedded AP/Reuters media — keep only VOA text/audio.
+ */
+export async function voaFetch(opts: {
+  url: string;
+}): Promise<{ title?: string; paragraphs: string[]; audioUrl?: string; license: LicenseInfo }> {
+  const html = String(
+    await cached(opts.url, async () =>
+      (await politeFetch(opts.url, { headers: { 'User-Agent': BROWSER_UA } })).text()
+    )
+  );
+  const title = html.match(/<title>([^<]+)<\/title>/)?.[1]?.trim();
+  const wswAt = html.indexOf('class="wsw"');
+  const body = wswAt >= 0 ? html.slice(wswAt) : html;
+  const paragraphs = [...body.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)]
+    .map((m) => decode(m[1] ?? ''))
+    .filter((p) => p.length > 15 && !/no media source|^(embed|share|print)$/i.test(p));
+  const audioUrl = html.match(/https?:\/\/[^"']+\.mp3/)?.[0];
+  return {
+    title,
+    paragraphs,
+    audioUrl,
+    license: {
+      type: 'public-domain',
+      attribution: 'VOA Learning English (learningenglish.voanews.com)',
+      sourceUrl: opts.url,
+    },
+  };
+}
+
 type OpenverseResult = {
   title?: string;
   url?: string;
