@@ -4,12 +4,162 @@
     "en": "At the café",
     "ru": "В кафе"
   },
-  "estimatedMinutes": 30,
+  "estimatedMinutes": 120,
   "tags": [
     "functions.ordering",
     "vocab.cafe"
   ],
   "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u07.d01.vocab",
+      "title": {
+        "en": "In the café",
+        "ru": "В кафе"
+      },
+      "words": [
+        {
+          "word": "cup",
+          "ru": "чашка",
+          "ipa": "/kʌp/",
+          "example": "A cup of tea, please.",
+          "exampleRu": "Чашку чая, пожалуйста.",
+          "audio": {
+            "src": "media/audio/u07.d01.vocab.cup.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "glass",
+          "ru": "стакан",
+          "ipa": "/ɡlɑːs/",
+          "example": "A glass of water.",
+          "exampleRu": "Стакан воды.",
+          "audio": {
+            "src": "media/audio/u07.d01.vocab.glass.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "juice",
+          "ru": "сок",
+          "ipa": "/dʒuːs/",
+          "example": "I like orange juice.",
+          "exampleRu": "Я люблю апельсиновый сок.",
+          "audio": {
+            "src": "media/audio/u07.d01.vocab.juice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cake",
+          "ru": "торт; пирожное",
+          "ipa": "/keɪk/",
+          "example": "This cake is sweet.",
+          "exampleRu": "Этот торт сладкий.",
+          "audio": {
+            "src": "media/audio/u07.d01.vocab.cake.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "breakfast",
+          "ru": "завтрак",
+          "ipa": "/ˈbrekfəst/",
+          "example": "I have breakfast at eight.",
+          "exampleRu": "Я завтракаю в восемь.",
+          "audio": {
+            "src": "media/audio/u07.d01.vocab.breakfast.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sugar",
+          "ru": "сахар",
+          "ipa": "/ˈʃʊɡər/",
+          "example": "No sugar, thank you.",
+          "exampleRu": "Без сахара, спасибо.",
+          "audio": {
+            "src": "media/audio/u07.d01.vocab.sugar.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "milk",
+          "ru": "молоко",
+          "ipa": "/mɪlk/",
+          "example": "Tea with milk, please.",
+          "exampleRu": "Чай с молоком, пожалуйста.",
+          "audio": {
+            "src": "media/audio/u07.d01.vocab.milk.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "table",
+          "ru": "стол; столик",
+          "ipa": "/ˈteɪbl/",
+          "example": "A table for two, please.",
+          "exampleRu": "Столик на двоих, пожалуйста.",
+          "audio": {
+            "src": "media/audio/u07.d01.vocab.table.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "please",
+          "ru": "пожалуйста",
+          "ipa": "/pliːz/",
+          "example": "A coffee, please.",
+          "exampleRu": "Кофе, пожалуйста.",
+          "audio": {
+            "src": "media/audio/u07.d01.vocab.please.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "thanks",
+          "ru": "спасибо",
+          "ipa": "/θæŋks/",
+          "example": "Thanks a lot!",
+          "exampleRu": "Большое спасибо!",
+          "audio": {
+            "src": "media/audio/u07.d01.vocab.thanks.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
     {
       "type": "grammar",
       "id": "u07.d01.grammar",

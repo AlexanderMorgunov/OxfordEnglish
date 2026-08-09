@@ -4,12 +4,163 @@
     "en": "Where is it?",
     "ru": "Где это?"
   },
-  "estimatedMinutes": 25,
+  "estimatedMinutes": 120,
   "tags": [
     "functions.directions",
-    "vocab.daily"
+    "vocab.daily",
+    "vocab.travel"
   ],
   "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u08.d01.vocab",
+      "title": {
+        "en": "Finding the way",
+        "ru": "Как найти дорогу"
+      },
+      "words": [
+        {
+          "word": "left",
+          "ru": "налево; левый",
+          "ipa": "/left/",
+          "example": "Turn left here.",
+          "exampleRu": "Поверни здесь налево.",
+          "audio": {
+            "src": "media/audio/u08.d01.vocab.left.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "right",
+          "ru": "направо; правый",
+          "ipa": "/raɪt/",
+          "example": "Turn right at the bank.",
+          "exampleRu": "Поверни направо у банка.",
+          "audio": {
+            "src": "media/audio/u08.d01.vocab.right.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "straight",
+          "ru": "прямо",
+          "ipa": "/streɪt/",
+          "example": "Go straight on.",
+          "exampleRu": "Иди прямо.",
+          "audio": {
+            "src": "media/audio/u08.d01.vocab.straight.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "corner",
+          "ru": "угол",
+          "ipa": "/ˈkɔːrnər/",
+          "example": "The shop is on the corner.",
+          "exampleRu": "Магазин на углу.",
+          "audio": {
+            "src": "media/audio/u08.d01.vocab.corner.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "street",
+          "ru": "улица",
+          "ipa": "/striːt/",
+          "example": "Cross the street.",
+          "exampleRu": "Перейди улицу.",
+          "audio": {
+            "src": "media/audio/u08.d01.vocab.street.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "station",
+          "ru": "станция; вокзал",
+          "ipa": "/ˈsteɪʃn/",
+          "example": "Where is the station?",
+          "exampleRu": "Где вокзал?",
+          "audio": {
+            "src": "media/audio/u08.d01.vocab.station.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bank",
+          "ru": "банк",
+          "ipa": "/bæŋk/",
+          "example": "The bank is near here.",
+          "exampleRu": "Банк тут рядом.",
+          "audio": {
+            "src": "media/audio/u08.d01.vocab.bank.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "near",
+          "ru": "рядом; близко",
+          "ipa": "/nɪər/",
+          "example": "It is near the café.",
+          "exampleRu": "Это рядом с кафе.",
+          "audio": {
+            "src": "media/audio/u08.d01.vocab.near.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "next to",
+          "ru": "рядом с",
+          "ipa": "/ˈnekst tuː/",
+          "example": "It is next to the bank.",
+          "exampleRu": "Это рядом с банком.",
+          "audio": {
+            "src": "media/audio/u08.d01.vocab.nextto.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "opposite",
+          "ru": "напротив",
+          "ipa": "/ˈɒpəzɪt/",
+          "example": "The park is opposite the shop.",
+          "exampleRu": "Парк напротив магазина.",
+          "audio": {
+            "src": "media/audio/u08.d01.vocab.opposite.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
     {
       "type": "grammar",
       "id": "u08.d01.grammar",
@@ -129,6 +280,68 @@
           "word": "where",
           "ru": "где",
           "ipa": "/wer/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u08.d01.listening",
+      "title": {
+        "en": "Asking the way",
+        "ru": "Спрашиваем дорогу"
+      },
+      "audio": {
+        "src": "media/audio/u08.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Excuse me, where is the station?",
+          "ru": "Извините, где вокзал?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Go straight on and turn left.",
+          "ru": "Идите прямо и поверните налево."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Is it near?",
+          "ru": "Это рядом?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Yes, it is next to the bank.",
+          "ru": "Да, это рядом с банком."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u08.d01.ex.l.01",
+          "instruction": {
+            "en": "Where is the station?",
+            "ru": "Где вокзал?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.directions"
+          ],
+          "prompt": "It is ___ the bank.",
+          "options": [
+            "next to",
+            "far from",
+            "inside"
+          ],
+          "correctIndex": 0
         }
       ]
     },

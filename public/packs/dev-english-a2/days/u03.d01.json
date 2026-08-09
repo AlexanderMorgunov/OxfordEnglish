@@ -4,12 +4,163 @@
     "en": "What are you doing?",
     "ru": "Что ты делаешь?"
   },
-  "estimatedMinutes": 30,
+  "estimatedMinutes": 120,
   "tags": [
     "grammar.present-continuous",
-    "functions.small-talk"
+    "functions.small-talk",
+    "vocab.dev"
   ],
   "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u03.d01.vocab",
+      "title": {
+        "en": "What I am doing now",
+        "ru": "Что я делаю сейчас"
+      },
+      "words": [
+        {
+          "word": "working",
+          "ru": "работаю",
+          "ipa": "/ˈwɜːrkɪŋ/",
+          "example": "I am working on a bug.",
+          "exampleRu": "Я работаю над багом.",
+          "audio": {
+            "src": "media/audio/u03.d01.vocab.working.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "writing",
+          "ru": "пишу",
+          "ipa": "/ˈraɪtɪŋ/",
+          "example": "She is writing an email.",
+          "exampleRu": "Она пишет письмо.",
+          "audio": {
+            "src": "media/audio/u03.d01.vocab.writing.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reading",
+          "ru": "читаю",
+          "ipa": "/ˈriːdɪŋ/",
+          "example": "He is reading the docs.",
+          "exampleRu": "Он читает документацию.",
+          "audio": {
+            "src": "media/audio/u03.d01.vocab.reading.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "testing",
+          "ru": "тестирую",
+          "ipa": "/ˈtestɪŋ/",
+          "example": "We are testing the app.",
+          "exampleRu": "Мы тестируем приложение.",
+          "audio": {
+            "src": "media/audio/u03.d01.vocab.testing.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "waiting",
+          "ru": "жду",
+          "ipa": "/ˈweɪtɪŋ/",
+          "example": "I am waiting for the build.",
+          "exampleRu": "Я жду сборку.",
+          "audio": {
+            "src": "media/audio/u03.d01.vocab.waiting.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "calling",
+          "ru": "звоню",
+          "ipa": "/ˈkɔːlɪŋ/",
+          "example": "She is calling the client.",
+          "exampleRu": "Она звонит клиенту.",
+          "audio": {
+            "src": "media/audio/u03.d01.vocab.calling.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "looking",
+          "ru": "смотрю; ищу",
+          "ipa": "/ˈlʊkɪŋ/",
+          "example": "I am looking at the logs.",
+          "exampleRu": "Я смотрю логи.",
+          "audio": {
+            "src": "media/audio/u03.d01.vocab.looking.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fixing",
+          "ru": "чиню",
+          "ipa": "/ˈfɪksɪŋ/",
+          "example": "He is fixing the error.",
+          "exampleRu": "Он чинит ошибку.",
+          "audio": {
+            "src": "media/audio/u03.d01.vocab.fixing.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "meeting",
+          "ru": "встреча; встречаюсь",
+          "ipa": "/ˈmiːtɪŋ/",
+          "example": "We are meeting now.",
+          "exampleRu": "Мы сейчас на встрече.",
+          "audio": {
+            "src": "media/audio/u03.d01.vocab.meeting.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "learning",
+          "ru": "учусь",
+          "ipa": "/ˈlɜːrnɪŋ/",
+          "example": "I am learning English.",
+          "exampleRu": "Я учу английский.",
+          "audio": {
+            "src": "media/audio/u03.d01.vocab.learning.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
     {
       "type": "grammar",
       "id": "u03.d01.grammar",
@@ -109,6 +260,68 @@
           "word": "listen",
           "ru": "слушать",
           "ipa": "/ˈlɪsn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u03.d01.listening",
+      "title": {
+        "en": "On a call",
+        "ru": "На созвоне"
+      },
+      "audio": {
+        "src": "media/audio/u03.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Hi! What are you doing right now?",
+          "ru": "Привет! Что ты сейчас делаешь?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "I am working on a bug. It is not easy.",
+          "ru": "Я работаю над багом. Это непросто."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Is Anna helping you?",
+          "ru": "Анна тебе помогает?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "No, she is writing an email. I am waiting for her.",
+          "ru": "Нет, она пишет письмо. Я её жду."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u03.d01.ex.l.01",
+          "instruction": {
+            "en": "What is the man doing?",
+            "ru": "Что делает мужчина?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.present-continuous"
+          ],
+          "prompt": "He is ___ on a bug.",
+          "options": [
+            "working",
+            "sleeping",
+            "reading"
+          ],
+          "correctIndex": 0
         }
       ]
     },

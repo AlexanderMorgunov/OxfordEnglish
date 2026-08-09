@@ -4,12 +4,162 @@
     "en": "Countable or uncountable?",
     "ru": "Исчисляемое или нет?"
   },
-  "estimatedMinutes": 30,
+  "estimatedMinutes": 120,
   "tags": [
     "grammar.countable-uncountable",
     "vocab.food"
   ],
   "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u07.d02.vocab",
+      "title": {
+        "en": "How much, how many",
+        "ru": "Сколько (much / many)"
+      },
+      "words": [
+        {
+          "word": "bread",
+          "ru": "хлеб",
+          "ipa": "/bred/",
+          "example": "We need some bread.",
+          "exampleRu": "Нам нужен хлеб.",
+          "audio": {
+            "src": "media/audio/u07.d02.vocab.bread.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "rice",
+          "ru": "рис",
+          "ipa": "/raɪs/",
+          "example": "There is some rice.",
+          "exampleRu": "Есть немного риса.",
+          "audio": {
+            "src": "media/audio/u07.d02.vocab.rice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "egg",
+          "ru": "яйцо",
+          "ipa": "/eɡ/",
+          "example": "How many eggs?",
+          "exampleRu": "Сколько яиц?",
+          "audio": {
+            "src": "media/audio/u07.d02.vocab.egg.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "apple",
+          "ru": "яблоко",
+          "ipa": "/ˈæpl/",
+          "example": "I have two apples.",
+          "exampleRu": "У меня два яблока.",
+          "audio": {
+            "src": "media/audio/u07.d02.vocab.apple.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bottle",
+          "ru": "бутылка",
+          "ipa": "/ˈbɒtl/",
+          "example": "A bottle of water.",
+          "exampleRu": "Бутылка воды.",
+          "audio": {
+            "src": "media/audio/u07.d02.vocab.bottle.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cheese",
+          "ru": "сыр",
+          "ipa": "/tʃiːz/",
+          "example": "There is a lot of cheese.",
+          "exampleRu": "Тут много сыра.",
+          "audio": {
+            "src": "media/audio/u07.d02.vocab.cheese.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "much",
+          "ru": "много (неисчисл.)",
+          "ipa": "/mʌtʃ/",
+          "example": "How much sugar?",
+          "exampleRu": "Сколько сахара?",
+          "audio": {
+            "src": "media/audio/u07.d02.vocab.much.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "many",
+          "ru": "много (исчисл.)",
+          "ipa": "/ˈmeni/",
+          "example": "How many apples?",
+          "exampleRu": "Сколько яблок?",
+          "audio": {
+            "src": "media/audio/u07.d02.vocab.many.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "a lot of",
+          "ru": "много",
+          "ipa": "/ə ˈlɒt əv/",
+          "example": "A lot of people.",
+          "exampleRu": "Много людей.",
+          "audio": {
+            "src": "media/audio/u07.d02.vocab.alotof.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "a little",
+          "ru": "немного",
+          "ipa": "/ə ˈlɪtl/",
+          "example": "A little milk, please.",
+          "exampleRu": "Немного молока, пожалуйста.",
+          "audio": {
+            "src": "media/audio/u07.d02.vocab.alittle.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
     {
       "type": "grammar",
       "id": "u07.d02.grammar",
@@ -108,6 +258,68 @@
           "word": "dozen",
           "ru": "дюжина",
           "ipa": "/ˈdʌzn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u07.d02.listening",
+      "title": {
+        "en": "At the shop",
+        "ru": "В магазине"
+      },
+      "audio": {
+        "src": "media/audio/u07.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "We need some food for breakfast.",
+          "ru": "Нам нужна еда на завтрак."
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "How many eggs do we need?",
+          "ru": "Сколько яиц нам нужно?"
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Six eggs. And how much bread?",
+          "ru": "Шесть яиц. А сколько хлеба?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Just a little. We have a lot of cheese at home.",
+          "ru": "Немного. Дома много сыра."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u07.d02.ex.l.01",
+          "instruction": {
+            "en": "How many eggs do they need?",
+            "ru": "Сколько яиц им нужно?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.countable-uncountable"
+          ],
+          "prompt": "They need ___ eggs.",
+          "options": [
+            "six",
+            "two",
+            "ten"
+          ],
+          "correctIndex": 0
         }
       ]
     },
