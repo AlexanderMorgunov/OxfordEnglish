@@ -1,0 +1,401 @@
+{
+  "id": "u01.d05",
+  "title": {
+    "en": "Introduce yourself",
+    "ru": "Представь себя"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "functions.small-talk",
+    "grammar.be"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u01.d05.vocab",
+      "title": {
+        "en": "Meeting people",
+        "ru": "Знакомимся"
+      },
+      "words": [
+        {
+          "word": "hello",
+          "ru": "привет",
+          "ipa": "/həˈləʊ/",
+          "example": "Hello, everyone!",
+          "exampleRu": "Всем привет!",
+          "audio": {
+            "src": "media/audio/u01.d05.vocab.hello.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "goodbye",
+          "ru": "до свидания",
+          "ipa": "/ɡʊdˈbaɪ/",
+          "example": "Goodbye, see you tomorrow.",
+          "exampleRu": "Пока, до завтра.",
+          "audio": {
+            "src": "media/audio/u01.d05.vocab.goodbye.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "welcome",
+          "ru": "добро пожаловать",
+          "ipa": "/ˈwelkəm/",
+          "example": "Welcome to our team!",
+          "exampleRu": "Добро пожаловать в команду!",
+          "audio": {
+            "src": "media/audio/u01.d05.vocab.welcome.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "please",
+          "ru": "пожалуйста",
+          "ipa": "/pliːz/",
+          "example": "Sit down, please.",
+          "exampleRu": "Садитесь, пожалуйста.",
+          "audio": {
+            "src": "media/audio/u01.d05.vocab.please.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "thanks",
+          "ru": "спасибо",
+          "ipa": "/θæŋks/",
+          "example": "Thanks a lot!",
+          "exampleRu": "Большое спасибо!",
+          "audio": {
+            "src": "media/audio/u01.d05.vocab.thanks.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "excuse me",
+          "ru": "извините",
+          "ipa": "/ɪkˈskjuːz miː/",
+          "example": "Excuse me, what is your name?",
+          "exampleRu": "Извините, как вас зовут?",
+          "audio": {
+            "src": "media/audio/u01.d05.vocab.excuseme.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "glad",
+          "ru": "рад",
+          "ipa": "/ɡlæd/",
+          "example": "I am glad to meet you.",
+          "exampleRu": "Рад познакомиться.",
+          "audio": {
+            "src": "media/audio/u01.d05.vocab.glad.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "together",
+          "ru": "вместе",
+          "ipa": "/təˈɡeðər/",
+          "example": "We work together.",
+          "exampleRu": "Мы работаем вместе.",
+          "audio": {
+            "src": "media/audio/u01.d05.vocab.together.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "again",
+          "ru": "снова",
+          "ipa": "/əˈɡen/",
+          "example": "See you again!",
+          "exampleRu": "До новой встречи!",
+          "audio": {
+            "src": "media/audio/u01.d05.vocab.again.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "everyone",
+          "ru": "все",
+          "ipa": "/ˈevriwʌn/",
+          "example": "Hello, everyone.",
+          "exampleRu": "Всем привет.",
+          "audio": {
+            "src": "media/audio/u01.d05.vocab.everyone.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u01.d05.grammar",
+      "title": {
+        "en": "Review: be, have got, pronouns",
+        "ru": "Повтор: be, have got, местоимения"
+      },
+      "rule": {
+        "en": "Put it together to introduce yourself: \"I am… / I have got… / This is my…\". Ask back with \"And you?\".",
+        "ru": "Соедини всё, чтобы представиться: \"I am… / I have got… / This is my…\". Верни вопрос: \"And you?\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Introduce",
+            "ru": "Представиться"
+          },
+          "formula": "I am … · I have got … · This is my …",
+          "examples": [
+            {
+              "en": "I am Anna. I have got a brother. This is my friend Tom.",
+              "ru": "Я Анна. У меня есть брат. Это мой друг Том."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Don't forget \"be\": \"I am a student\", \"I am from Russia\".",
+          "ru": "Не забывай \"be\": \"I am a student\", \"I am from Russia\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u01.d05.reading",
+      "title": {
+        "en": "A first day at work",
+        "ru": "Первый день на работе"
+      },
+      "blocks": [
+        {
+          "id": "u01.d05.reading.b1",
+          "en": "Hello, everyone! My name is Priya and I am your new colleague. I am from India and I am an engineer.",
+          "ru": "Всем привет! Меня зовут Прия, я ваш новый коллега. Я из Индии и я инженер.",
+          "audio": {
+            "src": "media/audio/u01.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u01.d05.reading.b2",
+          "en": "I have got a husband and a young daughter. I am glad to meet you all, and I hope we work well together!",
+          "ru": "У меня есть муж и маленькая дочь. Рада со всеми познакомиться и надеюсь, мы будем хорошо работать вместе!",
+          "audio": {
+            "src": "media/audio/u01.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "hope",
+          "ru": "надеяться",
+          "ipa": "/həʊp/"
+        },
+        {
+          "word": "well",
+          "ru": "хорошо",
+          "ipa": "/wel/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u01.d05.listening",
+      "title": {
+        "en": "Nice to meet you",
+        "ru": "Приятно познакомиться"
+      },
+      "audio": {
+        "src": "media/audio/u01.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Hello, I am Priya. Welcome! I am Tom.",
+          "ru": "Здравствуйте, я Прия. Добро пожаловать! Я Том."
+        },
+        {
+          "start": 3,
+          "end": 7,
+          "en": "Nice to meet you. Are you the new engineer? Yes, I am.",
+          "ru": "Приятно познакомиться. Ты новый инженер? Да."
+        },
+        {
+          "start": 7,
+          "end": 10,
+          "en": "Glad to meet you, Tom!",
+          "ru": "Рада познакомиться, Том!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u01.d05.ex.l.01",
+          "instruction": {
+            "en": "What is Priya's job?",
+            "ru": "Кто Прия по профессии?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "She is an ___.",
+          "options": [
+            "engineer",
+            "artist",
+            "nurse"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u01.d05.practice",
+      "title": {
+        "en": "Practice & write",
+        "ru": "Практика и письмо"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u01.d05.ex.g.01",
+          "instruction": {
+            "en": "be",
+            "ru": "be"
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "Hello, I ___ your new colleague.",
+          "answers": [
+            "am"
+          ]
+        },
+        {
+          "type": "transform",
+          "id": "u01.d05.ex.tf.01",
+          "instruction": {
+            "en": "Make it a question.",
+            "ru": "Сделай вопрос."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "You are the new engineer.",
+          "answers": [
+            "Are you the new engineer?"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u01.d05.ex.o.01",
+          "instruction": {
+            "en": "Make an introduction.",
+            "ru": "Собери представление."
+          },
+          "tags": [
+            "functions.small-talk"
+          ],
+          "tokens": [
+            "I",
+            "am",
+            "glad",
+            "to",
+            "meet",
+            "you"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u01.d05.ex.t.01",
+          "instruction": {
+            "en": "Write it in English.",
+            "ru": "Напиши по-английски."
+          },
+          "tags": [
+            "writing.translation",
+            "functions.small-talk"
+          ],
+          "direction": "ru-en",
+          "prompt": "Меня зовут Прия, я из Индии.",
+          "answers": [
+            "My name is Priya, I am from India.",
+            "My name is Priya and I am from India."
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u01.d05.ex.t.02",
+          "instruction": {
+            "en": "Write it in English (your turn).",
+            "ru": "Напиши по-английски (о себе)."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.have-got"
+          ],
+          "direction": "ru-en",
+          "prompt": "Рад со всеми познакомиться.",
+          "answers": [
+            "I am glad to meet you all.",
+            "Glad to meet you all."
+          ]
+        }
+      ]
+    }
+  ]
+}

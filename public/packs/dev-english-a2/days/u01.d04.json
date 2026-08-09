@@ -1,0 +1,462 @@
+{
+  "id": "u01.d04",
+  "title": {
+    "en": "Whose is this?",
+    "ru": "Чьё это?"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "grammar.possessives",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u01.d04.vocab",
+      "title": {
+        "en": "Describing people",
+        "ru": "Описываем людей"
+      },
+      "words": [
+        {
+          "word": "kind",
+          "ru": "добрый",
+          "ipa": "/kaɪnd/",
+          "example": "She is very kind.",
+          "exampleRu": "Она очень добрая.",
+          "audio": {
+            "src": "media/audio/u01.d04.vocab.kind.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "funny",
+          "ru": "смешной",
+          "ipa": "/ˈfʌni/",
+          "example": "My brother is funny.",
+          "exampleRu": "Мой брат смешной.",
+          "audio": {
+            "src": "media/audio/u01.d04.vocab.funny.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "clever",
+          "ru": "умный",
+          "ipa": "/ˈklevər/",
+          "example": "He is clever.",
+          "exampleRu": "Он умный.",
+          "audio": {
+            "src": "media/audio/u01.d04.vocab.clever.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "friendly",
+          "ru": "дружелюбный",
+          "ipa": "/ˈfrendli/",
+          "example": "The neighbours are friendly.",
+          "exampleRu": "Соседи дружелюбные.",
+          "audio": {
+            "src": "media/audio/u01.d04.vocab.friendly.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "quiet",
+          "ru": "тихий",
+          "ipa": "/ˈkwaɪət/",
+          "example": "She is quiet.",
+          "exampleRu": "Она тихая.",
+          "audio": {
+            "src": "media/audio/u01.d04.vocab.quiet.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "happy",
+          "ru": "счастливый",
+          "ipa": "/ˈhæpi/",
+          "example": "They are happy.",
+          "exampleRu": "Они счастливы.",
+          "audio": {
+            "src": "media/audio/u01.d04.vocab.happy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "short",
+          "ru": "низкий/короткий",
+          "ipa": "/ʃɔːt/",
+          "example": "He is short.",
+          "exampleRu": "Он низкий.",
+          "audio": {
+            "src": "media/audio/u01.d04.vocab.short.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "beard",
+          "ru": "борода",
+          "ipa": "/bɪəd/",
+          "example": "He has got a beard.",
+          "exampleRu": "У него борода.",
+          "audio": {
+            "src": "media/audio/u01.d04.vocab.beard.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bag",
+          "ru": "сумка",
+          "ipa": "/bæɡ/",
+          "example": "Whose bag is this?",
+          "exampleRu": "Чья это сумка?",
+          "audio": {
+            "src": "media/audio/u01.d04.vocab.bag.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "keys",
+          "ru": "ключи",
+          "ipa": "/kiːz/",
+          "example": "These keys are mine.",
+          "exampleRu": "Эти ключи мои.",
+          "audio": {
+            "src": "media/audio/u01.d04.vocab.keys.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "phone",
+          "ru": "телефон",
+          "ipa": "/fəʊn/",
+          "example": "Is this your phone?",
+          "exampleRu": "Это твой телефон?",
+          "audio": {
+            "src": "media/audio/u01.d04.vocab.phone.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "coat",
+          "ru": "пальто",
+          "ipa": "/kəʊt/",
+          "example": "That coat is hers.",
+          "exampleRu": "То пальто её.",
+          "audio": {
+            "src": "media/audio/u01.d04.vocab.coat.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u01.d04.grammar",
+      "title": {
+        "en": "mine/yours/hers & whose",
+        "ru": "mine/yours/hers и whose"
+      },
+      "rule": {
+        "en": "Possessive pronouns (mine, yours, his, hers, ours, theirs) replace \"my/your… + noun\". Ask \"Whose…?\" to find the owner.",
+        "ru": "Абсолютные притяжательные (mine, yours, his, hers, ours, theirs) заменяют \"my/your… + существительное\". \"Whose…?\" спрашивает о владельце."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Possessive pronoun",
+            "ru": "Притяжательное местоимение"
+          },
+          "formula": "mine · yours · his · hers · ours · theirs",
+          "examples": [
+            {
+              "en": "This bag is mine.",
+              "ru": "Эта сумка моя."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Whose…?",
+            "ru": "Чей…?"
+          },
+          "formula": "Whose + noun … ? — It's mine.",
+          "examples": [
+            {
+              "en": "Whose keys are these? — They're hers.",
+              "ru": "Чьи это ключи? — Её."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "No noun after a possessive pronoun: \"It's mine\", not \"It's mine bag\".",
+          "ru": "После абсолютного притяжательного нет существительного: \"It's mine\", а не \"It's mine bag\"."
+        },
+        {
+          "en": "\"Whose\" (чей) ≠ \"who's\" (who is). \"Whose bag?\" vs \"Who's here?\".",
+          "ru": "\"Whose\" (чей) ≠ \"who's\" (who is). \"Whose bag?\" против \"Who's here?\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u01.d04.reading",
+      "title": {
+        "en": "After the party",
+        "ru": "После вечеринки"
+      },
+      "blocks": [
+        {
+          "id": "u01.d04.reading.b1",
+          "en": "After the party there were things everywhere. Whose bag is this? It is mine. And whose keys are these?",
+          "ru": "После вечеринки всюду были вещи. Чья это сумка? Моя. А чьи это ключи?",
+          "audio": {
+            "src": "media/audio/u01.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u01.d04.reading.b2",
+          "en": "The keys are hers, and that coat is his. Our friends are kind and funny, but they are not very quiet!",
+          "ru": "Ключи её, а то пальто его. Наши друзья добрые и смешные, но не очень тихие!",
+          "audio": {
+            "src": "media/audio/u01.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "party",
+          "ru": "вечеринка",
+          "ipa": "/ˈpɑːti/"
+        },
+        {
+          "word": "everywhere",
+          "ru": "всюду",
+          "ipa": "/ˈevriweər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u01.d04.listening",
+      "title": {
+        "en": "Lost and found",
+        "ru": "Бюро находок"
+      },
+      "audio": {
+        "src": "media/audio/u01.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Excuse me, whose phone is this? Oh, it's mine, thank you!",
+          "ru": "Извините, чей это телефон? О, мой, спасибо!"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "And whose coat is this? I think it's hers.",
+          "ru": "А чьё это пальто? Думаю, её."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u01.d04.ex.l.01",
+          "instruction": {
+            "en": "Whose is the coat?",
+            "ru": "Чьё пальто?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "The coat is ___.",
+          "options": [
+            "hers",
+            "mine",
+            "his"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u01.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u01.d04.ex.g.01",
+          "instruction": {
+            "en": "Possessive pronoun.",
+            "ru": "Притяжательное местоимение."
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "prompt": "This bag is not yours, it is ___.",
+          "answers": [
+            "mine"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u01.d04.ex.c.01",
+          "instruction": {
+            "en": "whose or who's?",
+            "ru": "whose или who's?"
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "prompt": "___ keys are these?",
+          "options": [
+            "Whose",
+            "Who's",
+            "Who",
+            "Which"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "transform",
+          "id": "u01.d04.ex.tf.01",
+          "instruction": {
+            "en": "Use a possessive pronoun.",
+            "ru": "Используй притяжательное местоимение."
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "prompt": "It is my phone.",
+          "answers": [
+            "It is mine.",
+            "It's mine."
+          ]
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u01.d04.ex.mp.01",
+          "instruction": {
+            "en": "Which word do you hear?",
+            "ru": "Какое слово ты слышишь?"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u01.d04.mp.live.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "leave",
+            "live"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u01.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the adjective.",
+            "ru": "Сопоставь прилагательное."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "kind",
+              "right": "добрый"
+            },
+            {
+              "left": "funny",
+              "right": "смешной"
+            },
+            {
+              "left": "quiet",
+              "right": "тихий"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u01.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate.",
+            "ru": "Переведи."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.possessives"
+          ],
+          "direction": "ru-en",
+          "prompt": "Эти ключи мои.",
+          "answers": [
+            "These keys are mine."
+          ]
+        }
+      ]
+    }
+  ]
+}

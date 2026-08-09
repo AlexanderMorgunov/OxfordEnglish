@@ -1,0 +1,462 @@
+{
+  "id": "u01.d02",
+  "title": {
+    "en": "Have you got…?",
+    "ru": "У тебя есть…?"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "grammar.have-got",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u01.d02.vocab",
+      "title": {
+        "en": "Personal info",
+        "ru": "Личные данные"
+      },
+      "words": [
+        {
+          "word": "age",
+          "ru": "возраст",
+          "ipa": "/eɪdʒ/",
+          "example": "What is her age?",
+          "exampleRu": "Сколько ей лет?",
+          "audio": {
+            "src": "media/audio/u01.d02.vocab.age.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "address",
+          "ru": "адрес",
+          "ipa": "/ˈædres/",
+          "example": "What is your address?",
+          "exampleRu": "Какой у тебя адрес?",
+          "audio": {
+            "src": "media/audio/u01.d02.vocab.address.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "phone number",
+          "ru": "номер телефона",
+          "ipa": "/fəʊn ˈnʌmbər/",
+          "example": "Have you got my phone number?",
+          "exampleRu": "У тебя есть мой номер?",
+          "audio": {
+            "src": "media/audio/u01.d02.vocab.phonenumber.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "email",
+          "ru": "электронная почта",
+          "ipa": "/ˈiːmeɪl/",
+          "example": "Send me an email.",
+          "exampleRu": "Напиши мне на почту.",
+          "audio": {
+            "src": "media/audio/u01.d02.vocab.email.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "job",
+          "ru": "работа",
+          "ipa": "/dʒɒb/",
+          "example": "She has got a good job.",
+          "exampleRu": "У неё хорошая работа.",
+          "audio": {
+            "src": "media/audio/u01.d02.vocab.job.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "married",
+          "ru": "женат/замужем",
+          "ipa": "/ˈmærid/",
+          "example": "They are married.",
+          "exampleRu": "Они женаты.",
+          "audio": {
+            "src": "media/audio/u01.d02.vocab.married.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "single",
+          "ru": "холост/не замужем",
+          "ipa": "/ˈsɪŋɡl/",
+          "example": "He is single.",
+          "exampleRu": "Он холост.",
+          "audio": {
+            "src": "media/audio/u01.d02.vocab.single.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hair",
+          "ru": "волосы",
+          "ipa": "/heər/",
+          "example": "She has got long hair.",
+          "exampleRu": "У неё длинные волосы.",
+          "audio": {
+            "src": "media/audio/u01.d02.vocab.hair.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "eyes",
+          "ru": "глаза",
+          "ipa": "/aɪz/",
+          "example": "He has got blue eyes.",
+          "exampleRu": "У него голубые глаза.",
+          "audio": {
+            "src": "media/audio/u01.d02.vocab.eyes.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tall",
+          "ru": "высокий",
+          "ipa": "/tɔːl/",
+          "example": "My brother is tall.",
+          "exampleRu": "Мой брат высокий.",
+          "audio": {
+            "src": "media/audio/u01.d02.vocab.tall.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "glasses",
+          "ru": "очки",
+          "ipa": "/ˈɡlɑːsɪz/",
+          "example": "She wears glasses.",
+          "exampleRu": "Она носит очки.",
+          "audio": {
+            "src": "media/audio/u01.d02.vocab.glasses.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "young",
+          "ru": "молодой",
+          "ipa": "/jʌŋ/",
+          "example": "They are young.",
+          "exampleRu": "Они молодые.",
+          "audio": {
+            "src": "media/audio/u01.d02.vocab.young.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u01.d02.grammar",
+      "title": {
+        "en": "have got",
+        "ru": "have got"
+      },
+      "rule": {
+        "en": "Use \"have got\" for possession and description. \"I/you/we/they have got\", \"he/she/it has got\".",
+        "ru": "\"have got\" — для обладания и описания. \"I/you/we/they have got\", \"he/she/it has got\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Statement",
+            "ru": "Утверждение"
+          },
+          "formula": "'ve got · 's got",
+          "examples": [
+            {
+              "en": "She has got two children.",
+              "ru": "У неё двое детей."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Question / negative",
+            "ru": "Вопрос / отрицание"
+          },
+          "formula": "Have you got…? · haven't got",
+          "examples": [
+            {
+              "en": "Have you got a phone? — No, I haven't got one.",
+              "ru": "У тебя есть телефон? — Нет."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"has got\" for he/she/it, \"have got\" for the rest.",
+          "ru": "\"has got\" — для he/she/it, \"have got\" — для остальных."
+        },
+        {
+          "en": "In questions/negatives use \"have/has\", not \"do\": \"Have you got…?\", not \"Do you have got…?\".",
+          "ru": "В вопросах/отрицаниях — \"have/has\", не \"do\": \"Have you got…?\", а не \"Do you have got…?\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u01.d02.reading",
+      "title": {
+        "en": "My new colleague",
+        "ru": "Мой новый коллега"
+      },
+      "blocks": [
+        {
+          "id": "u01.d02.reading.b1",
+          "en": "I have got a new colleague. Her name is Sofia and she has got a great job in our team.",
+          "ru": "У меня новый коллега. Её зовут София, и у неё отличная работа в нашей команде.",
+          "audio": {
+            "src": "media/audio/u01.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u01.d02.reading.b2",
+          "en": "She has got short hair and green eyes, and she wears glasses. She is young and she is not married.",
+          "ru": "У неё короткие волосы и зелёные глаза, и она носит очки. Она молодая и не замужем.",
+          "audio": {
+            "src": "media/audio/u01.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "colleague",
+          "ru": "коллега",
+          "ipa": "/ˈkɒliːɡ/"
+        },
+        {
+          "word": "team",
+          "ru": "команда",
+          "ipa": "/tiːm/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u01.d02.listening",
+      "title": {
+        "en": "Contact details",
+        "ru": "Контакты"
+      },
+      "audio": {
+        "src": "media/audio/u01.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Have you got Sofia's phone number?",
+          "ru": "У тебя есть номер Софии?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "No, I haven't. But I have got her email.",
+          "ru": "Нет. Но есть её почта."
+        },
+        {
+          "start": 6,
+          "end": 10,
+          "en": "Great, can you send it to me? Sure.",
+          "ru": "Отлично, можешь прислать? Конечно."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u01.d02.ex.l.01",
+          "instruction": {
+            "en": "What has the speaker got?",
+            "ru": "Что есть у говорящего?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "Sofia's ___.",
+          "options": [
+            "email",
+            "phone number",
+            "address"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u01.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u01.d02.ex.g.01",
+          "instruction": {
+            "en": "have got or has got?",
+            "ru": "have got или has got?"
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "prompt": "She ___ green eyes.",
+          "answers": [
+            "has got",
+            "hasgot"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u01.d02.ex.g.02",
+          "instruction": {
+            "en": "have got or has got?",
+            "ru": "have got или has got?"
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "prompt": "We ___ a new colleague.",
+          "answers": [
+            "have got",
+            "havegot"
+          ]
+        },
+        {
+          "type": "transform",
+          "id": "u01.d02.ex.tf.01",
+          "instruction": {
+            "en": "Make it a question.",
+            "ru": "Сделай вопрос."
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "prompt": "You have got a phone.",
+          "answers": [
+            "Have you got a phone?"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u01.d02.ex.c.01",
+          "instruction": {
+            "en": "Pick the correct form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "prompt": "___ she got children?",
+          "options": [
+            "Has",
+            "Have",
+            "Does",
+            "Is"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "match",
+          "id": "u01.d02.ex.m.01",
+          "instruction": {
+            "en": "Match.",
+            "ru": "Сопоставь."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "hair",
+              "right": "волосы"
+            },
+            {
+              "left": "eyes",
+              "right": "глаза"
+            },
+            {
+              "left": "married",
+              "right": "женат"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u01.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate.",
+            "ru": "Переведи."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.have-got"
+          ],
+          "direction": "ru-en",
+          "prompt": "У неё длинные волосы.",
+          "answers": [
+            "She has got long hair.",
+            "She's got long hair."
+          ]
+        }
+      ]
+    }
+  ]
+}

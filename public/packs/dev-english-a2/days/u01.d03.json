@@ -1,0 +1,460 @@
+{
+  "id": "u01.d03",
+  "title": {
+    "en": "Who knows who?",
+    "ru": "Кто кого знает?"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "grammar.pronouns",
+    "vocab.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u01.d03.vocab",
+      "title": {
+        "en": "Jobs & people",
+        "ru": "Профессии и люди"
+      },
+      "words": [
+        {
+          "word": "doctor",
+          "ru": "врач",
+          "ipa": "/ˈdɒktər/",
+          "example": "She is a doctor.",
+          "exampleRu": "Она врач.",
+          "audio": {
+            "src": "media/audio/u01.d03.vocab.doctor.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "engineer",
+          "ru": "инженер",
+          "ipa": "/ˌendʒɪˈnɪər/",
+          "example": "He is an engineer.",
+          "exampleRu": "Он инженер.",
+          "audio": {
+            "src": "media/audio/u01.d03.vocab.engineer.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "driver",
+          "ru": "водитель",
+          "ipa": "/ˈdraɪvər/",
+          "example": "The driver is here.",
+          "exampleRu": "Водитель здесь.",
+          "audio": {
+            "src": "media/audio/u01.d03.vocab.driver.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "nurse",
+          "ru": "медсестра",
+          "ipa": "/nɜːs/",
+          "example": "My aunt is a nurse.",
+          "exampleRu": "Моя тётя медсестра.",
+          "audio": {
+            "src": "media/audio/u01.d03.vocab.nurse.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "manager",
+          "ru": "менеджер",
+          "ipa": "/ˈmænɪdʒər/",
+          "example": "Ask the manager.",
+          "exampleRu": "Спроси менеджера.",
+          "audio": {
+            "src": "media/audio/u01.d03.vocab.manager.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "artist",
+          "ru": "художник",
+          "ipa": "/ˈɑːtɪst/",
+          "example": "She is a famous artist.",
+          "exampleRu": "Она известная художница.",
+          "audio": {
+            "src": "media/audio/u01.d03.vocab.artist.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "boss",
+          "ru": "начальник",
+          "ipa": "/bɒs/",
+          "example": "My boss is kind.",
+          "exampleRu": "Мой начальник добрый.",
+          "audio": {
+            "src": "media/audio/u01.d03.vocab.boss.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "colleague",
+          "ru": "коллега",
+          "ipa": "/ˈkɒliːɡ/",
+          "example": "He is my colleague.",
+          "exampleRu": "Он мой коллега.",
+          "audio": {
+            "src": "media/audio/u01.d03.vocab.colleague.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "neighbour",
+          "ru": "сосед",
+          "ipa": "/ˈneɪbər/",
+          "example": "Our neighbour is nice.",
+          "exampleRu": "Наш сосед приятный.",
+          "audio": {
+            "src": "media/audio/u01.d03.vocab.neighbour.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "know",
+          "ru": "знать",
+          "ipa": "/nəʊ/",
+          "example": "Do you know her?",
+          "exampleRu": "Ты её знаешь?",
+          "audio": {
+            "src": "media/audio/u01.d03.vocab.know.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "meet",
+          "ru": "встречать",
+          "ipa": "/miːt/",
+          "example": "I meet them every day.",
+          "exampleRu": "Я встречаю их каждый день.",
+          "audio": {
+            "src": "media/audio/u01.d03.vocab.meet.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "call",
+          "ru": "звонить",
+          "ipa": "/kɔːl/",
+          "example": "Call me tonight.",
+          "exampleRu": "Позвони мне вечером.",
+          "audio": {
+            "src": "media/audio/u01.d03.vocab.call.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u01.d03.grammar",
+      "title": {
+        "en": "me/you/him/her & who questions",
+        "ru": "me/you/him/her и вопросы who"
+      },
+      "rule": {
+        "en": "Object pronouns (me, you, him, her, us, them) come after the verb. \"Who + verb?\" asks about the subject; \"Who + do/does + subject + verb?\" asks about the object.",
+        "ru": "Объектные местоимения (me, you, him, her, us, them) стоят после глагола. \"Who + глагол?\" спрашивает о подлежащем; \"Who + do/does + подлежащее + глагол?\" — об объекте."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Object pronoun",
+            "ru": "Объектное местоимение"
+          },
+          "formula": "verb + me/him/her/them",
+          "examples": [
+            {
+              "en": "I know him. Call me.",
+              "ru": "Я его знаю. Позвони мне."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Subject vs object question",
+            "ru": "Вопрос о подлежащем/объекте"
+          },
+          "formula": "Who knows Anna? / Who does Anna know?",
+          "examples": [
+            {
+              "en": "Who called you?",
+              "ru": "Кто тебе звонил?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After a verb use the object form: \"know him\", not \"know he\".",
+          "ru": "После глагола — объектная форма: \"know him\", а не \"know he\"."
+        },
+        {
+          "en": "Subject questions need no \"do\": \"Who called?\", not \"Who did call?\".",
+          "ru": "Вопрос о подлежащем без \"do\": \"Who called?\", а не \"Who did call?\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u01.d03.reading",
+      "title": {
+        "en": "A small office",
+        "ru": "Маленький офис"
+      },
+      "blocks": [
+        {
+          "id": "u01.d03.reading.b1",
+          "en": "Anna is a manager. Everyone in the office knows her, and she knows them all by name.",
+          "ru": "Анна — менеджер. Все в офисе её знают, и она знает всех по имени.",
+          "audio": {
+            "src": "media/audio/u01.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u01.d03.reading.b2",
+          "en": "Her colleague Ben is an engineer. Anna calls him every morning, and he helps her with the reports.",
+          "ru": "Её коллега Бен — инженер. Анна звонит ему каждое утро, и он помогает ей с отчётами.",
+          "audio": {
+            "src": "media/audio/u01.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "everyone",
+          "ru": "все",
+          "ipa": "/ˈevriwʌn/"
+        },
+        {
+          "word": "help",
+          "ru": "помогать",
+          "ipa": "/help/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u01.d03.listening",
+      "title": {
+        "en": "Who is who?",
+        "ru": "Кто есть кто?"
+      },
+      "audio": {
+        "src": "media/audio/u01.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Who is that man? He is our new engineer.",
+          "ru": "Кто этот мужчина? Наш новый инженер."
+        },
+        {
+          "start": 3,
+          "end": 7,
+          "en": "Do you know him? Yes, I met him yesterday.",
+          "ru": "Ты его знаешь? Да, встретил вчера."
+        },
+        {
+          "start": 7,
+          "end": 10,
+          "en": "Anna called me about it.",
+          "ru": "Анна звонила мне об этом."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u01.d03.ex.l.01",
+          "instruction": {
+            "en": "Who called the speaker?",
+            "ru": "Кто звонил говорящему?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "___ called.",
+          "options": [
+            "Anna",
+            "Ben",
+            "The engineer"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u01.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u01.d03.ex.g.01",
+          "instruction": {
+            "en": "Object pronoun.",
+            "ru": "Объектное местоимение."
+          },
+          "tags": [
+            "grammar.pronouns"
+          ],
+          "prompt": "I know Ben. I call ___ every day.",
+          "answers": [
+            "him"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u01.d03.ex.g.02",
+          "instruction": {
+            "en": "Object pronoun.",
+            "ru": "Объектное местоимение."
+          },
+          "tags": [
+            "grammar.pronouns"
+          ],
+          "prompt": "Anna is nice. Everyone likes ___.",
+          "answers": [
+            "her"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u01.d03.ex.c.01",
+          "instruction": {
+            "en": "Subject or object question?",
+            "ru": "Вопрос о подлежащем или объекте?"
+          },
+          "tags": [
+            "grammar.pronouns"
+          ],
+          "prompt": "___ called you? (ask about the caller)",
+          "options": [
+            "Who",
+            "Who did",
+            "Whom did",
+            "What"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "transform",
+          "id": "u01.d03.ex.tf.01",
+          "instruction": {
+            "en": "Replace the name with a pronoun.",
+            "ru": "Замени имя местоимением."
+          },
+          "tags": [
+            "grammar.pronouns"
+          ],
+          "prompt": "I know Anna.",
+          "answers": [
+            "I know her."
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u01.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the job.",
+            "ru": "Сопоставь профессию."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "doctor",
+              "right": "врач"
+            },
+            {
+              "left": "driver",
+              "right": "водитель"
+            },
+            {
+              "left": "nurse",
+              "right": "медсестра"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u01.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate.",
+            "ru": "Переведи."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.pronouns"
+          ],
+          "direction": "ru-en",
+          "prompt": "Позвони мне вечером.",
+          "answers": [
+            "Call me tonight.",
+            "Call me in the evening."
+          ]
+        }
+      ]
+    }
+  ]
+}

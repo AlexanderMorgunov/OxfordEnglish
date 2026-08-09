@@ -7,6 +7,8 @@
 export const SKILL_TAGS = [
   // grammar
   'grammar.be',
+  'grammar.have-got',
+  'grammar.pronouns',
   'grammar.possessives',
   'grammar.past-simple',
   'grammar.past-simple.regular',
