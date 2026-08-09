@@ -1,0 +1,490 @@
+{
+  "id": "u02.d03",
+  "title": {
+    "en": "At the café — full lesson",
+    "ru": "В кафе — полный урок"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "vocab.cafe",
+    "functions.ordering"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u02.d03.vocab",
+      "title": {
+        "en": "Café words",
+        "ru": "Слова кафе"
+      },
+      "words": [
+        {
+          "word": "menu",
+          "ru": "меню",
+          "ipa": "/ˈmenjuː/",
+          "example": "Can I see the menu, please?",
+          "exampleRu": "Можно меню, пожалуйста?",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.menu.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "waiter",
+          "ru": "официант",
+          "ipa": "/ˈweɪtər/",
+          "example": "The waiter brought our food.",
+          "exampleRu": "Официант принёс нашу еду.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.waiter.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "order",
+          "ru": "заказ; заказывать",
+          "ipa": "/ˈɔːrdər/",
+          "example": "Are you ready to order?",
+          "exampleRu": "Вы готовы сделать заказ?",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.order.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bill",
+          "ru": "счёт",
+          "ipa": "/bɪl/",
+          "example": "Can I have the bill, please?",
+          "exampleRu": "Можно счёт, пожалуйста?",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.bill.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "coffee",
+          "ru": "кофе",
+          "ipa": "/ˈkɔːfi/",
+          "example": "I'd like a coffee.",
+          "exampleRu": "Мне кофе.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.coffee.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tea",
+          "ru": "чай",
+          "ipa": "/tiː/",
+          "example": "She drinks tea in the morning.",
+          "exampleRu": "Она пьёт чай утром.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.tea.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "water",
+          "ru": "вода",
+          "ipa": "/ˈwɔːtər/",
+          "example": "A glass of water, please.",
+          "exampleRu": "Стакан воды, пожалуйста.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.water.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sandwich",
+          "ru": "сэндвич",
+          "ipa": "/ˈsænwɪtʃ/",
+          "example": "I ate a cheese sandwich.",
+          "exampleRu": "Я съел сэндвич с сыром.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.sandwich.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "salad",
+          "ru": "салат",
+          "ipa": "/ˈsæləd/",
+          "example": "The salad is fresh.",
+          "exampleRu": "Салат свежий.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.salad.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "soup",
+          "ru": "суп",
+          "ipa": "/suːp/",
+          "example": "The soup is hot.",
+          "exampleRu": "Суп горячий.",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.soup.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dessert",
+          "ru": "десерт",
+          "ipa": "/dɪˈzɜːrt/",
+          "example": "Would you like a dessert?",
+          "exampleRu": "Хотите десерт?",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.dessert.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "delicious",
+          "ru": "вкусный",
+          "ipa": "/dɪˈlɪʃəs/",
+          "example": "This cake is delicious!",
+          "exampleRu": "Этот торт вкусный!",
+          "audio": {
+            "src": "media/audio/u02.d03.vocab.delicious.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u02.d03.grammar",
+      "title": {
+        "en": "Ordering: a / some / would like",
+        "ru": "Заказ: a / some / would like"
+      },
+      "rule": {
+        "en": "Order with \"I'd like…\". Use \"a/an\" for one countable thing, \"some\" for uncountable or plural.",
+        "ru": "Заказывай через \"I'd like…\". \"a/an\" — для одного исчисляемого, \"some\" — для неисчисляемого или множественного."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "a / an",
+            "ru": "a / an"
+          },
+          "formula": "I'd like a + countable",
+          "examples": [
+            {
+              "en": "I'd like a sandwich.",
+              "ru": "Мне сэндвич."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "some",
+            "ru": "some"
+          },
+          "formula": "I'd like some + uncountable",
+          "examples": [
+            {
+              "en": "I'd like some water.",
+              "ru": "Мне воды."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Uncountable food takes \"some\", not \"a\": \"some soup\", not \"a soup\".",
+          "ru": "С неисчисляемой едой — \"some\", не \"a\": \"some soup\", а не \"a soup\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u02.d03.reading",
+      "title": {
+        "en": "Lunch with a friend",
+        "ru": "Обед с другом"
+      },
+      "blocks": [
+        {
+          "id": "u02.d03.reading.b1",
+          "en": "It was one o'clock, so my friend and I went to a café for lunch. The waiter gave us the menu and a glass of water.",
+          "ru": "Был час дня, и мы с другом пошли в кафе на обед. Официант дал нам меню и стакан воды.",
+          "audio": {
+            "src": "media/audio/u02.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u02.d03.reading.b2",
+          "en": "I ordered a cheese sandwich and a coffee. My friend had soup and a fresh salad. The food was delicious. After lunch, I asked the waiter for the bill.",
+          "ru": "Я заказал сэндвич с сыром и кофе. Друг взял суп и свежий салат. Еда была вкусной. После обеда я попросил у официанта счёт.",
+          "audio": {
+            "src": "media/audio/u02.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "fresh",
+          "ru": "свежий",
+          "ipa": "/freʃ/"
+        },
+        {
+          "word": "lunch",
+          "ru": "обед",
+          "ipa": "/lʌntʃ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u02.d03.listening",
+      "title": {
+        "en": "Ordering lunch",
+        "ru": "Заказываем обед"
+      },
+      "audio": {
+        "src": "media/audio/u02.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Good afternoon. Are you ready to order?",
+          "ru": "Добрый день. Готовы заказать?"
+        },
+        {
+          "start": 3,
+          "end": 7,
+          "en": "Yes, I would like a sandwich and a coffee, please.",
+          "ru": "Да, мне сэндвич и кофе, пожалуйста."
+        },
+        {
+          "start": 7,
+          "end": 10,
+          "en": "Would you like a dessert? No, thank you.",
+          "ru": "Хотите десерт? Нет, спасибо."
+        },
+        {
+          "start": 10,
+          "end": 14,
+          "en": "Can I have the bill? Of course, here you are.",
+          "ru": "Можно счёт? Конечно, вот, пожалуйста."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u02.d03.ex.l.01",
+          "instruction": {
+            "en": "What does the customer order?",
+            "ru": "Что заказывает клиент?"
+          },
+          "tags": [
+            "listening.detail",
+            "vocab.cafe"
+          ],
+          "prompt": "A sandwich and ___.",
+          "options": [
+            "a coffee",
+            "a tea",
+            "a salad"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u02.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u02.d03.ex.g.01",
+          "instruction": {
+            "en": "a or some?",
+            "ru": "a или some?"
+          },
+          "tags": [
+            "grammar.some-any"
+          ],
+          "prompt": "I'd like ___ water, please.",
+          "answers": [
+            "some"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d03.ex.g.02",
+          "instruction": {
+            "en": "a or some?",
+            "ru": "a или some?"
+          },
+          "tags": [
+            "grammar.some-any"
+          ],
+          "prompt": "I'd like ___ sandwich.",
+          "answers": [
+            "a"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u02.d03.ex.c.01",
+          "instruction": {
+            "en": "Polite order.",
+            "ru": "Вежливый заказ."
+          },
+          "tags": [
+            "grammar.would-like"
+          ],
+          "prompt": "___ you like a dessert?",
+          "options": [
+            "Would",
+            "Do",
+            "Are",
+            "Have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "match",
+          "id": "u02.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.cafe"
+          ],
+          "pairs": [
+            {
+              "left": "bill",
+              "right": "счёт"
+            },
+            {
+              "left": "waiter",
+              "right": "официант"
+            },
+            {
+              "left": "menu",
+              "right": "меню"
+            }
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u02.d03.ex.o.01",
+          "instruction": {
+            "en": "Put the order in order.",
+            "ru": "Собери заказ."
+          },
+          "tags": [
+            "functions.ordering"
+          ],
+          "tokens": [
+            "I",
+            "would",
+            "like",
+            "a",
+            "coffee"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u02.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.ordering",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Можно счёт, пожалуйста?",
+          "answers": [
+            "Can I have the bill, please?",
+            "Can I have the bill please?"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u02.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "vocab.cafe",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Еда была вкусной.",
+          "answers": [
+            "The food was delicious."
+          ]
+        }
+      ]
+    }
+  ]
+}
