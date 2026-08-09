@@ -1,8 +1,8 @@
 {
-  "id": "u01.d04",
+  "id": "u04.d03",
   "title": {
-    "en": "Reporting your day",
-    "ru": "Рассказываем про свой день"
+    "en": "Past Simple at work",
+    "ru": "Past Simple на работе"
   },
   "estimatedMinutes": 25,
   "tags": [
@@ -12,26 +12,26 @@
   "sections": [
     {
       "type": "grammar",
-      "id": "u01.d04.grammar",
+      "id": "u04.d03.grammar",
       "title": {
-        "en": "Reporting finished actions",
-        "ru": "Рассказываем о завершённых действиях"
+        "en": "Talking about a finished day",
+        "ru": "Рассказываем о завершённом дне"
       },
       "rule": {
-        "en": "At standup you report what you did — finished actions go in the Past Simple.",
-        "ru": "На стендапе ты рассказываешь, что сделал — завершённые действия в Past Simple."
+        "en": "Use the Past Simple to report what happened — finished actions at a known time.",
+        "ru": "Past Simple — чтобы рассказать, что произошло: завершённые действия в известное время."
       },
       "patterns": [
         {
           "label": {
-            "en": "Report",
-            "ru": "Отчёт"
+            "en": "Statement",
+            "ru": "Утверждение"
           },
-          "formula": "subject + past verb + object",
+          "formula": "subject + past verb",
           "examples": [
             {
-              "en": "I deployed the app.",
-              "ru": "Я задеплоил приложение."
+              "en": "We merged the branch.",
+              "ru": "Мы влили ветку."
             }
           ]
         }
@@ -39,18 +39,17 @@
     },
     {
       "type": "reading",
-      "id": "u01.d04.reading",
+      "id": "u04.d03.reading",
       "title": {
-        "en": "Standup notes",
-        "ru": "Заметки со стендапа"
+        "en": "A normal day",
+        "ru": "Обычный день"
       },
       "blocks": [
         {
-          "id": "u01.d04.reading.b1",
-          "en": "At standup I reported my day. I fixed a bug, merged a branch, and deployed the app. The server went down once, but we reverted the change.",
-          "ru": "На стендапе я рассказал про свой день. Я починил баг, влил ветку и задеплоил приложение. Сервер один раз упал, но мы откатили изменение.",
+          "id": "u04.d03.reading.b1",
+          "en": "Yesterday was a normal work day. I fixed a bug, wrote a test, and my teammate reviewed the pull request. We merged the branch and went home.",
           "audio": {
-            "src": "media/audio/u01.d04.reading.b1.wav",
+            "src": "media/audio/u04.d03.reading.b1.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -60,25 +59,22 @@
       ],
       "glossary": [
         {
+          "word": "deploy",
+          "ipa": "/dɪˈplɔɪ/"
+        },
+        {
           "word": "merge",
-          "ru": "сливать, вливать",
           "ipa": "/mɜːdʒ/"
         },
         {
-          "word": "server",
-          "ru": "сервер",
-          "ipa": "/ˈsɜːvə/"
-        },
-        {
           "word": "revert",
-          "ru": "откатывать",
           "ipa": "/rɪˈvɜːt/"
         }
       ]
     },
     {
       "type": "practice",
-      "id": "u01.d04.practice",
+      "id": "u04.d03.practice",
       "title": {
         "en": "Practice",
         "ru": "Практика"
@@ -86,7 +82,7 @@
       "exercises": [
         {
           "type": "translate",
-          "id": "u01.d04.ex.tr.01",
+          "id": "u04.d03.ex.tr.01",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."
@@ -103,7 +99,7 @@
         },
         {
           "type": "translate",
-          "id": "u01.d04.ex.tr.02",
+          "id": "u04.d03.ex.tr.02",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."
@@ -120,7 +116,7 @@
         },
         {
           "type": "translate",
-          "id": "u01.d04.ex.tr.03",
+          "id": "u04.d03.ex.tr.03",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."
@@ -137,7 +133,7 @@
         },
         {
           "type": "translate",
-          "id": "u01.d04.ex.tr.04",
+          "id": "u04.d03.ex.tr.04",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."
@@ -150,23 +146,6 @@
           "prompt": "Он задеплоил приложение в продакшн.",
           "answers": [
             "He deployed the app to production."
-          ]
-        },
-        {
-          "type": "translate",
-          "id": "u01.d04.ex.tr.05",
-          "instruction": {
-            "en": "Translate into English.",
-            "ru": "Переведи на английский."
-          },
-          "tags": [
-            "writing.translation",
-            "grammar.past-simple"
-          ],
-          "direction": "ru-en",
-          "prompt": "Сервер упал ночью.",
-          "answers": [
-            "The server went down at night."
           ]
         }
       ]

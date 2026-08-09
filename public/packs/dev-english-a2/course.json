@@ -22,51 +22,40 @@
       "checkpoint": {
         "id": "u00.checkpoint",
         "title": {
-          "en": "Start checkpoint",
-          "ru": "Стартовый чекпоинт"
+          "en": "Start here checkpoint",
+          "ru": "Чекпоинт: Начни отсюда"
         },
-        "questionCount": 10
+        "questionCount": 12
       }
     },
     {
       "id": "u01",
       "title": {
-        "en": "File 1 — Talking about yesterday",
-        "ru": "Юнит 1 — Рассказываем о вчера"
+        "en": "Nice to meet you",
+        "ru": "Знакомство"
       },
-      "dayIds": [
-        "u01.d01",
-        "u01.d02",
-        "u01.d03",
-        "u01.d04",
-        "u01.d05"
-      ],
+      "dayIds": [],
       "checkpoint": {
         "id": "u01.checkpoint",
         "title": {
-          "en": "Unit 1 checkpoint",
-          "ru": "Чекпоинт юнита 1"
+          "en": "Nice to meet you checkpoint",
+          "ru": "Чекпоинт: Знакомство"
         },
-        "drawFromPreviousUnits": 0,
-        "questionCount": 15
+        "questionCount": 12
       }
     },
     {
       "id": "u02",
       "title": {
-        "en": "File 2 — Everyday life",
-        "ru": "Юнит 2 — Повседневная жизнь"
+        "en": "Every day",
+        "ru": "Каждый день"
       },
-      "dayIds": [
-        "u02.d01",
-        "u02.d02",
-        "u02.d03"
-      ],
+      "dayIds": [],
       "checkpoint": {
         "id": "u02.checkpoint",
         "title": {
-          "en": "Unit 2 checkpoint",
-          "ru": "Чекпоинт юнита 2"
+          "en": "Every day checkpoint",
+          "ru": "Чекпоинт: Каждый день"
         },
         "questionCount": 12
       }
@@ -74,8 +63,8 @@
     {
       "id": "u03",
       "title": {
-        "en": "File 3 — Small talk",
-        "ru": "Юнит 3 — Small talk"
+        "en": "I can, I like",
+        "ru": "Я могу, я люблю"
       },
       "dayIds": [
         "u03.d01"
@@ -83,8 +72,8 @@
       "checkpoint": {
         "id": "u03.checkpoint",
         "title": {
-          "en": "Unit 3 checkpoint",
-          "ru": "Чекпоинт юнита 3"
+          "en": "I can, I like checkpoint",
+          "ru": "Чекпоинт: Я могу, я люблю"
         },
         "questionCount": 12
       }
@@ -92,17 +81,187 @@
     {
       "id": "u04",
       "title": {
-        "en": "File 4 — Getting around",
-        "ru": "Юнит 4 — Ориентируемся в городе"
+        "en": "Yesterday",
+        "ru": "Вчера"
       },
       "dayIds": [
-        "u04.d01"
+        "u04.d01",
+        "u04.d02",
+        "u04.d03",
+        "u04.d04",
+        "u04.d05"
       ],
       "checkpoint": {
         "id": "u04.checkpoint",
         "title": {
-          "en": "Unit 4 checkpoint",
-          "ru": "Чекпоинт юнита 4"
+          "en": "Yesterday checkpoint",
+          "ru": "Чекпоинт: Вчера"
+        },
+        "questionCount": 12
+      }
+    },
+    {
+      "id": "u05",
+      "title": {
+        "en": "Telling stories",
+        "ru": "Рассказываем истории"
+      },
+      "dayIds": [],
+      "checkpoint": {
+        "id": "u05.checkpoint",
+        "title": {
+          "en": "Telling stories checkpoint",
+          "ru": "Чекпоинт: Рассказываем истории"
+        },
+        "questionCount": 12
+      }
+    },
+    {
+      "id": "u06",
+      "title": {
+        "en": "Around the house",
+        "ru": "Дома"
+      },
+      "dayIds": [],
+      "checkpoint": {
+        "id": "u06.checkpoint",
+        "title": {
+          "en": "Around the house checkpoint",
+          "ru": "Чекпоинт: Дома"
+        },
+        "questionCount": 12
+      }
+    },
+    {
+      "id": "u07",
+      "title": {
+        "en": "At the table",
+        "ru": "За столом"
+      },
+      "dayIds": [
+        "u07.d01",
+        "u07.d02",
+        "u07.d03"
+      ],
+      "checkpoint": {
+        "id": "u07.checkpoint",
+        "title": {
+          "en": "At the table checkpoint",
+          "ru": "Чекпоинт: За столом"
+        },
+        "questionCount": 12
+      }
+    },
+    {
+      "id": "u08",
+      "title": {
+        "en": "In town",
+        "ru": "В городе"
+      },
+      "dayIds": [
+        "u08.d01"
+      ],
+      "checkpoint": {
+        "id": "u08.checkpoint",
+        "title": {
+          "en": "In town checkpoint",
+          "ru": "Чекпоинт: В городе"
+        },
+        "questionCount": 12
+      }
+    },
+    {
+      "id": "u09",
+      "title": {
+        "en": "Bigger, better",
+        "ru": "Больше, лучше"
+      },
+      "dayIds": [],
+      "checkpoint": {
+        "id": "u09.checkpoint",
+        "title": {
+          "en": "Bigger, better checkpoint",
+          "ru": "Чекпоинт: Больше, лучше"
+        },
+        "questionCount": 12
+      }
+    },
+    {
+      "id": "u10",
+      "title": {
+        "en": "Making plans",
+        "ru": "Планы"
+      },
+      "dayIds": [],
+      "checkpoint": {
+        "id": "u10.checkpoint",
+        "title": {
+          "en": "Making plans checkpoint",
+          "ru": "Чекпоинт: Планы"
+        },
+        "questionCount": 12
+      }
+    },
+    {
+      "id": "u11",
+      "title": {
+        "en": "Rules & health",
+        "ru": "Правила и здоровье"
+      },
+      "dayIds": [],
+      "checkpoint": {
+        "id": "u11.checkpoint",
+        "title": {
+          "en": "Rules & health checkpoint",
+          "ru": "Чекпоинт: Правила и здоровье"
+        },
+        "questionCount": 12
+      }
+    },
+    {
+      "id": "u12",
+      "title": {
+        "en": "Have you ever…?",
+        "ru": "Ты когда-нибудь…?"
+      },
+      "dayIds": [],
+      "checkpoint": {
+        "id": "u12.checkpoint",
+        "title": {
+          "en": "Have you ever…? checkpoint",
+          "ru": "Чекпоинт: Ты когда-нибудь…?"
+        },
+        "questionCount": 12
+      }
+    },
+    {
+      "id": "u13",
+      "title": {
+        "en": "Connecting ideas",
+        "ru": "Связываем идеи"
+      },
+      "dayIds": [],
+      "checkpoint": {
+        "id": "u13.checkpoint",
+        "title": {
+          "en": "Connecting ideas checkpoint",
+          "ru": "Чекпоинт: Связываем идеи"
+        },
+        "questionCount": 12
+      }
+    },
+    {
+      "id": "u14",
+      "title": {
+        "en": "Bridge & review",
+        "ru": "Мост к B1 и повтор"
+      },
+      "dayIds": [],
+      "checkpoint": {
+        "id": "u14.checkpoint",
+        "title": {
+          "en": "Bridge & review checkpoint",
+          "ru": "Чекпоинт: Мост к B1 и повтор"
         },
         "questionCount": 12
       }

@@ -1,5 +1,5 @@
 {
-  "id": "u02.d03",
+  "id": "u07.d03",
   "title": {
     "en": "At the café — full lesson",
     "ru": "В кафе — полный урок"
@@ -12,7 +12,7 @@
   "sections": [
     {
       "type": "vocabulary",
-      "id": "u02.d03.vocab",
+      "id": "u07.d03.vocab",
       "title": {
         "en": "Café words",
         "ru": "Слова кафе"
@@ -25,7 +25,7 @@
           "example": "Can I see the menu, please?",
           "exampleRu": "Можно меню, пожалуйста?",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.menu.wav",
+            "src": "media/audio/u07.d03.vocab.menu.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -39,7 +39,7 @@
           "example": "The waiter brought our food.",
           "exampleRu": "Официант принёс нашу еду.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.waiter.wav",
+            "src": "media/audio/u07.d03.vocab.waiter.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -53,7 +53,7 @@
           "example": "Are you ready to order?",
           "exampleRu": "Вы готовы сделать заказ?",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.order.wav",
+            "src": "media/audio/u07.d03.vocab.order.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -67,7 +67,7 @@
           "example": "Can I have the bill, please?",
           "exampleRu": "Можно счёт, пожалуйста?",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.bill.wav",
+            "src": "media/audio/u07.d03.vocab.bill.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -81,7 +81,7 @@
           "example": "I'd like a coffee.",
           "exampleRu": "Мне кофе.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.coffee.wav",
+            "src": "media/audio/u07.d03.vocab.coffee.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -95,7 +95,7 @@
           "example": "She drinks tea in the morning.",
           "exampleRu": "Она пьёт чай утром.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.tea.wav",
+            "src": "media/audio/u07.d03.vocab.tea.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -109,7 +109,7 @@
           "example": "A glass of water, please.",
           "exampleRu": "Стакан воды, пожалуйста.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.water.wav",
+            "src": "media/audio/u07.d03.vocab.water.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -123,7 +123,7 @@
           "example": "I ate a cheese sandwich.",
           "exampleRu": "Я съел сэндвич с сыром.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.sandwich.wav",
+            "src": "media/audio/u07.d03.vocab.sandwich.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -137,7 +137,7 @@
           "example": "The salad is fresh.",
           "exampleRu": "Салат свежий.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.salad.wav",
+            "src": "media/audio/u07.d03.vocab.salad.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -151,7 +151,7 @@
           "example": "The soup is hot.",
           "exampleRu": "Суп горячий.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.soup.wav",
+            "src": "media/audio/u07.d03.vocab.soup.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -165,7 +165,7 @@
           "example": "Would you like a dessert?",
           "exampleRu": "Хотите десерт?",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.dessert.wav",
+            "src": "media/audio/u07.d03.vocab.dessert.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -179,7 +179,7 @@
           "example": "This cake is delicious!",
           "exampleRu": "Этот торт вкусный!",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.delicious.wav",
+            "src": "media/audio/u07.d03.vocab.delicious.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -190,7 +190,7 @@
     },
     {
       "type": "grammar",
-      "id": "u02.d03.grammar",
+      "id": "u07.d03.grammar",
       "title": {
         "en": "Ordering: a / some / would like",
         "ru": "Заказ: a / some / would like"
@@ -236,18 +236,18 @@
     },
     {
       "type": "reading",
-      "id": "u02.d03.reading",
+      "id": "u07.d03.reading",
       "title": {
         "en": "Lunch with a friend",
         "ru": "Обед с другом"
       },
       "blocks": [
         {
-          "id": "u02.d03.reading.b1",
+          "id": "u07.d03.reading.b1",
           "en": "It was one o'clock, so my friend and I went to a café for lunch. The waiter gave us the menu and a glass of water.",
           "ru": "Был час дня, и мы с другом пошли в кафе на обед. Официант дал нам меню и стакан воды.",
           "audio": {
-            "src": "media/audio/u02.d03.reading.b1.wav",
+            "src": "media/audio/u07.d03.reading.b1.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -255,11 +255,11 @@
           }
         },
         {
-          "id": "u02.d03.reading.b2",
+          "id": "u07.d03.reading.b2",
           "en": "I ordered a cheese sandwich and a coffee. My friend had soup and a fresh salad. The food was delicious. After lunch, I asked the waiter for the bill.",
           "ru": "Я заказал сэндвич с сыром и кофе. Друг взял суп и свежий салат. Еда была вкусной. После обеда я попросил у официанта счёт.",
           "audio": {
-            "src": "media/audio/u02.d03.reading.b2.wav",
+            "src": "media/audio/u07.d03.reading.b2.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,13 +282,13 @@
     },
     {
       "type": "listening",
-      "id": "u02.d03.listening",
+      "id": "u07.d03.listening",
       "title": {
         "en": "Ordering lunch",
         "ru": "Заказываем обед"
       },
       "audio": {
-        "src": "media/audio/u02.d03.listening.wav",
+        "src": "media/audio/u07.d03.listening.wav",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"
@@ -323,7 +323,7 @@
       "exercises": [
         {
           "type": "choice",
-          "id": "u02.d03.ex.l.01",
+          "id": "u07.d03.ex.l.01",
           "instruction": {
             "en": "What does the customer order?",
             "ru": "Что заказывает клиент?"
@@ -344,7 +344,7 @@
     },
     {
       "type": "practice",
-      "id": "u02.d03.practice",
+      "id": "u07.d03.practice",
       "title": {
         "en": "Practice",
         "ru": "Практика"
@@ -352,7 +352,7 @@
       "exercises": [
         {
           "type": "gap-fill",
-          "id": "u02.d03.ex.g.01",
+          "id": "u07.d03.ex.g.01",
           "instruction": {
             "en": "a or some?",
             "ru": "a или some?"
@@ -367,7 +367,7 @@
         },
         {
           "type": "gap-fill",
-          "id": "u02.d03.ex.g.02",
+          "id": "u07.d03.ex.g.02",
           "instruction": {
             "en": "a or some?",
             "ru": "a или some?"
@@ -382,7 +382,7 @@
         },
         {
           "type": "choice",
-          "id": "u02.d03.ex.c.01",
+          "id": "u07.d03.ex.c.01",
           "instruction": {
             "en": "Polite order.",
             "ru": "Вежливый заказ."
@@ -401,7 +401,7 @@
         },
         {
           "type": "match",
-          "id": "u02.d03.ex.m.01",
+          "id": "u07.d03.ex.m.01",
           "instruction": {
             "en": "Match the word and the translation.",
             "ru": "Сопоставь слово и перевод."
@@ -426,7 +426,7 @@
         },
         {
           "type": "order-words",
-          "id": "u02.d03.ex.o.01",
+          "id": "u07.d03.ex.o.01",
           "instruction": {
             "en": "Put the order in order.",
             "ru": "Собери заказ."
@@ -451,7 +451,7 @@
         },
         {
           "type": "translate",
-          "id": "u02.d03.ex.t.01",
+          "id": "u07.d03.ex.t.01",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."
@@ -469,7 +469,7 @@
         },
         {
           "type": "translate",
-          "id": "u02.d03.ex.t.02",
+          "id": "u07.d03.ex.t.02",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."

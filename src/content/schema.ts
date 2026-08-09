@@ -235,7 +235,8 @@ const LEVEL = z.enum(['A1', 'A2', 'B1', 'B2']);
 export const UnitIndex = z.object({
   id: z.string().min(1),
   title: LocalizedText,
-  dayIds: z.array(z.string().min(1)).min(1),
+  // may be empty: units can be declared in the course map before they're authored.
+  dayIds: z.array(z.string().min(1)),
   checkpoint: Checkpoint.optional(),
 });
 

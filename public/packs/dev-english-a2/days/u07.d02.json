@@ -1,5 +1,5 @@
 {
-  "id": "u02.d02",
+  "id": "u07.d02",
   "title": {
     "en": "Countable or uncountable?",
     "ru": "Исчисляемое или нет?"
@@ -12,7 +12,7 @@
   "sections": [
     {
       "type": "grammar",
-      "id": "u02.d02.grammar",
+      "id": "u07.d02.grammar",
       "title": {
         "en": "Some, any, much, many",
         "ru": "Some, any, much, many"
@@ -62,18 +62,18 @@
     },
     {
       "type": "reading",
-      "id": "u02.d02.reading",
+      "id": "u07.d02.reading",
       "title": {
         "en": "Food shopping",
         "ru": "Покупаем еду"
       },
       "blocks": [
         {
-          "id": "u02.d02.reading.b1",
+          "id": "u07.d02.reading.b1",
           "en": "On Saturday I went shopping for food. I bought some milk, some bread, and a dozen eggs.",
           "ru": "В субботу я пошёл за продуктами. Я купил молока, хлеба и дюжину яиц.",
           "audio": {
-            "src": "media/audio/u02.d02.reading.b1.wav",
+            "src": "media/audio/u07.d02.reading.b1.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -81,11 +81,11 @@
           }
         },
         {
-          "id": "u02.d02.reading.b2",
+          "id": "u07.d02.reading.b2",
           "en": "I didn't buy any sugar because we still have some at home. How much coffee do we need? Not much — just one bag.",
           "ru": "Я не купил сахар, потому что дома ещё есть. Сколько кофе нам нужно? Немного — всего один пакет.",
           "audio": {
-            "src": "media/audio/u02.d02.reading.b2.wav",
+            "src": "media/audio/u07.d02.reading.b2.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -113,7 +113,7 @@
     },
     {
       "type": "practice",
-      "id": "u02.d02.practice",
+      "id": "u07.d02.practice",
       "title": {
         "en": "Practice",
         "ru": "Практика"
@@ -121,7 +121,7 @@
       "exercises": [
         {
           "type": "choice",
-          "id": "u02.d02.ex.choice.01",
+          "id": "u07.d02.ex.choice.01",
           "instruction": {
             "en": "some or any?",
             "ru": "some или any?"
@@ -140,7 +140,7 @@
         },
         {
           "type": "gap-fill",
-          "id": "u02.d02.ex.gap.01",
+          "id": "u07.d02.ex.gap.01",
           "instruction": {
             "en": "much or many?",
             "ru": "much или many?"
@@ -155,7 +155,7 @@
         },
         {
           "type": "spot-error",
-          "id": "u02.d02.ex.spot.01",
+          "id": "u07.d02.ex.spot.01",
           "instruction": {
             "en": "Which line is correct?",
             "ru": "Какая строка верна?"
@@ -171,7 +171,7 @@
         },
         {
           "type": "translate",
-          "id": "u02.d02.ex.tr.01",
+          "id": "u07.d02.ex.tr.01",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."

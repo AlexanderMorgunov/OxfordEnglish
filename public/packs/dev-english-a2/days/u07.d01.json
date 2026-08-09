@@ -1,5 +1,5 @@
 {
-  "id": "u02.d01",
+  "id": "u07.d01",
   "title": {
     "en": "At the café",
     "ru": "В кафе"
@@ -12,7 +12,7 @@
   "sections": [
     {
       "type": "grammar",
-      "id": "u02.d01.grammar",
+      "id": "u07.d01.grammar",
       "title": {
         "en": "Ordering politely",
         "ru": "Заказываем вежливо"
@@ -75,18 +75,18 @@
     },
     {
       "type": "reading",
-      "id": "u02.d01.reading",
+      "id": "u07.d01.reading",
       "title": {
         "en": "Lunch break",
         "ru": "Обеденный перерыв"
       },
       "blocks": [
         {
-          "id": "u02.d01.reading.b1",
+          "id": "u07.d01.reading.b1",
           "en": "It was lunchtime, so I went to a small café near the office. A waiter came and gave me the menu.",
           "ru": "Был обед, и я пошёл в маленькое кафе рядом с офисом. Официант подошёл и дал мне меню.",
           "audio": {
-            "src": "media/audio/u02.d01.reading.b1.wav",
+            "src": "media/audio/u07.d01.reading.b1.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -94,11 +94,11 @@
           }
         },
         {
-          "id": "u02.d01.reading.b2",
+          "id": "u07.d01.reading.b2",
           "en": "I'd like a coffee and a cheese sandwich, please, I said. Would you like some water too? he asked. Yes, please. Can I have the bill after?",
           "ru": "«Мне, пожалуйста, кофе и сэндвич с сыром», — сказал я. «Хотите ещё воды?» — спросил он. «Да, пожалуйста. Можно потом счёт?»",
           "audio": {
-            "src": "media/audio/u02.d01.reading.b2.wav",
+            "src": "media/audio/u07.d01.reading.b2.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -131,13 +131,13 @@
     },
     {
       "type": "listening",
-      "id": "u02.d01.listening",
+      "id": "u07.d01.listening",
       "title": {
         "en": "Ordering lunch",
         "ru": "Заказываем обед"
       },
       "audio": {
-        "src": "media/audio/u02.d01.listening.wav",
+        "src": "media/audio/u07.d01.listening.wav",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"
@@ -178,7 +178,7 @@
       "exercises": [
         {
           "type": "choice",
-          "id": "u02.d01.ex.choice.01",
+          "id": "u07.d01.ex.choice.01",
           "instruction": {
             "en": "What does the customer order?",
             "ru": "Что заказывает клиент?"
@@ -199,7 +199,7 @@
     },
     {
       "type": "practice",
-      "id": "u02.d01.practice",
+      "id": "u07.d01.practice",
       "title": {
         "en": "Practice",
         "ru": "Практика"
@@ -207,7 +207,7 @@
       "exercises": [
         {
           "type": "gap-fill",
-          "id": "u02.d01.ex.gap.01",
+          "id": "u07.d01.ex.gap.01",
           "instruction": {
             "en": "Complete the polite order.",
             "ru": "Заверши вежливый заказ."
@@ -222,7 +222,7 @@
         },
         {
           "type": "choice",
-          "id": "u02.d01.ex.choice.02",
+          "id": "u07.d01.ex.choice.02",
           "instruction": {
             "en": "Pick the polite offer.",
             "ru": "Выбери вежливое предложение."
@@ -241,7 +241,7 @@
         },
         {
           "type": "translate",
-          "id": "u02.d01.ex.tr.01",
+          "id": "u07.d01.ex.tr.01",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."

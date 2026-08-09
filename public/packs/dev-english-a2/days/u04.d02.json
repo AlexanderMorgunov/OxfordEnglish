@@ -1,5 +1,5 @@
 {
-  "id": "u01.d02",
+  "id": "u04.d02",
   "title": {
     "en": "Questions about the past",
     "ru": "Вопросы о прошлом"
@@ -12,7 +12,7 @@
   "sections": [
     {
       "type": "grammar",
-      "id": "u01.d02.grammar",
+      "id": "u04.d02.grammar",
       "title": {
         "en": "Asking what happened",
         "ru": "Спрашиваем, что произошло"
@@ -58,18 +58,18 @@
     },
     {
       "type": "reading",
-      "id": "u01.d02.reading",
+      "id": "u04.d02.reading",
       "title": {
         "en": "Standup",
         "ru": "Стендап"
       },
       "blocks": [
         {
-          "id": "u01.d02.reading.b1",
+          "id": "u04.d02.reading.b1",
           "en": "At the standup my manager asked, \"Did you finish the report task?\" I said yes, and I explained what I did.",
           "ru": "На стендапе менеджер спросил: «Ты закончил задачу с отчётом?» Я сказал да и объяснил, что сделал.",
           "audio": {
-            "src": "media/audio/u01.d02.reading.b1.wav",
+            "src": "media/audio/u04.d02.reading.b1.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -77,11 +77,11 @@
           }
         },
         {
-          "id": "u01.d02.reading.b2",
+          "id": "u04.d02.reading.b2",
           "en": "Then a teammate asked when the server went down. It happened at night, so nobody noticed it until the morning.",
           "ru": "Потом коллега спросил, когда упал сервер. Это случилось ночью, поэтому никто не заметил до утра.",
           "audio": {
-            "src": "media/audio/u01.d02.reading.b2.wav",
+            "src": "media/audio/u04.d02.reading.b2.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -109,7 +109,7 @@
     },
     {
       "type": "practice",
-      "id": "u01.d02.practice",
+      "id": "u04.d02.practice",
       "title": {
         "en": "Practice",
         "ru": "Практика"
@@ -117,7 +117,7 @@
       "exercises": [
         {
           "type": "choice",
-          "id": "u01.d02.ex.choice.01",
+          "id": "u04.d02.ex.choice.01",
           "instruction": {
             "en": "Pick the right word.",
             "ru": "Выбери правильное слово."
@@ -136,7 +136,7 @@
         },
         {
           "type": "spot-error",
-          "id": "u01.d02.ex.spot.01",
+          "id": "u04.d02.ex.spot.01",
           "instruction": {
             "en": "Which line is correct?",
             "ru": "Какая строка верна?"
@@ -152,7 +152,7 @@
         },
         {
           "type": "order-words",
-          "id": "u01.d02.ex.order.01",
+          "id": "u04.d02.ex.order.01",
           "instruction": {
             "en": "Put the words in order.",
             "ru": "Расставь слова по порядку."
@@ -179,7 +179,7 @@
         },
         {
           "type": "translate",
-          "id": "u01.d02.ex.translate.01",
+          "id": "u04.d02.ex.translate.01",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."

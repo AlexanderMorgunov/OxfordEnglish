@@ -1,62 +1,92 @@
 {
   "id": "u04.d01",
   "title": {
-    "en": "Where is it?",
-    "ru": "Где это?"
+    "en": "The Past Simple",
+    "ru": "Past Simple"
   },
-  "estimatedMinutes": 25,
+  "estimatedMinutes": 35,
   "tags": [
-    "functions.directions",
-    "vocab.daily"
+    "grammar.past-simple",
+    "vocab.dev"
   ],
   "sections": [
     {
       "type": "grammar",
       "id": "u04.d01.grammar",
       "title": {
-        "en": "There is / there are · Where is…?",
-        "ru": "There is / there are · Where is…?"
+        "en": "How it works",
+        "ru": "Как это работает"
       },
       "rule": {
-        "en": "Use \"there is\" for one thing, \"there are\" for many. Ask \"Where is…?\" to find something.",
-        "ru": "Используй \"there is\" для одного, \"there are\" для многих. Спрашивай \"Where is…?\", чтобы что-то найти."
+        "en": "Use the Past Simple for finished actions with a known time — what you shipped, fixed, or broke yesterday.",
+        "ru": "Past Simple — для завершённых действий с известным временем: что ты задеплоил, починил или сломал вчера."
       },
       "patterns": [
         {
           "label": {
-            "en": "there is / are",
-            "ru": "there is / are"
+            "en": "Regular verbs — add -ed",
+            "ru": "Правильные глаголы — добавляем -ed"
           },
-          "formula": "there is + singular · there are + plural",
+          "formula": "verb + ed",
           "examples": [
             {
-              "en": "There is a shop near here. There are two cafés.",
-              "ru": "Рядом есть магазин. Есть два кафе."
+              "en": "Yesterday I deployed the new build.",
+              "ru": "Вчера я задеплоил новый билд."
+            },
+            {
+              "en": "We merged the feature branch this morning.",
+              "ru": "Мы влили ветку с фичей сегодня утром."
             }
           ]
         },
         {
           "label": {
-            "en": "Where…?",
-            "ru": "Где…?"
+            "en": "Irregular verbs — memorize them",
+            "ru": "Неправильные глаголы — их нужно запомнить"
           },
-          "formula": "Where is / are + noun ?",
+          "formula": "write → wrote · build → built · break → broke",
           "examples": [
             {
-              "en": "Where is the water?",
-              "ru": "Где вода?"
+              "en": "She wrote the tests and the pipeline ran green.",
+              "ru": "Она написала тесты, и пайплайн прошёл."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Negative — didn't + base form",
+            "ru": "Отрицание — didn't + начальная форма"
+          },
+          "formula": "didn't + base",
+          "examples": [
+            {
+              "en": "The build didn't pass, so I didn't push to main.",
+              "ru": "Билд не прошёл, поэтому я не запушил в main."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Question — Did + subject + base form",
+            "ru": "Вопрос — Did + подлежащее + начальная форма"
+          },
+          "formula": "Did + subject + base ?",
+          "examples": [
+            {
+              "en": "Did you review my pull request?",
+              "ru": "Ты посмотрел мой пул-реквест?"
             }
           ]
         }
       ],
       "pitfalls": [
         {
-          "en": "Match the verb to the noun: \"there is one apple\", \"there are three apples\".",
-          "ru": "Согласуй глагол с существительным: \"there is one apple\", \"there are three apples\"."
+          "en": "After 'didn't' use the base form, not the past form: 'didn't pass', not 'didn't passed'.",
+          "ru": "После 'didn't' — начальная форма, а не прошедшая: 'didn't pass', а не 'didn't passed'."
         },
         {
-          "en": "Prepositions of place: at, in, on, near, next to, between.",
-          "ru": "Предлоги места: at, in, on, near, next to, between."
+          "en": "In questions the past is carried by 'did', so the main verb stays base: 'Did you merge?', not 'Did you merged?'.",
+          "ru": "В вопросе прошедшее время несёт 'did', основной глагол — в начальной форме: 'Did you merge?', а не 'Did you merged?'."
         }
       ]
     },
@@ -64,14 +94,25 @@
       "type": "reading",
       "id": "u04.d01.reading",
       "title": {
-        "en": "Looking for water",
-        "ru": "Ищем воду"
+        "en": "Yesterday's commits",
+        "ru": "Вчерашние коммиты"
       },
-      "attribution": "Augustine Napagi, African Storybook (global-asp), CC-BY",
+      "image": {
+        "src": "media/images/reading-yesterday.png",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors"
+        },
+        "alt": {
+          "en": "A terminal showing yesterday's git log",
+          "ru": "Терминал с git log за вчера"
+        }
+      },
       "blocks": [
         {
           "id": "u04.d01.reading.b1",
-          "en": "Where can I get water.",
+          "en": "Yesterday was a busy day. In the morning I deployed the new build to production and it worked without any problems.",
+          "ru": "Вчера был напряжённый день. Утром я задеплоил новый билд в продакшн, и он заработал без проблем.",
           "audio": {
             "src": "media/audio/u04.d01.reading.b1.wav",
             "license": {
@@ -82,7 +123,8 @@
         },
         {
           "id": "u04.d01.reading.b2",
-          "en": "There is some water in the pot.",
+          "en": "Then I found a bug in the login flow. I fixed it, wrote a test, and my teammate reviewed the pull request.",
+          "ru": "Потом я нашёл баг в логине. Я починил его, написал тест, и коллега посмотрел пул-реквест.",
           "audio": {
             "src": "media/audio/u04.d01.reading.b2.wav",
             "license": {
@@ -93,20 +135,10 @@
         },
         {
           "id": "u04.d01.reading.b3",
-          "en": "It is too hot.",
+          "en": "The last commit broke the build, so we did not push it to main. We reverted the change and went home.",
+          "ru": "Последний коммит сломал сборку, поэтому мы не запушили его в main. Мы откатили изменение и пошли домой.",
           "audio": {
             "src": "media/audio/u04.d01.reading.b3.wav",
-            "license": {
-              "type": "original",
-              "attribution": "Project authors (LLM-assisted)"
-            }
-          }
-        },
-        {
-          "id": "u04.d01.reading.b4",
-          "en": "Can this water be cold.",
-          "audio": {
-            "src": "media/audio/u04.d01.reading.b4.wav",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -116,19 +148,24 @@
       ],
       "glossary": [
         {
-          "word": "water",
-          "ru": "вода",
-          "ipa": "/ˈwɔːtər/"
+          "word": "deploy",
+          "ru": "развернуть, задеплоить",
+          "ipa": "/dɪˈplɔɪ/"
         },
         {
-          "word": "near",
-          "ru": "рядом",
-          "ipa": "/nɪr/"
+          "word": "commit",
+          "ru": "коммит",
+          "ipa": "/kəˈmɪt/"
         },
         {
-          "word": "where",
-          "ru": "где",
-          "ipa": "/wer/"
+          "word": "revert",
+          "ru": "откатить",
+          "ipa": "/rɪˈvɜːrt/"
+        },
+        {
+          "word": "review",
+          "ru": "проверить, отревьюить",
+          "ipa": "/rɪˈvjuː/"
         }
       ]
     },
@@ -141,56 +178,117 @@
       },
       "exercises": [
         {
+          "type": "gap-fill",
+          "id": "u04.d01.ex.gap.01",
+          "instruction": {
+            "en": "Type the past form.",
+            "ru": "Впиши форму прошедшего времени."
+          },
+          "tags": [
+            "grammar.past-simple.regular"
+          ],
+          "prompt": "Yesterday I ___ the new version to production.",
+          "cue": "(deploy)",
+          "answers": [
+            "deployed"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d01.ex.gap.02",
+          "instruction": {
+            "en": "Type the past form.",
+            "ru": "Впиши форму прошедшего времени."
+          },
+          "tags": [
+            "grammar.past-simple.irregular"
+          ],
+          "prompt": "She ___ the unit tests before the standup.",
+          "cue": "(write)",
+          "answers": [
+            "wrote"
+          ],
+          "explanation": {
+            "en": "'write' is irregular: write → wrote.",
+            "ru": "'write' — неправильный глагол: write → wrote."
+          }
+        },
+        {
           "type": "choice",
           "id": "u04.d01.ex.choice.01",
           "instruction": {
-            "en": "is or are?",
-            "ru": "is или are?"
+            "en": "Pick the right word.",
+            "ru": "Выбери правильное слово."
           },
           "tags": [
-            "grammar.word-order"
+            "grammar.past-simple.question"
           ],
-          "prompt": "There ___ two shops on this street.",
+          "prompt": "___ you fix the login bug last night?",
           "options": [
-            "are",
-            "is",
-            "be",
-            "have"
+            "Did",
+            "Do",
+            "Was",
+            "Does"
           ],
           "correctIndex": 0
         },
         {
-          "type": "gap-fill",
-          "id": "u04.d01.ex.gap.01",
+          "type": "spot-error",
+          "id": "u04.d01.ex.spot.01",
           "instruction": {
-            "en": "Ask where.",
-            "ru": "Спроси где."
+            "en": "Which line is correct?",
+            "ru": "Какая строка верна?"
           },
           "tags": [
-            "functions.directions"
+            "grammar.past-simple.negative"
           ],
-          "prompt": "___ is the station?",
-          "answers": [
-            "Where",
-            "where"
+          "variants": [
+            "The build didn't passed on CI.",
+            "The build didn't pass on CI."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "order-words",
+          "id": "u04.d01.ex.order.01",
+          "instruction": {
+            "en": "Put the words in order.",
+            "ru": "Расставь слова по порядку."
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "tokens": [
+            "Did",
+            "you",
+            "merge",
+            "the",
+            "branch"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
           ]
         },
         {
           "type": "translate",
-          "id": "u04.d01.ex.tr.01",
+          "id": "u04.d01.ex.translate.01",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."
           },
           "tags": [
-            "functions.directions",
-            "writing.translation"
+            "writing.translation",
+            "grammar.past-simple"
           ],
           "direction": "ru-en",
-          "prompt": "Рядом есть магазин.",
+          "prompt": "Вчера я починил баг.",
           "answers": [
-            "There is a shop near here.",
-            "There is a shop nearby."
+            "Yesterday I fixed the bug.",
+            "I fixed the bug yesterday."
           ]
         }
       ]
