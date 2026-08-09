@@ -7,7 +7,8 @@
   "estimatedMinutes": 120,
   "tags": [
     "vocab.daily",
-    "grammar.present-simple"
+    "grammar.present-simple",
+    "grammar.articles"
   ],
   "sections": [
     {
@@ -192,12 +193,12 @@
       "type": "grammar",
       "id": "u00.d01.grammar",
       "title": {
-        "en": "The verb \"be\" and a / an",
-        "ru": "Глагол \"be\" и a / an"
+        "en": "The verb \"be\", a / an and the",
+        "ru": "Глагол \"be\", a / an и the"
       },
       "rule": {
-        "en": "Use \"be\" (am / is / are) to say who and what things are. Use \"a/an\" before one singular thing.",
-        "ru": "Глагол \"be\" (am / is / are) говорит, кто и что есть. \"a/an\" — перед одним предметом в единственном числе."
+        "en": "Use \"be\" (am / is / are) to say who and what things are. Use \"a/an\" for one new thing (any one). Use \"the\" when we both know which one — because it was already mentioned or there is only one.",
+        "ru": "Глагол \"be\" (am / is / are) говорит, кто и что есть. \"a/an\" — для одного нового предмета (любого). \"the\" — когда обоим ясно, о каком именно идёт речь: он уже упоминался или он единственный."
       },
       "patterns": [
         {
@@ -225,6 +226,23 @@
               "ru": "город, яблоко"
             }
           ]
+        },
+        {
+          "label": {
+            "en": "a → the",
+            "ru": "a → the"
+          },
+          "formula": "a (new) → the (now known)",
+          "examples": [
+            {
+              "en": "I have a laptop. The laptop is new.",
+              "ru": "У меня есть ноутбук. Этот ноутбук новый."
+            },
+            {
+              "en": "the sun, the internet",
+              "ru": "солнце, интернет (единственные — the)"
+            }
+          ]
         }
       ],
       "pitfalls": [
@@ -235,6 +253,10 @@
         {
           "en": "Use \"an\" before a vowel sound: an apple, an hour.",
           "ru": "Ставь \"an\" перед гласным звуком: an apple, an hour."
+        },
+        {
+          "en": "Russian has no articles, so \"a/an\" vs \"the\" is new: first mention → a, second mention → the.",
+          "ru": "В русском артиклей нет, поэтому \"a/an\" и \"the\" — новое: первое упоминание → a, повторное → the."
         }
       ]
     },
@@ -495,6 +517,64 @@
           "answers": [
             "I am from Poland.",
             "I'm from Poland."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u00.d01.ex.a.01",
+          "instruction": {
+            "en": "First mention — a or the?",
+            "ru": "Первое упоминание — a или the?"
+          },
+          "tags": [
+            "grammar.articles"
+          ],
+          "prompt": "I have ___ dog.",
+          "options": [
+            "a",
+            "the"
+          ],
+          "correctIndex": 0,
+          "explanation": {
+            "en": "New thing, first time → a.",
+            "ru": "Новый предмет, впервые → a."
+          }
+        },
+        {
+          "type": "choice",
+          "id": "u00.d01.ex.a.02",
+          "instruction": {
+            "en": "We already know it — a or the?",
+            "ru": "Мы уже знаем его — a или the?"
+          },
+          "tags": [
+            "grammar.articles"
+          ],
+          "prompt": "I have a cat. ___ cat is black.",
+          "options": [
+            "The",
+            "A"
+          ],
+          "correctIndex": 0,
+          "explanation": {
+            "en": "Second mention, we know which cat → the.",
+            "ru": "Повторное упоминание, известно, о каком коте → the."
+          }
+        },
+        {
+          "type": "gap-fill",
+          "id": "u00.d01.ex.a.03",
+          "instruction": {
+            "en": "Only one in the world — write the article.",
+            "ru": "Единственное в мире — впиши артикль."
+          },
+          "tags": [
+            "grammar.articles"
+          ],
+          "prompt": "___ sun is a star.",
+          "answers": [
+            "The",
+            "the"
           ]
         }
       ]
