@@ -1,0 +1,503 @@
+{
+  "id": "u00.d01",
+  "title": {
+    "en": "Hello! Getting started",
+    "ru": "Привет! Начинаем"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "vocab.daily",
+    "grammar.present-simple"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u00.d01.vocab",
+      "title": {
+        "en": "First words",
+        "ru": "Первые слова"
+      },
+      "words": [
+        {
+          "word": "name",
+          "ru": "имя",
+          "ipa": "/neɪm/",
+          "example": "My name is Anna.",
+          "exampleRu": "Меня зовут Анна.",
+          "audio": {
+            "src": "media/audio/u00.d01.vocab.name.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "age",
+          "ru": "возраст",
+          "ipa": "/eɪdʒ/",
+          "example": "What is your age?",
+          "exampleRu": "Сколько тебе лет?",
+          "audio": {
+            "src": "media/audio/u00.d01.vocab.age.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "city",
+          "ru": "город",
+          "ipa": "/ˈsɪti/",
+          "example": "I live in a big city.",
+          "exampleRu": "Я живу в большом городе.",
+          "audio": {
+            "src": "media/audio/u00.d01.vocab.city.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "country",
+          "ru": "страна",
+          "ipa": "/ˈkʌntri/",
+          "example": "Russia is a big country.",
+          "exampleRu": "Россия — большая страна.",
+          "audio": {
+            "src": "media/audio/u00.d01.vocab.country.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "student",
+          "ru": "студент/ученик",
+          "ipa": "/ˈstuːdnt/",
+          "example": "She is a student.",
+          "exampleRu": "Она студентка.",
+          "audio": {
+            "src": "media/audio/u00.d01.vocab.student.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "teacher",
+          "ru": "учитель",
+          "ipa": "/ˈtiːtʃər/",
+          "example": "He is a teacher.",
+          "exampleRu": "Он учитель.",
+          "audio": {
+            "src": "media/audio/u00.d01.vocab.teacher.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "red",
+          "ru": "красный",
+          "ipa": "/red/",
+          "example": "The car is red.",
+          "exampleRu": "Машина красная.",
+          "audio": {
+            "src": "media/audio/u00.d01.vocab.red.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "blue",
+          "ru": "синий",
+          "ipa": "/bluː/",
+          "example": "The sky is blue.",
+          "exampleRu": "Небо синее.",
+          "audio": {
+            "src": "media/audio/u00.d01.vocab.blue.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "green",
+          "ru": "зелёный",
+          "ipa": "/ɡriːn/",
+          "example": "The grass is green.",
+          "exampleRu": "Трава зелёная.",
+          "audio": {
+            "src": "media/audio/u00.d01.vocab.green.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "first",
+          "ru": "первый",
+          "ipa": "/fɜːrst/",
+          "example": "This is my first lesson.",
+          "exampleRu": "Это мой первый урок.",
+          "audio": {
+            "src": "media/audio/u00.d01.vocab.first.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "second",
+          "ru": "второй",
+          "ipa": "/ˈsekənd/",
+          "example": "She won second place.",
+          "exampleRu": "Она заняла второе место.",
+          "audio": {
+            "src": "media/audio/u00.d01.vocab.second.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "thirty",
+          "ru": "тридцать",
+          "ipa": "/ˈθɜːrti/",
+          "example": "He is thirty years old.",
+          "exampleRu": "Ему тридцать лет.",
+          "audio": {
+            "src": "media/audio/u00.d01.vocab.thirty.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u00.d01.grammar",
+      "title": {
+        "en": "The verb \"be\" and a / an",
+        "ru": "Глагол \"be\" и a / an"
+      },
+      "rule": {
+        "en": "Use \"be\" (am / is / are) to say who and what things are. Use \"a/an\" before one singular thing.",
+        "ru": "Глагол \"be\" (am / is / are) говорит, кто и что есть. \"a/an\" — перед одним предметом в единственном числе."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "am / is / are",
+            "ru": "am / is / are"
+          },
+          "formula": "I am · he/she/it is · we/you/they are",
+          "examples": [
+            {
+              "en": "I am a student. She is a teacher.",
+              "ru": "Я студент. Она учитель."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "a / an",
+            "ru": "a / an"
+          },
+          "formula": "a + consonant · an + vowel",
+          "examples": [
+            {
+              "en": "a city, an apple",
+              "ru": "город, яблоко"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Don't drop \"be\": say \"I am a student\", not \"I student\".",
+          "ru": "Не выбрасывай \"be\": говори \"I am a student\", а не \"I student\"."
+        },
+        {
+          "en": "Use \"an\" before a vowel sound: an apple, an hour.",
+          "ru": "Ставь \"an\" перед гласным звуком: an apple, an hour."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u00.d01.reading",
+      "title": {
+        "en": "Meet Anna and Tom",
+        "ru": "Знакомьтесь: Анна и Том"
+      },
+      "blocks": [
+        {
+          "id": "u00.d01.reading.b1",
+          "en": "Hello! My name is Anna. I am twenty-five years old and I am from Poland. I am a student.",
+          "ru": "Привет! Меня зовут Анна. Мне двадцать пять лет, и я из Польши. Я студентка.",
+          "audio": {
+            "src": "media/audio/u00.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u00.d01.reading.b2",
+          "en": "This is my friend Tom. He is a teacher. He is British and he lives in a small city. We are good friends.",
+          "ru": "Это мой друг Том. Он учитель. Он британец и живёт в маленьком городе. Мы хорошие друзья.",
+          "audio": {
+            "src": "media/audio/u00.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "from",
+          "ru": "из",
+          "ipa": "/frʌm/"
+        },
+        {
+          "word": "friend",
+          "ru": "друг",
+          "ipa": "/frend/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u00.d01.listening",
+      "title": {
+        "en": "Nice to meet you",
+        "ru": "Приятно познакомиться"
+      },
+      "audio": {
+        "src": "media/audio/u00.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Hello, what is your name? My name is Anna.",
+          "ru": "Привет, как тебя зовут? Меня зовут Анна."
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Where are you from? I am from Poland.",
+          "ru": "Откуда ты? Я из Польши."
+        },
+        {
+          "start": 6,
+          "end": 10,
+          "en": "Are you a student? Yes, I am. Nice to meet you!",
+          "ru": "Ты студентка? Да. Приятно познакомиться!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u00.d01.ex.l.01",
+          "instruction": {
+            "en": "Where is Anna from?",
+            "ru": "Откуда Анна?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "Anna is from ___.",
+          "options": [
+            "Poland",
+            "Britain",
+            "Russia"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u00.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u00.d01.ex.g.01",
+          "instruction": {
+            "en": "am / is / are?",
+            "ru": "am / is / are?"
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "She ___ a teacher.",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u00.d01.ex.g.02",
+          "instruction": {
+            "en": "am / is / are?",
+            "ru": "am / is / are?"
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "We ___ good friends.",
+          "answers": [
+            "are"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u00.d01.ex.c.01",
+          "instruction": {
+            "en": "a or an?",
+            "ru": "a или an?"
+          },
+          "tags": [
+            "grammar.articles"
+          ],
+          "prompt": "He is ___ teacher.",
+          "options": [
+            "a",
+            "an",
+            "the",
+            "some"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u00.d01.ex.c.02",
+          "instruction": {
+            "en": "a or an?",
+            "ru": "a или an?"
+          },
+          "tags": [
+            "grammar.articles"
+          ],
+          "prompt": "I eat ___ apple.",
+          "options": [
+            "an",
+            "a",
+            "the",
+            "some"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "match",
+          "id": "u00.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the colour.",
+            "ru": "Сопоставь цвет."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "red",
+              "right": "красный"
+            },
+            {
+              "left": "blue",
+              "right": "синий"
+            },
+            {
+              "left": "green",
+              "right": "зелёный"
+            }
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u00.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "tokens": [
+            "I",
+            "am",
+            "a",
+            "student"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u00.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.present-simple"
+          ],
+          "direction": "ru-en",
+          "prompt": "Меня зовут Анна.",
+          "answers": [
+            "My name is Anna."
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u00.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я из Польши.",
+          "answers": [
+            "I am from Poland.",
+            "I'm from Poland."
+          ]
+        }
+      ]
+    }
+  ]
+}

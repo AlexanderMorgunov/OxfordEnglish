@@ -11,6 +11,24 @@
   },
   "units": [
     {
+      "id": "u00",
+      "title": {
+        "en": "Start here",
+        "ru": "Начни отсюда"
+      },
+      "dayIds": [
+        "u00.d01"
+      ],
+      "checkpoint": {
+        "id": "u00.checkpoint",
+        "title": {
+          "en": "Start checkpoint",
+          "ru": "Стартовый чекпоинт"
+        },
+        "questionCount": 10
+      }
+    },
+    {
       "id": "u01",
       "title": {
         "en": "File 1 — Talking about yesterday",
