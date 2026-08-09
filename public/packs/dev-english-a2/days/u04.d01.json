@@ -4,12 +4,162 @@
     "en": "The Past Simple",
     "ru": "Past Simple"
   },
-  "estimatedMinutes": 35,
+  "estimatedMinutes": 120,
   "tags": [
     "grammar.past-simple",
     "vocab.dev"
   ],
   "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u04.d01.vocab",
+      "title": {
+        "en": "Past-tense verbs",
+        "ru": "Глаголы в прошедшем"
+      },
+      "words": [
+        {
+          "word": "deployed",
+          "ru": "задеплоил",
+          "ipa": "/dɪˈplɔɪd/",
+          "example": "I deployed the build.",
+          "exampleRu": "Я задеплоил билд.",
+          "audio": {
+            "src": "media/audio/u04.d01.vocab.deployed.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "merged",
+          "ru": "влил (ветку)",
+          "ipa": "/mɜːdʒd/",
+          "example": "We merged the branch.",
+          "exampleRu": "Мы влили ветку.",
+          "audio": {
+            "src": "media/audio/u04.d01.vocab.merged.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fixed",
+          "ru": "починил",
+          "ipa": "/fɪkst/",
+          "example": "She fixed the bug.",
+          "exampleRu": "Она починила баг.",
+          "audio": {
+            "src": "media/audio/u04.d01.vocab.fixed.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wrote",
+          "ru": "написал",
+          "ipa": "/rəʊt/",
+          "example": "He wrote the tests.",
+          "exampleRu": "Он написал тесты.",
+          "audio": {
+            "src": "media/audio/u04.d01.vocab.wrote.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "built",
+          "ru": "собрал",
+          "ipa": "/bɪlt/",
+          "example": "The pipeline built the app.",
+          "exampleRu": "Пайплайн собрал приложение.",
+          "audio": {
+            "src": "media/audio/u04.d01.vocab.built.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "broke",
+          "ru": "сломал",
+          "ipa": "/brəʊk/",
+          "example": "The commit broke the build.",
+          "exampleRu": "Коммит сломал сборку.",
+          "audio": {
+            "src": "media/audio/u04.d01.vocab.broke.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pushed",
+          "ru": "запушил",
+          "ipa": "/pʊʃt/",
+          "example": "I pushed to main.",
+          "exampleRu": "Я запушил в main.",
+          "audio": {
+            "src": "media/audio/u04.d01.vocab.pushed.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "shipped",
+          "ru": "выкатил",
+          "ipa": "/ʃɪpt/",
+          "example": "We shipped the feature.",
+          "exampleRu": "Мы выкатили фичу.",
+          "audio": {
+            "src": "media/audio/u04.d01.vocab.shipped.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reviewed",
+          "ru": "проверил",
+          "ipa": "/rɪˈvjuːd/",
+          "example": "He reviewed my code.",
+          "exampleRu": "Он проверил мой код.",
+          "audio": {
+            "src": "media/audio/u04.d01.vocab.reviewed.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ran",
+          "ru": "запустил/прошёл",
+          "ipa": "/ræn/",
+          "example": "The tests ran green.",
+          "exampleRu": "Тесты прошли.",
+          "audio": {
+            "src": "media/audio/u04.d01.vocab.ran.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
     {
       "type": "grammar",
       "id": "u04.d01.grammar",
@@ -166,6 +316,55 @@
           "word": "review",
           "ru": "проверить, отревьюить",
           "ipa": "/rɪˈvjuː/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u04.d01.listen2",
+      "title": {
+        "en": "Yesterday's work",
+        "ru": "Вчерашняя работа"
+      },
+      "audio": {
+        "src": "media/audio/u04.d01.listen2.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "What did you do yesterday? I deployed the new build and fixed a bug.",
+          "ru": "Что ты делал вчера? Задеплоил новый билд и починил баг."
+        },
+        {
+          "start": 4,
+          "end": 7,
+          "en": "Did the tests pass? Yes, they did.",
+          "ru": "Тесты прошли? Да."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u04.d01.ex.l2.01",
+          "instruction": {
+            "en": "What did they fix?",
+            "ru": "Что починили?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "A ___.",
+          "options": [
+            "bug",
+            "build",
+            "test"
+          ],
+          "correctIndex": 0
         }
       ]
     },

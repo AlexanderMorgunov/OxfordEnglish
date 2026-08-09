@@ -4,12 +4,162 @@
     "en": "Listening — catch the phrase",
     "ru": "Аудирование — поймай фразу"
   },
-  "estimatedMinutes": 20,
+  "estimatedMinutes": 120,
   "tags": [
     "listening.gist",
     "vocab.daily"
   ],
   "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u04.d05.vocab",
+      "title": {
+        "en": "Listening skills",
+        "ru": "Навыки аудирования"
+      },
+      "words": [
+        {
+          "word": "phrase",
+          "ru": "фраза",
+          "ipa": "/freɪz/",
+          "example": "A short phrase.",
+          "exampleRu": "Короткая фраза.",
+          "audio": {
+            "src": "media/audio/u04.d05.vocab.phrase.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "chunk",
+          "ru": "кусок",
+          "ipa": "/tʃʌŋk/",
+          "example": "Listen for the chunk.",
+          "exampleRu": "Слушай целый кусок.",
+          "audio": {
+            "src": "media/audio/u04.d05.vocab.chunk.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "repeat",
+          "ru": "повторять",
+          "ipa": "/rɪˈpiːt/",
+          "example": "Repeat after me.",
+          "exampleRu": "Повторяй за мной.",
+          "audio": {
+            "src": "media/audio/u04.d05.vocab.repeat.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "understand",
+          "ru": "понимать",
+          "ipa": "/ˌʌndəˈstænd/",
+          "example": "Do you understand?",
+          "exampleRu": "Ты понимаешь?",
+          "audio": {
+            "src": "media/audio/u04.d05.vocab.understand.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "meaning",
+          "ru": "значение",
+          "ipa": "/ˈmiːnɪŋ/",
+          "example": "The meaning is clear.",
+          "exampleRu": "Значение ясно.",
+          "audio": {
+            "src": "media/audio/u04.d05.vocab.meaning.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "whole",
+          "ru": "целый",
+          "ipa": "/həʊl/",
+          "example": "The whole sentence.",
+          "exampleRu": "Всё предложение.",
+          "audio": {
+            "src": "media/audio/u04.d05.vocab.whole.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "again",
+          "ru": "снова",
+          "ipa": "/əˈɡen/",
+          "example": "Listen again.",
+          "exampleRu": "Послушай снова.",
+          "audio": {
+            "src": "media/audio/u04.d05.vocab.again.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "slow",
+          "ru": "медленный",
+          "ipa": "/sləʊ/",
+          "example": "Speak slowly.",
+          "exampleRu": "Говори медленно.",
+          "audio": {
+            "src": "media/audio/u04.d05.vocab.slow.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "clear",
+          "ru": "ясный",
+          "ipa": "/klɪər/",
+          "example": "A clear voice.",
+          "exampleRu": "Ясный голос.",
+          "audio": {
+            "src": "media/audio/u04.d05.vocab.clear.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sound",
+          "ru": "звук",
+          "ipa": "/saʊnd/",
+          "example": "The sound of the word.",
+          "exampleRu": "Звук слова.",
+          "audio": {
+            "src": "media/audio/u04.d05.vocab.sound.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
     {
       "type": "grammar",
       "id": "u04.d05.grammar",

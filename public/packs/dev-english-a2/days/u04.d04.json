@@ -4,12 +4,162 @@
     "en": "Reporting your day",
     "ru": "Рассказываем про свой день"
   },
-  "estimatedMinutes": 25,
+  "estimatedMinutes": 120,
   "tags": [
     "grammar.past-simple",
     "vocab.dev"
   ],
   "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u04.d04.vocab",
+      "title": {
+        "en": "Reporting",
+        "ru": "Отчитываемся"
+      },
+      "words": [
+        {
+          "word": "reported",
+          "ru": "сообщил",
+          "ipa": "/rɪˈpɔːtɪd/",
+          "example": "I reported the bug.",
+          "exampleRu": "Я сообщил о баге.",
+          "audio": {
+            "src": "media/audio/u04.d04.vocab.reported.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "explained",
+          "ru": "объяснил",
+          "ipa": "/ɪkˈspleɪnd/",
+          "example": "She explained the issue.",
+          "exampleRu": "Она объяснила проблему.",
+          "audio": {
+            "src": "media/audio/u04.d04.vocab.explained.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "asked",
+          "ru": "спросил",
+          "ipa": "/ɑːskt/",
+          "example": "He asked a question.",
+          "exampleRu": "Он задал вопрос.",
+          "audio": {
+            "src": "media/audio/u04.d04.vocab.asked.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "answered",
+          "ru": "ответил",
+          "ipa": "/ˈɑːnsəd/",
+          "example": "I answered him.",
+          "exampleRu": "Я ответил ему.",
+          "audio": {
+            "src": "media/audio/u04.d04.vocab.answered.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "helped",
+          "ru": "помог",
+          "ipa": "/helpt/",
+          "example": "They helped me.",
+          "exampleRu": "Они помогли мне.",
+          "audio": {
+            "src": "media/audio/u04.d04.vocab.helped.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "joined",
+          "ru": "присоединился",
+          "ipa": "/dʒɔɪnd/",
+          "example": "She joined the call.",
+          "exampleRu": "Она присоединилась к звонку.",
+          "audio": {
+            "src": "media/audio/u04.d04.vocab.joined.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "called",
+          "ru": "позвонил",
+          "ipa": "/kɔːld/",
+          "example": "He called me.",
+          "exampleRu": "Он позвонил мне.",
+          "audio": {
+            "src": "media/audio/u04.d04.vocab.called.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sent",
+          "ru": "отправил",
+          "ipa": "/sent/",
+          "example": "I sent the email.",
+          "exampleRu": "Я отправил письмо.",
+          "audio": {
+            "src": "media/audio/u04.d04.vocab.sent.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "opened",
+          "ru": "открыл",
+          "ipa": "/ˈəʊpənd/",
+          "example": "I opened a ticket.",
+          "exampleRu": "Я открыл тикет.",
+          "audio": {
+            "src": "media/audio/u04.d04.vocab.opened.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "closed",
+          "ru": "закрыл",
+          "ipa": "/kləʊzd/",
+          "example": "We closed the issue.",
+          "exampleRu": "Мы закрыли проблему.",
+          "audio": {
+            "src": "media/audio/u04.d04.vocab.closed.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
     {
       "type": "grammar",
       "id": "u04.d04.grammar",
@@ -73,6 +223,55 @@
           "word": "revert",
           "ru": "откатывать",
           "ipa": "/rɪˈvɜːt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u04.d04.listen2",
+      "title": {
+        "en": "At the standup",
+        "ru": "На стендапе"
+      },
+      "audio": {
+        "src": "media/audio/u04.d04.listen2.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 5,
+          "en": "What did you do yesterday? I opened a ticket and sent an email to the team.",
+          "ru": "Что ты делал вчера? Открыл тикет и отправил письмо команде."
+        },
+        {
+          "start": 5,
+          "end": 10,
+          "en": "Did anyone help you? Yes, Ben joined the call and explained the fix.",
+          "ru": "Тебе кто-то помог? Да, Бен присоединился и объяснил фикс."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u04.d04.ex.l2.01",
+          "instruction": {
+            "en": "Who helped?",
+            "ru": "Кто помог?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "___.",
+          "options": [
+            "Ben",
+            "The manager",
+            "Nobody"
+          ],
+          "correctIndex": 0
         }
       ]
     },

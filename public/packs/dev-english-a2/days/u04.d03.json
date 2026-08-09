@@ -4,12 +4,162 @@
     "en": "Past Simple at work",
     "ru": "Past Simple на работе"
   },
-  "estimatedMinutes": 25,
+  "estimatedMinutes": 120,
   "tags": [
     "grammar.past-simple",
     "vocab.dev"
   ],
   "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u04.d03.vocab",
+      "title": {
+        "en": "Incidents",
+        "ru": "Инциденты"
+      },
+      "words": [
+        {
+          "word": "revert",
+          "ru": "откатить",
+          "ipa": "/rɪˈvɜːt/",
+          "example": "We reverted the change.",
+          "exampleRu": "Мы откатили изменение.",
+          "audio": {
+            "src": "media/audio/u04.d03.vocab.revert.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "change",
+          "ru": "изменение",
+          "ipa": "/tʃeɪndʒ/",
+          "example": "A small change.",
+          "exampleRu": "Небольшое изменение.",
+          "audio": {
+            "src": "media/audio/u04.d03.vocab.change.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "commit",
+          "ru": "коммит",
+          "ipa": "/kəˈmɪt/",
+          "example": "The last commit.",
+          "exampleRu": "Последний коммит.",
+          "audio": {
+            "src": "media/audio/u04.d03.vocab.commit.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "branch",
+          "ru": "ветка",
+          "ipa": "/brɑːntʃ/",
+          "example": "A feature branch.",
+          "exampleRu": "Ветка с фичей.",
+          "audio": {
+            "src": "media/audio/u04.d03.vocab.branch.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "release",
+          "ru": "релиз",
+          "ipa": "/rɪˈliːs/",
+          "example": "A new release.",
+          "exampleRu": "Новый релиз.",
+          "audio": {
+            "src": "media/audio/u04.d03.vocab.release.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "error",
+          "ru": "ошибка",
+          "ipa": "/ˈerər/",
+          "example": "An error in the log.",
+          "exampleRu": "Ошибка в логе.",
+          "audio": {
+            "src": "media/audio/u04.d03.vocab.error.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "log",
+          "ru": "лог",
+          "ipa": "/lɒɡ/",
+          "example": "Check the log.",
+          "exampleRu": "Проверь лог.",
+          "audio": {
+            "src": "media/audio/u04.d03.vocab.log.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "rollback",
+          "ru": "откат",
+          "ipa": "/ˈrəʊlbæk/",
+          "example": "We did a rollback.",
+          "exampleRu": "Мы сделали откат.",
+          "audio": {
+            "src": "media/audio/u04.d03.vocab.rollback.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "incident",
+          "ru": "инцидент",
+          "ipa": "/ˈɪnsɪdənt/",
+          "example": "A small incident.",
+          "exampleRu": "Небольшой инцидент.",
+          "audio": {
+            "src": "media/audio/u04.d03.vocab.incident.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "test",
+          "ru": "тест",
+          "ipa": "/test/",
+          "example": "The test failed.",
+          "exampleRu": "Тест упал.",
+          "audio": {
+            "src": "media/audio/u04.d03.vocab.test.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
     {
       "type": "grammar",
       "id": "u04.d03.grammar",
@@ -69,6 +219,55 @@
         {
           "word": "revert",
           "ipa": "/rɪˈvɜːt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u04.d03.listen2",
+      "title": {
+        "en": "The rollback",
+        "ru": "Откат"
+      },
+      "audio": {
+        "src": "media/audio/u04.d03.listen2.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Why did you revert the change? The release broke a test.",
+          "ru": "Почему откатили? Релиз сломал тест."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "So we did a rollback and checked the log.",
+          "ru": "Поэтому сделали откат и проверили лог."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u04.d03.ex.l2.01",
+          "instruction": {
+            "en": "What broke?",
+            "ru": "Что сломалось?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "A ___.",
+          "options": [
+            "test",
+            "branch",
+            "log"
+          ],
+          "correctIndex": 0
         }
       ]
     },

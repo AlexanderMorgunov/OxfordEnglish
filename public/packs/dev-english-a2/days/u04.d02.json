@@ -4,12 +4,162 @@
     "en": "Questions about the past",
     "ru": "Вопросы о прошлом"
   },
-  "estimatedMinutes": 30,
+  "estimatedMinutes": 120,
   "tags": [
     "grammar.past-simple.question",
     "vocab.work"
   ],
   "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u04.d02.vocab",
+      "title": {
+        "en": "Work words",
+        "ru": "Рабочие слова"
+      },
+      "words": [
+        {
+          "word": "report",
+          "ru": "отчёт",
+          "ipa": "/rɪˈpɔːt/",
+          "example": "I finished the report.",
+          "exampleRu": "Я закончил отчёт.",
+          "audio": {
+            "src": "media/audio/u04.d02.vocab.report.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "task",
+          "ru": "задача",
+          "ipa": "/tɑːsk/",
+          "example": "A hard task.",
+          "exampleRu": "Сложная задача.",
+          "audio": {
+            "src": "media/audio/u04.d02.vocab.task.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "standup",
+          "ru": "стендап",
+          "ipa": "/ˈstændʌp/",
+          "example": "At the standup.",
+          "exampleRu": "На стендапе.",
+          "audio": {
+            "src": "media/audio/u04.d02.vocab.standup.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "manager",
+          "ru": "менеджер",
+          "ipa": "/ˈmænɪdʒər/",
+          "example": "My manager asked me.",
+          "exampleRu": "Менеджер спросил меня.",
+          "audio": {
+            "src": "media/audio/u04.d02.vocab.manager.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "crash",
+          "ru": "падать (о системе)",
+          "ipa": "/kræʃ/",
+          "example": "The app crashed.",
+          "exampleRu": "Приложение упало.",
+          "audio": {
+            "src": "media/audio/u04.d02.vocab.crash.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "server",
+          "ru": "сервер",
+          "ipa": "/ˈsɜːvər/",
+          "example": "The server went down.",
+          "exampleRu": "Сервер упал.",
+          "audio": {
+            "src": "media/audio/u04.d02.vocab.server.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "notice",
+          "ru": "замечать",
+          "ipa": "/ˈnəʊtɪs/",
+          "example": "Nobody noticed it.",
+          "exampleRu": "Никто не заметил.",
+          "audio": {
+            "src": "media/audio/u04.d02.vocab.notice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "explain",
+          "ru": "объяснять",
+          "ipa": "/ɪkˈspleɪn/",
+          "example": "I explained the problem.",
+          "exampleRu": "Я объяснил проблему.",
+          "audio": {
+            "src": "media/audio/u04.d02.vocab.explain.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "finish",
+          "ru": "заканчивать",
+          "ipa": "/ˈfɪnɪʃ/",
+          "example": "Did you finish it?",
+          "exampleRu": "Ты это закончил?",
+          "audio": {
+            "src": "media/audio/u04.d02.vocab.finish.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "happen",
+          "ru": "случаться",
+          "ipa": "/ˈhæpən/",
+          "example": "What happened?",
+          "exampleRu": "Что случилось?",
+          "audio": {
+            "src": "media/audio/u04.d02.vocab.happen.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
     {
       "type": "grammar",
       "id": "u04.d02.grammar",
@@ -104,6 +254,55 @@
           "word": "server",
           "ru": "сервер",
           "ipa": "/ˈsɜːrvər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u04.d02.listen2",
+      "title": {
+        "en": "What happened?",
+        "ru": "Что случилось?"
+      },
+      "audio": {
+        "src": "media/audio/u04.d02.listen2.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Did you finish the task? Yes, I did.",
+          "ru": "Ты закончил задачу? Да."
+        },
+        {
+          "start": 3,
+          "end": 8,
+          "en": "When did the server crash? It crashed at night. Nobody noticed until the morning.",
+          "ru": "Когда упал сервер? Ночью. Никто не заметил до утра."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u04.d02.ex.l2.01",
+          "instruction": {
+            "en": "When did it crash?",
+            "ru": "Когда упало?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "At ___.",
+          "options": [
+            "night",
+            "nine",
+            "noon"
+          ],
+          "correctIndex": 0
         }
       ]
     },
