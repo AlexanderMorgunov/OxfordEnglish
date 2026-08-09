@@ -91,6 +91,21 @@ export const TranslateExercise = z.object({
   answers: z.array(z.string().min(1)).min(1),
 });
 
+export const TransformExercise = z.object({
+  ...ExerciseBase,
+  type: z.literal('transform'),
+  prompt: z.string().min(1),
+  answers: z.array(z.string().min(1)).min(1),
+});
+
+export const MinimalPairsExercise = z.object({
+  ...ExerciseBase,
+  type: z.literal('minimal-pairs'),
+  audio: MediaRef,
+  options: z.array(z.string()).min(2),
+  correctIndex: z.number().int().nonnegative(),
+});
+
 export const Exercise = z.discriminatedUnion('type', [
   GapFillExercise,
   ChoiceExercise,
@@ -99,6 +114,8 @@ export const Exercise = z.discriminatedUnion('type', [
   OrderWordsExercise,
   DictationExercise,
   TranslateExercise,
+  TransformExercise,
+  MinimalPairsExercise,
 ]);
 
 export const GlossaryEntry = z.object({

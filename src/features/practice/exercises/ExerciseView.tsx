@@ -6,6 +6,8 @@ import { MatchExercise } from './MatchExercise';
 import { OrderWordsExercise } from './OrderWordsExercise';
 import { DictationExercise } from './DictationExercise';
 import { TranslateExercise } from './TranslateExercise';
+import { TransformExercise } from './TransformExercise';
+import { MinimalPairsExercise } from './MinimalPairsExercise';
 
 type Props = { exercise: Exercise; onSolved?: () => void };
 
@@ -25,5 +27,9 @@ export function ExerciseView({ exercise, onSolved }: Props) {
       return <DictationExercise exercise={exercise} onSolved={onSolved} />;
     case 'translate':
       return <TranslateExercise exercise={exercise} onSolved={onSolved} />;
+    case 'transform':
+      return <TransformExercise exercise={exercise} onSolved={onSolved} />;
+    case 'minimal-pairs':
+      return <MinimalPairsExercise exercise={exercise} onSolved={onSolved} />;
   }
 }
