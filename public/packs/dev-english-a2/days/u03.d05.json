@@ -1,0 +1,467 @@
+{
+  "id": "u03.d05",
+  "title": {
+    "en": "Can you help me?",
+    "ru": "Можешь помочь?"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "functions.requests",
+    "functions.offers",
+    "grammar.modals-ability",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u03.d05.vocab",
+      "title": {
+        "en": "Asking & offering",
+        "ru": "Просьбы и предложения"
+      },
+      "words": [
+        {
+          "word": "help",
+          "ru": "помогать",
+          "ipa": "/help/",
+          "example": "Can you help me?",
+          "exampleRu": "Можешь мне помочь?",
+          "audio": {
+            "src": "media/audio/u03.d05.vocab.help.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "borrow",
+          "ru": "брать взаймы",
+          "ipa": "/ˈbɒroʊ/",
+          "example": "Can I borrow your pen?",
+          "exampleRu": "Можно взять твою ручку?",
+          "audio": {
+            "src": "media/audio/u03.d05.vocab.borrow.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lend",
+          "ru": "одолжить (кому-то)",
+          "ipa": "/lend/",
+          "example": "Could you lend me a book?",
+          "exampleRu": "Не одолжишь мне книгу?",
+          "audio": {
+            "src": "media/audio/u03.d05.vocab.lend.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pass",
+          "ru": "передать",
+          "ipa": "/pɑːs/",
+          "example": "Can you pass the salt?",
+          "exampleRu": "Передашь соль?",
+          "audio": {
+            "src": "media/audio/u03.d05.vocab.pass.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "carry",
+          "ru": "нести",
+          "ipa": "/ˈkæri/",
+          "example": "Can you carry this?",
+          "exampleRu": "Можешь понести это?",
+          "audio": {
+            "src": "media/audio/u03.d05.vocab.carry.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wait",
+          "ru": "ждать",
+          "ipa": "/weɪt/",
+          "example": "Please wait a moment.",
+          "exampleRu": "Подождите минутку.",
+          "audio": {
+            "src": "media/audio/u03.d05.vocab.wait.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "open",
+          "ru": "открыть",
+          "ipa": "/ˈoʊpən/",
+          "example": "Can you open the door?",
+          "exampleRu": "Можешь открыть дверь?",
+          "audio": {
+            "src": "media/audio/u03.d05.vocab.open.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "close",
+          "ru": "закрыть",
+          "ipa": "/kloʊz/",
+          "example": "Could you close the window?",
+          "exampleRu": "Не закроешь окно?",
+          "audio": {
+            "src": "media/audio/u03.d05.vocab.close.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sure",
+          "ru": "конечно",
+          "ipa": "/ʃʊər/",
+          "example": "Sure, no problem.",
+          "exampleRu": "Конечно, без проблем.",
+          "audio": {
+            "src": "media/audio/u03.d05.vocab.sure.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "favour",
+          "ru": "услуга",
+          "ipa": "/ˈfeɪvər/",
+          "example": "Can I ask a favour?",
+          "exampleRu": "Можно попросить об услуге?",
+          "audio": {
+            "src": "media/audio/u03.d05.vocab.favour.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u03.d05.grammar",
+      "title": {
+        "en": "Requests & offers",
+        "ru": "Просьбы и предложения"
+      },
+      "rule": {
+        "en": "Ask politely with Can/Could you…? and Can I…? Offer with Would you like…? or I'll… Answer: Sure. / Of course. / No problem.",
+        "ru": "Вежливая просьба: Can/Could you…? и Can I…? Предложение: Would you like…? или I'll… Ответы: Sure. / Of course. / No problem."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "request",
+            "ru": "просьба"
+          },
+          "formula": "Could you + verb …?",
+          "examples": [
+            {
+              "en": "Could you help me, please?",
+              "ru": "Не мог бы ты помочь?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "permission",
+            "ru": "разрешение"
+          },
+          "formula": "Can I + verb …?",
+          "examples": [
+            {
+              "en": "Can I borrow your pen?",
+              "ru": "Можно взять твою ручку?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "offer",
+            "ru": "предложение"
+          },
+          "formula": "Would you like …? / I'll …",
+          "examples": [
+            {
+              "en": "Would you like some tea? I'll help you.",
+              "ru": "Хотите чаю? Я помогу."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Could is more polite than can, but both take the bare verb: \"Could you open…\", not \"Could you to open…\".",
+          "ru": "Could вежливее can, но оба с голым глаголом: \"Could you open…\", а не \"Could you to open…\"."
+        },
+        {
+          "en": "Offer with I'll (= I will) for a quick decision: \"I'll get it.\"",
+          "ru": "Предложение через I'll (= I will) для мгновенного решения: \"I'll get it.\""
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u03.d05.reading",
+      "title": {
+        "en": "A busy morning",
+        "ru": "Занятое утро"
+      },
+      "blocks": [
+        {
+          "id": "u03.d05.reading.b1",
+          "en": "It was a busy morning at the office. Nina had a lot of work. 'Could you help me with this report?' she asked Tom. 'Sure, no problem,' he said.",
+          "ru": "В офисе было занятое утро. У Нины было много работы. «Не мог бы ты помочь с отчётом?» — спросила она Тома. «Конечно, без проблем», — ответил он.",
+          "audio": {
+            "src": "media/audio/u03.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u03.d05.reading.b2",
+          "en": "Later Tom said, 'Would you like a coffee?' 'Yes, please,' said Nina. 'And can I borrow your charger?' 'Of course. I'll bring it now.'",
+          "ru": "Позже Том сказал: «Хочешь кофе?» «Да, пожалуйста», — сказала Нина. «И можно взять твою зарядку?» «Конечно. Сейчас принесу.»",
+          "audio": {
+            "src": "media/audio/u03.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "report",
+          "ru": "отчёт",
+          "ipa": "/rɪˈpɔːrt/"
+        },
+        {
+          "word": "charger",
+          "ru": "зарядка",
+          "ipa": "/ˈtʃɑːrdʒər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u03.d05.listening",
+      "title": {
+        "en": "In the office",
+        "ru": "В офисе"
+      },
+      "audio": {
+        "src": "media/audio/u03.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Could you help me, please?",
+          "ru": "Не мог бы ты помочь?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Sure. What do you need?",
+          "ru": "Конечно. Что нужно?"
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Can you open the window? It's hot.",
+          "ru": "Можешь открыть окно? Жарко."
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Of course. Would you like some water?",
+          "ru": "Конечно. Хочешь воды?"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u03.d05.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What does she ask him to do?",
+            "ru": "О чём она его просит?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.requests"
+          ],
+          "prompt": "She asks him to ___ the window.",
+          "options": [
+            "open",
+            "close",
+            "clean"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u03.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u03.d05.ex.c.01",
+          "instruction": {
+            "en": "Polite request.",
+            "ru": "Вежливая просьба."
+          },
+          "tags": [
+            "functions.requests"
+          ],
+          "prompt": "___ you help me, please?",
+          "options": [
+            "Could",
+            "Do",
+            "Are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u03.d05.ex.o.01",
+          "instruction": {
+            "en": "Ask for permission.",
+            "ru": "Попроси разрешения."
+          },
+          "tags": [
+            "functions.requests"
+          ],
+          "tokens": [
+            "Can",
+            "I",
+            "borrow",
+            "your",
+            "pen"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u03.d05.ex.c.02",
+          "instruction": {
+            "en": "Make an offer.",
+            "ru": "Сделай предложение."
+          },
+          "tags": [
+            "functions.offers"
+          ],
+          "prompt": "___ you like some tea?",
+          "options": [
+            "Would",
+            "Do",
+            "Are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u03.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.requests"
+          ],
+          "variants": [
+            "Could you to open the door?",
+            "Could you open the door?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u03.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the verb and the translation.",
+            "ru": "Сопоставь глагол и перевод."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "help",
+              "right": "помогать"
+            },
+            {
+              "left": "borrow",
+              "right": "брать взаймы"
+            },
+            {
+              "left": "carry",
+              "right": "нести"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u03.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.requests",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Можно взять твою ручку?",
+          "answers": [
+            "Can I borrow your pen?",
+            "Could I borrow your pen?"
+          ]
+        }
+      ]
+    }
+  ]
+}

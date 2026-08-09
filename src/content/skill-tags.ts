@@ -26,11 +26,18 @@ export const SKILL_TAGS = [
   'grammar.comparatives',
   'grammar.articles',
   'grammar.word-order',
+  'grammar.present-vs-continuous',
+  'grammar.stative-verbs',
+  'grammar.modals-ability',
+  'grammar.verb-ing-vs-to',
+  'grammar.to-purpose',
 
   // functions (everyday communication)
   'functions.ordering',
   'functions.small-talk',
   'functions.directions',
+  'functions.requests',
+  'functions.offers',
 
   // vocabulary (developer-life + everyday themes)
   'vocab.work',
@@ -39,6 +46,9 @@ export const SKILL_TAGS = [
   'vocab.daily',
   'vocab.food',
   'vocab.cafe',
+  'vocab.hobbies',
+  'vocab.sport',
+  'vocab.feelings',
 
   // reading
   'reading.gist',

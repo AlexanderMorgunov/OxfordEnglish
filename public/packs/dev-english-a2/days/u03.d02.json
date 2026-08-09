@@ -1,0 +1,439 @@
+{
+  "id": "u03.d02",
+  "title": {
+    "en": "Usually or now?",
+    "ru": "Обычно или сейчас?"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "grammar.present-vs-continuous",
+    "grammar.stative-verbs",
+    "vocab.hobbies"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u03.d02.vocab",
+      "title": {
+        "en": "Hobbies & free time",
+        "ru": "Хобби и свободное время"
+      },
+      "words": [
+        {
+          "word": "hobby",
+          "ru": "хобби",
+          "ipa": "/ˈhɒbi/",
+          "example": "Reading is my hobby.",
+          "exampleRu": "Чтение — моё хобби.",
+          "audio": {
+            "src": "media/audio/u03.d02.vocab.hobby.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "football",
+          "ru": "футбол",
+          "ipa": "/ˈfʊtbɔːl/",
+          "example": "I play football on Sundays.",
+          "exampleRu": "Я играю в футбол по воскресеньям.",
+          "audio": {
+            "src": "media/audio/u03.d02.vocab.football.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "guitar",
+          "ru": "гитара",
+          "ipa": "/ɡɪˈtɑːr/",
+          "example": "She plays the guitar.",
+          "exampleRu": "Она играет на гитаре.",
+          "audio": {
+            "src": "media/audio/u03.d02.vocab.guitar.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "drawing",
+          "ru": "рисование",
+          "ipa": "/ˈdrɔːɪŋ/",
+          "example": "I like drawing.",
+          "exampleRu": "Мне нравится рисовать.",
+          "audio": {
+            "src": "media/audio/u03.d02.vocab.drawing.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cooking",
+          "ru": "готовка",
+          "ipa": "/ˈkʊkɪŋ/",
+          "example": "He is cooking dinner now.",
+          "exampleRu": "Он сейчас готовит ужин.",
+          "audio": {
+            "src": "media/audio/u03.d02.vocab.cooking.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "running",
+          "ru": "бег",
+          "ipa": "/ˈrʌnɪŋ/",
+          "example": "Running is good for you.",
+          "exampleRu": "Бег полезен.",
+          "audio": {
+            "src": "media/audio/u03.d02.vocab.running.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "swimming",
+          "ru": "плавание",
+          "ipa": "/ˈswɪmɪŋ/",
+          "example": "We go swimming on Fridays.",
+          "exampleRu": "Мы ходим плавать по пятницам.",
+          "audio": {
+            "src": "media/audio/u03.d02.vocab.swimming.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "gaming",
+          "ru": "видеоигры",
+          "ipa": "/ˈɡeɪmɪŋ/",
+          "example": "Gaming is his hobby.",
+          "exampleRu": "Видеоигры — его хобби.",
+          "audio": {
+            "src": "media/audio/u03.d02.vocab.gaming.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "music",
+          "ru": "музыка",
+          "ipa": "/ˈmjuːzɪk/",
+          "example": "I listen to music every day.",
+          "exampleRu": "Я слушаю музыку каждый день.",
+          "audio": {
+            "src": "media/audio/u03.d02.vocab.music.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "free time",
+          "ru": "свободное время",
+          "ipa": "/ˌfriː ˈtaɪm/",
+          "example": "What do you do in your free time?",
+          "exampleRu": "Что ты делаешь в свободное время?",
+          "audio": {
+            "src": "media/audio/u03.d02.vocab.freetime.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u03.d02.grammar",
+      "title": {
+        "en": "Present simple vs continuous",
+        "ru": "Present simple и continuous"
+      },
+      "rule": {
+        "en": "Present simple = routines and facts (every day, usually). Present continuous = things happening now (am/is/are + -ing).",
+        "ru": "Present simple — привычки и факты (every day, usually). Present continuous — то, что происходит сейчас (am/is/are + -ing)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "usually",
+            "ru": "обычно"
+          },
+          "formula": "subject + verb(s) — every day",
+          "examples": [
+            {
+              "en": "I play football every Sunday.",
+              "ru": "Я играю в футбол каждое воскресенье."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "now",
+            "ru": "сейчас"
+          },
+          "formula": "am/is/are + verb-ing",
+          "examples": [
+            {
+              "en": "I am playing football now.",
+              "ru": "Я сейчас играю в футбол."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Stative verbs (know, like, want, need) are not used in continuous: \"I know\", not \"I am knowing\".",
+          "ru": "Глаголы состояния (know, like, want, need) не ставят в continuous: \"I know\", а не \"I am knowing\"."
+        },
+        {
+          "en": "Time words help: usually/every day → simple; now/at the moment → continuous.",
+          "ru": "Помогают маркеры: usually/every day → simple; now/at the moment → continuous."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u03.d02.reading",
+      "title": {
+        "en": "Sam's weekend",
+        "ru": "Выходные Сэма"
+      },
+      "blocks": [
+        {
+          "id": "u03.d02.reading.b1",
+          "en": "Sam usually works from Monday to Friday. On weekends he relaxes. He often plays football with friends and cooks a big lunch.",
+          "ru": "Сэм обычно работает с понедельника по пятницу. На выходных он отдыхает. Часто играет в футбол с друзьями и готовит большой обед.",
+          "audio": {
+            "src": "media/audio/u03.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u03.d02.reading.b2",
+          "en": "But it is Saturday now, and it is raining. So today Sam is not playing football. He is sitting at home, drawing and listening to music.",
+          "ru": "Но сейчас суббота, и идёт дождь. Поэтому сегодня Сэм не играет в футбол. Он сидит дома, рисует и слушает музыку.",
+          "audio": {
+            "src": "media/audio/u03.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "relax",
+          "ru": "отдыхать",
+          "ipa": "/rɪˈlæks/"
+        },
+        {
+          "word": "often",
+          "ru": "часто",
+          "ipa": "/ˈɒfn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u03.d02.listening",
+      "title": {
+        "en": "What are you doing today?",
+        "ru": "Что ты делаешь сегодня?"
+      },
+      "audio": {
+        "src": "media/audio/u03.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "What do you usually do on Saturdays?",
+          "ru": "Что ты обычно делаешь по субботам?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "I usually play tennis. But today I am reading a book.",
+          "ru": "Обычно я играю в теннис. Но сегодня читаю книгу."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Why? Is it raining?",
+          "ru": "Почему? Идёт дождь?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Yes. So I am staying at home.",
+          "ru": "Да. Поэтому я сижу дома."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u03.d02.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What is she doing today?",
+            "ru": "Что она делает сегодня?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "Today she is ___ a book.",
+          "options": [
+            "reading",
+            "playing tennis",
+            "cooking"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u03.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u03.d02.ex.g.01",
+          "instruction": {
+            "en": "Present simple (routine).",
+            "ru": "Present simple (привычка)."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "He usually ___ football on Sundays. (play)",
+          "answers": [
+            "plays"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u03.d02.ex.g.02",
+          "instruction": {
+            "en": "Present continuous (now).",
+            "ru": "Present continuous (сейчас)."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "Look! It ___ now. (rain)",
+          "answers": [
+            "is raining"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u03.d02.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct form.",
+            "ru": "Выбери верную форму."
+          },
+          "tags": [
+            "grammar.stative-verbs"
+          ],
+          "prompt": "I ___ this song.",
+          "options": [
+            "like",
+            "am liking"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u03.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.stative-verbs"
+          ],
+          "variants": [
+            "I am knowing the answer.",
+            "I know the answer."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u03.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the hobby and the translation.",
+            "ru": "Сопоставь хобби и перевод."
+          },
+          "tags": [
+            "vocab.hobbies"
+          ],
+          "pairs": [
+            {
+              "left": "guitar",
+              "right": "гитара"
+            },
+            {
+              "left": "drawing",
+              "right": "рисование"
+            },
+            {
+              "left": "swimming",
+              "right": "плавание"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u03.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-vs-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Сейчас он готовит обед.",
+          "answers": [
+            "He is cooking lunch now.",
+            "He is cooking lunch."
+          ]
+        }
+      ]
+    }
+  ]
+}

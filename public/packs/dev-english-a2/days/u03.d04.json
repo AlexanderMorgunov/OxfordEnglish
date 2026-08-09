@@ -1,0 +1,451 @@
+{
+  "id": "u03.d04",
+  "title": {
+    "en": "I enjoy learning",
+    "ru": "Мне нравится учиться"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "grammar.verb-ing-vs-to",
+    "grammar.to-purpose",
+    "vocab.feelings"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u03.d04.vocab",
+      "title": {
+        "en": "Likes & feelings",
+        "ru": "Симпатии и чувства"
+      },
+      "words": [
+        {
+          "word": "like",
+          "ru": "нравиться",
+          "ipa": "/laɪk/",
+          "example": "I like coffee.",
+          "exampleRu": "Мне нравится кофе.",
+          "audio": {
+            "src": "media/audio/u03.d04.vocab.like.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "love",
+          "ru": "обожать, любить",
+          "ipa": "/lʌv/",
+          "example": "I love music.",
+          "exampleRu": "Я обожаю музыку.",
+          "audio": {
+            "src": "media/audio/u03.d04.vocab.love.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "enjoy",
+          "ru": "получать удовольствие",
+          "ipa": "/ɪnˈdʒɔɪ/",
+          "example": "I enjoy reading.",
+          "exampleRu": "Мне нравится читать.",
+          "audio": {
+            "src": "media/audio/u03.d04.vocab.enjoy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hate",
+          "ru": "ненавидеть",
+          "ipa": "/heɪt/",
+          "example": "I hate waiting.",
+          "exampleRu": "Я ненавижу ждать.",
+          "audio": {
+            "src": "media/audio/u03.d04.vocab.hate.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "prefer",
+          "ru": "предпочитать",
+          "ipa": "/prɪˈfɜːr/",
+          "example": "I prefer tea.",
+          "exampleRu": "Я предпочитаю чай.",
+          "audio": {
+            "src": "media/audio/u03.d04.vocab.prefer.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "want",
+          "ru": "хотеть",
+          "ipa": "/wɒnt/",
+          "example": "I want to learn.",
+          "exampleRu": "Я хочу учиться.",
+          "audio": {
+            "src": "media/audio/u03.d04.vocab.want.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "happy",
+          "ru": "счастливый",
+          "ipa": "/ˈhæpi/",
+          "example": "I am happy today.",
+          "exampleRu": "Я сегодня счастлив.",
+          "audio": {
+            "src": "media/audio/u03.d04.vocab.happy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tired",
+          "ru": "усталый",
+          "ipa": "/ˈtaɪərd/",
+          "example": "She is tired.",
+          "exampleRu": "Она устала.",
+          "audio": {
+            "src": "media/audio/u03.d04.vocab.tired.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bored",
+          "ru": "скучающий",
+          "ipa": "/bɔːrd/",
+          "example": "He is bored.",
+          "exampleRu": "Ему скучно.",
+          "audio": {
+            "src": "media/audio/u03.d04.vocab.bored.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "relaxed",
+          "ru": "расслабленный",
+          "ipa": "/rɪˈlækst/",
+          "example": "I feel relaxed.",
+          "exampleRu": "Я чувствую себя расслабленно.",
+          "audio": {
+            "src": "media/audio/u03.d04.vocab.relaxed.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u03.d04.grammar",
+      "title": {
+        "en": "like/enjoy + -ing · want + to · to for purpose",
+        "ru": "like/enjoy + -ing · want + to · to для цели"
+      },
+      "rule": {
+        "en": "After like, love, enjoy, hate, prefer use verb + -ing. After want, need, would like use to + verb. Use to + verb to explain purpose (why).",
+        "ru": "После like, love, enjoy, hate, prefer — глагол + -ing. После want, need, would like — to + глагол. Чтобы объяснить цель (зачем) — to + глагол."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "enjoy + -ing",
+            "ru": "enjoy + -ing"
+          },
+          "formula": "enjoy/like + verb-ing",
+          "examples": [
+            {
+              "en": "I enjoy coding.",
+              "ru": "Мне нравится программировать."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "want + to",
+            "ru": "want + to"
+          },
+          "formula": "want/need + to + verb",
+          "examples": [
+            {
+              "en": "I want to rest.",
+              "ru": "Я хочу отдохнуть."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "to (purpose)",
+            "ru": "to (цель)"
+          },
+          "formula": "... to + verb (why)",
+          "examples": [
+            {
+              "en": "I use Git to save my work.",
+              "ru": "Я использую Git, чтобы сохранять работу."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After enjoy use -ing, not to: \"enjoy reading\", not \"enjoy to read\".",
+          "ru": "После enjoy — -ing, не to: \"enjoy reading\", а не \"enjoy to read\"."
+        },
+        {
+          "en": "After want use to: \"want to go\", not \"want going\".",
+          "ru": "После want — to: \"want to go\", а не \"want going\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u03.d04.reading",
+      "title": {
+        "en": "Why I code",
+        "ru": "Почему я программирую"
+      },
+      "blocks": [
+        {
+          "id": "u03.d04.reading.b1",
+          "en": "Leo enjoys building things. He likes learning new tools and he loves solving problems. In his free time he plays the guitar to relax.",
+          "ru": "Лео нравится создавать. Ему нравится изучать новые инструменты, и он обожает решать задачи. В свободное время он играет на гитаре, чтобы расслабиться.",
+          "audio": {
+            "src": "media/audio/u03.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u03.d04.reading.b2",
+          "en": "He doesn't like long meetings and he hates waiting for slow builds. But he wants to become a better developer, so he practises every evening.",
+          "ru": "Ему не нравятся долгие встречи, и он ненавидит ждать медленные сборки. Но он хочет стать лучше как разработчик, поэтому занимается каждый вечер.",
+          "audio": {
+            "src": "media/audio/u03.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "solve",
+          "ru": "решать",
+          "ipa": "/sɒlv/"
+        },
+        {
+          "word": "slow",
+          "ru": "медленный",
+          "ipa": "/sloʊ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u03.d04.listening",
+      "title": {
+        "en": "Free time",
+        "ru": "Свободное время"
+      },
+      "audio": {
+        "src": "media/audio/u03.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "What do you enjoy doing after work?",
+          "ru": "Что тебе нравится делать после работы?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "I love cooking. And I want to learn to draw.",
+          "ru": "Обожаю готовить. И хочу научиться рисовать."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Why draw?",
+          "ru": "Почему рисовать?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "I draw to relax. It makes me happy.",
+          "ru": "Я рисую, чтобы расслабиться. Это делает меня счастливым."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u03.d04.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "Why does she draw?",
+            "ru": "Почему она рисует?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.to-purpose"
+          ],
+          "prompt": "She draws ___ relax.",
+          "options": [
+            "to",
+            "for",
+            "that"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u03.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u03.d04.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct form.",
+            "ru": "Выбери верную форму."
+          },
+          "tags": [
+            "grammar.verb-ing-vs-to"
+          ],
+          "prompt": "I enjoy ___.",
+          "options": [
+            "reading",
+            "to read"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u03.d04.ex.g.01",
+          "instruction": {
+            "en": "want + to.",
+            "ru": "want + to."
+          },
+          "tags": [
+            "grammar.verb-ing-vs-to"
+          ],
+          "prompt": "I want ___ English. (learn)",
+          "answers": [
+            "to learn"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u03.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.verb-ing-vs-to"
+          ],
+          "variants": [
+            "She enjoys to cook.",
+            "She enjoys cooking."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u03.d04.ex.g.02",
+          "instruction": {
+            "en": "to for purpose (why).",
+            "ru": "to для цели (зачем)."
+          },
+          "tags": [
+            "grammar.to-purpose"
+          ],
+          "prompt": "I use a map ___ the way. (find)",
+          "answers": [
+            "to find"
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u03.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the feeling and the translation.",
+            "ru": "Сопоставь чувство и перевод."
+          },
+          "tags": [
+            "vocab.feelings"
+          ],
+          "pairs": [
+            {
+              "left": "tired",
+              "right": "усталый"
+            },
+            {
+              "left": "bored",
+              "right": "скучающий"
+            },
+            {
+              "left": "happy",
+              "right": "счастливый"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u03.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.verb-ing-vs-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я хочу научиться плавать.",
+          "answers": [
+            "I want to learn to swim."
+          ]
+        }
+      ]
+    }
+  ]
+}

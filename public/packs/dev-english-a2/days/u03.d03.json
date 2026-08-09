@@ -1,0 +1,452 @@
+{
+  "id": "u03.d03",
+  "title": {
+    "en": "I can do it",
+    "ru": "Я умею"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "grammar.modals-ability",
+    "vocab.sport"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u03.d03.vocab",
+      "title": {
+        "en": "Abilities & sport",
+        "ru": "Умения и спорт"
+      },
+      "words": [
+        {
+          "word": "swim",
+          "ru": "плавать",
+          "ipa": "/swɪm/",
+          "example": "I can swim.",
+          "exampleRu": "Я умею плавать.",
+          "audio": {
+            "src": "media/audio/u03.d03.vocab.swim.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ride",
+          "ru": "ездить (верхом, на велосипеде)",
+          "ipa": "/raɪd/",
+          "example": "She can ride a bike.",
+          "exampleRu": "Она умеет ездить на велосипеде.",
+          "audio": {
+            "src": "media/audio/u03.d03.vocab.ride.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "drive",
+          "ru": "водить",
+          "ipa": "/draɪv/",
+          "example": "He can drive a car.",
+          "exampleRu": "Он умеет водить машину.",
+          "audio": {
+            "src": "media/audio/u03.d03.vocab.drive.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cook",
+          "ru": "готовить",
+          "ipa": "/kʊk/",
+          "example": "I can cook pasta.",
+          "exampleRu": "Я умею готовить пасту.",
+          "audio": {
+            "src": "media/audio/u03.d03.vocab.cook.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dance",
+          "ru": "танцевать",
+          "ipa": "/dɑːns/",
+          "example": "They can dance well.",
+          "exampleRu": "Они хорошо танцуют.",
+          "audio": {
+            "src": "media/audio/u03.d03.vocab.dance.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sing",
+          "ru": "петь",
+          "ipa": "/sɪŋ/",
+          "example": "She can sing.",
+          "exampleRu": "Она умеет петь.",
+          "audio": {
+            "src": "media/audio/u03.d03.vocab.sing.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "climb",
+          "ru": "взбираться, лазать",
+          "ipa": "/klaɪm/",
+          "example": "We can climb the hill.",
+          "exampleRu": "Мы можем взобраться на холм.",
+          "audio": {
+            "src": "media/audio/u03.d03.vocab.climb.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "jump",
+          "ru": "прыгать",
+          "ipa": "/dʒʌmp/",
+          "example": "The cat can jump high.",
+          "exampleRu": "Кот умеет высоко прыгать.",
+          "audio": {
+            "src": "media/audio/u03.d03.vocab.jump.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "throw",
+          "ru": "бросать",
+          "ipa": "/θroʊ/",
+          "example": "He can throw the ball far.",
+          "exampleRu": "Он умеет далеко бросать мяч.",
+          "audio": {
+            "src": "media/audio/u03.d03.vocab.throw.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "win",
+          "ru": "побеждать",
+          "ipa": "/wɪn/",
+          "example": "Our team can win.",
+          "exampleRu": "Наша команда может победить.",
+          "audio": {
+            "src": "media/audio/u03.d03.vocab.win.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u03.d03.grammar",
+      "title": {
+        "en": "Ability: can / could / be able to",
+        "ru": "Умение: can / could / be able to"
+      },
+      "rule": {
+        "en": "Use can + verb for ability now, could for past ability, and be able to for other tenses. No \"to\" after can/could.",
+        "ru": "can + глагол — умение сейчас, could — в прошлом, be able to — в других временах. После can/could нет \"to\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "can (now)",
+            "ru": "can (сейчас)"
+          },
+          "formula": "can + verb",
+          "examples": [
+            {
+              "en": "I can swim.",
+              "ru": "Я умею плавать."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "could (past)",
+            "ru": "could (прошлое)"
+          },
+          "formula": "could + verb",
+          "examples": [
+            {
+              "en": "I could swim at five.",
+              "ru": "Я умел плавать в пять лет."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "be able to",
+            "ru": "be able to"
+          },
+          "formula": "am/is/are able to + verb",
+          "examples": [
+            {
+              "en": "She is able to drive.",
+              "ru": "Она умеет водить."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "No \"to\" after can/could: \"I can swim\", not \"I can to swim\".",
+          "ru": "После can/could нет \"to\": \"I can swim\", а не \"I can to swim\"."
+        },
+        {
+          "en": "Same form for all persons: he can (not \"he cans\").",
+          "ru": "Форма одна для всех лиц: he can (не \"he cans\")."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u03.d03.reading",
+      "title": {
+        "en": "Learning new things",
+        "ru": "Учимся новому"
+      },
+      "blocks": [
+        {
+          "id": "u03.d03.reading.b1",
+          "en": "Two years ago, Mia could not code. She could not write a single line. But she started a course and practised every day.",
+          "ru": "Два года назад Мия не умела программировать. Не могла написать ни строчки. Но она пошла на курс и занималась каждый день.",
+          "audio": {
+            "src": "media/audio/u03.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u03.d03.reading.b2",
+          "en": "Now Mia can build small apps. She can also fix simple bugs. Next year she wants to be able to work as a developer.",
+          "ru": "Теперь Мия умеет делать небольшие приложения. Ещё она может чинить простые баги. В следующем году она хочет уметь работать разработчиком.",
+          "audio": {
+            "src": "media/audio/u03.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "practise",
+          "ru": "заниматься, практиковаться",
+          "ipa": "/ˈpræktɪs/"
+        },
+        {
+          "word": "a single",
+          "ru": "ни одного",
+          "ipa": "/ˈsɪŋɡl/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u03.d03.listening",
+      "title": {
+        "en": "Can you swim?",
+        "ru": "Ты умеешь плавать?"
+      },
+      "audio": {
+        "src": "media/audio/u03.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Can you drive?",
+          "ru": "Ты умеешь водить?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Yes, I can. But I can't swim.",
+          "ru": "Да, умею. Но не умею плавать."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Really? I could swim when I was six.",
+          "ru": "Правда? Я умел плавать в шесть лет."
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "I want to learn this summer.",
+          "ru": "Хочу научиться этим летом."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u03.d03.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What can't he do?",
+            "ru": "Что он не умеет?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.modals-ability"
+          ],
+          "prompt": "He can't ___.",
+          "options": [
+            "swim",
+            "drive",
+            "cook"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u03.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u03.d03.ex.g.01",
+          "instruction": {
+            "en": "Ask about ability.",
+            "ru": "Спроси об умении."
+          },
+          "tags": [
+            "grammar.modals-ability"
+          ],
+          "prompt": "___ you swim?",
+          "answers": [
+            "Can"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u03.d03.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct form.",
+            "ru": "Выбери верную форму."
+          },
+          "tags": [
+            "grammar.modals-ability"
+          ],
+          "prompt": "He ___ ride a bike.",
+          "options": [
+            "can",
+            "cans",
+            "can to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u03.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.modals-ability"
+          ],
+          "variants": [
+            "I can to drive.",
+            "I can drive."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u03.d03.ex.g.02",
+          "instruction": {
+            "en": "Past ability.",
+            "ru": "Умение в прошлом."
+          },
+          "tags": [
+            "grammar.modals-ability"
+          ],
+          "prompt": "Ten years ago I ___ run fast. (can)",
+          "answers": [
+            "could"
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u03.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the verb and the translation.",
+            "ru": "Сопоставь глагол и перевод."
+          },
+          "tags": [
+            "vocab.sport"
+          ],
+          "pairs": [
+            {
+              "left": "swim",
+              "right": "плавать"
+            },
+            {
+              "left": "drive",
+              "right": "водить"
+            },
+            {
+              "left": "sing",
+              "right": "петь"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u03.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.modals-ability",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она умеет водить машину.",
+          "answers": [
+            "She can drive a car.",
+            "She can drive."
+          ]
+        }
+      ]
+    }
+  ]
+}
