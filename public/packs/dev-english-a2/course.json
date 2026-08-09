@@ -34,7 +34,9 @@
         "en": "Nice to meet you",
         "ru": "Знакомство"
       },
-      "dayIds": [],
+      "dayIds": [
+        "u01.d01"
+      ],
       "checkpoint": {
         "id": "u01.checkpoint",
         "title": {

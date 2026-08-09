@@ -1,0 +1,483 @@
+{
+  "id": "u01.d01",
+  "title": {
+    "en": "Nice to meet you",
+    "ru": "Приятно познакомиться"
+  },
+  "estimatedMinutes": 120,
+  "tags": [
+    "grammar.be",
+    "functions.small-talk"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u01.d01.vocab",
+      "title": {
+        "en": "Countries & family",
+        "ru": "Страны и семья"
+      },
+      "words": [
+        {
+          "word": "country",
+          "ru": "страна",
+          "ipa": "/ˈkʌntri/",
+          "example": "Which country are you from?",
+          "exampleRu": "Из какой ты страны?",
+          "audio": {
+            "src": "media/audio/u01.d01.vocab.country.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "Russia",
+          "ru": "Россия",
+          "ipa": "/ˈrʌʃə/",
+          "example": "She is from Russia.",
+          "exampleRu": "Она из России.",
+          "audio": {
+            "src": "media/audio/u01.d01.vocab.russia.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "Russian",
+          "ru": "русский",
+          "ipa": "/ˈrʌʃn/",
+          "example": "He speaks Russian.",
+          "exampleRu": "Он говорит по-русски.",
+          "audio": {
+            "src": "media/audio/u01.d01.vocab.russian.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "France",
+          "ru": "Франция",
+          "ipa": "/fræns/",
+          "example": "Paris is in France.",
+          "exampleRu": "Париж во Франции.",
+          "audio": {
+            "src": "media/audio/u01.d01.vocab.france.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "French",
+          "ru": "французский",
+          "ipa": "/frentʃ/",
+          "example": "I study French.",
+          "exampleRu": "Я учу французский.",
+          "audio": {
+            "src": "media/audio/u01.d01.vocab.french.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "Spain",
+          "ru": "Испания",
+          "ipa": "/speɪn/",
+          "example": "They live in Spain.",
+          "exampleRu": "Они живут в Испании.",
+          "audio": {
+            "src": "media/audio/u01.d01.vocab.spain.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mother",
+          "ru": "мама",
+          "ipa": "/ˈmʌðər/",
+          "example": "My mother is a doctor.",
+          "exampleRu": "Моя мама — врач.",
+          "audio": {
+            "src": "media/audio/u01.d01.vocab.mother.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "father",
+          "ru": "папа",
+          "ipa": "/ˈfɑːðər/",
+          "example": "His father works here.",
+          "exampleRu": "Его папа работает здесь.",
+          "audio": {
+            "src": "media/audio/u01.d01.vocab.father.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sister",
+          "ru": "сестра",
+          "ipa": "/ˈsɪstər/",
+          "example": "Her sister is ten.",
+          "exampleRu": "Её сестре десять.",
+          "audio": {
+            "src": "media/audio/u01.d01.vocab.sister.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "brother",
+          "ru": "брат",
+          "ipa": "/ˈbrʌðər/",
+          "example": "I have one brother.",
+          "exampleRu": "У меня один брат.",
+          "audio": {
+            "src": "media/audio/u01.d01.vocab.brother.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wife",
+          "ru": "жена",
+          "ipa": "/waɪf/",
+          "example": "This is my wife.",
+          "exampleRu": "Это моя жена.",
+          "audio": {
+            "src": "media/audio/u01.d01.vocab.wife.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "husband",
+          "ru": "муж",
+          "ipa": "/ˈhʌzbənd/",
+          "example": "Her husband is British.",
+          "exampleRu": "Её муж — британец.",
+          "audio": {
+            "src": "media/audio/u01.d01.vocab.husband.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u01.d01.grammar",
+      "title": {
+        "en": "be questions & my/your/his/her",
+        "ru": "Вопросы с be и my/your/his/her"
+      },
+      "rule": {
+        "en": "To ask with \"be\", put am/is/are first. Use possessives (my, your, his, her, our, their) to say whose.",
+        "ru": "Чтобы спросить с \"be\", поставь am/is/are в начало. Притяжательные (my, your, his, her, our, their) говорят, чей."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Question",
+            "ru": "Вопрос"
+          },
+          "formula": "Am/Is/Are + subject … ?",
+          "examples": [
+            {
+              "en": "Are you from Spain?",
+              "ru": "Ты из Испании?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Possessives",
+            "ru": "Притяжательные"
+          },
+          "formula": "my · your · his · her · our · their",
+          "examples": [
+            {
+              "en": "This is her brother.",
+              "ru": "Это её брат."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"his\" for a man, \"her\" for a woman — not tied to the object: \"her husband\", \"his wife\".",
+          "ru": "\"his\" — для мужчины, \"her\" — для женщины, не зависит от предмета: \"her husband\", \"his wife\"."
+        },
+        {
+          "en": "In questions, be comes before the subject: \"Is she…?\", not \"She is…?\".",
+          "ru": "В вопросе be перед подлежащим: \"Is she…?\", а не \"She is…?\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u01.d01.reading",
+      "title": {
+        "en": "Marco's family",
+        "ru": "Семья Марко"
+      },
+      "blocks": [
+        {
+          "id": "u01.d01.reading.b1",
+          "en": "Hello! I am Marco and I am from Italy. This is my family. My wife is from Spain and her name is Lucia.",
+          "ru": "Привет! Я Марко, я из Италии. Это моя семья. Моя жена из Испании, её зовут Лючия.",
+          "audio": {
+            "src": "media/audio/u01.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u01.d01.reading.b2",
+          "en": "We have two children: a son and a daughter. My son is Russian at school — he loves the language! My brother lives in France with his French wife.",
+          "ru": "У нас двое детей: сын и дочь. Мой сын учит русский в школе — он обожает язык! Мой брат живёт во Франции со своей женой-француженкой.",
+          "audio": {
+            "src": "media/audio/u01.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "children",
+          "ru": "дети",
+          "ipa": "/ˈtʃɪldrən/"
+        },
+        {
+          "word": "daughter",
+          "ru": "дочь",
+          "ipa": "/ˈdɔːtər/"
+        },
+        {
+          "word": "son",
+          "ru": "сын",
+          "ipa": "/sʌn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u01.d01.listening",
+      "title": {
+        "en": "Where are you from?",
+        "ru": "Откуда ты?"
+      },
+      "audio": {
+        "src": "media/audio/u01.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Hi! Where are you from? I am from Italy.",
+          "ru": "Привет! Откуда ты? Я из Италии."
+        },
+        {
+          "start": 3,
+          "end": 7,
+          "en": "Is this your sister? No, she is my wife.",
+          "ru": "Это твоя сестра? Нет, это моя жена."
+        },
+        {
+          "start": 7,
+          "end": 11,
+          "en": "And where is she from? She is from Spain. Nice family!",
+          "ru": "А она откуда? Из Испании. Хорошая семья!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u01.d01.ex.l.01",
+          "instruction": {
+            "en": "Who is the woman?",
+            "ru": "Кто эта женщина?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "She is his ___.",
+          "options": [
+            "wife",
+            "sister",
+            "mother"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u01.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u01.d01.ex.g.01",
+          "instruction": {
+            "en": "his or her?",
+            "ru": "his или her?"
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "prompt": "Marco loves ___ wife, Lucia.",
+          "answers": [
+            "his"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u01.d01.ex.g.02",
+          "instruction": {
+            "en": "his or her?",
+            "ru": "his или her?"
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "prompt": "Lucia is from Spain and ___ husband is Italian.",
+          "answers": [
+            "her"
+          ]
+        },
+        {
+          "type": "transform",
+          "id": "u01.d01.ex.tf.01",
+          "instruction": {
+            "en": "Make it a question.",
+            "ru": "Сделай вопрос."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "You are from Spain.",
+          "answers": [
+            "Are you from Spain?"
+          ]
+        },
+        {
+          "type": "transform",
+          "id": "u01.d01.ex.tf.02",
+          "instruction": {
+            "en": "Make it a question.",
+            "ru": "Сделай вопрос."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "She is your sister.",
+          "answers": [
+            "Is she your sister?"
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u01.d01.ex.m.01",
+          "instruction": {
+            "en": "Country and language.",
+            "ru": "Страна и язык."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "Russia",
+              "right": "Russian"
+            },
+            {
+              "left": "France",
+              "right": "French"
+            },
+            {
+              "left": "Spain",
+              "right": "Spanish"
+            }
+          ]
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u01.d01.ex.mp.01",
+          "instruction": {
+            "en": "Which word do you hear?",
+            "ru": "Какое слово ты слышишь?"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u01.d01.mp.sheep.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "ship",
+            "sheep"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u01.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "writing.translation",
+            "grammar.possessives"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это моя жена.",
+          "answers": [
+            "This is my wife."
+          ]
+        }
+      ]
+    }
+  ]
+}

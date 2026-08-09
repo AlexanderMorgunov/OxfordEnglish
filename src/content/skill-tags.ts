@@ -6,6 +6,8 @@
  */
 export const SKILL_TAGS = [
   // grammar
+  'grammar.be',
+  'grammar.possessives',
   'grammar.past-simple',
   'grammar.past-simple.regular',
   'grammar.past-simple.irregular',
@@ -37,10 +39,11 @@ export const SKILL_TAGS = [
   'reading.gist',
   'reading.detail',
 
-  // listening
+  // listening & pronunciation
   'listening.gist',
   'listening.detail',
   'listening.dictation',
+  'pronunciation',
 
   // writing / production
   'writing.sentence',
