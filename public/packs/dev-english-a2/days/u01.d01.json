@@ -387,8 +387,8 @@
           "type": "transform",
           "id": "u01.d01.ex.tf.01",
           "instruction": {
-            "en": "Make it a question.",
-            "ru": "Сделай вопрос."
+            "en": "Make it a question. (He is late → Is he late?)",
+            "ru": "Сделай вопрос. (He is late → Is he late?)"
           },
           "tags": [
             "grammar.be"
@@ -402,8 +402,8 @@
           "type": "transform",
           "id": "u01.d01.ex.tf.02",
           "instruction": {
-            "en": "Make it a question.",
-            "ru": "Сделай вопрос."
+            "en": "Make it a question. (He is late → Is he late?)",
+            "ru": "Сделай вопрос. (He is late → Is he late?)"
           },
           "tags": [
             "grammar.be"

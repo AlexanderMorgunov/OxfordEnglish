@@ -349,8 +349,8 @@
           "type": "transform",
           "id": "u02.d05.ex.tf.01",
           "instruction": {
-            "en": "Ask about routine.",
-            "ru": "Спроси про распорядок."
+            "en": "Ask about a routine. (You work → Do you work?)",
+            "ru": "Спроси о привычке. (You work → Do you work?)"
           },
           "tags": [
             "grammar.present-simple"

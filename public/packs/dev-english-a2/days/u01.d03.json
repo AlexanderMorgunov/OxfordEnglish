@@ -401,8 +401,8 @@
           "type": "transform",
           "id": "u01.d03.ex.tf.01",
           "instruction": {
-            "en": "Replace the name with a pronoun.",
-            "ru": "Замени имя местоимением."
+            "en": "Replace the name with a pronoun. (I see Tom → I see him.)",
+            "ru": "Замени имя местоимением. (I see Tom → I see him.)"
           },
           "tags": [
             "grammar.pronouns"

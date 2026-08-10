@@ -45,11 +45,14 @@ export function TransformExercise({ exercise, onSolved }: Props) {
         )
       }
     >
-      <p className="mb-3.5 font-mono text-base text-muted">{exercise.prompt}</p>
+      <p className="mb-3.5 font-mono text-base">
+        <span className="text-muted">{exercise.prompt}</span>
+        <span className="ml-2 text-faint">→ ?</span>
+      </p>
       <div className="flex flex-wrap items-center gap-2.5">
         <Input
           className="min-w-64 flex-1"
-          placeholder="rewrite…"
+          placeholder="rewrite the sentence…"
           value={value}
           disabled={status === 'correct'}
           onChange={(e) => setValue(e.target.value)}

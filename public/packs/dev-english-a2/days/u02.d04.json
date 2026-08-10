@@ -403,8 +403,8 @@
           "type": "transform",
           "id": "u02.d04.ex.tf.01",
           "instruction": {
-            "en": "Make it plural.",
-            "ru": "Сделай множественным."
+            "en": "Make it plural. (There is a car → There are cars.)",
+            "ru": "Поставь во множественное. (There is a car → There are cars.)"
           },
           "tags": [
             "grammar.there-is"

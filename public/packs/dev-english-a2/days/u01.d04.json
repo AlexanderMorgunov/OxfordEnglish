@@ -380,8 +380,8 @@
           "type": "transform",
           "id": "u01.d04.ex.tf.01",
           "instruction": {
-            "en": "Use a possessive pronoun.",
-            "ru": "Используй притяжательное местоимение."
+            "en": "Rewrite with a possessive pronoun. (It is my car → It is mine.)",
+            "ru": "Перепиши с притяжательным местоимением. (It is my car → It is mine.)"
           },
           "tags": [
             "grammar.possessives"

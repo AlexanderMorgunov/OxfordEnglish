@@ -387,8 +387,8 @@
           "type": "transform",
           "id": "u02.d02.ex.tf.01",
           "instruction": {
-            "en": "Make it a question.",
-            "ru": "Сделай вопрос."
+            "en": "Make it a question. (He is late → Is he late?)",
+            "ru": "Сделай вопрос. (He is late → Is he late?)"
           },
           "tags": [
             "grammar.present-simple"
@@ -402,8 +402,8 @@
           "type": "transform",
           "id": "u02.d02.ex.tf.02",
           "instruction": {
-            "en": "Make it negative.",
-            "ru": "Сделай отрицание."
+            "en": "Make it negative. (He works → He doesn't work.)",
+            "ru": "Сделай отрицание. (He works → He doesn't work.)"
           },
           "tags": [
             "grammar.present-simple"
