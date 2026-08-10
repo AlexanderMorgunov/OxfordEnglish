@@ -298,7 +298,13 @@
         "en": "Connecting ideas",
         "ru": "Связываем идеи"
       },
-      "dayIds": [],
+      "dayIds": [
+        "u13.d01",
+        "u13.d02",
+        "u13.d03",
+        "u13.d04",
+        "u13.d05"
+      ],
       "checkpoint": {
         "id": "u13.checkpoint",
         "title": {

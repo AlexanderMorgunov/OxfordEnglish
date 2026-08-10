@@ -62,6 +62,13 @@ export const SKILL_TAGS = [
   'grammar.just-yet-already',
   'grammar.for-since',
   'grammar.perfect-vs-past',
+  'grammar.zero-conditional',
+  'grammar.first-conditional',
+  'grammar.relative-clauses',
+  'grammar.indefinite-pronouns',
+  'grammar.question-tags',
+  'grammar.so-neither',
+  'grammar.dependent-prepositions',
 
   // functions (everyday communication)
   'functions.ordering',
@@ -78,6 +85,7 @@ export const SKILL_TAGS = [
   'functions.advice',
   'functions.doctor',
   'functions.experiences',
+  'functions.opinions',
 
   // vocabulary (developer-life + everyday themes)
   'vocab.work',
@@ -108,6 +116,9 @@ export const SKILL_TAGS = [
   'vocab.school',
   'vocab.achievements',
   'vocab.technology',
+  'vocab.nature',
+  'vocab.animals',
+  'vocab.seasons',
 
   // reading
   'reading.gist',

@@ -1,0 +1,457 @@
+{
+  "id": "u13.d03",
+  "title": {
+    "en": "The man who helped me",
+    "ru": "Человек, который мне помог"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.relative-clauses",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u13.d03.vocab",
+      "title": {
+        "en": "People, things & places",
+        "ru": "Люди, вещи и места"
+      },
+      "words": [
+        {
+          "word": "person",
+          "ru": "человек",
+          "ipa": "/ˈpɜːrsn/",
+          "example": "She is a kind person.",
+          "exampleRu": "Она добрый человек.",
+          "audio": {
+            "src": "media/audio/u13.d03.vocab.person.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "neighbour",
+          "ru": "сосед",
+          "ipa": "/ˈneɪbər/",
+          "example": "My neighbour is friendly.",
+          "exampleRu": "Мой сосед дружелюбный.",
+          "audio": {
+            "src": "media/audio/u13.d03.vocab.neighbour.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tool",
+          "ru": "инструмент",
+          "ipa": "/tuːl/",
+          "example": "It is a useful tool.",
+          "exampleRu": "Это полезный инструмент.",
+          "audio": {
+            "src": "media/audio/u13.d03.vocab.tool.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "machine",
+          "ru": "машина, механизм",
+          "ipa": "/məˈʃiːn/",
+          "example": "The machine is broken.",
+          "exampleRu": "Механизм сломан.",
+          "audio": {
+            "src": "media/audio/u13.d03.vocab.machine.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pet",
+          "ru": "домашнее животное",
+          "ipa": "/pet/",
+          "example": "A dog is a good pet.",
+          "exampleRu": "Собака — хороший питомец.",
+          "audio": {
+            "src": "media/audio/u13.d03.vocab.pet.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "place",
+          "ru": "место",
+          "ipa": "/pleɪs/",
+          "example": "This is the place where I grew up.",
+          "exampleRu": "Это место, где я вырос.",
+          "audio": {
+            "src": "media/audio/u13.d03.vocab.place.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "thing",
+          "ru": "вещь",
+          "ipa": "/θɪŋ/",
+          "example": "It is a thing that helps.",
+          "exampleRu": "Это вещь, которая помогает.",
+          "audio": {
+            "src": "media/audio/u13.d03.vocab.thing.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "useful",
+          "ru": "полезный",
+          "ipa": "/ˈjuːsfl/",
+          "example": "A phone is useful.",
+          "exampleRu": "Телефон полезен.",
+          "audio": {
+            "src": "media/audio/u13.d03.vocab.useful.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "famous",
+          "ru": "известный",
+          "ipa": "/ˈfeɪməs/",
+          "example": "He is a famous writer.",
+          "exampleRu": "Он известный писатель.",
+          "audio": {
+            "src": "media/audio/u13.d03.vocab.famous.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "invention",
+          "ru": "изобретение",
+          "ipa": "/ɪnˈvenʃn/",
+          "example": "The wheel is a great invention.",
+          "exampleRu": "Колесо — великое изобретение.",
+          "audio": {
+            "src": "media/audio/u13.d03.vocab.invention.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u13.d03.grammar",
+      "title": {
+        "en": "Relative clauses: who / which / that",
+        "ru": "Относительные придаточные: who / which / that"
+      },
+      "rule": {
+        "en": "Add information about a noun with a relative clause: \"who\" for people, \"which\" for things, \"that\" for both.",
+        "ru": "Добавляй информацию к существительному придаточным: \"who\" — о людях, \"which\" — о вещах, \"that\" — о том и другом."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "who (people)",
+            "ru": "who (люди)"
+          },
+          "formula": "the person who + verb",
+          "examples": [
+            {
+              "en": "The man who helped me was kind.",
+              "ru": "Человек, который мне помог, был добрым."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "which (things)",
+            "ru": "which (вещи)"
+          },
+          "formula": "the thing which + verb",
+          "examples": [
+            {
+              "en": "This is the app which saves my work.",
+              "ru": "Это приложение, которое сохраняет мою работу."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "that (both)",
+            "ru": "that (оба)"
+          },
+          "formula": "the … that + verb",
+          "examples": [
+            {
+              "en": "A doctor is a person that helps you.",
+              "ru": "Врач — это человек, который тебе помогает."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use \"who\" for people, \"which\" for things; \"that\" works for both.",
+          "ru": "\"who\" — для людей, \"which\" — для вещей; \"that\" — для обоих."
+        },
+        {
+          "en": "Don't repeat the subject: \"the man who helped me\", not \"the man who he helped me\".",
+          "ru": "Не дублируй подлежащее: \"the man who helped me\", а не \"the man who he helped me\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u13.d03.reading",
+      "title": {
+        "en": "People who help",
+        "ru": "Люди, которые помогают"
+      },
+      "blocks": [
+        {
+          "id": "u13.d03.reading.b1",
+          "en": "A teacher is a person who helps you learn. A doctor is someone who helps you when you are ill. A friend is a person who is always there for you.",
+          "ru": "Учитель — это человек, который помогает тебе учиться. Врач — тот, кто помогает, когда ты болен. Друг — человек, который всегда рядом.",
+          "audio": {
+            "src": "media/audio/u13.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u13.d03.reading.b2",
+          "en": "A phone is a thing which connects people. The internet is an invention that changed the world. These are things that make life easier every day.",
+          "ru": "Телефон — вещь, которая соединяет людей. Интернет — изобретение, которое изменило мир. Это вещи, которые каждый день упрощают жизнь.",
+          "audio": {
+            "src": "media/audio/u13.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "connect",
+          "ru": "соединять",
+          "ipa": "/kəˈnekt/"
+        },
+        {
+          "word": "change",
+          "ru": "менять",
+          "ipa": "/tʃeɪndʒ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u13.d03.listening",
+      "title": {
+        "en": "Who is she?",
+        "ru": "Кто она?"
+      },
+      "audio": {
+        "src": "media/audio/u13.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Who is the woman who is talking to Tom?",
+          "ru": "Кто эта женщина, что говорит с Томом?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "She is the neighbour who lives next door.",
+          "ru": "Это соседка, которая живёт рядом."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "And what is that machine which is on the table?",
+          "ru": "А что за прибор, который на столе?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "It's the coffee machine that she gave us.",
+          "ru": "Это кофемашина, которую она нам подарила."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u13.d03.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "Who is the woman?",
+            "ru": "Кто эта женщина?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.relative-clauses"
+          ],
+          "prompt": "She is the ___ who lives next door.",
+          "options": [
+            "neighbour",
+            "teacher",
+            "doctor"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u13.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u13.d03.ex.c.01",
+          "instruction": {
+            "en": "People → ?",
+            "ru": "Люди → ?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The man ___ helped me was kind.",
+          "options": [
+            "who",
+            "which",
+            "where"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u13.d03.ex.c.02",
+          "instruction": {
+            "en": "Things → ?",
+            "ru": "Вещи → ?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "This is the app ___ saves my work.",
+          "options": [
+            "which",
+            "who",
+            "when"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u13.d03.ex.g.01",
+          "instruction": {
+            "en": "Both people & things.",
+            "ru": "И люди, и вещи."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "A doctor is a person ___ helps you. (both)",
+          "answers": [
+            "that",
+            "who"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u13.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "variants": [
+            "The man who he helped me was kind.",
+            "The man who helped me was kind."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u13.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "neighbour",
+              "right": "сосед"
+            },
+            {
+              "left": "invention",
+              "right": "изобретение"
+            },
+            {
+              "left": "tool",
+              "right": "инструмент"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u13.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это приложение, которое сохраняет мою работу.",
+          "answers": [
+            "This is the app which saves my work.",
+            "This is the app that saves my work."
+          ]
+        }
+      ]
+    }
+  ]
+}

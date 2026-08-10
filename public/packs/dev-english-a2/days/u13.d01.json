@@ -1,0 +1,442 @@
+{
+  "id": "u13.d01",
+  "title": {
+    "en": "If you heat ice, it melts",
+    "ru": "Если нагреть лёд, он тает"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.zero-conditional",
+    "vocab.nature",
+    "vocab.animals"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u13.d01.vocab",
+      "title": {
+        "en": "Nature & animals",
+        "ru": "Природа и животные"
+      },
+      "words": [
+        {
+          "word": "nature",
+          "ru": "природа",
+          "ipa": "/ˈneɪtʃər/",
+          "example": "I love nature.",
+          "exampleRu": "Я люблю природу.",
+          "audio": {
+            "src": "media/audio/u13.d01.vocab.nature.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tree",
+          "ru": "дерево",
+          "ipa": "/triː/",
+          "example": "The tree is tall.",
+          "exampleRu": "Дерево высокое.",
+          "audio": {
+            "src": "media/audio/u13.d01.vocab.tree.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "river",
+          "ru": "река",
+          "ipa": "/ˈrɪvər/",
+          "example": "The river is cold.",
+          "exampleRu": "Река холодная.",
+          "audio": {
+            "src": "media/audio/u13.d01.vocab.river.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mountain",
+          "ru": "гора",
+          "ipa": "/ˈmaʊntən/",
+          "example": "We climbed the mountain.",
+          "exampleRu": "Мы взобрались на гору.",
+          "audio": {
+            "src": "media/audio/u13.d01.vocab.mountain.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "forest",
+          "ru": "лес",
+          "ipa": "/ˈfɒrɪst/",
+          "example": "The forest is quiet.",
+          "exampleRu": "Лес тихий.",
+          "audio": {
+            "src": "media/audio/u13.d01.vocab.forest.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bird",
+          "ru": "птица",
+          "ipa": "/bɜːrd/",
+          "example": "The bird can fly.",
+          "exampleRu": "Птица умеет летать.",
+          "audio": {
+            "src": "media/audio/u13.d01.vocab.bird.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fish",
+          "ru": "рыба",
+          "ipa": "/fɪʃ/",
+          "example": "Fish live in water.",
+          "exampleRu": "Рыбы живут в воде.",
+          "audio": {
+            "src": "media/audio/u13.d01.vocab.fish.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "animal",
+          "ru": "животное",
+          "ipa": "/ˈænɪml/",
+          "example": "A dog is an animal.",
+          "exampleRu": "Собака — это животное.",
+          "audio": {
+            "src": "media/audio/u13.d01.vocab.animal.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wild",
+          "ru": "дикий",
+          "ipa": "/waɪld/",
+          "example": "Wild animals live in the forest.",
+          "exampleRu": "Дикие животные живут в лесу.",
+          "audio": {
+            "src": "media/audio/u13.d01.vocab.wild.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ice",
+          "ru": "лёд",
+          "ipa": "/aɪs/",
+          "example": "Ice is cold.",
+          "exampleRu": "Лёд холодный.",
+          "audio": {
+            "src": "media/audio/u13.d01.vocab.ice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u13.d01.grammar",
+      "title": {
+        "en": "Zero conditional",
+        "ru": "Нулевой тип условия"
+      },
+      "rule": {
+        "en": "For general truths and facts use the zero conditional: If + present simple, present simple. \"If\" can also mean \"when\" for facts.",
+        "ru": "Для общих истин и фактов — нулевой тип: If + present simple, present simple. Здесь \"if\" близко к \"when\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "if + present",
+            "ru": "if + present"
+          },
+          "formula": "If + present simple, present simple",
+          "examples": [
+            {
+              "en": "If you heat ice, it melts.",
+              "ru": "Если нагреть лёд, он тает."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "fact",
+            "ru": "факт"
+          },
+          "formula": "general truth",
+          "examples": [
+            {
+              "en": "Plants die if they don't get water.",
+              "ru": "Растения гибнут, если не получают воды."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Both verbs are present simple — no \"will\" here: \"If it rains, the ground gets wet\".",
+          "ru": "Оба глагола в present simple — без \"will\": \"If it rains, the ground gets wet\"."
+        },
+        {
+          "en": "You can swap the halves: \"Ice melts if you heat it\".",
+          "ru": "Части можно менять местами: \"Ice melts if you heat it\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u13.d01.reading",
+      "title": {
+        "en": "How nature works",
+        "ru": "Как устроена природа"
+      },
+      "blocks": [
+        {
+          "id": "u13.d01.reading.b1",
+          "en": "Nature follows simple rules. If the sun shines, the ice melts. If it rains a lot, the river gets bigger. Birds fly south if the weather gets cold.",
+          "ru": "Природа живёт по простым правилам. Если светит солнце, лёд тает. Если много дождя, река становится больше. Птицы летят на юг, если холодает.",
+          "audio": {
+            "src": "media/audio/u13.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u13.d01.reading.b2",
+          "en": "Animals need nature. If a forest disappears, the animals lose their home. If we protect nature, wild animals and plants live well. It is all connected.",
+          "ru": "Животным нужна природа. Если лес исчезает, животные теряют дом. Если мы бережём природу, дикие животные и растения живут хорошо. Всё связано.",
+          "audio": {
+            "src": "media/audio/u13.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "melt",
+          "ru": "таять",
+          "ipa": "/melt/"
+        },
+        {
+          "word": "protect",
+          "ru": "защищать",
+          "ipa": "/prəˈtekt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u13.d01.listening",
+      "title": {
+        "en": "Simple facts",
+        "ru": "Простые факты"
+      },
+      "audio": {
+        "src": "media/audio/u13.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "What happens if you don't water a plant?",
+          "ru": "Что будет, если не поливать растение?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "If you don't water it, it dies.",
+          "ru": "Если его не поливать, оно погибнет."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "And if you give it too much water?",
+          "ru": "А если дать слишком много воды?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "If you give it too much, it also dies.",
+          "ru": "Если дать слишком много, оно тоже погибнет."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u13.d01.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What happens without water?",
+            "ru": "Что будет без воды?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.zero-conditional"
+          ],
+          "prompt": "If you don't water a plant, it ___ .",
+          "options": [
+            "dies",
+            "grows",
+            "melts"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u13.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u13.d01.ex.g.01",
+          "instruction": {
+            "en": "Zero conditional (present + present).",
+            "ru": "Нулевой тип (present + present)."
+          },
+          "tags": [
+            "grammar.zero-conditional"
+          ],
+          "prompt": "If you heat ice, it ___ . (melt)",
+          "answers": [
+            "melts"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u13.d01.ex.g.02",
+          "instruction": {
+            "en": "Both verbs present simple.",
+            "ru": "Оба глагола в present simple."
+          },
+          "tags": [
+            "grammar.zero-conditional"
+          ],
+          "prompt": "Plants die if they ___ get water. (not)",
+          "answers": [
+            "don't",
+            "do not"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u13.d01.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct form.",
+            "ru": "Выбери верную форму."
+          },
+          "tags": [
+            "grammar.zero-conditional"
+          ],
+          "prompt": "If it rains, the ground ___ wet.",
+          "options": [
+            "gets",
+            "will get",
+            "get"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u13.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.zero-conditional"
+          ],
+          "variants": [
+            "If you heat ice, it will melt.",
+            "If you heat ice, it melts."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u13.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the nature word and the translation.",
+            "ru": "Сопоставь слово о природе и перевод."
+          },
+          "tags": [
+            "vocab.nature"
+          ],
+          "pairs": [
+            {
+              "left": "forest",
+              "right": "лес"
+            },
+            {
+              "left": "river",
+              "right": "река"
+            },
+            {
+              "left": "mountain",
+              "right": "гора"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u13.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.zero-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Если светит солнце, лёд тает.",
+          "answers": [
+            "If the sun shines, the ice melts.",
+            "If the sun shines, ice melts."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,455 @@
+{
+  "id": "u13.d04",
+  "title": {
+    "en": "Someone is at the door",
+    "ru": "Кто-то у двери"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.indefinite-pronouns",
+    "vocab.feelings",
+    "pronunciation"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u13.d04.vocab",
+      "title": {
+        "en": "Feelings & reactions",
+        "ru": "Чувства и реакции"
+      },
+      "words": [
+        {
+          "word": "surprised",
+          "ru": "удивлённый",
+          "ipa": "/sərˈpraɪzd/",
+          "example": "I was surprised.",
+          "exampleRu": "Я был удивлён.",
+          "audio": {
+            "src": "media/audio/u13.d04.vocab.surprised.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "worried",
+          "ru": "обеспокоенный",
+          "ipa": "/ˈwʌrid/",
+          "example": "She looks worried.",
+          "exampleRu": "Она выглядит обеспокоенной.",
+          "audio": {
+            "src": "media/audio/u13.d04.vocab.worried.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "excited",
+          "ru": "взволнованный (радостно)",
+          "ipa": "/ɪkˈsaɪtɪd/",
+          "example": "The kids are excited.",
+          "exampleRu": "Дети в восторге.",
+          "audio": {
+            "src": "media/audio/u13.d04.vocab.excited.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "afraid",
+          "ru": "испуганный",
+          "ipa": "/əˈfreɪd/",
+          "example": "Don't be afraid.",
+          "exampleRu": "Не бойся.",
+          "audio": {
+            "src": "media/audio/u13.d04.vocab.afraid.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "glad",
+          "ru": "радостный, рад",
+          "ipa": "/ɡlæd/",
+          "example": "I'm glad to see you.",
+          "exampleRu": "Рад тебя видеть.",
+          "audio": {
+            "src": "media/audio/u13.d04.vocab.glad.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "upset",
+          "ru": "расстроенный",
+          "ipa": "/ʌpˈset/",
+          "example": "He was upset.",
+          "exampleRu": "Он был расстроен.",
+          "audio": {
+            "src": "media/audio/u13.d04.vocab.upset.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "calm",
+          "ru": "спокойный",
+          "ipa": "/kɑːm/",
+          "example": "Stay calm.",
+          "exampleRu": "Сохраняй спокойствие.",
+          "audio": {
+            "src": "media/audio/u13.d04.vocab.calm.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "proud",
+          "ru": "гордый",
+          "ipa": "/praʊd/",
+          "example": "I'm proud of you.",
+          "exampleRu": "Я горжусь тобой.",
+          "audio": {
+            "src": "media/audio/u13.d04.vocab.proud.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "someone",
+          "ru": "кто-то",
+          "ipa": "/ˈsʌmwʌn/",
+          "example": "Someone is here.",
+          "exampleRu": "Здесь кто-то есть.",
+          "audio": {
+            "src": "media/audio/u13.d04.vocab.someone.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "nothing",
+          "ru": "ничего",
+          "ipa": "/ˈnʌθɪŋ/",
+          "example": "There is nothing here.",
+          "exampleRu": "Здесь ничего нет.",
+          "audio": {
+            "src": "media/audio/u13.d04.vocab.nothing.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u13.d04.grammar",
+      "title": {
+        "en": "Indefinite pronouns",
+        "ru": "Неопределённые местоимения"
+      },
+      "rule": {
+        "en": "Use some- in positive sentences, any- in questions and negatives: someone/anyone/no one (people), something/anything/nothing (things), somewhere/anywhere (places).",
+        "ru": "some- — в утверждениях, any- — в вопросах и отрицаниях: someone/anyone/no one (люди), something/anything/nothing (вещи), somewhere/anywhere (места)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "some- (positive)",
+            "ru": "some- (утверждение)"
+          },
+          "formula": "someone · something · somewhere",
+          "examples": [
+            {
+              "en": "Someone is at the door.",
+              "ru": "Кто-то у двери."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "any- (question/neg)",
+            "ru": "any- (вопрос/отриц.)"
+          },
+          "formula": "anyone · anything · anywhere",
+          "examples": [
+            {
+              "en": "Is there anything to eat?",
+              "ru": "Есть что-нибудь поесть?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "no- (= not any)",
+            "ru": "no- (= not any)"
+          },
+          "formula": "no one · nothing · nowhere",
+          "examples": [
+            {
+              "en": "There is nothing in the box.",
+              "ru": "В коробке ничего нет."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Indefinite pronouns take a singular verb: \"Everyone is here\", not \"are\".",
+          "ru": "Неопределённые местоимения — с глаголом в ед. ч.: \"Everyone is here\", не \"are\"."
+        },
+        {
+          "en": "Use \"anything\" with a negative: \"I don't have anything\", not \"nothing\".",
+          "ru": "С отрицанием — \"anything\": \"I don't have anything\", а не \"nothing\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u13.d04.reading",
+      "title": {
+        "en": "A strange evening",
+        "ru": "Странный вечер"
+      },
+      "blocks": [
+        {
+          "id": "u13.d04.reading.b1",
+          "en": "It was late and I was a little worried. Suddenly, someone knocked at the door. \"Is anyone there?\" I asked. Nobody answered. I heard nothing.",
+          "ru": "Было поздно, и я немного нервничал. Вдруг кто-то постучал в дверь. «Есть кто-нибудь?» — спросил я. Никто не ответил. Я ничего не услышал.",
+          "audio": {
+            "src": "media/audio/u13.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u13.d04.reading.b2",
+          "en": "I opened the door. There was nobody outside, but there was something on the floor — a small box. Inside was a note from a friend. I was surprised and glad.",
+          "ru": "Я открыл дверь. Снаружи никого не было, но что-то лежало на полу — маленькая коробка. Внутри записка от друга. Я был удивлён и рад.",
+          "audio": {
+            "src": "media/audio/u13.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "knock",
+          "ru": "стучать",
+          "ipa": "/nɒk/"
+        },
+        {
+          "word": "note",
+          "ru": "записка",
+          "ipa": "/noʊt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u13.d04.listening",
+      "title": {
+        "en": "Is there anyone?",
+        "ru": "Есть кто-нибудь?"
+      },
+      "audio": {
+        "src": "media/audio/u13.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Is there anyone in the office?",
+          "ru": "В офисе кто-нибудь есть?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "No, there's no one here.",
+          "ru": "Нет, здесь никого нет."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Is there anything on my desk?",
+          "ru": "На моём столе что-нибудь есть?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "There's something — a letter for you.",
+          "ru": "Кое-что есть — письмо для тебя."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u13.d04.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What is on the desk?",
+            "ru": "Что на столе?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.indefinite-pronouns"
+          ],
+          "prompt": "There is ___ — a letter.",
+          "options": [
+            "something",
+            "nothing",
+            "anyone"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u13.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u13.d04.ex.c.01",
+          "instruction": {
+            "en": "Positive sentence.",
+            "ru": "Утверждение."
+          },
+          "tags": [
+            "grammar.indefinite-pronouns"
+          ],
+          "prompt": "___ is at the door.",
+          "options": [
+            "Someone",
+            "Anyone",
+            "Nothing"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u13.d04.ex.c.02",
+          "instruction": {
+            "en": "Question.",
+            "ru": "Вопрос."
+          },
+          "tags": [
+            "grammar.indefinite-pronouns"
+          ],
+          "prompt": "Is there ___ to eat?",
+          "options": [
+            "anything",
+            "something",
+            "nothing"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u13.d04.ex.g.01",
+          "instruction": {
+            "en": "Negative meaning.",
+            "ru": "Отрицательный смысл."
+          },
+          "tags": [
+            "grammar.indefinite-pronouns"
+          ],
+          "prompt": "There is ___ in the box. It's empty.",
+          "answers": [
+            "nothing"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u13.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.indefinite-pronouns"
+          ],
+          "variants": [
+            "I don't have nothing.",
+            "I don't have anything."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u13.d04.ex.mp.01",
+          "instruction": {
+            "en": "Listen — which word do you hear?",
+            "ru": "Послушай — какое слово ты слышишь?"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u13.d04.ex.mp.01.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "bad",
+            "bed"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u13.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.indefinite-pronouns",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Здесь кто-то есть.",
+          "answers": [
+            "Someone is here.",
+            "There is someone here."
+          ]
+        }
+      ]
+    }
+  ]
+}

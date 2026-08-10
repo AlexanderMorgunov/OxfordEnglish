@@ -1,0 +1,461 @@
+{
+  "id": "u13.d05",
+  "title": {
+    "en": "I think so too",
+    "ru": "Я тоже так думаю"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "functions.opinions",
+    "grammar.so-neither",
+    "grammar.question-tags",
+    "grammar.dependent-prepositions",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u13.d05.vocab",
+      "title": {
+        "en": "Opinions & agreeing",
+        "ru": "Мнения и согласие"
+      },
+      "words": [
+        {
+          "word": "agree",
+          "ru": "соглашаться",
+          "ipa": "/əˈɡriː/",
+          "example": "I agree with you.",
+          "exampleRu": "Я с тобой согласен.",
+          "audio": {
+            "src": "media/audio/u13.d05.vocab.agree.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "disagree",
+          "ru": "не соглашаться",
+          "ipa": "/ˌdɪsəˈɡriː/",
+          "example": "I disagree.",
+          "exampleRu": "Я не согласен.",
+          "audio": {
+            "src": "media/audio/u13.d05.vocab.disagree.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "opinion",
+          "ru": "мнение",
+          "ipa": "/əˈpɪnjən/",
+          "example": "In my opinion, it's true.",
+          "exampleRu": "По-моему, это правда.",
+          "audio": {
+            "src": "media/audio/u13.d05.vocab.opinion.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "think",
+          "ru": "думать, считать",
+          "ipa": "/θɪŋk/",
+          "example": "I think it's a good idea.",
+          "exampleRu": "Думаю, это хорошая идея.",
+          "audio": {
+            "src": "media/audio/u13.d05.vocab.think.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "right",
+          "ru": "правильный, прав",
+          "ipa": "/raɪt/",
+          "example": "You are right.",
+          "exampleRu": "Ты прав.",
+          "audio": {
+            "src": "media/audio/u13.d05.vocab.right.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wrong",
+          "ru": "неправильный",
+          "ipa": "/rɒŋ/",
+          "example": "I think that's wrong.",
+          "exampleRu": "Думаю, это неправильно.",
+          "audio": {
+            "src": "media/audio/u13.d05.vocab.wrong.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "true",
+          "ru": "правдивый, верный",
+          "ipa": "/truː/",
+          "example": "That's true.",
+          "exampleRu": "Это правда.",
+          "audio": {
+            "src": "media/audio/u13.d05.vocab.true.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "interested in",
+          "ru": "интересующийся (чем-то)",
+          "ipa": "/ˈɪntrəstɪd ɪn/",
+          "example": "I'm interested in music.",
+          "exampleRu": "Я интересуюсь музыкой.",
+          "audio": {
+            "src": "media/audio/u13.d05.vocab.interestedin.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "good at",
+          "ru": "хорош в (чём-то)",
+          "ipa": "/ɡʊd æt/",
+          "example": "She is good at maths.",
+          "exampleRu": "Она хороша в математике.",
+          "audio": {
+            "src": "media/audio/u13.d05.vocab.goodat.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "afraid of",
+          "ru": "боящийся (чего-то)",
+          "ipa": "/əˈfreɪd əv/",
+          "example": "He is afraid of dogs.",
+          "exampleRu": "Он боится собак.",
+          "audio": {
+            "src": "media/audio/u13.d05.vocab.afraidof.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u13.d05.grammar",
+      "title": {
+        "en": "Opinions · so/neither do I · question tags",
+        "ru": "Мнения · so/neither do I · вопросы-концовки"
+      },
+      "rule": {
+        "en": "Give an opinion with \"I think…\" / \"In my opinion…\". Agree with \"So do I\" (positive) and \"Neither do I\" (negative). Check with a question tag: \"…, isn't it?\".",
+        "ru": "Мнение — \"I think…\" / \"In my opinion…\". Согласие — \"So do I\" (в плюс) и \"Neither do I\" (в минус). Уточнение — вопрос-концовка: \"…, isn't it?\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "opinion",
+            "ru": "мнение"
+          },
+          "formula": "I think … / In my opinion …",
+          "examples": [
+            {
+              "en": "I think English is useful.",
+              "ru": "Думаю, английский полезен."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "so / neither",
+            "ru": "so / neither"
+          },
+          "formula": "So do I. · Neither do I.",
+          "examples": [
+            {
+              "en": "I like tea. — So do I. I don't smoke. — Neither do I.",
+              "ru": "Я люблю чай. — И я. Я не курю. — И я нет."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "question tag",
+            "ru": "вопрос-концовка"
+          },
+          "formula": "positive sentence, negative tag?",
+          "examples": [
+            {
+              "en": "It's cold today, isn't it?",
+              "ru": "Сегодня холодно, не так ли?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Dependent prepositions are fixed: interested IN, good AT, afraid OF.",
+          "ru": "Предлоги при словах фиксированы: interested IN, good AT, afraid OF."
+        },
+        {
+          "en": "Positive sentence → negative tag: \"You like it, don't you?\"",
+          "ru": "Утверждение → отрицательная концовка: \"You like it, don't you?\""
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u13.d05.reading",
+      "title": {
+        "en": "A friendly argument",
+        "ru": "Дружеский спор"
+      },
+      "blocks": [
+        {
+          "id": "u13.d05.reading.b1",
+          "en": "\"I think winter is the best season,\" said Tom. \"Really? I don't agree,\" said Mia. \"In my opinion, summer is better.\" \"You love the sea, don't you?\" \"Yes, I do!\"",
+          "ru": "«Думаю, зима — лучшее время года», — сказал Том. «Правда? Не согласна», — сказала Мия. «По-моему, лето лучше». «Ты ведь любишь море?» «Да!»",
+          "audio": {
+            "src": "media/audio/u13.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u13.d05.reading.b2",
+          "en": "\"I'm interested in winter sports,\" said Tom. \"So am I, actually,\" said Mia. \"But I'm afraid of the cold.\" \"Neither of us likes storms, that's for sure!\" They both laughed.",
+          "ru": "«Мне интересны зимние виды спорта», — сказал Том. «Мне вообще-то тоже», — сказала Мия. «Но я боюсь холода». «Грозы точно никто из нас не любит!» Оба засмеялись.",
+          "audio": {
+            "src": "media/audio/u13.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "argument",
+          "ru": "спор",
+          "ipa": "/ˈɑːrɡjumənt/"
+        },
+        {
+          "word": "actually",
+          "ru": "на самом деле",
+          "ipa": "/ˈæktʃuəli/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u13.d05.listening",
+      "title": {
+        "en": "So do I",
+        "ru": "И я тоже"
+      },
+      "audio": {
+        "src": "media/audio/u13.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "I love autumn.",
+          "ru": "Я люблю осень."
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "So do I. It's beautiful, isn't it?",
+          "ru": "И я. Красиво, правда?"
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Yes. But I don't like the rain.",
+          "ru": "Да. Но я не люблю дождь."
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Neither do I. We agree on that!",
+          "ru": "И я нет. В этом мы согласны!"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u13.d05.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "How does she agree about autumn?",
+            "ru": "Как она соглашается про осень?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.so-neither"
+          ],
+          "prompt": "She says: \"___ do I\".",
+          "options": [
+            "So",
+            "Neither",
+            "Either"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u13.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u13.d05.ex.c.01",
+          "instruction": {
+            "en": "Agree (positive).",
+            "ru": "Согласись (плюс)."
+          },
+          "tags": [
+            "grammar.so-neither"
+          ],
+          "prompt": "I like coffee. — ___ do I.",
+          "options": [
+            "So",
+            "Neither",
+            "Also"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u13.d05.ex.c.02",
+          "instruction": {
+            "en": "Agree (negative).",
+            "ru": "Согласись (минус)."
+          },
+          "tags": [
+            "grammar.so-neither"
+          ],
+          "prompt": "I don't smoke. — ___ do I.",
+          "options": [
+            "Neither",
+            "So",
+            "Either"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u13.d05.ex.c.03",
+          "instruction": {
+            "en": "Dependent preposition.",
+            "ru": "Зависимый предлог."
+          },
+          "tags": [
+            "grammar.dependent-prepositions"
+          ],
+          "prompt": "She is good ___ maths.",
+          "options": [
+            "at",
+            "in",
+            "of"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u13.d05.ex.g.01",
+          "instruction": {
+            "en": "Question tag.",
+            "ru": "Вопрос-концовка."
+          },
+          "tags": [
+            "grammar.question-tags"
+          ],
+          "prompt": "It's cold today, ___ it?",
+          "answers": [
+            "isn't"
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u13.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the phrase and the translation.",
+            "ru": "Сопоставь выражение и перевод."
+          },
+          "tags": [
+            "grammar.dependent-prepositions"
+          ],
+          "pairs": [
+            {
+              "left": "interested in",
+              "right": "интересоваться"
+            },
+            {
+              "left": "afraid of",
+              "right": "бояться"
+            },
+            {
+              "left": "good at",
+              "right": "хорош в"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u13.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.opinions",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "По-моему, английский полезен.",
+          "answers": [
+            "In my opinion, English is useful.",
+            "I think English is useful."
+          ]
+        }
+      ]
+    }
+  ]
+}

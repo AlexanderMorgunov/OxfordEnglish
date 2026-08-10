@@ -1,0 +1,454 @@
+{
+  "id": "u13.d02",
+  "title": {
+    "en": "If it rains, we'll stay in",
+    "ru": "Если пойдёт дождь, останемся дома"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.first-conditional",
+    "vocab.seasons"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u13.d02.vocab",
+      "title": {
+        "en": "Seasons & weather",
+        "ru": "Времена года и погода"
+      },
+      "words": [
+        {
+          "word": "spring",
+          "ru": "весна",
+          "ipa": "/sprɪŋ/",
+          "example": "Flowers grow in spring.",
+          "exampleRu": "Весной растут цветы.",
+          "audio": {
+            "src": "media/audio/u13.d02.vocab.spring.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "summer",
+          "ru": "лето",
+          "ipa": "/ˈsʌmər/",
+          "example": "Summer is hot.",
+          "exampleRu": "Лето жаркое.",
+          "audio": {
+            "src": "media/audio/u13.d02.vocab.summer.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "autumn",
+          "ru": "осень",
+          "ipa": "/ˈɔːtəm/",
+          "example": "Leaves fall in autumn.",
+          "exampleRu": "Осенью падают листья.",
+          "audio": {
+            "src": "media/audio/u13.d02.vocab.autumn.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "winter",
+          "ru": "зима",
+          "ipa": "/ˈwɪntər/",
+          "example": "Winter is cold.",
+          "exampleRu": "Зима холодная.",
+          "audio": {
+            "src": "media/audio/u13.d02.vocab.winter.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "season",
+          "ru": "время года",
+          "ipa": "/ˈsiːzn/",
+          "example": "My favourite season is spring.",
+          "exampleRu": "Моё любимое время года — весна.",
+          "audio": {
+            "src": "media/audio/u13.d02.vocab.season.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "warm",
+          "ru": "тёплый",
+          "ipa": "/wɔːrm/",
+          "example": "It is warm today.",
+          "exampleRu": "Сегодня тепло.",
+          "audio": {
+            "src": "media/audio/u13.d02.vocab.warm.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cool",
+          "ru": "прохладный",
+          "ipa": "/kuːl/",
+          "example": "The evening is cool.",
+          "exampleRu": "Вечер прохладный.",
+          "audio": {
+            "src": "media/audio/u13.d02.vocab.cool.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "storm",
+          "ru": "буря, гроза",
+          "ipa": "/stɔːrm/",
+          "example": "A storm is coming.",
+          "exampleRu": "Приближается гроза.",
+          "audio": {
+            "src": "media/audio/u13.d02.vocab.storm.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sunshine",
+          "ru": "солнечный свет",
+          "ipa": "/ˈsʌnʃaɪn/",
+          "example": "I love the sunshine.",
+          "exampleRu": "Я люблю солнечный свет.",
+          "audio": {
+            "src": "media/audio/u13.d02.vocab.sunshine.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "umbrella",
+          "ru": "зонт",
+          "ipa": "/ʌmˈbrelə/",
+          "example": "Take an umbrella.",
+          "exampleRu": "Возьми зонт.",
+          "audio": {
+            "src": "media/audio/u13.d02.vocab.umbrella.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u13.d02.grammar",
+      "title": {
+        "en": "First conditional",
+        "ru": "Первый тип условия"
+      },
+      "rule": {
+        "en": "For a real future possibility use the first conditional: If + present simple, will + verb.",
+        "ru": "Для реальной возможности в будущем — первый тип: If + present simple, will + глагол."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "if + present, will",
+            "ru": "if + present, will"
+          },
+          "formula": "If + present simple, will + verb",
+          "examples": [
+            {
+              "en": "If it rains, we'll stay at home.",
+              "ru": "Если пойдёт дождь, мы останемся дома."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "won't",
+            "ru": "won't"
+          },
+          "formula": "If …, won't + verb",
+          "examples": [
+            {
+              "en": "If it's sunny, we won't take umbrellas.",
+              "ru": "Если будет солнечно, зонты не возьмём."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "question",
+            "ru": "вопрос"
+          },
+          "formula": "What will you do if …?",
+          "examples": [
+            {
+              "en": "What will you do if it snows?",
+              "ru": "Что ты будешь делать, если пойдёт снег?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "No \"will\" in the if-part: \"If it rains\", not \"If it will rain\".",
+          "ru": "В части с if нет \"will\": \"If it rains\", а не \"If it will rain\"."
+        },
+        {
+          "en": "Zero = always true; first = one future possibility.",
+          "ru": "Нулевой = всегда истина; первый = одна возможность в будущем."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u13.d02.reading",
+      "title": {
+        "en": "Weekend weather",
+        "ru": "Погода на выходных"
+      },
+      "blocks": [
+        {
+          "id": "u13.d02.reading.b1",
+          "en": "The weather is not sure this weekend. If it is sunny, we will go to the mountains. If it rains, we will stay at home and watch films.",
+          "ru": "На эти выходные погода неясная. Если будет солнечно, поедем в горы. Если пойдёт дождь, останемся дома и будем смотреть фильмы.",
+          "audio": {
+            "src": "media/audio/u13.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u13.d02.reading.b2",
+          "en": "If there is a storm, we won't drive at all. \"If you come with us, bring an umbrella,\" said Mia. \"It will be safer if we plan for the rain.\"",
+          "ru": "Если будет гроза, вообще не поедем. «Если поедешь с нами, возьми зонт», — сказала Мия. «Будет надёжнее, если рассчитаем на дождь».",
+          "audio": {
+            "src": "media/audio/u13.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "safe",
+          "ru": "безопасный",
+          "ipa": "/seɪf/"
+        },
+        {
+          "word": "plan",
+          "ru": "планировать",
+          "ipa": "/plæn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u13.d02.listening",
+      "title": {
+        "en": "If it snows…",
+        "ru": "Если пойдёт снег…"
+      },
+      "audio": {
+        "src": "media/audio/u13.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "What will you do if it snows tomorrow?",
+          "ru": "Что ты будешь делать, если завтра пойдёт снег?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "If it snows, I'll stay at home.",
+          "ru": "Если пойдёт снег, останусь дома."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "And if it's sunny?",
+          "ru": "А если будет солнечно?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "If it's sunny, we'll go skiing.",
+          "ru": "Если будет солнечно, поедем кататься на лыжах."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u13.d02.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What will they do if it is sunny?",
+            "ru": "Что они сделают, если будет солнечно?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.first-conditional"
+          ],
+          "prompt": "If it's sunny, they will go ___ .",
+          "options": [
+            "skiing",
+            "home",
+            "shopping"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u13.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u13.d02.ex.g.01",
+          "instruction": {
+            "en": "The if-part: present simple.",
+            "ru": "Часть с if: present simple."
+          },
+          "tags": [
+            "grammar.first-conditional"
+          ],
+          "prompt": "If it ___ , we will stay in. (rain)",
+          "answers": [
+            "rains"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u13.d02.ex.g.02",
+          "instruction": {
+            "en": "The result: will + verb.",
+            "ru": "Результат: will + глагол."
+          },
+          "tags": [
+            "grammar.first-conditional"
+          ],
+          "prompt": "If it is sunny, we ___ to the park. (go)",
+          "answers": [
+            "will go",
+            "'ll go"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u13.d02.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct form.",
+            "ru": "Выбери верную форму."
+          },
+          "tags": [
+            "grammar.first-conditional"
+          ],
+          "prompt": "If you help me, I ___ finish faster.",
+          "options": [
+            "will",
+            "am",
+            "do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u13.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.first-conditional"
+          ],
+          "variants": [
+            "If it will rain, we will stay in.",
+            "If it rains, we will stay in."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u13.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the season and the translation.",
+            "ru": "Сопоставь время года и перевод."
+          },
+          "tags": [
+            "vocab.seasons"
+          ],
+          "pairs": [
+            {
+              "left": "spring",
+              "right": "весна"
+            },
+            {
+              "left": "autumn",
+              "right": "осень"
+            },
+            {
+              "left": "winter",
+              "right": "зима"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u13.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.first-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Если пойдёт дождь, мы останемся дома.",
+          "answers": [
+            "If it rains, we will stay at home.",
+            "If it rains, we'll stay home."
+          ]
+        }
+      ]
+    }
+  ]
+}
