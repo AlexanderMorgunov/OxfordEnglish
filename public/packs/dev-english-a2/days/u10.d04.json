@@ -1,0 +1,458 @@
+{
+  "id": "u10.d04",
+  "title": {
+    "en": "Let's meet at six",
+    "ru": "Давай встретимся в шесть"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.shall-lets",
+    "grammar.future-time-clauses",
+    "vocab.plans",
+    "pronunciation"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u10.d04.vocab",
+      "title": {
+        "en": "Arranging to meet",
+        "ru": "Договариваемся о встрече"
+      },
+      "words": [
+        {
+          "word": "meet",
+          "ru": "встречать(ся)",
+          "ipa": "/miːt/",
+          "example": "Let's meet at six.",
+          "exampleRu": "Давай встретимся в шесть.",
+          "audio": {
+            "src": "media/audio/u10.d04.vocab.meet.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "arrange",
+          "ru": "договариваться",
+          "ipa": "/əˈreɪndʒ/",
+          "example": "Let's arrange a time.",
+          "exampleRu": "Давай договоримся о времени.",
+          "audio": {
+            "src": "media/audio/u10.d04.vocab.arrange.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "arrive",
+          "ru": "прибывать",
+          "ipa": "/əˈraɪv/",
+          "example": "Call me when you arrive.",
+          "exampleRu": "Позвони, когда приедешь.",
+          "audio": {
+            "src": "media/audio/u10.d04.vocab.arrive.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ready",
+          "ru": "готовый",
+          "ipa": "/ˈredi/",
+          "example": "I'll call when I'm ready.",
+          "exampleRu": "Я позвоню, когда буду готов.",
+          "audio": {
+            "src": "media/audio/u10.d04.vocab.ready.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wait",
+          "ru": "ждать",
+          "ipa": "/weɪt/",
+          "example": "Wait for me at the door.",
+          "exampleRu": "Жди меня у двери.",
+          "audio": {
+            "src": "media/audio/u10.d04.vocab.wait.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "then",
+          "ru": "тогда, потом",
+          "ipa": "/ðen/",
+          "example": "See you then.",
+          "exampleRu": "Тогда до встречи.",
+          "audio": {
+            "src": "media/audio/u10.d04.vocab.then.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "shall",
+          "ru": "(предложение) давай",
+          "ipa": "/ʃæl/",
+          "example": "Shall we go?",
+          "exampleRu": "Пойдём?",
+          "audio": {
+            "src": "media/audio/u10.d04.vocab.shall.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "idea",
+          "ru": "идея",
+          "ipa": "/aɪˈdɪə/",
+          "example": "Good idea!",
+          "exampleRu": "Хорошая идея!",
+          "audio": {
+            "src": "media/audio/u10.d04.vocab.idea.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "as soon as",
+          "ru": "как только",
+          "ipa": "/əz ˈsuːn əz/",
+          "example": "I'll come as soon as I can.",
+          "exampleRu": "Я приду, как только смогу.",
+          "audio": {
+            "src": "media/audio/u10.d04.vocab.assoonas.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "before",
+          "ru": "перед, до",
+          "ipa": "/bɪˈfɔːr/",
+          "example": "Call before you leave.",
+          "exampleRu": "Позвони перед уходом.",
+          "audio": {
+            "src": "media/audio/u10.d04.vocab.before.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u10.d04.grammar",
+      "title": {
+        "en": "Suggestions · future time clauses",
+        "ru": "Предложения · придаточные времени"
+      },
+      "rule": {
+        "en": "Suggest with \"Shall we…?\", \"Let's + verb\", \"Why don't we…?\". After when / as soon as / before / after use the present simple, not will.",
+        "ru": "Предлагай: \"Shall we…?\", \"Let's + глагол\", \"Why don't we…?\". После when / as soon as / before / after — present simple, не will."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "suggest",
+            "ru": "предложить"
+          },
+          "formula": "Shall we…? · Let's + verb",
+          "examples": [
+            {
+              "en": "Shall we meet at six? Let's have coffee.",
+              "ru": "Встретимся в шесть? Давай выпьем кофе."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "time clause",
+            "ru": "придаточное времени"
+          },
+          "formula": "when/as soon as + present simple",
+          "examples": [
+            {
+              "en": "I'll call you when I arrive.",
+              "ru": "Я позвоню, когда приеду."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "before / after",
+            "ru": "before / after"
+          },
+          "formula": "before/after + present simple",
+          "examples": [
+            {
+              "en": "Text me before you leave.",
+              "ru": "Напиши перед уходом."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "No \"will\" in the time clause: \"when I arrive\", not \"when I will arrive\".",
+          "ru": "В придаточном времени нет \"will\": \"when I arrive\", а не \"when I will arrive\"."
+        },
+        {
+          "en": "After \"Let's\" use the base verb: \"Let's go\", not \"Let's to go\".",
+          "ru": "После \"Let's\" — начальная форма: \"Let's go\", а не \"Let's to go\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u10.d04.reading",
+      "title": {
+        "en": "Making a plan",
+        "ru": "Договариваемся"
+      },
+      "blocks": [
+        {
+          "id": "u10.d04.reading.b1",
+          "en": "\"Shall we meet tomorrow?\" \"Good idea. Let's meet at the café at six.\" \"Great. I'll call you when I leave the office.\"",
+          "ru": "«Встретимся завтра?» «Хорошая идея. Давай в кафе в шесть». «Отлично. Я позвоню, когда выйду из офиса».",
+          "audio": {
+            "src": "media/audio/u10.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u10.d04.reading.b2",
+          "en": "\"And text me as soon as you arrive, so I know you're near.\" \"Sure. See you then!\" \"See you tomorrow. Don't be late!\"",
+          "ru": "«И напиши, как только приедешь, чтобы я знал, что ты рядом». «Конечно. Тогда до встречи!» «До завтра. Не опаздывай!»",
+          "audio": {
+            "src": "media/audio/u10.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "office",
+          "ru": "офис",
+          "ipa": "/ˈɒfɪs/"
+        },
+        {
+          "word": "leave",
+          "ru": "уходить, покидать",
+          "ipa": "/liːv/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u10.d04.listening",
+      "title": {
+        "en": "Shall we?",
+        "ru": "Может, встретимся?"
+      },
+      "audio": {
+        "src": "media/audio/u10.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Shall we go to the cinema tonight?",
+          "ru": "Сходим сегодня в кино?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Good idea! Let's meet at seven.",
+          "ru": "Хорошая идея! Давай в семь."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Perfect. I'll text you when I get there.",
+          "ru": "Отлично. Я напишу, когда буду там."
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Great. See you then!",
+          "ru": "Класс. Тогда до встречи!"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u10.d04.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What time do they arrange to meet?",
+            "ru": "На какое время договариваются?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.shall-lets"
+          ],
+          "prompt": "Let's meet at ___ .",
+          "options": [
+            "seven",
+            "six",
+            "eight"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u10.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u10.d04.ex.c.01",
+          "instruction": {
+            "en": "Make a suggestion.",
+            "ru": "Сделай предложение."
+          },
+          "tags": [
+            "grammar.shall-lets"
+          ],
+          "prompt": "___ we meet at six?",
+          "options": [
+            "Shall",
+            "Do",
+            "Are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d04.ex.g.01",
+          "instruction": {
+            "en": "Suggest with let's.",
+            "ru": "Предложи через let's."
+          },
+          "tags": [
+            "grammar.shall-lets"
+          ],
+          "prompt": "___ have a coffee. (let us)",
+          "answers": [
+            "Let's",
+            "Let us"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u10.d04.ex.c.02",
+          "instruction": {
+            "en": "Future time clause — no will.",
+            "ru": "Придаточное времени — без will."
+          },
+          "tags": [
+            "grammar.future-time-clauses"
+          ],
+          "prompt": "I'll call you when I ___ home.",
+          "options": [
+            "get",
+            "will get",
+            "getting"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u10.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.future-time-clauses"
+          ],
+          "variants": [
+            "I will call you when I will arrive.",
+            "I will call you when I arrive."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u10.d04.ex.mp.01",
+          "instruction": {
+            "en": "Listen — which word do you hear?",
+            "ru": "Послушай — какое слово ты слышишь?"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u10.d04.ex.mp.01.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "meet",
+            "met"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u10.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.future-time-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я позвоню, когда приеду.",
+          "answers": [
+            "I will call you when I arrive.",
+            "I'll call you when I arrive.",
+            "I will call when I arrive."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,454 @@
+{
+  "id": "u10.d02",
+  "title": {
+    "en": "I think it will rain",
+    "ru": "Думаю, будет дождь"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.will",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u10.d02.vocab",
+      "title": {
+        "en": "Predictions & decisions",
+        "ru": "Прогнозы и решения"
+      },
+      "words": [
+        {
+          "word": "maybe",
+          "ru": "может быть",
+          "ipa": "/ˈmeɪbi/",
+          "example": "Maybe it will rain.",
+          "exampleRu": "Может быть, пойдёт дождь.",
+          "audio": {
+            "src": "media/audio/u10.d02.vocab.maybe.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "probably",
+          "ru": "вероятно",
+          "ipa": "/ˈprɒbəbli/",
+          "example": "She will probably come.",
+          "exampleRu": "Она, вероятно, придёт.",
+          "audio": {
+            "src": "media/audio/u10.d02.vocab.probably.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sure",
+          "ru": "уверенный",
+          "ipa": "/ʃʊər/",
+          "example": "I am sure it will be fine.",
+          "exampleRu": "Я уверен, всё будет хорошо.",
+          "audio": {
+            "src": "media/audio/u10.d02.vocab.sure.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "promise",
+          "ru": "обещать; обещание",
+          "ipa": "/ˈprɒmɪs/",
+          "example": "I promise I will call.",
+          "exampleRu": "Обещаю, я позвоню.",
+          "audio": {
+            "src": "media/audio/u10.d02.vocab.promise.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "decide",
+          "ru": "решать",
+          "ipa": "/dɪˈsaɪd/",
+          "example": "I can't decide.",
+          "exampleRu": "Я не могу решить.",
+          "audio": {
+            "src": "media/audio/u10.d02.vocab.decide.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "future",
+          "ru": "будущее",
+          "ipa": "/ˈfjuːtʃər/",
+          "example": "No one knows the future.",
+          "exampleRu": "Никто не знает будущего.",
+          "audio": {
+            "src": "media/audio/u10.d02.vocab.future.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "free",
+          "ru": "свободный",
+          "ipa": "/friː/",
+          "example": "Are you free tonight?",
+          "exampleRu": "Ты свободен сегодня вечером?",
+          "audio": {
+            "src": "media/audio/u10.d02.vocab.free.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "busy",
+          "ru": "занятой",
+          "ipa": "/ˈbɪzi/",
+          "example": "I will be busy tomorrow.",
+          "exampleRu": "Завтра я буду занят.",
+          "audio": {
+            "src": "media/audio/u10.d02.vocab.busy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "later",
+          "ru": "позже",
+          "ipa": "/ˈleɪtər/",
+          "example": "I will call you later.",
+          "exampleRu": "Я позвоню тебе позже.",
+          "audio": {
+            "src": "media/audio/u10.d02.vocab.later.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tonight",
+          "ru": "сегодня вечером",
+          "ipa": "/təˈnaɪt/",
+          "example": "What will you do tonight?",
+          "exampleRu": "Что ты будешь делать вечером?",
+          "audio": {
+            "src": "media/audio/u10.d02.vocab.tonight.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u10.d02.grammar",
+      "title": {
+        "en": "will / won't",
+        "ru": "will / won't"
+      },
+      "rule": {
+        "en": "Use \"will + verb\" for predictions, quick decisions, offers and promises. Negative is \"won't\". Often with I think, maybe, probably.",
+        "ru": "\"will + глагол\" — прогнозы, мгновенные решения, предложения, обещания. Отрицание — \"won't\". Часто с I think, maybe, probably."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "prediction",
+            "ru": "прогноз"
+          },
+          "formula": "I think … will …",
+          "examples": [
+            {
+              "en": "I think it will rain.",
+              "ru": "Думаю, будет дождь."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "decision / offer",
+            "ru": "решение / предложение"
+          },
+          "formula": "I'll + verb (now)",
+          "examples": [
+            {
+              "en": "You look tired. I'll help you.",
+              "ru": "Ты устал. Я помогу."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "won't",
+            "ru": "won't"
+          },
+          "formula": "will not = won't",
+          "examples": [
+            {
+              "en": "Don't worry, I won't be late.",
+              "ru": "Не волнуйся, я не опоздаю."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use the base verb after will: \"will go\", not \"will to go\".",
+          "ru": "После will — начальная форма: \"will go\", а не \"will to go\"."
+        },
+        {
+          "en": "Same form for all persons: he will, they will.",
+          "ru": "Форма одна для всех лиц: he will, they will."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u10.d02.reading",
+      "title": {
+        "en": "Tomorrow",
+        "ru": "Завтра"
+      },
+      "blocks": [
+        {
+          "id": "u10.d02.reading.b1",
+          "en": "The weather report says it will be cold tomorrow. It will probably rain in the afternoon, so I won't go for a long walk.",
+          "ru": "Прогноз говорит, что завтра будет холодно. Днём, вероятно, пойдёт дождь, поэтому я не пойду на долгую прогулку.",
+          "audio": {
+            "src": "media/audio/u10.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u10.d02.reading.b2",
+          "en": "Maybe I will stay at home and read. My friend says, \"Don't worry, I will visit you. I'll bring some coffee and we'll watch a film.\"",
+          "ru": "Наверное, я останусь дома и почитаю. Друг говорит: «Не переживай, я зайду. Принесу кофе, и мы посмотрим фильм».",
+          "audio": {
+            "src": "media/audio/u10.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "report",
+          "ru": "сводка, отчёт",
+          "ipa": "/rɪˈpɔːrt/"
+        },
+        {
+          "word": "afternoon",
+          "ru": "день (после полудня)",
+          "ipa": "/ˌɑːftərˈnuːn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u10.d02.listening",
+      "title": {
+        "en": "I'll help you",
+        "ru": "Я помогу"
+      },
+      "audio": {
+        "src": "media/audio/u10.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "These bags are so heavy!",
+          "ru": "Эти сумки такие тяжёлые!"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Don't worry, I'll carry one.",
+          "ru": "Не волнуйся, я понесу одну."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Thank you! Do you think it will rain?",
+          "ru": "Спасибо! Думаешь, пойдёт дождь?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Maybe. I think it will be cloudy.",
+          "ru": "Может быть. Думаю, будет облачно."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u10.d02.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What does he offer to do?",
+            "ru": "Что он предлагает сделать?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.will"
+          ],
+          "prompt": "He says: \"I'll ___ one\".",
+          "options": [
+            "carry",
+            "buy",
+            "take"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u10.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u10.d02.ex.g.01",
+          "instruction": {
+            "en": "Prediction with will.",
+            "ru": "Прогноз с will."
+          },
+          "tags": [
+            "grammar.will"
+          ],
+          "prompt": "I think it ___ rain. (will)",
+          "answers": [
+            "will"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u10.d02.ex.c.01",
+          "instruction": {
+            "en": "Quick decision.",
+            "ru": "Мгновенное решение."
+          },
+          "tags": [
+            "grammar.will"
+          ],
+          "prompt": "You look tired. ___ help you.",
+          "options": [
+            "I'll",
+            "I going to",
+            "I am"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d02.ex.g.02",
+          "instruction": {
+            "en": "Negative (won't).",
+            "ru": "Отрицание (won't)."
+          },
+          "tags": [
+            "grammar.will"
+          ],
+          "prompt": "Don't worry, I ___ be late. (will not)",
+          "answers": [
+            "won't",
+            "will not"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u10.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.will"
+          ],
+          "variants": [
+            "I will to call you.",
+            "I will call you."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u10.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "probably",
+              "right": "вероятно"
+            },
+            {
+              "left": "promise",
+              "right": "обещать"
+            },
+            {
+              "left": "free",
+              "right": "свободный"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u10.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.will",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я позвоню тебе позже.",
+          "answers": [
+            "I will call you later.",
+            "I'll call you later."
+          ]
+        }
+      ]
+    }
+  ]
+}

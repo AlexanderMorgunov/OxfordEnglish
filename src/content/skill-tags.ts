@@ -48,6 +48,12 @@ export const SKILL_TAGS = [
   'grammar.superlatives',
   'grammar.as-as',
   'grammar.too-enough',
+  'grammar.going-to',
+  'grammar.will',
+  'grammar.will-vs-going-to',
+  'grammar.present-continuous-future',
+  'grammar.future-time-clauses',
+  'grammar.shall-lets',
 
   // functions (everyday communication)
   'functions.ordering',
@@ -59,6 +65,8 @@ export const SKILL_TAGS = [
   'functions.thanking',
   'functions.describing',
   'functions.shopping',
+  'functions.arrangements',
+  'functions.phone',
 
   // vocabulary (developer-life + everyday themes)
   'vocab.work',
@@ -82,6 +90,8 @@ export const SKILL_TAGS = [
   'vocab.shopping',
   'vocab.money',
   'vocab.personality',
+  'vocab.plans',
+  'vocab.phone',
 
   // reading
   'reading.gist',

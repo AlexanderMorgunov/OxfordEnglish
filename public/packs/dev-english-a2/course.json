@@ -232,7 +232,13 @@
         "en": "Making plans",
         "ru": "Планы"
       },
-      "dayIds": [],
+      "dayIds": [
+        "u10.d01",
+        "u10.d02",
+        "u10.d03",
+        "u10.d04",
+        "u10.d05"
+      ],
       "checkpoint": {
         "id": "u10.checkpoint",
         "title": {

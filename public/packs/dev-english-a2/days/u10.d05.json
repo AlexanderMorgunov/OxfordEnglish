@@ -1,0 +1,467 @@
+{
+  "id": "u10.d05",
+  "title": {
+    "en": "See you at six!",
+    "ru": "До встречи в шесть!"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "functions.phone",
+    "functions.arrangements",
+    "vocab.phone"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u10.d05.vocab",
+      "title": {
+        "en": "On the phone",
+        "ru": "По телефону"
+      },
+      "words": [
+        {
+          "word": "call",
+          "ru": "звонить; звонок",
+          "ipa": "/kɔːl/",
+          "example": "I'll call you tonight.",
+          "exampleRu": "Я позвоню тебе вечером.",
+          "audio": {
+            "src": "media/audio/u10.d05.vocab.call.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ring",
+          "ru": "звонить (по телефону)",
+          "ipa": "/rɪŋ/",
+          "example": "Ring me later.",
+          "exampleRu": "Позвони мне позже.",
+          "audio": {
+            "src": "media/audio/u10.d05.vocab.ring.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "phone",
+          "ru": "телефон; звонить",
+          "ipa": "/foʊn/",
+          "example": "My phone is off.",
+          "exampleRu": "Мой телефон выключен.",
+          "audio": {
+            "src": "media/audio/u10.d05.vocab.phone.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "message",
+          "ru": "сообщение",
+          "ipa": "/ˈmesɪdʒ/",
+          "example": "Can I leave a message?",
+          "exampleRu": "Можно оставить сообщение?",
+          "audio": {
+            "src": "media/audio/u10.d05.vocab.message.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "text",
+          "ru": "смс; писать смс",
+          "ipa": "/tekst/",
+          "example": "I'll text you.",
+          "exampleRu": "Я напишу тебе смс.",
+          "audio": {
+            "src": "media/audio/u10.d05.vocab.text.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "answer",
+          "ru": "отвечать",
+          "ipa": "/ˈɑːnsər/",
+          "example": "She didn't answer.",
+          "exampleRu": "Она не ответила.",
+          "audio": {
+            "src": "media/audio/u10.d05.vocab.answer.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "speak to",
+          "ru": "поговорить с",
+          "ipa": "/spiːk tuː/",
+          "example": "Can I speak to Anna?",
+          "exampleRu": "Можно поговорить с Анной?",
+          "audio": {
+            "src": "media/audio/u10.d05.vocab.speakto.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "call back",
+          "ru": "перезвонить",
+          "ipa": "/kɔːl bæk/",
+          "example": "I'll call you back.",
+          "exampleRu": "Я перезвоню.",
+          "audio": {
+            "src": "media/audio/u10.d05.vocab.callback.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "busy",
+          "ru": "занято (линия)",
+          "ipa": "/ˈbɪzi/",
+          "example": "The line is busy.",
+          "exampleRu": "Линия занята.",
+          "audio": {
+            "src": "media/audio/u10.d05.vocab.busy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hang up",
+          "ru": "вешать трубку",
+          "ipa": "/hæŋ ʌp/",
+          "example": "Don't hang up!",
+          "exampleRu": "Не вешай трубку!",
+          "audio": {
+            "src": "media/audio/u10.d05.vocab.hangup.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u10.d05.grammar",
+      "title": {
+        "en": "On the phone & arranging to meet",
+        "ru": "По телефону и договориться о встрече"
+      },
+      "rule": {
+        "en": "Answer with \"Hello, this is …\". Ask with \"Can I speak to …?\". Offer with \"Can I take a message?\" / \"I'll call back\". Arrange with \"Let's meet …\" / \"See you then\".",
+        "ru": "Отвечай: \"Hello, this is …\". Спрашивай: \"Can I speak to …?\". Предлагай: \"Can I take a message?\" / \"I'll call back\". Договаривайся: \"Let's meet …\" / \"See you then\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "answer / ask",
+            "ru": "ответ / просьба"
+          },
+          "formula": "This is … · Can I speak to …?",
+          "examples": [
+            {
+              "en": "Hello, this is Ben. Can I speak to Mia?",
+              "ru": "Алло, это Бен. Можно Мию?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "message",
+            "ru": "сообщение"
+          },
+          "formula": "Can I take a message? · I'll call back.",
+          "examples": [
+            {
+              "en": "She's out. Can I take a message?",
+              "ru": "Её нет. Передать что-нибудь?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "arrange",
+            "ru": "договориться"
+          },
+          "formula": "Let's meet … · See you then.",
+          "examples": [
+            {
+              "en": "Let's meet at six. See you then!",
+              "ru": "Давай в шесть. До встречи!"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "On the phone say \"This is Ben\", not \"I am Ben\".",
+          "ru": "По телефону — \"This is Ben\", а не \"I am Ben\"."
+        },
+        {
+          "en": "\"Can I speak to …?\" to ask for a person.",
+          "ru": "\"Can I speak to …?\" — чтобы попросить позвать человека."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u10.d05.reading",
+      "title": {
+        "en": "A phone call",
+        "ru": "Телефонный разговор"
+      },
+      "blocks": [
+        {
+          "id": "u10.d05.reading.b1",
+          "en": "\"Hello, this is Ben. Can I speak to Mia, please?\" \"I'm sorry, she's out. Can I take a message?\" \"Yes. Can you tell her I'll call back at six?\"",
+          "ru": "«Алло, это Бен. Можно Мию, пожалуйста?» «Извините, её нет. Передать что-нибудь?» «Да. Скажите, что я перезвоню в шесть».",
+          "audio": {
+            "src": "media/audio/u10.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u10.d05.reading.b2",
+          "en": "Later Ben called again. \"Hi Mia! Shall we meet tonight?\" \"Sure! Let's meet at the café at seven.\" \"Great. See you then!\"",
+          "ru": "Позже Бен позвонил снова. «Привет, Мия! Встретимся сегодня?» «Конечно! Давай в кафе в семь». «Отлично. До встречи!»",
+          "audio": {
+            "src": "media/audio/u10.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "out",
+          "ru": "вышел, отсутствует",
+          "ipa": "/aʊt/"
+        },
+        {
+          "word": "tell",
+          "ru": "сказать, передать",
+          "ipa": "/tel/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u10.d05.listening",
+      "title": {
+        "en": "Can I speak to Tom?",
+        "ru": "Можно Тома?"
+      },
+      "audio": {
+        "src": "media/audio/u10.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Hello, can I speak to Tom, please?",
+          "ru": "Алло, можно Тома, пожалуйста?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "He's not here right now. Can I take a message?",
+          "ru": "Его сейчас нет. Передать что-нибудь?"
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Yes, please tell him to call me back.",
+          "ru": "Да, попросите его перезвонить мне."
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Of course. I'll tell him.",
+          "ru": "Конечно. Я передам."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u10.d05.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What does the caller ask for?",
+            "ru": "О чём просит звонящий?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.phone"
+          ],
+          "prompt": "Please tell Tom to ___ .",
+          "options": [
+            "call back",
+            "wait",
+            "hang up"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u10.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u10.d05.ex.c.01",
+          "instruction": {
+            "en": "Answer the phone.",
+            "ru": "Ответь по телефону."
+          },
+          "tags": [
+            "functions.phone"
+          ],
+          "prompt": "Hello, ___ is Ben.",
+          "options": [
+            "this",
+            "it",
+            "I"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u10.d05.ex.o.01",
+          "instruction": {
+            "en": "Ask for a person.",
+            "ru": "Попроси позвать человека."
+          },
+          "tags": [
+            "functions.phone"
+          ],
+          "tokens": [
+            "Can",
+            "I",
+            "speak",
+            "to",
+            "Mia"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u10.d05.ex.c.02",
+          "instruction": {
+            "en": "Offer to take a message.",
+            "ru": "Предложи передать сообщение."
+          },
+          "tags": [
+            "functions.phone"
+          ],
+          "prompt": "She's out. Can I take a ___ ?",
+          "options": [
+            "message",
+            "text",
+            "call"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u10.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.phone"
+          ],
+          "variants": [
+            "Hello, I am Ben.",
+            "Hello, this is Ben."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u10.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.phone"
+          ],
+          "pairs": [
+            {
+              "left": "message",
+              "right": "сообщение"
+            },
+            {
+              "left": "call back",
+              "right": "перезвонить"
+            },
+            {
+              "left": "hang up",
+              "right": "вешать трубку"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u10.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.phone",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Можно поговорить с Анной?",
+          "answers": [
+            "Can I speak to Anna?",
+            "Can I speak to Anna, please?"
+          ]
+        }
+      ]
+    }
+  ]
+}

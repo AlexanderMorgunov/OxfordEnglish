@@ -1,0 +1,457 @@
+{
+  "id": "u10.d03",
+  "title": {
+    "en": "Are you doing anything Friday?",
+    "ru": "Ты занят(а) в пятницу?"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.will-vs-going-to",
+    "grammar.present-continuous-future",
+    "vocab.plans"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u10.d03.vocab",
+      "title": {
+        "en": "Dates & meetings",
+        "ru": "Встречи и даты"
+      },
+      "words": [
+        {
+          "word": "meeting",
+          "ru": "встреча, совещание",
+          "ipa": "/ˈmiːtɪŋ/",
+          "example": "I have a meeting at ten.",
+          "exampleRu": "У меня встреча в десять.",
+          "audio": {
+            "src": "media/audio/u10.d03.vocab.meeting.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "appointment",
+          "ru": "приём, запись",
+          "ipa": "/əˈpɔɪntmənt/",
+          "example": "a doctor's appointment",
+          "exampleRu": "приём у врача",
+          "audio": {
+            "src": "media/audio/u10.d03.vocab.appointment.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "party",
+          "ru": "вечеринка",
+          "ipa": "/ˈpɑːrti/",
+          "example": "We are having a party.",
+          "exampleRu": "Мы устраиваем вечеринку.",
+          "audio": {
+            "src": "media/audio/u10.d03.vocab.party.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dinner",
+          "ru": "ужин",
+          "ipa": "/ˈdɪnər/",
+          "example": "We are having dinner at eight.",
+          "exampleRu": "Мы ужинаем в восемь.",
+          "audio": {
+            "src": "media/audio/u10.d03.vocab.dinner.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "date",
+          "ru": "дата; свидание",
+          "ipa": "/deɪt/",
+          "example": "What is the date today?",
+          "exampleRu": "Какое сегодня число?",
+          "audio": {
+            "src": "media/audio/u10.d03.vocab.date.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "invite",
+          "ru": "приглашать",
+          "ipa": "/ɪnˈvaɪt/",
+          "example": "I will invite my friends.",
+          "exampleRu": "Я приглашу друзей.",
+          "audio": {
+            "src": "media/audio/u10.d03.vocab.invite.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "busy",
+          "ru": "занятой",
+          "ipa": "/ˈbɪzi/",
+          "example": "I am busy on Friday.",
+          "exampleRu": "Я занят в пятницу.",
+          "audio": {
+            "src": "media/audio/u10.d03.vocab.busy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "free",
+          "ru": "свободный",
+          "ipa": "/friː/",
+          "example": "Are you free tonight?",
+          "exampleRu": "Ты свободен сегодня вечером?",
+          "audio": {
+            "src": "media/audio/u10.d03.vocab.free.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tonight",
+          "ru": "сегодня вечером",
+          "ipa": "/təˈnaɪt/",
+          "example": "What are you doing tonight?",
+          "exampleRu": "Что ты делаешь сегодня вечером?",
+          "audio": {
+            "src": "media/audio/u10.d03.vocab.tonight.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tomorrow",
+          "ru": "завтра",
+          "ipa": "/təˈmɒroʊ/",
+          "example": "I am leaving tomorrow.",
+          "exampleRu": "Я уезжаю завтра.",
+          "audio": {
+            "src": "media/audio/u10.d03.vocab.tomorrow.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u10.d03.grammar",
+      "title": {
+        "en": "will vs going to · present continuous for arrangements",
+        "ru": "will vs going to · present continuous для договорённостей"
+      },
+      "rule": {
+        "en": "Use \"going to\" for a plan you already have, \"will\" for a decision you make now. Use the present continuous for fixed arrangements with a time or place.",
+        "ru": "\"going to\" — план, который уже есть; \"will\" — решение прямо сейчас. Present continuous — договорённость с указанием времени/места."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "going to (plan)",
+            "ru": "going to (план)"
+          },
+          "formula": "be going to + verb",
+          "examples": [
+            {
+              "en": "We are going to paint the flat.",
+              "ru": "Мы собираемся покрасить квартиру."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "will (now)",
+            "ru": "will (сейчас)"
+          },
+          "formula": "I'll + verb (decide now)",
+          "examples": [
+            {
+              "en": "The phone is ringing. I'll get it.",
+              "ru": "Телефон звонит. Я возьму."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "arrangement",
+            "ru": "договорённость"
+          },
+          "formula": "am/is/are + -ing + time",
+          "examples": [
+            {
+              "en": "I'm meeting Tom at six on Friday.",
+              "ru": "Я встречаюсь с Томом в шесть в пятницу."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "For a fixed arrangement with a time, the present continuous is natural: \"I'm seeing the doctor at 3\".",
+          "ru": "Для назначенной встречи со временем естественен present continuous: \"I'm seeing the doctor at 3\"."
+        },
+        {
+          "en": "A decision at the moment of speaking = will, not going to.",
+          "ru": "Решение в момент речи = will, не going to."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u10.d03.reading",
+      "title": {
+        "en": "A busy week",
+        "ru": "Насыщенная неделя"
+      },
+      "blocks": [
+        {
+          "id": "u10.d03.reading.b1",
+          "en": "Next week is busy. On Monday I'm seeing the dentist at nine. On Wednesday I'm meeting a client, and on Friday we're having a small party at home.",
+          "ru": "Следующая неделя насыщенная. В понедельник в девять я иду к стоматологу. В среду встречаюсь с клиентом, а в пятницу у нас дома небольшая вечеринка.",
+          "audio": {
+            "src": "media/audio/u10.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u10.d03.reading.b2",
+          "en": "I'm also going to start a new course soon. \"The bell is ringing — I'll open the door,\" said my brother. He is always ready to help.",
+          "ru": "Ещё я скоро собираюсь начать новый курс. «Звонок в дверь — я открою», — сказал брат. Он всегда готов помочь.",
+          "audio": {
+            "src": "media/audio/u10.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "dentist",
+          "ru": "стоматолог",
+          "ipa": "/ˈdentɪst/"
+        },
+        {
+          "word": "client",
+          "ru": "клиент",
+          "ipa": "/ˈklaɪənt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u10.d03.listening",
+      "title": {
+        "en": "Are you free on Friday?",
+        "ru": "Ты свободен в пятницу?"
+      },
+      "audio": {
+        "src": "media/audio/u10.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Are you free on Friday evening?",
+          "ru": "Ты свободен в пятницу вечером?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "No, I'm meeting my sister at seven.",
+          "ru": "Нет, я встречаюсь с сестрой в семь."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "OK. What about Saturday?",
+          "ru": "Хорошо. А в субботу?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Saturday is good. I'll call you then.",
+          "ru": "Суббота подходит. Я тебе тогда позвоню."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u10.d03.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "Why is he busy on Friday?",
+            "ru": "Почему он занят в пятницу?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.present-continuous-future"
+          ],
+          "prompt": "He is ___ his sister at seven.",
+          "options": [
+            "meeting",
+            "calling",
+            "inviting"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u10.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u10.d03.ex.c.01",
+          "instruction": {
+            "en": "Plan you already have.",
+            "ru": "План, который уже есть."
+          },
+          "tags": [
+            "grammar.will-vs-going-to"
+          ],
+          "prompt": "We ___ paint the flat next week. (plan)",
+          "options": [
+            "are going to",
+            "will",
+            "paint"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u10.d03.ex.c.02",
+          "instruction": {
+            "en": "Decision now.",
+            "ru": "Решение сейчас."
+          },
+          "tags": [
+            "grammar.will-vs-going-to"
+          ],
+          "prompt": "The phone is ringing. I ___ get it.",
+          "options": [
+            "'ll",
+            "am going to",
+            "getting"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d03.ex.g.01",
+          "instruction": {
+            "en": "Arrangement (present continuous).",
+            "ru": "Договорённость (present continuous)."
+          },
+          "tags": [
+            "grammar.present-continuous-future"
+          ],
+          "prompt": "I ___ Tom at six. (meet)",
+          "answers": [
+            "am meeting"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u10.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-continuous-future"
+          ],
+          "variants": [
+            "I will meet Tom at six tomorrow (fixed plan).",
+            "I'm meeting Tom at six tomorrow."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u10.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.plans"
+          ],
+          "pairs": [
+            {
+              "left": "meeting",
+              "right": "встреча"
+            },
+            {
+              "left": "appointment",
+              "right": "приём"
+            },
+            {
+              "left": "invite",
+              "right": "приглашать"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u10.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-continuous-future",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я встречаюсь с другом в семь.",
+          "answers": [
+            "I am meeting my friend at seven.",
+            "I'm meeting a friend at seven."
+          ]
+        }
+      ]
+    }
+  ]
+}

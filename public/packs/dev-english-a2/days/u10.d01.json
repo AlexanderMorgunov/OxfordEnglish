@@ -1,0 +1,454 @@
+{
+  "id": "u10.d01",
+  "title": {
+    "en": "What are you going to do?",
+    "ru": "Что ты собираешься делать?"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.going-to",
+    "vocab.plans"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u10.d01.vocab",
+      "title": {
+        "en": "Plans & ambitions",
+        "ru": "Планы и мечты"
+      },
+      "words": [
+        {
+          "word": "plan",
+          "ru": "план; планировать",
+          "ipa": "/plæn/",
+          "example": "What is your plan?",
+          "exampleRu": "Какой у тебя план?",
+          "audio": {
+            "src": "media/audio/u10.d01.vocab.plan.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "holiday",
+          "ru": "отпуск, каникулы",
+          "ipa": "/ˈhɒlədeɪ/",
+          "example": "We are going on holiday.",
+          "exampleRu": "Мы едем в отпуск.",
+          "audio": {
+            "src": "media/audio/u10.d01.vocab.holiday.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ambition",
+          "ru": "амбиция, стремление",
+          "ipa": "/æmˈbɪʃn/",
+          "example": "Her ambition is to travel.",
+          "exampleRu": "Её мечта — путешествовать.",
+          "audio": {
+            "src": "media/audio/u10.d01.vocab.ambition.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dream",
+          "ru": "мечта",
+          "ipa": "/driːm/",
+          "example": "It is my dream.",
+          "exampleRu": "Это моя мечта.",
+          "audio": {
+            "src": "media/audio/u10.d01.vocab.dream.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "future",
+          "ru": "будущее",
+          "ipa": "/ˈfjuːtʃər/",
+          "example": "Think about the future.",
+          "exampleRu": "Подумай о будущем.",
+          "audio": {
+            "src": "media/audio/u10.d01.vocab.future.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "goal",
+          "ru": "цель",
+          "ipa": "/ɡoʊl/",
+          "example": "My goal is to learn English.",
+          "exampleRu": "Моя цель — выучить английский.",
+          "audio": {
+            "src": "media/audio/u10.d01.vocab.goal.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "next",
+          "ru": "следующий",
+          "ipa": "/nekst/",
+          "example": "next week",
+          "exampleRu": "на следующей неделе",
+          "audio": {
+            "src": "media/audio/u10.d01.vocab.next.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "soon",
+          "ru": "скоро",
+          "ipa": "/suːn/",
+          "example": "See you soon.",
+          "exampleRu": "До скорого.",
+          "audio": {
+            "src": "media/audio/u10.d01.vocab.soon.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hope",
+          "ru": "надеяться",
+          "ipa": "/hoʊp/",
+          "example": "I hope to visit Paris.",
+          "exampleRu": "Надеюсь побывать в Париже.",
+          "audio": {
+            "src": "media/audio/u10.d01.vocab.hope.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "weekend",
+          "ru": "выходные",
+          "ipa": "/ˈwiːkend/",
+          "example": "What are your plans for the weekend?",
+          "exampleRu": "Какие планы на выходные?",
+          "audio": {
+            "src": "media/audio/u10.d01.vocab.weekend.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u10.d01.grammar",
+      "title": {
+        "en": "be going to",
+        "ru": "be going to"
+      },
+      "rule": {
+        "en": "Talk about plans and intentions with \"be going to + verb\". Form: am/is/are + going to + verb.",
+        "ru": "О планах и намерениях — \"be going to + глагол\". Форма: am/is/are + going to + глагол."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "positive",
+            "ru": "утверждение"
+          },
+          "formula": "am/is/are + going to + verb",
+          "examples": [
+            {
+              "en": "I am going to visit my family.",
+              "ru": "Я собираюсь навестить семью."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "negative",
+            "ru": "отрицание"
+          },
+          "formula": "am/is/are not + going to + verb",
+          "examples": [
+            {
+              "en": "We aren't going to travel this year.",
+              "ru": "В этом году мы не собираемся путешествовать."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "question",
+            "ru": "вопрос"
+          },
+          "formula": "What are you going to do?",
+          "examples": [
+            {
+              "en": "What are you going to do next week?",
+              "ru": "Что ты собираешься делать на следующей неделе?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Keep \"going to\" + base verb: \"going to go\", \"going to see\".",
+          "ru": "Сохраняй \"going to\" + начальную форму: \"going to go\", \"going to see\"."
+        },
+        {
+          "en": "Match be to the subject: I am, he/she is, we/you/they are.",
+          "ru": "Согласуй be с подлежащим: I am, he/she is, we/you/they are."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u10.d01.reading",
+      "title": {
+        "en": "Summer plans",
+        "ru": "Планы на лето"
+      },
+      "blocks": [
+        {
+          "id": "u10.d01.reading.b1",
+          "en": "This summer we are going to have a long holiday. We are going to travel to Italy and stay near the sea for two weeks.",
+          "ru": "Этим летом у нас будет долгий отпуск. Мы собираемся поехать в Италию и пожить у моря две недели.",
+          "audio": {
+            "src": "media/audio/u10.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u10.d01.reading.b2",
+          "en": "My sister is going to learn to swim, and I am going to read a lot of books. We are not going to work at all. It is going to be great!",
+          "ru": "Сестра собирается научиться плавать, а я собираюсь читать много книг. Мы совсем не будем работать. Это будет здорово!",
+          "audio": {
+            "src": "media/audio/u10.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "summer",
+          "ru": "лето",
+          "ipa": "/ˈsʌmər/"
+        },
+        {
+          "word": "sea",
+          "ru": "море",
+          "ipa": "/siː/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u10.d01.listening",
+      "title": {
+        "en": "Weekend plans",
+        "ru": "Планы на выходные"
+      },
+      "audio": {
+        "src": "media/audio/u10.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "What are you going to do this weekend?",
+          "ru": "Что ты собираешься делать на выходных?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "I am going to visit my grandparents.",
+          "ru": "Я собираюсь навестить бабушку с дедушкой."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Nice! Are you going to drive?",
+          "ru": "Здорово! Поедешь на машине?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "No, we are going to take the train.",
+          "ru": "Нет, мы поедем на поезде."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u10.d01.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "How are they going to travel?",
+            "ru": "Как они собираются добираться?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.going-to"
+          ],
+          "prompt": "They are going to take the ___ .",
+          "options": [
+            "train",
+            "car",
+            "plane"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u10.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u10.d01.ex.g.01",
+          "instruction": {
+            "en": "be going to (positive).",
+            "ru": "be going to (утверждение)."
+          },
+          "tags": [
+            "grammar.going-to"
+          ],
+          "prompt": "I ___ visit my family. (be going to)",
+          "answers": [
+            "am going to"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d01.ex.g.02",
+          "instruction": {
+            "en": "be going to (question).",
+            "ru": "be going to (вопрос)."
+          },
+          "tags": [
+            "grammar.going-to"
+          ],
+          "prompt": "What ___ you going to do? (be)",
+          "answers": [
+            "are"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u10.d01.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct form.",
+            "ru": "Выбери верную форму."
+          },
+          "tags": [
+            "grammar.going-to"
+          ],
+          "prompt": "She ___ going to travel.",
+          "options": [
+            "is",
+            "are",
+            "am"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u10.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.going-to"
+          ],
+          "variants": [
+            "I going to study.",
+            "I am going to study."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u10.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.plans"
+          ],
+          "pairs": [
+            {
+              "left": "holiday",
+              "right": "отпуск"
+            },
+            {
+              "left": "goal",
+              "right": "цель"
+            },
+            {
+              "left": "dream",
+              "right": "мечта"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u10.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.going-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я собираюсь учить английский.",
+          "answers": [
+            "I am going to study English.",
+            "I'm going to study English.",
+            "I am going to learn English."
+          ]
+        }
+      ]
+    }
+  ]
+}
