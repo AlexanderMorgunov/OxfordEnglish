@@ -214,12 +214,17 @@ export const Section = z.discriminatedUnion('type', [
   ListeningSection,
 ]);
 
+export const Level = z.enum(['A1', 'A2', 'B1', 'B2']);
+
 export const Day = z.object({
   id: z.string().min(1),
   title: LocalizedText,
   estimatedMinutes: z.number().int().positive(),
   sections: z.array(Section).min(1),
   tags: z.array(SkillTag),
+  // CEFR tier of the day; optional so older content stays valid. Groundwork for
+  // level tiers + an entry placement test (serve content matching the user).
+  level: Level.optional(),
 });
 
 export const Checkpoint = z.object({
@@ -228,8 +233,6 @@ export const Checkpoint = z.object({
   drawFromPreviousUnits: z.number().int().nonnegative().optional(),
   questionCount: z.number().int().positive().optional(),
 });
-
-const LEVEL = z.enum(['A1', 'A2', 'B1', 'B2']);
 
 /** On-disk unit index (course.json) — days are referenced by id, stored per-file. */
 export const UnitIndex = z.object({
@@ -243,7 +246,7 @@ export const UnitIndex = z.object({
 export const CourseIndex = z.object({
   id: z.string().min(1),
   title: LocalizedText,
-  level: LEVEL,
+  level: Level,
   license: LicenseInfo,
   units: z.array(UnitIndex).min(1),
 });
@@ -252,7 +255,7 @@ export const PackManifest = z.object({
   id: z.string().min(1),
   name: LocalizedText,
   version: z.string().min(1),
-  level: LEVEL,
+  level: Level,
   visibility: z.enum(['public', 'local']),
   license: LicenseInfo,
   attributions: z
@@ -269,6 +272,7 @@ export const PackManifest = z.object({
 export type LocalizedText = z.infer<typeof LocalizedText>;
 export type LicenseInfo = z.infer<typeof LicenseInfo>;
 export type MediaRef = z.infer<typeof MediaRef>;
+export type Level = z.infer<typeof Level>;
 export type Exercise = z.infer<typeof Exercise>;
 export type Section = z.infer<typeof Section>;
 export type ReadingSection = z.infer<typeof ReadingSection>;

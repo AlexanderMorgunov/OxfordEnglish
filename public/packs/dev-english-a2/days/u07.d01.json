@@ -5,6 +5,7 @@
     "ru": "В кафе"
   },
   "estimatedMinutes": 120,
+  "level": "A2",
   "tags": [
     "functions.ordering",
     "vocab.cafe"

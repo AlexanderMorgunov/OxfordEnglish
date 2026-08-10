@@ -5,6 +5,7 @@
     "ru": "Рассказываем про свой день"
   },
   "estimatedMinutes": 120,
+  "level": "A2",
   "tags": [
     "grammar.past-simple",
     "vocab.dev"

@@ -5,6 +5,7 @@
     "ru": "Можешь помочь?"
   },
   "estimatedMinutes": 120,
+  "level": "A2",
   "tags": [
     "functions.requests",
     "functions.offers",

@@ -5,6 +5,7 @@
     "ru": "В кафе — полный урок"
   },
   "estimatedMinutes": 120,
+  "level": "A2",
   "tags": [
     "vocab.cafe",
     "functions.ordering"
