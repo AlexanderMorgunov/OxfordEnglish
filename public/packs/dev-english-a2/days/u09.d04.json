@@ -1,0 +1,476 @@
+{
+  "id": "u09.d04",
+  "title": {
+    "en": "Too big, not big enough",
+    "ru": "Слишком большой, недостаточно большой"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.too-enough",
+    "vocab.money",
+    "pronunciation"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u09.d04.vocab",
+      "title": {
+        "en": "Money",
+        "ru": "Деньги"
+      },
+      "words": [
+        {
+          "word": "money",
+          "ru": "деньги",
+          "ipa": "/ˈmʌni/",
+          "example": "I don't have much money.",
+          "exampleRu": "У меня немного денег.",
+          "audio": {
+            "src": "media/audio/u09.d04.vocab.money.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cost",
+          "ru": "стоить; стоимость",
+          "ipa": "/kɒst/",
+          "example": "How much does it cost?",
+          "exampleRu": "Сколько это стоит?",
+          "audio": {
+            "src": "media/audio/u09.d04.vocab.cost.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pay",
+          "ru": "платить",
+          "ipa": "/peɪ/",
+          "example": "I can pay now.",
+          "exampleRu": "Я могу заплатить сейчас.",
+          "audio": {
+            "src": "media/audio/u09.d04.vocab.pay.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cash",
+          "ru": "наличные",
+          "ipa": "/kæʃ/",
+          "example": "I'll pay in cash.",
+          "exampleRu": "Я заплачу наличными.",
+          "audio": {
+            "src": "media/audio/u09.d04.vocab.cash.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "card",
+          "ru": "карта",
+          "ipa": "/kɑːrd/",
+          "example": "Can I pay by card?",
+          "exampleRu": "Можно оплатить картой?",
+          "audio": {
+            "src": "media/audio/u09.d04.vocab.card.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "change",
+          "ru": "сдача",
+          "ipa": "/tʃeɪndʒ/",
+          "example": "Here is your change.",
+          "exampleRu": "Вот ваша сдача.",
+          "audio": {
+            "src": "media/audio/u09.d04.vocab.change.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "afford",
+          "ru": "позволить себе",
+          "ipa": "/əˈfɔːrd/",
+          "example": "I can't afford it.",
+          "exampleRu": "Я не могу это себе позволить.",
+          "audio": {
+            "src": "media/audio/u09.d04.vocab.afford.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cheap",
+          "ru": "дешёвый",
+          "ipa": "/tʃiːp/",
+          "example": "It is cheap enough.",
+          "exampleRu": "Это достаточно дёшево.",
+          "audio": {
+            "src": "media/audio/u09.d04.vocab.cheap.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "enough",
+          "ru": "достаточно",
+          "ipa": "/ɪˈnʌf/",
+          "example": "I have enough money.",
+          "exampleRu": "У меня достаточно денег.",
+          "audio": {
+            "src": "media/audio/u09.d04.vocab.enough.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "too",
+          "ru": "слишком",
+          "ipa": "/tuː/",
+          "example": "It is too expensive.",
+          "exampleRu": "Это слишком дорого.",
+          "audio": {
+            "src": "media/audio/u09.d04.vocab.too.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u09.d04.grammar",
+      "title": {
+        "en": "too / (not) enough",
+        "ru": "too / (not) enough"
+      },
+      "rule": {
+        "en": "\"too + adjective\" means more than we want (a problem). \"adjective + enough\" means the right amount. \"enough + noun\" comes before the noun.",
+        "ru": "\"too + прилагательное\" — больше, чем нужно (проблема). \"прилагательное + enough\" — в самый раз. \"enough + существительное\" — перед существительным."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "too + adj",
+            "ru": "too + прил."
+          },
+          "formula": "too + adjective",
+          "examples": [
+            {
+              "en": "This coat is too expensive.",
+              "ru": "Это пальто слишком дорогое."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "adj + enough",
+            "ru": "прил. + enough"
+          },
+          "formula": "adjective + enough",
+          "examples": [
+            {
+              "en": "It is not big enough.",
+              "ru": "Оно недостаточно большое."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "enough + noun",
+            "ru": "enough + сущ."
+          },
+          "formula": "enough + noun",
+          "examples": [
+            {
+              "en": "I don't have enough money.",
+              "ru": "У меня недостаточно денег."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"too\" goes before the adjective, \"enough\" goes after it: \"too small\", \"small enough\".",
+          "ru": "\"too\" — перед прилагательным, \"enough\" — после: \"too small\", \"small enough\"."
+        },
+        {
+          "en": "\"enough\" goes before a noun: \"enough time\", not \"time enough\".",
+          "ru": "\"enough\" — перед существительным: \"enough time\", а не \"time enough\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u09.d04.reading",
+      "title": {
+        "en": "A hard choice",
+        "ru": "Трудный выбор"
+      },
+      "blocks": [
+        {
+          "id": "u09.d04.reading.b1",
+          "en": "I wanted the black boots, but they were too expensive. I didn't have enough money that day. The brown ones were cheaper, but too big.",
+          "ru": "Я хотел чёрные ботинки, но они были слишком дорогими. В тот день у меня не хватало денег. Коричневые были дешевле, но слишком большими.",
+          "audio": {
+            "src": "media/audio/u09.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u09.d04.reading.b2",
+          "en": "The shop assistant said, \"These grey ones are cheap enough, and they are the right size.\" They were comfortable enough, so I bought them.",
+          "ru": "Продавец сказал: «Эти серые достаточно дешёвые и нужного размера». Они были достаточно удобными, поэтому я их купил.",
+          "audio": {
+            "src": "media/audio/u09.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "boots",
+          "ru": "ботинки",
+          "ipa": "/buːts/"
+        },
+        {
+          "word": "assistant",
+          "ru": "продавец, помощник",
+          "ipa": "/əˈsɪstənt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u09.d04.listening",
+      "title": {
+        "en": "It doesn't fit",
+        "ru": "Не подходит"
+      },
+      "audio": {
+        "src": "media/audio/u09.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "How is the jacket?",
+          "ru": "Как куртка?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "It's too small. It doesn't fit.",
+          "ru": "Слишком маленькая. Не подходит."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "And the price?",
+          "ru": "А цена?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "It's cheap enough, but I need a bigger size.",
+          "ru": "Достаточно дешёвая, но мне нужен размер побольше."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u09.d04.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What is the problem with the jacket?",
+            "ru": "В чём проблема с курткой?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.too-enough"
+          ],
+          "prompt": "It is too ___ .",
+          "options": [
+            "small",
+            "expensive",
+            "big"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u09.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u09.d04.ex.c.01",
+          "instruction": {
+            "en": "too or enough?",
+            "ru": "too или enough?"
+          },
+          "tags": [
+            "grammar.too-enough"
+          ],
+          "prompt": "This coat is ___ expensive. I can't buy it.",
+          "options": [
+            "too",
+            "enough",
+            "very much"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u09.d04.ex.g.01",
+          "instruction": {
+            "en": "adjective + enough.",
+            "ru": "прилагательное + enough."
+          },
+          "tags": [
+            "grammar.too-enough"
+          ],
+          "prompt": "The room is not big ___ for a bed.",
+          "answers": [
+            "enough"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u09.d04.ex.g.02",
+          "instruction": {
+            "en": "enough + noun.",
+            "ru": "enough + существительное."
+          },
+          "tags": [
+            "grammar.too-enough"
+          ],
+          "prompt": "I don't have ___ money. (enough)",
+          "answers": [
+            "enough"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u09.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.too-enough"
+          ],
+          "variants": [
+            "It is enough big.",
+            "It is big enough."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u09.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the money word and the translation.",
+            "ru": "Сопоставь слово о деньгах и перевод."
+          },
+          "tags": [
+            "vocab.money"
+          ],
+          "pairs": [
+            {
+              "left": "cash",
+              "right": "наличные"
+            },
+            {
+              "left": "change",
+              "right": "сдача"
+            },
+            {
+              "left": "afford",
+              "right": "позволить себе"
+            }
+          ]
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u09.d04.ex.mp.01",
+          "instruction": {
+            "en": "Listen — which word do you hear?",
+            "ru": "Послушай — какое слово ты слышишь?"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u09.d04.ex.mp.01.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "cheap",
+            "chip"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u09.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.too-enough",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это слишком дорого.",
+          "answers": [
+            "It is too expensive."
+          ]
+        }
+      ]
+    }
+  ]
+}

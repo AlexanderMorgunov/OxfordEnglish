@@ -1,0 +1,466 @@
+{
+  "id": "u09.d05",
+  "title": {
+    "en": "Can I pay by card?",
+    "ru": "Можно оплатить картой?"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "functions.shopping",
+    "vocab.shopping",
+    "vocab.clothes"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u09.d05.vocab",
+      "title": {
+        "en": "Paying in a shop",
+        "ru": "Оплата в магазине"
+      },
+      "words": [
+        {
+          "word": "try on",
+          "ru": "примерять",
+          "ipa": "/traɪ ɒn/",
+          "example": "Can I try this on?",
+          "exampleRu": "Можно это примерить?",
+          "audio": {
+            "src": "media/audio/u09.d05.vocab.tryon.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fitting room",
+          "ru": "примерочная",
+          "ipa": "/ˈfɪtɪŋ ruːm/",
+          "example": "The fitting room is over there.",
+          "exampleRu": "Примерочная вон там.",
+          "audio": {
+            "src": "media/audio/u09.d05.vocab.fittingroom.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "size",
+          "ru": "размер",
+          "ipa": "/saɪz/",
+          "example": "What size do you need?",
+          "exampleRu": "Какой размер вам нужен?",
+          "audio": {
+            "src": "media/audio/u09.d05.vocab.size.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "receipt",
+          "ru": "чек",
+          "ipa": "/rɪˈsiːt/",
+          "example": "Here is your receipt.",
+          "exampleRu": "Вот ваш чек.",
+          "audio": {
+            "src": "media/audio/u09.d05.vocab.receipt.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "card",
+          "ru": "карта",
+          "ipa": "/kɑːrd/",
+          "example": "Can I pay by card?",
+          "exampleRu": "Можно оплатить картой?",
+          "audio": {
+            "src": "media/audio/u09.d05.vocab.card.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cash",
+          "ru": "наличные",
+          "ipa": "/kæʃ/",
+          "example": "Cash or card?",
+          "exampleRu": "Наличные или карта?",
+          "audio": {
+            "src": "media/audio/u09.d05.vocab.cash.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "refund",
+          "ru": "возврат денег",
+          "ipa": "/ˈriːfʌnd/",
+          "example": "Can I get a refund?",
+          "exampleRu": "Можно вернуть деньги?",
+          "audio": {
+            "src": "media/audio/u09.d05.vocab.refund.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "take",
+          "ru": "брать (покупать)",
+          "ipa": "/teɪk/",
+          "example": "I'll take it.",
+          "exampleRu": "Я это беру.",
+          "audio": {
+            "src": "media/audio/u09.d05.vocab.take.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "how much",
+          "ru": "сколько (стоит)",
+          "ipa": "/haʊ mʌtʃ/",
+          "example": "How much is this?",
+          "exampleRu": "Сколько это стоит?",
+          "audio": {
+            "src": "media/audio/u09.d05.vocab.howmuch.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bag",
+          "ru": "пакет, сумка",
+          "ipa": "/bæɡ/",
+          "example": "Do you want a bag?",
+          "exampleRu": "Вам нужен пакет?",
+          "audio": {
+            "src": "media/audio/u09.d05.vocab.bag.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u09.d05.grammar",
+      "title": {
+        "en": "Shopping & paying",
+        "ru": "Покупки и оплата"
+      },
+      "rule": {
+        "en": "Ask the price with \"How much is it?\". Ask to try with \"Can I try this on?\". Decide with \"I'll take it\". Pay with \"Can I pay by card / in cash?\".",
+        "ru": "Цена — \"How much is it?\". Примерка — \"Can I try this on?\". Решение — \"I'll take it\". Оплата — \"Can I pay by card / in cash?\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "price / try",
+            "ru": "цена / примерка"
+          },
+          "formula": "How much is it? · Can I try it on?",
+          "examples": [
+            {
+              "en": "How much is this shirt? Can I try it on?",
+              "ru": "Сколько стоит эта рубашка? Можно примерить?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "decide",
+            "ru": "решение"
+          },
+          "formula": "I'll take it / them.",
+          "examples": [
+            {
+              "en": "It fits well. I'll take it.",
+              "ru": "Хорошо сидит. Я беру."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "pay",
+            "ru": "оплата"
+          },
+          "formula": "Can I pay by card / in cash?",
+          "examples": [
+            {
+              "en": "Can I pay by card? Here is your receipt.",
+              "ru": "Можно картой? Вот ваш чек."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Say \"pay by card\" but \"pay in cash\".",
+          "ru": "Говори \"pay by card\", но \"pay in cash\"."
+        },
+        {
+          "en": "\"How much is it?\" for price, \"How many?\" for number.",
+          "ru": "\"How much is it?\" — о цене, \"How many?\" — о количестве."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u09.d05.reading",
+      "title": {
+        "en": "Buying a shirt",
+        "ru": "Покупаем рубашку"
+      },
+      "blocks": [
+        {
+          "id": "u09.d05.reading.b1",
+          "en": "\"How much is this shirt?\" \"It's twenty pounds.\" \"Can I try it on?\" \"Yes, the fitting room is over there.\" The shirt was a good size and colour.",
+          "ru": "«Сколько стоит эта рубашка?» «Двадцать фунтов». «Можно примерить?» «Да, примерочная вон там». Рубашка была подходящего размера и цвета.",
+          "audio": {
+            "src": "media/audio/u09.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u09.d05.reading.b2",
+          "en": "\"It fits well. I'll take it.\" \"Cash or card?\" \"By card, please.\" \"Here is your receipt. Do you want a bag?\" \"Yes, please. Thank you!\"",
+          "ru": "«Хорошо сидит. Беру». «Наличные или карта?» «Картой, пожалуйста». «Вот ваш чек. Пакет нужен?» «Да, спасибо!»",
+          "audio": {
+            "src": "media/audio/u09.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "pound",
+          "ru": "фунт",
+          "ipa": "/paʊnd/"
+        },
+        {
+          "word": "colour",
+          "ru": "цвет",
+          "ipa": "/ˈkʌlər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u09.d05.listening",
+      "title": {
+        "en": "At the till",
+        "ru": "На кассе"
+      },
+      "audio": {
+        "src": "media/audio/u09.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "How much are these shoes?",
+          "ru": "Сколько стоит эта обувь?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "They're thirty pounds. Would you like to try them on?",
+          "ru": "Тридцать фунтов. Хотите примерить?"
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Yes... They fit well. I'll take them.",
+          "ru": "Да... Хорошо сидят. Я беру."
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Great. Can you pay by card? Here's your receipt.",
+          "ru": "Отлично. Оплатите картой? Вот ваш чек."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u09.d05.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "How does the customer decide?",
+            "ru": "Как клиент принимает решение?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.shopping"
+          ],
+          "prompt": "The customer says: \"I'll ___ them\".",
+          "options": [
+            "take",
+            "try",
+            "pay"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u09.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u09.d05.ex.c.01",
+          "instruction": {
+            "en": "Ask the price.",
+            "ru": "Спроси цену."
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "prompt": "___ is this jacket?",
+          "options": [
+            "How much",
+            "How many",
+            "What price"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u09.d05.ex.o.01",
+          "instruction": {
+            "en": "Ask to try it on.",
+            "ru": "Попроси примерить."
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "tokens": [
+            "Can",
+            "I",
+            "try",
+            "this",
+            "on"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u09.d05.ex.c.02",
+          "instruction": {
+            "en": "Pay in a shop.",
+            "ru": "Оплати в магазине."
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "prompt": "Can I pay ___ card?",
+          "options": [
+            "by",
+            "in",
+            "with"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u09.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "variants": [
+            "How many is this shirt?",
+            "How much is this shirt?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u09.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.shopping"
+          ],
+          "pairs": [
+            {
+              "left": "receipt",
+              "right": "чек"
+            },
+            {
+              "left": "fitting room",
+              "right": "примерочная"
+            },
+            {
+              "left": "refund",
+              "right": "возврат денег"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u09.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.shopping",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Можно оплатить картой?",
+          "answers": [
+            "Can I pay by card?"
+          ]
+        }
+      ]
+    }
+  ]
+}

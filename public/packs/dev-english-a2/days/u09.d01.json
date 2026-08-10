@@ -1,0 +1,452 @@
+{
+  "id": "u09.d01",
+  "title": {
+    "en": "Which one is better?",
+    "ru": "Какой лучше?"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.comparatives",
+    "vocab.clothes"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u09.d01.vocab",
+      "title": {
+        "en": "Clothes & shopping",
+        "ru": "Одежда и покупки"
+      },
+      "words": [
+        {
+          "word": "shirt",
+          "ru": "рубашка",
+          "ipa": "/ʃɜːrt/",
+          "example": "This shirt is nice.",
+          "exampleRu": "Эта рубашка красивая.",
+          "audio": {
+            "src": "media/audio/u09.d01.vocab.shirt.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "trousers",
+          "ru": "брюки",
+          "ipa": "/ˈtraʊzərz/",
+          "example": "The trousers are too long.",
+          "exampleRu": "Брюки слишком длинные.",
+          "audio": {
+            "src": "media/audio/u09.d01.vocab.trousers.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dress",
+          "ru": "платье",
+          "ipa": "/dres/",
+          "example": "She bought a red dress.",
+          "exampleRu": "Она купила красное платье.",
+          "audio": {
+            "src": "media/audio/u09.d01.vocab.dress.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "shoes",
+          "ru": "туфли, обувь",
+          "ipa": "/ʃuːz/",
+          "example": "These shoes are comfortable.",
+          "exampleRu": "Эта обувь удобная.",
+          "audio": {
+            "src": "media/audio/u09.d01.vocab.shoes.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "jacket",
+          "ru": "куртка, пиджак",
+          "ipa": "/ˈdʒækɪt/",
+          "example": "The jacket is warm.",
+          "exampleRu": "Куртка тёплая.",
+          "audio": {
+            "src": "media/audio/u09.d01.vocab.jacket.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "coat",
+          "ru": "пальто",
+          "ipa": "/koʊt/",
+          "example": "I need a new coat.",
+          "exampleRu": "Мне нужно новое пальто.",
+          "audio": {
+            "src": "media/audio/u09.d01.vocab.coat.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "size",
+          "ru": "размер",
+          "ipa": "/saɪz/",
+          "example": "What size are you?",
+          "exampleRu": "Какой у тебя размер?",
+          "audio": {
+            "src": "media/audio/u09.d01.vocab.size.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cheap",
+          "ru": "дешёвый",
+          "ipa": "/tʃiːp/",
+          "example": "This shop is cheap.",
+          "exampleRu": "Этот магазин дешёвый.",
+          "audio": {
+            "src": "media/audio/u09.d01.vocab.cheap.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "expensive",
+          "ru": "дорогой",
+          "ipa": "/ɪkˈspensɪv/",
+          "example": "That coat is expensive.",
+          "exampleRu": "То пальто дорогое.",
+          "audio": {
+            "src": "media/audio/u09.d01.vocab.expensive.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "colour",
+          "ru": "цвет",
+          "ipa": "/ˈkʌlər/",
+          "example": "I like this colour.",
+          "exampleRu": "Мне нравится этот цвет.",
+          "audio": {
+            "src": "media/audio/u09.d01.vocab.colour.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u09.d01.grammar",
+      "title": {
+        "en": "Comparatives",
+        "ru": "Сравнительная степень"
+      },
+      "rule": {
+        "en": "Compare two things. Short adjectives add -er + than; long adjectives use \"more … than\". Some are irregular: good → better, bad → worse.",
+        "ru": "Сравнивай два предмета. Короткие прилагательные + -er + than; длинные — \"more … than\". Есть исключения: good → better, bad → worse."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "short + -er",
+            "ru": "короткие + -er"
+          },
+          "formula": "adjective + -er than",
+          "examples": [
+            {
+              "en": "This shirt is cheaper than that one.",
+              "ru": "Эта рубашка дешевле той."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "more + long",
+            "ru": "more + длинные"
+          },
+          "formula": "more + adjective + than",
+          "examples": [
+            {
+              "en": "This coat is more expensive than the jacket.",
+              "ru": "Это пальто дороже куртки."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "irregular",
+            "ru": "исключения"
+          },
+          "formula": "good → better · bad → worse",
+          "examples": [
+            {
+              "en": "These shoes are better than the old ones.",
+              "ru": "Эта обувь лучше старой."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Double the last letter for short vowel + consonant: big → bigger, hot → hotter.",
+          "ru": "Удвой последнюю букву после краткого гласного: big → bigger, hot → hotter."
+        },
+        {
+          "en": "Don't mix forms: \"more cheaper\" is wrong — say \"cheaper\".",
+          "ru": "Не смешивай формы: \"more cheaper\" — ошибка, говори \"cheaper\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u09.d01.reading",
+      "title": {
+        "en": "Two jackets",
+        "ru": "Две куртки"
+      },
+      "blocks": [
+        {
+          "id": "u09.d01.reading.b1",
+          "en": "In the shop there were two jackets. The blue one was cheaper, but the black one was warmer and more comfortable. It was also more expensive.",
+          "ru": "В магазине было две куртки. Синяя была дешевле, но чёрная — теплее и удобнее. Она была ещё и дороже.",
+          "audio": {
+            "src": "media/audio/u09.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u09.d01.reading.b2",
+          "en": "I tried both. The black jacket was bigger and better for winter. \"This one is nicer,\" said my friend. So I bought the black one.",
+          "ru": "Я примерил обе. Чёрная куртка была больше и лучше для зимы. «Эта симпатичнее», — сказал друг. Так что я купил чёрную.",
+          "audio": {
+            "src": "media/audio/u09.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "try",
+          "ru": "примерять, пробовать",
+          "ipa": "/traɪ/"
+        },
+        {
+          "word": "winter",
+          "ru": "зима",
+          "ipa": "/ˈwɪntər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u09.d01.listening",
+      "title": {
+        "en": "Which shirt?",
+        "ru": "Какая рубашка?"
+      },
+      "audio": {
+        "src": "media/audio/u09.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Which shirt do you like?",
+          "ru": "Какая рубашка тебе нравится?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "The white one is nicer, but it's more expensive.",
+          "ru": "Белая симпатичнее, но она дороже."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "The blue one is cheaper.",
+          "ru": "Синяя дешевле."
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Yes, but the white one is better quality.",
+          "ru": "Да, но белая лучше по качеству."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u09.d01.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "Which shirt is more expensive?",
+            "ru": "Какая рубашка дороже?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.comparatives"
+          ],
+          "prompt": "The ___ shirt is more expensive.",
+          "options": [
+            "white",
+            "blue",
+            "black"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u09.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u09.d01.ex.g.01",
+          "instruction": {
+            "en": "Comparative (short).",
+            "ru": "Сравнительная (короткое)."
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "prompt": "This shirt is ___ than that one. (cheap)",
+          "answers": [
+            "cheaper"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u09.d01.ex.g.02",
+          "instruction": {
+            "en": "Comparative (long).",
+            "ru": "Сравнительная (длинное)."
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "prompt": "This coat is ___ than the jacket. (expensive)",
+          "answers": [
+            "more expensive"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u09.d01.ex.c.01",
+          "instruction": {
+            "en": "Irregular comparative.",
+            "ru": "Неправильная форма."
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "prompt": "These shoes are ___ than the old ones.",
+          "options": [
+            "better",
+            "gooder",
+            "more good"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u09.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "variants": [
+            "It is more cheaper.",
+            "It is cheaper."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u09.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the clothes word and the translation.",
+            "ru": "Сопоставь одежду и перевод."
+          },
+          "tags": [
+            "vocab.clothes"
+          ],
+          "pairs": [
+            {
+              "left": "shirt",
+              "right": "рубашка"
+            },
+            {
+              "left": "trousers",
+              "right": "брюки"
+            },
+            {
+              "left": "coat",
+              "right": "пальто"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u09.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.comparatives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Эта куртка теплее.",
+          "answers": [
+            "This jacket is warmer."
+          ]
+        }
+      ]
+    }
+  ]
+}

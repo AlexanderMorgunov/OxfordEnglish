@@ -1,0 +1,452 @@
+{
+  "id": "u09.d02",
+  "title": {
+    "en": "The best in town",
+    "ru": "Лучший в городе"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.superlatives",
+    "vocab.shopping"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u09.d02.vocab",
+      "title": {
+        "en": "Shopping",
+        "ru": "Покупки"
+      },
+      "words": [
+        {
+          "word": "price",
+          "ru": "цена",
+          "ipa": "/praɪs/",
+          "example": "The price is good.",
+          "exampleRu": "Цена хорошая.",
+          "audio": {
+            "src": "media/audio/u09.d02.vocab.price.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sale",
+          "ru": "распродажа",
+          "ipa": "/seɪl/",
+          "example": "The shoes are on sale.",
+          "exampleRu": "Обувь на распродаже.",
+          "audio": {
+            "src": "media/audio/u09.d02.vocab.sale.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "discount",
+          "ru": "скидка",
+          "ipa": "/ˈdɪskaʊnt/",
+          "example": "There is a big discount.",
+          "exampleRu": "Большая скидка.",
+          "audio": {
+            "src": "media/audio/u09.d02.vocab.discount.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "try on",
+          "ru": "примерять",
+          "ipa": "/traɪ ɒn/",
+          "example": "Can I try on this dress?",
+          "exampleRu": "Можно примерить это платье?",
+          "audio": {
+            "src": "media/audio/u09.d02.vocab.tryon.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fit",
+          "ru": "подходить (по размеру)",
+          "ipa": "/fɪt/",
+          "example": "These shoes fit well.",
+          "exampleRu": "Эта обувь хорошо сидит.",
+          "audio": {
+            "src": "media/audio/u09.d02.vocab.fit.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "quality",
+          "ru": "качество",
+          "ipa": "/ˈkwɒləti/",
+          "example": "The quality is high.",
+          "exampleRu": "Качество высокое.",
+          "audio": {
+            "src": "media/audio/u09.d02.vocab.quality.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "popular",
+          "ru": "популярный",
+          "ipa": "/ˈpɒpjələr/",
+          "example": "This shop is popular.",
+          "exampleRu": "Этот магазин популярный.",
+          "audio": {
+            "src": "media/audio/u09.d02.vocab.popular.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "brand",
+          "ru": "бренд, марка",
+          "ipa": "/brænd/",
+          "example": "It is a famous brand.",
+          "exampleRu": "Это известный бренд.",
+          "audio": {
+            "src": "media/audio/u09.d02.vocab.brand.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "customer",
+          "ru": "покупатель, клиент",
+          "ipa": "/ˈkʌstəmər/",
+          "example": "The customer is happy.",
+          "exampleRu": "Покупатель доволен.",
+          "audio": {
+            "src": "media/audio/u09.d02.vocab.customer.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "busy",
+          "ru": "оживлённый, занятой",
+          "ipa": "/ˈbɪzi/",
+          "example": "Saturday is the busiest day.",
+          "exampleRu": "Суббота — самый занятой день.",
+          "audio": {
+            "src": "media/audio/u09.d02.vocab.busy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u09.d02.grammar",
+      "title": {
+        "en": "Superlatives",
+        "ru": "Превосходная степень"
+      },
+      "rule": {
+        "en": "Say which is number one. Short adjectives: the + -est; long adjectives: the most … . Irregular: good → the best, bad → the worst.",
+        "ru": "Скажи, кто самый-самый. Короткие: the + -est; длинные: the most … . Исключения: good → the best, bad → the worst."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "the + -est",
+            "ru": "the + -est"
+          },
+          "formula": "the + adjective + -est",
+          "examples": [
+            {
+              "en": "This is the cheapest shop.",
+              "ru": "Это самый дешёвый магазин."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "the most",
+            "ru": "the most"
+          },
+          "formula": "the most + long adjective",
+          "examples": [
+            {
+              "en": "It is the most popular brand.",
+              "ru": "Это самый популярный бренд."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "irregular",
+            "ru": "исключения"
+          },
+          "formula": "the best · the worst",
+          "examples": [
+            {
+              "en": "It is the best shop in town.",
+              "ru": "Это лучший магазин в городе."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Always use \"the\" before a superlative: \"the biggest\", not \"biggest\".",
+          "ru": "Перед превосходной всегда \"the\": \"the biggest\", а не \"biggest\"."
+        },
+        {
+          "en": "Don't say \"the most cheapest\" — choose one form: \"the cheapest\".",
+          "ru": "Не говори \"the most cheapest\" — выбери одну форму: \"the cheapest\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u09.d02.reading",
+      "title": {
+        "en": "The best shop",
+        "ru": "Лучший магазин"
+      },
+      "blocks": [
+        {
+          "id": "u09.d02.reading.b1",
+          "en": "City Style is the biggest clothes shop in town. It is also the most popular, because it has the best prices and good quality clothes.",
+          "ru": "City Style — самый большой магазин одежды в городе. Ещё и самый популярный, потому что у него лучшие цены и качественная одежда.",
+          "audio": {
+            "src": "media/audio/u09.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u09.d02.reading.b2",
+          "en": "On Saturday it is the busiest. That day they have the biggest sale, with the cheapest shoes and the most beautiful dresses. Customers love it.",
+          "ru": "В субботу там больше всего людей. В этот день самая большая распродажа: самая дешёвая обувь и самые красивые платья. Покупатели в восторге.",
+          "audio": {
+            "src": "media/audio/u09.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "famous",
+          "ru": "известный",
+          "ipa": "/ˈfeɪməs/"
+        },
+        {
+          "word": "clothes",
+          "ru": "одежда",
+          "ipa": "/kloʊðz/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u09.d02.listening",
+      "title": {
+        "en": "The cheapest one",
+        "ru": "Самый дешёвый"
+      },
+      "audio": {
+        "src": "media/audio/u09.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Which shop is the best for shoes?",
+          "ru": "В каком магазине лучше всего покупать обувь?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "City Style. It has the cheapest prices.",
+          "ru": "City Style. Там самые дешёвые цены."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Is it the biggest shop?",
+          "ru": "Это самый большой магазин?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Yes, and the most popular one in town.",
+          "ru": "Да, и самый популярный в городе."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u09.d02.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What is special about City Style?",
+            "ru": "Чем особенен City Style?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.superlatives"
+          ],
+          "prompt": "It has the ___ prices.",
+          "options": [
+            "cheapest",
+            "most expensive",
+            "worst"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u09.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u09.d02.ex.g.01",
+          "instruction": {
+            "en": "Superlative (short).",
+            "ru": "Превосходная (короткое)."
+          },
+          "tags": [
+            "grammar.superlatives"
+          ],
+          "prompt": "This is ___ shop in town. (cheap)",
+          "answers": [
+            "the cheapest"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u09.d02.ex.g.02",
+          "instruction": {
+            "en": "Superlative (long).",
+            "ru": "Превосходная (длинное)."
+          },
+          "tags": [
+            "grammar.superlatives"
+          ],
+          "prompt": "It is ___ brand. (popular)",
+          "answers": [
+            "the most popular"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u09.d02.ex.c.01",
+          "instruction": {
+            "en": "Irregular superlative.",
+            "ru": "Неправильная форма."
+          },
+          "tags": [
+            "grammar.superlatives"
+          ],
+          "prompt": "It is ___ shop in town.",
+          "options": [
+            "the best",
+            "the goodest",
+            "the most good"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u09.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.superlatives"
+          ],
+          "variants": [
+            "It is most cheapest.",
+            "It is the cheapest."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u09.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.shopping"
+          ],
+          "pairs": [
+            {
+              "left": "discount",
+              "right": "скидка"
+            },
+            {
+              "left": "sale",
+              "right": "распродажа"
+            },
+            {
+              "left": "quality",
+              "right": "качество"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u09.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.superlatives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это лучший магазин в городе.",
+          "answers": [
+            "It is the best shop in town."
+          ]
+        }
+      ]
+    }
+  ]
+}

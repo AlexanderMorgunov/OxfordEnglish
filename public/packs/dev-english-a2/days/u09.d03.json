@@ -1,0 +1,456 @@
+{
+  "id": "u09.d03",
+  "title": {
+    "en": "As kind as you",
+    "ru": "Такой же добрый, как ты"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.as-as",
+    "vocab.personality"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u09.d03.vocab",
+      "title": {
+        "en": "Personality",
+        "ru": "Характер"
+      },
+      "words": [
+        {
+          "word": "kind",
+          "ru": "добрый",
+          "ipa": "/kaɪnd/",
+          "example": "She is very kind.",
+          "exampleRu": "Она очень добрая.",
+          "audio": {
+            "src": "media/audio/u09.d03.vocab.kind.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "funny",
+          "ru": "весёлый, смешной",
+          "ipa": "/ˈfʌni/",
+          "example": "He is funny.",
+          "exampleRu": "Он весёлый.",
+          "audio": {
+            "src": "media/audio/u09.d03.vocab.funny.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "clever",
+          "ru": "умный",
+          "ipa": "/ˈklevər/",
+          "example": "She is clever.",
+          "exampleRu": "Она умная.",
+          "audio": {
+            "src": "media/audio/u09.d03.vocab.clever.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "friendly",
+          "ru": "дружелюбный",
+          "ipa": "/ˈfrendli/",
+          "example": "The staff are friendly.",
+          "exampleRu": "Персонал дружелюбный.",
+          "audio": {
+            "src": "media/audio/u09.d03.vocab.friendly.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lazy",
+          "ru": "ленивый",
+          "ipa": "/ˈleɪzi/",
+          "example": "The cat is lazy.",
+          "exampleRu": "Кот ленивый.",
+          "audio": {
+            "src": "media/audio/u09.d03.vocab.lazy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "shy",
+          "ru": "застенчивый",
+          "ipa": "/ʃaɪ/",
+          "example": "He is a bit shy.",
+          "exampleRu": "Он немного застенчивый.",
+          "audio": {
+            "src": "media/audio/u09.d03.vocab.shy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "polite",
+          "ru": "вежливый",
+          "ipa": "/pəˈlaɪt/",
+          "example": "Be polite to guests.",
+          "exampleRu": "Будь вежлив с гостями.",
+          "audio": {
+            "src": "media/audio/u09.d03.vocab.polite.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "honest",
+          "ru": "честный",
+          "ipa": "/ˈɒnɪst/",
+          "example": "She is honest.",
+          "exampleRu": "Она честная.",
+          "audio": {
+            "src": "media/audio/u09.d03.vocab.honest.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "brave",
+          "ru": "храбрый",
+          "ipa": "/breɪv/",
+          "example": "The boy is brave.",
+          "exampleRu": "Мальчик храбрый.",
+          "audio": {
+            "src": "media/audio/u09.d03.vocab.brave.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hard-working",
+          "ru": "трудолюбивый",
+          "ipa": "/ˌhɑːrd ˈwɜːrkɪŋ/",
+          "example": "He is hard-working.",
+          "exampleRu": "Он трудолюбивый.",
+          "audio": {
+            "src": "media/audio/u09.d03.vocab.hardworking.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u09.d03.grammar",
+      "title": {
+        "en": "as … as · the same as · different from",
+        "ru": "as … as · the same as · different from"
+      },
+      "rule": {
+        "en": "Say two things are equal with \"as … as\". \"not as … as\" means less. Use \"the same as\" for equal and \"different from\" for not equal.",
+        "ru": "Равенство — \"as … as\". \"not as … as\" значит меньше. \"the same as\" — одинаковый, \"different from\" — другой."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "as … as",
+            "ru": "as … as"
+          },
+          "formula": "as + adjective + as",
+          "examples": [
+            {
+              "en": "She is as kind as her sister.",
+              "ru": "Она такая же добрая, как её сестра."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "not as … as",
+            "ru": "not as … as"
+          },
+          "formula": "not as + adjective + as",
+          "examples": [
+            {
+              "en": "He is not as tall as me.",
+              "ru": "Он не такой высокий, как я."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "same / different",
+            "ru": "same / different"
+          },
+          "formula": "the same as · different from",
+          "examples": [
+            {
+              "en": "This bag is the same as mine. Yours is different from mine.",
+              "ru": "Эта сумка такая же, как моя. Твоя отличается от моей."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use \"different from\", not \"different than\" (in British English).",
+          "ru": "Используй \"different from\", а не \"different than\" (в британском)."
+        },
+        {
+          "en": "\"not as … as\" = less: \"not as expensive as\" means cheaper.",
+          "ru": "\"not as … as\" = меньше: \"not as expensive as\" значит дешевле."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u09.d03.reading",
+      "title": {
+        "en": "Two friends",
+        "ru": "Два друга"
+      },
+      "blocks": [
+        {
+          "id": "u09.d03.reading.b1",
+          "en": "Max and Sam are good friends, but they are very different. Max is quiet and shy, and Sam is as funny as a clown. He talks a lot.",
+          "ru": "Макс и Сэм — хорошие друзья, но они очень разные. Макс тихий и застенчивый, а Сэм весёлый, как клоун. Он много говорит.",
+          "audio": {
+            "src": "media/audio/u09.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u09.d03.reading.b2",
+          "en": "They are not the same, but both are kind and honest. Max is as clever as Sam, and Sam is as hard-working as Max. That's why they work well together.",
+          "ru": "Они не одинаковые, но оба добрые и честные. Макс такой же умный, как Сэм, а Сэм такой же трудолюбивый, как Макс. Поэтому они хорошо работают вместе.",
+          "audio": {
+            "src": "media/audio/u09.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "clown",
+          "ru": "клоун",
+          "ipa": "/klaʊn/"
+        },
+        {
+          "word": "together",
+          "ru": "вместе",
+          "ipa": "/təˈɡeðər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u09.d03.listening",
+      "title": {
+        "en": "Are they similar?",
+        "ru": "Они похожи?"
+      },
+      "audio": {
+        "src": "media/audio/u09.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Is your brother like you?",
+          "ru": "Твой брат похож на тебя?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "No, he is different from me. He is quieter.",
+          "ru": "Нет, он отличается от меня. Он тише."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Is he as tall as you?",
+          "ru": "Он такой же высокий, как ты?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "No, he is not as tall as me, but he is kinder.",
+          "ru": "Нет, он не такой высокий, как я, но добрее."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u09.d03.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "How is his brother different?",
+            "ru": "Чем отличается его брат?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.as-as"
+          ],
+          "prompt": "His brother is not as ___ as him.",
+          "options": [
+            "tall",
+            "kind",
+            "quiet"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u09.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u09.d03.ex.g.01",
+          "instruction": {
+            "en": "Equal: as … as.",
+            "ru": "Равенство: as … as."
+          },
+          "tags": [
+            "grammar.as-as"
+          ],
+          "prompt": "She is ___ kind ___ her mother.",
+          "answers": [
+            "as ... as",
+            "as as"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u09.d03.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct phrase.",
+            "ru": "Выбери верную фразу."
+          },
+          "tags": [
+            "grammar.as-as"
+          ],
+          "prompt": "My bag is the same ___ yours.",
+          "options": [
+            "as",
+            "from",
+            "than"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u09.d03.ex.c.02",
+          "instruction": {
+            "en": "Choose the correct phrase.",
+            "ru": "Выбери верную фразу."
+          },
+          "tags": [
+            "grammar.as-as"
+          ],
+          "prompt": "This shop is different ___ that one.",
+          "options": [
+            "from",
+            "as",
+            "than"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u09.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.as-as"
+          ],
+          "variants": [
+            "He is so tall as me.",
+            "He is as tall as me."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u09.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the personality word and the translation.",
+            "ru": "Сопоставь черту характера и перевод."
+          },
+          "tags": [
+            "vocab.personality"
+          ],
+          "pairs": [
+            {
+              "left": "kind",
+              "right": "добрый"
+            },
+            {
+              "left": "shy",
+              "right": "застенчивый"
+            },
+            {
+              "left": "honest",
+              "right": "честный"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u09.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.as-as",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он такой же добрый, как ты.",
+          "answers": [
+            "He is as kind as you."
+          ]
+        }
+      ]
+    }
+  ]
+}

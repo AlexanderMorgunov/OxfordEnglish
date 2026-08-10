@@ -45,6 +45,9 @@ export const SKILL_TAGS = [
   'grammar.prepositions-movement',
   'grammar.both-all',
   'grammar.another-other',
+  'grammar.superlatives',
+  'grammar.as-as',
+  'grammar.too-enough',
 
   // functions (everyday communication)
   'functions.ordering',
@@ -55,6 +58,7 @@ export const SKILL_TAGS = [
   'functions.apologizing',
   'functions.thanking',
   'functions.describing',
+  'functions.shopping',
 
   // vocabulary (developer-life + everyday themes)
   'vocab.work',
@@ -74,6 +78,10 @@ export const SKILL_TAGS = [
   'vocab.restaurant',
   'vocab.town',
   'vocab.shops',
+  'vocab.clothes',
+  'vocab.shopping',
+  'vocab.money',
+  'vocab.personality',
 
   // reading
   'reading.gist',

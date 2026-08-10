@@ -210,7 +210,13 @@
         "en": "Bigger, better",
         "ru": "Больше, лучше"
       },
-      "dayIds": [],
+      "dayIds": [
+        "u09.d01",
+        "u09.d02",
+        "u09.d03",
+        "u09.d04",
+        "u09.d05"
+      ],
       "checkpoint": {
         "id": "u09.checkpoint",
         "title": {
