@@ -1,0 +1,479 @@
+{
+  "id": "u07.d04",
+  "title": {
+    "en": "A few or a little?",
+    "ru": "A few или a little?"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.few-little",
+    "grammar.one-ones",
+    "vocab.food"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u07.d04.vocab",
+      "title": {
+        "en": "Containers & quantities",
+        "ru": "Ёмкости и количества"
+      },
+      "words": [
+        {
+          "word": "bottle",
+          "ru": "бутылка",
+          "ipa": "/ˈbɒtl/",
+          "example": "a bottle of water",
+          "exampleRu": "бутылка воды",
+          "audio": {
+            "src": "media/audio/u07.d04.vocab.bottle.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "glass",
+          "ru": "стакан",
+          "ipa": "/ɡlɑːs/",
+          "example": "a glass of juice",
+          "exampleRu": "стакан сока",
+          "audio": {
+            "src": "media/audio/u07.d04.vocab.glass.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cup",
+          "ru": "чашка",
+          "ipa": "/kʌp/",
+          "example": "a cup of tea",
+          "exampleRu": "чашка чая",
+          "audio": {
+            "src": "media/audio/u07.d04.vocab.cup.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "piece",
+          "ru": "кусок",
+          "ipa": "/piːs/",
+          "example": "a piece of cake",
+          "exampleRu": "кусок торта",
+          "audio": {
+            "src": "media/audio/u07.d04.vocab.piece.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "slice",
+          "ru": "ломтик",
+          "ipa": "/slaɪs/",
+          "example": "a slice of bread",
+          "exampleRu": "ломтик хлеба",
+          "audio": {
+            "src": "media/audio/u07.d04.vocab.slice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bowl",
+          "ru": "миска, тарелка",
+          "ipa": "/boʊl/",
+          "example": "a bowl of soup",
+          "exampleRu": "тарелка супа",
+          "audio": {
+            "src": "media/audio/u07.d04.vocab.bowl.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "packet",
+          "ru": "пачка",
+          "ipa": "/ˈpækɪt/",
+          "example": "a packet of rice",
+          "exampleRu": "пачка риса",
+          "audio": {
+            "src": "media/audio/u07.d04.vocab.packet.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "kilo",
+          "ru": "килограмм",
+          "ipa": "/ˈkiːloʊ/",
+          "example": "a kilo of apples",
+          "exampleRu": "килограмм яблок",
+          "audio": {
+            "src": "media/audio/u07.d04.vocab.kilo.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "litre",
+          "ru": "литр",
+          "ipa": "/ˈliːtər/",
+          "example": "a litre of milk",
+          "exampleRu": "литр молока",
+          "audio": {
+            "src": "media/audio/u07.d04.vocab.litre.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "half",
+          "ru": "половина",
+          "ipa": "/hɑːf/",
+          "example": "half a kilo of sugar",
+          "exampleRu": "полкило сахара",
+          "audio": {
+            "src": "media/audio/u07.d04.vocab.half.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u07.d04.grammar",
+      "title": {
+        "en": "(a) few / (a) little · one / ones",
+        "ru": "(a) few / (a) little · one / ones"
+      },
+      "rule": {
+        "en": "Use \"a few\" with countable nouns and \"a little\" with uncountable nouns for a small amount. Use \"one/ones\" instead of repeating the noun.",
+        "ru": "\"a few\" — с исчисляемыми, \"a little\" — с неисчисляемыми (небольшое количество). \"one/ones\" — вместо повтора существительного."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "a few",
+            "ru": "a few"
+          },
+          "formula": "a few + countable plural",
+          "examples": [
+            {
+              "en": "I have a few apples.",
+              "ru": "У меня есть несколько яблок."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "a little",
+            "ru": "a little"
+          },
+          "formula": "a little + uncountable",
+          "examples": [
+            {
+              "en": "I have a little milk.",
+              "ru": "У меня есть немного молока."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "one / ones",
+            "ru": "one / ones"
+          },
+          "formula": "the red one · the big ones",
+          "examples": [
+            {
+              "en": "Which cup? The blue one.",
+              "ru": "Какая чашка? Синяя."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"few\" (no \"a\") means almost none: \"few people came\".",
+          "ru": "\"few\" (без \"a\") — почти никого: \"few people came\"."
+        },
+        {
+          "en": "Use \"ones\" for plural: \"the small ones\", not \"the small one\" for many.",
+          "ru": "Для множественного — \"ones\": \"the small ones\", а не \"the small one\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u07.d04.reading",
+      "title": {
+        "en": "A quick shopping trip",
+        "ru": "Быстрый поход за покупками"
+      },
+      "blocks": [
+        {
+          "id": "u07.d04.reading.b1",
+          "en": "I only needed a few things for dinner: a kilo of apples, a packet of rice and a little cheese. At the shop there were a lot of fruits.",
+          "ru": "Мне нужно было всего несколько вещей на ужин: килограмм яблок, пачка риса и немного сыра. В магазине было много фруктов.",
+          "audio": {
+            "src": "media/audio/u07.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u07.d04.reading.b2",
+          "en": "\"Which apples do you want?\" asked the man. \"The red ones, please, and a bottle of water.\" I paid and went home with a full bag.",
+          "ru": "«Какие яблоки вам нужны?» — спросил мужчина. «Красные, пожалуйста, и бутылку воды». Я заплатил и пошёл домой с полной сумкой.",
+          "audio": {
+            "src": "media/audio/u07.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "fruit",
+          "ru": "фрукты",
+          "ipa": "/fruːt/"
+        },
+        {
+          "word": "pay",
+          "ru": "платить",
+          "ipa": "/peɪ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u07.d04.listening",
+      "title": {
+        "en": "How much sugar?",
+        "ru": "Сколько сахара?"
+      },
+      "audio": {
+        "src": "media/audio/u07.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Do we have any sugar?",
+          "ru": "У нас есть сахар?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Only a little. And a few eggs.",
+          "ru": "Только немного. И несколько яиц."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "We need more. Which eggs — the big ones?",
+          "ru": "Нужно больше. Какие яйца — большие?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Yes, the big ones, please.",
+          "ru": "Да, большие, пожалуйста."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u07.d04.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "How much sugar is there?",
+            "ru": "Сколько сахара?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.few-little"
+          ],
+          "prompt": "There is only ___ sugar.",
+          "options": [
+            "a little",
+            "a few",
+            "many"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u07.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u07.d04.ex.c.01",
+          "instruction": {
+            "en": "a few or a little?",
+            "ru": "a few или a little?"
+          },
+          "tags": [
+            "grammar.few-little"
+          ],
+          "prompt": "I have ___ apples.",
+          "options": [
+            "a few",
+            "a little",
+            "much"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u07.d04.ex.c.02",
+          "instruction": {
+            "en": "a few or a little?",
+            "ru": "a few или a little?"
+          },
+          "tags": [
+            "grammar.few-little"
+          ],
+          "prompt": "There is ___ milk in the cup.",
+          "options": [
+            "a little",
+            "a few",
+            "many"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u07.d04.ex.g.01",
+          "instruction": {
+            "en": "one or ones?",
+            "ru": "one или ones?"
+          },
+          "tags": [
+            "grammar.one-ones"
+          ],
+          "prompt": "Which cups? The blue ___ .",
+          "answers": [
+            "ones"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u07.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.few-little"
+          ],
+          "variants": [
+            "I have a little apples.",
+            "I have a few apples."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u07.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the container and the translation.",
+            "ru": "Сопоставь ёмкость и перевод."
+          },
+          "tags": [
+            "vocab.food"
+          ],
+          "pairs": [
+            {
+              "left": "bottle",
+              "right": "бутылка"
+            },
+            {
+              "left": "slice",
+              "right": "ломтик"
+            },
+            {
+              "left": "bowl",
+              "right": "миска"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u07.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.few-little",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У меня есть немного молока.",
+          "answers": [
+            "I have a little milk."
+          ]
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u07.d04.ex.mp.01",
+          "instruction": {
+            "en": "Listen — which word do you hear?",
+            "ru": "Послушай — какое слово ты слышишь?"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u07.d04.ex.mp.01.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "cup",
+            "cap"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    }
+  ]
+}

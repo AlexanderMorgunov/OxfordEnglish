@@ -169,7 +169,9 @@
       "dayIds": [
         "u07.d01",
         "u07.d02",
-        "u07.d03"
+        "u07.d03",
+        "u07.d04",
+        "u07.d05"
       ],
       "checkpoint": {
         "id": "u07.checkpoint",

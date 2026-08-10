@@ -1,0 +1,475 @@
+{
+  "id": "u07.d05",
+  "title": {
+    "en": "At the restaurant",
+    "ru": "В ресторане"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "functions.ordering",
+    "vocab.restaurant"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u07.d05.vocab",
+      "title": {
+        "en": "At the restaurant",
+        "ru": "В ресторане"
+      },
+      "words": [
+        {
+          "word": "waiter",
+          "ru": "официант",
+          "ipa": "/ˈweɪtər/",
+          "example": "The waiter took our order.",
+          "exampleRu": "Официант принял заказ.",
+          "audio": {
+            "src": "media/audio/u07.d05.vocab.waiter.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "menu",
+          "ru": "меню",
+          "ipa": "/ˈmenjuː/",
+          "example": "Can I see the menu?",
+          "exampleRu": "Можно меню?",
+          "audio": {
+            "src": "media/audio/u07.d05.vocab.menu.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "starter",
+          "ru": "закуска",
+          "ipa": "/ˈstɑːrtər/",
+          "example": "For a starter, soup please.",
+          "exampleRu": "На закуску — суп, пожалуйста.",
+          "audio": {
+            "src": "media/audio/u07.d05.vocab.starter.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "main course",
+          "ru": "основное блюдо",
+          "ipa": "/meɪn kɔːrs/",
+          "example": "For the main course, fish.",
+          "exampleRu": "На основное — рыбу.",
+          "audio": {
+            "src": "media/audio/u07.d05.vocab.maincourse.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dessert",
+          "ru": "десерт",
+          "ipa": "/dɪˈzɜːrt/",
+          "example": "What is for dessert?",
+          "exampleRu": "Что на десерт?",
+          "audio": {
+            "src": "media/audio/u07.d05.vocab.dessert.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "book",
+          "ru": "бронировать",
+          "ipa": "/bʊk/",
+          "example": "I want to book a table.",
+          "exampleRu": "Хочу забронировать столик.",
+          "audio": {
+            "src": "media/audio/u07.d05.vocab.book.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "order",
+          "ru": "заказ; заказывать",
+          "ipa": "/ˈɔːrdər/",
+          "example": "Are you ready to order?",
+          "exampleRu": "Готовы заказать?",
+          "audio": {
+            "src": "media/audio/u07.d05.vocab.order.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bill",
+          "ru": "счёт",
+          "ipa": "/bɪl/",
+          "example": "Could we have the bill?",
+          "exampleRu": "Можно счёт?",
+          "audio": {
+            "src": "media/audio/u07.d05.vocab.bill.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tip",
+          "ru": "чаевые",
+          "ipa": "/tɪp/",
+          "example": "We left a tip.",
+          "exampleRu": "Мы оставили чаевые.",
+          "audio": {
+            "src": "media/audio/u07.d05.vocab.tip.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "delicious",
+          "ru": "вкусный",
+          "ipa": "/dɪˈlɪʃəs/",
+          "example": "The food was delicious.",
+          "exampleRu": "Еда была вкусной.",
+          "audio": {
+            "src": "media/audio/u07.d05.vocab.delicious.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u07.d05.grammar",
+      "title": {
+        "en": "Ordering a meal",
+        "ru": "Заказ еды"
+      },
+      "rule": {
+        "en": "Book with \"I'd like to book a table\". Order with \"Can I have…?\" or \"I'll have…\". Ask for the bill with \"Could we have the bill, please?\".",
+        "ru": "Бронируй: \"I'd like to book a table\". Заказывай: \"Can I have…?\" или \"I'll have…\". Счёт: \"Could we have the bill, please?\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "book",
+            "ru": "бронь"
+          },
+          "formula": "I'd like to book a table for two.",
+          "examples": [
+            {
+              "en": "I'd like to book a table for two, please.",
+              "ru": "Хочу забронировать столик на двоих."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "order",
+            "ru": "заказ"
+          },
+          "formula": "I'll have … / Can I have …?",
+          "examples": [
+            {
+              "en": "I'll have the soup and the fish.",
+              "ru": "Мне суп и рыбу."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "bill",
+            "ru": "счёт"
+          },
+          "formula": "Could we have the bill, please?",
+          "examples": [
+            {
+              "en": "Could we have the bill, please?",
+              "ru": "Можно счёт, пожалуйста?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"I'll have\" (= I will have) is the natural way to order in a restaurant.",
+          "ru": "\"I'll have\" (= I will have) — естественный способ заказать в ресторане."
+        },
+        {
+          "en": "Say \"for a starter / for the main course\" to structure your order.",
+          "ru": "Скажи \"for a starter / for the main course\", чтобы построить заказ."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u07.d05.reading",
+      "title": {
+        "en": "Dinner out",
+        "ru": "Ужин в ресторане"
+      },
+      "blocks": [
+        {
+          "id": "u07.d05.reading.b1",
+          "en": "On Friday we went to a restaurant for dinner. We booked a table for two near the window. The waiter brought the menu and some water.",
+          "ru": "В пятницу мы пошли ужинать в ресторан. Мы забронировали столик на двоих у окна. Официант принёс меню и воду.",
+          "audio": {
+            "src": "media/audio/u07.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u07.d05.reading.b2",
+          "en": "For a starter I had soup, and for the main course I had fish with rice. It was delicious. At the end we asked for the bill and left a tip.",
+          "ru": "На закуску я взял суп, а на основное — рыбу с рисом. Было вкусно. В конце мы попросили счёт и оставили чаевые.",
+          "audio": {
+            "src": "media/audio/u07.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "restaurant",
+          "ru": "ресторан",
+          "ipa": "/ˈrestrɒnt/"
+        },
+        {
+          "word": "bring",
+          "ru": "приносить",
+          "ipa": "/brɪŋ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u07.d05.listening",
+      "title": {
+        "en": "Are you ready to order?",
+        "ru": "Готовы заказать?"
+      },
+      "audio": {
+        "src": "media/audio/u07.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Good evening. Are you ready to order?",
+          "ru": "Добрый вечер. Готовы заказать?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Yes. For a starter, I'll have the soup.",
+          "ru": "Да. На закуску — суп."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "And for the main course?",
+          "ru": "А на основное?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "I'll have the chicken, please. And the bill later.",
+          "ru": "Курицу, пожалуйста. И счёт потом."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u07.d05.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What does the customer order for the main course?",
+            "ru": "Что клиент заказывает на основное?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.ordering"
+          ],
+          "prompt": "For the main course: the ___ .",
+          "options": [
+            "chicken",
+            "soup",
+            "fish"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u07.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u07.d05.ex.c.01",
+          "instruction": {
+            "en": "Order politely.",
+            "ru": "Закажи вежливо."
+          },
+          "tags": [
+            "functions.ordering"
+          ],
+          "prompt": "___ have the fish, please.",
+          "options": [
+            "I'll",
+            "I",
+            "Me"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u07.d05.ex.o.01",
+          "instruction": {
+            "en": "Ask for the bill.",
+            "ru": "Попроси счёт."
+          },
+          "tags": [
+            "functions.ordering"
+          ],
+          "tokens": [
+            "Could",
+            "we",
+            "have",
+            "the",
+            "bill"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u07.d05.ex.o.02",
+          "instruction": {
+            "en": "Book a table.",
+            "ru": "Забронируй столик."
+          },
+          "tags": [
+            "functions.ordering"
+          ],
+          "tokens": [
+            "I",
+            "want",
+            "to",
+            "book",
+            "a",
+            "table"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u07.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.ordering"
+          ],
+          "variants": [
+            "I have the soup, please.",
+            "I'll have the soup, please."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u07.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.restaurant"
+          ],
+          "pairs": [
+            {
+              "left": "starter",
+              "right": "закуска"
+            },
+            {
+              "left": "bill",
+              "right": "счёт"
+            },
+            {
+              "left": "tip",
+              "right": "чаевые"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u07.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.ordering",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Можно счёт, пожалуйста?",
+          "answers": [
+            "Could we have the bill, please?",
+            "Can I have the bill, please?"
+          ]
+        }
+      ]
+    }
+  ]
+}
