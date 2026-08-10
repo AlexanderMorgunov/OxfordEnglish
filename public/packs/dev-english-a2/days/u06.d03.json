@@ -1,0 +1,456 @@
+{
+  "id": "u06.d03",
+  "title": {
+    "en": "This and that",
+    "ru": "Это и то"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.demonstratives",
+    "vocab.house"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u06.d03.vocab",
+      "title": {
+        "en": "Around the home",
+        "ru": "Вокруг дома"
+      },
+      "words": [
+        {
+          "word": "key",
+          "ru": "ключ",
+          "ipa": "/kiː/",
+          "example": "This is my key.",
+          "exampleRu": "Это мой ключ.",
+          "audio": {
+            "src": "media/audio/u06.d03.vocab.key.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "clock",
+          "ru": "часы (настенные)",
+          "ipa": "/klɒk/",
+          "example": "That clock is old.",
+          "exampleRu": "Те часы старые.",
+          "audio": {
+            "src": "media/audio/u06.d03.vocab.clock.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "plant",
+          "ru": "растение",
+          "ipa": "/plɑːnt/",
+          "example": "These plants are green.",
+          "exampleRu": "Эти растения зелёные.",
+          "audio": {
+            "src": "media/audio/u06.d03.vocab.plant.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "curtain",
+          "ru": "штора",
+          "ipa": "/ˈkɜːrtn/",
+          "example": "Those curtains are blue.",
+          "exampleRu": "Те шторы синие.",
+          "audio": {
+            "src": "media/audio/u06.d03.vocab.curtain.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "garden",
+          "ru": "сад",
+          "ipa": "/ˈɡɑːrdn/",
+          "example": "The garden is behind the house.",
+          "exampleRu": "Сад за домом.",
+          "audio": {
+            "src": "media/audio/u06.d03.vocab.garden.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "living room",
+          "ru": "гостиная",
+          "ipa": "/ˈlɪvɪŋ ruːm/",
+          "example": "This is the living room.",
+          "exampleRu": "Это гостиная.",
+          "audio": {
+            "src": "media/audio/u06.d03.vocab.livingroom.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "drawer",
+          "ru": "ящик (стола)",
+          "ipa": "/drɔːr/",
+          "example": "The keys are in that drawer.",
+          "exampleRu": "Ключи в том ящике.",
+          "audio": {
+            "src": "media/audio/u06.d03.vocab.drawer.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cushion",
+          "ru": "подушка (диванная)",
+          "ipa": "/ˈkʊʃn/",
+          "example": "These cushions are soft.",
+          "exampleRu": "Эти подушки мягкие.",
+          "audio": {
+            "src": "media/audio/u06.d03.vocab.cushion.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "stairs",
+          "ru": "лестница",
+          "ipa": "/steərz/",
+          "example": "The stairs are near the door.",
+          "exampleRu": "Лестница у двери.",
+          "audio": {
+            "src": "media/audio/u06.d03.vocab.stairs.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wardrobe",
+          "ru": "шкаф для одежды",
+          "ipa": "/ˈwɔːrdroʊb/",
+          "example": "My clothes are in the wardrobe.",
+          "exampleRu": "Моя одежда в шкафу.",
+          "audio": {
+            "src": "media/audio/u06.d03.vocab.wardrobe.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u06.d03.grammar",
+      "title": {
+        "en": "this / that / these / those",
+        "ru": "this / that / these / those"
+      },
+      "rule": {
+        "en": "Point to things with demonstratives: this/these for near, that/those for far; this/that for one, these/those for many.",
+        "ru": "Указывай на предметы: this/these — близко, that/those — далеко; this/that — один, these/those — много."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "near",
+            "ru": "близко"
+          },
+          "formula": "this (one) · these (many)",
+          "examples": [
+            {
+              "en": "This is my key. These are my books.",
+              "ru": "Это мой ключ. Это мои книги."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "far",
+            "ru": "далеко"
+          },
+          "formula": "that (one) · those (many)",
+          "examples": [
+            {
+              "en": "That is your bag. Those are your shoes.",
+              "ru": "То — твоя сумка. То — твои туфли."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "question",
+            "ru": "вопрос"
+          },
+          "formula": "What is this / that? What are these / those?",
+          "examples": [
+            {
+              "en": "What is this? What are those?",
+              "ru": "Что это? Что то?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "these/those are plural: \"these books\", not \"this books\".",
+          "ru": "these/those — множественное: \"these books\", а не \"this books\"."
+        },
+        {
+          "en": "this/these = here (near), that/those = there (far).",
+          "ru": "this/these = здесь (близко), that/those = там (далеко)."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u06.d03.reading",
+      "title": {
+        "en": "A tour of the house",
+        "ru": "Экскурсия по дому"
+      },
+      "blocks": [
+        {
+          "id": "u06.d03.reading.b1",
+          "en": "\"Come in! This is the living room. This sofa is new, and these cushions are very soft. That clock on the wall is old — it was my grandmother's.\"",
+          "ru": "«Заходи! Это гостиная. Этот диван новый, а эти подушки очень мягкие. Те часы на стене старые — они были бабушкиными».",
+          "audio": {
+            "src": "media/audio/u06.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u06.d03.reading.b2",
+          "en": "\"Those windows look at the garden. And this door goes to the kitchen. Do you like it?\" \"Yes, this house is beautiful!\"",
+          "ru": "«Те окна выходят в сад. А эта дверь ведёт на кухню. Тебе нравится?» «Да, этот дом прекрасен!»",
+          "audio": {
+            "src": "media/audio/u06.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "grandmother",
+          "ru": "бабушка",
+          "ipa": "/ˈɡrænmʌðər/"
+        },
+        {
+          "word": "come in",
+          "ru": "заходи",
+          "ipa": "/kʌm ɪn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u06.d03.listening",
+      "title": {
+        "en": "What's this?",
+        "ru": "Что это?"
+      },
+      "audio": {
+        "src": "media/audio/u06.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "What is this?",
+          "ru": "Что это?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "This is a plant from my garden.",
+          "ru": "Это растение из моего сада."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "And what are those on the shelf?",
+          "ru": "А что то на полке?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Those are old photos of my family.",
+          "ru": "Это старые фото моей семьи."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u06.d03.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What are on the shelf?",
+            "ru": "Что на полке?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.demonstratives"
+          ],
+          "prompt": "Those are old ___.",
+          "options": [
+            "photos",
+            "plants",
+            "keys"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u06.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u06.d03.ex.c.01",
+          "instruction": {
+            "en": "this or these?",
+            "ru": "this или these?"
+          },
+          "tags": [
+            "grammar.demonstratives"
+          ],
+          "prompt": "___ books are mine. (near)",
+          "options": [
+            "These",
+            "This",
+            "That"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u06.d03.ex.c.02",
+          "instruction": {
+            "en": "that or those?",
+            "ru": "that или those?"
+          },
+          "tags": [
+            "grammar.demonstratives"
+          ],
+          "prompt": "___ is your bag over there. (far)",
+          "options": [
+            "That",
+            "Those",
+            "These"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u06.d03.ex.g.01",
+          "instruction": {
+            "en": "Near + plural.",
+            "ru": "Близко + множ."
+          },
+          "tags": [
+            "grammar.demonstratives"
+          ],
+          "prompt": "___ cushions here are soft.",
+          "answers": [
+            "These",
+            "these"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u06.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.demonstratives"
+          ],
+          "variants": [
+            "This are my shoes.",
+            "These are my shoes."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u06.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.house"
+          ],
+          "pairs": [
+            {
+              "left": "curtain",
+              "right": "штора"
+            },
+            {
+              "left": "garden",
+              "right": "сад"
+            },
+            {
+              "left": "drawer",
+              "right": "ящик"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u06.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.demonstratives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это мои ключи.",
+          "answers": [
+            "These are my keys."
+          ]
+        }
+      ]
+    }
+  ]
+}

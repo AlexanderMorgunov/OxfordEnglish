@@ -1,0 +1,453 @@
+{
+  "id": "u06.d01",
+  "title": {
+    "en": "Welcome to my home",
+    "ru": "Добро пожаловать домой"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "vocab.house",
+    "vocab.furniture",
+    "grammar.there-is"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u06.d01.vocab",
+      "title": {
+        "en": "House & furniture",
+        "ru": "Дом и мебель"
+      },
+      "words": [
+        {
+          "word": "house",
+          "ru": "дом",
+          "ipa": "/haʊs/",
+          "example": "They have a big house.",
+          "exampleRu": "У них большой дом.",
+          "audio": {
+            "src": "media/audio/u06.d01.vocab.house.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "flat",
+          "ru": "квартира",
+          "ipa": "/flæt/",
+          "example": "I live in a small flat.",
+          "exampleRu": "Я живу в маленькой квартире.",
+          "audio": {
+            "src": "media/audio/u06.d01.vocab.flat.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "room",
+          "ru": "комната",
+          "ipa": "/ruːm/",
+          "example": "This room is bright.",
+          "exampleRu": "Эта комната светлая.",
+          "audio": {
+            "src": "media/audio/u06.d01.vocab.room.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "kitchen",
+          "ru": "кухня",
+          "ipa": "/ˈkɪtʃɪn/",
+          "example": "The kitchen is small.",
+          "exampleRu": "Кухня маленькая.",
+          "audio": {
+            "src": "media/audio/u06.d01.vocab.kitchen.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bedroom",
+          "ru": "спальня",
+          "ipa": "/ˈbedruːm/",
+          "example": "There are two bedrooms.",
+          "exampleRu": "Есть две спальни.",
+          "audio": {
+            "src": "media/audio/u06.d01.vocab.bedroom.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bathroom",
+          "ru": "ванная",
+          "ipa": "/ˈbɑːθruːm/",
+          "example": "The bathroom is next to the bedroom.",
+          "exampleRu": "Ванная рядом со спальней.",
+          "audio": {
+            "src": "media/audio/u06.d01.vocab.bathroom.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "table",
+          "ru": "стол",
+          "ipa": "/ˈteɪbl/",
+          "example": "There is a table in the kitchen.",
+          "exampleRu": "На кухне есть стол.",
+          "audio": {
+            "src": "media/audio/u06.d01.vocab.table.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "chair",
+          "ru": "стул",
+          "ipa": "/tʃeər/",
+          "example": "There are four chairs.",
+          "exampleRu": "Есть четыре стула.",
+          "audio": {
+            "src": "media/audio/u06.d01.vocab.chair.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bed",
+          "ru": "кровать",
+          "ipa": "/bed/",
+          "example": "The bed is comfortable.",
+          "exampleRu": "Кровать удобная.",
+          "audio": {
+            "src": "media/audio/u06.d01.vocab.bed.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sofa",
+          "ru": "диван",
+          "ipa": "/ˈsoʊfə/",
+          "example": "There is a sofa in the living room.",
+          "exampleRu": "В гостиной есть диван.",
+          "audio": {
+            "src": "media/audio/u06.d01.vocab.sofa.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u06.d01.grammar",
+      "title": {
+        "en": "there is / there are (review)",
+        "ru": "there is / there are (повторение)"
+      },
+      "rule": {
+        "en": "Say what a place has with \"there is\" (one thing) and \"there are\" (many). Use \"some\" for plurals and \"any\" in questions and negatives.",
+        "ru": "Что есть в месте — через \"there is\" (один предмет) и \"there are\" (много). \"some\" — с множественным, \"any\" — в вопросах и отрицаниях."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "there is",
+            "ru": "there is"
+          },
+          "formula": "There is a + singular",
+          "examples": [
+            {
+              "en": "There is a sofa in the room.",
+              "ru": "В комнате есть диван."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "there are",
+            "ru": "there are"
+          },
+          "formula": "There are + plural",
+          "examples": [
+            {
+              "en": "There are two chairs.",
+              "ru": "Есть два стула."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "any",
+            "ru": "any"
+          },
+          "formula": "Is there…? · There aren't any…",
+          "examples": [
+            {
+              "en": "Is there a table? There aren't any windows.",
+              "ru": "Есть стол? Окон нет."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Match the verb to the noun: \"there is one bed\", \"there are two beds\".",
+          "ru": "Согласуй глагол с существительным: \"there is one bed\", \"there are two beds\"."
+        },
+        {
+          "en": "Use \"any\", not \"some\", in questions and negatives: \"Is there any milk?\"",
+          "ru": "В вопросах и отрицаниях — \"any\", не \"some\": \"Is there any milk?\""
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u06.d01.reading",
+      "title": {
+        "en": "My new flat",
+        "ru": "Моя новая квартира"
+      },
+      "blocks": [
+        {
+          "id": "u06.d01.reading.b1",
+          "en": "I have a new flat in the city. It is not big, but it is comfortable. There is a small kitchen, one bedroom and a bright living room.",
+          "ru": "У меня новая квартира в городе. Она небольшая, но уютная. Есть маленькая кухня, одна спальня и светлая гостиная.",
+          "audio": {
+            "src": "media/audio/u06.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u06.d01.reading.b2",
+          "en": "In the living room there is a soft sofa and a low table. There are two big windows, so the room is full of light. I love my new home.",
+          "ru": "В гостиной стоит мягкий диван и низкий стол. Есть два больших окна, поэтому в комнате много света. Я люблю свой новый дом.",
+          "audio": {
+            "src": "media/audio/u06.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "bright",
+          "ru": "светлый",
+          "ipa": "/braɪt/"
+        },
+        {
+          "word": "light",
+          "ru": "свет",
+          "ipa": "/laɪt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u06.d01.listening",
+      "title": {
+        "en": "Is there a garden?",
+        "ru": "Есть ли сад?"
+      },
+      "audio": {
+        "src": "media/audio/u06.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Is there a garden at your new house?",
+          "ru": "У твоего нового дома есть сад?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Yes, there is a small one behind the house.",
+          "ru": "Да, есть маленький за домом."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Are there many rooms?",
+          "ru": "Комнат много?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "There are three rooms and two bathrooms.",
+          "ru": "Три комнаты и две ванные."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u06.d01.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "How many bathrooms are there?",
+            "ru": "Сколько ванных?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.there-is"
+          ],
+          "prompt": "There are ___ bathrooms.",
+          "options": [
+            "two",
+            "three",
+            "one"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u06.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u06.d01.ex.g.01",
+          "instruction": {
+            "en": "is or are?",
+            "ru": "is или are?"
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "prompt": "There ___ a sofa in the room.",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u06.d01.ex.g.02",
+          "instruction": {
+            "en": "is or are?",
+            "ru": "is или are?"
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "prompt": "There ___ two windows.",
+          "answers": [
+            "are"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u06.d01.ex.c.01",
+          "instruction": {
+            "en": "some or any?",
+            "ru": "some или any?"
+          },
+          "tags": [
+            "grammar.some-any"
+          ],
+          "prompt": "Is there ___ milk in the kitchen?",
+          "options": [
+            "any",
+            "some",
+            "a"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u06.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "variants": [
+            "There is two chairs.",
+            "There are two chairs."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u06.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the room and the translation.",
+            "ru": "Сопоставь комнату и перевод."
+          },
+          "tags": [
+            "vocab.house"
+          ],
+          "pairs": [
+            {
+              "left": "kitchen",
+              "right": "кухня"
+            },
+            {
+              "left": "bedroom",
+              "right": "спальня"
+            },
+            {
+              "left": "bathroom",
+              "right": "ванная"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u06.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.there-is",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "В комнате есть стол.",
+          "answers": [
+            "There is a table in the room."
+          ]
+        }
+      ]
+    }
+  ]
+}

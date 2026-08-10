@@ -1,0 +1,452 @@
+{
+  "id": "u06.d05",
+  "title": {
+    "en": "Describe your place",
+    "ru": "Опиши своё место"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "functions.describing",
+    "vocab.house",
+    "vocab.appearance"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u06.d05.vocab",
+      "title": {
+        "en": "Describing places",
+        "ru": "Описываем места"
+      },
+      "words": [
+        {
+          "word": "comfortable",
+          "ru": "удобный, уютный",
+          "ipa": "/ˈkʌmftəbl/",
+          "example": "The room is comfortable.",
+          "exampleRu": "Комната уютная.",
+          "audio": {
+            "src": "media/audio/u06.d05.vocab.comfortable.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "modern",
+          "ru": "современный",
+          "ipa": "/ˈmɒdərn/",
+          "example": "It is a modern flat.",
+          "exampleRu": "Это современная квартира.",
+          "audio": {
+            "src": "media/audio/u06.d05.vocab.modern.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "quiet",
+          "ru": "тихий",
+          "ipa": "/ˈkwaɪət/",
+          "example": "The street is quiet.",
+          "exampleRu": "Улица тихая.",
+          "audio": {
+            "src": "media/audio/u06.d05.vocab.quiet.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "view",
+          "ru": "вид",
+          "ipa": "/vjuː/",
+          "example": "There is a nice view.",
+          "exampleRu": "Отсюда красивый вид.",
+          "audio": {
+            "src": "media/audio/u06.d05.vocab.view.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "floor",
+          "ru": "этаж",
+          "ipa": "/flɔːr/",
+          "example": "I live on the third floor.",
+          "exampleRu": "Я живу на третьем этаже.",
+          "audio": {
+            "src": "media/audio/u06.d05.vocab.floor.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "near",
+          "ru": "рядом, близко",
+          "ipa": "/nɪər/",
+          "example": "It is near the park.",
+          "exampleRu": "Это рядом с парком.",
+          "audio": {
+            "src": "media/audio/u06.d05.vocab.near.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "looks like",
+          "ru": "выглядит как",
+          "ipa": "/lʊks laɪk/",
+          "example": "It looks like a small castle.",
+          "exampleRu": "Он выглядит как маленький замок.",
+          "audio": {
+            "src": "media/audio/u06.d05.vocab.lookslike.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "friendly",
+          "ru": "дружелюбный",
+          "ipa": "/ˈfrendli/",
+          "example": "My neighbours are friendly.",
+          "exampleRu": "Мои соседи дружелюбные.",
+          "audio": {
+            "src": "media/audio/u06.d05.vocab.friendly.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "clean",
+          "ru": "чистый",
+          "ipa": "/kliːn/",
+          "example": "The kitchen is clean.",
+          "exampleRu": "Кухня чистая.",
+          "audio": {
+            "src": "media/audio/u06.d05.vocab.clean.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "favourite",
+          "ru": "любимый",
+          "ipa": "/ˈfeɪvərɪt/",
+          "example": "This is my favourite room.",
+          "exampleRu": "Это моя любимая комната.",
+          "audio": {
+            "src": "media/audio/u06.d05.vocab.favourite.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u06.d05.grammar",
+      "title": {
+        "en": "Describing a place or a person",
+        "ru": "Описываем место или человека"
+      },
+      "rule": {
+        "en": "Describe a place with \"There is/are ...\", \"It has ...\", \"It is + adjective\". Describe a person with \"He/She is ...\", \"He/She has ...\", \"He/She looks ...\".",
+        "ru": "Место: \"There is/are ...\", \"It has ...\", \"It is + прилагательное\". Человек: \"He/She is ...\", \"He/She has ...\", \"He/She looks ...\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "a place",
+            "ru": "место"
+          },
+          "formula": "It is a + adj + noun · There is …",
+          "examples": [
+            {
+              "en": "It is a small quiet flat. There is a nice view.",
+              "ru": "Это маленькая тихая квартира. Отсюда красивый вид."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "a person",
+            "ru": "человек"
+          },
+          "formula": "He/She is … · has … · looks …",
+          "examples": [
+            {
+              "en": "She is tall and has long hair. She looks friendly.",
+              "ru": "Она высокая, с длинными волосами. Выглядит дружелюбной."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use \"has\" for features: \"The room has two windows.\"",
+          "ru": "Для деталей — \"has\": \"The room has two windows.\""
+        },
+        {
+          "en": "\"looks\" + adjective (looks nice), \"looks like\" + noun (looks like a castle).",
+          "ru": "\"looks\" + прилагательное (looks nice), \"looks like\" + существительное (looks like a castle)."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u06.d05.reading",
+      "title": {
+        "en": "My favourite place",
+        "ru": "Моё любимое место"
+      },
+      "blocks": [
+        {
+          "id": "u06.d05.reading.b1",
+          "en": "My favourite place is my grandmother's house. It is an old but comfortable house near a small lake. It has a big garden and a quiet street.",
+          "ru": "Моё любимое место — дом бабушки. Это старый, но уютный дом у небольшого озера. У него большой сад и тихая улица.",
+          "audio": {
+            "src": "media/audio/u06.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u06.d05.reading.b2",
+          "en": "My grandmother is short and has grey hair and kind eyes. She always looks happy. When I am there, everything is calm and I feel at home.",
+          "ru": "Бабушка невысокая, с седыми волосами и добрыми глазами. Она всегда выглядит счастливой. Когда я там, всё спокойно, и я чувствую себя как дома.",
+          "audio": {
+            "src": "media/audio/u06.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "lake",
+          "ru": "озеро",
+          "ipa": "/leɪk/"
+        },
+        {
+          "word": "kind",
+          "ru": "добрый",
+          "ipa": "/kaɪnd/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u06.d05.listening",
+      "title": {
+        "en": "Tell me about your flat",
+        "ru": "Расскажи о своей квартире"
+      },
+      "audio": {
+        "src": "media/audio/u06.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Tell me about your new flat.",
+          "ru": "Расскажи о своей новой квартире."
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "It is small but modern. It is on the fifth floor.",
+          "ru": "Она маленькая, но современная. На пятом этаже."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Is it quiet?",
+          "ru": "Там тихо?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Yes, and there is a beautiful view of the park.",
+          "ru": "Да, и отсюда красивый вид на парк."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u06.d05.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What floor is the flat on?",
+            "ru": "На каком этаже квартира?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.describing"
+          ],
+          "prompt": "It is on the ___ floor.",
+          "options": [
+            "fifth",
+            "third",
+            "first"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u06.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u06.d05.ex.c.01",
+          "instruction": {
+            "en": "looks or looks like?",
+            "ru": "looks или looks like?"
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "She ___ friendly.",
+          "options": [
+            "looks",
+            "looks like",
+            "look"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u06.d05.ex.c.02",
+          "instruction": {
+            "en": "looks or looks like?",
+            "ru": "looks или looks like?"
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "The house ___ a castle.",
+          "options": [
+            "looks like",
+            "looks",
+            "is like"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u06.d05.ex.g.01",
+          "instruction": {
+            "en": "Describe a feature (has).",
+            "ru": "Опиши деталь (has)."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "The room ___ two windows.",
+          "answers": [
+            "has"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u06.d05.ex.o.01",
+          "instruction": {
+            "en": "Describe the flat.",
+            "ru": "Опиши квартиру."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "tokens": [
+            "It",
+            "is",
+            "a",
+            "quiet",
+            "flat"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u06.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.house"
+          ],
+          "pairs": [
+            {
+              "left": "quiet",
+              "right": "тихий"
+            },
+            {
+              "left": "view",
+              "right": "вид"
+            },
+            {
+              "left": "modern",
+              "right": "современный"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u06.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.describing",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это маленькая тихая квартира.",
+          "answers": [
+            "It is a small quiet flat."
+          ]
+        }
+      ]
+    }
+  ]
+}

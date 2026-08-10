@@ -1,0 +1,455 @@
+{
+  "id": "u06.d02",
+  "title": {
+    "en": "Where is it?",
+    "ru": "Где это?"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.prepositions-place",
+    "vocab.furniture"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u06.d02.vocab",
+      "title": {
+        "en": "Things in a room",
+        "ru": "Вещи в комнате"
+      },
+      "words": [
+        {
+          "word": "door",
+          "ru": "дверь",
+          "ipa": "/dɔːr/",
+          "example": "The door is open.",
+          "exampleRu": "Дверь открыта.",
+          "audio": {
+            "src": "media/audio/u06.d02.vocab.door.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wall",
+          "ru": "стена",
+          "ipa": "/wɔːl/",
+          "example": "A picture is on the wall.",
+          "exampleRu": "Картина на стене.",
+          "audio": {
+            "src": "media/audio/u06.d02.vocab.wall.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "floor",
+          "ru": "пол",
+          "ipa": "/flɔːr/",
+          "example": "The cat is on the floor.",
+          "exampleRu": "Кот на полу.",
+          "audio": {
+            "src": "media/audio/u06.d02.vocab.floor.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lamp",
+          "ru": "лампа",
+          "ipa": "/læmp/",
+          "example": "The lamp is next to the bed.",
+          "exampleRu": "Лампа рядом с кроватью.",
+          "audio": {
+            "src": "media/audio/u06.d02.vocab.lamp.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "shelf",
+          "ru": "полка",
+          "ipa": "/ʃelf/",
+          "example": "The books are on the shelf.",
+          "exampleRu": "Книги на полке.",
+          "audio": {
+            "src": "media/audio/u06.d02.vocab.shelf.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "carpet",
+          "ru": "ковёр",
+          "ipa": "/ˈkɑːrpɪt/",
+          "example": "There is a carpet under the table.",
+          "exampleRu": "Под столом ковёр.",
+          "audio": {
+            "src": "media/audio/u06.d02.vocab.carpet.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mirror",
+          "ru": "зеркало",
+          "ipa": "/ˈmɪrər/",
+          "example": "The mirror is behind the door.",
+          "exampleRu": "Зеркало за дверью.",
+          "audio": {
+            "src": "media/audio/u06.d02.vocab.mirror.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "desk",
+          "ru": "письменный стол",
+          "ipa": "/desk/",
+          "example": "My laptop is on the desk.",
+          "exampleRu": "Мой ноутбук на столе.",
+          "audio": {
+            "src": "media/audio/u06.d02.vocab.desk.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "picture",
+          "ru": "картина",
+          "ipa": "/ˈpɪktʃər/",
+          "example": "The picture is between two windows.",
+          "exampleRu": "Картина между двух окон.",
+          "audio": {
+            "src": "media/audio/u06.d02.vocab.picture.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cupboard",
+          "ru": "шкаф (кухонный)",
+          "ipa": "/ˈkʌbərd/",
+          "example": "The cups are in the cupboard.",
+          "exampleRu": "Чашки в шкафу.",
+          "audio": {
+            "src": "media/audio/u06.d02.vocab.cupboard.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u06.d02.grammar",
+      "title": {
+        "en": "Prepositions of place",
+        "ru": "Предлоги места"
+      },
+      "rule": {
+        "en": "Say where things are with prepositions: in, on, under, behind, in front of, next to, between.",
+        "ru": "Где находятся предметы — предлогами: in, on, under, behind, in front of, next to, between."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "in / on / under",
+            "ru": "in / on / under"
+          },
+          "formula": "in a box · on the table · under the bed",
+          "examples": [
+            {
+              "en": "The keys are on the table.",
+              "ru": "Ключи на столе."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "next to / between",
+            "ru": "next to / between"
+          },
+          "formula": "next to X · between X and Y",
+          "examples": [
+            {
+              "en": "The lamp is next to the bed.",
+              "ru": "Лампа рядом с кроватью."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "behind / in front of",
+            "ru": "behind / in front of"
+          },
+          "formula": "behind X · in front of X",
+          "examples": [
+            {
+              "en": "The car is in front of the house.",
+              "ru": "Машина перед домом."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use \"on\" for surfaces, \"in\" for closed spaces: \"on the wall\", \"in the box\".",
+          "ru": "\"on\" — для поверхностей, \"in\" — для закрытых пространств: \"on the wall\", \"in the box\"."
+        },
+        {
+          "en": "\"between\" needs two things: \"between the sofa and the wall\".",
+          "ru": "\"between\" — между двумя предметами: \"between the sofa and the wall\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u06.d02.reading",
+      "title": {
+        "en": "My desk",
+        "ru": "Мой стол"
+      },
+      "blocks": [
+        {
+          "id": "u06.d02.reading.b1",
+          "en": "My desk is next to the window. On the desk there is a laptop and a small lamp. Under the desk there is a box with old books.",
+          "ru": "Мой стол стоит у окна. На столе ноутбук и маленькая лампа. Под столом коробка со старыми книгами.",
+          "audio": {
+            "src": "media/audio/u06.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u06.d02.reading.b2",
+          "en": "Behind the desk there is a shelf on the wall. Between the two windows there is a picture of the sea. I like to work here.",
+          "ru": "За столом на стене полка. Между двумя окнами картина с морем. Мне нравится тут работать.",
+          "audio": {
+            "src": "media/audio/u06.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "box",
+          "ru": "коробка",
+          "ipa": "/bɒks/"
+        },
+        {
+          "word": "sea",
+          "ru": "море",
+          "ipa": "/siː/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u06.d02.listening",
+      "title": {
+        "en": "Where are my keys?",
+        "ru": "Где мои ключи?"
+      },
+      "audio": {
+        "src": "media/audio/u06.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Where are my keys?",
+          "ru": "Где мои ключи?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Are they on the table?",
+          "ru": "Они на столе?"
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "No, they aren't. Oh, they are under the newspaper!",
+          "ru": "Нет. О, они под газетой!"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "And your phone is next to the lamp.",
+          "ru": "А твой телефон рядом с лампой."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u06.d02.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "Where are the keys?",
+            "ru": "Где ключи?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.prepositions-place"
+          ],
+          "prompt": "They are ___ the newspaper.",
+          "options": [
+            "under",
+            "on",
+            "behind"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u06.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u06.d02.ex.g.01",
+          "instruction": {
+            "en": "on, in or under?",
+            "ru": "on, in или under?"
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "prompt": "The books are ___ the shelf.",
+          "answers": [
+            "on"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u06.d02.ex.c.01",
+          "instruction": {
+            "en": "Choose the preposition.",
+            "ru": "Выбери предлог."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "prompt": "The lamp is ___ the bed.",
+          "options": [
+            "next to",
+            "between",
+            "in"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u06.d02.ex.c.02",
+          "instruction": {
+            "en": "Choose the preposition.",
+            "ru": "Выбери предлог."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "prompt": "The car is ___ the house.",
+          "options": [
+            "in front of",
+            "on",
+            "under"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u06.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "variants": [
+            "The picture is in the wall.",
+            "The picture is on the wall."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u06.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.furniture"
+          ],
+          "pairs": [
+            {
+              "left": "shelf",
+              "right": "полка"
+            },
+            {
+              "left": "mirror",
+              "right": "зеркало"
+            },
+            {
+              "left": "carpet",
+              "right": "ковёр"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u06.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.prepositions-place",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Кот под столом.",
+          "answers": [
+            "The cat is under the table."
+          ]
+        }
+      ]
+    }
+  ]
+}

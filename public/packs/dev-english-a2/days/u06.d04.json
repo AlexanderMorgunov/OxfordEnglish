@@ -1,0 +1,461 @@
+{
+  "id": "u06.d04",
+  "title": {
+    "en": "A big old house",
+    "ru": "Большой старый дом"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.adjective-order",
+    "grammar.ed-ing-adjectives",
+    "vocab.appearance",
+    "pronunciation"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u06.d04.vocab",
+      "title": {
+        "en": "Describing people",
+        "ru": "Описываем людей"
+      },
+      "words": [
+        {
+          "word": "tall",
+          "ru": "высокий",
+          "ipa": "/tɔːl/",
+          "example": "He is tall.",
+          "exampleRu": "Он высокий.",
+          "audio": {
+            "src": "media/audio/u06.d04.vocab.tall.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "short",
+          "ru": "низкий, короткий",
+          "ipa": "/ʃɔːrt/",
+          "example": "She is short.",
+          "exampleRu": "Она невысокая.",
+          "audio": {
+            "src": "media/audio/u06.d04.vocab.short.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "young",
+          "ru": "молодой",
+          "ipa": "/jʌŋ/",
+          "example": "They are young.",
+          "exampleRu": "Они молодые.",
+          "audio": {
+            "src": "media/audio/u06.d04.vocab.young.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "old",
+          "ru": "старый, пожилой",
+          "ipa": "/oʊld/",
+          "example": "He is an old man.",
+          "exampleRu": "Он пожилой мужчина.",
+          "audio": {
+            "src": "media/audio/u06.d04.vocab.old.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "beautiful",
+          "ru": "красивый",
+          "ipa": "/ˈbjuːtɪfl/",
+          "example": "What a beautiful garden!",
+          "exampleRu": "Какой красивый сад!",
+          "audio": {
+            "src": "media/audio/u06.d04.vocab.beautiful.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "thin",
+          "ru": "худой, тонкий",
+          "ipa": "/θɪn/",
+          "example": "The cat is thin.",
+          "exampleRu": "Кот худой.",
+          "audio": {
+            "src": "media/audio/u06.d04.vocab.thin.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hair",
+          "ru": "волосы",
+          "ipa": "/heər/",
+          "example": "She has long hair.",
+          "exampleRu": "У неё длинные волосы.",
+          "audio": {
+            "src": "media/audio/u06.d04.vocab.hair.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "eyes",
+          "ru": "глаза",
+          "ipa": "/aɪz/",
+          "example": "He has blue eyes.",
+          "exampleRu": "У него голубые глаза.",
+          "audio": {
+            "src": "media/audio/u06.d04.vocab.eyes.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "boring",
+          "ru": "скучный",
+          "ipa": "/ˈbɔːrɪŋ/",
+          "example": "The film was boring.",
+          "exampleRu": "Фильм был скучным.",
+          "audio": {
+            "src": "media/audio/u06.d04.vocab.boring.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "interesting",
+          "ru": "интересный",
+          "ipa": "/ˈɪntrəstɪŋ/",
+          "example": "This book is interesting.",
+          "exampleRu": "Эта книга интересная.",
+          "audio": {
+            "src": "media/audio/u06.d04.vocab.interesting.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u06.d04.grammar",
+      "title": {
+        "en": "Adjective order · -ed / -ing adjectives",
+        "ru": "Порядок прилагательных · -ed / -ing"
+      },
+      "rule": {
+        "en": "Put adjectives in order: opinion → size → age → colour → noun. Use -ing for the thing (boring film) and -ed for the feeling (bored person).",
+        "ru": "Порядок прилагательных: мнение → размер → возраст → цвет → существительное. -ing — о предмете (boring film), -ed — о чувстве (bored person)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "order",
+            "ru": "порядок"
+          },
+          "formula": "opinion + size + age + colour + noun",
+          "examples": [
+            {
+              "en": "a beautiful big old house",
+              "ru": "красивый большой старый дом"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "-ing (thing)",
+            "ru": "-ing (предмет)"
+          },
+          "formula": "The film is boring.",
+          "examples": [
+            {
+              "en": "This lesson is interesting.",
+              "ru": "Этот урок интересный."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "-ed (feeling)",
+            "ru": "-ed (чувство)"
+          },
+          "formula": "I am bored / interested.",
+          "examples": [
+            {
+              "en": "I am interested in it.",
+              "ru": "Мне это интересно."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Say \"I am bored\" (feeling), not \"I am boring\" (that means you are dull!).",
+          "ru": "Говори \"I am bored\" (чувство), а не \"I am boring\" (это значит, что ты скучный!)."
+        },
+        {
+          "en": "Size before colour: \"a big red bag\", not \"a red big bag\".",
+          "ru": "Размер перед цветом: \"a big red bag\", а не \"a red big bag\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u06.d04.reading",
+      "title": {
+        "en": "My best friend",
+        "ru": "Мой лучший друг"
+      },
+      "blocks": [
+        {
+          "id": "u06.d04.reading.b1",
+          "en": "My best friend Kate is tall and young, with long brown hair and green eyes. She lives in a beautiful old house near the river.",
+          "ru": "Моя лучшая подруга Кейт высокая и молодая, с длинными каштановыми волосами и зелёными глазами. Она живёт в красивом старом доме у реки.",
+          "audio": {
+            "src": "media/audio/u06.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u06.d04.reading.b2",
+          "en": "Kate is never boring. She reads a lot and always has interesting stories. When I am tired or bored, I call her and I feel better.",
+          "ru": "Кейт никогда не бывает скучной. Она много читает и всегда рассказывает интересные истории. Когда я устал или мне скучно, я звоню ей и мне становится легче.",
+          "audio": {
+            "src": "media/audio/u06.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "river",
+          "ru": "река",
+          "ipa": "/ˈrɪvər/"
+        },
+        {
+          "word": "story",
+          "ru": "история",
+          "ipa": "/ˈstɔːri/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u06.d04.listening",
+      "title": {
+        "en": "What does she look like?",
+        "ru": "Как она выглядит?"
+      },
+      "audio": {
+        "src": "media/audio/u06.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "What does your sister look like?",
+          "ru": "Как выглядит твоя сестра?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "She is tall, with short blonde hair.",
+          "ru": "Она высокая, с короткими светлыми волосами."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Is she young?",
+          "ru": "Она молодая?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Yes, and she is very funny. She is never boring!",
+          "ru": "Да, и очень весёлая. С ней никогда не скучно!"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u06.d04.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What hair does the sister have?",
+            "ru": "Какие волосы у сестры?"
+          },
+          "tags": [
+            "listening.detail",
+            "vocab.appearance"
+          ],
+          "prompt": "She has short ___ hair.",
+          "options": [
+            "blonde",
+            "brown",
+            "black"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u06.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "order-words",
+          "id": "u06.d04.ex.o.01",
+          "instruction": {
+            "en": "Put the adjectives in order.",
+            "ru": "Поставь прилагательные по порядку."
+          },
+          "tags": [
+            "grammar.adjective-order"
+          ],
+          "tokens": [
+            "a",
+            "big",
+            "old",
+            "house"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u06.d04.ex.c.01",
+          "instruction": {
+            "en": "-ed or -ing?",
+            "ru": "-ed или -ing?"
+          },
+          "tags": [
+            "grammar.ed-ing-adjectives"
+          ],
+          "prompt": "The film was ___ .",
+          "options": [
+            "boring",
+            "bored"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u06.d04.ex.c.02",
+          "instruction": {
+            "en": "-ed or -ing?",
+            "ru": "-ed или -ing?"
+          },
+          "tags": [
+            "grammar.ed-ing-adjectives"
+          ],
+          "prompt": "I am ___ . Let's do something.",
+          "options": [
+            "bored",
+            "boring"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u06.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.adjective-order"
+          ],
+          "variants": [
+            "a red big bag",
+            "a big red bag"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u06.d04.ex.mp.01",
+          "instruction": {
+            "en": "Listen — which word do you hear?",
+            "ru": "Послушай — какое слово ты слышишь?"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u06.d04.ex.mp.01.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "men",
+            "man"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u06.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.ed-ing-adjectives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Эта книга интересная.",
+          "answers": [
+            "This book is interesting."
+          ]
+        }
+      ]
+    }
+  ]
+}

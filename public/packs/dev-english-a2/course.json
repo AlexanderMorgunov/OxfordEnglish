@@ -144,7 +144,13 @@
         "en": "Around the house",
         "ru": "Дома"
       },
-      "dayIds": [],
+      "dayIds": [
+        "u06.d01",
+        "u06.d02",
+        "u06.d03",
+        "u06.d04",
+        "u06.d05"
+      ],
       "checkpoint": {
         "id": "u06.checkpoint",
         "title": {
