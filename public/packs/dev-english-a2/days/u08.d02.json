@@ -1,0 +1,467 @@
+{
+  "id": "u08.d02",
+  "title": {
+    "en": "Turn left, go straight",
+    "ru": "Налево, потом прямо"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.imperatives",
+    "functions.directions",
+    "vocab.town"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u08.d02.vocab",
+      "title": {
+        "en": "Around town",
+        "ru": "По городу"
+      },
+      "words": [
+        {
+          "word": "street",
+          "ru": "улица",
+          "ipa": "/striːt/",
+          "example": "Walk down this street.",
+          "exampleRu": "Иди вниз по этой улице.",
+          "audio": {
+            "src": "media/audio/u08.d02.vocab.street.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "road",
+          "ru": "дорога",
+          "ipa": "/roʊd/",
+          "example": "Cross the road here.",
+          "exampleRu": "Перейди дорогу здесь.",
+          "audio": {
+            "src": "media/audio/u08.d02.vocab.road.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "square",
+          "ru": "площадь",
+          "ipa": "/skweər/",
+          "example": "The café is on the square.",
+          "exampleRu": "Кафе на площади.",
+          "audio": {
+            "src": "media/audio/u08.d02.vocab.square.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bridge",
+          "ru": "мост",
+          "ipa": "/brɪdʒ/",
+          "example": "Go over the bridge.",
+          "exampleRu": "Перейди через мост.",
+          "audio": {
+            "src": "media/audio/u08.d02.vocab.bridge.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "park",
+          "ru": "парк",
+          "ipa": "/pɑːrk/",
+          "example": "The park is on the left.",
+          "exampleRu": "Парк слева.",
+          "audio": {
+            "src": "media/audio/u08.d02.vocab.park.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "museum",
+          "ru": "музей",
+          "ipa": "/mjuˈziːəm/",
+          "example": "The museum is near here.",
+          "exampleRu": "Музей рядом.",
+          "audio": {
+            "src": "media/audio/u08.d02.vocab.museum.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "library",
+          "ru": "библиотека",
+          "ipa": "/ˈlaɪbreri/",
+          "example": "Turn right at the library.",
+          "exampleRu": "Поверни направо у библиотеки.",
+          "audio": {
+            "src": "media/audio/u08.d02.vocab.library.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cinema",
+          "ru": "кинотеатр",
+          "ipa": "/ˈsɪnəmə/",
+          "example": "The cinema is opposite the bank.",
+          "exampleRu": "Кинотеатр напротив банка.",
+          "audio": {
+            "src": "media/audio/u08.d02.vocab.cinema.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "corner",
+          "ru": "угол",
+          "ipa": "/ˈkɔːrnər/",
+          "example": "The shop is on the corner.",
+          "exampleRu": "Магазин на углу.",
+          "audio": {
+            "src": "media/audio/u08.d02.vocab.corner.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "traffic lights",
+          "ru": "светофор",
+          "ipa": "/ˈtræfɪk laɪts/",
+          "example": "Turn left at the traffic lights.",
+          "exampleRu": "Поверни налево у светофора.",
+          "audio": {
+            "src": "media/audio/u08.d02.vocab.trafficlights.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u08.d02.grammar",
+      "title": {
+        "en": "Imperatives for directions",
+        "ru": "Повелительное наклонение (указания пути)"
+      },
+      "rule": {
+        "en": "Give directions with the base verb and no subject: Go, Turn, Take, Cross. For a negative use \"Don't + verb\".",
+        "ru": "Указания пути — начальная форма глагола без подлежащего: Go, Turn, Take, Cross. Отрицание — \"Don't + глагол\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "go / turn",
+            "ru": "go / turn"
+          },
+          "formula": "Go straight on. · Turn left / right.",
+          "examples": [
+            {
+              "en": "Go straight on and turn right.",
+              "ru": "Иди прямо и поверни направо."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "take / cross",
+            "ru": "take / cross"
+          },
+          "formula": "Take the first left. · Cross the road.",
+          "examples": [
+            {
+              "en": "Take the second street on the left.",
+              "ru": "Сверни на вторую улицу налево."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "don't",
+            "ru": "don't"
+          },
+          "formula": "Don't + verb",
+          "examples": [
+            {
+              "en": "Don't turn here — go past the park.",
+              "ru": "Не поворачивай здесь — иди мимо парка."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "No subject in the imperative: \"Turn left\", not \"You turn left\".",
+          "ru": "В повелительном нет подлежащего: \"Turn left\", а не \"You turn left\"."
+        },
+        {
+          "en": "Use \"the first/second + (street) on the left/right\".",
+          "ru": "Используй \"the first/second + (street) on the left/right\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u08.d02.reading",
+      "title": {
+        "en": "How to find the museum",
+        "ru": "Как найти музей"
+      },
+      "blocks": [
+        {
+          "id": "u08.d02.reading.b1",
+          "en": "Finding the museum is easy. Go straight on down this street and cross the bridge. Then turn left at the traffic lights.",
+          "ru": "Найти музей легко. Иди прямо по этой улице и перейди мост. Потом поверни налево у светофора.",
+          "audio": {
+            "src": "media/audio/u08.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u08.d02.reading.b2",
+          "en": "Take the first street on the right and go past the library. The museum is on the corner, opposite the park. Don't go too far!",
+          "ru": "Сверни на первую улицу направо и пройди мимо библиотеки. Музей на углу, напротив парка. Не уходи слишком далеко!",
+          "audio": {
+            "src": "media/audio/u08.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "easy",
+          "ru": "лёгкий",
+          "ipa": "/ˈiːzi/"
+        },
+        {
+          "word": "far",
+          "ru": "далеко",
+          "ipa": "/fɑːr/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u08.d02.listening",
+      "title": {
+        "en": "Where is the park?",
+        "ru": "Где парк?"
+      },
+      "audio": {
+        "src": "media/audio/u08.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Excuse me, where is the park?",
+          "ru": "Извините, где парк?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Go straight on and turn left at the corner.",
+          "ru": "Иди прямо и поверни налево на углу."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Left at the corner. Is it far?",
+          "ru": "Налево на углу. Это далеко?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "No. Take the first road and it's on the right.",
+          "ru": "Нет. Сверни на первую дорогу, и он будет справа."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u08.d02.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "Which way at the corner?",
+            "ru": "Куда на углу?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.imperatives"
+          ],
+          "prompt": "Turn ___ at the corner.",
+          "options": [
+            "left",
+            "right",
+            "back"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u08.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u08.d02.ex.c.01",
+          "instruction": {
+            "en": "Give a direction.",
+            "ru": "Дай указание."
+          },
+          "tags": [
+            "grammar.imperatives"
+          ],
+          "prompt": "___ left at the bank.",
+          "options": [
+            "Turn",
+            "Turning",
+            "You turn"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u08.d02.ex.o.01",
+          "instruction": {
+            "en": "Give the direction.",
+            "ru": "Составь указание."
+          },
+          "tags": [
+            "grammar.imperatives"
+          ],
+          "tokens": [
+            "Go",
+            "straight",
+            "on",
+            "and",
+            "turn",
+            "right"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u08.d02.ex.g.01",
+          "instruction": {
+            "en": "Negative imperative.",
+            "ru": "Отрицательное повеление."
+          },
+          "tags": [
+            "grammar.imperatives"
+          ],
+          "prompt": "___ turn here — go past the park. (not)",
+          "answers": [
+            "Don't",
+            "Do not"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u08.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.imperatives"
+          ],
+          "variants": [
+            "You cross the road here.",
+            "Cross the road here."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u08.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the place and the translation.",
+            "ru": "Сопоставь место и перевод."
+          },
+          "tags": [
+            "vocab.town"
+          ],
+          "pairs": [
+            {
+              "left": "bridge",
+              "right": "мост"
+            },
+            {
+              "left": "square",
+              "right": "площадь"
+            },
+            {
+              "left": "library",
+              "right": "библиотека"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u08.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.imperatives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Иди прямо и поверни налево.",
+          "answers": [
+            "Go straight on and turn left.",
+            "Go straight and turn left."
+          ]
+        }
+      ]
+    }
+  ]
+}

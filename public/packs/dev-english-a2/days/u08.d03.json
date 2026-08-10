@@ -1,0 +1,456 @@
+{
+  "id": "u08.d03",
+  "title": {
+    "en": "Across the town",
+    "ru": "Через весь город"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.prepositions-movement",
+    "vocab.town"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u08.d03.vocab",
+      "title": {
+        "en": "On the way",
+        "ru": "По пути"
+      },
+      "words": [
+        {
+          "word": "along",
+          "ru": "вдоль, по",
+          "ipa": "/əˈlɒŋ/",
+          "example": "Walk along the river.",
+          "exampleRu": "Иди вдоль реки.",
+          "audio": {
+            "src": "media/audio/u08.d03.vocab.along.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "across",
+          "ru": "через (поперёк)",
+          "ipa": "/əˈkrɒs/",
+          "example": "Walk across the square.",
+          "exampleRu": "Пройди через площадь.",
+          "audio": {
+            "src": "media/audio/u08.d03.vocab.across.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "past",
+          "ru": "мимо",
+          "ipa": "/pɑːst/",
+          "example": "Go past the bank.",
+          "exampleRu": "Пройди мимо банка.",
+          "audio": {
+            "src": "media/audio/u08.d03.vocab.past.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "through",
+          "ru": "сквозь, через",
+          "ipa": "/θruː/",
+          "example": "Walk through the park.",
+          "exampleRu": "Пройди через парк.",
+          "audio": {
+            "src": "media/audio/u08.d03.vocab.through.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "into",
+          "ru": "в (внутрь)",
+          "ipa": "/ˈɪntuː/",
+          "example": "Go into the building.",
+          "exampleRu": "Зайди в здание.",
+          "audio": {
+            "src": "media/audio/u08.d03.vocab.into.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "out of",
+          "ru": "из (наружу)",
+          "ipa": "/ˈaʊt əv/",
+          "example": "Come out of the shop.",
+          "exampleRu": "Выйди из магазина.",
+          "audio": {
+            "src": "media/audio/u08.d03.vocab.outof.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "up",
+          "ru": "вверх",
+          "ipa": "/ʌp/",
+          "example": "Go up the stairs.",
+          "exampleRu": "Поднимись по лестнице.",
+          "audio": {
+            "src": "media/audio/u08.d03.vocab.up.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "down",
+          "ru": "вниз",
+          "ipa": "/daʊn/",
+          "example": "Go down the street.",
+          "exampleRu": "Иди вниз по улице.",
+          "audio": {
+            "src": "media/audio/u08.d03.vocab.down.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "over",
+          "ru": "через (сверху)",
+          "ipa": "/ˈoʊvər/",
+          "example": "Go over the bridge.",
+          "exampleRu": "Перейди через мост.",
+          "audio": {
+            "src": "media/audio/u08.d03.vocab.over.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "towards",
+          "ru": "к, по направлению",
+          "ipa": "/təˈwɔːrdz/",
+          "example": "Walk towards the station.",
+          "exampleRu": "Иди к вокзалу.",
+          "audio": {
+            "src": "media/audio/u08.d03.vocab.towards.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u08.d03.grammar",
+      "title": {
+        "en": "Prepositions of movement",
+        "ru": "Предлоги движения"
+      },
+      "rule": {
+        "en": "Show movement with prepositions: along, across, past, through, into / out of, up / down, over, towards.",
+        "ru": "Движение показывают предлоги: along, across, past, through, into / out of, up / down, over, towards."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "along / across",
+            "ru": "along / across"
+          },
+          "formula": "along the street · across the road",
+          "examples": [
+            {
+              "en": "Walk along the street and across the square.",
+              "ru": "Иди по улице и через площадь."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "through / past",
+            "ru": "through / past"
+          },
+          "formula": "through the park · past the shop",
+          "examples": [
+            {
+              "en": "Go through the park, past the café.",
+              "ru": "Пройди через парк, мимо кафе."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "into / out of",
+            "ru": "into / out of"
+          },
+          "formula": "into the shop · out of the station",
+          "examples": [
+            {
+              "en": "Come out of the station and go towards the bridge.",
+              "ru": "Выйди из вокзала и иди к мосту."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"across\" = from one side to the other; \"along\" = following the length.",
+          "ru": "\"across\" = с одной стороны на другую; \"along\" = вдоль."
+        },
+        {
+          "en": "\"into/out of\" for entering/leaving: \"into the shop\", \"out of the car\".",
+          "ru": "\"into/out of\" — войти/выйти: \"into the shop\", \"out of the car\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u08.d03.reading",
+      "title": {
+        "en": "A walk to the station",
+        "ru": "Прогулка до вокзала"
+      },
+      "blocks": [
+        {
+          "id": "u08.d03.reading.b1",
+          "en": "To get to the station, come out of the hotel and walk along the main street. Go past the market and across the small square.",
+          "ru": "Чтобы добраться до вокзала, выйди из отеля и иди по главной улице. Пройди мимо рынка и через маленькую площадь.",
+          "audio": {
+            "src": "media/audio/u08.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u08.d03.reading.b2",
+          "en": "Then walk through the park and over the bridge. The station is on the other side, towards the river. It takes about ten minutes.",
+          "ru": "Потом пройди через парк и через мост. Вокзал на другой стороне, ближе к реке. Это займёт около десяти минут.",
+          "audio": {
+            "src": "media/audio/u08.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "main",
+          "ru": "главный",
+          "ipa": "/meɪn/"
+        },
+        {
+          "word": "side",
+          "ru": "сторона",
+          "ipa": "/saɪd/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u08.d03.listening",
+      "title": {
+        "en": "Which way to the shop?",
+        "ru": "Как пройти к магазину?"
+      },
+      "audio": {
+        "src": "media/audio/u08.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "How do I get to the shop?",
+          "ru": "Как мне пройти к магазину?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Walk along this street and go past the café.",
+          "ru": "Иди по этой улице и пройди мимо кафе."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Along the street, past the café. Then?",
+          "ru": "По улице, мимо кафе. А потом?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Go across the square. The shop is there.",
+          "ru": "Пройди через площадь. Магазин там."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u08.d03.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "How do you cross the square?",
+            "ru": "Как пройти площадь?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.prepositions-movement"
+          ],
+          "prompt": "Go ___ the square.",
+          "options": [
+            "across",
+            "into",
+            "up"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u08.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u08.d03.ex.c.01",
+          "instruction": {
+            "en": "Choose the preposition.",
+            "ru": "Выбери предлог."
+          },
+          "tags": [
+            "grammar.prepositions-movement"
+          ],
+          "prompt": "Walk ___ the river to the bridge.",
+          "options": [
+            "along",
+            "across",
+            "into"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u08.d03.ex.c.02",
+          "instruction": {
+            "en": "Choose the preposition.",
+            "ru": "Выбери предлог."
+          },
+          "tags": [
+            "grammar.prepositions-movement"
+          ],
+          "prompt": "Go ___ the park to the station.",
+          "options": [
+            "through",
+            "past",
+            "up"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u08.d03.ex.g.01",
+          "instruction": {
+            "en": "Leaving a place.",
+            "ru": "Выход из места."
+          },
+          "tags": [
+            "grammar.prepositions-movement"
+          ],
+          "prompt": "Come ___ the shop and turn left. (out)",
+          "answers": [
+            "out of"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u08.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.prepositions-movement"
+          ],
+          "variants": [
+            "Walk across the street to the corner.",
+            "Walk along the street to the corner."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u08.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the preposition and the translation.",
+            "ru": "Сопоставь предлог и перевод."
+          },
+          "tags": [
+            "grammar.prepositions-movement"
+          ],
+          "pairs": [
+            {
+              "left": "past",
+              "right": "мимо"
+            },
+            {
+              "left": "through",
+              "right": "через (сквозь)"
+            },
+            {
+              "left": "towards",
+              "right": "к"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u08.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.prepositions-movement",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Пройди через парк.",
+          "answers": [
+            "Go through the park.",
+            "Walk through the park."
+          ]
+        }
+      ]
+    }
+  ]
+}

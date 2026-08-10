@@ -1,0 +1,481 @@
+{
+  "id": "u08.d04",
+  "title": {
+    "en": "Both, all, another",
+    "ru": "Both, all, another"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.both-all",
+    "grammar.another-other",
+    "grammar.articles",
+    "vocab.shops",
+    "pronunciation"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u08.d04.vocab",
+      "title": {
+        "en": "Shops & places",
+        "ru": "Магазины и места"
+      },
+      "words": [
+        {
+          "word": "shop",
+          "ru": "магазин",
+          "ipa": "/ʃɒp/",
+          "example": "This shop is closed.",
+          "exampleRu": "Этот магазин закрыт.",
+          "audio": {
+            "src": "media/audio/u08.d04.vocab.shop.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "supermarket",
+          "ru": "супермаркет",
+          "ipa": "/ˈsuːpərmɑːrkɪt/",
+          "example": "The supermarket is big.",
+          "exampleRu": "Супермаркет большой.",
+          "audio": {
+            "src": "media/audio/u08.d04.vocab.supermarket.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bakery",
+          "ru": "пекарня",
+          "ipa": "/ˈbeɪkəri/",
+          "example": "Bread is fresh at the bakery.",
+          "exampleRu": "В пекарне свежий хлеб.",
+          "audio": {
+            "src": "media/audio/u08.d04.vocab.bakery.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pharmacy",
+          "ru": "аптека",
+          "ipa": "/ˈfɑːrməsi/",
+          "example": "The pharmacy is next to the bank.",
+          "exampleRu": "Аптека рядом с банком.",
+          "audio": {
+            "src": "media/audio/u08.d04.vocab.pharmacy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bookshop",
+          "ru": "книжный магазин",
+          "ipa": "/ˈbʊkʃɒp/",
+          "example": "I bought it at the bookshop.",
+          "exampleRu": "Я купил это в книжном.",
+          "audio": {
+            "src": "media/audio/u08.d04.vocab.bookshop.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bank",
+          "ru": "банк",
+          "ipa": "/bæŋk/",
+          "example": "Go to the bank first.",
+          "exampleRu": "Сначала зайди в банк.",
+          "audio": {
+            "src": "media/audio/u08.d04.vocab.bank.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "post office",
+          "ru": "почта",
+          "ipa": "/ˈpoʊst ɒfɪs/",
+          "example": "The post office closes at five.",
+          "exampleRu": "Почта закрывается в пять.",
+          "audio": {
+            "src": "media/audio/u08.d04.vocab.postoffice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "market",
+          "ru": "рынок",
+          "ipa": "/ˈmɑːrkɪt/",
+          "example": "We buy fruit at the market.",
+          "exampleRu": "Мы покупаем фрукты на рынке.",
+          "audio": {
+            "src": "media/audio/u08.d04.vocab.market.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "centre",
+          "ru": "центр",
+          "ipa": "/ˈsentər/",
+          "example": "The shopping centre is new.",
+          "exampleRu": "Торговый центр новый.",
+          "audio": {
+            "src": "media/audio/u08.d04.vocab.centre.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "open",
+          "ru": "открытый",
+          "ipa": "/ˈoʊpən/",
+          "example": "Both shops are open.",
+          "exampleRu": "Оба магазина открыты.",
+          "audio": {
+            "src": "media/audio/u08.d04.vocab.open.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u08.d04.grammar",
+      "title": {
+        "en": "both / all · another / other · the + places",
+        "ru": "both / all · another / other · the + места"
+      },
+      "rule": {
+        "en": "Use \"both\" for two and \"all\" for three or more. \"Another\" = one more (singular); \"other/others\" = different or plural. Use \"the\" with many public places: the bank, the station.",
+        "ru": "\"both\" — о двух, \"all\" — о трёх и более. \"Another\" = ещё один (ед. ч.); \"other/others\" = другой или мн. ч. С многими общественными местами — \"the\": the bank, the station."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "both / all",
+            "ru": "both / all"
+          },
+          "formula": "both (of the two) · all (of them)",
+          "examples": [
+            {
+              "en": "Both shops are open. All the shops are closed on Sunday.",
+              "ru": "Оба магазина открыты. Все магазины закрыты в воскресенье."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "another / other",
+            "ru": "another / other"
+          },
+          "formula": "another + singular · other + plural",
+          "examples": [
+            {
+              "en": "I want another coffee. The other shops are far.",
+              "ru": "Я хочу ещё кофе. Другие магазины далеко."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "the + places",
+            "ru": "the + места"
+          },
+          "formula": "go to the bank / the station / the market",
+          "examples": [
+            {
+              "en": "First go to the bank, then to the post office.",
+              "ru": "Сначала в банк, потом на почту."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"another\" is one word (an + other) and takes a singular noun: \"another shop\".",
+          "ru": "\"another\" — одно слово (an + other), с существительным в ед. ч.: \"another shop\"."
+        },
+        {
+          "en": "\"both\" for exactly two; \"all\" for three or more.",
+          "ru": "\"both\" — ровно два; \"all\" — три и более."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u08.d04.reading",
+      "title": {
+        "en": "Shopping in the centre",
+        "ru": "Покупки в центре"
+      },
+      "blocks": [
+        {
+          "id": "u08.d04.reading.b1",
+          "en": "There are two supermarkets in the centre. Both are open on Saturday, but all the small shops close early. I usually go to the bank first.",
+          "ru": "В центре два супермаркета. Оба открыты в субботу, но все маленькие магазины закрываются рано. Обычно я сначала иду в банк.",
+          "audio": {
+            "src": "media/audio/u08.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u08.d04.reading.b2",
+          "en": "Yesterday one bakery was closed, so I went to another one across the road. The other shops — the bookshop and the pharmacy — were open.",
+          "ru": "Вчера одна пекарня была закрыта, поэтому я пошёл в другую через дорогу. Остальные магазины — книжный и аптека — были открыты.",
+          "audio": {
+            "src": "media/audio/u08.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "close",
+          "ru": "закрываться",
+          "ipa": "/kloʊz/"
+        },
+        {
+          "word": "early",
+          "ru": "рано",
+          "ipa": "/ˈɜːrli/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u08.d04.listening",
+      "title": {
+        "en": "Are they open?",
+        "ru": "Они открыты?"
+      },
+      "audio": {
+        "src": "media/audio/u08.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Are the shops open today?",
+          "ru": "Магазины сегодня открыты?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Both supermarkets are open, but the market is closed.",
+          "ru": "Оба супермаркета открыты, но рынок закрыт."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "I need bread. Is the bakery open?",
+          "ru": "Мне нужен хлеб. Пекарня открыта?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "This one is closed. Try another one near the bank.",
+          "ru": "Эта закрыта. Попробуй другую у банка."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u08.d04.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "How many supermarkets are open?",
+            "ru": "Сколько супермаркетов открыто?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.both-all"
+          ],
+          "prompt": "___ supermarkets are open.",
+          "options": [
+            "Both",
+            "All the",
+            "Another"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u08.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u08.d04.ex.c.01",
+          "instruction": {
+            "en": "both or all?",
+            "ru": "both или all?"
+          },
+          "tags": [
+            "grammar.both-all"
+          ],
+          "prompt": "___ my two brothers live here.",
+          "options": [
+            "Both",
+            "All",
+            "Another"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u08.d04.ex.c.02",
+          "instruction": {
+            "en": "another or other?",
+            "ru": "another или other?"
+          },
+          "tags": [
+            "grammar.another-other"
+          ],
+          "prompt": "Can I have ___ coffee, please?",
+          "options": [
+            "another",
+            "other",
+            "others"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u08.d04.ex.g.01",
+          "instruction": {
+            "en": "the + place.",
+            "ru": "the + место."
+          },
+          "tags": [
+            "grammar.articles"
+          ],
+          "prompt": "First I go to ___ bank.",
+          "answers": [
+            "the"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u08.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.another-other"
+          ],
+          "variants": [
+            "I want other coffee.",
+            "I want another coffee."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u08.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the shop and the translation.",
+            "ru": "Сопоставь магазин и перевод."
+          },
+          "tags": [
+            "vocab.shops"
+          ],
+          "pairs": [
+            {
+              "left": "bakery",
+              "right": "пекарня"
+            },
+            {
+              "left": "pharmacy",
+              "right": "аптека"
+            },
+            {
+              "left": "post office",
+              "right": "почта"
+            }
+          ]
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u08.d04.ex.mp.01",
+          "instruction": {
+            "en": "Listen — which word do you hear?",
+            "ru": "Послушай — какое слово ты слышишь?"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u08.d04.ex.mp.01.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "shop",
+            "ship"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u08.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.both-all",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Оба магазина открыты.",
+          "answers": [
+            "Both shops are open."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,469 @@
+{
+  "id": "u08.d05",
+  "title": {
+    "en": "How do I get there?",
+    "ru": "Как туда добраться?"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "functions.directions",
+    "vocab.transport"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u08.d05.vocab",
+      "title": {
+        "en": "Tickets & transport",
+        "ru": "Билеты и транспорт"
+      },
+      "words": [
+        {
+          "word": "ticket",
+          "ru": "билет",
+          "ipa": "/ˈtɪkɪt/",
+          "example": "A ticket to the centre, please.",
+          "exampleRu": "Билет до центра, пожалуйста.",
+          "audio": {
+            "src": "media/audio/u08.d05.vocab.ticket.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "single",
+          "ru": "в одну сторону",
+          "ipa": "/ˈsɪŋɡl/",
+          "example": "A single to London.",
+          "exampleRu": "Билет в одну сторону до Лондона.",
+          "audio": {
+            "src": "media/audio/u08.d05.vocab.single.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "return",
+          "ru": "туда-обратно",
+          "ipa": "/rɪˈtɜːrn/",
+          "example": "A return, please.",
+          "exampleRu": "Туда-обратно, пожалуйста.",
+          "audio": {
+            "src": "media/audio/u08.d05.vocab.return.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "platform",
+          "ru": "платформа",
+          "ipa": "/ˈplætfɔːrm/",
+          "example": "The train leaves from platform three.",
+          "exampleRu": "Поезд отходит с третьей платформы.",
+          "audio": {
+            "src": "media/audio/u08.d05.vocab.platform.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "timetable",
+          "ru": "расписание",
+          "ipa": "/ˈtaɪmteɪbl/",
+          "example": "Check the timetable.",
+          "exampleRu": "Посмотри расписание.",
+          "audio": {
+            "src": "media/audio/u08.d05.vocab.timetable.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fare",
+          "ru": "стоимость проезда",
+          "ipa": "/feər/",
+          "example": "The fare is two pounds.",
+          "exampleRu": "Проезд стоит два фунта.",
+          "audio": {
+            "src": "media/audio/u08.d05.vocab.fare.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bus stop",
+          "ru": "автобусная остановка",
+          "ipa": "/ˈbʌs stɒp/",
+          "example": "Wait at the bus stop.",
+          "exampleRu": "Жди на остановке.",
+          "audio": {
+            "src": "media/audio/u08.d05.vocab.busstop.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "underground",
+          "ru": "метро",
+          "ipa": "/ˈʌndərɡraʊnd/",
+          "example": "Take the underground.",
+          "exampleRu": "Езжай на метро.",
+          "audio": {
+            "src": "media/audio/u08.d05.vocab.underground.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "change",
+          "ru": "пересадка; менять",
+          "ipa": "/tʃeɪndʒ/",
+          "example": "Change at the next station.",
+          "exampleRu": "Сделай пересадку на следующей станции.",
+          "audio": {
+            "src": "media/audio/u08.d05.vocab.change.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "get to",
+          "ru": "добраться до",
+          "ipa": "/ˈɡet tuː/",
+          "example": "How do I get to the museum?",
+          "exampleRu": "Как добраться до музея?",
+          "audio": {
+            "src": "media/audio/u08.d05.vocab.getto.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u08.d05.grammar",
+      "title": {
+        "en": "Asking the way & buying a ticket",
+        "ru": "Спросить дорогу и купить билет"
+      },
+      "rule": {
+        "en": "Ask the way with \"Excuse me, how do I get to …?\" or \"Is there a … near here?\". Buy a ticket with \"A single/return to …, please.\".",
+        "ru": "Спрашивай дорогу: \"Excuse me, how do I get to …?\" или \"Is there a … near here?\". Покупай билет: \"A single/return to …, please.\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "ask the way",
+            "ru": "спросить путь"
+          },
+          "formula": "Excuse me, how do I get to …?",
+          "examples": [
+            {
+              "en": "Excuse me, how do I get to the station?",
+              "ru": "Извините, как добраться до вокзала?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "is there …?",
+            "ru": "is there …?"
+          },
+          "formula": "Is there a … near here?",
+          "examples": [
+            {
+              "en": "Is there a bank near here?",
+              "ru": "Есть ли банк поблизости?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "buy a ticket",
+            "ru": "купить билет"
+          },
+          "formula": "A single / return to …, please.",
+          "examples": [
+            {
+              "en": "A return to the centre, please.",
+              "ru": "Туда-обратно до центра, пожалуйста."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Start politely with \"Excuse me\" before asking a stranger.",
+          "ru": "Начинай вежливо с \"Excuse me\", прежде чем спросить незнакомца."
+        },
+        {
+          "en": "\"single\" = one way, \"return\" = there and back.",
+          "ru": "\"single\" = в одну сторону, \"return\" = туда и обратно."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u08.d05.reading",
+      "title": {
+        "en": "Getting to the centre",
+        "ru": "Как доехать до центра"
+      },
+      "blocks": [
+        {
+          "id": "u08.d05.reading.b1",
+          "en": "\"Excuse me, how do I get to the city centre?\" \"Take the underground. There is a station over there. A single ticket is two pounds.\"",
+          "ru": "«Извините, как добраться до центра?» «Езжайте на метро. Станция вон там. Билет в одну сторону стоит два фунта».",
+          "audio": {
+            "src": "media/audio/u08.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u08.d05.reading.b2",
+          "en": "\"Do I change trains?\" \"Yes, change at the next station. The centre is only four stops away.\" \"Thank you very much!\" \"You're welcome.\"",
+          "ru": "«Мне нужна пересадка?» «Да, пересядьте на следующей станции. Центр всего в четырёх остановках». «Большое спасибо!» «Пожалуйста».",
+          "audio": {
+            "src": "media/audio/u08.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "stop",
+          "ru": "остановка",
+          "ipa": "/stɒp/"
+        },
+        {
+          "word": "pound",
+          "ru": "фунт",
+          "ipa": "/paʊnd/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u08.d05.listening",
+      "title": {
+        "en": "A ticket, please",
+        "ru": "Билет, пожалуйста"
+      },
+      "audio": {
+        "src": "media/audio/u08.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Excuse me, how do I get to the museum?",
+          "ru": "Извините, как добраться до музея?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Take the bus from that bus stop.",
+          "ru": "Садитесь на автобус вон на той остановке."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "How much is the fare?",
+          "ru": "Сколько стоит проезд?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "A single is one pound fifty.",
+          "ru": "Билет в одну сторону — один фунт пятьдесят."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u08.d05.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "How does she travel to the museum?",
+            "ru": "Как она добирается до музея?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.directions"
+          ],
+          "prompt": "She takes the ___ .",
+          "options": [
+            "bus",
+            "train",
+            "underground"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u08.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "order-words",
+          "id": "u08.d05.ex.o.01",
+          "instruction": {
+            "en": "Ask the way.",
+            "ru": "Спроси дорогу."
+          },
+          "tags": [
+            "functions.directions"
+          ],
+          "tokens": [
+            "How",
+            "do",
+            "I",
+            "get",
+            "to",
+            "the",
+            "station"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u08.d05.ex.c.01",
+          "instruction": {
+            "en": "Buy a ticket.",
+            "ru": "Купи билет."
+          },
+          "tags": [
+            "functions.directions"
+          ],
+          "prompt": "A ___ to the centre, please. (one way)",
+          "options": [
+            "single",
+            "return",
+            "change"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u08.d05.ex.c.02",
+          "instruction": {
+            "en": "Ask if a place exists nearby.",
+            "ru": "Спроси, есть ли место рядом."
+          },
+          "tags": [
+            "functions.directions"
+          ],
+          "prompt": "___ there a bank near here?",
+          "options": [
+            "Is",
+            "Are",
+            "Do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u08.d05.ex.s.01",
+          "instruction": {
+            "en": "Which question is correct?",
+            "ru": "Какой вопрос верный?"
+          },
+          "tags": [
+            "functions.directions"
+          ],
+          "variants": [
+            "How I get to the park?",
+            "How do I get to the park?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u08.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.transport"
+          ],
+          "pairs": [
+            {
+              "left": "single",
+              "right": "в одну сторону"
+            },
+            {
+              "left": "return",
+              "right": "туда-обратно"
+            },
+            {
+              "left": "platform",
+              "right": "платформа"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u08.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.directions",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Как добраться до вокзала?",
+          "answers": [
+            "How do I get to the station?"
+          ]
+        }
+      ]
+    }
+  ]
+}

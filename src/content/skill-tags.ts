@@ -41,6 +41,10 @@ export const SKILL_TAGS = [
   'grammar.ed-ing-adjectives',
   'grammar.few-little',
   'grammar.one-ones',
+  'grammar.imperatives',
+  'grammar.prepositions-movement',
+  'grammar.both-all',
+  'grammar.another-other',
 
   // functions (everyday communication)
   'functions.ordering',
@@ -68,6 +72,8 @@ export const SKILL_TAGS = [
   'vocab.furniture',
   'vocab.appearance',
   'vocab.restaurant',
+  'vocab.town',
+  'vocab.shops',
 
   // reading
   'reading.gist',
