@@ -1,0 +1,455 @@
+{
+  "id": "u11.d03",
+  "title": {
+    "en": "You should rest",
+    "ru": "Тебе стоит отдохнуть"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.should",
+    "vocab.health"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u11.d03.vocab",
+      "title": {
+        "en": "Health",
+        "ru": "Здоровье"
+      },
+      "words": [
+        {
+          "word": "doctor",
+          "ru": "врач",
+          "ipa": "/ˈdɒktər/",
+          "example": "See a doctor.",
+          "exampleRu": "Сходи к врачу.",
+          "audio": {
+            "src": "media/audio/u11.d03.vocab.doctor.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "medicine",
+          "ru": "лекарство",
+          "ipa": "/ˈmedsn/",
+          "example": "Take your medicine.",
+          "exampleRu": "Прими лекарство.",
+          "audio": {
+            "src": "media/audio/u11.d03.vocab.medicine.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "rest",
+          "ru": "отдых; отдыхать",
+          "ipa": "/rest/",
+          "example": "You should rest.",
+          "exampleRu": "Тебе стоит отдохнуть.",
+          "audio": {
+            "src": "media/audio/u11.d03.vocab.rest.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "exercise",
+          "ru": "упражнение; заниматься",
+          "ipa": "/ˈeksərsaɪz/",
+          "example": "You should exercise more.",
+          "exampleRu": "Тебе стоит больше двигаться.",
+          "audio": {
+            "src": "media/audio/u11.d03.vocab.exercise.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tired",
+          "ru": "усталый",
+          "ipa": "/ˈtaɪərd/",
+          "example": "I feel tired.",
+          "exampleRu": "Я чувствую усталость.",
+          "audio": {
+            "src": "media/audio/u11.d03.vocab.tired.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "headache",
+          "ru": "головная боль",
+          "ipa": "/ˈhedeɪk/",
+          "example": "I have a headache.",
+          "exampleRu": "У меня болит голова.",
+          "audio": {
+            "src": "media/audio/u11.d03.vocab.headache.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cold",
+          "ru": "простуда",
+          "ipa": "/koʊld/",
+          "example": "She has a cold.",
+          "exampleRu": "Она простудилась.",
+          "audio": {
+            "src": "media/audio/u11.d03.vocab.cold.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sick",
+          "ru": "больной",
+          "ipa": "/sɪk/",
+          "example": "He feels sick.",
+          "exampleRu": "Ему нездоровится.",
+          "audio": {
+            "src": "media/audio/u11.d03.vocab.sick.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "better",
+          "ru": "лучше",
+          "ipa": "/ˈbetər/",
+          "example": "I feel better today.",
+          "exampleRu": "Сегодня мне лучше.",
+          "audio": {
+            "src": "media/audio/u11.d03.vocab.better.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sleep",
+          "ru": "спать; сон",
+          "ipa": "/sliːp/",
+          "example": "You should sleep more.",
+          "exampleRu": "Тебе стоит больше спать.",
+          "audio": {
+            "src": "media/audio/u11.d03.vocab.sleep.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u11.d03.grammar",
+      "title": {
+        "en": "should / shouldn't",
+        "ru": "should / shouldn't"
+      },
+      "rule": {
+        "en": "Give advice with \"should + verb\" (a good idea) and \"shouldn't + verb\" (a bad idea).",
+        "ru": "Совет — \"should + глагол\" (хорошая идея) и \"shouldn't + глагол\" (плохая идея)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "should",
+            "ru": "should"
+          },
+          "formula": "should + verb",
+          "examples": [
+            {
+              "en": "You should drink more water.",
+              "ru": "Тебе стоит пить больше воды."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "shouldn't",
+            "ru": "shouldn't"
+          },
+          "formula": "shouldn't + verb",
+          "examples": [
+            {
+              "en": "You shouldn't eat so late.",
+              "ru": "Тебе не стоит есть так поздно."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "question",
+            "ru": "вопрос"
+          },
+          "formula": "Should I …?",
+          "examples": [
+            {
+              "en": "Should I see a doctor?",
+              "ru": "Мне стоит сходить к врачу?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Base verb after should: \"should go\", not \"should to go\".",
+          "ru": "После should — начальная форма: \"should go\", а не \"should to go\"."
+        },
+        {
+          "en": "Same form for all persons: he should, they should.",
+          "ru": "Форма одна для всех лиц: he should, they should."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u11.d03.reading",
+      "title": {
+        "en": "Feeling tired",
+        "ru": "Постоянная усталость"
+      },
+      "blocks": [
+        {
+          "id": "u11.d03.reading.b1",
+          "en": "Tom always feels tired and he often has a headache. His friend says, \"You should sleep more and you shouldn't drink so much coffee.\"",
+          "ru": "Том всё время устал и часто с головной болью. Друг говорит: «Тебе стоит больше спать и не стоит пить столько кофе».",
+          "audio": {
+            "src": "media/audio/u11.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u11.d03.reading.b2",
+          "en": "\"You should also exercise and eat healthy food. And you shouldn't work at night.\" Tom followed the advice, and after a week he felt much better.",
+          "ru": "«Ещё тебе стоит заниматься спортом и есть здоровую еду. И не стоит работать по ночам». Том последовал совету и через неделю почувствовал себя гораздо лучше.",
+          "audio": {
+            "src": "media/audio/u11.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "advice",
+          "ru": "совет",
+          "ipa": "/ədˈvaɪs/"
+        },
+        {
+          "word": "follow",
+          "ru": "следовать",
+          "ipa": "/ˈfɒloʊ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u11.d03.listening",
+      "title": {
+        "en": "I have a cold",
+        "ru": "Я простудился"
+      },
+      "audio": {
+        "src": "media/audio/u11.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "I have a bad cold.",
+          "ru": "Я сильно простудился."
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "You should drink hot tea and rest.",
+          "ru": "Тебе стоит пить горячий чай и отдыхать."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Should I take medicine?",
+          "ru": "Мне стоит принять лекарство?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Yes, but you shouldn't go to work today.",
+          "ru": "Да, но сегодня тебе не стоит идти на работу."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u11.d03.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What advice does she give?",
+            "ru": "Какой совет она даёт?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.should"
+          ],
+          "prompt": "You should drink hot tea and ___ .",
+          "options": [
+            "rest",
+            "work",
+            "run"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u11.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u11.d03.ex.c.01",
+          "instruction": {
+            "en": "Good advice.",
+            "ru": "Хороший совет."
+          },
+          "tags": [
+            "grammar.should"
+          ],
+          "prompt": "You're tired. You ___ rest.",
+          "options": [
+            "should",
+            "shouldn't",
+            "mustn't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u11.d03.ex.c.02",
+          "instruction": {
+            "en": "Bad idea.",
+            "ru": "Плохая идея."
+          },
+          "tags": [
+            "grammar.should"
+          ],
+          "prompt": "You have a cold. You ___ go out.",
+          "options": [
+            "shouldn't",
+            "should",
+            "have to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u11.d03.ex.g.01",
+          "instruction": {
+            "en": "Ask for advice.",
+            "ru": "Спроси совета."
+          },
+          "tags": [
+            "grammar.should"
+          ],
+          "prompt": "___ I see a doctor? (should)",
+          "answers": [
+            "Should"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u11.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.should"
+          ],
+          "variants": [
+            "You should to sleep more.",
+            "You should sleep more."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u11.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.health"
+          ],
+          "pairs": [
+            {
+              "left": "headache",
+              "right": "головная боль"
+            },
+            {
+              "left": "medicine",
+              "right": "лекарство"
+            },
+            {
+              "left": "rest",
+              "right": "отдых"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u11.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.should",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Тебе стоит больше спать.",
+          "answers": [
+            "You should sleep more."
+          ]
+        }
+      ]
+    }
+  ]
+}

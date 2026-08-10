@@ -1,0 +1,464 @@
+{
+  "id": "u11.d05",
+  "title": {
+    "en": "At the doctor's",
+    "ru": "У врача"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "functions.doctor",
+    "functions.advice",
+    "vocab.health"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u11.d05.vocab",
+      "title": {
+        "en": "At the doctor's",
+        "ru": "У врача"
+      },
+      "words": [
+        {
+          "word": "doctor",
+          "ru": "врач",
+          "ipa": "/ˈdɒktər/",
+          "example": "The doctor is ready.",
+          "exampleRu": "Врач готов принять.",
+          "audio": {
+            "src": "media/audio/u11.d05.vocab.doctor.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "nurse",
+          "ru": "медсестра",
+          "ipa": "/nɜːrs/",
+          "example": "The nurse was kind.",
+          "exampleRu": "Медсестра была добрая.",
+          "audio": {
+            "src": "media/audio/u11.d05.vocab.nurse.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "patient",
+          "ru": "пациент",
+          "ipa": "/ˈpeɪʃnt/",
+          "example": "The patient is waiting.",
+          "exampleRu": "Пациент ждёт.",
+          "audio": {
+            "src": "media/audio/u11.d05.vocab.patient.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pain",
+          "ru": "боль",
+          "ipa": "/peɪn/",
+          "example": "I have a pain in my back.",
+          "exampleRu": "У меня боль в спине.",
+          "audio": {
+            "src": "media/audio/u11.d05.vocab.pain.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ache",
+          "ru": "ноющая боль",
+          "ipa": "/eɪk/",
+          "example": "I have a stomach ache.",
+          "exampleRu": "У меня болит живот.",
+          "audio": {
+            "src": "media/audio/u11.d05.vocab.ache.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "symptom",
+          "ru": "симптом",
+          "ipa": "/ˈsɪmptəm/",
+          "example": "What are your symptoms?",
+          "exampleRu": "Какие у вас симптомы?",
+          "audio": {
+            "src": "media/audio/u11.d05.vocab.symptom.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "prescription",
+          "ru": "рецепт",
+          "ipa": "/prɪˈskrɪpʃn/",
+          "example": "Here is your prescription.",
+          "exampleRu": "Вот ваш рецепт.",
+          "audio": {
+            "src": "media/audio/u11.d05.vocab.prescription.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pill",
+          "ru": "таблетка",
+          "ipa": "/pɪl/",
+          "example": "Take one pill a day.",
+          "exampleRu": "Принимайте по одной таблетке в день.",
+          "audio": {
+            "src": "media/audio/u11.d05.vocab.pill.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "feel",
+          "ru": "чувствовать себя",
+          "ipa": "/fiːl/",
+          "example": "How do you feel?",
+          "exampleRu": "Как вы себя чувствуете?",
+          "audio": {
+            "src": "media/audio/u11.d05.vocab.feel.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "matter",
+          "ru": "дело, проблема",
+          "ipa": "/ˈmætər/",
+          "example": "What's the matter?",
+          "exampleRu": "Что случилось?",
+          "audio": {
+            "src": "media/audio/u11.d05.vocab.matter.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u11.d05.grammar",
+      "title": {
+        "en": "At the doctor's",
+        "ru": "У врача"
+      },
+      "rule": {
+        "en": "The doctor asks \"What's the matter?\" / \"How do you feel?\". Say \"I have a … (headache/pain)\". The doctor gives advice with \"You should …\" and \"Take …\".",
+        "ru": "Врач спрашивает \"What's the matter?\" / \"How do you feel?\". Отвечай \"I have a … (headache/pain)\". Врач советует \"You should …\" и \"Take …\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "symptom",
+            "ru": "симптом"
+          },
+          "formula": "I have a + illness/pain",
+          "examples": [
+            {
+              "en": "I have a headache and a sore throat.",
+              "ru": "У меня болит голова и горло."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "ask",
+            "ru": "вопрос"
+          },
+          "formula": "What's the matter? · How do you feel?",
+          "examples": [
+            {
+              "en": "What's the matter? How do you feel?",
+              "ru": "Что случилось? Как вы себя чувствуете?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "advice",
+            "ru": "совет"
+          },
+          "formula": "You should … · Take …",
+          "examples": [
+            {
+              "en": "You should rest. Take this medicine.",
+              "ru": "Вам стоит отдохнуть. Принимайте это лекарство."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Say \"I have a headache\", not \"I am headache\".",
+          "ru": "Говори \"I have a headache\", а не \"I am headache\"."
+        },
+        {
+          "en": "Use \"a\" with aches: \"a headache\", \"a stomach ache\".",
+          "ru": "С болями — \"a\": \"a headache\", \"a stomach ache\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u11.d05.reading",
+      "title": {
+        "en": "A visit to the doctor",
+        "ru": "Визит к врачу"
+      },
+      "blocks": [
+        {
+          "id": "u11.d05.reading.b1",
+          "en": "\"Good morning. What's the matter?\" asked the doctor. \"I feel sick and I have a bad headache,\" said Kate. \"How long have you felt like this?\"",
+          "ru": "«Доброе утро. Что случилось?» — спросил врач. «Мне нездоровится и сильно болит голова», — сказала Кейт. «Как давно вы так себя чувствуете?»",
+          "audio": {
+            "src": "media/audio/u11.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u11.d05.reading.b2",
+          "en": "\"For two days.\" The doctor said, \"You have a cold. You should rest and drink water. Take these pills twice a day. You'll feel better soon.\"",
+          "ru": "«Уже два дня». Врач сказал: «У вас простуда. Вам стоит отдыхать и пить воду. Принимайте эти таблетки дважды в день. Скоро станет лучше».",
+          "audio": {
+            "src": "media/audio/u11.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "throat",
+          "ru": "горло",
+          "ipa": "/θroʊt/"
+        },
+        {
+          "word": "twice",
+          "ru": "дважды",
+          "ipa": "/twaɪs/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u11.d05.listening",
+      "title": {
+        "en": "How do you feel?",
+        "ru": "Как вы себя чувствуете?"
+      },
+      "audio": {
+        "src": "media/audio/u11.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "What's the matter?",
+          "ru": "Что случилось?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "I have a pain in my stomach.",
+          "ru": "У меня болит живот."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "How long have you had it?",
+          "ru": "Как давно это у вас?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Since yesterday. You should rest and take this medicine.",
+          "ru": "Со вчерашнего дня. — Вам стоит отдохнуть и принять это лекарство."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u11.d05.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What is the problem?",
+            "ru": "В чём проблема?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.doctor"
+          ],
+          "prompt": "She has a pain in her ___ .",
+          "options": [
+            "stomach",
+            "head",
+            "leg"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u11.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u11.d05.ex.c.01",
+          "instruction": {
+            "en": "Describe a symptom.",
+            "ru": "Опиши симптом."
+          },
+          "tags": [
+            "functions.doctor"
+          ],
+          "prompt": "I ___ a headache.",
+          "options": [
+            "have",
+            "am",
+            "do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u11.d05.ex.o.01",
+          "instruction": {
+            "en": "Ask about the problem.",
+            "ru": "Спроси о проблеме."
+          },
+          "tags": [
+            "functions.doctor"
+          ],
+          "tokens": [
+            "What",
+            "is",
+            "the",
+            "matter"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u11.d05.ex.c.02",
+          "instruction": {
+            "en": "Give advice.",
+            "ru": "Дай совет."
+          },
+          "tags": [
+            "functions.advice"
+          ],
+          "prompt": "You have a cold. You ___ rest.",
+          "options": [
+            "should",
+            "must not",
+            "don't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u11.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.doctor"
+          ],
+          "variants": [
+            "I am headache.",
+            "I have a headache."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u11.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.health"
+          ],
+          "pairs": [
+            {
+              "left": "nurse",
+              "right": "медсестра"
+            },
+            {
+              "left": "prescription",
+              "right": "рецепт"
+            },
+            {
+              "left": "pain",
+              "right": "боль"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u11.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.doctor",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У меня болит голова.",
+          "answers": [
+            "I have a headache."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,452 @@
+{
+  "id": "u11.d02",
+  "title": {
+    "en": "Do I have to?",
+    "ru": "Мне обязательно?"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.have-to",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u11.d02.vocab",
+      "title": {
+        "en": "Rules & routines",
+        "ru": "Правила и распорядок"
+      },
+      "words": [
+        {
+          "word": "rule",
+          "ru": "правило",
+          "ipa": "/ruːl/",
+          "example": "It is an important rule.",
+          "exampleRu": "Это важное правило.",
+          "audio": {
+            "src": "media/audio/u11.d02.vocab.rule.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wear",
+          "ru": "носить (одежду)",
+          "ipa": "/weər/",
+          "example": "We have to wear a uniform.",
+          "exampleRu": "Нам нужно носить форму.",
+          "audio": {
+            "src": "media/audio/u11.d02.vocab.wear.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "uniform",
+          "ru": "форма (одежда)",
+          "ipa": "/ˈjuːnɪfɔːrm/",
+          "example": "The uniform is blue.",
+          "exampleRu": "Форма синяя.",
+          "audio": {
+            "src": "media/audio/u11.d02.vocab.uniform.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "allowed",
+          "ru": "разрешено",
+          "ipa": "/əˈlaʊd/",
+          "example": "Phones are not allowed.",
+          "exampleRu": "Телефоны не разрешены.",
+          "audio": {
+            "src": "media/audio/u11.d02.vocab.allowed.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "permission",
+          "ru": "разрешение",
+          "ipa": "/pərˈmɪʃn/",
+          "example": "You need permission.",
+          "exampleRu": "Нужно разрешение.",
+          "audio": {
+            "src": "media/audio/u11.d02.vocab.permission.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "arrive",
+          "ru": "приходить, прибывать",
+          "ipa": "/əˈraɪv/",
+          "example": "We have to arrive at nine.",
+          "exampleRu": "Нам нужно приходить к девяти.",
+          "audio": {
+            "src": "media/audio/u11.d02.vocab.arrive.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "finish",
+          "ru": "заканчивать",
+          "ipa": "/ˈfɪnɪʃ/",
+          "example": "I have to finish this today.",
+          "exampleRu": "Мне нужно закончить это сегодня.",
+          "audio": {
+            "src": "media/audio/u11.d02.vocab.finish.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "break",
+          "ru": "перерыв",
+          "ipa": "/breɪk/",
+          "example": "We have a break at noon.",
+          "exampleRu": "У нас перерыв в полдень.",
+          "audio": {
+            "src": "media/audio/u11.d02.vocab.break.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "early",
+          "ru": "рано",
+          "ipa": "/ˈɜːrli/",
+          "example": "I have to get up early.",
+          "exampleRu": "Мне нужно рано вставать.",
+          "audio": {
+            "src": "media/audio/u11.d02.vocab.early.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "late",
+          "ru": "поздно",
+          "ipa": "/leɪt/",
+          "example": "You mustn't be late.",
+          "exampleRu": "Нельзя опаздывать.",
+          "audio": {
+            "src": "media/audio/u11.d02.vocab.late.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u11.d02.grammar",
+      "title": {
+        "en": "have to / don't have to / had to",
+        "ru": "have to / don't have to / had to"
+      },
+      "rule": {
+        "en": "\"have to\" = it is necessary (a rule from outside). \"don't have to\" = it is not necessary. The past of both is \"had to / didn't have to\".",
+        "ru": "\"have to\" = нужно (внешнее правило). \"don't have to\" = не обязательно. Прошедшее — \"had to / didn't have to\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "have to",
+            "ru": "have to"
+          },
+          "formula": "have/has to + verb",
+          "examples": [
+            {
+              "en": "She has to wear a uniform.",
+              "ru": "Ей нужно носить форму."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "don't have to",
+            "ru": "don't have to"
+          },
+          "formula": "don't/doesn't have to + verb",
+          "examples": [
+            {
+              "en": "We don't have to work on Sunday.",
+              "ru": "В воскресенье нам не нужно работать."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "had to (past)",
+            "ru": "had to (прошлое)"
+          },
+          "formula": "had to + verb",
+          "examples": [
+            {
+              "en": "Yesterday I had to stay late.",
+              "ru": "Вчера мне пришлось остаться допоздна."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use \"has to\" for he/she/it: \"he has to go\".",
+          "ru": "Для he/she/it — \"has to\": \"he has to go\"."
+        },
+        {
+          "en": "\"don't have to\" = not necessary (you can choose), not \"prohibited\".",
+          "ru": "\"don't have to\" = не обязательно (можно выбрать), а не \"запрещено\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u11.d02.reading",
+      "title": {
+        "en": "My first job",
+        "ru": "Моя первая работа"
+      },
+      "blocks": [
+        {
+          "id": "u11.d02.reading.b1",
+          "en": "At my first job I had to wear a uniform and I had to arrive at eight o'clock. I didn't have to work at weekends, but I often had to stay late.",
+          "ru": "На первой работе мне нужно было носить форму и приходить к восьми. По выходным работать было не обязательно, но часто приходилось задерживаться.",
+          "audio": {
+            "src": "media/audio/u11.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u11.d02.reading.b2",
+          "en": "Now I work from home. I don't have to wear a uniform and I don't have to travel. But I still have to finish my tasks on time. Rules are rules.",
+          "ru": "Сейчас я работаю из дома. Мне не нужно носить форму и не нужно ездить. Но задачи всё равно нужно сдавать вовремя. Правила есть правила.",
+          "audio": {
+            "src": "media/audio/u11.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "task",
+          "ru": "задача",
+          "ipa": "/tɑːsk/"
+        },
+        {
+          "word": "on time",
+          "ru": "вовремя",
+          "ipa": "/ɒn taɪm/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u11.d02.listening",
+      "title": {
+        "en": "The new school",
+        "ru": "Новая школа"
+      },
+      "audio": {
+        "src": "media/audio/u11.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Do we have to wear a uniform?",
+          "ru": "Нам нужно носить форму?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Yes, you have to wear a blue shirt.",
+          "ru": "Да, нужно носить синюю рубашку."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Do we have to come on Saturday?",
+          "ru": "В субботу нужно приходить?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "No, you don't have to. Saturday is free.",
+          "ru": "Нет, не обязательно. Суббота свободна."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u11.d02.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What about Saturday?",
+            "ru": "Что насчёт субботы?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.have-to"
+          ],
+          "prompt": "They ___ come on Saturday.",
+          "options": [
+            "don't have to",
+            "have to",
+            "mustn't"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u11.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u11.d02.ex.g.01",
+          "instruction": {
+            "en": "have to / has to.",
+            "ru": "have to / has to."
+          },
+          "tags": [
+            "grammar.have-to"
+          ],
+          "prompt": "She ___ wear a uniform. (have to)",
+          "answers": [
+            "has to"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u11.d02.ex.c.01",
+          "instruction": {
+            "en": "Not necessary.",
+            "ru": "Не обязательно."
+          },
+          "tags": [
+            "grammar.have-to"
+          ],
+          "prompt": "It's Sunday. We ___ work.",
+          "options": [
+            "don't have to",
+            "have to",
+            "must"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u11.d02.ex.g.02",
+          "instruction": {
+            "en": "Past: had to.",
+            "ru": "Прошлое: had to."
+          },
+          "tags": [
+            "grammar.have-to"
+          ],
+          "prompt": "Yesterday I ___ stay late. (have to)",
+          "answers": [
+            "had to"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u11.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.have-to"
+          ],
+          "variants": [
+            "He have to go.",
+            "He has to go."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u11.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "uniform",
+              "right": "форма"
+            },
+            {
+              "left": "allowed",
+              "right": "разрешено"
+            },
+            {
+              "left": "break",
+              "right": "перерыв"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u11.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.have-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мне нужно рано вставать.",
+          "answers": [
+            "I have to get up early."
+          ]
+        }
+      ]
+    }
+  ]
+}

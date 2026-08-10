@@ -254,7 +254,13 @@
         "en": "Rules & health",
         "ru": "Правила и здоровье"
       },
-      "dayIds": [],
+      "dayIds": [
+        "u11.d01",
+        "u11.d02",
+        "u11.d03",
+        "u11.d04",
+        "u11.d05"
+      ],
       "checkpoint": {
         "id": "u11.checkpoint",
         "title": {

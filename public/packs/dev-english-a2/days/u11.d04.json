@@ -1,0 +1,462 @@
+{
+  "id": "u11.d04",
+  "title": {
+    "en": "It might rain",
+    "ru": "Возможно, будет дождь"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.might-may",
+    "vocab.school",
+    "pronunciation"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u11.d04.vocab",
+      "title": {
+        "en": "School & study",
+        "ru": "Школа и учёба"
+      },
+      "words": [
+        {
+          "word": "school",
+          "ru": "школа",
+          "ipa": "/skuːl/",
+          "example": "The school is near.",
+          "exampleRu": "Школа рядом.",
+          "audio": {
+            "src": "media/audio/u11.d04.vocab.school.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "teacher",
+          "ru": "учитель",
+          "ipa": "/ˈtiːtʃər/",
+          "example": "Our teacher is kind.",
+          "exampleRu": "Наш учитель добрый.",
+          "audio": {
+            "src": "media/audio/u11.d04.vocab.teacher.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "exam",
+          "ru": "экзамен",
+          "ipa": "/ɪɡˈzæm/",
+          "example": "The exam is on Monday.",
+          "exampleRu": "Экзамен в понедельник.",
+          "audio": {
+            "src": "media/audio/u11.d04.vocab.exam.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "homework",
+          "ru": "домашнее задание",
+          "ipa": "/ˈhoʊmwɜːrk/",
+          "example": "I have a lot of homework.",
+          "exampleRu": "У меня много домашки.",
+          "audio": {
+            "src": "media/audio/u11.d04.vocab.homework.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lesson",
+          "ru": "урок",
+          "ipa": "/ˈlesn/",
+          "example": "The lesson starts at nine.",
+          "exampleRu": "Урок начинается в девять.",
+          "audio": {
+            "src": "media/audio/u11.d04.vocab.lesson.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "study",
+          "ru": "учиться, изучать",
+          "ipa": "/ˈstʌdi/",
+          "example": "I study every evening.",
+          "exampleRu": "Я занимаюсь каждый вечер.",
+          "audio": {
+            "src": "media/audio/u11.d04.vocab.study.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "learn",
+          "ru": "учить, узнавать",
+          "ipa": "/lɜːrn/",
+          "example": "We learn English.",
+          "exampleRu": "Мы учим английский.",
+          "audio": {
+            "src": "media/audio/u11.d04.vocab.learn.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "subject",
+          "ru": "предмет",
+          "ipa": "/ˈsʌbdʒɪkt/",
+          "example": "Maths is my favourite subject.",
+          "exampleRu": "Математика — мой любимый предмет.",
+          "audio": {
+            "src": "media/audio/u11.d04.vocab.subject.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "grade",
+          "ru": "оценка",
+          "ipa": "/ɡreɪd/",
+          "example": "She got a good grade.",
+          "exampleRu": "Она получила хорошую оценку.",
+          "audio": {
+            "src": "media/audio/u11.d04.vocab.grade.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "maybe",
+          "ru": "может быть",
+          "ipa": "/ˈmeɪbi/",
+          "example": "Maybe I'll pass.",
+          "exampleRu": "Может быть, я сдам.",
+          "audio": {
+            "src": "media/audio/u11.d04.vocab.maybe.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u11.d04.grammar",
+      "title": {
+        "en": "might / may",
+        "ru": "might / may"
+      },
+      "rule": {
+        "en": "Use \"might\" or \"may\" + verb for possibility (maybe it will happen). The negative is \"might not / may not\".",
+        "ru": "\"might\" или \"may\" + глагол — возможность (может быть, случится). Отрицание — \"might not / may not\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "might / may",
+            "ru": "might / may"
+          },
+          "formula": "might/may + verb",
+          "examples": [
+            {
+              "en": "It might rain later.",
+              "ru": "Возможно, позже пойдёт дождь."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "might not",
+            "ru": "might not"
+          },
+          "formula": "might not + verb",
+          "examples": [
+            {
+              "en": "I might not pass the exam.",
+              "ru": "Возможно, я не сдам экзамен."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "answer",
+            "ru": "ответ"
+          },
+          "formula": "Maybe. / I might.",
+          "examples": [
+            {
+              "en": "Will you come? I might.",
+              "ru": "Ты придёшь? Возможно."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Base verb after might/may: \"might go\", not \"might to go\".",
+          "ru": "После might/may — начальная форма: \"might go\", а не \"might to go\"."
+        },
+        {
+          "en": "\"might\" and \"may\" both mean \"possibly\" here — they are similar.",
+          "ru": "\"might\" и \"may\" здесь оба значат \"возможно\" — они близки."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u11.d04.reading",
+      "title": {
+        "en": "Before the exam",
+        "ru": "Перед экзаменом"
+      },
+      "blocks": [
+        {
+          "id": "u11.d04.reading.b1",
+          "en": "Anna has an important exam tomorrow. She studied a lot, but she is nervous. \"I might pass, or I might not,\" she says. \"The exam may be difficult.\"",
+          "ru": "Завтра у Анны важный экзамен. Она много готовилась, но нервничает. «Может, сдам, а может, и нет», — говорит она. «Экзамен может быть сложным».",
+          "audio": {
+            "src": "media/audio/u11.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u11.d04.reading.b2",
+          "en": "Her teacher says, \"Don't worry. You know the subject well. You may get a good grade. And if it rains, we might do the exam in the library.\"",
+          "ru": "Учитель говорит: «Не переживай. Ты хорошо знаешь предмет. Возможно, получишь хорошую оценку. А если пойдёт дождь, экзамен, может быть, проведём в библиотеке».",
+          "audio": {
+            "src": "media/audio/u11.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "nervous",
+          "ru": "нервный, взволнованный",
+          "ipa": "/ˈnɜːrvəs/"
+        },
+        {
+          "word": "difficult",
+          "ru": "сложный",
+          "ipa": "/ˈdɪfɪkəlt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u11.d04.listening",
+      "title": {
+        "en": "Maybe",
+        "ru": "Возможно"
+      },
+      "audio": {
+        "src": "media/audio/u11.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Will you come to the party?",
+          "ru": "Придёшь на вечеринку?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "I might. I have an exam the next day.",
+          "ru": "Возможно. У меня на следующий день экзамен."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Will it be difficult?",
+          "ru": "Он будет сложным?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "It may be. I'm not sure yet.",
+          "ru": "Может быть. Пока не уверен."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u11.d04.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "Will he come to the party?",
+            "ru": "Он придёт на вечеринку?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.might-may"
+          ],
+          "prompt": "He says he ___ come.",
+          "options": [
+            "might",
+            "will",
+            "must"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u11.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u11.d04.ex.g.01",
+          "instruction": {
+            "en": "Possibility with might.",
+            "ru": "Возможность с might."
+          },
+          "tags": [
+            "grammar.might-may"
+          ],
+          "prompt": "It ___ rain later. (might)",
+          "answers": [
+            "might"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u11.d04.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct form.",
+            "ru": "Выбери верную форму."
+          },
+          "tags": [
+            "grammar.might-may"
+          ],
+          "prompt": "I'm not sure. I ___ be late.",
+          "options": [
+            "may",
+            "must",
+            "should"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u11.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.might-may"
+          ],
+          "variants": [
+            "It might to rain.",
+            "It might rain."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u11.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the school word and the translation.",
+            "ru": "Сопоставь школьное слово и перевод."
+          },
+          "tags": [
+            "vocab.school"
+          ],
+          "pairs": [
+            {
+              "left": "exam",
+              "right": "экзамен"
+            },
+            {
+              "left": "homework",
+              "right": "домашнее задание"
+            },
+            {
+              "left": "subject",
+              "right": "предмет"
+            }
+          ]
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u11.d04.ex.mp.01",
+          "instruction": {
+            "en": "Listen — which word do you hear?",
+            "ru": "Послушай — какое слово ты слышишь?"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u11.d04.ex.mp.01.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "back",
+            "bag"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u11.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.might-may",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Возможно, я опоздаю.",
+          "answers": [
+            "I might be late.",
+            "I may be late."
+          ]
+        }
+      ]
+    }
+  ]
+}

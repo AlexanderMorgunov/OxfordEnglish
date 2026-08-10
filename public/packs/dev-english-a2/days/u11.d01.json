@@ -1,0 +1,443 @@
+{
+  "id": "u11.d01",
+  "title": {
+    "en": "You must wear a helmet",
+    "ru": "Нужно надеть шлем"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.must",
+    "vocab.body"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u11.d01.vocab",
+      "title": {
+        "en": "The body",
+        "ru": "Тело"
+      },
+      "words": [
+        {
+          "word": "body",
+          "ru": "тело",
+          "ipa": "/ˈbɒdi/",
+          "example": "Exercise is good for the body.",
+          "exampleRu": "Упражнения полезны для тела.",
+          "audio": {
+            "src": "media/audio/u11.d01.vocab.body.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "head",
+          "ru": "голова",
+          "ipa": "/hed/",
+          "example": "My head hurts.",
+          "exampleRu": "У меня болит голова.",
+          "audio": {
+            "src": "media/audio/u11.d01.vocab.head.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "arm",
+          "ru": "рука (от плеча)",
+          "ipa": "/ɑːrm/",
+          "example": "He broke his arm.",
+          "exampleRu": "Он сломал руку.",
+          "audio": {
+            "src": "media/audio/u11.d01.vocab.arm.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "leg",
+          "ru": "нога",
+          "ipa": "/leɡ/",
+          "example": "My leg is tired.",
+          "exampleRu": "У меня устала нога.",
+          "audio": {
+            "src": "media/audio/u11.d01.vocab.leg.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hand",
+          "ru": "рука (кисть)",
+          "ipa": "/hænd/",
+          "example": "Wash your hands.",
+          "exampleRu": "Помой руки.",
+          "audio": {
+            "src": "media/audio/u11.d01.vocab.hand.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "foot",
+          "ru": "ступня, нога",
+          "ipa": "/fʊt/",
+          "example": "My foot hurts.",
+          "exampleRu": "У меня болит нога.",
+          "audio": {
+            "src": "media/audio/u11.d01.vocab.foot.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "back",
+          "ru": "спина",
+          "ipa": "/bæk/",
+          "example": "My back is sore.",
+          "exampleRu": "У меня болит спина.",
+          "audio": {
+            "src": "media/audio/u11.d01.vocab.back.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "stomach",
+          "ru": "живот",
+          "ipa": "/ˈstʌmək/",
+          "example": "I have a stomach ache.",
+          "exampleRu": "У меня болит живот.",
+          "audio": {
+            "src": "media/audio/u11.d01.vocab.stomach.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "healthy",
+          "ru": "здоровый",
+          "ipa": "/ˈhelθi/",
+          "example": "Stay healthy.",
+          "exampleRu": "Будь здоров.",
+          "audio": {
+            "src": "media/audio/u11.d01.vocab.healthy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "helmet",
+          "ru": "шлем",
+          "ipa": "/ˈhelmɪt/",
+          "example": "You must wear a helmet.",
+          "exampleRu": "Нужно надеть шлем.",
+          "audio": {
+            "src": "media/audio/u11.d01.vocab.helmet.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u11.d01.grammar",
+      "title": {
+        "en": "must / mustn't",
+        "ru": "must / mustn't"
+      },
+      "rule": {
+        "en": "Use \"must + verb\" for a strong obligation or a rule. Use \"mustn't + verb\" for something prohibited (don't do it).",
+        "ru": "\"must + глагол\" — сильная обязанность или правило. \"mustn't + глагол\" — то, что запрещено (нельзя делать)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "must",
+            "ru": "must"
+          },
+          "formula": "must + verb (necessary)",
+          "examples": [
+            {
+              "en": "You must wear a helmet.",
+              "ru": "Ты должен надеть шлем."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "mustn't",
+            "ru": "mustn't"
+          },
+          "formula": "mustn't + verb (prohibited)",
+          "examples": [
+            {
+              "en": "You mustn't use your phone here.",
+              "ru": "Здесь нельзя пользоваться телефоном."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use the base verb after must: \"must go\", not \"must to go\".",
+          "ru": "После must — начальная форма: \"must go\", а не \"must to go\"."
+        },
+        {
+          "en": "\"mustn't\" = prohibited; it is not the same as \"don't have to\" (= not necessary).",
+          "ru": "\"mustn't\" = запрещено; это не то же самое, что \"don't have to\" (= не обязательно)."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u11.d01.reading",
+      "title": {
+        "en": "Gym rules",
+        "ru": "Правила зала"
+      },
+      "blocks": [
+        {
+          "id": "u11.d01.reading.b1",
+          "en": "There are some rules at the gym. You must wear clean shoes and you must bring a towel. You must drink a lot of water when you train.",
+          "ru": "В зале есть правила. Нужно быть в чистой обуви и приносить полотенце. Во время тренировки нужно пить много воды.",
+          "audio": {
+            "src": "media/audio/u11.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u11.d01.reading.b2",
+          "en": "You mustn't eat in the training room, and you mustn't drop the weights on the floor. If you follow the rules, your body will be healthy and strong.",
+          "ru": "Нельзя есть в тренировочном зале и нельзя бросать веса на пол. Если соблюдать правила, тело будет здоровым и сильным.",
+          "audio": {
+            "src": "media/audio/u11.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "towel",
+          "ru": "полотенце",
+          "ipa": "/ˈtaʊəl/"
+        },
+        {
+          "word": "weights",
+          "ru": "веса, гантели",
+          "ipa": "/weɪts/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u11.d01.listening",
+      "title": {
+        "en": "At the pool",
+        "ru": "В бассейне"
+      },
+      "audio": {
+        "src": "media/audio/u11.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Excuse me, what are the rules here?",
+          "ru": "Извините, какие тут правила?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "You must take a shower before you swim.",
+          "ru": "Перед плаванием нужно принять душ."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "OK. Can I bring food?",
+          "ru": "Хорошо. Можно принести еду?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "No, you mustn't eat near the pool.",
+          "ru": "Нет, у бассейна есть нельзя."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u11.d01.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What must you do before swimming?",
+            "ru": "Что нужно сделать перед плаванием?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.must"
+          ],
+          "prompt": "You must take a ___ .",
+          "options": [
+            "shower",
+            "break",
+            "photo"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u11.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u11.d01.ex.c.01",
+          "instruction": {
+            "en": "Obligation or prohibition?",
+            "ru": "Обязанность или запрет?"
+          },
+          "tags": [
+            "grammar.must"
+          ],
+          "prompt": "You ___ wear a helmet. It's a rule.",
+          "options": [
+            "must",
+            "mustn't",
+            "don't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u11.d01.ex.c.02",
+          "instruction": {
+            "en": "Obligation or prohibition?",
+            "ru": "Обязанность или запрет?"
+          },
+          "tags": [
+            "grammar.must"
+          ],
+          "prompt": "You ___ smoke here. It's not allowed.",
+          "options": [
+            "mustn't",
+            "must",
+            "have to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u11.d01.ex.g.01",
+          "instruction": {
+            "en": "Base verb after must.",
+            "ru": "Начальная форма после must."
+          },
+          "tags": [
+            "grammar.must"
+          ],
+          "prompt": "You must ___ your hands. (wash)",
+          "answers": [
+            "wash"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u11.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.must"
+          ],
+          "variants": [
+            "You must to wear a helmet.",
+            "You must wear a helmet."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u11.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the body word and the translation.",
+            "ru": "Сопоставь часть тела и перевод."
+          },
+          "tags": [
+            "vocab.body"
+          ],
+          "pairs": [
+            {
+              "left": "head",
+              "right": "голова"
+            },
+            {
+              "left": "back",
+              "right": "спина"
+            },
+            {
+              "left": "stomach",
+              "right": "живот"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u11.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.must",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Здесь нельзя есть.",
+          "answers": [
+            "You mustn't eat here.",
+            "You must not eat here."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -54,6 +54,10 @@ export const SKILL_TAGS = [
   'grammar.present-continuous-future',
   'grammar.future-time-clauses',
   'grammar.shall-lets',
+  'grammar.must',
+  'grammar.have-to',
+  'grammar.should',
+  'grammar.might-may',
 
   // functions (everyday communication)
   'functions.ordering',
@@ -67,6 +71,8 @@ export const SKILL_TAGS = [
   'functions.shopping',
   'functions.arrangements',
   'functions.phone',
+  'functions.advice',
+  'functions.doctor',
 
   // vocabulary (developer-life + everyday themes)
   'vocab.work',
@@ -92,6 +98,9 @@ export const SKILL_TAGS = [
   'vocab.personality',
   'vocab.plans',
   'vocab.phone',
+  'vocab.health',
+  'vocab.body',
+  'vocab.school',
 
   // reading
   'reading.gist',
