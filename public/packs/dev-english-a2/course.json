@@ -276,7 +276,13 @@
         "en": "Have you ever…?",
         "ru": "Ты когда-нибудь…?"
       },
-      "dayIds": [],
+      "dayIds": [
+        "u12.d01",
+        "u12.d02",
+        "u12.d03",
+        "u12.d04",
+        "u12.d05"
+      ],
       "checkpoint": {
         "id": "u12.checkpoint",
         "title": {

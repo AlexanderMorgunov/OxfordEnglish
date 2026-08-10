@@ -1,0 +1,456 @@
+{
+  "id": "u12.d03",
+  "title": {
+    "en": "For five years",
+    "ru": "Уже пять лет"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.for-since",
+    "vocab.achievements"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u12.d03.vocab",
+      "title": {
+        "en": "Life & achievements",
+        "ru": "Жизнь и достижения"
+      },
+      "words": [
+        {
+          "word": "achievement",
+          "ru": "достижение",
+          "ipa": "/əˈtʃiːvmənt/",
+          "example": "It is a great achievement.",
+          "exampleRu": "Это большое достижение.",
+          "audio": {
+            "src": "media/audio/u12.d03.vocab.achievement.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "win",
+          "ru": "выигрывать",
+          "ipa": "/wɪn/",
+          "example": "She has won a prize.",
+          "exampleRu": "Она выиграла приз.",
+          "audio": {
+            "src": "media/audio/u12.d03.vocab.win.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "prize",
+          "ru": "приз, награда",
+          "ipa": "/praɪz/",
+          "example": "He won first prize.",
+          "exampleRu": "Он получил первый приз.",
+          "audio": {
+            "src": "media/audio/u12.d03.vocab.prize.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "learn",
+          "ru": "учить, осваивать",
+          "ipa": "/lɜːrn/",
+          "example": "I have learned to drive.",
+          "exampleRu": "Я научился водить.",
+          "audio": {
+            "src": "media/audio/u12.d03.vocab.learn.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "build",
+          "ru": "строить, создавать",
+          "ipa": "/bɪld/",
+          "example": "They have built a house.",
+          "exampleRu": "Они построили дом.",
+          "audio": {
+            "src": "media/audio/u12.d03.vocab.build.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "success",
+          "ru": "успех",
+          "ipa": "/səkˈses/",
+          "example": "The project was a success.",
+          "exampleRu": "Проект был успешным.",
+          "audio": {
+            "src": "media/audio/u12.d03.vocab.success.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "career",
+          "ru": "карьера",
+          "ipa": "/kəˈrɪər/",
+          "example": "She has a good career.",
+          "exampleRu": "У неё хорошая карьера.",
+          "audio": {
+            "src": "media/audio/u12.d03.vocab.career.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "goal",
+          "ru": "цель",
+          "ipa": "/ɡoʊl/",
+          "example": "I have reached my goal.",
+          "exampleRu": "Я достиг своей цели.",
+          "audio": {
+            "src": "media/audio/u12.d03.vocab.goal.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "since",
+          "ru": "с (момента)",
+          "ipa": "/sɪns/",
+          "example": "I have lived here since 2020.",
+          "exampleRu": "Я живу здесь с 2020 года.",
+          "audio": {
+            "src": "media/audio/u12.d03.vocab.since.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "for",
+          "ru": "в течение",
+          "ipa": "/fɔːr/",
+          "example": "I have known her for years.",
+          "exampleRu": "Я знаю её много лет.",
+          "audio": {
+            "src": "media/audio/u12.d03.vocab.for.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u12.d03.grammar",
+      "title": {
+        "en": "for / since",
+        "ru": "for / since"
+      },
+      "rule": {
+        "en": "With the present perfect, use \"for\" + a period of time and \"since\" + a point in time to say how long.",
+        "ru": "С present perfect: \"for\" + промежуток времени, \"since\" + момент во времени — чтобы сказать, как долго."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "for + period",
+            "ru": "for + промежуток"
+          },
+          "formula": "for + two years / a week",
+          "examples": [
+            {
+              "en": "I have lived here for five years.",
+              "ru": "Я живу здесь пять лет."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "since + point",
+            "ru": "since + момент"
+          },
+          "formula": "since + 2020 / Monday",
+          "examples": [
+            {
+              "en": "I have known her since 2015.",
+              "ru": "Я знаю её с 2015 года."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "How long…?",
+            "ru": "How long…?"
+          },
+          "formula": "How long have you …?",
+          "examples": [
+            {
+              "en": "How long have you worked here?",
+              "ru": "Как долго ты здесь работаешь?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"for\" + length (for two hours); \"since\" + start point (since Monday).",
+          "ru": "\"for\" + длительность (for two hours); \"since\" + начало (since Monday)."
+        },
+        {
+          "en": "Use the present perfect, not present simple: \"I have lived here for years\".",
+          "ru": "Используй present perfect, не present simple: \"I have lived here for years\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u12.d03.reading",
+      "title": {
+        "en": "A long friendship",
+        "ru": "Долгая дружба"
+      },
+      "blocks": [
+        {
+          "id": "u12.d03.reading.b1",
+          "en": "I have known my best friend Nina since school. We have been friends for more than ten years. She has lived in the same city since she was born.",
+          "ru": "Я знаю свою лучшую подругу Нину со школы. Мы дружим больше десяти лет. Она живёт в одном и том же городе с самого рождения.",
+          "audio": {
+            "src": "media/audio/u12.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u12.d03.reading.b2",
+          "en": "Nina has worked as a nurse for six years, and she has won a prize for her work. It is a real achievement. I am proud of her.",
+          "ru": "Нина работает медсестрой уже шесть лет и получила награду за свою работу. Это настоящее достижение. Я горжусь ею.",
+          "audio": {
+            "src": "media/audio/u12.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "proud",
+          "ru": "гордый",
+          "ipa": "/praʊd/"
+        },
+        {
+          "word": "born",
+          "ru": "рождённый",
+          "ipa": "/bɔːrn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u12.d03.listening",
+      "title": {
+        "en": "How long?",
+        "ru": "Как долго?"
+      },
+      "audio": {
+        "src": "media/audio/u12.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "How long have you lived here?",
+          "ru": "Как долго ты здесь живёшь?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "I have lived here for eight years.",
+          "ru": "Я живу здесь восемь лет."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "And how long have you known Tom?",
+          "ru": "А как давно ты знаешь Тома?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Since university. We met in 2016.",
+          "ru": "С университета. Мы познакомились в 2016."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u12.d03.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "How long has she lived here?",
+            "ru": "Как долго она здесь живёт?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.for-since"
+          ],
+          "prompt": "She has lived here ___ eight years.",
+          "options": [
+            "for",
+            "since",
+            "ago"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u12.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u12.d03.ex.c.01",
+          "instruction": {
+            "en": "for or since?",
+            "ru": "for или since?"
+          },
+          "tags": [
+            "grammar.for-since"
+          ],
+          "prompt": "I have lived here ___ five years.",
+          "options": [
+            "for",
+            "since",
+            "ago"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u12.d03.ex.c.02",
+          "instruction": {
+            "en": "for or since?",
+            "ru": "for или since?"
+          },
+          "tags": [
+            "grammar.for-since"
+          ],
+          "prompt": "She has worked here ___ 2019.",
+          "options": [
+            "since",
+            "for",
+            "from"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d03.ex.g.01",
+          "instruction": {
+            "en": "Ask how long.",
+            "ru": "Спроси, как долго."
+          },
+          "tags": [
+            "grammar.for-since"
+          ],
+          "prompt": "How long ___ you known him? (have)",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u12.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.for-since"
+          ],
+          "variants": [
+            "I have known her since ten years.",
+            "I have known her for ten years."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u12.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.achievements"
+          ],
+          "pairs": [
+            {
+              "left": "achievement",
+              "right": "достижение"
+            },
+            {
+              "left": "prize",
+              "right": "приз"
+            },
+            {
+              "left": "career",
+              "right": "карьера"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u12.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.for-since",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я знаю её пять лет.",
+          "answers": [
+            "I have known her for five years.",
+            "I've known her for five years."
+          ]
+        }
+      ]
+    }
+  ]
+}

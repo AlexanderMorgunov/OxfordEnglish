@@ -1,0 +1,465 @@
+{
+  "id": "u12.d05",
+  "title": {
+    "en": "Tell me about your life",
+    "ru": "Расскажи о своей жизни"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "functions.experiences",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u12.d05.vocab",
+      "title": {
+        "en": "Talking about experiences",
+        "ru": "Рассказ об опыте"
+      },
+      "words": [
+        {
+          "word": "experience",
+          "ru": "опыт, впечатление",
+          "ipa": "/ɪkˈspɪəriəns/",
+          "example": "What a great experience!",
+          "exampleRu": "Какое отличное впечатление!",
+          "audio": {
+            "src": "media/audio/u12.d05.vocab.experience.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "try",
+          "ru": "пробовать",
+          "ipa": "/traɪ/",
+          "example": "Have you tried surfing?",
+          "exampleRu": "Ты пробовал сёрфинг?",
+          "audio": {
+            "src": "media/audio/u12.d05.vocab.try.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "taste",
+          "ru": "пробовать (на вкус)",
+          "ipa": "/teɪst/",
+          "example": "Have you tasted this?",
+          "exampleRu": "Ты это пробовал?",
+          "audio": {
+            "src": "media/audio/u12.d05.vocab.taste.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "meet",
+          "ru": "встречать, знакомиться",
+          "ipa": "/miːt/",
+          "example": "I have met famous people.",
+          "exampleRu": "Я знакомился с известными людьми.",
+          "audio": {
+            "src": "media/audio/u12.d05.vocab.meet.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "amazing",
+          "ru": "потрясающий",
+          "ipa": "/əˈmeɪzɪŋ/",
+          "example": "It was amazing!",
+          "exampleRu": "Это было потрясающе!",
+          "audio": {
+            "src": "media/audio/u12.d05.vocab.amazing.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "boring",
+          "ru": "скучный",
+          "ipa": "/ˈbɔːrɪŋ/",
+          "example": "The trip was boring.",
+          "exampleRu": "Поездка была скучной.",
+          "audio": {
+            "src": "media/audio/u12.d05.vocab.boring.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "interesting",
+          "ru": "интересный",
+          "ipa": "/ˈɪntrəstɪŋ/",
+          "example": "It was really interesting.",
+          "exampleRu": "Было очень интересно.",
+          "audio": {
+            "src": "media/audio/u12.d05.vocab.interesting.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "favourite",
+          "ru": "любимый",
+          "ipa": "/ˈfeɪvərɪt/",
+          "example": "It's my favourite place.",
+          "exampleRu": "Это моё любимое место.",
+          "audio": {
+            "src": "media/audio/u12.d05.vocab.favourite.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lucky",
+          "ru": "везучий, удачный",
+          "ipa": "/ˈlʌki/",
+          "example": "I was lucky.",
+          "exampleRu": "Мне повезло.",
+          "audio": {
+            "src": "media/audio/u12.d05.vocab.lucky.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "once",
+          "ru": "однажды, раз",
+          "ipa": "/wʌns/",
+          "example": "I have been there once.",
+          "exampleRu": "Я был там однажды.",
+          "audio": {
+            "src": "media/audio/u12.d05.vocab.once.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u12.d05.grammar",
+      "title": {
+        "en": "Talking about experiences",
+        "ru": "Говорим об опыте"
+      },
+      "rule": {
+        "en": "Ask about experiences with \"Have you ever …?\". Answer \"Yes, I have / No, I haven't / I've never …\". Add details in the past simple with \"What was it like?\".",
+        "ru": "Спрашивай об опыте: \"Have you ever …?\". Отвечай \"Yes, I have / No, I haven't / I've never …\". Детали — в past simple, вопрос \"What was it like?\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "ask",
+            "ru": "вопрос"
+          },
+          "formula": "Have you ever + V3?",
+          "examples": [
+            {
+              "en": "Have you ever ridden a horse?",
+              "ru": "Ты когда-нибудь катался на лошади?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "answer",
+            "ru": "ответ"
+          },
+          "formula": "Yes, I have. / No, I haven't.",
+          "examples": [
+            {
+              "en": "Yes, I have! / No, I've never done that.",
+              "ru": "Да! / Нет, я такого не делал."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "details",
+            "ru": "детали"
+          },
+          "formula": "What was it like? + past simple",
+          "examples": [
+            {
+              "en": "What was it like? It was amazing!",
+              "ru": "Как это было? Потрясающе!"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Answer with the auxiliary: \"Yes, I have\", not \"Yes, I have been\".",
+          "ru": "Отвечай вспомогательным: \"Yes, I have\", а не \"Yes, I have been\"."
+        },
+        {
+          "en": "Switch to the past simple for details and time: \"It was in 2019\".",
+          "ru": "Для деталей и времени переходи на past simple: \"It was in 2019\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u12.d05.reading",
+      "title": {
+        "en": "Two friends talk",
+        "ru": "Разговор двух друзей"
+      },
+      "blocks": [
+        {
+          "id": "u12.d05.reading.b1",
+          "en": "\"Have you ever tried surfing?\" asked Kate. \"Yes, I have! I tried it in Portugal last year.\" \"Wow! What was it like?\" \"It was amazing but difficult.\"",
+          "ru": "«Ты когда-нибудь пробовала сёрфинг?» — спросила Кейт. «Да! Я пробовала в Португалии в прошлом году». «Ух ты! Как это было?» «Потрясающе, но сложно».",
+          "audio": {
+            "src": "media/audio/u12.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u12.d05.reading.b2",
+          "en": "\"Have you ever met a famous person?\" \"No, I've never met one. But I've seen a singer at the airport once. That was an interesting experience!\"",
+          "ru": "«А ты когда-нибудь встречала знаменитость?» «Нет, ни разу. Но однажды я видела певца в аэропорту. Это было интересное впечатление!»",
+          "audio": {
+            "src": "media/audio/u12.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "surfing",
+          "ru": "сёрфинг",
+          "ipa": "/ˈsɜːrfɪŋ/"
+        },
+        {
+          "word": "singer",
+          "ru": "певец",
+          "ipa": "/ˈsɪŋər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u12.d05.listening",
+      "title": {
+        "en": "Have you ever…?",
+        "ru": "Ты когда-нибудь…?"
+      },
+      "audio": {
+        "src": "media/audio/u12.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Have you ever eaten Japanese food?",
+          "ru": "Ты когда-нибудь ел японскую еду?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Yes, I have! I tried sushi in Tokyo.",
+          "ru": "Да! Я пробовал суши в Токио."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "What was it like?",
+          "ru": "Как тебе?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "It was amazing. I want to go back.",
+          "ru": "Потрясающе. Хочу вернуться."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u12.d05.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What did he try in Tokyo?",
+            "ru": "Что он попробовал в Токио?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.experiences"
+          ],
+          "prompt": "He tried ___ in Tokyo.",
+          "options": [
+            "sushi",
+            "pizza",
+            "soup"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u12.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "order-words",
+          "id": "u12.d05.ex.o.01",
+          "instruction": {
+            "en": "Ask about an experience.",
+            "ru": "Спроси об опыте."
+          },
+          "tags": [
+            "functions.experiences"
+          ],
+          "tokens": [
+            "Have",
+            "you",
+            "ever",
+            "been",
+            "abroad"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u12.d05.ex.c.01",
+          "instruction": {
+            "en": "Short answer.",
+            "ru": "Краткий ответ."
+          },
+          "tags": [
+            "functions.experiences"
+          ],
+          "prompt": "Have you seen it? — Yes, I ___ .",
+          "options": [
+            "have",
+            "did",
+            "do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u12.d05.ex.c.02",
+          "instruction": {
+            "en": "Ask for details.",
+            "ru": "Спроси детали."
+          },
+          "tags": [
+            "functions.experiences"
+          ],
+          "prompt": "___ was it like?",
+          "options": [
+            "What",
+            "How",
+            "Which"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u12.d05.ex.s.01",
+          "instruction": {
+            "en": "Which answer is correct?",
+            "ru": "Какой ответ верный?"
+          },
+          "tags": [
+            "functions.experiences"
+          ],
+          "variants": [
+            "Have you been there? — Yes, I did.",
+            "Have you been there? — Yes, I have."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u12.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "amazing",
+              "right": "потрясающий"
+            },
+            {
+              "left": "lucky",
+              "right": "везучий"
+            },
+            {
+              "left": "once",
+              "right": "однажды"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u12.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.experiences",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты когда-нибудь был за границей?",
+          "answers": [
+            "Have you ever been abroad?"
+          ]
+        }
+      ]
+    }
+  ]
+}

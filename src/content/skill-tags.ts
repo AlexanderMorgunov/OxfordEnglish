@@ -58,6 +58,10 @@ export const SKILL_TAGS = [
   'grammar.have-to',
   'grammar.should',
   'grammar.might-may',
+  'grammar.present-perfect',
+  'grammar.just-yet-already',
+  'grammar.for-since',
+  'grammar.perfect-vs-past',
 
   // functions (everyday communication)
   'functions.ordering',
@@ -73,6 +77,7 @@ export const SKILL_TAGS = [
   'functions.phone',
   'functions.advice',
   'functions.doctor',
+  'functions.experiences',
 
   // vocabulary (developer-life + everyday themes)
   'vocab.work',
@@ -101,6 +106,8 @@ export const SKILL_TAGS = [
   'vocab.health',
   'vocab.body',
   'vocab.school',
+  'vocab.achievements',
+  'vocab.technology',
 
   // reading
   'reading.gist',

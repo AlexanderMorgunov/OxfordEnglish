@@ -1,0 +1,455 @@
+{
+  "id": "u12.d04",
+  "title": {
+    "en": "Have you seen it? Did you see it?",
+    "ru": "Видел? Ты это видел?"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.perfect-vs-past",
+    "vocab.technology",
+    "pronunciation"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u12.d04.vocab",
+      "title": {
+        "en": "Technology",
+        "ru": "Технологии"
+      },
+      "words": [
+        {
+          "word": "computer",
+          "ru": "компьютер",
+          "ipa": "/kəmˈpjuːtər/",
+          "example": "My computer is new.",
+          "exampleRu": "Мой компьютер новый.",
+          "audio": {
+            "src": "media/audio/u12.d04.vocab.computer.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "internet",
+          "ru": "интернет",
+          "ipa": "/ˈɪntərnet/",
+          "example": "The internet is slow.",
+          "exampleRu": "Интернет медленный.",
+          "audio": {
+            "src": "media/audio/u12.d04.vocab.internet.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "email",
+          "ru": "электронная почта",
+          "ipa": "/ˈiːmeɪl/",
+          "example": "I sent an email.",
+          "exampleRu": "Я отправил письмо.",
+          "audio": {
+            "src": "media/audio/u12.d04.vocab.email.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "message",
+          "ru": "сообщение",
+          "ipa": "/ˈmesɪdʒ/",
+          "example": "I got your message.",
+          "exampleRu": "Я получил твоё сообщение.",
+          "audio": {
+            "src": "media/audio/u12.d04.vocab.message.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "app",
+          "ru": "приложение",
+          "ipa": "/æp/",
+          "example": "This app is useful.",
+          "exampleRu": "Это приложение полезное.",
+          "audio": {
+            "src": "media/audio/u12.d04.vocab.app.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "screen",
+          "ru": "экран",
+          "ipa": "/skriːn/",
+          "example": "The screen is big.",
+          "exampleRu": "Экран большой.",
+          "audio": {
+            "src": "media/audio/u12.d04.vocab.screen.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "download",
+          "ru": "скачивать",
+          "ipa": "/ˈdaʊnloʊd/",
+          "example": "I have downloaded the file.",
+          "exampleRu": "Я скачал файл.",
+          "audio": {
+            "src": "media/audio/u12.d04.vocab.download.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "online",
+          "ru": "онлайн",
+          "ipa": "/ˌɒnˈlaɪn/",
+          "example": "I bought it online.",
+          "exampleRu": "Я купил это онлайн.",
+          "audio": {
+            "src": "media/audio/u12.d04.vocab.online.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "update",
+          "ru": "обновление; обновлять",
+          "ipa": "/ˈʌpdeɪt/",
+          "example": "The app needs an update.",
+          "exampleRu": "Приложению нужно обновление.",
+          "audio": {
+            "src": "media/audio/u12.d04.vocab.update.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "password",
+          "ru": "пароль",
+          "ipa": "/ˈpɑːswɜːrd/",
+          "example": "I forgot my password.",
+          "exampleRu": "Я забыл пароль.",
+          "audio": {
+            "src": "media/audio/u12.d04.vocab.password.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u12.d04.grammar",
+      "title": {
+        "en": "Present perfect vs past simple",
+        "ru": "Present perfect и past simple"
+      },
+      "rule": {
+        "en": "Use the present perfect for experiences with no time (Have you seen…?). Use the past simple when you say WHEN (yesterday, last week, in 2010).",
+        "ru": "Present perfect — об опыте без указания времени (Have you seen…?). Past simple — когда назван МОМЕНТ (yesterday, last week, in 2010)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "perfect (no time)",
+            "ru": "perfect (без времени)"
+          },
+          "formula": "Have you + V3?",
+          "examples": [
+            {
+              "en": "Have you seen this film?",
+              "ru": "Ты видел этот фильм?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "past (with time)",
+            "ru": "past (со временем)"
+          },
+          "formula": "Did you + verb + time?",
+          "examples": [
+            {
+              "en": "Did you see it yesterday?",
+              "ru": "Ты видел это вчера?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "together",
+            "ru": "вместе"
+          },
+          "formula": "perfect → then past for details",
+          "examples": [
+            {
+              "en": "I've been to Rome. I went there in 2019.",
+              "ru": "Я был в Риме. Я ездил туда в 2019."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "With a past time word use the past simple: \"I saw it yesterday\", not \"I have seen it yesterday\".",
+          "ru": "Со словом о прошлом — past simple: \"I saw it yesterday\", а не \"I have seen it yesterday\"."
+        },
+        {
+          "en": "No exact time → present perfect; exact time → past simple.",
+          "ru": "Нет точного времени → present perfect; есть → past simple."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u12.d04.reading",
+      "title": {
+        "en": "A new phone",
+        "ru": "Новый телефон"
+      },
+      "blocks": [
+        {
+          "id": "u12.d04.reading.b1",
+          "en": "\"Have you seen the new phone?\" asked Leo. \"Yes, I bought one last week!\" said Mia. \"I have already downloaded all my apps and photos.\"",
+          "ru": "«Ты видел новый телефон?» — спросил Лео. «Да, я купила такой на прошлой неделе!» — сказала Мия. «Я уже скачала все приложения и фото».",
+          "audio": {
+            "src": "media/audio/u12.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u12.d04.reading.b2",
+          "en": "\"Has it got a good screen?\" \"Yes, it's great. I have never had such a fast phone. I updated it yesterday and now it works perfectly.\"",
+          "ru": "«У него хороший экран?» «Да, отличный. У меня никогда не было такого быстрого телефона. Вчера я его обновила, и теперь он работает идеально».",
+          "audio": {
+            "src": "media/audio/u12.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "fast",
+          "ru": "быстрый",
+          "ipa": "/fɑːst/"
+        },
+        {
+          "word": "perfectly",
+          "ru": "идеально",
+          "ipa": "/ˈpɜːrfɪktli/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u12.d04.listening",
+      "title": {
+        "en": "Have you or did you?",
+        "ru": "Have you или did you?"
+      },
+      "audio": {
+        "src": "media/audio/u12.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Have you read this book?",
+          "ru": "Ты читал эту книгу?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Yes, I read it last summer.",
+          "ru": "Да, я читал её прошлым летом."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Did you like it?",
+          "ru": "Тебе понравилось?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Yes, I have never read such a good story.",
+          "ru": "Да, я никогда не читал такой хорошей истории."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u12.d04.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "When did he read the book?",
+            "ru": "Когда он читал книгу?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.perfect-vs-past"
+          ],
+          "prompt": "He read it last ___ .",
+          "options": [
+            "summer",
+            "week",
+            "year"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u12.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u12.d04.ex.c.01",
+          "instruction": {
+            "en": "No time given.",
+            "ru": "Время не названо."
+          },
+          "tags": [
+            "grammar.perfect-vs-past"
+          ],
+          "prompt": "___ you ever seen this film?",
+          "options": [
+            "Have",
+            "Did",
+            "Do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u12.d04.ex.c.02",
+          "instruction": {
+            "en": "With \"yesterday\".",
+            "ru": "Со словом \"yesterday\"."
+          },
+          "tags": [
+            "grammar.perfect-vs-past"
+          ],
+          "prompt": "I ___ the file yesterday.",
+          "options": [
+            "downloaded",
+            "have downloaded",
+            "download"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d04.ex.g.01",
+          "instruction": {
+            "en": "Past simple with a time word.",
+            "ru": "Past simple со словом времени."
+          },
+          "tags": [
+            "grammar.perfect-vs-past"
+          ],
+          "prompt": "She ___ a new phone last week. (buy)",
+          "answers": [
+            "bought"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u12.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.perfect-vs-past"
+          ],
+          "variants": [
+            "I have seen it yesterday.",
+            "I saw it yesterday."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u12.d04.ex.mp.01",
+          "instruction": {
+            "en": "Listen — which word do you hear?",
+            "ru": "Послушай — какое слово ты слышишь?"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u12.d04.ex.mp.01.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "leave",
+            "live"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u12.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.perfect-vs-past",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я видел этот фильм вчера.",
+          "answers": [
+            "I saw this film yesterday.",
+            "I saw that film yesterday."
+          ]
+        }
+      ]
+    }
+  ]
+}

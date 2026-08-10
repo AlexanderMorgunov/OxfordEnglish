@@ -1,0 +1,453 @@
+{
+  "id": "u12.d01",
+  "title": {
+    "en": "Have you ever been abroad?",
+    "ru": "Ты когда-нибудь был за границей?"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.present-perfect",
+    "vocab.travel"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u12.d01.vocab",
+      "title": {
+        "en": "Travel & experiences",
+        "ru": "Путешествия и опыт"
+      },
+      "words": [
+        {
+          "word": "abroad",
+          "ru": "за границей",
+          "ipa": "/əˈbrɔːd/",
+          "example": "Have you been abroad?",
+          "exampleRu": "Ты был за границей?",
+          "audio": {
+            "src": "media/audio/u12.d01.vocab.abroad.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "travel",
+          "ru": "путешествовать",
+          "ipa": "/ˈtrævl/",
+          "example": "I love to travel.",
+          "exampleRu": "Я люблю путешествовать.",
+          "audio": {
+            "src": "media/audio/u12.d01.vocab.travel.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "visit",
+          "ru": "посещать",
+          "ipa": "/ˈvɪzɪt/",
+          "example": "I have visited Rome.",
+          "exampleRu": "Я был в Риме.",
+          "audio": {
+            "src": "media/audio/u12.d01.vocab.visit.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "flight",
+          "ru": "рейс, полёт",
+          "ipa": "/flaɪt/",
+          "example": "The flight was long.",
+          "exampleRu": "Полёт был долгим.",
+          "audio": {
+            "src": "media/audio/u12.d01.vocab.flight.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "passport",
+          "ru": "паспорт",
+          "ipa": "/ˈpɑːspɔːrt/",
+          "example": "Where is my passport?",
+          "exampleRu": "Где мой паспорт?",
+          "audio": {
+            "src": "media/audio/u12.d01.vocab.passport.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "experience",
+          "ru": "опыт, впечатление",
+          "ipa": "/ɪkˈspɪəriəns/",
+          "example": "It was a great experience.",
+          "exampleRu": "Это был отличный опыт.",
+          "audio": {
+            "src": "media/audio/u12.d01.vocab.experience.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ever",
+          "ru": "когда-нибудь",
+          "ipa": "/ˈevər/",
+          "example": "Have you ever tried sushi?",
+          "exampleRu": "Ты когда-нибудь пробовал суши?",
+          "audio": {
+            "src": "media/audio/u12.d01.vocab.ever.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "never",
+          "ru": "никогда",
+          "ipa": "/ˈnevər/",
+          "example": "I have never been to Japan.",
+          "exampleRu": "Я никогда не был в Японии.",
+          "audio": {
+            "src": "media/audio/u12.d01.vocab.never.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "before",
+          "ru": "раньше",
+          "ipa": "/bɪˈfɔːr/",
+          "example": "I have seen this film before.",
+          "exampleRu": "Я видел этот фильм раньше.",
+          "audio": {
+            "src": "media/audio/u12.d01.vocab.before.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "twice",
+          "ru": "дважды",
+          "ipa": "/twaɪs/",
+          "example": "I have been there twice.",
+          "exampleRu": "Я был там дважды.",
+          "audio": {
+            "src": "media/audio/u12.d01.vocab.twice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u12.d01.grammar",
+      "title": {
+        "en": "Present perfect: ever / never",
+        "ru": "Present perfect: ever / never"
+      },
+      "rule": {
+        "en": "Talk about experiences (no exact time) with the present perfect: have/has + past participle. Use \"ever\" in questions and \"never\" for none.",
+        "ru": "О жизненном опыте (без точного времени) — present perfect: have/has + причастие прошедшего. \"ever\" — в вопросах, \"never\" — если ни разу."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "have/has + V3",
+            "ru": "have/has + V3"
+          },
+          "formula": "have/has + past participle",
+          "examples": [
+            {
+              "en": "I have visited Paris.",
+              "ru": "Я был в Париже."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "ever (question)",
+            "ru": "ever (вопрос)"
+          },
+          "formula": "Have you ever + V3?",
+          "examples": [
+            {
+              "en": "Have you ever been abroad?",
+              "ru": "Ты когда-нибудь был за границей?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "never",
+            "ru": "never"
+          },
+          "formula": "have/has never + V3",
+          "examples": [
+            {
+              "en": "She has never eaten sushi.",
+              "ru": "Она никогда не ела суши."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Learn past participles: be → been, see → seen, do → done, eat → eaten, go → gone.",
+          "ru": "Учи причастия: be → been, see → seen, do → done, eat → eaten, go → gone."
+        },
+        {
+          "en": "Use \"has\" for he/she/it: \"she has been\", not \"she have been\".",
+          "ru": "Для he/she/it — \"has\": \"she has been\", а не \"she have been\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u12.d01.reading",
+      "title": {
+        "en": "A traveller",
+        "ru": "Путешественница"
+      },
+      "blocks": [
+        {
+          "id": "u12.d01.reading.b1",
+          "en": "My aunt loves travelling. She has visited more than twenty countries. She has seen the mountains of Nepal and has swum in three oceans.",
+          "ru": "Моя тётя обожает путешествия. Она побывала более чем в двадцати странах. Она видела горы Непала и плавала в трёх океанах.",
+          "audio": {
+            "src": "media/audio/u12.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u12.d01.reading.b2",
+          "en": "She has never been to Australia, but it is her dream. \"Have you ever felt afraid on a trip?\" I asked. \"Never,\" she said. \"Travel is always an adventure.\"",
+          "ru": "Она никогда не была в Австралии, но это её мечта. «Ты когда-нибудь боялась в поездке?» — спросил я. «Никогда, — сказала она. — Путешествие всегда приключение».",
+          "audio": {
+            "src": "media/audio/u12.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "ocean",
+          "ru": "океан",
+          "ipa": "/ˈoʊʃn/"
+        },
+        {
+          "word": "adventure",
+          "ru": "приключение",
+          "ipa": "/ədˈventʃər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u12.d01.listening",
+      "title": {
+        "en": "Have you ever…?",
+        "ru": "Ты когда-нибудь…?"
+      },
+      "audio": {
+        "src": "media/audio/u12.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Have you ever been to London?",
+          "ru": "Ты когда-нибудь был в Лондоне?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Yes, I have. I went there last year.",
+          "ru": "Да, был. Я ездил туда в прошлом году."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Have you ever tried Indian food?",
+          "ru": "Ты когда-нибудь пробовал индийскую еду?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "No, I have never tried it.",
+          "ru": "Нет, никогда не пробовал."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u12.d01.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What has he never done?",
+            "ru": "Чего он никогда не делал?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.present-perfect"
+          ],
+          "prompt": "He has never tried ___ food.",
+          "options": [
+            "Indian",
+            "Italian",
+            "Chinese"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u12.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u12.d01.ex.g.01",
+          "instruction": {
+            "en": "Present perfect (have + V3).",
+            "ru": "Present perfect (have + V3)."
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "prompt": "I ___ visited Rome. (have)",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d01.ex.g.02",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие прошедшего."
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "prompt": "She has ___ to Japan. (be)",
+          "answers": [
+            "been"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u12.d01.ex.c.01",
+          "instruction": {
+            "en": "have or has?",
+            "ru": "have или has?"
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "prompt": "He ___ seen this film.",
+          "options": [
+            "has",
+            "have",
+            "is"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u12.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "variants": [
+            "Have you ever went abroad?",
+            "Have you ever been abroad?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u12.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the verb and its past participle.",
+            "ru": "Сопоставь глагол и причастие."
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "pairs": [
+            {
+              "left": "see",
+              "right": "seen"
+            },
+            {
+              "left": "eat",
+              "right": "eaten"
+            },
+            {
+              "left": "do",
+              "right": "done"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u12.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-perfect",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я никогда не был в Японии.",
+          "answers": [
+            "I have never been to Japan.",
+            "I've never been to Japan."
+          ]
+        }
+      ]
+    }
+  ]
+}

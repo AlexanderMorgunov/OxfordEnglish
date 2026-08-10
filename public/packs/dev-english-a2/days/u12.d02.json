@@ -1,0 +1,456 @@
+{
+  "id": "u12.d02",
+  "title": {
+    "en": "I've just finished",
+    "ru": "Я только что закончил"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.just-yet-already",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u12.d02.vocab",
+      "title": {
+        "en": "Getting things done",
+        "ru": "Дела и задачи"
+      },
+      "words": [
+        {
+          "word": "finish",
+          "ru": "заканчивать",
+          "ipa": "/ˈfɪnɪʃ/",
+          "example": "I have just finished.",
+          "exampleRu": "Я только что закончил.",
+          "audio": {
+            "src": "media/audio/u12.d02.vocab.finish.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "start",
+          "ru": "начинать",
+          "ipa": "/stɑːrt/",
+          "example": "The film has already started.",
+          "exampleRu": "Фильм уже начался.",
+          "audio": {
+            "src": "media/audio/u12.d02.vocab.start.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "arrive",
+          "ru": "прибывать",
+          "ipa": "/əˈraɪv/",
+          "example": "They have just arrived.",
+          "exampleRu": "Они только что приехали.",
+          "audio": {
+            "src": "media/audio/u12.d02.vocab.arrive.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "leave",
+          "ru": "уходить, уезжать",
+          "ipa": "/liːv/",
+          "example": "She has already left.",
+          "exampleRu": "Она уже ушла.",
+          "audio": {
+            "src": "media/audio/u12.d02.vocab.leave.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "send",
+          "ru": "отправлять",
+          "ipa": "/send/",
+          "example": "I have already sent the email.",
+          "exampleRu": "Я уже отправил письмо.",
+          "audio": {
+            "src": "media/audio/u12.d02.vocab.send.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "buy",
+          "ru": "покупать",
+          "ipa": "/baɪ/",
+          "example": "Have you bought the tickets yet?",
+          "exampleRu": "Ты уже купил билеты?",
+          "audio": {
+            "src": "media/audio/u12.d02.vocab.buy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pack",
+          "ru": "собирать вещи",
+          "ipa": "/pæk/",
+          "example": "I haven't packed yet.",
+          "exampleRu": "Я ещё не собрал вещи.",
+          "audio": {
+            "src": "media/audio/u12.d02.vocab.pack.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ready",
+          "ru": "готовый",
+          "ipa": "/ˈredi/",
+          "example": "Are you ready yet?",
+          "exampleRu": "Ты уже готов?",
+          "audio": {
+            "src": "media/audio/u12.d02.vocab.ready.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "just",
+          "ru": "только что",
+          "ipa": "/dʒʌst/",
+          "example": "I have just called him.",
+          "exampleRu": "Я только что ему позвонил.",
+          "audio": {
+            "src": "media/audio/u12.d02.vocab.just.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "already",
+          "ru": "уже",
+          "ipa": "/ɔːlˈredi/",
+          "example": "She has already eaten.",
+          "exampleRu": "Она уже поела.",
+          "audio": {
+            "src": "media/audio/u12.d02.vocab.already.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u12.d02.grammar",
+      "title": {
+        "en": "just / yet / already",
+        "ru": "just / yet / already"
+      },
+      "rule": {
+        "en": "With the present perfect: \"just\" = a moment ago; \"already\" = before now (sooner than expected); \"yet\" = up to now, in questions and negatives.",
+        "ru": "С present perfect: \"just\" = только что; \"already\" = уже (раньше, чем ожидали); \"yet\" = пока/уже — в вопросах и отрицаниях."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "just",
+            "ru": "just"
+          },
+          "formula": "have just + V3",
+          "examples": [
+            {
+              "en": "I've just finished my work.",
+              "ru": "Я только что закончил работу."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "already",
+            "ru": "already"
+          },
+          "formula": "have already + V3",
+          "examples": [
+            {
+              "en": "She has already left.",
+              "ru": "Она уже ушла."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "yet",
+            "ru": "yet"
+          },
+          "formula": "… yet? · haven't … yet",
+          "examples": [
+            {
+              "en": "Have you eaten yet? I haven't eaten yet.",
+              "ru": "Ты уже поел? Я ещё не поел."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"yet\" goes at the end: \"Have you finished yet?\"",
+          "ru": "\"yet\" — в конце: \"Have you finished yet?\""
+        },
+        {
+          "en": "\"just\" and \"already\" go before the past participle.",
+          "ru": "\"just\" и \"already\" — перед причастием."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u12.d02.reading",
+      "title": {
+        "en": "Before the trip",
+        "ru": "Перед поездкой"
+      },
+      "blocks": [
+        {
+          "id": "u12.d02.reading.b1",
+          "en": "We are leaving in an hour, and I am nervous. I have already packed my bag and I have just bought the train tickets. But I haven't called a taxi yet.",
+          "ru": "Мы уезжаем через час, и я нервничаю. Я уже собрал сумку и только что купил билеты на поезд. Но такси ещё не вызвал.",
+          "audio": {
+            "src": "media/audio/u12.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u12.d02.reading.b2",
+          "en": "\"Have you found your passport yet?\" asked my wife. \"Yes, I've just found it.\" \"Good. I've already locked the door. We're ready!\"",
+          "ru": "«Ты уже нашёл паспорт?» — спросила жена. «Да, только что нашёл». «Хорошо. Я уже закрыла дверь. Мы готовы!»",
+          "audio": {
+            "src": "media/audio/u12.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "lock",
+          "ru": "запирать",
+          "ipa": "/lɒk/"
+        },
+        {
+          "word": "nervous",
+          "ru": "взволнованный",
+          "ipa": "/ˈnɜːrvəs/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u12.d02.listening",
+      "title": {
+        "en": "Are you ready yet?",
+        "ru": "Ты уже готов?"
+      },
+      "audio": {
+        "src": "media/audio/u12.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Are you ready yet?",
+          "ru": "Ты уже готов?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Almost. I've just packed my bag.",
+          "ru": "Почти. Я только что собрал сумку."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Have you called the taxi?",
+          "ru": "Ты вызвал такси?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Yes, I've already called it. It's coming.",
+          "ru": "Да, уже вызвал. Оно едет."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u12.d02.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What has he just done?",
+            "ru": "Что он только что сделал?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.just-yet-already"
+          ],
+          "prompt": "He has just ___ his bag.",
+          "options": [
+            "packed",
+            "bought",
+            "called"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u12.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u12.d02.ex.c.01",
+          "instruction": {
+            "en": "A moment ago.",
+            "ru": "Только что."
+          },
+          "tags": [
+            "grammar.just-yet-already"
+          ],
+          "prompt": "I have ___ finished my work.",
+          "options": [
+            "just",
+            "yet",
+            "ever"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u12.d02.ex.c.02",
+          "instruction": {
+            "en": "Question / negative.",
+            "ru": "Вопрос / отрицание."
+          },
+          "tags": [
+            "grammar.just-yet-already"
+          ],
+          "prompt": "Have you eaten ___ ?",
+          "options": [
+            "yet",
+            "already",
+            "just"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d02.ex.g.01",
+          "instruction": {
+            "en": "Sooner than expected.",
+            "ru": "Раньше, чем ожидали."
+          },
+          "tags": [
+            "grammar.just-yet-already"
+          ],
+          "prompt": "She has ___ left. (before now)",
+          "answers": [
+            "already"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u12.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.just-yet-already"
+          ],
+          "variants": [
+            "I haven't finished already.",
+            "I haven't finished yet."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u12.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "just",
+              "right": "только что"
+            },
+            {
+              "left": "already",
+              "right": "уже"
+            },
+            {
+              "left": "pack",
+              "right": "собирать вещи"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u12.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.just-yet-already",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я только что отправил письмо.",
+          "answers": [
+            "I have just sent the email.",
+            "I've just sent the email."
+          ]
+        }
+      ]
+    }
+  ]
+}
