@@ -1,0 +1,454 @@
+{
+  "id": "u05.d02",
+  "title": {
+    "en": "What were you doing?",
+    "ru": "Что ты делал?"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.past-continuous",
+    "vocab.transport",
+    "vocab.travel"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u05.d02.vocab",
+      "title": {
+        "en": "Transport",
+        "ru": "Транспорт"
+      },
+      "words": [
+        {
+          "word": "bus",
+          "ru": "автобус",
+          "ipa": "/bʌs/",
+          "example": "I was waiting for the bus.",
+          "exampleRu": "Я ждал автобус.",
+          "audio": {
+            "src": "media/audio/u05.d02.vocab.bus.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "train",
+          "ru": "поезд",
+          "ipa": "/treɪn/",
+          "example": "The train was late.",
+          "exampleRu": "Поезд опаздывал.",
+          "audio": {
+            "src": "media/audio/u05.d02.vocab.train.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "plane",
+          "ru": "самолёт",
+          "ipa": "/pleɪn/",
+          "example": "The plane was landing.",
+          "exampleRu": "Самолёт садился.",
+          "audio": {
+            "src": "media/audio/u05.d02.vocab.plane.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "car",
+          "ru": "машина",
+          "ipa": "/kɑːr/",
+          "example": "She was driving her car.",
+          "exampleRu": "Она вела машину.",
+          "audio": {
+            "src": "media/audio/u05.d02.vocab.car.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ticket",
+          "ru": "билет",
+          "ipa": "/ˈtɪkɪt/",
+          "example": "I was buying a ticket.",
+          "exampleRu": "Я покупал билет.",
+          "audio": {
+            "src": "media/audio/u05.d02.vocab.ticket.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "station",
+          "ru": "станция, вокзал",
+          "ipa": "/ˈsteɪʃn/",
+          "example": "We were at the station.",
+          "exampleRu": "Мы были на вокзале.",
+          "audio": {
+            "src": "media/audio/u05.d02.vocab.station.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "airport",
+          "ru": "аэропорт",
+          "ipa": "/ˈeərpɔːrt/",
+          "example": "They were waiting at the airport.",
+          "exampleRu": "Они ждали в аэропорту.",
+          "audio": {
+            "src": "media/audio/u05.d02.vocab.airport.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "catch",
+          "ru": "успеть (на транспорт)",
+          "ipa": "/kætʃ/",
+          "example": "We ran to catch the train.",
+          "exampleRu": "Мы бежали, чтобы успеть на поезд.",
+          "audio": {
+            "src": "media/audio/u05.d02.vocab.catch.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "miss",
+          "ru": "опоздать, пропустить",
+          "ipa": "/mɪs/",
+          "example": "I missed the bus.",
+          "exampleRu": "Я опоздал на автобус.",
+          "audio": {
+            "src": "media/audio/u05.d02.vocab.miss.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "platform",
+          "ru": "платформа",
+          "ipa": "/ˈplætfɔːrm/",
+          "example": "The train left from platform two.",
+          "exampleRu": "Поезд ушёл со второй платформы.",
+          "audio": {
+            "src": "media/audio/u05.d02.vocab.platform.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u05.d02.grammar",
+      "title": {
+        "en": "Past continuous",
+        "ru": "Past continuous"
+      },
+      "rule": {
+        "en": "Use the past continuous (was/were + -ing) for an action in progress at a moment in the past — the background of a story.",
+        "ru": "Past continuous (was/were + -ing) — действие, которое шло в определённый момент в прошлом; фон истории."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "was + -ing",
+            "ru": "was + -ing"
+          },
+          "formula": "I/he/she/it was + verb-ing",
+          "examples": [
+            {
+              "en": "At 8pm I was reading.",
+              "ru": "В 8 вечера я читал."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "were + -ing",
+            "ru": "were + -ing"
+          },
+          "formula": "we/you/they were + verb-ing",
+          "examples": [
+            {
+              "en": "They were waiting at the station.",
+              "ru": "Они ждали на вокзале."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "question",
+            "ru": "вопрос"
+          },
+          "formula": "was/were + subject + -ing?",
+          "examples": [
+            {
+              "en": "What were you doing?",
+              "ru": "Что ты делал?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Choose was or were by the subject: I/he/she/it → was, we/you/they → were.",
+          "ru": "was или were — по подлежащему: I/he/she/it → was, we/you/they → were."
+        },
+        {
+          "en": "Stative verbs (know, want) usually stay simple, not continuous.",
+          "ru": "Глаголы состояния (know, want) обычно не ставят в continuous."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u05.d02.reading",
+      "title": {
+        "en": "At the station",
+        "ru": "На вокзале"
+      },
+      "blocks": [
+        {
+          "id": "u05.d02.reading.b1",
+          "en": "At six o'clock the station was busy. People were running to catch their trains. A woman was buying a ticket and a man was reading a newspaper.",
+          "ru": "В шесть часов вокзал был оживлённым. Люди бежали, чтобы успеть на поезда. Женщина покупала билет, а мужчина читал газету.",
+          "audio": {
+            "src": "media/audio/u05.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u05.d02.reading.b2",
+          "en": "On platform two, some students were waiting for the train to the city. It was raining, so everybody was standing under the roof.",
+          "ru": "На второй платформе студенты ждали поезд в город. Шёл дождь, поэтому все стояли под крышей.",
+          "audio": {
+            "src": "media/audio/u05.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "busy",
+          "ru": "оживлённый, занятой",
+          "ipa": "/ˈbɪzi/"
+        },
+        {
+          "word": "roof",
+          "ru": "крыша",
+          "ipa": "/ruːf/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u05.d02.listening",
+      "title": {
+        "en": "At 8 o'clock",
+        "ru": "В восемь часов"
+      },
+      "audio": {
+        "src": "media/audio/u05.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "What were you doing at eight last night?",
+          "ru": "Что ты делал вчера в восемь вечера?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "I was waiting for the bus in the rain.",
+          "ru": "Я ждал автобус под дождём."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Oh no! Were you cold?",
+          "ru": "О нет! Ты замёрз?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Yes! And the bus was coming very slowly.",
+          "ru": "Да! А автобус ехал очень медленно."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u05.d02.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What was he doing at eight?",
+            "ru": "Что он делал в восемь?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.past-continuous"
+          ],
+          "prompt": "He was ___ for the bus.",
+          "options": [
+            "waiting",
+            "looking",
+            "driving"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u05.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u05.d02.ex.g.01",
+          "instruction": {
+            "en": "Past continuous (was).",
+            "ru": "Past continuous (was)."
+          },
+          "tags": [
+            "grammar.past-continuous"
+          ],
+          "prompt": "At 8pm I ___ a book. (read)",
+          "answers": [
+            "was reading"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u05.d02.ex.g.02",
+          "instruction": {
+            "en": "Past continuous (were).",
+            "ru": "Past continuous (were)."
+          },
+          "tags": [
+            "grammar.past-continuous"
+          ],
+          "prompt": "They ___ at the station. (wait)",
+          "answers": [
+            "were waiting"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u05.d02.ex.c.01",
+          "instruction": {
+            "en": "was or were?",
+            "ru": "was или were?"
+          },
+          "tags": [
+            "grammar.past-continuous"
+          ],
+          "prompt": "We ___ running to the train.",
+          "options": [
+            "were",
+            "was",
+            "are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u05.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.past-continuous"
+          ],
+          "variants": [
+            "She were driving.",
+            "She was driving."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u05.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the transport word and the translation.",
+            "ru": "Сопоставь слово о транспорте и перевод."
+          },
+          "tags": [
+            "vocab.transport"
+          ],
+          "pairs": [
+            {
+              "left": "ticket",
+              "right": "билет"
+            },
+            {
+              "left": "airport",
+              "right": "аэропорт"
+            },
+            {
+              "left": "miss",
+              "right": "опоздать"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u05.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Что ты делал в семь вечера?",
+          "answers": [
+            "What were you doing at seven?",
+            "What were you doing at 7pm?"
+          ]
+        }
+      ]
+    }
+  ]
+}

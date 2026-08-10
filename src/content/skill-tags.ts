@@ -31,6 +31,10 @@ export const SKILL_TAGS = [
   'grammar.modals-ability',
   'grammar.verb-ing-vs-to',
   'grammar.to-purpose',
+  'grammar.past-continuous',
+  'grammar.past-vs-continuous',
+  'grammar.connectors',
+  'grammar.adverbs-manner',
 
   // functions (everyday communication)
   'functions.ordering',
@@ -38,6 +42,8 @@ export const SKILL_TAGS = [
   'functions.directions',
   'functions.requests',
   'functions.offers',
+  'functions.apologizing',
+  'functions.thanking',
 
   // vocabulary (developer-life + everyday themes)
   'vocab.work',
@@ -49,6 +55,8 @@ export const SKILL_TAGS = [
   'vocab.hobbies',
   'vocab.sport',
   'vocab.feelings',
+  'vocab.weather',
+  'vocab.transport',
 
   // reading
   'reading.gist',

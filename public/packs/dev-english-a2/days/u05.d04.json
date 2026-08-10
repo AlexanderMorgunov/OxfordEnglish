@@ -1,0 +1,455 @@
+{
+  "id": "u05.d04",
+  "title": {
+    "en": "Slowly and carefully",
+    "ru": "Медленно и осторожно"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.connectors",
+    "grammar.adverbs-manner",
+    "vocab.daily",
+    "pronunciation"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u05.d04.vocab",
+      "title": {
+        "en": "How we do things",
+        "ru": "Как мы делаем вещи"
+      },
+      "words": [
+        {
+          "word": "quickly",
+          "ru": "быстро",
+          "ipa": "/ˈkwɪkli/",
+          "example": "He ate quickly.",
+          "exampleRu": "Он быстро поел.",
+          "audio": {
+            "src": "media/audio/u05.d04.vocab.quickly.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "slowly",
+          "ru": "медленно",
+          "ipa": "/ˈsloʊli/",
+          "example": "She spoke slowly.",
+          "exampleRu": "Она говорила медленно.",
+          "audio": {
+            "src": "media/audio/u05.d04.vocab.slowly.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "carefully",
+          "ru": "осторожно, внимательно",
+          "ipa": "/ˈkeərfəli/",
+          "example": "Drive carefully.",
+          "exampleRu": "Веди осторожно.",
+          "audio": {
+            "src": "media/audio/u05.d04.vocab.carefully.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "badly",
+          "ru": "плохо",
+          "ipa": "/ˈbædli/",
+          "example": "He slept badly.",
+          "exampleRu": "Он плохо спал.",
+          "audio": {
+            "src": "media/audio/u05.d04.vocab.badly.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "well",
+          "ru": "хорошо",
+          "ipa": "/wel/",
+          "example": "She sings well.",
+          "exampleRu": "Она хорошо поёт.",
+          "audio": {
+            "src": "media/audio/u05.d04.vocab.well.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "loudly",
+          "ru": "громко",
+          "ipa": "/ˈlaʊdli/",
+          "example": "They laughed loudly.",
+          "exampleRu": "Они громко смеялись.",
+          "audio": {
+            "src": "media/audio/u05.d04.vocab.loudly.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "quietly",
+          "ru": "тихо",
+          "ipa": "/ˈkwaɪətli/",
+          "example": "He closed the door quietly.",
+          "exampleRu": "Он тихо закрыл дверь.",
+          "audio": {
+            "src": "media/audio/u05.d04.vocab.quietly.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "so",
+          "ru": "поэтому",
+          "ipa": "/soʊ/",
+          "example": "It was late, so we left.",
+          "exampleRu": "Было поздно, поэтому мы ушли.",
+          "audio": {
+            "src": "media/audio/u05.d04.vocab.so.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "because",
+          "ru": "потому что",
+          "ipa": "/bɪˈkɔːz/",
+          "example": "We stayed because it rained.",
+          "exampleRu": "Мы остались, потому что шёл дождь.",
+          "audio": {
+            "src": "media/audio/u05.d04.vocab.because.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "but",
+          "ru": "но",
+          "ipa": "/bʌt/",
+          "example": "It was cold but sunny.",
+          "exampleRu": "Было холодно, но солнечно.",
+          "audio": {
+            "src": "media/audio/u05.d04.vocab.but.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u05.d04.grammar",
+      "title": {
+        "en": "Connectors & -ly adverbs",
+        "ru": "Связки и наречия на -ly"
+      },
+      "rule": {
+        "en": "Join ideas with connectors: and, but, so (result), because (reason), when/while (time). Describe how an action happens with an adverb: adjective + -ly.",
+        "ru": "Соединяй мысли связками: and, but, so (результат), because (причина), when/while (время). Как происходит действие — наречием: прилагательное + -ly."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "so / because",
+            "ru": "so / because"
+          },
+          "formula": "result → so · reason → because",
+          "examples": [
+            {
+              "en": "It rained, so we stayed. We stayed because it rained.",
+              "ru": "Шёл дождь, поэтому мы остались. Мы остались, потому что шёл дождь."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "adjective → adverb",
+            "ru": "прилагательное → наречие"
+          },
+          "formula": "quick → quickly, careful → carefully",
+          "examples": [
+            {
+              "en": "She is a careful driver. She drives carefully.",
+              "ru": "Она осторожный водитель. Она водит осторожно."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "irregular",
+            "ru": "исключения"
+          },
+          "formula": "good → well, fast → fast",
+          "examples": [
+            {
+              "en": "He is good. He plays well.",
+              "ru": "Он хорош. Он хорошо играет."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"good\" is an adjective; the adverb is \"well\": \"She sings well\", not \"She sings good\".",
+          "ru": "\"good\" — прилагательное; наречие — \"well\": \"She sings well\", а не \"She sings good\"."
+        },
+        {
+          "en": "Adverb of manner usually goes after the verb/object: \"He speaks English slowly.\"",
+          "ru": "Наречие образа действия обычно после глагола/дополнения: \"He speaks English slowly.\""
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u05.d04.reading",
+      "title": {
+        "en": "The careful driver",
+        "ru": "Осторожный водитель"
+      },
+      "blocks": [
+        {
+          "id": "u05.d04.reading.b1",
+          "en": "Anna drives very carefully because the roads were icy that day. She was going slowly, but a fast car came suddenly from the left.",
+          "ru": "Анна водит очень осторожно, потому что дороги в тот день были ледяными. Она ехала медленно, но слева внезапно появилась быстрая машина.",
+          "audio": {
+            "src": "media/audio/u05.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u05.d04.reading.b2",
+          "en": "She stopped quickly and nothing happened. \"That was close,\" she said quietly. She waited a minute and then drove on, slowly and calmly.",
+          "ru": "Она быстро остановилась, и ничего не случилось. «Чуть не столкнулись», — тихо сказала она. Она подождала минуту, а потом поехала дальше, медленно и спокойно.",
+          "audio": {
+            "src": "media/audio/u05.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "icy",
+          "ru": "ледяной",
+          "ipa": "/ˈaɪsi/"
+        },
+        {
+          "word": "calmly",
+          "ru": "спокойно",
+          "ipa": "/ˈkɑːmli/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u05.d04.listening",
+      "title": {
+        "en": "Say it with -ly",
+        "ru": "Скажи это с -ly"
+      },
+      "audio": {
+        "src": "media/audio/u05.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Why are you speaking so quietly?",
+          "ru": "Почему ты говоришь так тихо?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Because the baby is sleeping.",
+          "ru": "Потому что малыш спит."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Oh, sorry. I will speak quietly too.",
+          "ru": "О, извини. Я тоже буду говорить тихо."
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Thanks. He woke up badly last night, so he is tired.",
+          "ru": "Спасибо. Он плохо просыпался ночью, поэтому устал."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u05.d04.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "Why is she speaking quietly?",
+            "ru": "Почему она говорит тихо?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.connectors"
+          ],
+          "prompt": "___ the baby is sleeping.",
+          "options": [
+            "Because",
+            "But",
+            "So"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u05.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u05.d04.ex.g.01",
+          "instruction": {
+            "en": "Make an adverb (adjective + -ly).",
+            "ru": "Образуй наречие (прилагательное + -ly)."
+          },
+          "tags": [
+            "grammar.adverbs-manner"
+          ],
+          "prompt": "She drives ___ . (careful)",
+          "answers": [
+            "carefully"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u05.d04.ex.c.01",
+          "instruction": {
+            "en": "good or well?",
+            "ru": "good или well?"
+          },
+          "tags": [
+            "grammar.adverbs-manner"
+          ],
+          "prompt": "He plays the guitar ___ .",
+          "options": [
+            "well",
+            "good",
+            "goodly"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u05.d04.ex.c.02",
+          "instruction": {
+            "en": "so or because?",
+            "ru": "so или because?"
+          },
+          "tags": [
+            "grammar.connectors"
+          ],
+          "prompt": "It was late, ___ we went home.",
+          "options": [
+            "so",
+            "because",
+            "but"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u05.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.adverbs-manner"
+          ],
+          "variants": [
+            "She speaks English slow.",
+            "She speaks English slowly."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u05.d04.ex.mp.01",
+          "instruction": {
+            "en": "Listen — which word do you hear?",
+            "ru": "Послушай — какое слово ты слышишь?"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u05.d04.ex.mp.01.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "worked",
+            "walked"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u05.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.connectors",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Было холодно, но солнечно.",
+          "answers": [
+            "It was cold but sunny."
+          ]
+        }
+      ]
+    }
+  ]
+}

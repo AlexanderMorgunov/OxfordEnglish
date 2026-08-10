@@ -1,0 +1,468 @@
+{
+  "id": "u05.d05",
+  "title": {
+    "en": "Sorry and thank you",
+    "ru": "Извинения и благодарность"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "functions.apologizing",
+    "functions.thanking",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u05.d05.vocab",
+      "title": {
+        "en": "Apologizing & thanking",
+        "ru": "Извинения и благодарность"
+      },
+      "words": [
+        {
+          "word": "sorry",
+          "ru": "извини(те)",
+          "ipa": "/ˈsɒri/",
+          "example": "I'm sorry I'm late.",
+          "exampleRu": "Извини, что опоздал.",
+          "audio": {
+            "src": "media/audio/u05.d05.vocab.sorry.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "apologize",
+          "ru": "извиняться",
+          "ipa": "/əˈpɒlədʒaɪz/",
+          "example": "I want to apologize.",
+          "exampleRu": "Я хочу извиниться.",
+          "audio": {
+            "src": "media/audio/u05.d05.vocab.apologize.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "thank",
+          "ru": "благодарить",
+          "ipa": "/θæŋk/",
+          "example": "I want to thank you.",
+          "exampleRu": "Я хочу тебя поблагодарить.",
+          "audio": {
+            "src": "media/audio/u05.d05.vocab.thank.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "excuse",
+          "ru": "извинять; прощать",
+          "ipa": "/ɪkˈskjuːz/",
+          "example": "Excuse me, please.",
+          "exampleRu": "Извините, пожалуйста.",
+          "audio": {
+            "src": "media/audio/u05.d05.vocab.excuse.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mistake",
+          "ru": "ошибка",
+          "ipa": "/mɪˈsteɪk/",
+          "example": "It was my mistake.",
+          "exampleRu": "Это была моя ошибка.",
+          "audio": {
+            "src": "media/audio/u05.d05.vocab.mistake.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "late",
+          "ru": "поздний, опоздавший",
+          "ipa": "/leɪt/",
+          "example": "Sorry I'm late.",
+          "exampleRu": "Извини, что опоздал.",
+          "audio": {
+            "src": "media/audio/u05.d05.vocab.late.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "worry",
+          "ru": "волноваться",
+          "ipa": "/ˈwʌri/",
+          "example": "Don't worry.",
+          "exampleRu": "Не волнуйся.",
+          "audio": {
+            "src": "media/audio/u05.d05.vocab.worry.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fault",
+          "ru": "вина",
+          "ipa": "/fɔːlt/",
+          "example": "It's not your fault.",
+          "exampleRu": "Это не твоя вина.",
+          "audio": {
+            "src": "media/audio/u05.d05.vocab.fault.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "welcome",
+          "ru": "пожалуйста (в ответ)",
+          "ipa": "/ˈwelkəm/",
+          "example": "You're welcome.",
+          "exampleRu": "Пожалуйста (не за что).",
+          "audio": {
+            "src": "media/audio/u05.d05.vocab.welcome.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "forgive",
+          "ru": "прощать",
+          "ipa": "/fərˈɡɪv/",
+          "example": "Please forgive me.",
+          "exampleRu": "Пожалуйста, прости меня.",
+          "audio": {
+            "src": "media/audio/u05.d05.vocab.forgive.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u05.d05.grammar",
+      "title": {
+        "en": "Apologizing & thanking",
+        "ru": "Извинения и благодарность"
+      },
+      "rule": {
+        "en": "Apologize with \"I'm sorry (for) ...\" and answer with \"That's okay / Don't worry\". Thank with \"Thank you for ...\" and answer with \"You're welcome\".",
+        "ru": "Извиняйся через \"I'm sorry (for) ...\" и отвечай \"That's okay / Don't worry\". Благодари через \"Thank you for ...\" и отвечай \"You're welcome\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "apologize",
+            "ru": "извиниться"
+          },
+          "formula": "I'm sorry (for + -ing / about ...)",
+          "examples": [
+            {
+              "en": "I'm sorry for being late.",
+              "ru": "Извини, что опоздал."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "thank",
+            "ru": "поблагодарить"
+          },
+          "formula": "Thank you for + noun / -ing",
+          "examples": [
+            {
+              "en": "Thank you for your help.",
+              "ru": "Спасибо за помощь."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "reply",
+            "ru": "ответ"
+          },
+          "formula": "That's okay · You're welcome",
+          "examples": [
+            {
+              "en": "Sorry! — That's okay. Thanks! — You're welcome.",
+              "ru": "Извини! — Ничего. Спасибо! — Пожалуйста."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After \"sorry for\" and \"thank you for\" use a noun or -ing: \"sorry for being late\".",
+          "ru": "После \"sorry for\" и \"thank you for\" — существительное или -ing: \"sorry for being late\"."
+        },
+        {
+          "en": "\"You're welcome\" is the reply to thanks, not a greeting.",
+          "ru": "\"You're welcome\" — ответ на благодарность, а не приветствие."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u05.d05.reading",
+      "title": {
+        "en": "A small mistake",
+        "ru": "Маленькая ошибка"
+      },
+      "blocks": [
+        {
+          "id": "u05.d05.reading.b1",
+          "en": "Ben arrived twenty minutes late. \"I'm really sorry for being late,\" he said. \"The bus didn't come.\" \"Don't worry, it's okay,\" said Mia.",
+          "ru": "Бен пришёл на двадцать минут позже. «Извини, что опоздал», — сказал он. «Автобус не пришёл». «Не переживай, всё нормально», — сказала Мия.",
+          "audio": {
+            "src": "media/audio/u05.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u05.d05.reading.b2",
+          "en": "Mia helped Ben with his work all evening. \"Thank you so much for your help,\" he said. \"You're welcome,\" she smiled. \"That's what friends are for.\"",
+          "ru": "Мия весь вечер помогала Бену с работой. «Огромное спасибо за помощь», — сказал он. «Пожалуйста», — улыбнулась она. «Для того и друзья».",
+          "audio": {
+            "src": "media/audio/u05.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "arrive",
+          "ru": "прибыть, прийти",
+          "ipa": "/əˈraɪv/"
+        },
+        {
+          "word": "friend",
+          "ru": "друг",
+          "ipa": "/frend/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u05.d05.listening",
+      "title": {
+        "en": "Sorry I'm late",
+        "ru": "Извини, что опоздал"
+      },
+      "audio": {
+        "src": "media/audio/u05.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "I'm so sorry I'm late!",
+          "ru": "Извини, что так опоздал!"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Don't worry, it's okay. What happened?",
+          "ru": "Не волнуйся, всё нормально. Что случилось?"
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "I missed the train. Thank you for waiting.",
+          "ru": "Я опоздал на поезд. Спасибо, что подождала."
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "You're welcome. Let's go in.",
+          "ru": "Пожалуйста. Пойдём внутрь."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u05.d05.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "How does she reply to \"thank you\"?",
+            "ru": "Как она отвечает на \"спасибо\"?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.thanking"
+          ],
+          "prompt": "She says: \"___\".",
+          "options": [
+            "You're welcome",
+            "I'm sorry",
+            "Thank you"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u05.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u05.d05.ex.c.01",
+          "instruction": {
+            "en": "Apologize.",
+            "ru": "Извинись."
+          },
+          "tags": [
+            "functions.apologizing"
+          ],
+          "prompt": "I'm sorry ___ being late.",
+          "options": [
+            "for",
+            "to",
+            "of"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u05.d05.ex.c.02",
+          "instruction": {
+            "en": "Reply to \"Thank you\".",
+            "ru": "Ответь на \"Спасибо\"."
+          },
+          "tags": [
+            "functions.thanking"
+          ],
+          "prompt": "Thank you! — ___",
+          "options": [
+            "You're welcome",
+            "I'm sorry",
+            "Please"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u05.d05.ex.o.01",
+          "instruction": {
+            "en": "Say thank you.",
+            "ru": "Скажи спасибо."
+          },
+          "tags": [
+            "functions.thanking"
+          ],
+          "tokens": [
+            "Thank",
+            "you",
+            "for",
+            "your",
+            "help"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u05.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.apologizing"
+          ],
+          "variants": [
+            "Sorry for be late.",
+            "Sorry for being late."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u05.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "mistake",
+              "right": "ошибка"
+            },
+            {
+              "left": "fault",
+              "right": "вина"
+            },
+            {
+              "left": "forgive",
+              "right": "прощать"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u05.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.apologizing",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Извини, что опоздал.",
+          "answers": [
+            "I'm sorry I'm late.",
+            "Sorry I'm late.",
+            "I'm sorry for being late."
+          ]
+        }
+      ]
+    }
+  ]
+}

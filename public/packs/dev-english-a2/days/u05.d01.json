@@ -1,0 +1,454 @@
+{
+  "id": "u05.d01",
+  "title": {
+    "en": "A trip to remember",
+    "ru": "Запоминающаяся поездка"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "vocab.weather",
+    "vocab.travel",
+    "grammar.past-simple"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u05.d01.vocab",
+      "title": {
+        "en": "Weather & travel",
+        "ru": "Погода и путешествия"
+      },
+      "words": [
+        {
+          "word": "weather",
+          "ru": "погода",
+          "ipa": "/ˈweðər/",
+          "example": "The weather was nice.",
+          "exampleRu": "Погода была хорошая.",
+          "audio": {
+            "src": "media/audio/u05.d01.vocab.weather.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "rain",
+          "ru": "дождь",
+          "ipa": "/reɪn/",
+          "example": "The rain stopped.",
+          "exampleRu": "Дождь прекратился.",
+          "audio": {
+            "src": "media/audio/u05.d01.vocab.rain.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "snow",
+          "ru": "снег",
+          "ipa": "/snoʊ/",
+          "example": "There was a lot of snow.",
+          "exampleRu": "Было много снега.",
+          "audio": {
+            "src": "media/audio/u05.d01.vocab.snow.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wind",
+          "ru": "ветер",
+          "ipa": "/wɪnd/",
+          "example": "The wind was strong.",
+          "exampleRu": "Ветер был сильный.",
+          "audio": {
+            "src": "media/audio/u05.d01.vocab.wind.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sunny",
+          "ru": "солнечный",
+          "ipa": "/ˈsʌni/",
+          "example": "It was a sunny day.",
+          "exampleRu": "Был солнечный день.",
+          "audio": {
+            "src": "media/audio/u05.d01.vocab.sunny.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cloudy",
+          "ru": "облачный",
+          "ipa": "/ˈklaʊdi/",
+          "example": "The sky was cloudy.",
+          "exampleRu": "Небо было облачным.",
+          "audio": {
+            "src": "media/audio/u05.d01.vocab.cloudy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cold",
+          "ru": "холодный",
+          "ipa": "/koʊld/",
+          "example": "The morning was cold.",
+          "exampleRu": "Утро было холодным.",
+          "audio": {
+            "src": "media/audio/u05.d01.vocab.cold.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "trip",
+          "ru": "поездка",
+          "ipa": "/trɪp/",
+          "example": "We had a great trip.",
+          "exampleRu": "У нас была отличная поездка.",
+          "audio": {
+            "src": "media/audio/u05.d01.vocab.trip.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "journey",
+          "ru": "путешествие, дорога",
+          "ipa": "/ˈdʒɜːrni/",
+          "example": "The journey was long.",
+          "exampleRu": "Дорога была долгой.",
+          "audio": {
+            "src": "media/audio/u05.d01.vocab.journey.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "map",
+          "ru": "карта",
+          "ipa": "/mæp/",
+          "example": "We looked at the map.",
+          "exampleRu": "Мы смотрели на карту.",
+          "audio": {
+            "src": "media/audio/u05.d01.vocab.map.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u05.d01.grammar",
+      "title": {
+        "en": "Past simple (review)",
+        "ru": "Past simple (повторение)"
+      },
+      "rule": {
+        "en": "To tell a story about the past, use the past simple: regular verbs add -ed, irregular verbs change form. Questions and negatives use did / didn't.",
+        "ru": "Чтобы рассказать историю о прошлом, используй past simple: правильные глаголы + -ed, неправильные меняют форму. Вопросы и отрицания — через did / didn't."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "regular",
+            "ru": "правильные"
+          },
+          "formula": "verb + -ed",
+          "examples": [
+            {
+              "en": "We walked to the beach.",
+              "ru": "Мы пошли на пляж."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "irregular",
+            "ru": "неправильные"
+          },
+          "formula": "go → went, have → had",
+          "examples": [
+            {
+              "en": "We went by train. We had lunch there.",
+              "ru": "Мы поехали на поезде. Там мы пообедали."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "did / didn't",
+            "ru": "did / didn't"
+          },
+          "formula": "did + verb? · didn't + verb",
+          "examples": [
+            {
+              "en": "Did you like it? It didn't rain.",
+              "ru": "Тебе понравилось? Дождя не было."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After did/didn't use the base verb: \"did you go\", not \"did you went\".",
+          "ru": "После did/didn't — начальная форма: \"did you go\", а не \"did you went\"."
+        },
+        {
+          "en": "Learn irregular verbs by heart: come → came, see → saw, take → took.",
+          "ru": "Неправильные глаголы учи наизусть: come → came, see → saw, take → took."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u05.d01.reading",
+      "title": {
+        "en": "Our weekend trip",
+        "ru": "Наша поездка на выходных"
+      },
+      "blocks": [
+        {
+          "id": "u05.d01.reading.b1",
+          "en": "Last weekend we went to the mountains. The weather was cold but sunny. We took a train and then walked for two hours with a map.",
+          "ru": "На прошлых выходных мы поехали в горы. Погода была холодной, но солнечной. Мы сели на поезд, а потом два часа шли с картой.",
+          "audio": {
+            "src": "media/audio/u05.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u05.d01.reading.b2",
+          "en": "In the evening it started to rain, so we stayed in a small hotel. We had hot soup and talked about the trip. It was a great journey.",
+          "ru": "Вечером пошёл дождь, поэтому мы остановились в маленьком отеле. Мы ели горячий суп и говорили о поездке. Это было отличное путешествие.",
+          "audio": {
+            "src": "media/audio/u05.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "mountains",
+          "ru": "горы",
+          "ipa": "/ˈmaʊntənz/"
+        },
+        {
+          "word": "hotel",
+          "ru": "отель",
+          "ipa": "/hoʊˈtel/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u05.d01.listening",
+      "title": {
+        "en": "How was your holiday?",
+        "ru": "Как прошёл отпуск?"
+      },
+      "audio": {
+        "src": "media/audio/u05.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "How was your holiday?",
+          "ru": "Как прошёл отпуск?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Great! We went to the sea by car.",
+          "ru": "Отлично! Мы поехали к морю на машине."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Was the weather good?",
+          "ru": "Погода была хорошая?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Yes, it was sunny every day. It didn't rain once.",
+          "ru": "Да, каждый день было солнечно. Ни разу не было дождя."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u05.d01.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "How did they travel?",
+            "ru": "Как они добирались?"
+          },
+          "tags": [
+            "listening.detail",
+            "vocab.travel"
+          ],
+          "prompt": "They went to the sea ___.",
+          "options": [
+            "by car",
+            "by train",
+            "by plane"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u05.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u05.d01.ex.g.01",
+          "instruction": {
+            "en": "Past simple (regular).",
+            "ru": "Past simple (правильный)."
+          },
+          "tags": [
+            "grammar.past-simple.regular"
+          ],
+          "prompt": "We ___ to the beach. (walk)",
+          "answers": [
+            "walked"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u05.d01.ex.g.02",
+          "instruction": {
+            "en": "Past simple (irregular).",
+            "ru": "Past simple (неправильный)."
+          },
+          "tags": [
+            "grammar.past-simple.irregular"
+          ],
+          "prompt": "We ___ by train. (go)",
+          "answers": [
+            "went"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u05.d01.ex.c.01",
+          "instruction": {
+            "en": "Question in the past.",
+            "ru": "Вопрос в прошедшем."
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "prompt": "___ you like the trip?",
+          "options": [
+            "Did",
+            "Do",
+            "Was"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u05.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "variants": [
+            "Did you went there?",
+            "Did you go there?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u05.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the weather word and the translation.",
+            "ru": "Сопоставь слово о погоде и перевод."
+          },
+          "tags": [
+            "vocab.weather"
+          ],
+          "pairs": [
+            {
+              "left": "rain",
+              "right": "дождь"
+            },
+            {
+              "left": "snow",
+              "right": "снег"
+            },
+            {
+              "left": "wind",
+              "right": "ветер"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u05.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-simple",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Погода была солнечной.",
+          "answers": [
+            "The weather was sunny.",
+            "It was sunny."
+          ]
+        }
+      ]
+    }
+  ]
+}

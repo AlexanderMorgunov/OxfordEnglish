@@ -1,0 +1,439 @@
+{
+  "id": "u05.d03",
+  "title": {
+    "en": "When it happened",
+    "ru": "Когда это случилось"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.past-vs-continuous",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u05.d03.vocab",
+      "title": {
+        "en": "Accidents & surprises",
+        "ru": "Происшествия и неожиданности"
+      },
+      "words": [
+        {
+          "word": "accident",
+          "ru": "происшествие, авария",
+          "ipa": "/ˈæksɪdənt/",
+          "example": "There was a small accident.",
+          "exampleRu": "Произошла небольшая авария.",
+          "audio": {
+            "src": "media/audio/u05.d03.vocab.accident.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fall",
+          "ru": "падать",
+          "ipa": "/fɔːl/",
+          "example": "He fell on the ice.",
+          "exampleRu": "Он упал на льду.",
+          "audio": {
+            "src": "media/audio/u05.d03.vocab.fall.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "break",
+          "ru": "ломать(ся)",
+          "ipa": "/breɪk/",
+          "example": "She broke her phone.",
+          "exampleRu": "Она разбила телефон.",
+          "audio": {
+            "src": "media/audio/u05.d03.vocab.break.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hurt",
+          "ru": "ушибить, болеть",
+          "ipa": "/hɜːrt/",
+          "example": "I hurt my arm.",
+          "exampleRu": "Я ушиб руку.",
+          "audio": {
+            "src": "media/audio/u05.d03.vocab.hurt.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "drop",
+          "ru": "уронить",
+          "ipa": "/drɒp/",
+          "example": "He dropped his keys.",
+          "exampleRu": "Он уронил ключи.",
+          "audio": {
+            "src": "media/audio/u05.d03.vocab.drop.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "slip",
+          "ru": "поскользнуться",
+          "ipa": "/slɪp/",
+          "example": "She slipped on the floor.",
+          "exampleRu": "Она поскользнулась на полу.",
+          "audio": {
+            "src": "media/audio/u05.d03.vocab.slip.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "suddenly",
+          "ru": "вдруг, внезапно",
+          "ipa": "/ˈsʌdənli/",
+          "example": "Suddenly, the lights went off.",
+          "exampleRu": "Вдруг погас свет.",
+          "audio": {
+            "src": "media/audio/u05.d03.vocab.suddenly.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "luckily",
+          "ru": "к счастью",
+          "ipa": "/ˈlʌkɪli/",
+          "example": "Luckily, nobody was hurt.",
+          "exampleRu": "К счастью, никто не пострадал.",
+          "audio": {
+            "src": "media/audio/u05.d03.vocab.luckily.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "careful",
+          "ru": "осторожный",
+          "ipa": "/ˈkeərfl/",
+          "example": "Be careful!",
+          "exampleRu": "Будь осторожен!",
+          "audio": {
+            "src": "media/audio/u05.d03.vocab.careful.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "happen",
+          "ru": "случаться",
+          "ipa": "/ˈhæpən/",
+          "example": "What happened?",
+          "exampleRu": "Что случилось?",
+          "audio": {
+            "src": "media/audio/u05.d03.vocab.happen.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u05.d03.grammar",
+      "title": {
+        "en": "Past simple vs past continuous",
+        "ru": "Past simple и past continuous"
+      },
+      "rule": {
+        "en": "A longer background action uses the past continuous (while ... -ing). A short action that interrupts it uses the past simple (when ...).",
+        "ru": "Длинное фоновое действие — past continuous (while ... -ing). Короткое действие, которое его прерывает, — past simple (when ...)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "while + -ing",
+            "ru": "while + -ing"
+          },
+          "formula": "While + past continuous",
+          "examples": [
+            {
+              "en": "While I was cooking, the phone rang.",
+              "ru": "Пока я готовил, зазвонил телефон."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "when + past simple",
+            "ru": "when + past simple"
+          },
+          "formula": "when + past simple (short action)",
+          "examples": [
+            {
+              "en": "I was walking when I fell.",
+              "ru": "Я шёл, когда упал."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The long action = continuous, the short/interrupting one = simple.",
+          "ru": "Длинное действие — continuous, короткое/прерывающее — simple."
+        },
+        {
+          "en": "Use \"while\" with the -ing action and \"when\" with the short action.",
+          "ru": "\"while\" — с действием на -ing, \"when\" — с коротким действием."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u05.d03.reading",
+      "title": {
+        "en": "A little accident",
+        "ru": "Небольшое происшествие"
+      },
+      "blocks": [
+        {
+          "id": "u05.d03.reading.b1",
+          "en": "Yesterday morning it was raining. While Tom was running to the bus, he slipped and fell. He dropped his bag and his coffee.",
+          "ru": "Вчера утром шёл дождь. Пока Том бежал к автобусу, он поскользнулся и упал. Он уронил сумку и кофе.",
+          "audio": {
+            "src": "media/audio/u05.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u05.d03.reading.b2",
+          "en": "Luckily, he didn't hurt himself. A woman was passing and helped him. \"Are you okay?\" she asked. Tom smiled and said, \"Yes, thank you!\"",
+          "ru": "К счастью, он не ушибся. Мимо проходила женщина и помогла ему. «Вы в порядке?» — спросила она. Том улыбнулся и сказал: «Да, спасибо!»",
+          "audio": {
+            "src": "media/audio/u05.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "himself",
+          "ru": "себя (сам)",
+          "ipa": "/hɪmˈself/"
+        },
+        {
+          "word": "pass",
+          "ru": "проходить мимо",
+          "ipa": "/pɑːs/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u05.d03.listening",
+      "title": {
+        "en": "What happened?",
+        "ru": "Что случилось?"
+      },
+      "audio": {
+        "src": "media/audio/u05.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "You look tired. What happened?",
+          "ru": "Ты выглядишь усталым. Что случилось?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "While I was cooking dinner, I cut my finger.",
+          "ru": "Пока я готовил ужин, я порезал палец."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Oh no! Is it bad?",
+          "ru": "О нет! Сильно?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "No, luckily it's small. It happened when the knife slipped.",
+          "ru": "Нет, к счастью, небольшая. Это случилось, когда нож соскользнул."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u05.d03.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "When did he cut his finger?",
+            "ru": "Когда он порезал палец?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.past-vs-continuous"
+          ],
+          "prompt": "While he was ___ dinner.",
+          "options": [
+            "cooking",
+            "eating",
+            "buying"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u05.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u05.d03.ex.g.01",
+          "instruction": {
+            "en": "Which tense? (long action)",
+            "ru": "Какое время? (длинное действие)"
+          },
+          "tags": [
+            "grammar.past-vs-continuous"
+          ],
+          "prompt": "While I ___ , the phone rang. (cook)",
+          "answers": [
+            "was cooking"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u05.d03.ex.g.02",
+          "instruction": {
+            "en": "Which tense? (short action)",
+            "ru": "Какое время? (короткое действие)"
+          },
+          "tags": [
+            "grammar.past-vs-continuous"
+          ],
+          "prompt": "I was walking when I ___ . (fall)",
+          "answers": [
+            "fell"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u05.d03.ex.c.01",
+          "instruction": {
+            "en": "when or while?",
+            "ru": "when или while?"
+          },
+          "tags": [
+            "grammar.connectors"
+          ],
+          "prompt": "___ she was reading, the lights went off.",
+          "options": [
+            "While",
+            "When",
+            "So"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u05.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.past-vs-continuous"
+          ],
+          "variants": [
+            "While I walked, it was raining.",
+            "While I was walking, it started to rain."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u05.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the verb and the translation.",
+            "ru": "Сопоставь глагол и перевод."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "slip",
+              "right": "поскользнуться"
+            },
+            {
+              "left": "drop",
+              "right": "уронить"
+            },
+            {
+              "left": "hurt",
+              "right": "ушибить"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u05.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-vs-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я шёл, когда упал.",
+          "answers": [
+            "I was walking when I fell."
+          ]
+        }
+      ]
+    }
+  ]
+}

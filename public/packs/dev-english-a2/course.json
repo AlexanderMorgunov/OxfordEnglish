@@ -122,7 +122,13 @@
         "en": "Telling stories",
         "ru": "Рассказываем истории"
       },
-      "dayIds": [],
+      "dayIds": [
+        "u05.d01",
+        "u05.d02",
+        "u05.d03",
+        "u05.d04",
+        "u05.d05"
+      ],
       "checkpoint": {
         "id": "u05.checkpoint",
         "title": {
