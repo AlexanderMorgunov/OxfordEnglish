@@ -1,0 +1,456 @@
+{
+  "id": "u16.d04",
+  "title": {
+    "en": "By the time we arrived",
+    "ru": "К тому времени, как мы пришли"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.time-linkers",
+    "vocab.stories",
+    "pronunciation"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u16.d04.vocab",
+      "title": {
+        "en": "Linking events in time",
+        "ru": "Связываем события во времени"
+      },
+      "words": [
+        {
+          "word": "by the time",
+          "ru": "к тому времени, как",
+          "ipa": "/baɪ ðə taɪm/",
+          "example": "By the time we arrived, it had ended.",
+          "exampleRu": "К нашему приходу всё закончилось.",
+          "audio": {
+            "src": "media/audio/u16.d04.vocab.bythetime.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "as soon as",
+          "ru": "как только",
+          "ipa": "/əz suːn əz/",
+          "example": "As soon as he saw me, he smiled.",
+          "exampleRu": "Как только он меня увидел, улыбнулся.",
+          "audio": {
+            "src": "media/audio/u16.d04.vocab.assoonas.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "until",
+          "ru": "до тех пор, пока не",
+          "ipa": "/ʌnˈtɪl/",
+          "example": "We waited until it stopped.",
+          "exampleRu": "Мы ждали, пока не прекратилось.",
+          "audio": {
+            "src": "media/audio/u16.d04.vocab.until.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "by then",
+          "ru": "к тому моменту",
+          "ipa": "/baɪ ðen/",
+          "example": "By then, everyone had left.",
+          "exampleRu": "К тому моменту все ушли.",
+          "audio": {
+            "src": "media/audio/u16.d04.vocab.bythen.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "meanwhile",
+          "ru": "тем временем",
+          "ipa": "/ˈmiːnwaɪl/",
+          "example": "Meanwhile, I was waiting outside.",
+          "exampleRu": "Тем временем я ждал снаружи.",
+          "audio": {
+            "src": "media/audio/u16.d04.vocab.meanwhile.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "eventually",
+          "ru": "в конце концов",
+          "ipa": "/ɪˈventʃuəli/",
+          "example": "Eventually, they found the key.",
+          "exampleRu": "В конце концов они нашли ключ.",
+          "audio": {
+            "src": "media/audio/u16.d04.vocab.eventually.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "during",
+          "ru": "во время",
+          "ipa": "/ˈdjʊərɪŋ/",
+          "example": "It happened during the night.",
+          "exampleRu": "Это случилось ночью.",
+          "audio": {
+            "src": "media/audio/u16.d04.vocab.during.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "immediately",
+          "ru": "немедленно",
+          "ipa": "/ɪˈmiːdiətli/",
+          "example": "She called immediately.",
+          "exampleRu": "Она сразу позвонила.",
+          "audio": {
+            "src": "media/audio/u16.d04.vocab.immediately.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "quite",
+          "ru": "довольно, вполне",
+          "ipa": "/kwaɪt/",
+          "example": "It was quite late.",
+          "exampleRu": "Было довольно поздно.",
+          "audio": {
+            "src": "media/audio/u16.d04.vocab.quite.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "in the end",
+          "ru": "в итоге",
+          "ipa": "/ɪn ðə end/",
+          "example": "In the end, it was fine.",
+          "exampleRu": "В итоге всё обошлось.",
+          "audio": {
+            "src": "media/audio/u16.d04.vocab.intheend.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u16.d04.grammar",
+      "title": {
+        "en": "Time linkers",
+        "ru": "Связки времени"
+      },
+      "rule": {
+        "en": "Order events with time linkers: \"by the time\" + past, then past perfect; \"as soon as\" for one event right after another; \"until\" for the end point.",
+        "ru": "Упорядочивай события связками: \"by the time\" + past, дальше past perfect; \"as soon as\" — одно сразу за другим; \"until\" — до какой точки."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "by the time",
+            "ru": "by the time"
+          },
+          "formula": "By the time + past, past perfect",
+          "examples": [
+            {
+              "en": "By the time we arrived, the film had started.",
+              "ru": "К нашему приходу фильм уже начался."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "as soon as",
+            "ru": "as soon as"
+          },
+          "formula": "As soon as + past, past",
+          "examples": [
+            {
+              "en": "As soon as she arrived, we left.",
+              "ru": "Как только она пришла, мы ушли."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "until",
+            "ru": "until"
+          },
+          "formula": "… until + past",
+          "examples": [
+            {
+              "en": "We waited until the rain stopped.",
+              "ru": "Мы ждали, пока дождь не прекратился."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"By the time\" usually pairs with the past perfect for the earlier action.",
+          "ru": "\"By the time\" обычно с past perfect для более раннего действия."
+        },
+        {
+          "en": "\"until\" marks the end point, not a single moment — use \"when\" for a moment.",
+          "ru": "\"until\" — конечная точка, не момент; для момента — \"when\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u16.d04.reading",
+      "title": {
+        "en": "A long journey home",
+        "ru": "Долгая дорога домой"
+      },
+      "blocks": [
+        {
+          "id": "u16.d04.reading.b1",
+          "en": "Our flight was delayed for hours. By the time we finally landed, the last train had already gone. Meanwhile, the rain had turned the roads into rivers, and no taxis were waiting outside.",
+          "ru": "Наш рейс задержали на несколько часов. К тому времени, как мы наконец приземлились, последний поезд уже ушёл. Тем временем дождь превратил дороги в реки, и снаружи не было ни одного такси.",
+          "audio": {
+            "src": "media/audio/u16.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u16.d04.reading.b2",
+          "en": "We waited until a bus appeared, and as soon as it arrived, everyone rushed on. Eventually, quite late and very tired, we reached home. In the end, we laughed about it — it had been a small adventure after all.",
+          "ru": "Мы ждали, пока не появился автобус, и как только он подъехал, все ринулись внутрь. В конце концов, довольно поздно и очень уставшие, мы добрались домой. В итоге мы над этим смеялись — всё-таки это было маленькое приключение.",
+          "audio": {
+            "src": "media/audio/u16.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "delay",
+          "ru": "задержка; задерживать",
+          "ipa": "/dɪˈleɪ/"
+        },
+        {
+          "word": "rush",
+          "ru": "спешить, кинуться",
+          "ipa": "/rʌʃ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u16.d04.listening",
+      "title": {
+        "en": "By the time…",
+        "ru": "К тому времени…"
+      },
+      "audio": {
+        "src": "media/audio/u16.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Did you get to the party?",
+          "ru": "Ты попал на вечеринку?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Yes, but by the time I got there, most people had left.",
+          "ru": "Да, но к моему приходу большинство уже ушли."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Oh no. Did you stay long?",
+          "ru": "О нет. Долго пробыл?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Until the music stopped. As soon as it ended, I went home.",
+          "ru": "Пока музыка не смолкла. Как только она кончилась, я ушёл домой."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u16.d04.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "When did he go home?",
+            "ru": "Когда он ушёл домой?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.time-linkers"
+          ],
+          "prompt": "As soon as the music ___ .",
+          "options": [
+            "ended",
+            "had ended",
+            "was ending"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u16.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u16.d04.ex.c.01",
+          "instruction": {
+            "en": "by the time → ?",
+            "ru": "by the time → ?"
+          },
+          "tags": [
+            "grammar.time-linkers"
+          ],
+          "prompt": "By the time we arrived, the film ___ .",
+          "options": [
+            "had started",
+            "started",
+            "starts"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u16.d04.ex.g.01",
+          "instruction": {
+            "en": "Link two events.",
+            "ru": "Свяжи два события."
+          },
+          "tags": [
+            "grammar.time-linkers"
+          ],
+          "prompt": "___ soon as she arrived, we left. (word)",
+          "answers": [
+            "As",
+            "as"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u16.d04.ex.c.02",
+          "instruction": {
+            "en": "End point.",
+            "ru": "Конечная точка."
+          },
+          "tags": [
+            "grammar.time-linkers"
+          ],
+          "prompt": "We waited ___ the rain stopped.",
+          "options": [
+            "until",
+            "by the time",
+            "as soon"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u16.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.time-linkers"
+          ],
+          "variants": [
+            "By the time we arrived, the film started.",
+            "By the time we arrived, the film had started."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u16.d04.ex.mp.01",
+          "instruction": {
+            "en": "Listen — which word do you hear?",
+            "ru": "Послушай — какое слово ты слышишь?"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u16.d04.ex.mp.01.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "quiet",
+            "quite"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u16.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.time-linkers",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "К тому времени, как мы пришли, поезд уже ушёл.",
+          "answers": [
+            "By the time we arrived, the train had already left.",
+            "By the time we arrived, the train had left."
+          ]
+        }
+      ]
+    }
+  ]
+}

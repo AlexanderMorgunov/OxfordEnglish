@@ -77,6 +77,10 @@ export const SKILL_TAGS = [
   'grammar.second-conditional',
   'grammar.wish',
   'grammar.hypothetical-advice',
+  'grammar.past-perfect',
+  'grammar.past-perfect-vs-past',
+  'grammar.narrative-tenses',
+  'grammar.time-linkers',
 
   // functions (everyday communication)
   'functions.ordering',
@@ -95,6 +99,7 @@ export const SKILL_TAGS = [
   'functions.experiences',
   'functions.opinions',
   'functions.hypothetical',
+  'functions.storytelling',
 
   // vocabulary (developer-life + everyday themes)
   'vocab.work',
@@ -133,6 +138,7 @@ export const SKILL_TAGS = [
   'vocab.dreams',
   'vocab.choices',
   'vocab.life',
+  'vocab.stories',
 
   // reading
   'reading.gist',

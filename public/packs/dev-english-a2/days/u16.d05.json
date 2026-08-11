@@ -1,0 +1,465 @@
+{
+  "id": "u16.d05",
+  "title": {
+    "en": "Let me tell you a story",
+    "ru": "Дай расскажу историю"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "functions.storytelling",
+    "vocab.stories"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u16.d05.vocab",
+      "title": {
+        "en": "Telling a story",
+        "ru": "Рассказываем историю"
+      },
+      "words": [
+        {
+          "word": "once",
+          "ru": "однажды",
+          "ipa": "/wʌns/",
+          "example": "Once, when I was a child…",
+          "exampleRu": "Однажды, когда я был ребёнком…",
+          "audio": {
+            "src": "media/audio/u16.d05.vocab.once.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "at first",
+          "ru": "сначала",
+          "ipa": "/ət fɜːrst/",
+          "example": "At first, I was scared.",
+          "exampleRu": "Сначала я испугался.",
+          "audio": {
+            "src": "media/audio/u16.d05.vocab.atfirst.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "anyway",
+          "ru": "в общем; как бы то ни было",
+          "ipa": "/ˈeniweɪ/",
+          "example": "Anyway, we finally left.",
+          "exampleRu": "В общем, мы наконец ушли.",
+          "audio": {
+            "src": "media/audio/u16.d05.vocab.anyway.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "guess what",
+          "ru": "угадай что",
+          "ipa": "/ɡes wɒt/",
+          "example": "And guess what happened next!",
+          "exampleRu": "И угадай, что было дальше!",
+          "audio": {
+            "src": "media/audio/u16.d05.vocab.guesswhat.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "believe",
+          "ru": "верить",
+          "ipa": "/bɪˈliːv/",
+          "example": "You won't believe this.",
+          "exampleRu": "Ты не поверишь.",
+          "audio": {
+            "src": "media/audio/u16.d05.vocab.believe.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "incredible",
+          "ru": "невероятный",
+          "ipa": "/ɪnˈkredəbl/",
+          "example": "It was incredible.",
+          "exampleRu": "Это было невероятно.",
+          "audio": {
+            "src": "media/audio/u16.d05.vocab.incredible.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "joke",
+          "ru": "шутка",
+          "ipa": "/dʒoʊk/",
+          "example": "We thought it was a joke.",
+          "exampleRu": "Мы подумали, что это шутка.",
+          "audio": {
+            "src": "media/audio/u16.d05.vocab.joke.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lucky",
+          "ru": "везучий",
+          "ipa": "/ˈlʌki/",
+          "example": "We were so lucky.",
+          "exampleRu": "Нам так повезло.",
+          "audio": {
+            "src": "media/audio/u16.d05.vocab.lucky.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "nightmare",
+          "ru": "кошмар",
+          "ipa": "/ˈnaɪtmeər/",
+          "example": "The trip was a nightmare.",
+          "exampleRu": "Поездка была кошмаром.",
+          "audio": {
+            "src": "media/audio/u16.d05.vocab.nightmare.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "in the end",
+          "ru": "в итоге",
+          "ipa": "/ɪn ðə end/",
+          "example": "In the end, it was worth it.",
+          "exampleRu": "В итоге оно того стоило.",
+          "audio": {
+            "src": "media/audio/u16.d05.vocab.intheend.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u16.d05.grammar",
+      "title": {
+        "en": "Telling a story",
+        "ru": "Как рассказать историю"
+      },
+      "rule": {
+        "en": "Open with \"Once…\" or \"You won't believe what happened\". Order it with \"at first / then / after that / in the end\". Keep listeners with \"Anyway…\" and \"Guess what!\".",
+        "ru": "Начни с \"Once…\" или \"You won't believe what happened\". Упорядочи \"at first / then / after that / in the end\". Держи слушателя через \"Anyway…\" и \"Guess what!\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "open",
+            "ru": "начать"
+          },
+          "formula": "Once… / You won't believe…",
+          "examples": [
+            {
+              "en": "You won't believe what happened yesterday.",
+              "ru": "Ты не поверишь, что вчера случилось."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "order it",
+            "ru": "упорядочить"
+          },
+          "formula": "at first → then → in the end",
+          "examples": [
+            {
+              "en": "At first it was quiet, then everything went wrong.",
+              "ru": "Сначала было тихо, потом всё пошло не так."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "react",
+            "ru": "реакция"
+          },
+          "formula": "Guess what! / Really? / No way!",
+          "examples": [
+            {
+              "en": "And guess what — it was my old teacher!",
+              "ru": "И угадай — это был мой старый учитель!"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Keep your narrative tenses consistent: scene (continuous), events (simple), background (perfect).",
+          "ru": "Держи времена согласованно: фон (continuous), события (simple), предыстория (perfect)."
+        },
+        {
+          "en": "\"In the end\" = finally; \"at the end\" = at the final point of something.",
+          "ru": "\"In the end\" = в итоге; \"at the end\" = в конце (чего-то)."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u16.d05.reading",
+      "title": {
+        "en": "The best worst holiday",
+        "ru": "Лучший худший отпуск"
+      },
+      "blocks": [
+        {
+          "id": "u16.d05.reading.b1",
+          "en": "\"You won't believe what happened on our holiday,\" Tom laughed. \"At first, everything went wrong. Our flight was cancelled, and when we finally reached the hotel, they had given our room to someone else. It was a total nightmare.\"",
+          "ru": "«Ты не поверишь, что случилось в нашем отпуске, — засмеялся Том. — Сначала всё шло не так. Рейс отменили, а когда мы наконец добрались до отеля, наш номер уже отдали кому-то другому. Настоящий кошмар».",
+          "audio": {
+            "src": "media/audio/u16.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u16.d05.reading.b2",
+          "en": "\"Anyway, the manager felt sorry for us, so he moved us to a much better room by the sea — for free! And guess what: on the first evening, we met an old friend I hadn't seen for ten years. In the end, it turned out to be the best holiday we'd ever had.\"",
+          "ru": "«В общем, менеджеру стало нас жаль, и он бесплатно переселил нас в номер получше, у моря! И угадай: в первый же вечер мы встретили старого друга, которого я не видел десять лет. В итоге это оказался лучший отпуск в нашей жизни».",
+          "audio": {
+            "src": "media/audio/u16.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "cancel",
+          "ru": "отменять",
+          "ipa": "/ˈkænsl/"
+        },
+        {
+          "word": "manager",
+          "ru": "менеджер",
+          "ipa": "/ˈmænɪdʒər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u16.d05.listening",
+      "title": {
+        "en": "Guess what!",
+        "ru": "Угадай что!"
+      },
+      "audio": {
+        "src": "media/audio/u16.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "You won't believe what happened to me yesterday!",
+          "ru": "Ты не поверишь, что вчера со мной случилось!"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Go on, tell me.",
+          "ru": "Давай, рассказывай."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "At first I thought I had lost my phone. I searched everywhere.",
+          "ru": "Сначала я думал, что потерял телефон. Искал везде."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "And? Guess what — it had been in my pocket the whole time!",
+          "ru": "И? Угадай — он всё это время был у меня в кармане!"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u16.d05.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "Where was the phone?",
+            "ru": "Где был телефон?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.storytelling"
+          ],
+          "prompt": "It had been in his ___ the whole time.",
+          "options": [
+            "pocket",
+            "bag",
+            "car"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u16.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u16.d05.ex.c.01",
+          "instruction": {
+            "en": "Open a story.",
+            "ru": "Начни историю."
+          },
+          "tags": [
+            "functions.storytelling"
+          ],
+          "prompt": "You won't ___ what happened!",
+          "options": [
+            "believe",
+            "think",
+            "know"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u16.d05.ex.o.01",
+          "instruction": {
+            "en": "Order the story.",
+            "ru": "Упорядочь рассказ."
+          },
+          "tags": [
+            "functions.storytelling"
+          ],
+          "tokens": [
+            "At",
+            "first",
+            "everything",
+            "went",
+            "wrong"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u16.d05.ex.c.02",
+          "instruction": {
+            "en": "in the end or at the end?",
+            "ru": "in the end или at the end?"
+          },
+          "tags": [
+            "functions.storytelling"
+          ],
+          "prompt": "___ , it turned out fine. (finally)",
+          "options": [
+            "In the end",
+            "At the end",
+            "On the end"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u16.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.narrative-tenses"
+          ],
+          "variants": [
+            "We met a friend I didn't see for ten years.",
+            "We met a friend I hadn't seen for ten years."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u16.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.stories"
+          ],
+          "pairs": [
+            {
+              "left": "incredible",
+              "right": "невероятный"
+            },
+            {
+              "left": "nightmare",
+              "right": "кошмар"
+            },
+            {
+              "left": "anyway",
+              "right": "в общем"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u16.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.storytelling",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты не поверишь, что случилось!",
+          "answers": [
+            "You won't believe what happened!"
+          ]
+        }
+      ]
+    }
+  ]
+}

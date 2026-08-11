@@ -1,0 +1,455 @@
+{
+  "id": "u16.d02",
+  "title": {
+    "en": "Which happened first?",
+    "ru": "Что случилось раньше?"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.past-perfect-vs-past",
+    "vocab.stories"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u16.d02.vocab",
+      "title": {
+        "en": "Telling what happened",
+        "ru": "Рассказываем, что было"
+      },
+      "words": [
+        {
+          "word": "before",
+          "ru": "до, прежде",
+          "ipa": "/bɪˈfɔːr/",
+          "example": "I had eaten before I left.",
+          "exampleRu": "Я поел перед уходом.",
+          "audio": {
+            "src": "media/audio/u16.d02.vocab.before.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "after",
+          "ru": "после",
+          "ipa": "/ˈɑːftər/",
+          "example": "After she had left, he called.",
+          "exampleRu": "После её ухода он позвонил.",
+          "audio": {
+            "src": "media/audio/u16.d02.vocab.after.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "already",
+          "ru": "уже",
+          "ipa": "/ɔːlˈredi/",
+          "example": "They had already eaten.",
+          "exampleRu": "Они уже поели.",
+          "audio": {
+            "src": "media/audio/u16.d02.vocab.already.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "just",
+          "ru": "только что",
+          "ipa": "/dʒʌst/",
+          "example": "The film had just started.",
+          "exampleRu": "Фильм только начался.",
+          "audio": {
+            "src": "media/audio/u16.d02.vocab.just.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "once",
+          "ru": "как только; однажды",
+          "ipa": "/wʌns/",
+          "example": "Once she had finished, she relaxed.",
+          "exampleRu": "Как только она закончила, расслабилась.",
+          "audio": {
+            "src": "media/audio/u16.d02.vocab.once.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "return",
+          "ru": "возвращаться",
+          "ipa": "/rɪˈtɜːrn/",
+          "example": "He returned after the show had ended.",
+          "exampleRu": "Он вернулся после конца шоу.",
+          "audio": {
+            "src": "media/audio/u16.d02.vocab.return.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "explain",
+          "ru": "объяснять",
+          "ipa": "/ɪkˈspleɪn/",
+          "example": "She explained what had happened.",
+          "exampleRu": "Она объяснила, что случилось.",
+          "audio": {
+            "src": "media/audio/u16.d02.vocab.explain.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "discover",
+          "ru": "обнаруживать",
+          "ipa": "/dɪˈskʌvər/",
+          "example": "We discovered the truth later.",
+          "exampleRu": "Правду мы узнали позже.",
+          "audio": {
+            "src": "media/audio/u16.d02.vocab.discover.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reason",
+          "ru": "причина",
+          "ipa": "/ˈriːzn/",
+          "example": "That was the reason he was late.",
+          "exampleRu": "Вот почему он опоздал.",
+          "audio": {
+            "src": "media/audio/u16.d02.vocab.reason.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "finally",
+          "ru": "наконец",
+          "ipa": "/ˈfaɪnəli/",
+          "example": "Finally, everything made sense.",
+          "exampleRu": "Наконец всё стало ясно.",
+          "audio": {
+            "src": "media/audio/u16.d02.vocab.finally.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u16.d02.grammar",
+      "title": {
+        "en": "Past perfect vs past simple",
+        "ru": "Past perfect и past simple"
+      },
+      "rule": {
+        "en": "In a story, the past perfect marks the earlier event and the past simple the later one. With \"after/before\" the order is clear, so the past simple is often enough.",
+        "ru": "В рассказе past perfect отмечает более раннее событие, past simple — позднее. С \"after/before\" порядок ясен, поэтому часто хватает past simple."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "earlier → had",
+            "ru": "раньше → had"
+          },
+          "formula": "past perfect + past simple",
+          "examples": [
+            {
+              "en": "She had cooked dinner before the guests arrived.",
+              "ru": "Она приготовила ужин до прихода гостей."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "after + past perfect",
+            "ru": "after + past perfect"
+          },
+          "formula": "After + had V3, past simple",
+          "examples": [
+            {
+              "en": "After they had eaten, they watched a film.",
+              "ru": "После еды они посмотрели фильм."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "explains why",
+            "ru": "объясняет причину"
+          },
+          "formula": "past simple (…because had V3)",
+          "examples": [
+            {
+              "en": "He was tired because he had worked all night.",
+              "ru": "Он устал, потому что работал всю ночь."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Don't make everything past perfect — only the clearly earlier event needs it.",
+          "ru": "Не ставь всё в past perfect — только явно более раннее событие."
+        },
+        {
+          "en": "Simple sequence with \"then\" stays past simple: \"I woke up, then I ran\".",
+          "ru": "Простая последовательность с \"then\" — past simple: \"I woke up, then I ran\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u16.d02.reading",
+      "title": {
+        "en": "The reason he was late",
+        "ru": "Почему он опоздал"
+      },
+      "blocks": [
+        {
+          "id": "u16.d02.reading.b1",
+          "en": "When Marco finally arrived at the meeting, everyone was annoyed. But once he had explained what happened, they understood. On the way, he had stopped to help an old woman who had fallen on the ice.",
+          "ru": "Когда Марко наконец пришёл на встречу, все были раздражены. Но как только он объяснил, что произошло, все поняли. По дороге он остановился помочь пожилой женщине, которая упала на льду.",
+          "audio": {
+            "src": "media/audio/u16.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u16.d02.reading.b2",
+          "en": "He had called an ambulance and waited with her until it came. By the time he reached the office, the meeting had already started, but nobody minded any more. He had done the right thing, and that was the reason he was late.",
+          "ru": "Он вызвал скорую и ждал с ней, пока та не приехала. К моменту, когда он добрался до офиса, встреча уже началась, но теперь это никого не смущало. Он поступил правильно — вот почему он опоздал.",
+          "audio": {
+            "src": "media/audio/u16.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "annoyed",
+          "ru": "раздражённый",
+          "ipa": "/əˈnɔɪd/"
+        },
+        {
+          "word": "ambulance",
+          "ru": "скорая помощь",
+          "ipa": "/ˈæmbjələns/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u16.d02.listening",
+      "title": {
+        "en": "What had happened?",
+        "ru": "Что произошло?"
+      },
+      "audio": {
+        "src": "media/audio/u16.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Why was the kitchen such a mess?",
+          "ru": "Почему на кухне был такой бардак?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "The children had made a cake before we got home.",
+          "ru": "Дети испекли торт до нашего прихода."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Oh! So the cake was ready?",
+          "ru": "О! Значит, торт был готов?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Yes, they had finished it, but they hadn't cleaned up!",
+          "ru": "Да, они его доделали, но не убрали за собой!"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u16.d02.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What had the children done?",
+            "ru": "Что сделали дети?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.past-perfect-vs-past"
+          ],
+          "prompt": "They had made a ___ .",
+          "options": [
+            "cake",
+            "mess only",
+            "dinner"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u16.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u16.d02.ex.c.01",
+          "instruction": {
+            "en": "Earlier action → ?",
+            "ru": "Более раннее действие → ?"
+          },
+          "tags": [
+            "grammar.past-perfect-vs-past"
+          ],
+          "prompt": "She was tired because she ___ all night.",
+          "options": [
+            "had worked",
+            "worked",
+            "was working"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u16.d02.ex.g.01",
+          "instruction": {
+            "en": "After + past perfect.",
+            "ru": "After + past perfect."
+          },
+          "tags": [
+            "grammar.past-perfect-vs-past"
+          ],
+          "prompt": "After they ___ eaten, they left. (have)",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u16.d02.ex.c.02",
+          "instruction": {
+            "en": "Simple sequence — which tense?",
+            "ru": "Простая последовательность — какое время?"
+          },
+          "tags": [
+            "grammar.past-perfect-vs-past"
+          ],
+          "prompt": "I woke up, then I ___ breakfast.",
+          "options": [
+            "made",
+            "had made",
+            "was making"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u16.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.past-perfect-vs-past"
+          ],
+          "variants": [
+            "I had woken up and had run to the door.",
+            "I woke up and ran to the door."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u16.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.stories"
+          ],
+          "pairs": [
+            {
+              "left": "discover",
+              "right": "обнаруживать"
+            },
+            {
+              "left": "reason",
+              "right": "причина"
+            },
+            {
+              "left": "explain",
+              "right": "объяснять"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u16.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-perfect-vs-past",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он устал, потому что работал всю ночь.",
+          "answers": [
+            "He was tired because he had worked all night."
+          ]
+        }
+      ]
+    }
+  ]
+}

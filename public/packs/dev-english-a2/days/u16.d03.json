@@ -1,0 +1,453 @@
+{
+  "id": "u16.d03",
+  "title": {
+    "en": "While she was sleeping",
+    "ru": "Пока она спала"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.narrative-tenses",
+    "vocab.stories"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u16.d03.vocab",
+      "title": {
+        "en": "Setting the scene",
+        "ru": "Создаём картину"
+      },
+      "words": [
+        {
+          "word": "quiet",
+          "ru": "тихий",
+          "ipa": "/ˈkwaɪət/",
+          "example": "The house was quiet.",
+          "exampleRu": "В доме было тихо.",
+          "audio": {
+            "src": "media/audio/u16.d03.vocab.quiet.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dark",
+          "ru": "тёмный",
+          "ipa": "/dɑːrk/",
+          "example": "It was dark outside.",
+          "exampleRu": "На улице было темно.",
+          "audio": {
+            "src": "media/audio/u16.d03.vocab.dark.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "noise",
+          "ru": "шум",
+          "ipa": "/nɔɪz/",
+          "example": "She heard a noise.",
+          "exampleRu": "Она услышала шум.",
+          "audio": {
+            "src": "media/audio/u16.d03.vocab.noise.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "shadow",
+          "ru": "тень",
+          "ipa": "/ˈʃædoʊ/",
+          "example": "A shadow moved on the wall.",
+          "exampleRu": "На стене шевельнулась тень.",
+          "audio": {
+            "src": "media/audio/u16.d03.vocab.shadow.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "careful",
+          "ru": "осторожный",
+          "ipa": "/ˈkeərfl/",
+          "example": "She was very careful.",
+          "exampleRu": "Она была очень осторожна.",
+          "audio": {
+            "src": "media/audio/u16.d03.vocab.careful.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "whisper",
+          "ru": "шептать",
+          "ipa": "/ˈwɪspər/",
+          "example": "He whispered a name.",
+          "exampleRu": "Он прошептал имя.",
+          "audio": {
+            "src": "media/audio/u16.d03.vocab.whisper.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "appear",
+          "ru": "появляться",
+          "ipa": "/əˈpɪər/",
+          "example": "A figure appeared at the door.",
+          "exampleRu": "В дверях появилась фигура.",
+          "audio": {
+            "src": "media/audio/u16.d03.vocab.appear.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "breathe",
+          "ru": "дышать",
+          "ipa": "/briːð/",
+          "example": "She could hardly breathe.",
+          "exampleRu": "Она едва дышала.",
+          "audio": {
+            "src": "media/audio/u16.d03.vocab.breathe.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "turn out",
+          "ru": "оказаться",
+          "ipa": "/tɜːrn aʊt/",
+          "example": "It turned out to be the cat.",
+          "exampleRu": "Это оказался кот.",
+          "audio": {
+            "src": "media/audio/u16.d03.vocab.turnout.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "relief",
+          "ru": "облегчение",
+          "ipa": "/rɪˈliːf/",
+          "example": "What a relief!",
+          "exampleRu": "Какое облегчение!",
+          "audio": {
+            "src": "media/audio/u16.d03.vocab.relief.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u16.d03.grammar",
+      "title": {
+        "en": "Narrative tenses together",
+        "ru": "Нарративные времена вместе"
+      },
+      "rule": {
+        "en": "A story mixes three past tenses: past continuous sets the scene (was -ing), past simple gives the main events, and past perfect gives the background that happened earlier.",
+        "ru": "История сочетает три времени: past continuous задаёт фон (was -ing), past simple — основные события, past perfect — то, что было раньше."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "scene",
+            "ru": "фон"
+          },
+          "formula": "past continuous (was -ing)",
+          "examples": [
+            {
+              "en": "It was raining and the house was quiet.",
+              "ru": "Шёл дождь, в доме было тихо."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "event",
+            "ru": "событие"
+          },
+          "formula": "past simple",
+          "examples": [
+            {
+              "en": "Suddenly, she heard a noise.",
+              "ru": "Вдруг она услышала шум."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "background",
+            "ru": "предыстория"
+          },
+          "formula": "past perfect (had V3)",
+          "examples": [
+            {
+              "en": "Someone had left the window open.",
+              "ru": "Кто-то оставил окно открытым."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The interrupted (longer) action is continuous; the short event is simple.",
+          "ru": "Прерванное (длинное) действие — continuous; короткое событие — simple."
+        },
+        {
+          "en": "Use past perfect only for what happened before the main story time.",
+          "ru": "Past perfect — только для того, что было до основного времени рассказа."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u16.d03.reading",
+      "title": {
+        "en": "A noise in the night",
+        "ru": "Шум в ночи"
+      },
+      "blocks": [
+        {
+          "id": "u16.d03.reading.b1",
+          "en": "It was late, and Lena was reading in bed. The rain was falling softly and the whole house was quiet. She had locked all the doors before going upstairs, so she felt safe. Then, suddenly, she heard a noise downstairs.",
+          "ru": "Было поздно, и Лена читала в постели. Тихо шёл дождь, весь дом молчал. Перед тем как подняться, она заперла все двери, поэтому чувствовала себя спокойно. И вдруг снизу донёсся шум.",
+          "audio": {
+            "src": "media/audio/u16.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u16.d03.reading.b2",
+          "en": "She froze. Someone — or something — was moving in the kitchen. Her heart was beating fast as she walked carefully down the stairs. A shadow appeared near the table. But when she turned on the light, it turned out that the cat had knocked over a cup. What a relief!",
+          "ru": "Она замерла. Кто-то — или что-то — двигался на кухне. Сердце колотилось, пока она осторожно спускалась по лестнице. У стола появилась тень. Но когда она включила свет, оказалось, что это кот опрокинул чашку. Какое облегчение!",
+          "audio": {
+            "src": "media/audio/u16.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "freeze",
+          "ru": "замереть, застыть",
+          "ipa": "/friːz/"
+        },
+        {
+          "word": "knock over",
+          "ru": "опрокинуть",
+          "ipa": "/nɒk ˈoʊvər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u16.d03.listening",
+      "title": {
+        "en": "When it happened",
+        "ru": "Когда это случилось"
+      },
+      "audio": {
+        "src": "media/audio/u16.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "What were you doing when the storm started?",
+          "ru": "Что ты делал, когда началась гроза?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "I was cooking dinner. The kitchen was warm and quiet.",
+          "ru": "Готовил ужин. На кухне было тепло и тихо."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "And then?",
+          "ru": "А потом?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Suddenly the lights went out — a tree had fallen on the wires.",
+          "ru": "Вдруг погас свет — дерево упало на провода."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u16.d03.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "Why did the lights go out?",
+            "ru": "Почему погас свет?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.narrative-tenses"
+          ],
+          "prompt": "A tree ___ on the wires.",
+          "options": [
+            "had fallen",
+            "was falling",
+            "falls"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u16.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u16.d03.ex.g.01",
+          "instruction": {
+            "en": "Scene: past continuous.",
+            "ru": "Фон: past continuous."
+          },
+          "tags": [
+            "grammar.narrative-tenses"
+          ],
+          "prompt": "It ___ and the house was quiet. (rain)",
+          "answers": [
+            "was raining"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u16.d03.ex.g.02",
+          "instruction": {
+            "en": "Event: past simple.",
+            "ru": "Событие: past simple."
+          },
+          "tags": [
+            "grammar.narrative-tenses"
+          ],
+          "prompt": "Suddenly she ___ a noise. (hear)",
+          "answers": [
+            "heard"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u16.d03.ex.c.01",
+          "instruction": {
+            "en": "Background: which tense?",
+            "ru": "Предыстория: какое время?"
+          },
+          "tags": [
+            "grammar.narrative-tenses"
+          ],
+          "prompt": "Someone ___ the window open.",
+          "options": [
+            "had left",
+            "left",
+            "was leaving"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u16.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.narrative-tenses"
+          ],
+          "variants": [
+            "While I cooked, the phone was ringing.",
+            "While I was cooking, the phone rang."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u16.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.stories"
+          ],
+          "pairs": [
+            {
+              "left": "shadow",
+              "right": "тень"
+            },
+            {
+              "left": "whisper",
+              "right": "шептать"
+            },
+            {
+              "left": "relief",
+              "right": "облегчение"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u16.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.narrative-tenses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Пока она спала, кто-то постучал в дверь.",
+          "answers": [
+            "While she was sleeping, someone knocked at the door.",
+            "While she was sleeping, someone knocked on the door."
+          ]
+        }
+      ]
+    }
+  ]
+}
