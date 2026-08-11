@@ -3,15 +3,20 @@ import { Link } from 'react-router-dom';
 import { useContentStore } from '@/content/store';
 import { useSolvedExercises } from '@/features/progress/useCompletion';
 import { dayProgress, unitProgress } from '@/features/progress/completion';
+import { useLearner } from '@/features/learner/store';
 import { Card, PixelImage } from '@/shared/ui';
 
 export function DashboardPage() {
   const { status, pack, error, load } = useContentStore();
   const solved = useSolvedExercises();
+  const { level, recommendedUnitId, placementDone } = useLearner();
 
   useEffect(() => {
     void load();
   }, [load]);
+
+  const recommended = pack?.units.find((u) => u.id === recommendedUnitId);
+  const recommendedDay = recommended?.days[0];
 
   return (
     <section aria-label="Dashboard">
@@ -49,13 +54,61 @@ export function DashboardPage() {
       )}
 
       {status === 'ready' && pack && (
-        <div className="flex flex-col gap-6">
+        <>
+          {!placementDone ? (
+            <Card className="mb-6 flex flex-wrap items-center justify-between gap-3 border-violet-dim bg-violet-dim/15">
+              <div>
+                <p className="mb-0.5 font-mono text-2xs uppercase tracking-[0.08em] text-violet">
+                  new here?
+                </p>
+                <p className="text-sm text-pretty">
+                  Take a 5-minute placement test to find your starting point.
+                </p>
+              </div>
+              <Link
+                to="/placement"
+                className="inline-flex shrink-0 items-center gap-2 rounded-sm bg-violet px-4 py-2.5 text-sm font-mono font-semibold text-ink transition-opacity hover:opacity-90"
+              >
+                Take the test →
+              </Link>
+            </Card>
+          ) : recommended && recommendedDay ? (
+            <Card className="mb-6 flex flex-wrap items-center justify-between gap-3 border-teal-dim">
+              <div>
+                <p className="mb-0.5 font-mono text-2xs uppercase tracking-[0.08em] text-teal">
+                  your level: {level}
+                </p>
+                <p className="text-sm text-pretty">
+                  Recommended start: <b className="text-content">{recommended.title.en}</b>{' '}
+                  <span className="font-mono text-2xs text-muted">· {recommendedDay.id}</span>
+                </p>
+              </div>
+              <div className="flex shrink-0 items-center gap-3">
+                <Link
+                  to={`/course/${recommended.id}/day/${recommendedDay.id}`}
+                  className="inline-flex items-center gap-2 rounded-sm bg-teal px-4 py-2.5 text-sm font-mono font-semibold text-ink transition-opacity hover:opacity-90"
+                >
+                  Start →
+                </Link>
+                <Link to="/placement" className="font-mono text-2xs text-muted hover:text-content">
+                  retake
+                </Link>
+              </div>
+            </Card>
+          ) : null}
+
+          <div className="flex flex-col gap-6">
           {pack.units.map((unit) => {
             const up = unitProgress(unit, solved);
             return (
               <div key={unit.id}>
                 <p className="mb-3 flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.14em] text-muted">
                   <span>{unit.title.en}</span>
+                  {placementDone && unit.id === recommendedUnitId && (
+                    <span className="rounded-sm bg-teal/15 px-1.5 py-0.5 text-2xs text-teal normal-case tracking-normal">
+                      ▶ start here
+                    </span>
+                  )}
                   {unit.days.length === 0 ? (
                     <span className="text-faint normal-case tracking-normal">
                       · soon
@@ -114,7 +167,8 @@ export function DashboardPage() {
               </div>
             );
           })}
-        </div>
+          </div>
+        </>
       )}
     </section>
   );

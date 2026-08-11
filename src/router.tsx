@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import { AppLayout } from '@/layout/AppLayout';
 import { DashboardPage } from '@/pages/DashboardPage';
+import { PlacementPage } from '@/pages/PlacementPage';
 import { DayPage } from '@/pages/DayPage';
 import { ReviewPage } from '@/pages/ReviewPage';
 import { CheckpointPage } from '@/pages/CheckpointPage';
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
     element: <AppLayout />,
     children: [
       { path: '/', element: <DashboardPage /> },
+      { path: '/placement', element: <PlacementPage /> },
       { path: '/course/:unitId/day/:dayId', element: <DayPage /> },
       { path: '/review', element: <ReviewPage /> },
       { path: '/checkpoint/:unitId', element: <CheckpointPage /> },

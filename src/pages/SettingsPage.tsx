@@ -1,10 +1,16 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Card, Eyebrow, Input, Option } from '@/shared/ui';
 import { PROVIDERS, type AiProviderId } from '@/features/ai/provider';
 import { isConfigured, useAiStore } from '@/features/ai/store';
 import { exportData, importData } from '@/features/progress/backup';
+import { useLearner } from '@/features/learner/store';
+import type { Level } from '@/content/schema';
 
 const PROVIDER_IDS = Object.keys(PROVIDERS) as AiProviderId[];
+
+const LEVEL_START: Record<Level, string> = { A1: 'u00', A2: 'u01', B1: 'u13', B2: 'u13' };
+const LEVELS: Level[] = ['A1', 'A2', 'B1'];
 
 export function SettingsPage() {
   const { config, setConfig } = useAiStore();
@@ -36,6 +42,8 @@ export function SettingsPage() {
     setApiKey('');
     setSaved(false);
   };
+
+  const { level, placementDone, setLevel } = useLearner();
 
   const [dataMsg, setDataMsg] = useState('');
   const doExport = async () => {
@@ -150,6 +158,34 @@ export function SettingsPage() {
           </Button>
         )}
         {saved && <span className="font-mono text-2xs text-teal">✓ saved</span>}
+      </div>
+
+      <div className="mt-10 border-t border-line pt-8">
+        <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
+          your level
+        </p>
+        <p className="mb-4 text-sm text-muted text-pretty">
+          {placementDone
+            ? 'Set by the placement test. Change it here or retake the test.'
+            : 'Not set yet. Take the placement test, or choose a level to start from.'}
+        </p>
+        <div className="mb-3 flex flex-wrap gap-2">
+          {LEVELS.map((lv) => (
+            <Option
+              key={lv}
+              state={level === lv ? 'chosen' : 'default'}
+              onClick={() => setLevel(lv, LEVEL_START[lv])}
+            >
+              {lv}
+            </Option>
+          ))}
+        </div>
+        <Link
+          to="/placement"
+          className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
+        >
+          {placementDone ? 'retake placement test →' : 'take placement test →'}
+        </Link>
       </div>
 
       <div className="mt-10 border-t border-line pt-8">
