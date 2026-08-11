@@ -86,3 +86,48 @@ pedagogy inspiration, never verbatim.
 automation win for coherent reading passages. Then a **VOA lesson adapter**
 (graded dialogue + audio + transcript). Both feed `pack_write_day`; grammar +
 pitfalls + distractors stay hand-authored.
+
+## B1–B2 sources (independent audit, 2026-08)
+
+Verdict: **open, *graded* B2 material is almost nonexistent** — author it. B1 has
+one strong public-domain source (VOA). Sourcing only ever fills the reading/
+listening slot; ~70% of a day (vocab bank, grammar, exercises, RU, TTS) stays
+authored regardless. For our format authoring beat sourcing at A2 and B1 (pilot
+U15 built end-to-end in one pass) — keep authoring as the default; use sources to
+enrich select reading blocks, not as the spine.
+
+**Usable (CC-BY / CC0 / PD — redistributable):**
+- **VOA Learning English** — PD; tiers Beginning/Intermediate/**Advanced**
+  (Advanced ≈ B1–B2, VOA states *no* official CEFR mapping — it's an estimate).
+  The **"Let's Learn English" / "Everyday Grammar"** strand is graded PD *dialogue*
+  with transcripts + audio — the everyday-dialogue source, not just news prose.
+  Strip embedded AP/Reuters media (not PD). `voa_fetch` already handles it.
+- **LibreTexts — "High-Intermediate Academic Grammar for ESL Students" (Al Haider)**
+  — **CC BY 4.0**, self-declared **B2**, graded readings (Psychology / US History /
+  Lifespan). The one verified clean open B2 graded source. It's a grammar textbook,
+  not a reader series. The LibreTexts ESL/EFL shelves are **mixed-license** — audit
+  every title (neighbours "It's All Greek to Me!", "Writing for Change" are NC-SA).
+- **Wikinews** — **CC BY 2.5** (the *only* Wikimedia project without share-alike;
+  pre-2005 items PD, post-2024-12 CC BY 4.0). Ungraded authentic B2–C1 news.
+  Audio Wikinews = rare CC-BY audio+transcript, but the project is near-dormant —
+  verify activity before building a pipeline.
+- **US federal PD** (NASA, NIST, NIH/NLM, likely CISA/code.gov) — PD but C1+
+  register → **fact source for authoring** B2 dev/tech passages, not drop-in text.
+  Carve-outs: branding/insignia, embedded third-party media, identifiable persons.
+
+**Reference-only (topic inspiration; text is NOT reusable):**
+- Dev/tech sites are all SA or all-rights-reserved: **MDN, Stack Overflow,
+  Wikipedia, Mozilla Hacks** = CC BY-**SA** (share-alike trap); **dev.to,
+  freeCodeCamp News, Google Dev Blog** = no open license / ARR by default.
+  Great for *topics*; write our own sentences. Rule: facts & topics are free,
+  the specific wording is not — never sentence-by-sentence rewrite.
+- **News in Levels, Breaking News English** = © all rights reserved (free-to-read
+  ≠ open). Breaking News English explicitly forbids app/website reuse.
+- **Simple English Wikipedia, Wikibooks, Wikivoyage** = CC BY-**SA** (tempting
+  because they read simple — still SA).
+- Attractive B2/STEM readers that are traps: **"10 Inventions That Changed The
+  World"** (CC BY-**NC-SA**), plus the NC-SA LibreTexts titles above.
+
+**Gaps:** no CC-BY ELT/tech **podcast with transcripts** exists (all NC/ND/ARR) →
+B1–B2 dev listening stays TTS-over-authored-scripts. No graded-reader *series*
+reaches B2 openly (StoryWeaver/African Storybook cap ~B1).
