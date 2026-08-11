@@ -1,0 +1,467 @@
+{
+  "id": "u15.d05",
+  "title": {
+    "en": "Let's imagine",
+    "ru": "Давай представим"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "functions.hypothetical",
+    "functions.advice",
+    "vocab.life"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u15.d05.vocab",
+      "title": {
+        "en": "Discussing ideas",
+        "ru": "Обсуждаем идеи"
+      },
+      "words": [
+        {
+          "word": "imagine",
+          "ru": "представлять",
+          "ipa": "/ɪˈmædʒɪn/",
+          "example": "Imagine you could fly.",
+          "exampleRu": "Представь, что ты умеешь летать.",
+          "audio": {
+            "src": "media/audio/u15.d05.vocab.imagine.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "suppose",
+          "ru": "предположить",
+          "ipa": "/səˈpoʊz/",
+          "example": "Suppose it rained tomorrow.",
+          "exampleRu": "Предположим, завтра пойдёт дождь.",
+          "audio": {
+            "src": "media/audio/u15.d05.vocab.suppose.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "otherwise",
+          "ru": "иначе",
+          "ipa": "/ˈʌðərwaɪz/",
+          "example": "Leave now, otherwise you'll be late.",
+          "exampleRu": "Уходи сейчас, иначе опоздаешь.",
+          "audio": {
+            "src": "media/audio/u15.d05.vocab.otherwise.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "honestly",
+          "ru": "честно говоря",
+          "ipa": "/ˈɒnɪstli/",
+          "example": "Honestly, I don't know.",
+          "exampleRu": "Честно говоря, не знаю.",
+          "audio": {
+            "src": "media/audio/u15.d05.vocab.honestly.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "personally",
+          "ru": "лично",
+          "ipa": "/ˈpɜːrsənəli/",
+          "example": "Personally, I would say yes.",
+          "exampleRu": "Лично я бы сказал «да».",
+          "audio": {
+            "src": "media/audio/u15.d05.vocab.personally.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "perhaps",
+          "ru": "возможно",
+          "ipa": "/pərˈhæps/",
+          "example": "Perhaps you're right.",
+          "exampleRu": "Возможно, ты прав.",
+          "audio": {
+            "src": "media/audio/u15.d05.vocab.perhaps.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "definitely",
+          "ru": "определённо",
+          "ipa": "/ˈdefɪnətli/",
+          "example": "I would definitely go.",
+          "exampleRu": "Я бы точно пошёл.",
+          "audio": {
+            "src": "media/audio/u15.d05.vocab.definitely.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "depends",
+          "ru": "зависит",
+          "ipa": "/dɪˈpendz/",
+          "example": "It depends on you.",
+          "exampleRu": "Это зависит от тебя.",
+          "audio": {
+            "src": "media/audio/u15.d05.vocab.depends.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "point of view",
+          "ru": "точка зрения",
+          "ipa": "/pɔɪnt əv vjuː/",
+          "example": "I see your point of view.",
+          "exampleRu": "Я понимаю твою точку зрения.",
+          "audio": {
+            "src": "media/audio/u15.d05.vocab.pointofview.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "agree",
+          "ru": "соглашаться",
+          "ipa": "/əˈɡriː/",
+          "example": "I totally agree.",
+          "exampleRu": "Полностью согласен.",
+          "audio": {
+            "src": "media/audio/u15.d05.vocab.agree.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u15.d05.grammar",
+      "title": {
+        "en": "Discussing hypotheticals",
+        "ru": "Обсуждаем гипотетическое"
+      },
+      "rule": {
+        "en": "Open a hypothetical with \"Imagine …\" or \"Suppose …\". Give your view with \"Personally, I would …\", \"Honestly, I'd probably …\". Say it is uncertain with \"It depends\".",
+        "ru": "Начни гипотезу с \"Imagine …\" или \"Suppose …\". Своё мнение — \"Personally, I would …\", \"Honestly, I'd probably …\". Неопределённость — \"It depends\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "open it",
+            "ru": "начать"
+          },
+          "formula": "Imagine / Suppose + past",
+          "examples": [
+            {
+              "en": "Imagine you could live anywhere.",
+              "ru": "Представь, что ты мог бы жить где угодно."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "your view",
+            "ru": "своё мнение"
+          },
+          "formula": "Personally, I would …",
+          "examples": [
+            {
+              "en": "Personally, I would choose the quiet life.",
+              "ru": "Лично я бы выбрал тихую жизнь."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "it depends",
+            "ru": "it depends"
+          },
+          "formula": "It depends on …",
+          "examples": [
+            {
+              "en": "It depends on the situation.",
+              "ru": "Это зависит от ситуации."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Keep the second conditional across the whole discussion: past in the if, would in the answer.",
+          "ru": "Держи второй тип условия во всём разговоре: past в if, would в ответе."
+        },
+        {
+          "en": "Soften strong claims with \"perhaps\", \"probably\", \"I'd say\".",
+          "ru": "Смягчай резкие утверждения через \"perhaps\", \"probably\", \"I'd say\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u15.d05.reading",
+      "title": {
+        "en": "A dinner debate",
+        "ru": "Спор за ужином"
+      },
+      "blocks": [
+        {
+          "id": "u15.d05.reading.b1",
+          "en": "At dinner, someone asked a simple question: \"If you could live in any time in history, when would you choose?\" Everyone had a different point of view. \"Personally, I would pick the future,\" said Lena. \"Imagine the technology!\"",
+          "ru": "За ужином кто-то задал простой вопрос: «Если бы ты мог жить в любую эпоху, что бы ты выбрал?» У каждого была своя точка зрения. «Лично я бы выбрала будущее, — сказала Лена. — Представьте технологии!»",
+          "audio": {
+            "src": "media/audio/u15.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u15.d05.reading.b2",
+          "en": "\"Honestly, I disagree,\" said Marco. \"Suppose there were no problems left to solve — I think I'd be bored. It depends on what you want from life. For me, the present is exactly the right time.\"",
+          "ru": "«Честно, я не согласен, — сказал Марко. — Предположим, не осталось бы нерешённых задач — думаю, мне было бы скучно. Всё зависит от того, чего хочешь от жизни. Для меня настоящее — самое подходящее время».",
+          "audio": {
+            "src": "media/audio/u15.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "history",
+          "ru": "история",
+          "ipa": "/ˈhɪstri/"
+        },
+        {
+          "word": "solve",
+          "ru": "решать",
+          "ipa": "/sɒlv/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u15.d05.listening",
+      "title": {
+        "en": "If you could choose",
+        "ru": "Если бы ты мог выбрать"
+      },
+      "audio": {
+        "src": "media/audio/u15.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Suppose you could learn any skill instantly. What would it be?",
+          "ru": "Предположим, ты мог бы мгновенно освоить любой навык. Какой?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Honestly, I would learn to play the piano.",
+          "ru": "Честно, я бы научился играть на пианино."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Not a language? Personally, I'd choose Japanese.",
+          "ru": "Не язык? Лично я бы выбрал японский."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "It depends on your goals, I suppose.",
+          "ru": "Полагаю, всё зависит от целей."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u15.d05.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What skill would he learn?",
+            "ru": "Какой навык он бы освоил?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.hypothetical"
+          ],
+          "prompt": "He would learn to play the ___ .",
+          "options": [
+            "piano",
+            "guitar",
+            "violin"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u15.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u15.d05.ex.c.01",
+          "instruction": {
+            "en": "Open a hypothetical.",
+            "ru": "Начни гипотезу."
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "prompt": "___ you could live anywhere. Where would you go?",
+          "options": [
+            "Imagine",
+            "Imagined",
+            "Imagining"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u15.d05.ex.c.02",
+          "instruction": {
+            "en": "Give your own view.",
+            "ru": "Вырази своё мнение."
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "prompt": "___ , I would choose the quiet life.",
+          "options": [
+            "Personally",
+            "Person",
+            "Personal"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u15.d05.ex.o.01",
+          "instruction": {
+            "en": "Say it is uncertain.",
+            "ru": "Скажи, что зависит."
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "tokens": [
+            "It",
+            "depends",
+            "on",
+            "the",
+            "situation"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u15.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "variants": [
+            "Suppose you will win. What you would do?",
+            "Suppose you won. What would you do?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u15.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.life"
+          ],
+          "pairs": [
+            {
+              "left": "honestly",
+              "right": "честно говоря"
+            },
+            {
+              "left": "perhaps",
+              "right": "возможно"
+            },
+            {
+              "left": "point of view",
+              "right": "точка зрения"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u15.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.hypothetical",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Лично я бы выбрал будущее.",
+          "answers": [
+            "Personally, I would choose the future.",
+            "Personally, I'd choose the future."
+          ]
+        }
+      ]
+    }
+  ]
+}

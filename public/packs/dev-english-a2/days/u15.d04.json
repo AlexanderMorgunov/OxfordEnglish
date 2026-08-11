@@ -1,0 +1,456 @@
+{
+  "id": "u15.d04",
+  "title": {
+    "en": "If I were you",
+    "ru": "На твоём месте"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.hypothetical-advice",
+    "grammar.second-conditional",
+    "vocab.life",
+    "pronunciation"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u15.d04.vocab",
+      "title": {
+        "en": "Life changes",
+        "ru": "Перемены в жизни"
+      },
+      "words": [
+        {
+          "word": "change",
+          "ru": "менять; перемена",
+          "ipa": "/tʃeɪndʒ/",
+          "example": "Big changes are coming.",
+          "exampleRu": "Грядут большие перемены.",
+          "audio": {
+            "src": "media/audio/u15.d04.vocab.change.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "move",
+          "ru": "переезжать",
+          "ipa": "/muːv/",
+          "example": "They moved abroad.",
+          "exampleRu": "Они переехали за границу.",
+          "audio": {
+            "src": "media/audio/u15.d04.vocab.move.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "relationship",
+          "ru": "отношения",
+          "ipa": "/rɪˈleɪʃnʃɪp/",
+          "example": "It's a serious relationship.",
+          "exampleRu": "Это серьёзные отношения.",
+          "audio": {
+            "src": "media/audio/u15.d04.vocab.relationship.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "decision",
+          "ru": "решение",
+          "ipa": "/dɪˈsɪʒn/",
+          "example": "It's your decision.",
+          "exampleRu": "Это твоё решение.",
+          "audio": {
+            "src": "media/audio/u15.d04.vocab.decision.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "advice",
+          "ru": "совет (сущ.)",
+          "ipa": "/ədˈvaɪs/",
+          "example": "Can I give you some advice?",
+          "exampleRu": "Можно дать тебе совет?",
+          "audio": {
+            "src": "media/audio/u15.d04.vocab.advice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "advise",
+          "ru": "советовать (глаг.)",
+          "ipa": "/ədˈvaɪz/",
+          "example": "I advise you to wait.",
+          "exampleRu": "Советую тебе подождать.",
+          "audio": {
+            "src": "media/audio/u15.d04.vocab.advise.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "future",
+          "ru": "будущее",
+          "ipa": "/ˈfjuːtʃər/",
+          "example": "Think about your future.",
+          "exampleRu": "Подумай о будущем.",
+          "audio": {
+            "src": "media/audio/u15.d04.vocab.future.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "settle down",
+          "ru": "остепениться",
+          "ipa": "/ˈsetl daʊn/",
+          "example": "They want to settle down.",
+          "exampleRu": "Они хотят остепениться.",
+          "audio": {
+            "src": "media/audio/u15.d04.vocab.settledown.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "take a risk",
+          "ru": "рискнуть",
+          "ipa": "/teɪk ə rɪsk/",
+          "example": "Sometimes you have to take a risk.",
+          "exampleRu": "Иногда нужно рискнуть.",
+          "audio": {
+            "src": "media/audio/u15.d04.vocab.takearisk.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "in your position",
+          "ru": "на твоём месте",
+          "ipa": "/ɪn jɔːr pəˈzɪʃn/",
+          "example": "In your position, I would wait.",
+          "exampleRu": "На твоём месте я бы подождал.",
+          "audio": {
+            "src": "media/audio/u15.d04.vocab.inyourposition.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u15.d04.grammar",
+      "title": {
+        "en": "Giving hypothetical advice",
+        "ru": "Гипотетический совет"
+      },
+      "rule": {
+        "en": "Give strong advice with \"If I were you, I would/wouldn't …\". Soften it with \"You could …\", \"I'd probably …\" or \"In your position, I would …\".",
+        "ru": "Настойчивый совет — \"If I were you, I would/wouldn't …\". Мягче — \"You could …\", \"I'd probably …\" или \"In your position, I would …\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "If I were you",
+            "ru": "If I were you"
+          },
+          "formula": "If I were you, I would/wouldn't …",
+          "examples": [
+            {
+              "en": "If I were you, I wouldn't rush the decision.",
+              "ru": "На твоём месте я бы не торопился с решением."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "softer advice",
+            "ru": "мягкий совет"
+          },
+          "formula": "You could … / I'd probably …",
+          "examples": [
+            {
+              "en": "You could talk to her first. I'd probably wait.",
+              "ru": "Ты мог бы сначала поговорить с ней. Я бы, наверное, подождал."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "in your position",
+            "ru": "на твоём месте"
+          },
+          "formula": "In your position, I would …",
+          "examples": [
+            {
+              "en": "In your position, I would take the risk.",
+              "ru": "На твоём месте я бы рискнул."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Advice uses \"were\" (not \"was\"): \"If I were you\", not \"If I was you\".",
+          "ru": "В совете — \"were\" (не \"was\"): \"If I were you\", а не \"If I was you\"."
+        },
+        {
+          "en": "\"advice\" is the noun, \"advise\" is the verb: \"give advice\", \"advise someone\".",
+          "ru": "\"advice\" — существительное, \"advise\" — глагол: \"give advice\", \"advise someone\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u15.d04.reading",
+      "title": {
+        "en": "A big decision",
+        "ru": "Большое решение"
+      },
+      "blocks": [
+        {
+          "id": "u15.d04.reading.b1",
+          "en": "\"I don't know what to do,\" said Sam. \"They offered me a job abroad, but Anna wants to settle down here.\" His brother listened carefully. \"If I were you, I wouldn't decide too quickly. This is about your future, not just one job.\"",
+          "ru": "«Я не знаю, что делать, — сказал Сэм. — Мне предложили работу за границей, но Анна хочет осесть здесь». Брат внимательно слушал. «На твоём месте я бы не решал слишком быстро. Речь о твоём будущем, а не об одной работе».",
+          "audio": {
+            "src": "media/audio/u15.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u15.d04.reading.b2",
+          "en": "\"In your position, I would talk to Anna honestly and think about it together. You could even visit the city first. My advice? Don't take a risk this big alone — but don't give up on your dream either.\"",
+          "ru": "«На твоём месте я бы честно поговорил с Анной и подумал вместе. Ты мог бы даже сначала съездить в тот город. Мой совет? Не рискуй так сильно в одиночку — но и от мечты не отказывайся».",
+          "audio": {
+            "src": "media/audio/u15.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "honestly",
+          "ru": "честно",
+          "ipa": "/ˈɒnɪstli/"
+        },
+        {
+          "word": "together",
+          "ru": "вместе",
+          "ipa": "/təˈɡeðər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u15.d04.listening",
+      "title": {
+        "en": "What should I do?",
+        "ru": "Что мне делать?"
+      },
+      "audio": {
+        "src": "media/audio/u15.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "I got two job offers and I can't decide.",
+          "ru": "Мне сделали два предложения о работе, и я не могу выбрать."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "If I were you, I would choose the one you enjoy more.",
+          "ru": "На твоём месте я бы выбрал ту, что больше нравится."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "But the other one pays better.",
+          "ru": "Но за другую больше платят."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "In your position, I'd think about the future, not just the money.",
+          "ru": "На твоём месте я бы думал о будущем, а не только о деньгах."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u15.d04.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What does the friend advise?",
+            "ru": "Что советует друг?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.hypothetical-advice"
+          ],
+          "prompt": "Choose the job you ___ more.",
+          "options": [
+            "enjoy",
+            "pay",
+            "need"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u15.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u15.d04.ex.c.01",
+          "instruction": {
+            "en": "Advice: were or was?",
+            "ru": "Совет: were или was?"
+          },
+          "tags": [
+            "grammar.hypothetical-advice"
+          ],
+          "prompt": "If I ___ you, I would wait.",
+          "options": [
+            "were",
+            "was",
+            "am"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u15.d04.ex.c.02",
+          "instruction": {
+            "en": "noun or verb?",
+            "ru": "существительное или глагол?"
+          },
+          "tags": [
+            "grammar.hypothetical-advice"
+          ],
+          "prompt": "Can I give you some ___ ?",
+          "options": [
+            "advice",
+            "advise",
+            "advices"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u15.d04.ex.g.01",
+          "instruction": {
+            "en": "Complete the advice.",
+            "ru": "Заверши совет."
+          },
+          "tags": [
+            "grammar.hypothetical-advice"
+          ],
+          "prompt": "In your ___ , I would take the risk. (position)",
+          "answers": [
+            "position"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u15.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.hypothetical-advice"
+          ],
+          "variants": [
+            "If I was you, I would wait.",
+            "If I were you, I would wait."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u15.d04.ex.mp.01",
+          "instruction": {
+            "en": "Listen — which word do you hear? (noun /s/ vs verb /z/)",
+            "ru": "Послушай — какое слово? (сущ. /s/ vs глаг. /z/)"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u15.d04.ex.mp.01.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "advice",
+            "advise"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u15.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.hypothetical-advice",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "На твоём месте я бы не торопился.",
+          "answers": [
+            "If I were you, I wouldn't rush.",
+            "If I were you, I wouldn't hurry."
+          ]
+        }
+      ]
+    }
+  ]
+}

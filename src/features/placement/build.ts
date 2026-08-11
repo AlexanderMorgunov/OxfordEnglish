@@ -98,8 +98,8 @@ export function scorePlacement(scores: Record<Band, BandScore>): PlacementOutcom
   }
   return {
     level: 'B1',
-    recommendedUnitId: 'u13',
-    message: "Excellent — you're ready for B1. Review the last units; B1 content is coming.",
+    recommendedUnitId: 'u15',
+    message: "Excellent — you're ready for B1. Start the B1 units.",
     b1Ready: true,
   };
 }

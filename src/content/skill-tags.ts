@@ -73,6 +73,11 @@ export const SKILL_TAGS = [
   'grammar.reported-speech',
   'grammar.review',
 
+  // B1 grammar
+  'grammar.second-conditional',
+  'grammar.wish',
+  'grammar.hypothetical-advice',
+
   // functions (everyday communication)
   'functions.ordering',
   'functions.small-talk',
@@ -89,6 +94,7 @@ export const SKILL_TAGS = [
   'functions.doctor',
   'functions.experiences',
   'functions.opinions',
+  'functions.hypothetical',
 
   // vocabulary (developer-life + everyday themes)
   'vocab.work',
@@ -124,6 +130,9 @@ export const SKILL_TAGS = [
   'vocab.seasons',
   'vocab.celebrations',
   'vocab.collocations',
+  'vocab.dreams',
+  'vocab.choices',
+  'vocab.life',
 
   // reading
   'reading.gist',

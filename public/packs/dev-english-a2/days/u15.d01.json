@@ -1,0 +1,470 @@
+{
+  "id": "u15.d01",
+  "title": {
+    "en": "If I had more time",
+    "ru": "Если бы у меня было больше времени"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.second-conditional",
+    "vocab.dreams"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u15.d01.vocab",
+      "title": {
+        "en": "Dreams & ambitions",
+        "ru": "Мечты и стремления"
+      },
+      "words": [
+        {
+          "word": "dream",
+          "ru": "мечта; мечтать",
+          "ipa": "/driːm/",
+          "example": "She dreams of a quiet life.",
+          "exampleRu": "Она мечтает о спокойной жизни.",
+          "audio": {
+            "src": "media/audio/u15.d01.vocab.dream.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ambition",
+          "ru": "амбиция, стремление",
+          "ipa": "/æmˈbɪʃn/",
+          "example": "His ambition is to start a company.",
+          "exampleRu": "Его мечта — открыть компанию.",
+          "audio": {
+            "src": "media/audio/u15.d01.vocab.ambition.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "imagine",
+          "ru": "представлять",
+          "ipa": "/ɪˈmædʒɪn/",
+          "example": "Imagine you won the lottery.",
+          "exampleRu": "Представь, что ты выиграл в лотерею.",
+          "audio": {
+            "src": "media/audio/u15.d01.vocab.imagine.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "opportunity",
+          "ru": "возможность",
+          "ipa": "/ˌɒpərˈtjuːnəti/",
+          "example": "It was a great opportunity.",
+          "exampleRu": "Это была отличная возможность.",
+          "audio": {
+            "src": "media/audio/u15.d01.vocab.opportunity.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "freedom",
+          "ru": "свобода",
+          "ipa": "/ˈfriːdəm/",
+          "example": "Money gives you freedom.",
+          "exampleRu": "Деньги дают свободу.",
+          "audio": {
+            "src": "media/audio/u15.d01.vocab.freedom.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "achieve",
+          "ru": "достигать",
+          "ipa": "/əˈtʃiːv/",
+          "example": "You can achieve your goals.",
+          "exampleRu": "Ты можешь достичь своих целей.",
+          "audio": {
+            "src": "media/audio/u15.d01.vocab.achieve.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lottery",
+          "ru": "лотерея",
+          "ipa": "/ˈlɒtəri/",
+          "example": "He never wins the lottery.",
+          "exampleRu": "Он никогда не выигрывает в лотерею.",
+          "audio": {
+            "src": "media/audio/u15.d01.vocab.lottery.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "million",
+          "ru": "миллион",
+          "ipa": "/ˈmɪljən/",
+          "example": "What would you do with a million?",
+          "exampleRu": "Что бы ты сделал с миллионом?",
+          "audio": {
+            "src": "media/audio/u15.d01.vocab.million.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "quit",
+          "ru": "бросить, уволиться",
+          "ipa": "/kwɪt/",
+          "example": "I would quit my job.",
+          "exampleRu": "Я бы уволился.",
+          "audio": {
+            "src": "media/audio/u15.d01.vocab.quit.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "travel the world",
+          "ru": "путешествовать по миру",
+          "ipa": "/ˈtrævl ðə wɜːrld/",
+          "example": "I would travel the world.",
+          "exampleRu": "Я бы объехал весь мир.",
+          "audio": {
+            "src": "media/audio/u15.d01.vocab.traveltheworld.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u15.d01.grammar",
+      "title": {
+        "en": "Second conditional",
+        "ru": "Второй тип условия"
+      },
+      "rule": {
+        "en": "Talk about an unreal or imaginary present with the second conditional: If + past simple, would + verb. Use \"were\" for all persons in the if-clause.",
+        "ru": "О нереальном/воображаемом настоящем — второй тип: If + past simple, would + глагол. В if-части для всех лиц используется \"were\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "if + past, would",
+            "ru": "if + past, would"
+          },
+          "formula": "If + past simple, would + verb",
+          "examples": [
+            {
+              "en": "If I had more time, I would learn to paint.",
+              "ru": "Если бы у меня было больше времени, я бы научился рисовать."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "were (all persons)",
+            "ru": "were (все лица)"
+          },
+          "formula": "If I/he/she were …",
+          "examples": [
+            {
+              "en": "If I were rich, I would travel the world.",
+              "ru": "Будь я богат, я бы объехал весь мир."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "wouldn't",
+            "ru": "wouldn't"
+          },
+          "formula": "If …, wouldn't + verb",
+          "examples": [
+            {
+              "en": "If I won the lottery, I wouldn't quit my job.",
+              "ru": "Даже выиграв в лотерею, я бы не бросил работу."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The if-clause uses the past simple, but the meaning is present/unreal — not a real plan.",
+          "ru": "В if-части — past simple, но смысл настоящий/нереальный, а не реальный план."
+        },
+        {
+          "en": "No \"would\" in the if-clause: \"If I had money\", not \"If I would have money\".",
+          "ru": "В if-части нет \"would\": \"If I had money\", а не \"If I would have money\"."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u15.d01.reading",
+      "title": {
+        "en": "A million euros",
+        "ru": "Миллион евро"
+      },
+      "blocks": [
+        {
+          "id": "u15.d01.reading.b1",
+          "en": "People often imagine what they would do if they suddenly had a lot of money. Some say they would quit their jobs immediately, buy a big house and travel the world for a year.",
+          "ru": "Люди часто представляют, что бы они сделали, если бы у них вдруг появилось много денег. Одни говорят, что тут же уволились бы, купили большой дом и год путешествовали по миру.",
+          "audio": {
+            "src": "media/audio/u15.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u15.d01.reading.b2",
+          "en": "Others are more careful. \"If I won a million euros, I wouldn't change my whole life,\" says Elena. \"I would keep my job, help my family, and use the freedom to start a small business I really believe in.\"",
+          "ru": "«Другие осторожнее. «Если бы я выиграла миллион евро, я бы не стала менять всю жизнь, — говорит Елена. — Я бы оставила работу, помогла семье и использовала свободу, чтобы открыть маленькое дело, в которое действительно верю».",
+          "audio": {
+            "src": "media/audio/u15.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "suddenly",
+          "ru": "внезапно",
+          "ipa": "/ˈsʌdənli/"
+        },
+        {
+          "word": "believe in",
+          "ru": "верить в",
+          "ipa": "/bɪˈliːv ɪn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u15.d01.listening",
+      "title": {
+        "en": "What would you do?",
+        "ru": "Что бы ты сделал?"
+      },
+      "audio": {
+        "src": "media/audio/u15.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Imagine you had a free year and enough money. What would you do?",
+          "ru": "Представь: у тебя есть свободный год и достаточно денег. Что бы ты делал?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "If I had a whole year, I would travel and learn two languages.",
+          "ru": "Будь у меня целый год, я бы путешествовал и выучил два языка."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Interesting. Would you quit your job?",
+          "ru": "Интересно. Ты бы уволился?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "No, I wouldn't quit. I'd just take a long break and come back.",
+          "ru": "Нет, не уволился бы. Просто взял бы длинный перерыв и вернулся."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u15.d01.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "Would he quit his job?",
+            "ru": "Он бы уволился?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.second-conditional"
+          ],
+          "prompt": "He says he ___ quit his job.",
+          "options": [
+            "wouldn't",
+            "would",
+            "didn't"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u15.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u15.d01.ex.g.01",
+          "instruction": {
+            "en": "The if-clause: past simple.",
+            "ru": "If-часть: past simple."
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "If I ___ more time, I would read more. (have)",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u15.d01.ex.g.02",
+          "instruction": {
+            "en": "The result: would + verb.",
+            "ru": "Результат: would + глагол."
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "If she won the lottery, she ___ a house. (buy)",
+          "answers": [
+            "would buy",
+            "'d buy"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u15.d01.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct form.",
+            "ru": "Выбери верную форму."
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "If I ___ you, I would take the job.",
+          "options": [
+            "were",
+            "am",
+            "would be"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u15.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "variants": [
+            "If I would have money, I would travel.",
+            "If I had money, I would travel."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "transform",
+          "id": "u15.d01.ex.tf.01",
+          "instruction": {
+            "en": "Rewrite as a second conditional. (I don't have a car, so I walk → If I had a car, I wouldn't walk.)",
+            "ru": "Перепиши как второй тип условия. (I don't have a car, so I walk → If I had a car, I wouldn't walk.)"
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "I don't have time, so I don't travel.",
+          "answers": [
+            "If I had time, I would travel.",
+            "If I had time, I'd travel."
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u15.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.dreams"
+          ],
+          "pairs": [
+            {
+              "left": "freedom",
+              "right": "свобода"
+            },
+            {
+              "left": "achieve",
+              "right": "достигать"
+            },
+            {
+              "left": "opportunity",
+              "right": "возможность"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u15.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.second-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Если бы я был богат, я бы путешествовал.",
+          "answers": [
+            "If I were rich, I would travel.",
+            "If I were rich, I'd travel."
+          ]
+        }
+      ]
+    }
+  ]
+}

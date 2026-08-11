@@ -1,0 +1,455 @@
+{
+  "id": "u15.d02",
+  "title": {
+    "en": "A hard choice",
+    "ru": "Трудный выбор"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.second-conditional",
+    "vocab.choices"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u15.d02.vocab",
+      "title": {
+        "en": "Choices & decisions",
+        "ru": "Выбор и решения"
+      },
+      "words": [
+        {
+          "word": "choice",
+          "ru": "выбор",
+          "ipa": "/tʃɔɪs/",
+          "example": "It was a difficult choice.",
+          "exampleRu": "Это был трудный выбор.",
+          "audio": {
+            "src": "media/audio/u15.d02.vocab.choice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "decide",
+          "ru": "решать",
+          "ipa": "/dɪˈsaɪd/",
+          "example": "I can't decide.",
+          "exampleRu": "Я не могу решить.",
+          "audio": {
+            "src": "media/audio/u15.d02.vocab.decide.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "option",
+          "ru": "вариант",
+          "ipa": "/ˈɒpʃn/",
+          "example": "There are two options.",
+          "exampleRu": "Есть два варианта.",
+          "audio": {
+            "src": "media/audio/u15.d02.vocab.option.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "instead",
+          "ru": "вместо",
+          "ipa": "/ɪnˈsted/",
+          "example": "I would stay home instead.",
+          "exampleRu": "Вместо этого я бы остался дома.",
+          "audio": {
+            "src": "media/audio/u15.d02.vocab.instead.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "rather",
+          "ru": "скорее, лучше",
+          "ipa": "/ˈrɑːðər/",
+          "example": "I would rather walk.",
+          "exampleRu": "Я бы лучше пошёл пешком.",
+          "audio": {
+            "src": "media/audio/u15.d02.vocab.rather.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "consider",
+          "ru": "обдумывать",
+          "ipa": "/kənˈsɪdər/",
+          "example": "You should consider it.",
+          "exampleRu": "Тебе стоит это обдумать.",
+          "audio": {
+            "src": "media/audio/u15.d02.vocab.consider.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "risk",
+          "ru": "риск; рисковать",
+          "ipa": "/rɪsk/",
+          "example": "It's a big risk.",
+          "exampleRu": "Это большой риск.",
+          "audio": {
+            "src": "media/audio/u15.d02.vocab.risk.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "depend on",
+          "ru": "зависеть от",
+          "ipa": "/dɪˈpend ɒn/",
+          "example": "It depends on the money.",
+          "exampleRu": "Это зависит от денег.",
+          "audio": {
+            "src": "media/audio/u15.d02.vocab.dependon.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "give up",
+          "ru": "сдаваться, бросать",
+          "ipa": "/ɡɪv ʌp/",
+          "example": "Don't give up.",
+          "exampleRu": "Не сдавайся.",
+          "audio": {
+            "src": "media/audio/u15.d02.vocab.giveup.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "worth it",
+          "ru": "того стоит",
+          "ipa": "/wɜːrθ ɪt/",
+          "example": "It would be worth it.",
+          "exampleRu": "Оно бы того стоило.",
+          "audio": {
+            "src": "media/audio/u15.d02.vocab.worthit.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u15.d02.grammar",
+      "title": {
+        "en": "Second conditional: could / might · questions",
+        "ru": "Второй тип: could / might · вопросы"
+      },
+      "rule": {
+        "en": "In the result, use \"could\" for ability or \"might\" for possibility instead of \"would\". Ask hypothetical questions with \"What would you do if …?\".",
+        "ru": "В результате вместо \"would\" можно ставить \"could\" (возможность/умение) или \"might\" (вероятность). Гипотетический вопрос — \"What would you do if …?\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "could",
+            "ru": "could"
+          },
+          "formula": "If …, could + verb",
+          "examples": [
+            {
+              "en": "If I spoke French, I could work in Paris.",
+              "ru": "Знай я французский, я мог бы работать в Париже."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "might",
+            "ru": "might"
+          },
+          "formula": "If …, might + verb",
+          "examples": [
+            {
+              "en": "If we left now, we might catch the train.",
+              "ru": "Если бы мы вышли сейчас, могли бы успеть на поезд."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "question",
+            "ru": "вопрос"
+          },
+          "formula": "What would you do if …?",
+          "examples": [
+            {
+              "en": "What would you do if you lost your phone?",
+              "ru": "Что бы ты сделал, если бы потерял телефон?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"would rather + base verb\": \"I would rather stay\", not \"to stay\".",
+          "ru": "\"would rather + начальная форма\": \"I would rather stay\", а не \"to stay\"."
+        },
+        {
+          "en": "The if-clause stays past simple even with could/might in the result.",
+          "ru": "If-часть остаётся в past simple, даже если в результате could/might."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u15.d02.reading",
+      "title": {
+        "en": "The job offer",
+        "ru": "Предложение о работе"
+      },
+      "blocks": [
+        {
+          "id": "u15.d02.reading.b1",
+          "en": "Marta has a difficult choice. A company in another city has offered her a better job, but she would have to leave her friends and family. \"If I took it, I could earn more and grow faster,\" she thinks, \"but I might feel lonely there.\"",
+          "ru": "У Марты трудный выбор. Компания в другом городе предложила ей работу получше, но пришлось бы оставить друзей и семью. «Если бы я согласилась, я могла бы больше зарабатывать и быстрее расти, — думает она, — но могла бы чувствовать себя одиноко».",
+          "audio": {
+            "src": "media/audio/u15.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u15.d02.reading.b2",
+          "en": "Her friend asked, \"What would you do if the money were the same here?\" Marta smiled. \"Honestly, I would stay. But the risk might be worth it. It really depends on how brave I feel.\"",
+          "ru": "Подруга спросила: «А что бы ты сделала, если бы деньги здесь были такими же?» Марта улыбнулась. «Честно, я бы осталась. Но риск, возможно, того стоит. Всё зависит от того, насколько я смелая».",
+          "audio": {
+            "src": "media/audio/u15.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "offer",
+          "ru": "предлагать; предложение",
+          "ipa": "/ˈɒfər/"
+        },
+        {
+          "word": "brave",
+          "ru": "смелый",
+          "ipa": "/breɪv/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u15.d02.listening",
+      "title": {
+        "en": "If you had the choice",
+        "ru": "Если бы у тебя был выбор"
+      },
+      "audio": {
+        "src": "media/audio/u15.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "What would you do if you could work from anywhere?",
+          "ru": "Что бы ты делал, если бы мог работать откуда угодно?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "If I could choose, I would live by the sea.",
+          "ru": "Если бы мог выбирать, я бы жил у моря."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Wouldn't you miss the city?",
+          "ru": "А по городу бы не скучал?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Maybe, but I might travel back for work sometimes.",
+          "ru": "Может быть, но иногда я бы возвращался по работе."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u15.d02.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "Where would he live?",
+            "ru": "Где бы он жил?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.second-conditional"
+          ],
+          "prompt": "If he could choose, he would live ___ .",
+          "options": [
+            "by the sea",
+            "in the city",
+            "in the mountains"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u15.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u15.d02.ex.c.01",
+          "instruction": {
+            "en": "Ability in the result.",
+            "ru": "Возможность/умение в результате."
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "If I spoke French, I ___ work in Paris.",
+          "options": [
+            "could",
+            "can",
+            "will"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u15.d02.ex.g.01",
+          "instruction": {
+            "en": "Hypothetical question.",
+            "ru": "Гипотетический вопрос."
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "What ___ you do if you lost your job? (would)",
+          "answers": [
+            "would"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u15.d02.ex.c.02",
+          "instruction": {
+            "en": "Preference.",
+            "ru": "Предпочтение."
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "I would ___ stay at home tonight.",
+          "options": [
+            "rather",
+            "better",
+            "prefer"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u15.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "variants": [
+            "If we left now, we will catch the train.",
+            "If we left now, we might catch the train."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u15.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.choices"
+          ],
+          "pairs": [
+            {
+              "left": "option",
+              "right": "вариант"
+            },
+            {
+              "left": "risk",
+              "right": "риск"
+            },
+            {
+              "left": "consider",
+              "right": "обдумывать"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u15.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.second-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Что бы ты сделал, если бы потерял телефон?",
+          "answers": [
+            "What would you do if you lost your phone?"
+          ]
+        }
+      ]
+    }
+  ]
+}
