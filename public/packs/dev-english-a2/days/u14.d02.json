@@ -1,0 +1,452 @@
+{
+  "id": "u14.d02",
+  "title": {
+    "en": "English is spoken here",
+    "ru": "Здесь говорят по-английски"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.passive",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u14.d02.vocab",
+      "title": {
+        "en": "Making & doing",
+        "ru": "Создание и действия"
+      },
+      "words": [
+        {
+          "word": "make",
+          "ru": "делать, производить",
+          "ipa": "/meɪk/",
+          "example": "Cars are made in factories.",
+          "exampleRu": "Машины делают на заводах.",
+          "audio": {
+            "src": "media/audio/u14.d02.vocab.make.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "build",
+          "ru": "строить",
+          "ipa": "/bɪld/",
+          "example": "The bridge was built in 1990.",
+          "exampleRu": "Мост построили в 1990.",
+          "audio": {
+            "src": "media/audio/u14.d02.vocab.build.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "use",
+          "ru": "использовать",
+          "ipa": "/juːz/",
+          "example": "English is used everywhere.",
+          "exampleRu": "Английский используют повсюду.",
+          "audio": {
+            "src": "media/audio/u14.d02.vocab.use.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "speak",
+          "ru": "говорить",
+          "ipa": "/spiːk/",
+          "example": "Spanish is spoken in Mexico.",
+          "exampleRu": "В Мексике говорят по-испански.",
+          "audio": {
+            "src": "media/audio/u14.d02.vocab.speak.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "invent",
+          "ru": "изобретать",
+          "ipa": "/ɪnˈvent/",
+          "example": "The phone was invented long ago.",
+          "exampleRu": "Телефон изобрели давно.",
+          "audio": {
+            "src": "media/audio/u14.d02.vocab.invent.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "produce",
+          "ru": "производить",
+          "ipa": "/prəˈdjuːs/",
+          "example": "Coffee is produced in Brazil.",
+          "exampleRu": "Кофе производят в Бразилии.",
+          "audio": {
+            "src": "media/audio/u14.d02.vocab.produce.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sell",
+          "ru": "продавать",
+          "ipa": "/sel/",
+          "example": "These books are sold online.",
+          "exampleRu": "Эти книги продают онлайн.",
+          "audio": {
+            "src": "media/audio/u14.d02.vocab.sell.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "clean",
+          "ru": "убирать, чистить",
+          "ipa": "/kliːn/",
+          "example": "The room is cleaned every day.",
+          "exampleRu": "Комнату убирают каждый день.",
+          "audio": {
+            "src": "media/audio/u14.d02.vocab.clean.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "factory",
+          "ru": "завод, фабрика",
+          "ipa": "/ˈfæktəri/",
+          "example": "She works in a factory.",
+          "exampleRu": "Она работает на заводе.",
+          "audio": {
+            "src": "media/audio/u14.d02.vocab.factory.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "famous",
+          "ru": "известный",
+          "ipa": "/ˈfeɪməs/",
+          "example": "It is famous around the world.",
+          "exampleRu": "Это известно по всему миру.",
+          "audio": {
+            "src": "media/audio/u14.d02.vocab.famous.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u14.d02.grammar",
+      "title": {
+        "en": "The passive (intro)",
+        "ru": "Пассивный залог (введение)"
+      },
+      "rule": {
+        "en": "Use the passive when the action matters more than who does it: be + past participle. Present: is/are + V3. Past: was/were + V3. Add \"by\" for the doer.",
+        "ru": "Пассив — когда важнее действие, а не деятель: be + причастие. Настоящее: is/are + V3. Прошлое: was/were + V3. Деятель — через \"by\"."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "present passive",
+            "ru": "present passive"
+          },
+          "formula": "is/are + past participle",
+          "examples": [
+            {
+              "en": "English is spoken here.",
+              "ru": "Здесь говорят по-английски."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "past passive",
+            "ru": "past passive"
+          },
+          "formula": "was/were + past participle",
+          "examples": [
+            {
+              "en": "The bridge was built in 1990.",
+              "ru": "Мост построили в 1990."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "by + doer",
+            "ru": "by + деятель"
+          },
+          "formula": "… by + person",
+          "examples": [
+            {
+              "en": "The book was written by a teacher.",
+              "ru": "Книгу написал учитель."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The passive always uses a form of \"be\" + past participle.",
+          "ru": "Пассив всегда: форма \"be\" + причастие прошедшего."
+        },
+        {
+          "en": "Choose is/are or was/were by the subject and the time.",
+          "ru": "is/are или was/were выбирай по подлежащему и времени."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u14.d02.reading",
+      "title": {
+        "en": "How chocolate is made",
+        "ru": "Как делают шоколад"
+      },
+      "blocks": [
+        {
+          "id": "u14.d02.reading.b1",
+          "en": "Chocolate is loved all over the world. The cocoa is grown in warm countries and the beans are sent to factories. There the chocolate is made and packed.",
+          "ru": "Шоколад любят во всём мире. Какао выращивают в тёплых странах, а бобы отправляют на фабрики. Там шоколад делают и упаковывают.",
+          "audio": {
+            "src": "media/audio/u14.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u14.d02.reading.b2",
+          "en": "The first chocolate bar was made in England in the 19th century. Today millions of bars are sold every day. Chocolate is enjoyed by people of all ages.",
+          "ru": "Первую плитку шоколада сделали в Англии в XIX веке. Сегодня миллионы плиток продают каждый день. Шоколадом наслаждаются люди всех возрастов.",
+          "audio": {
+            "src": "media/audio/u14.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "cocoa",
+          "ru": "какао",
+          "ipa": "/ˈkoʊkoʊ/"
+        },
+        {
+          "word": "pack",
+          "ru": "упаковывать",
+          "ipa": "/pæk/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u14.d02.listening",
+      "title": {
+        "en": "Where is it made?",
+        "ru": "Где это делают?"
+      },
+      "audio": {
+        "src": "media/audio/u14.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Where is this cheese made?",
+          "ru": "Где делают этот сыр?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "It is made in France.",
+          "ru": "Его делают во Франции."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "And when was this shop opened?",
+          "ru": "А когда открыли этот магазин?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "It was opened last year.",
+          "ru": "Его открыли в прошлом году."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u14.d02.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "Where is the cheese made?",
+            "ru": "Где делают сыр?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.passive"
+          ],
+          "prompt": "It is made in ___ .",
+          "options": [
+            "France",
+            "Italy",
+            "Spain"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u14.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u14.d02.ex.g.01",
+          "instruction": {
+            "en": "Present passive.",
+            "ru": "Present passive."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "English ___ spoken here. (be)",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d02.ex.g.02",
+          "instruction": {
+            "en": "Past passive.",
+            "ru": "Past passive."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The bridge ___ built in 1990. (be)",
+          "answers": [
+            "was"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d02.ex.c.01",
+          "instruction": {
+            "en": "Choose the passive form.",
+            "ru": "Выбери форму пассива."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "These cars ___ made in Japan.",
+          "options": [
+            "are",
+            "is",
+            "were made by"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u14.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "The house was build in 2000.",
+            "The house was built in 2000."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u14.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the verb and its past participle.",
+            "ru": "Сопоставь глагол и причастие."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "pairs": [
+            {
+              "left": "make",
+              "right": "made"
+            },
+            {
+              "left": "build",
+              "right": "built"
+            },
+            {
+              "left": "write",
+              "right": "written"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u14.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Здесь говорят по-английски.",
+          "answers": [
+            "English is spoken here."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,464 @@
+{
+  "id": "u14.d05",
+  "title": {
+    "en": "A2 checkpoint",
+    "ru": "Контрольная A2"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.review",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u14.d05.vocab",
+      "title": {
+        "en": "Key words to remember",
+        "ru": "Ключевые слова"
+      },
+      "words": [
+        {
+          "word": "because",
+          "ru": "потому что",
+          "ipa": "/bɪˈkɔːz/",
+          "example": "I stayed because it rained.",
+          "exampleRu": "Я остался, потому что шёл дождь.",
+          "audio": {
+            "src": "media/audio/u14.d05.vocab.because.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "although",
+          "ru": "хотя",
+          "ipa": "/ɔːlˈðoʊ/",
+          "example": "Although it was cold, we went out.",
+          "exampleRu": "Хотя было холодно, мы вышли.",
+          "audio": {
+            "src": "media/audio/u14.d05.vocab.although.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "however",
+          "ru": "однако",
+          "ipa": "/haʊˈevər/",
+          "example": "It was hard. However, I finished.",
+          "exampleRu": "Было тяжело. Однако я закончил.",
+          "audio": {
+            "src": "media/audio/u14.d05.vocab.however.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "finally",
+          "ru": "наконец",
+          "ipa": "/ˈfaɪnəli/",
+          "example": "Finally, we arrived.",
+          "exampleRu": "Наконец мы приехали.",
+          "audio": {
+            "src": "media/audio/u14.d05.vocab.finally.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "usually",
+          "ru": "обычно",
+          "ipa": "/ˈjuːʒuəli/",
+          "example": "I usually get up early.",
+          "exampleRu": "Обычно я встаю рано.",
+          "audio": {
+            "src": "media/audio/u14.d05.vocab.usually.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "enough",
+          "ru": "достаточно",
+          "ipa": "/ɪˈnʌf/",
+          "example": "That's enough.",
+          "exampleRu": "Достаточно.",
+          "audio": {
+            "src": "media/audio/u14.d05.vocab.enough.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "both",
+          "ru": "оба",
+          "ipa": "/boʊθ/",
+          "example": "Both answers are right.",
+          "exampleRu": "Оба ответа верны.",
+          "audio": {
+            "src": "media/audio/u14.d05.vocab.both.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "each",
+          "ru": "каждый",
+          "ipa": "/iːtʃ/",
+          "example": "Each student has a book.",
+          "exampleRu": "У каждого ученика есть книга.",
+          "audio": {
+            "src": "media/audio/u14.d05.vocab.each.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ready",
+          "ru": "готовый",
+          "ipa": "/ˈredi/",
+          "example": "Are you ready?",
+          "exampleRu": "Ты готов?",
+          "audio": {
+            "src": "media/audio/u14.d05.vocab.ready.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "proud",
+          "ru": "гордый",
+          "ipa": "/praʊd/",
+          "example": "Be proud of your progress.",
+          "exampleRu": "Гордись своим прогрессом.",
+          "audio": {
+            "src": "media/audio/u14.d05.vocab.proud.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u14.d05.grammar",
+      "title": {
+        "en": "A2 in a nutshell",
+        "ru": "A2 вкратце"
+      },
+      "rule": {
+        "en": "You now know the core of A2: the main tenses, modal verbs, comparatives, conditionals and the passive. This checkpoint mixes them all.",
+        "ru": "Теперь ты знаешь основу A2: главные времена, модальные глаголы, степени сравнения, условные и пассив. Эта контрольная смешивает всё."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "tenses",
+            "ru": "времена"
+          },
+          "formula": "present · past · perfect · future",
+          "examples": [
+            {
+              "en": "I work, I worked, I have worked, I will work.",
+              "ru": "Я работаю, работал, поработал, буду работать."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "modals",
+            "ru": "модальные"
+          },
+          "formula": "can · should · must · might",
+          "examples": [
+            {
+              "en": "You should rest. You must not be late.",
+              "ru": "Тебе стоит отдохнуть. Нельзя опаздывать."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "conditionals",
+            "ru": "условные"
+          },
+          "formula": "If + present, will …",
+          "examples": [
+            {
+              "en": "If you practise, you will improve.",
+              "ru": "Если будешь заниматься, ты станешь лучше."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "When you are unsure, look for the time word — it usually tells you the tense.",
+          "ru": "Если сомневаешься, ищи слово времени — оно обычно подсказывает время."
+        },
+        {
+          "en": "Read the whole sentence before choosing: context decides the grammar.",
+          "ru": "Читай всё предложение перед выбором: контекст решает грамматику."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u14.d05.reading",
+      "title": {
+        "en": "You did it!",
+        "ru": "Ты справился!"
+      },
+      "blocks": [
+        {
+          "id": "u14.d05.reading.b1",
+          "en": "Congratulations! You have reached the end of the A2 course. You started with simple words, and now you can talk about the past, the future and your experiences.",
+          "ru": "Поздравляем! Ты дошёл до конца курса A2. Ты начинал с простых слов, а теперь умеешь говорить о прошлом, будущем и своём опыте.",
+          "audio": {
+            "src": "media/audio/u14.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u14.d05.reading.b2",
+          "en": "You can ask for things, give advice, make plans and share opinions. If you keep practising, you will soon be ready for B1. Be proud of your progress!",
+          "ru": "Ты умеешь просить, давать советы, строить планы и делиться мнением. Если продолжишь заниматься, скоро будешь готов к B1. Гордись своим прогрессом!",
+          "audio": {
+            "src": "media/audio/u14.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "congratulations",
+          "ru": "поздравляем",
+          "ipa": "/kənˌɡrætʃuˈleɪʃnz/"
+        },
+        {
+          "word": "progress",
+          "ru": "прогресс",
+          "ipa": "/ˈprɒɡres/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u14.d05.listening",
+      "title": {
+        "en": "Ready for B1",
+        "ru": "Готов к B1"
+      },
+      "audio": {
+        "src": "media/audio/u14.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Have you finished the A2 course?",
+          "ru": "Ты закончил курс A2?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Yes, I have! It was hard but great.",
+          "ru": "Да! Было трудно, но здорово."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "What will you do next?",
+          "ru": "Что дальше?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "If I keep practising, I will start B1 soon.",
+          "ru": "Если продолжу заниматься, скоро начну B1."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u14.d05.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What will he do if he keeps practising?",
+            "ru": "Что он сделает, если продолжит заниматься?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.first-conditional"
+          ],
+          "prompt": "He will start ___ soon.",
+          "options": [
+            "B1",
+            "A1",
+            "A2"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u14.d05.practice",
+      "title": {
+        "en": "Cumulative check",
+        "ru": "Итоговая проверка"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u14.d05.ex.c.01",
+          "instruction": {
+            "en": "Modal: advice.",
+            "ru": "Модальный: совет."
+          },
+          "tags": [
+            "grammar.should"
+          ],
+          "prompt": "You look ill. You ___ see a doctor.",
+          "options": [
+            "should",
+            "must not",
+            "are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d05.ex.g.01",
+          "instruction": {
+            "en": "Present perfect.",
+            "ru": "Present perfect."
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "prompt": "I ___ never been to Spain. (have)",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d05.ex.c.02",
+          "instruction": {
+            "en": "Comparative.",
+            "ru": "Сравнительная."
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "prompt": "This book is ___ than that one.",
+          "options": [
+            "more interesting",
+            "interestinger",
+            "most interesting"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d05.ex.g.02",
+          "instruction": {
+            "en": "First conditional.",
+            "ru": "Первый тип условия."
+          },
+          "tags": [
+            "grammar.first-conditional"
+          ],
+          "prompt": "If you practise, you ___ improve. (will)",
+          "answers": [
+            "will"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d05.ex.c.03",
+          "instruction": {
+            "en": "Passive.",
+            "ru": "Пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "This song ___ loved by everyone.",
+          "options": [
+            "is",
+            "does",
+            "has"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u14.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.perfect-vs-past"
+          ],
+          "variants": [
+            "I have seen him yesterday.",
+            "I saw him yesterday."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u14.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.review",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Если ты будешь заниматься, ты станешь лучше.",
+          "answers": [
+            "If you practise, you will improve.",
+            "If you practice, you will improve."
+          ]
+        }
+      ]
+    }
+  ]
+}

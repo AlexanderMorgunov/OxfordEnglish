@@ -1,0 +1,453 @@
+{
+  "id": "u14.d01",
+  "title": {
+    "en": "Time to celebrate",
+    "ru": "Время праздновать"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.review",
+    "vocab.celebrations"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u14.d01.vocab",
+      "title": {
+        "en": "Celebrations",
+        "ru": "Праздники"
+      },
+      "words": [
+        {
+          "word": "party",
+          "ru": "вечеринка",
+          "ipa": "/ˈpɑːrti/",
+          "example": "We had a big party.",
+          "exampleRu": "У нас была большая вечеринка.",
+          "audio": {
+            "src": "media/audio/u14.d01.vocab.party.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "birthday",
+          "ru": "день рождения",
+          "ipa": "/ˈbɜːrθdeɪ/",
+          "example": "Happy birthday!",
+          "exampleRu": "С днём рождения!",
+          "audio": {
+            "src": "media/audio/u14.d01.vocab.birthday.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "present",
+          "ru": "подарок",
+          "ipa": "/ˈpreznt/",
+          "example": "I bought a present.",
+          "exampleRu": "Я купил подарок.",
+          "audio": {
+            "src": "media/audio/u14.d01.vocab.present.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "celebrate",
+          "ru": "праздновать",
+          "ipa": "/ˈselɪbreɪt/",
+          "example": "We celebrate every year.",
+          "exampleRu": "Мы празднуем каждый год.",
+          "audio": {
+            "src": "media/audio/u14.d01.vocab.celebrate.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "guest",
+          "ru": "гость",
+          "ipa": "/ɡest/",
+          "example": "The guests arrived at seven.",
+          "exampleRu": "Гости пришли в семь.",
+          "audio": {
+            "src": "media/audio/u14.d01.vocab.guest.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "candle",
+          "ru": "свеча",
+          "ipa": "/ˈkændl/",
+          "example": "Blow out the candles.",
+          "exampleRu": "Задуй свечи.",
+          "audio": {
+            "src": "media/audio/u14.d01.vocab.candle.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wedding",
+          "ru": "свадьба",
+          "ipa": "/ˈwedɪŋ/",
+          "example": "Their wedding was beautiful.",
+          "exampleRu": "Их свадьба была красивой.",
+          "audio": {
+            "src": "media/audio/u14.d01.vocab.wedding.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "invitation",
+          "ru": "приглашение",
+          "ipa": "/ˌɪnvɪˈteɪʃn/",
+          "example": "I got an invitation.",
+          "exampleRu": "Я получил приглашение.",
+          "audio": {
+            "src": "media/audio/u14.d01.vocab.invitation.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "gift",
+          "ru": "подарок",
+          "ipa": "/ɡɪft/",
+          "example": "What a nice gift!",
+          "exampleRu": "Какой хороший подарок!",
+          "audio": {
+            "src": "media/audio/u14.d01.vocab.gift.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "special",
+          "ru": "особенный",
+          "ipa": "/ˈspeʃl/",
+          "example": "It was a special day.",
+          "exampleRu": "Это был особенный день.",
+          "audio": {
+            "src": "media/audio/u14.d01.vocab.special.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u14.d01.grammar",
+      "title": {
+        "en": "Tenses review",
+        "ru": "Повторение времён"
+      },
+      "rule": {
+        "en": "Recap: present simple for routines, past simple for finished actions, present perfect for experiences, going to / will for the future.",
+        "ru": "Повторим: present simple — привычки, past simple — законченные действия, present perfect — опыт, going to / will — будущее."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "present / past",
+            "ru": "present / past"
+          },
+          "formula": "I work · I worked",
+          "examples": [
+            {
+              "en": "I usually work, but yesterday I rested.",
+              "ru": "Обычно я работаю, но вчера отдыхал."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "present perfect",
+            "ru": "present perfect"
+          },
+          "formula": "I have + V3",
+          "examples": [
+            {
+              "en": "I have been to many parties.",
+              "ru": "Я был на многих вечеринках."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "future",
+            "ru": "будущее"
+          },
+          "formula": "going to / will",
+          "examples": [
+            {
+              "en": "We are going to celebrate tonight.",
+              "ru": "Сегодня вечером мы будем праздновать."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Time words tell you the tense: yesterday → past, every day → present, tomorrow → future.",
+          "ru": "Слова-маркеры подсказывают время: yesterday → past, every day → present, tomorrow → future."
+        },
+        {
+          "en": "Use present perfect (not past) when there is no exact time.",
+          "ru": "Используй present perfect (не past), когда точного времени нет."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u14.d01.reading",
+      "title": {
+        "en": "A birthday to remember",
+        "ru": "Запоминающийся день рождения"
+      },
+      "blocks": [
+        {
+          "id": "u14.d01.reading.b1",
+          "en": "Last Saturday we celebrated my sister's birthday. Ten guests came and we had a big cake with candles. She got a lot of presents.",
+          "ru": "В прошлую субботу мы отпраздновали день рождения сестры. Пришло десять гостей, у нас был большой торт со свечами. Она получила много подарков.",
+          "audio": {
+            "src": "media/audio/u14.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u14.d01.reading.b2",
+          "en": "She has never had such a happy day. Next year we are going to make an even bigger party. Celebrations always bring the family together.",
+          "ru": "У неё никогда не было такого счастливого дня. В следующем году мы устроим ещё большую вечеринку. Праздники всегда собирают семью вместе.",
+          "audio": {
+            "src": "media/audio/u14.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "together",
+          "ru": "вместе",
+          "ipa": "/təˈɡeðər/"
+        },
+        {
+          "word": "happy",
+          "ru": "счастливый",
+          "ipa": "/ˈhæpi/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u14.d01.listening",
+      "title": {
+        "en": "The party",
+        "ru": "Вечеринка"
+      },
+      "audio": {
+        "src": "media/audio/u14.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Did you go to Mia's party?",
+          "ru": "Ты был на вечеринке у Мии?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Yes, I did. It was great!",
+          "ru": "Да, был. Было здорово!"
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Have you ever been to such a big party?",
+          "ru": "Ты когда-нибудь был на такой большой вечеринке?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Never! Next time I am going to bring my brother.",
+          "ru": "Никогда! В следующий раз приведу брата."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u14.d01.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What will he do next time?",
+            "ru": "Что он сделает в следующий раз?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.review"
+          ],
+          "prompt": "He is going to bring his ___ .",
+          "options": [
+            "brother",
+            "sister",
+            "friend"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u14.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u14.d01.ex.g.01",
+          "instruction": {
+            "en": "Past simple (yesterday).",
+            "ru": "Past simple (yesterday)."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "Yesterday we ___ a party. (have)",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d01.ex.g.02",
+          "instruction": {
+            "en": "Present perfect (no time).",
+            "ru": "Present perfect (без времени)."
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "prompt": "I ___ never been to a wedding. (have)",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d01.ex.c.01",
+          "instruction": {
+            "en": "Choose the tense.",
+            "ru": "Выбери время."
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "prompt": "Tomorrow we ___ celebrate.",
+          "options": [
+            "are going to",
+            "celebrated",
+            "have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u14.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "variants": [
+            "I have seen her yesterday.",
+            "I saw her yesterday."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u14.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.celebrations"
+          ],
+          "pairs": [
+            {
+              "left": "guest",
+              "right": "гость"
+            },
+            {
+              "left": "candle",
+              "right": "свеча"
+            },
+            {
+              "left": "wedding",
+              "right": "свадьба"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u14.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.review",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Вчера мы праздновали день рождения.",
+          "answers": [
+            "Yesterday we celebrated a birthday.",
+            "We celebrated a birthday yesterday."
+          ]
+        }
+      ]
+    }
+  ]
+}

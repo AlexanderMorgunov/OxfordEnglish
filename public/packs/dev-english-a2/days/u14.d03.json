@@ -1,0 +1,453 @@
+{
+  "id": "u14.d03",
+  "title": {
+    "en": "She said she was tired",
+    "ru": "Она сказала, что устала"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.reported-speech",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u14.d03.vocab",
+      "title": {
+        "en": "Telling & asking",
+        "ru": "Рассказ и вопросы"
+      },
+      "words": [
+        {
+          "word": "say",
+          "ru": "говорить, сказать",
+          "ipa": "/seɪ/",
+          "example": "She said hello.",
+          "exampleRu": "Она сказала «привет».",
+          "audio": {
+            "src": "media/audio/u14.d03.vocab.say.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tell",
+          "ru": "рассказывать, говорить (кому)",
+          "ipa": "/tel/",
+          "example": "He told me a secret.",
+          "exampleRu": "Он рассказал мне секрет.",
+          "audio": {
+            "src": "media/audio/u14.d03.vocab.tell.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ask",
+          "ru": "спрашивать, просить",
+          "ipa": "/ɑːsk/",
+          "example": "She asked a question.",
+          "exampleRu": "Она задала вопрос.",
+          "audio": {
+            "src": "media/audio/u14.d03.vocab.ask.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "answer",
+          "ru": "отвечать",
+          "ipa": "/ˈɑːnsər/",
+          "example": "He answered quickly.",
+          "exampleRu": "Он быстро ответил.",
+          "audio": {
+            "src": "media/audio/u14.d03.vocab.answer.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "explain",
+          "ru": "объяснять",
+          "ipa": "/ɪkˈspleɪn/",
+          "example": "She explained the rule.",
+          "exampleRu": "Она объяснила правило.",
+          "audio": {
+            "src": "media/audio/u14.d03.vocab.explain.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "promise",
+          "ru": "обещать",
+          "ipa": "/ˈprɒmɪs/",
+          "example": "He promised to help.",
+          "exampleRu": "Он обещал помочь.",
+          "audio": {
+            "src": "media/audio/u14.d03.vocab.promise.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "repeat",
+          "ru": "повторять",
+          "ipa": "/rɪˈpiːt/",
+          "example": "Please repeat that.",
+          "exampleRu": "Повтори, пожалуйста.",
+          "audio": {
+            "src": "media/audio/u14.d03.vocab.repeat.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reply",
+          "ru": "отвечать",
+          "ipa": "/rɪˈplaɪ/",
+          "example": "She replied at once.",
+          "exampleRu": "Она сразу ответила.",
+          "audio": {
+            "src": "media/audio/u14.d03.vocab.reply.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mention",
+          "ru": "упоминать",
+          "ipa": "/ˈmenʃn/",
+          "example": "He mentioned your name.",
+          "exampleRu": "Он упомянул твоё имя.",
+          "audio": {
+            "src": "media/audio/u14.d03.vocab.mention.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "secret",
+          "ru": "секрет",
+          "ipa": "/ˈsiːkrət/",
+          "example": "Can you keep a secret?",
+          "exampleRu": "Умеешь хранить секреты?",
+          "audio": {
+            "src": "media/audio/u14.d03.vocab.secret.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u14.d03.grammar",
+      "title": {
+        "en": "Reported speech (intro)",
+        "ru": "Косвенная речь (введение)"
+      },
+      "rule": {
+        "en": "To report what someone said, use \"say\" or \"tell + person\" and move the tense back one step: present → past, will → would, can → could.",
+        "ru": "Чтобы передать чужие слова, используй \"say\" или \"tell + кому\" и сдвинь время на шаг назад: present → past, will → would, can → could."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "present → past",
+            "ru": "present → past"
+          },
+          "formula": "\"I am tired\" → She said she was tired",
+          "examples": [
+            {
+              "en": "She said she was tired.",
+              "ru": "Она сказала, что устала."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "say / tell",
+            "ru": "say / tell"
+          },
+          "formula": "say (that) · tell + person (that)",
+          "examples": [
+            {
+              "en": "He told me that he was late.",
+              "ru": "Он сказал мне, что опаздывает."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "will → would",
+            "ru": "will → would"
+          },
+          "formula": "\"I will come\" → He said he would come",
+          "examples": [
+            {
+              "en": "He said he would come.",
+              "ru": "Он сказал, что придёт."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use \"tell\" with a person, \"say\" without: \"She told me\", \"She said\".",
+          "ru": "\"tell\" — с человеком, \"say\" — без: \"She told me\", \"She said\"."
+        },
+        {
+          "en": "Move the tense back: is → was, have → had, will → would.",
+          "ru": "Сдвигай время назад: is → was, have → had, will → would."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u14.d03.reading",
+      "title": {
+        "en": "What they said",
+        "ru": "Что они сказали"
+      },
+      "blocks": [
+        {
+          "id": "u14.d03.reading.b1",
+          "en": "Yesterday I met my friend Kate. She said she was very busy with a new project. She told me that she had a lot of work but she was happy.",
+          "ru": "Вчера я встретил подругу Кейт. Она сказала, что очень занята новым проектом. Она рассказала, что у неё много работы, но она счастлива.",
+          "audio": {
+            "src": "media/audio/u14.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u14.d03.reading.b2",
+          "en": "She also said she would visit us soon. I asked her when, and she explained that she would come after the holiday. I told her that we couldn't wait.",
+          "ru": "Ещё она сказала, что скоро нас навестит. Я спросил когда, и она объяснила, что приедет после праздника. Я сказал ей, что мы с нетерпением ждём.",
+          "audio": {
+            "src": "media/audio/u14.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "project",
+          "ru": "проект",
+          "ipa": "/ˈprɒdʒekt/"
+        },
+        {
+          "word": "busy",
+          "ru": "занятой",
+          "ipa": "/ˈbɪzi/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u14.d03.listening",
+      "title": {
+        "en": "He said…",
+        "ru": "Он сказал…"
+      },
+      "audio": {
+        "src": "media/audio/u14.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "Did you speak to Tom?",
+          "ru": "Ты говорил с Томом?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "Yes. He said he was ill.",
+          "ru": "Да. Он сказал, что болеет."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Did he say anything else?",
+          "ru": "Он ещё что-нибудь сказал?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "He told me he would call you later.",
+          "ru": "Он сказал, что позвонит тебе позже."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u14.d03.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What did Tom say about himself?",
+            "ru": "Что Том сказал о себе?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.reported-speech"
+          ],
+          "prompt": "He said he was ___ .",
+          "options": [
+            "ill",
+            "busy",
+            "tired"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u14.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u14.d03.ex.c.01",
+          "instruction": {
+            "en": "say or tell?",
+            "ru": "say или tell?"
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "She ___ me that she was busy.",
+          "options": [
+            "told",
+            "said",
+            "says"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d03.ex.g.01",
+          "instruction": {
+            "en": "present → past.",
+            "ru": "present → past."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "\"I am tired.\" → She said she ___ tired.",
+          "answers": [
+            "was"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d03.ex.g.02",
+          "instruction": {
+            "en": "will → would.",
+            "ru": "will → would."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "\"I will help.\" → He said he ___ help.",
+          "answers": [
+            "would"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u14.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "variants": [
+            "She said me she was happy.",
+            "She told me she was happy."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u14.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "explain",
+              "right": "объяснять"
+            },
+            {
+              "left": "promise",
+              "right": "обещать"
+            },
+            {
+              "left": "reply",
+              "right": "отвечать"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u14.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.reported-speech",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она сказала, что устала.",
+          "answers": [
+            "She said she was tired.",
+            "She said that she was tired."
+          ]
+        }
+      ]
+    }
+  ]
+}

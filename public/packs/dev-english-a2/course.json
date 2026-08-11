@@ -320,7 +320,13 @@
         "en": "Bridge & review",
         "ru": "Мост к B1 и повтор"
       },
-      "dayIds": [],
+      "dayIds": [
+        "u14.d01",
+        "u14.d02",
+        "u14.d03",
+        "u14.d04",
+        "u14.d05"
+      ],
       "checkpoint": {
         "id": "u14.checkpoint",
         "title": {

@@ -1,0 +1,464 @@
+{
+  "id": "u14.d04",
+  "title": {
+    "en": "Choosing the right tense",
+    "ru": "Выбираем правильное время"
+  },
+  "estimatedMinutes": 120,
+  "level": "A2",
+  "tags": [
+    "grammar.review",
+    "vocab.collocations",
+    "pronunciation"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u14.d04.vocab",
+      "title": {
+        "en": "Common collocations",
+        "ru": "Частые сочетания"
+      },
+      "words": [
+        {
+          "word": "make a decision",
+          "ru": "принять решение",
+          "ipa": "/meɪk ə dɪˈsɪʒn/",
+          "example": "I made a decision.",
+          "exampleRu": "Я принял решение.",
+          "audio": {
+            "src": "media/audio/u14.d04.vocab.makeadecision.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "take a photo",
+          "ru": "сделать фото",
+          "ipa": "/teɪk ə ˈfoʊtoʊ/",
+          "example": "Let's take a photo.",
+          "exampleRu": "Давай сделаем фото.",
+          "audio": {
+            "src": "media/audio/u14.d04.vocab.takeaphoto.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "have breakfast",
+          "ru": "завтракать",
+          "ipa": "/hæv ˈbrekfəst/",
+          "example": "I have breakfast at eight.",
+          "exampleRu": "Я завтракаю в восемь.",
+          "audio": {
+            "src": "media/audio/u14.d04.vocab.havebreakfast.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "do homework",
+          "ru": "делать домашку",
+          "ipa": "/duː ˈhoʊmwɜːrk/",
+          "example": "She does her homework.",
+          "exampleRu": "Она делает домашнее задание.",
+          "audio": {
+            "src": "media/audio/u14.d04.vocab.dohomework.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "catch a bus",
+          "ru": "успеть на автобус",
+          "ipa": "/kætʃ ə bʌs/",
+          "example": "I caught the bus.",
+          "exampleRu": "Я успел на автобус.",
+          "audio": {
+            "src": "media/audio/u14.d04.vocab.catchabus.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tell a story",
+          "ru": "рассказать историю",
+          "ipa": "/tel ə ˈstɔːri/",
+          "example": "He told a story.",
+          "exampleRu": "Он рассказал историю.",
+          "audio": {
+            "src": "media/audio/u14.d04.vocab.tellastory.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "give advice",
+          "ru": "дать совет",
+          "ipa": "/ɡɪv ədˈvaɪs/",
+          "example": "She gave me advice.",
+          "exampleRu": "Она дала мне совет.",
+          "audio": {
+            "src": "media/audio/u14.d04.vocab.giveadvice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "make friends",
+          "ru": "заводить друзей",
+          "ipa": "/meɪk frendz/",
+          "example": "He makes friends easily.",
+          "exampleRu": "Он легко заводит друзей.",
+          "audio": {
+            "src": "media/audio/u14.d04.vocab.makefriends.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "take care",
+          "ru": "заботиться, беречься",
+          "ipa": "/teɪk keər/",
+          "example": "Take care of yourself.",
+          "exampleRu": "Береги себя.",
+          "audio": {
+            "src": "media/audio/u14.d04.vocab.takecare.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "have fun",
+          "ru": "весело проводить время",
+          "ipa": "/hæv fʌn/",
+          "example": "We had a lot of fun.",
+          "exampleRu": "Мы отлично повеселились.",
+          "audio": {
+            "src": "media/audio/u14.d04.vocab.havefun.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u14.d04.grammar",
+      "title": {
+        "en": "Which tense?",
+        "ru": "Какое время?"
+      },
+      "rule": {
+        "en": "Choose the tense from the meaning: routine → present simple, now → present continuous, finished past → past simple, experience → present perfect.",
+        "ru": "Выбирай время по смыслу: привычка → present simple, сейчас → present continuous, законченное прошлое → past simple, опыт → present perfect."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "now vs usually",
+            "ru": "сейчас vs обычно"
+          },
+          "formula": "am -ing vs verb(s)",
+          "examples": [
+            {
+              "en": "I usually walk, but now I am driving.",
+              "ru": "Обычно я хожу пешком, но сейчас еду за рулём."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "past vs perfect",
+            "ru": "past vs perfect"
+          },
+          "formula": "V2 (when) vs have V3 (ever)",
+          "examples": [
+            {
+              "en": "I saw it yesterday. I have seen it before.",
+              "ru": "Я видел это вчера. Я видел это раньше."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "future",
+            "ru": "будущее"
+          },
+          "formula": "going to / will / -ing",
+          "examples": [
+            {
+              "en": "I'm meeting Tom at six. It will be fun.",
+              "ru": "Я встречаюсь с Томом в шесть. Будет весело."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Stative verbs (know, like) stay simple, not continuous.",
+          "ru": "Глаголы состояния (know, like) — в simple, не в continuous."
+        },
+        {
+          "en": "A time word (yesterday, ever, now) is your best clue for the tense.",
+          "ru": "Слово времени (yesterday, ever, now) — лучшая подсказка для времени."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u14.d04.reading",
+      "title": {
+        "en": "A normal, busy day",
+        "ru": "Обычный насыщенный день"
+      },
+      "blocks": [
+        {
+          "id": "u14.d04.reading.b1",
+          "en": "I usually have breakfast at seven and catch the bus to work. But today I am working from home, so I am still drinking my coffee at nine.",
+          "ru": "Обычно я завтракаю в семь и еду на автобусе на работу. Но сегодня работаю из дома, поэтому в девять всё ещё пью кофе.",
+          "audio": {
+            "src": "media/audio/u14.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u14.d04.reading.b2",
+          "en": "I have already answered ten emails this morning. Yesterday I made an important decision about a new project. Tomorrow I am going to tell my team about it.",
+          "ru": "Сегодня утром я уже ответил на десять писем. Вчера я принял важное решение о новом проекте. Завтра расскажу о нём команде.",
+          "audio": {
+            "src": "media/audio/u14.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "team",
+          "ru": "команда",
+          "ipa": "/tiːm/"
+        },
+        {
+          "word": "important",
+          "ru": "важный",
+          "ipa": "/ɪmˈpɔːrtnt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u14.d04.listening",
+      "title": {
+        "en": "Right now",
+        "ru": "Прямо сейчас"
+      },
+      "audio": {
+        "src": "media/audio/u14.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3,
+          "en": "What are you doing?",
+          "ru": "Что ты делаешь?"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "en": "I am doing my homework. I usually do it after dinner.",
+          "ru": "Делаю домашку. Обычно я делаю её после ужина."
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "en": "Have you finished the maths?",
+          "ru": "Математику закончил?"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "en": "Yes, I finished it an hour ago.",
+          "ru": "Да, закончил час назад."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "u14.d04.ex.l.01",
+          "type": "choice",
+          "instruction": {
+            "en": "What is he doing now?",
+            "ru": "Что он делает сейчас?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.review"
+          ],
+          "prompt": "He is doing his ___ .",
+          "options": [
+            "homework",
+            "breakfast",
+            "shopping"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u14.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u14.d04.ex.c.01",
+          "instruction": {
+            "en": "now → ?",
+            "ru": "сейчас → ?"
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "Look! The bus ___ .",
+          "options": [
+            "is coming",
+            "comes",
+            "came"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u14.d04.ex.c.02",
+          "instruction": {
+            "en": "ever → ?",
+            "ru": "ever → ?"
+          },
+          "tags": [
+            "grammar.perfect-vs-past"
+          ],
+          "prompt": "I ___ never seen snow.",
+          "options": [
+            "have",
+            "did",
+            "am"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d04.ex.g.01",
+          "instruction": {
+            "en": "yesterday → past simple.",
+            "ru": "yesterday → past simple."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "I ___ an important decision yesterday. (make)",
+          "answers": [
+            "made"
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u14.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the collocation and the translation.",
+            "ru": "Сопоставь сочетание и перевод."
+          },
+          "tags": [
+            "vocab.collocations"
+          ],
+          "pairs": [
+            {
+              "left": "make a decision",
+              "right": "принять решение"
+            },
+            {
+              "left": "take a photo",
+              "right": "сделать фото"
+            },
+            {
+              "left": "give advice",
+              "right": "дать совет"
+            }
+          ]
+        },
+        {
+          "type": "minimal-pairs",
+          "id": "u14.d04.ex.mp.01",
+          "instruction": {
+            "en": "Listen — which word do you hear?",
+            "ru": "Послушай — какое слово ты слышишь?"
+          },
+          "tags": [
+            "pronunciation"
+          ],
+          "audio": {
+            "src": "media/audio/u14.d04.ex.mp.01.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "options": [
+            "sheep",
+            "ship"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u14.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.review",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Сейчас я делаю домашнее задание.",
+          "answers": [
+            "I am doing my homework now.",
+            "I'm doing my homework."
+          ]
+        }
+      ]
+    }
+  ]
+}

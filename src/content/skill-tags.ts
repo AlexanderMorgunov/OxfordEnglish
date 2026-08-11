@@ -69,6 +69,9 @@ export const SKILL_TAGS = [
   'grammar.question-tags',
   'grammar.so-neither',
   'grammar.dependent-prepositions',
+  'grammar.passive',
+  'grammar.reported-speech',
+  'grammar.review',
 
   // functions (everyday communication)
   'functions.ordering',
@@ -119,6 +122,8 @@ export const SKILL_TAGS = [
   'vocab.nature',
   'vocab.animals',
   'vocab.seasons',
+  'vocab.celebrations',
+  'vocab.collocations',
 
   // reading
   'reading.gist',
