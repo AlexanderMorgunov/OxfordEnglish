@@ -22,20 +22,27 @@ const BAND_SOURCES: Record<Band, { unitId: string; take: number }[]> = {
   ],
 };
 
-/** Deterministic: choice/gap-fill items from a unit, in day → section → order. */
+/**
+ * Deterministic pick of self-contained questions from a unit. Only practice
+ * sections — listening exercises test recall of the day's audio, not language,
+ * so they are unanswerable out of context. Choice comes before gap-fill:
+ * unambiguous and typo-proof, with cue-bearing gap-fills as a fallback.
+ */
 function pickFromUnit(pack: LoadedPack, unitId: string, take: number): Exercise[] {
   const unit = pack.units.find((u) => u.id === unitId);
   if (!unit) return [];
-  const items: Exercise[] = [];
+  const choice: Exercise[] = [];
+  const gapFill: Exercise[] = [];
   for (const day of unit.days) {
     for (const section of day.sections) {
-      if (section.type !== 'practice' && section.type !== 'listening') continue;
+      if (section.type !== 'practice') continue;
       for (const ex of section.exercises) {
-        if (ex.type === 'choice' || ex.type === 'gap-fill') items.push(ex);
+        if (ex.type === 'choice') choice.push(ex);
+        else if (ex.type === 'gap-fill') gapFill.push(ex);
       }
     }
   }
-  return items.slice(0, take);
+  return [...choice, ...gapFill].slice(0, take);
 }
 
 /** A fixed diagnostic: 4 easy + 4 mid + 4 hard, always the same for a given pack. */
