@@ -41,6 +41,23 @@ export function addWordCard(
   });
 }
 
+export function addPhraseCard(
+  phrase: string,
+  back: string,
+  context?: string,
+  sourceDayId?: string
+): Promise<void> {
+  return upsert({
+    id: `phrase:${phrase.toLowerCase()}`,
+    kind: 'phrase',
+    front: phrase,
+    back: back || phrase,
+    contextSentence: context,
+    sourceDayId,
+    tags: [],
+  });
+}
+
 export function addErrorCard(
   exerciseId: string,
   front: string,
