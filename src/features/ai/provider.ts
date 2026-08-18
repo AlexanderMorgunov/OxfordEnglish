@@ -26,7 +26,8 @@ export const PROVIDERS: Record<AiProviderId, Preset> = {
   groq: {
     label: 'Groq',
     baseUrl: 'https://api.groq.com/openai/v1',
-    model: 'llama-3.3-70b-versatile',
+    // llama-3.3-70b-versatile reached end-of-life 2026-08-16; gpt-oss is the successor.
+    model: 'openai/gpt-oss-20b',
     browserSafe: true,
     noCard: true,
     keyUrl: 'https://console.groq.com/keys',
@@ -34,7 +35,7 @@ export const PROVIDERS: Record<AiProviderId, Preset> = {
   openrouter: {
     label: 'OpenRouter',
     baseUrl: 'https://openrouter.ai/api/v1',
-    model: 'meta-llama/llama-3.3-70b-instruct:free',
+    model: 'openai/gpt-oss-20b:free',
     browserSafe: true,
     noCard: true,
     keyUrl: 'https://openrouter.ai/keys',
@@ -42,7 +43,8 @@ export const PROVIDERS: Record<AiProviderId, Preset> = {
   cerebras: {
     label: 'Cerebras',
     baseUrl: 'https://api.cerebras.ai/v1',
-    model: 'llama-3.3-70b',
+    // Cerebras uses the bare id (no "openai/" prefix, unlike Groq/OpenRouter).
+    model: 'gpt-oss-120b',
     browserSafe: true,
     noCard: true,
     keyUrl: 'https://cloud.cerebras.ai',

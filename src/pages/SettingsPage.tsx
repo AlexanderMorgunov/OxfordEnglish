@@ -152,8 +152,17 @@ export function SettingsPage() {
           />
         </label>
         <label className="flex flex-col gap-1.5">
-          <span className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
+          <span className="flex items-center justify-between font-mono text-2xs uppercase tracking-[0.14em] text-muted">
             model
+            {model !== PROVIDERS[provider].model && PROVIDERS[provider].model && (
+              <button
+                type="button"
+                className="text-teal hover:underline"
+                onClick={() => setModel(PROVIDERS[provider].model)}
+              >
+                ↺ сбросить на {PROVIDERS[provider].model}
+              </button>
+            )}
           </span>
           <Input value={model} onChange={(e) => setModel(e.target.value)} />
         </label>
