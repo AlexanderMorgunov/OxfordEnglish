@@ -34,3 +34,20 @@ export function checkAnswer(
   if (normalized === '') return false;
   return answers.some((a) => normalizeAnswer(a, options) === normalized);
 }
+
+/**
+ * First authored typical-error whose trigger is contained in the normalized
+ * answer. Same folding as `checkAnswer`, plain substring — no regex.
+ */
+export function matchCommonError<T extends { match: string[] }>(
+  value: string,
+  commonErrors: T[] | undefined,
+  options: NormalizeOptions = {}
+): T | undefined {
+  if (!commonErrors?.length) return undefined;
+  const normalized = normalizeAnswer(value, options);
+  if (normalized === '') return undefined;
+  return commonErrors.find((ce) =>
+    ce.match.some((m) => normalized.includes(normalizeAnswer(m, options)))
+  );
+}

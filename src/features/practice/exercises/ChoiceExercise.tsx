@@ -22,7 +22,8 @@ function optionState(
 
 export function ChoiceExercise({ exercise, onSolved }: Props) {
   const [chosen, setChosen] = useState<number | null>(null);
-  const { status, revealHint, submit } = useExerciseAttempt(exercise, onSolved);
+  const attempt = useExerciseAttempt(exercise, onSolved);
+  const { status, submit } = attempt;
   const [before, after] = exercise.prompt.split(/_{2,}/);
 
   const pick = (i: number) => {
@@ -36,16 +37,12 @@ export function ChoiceExercise({ exercise, onSolved }: Props) {
 
   return (
     <ExerciseShell
-      instruction={exercise.instruction}
-      hint={exercise.hint}
-      explanation={exercise.explanation}
-      status={status}
-      onRevealHint={revealHint}
-      aiContext={{
+      exercise={exercise}
+      attempt={attempt}
+      ai={{
         prompt: exercise.prompt,
         userAnswer: chosen !== null ? (exercise.options[chosen] ?? '') : '',
         correct: exercise.options[exercise.correctIndex] ?? '',
-        topic: exercise.tags[0] ?? 'grammar',
       }}
       feedback={
         status !== 'idle' && (

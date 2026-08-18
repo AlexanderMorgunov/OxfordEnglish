@@ -13,7 +13,8 @@ type Props = {
 
 export function DictationExercise({ exercise, onSolved }: Props) {
   const [value, setValue] = useState('');
-  const { status, revealHint, submit } = useExerciseAttempt(exercise, onSolved);
+  const attempt = useExerciseAttempt(exercise, onSolved);
+  const { status, submit } = attempt;
 
   const check = () => {
     if (!value.trim() || status === 'correct') return;
@@ -22,11 +23,13 @@ export function DictationExercise({ exercise, onSolved }: Props) {
 
   return (
     <ExerciseShell
-      instruction={exercise.instruction}
-      hint={exercise.hint}
-      explanation={exercise.explanation}
-      status={status}
-      onRevealHint={revealHint}
+      exercise={exercise}
+      attempt={attempt}
+      ai={{
+        prompt: 'Type what you hear (dictation).',
+        userAnswer: value,
+        correct: exercise.answer,
+      }}
       feedback={
         status !== 'idle' && (
           <Console status={status === 'correct' ? 'pass' : 'fail'}>

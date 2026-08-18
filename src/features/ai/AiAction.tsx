@@ -3,9 +3,13 @@ import { Button } from '@/shared/ui';
 import { isConfigured, useAiStore } from './store';
 import type { AiConfig } from './provider';
 
-type Props = { label: string; run: (config: AiConfig) => Promise<string> };
+type Props = {
+  label: string;
+  run: (config: AiConfig) => Promise<string>;
+  onRun?: () => void;
+};
 
-export function AiAction({ label, run }: Props) {
+export function AiAction({ label, run, onRun }: Props) {
   const config = useAiStore((s) => s.config);
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState<string | null>(null);
@@ -22,6 +26,7 @@ export function AiAction({ label, run }: Props) {
   const go = async () => {
     setLoading(true);
     setError(null);
+    onRun?.();
     try {
       setText(await run(config));
     } catch (e) {

@@ -14,7 +14,8 @@ export function MatchExercise({ exercise, onSolved }: Props) {
   const [rightOrder] = useState(() => shuffle(exercise.pairs.map((_, i) => i)));
   const [selectedLeft, setSelectedLeft] = useState<number | null>(null);
   const [assign, setAssign] = useState<Record<number, number>>({});
-  const { status, revealHint, submit } = useExerciseAttempt(exercise, onSolved);
+  const attempt = useExerciseAttempt(exercise, onSolved);
+  const { status, submit } = attempt;
 
   const usedRight = new Set(Object.values(assign));
 
@@ -43,11 +44,8 @@ export function MatchExercise({ exercise, onSolved }: Props) {
 
   return (
     <ExerciseShell
-      instruction={exercise.instruction}
-      hint={exercise.hint}
-      explanation={exercise.explanation}
-      status={status}
-      onRevealHint={revealHint}
+      exercise={exercise}
+      attempt={attempt}
       feedback={
         status !== 'idle' && (
           <Console status={status === 'correct' ? 'pass' : 'fail'}>

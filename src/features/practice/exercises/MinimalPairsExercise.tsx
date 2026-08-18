@@ -24,7 +24,8 @@ function optionState(
 
 export function MinimalPairsExercise({ exercise, onSolved }: Props) {
   const [chosen, setChosen] = useState<number | null>(null);
-  const { status, revealHint, submit } = useExerciseAttempt(exercise, onSolved);
+  const attempt = useExerciseAttempt(exercise, onSolved);
+  const { status, submit } = attempt;
 
   const pick = (i: number) => {
     if (status === 'correct') return;
@@ -34,11 +35,8 @@ export function MinimalPairsExercise({ exercise, onSolved }: Props) {
 
   return (
     <ExerciseShell
-      instruction={exercise.instruction}
-      hint={exercise.hint}
-      explanation={exercise.explanation}
-      status={status}
-      onRevealHint={revealHint}
+      exercise={exercise}
+      attempt={attempt}
       feedback={
         status !== 'idle' && (
           <Console status={status === 'correct' ? 'pass' : 'fail'}>

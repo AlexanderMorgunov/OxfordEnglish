@@ -392,6 +392,15 @@
           "prompt": "Я обычно встаю рано и работаю в офисе.",
           "answers": [
             "I usually get up early and work in an office."
+          ],
+          "commonErrors": [
+            {
+              "match": ["usually i "],
+              "explanation": {
+                "en": "Word order: the adverb of frequency goes AFTER the subject, not before it — say \"I usually…\", not \"Usually I…\". Swap the first two words.",
+                "ru": "Порядок слов: наречие частотности стоит ПОСЛЕ подлежащего, а не перед ним — «I usually…», а не «Usually I…». Поменяй местами первые два слова."
+              }
+            }
           ]
         }
       ]

@@ -31,12 +31,23 @@ export const SkillTag = z
     message: `Unknown skill tag "${tag}" — add it to SKILL_TAGS (src/content/skill-tags.ts)`,
   }));
 
+export const CommonError = z.object({
+  // Trigger substrings; matched against the normalized answer (same folding as
+  // checkAnswer), plain contains — no regex (authors write these by hand).
+  match: z.array(z.string().min(1)).min(1),
+  explanation: LocalizedText,
+});
+
 const ExerciseBase = {
   id: z.string().min(1),
   instruction: LocalizedText,
   tags: z.array(SkillTag),
   hint: LocalizedText.optional(),
   explanation: LocalizedText.optional(),
+  // Authored typical-mistake bank shown on a matching wrong answer, before AI.
+  // Free-input types only (gap-fill/translate/transform/order-words/dictation) —
+  // meaningless for choice/spot-error/minimal-pairs (answer visible among options).
+  commonErrors: z.array(CommonError).optional(),
 };
 
 export const GapFillExercise = z.object({
@@ -273,6 +284,7 @@ export type LocalizedText = z.infer<typeof LocalizedText>;
 export type LicenseInfo = z.infer<typeof LicenseInfo>;
 export type MediaRef = z.infer<typeof MediaRef>;
 export type Level = z.infer<typeof Level>;
+export type CommonError = z.infer<typeof CommonError>;
 export type Exercise = z.infer<typeof Exercise>;
 export type Section = z.infer<typeof Section>;
 export type ReadingSection = z.infer<typeof ReadingSection>;

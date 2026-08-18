@@ -5,6 +5,7 @@ import { PROVIDERS, type AiProviderId } from '@/features/ai/provider';
 import { isConfigured, useAiStore } from '@/features/ai/store';
 import { exportData, importData } from '@/features/progress/backup';
 import { useLearner } from '@/features/learner/store';
+import { useUiLang } from '@/features/i18n/uiLang';
 import type { Level } from '@/content/schema';
 
 const PROVIDER_IDS = Object.keys(PROVIDERS) as AiProviderId[];
@@ -44,6 +45,7 @@ export function SettingsPage() {
   };
 
   const { level, placementDone, setLevel } = useLearner();
+  const { lang, setLang } = useUiLang();
 
   const [dataMsg, setDataMsg] = useState('');
   const doExport = async () => {
@@ -66,6 +68,27 @@ export function SettingsPage() {
 
   return (
     <section aria-label="Settings" className="max-w-prose">
+      <div className="mb-10 border-b border-line pb-8">
+        <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
+          язык интерфейса · interface language
+        </p>
+        <p className="mb-3 text-sm text-muted text-pretty">
+          Язык инструкций, подсказок и объяснений. Английский учебный текст не
+          меняется. / Language of instructions, hints and explanations.
+        </p>
+        <div className="flex gap-2">
+          {(['ru', 'en'] as const).map((l) => (
+            <Option
+              key={l}
+              state={lang === l ? 'chosen' : 'default'}
+              onClick={() => setLang(l)}
+            >
+              {l === 'ru' ? 'Русский' : 'English'}
+            </Option>
+          ))}
+        </div>
+      </div>
+
       <Eyebrow className="mb-3.5">config · ai (byok)</Eyebrow>
       <h1 className="mb-2 text-2xl font-bold tracking-tight">AI assistant</h1>
       <p className="mb-8 text-muted text-pretty">

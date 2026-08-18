@@ -22,7 +22,8 @@ function optionState(
 
 export function SpotErrorExercise({ exercise, onSolved }: Props) {
   const [chosen, setChosen] = useState<number | null>(null);
-  const { status, revealHint, submit } = useExerciseAttempt(exercise, onSolved);
+  const attempt = useExerciseAttempt(exercise, onSolved);
+  const { status, submit } = attempt;
 
   const pick = (i: number) => {
     if (status === 'correct') return;
@@ -35,16 +36,12 @@ export function SpotErrorExercise({ exercise, onSolved }: Props) {
 
   return (
     <ExerciseShell
-      instruction={exercise.instruction}
-      hint={exercise.hint}
-      explanation={exercise.explanation}
-      status={status}
-      onRevealHint={revealHint}
-      aiContext={{
+      exercise={exercise}
+      attempt={attempt}
+      ai={{
         prompt: `Which line is correct? ${exercise.variants.join(' / ')}`,
         userAnswer: chosen !== null ? (exercise.variants[chosen] ?? '') : '',
         correct: exercise.variants[exercise.correctIndex] ?? '',
-        topic: exercise.tags[0] ?? 'grammar',
       }}
       feedback={
         status !== 'idle' && (

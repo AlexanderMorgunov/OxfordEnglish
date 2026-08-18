@@ -12,7 +12,8 @@ type Props = {
 
 export function TransformExercise({ exercise, onSolved }: Props) {
   const [value, setValue] = useState('');
-  const { status, revealHint, submit } = useExerciseAttempt(exercise, onSolved);
+  const attempt = useExerciseAttempt(exercise, onSolved);
+  const { status, submit } = attempt;
 
   const check = () => {
     if (!value.trim() || status === 'correct') return;
@@ -24,16 +25,12 @@ export function TransformExercise({ exercise, onSolved }: Props) {
 
   return (
     <ExerciseShell
-      instruction={exercise.instruction}
-      hint={exercise.hint}
-      explanation={exercise.explanation}
-      status={status}
-      onRevealHint={revealHint}
-      aiContext={{
+      exercise={exercise}
+      attempt={attempt}
+      ai={{
         prompt: exercise.prompt,
         userAnswer: value,
         correct: exercise.answers[0] ?? '',
-        topic: exercise.tags[0] ?? 'grammar',
       }}
       feedback={
         status !== 'idle' && (

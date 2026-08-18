@@ -1,4 +1,4 @@
-import { checkAnswer, normalizeAnswer } from './normalize';
+import { checkAnswer, matchCommonError, normalizeAnswer } from './normalize';
 
 test('trims and collapses whitespace', () => {
   expect(normalizeAnswer('  deployed   the  app ')).toBe('deployed the app');
@@ -35,4 +35,17 @@ test('checkAnswer rejects empty input', () => {
 test('caseSensitive gap-fill distinguishes case', () => {
   expect(checkAnswer('ci', ['CI'], { caseSensitive: true })).toBe(false);
   expect(checkAnswer('CI', ['CI'], { caseSensitive: true })).toBe(true);
+});
+
+test('matchCommonError matches a trigger regardless of case/spacing', () => {
+  const errors = [
+    { match: ['usually i'], explanation: { en: 'Put the subject before the adverb.' } },
+  ];
+  // different capitalization + extra spaces still matches (same folding as checkAnswer)
+  expect(matchCommonError('Usually  I get up early', errors)?.explanation.en).toBe(
+    'Put the subject before the adverb.'
+  );
+  expect(matchCommonError('I usually get up early', errors)).toBeUndefined();
+  expect(matchCommonError('anything', undefined)).toBeUndefined();
+  expect(matchCommonError('   ', errors)).toBeUndefined();
 });

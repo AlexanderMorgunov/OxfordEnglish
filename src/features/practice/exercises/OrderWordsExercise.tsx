@@ -16,7 +16,8 @@ const arrayEq = (a: number[], b: number[]) =>
 export function OrderWordsExercise({ exercise, onSolved }: Props) {
   const [display] = useState(() => shuffle(exercise.tokens.map((_, i) => i)));
   const [picked, setPicked] = useState<number[]>([]);
-  const { status, revealHint, submit } = useExerciseAttempt(exercise, onSolved);
+  const attempt = useExerciseAttempt(exercise, onSolved);
+  const { status, submit } = attempt;
 
   const pick = (i: number) => {
     if (status === 'correct' || picked.includes(i)) return;
@@ -37,11 +38,13 @@ export function OrderWordsExercise({ exercise, onSolved }: Props) {
 
   return (
     <ExerciseShell
-      instruction={exercise.instruction}
-      hint={exercise.hint}
-      explanation={exercise.explanation}
-      status={status}
-      onRevealHint={revealHint}
+      exercise={exercise}
+      attempt={attempt}
+      ai={{
+        prompt: `Put in order: ${exercise.tokens.join(' / ')}`,
+        userAnswer: picked.map((k) => exercise.tokens[k]).join(' '),
+        correct: exercise.correctOrder.map((k) => exercise.tokens[k]).join(' '),
+      }}
       feedback={
         status !== 'idle' && (
           <Console status={status === 'correct' ? 'pass' : 'fail'}>

@@ -13,10 +13,14 @@ export type ExerciseMeta = {
   explanation?: LocalizedText;
 };
 
+export const AI_HINT_LIMIT = 5;
+
 export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void) {
   const [status, setStatus] = useState<ExerciseStatus>('idle');
   const [attemptNumber, setAttemptNumber] = useState(0);
+  const [attempts, setAttempts] = useState<string[]>([]);
   const [usedHint, setUsedHint] = useState(false);
+  const [aiHintsUsed, setAiHintsUsed] = useState(0);
 
   const submit = (
     correct: boolean,
@@ -26,6 +30,7 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
     if (status === 'correct') return;
     const n = attemptNumber + 1;
     setAttemptNumber(n);
+    setAttempts((prev) => [...prev, userAnswer]);
     useSessionResults.getState().record(exercise.id, correct, exercise.tags);
     void recordAttempt({
       exerciseId: exercise.id,
@@ -51,8 +56,15 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
   return {
     status,
     attemptNumber,
+    attempts,
     usedHint,
+    aiHintsUsed,
+    aiHintsLeft: AI_HINT_LIMIT - aiHintsUsed,
+    noteAiHint: () => setAiHintsUsed((n) => n + 1),
+    canReveal: attemptNumber >= 2 && status !== 'correct',
     revealHint: () => setUsedHint(true),
     submit,
   };
 }
+
+export type ExerciseAttempt = ReturnType<typeof useExerciseAttempt>;
