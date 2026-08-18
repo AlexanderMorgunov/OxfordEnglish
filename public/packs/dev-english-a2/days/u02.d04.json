@@ -237,7 +237,8 @@
           "en": "Use \"some/any\" with plurals: \"there are some shops\", \"there aren't any parks\".",
           "ru": "С множественным — \"some/any\": \"there are some shops\", \"there aren't any parks\"."
         }
-      ]
+      ],
+      "ref": "there-is"
     },
     {
       "type": "reading",

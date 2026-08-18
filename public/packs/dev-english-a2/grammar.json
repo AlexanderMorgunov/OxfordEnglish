@@ -239,5 +239,230 @@
       { "en": "The third form ≠ the past form for many verbs: go → went (past) → gone (third).", "ru": "Третья форма ≠ прошедшая у многих глаголов: go → went (прошедшее) → gone (третья)." }
     ],
     "seeAlso": ["past-simple"]
+  },
+  {
+    "id": "verb-be",
+    "title": { "en": "The verb \"be\": am / is / are", "ru": "Глагол \"be\": am / is / are" },
+    "level": "A1",
+    "summary": {
+      "en": "The most important verb — says who or what someone/something is.",
+      "ru": "Самый важный глагол — говорит, кто или что есть кто-то/что-то."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "Three forms", "ru": "Три формы" },
+        "text": {
+          "en": "\"be\" changes with the subject: I am, he/she/it is, we/you/they are. In Russian we usually drop this verb (\"Я студент\"), but in English it is almost never dropped.",
+          "ru": "\"be\" меняется по подлежащему:\n• I am (я есть)\n• he / she / it is (он/она/оно есть)\n• we / you / they are (мы/вы/они есть)\n\nВ русском мы обычно опускаем этот глагол («Я студент»), но в английском его почти никогда не выбрасывают. Короткие формы: I'm, he's, she's, it's, we're, you're, they're."
+        },
+        "examples": [
+          { "en": "I am a student. (I'm a student)", "ru": "Я студент." },
+          { "en": "She is from Spain. (She's from Spain)", "ru": "Она из Испании." },
+          { "en": "We are friends. (We're friends)", "ru": "Мы друзья." }
+        ]
+      },
+      {
+        "heading": { "en": "Negatives", "ru": "Отрицания" },
+        "text": {
+          "en": "Add not after be: I am not, he is not (isn't), we are not (aren't).",
+          "ru": "Добавляем not после be: I am not, he is not (isn't), we are not (aren't)."
+        },
+        "examples": [
+          { "en": "I'm not tired.", "ru": "Я не устал." },
+          { "en": "He isn't at home.", "ru": "Его нет дома." }
+        ]
+      },
+      {
+        "heading": { "en": "Questions: Am/Is/Are + subject … ?", "ru": "Вопросы: Am/Is/Are + подлежащее … ?" },
+        "text": {
+          "en": "To ask, put be BEFORE the subject. Short answers keep be: Yes, I am. / No, she isn't.",
+          "ru": "Чтобы спросить, ставим be ПЕРЕД подлежащим: Are you…? Is she…? Am I…?\n\nКраткие ответы сохраняют be: Yes, I am. / No, she isn't. (нельзя просто «Yes, I»)."
+        },
+        "examples": [
+          { "en": "Are you from Russia? — Yes, I am.", "ru": "Ты из России? — Да." },
+          { "en": "Is she your sister? — No, she isn't.", "ru": "Она твоя сестра? — Нет." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "Don't drop be: \"I am a teacher\", not \"I a teacher\".", "ru": "Не выбрасывай be: «I am a teacher», а не «I a teacher»." },
+      { "en": "In questions be comes first: \"Are you ready?\", not \"You are ready?\".", "ru": "В вопросе be на первом месте: «Are you ready?», а не «You are ready?»." }
+    ],
+    "seeAlso": ["pronouns", "possessives", "present-simple"]
+  },
+  {
+    "id": "pronouns",
+    "title": { "en": "Personal pronouns: I / me, he / him …", "ru": "Личные местоимения: I / me, he / him …" },
+    "level": "A1",
+    "summary": {
+      "en": "Subject pronouns do the action; object pronouns receive it.",
+      "ru": "Местоимение-подлежащее совершает действие; местоимение-дополнение принимает его."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "Two sets", "ru": "Два набора" },
+        "text": {
+          "en": "Subject (before the verb): I, you, he, she, it, we, they. Object (after the verb or a preposition): me, you, him, her, it, us, them.",
+          "ru": "Подлежащее (перед глаголом): I, you, he, she, it, we, they.\nДополнение (после глагола или предлога): me, you, him, her, it, us, them.\n\nПары: I → me, he → him, she → her, we → us, they → them (you и it не меняются)."
+        },
+        "examples": [
+          { "en": "I know her. She knows me.", "ru": "Я знаю её. Она знает меня." },
+          { "en": "We saw them. They saw us.", "ru": "Мы видели их. Они видели нас." },
+          { "en": "Give it to him.", "ru": "Дай это ему." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "After a verb or preposition use the object form: \"with me\", not \"with I\".", "ru": "После глагола или предлога — форма дополнения: «with me», а не «with I»." },
+      { "en": "Don't repeat the subject: \"My brother he works\" → \"My brother works\".", "ru": "Не дублируй подлежащее: «My brother he works» → «My brother works»." }
+    ],
+    "seeAlso": ["possessives", "verb-be"]
+  },
+  {
+    "id": "possessives",
+    "title": { "en": "Possessives: my / your / his … and mine / yours", "ru": "Притяжательные: my / your / his … и mine / yours" },
+    "level": "A1",
+    "summary": {
+      "en": "Show who something belongs to.",
+      "ru": "Показывают, кому что-то принадлежит."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "Before a noun: my, your, his, her, its, our, their", "ru": "Перед существительным: my, your, his, her, its, our, their" },
+        "text": {
+          "en": "These words go BEFORE a noun to say whose it is. Careful: his = his (of a man), her = her (of a woman) — the form matches the OWNER, not the thing.",
+          "ru": "Эти слова ставятся ПЕРЕД существительным и говорят, чьё это:\n• I → my (мой)\n• you → your (твой)\n• he → his (его)\n• she → her (её)\n• it → its (его/её, о предмете)\n• we → our (наш)\n• they → their (их)\n\nВажно: форма зависит от ВЛАДЕЛЬЦА, а не от предмета. «his wife» — жена мужчины, «her husband» — муж женщины."
+        },
+        "examples": [
+          { "en": "This is my phone.", "ru": "Это мой телефон." },
+          { "en": "Marco loves his wife.", "ru": "Марко любит свою жену. (владелец — мужчина → his)" },
+          { "en": "Anna and her brother.", "ru": "Анна и её брат. (владелец — женщина → her)" }
+        ]
+      },
+      {
+        "heading": { "en": "Without a noun: mine, yours, his, hers, ours, theirs", "ru": "Без существительного: mine, yours, his, hers, ours, theirs" },
+        "text": {
+          "en": "When you don't repeat the noun, use the second form. \"Whose is this? — It's mine.\"",
+          "ru": "Когда не повторяем существительное, берём вторую форму:\n• my → mine, your → yours, her → hers, our → ours, their → theirs (his не меняется).\n\nВопрос о владельце: «Whose…?» (чей?)."
+        },
+        "examples": [
+          { "en": "It is my phone. → It is mine.", "ru": "Это мой телефон. → Это мой." },
+          { "en": "Whose keys are these? — They're hers.", "ru": "Чьи это ключи? — Её." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "\"its\" (no apostrophe) = belonging to it; \"it's\" = it is. Different words!", "ru": "«its» (без апострофа) — принадлежность; «it's» — это «it is». Разные слова!" },
+      { "en": "The form matches the owner: a man → his, a woman → her.", "ru": "Форма — по владельцу: мужчина → his, женщина → her." }
+    ],
+    "seeAlso": ["pronouns", "verb-be"]
+  },
+  {
+    "id": "have-got",
+    "title": { "en": "have got / has got", "ru": "have got / has got (иметь)" },
+    "level": "A1",
+    "summary": {
+      "en": "A common way to talk about possession, family and features.",
+      "ru": "Частый способ сказать о том, что у тебя есть, о семье и признаках."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "Form", "ru": "Форма" },
+        "text": {
+          "en": "I/you/we/they have got; he/she/it has got. Short: I've got, she's got. It means the same as \"have\" but is very common in British English, especially in speech.",
+          "ru": "I/you/we/they have got; he/she/it has got. Кратко: I've got, she's got.\n\nЗначит то же, что и «have» (иметь), но очень часто используется в британском английском, особенно в речи."
+        },
+        "examples": [
+          { "en": "I've got a car.", "ru": "У меня есть машина." },
+          { "en": "She's got two brothers.", "ru": "У неё два брата." }
+        ]
+      },
+      {
+        "heading": { "en": "Questions and negatives", "ru": "Вопросы и отрицания" },
+        "text": {
+          "en": "Put have/has before the subject for questions; add not for negatives (haven't got / hasn't got).",
+          "ru": "Для вопроса ставим have/has перед подлежащим; для отрицания добавляем not (haven't got / hasn't got)."
+        },
+        "examples": [
+          { "en": "Have you got a phone? — Yes, I have.", "ru": "У тебя есть телефон? — Да." },
+          { "en": "He hasn't got a car.", "ru": "У него нет машины." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "Use has got for he/she/it: \"she has got\", not \"she have got\".", "ru": "Для he/she/it — has got: «she has got», а не «she have got»." }
+    ],
+    "seeAlso": ["verb-be", "there-is"]
+  },
+  {
+    "id": "present-continuous",
+    "title": { "en": "Present Continuous", "ru": "Present Continuous (настоящее длительное)" },
+    "level": "A2",
+    "summary": {
+      "en": "For an action happening now, at this moment.",
+      "ru": "Для действия, которое происходит сейчас, в этот момент."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "Form: be + verb-ing", "ru": "Форма: be + глагол-ing" },
+        "text": {
+          "en": "am / is / are + the -ing form of the verb. Spelling: make → making (drop -e), sit → sitting (double the consonant), run → running.",
+          "ru": "am / is / are + глагол с окончанием -ing.\n\nПравописание -ing:\n• глагол на -e → убираем -e: make → making\n• короткий ударный гласный + согласная → удваиваем: sit → sitting, run → running\n• обычно просто +ing: play → playing"
+        },
+        "examples": [
+          { "en": "I am reading now.", "ru": "Я сейчас читаю." },
+          { "en": "She is cooking dinner.", "ru": "Она готовит ужин (прямо сейчас)." }
+        ]
+      },
+      {
+        "heading": { "en": "When to use it", "ru": "Когда используем" },
+        "text": {
+          "en": "Right now (Look! It's raining) or around now (I'm reading a good book this week). Marker words: now, at the moment, right now, Look!, Listen!.",
+          "ru": "Прямо сейчас (Look! It's raining — Смотри! Идёт дождь) или в этот период (I'm reading a good book this week). Слова-маркеры: now, at the moment, right now, Look!, Listen!."
+        }
+      }
+    ],
+    "pitfalls": [
+      { "en": "Stative verbs (know, like, want, need) are not used in -ing: \"I know\", not \"I am knowing\".", "ru": "Глаголы состояния (know, like, want, need) не ставят в -ing: «I know», а не «I am knowing»." },
+      { "en": "Don't forget be: \"I am working\", not \"I working\".", "ru": "Не забывай be: «I am working», а не «I working»." }
+    ],
+    "seeAlso": ["present-simple", "verb-be"]
+  },
+  {
+    "id": "there-is",
+    "title": { "en": "there is / there are", "ru": "there is / there are (есть, имеется)" },
+    "level": "A2",
+    "summary": {
+      "en": "Says that something exists or is in a place.",
+      "ru": "Говорит, что что-то существует или находится в месте."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "One vs many", "ru": "Один или много" },
+        "text": {
+          "en": "there is + one thing (singular/uncountable); there are + many (plural). Short: there's. This structure has no direct Russian word — it's like «здесь есть…».",
+          "ru": "there is + один предмет (единственное/неисчисляемое); there are + много (множественное). Кратко: there's.\n\nОтдельного слова в русском нет — это как «здесь есть…», «имеется…»."
+        },
+        "examples": [
+          { "en": "There is a shop on the corner.", "ru": "На углу есть магазин." },
+          { "en": "There are two windows in the room.", "ru": "В комнате два окна." }
+        ]
+      },
+      {
+        "heading": { "en": "Questions and negatives", "ru": "Вопросы и отрицания" },
+        "text": {
+          "en": "Is there…? / Are there…? for questions; There isn't / There aren't for negatives. Use some in positive plurals and any in questions/negatives.",
+          "ru": "Is there…? / Are there…? — вопрос; There isn't / There aren't — отрицание. С множественным: some в утверждении, any в вопросе и отрицании."
+        },
+        "examples": [
+          { "en": "Is there any milk? — No, there isn't.", "ru": "Есть молоко? — Нет." },
+          { "en": "There aren't any free seats.", "ru": "Свободных мест нет." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "Match the verb to the noun: \"there is one book\", \"there are two books\".", "ru": "Согласуй глагол с существительным: «there is one book», «there are two books»." }
+    ],
+    "seeAlso": ["some-any", "articles"]
   }
 ]

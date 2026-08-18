@@ -237,7 +237,8 @@
           "en": "In questions/negatives use \"have/has\", not \"do\": \"Have you got…?\", not \"Do you have got…?\".",
           "ru": "В вопросах/отрицаниях — \"have/has\", не \"do\": \"Have you got…?\", а не \"Do you have got…?\"."
         }
-      ]
+      ],
+      "ref": "have-got"
     },
     {
       "type": "reading",

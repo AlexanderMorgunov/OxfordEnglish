@@ -237,7 +237,8 @@
           "en": "Subject questions need no \"do\": \"Who called?\", not \"Who did call?\".",
           "ru": "Вопрос о подлежащем без \"do\": \"Who called?\", а не \"Who did call?\"."
         }
-      ]
+      ],
+      "ref": "pronouns"
     },
     {
       "type": "reading",
