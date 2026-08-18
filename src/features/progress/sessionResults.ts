@@ -10,6 +10,7 @@ type SessionResultsState = {
   results: Record<string, ExerciseResult>;
   record: (id: string, correct: boolean, tags: string[]) => void;
   hydrate: (entries: { id: string; result: ExerciseResult }[]) => void;
+  reset: (ids: string[]) => void;
 };
 
 /**
@@ -35,6 +36,12 @@ export const useSessionResults = create<SessionResultsState>((set) => ({
     set((state) => {
       const next = { ...state.results };
       for (const { id, result } of entries) if (!next[id]) next[id] = result;
+      return { results: next };
+    }),
+  reset: (ids) =>
+    set((state) => {
+      const next = { ...state.results };
+      for (const id of ids) delete next[id];
       return { results: next };
     }),
 }));

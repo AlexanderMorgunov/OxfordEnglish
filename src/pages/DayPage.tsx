@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useContentStore } from '@/content/store';
 import { PracticeSectionView } from '@/features/practice/PracticeSectionView';
@@ -8,7 +8,7 @@ import { VocabularySectionView } from '@/features/learn/VocabularySectionView';
 import { ListeningSectionView } from '@/features/listen/ListeningSectionView';
 import { DaySummary, type NextDay } from '@/features/learn/DaySummary';
 import { loadAttempts } from '@/features/progress/queries';
-import { resultsFromAttempts } from '@/features/progress/completion';
+import { resultsFromAttempts, dayExercises } from '@/features/progress/completion';
 import { useSessionResults } from '@/features/progress/sessionResults';
 import { Eyebrow, PageStub, PixelImage } from '@/shared/ui';
 import type { LoadedPack } from '@/content/loader';
@@ -18,6 +18,13 @@ function nextDayOf(pack: LoadedPack, dayId: string): NextDay | null {
   const idx = ordered.findIndex((o) => o.day.id === dayId);
   const nxt = idx >= 0 ? ordered[idx + 1] : undefined;
   return nxt ? { unitId: nxt.unitId, dayId: nxt.day.id, title: nxt.day.title.en } : null;
+}
+
+/** unitId when `dayId` is the LAST day of its unit — the point to offer a checkpoint. */
+function unitCheckpointOf(pack: LoadedPack, dayId: string): string | null {
+  const unit = pack.units.find((u) => u.days.some((d) => d.id === dayId));
+  const last = unit?.days[unit.days.length - 1];
+  return last && last.id === dayId ? unit.id : null;
 }
 
 const SECTION_LABEL: Record<string, string> = {
@@ -32,6 +39,8 @@ export function DayPage() {
   const { dayId } = useParams();
   const { status, pack, load } = useContentStore();
   const hydrate = useSessionResults((s) => s.hydrate);
+  const resetResults = useSessionResults((s) => s.reset);
+  const [runKey, setRunKey] = useState(0);
 
   useEffect(() => {
     void load();
@@ -55,6 +64,12 @@ export function DayPage() {
     );
   }
 
+  const redo = () => {
+    resetResults(dayExercises(day).map((e) => e.id));
+    setRunKey((k) => k + 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <article>
       <Eyebrow className="mb-3.5">learning day · {day.id}</Eyebrow>
@@ -64,7 +79,7 @@ export function DayPage() {
 
       <div className="flex flex-col gap-12">
         {day.sections.map((section) => (
-          <section key={section.id} aria-label={section.title.en}>
+          <section key={`${section.id}.${runKey}`} aria-label={section.title.en}>
             <div className="mb-4 flex items-center gap-2.5 border-b border-line pb-2">
               <PixelImage
                 src={`/assets/pixel/sections/${section.type}.png`}
@@ -92,7 +107,12 @@ export function DayPage() {
           </section>
         ))}
 
-        <DaySummary day={day} next={pack ? nextDayOf(pack, day.id) : null} />
+        <DaySummary
+          day={day}
+          next={pack ? nextDayOf(pack, day.id) : null}
+          checkpointUnitId={pack ? unitCheckpointOf(pack, day.id) : null}
+          onRedo={redo}
+        />
       </div>
     </article>
   );

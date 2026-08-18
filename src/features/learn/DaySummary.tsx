@@ -5,14 +5,19 @@ import { dayExercises } from '@/features/progress/completion';
 import { Card, ProgressBar } from '@/shared/ui';
 
 export type NextDay = { unitId: string; dayId: string; title: string };
-type Props = { day: Day; next: NextDay | null };
+type Props = {
+  day: Day;
+  next: NextDay | null;
+  checkpointUnitId?: string | null;
+  onRedo?: () => void;
+};
 
 const nextClass =
   'inline-flex items-center justify-center gap-2 rounded-sm px-4 py-2.5 text-sm font-mono ' +
   'tracking-[0.02em] bg-teal text-ink font-semibold transition-[opacity,scale] duration-150 ' +
   'hover:opacity-90 active:scale-[0.96] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal';
 
-export function DaySummary({ day, next }: Props) {
+export function DaySummary({ day, next, checkpointUnitId, onRedo }: Props) {
   const results = useSessionResults((s) => s.results);
   const exercises = dayExercises(day);
   if (exercises.length === 0) return null;
@@ -60,6 +65,18 @@ export function DaySummary({ day, next }: Props) {
         <p className="mt-4 text-sm text-teal">Отличная работа — без ошибок! ✓</p>
       ) : null}
 
+      {checkpointUnitId && (
+        <Link
+          to={`/checkpoint/${checkpointUnitId}`}
+          className="mt-4 block rounded-sm border border-amber-dim bg-amber-dim/10 px-3.5 py-2.5 text-sm hover:border-amber"
+        >
+          <span className="font-mono text-2xs uppercase tracking-[0.08em] text-amber">
+            конец юнита
+          </span>
+          <span className="ml-2">Пройти контрольную по юниту →</span>
+        </Link>
+      )}
+
       <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-line pt-5">
         {next ? (
           <Link to={`/course/${next.unitId}/day/${next.dayId}`} className={nextClass}>
@@ -69,6 +86,15 @@ export function DaySummary({ day, next }: Props) {
           <Link to="/" className={nextClass}>
             На главную →
           </Link>
+        )}
+        {onRedo && (
+          <button
+            type="button"
+            onClick={onRedo}
+            className="font-mono text-2xs uppercase tracking-[0.08em] text-muted hover:text-content"
+          >
+            ↻ пройти заново
+          </button>
         )}
         {next && (
           <span className="font-mono text-2xs text-muted">
