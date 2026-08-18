@@ -479,6 +479,128 @@
           "answers": [
             "This is my wife."
           ]
+        },
+        {
+          "type": "choice",
+          "id": "u01.d01.ex.b.01",
+          "instruction": {
+            "en": "Ask with \"be\".",
+            "ru": "Спроси через «be»."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "___ you from Spain?",
+          "options": [
+            "Are",
+            "Is",
+            "Am",
+            "Do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u01.d01.ex.b.02",
+          "instruction": {
+            "en": "am / is / are?",
+            "ru": "am / is / are?"
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "She ___ my sister.",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u01.d01.ex.b.03",
+          "instruction": {
+            "en": "Which question is correct?",
+            "ru": "Какой вопрос верный?"
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "variants": [
+            "You are from Russia?",
+            "Are you from Russia?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u01.d01.ex.b.04",
+          "instruction": {
+            "en": "my / your / his / her?",
+            "ru": "my / your / his / her?"
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "prompt": "Anna loves ___ brother.",
+          "options": [
+            "her",
+            "his",
+            "their",
+            "your"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u01.d01.ex.b.05",
+          "instruction": {
+            "en": "Make a question.",
+            "ru": "Составь вопрос."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "tokens": [
+            "Is",
+            "he",
+            "your",
+            "father"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u01.d01.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.be",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он из Франции.",
+          "answers": [
+            "He is from France.",
+            "He's from France."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he from",
+                "he is france"
+              ],
+              "explanation": {
+                "en": "Don't drop \"be\" and use \"from\": \"He is from France.\"",
+                "ru": "Не выбрасывай «be» и используй «from»: «He is from France»."
+              }
+            }
+          ]
         }
       ]
     }

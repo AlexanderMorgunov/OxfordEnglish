@@ -184,7 +184,8 @@
               "en": "I am Anna. I have got a brother. This is my friend Tom.",
               "ru": "Я Анна. У меня есть брат. Это мой друг Том."
             }
-          ]
+          ],
+          "ref": "verb-be"
         }
       ],
       "pitfalls": [
@@ -394,6 +395,129 @@
           "answers": [
             "I am glad to meet you all.",
             "Glad to meet you all."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u01.d05.ex.b.01",
+          "instruction": {
+            "en": "Ask with have got.",
+            "ru": "Спроси через have got."
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "prompt": "___ you got any brothers?",
+          "options": [
+            "Have",
+            "Are",
+            "Do",
+            "Has"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u01.d05.ex.b.02",
+          "instruction": {
+            "en": "The verb be.",
+            "ru": "Глагол be."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "Hello, I ___ Anna.",
+          "answers": [
+            "am"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u01.d05.ex.b.03",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "variants": [
+            "I am have got a car.",
+            "I have got a car."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "order-words",
+          "id": "u01.d05.ex.b.04",
+          "instruction": {
+            "en": "A polite phrase.",
+            "ru": "Вежливая фраза."
+          },
+          "tags": [
+            "functions.small-talk"
+          ],
+          "tokens": [
+            "Nice",
+            "to",
+            "meet",
+            "you"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u01.d05.ex.b.05",
+          "instruction": {
+            "en": "Object pronoun.",
+            "ru": "Местоимение-дополнение."
+          },
+          "tags": [
+            "grammar.pronouns"
+          ],
+          "prompt": "Please call ___ tomorrow. (I)",
+          "options": [
+            "me",
+            "I",
+            "my",
+            "mine"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u01.d05.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.be",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Меня зовут Том, я из Испании.",
+          "answers": [
+            "My name is Tom, I am from Spain.",
+            "My name is Tom, I'm from Spain."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "my name tom",
+                "i from spain",
+                "name is tom i from"
+              ],
+              "explanation": {
+                "en": "Don't drop \"is\"/\"am\": \"My name is Tom, I am from Spain.\"",
+                "ru": "Не выбрасывай «is»/«am»: «My name is Tom, I am from Spain»."
+              }
+            }
           ]
         }
       ]

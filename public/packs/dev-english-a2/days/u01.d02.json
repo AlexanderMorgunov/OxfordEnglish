@@ -212,7 +212,8 @@
               "en": "She has got two children.",
               "ru": "У неё двое детей."
             }
-          ]
+          ],
+          "ref": "have-got"
         },
         {
           "label": {
@@ -225,7 +226,8 @@
               "en": "Have you got a phone? — No, I haven't got one.",
               "ru": "У тебя есть телефон? — Нет."
             }
-          ]
+          ],
+          "ref": "have-got"
         }
       ],
       "pitfalls": [
@@ -237,8 +239,7 @@
           "en": "In questions/negatives use \"have/has\", not \"do\": \"Have you got…?\", not \"Do you have got…?\".",
           "ru": "В вопросах/отрицаниях — \"have/has\", не \"do\": \"Have you got…?\", а не \"Do you have got…?\"."
         }
-      ],
-      "ref": "have-got"
+      ]
     },
     {
       "type": "reading",
@@ -456,6 +457,131 @@
           "answers": [
             "She has got long hair.",
             "She's got long hair."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u01.d02.ex.b.01",
+          "instruction": {
+            "en": "have got or has got?",
+            "ru": "have got или has got?"
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "prompt": "She ___ got two brothers.",
+          "answers": [
+            "has"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u01.d02.ex.b.02",
+          "instruction": {
+            "en": "Ask about possession.",
+            "ru": "Спроси о наличии."
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "prompt": "___ you got a car?",
+          "options": [
+            "Have",
+            "Do",
+            "Are",
+            "Has"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u01.d02.ex.b.03",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "variants": [
+            "He have got a dog.",
+            "He has got a dog."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u01.d02.ex.b.04",
+          "instruction": {
+            "en": "Negative.",
+            "ru": "Отрицание."
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "prompt": "I ___ got glasses.",
+          "options": [
+            "haven't",
+            "don't",
+            "am not",
+            "isn't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u01.d02.ex.b.05",
+          "instruction": {
+            "en": "Ask about a phone.",
+            "ru": "Спроси про телефон."
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "tokens": [
+            "Have",
+            "you",
+            "got",
+            "a",
+            "phone"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u01.d02.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.have-got",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У неё длинные волосы.",
+          "answers": [
+            "She has got long hair.",
+            "She has long hair.",
+            "She's got long hair."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she have got",
+                "she have"
+              ],
+              "explanation": {
+                "en": "For he/she/it use \"has got\": \"She has got long hair.\"",
+                "ru": "Для he/she/it — «has got»: «She has got long hair»."
+              }
+            }
           ]
         }
       ]

@@ -212,7 +212,8 @@
               "en": "This bag is mine.",
               "ru": "Эта сумка моя."
             }
-          ]
+          ],
+          "ref": "possessives"
         },
         {
           "label": {
@@ -225,7 +226,8 @@
               "en": "Whose keys are these? — They're hers.",
               "ru": "Чьи это ключи? — Её."
             }
-          ]
+          ],
+          "ref": "possessives"
         }
       ],
       "pitfalls": [
@@ -237,8 +239,7 @@
           "en": "\"Whose\" (чей) ≠ \"who's\" (who is). \"Whose bag?\" vs \"Who's here?\".",
           "ru": "\"Whose\" (чей) ≠ \"who's\" (who is). \"Whose bag?\" против \"Who's here?\"."
         }
-      ],
-      "ref": "possessives"
+      ]
     },
     {
       "type": "reading",
@@ -451,6 +452,121 @@
           "tags": [
             "writing.translation",
             "grammar.possessives"
+          ],
+          "direction": "ru-en",
+          "prompt": "Эти ключи мои.",
+          "answers": [
+            "These keys are mine."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u01.d04.ex.b.01",
+          "instruction": {
+            "en": "Possessive pronoun.",
+            "ru": "Притяжательное местоимение."
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "prompt": "This phone is ___ .",
+          "options": [
+            "mine",
+            "my",
+            "me",
+            "myself"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u01.d04.ex.b.02",
+          "instruction": {
+            "en": "Whose? — hers.",
+            "ru": "Чей? — hers."
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "prompt": "Whose bag is this? — It's ___ . (she)",
+          "answers": [
+            "hers"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u01.d04.ex.b.03",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "variants": [
+            "It's your.",
+            "It's yours."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u01.d04.ex.b.04",
+          "instruction": {
+            "en": "Whose or Who's?",
+            "ru": "Whose или Who's?"
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "prompt": "___ keys are these?",
+          "options": [
+            "Whose",
+            "Who's",
+            "Who",
+            "Which"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "transform",
+          "id": "u01.d04.ex.b.05",
+          "instruction": {
+            "en": "Rewrite with a possessive pronoun. (It is my car → It is mine.)",
+            "ru": "Перепиши с притяжательным местоимением. (It is my car → It is mine.)"
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "prompt": "It is my coat.",
+          "answers": [
+            "It is mine.",
+            "It's mine."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "my",
+                "mine coat",
+                "is my"
+              ],
+              "explanation": {
+                "en": "Without the noun use \"mine\": \"It is mine\", not \"It is my\".",
+                "ru": "Без существительного — «mine»: «It is mine», а не «It is my»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u01.d04.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.possessives",
+            "writing.translation"
           ],
           "direction": "ru-en",
           "prompt": "Эти ключи мои.",

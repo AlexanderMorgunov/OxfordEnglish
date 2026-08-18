@@ -212,7 +212,8 @@
               "en": "I know him. Call me.",
               "ru": "Я его знаю. Позвони мне."
             }
-          ]
+          ],
+          "ref": "pronouns"
         },
         {
           "label": {
@@ -225,7 +226,8 @@
               "en": "Who called you?",
               "ru": "Кто тебе звонил?"
             }
-          ]
+          ],
+          "ref": "pronouns"
         }
       ],
       "pitfalls": [
@@ -237,8 +239,7 @@
           "en": "Subject questions need no \"do\": \"Who called?\", not \"Who did call?\".",
           "ru": "Вопрос о подлежащем без \"do\": \"Who called?\", а не \"Who did call?\"."
         }
-      ],
-      "ref": "pronouns"
+      ]
     },
     {
       "type": "reading",
@@ -454,6 +455,126 @@
           "answers": [
             "Call me tonight.",
             "Call me in the evening."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u01.d03.ex.b.01",
+          "instruction": {
+            "en": "Object pronoun.",
+            "ru": "Местоимение-дополнение."
+          },
+          "tags": [
+            "grammar.pronouns"
+          ],
+          "prompt": "I know ___ well.",
+          "options": [
+            "her",
+            "she",
+            "hers",
+            "their"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u01.d03.ex.b.02",
+          "instruction": {
+            "en": "Object pronoun for \"he\".",
+            "ru": "Дополнение для «he»."
+          },
+          "tags": [
+            "grammar.pronouns"
+          ],
+          "prompt": "Give it to ___ .",
+          "answers": [
+            "him"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u01.d03.ex.b.03",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.pronouns"
+          ],
+          "variants": [
+            "She knows I.",
+            "She knows me."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u01.d03.ex.b.04",
+          "instruction": {
+            "en": "Ask about the subject.",
+            "ru": "Спроси о подлежащем."
+          },
+          "tags": [
+            "grammar.pronouns"
+          ],
+          "prompt": "___ called you? (ask about the caller)",
+          "options": [
+            "Who",
+            "Who did",
+            "Whom did",
+            "What"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u01.d03.ex.b.05",
+          "instruction": {
+            "en": "Put in order.",
+            "ru": "Собери фразу."
+          },
+          "tags": [
+            "grammar.pronouns"
+          ],
+          "tokens": [
+            "We",
+            "saw",
+            "them",
+            "yesterday"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u01.d03.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.pronouns",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мы знаем их.",
+          "answers": [
+            "We know them."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "we know they"
+              ],
+              "explanation": {
+                "en": "After the verb use the object form: \"them\", not \"they\".",
+                "ru": "После глагола — форма дополнения: «them», а не «they»."
+              }
+            }
           ]
         }
       ]
