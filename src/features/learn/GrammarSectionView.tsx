@@ -72,7 +72,7 @@ export function GrammarSectionView({ section }: Props) {
 
       {section.ref && (
         <Link
-          to={`/grammar/${section.ref}`}
+          to={`/grammar/${section.ref}?from=${section.id.replace(/\.grammar$/, '')}`}
           className="self-start font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
         >
           {uiLang === 'ru' ? '→ подробнее в справочнике' : '→ read more in the reference'}

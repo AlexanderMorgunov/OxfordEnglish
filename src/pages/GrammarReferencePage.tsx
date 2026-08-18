@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { useContentStore } from '@/content/store';
 import { useUiLang, tr } from '@/features/i18n/uiLang';
 import { Card, Eyebrow, PageStub } from '@/shared/ui';
@@ -57,6 +57,8 @@ export function GrammarIndexPage() {
 
 export function GrammarArticlePage() {
   const { articleId } = useParams();
+  const [searchParams] = useSearchParams();
+  const fromDay = searchParams.get('from');
   const { pack, load, status } = useContentStore();
   const lang = useUiLang((s) => s.lang);
   useEffect(() => {
@@ -84,12 +86,22 @@ export function GrammarArticlePage() {
 
   return (
     <article className="max-w-prose">
-      <Link
-        to="/grammar"
-        className="mb-4 inline-block font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
-      >
-        {lang === 'ru' ? '← справочник' : '← reference'}
-      </Link>
+      <div className="mb-4 flex flex-wrap gap-4">
+        {fromDay && (
+          <Link
+            to={`/course/${fromDay.split('.')[0]}/day/${fromDay}`}
+            className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
+          >
+            {lang === 'ru' ? '← вернуться к дню' : '← back to the day'}
+          </Link>
+        )}
+        <Link
+          to="/grammar"
+          className="font-mono text-2xs uppercase tracking-[0.08em] text-muted hover:text-content"
+        >
+          {lang === 'ru' ? '← справочник' : '← reference'}
+        </Link>
+      </div>
       <h1 className="mb-2 text-2xl font-bold tracking-tight text-balance">
         {tr(article.title, lang)}
       </h1>
