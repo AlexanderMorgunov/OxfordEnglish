@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import type { Section, VocabEntry } from '@/content/schema';
 import { packMediaUrl } from '@/content/loader';
 import { Button, SegmentedToggle } from '@/shared/ui';
 import { canSpeak, playClip, speakWord } from '@/shared/lib/audio';
 import { addWordCard } from '@/features/srs/service';
+import { PuzzleSection } from '@/features/puzzle/PuzzleSection';
+import { puzzleWords } from '@/features/puzzle/generate';
 
 type VocabularySection = Extract<Section, { type: 'vocabulary' }>;
 
@@ -69,6 +71,12 @@ function WordCard({ entry, testMode }: { entry: VocabEntry; testMode: boolean })
 
 export function VocabularySectionView({ section }: { section: VocabularySection }) {
   const [mode, setMode] = useState<'study' | 'test'>('study');
+  const [showPuzzle, setShowPuzzle] = useState(false);
+  const entries = useMemo(
+    () => section.words.map((w) => ({ word: w.word, clue: w.ru })),
+    [section.words]
+  );
+  const canPuzzle = puzzleWords(entries).length >= 3;
 
   return (
     <div className="flex flex-col gap-4">
@@ -103,6 +111,19 @@ export function VocabularySectionView({ section }: { section: VocabularySection 
           <WordCard key={entry.word} entry={entry} testMode={mode === 'test'} />
         ))}
       </div>
+
+      {canPuzzle &&
+        (showPuzzle ? (
+          <PuzzleSection entries={entries} />
+        ) : (
+          <button
+            type="button"
+            className="self-start font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
+            onClick={() => setShowPuzzle(true)}
+          >
+            ▸ повторить сеткой (кроссворд / филворд)
+          </button>
+        ))}
     </div>
   );
 }
