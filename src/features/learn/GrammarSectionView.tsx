@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { Section } from '@/content/schema';
 import { SegmentedToggle } from '@/shared/ui';
+import { useUiLang } from '@/features/i18n/uiLang';
 
 type Props = { section: Extract<Section, { type: 'grammar' }> };
 
 export function GrammarSectionView({ section }: Props) {
   const [lang, setLang] = useState<'en' | 'ru'>('en');
+  const uiLang = useUiLang((s) => s.lang);
   const hasRu = Boolean(section.rule.ru);
   const showRu = lang === 'ru' && hasRu;
 
@@ -65,6 +68,15 @@ export function GrammarSectionView({ section }: Props) {
             ))}
           </ul>
         </div>
+      )}
+
+      {section.ref && (
+        <Link
+          to={`/grammar/${section.ref}`}
+          className="self-start font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
+        >
+          {uiLang === 'ru' ? '→ подробнее в справочнике' : '→ read more in the reference'}
+        </Link>
       )}
     </div>
   );

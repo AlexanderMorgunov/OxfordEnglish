@@ -3,6 +3,7 @@ import { useLearner } from '@/features/learner/store';
 
 const NAV = [
   { to: '/', label: 'today', end: true, devOnly: false },
+  { to: '/grammar', label: 'grammar', end: false, devOnly: false },
   { to: '/review', label: 'review', end: false, devOnly: false },
   { to: '/progress', label: 'progress', end: false, devOnly: false },
   { to: '/vocabulary', label: 'vocab', end: false, devOnly: false },

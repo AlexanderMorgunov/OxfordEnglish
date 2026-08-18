@@ -10,7 +10,14 @@ import type { Level } from '@/content/schema';
 
 const PROVIDER_IDS = Object.keys(PROVIDERS) as AiProviderId[];
 
-const LEVEL_START: Record<Level, string> = { A1: 'u00', A2: 'u01', B1: 'u15', B2: 'u15' };
+const LEVEL_START: Record<Level, string> = {
+  A1: 'u00',
+  A2: 'u01',
+  B1: 'u15',
+  B2: 'u15',
+  C1: 'u15',
+  C2: 'u15',
+};
 const LEVELS: Level[] = ['A1', 'A2', 'B1'];
 
 export function SettingsPage() {

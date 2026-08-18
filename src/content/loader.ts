@@ -1,4 +1,11 @@
-import { CourseIndex, Day, PackManifest, type UnitIndex } from './schema';
+import {
+  CourseIndex,
+  Day,
+  GrammarReference,
+  PackManifest,
+  type GrammarArticle,
+  type UnitIndex,
+} from './schema';
 
 export const PUBLIC_PACK_BASE = '/packs/dev-english-a2';
 
@@ -14,6 +21,7 @@ export type LoadedPack = {
   course: CourseIndex;
   units: LoadedUnit[];
   days: Map<string, Day>;
+  grammar: GrammarArticle[];
 };
 
 async function fetchJson(path: string): Promise<unknown> {
@@ -46,5 +54,13 @@ export async function loadPublicPack(): Promise<LoadedPack> {
     }),
   }));
 
-  return { manifest, course, units, days };
+  // Grammar reference is optional — the pack works without it.
+  let grammar: GrammarArticle[] = [];
+  try {
+    grammar = GrammarReference.parse(await fetchJson(`${PUBLIC_PACK_BASE}/grammar.json`));
+  } catch {
+    grammar = [];
+  }
+
+  return { manifest, course, units, days, grammar };
 }

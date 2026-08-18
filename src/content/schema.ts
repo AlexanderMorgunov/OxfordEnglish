@@ -160,10 +160,34 @@ export const ReadingSection = z.object({
   attribution: z.string().optional(),
 });
 
+export const GrammarArticle = z.object({
+  id: z.string().min(1),
+  title: LocalizedText,
+  level: z.enum(['A1', 'A2', 'B1', 'B2', 'C1', 'C2']).optional(),
+  summary: LocalizedText,
+  blocks: z
+    .array(
+      z.object({
+        heading: LocalizedText.optional(),
+        text: LocalizedText,
+        examples: z
+          .array(z.object({ en: z.string().min(1), ru: z.string().optional() }))
+          .optional(),
+      })
+    )
+    .min(1),
+  pitfalls: z.array(LocalizedText).optional(),
+  seeAlso: z.array(z.string()).optional(),
+});
+
+export const GrammarReference = z.array(GrammarArticle);
+
 export const GrammarSection = z.object({
   type: z.literal('grammar'),
   id: z.string().min(1),
   title: LocalizedText,
+  // Optional link to a reference article (GrammarArticle.id) — "read more".
+  ref: z.string().optional(),
   rule: LocalizedText,
   patterns: z
     .array(
@@ -225,7 +249,7 @@ export const Section = z.discriminatedUnion('type', [
   ListeningSection,
 ]);
 
-export const Level = z.enum(['A1', 'A2', 'B1', 'B2']);
+export const Level = z.enum(['A1', 'A2', 'B1', 'B2', 'C1', 'C2']);
 
 export const Day = z.object({
   id: z.string().min(1),
@@ -289,6 +313,7 @@ export type Exercise = z.infer<typeof Exercise>;
 export type Section = z.infer<typeof Section>;
 export type ReadingSection = z.infer<typeof ReadingSection>;
 export type GrammarSection = z.infer<typeof GrammarSection>;
+export type GrammarArticle = z.infer<typeof GrammarArticle>;
 export type VocabEntry = z.infer<typeof VocabEntry>;
 export type VocabularySection = z.infer<typeof VocabularySection>;
 export type PracticeSection = z.infer<typeof PracticeSection>;

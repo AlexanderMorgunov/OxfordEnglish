@@ -259,7 +259,8 @@
           "en": "Russian has no articles, so \"a/an\" vs \"the\" is new: first mention → a, second mention → the.",
           "ru": "В русском артиклей нет, поэтому \"a/an\" и \"the\" — новое: первое упоминание → a, повторное → the."
         }
-      ]
+      ],
+      "ref": "articles"
     },
     {
       "type": "reading",

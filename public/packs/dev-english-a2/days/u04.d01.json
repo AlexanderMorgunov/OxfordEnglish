@@ -239,7 +239,8 @@
           "en": "In questions the past is carried by 'did', so the main verb stays base: 'Did you merge?', not 'Did you merged?'.",
           "ru": "В вопросе прошедшее время несёт 'did', основной глагол — в начальной форме: 'Did you merge?', а не 'Did you merged?'."
         }
-      ]
+      ],
+      "ref": "past-simple"
     },
     {
       "type": "reading",

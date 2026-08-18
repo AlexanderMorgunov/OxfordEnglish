@@ -1,0 +1,243 @@
+[
+  {
+    "id": "present-simple",
+    "title": { "en": "Present Simple", "ru": "Present Simple (настоящее простое)" },
+    "level": "A2",
+    "summary": {
+      "en": "For routines, habits and facts — what is generally true.",
+      "ru": "Для привычек, распорядка и фактов — то, что верно вообще."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "When we use it", "ru": "Когда используем" },
+        "text": {
+          "en": "Present Simple describes things that happen regularly (routines and habits) and things that are always true (facts). It is not about this exact moment now — for that we use Present Continuous.",
+          "ru": "Present Simple описывает то, что происходит регулярно (привычки, распорядок дня), и то, что верно всегда (факты). Это НЕ про момент прямо сейчас — для «сейчас» есть Present Continuous.\n\nОбрати внимание на слова-маркеры: always (всегда), usually (обычно), often (часто), sometimes (иногда), never (никогда), every day (каждый день), on Mondays (по понедельникам). Если видишь их — почти всегда нужен Present Simple."
+        },
+        "examples": [
+          { "en": "I work in an office.", "ru": "Я работаю в офисе. (вообще, это моя работа)" },
+          { "en": "She usually gets up at seven.", "ru": "Она обычно встаёт в семь." },
+          { "en": "Water boils at 100 degrees.", "ru": "Вода кипит при 100 градусах. (факт)" }
+        ]
+      },
+      {
+        "heading": { "en": "How to build it", "ru": "Как строится" },
+        "text": {
+          "en": "For I / you / we / they use the base verb. For he / she / it add -s to the verb. That -s is the thing learners forget most often, so watch for it.",
+          "ru": "С I / you / we / they берём глагол в начальной форме. С he / she / it добавляем к глаголу -s. Именно это -s чаще всего забывают — следи за ним.\n\nСхема:\n• I / you / we / they + глагол → I work, they play\n• he / she / it + глагол + s → he works, she plays"
+        },
+        "examples": [
+          { "en": "I / you / we / they play football.", "ru": "Я / ты / мы / они играем в футбол." },
+          { "en": "He plays football.", "ru": "Он играет в футбол. (play → plays)" },
+          { "en": "My sister lives in Moscow.", "ru": "Моя сестра живёт в Москве. (live → lives)" }
+        ]
+      },
+      {
+        "heading": { "en": "Questions and negatives: do / does", "ru": "Вопросы и отрицания: do / does" },
+        "text": {
+          "en": "To ask a question or make a negative, use the helper do (I/you/we/they) or does (he/she/it) — and the main verb goes back to its base form (no -s!).",
+          "ru": "Чтобы задать вопрос или сказать отрицание, используем вспомогательный глагол do (с I/you/we/they) или does (с he/she/it). При этом основной глагол возвращается в начальную форму — без -s! Само -s «переходит» в does."
+        },
+        "examples": [
+          { "en": "Do you like coffee?", "ru": "Ты любишь кофе?" },
+          { "en": "Does she work here? — Yes, she does.", "ru": "Она здесь работает? — Да." },
+          { "en": "He doesn't (does not) eat meat.", "ru": "Он не ест мясо. (не «doesn't eats»!)" }
+        ]
+      },
+      {
+        "heading": { "en": "Spelling of the -s", "ru": "Правописание -s (3-е лицо)" },
+        "text": {
+          "en": "Usually just add -s. But: after -s, -sh, -ch, -x, -o add -es; and if the verb ends in consonant + y, change y to -ies.",
+          "ru": "Обычно просто добавляем -s. Но есть нюансы:\n• после -s, -sh, -ch, -x, -o → добавляем -es: watch → watches, go → goes\n• согласная + y → меняем y на -ies: study → studies, try → tries\n• гласная + y → просто -s: play → plays"
+        },
+        "examples": [
+          { "en": "watch → watches, go → goes", "ru": "смотрит, идёт" },
+          { "en": "study → studies, fly → flies", "ru": "учится, летает" }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "Don't forget -s for he/she/it: \"he works\", not \"he work\".", "ru": "Не забывай -s для he/she/it: «he works», а не «he work»." },
+      { "en": "After does/doesn't use the base verb: \"Does he work?\", not \"Does he works?\".", "ru": "После does/doesn't — начальная форма: «Does he work?», а не «Does he works?»." },
+      { "en": "Russian has no such helper — \"do/does\" has no direct translation, it's just grammar.", "ru": "В русском нет такого вспомогательного глагола — «do/does» не переводится отдельным словом, это просто часть грамматики." }
+    ],
+    "seeAlso": ["present-continuous", "articles"]
+  },
+  {
+    "id": "articles",
+    "title": { "en": "Articles: a / an / the", "ru": "Артикли: a / an / the" },
+    "level": "A1",
+    "summary": {
+      "en": "a/an for a new thing, the for a known one, no article for things in general.",
+      "ru": "a/an — для нового предмета, the — для известного, без артикля — о предметах вообще."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "Why this is hard for us", "ru": "Почему это трудно для нас" },
+        "text": {
+          "en": "Russian has no articles at all, so this is a completely new idea. In English almost every singular countable noun needs an article (or another word like my/this). The choice depends on whether the listener knows WHICH thing you mean.",
+          "ru": "В русском артиклей нет вообще, поэтому это совершенно новая идея. В английском почти каждое исчисляемое существительное в единственном числе требует артикль (или другое слово вроде my/this). Выбор зависит от одного: понимает ли собеседник, о КАКОМ именно предмете речь."
+        }
+      },
+      {
+        "heading": { "en": "a / an — a new thing (any one)", "ru": "a / an — новое (любой такой)" },
+        "text": {
+          "en": "Use a/an when you mention a countable thing for the FIRST time, or when it doesn't matter which one. Use a before a consonant sound and an before a vowel sound. We also use a/an with jobs.",
+          "ru": "Ставим a/an, когда называем исчисляемый предмет ВПЕРВЫЕ или когда неважно, какой именно. Перед согласным звуком — a, перед гласным звуком — an (важен именно звук, а не буква). Ещё a/an используется с профессиями."
+        },
+        "examples": [
+          { "en": "I have a dog.", "ru": "У меня есть собака. (какая-то, впервые упомянули)" },
+          { "en": "an apple, an hour", "ru": "яблоко, час (звук гласный → an)" },
+          { "en": "She is a teacher.", "ru": "Она учитель. (профессия → a)" }
+        ]
+      },
+      {
+        "heading": { "en": "the — a known thing", "ru": "the — известное" },
+        "text": {
+          "en": "Use the when both of you know WHICH thing is meant: it was already mentioned, or there is only one of it, or it's clear from the situation.",
+          "ru": "Ставим the, когда обоим ясно, о КАКОМ предмете речь: он уже упоминался, или он единственный, или это понятно из ситуации.\n\nТипичный переход: первое упоминание → a, второе → the."
+        },
+        "examples": [
+          { "en": "I have a car. The car is red.", "ru": "У меня есть машина. Эта машина красная. (второе упоминание → the)" },
+          { "en": "the sun, the internet", "ru": "солнце, интернет (единственные в своём роде → the)" },
+          { "en": "Close the door, please.", "ru": "Закрой дверь, пожалуйста. (понятно, какую)" }
+        ]
+      },
+      {
+        "heading": { "en": "no article — things in general", "ru": "без артикля — о предметах вообще" },
+        "text": {
+          "en": "Don't use an article with plural or uncountable nouns when you talk about them in general. Compare: \"Dogs are friendly\" (dogs in general) vs \"The dogs are hungry\" (these specific dogs).",
+          "ru": "Не ставим артикль перед множественным числом и неисчисляемыми, когда говорим о них в общем смысле. Сравни: «Dogs are friendly» (собаки вообще) и «The dogs are hungry» (эти конкретные собаки)."
+        },
+        "examples": [
+          { "en": "I like coffee.", "ru": "Я люблю кофе. (вообще, неисчисляемое)" },
+          { "en": "Cats are independent.", "ru": "Кошки независимы. (кошки вообще)" }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "a/an is only for singular countable nouns — never \"a water\", \"a money\".", "ru": "a/an — только с исчисляемыми в единственном числе: нельзя «a water», «a money»." },
+      { "en": "It's about sound, not letter: \"an hour\" (h is silent), \"a university\" (sounds like 'you').", "ru": "Важен звук, а не буква: «an hour» (h не читается), «a university» (звучит как «ю»)." },
+      { "en": "First mention → a, second mention → the.", "ru": "Первое упоминание → a, повторное → the." }
+    ],
+    "seeAlso": ["present-simple"]
+  },
+  {
+    "id": "past-simple",
+    "title": { "en": "Past Simple", "ru": "Past Simple (прошедшее простое)" },
+    "level": "A2",
+    "summary": {
+      "en": "For finished actions in the past, usually with a time word.",
+      "ru": "Для законченных действий в прошлом, обычно со словом времени."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "When we use it", "ru": "Когда используем" },
+        "text": {
+          "en": "Past Simple is for an action that started and finished in the past. It usually goes with time words: yesterday, last week, in 2020, two days ago, when I was a child.",
+          "ru": "Past Simple — для действия, которое началось и закончилось в прошлом. Обычно рядом есть слово времени: yesterday (вчера), last week (на прошлой неделе), in 2020, two days ago (два дня назад), when I was a child (когда я был ребёнком)."
+        },
+        "examples": [
+          { "en": "I watched a film yesterday.", "ru": "Вчера я посмотрел фильм." },
+          { "en": "We went to Italy last summer.", "ru": "Прошлым летом мы ездили в Италию." }
+        ]
+      },
+      {
+        "heading": { "en": "Regular verbs: + -ed", "ru": "Правильные глаголы: + -ed" },
+        "text": {
+          "en": "Most verbs are regular: just add -ed. Spelling notes: verb ending in -e → add -d (like → liked); consonant + y → -ied (study → studied); short stressed vowel + consonant → double it (stop → stopped).",
+          "ru": "Большинство глаголов правильные: просто добавляем -ed. Нюансы правописания:\n• глагол на -e → добавляем -d: like → liked\n• согласная + y → -ied: study → studied\n• короткий ударный гласный + согласная → удваиваем согласную: stop → stopped"
+        },
+        "examples": [
+          { "en": "work → worked, play → played", "ru": "работал, играл" },
+          { "en": "study → studied, stop → stopped", "ru": "учился, остановился" }
+        ]
+      },
+      {
+        "heading": { "en": "Irregular verbs", "ru": "Неправильные глаголы" },
+        "text": {
+          "en": "Many common verbs are irregular — they change form and you have to learn them by heart. There is no rule; a good learner keeps a list and practises them.",
+          "ru": "Многие частые глаголы неправильные — они меняют форму, и их нужно учить наизусть. Правила нет; заведи список и повторяй их.\n\nСамые частые: go → went, have → had, see → saw, do → did, make → made, take → took, come → came, get → got."
+        },
+        "examples": [
+          { "en": "go → went, have → had, see → saw", "ru": "пошёл, имел, видел" },
+          { "en": "I saw him yesterday.", "ru": "Я видел его вчера. (see → saw)" }
+        ]
+      },
+      {
+        "heading": { "en": "Questions and negatives: did", "ru": "Вопросы и отрицания: did" },
+        "text": {
+          "en": "For questions and negatives use the helper did (for all persons), and the main verb goes back to its base form — no -ed, no irregular change.",
+          "ru": "Для вопросов и отрицаний используем вспомогательный did (для всех лиц), а основной глагол возвращается в начальную форму — без -ed и без изменения. Прошедшее время «уходит» в did."
+        },
+        "examples": [
+          { "en": "Did you see the film?", "ru": "Ты видел фильм? (не «did you saw»)" },
+          { "en": "I didn't (did not) go to work.", "ru": "Я не ходил на работу." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "After did/didn't use the base verb: \"Did you go?\", not \"Did you went?\".", "ru": "После did/didn't — начальная форма: «Did you go?», а не «Did you went?»." },
+      { "en": "Irregular verbs have no rule — learn them by heart.", "ru": "Неправильные глаголы не подчиняются правилу — учи наизусть." }
+    ],
+    "seeAlso": ["present-perfect", "articles"]
+  },
+  {
+    "id": "present-perfect",
+    "title": { "en": "Present Perfect", "ru": "Present Perfect (настоящее совершённое)" },
+    "level": "A2",
+    "summary": {
+      "en": "Links the past to now — experience or result, with no exact time.",
+      "ru": "Связывает прошлое с настоящим — опыт или результат, без точного времени."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "The main idea", "ru": "Главная идея" },
+        "text": {
+          "en": "Present Perfect connects a past action to the present. We don't say WHEN it happened — the time is not important, only the result or the experience now. This tense often confuses Russian speakers because Russian uses the past tense here.",
+          "ru": "Present Perfect связывает прошлое действие с настоящим. Мы НЕ говорим, когда именно это было — время неважно, важен результат или опыт сейчас. Это время часто путает русскоговорящих, потому что в русском тут используется прошедшее время.\n\nСравни:\n• I have lost my keys. → Я потерял ключи (и сейчас их нет — результат в настоящем).\n• I lost my keys yesterday. → есть слово «вчера» → Past Simple."
+        },
+        "examples": [
+          { "en": "I have finished my work.", "ru": "Я закончил работу. (и теперь свободен — результат сейчас)" },
+          { "en": "She has broken her phone.", "ru": "Она разбила телефон. (и он не работает сейчас)" }
+        ]
+      },
+      {
+        "heading": { "en": "How to build it", "ru": "Как строится" },
+        "text": {
+          "en": "have / has + the third form of the verb (past participle). Use have with I/you/we/they and has with he/she/it. The third form is the same list you learn for irregular verbs (see → seen, do → done, be → been); for regular verbs it's just -ed.",
+          "ru": "have / has + третья форма глагола (причастие). have — с I/you/we/they, has — с he/she/it. Третья форма — это тот же список неправильных глаголов (see → seen, do → done, be → been); у правильных глаголов это просто -ed."
+        },
+        "examples": [
+          { "en": "I have seen this film.", "ru": "Я видел этот фильм. (see → seen)" },
+          { "en": "He has done his homework.", "ru": "Он сделал домашку. (do → done)" }
+        ]
+      },
+      {
+        "heading": { "en": "Typical words: ever, never, just, yet, already, for, since", "ru": "Типичные слова: ever, never, just, yet, already, for, since" },
+        "text": {
+          "en": "ever/never — life experience (Have you ever…? / I have never…). just — a moment ago. already — sooner than expected. yet — in questions and negatives. for + a period (for two years). since + a starting point (since 2020).",
+          "ru": "ever/never — жизненный опыт (Have you ever…? / I have never…). just — только что. already — уже (раньше, чем ожидали). yet — в вопросах и отрицаниях (пока/уже). for + промежуток (for two years — два года). since + момент начала (since 2020 — с 2020)."
+        },
+        "examples": [
+          { "en": "Have you ever been abroad?", "ru": "Ты когда-нибудь был за границей?" },
+          { "en": "I have lived here for five years.", "ru": "Я живу здесь пять лет." },
+          { "en": "She has just arrived.", "ru": "Она только что пришла." }
+        ]
+      },
+      {
+        "heading": { "en": "Present Perfect vs Past Simple", "ru": "Present Perfect и Past Simple" },
+        "text": {
+          "en": "The key test: is there an exact past time? If YES (yesterday, in 2019, an hour ago) → Past Simple. If NO exact time, and it matters now → Present Perfect.",
+          "ru": "Главная проверка: есть ли точное время в прошлом? Если ДА (yesterday, in 2019, час назад) → Past Simple. Если точного времени НЕТ, а важен результат сейчас → Present Perfect.\n\n• I have visited Rome. (когда-то, важно что был опыт)\n• I visited Rome in 2019. (есть год → Past Simple)"
+        }
+      }
+    ],
+    "pitfalls": [
+      { "en": "Don't use Present Perfect with a finished-time word: \"I have seen it yesterday\" is wrong — say \"I saw it yesterday\".", "ru": "Не используй Present Perfect со словом о завершённом времени: «I have seen it yesterday» — ошибка, нужно «I saw it yesterday»." },
+      { "en": "Use has for he/she/it: \"she has gone\", not \"she have gone\".", "ru": "Для he/she/it — has: «she has gone», а не «she have gone»." },
+      { "en": "The third form ≠ the past form for many verbs: go → went (past) → gone (third).", "ru": "Третья форма ≠ прошедшая у многих глаголов: go → went (прошедшее) → gone (третья)." }
+    ],
+    "seeAlso": ["past-simple"]
+  }
+]

@@ -1,0 +1,158 @@
+import { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useContentStore } from '@/content/store';
+import { useUiLang, tr } from '@/features/i18n/uiLang';
+import { Card, Eyebrow, PageStub } from '@/shared/ui';
+
+export function GrammarIndexPage() {
+  const { status, pack, load } = useContentStore();
+  const lang = useUiLang((s) => s.lang);
+  useEffect(() => {
+    void load();
+  }, [load]);
+
+  const articles = pack?.grammar ?? [];
+
+  return (
+    <section aria-label="Grammar reference" className="max-w-prose">
+      <Eyebrow className="mb-3.5">reference</Eyebrow>
+      <h1 className="mb-2 text-2xl font-bold tracking-tight">
+        {lang === 'ru' ? 'Справочник по грамматике' : 'Grammar reference'}
+      </h1>
+      <p className="mb-8 text-muted text-pretty">
+        {lang === 'ru'
+          ? 'Подробные объяснения с примерами — можно вернуться и повторить в любой момент.'
+          : 'Detailed explanations with examples — come back and review any time.'}
+      </p>
+
+      {status === 'loading' && (
+        <p className="font-mono text-sm text-muted">loading…</p>
+      )}
+      {status === 'ready' && articles.length === 0 && (
+        <p className="text-sm text-muted">
+          {lang === 'ru' ? 'Статьи скоро появятся.' : 'Articles are coming soon.'}
+        </p>
+      )}
+
+      <div className="flex flex-col gap-2.5">
+        {articles.map((a) => (
+          <Link
+            key={a.id}
+            to={`/grammar/${a.id}`}
+            className="group flex items-center justify-between rounded-md border border-line bg-surface px-4 py-3.5 transition-colors hover:border-teal-dim"
+          >
+            <span className="flex items-baseline gap-3">
+              {a.level && <span className="font-mono text-2xs text-teal">{a.level}</span>}
+              <span className="text-base">{tr(a.title, lang)}</span>
+            </span>
+            <span className="max-w-[45%] truncate font-mono text-2xs text-muted">
+              {tr(a.summary, lang)}
+            </span>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function GrammarArticlePage() {
+  const { articleId } = useParams();
+  const { pack, load, status } = useContentStore();
+  const lang = useUiLang((s) => s.lang);
+  useEffect(() => {
+    void load();
+  }, [load]);
+
+  if (status === 'idle' || status === 'loading') {
+    return <p className="font-mono text-sm text-muted">loading…</p>;
+  }
+
+  const article = pack?.grammar.find((a) => a.id === articleId);
+  if (!article) {
+    return (
+      <PageStub eyebrow="404" title={lang === 'ru' ? 'Статья не найдена' : 'Article not found'}>
+        <Link to="/grammar" className="text-teal hover:underline">
+          {lang === 'ru' ? '← ко всем статьям' : '← all articles'}
+        </Link>
+      </PageStub>
+    );
+  }
+
+  const seeAlso = (article.seeAlso ?? [])
+    .map((id) => pack?.grammar.find((a) => a.id === id))
+    .filter((a): a is NonNullable<typeof a> => Boolean(a));
+
+  return (
+    <article className="max-w-prose">
+      <Link
+        to="/grammar"
+        className="mb-4 inline-block font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
+      >
+        {lang === 'ru' ? '← справочник' : '← reference'}
+      </Link>
+      <h1 className="mb-2 text-2xl font-bold tracking-tight text-balance">
+        {tr(article.title, lang)}
+      </h1>
+      <p className="mb-8 text-lg text-muted text-pretty">{tr(article.summary, lang)}</p>
+
+      <div className="flex flex-col gap-8">
+        {article.blocks.map((b, i) => (
+          <div key={i}>
+            {b.heading && (
+              <h2 className="mb-2 text-lg font-semibold tracking-tight">
+                {tr(b.heading, lang)}
+              </h2>
+            )}
+            <p className="leading-relaxed text-pretty whitespace-pre-line">
+              {tr(b.text, lang)}
+            </p>
+            {b.examples && b.examples.length > 0 && (
+              <div className="mt-3 flex flex-col gap-1.5 rounded-md border border-line bg-surface p-4">
+                {b.examples.map((ex, j) => (
+                  <p key={j} className="text-sm">
+                    <span className="font-mono text-teal">{ex.en}</span>
+                    {ex.ru && <span className="text-muted"> — {ex.ru}</span>}
+                  </p>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {article.pitfalls && article.pitfalls.length > 0 && (
+        <Card className="mt-8 border-amber-dim bg-amber-dim/10">
+          <p className="mb-2 font-mono text-2xs uppercase tracking-[0.08em] text-amber">
+            {lang === 'ru' ? 'частые ошибки' : 'common mistakes'}
+          </p>
+          <ul className="flex flex-col gap-2">
+            {article.pitfalls.map((p, i) => (
+              <li key={i} className="text-sm text-pretty">
+                {tr(p, lang)}
+              </li>
+            ))}
+          </ul>
+        </Card>
+      )}
+
+      {seeAlso.length > 0 && (
+        <div className="mt-8 border-t border-line pt-5">
+          <p className="mb-2 font-mono text-2xs uppercase tracking-[0.08em] text-muted">
+            {lang === 'ru' ? 'см. также' : 'see also'}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {seeAlso.map((a) => (
+              <Link
+                key={a.id}
+                to={`/grammar/${a.id}`}
+                className="rounded-sm bg-surface-2 px-2.5 py-1.5 font-mono text-2xs text-teal hover:underline"
+              >
+                {tr(a.title, lang)}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </article>
+  );
+}
