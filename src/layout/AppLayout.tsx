@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, ScrollRestoration } from 'react-router-dom';
 import { useLearner } from '@/features/learner/store';
 
 const NAV = [
@@ -52,6 +52,8 @@ export function AppLayout() {
       <main className="mx-auto max-w-3xl px-5 py-8 pb-20">
         <Outlet />
       </main>
+      {/* New paths open at the top; returning to a seen path restores its scroll. */}
+      <ScrollRestoration getKey={(location) => location.pathname} />
     </div>
   );
 }
