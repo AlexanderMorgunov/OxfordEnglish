@@ -7,6 +7,9 @@ import { useVocabStore } from '@/features/vocab/vocabStore';
 import { canSpeak, playClip, speakWord } from '@/shared/lib/audio';
 import { translateWord } from '@/features/vocab/translate';
 import { addWordCard, addPhraseCard } from '@/features/srs/service';
+import { AiAction } from '@/features/ai/AiAction';
+import { wordInContext } from '@/features/ai/functions';
+import { useUiLang } from '@/features/i18n/uiLang';
 
 type ReadingSection = Extract<Section, { type: 'reading' }>;
 type Gloss = { ru?: string; ipa?: string };
@@ -43,9 +46,10 @@ function GlossaryRow({ word, ipa, ru }: { word: string; ipa?: string; ru?: strin
   );
 }
 
-function WordToken({ word, gloss }: { word: string; gloss?: Gloss }) {
+function WordToken({ word, gloss, sentence }: { word: string; gloss?: Gloss; sentence: string }) {
   const status = useVocabStore((s) => s.statuses.get(word.toLowerCase()));
   const setStatus = useVocabStore((s) => s.setStatus);
+  const lang = useUiLang((s) => s.lang);
   const [fetched, setFetched] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
@@ -97,6 +101,12 @@ function WordToken({ word, gloss }: { word: string; gloss?: Gloss }) {
       {gloss?.ipa && <p className="font-mono text-xs text-muted">{gloss.ipa}</p>}
       {translation && <p className="mt-1 text-sm text-content">{translation}</p>}
       {loading && <p className="mt-1 font-mono text-2xs text-faint">translating…</p>}
+      <div className="mt-2">
+        <AiAction
+          label={lang === 'ru' ? 'значение в контексте (AI)' : 'meaning in context (AI)'}
+          run={(config) => wordInContext(config, word, sentence)}
+        />
+      </div>
       <div className="mt-2.5 flex gap-1.5">
         <Button
           size="sm"
@@ -147,7 +157,12 @@ function ReadingBlock({
         )}
         {tokens.map((tok, i) =>
           /^[a-zA-Z']+$/.test(tok) ? (
-            <WordToken key={i} word={tok} gloss={glossary.get(tok.toLowerCase())} />
+            <WordToken
+              key={i}
+              word={tok}
+              gloss={glossary.get(tok.toLowerCase())}
+              sentence={en}
+            />
           ) : (
             <span key={i}>{tok}</span>
           )
