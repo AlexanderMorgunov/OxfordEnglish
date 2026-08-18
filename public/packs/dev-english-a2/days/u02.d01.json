@@ -212,7 +212,8 @@
               "en": "I get up at seven.",
               "ru": "Я встаю в семь."
             }
-          ]
+          ],
+          "ref": "present-simple"
         },
         {
           "label": {
@@ -225,7 +226,8 @@
               "en": "She finishes at five.",
               "ru": "Она заканчивает в пять."
             }
-          ]
+          ],
+          "ref": "present-simple"
         }
       ],
       "pitfalls": [
@@ -237,8 +239,7 @@
           "en": "Spelling: -es after -sh/-ch/-s/-x/-o: \"finishes\", \"watches\", \"goes\".",
           "ru": "Написание: -es после -sh/-ch/-s/-x/-o: \"finishes\", \"watches\", \"goes\"."
         }
-      ],
-      "ref": "present-simple"
+      ]
     },
     {
       "type": "reading",
@@ -463,6 +464,123 @@
           "prompt": "Она заканчивает в пять.",
           "answers": [
             "She finishes at five."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u02.d01.ex.b.01",
+          "instruction": {
+            "en": "Add -s if needed.",
+            "ru": "Добавь -s, если нужно."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "My sister ___ in a bank.",
+          "options": [
+            "works",
+            "work",
+            "working",
+            "is work"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u02.d01.ex.b.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "variants": [
+            "She work every day.",
+            "She works every day."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d01.ex.b.03",
+          "instruction": {
+            "en": "Present simple.",
+            "ru": "Present simple."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "They ___ dinner at eight. (have)",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d01.ex.b.04",
+          "instruction": {
+            "en": "Spelling of -s.",
+            "ru": "Правописание -s."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "He ___ TV in the evening. (watch)",
+          "answers": [
+            "watches"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u02.d01.ex.b.05",
+          "instruction": {
+            "en": "Put in order.",
+            "ru": "Собери фразу."
+          },
+          "tags": [
+            "grammar.adverbs-frequency"
+          ],
+          "tokens": [
+            "I",
+            "always",
+            "have",
+            "breakfast"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u02.d01.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-simple",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она встаёт рано.",
+          "answers": [
+            "She gets up early."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she get up",
+                "she get"
+              ],
+              "explanation": {
+                "en": "Add -s for he/she/it: \"She gets up early.\"",
+                "ru": "Для he/she/it добавь -s: «She gets up early»."
+              }
+            }
           ]
         }
       ]

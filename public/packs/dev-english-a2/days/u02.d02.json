@@ -212,7 +212,8 @@
               "en": "Does she work here?",
               "ru": "Она здесь работает?"
             }
-          ]
+          ],
+          "ref": "present-simple"
         },
         {
           "label": {
@@ -225,7 +226,8 @@
               "en": "Do you drive? — Yes, I do.",
               "ru": "Ты водишь? — Да."
             }
-          ]
+          ],
+          "ref": "present-simple"
         }
       ],
       "pitfalls": [
@@ -454,6 +456,120 @@
           "prompt": "Ты здесь работаешь?",
           "answers": [
             "Do you work here?"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d02.ex.b.01",
+          "instruction": {
+            "en": "Do or Does?",
+            "ru": "Do или Does?"
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "___ you work here?",
+          "answers": [
+            "Do"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u02.d02.ex.b.02",
+          "instruction": {
+            "en": "Which question is correct?",
+            "ru": "Какой вопрос верный?"
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "variants": [
+            "Does he works here?",
+            "Does he work here?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u02.d02.ex.b.03",
+          "instruction": {
+            "en": "Short answer.",
+            "ru": "Краткий ответ."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "Do you drive? — Yes, I ___ .",
+          "options": [
+            "do",
+            "am",
+            "does",
+            "drive"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d02.ex.b.04",
+          "instruction": {
+            "en": "Negative.",
+            "ru": "Отрицание."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "She ___ work on Sunday. (not)",
+          "answers": [
+            "doesn't",
+            "does not"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u02.d02.ex.b.05",
+          "instruction": {
+            "en": "Do or Does?",
+            "ru": "Do или Does?"
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "___ your brother study at university?",
+          "options": [
+            "Does",
+            "Do",
+            "Is",
+            "Are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u02.d02.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-simple",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты работаешь в офисе?",
+          "answers": [
+            "Do you work in an office?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "do you works",
+                "you work in office"
+              ],
+              "explanation": {
+                "en": "After \"do\" use the base verb, and \"in an office\": \"Do you work in an office?\"",
+                "ru": "После «do» — начальная форма, и «in an office»: «Do you work in an office?»."
+              }
+            }
           ]
         }
       ]

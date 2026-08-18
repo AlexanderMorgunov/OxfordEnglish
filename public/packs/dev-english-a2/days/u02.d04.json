@@ -212,7 +212,8 @@
               "en": "There's a park. The park is big.",
               "ru": "Есть парк. Парк большой."
             }
-          ]
+          ],
+          "ref": "articles"
         },
         {
           "label": {
@@ -225,7 +226,8 @@
               "en": "There are two shops on the street.",
               "ru": "На улице два магазина."
             }
-          ]
+          ],
+          "ref": "there-is"
         }
       ],
       "pitfalls": [
@@ -237,8 +239,7 @@
           "en": "Use \"some/any\" with plurals: \"there are some shops\", \"there aren't any parks\".",
           "ru": "С множественным — \"some/any\": \"there are some shops\", \"there aren't any parks\"."
         }
-      ],
-      "ref": "there-is"
+      ]
     },
     {
       "type": "reading",
@@ -457,6 +458,117 @@
           "answers": [
             "There is a shop on the corner.",
             "There's a shop on the corner."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d04.ex.b.01",
+          "instruction": {
+            "en": "is or are?",
+            "ru": "is или are?"
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "prompt": "There ___ a shop on the corner.",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d04.ex.b.02",
+          "instruction": {
+            "en": "is or are?",
+            "ru": "is или are?"
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "prompt": "There ___ two parks near here.",
+          "answers": [
+            "are"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u02.d04.ex.b.03",
+          "instruction": {
+            "en": "some or any?",
+            "ru": "some или any?"
+          },
+          "tags": [
+            "grammar.some-any"
+          ],
+          "prompt": "Is there ___ milk?",
+          "options": [
+            "any",
+            "some",
+            "a"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u02.d04.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "variants": [
+            "There is two shops.",
+            "There are two shops."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u02.d04.ex.b.05",
+          "instruction": {
+            "en": "a or the?",
+            "ru": "a или the?"
+          },
+          "tags": [
+            "grammar.articles"
+          ],
+          "prompt": "I have a car. ___ car is red.",
+          "options": [
+            "The",
+            "A",
+            "An"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u02.d04.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.there-is",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "В городе есть станция.",
+          "answers": [
+            "There is a station in the city."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "there is station",
+                "in city"
+              ],
+              "explanation": {
+                "en": "Use \"a\" and \"the city\": \"There is a station in the city.\"",
+                "ru": "Нужны «a» и «the city»: «There is a station in the city»."
+              }
+            }
           ]
         }
       ]

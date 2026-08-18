@@ -461,6 +461,128 @@
             "At the weekend I never work.",
             "I never work at the weekend."
           ]
+        },
+        {
+          "type": "order-words",
+          "id": "u02.d03.ex.b.01",
+          "instruction": {
+            "en": "Adverb of frequency — position.",
+            "ru": "Наречие частотности — место."
+          },
+          "tags": [
+            "grammar.adverbs-frequency"
+          ],
+          "tokens": [
+            "She",
+            "often",
+            "works",
+            "late"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u02.d03.ex.b.02",
+          "instruction": {
+            "en": "at / in / on?",
+            "ru": "at / in / on?"
+          },
+          "tags": [
+            "grammar.prepositions-time"
+          ],
+          "prompt": "I have a meeting ___ Monday.",
+          "options": [
+            "on",
+            "in",
+            "at",
+            "to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u02.d03.ex.b.03",
+          "instruction": {
+            "en": "at / in / on?",
+            "ru": "at / in / on?"
+          },
+          "tags": [
+            "grammar.prepositions-time"
+          ],
+          "prompt": "We start work ___ nine o'clock.",
+          "options": [
+            "at",
+            "in",
+            "on"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u02.d03.ex.b.04",
+          "instruction": {
+            "en": "at / in / on?",
+            "ru": "at / in / on?"
+          },
+          "tags": [
+            "grammar.prepositions-time"
+          ],
+          "prompt": "It is cold ___ the morning.",
+          "options": [
+            "in",
+            "on",
+            "at"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u02.d03.ex.b.05",
+          "instruction": {
+            "en": "Where does \"always\" go?",
+            "ru": "Где стоит «always»?"
+          },
+          "tags": [
+            "grammar.adverbs-frequency"
+          ],
+          "variants": [
+            "She always is late.",
+            "She is always late."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u02.d03.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.adverbs-frequency",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я обычно встаю рано.",
+          "answers": [
+            "I usually get up early."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "usually i "
+              ],
+              "explanation": {
+                "en": "Word order: the adverb goes AFTER the subject — \"I usually…\", not \"Usually I…\".",
+                "ru": "Порядок слов: наречие — ПОСЛЕ подлежащего: «I usually…», а не «Usually I…»."
+              }
+            }
+          ]
         }
       ]
     }

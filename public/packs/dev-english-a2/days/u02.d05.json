@@ -395,12 +395,126 @@
           ],
           "commonErrors": [
             {
-              "match": ["usually i "],
+              "match": [
+                "usually i "
+              ],
               "explanation": {
                 "en": "Word order: the adverb of frequency goes AFTER the subject, not before it — say \"I usually…\", not \"Usually I…\". Swap the first two words.",
                 "ru": "Порядок слов: наречие частотности стоит ПОСЛЕ подлежащего, а не перед ним — «I usually…», а не «Usually I…». Поменяй местами первые два слова."
               }
             }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u02.d05.ex.b.01",
+          "instruction": {
+            "en": "The verb be.",
+            "ru": "Глагол be."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "How ___ you?",
+          "options": [
+            "are",
+            "is",
+            "do",
+            "am"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d05.ex.b.02",
+          "instruction": {
+            "en": "have got.",
+            "ru": "have got."
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "prompt": "___ you got any plans? (have)",
+          "answers": [
+            "Have"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u02.d05.ex.b.03",
+          "instruction": {
+            "en": "Offer a drink.",
+            "ru": "Предложи напиток."
+          },
+          "tags": [
+            "functions.small-talk"
+          ],
+          "tokens": [
+            "Do",
+            "you",
+            "want",
+            "a",
+            "coffee"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u02.d05.ex.b.04",
+          "instruction": {
+            "en": "Which question is correct?",
+            "ru": "Какой вопрос верный?"
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "variants": [
+            "What you do at weekends?",
+            "What do you do at weekends?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u02.d05.ex.b.05",
+          "instruction": {
+            "en": "The verb be.",
+            "ru": "Глагол be."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "I ___ a bit tired today.",
+          "options": [
+            "am",
+            "is",
+            "are",
+            "be"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u02.d05.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.small-talk",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Как дела? — Всё хорошо, спасибо.",
+          "answers": [
+            "How are you? — I'm fine, thanks.",
+            "How are you? — I am fine, thank you."
           ]
         }
       ]
