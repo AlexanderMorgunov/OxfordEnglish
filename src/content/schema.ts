@@ -194,6 +194,8 @@ export const GrammarSection = z.object({
       z.object({
         label: LocalizedText,
         formula: z.string().min(1),
+        // Optional per-pattern link to a reference article (its sub-topic).
+        ref: z.string().optional(),
         examples: z
           .array(
             z.object({

@@ -11,6 +11,8 @@ export function GrammarSectionView({ section }: Props) {
   const uiLang = useUiLang((s) => s.lang);
   const hasRu = Boolean(section.rule.ru);
   const showRu = lang === 'ru' && hasRu;
+  const dayId = section.id.replace(/\.grammar$/, '');
+  const moreLabel = uiLang === 'ru' ? '→ в справочнике' : '→ in the reference';
 
   return (
     <div className="flex flex-col gap-4">
@@ -39,9 +41,19 @@ export function GrammarSectionView({ section }: Props) {
       <div className="overflow-hidden rounded-lg border border-line bg-surface">
         {section.patterns.map((pattern, i) => (
           <div key={i} className="border-b border-line p-5 last:border-b-0">
-            <p className="mb-2 font-mono text-2xs uppercase tracking-[0.08em] text-muted">
-              {showRu ? pattern.label.ru ?? pattern.label.en : pattern.label.en}
-            </p>
+            <div className="mb-2 flex items-center justify-between gap-3">
+              <p className="font-mono text-2xs uppercase tracking-[0.08em] text-muted">
+                {showRu ? pattern.label.ru ?? pattern.label.en : pattern.label.en}
+              </p>
+              {pattern.ref && (
+                <Link
+                  to={`/grammar/${pattern.ref}?from=${dayId}`}
+                  className="shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
+                >
+                  {moreLabel}
+                </Link>
+              )}
+            </div>
             <p className="font-mono text-sm text-amber">{pattern.formula}</p>
             <ul className="mt-2.5 flex flex-col gap-1.5">
               {pattern.examples.map((ex, j) => (

@@ -212,7 +212,8 @@
               "en": "Are you from Spain?",
               "ru": "Ты из Испании?"
             }
-          ]
+          ],
+          "ref": "verb-be"
         },
         {
           "label": {
@@ -225,7 +226,8 @@
               "en": "This is her brother.",
               "ru": "Это её брат."
             }
-          ]
+          ],
+          "ref": "possessives"
         }
       ],
       "pitfalls": [
@@ -237,8 +239,7 @@
           "en": "In questions, be comes before the subject: \"Is she…?\", not \"She is…?\".",
           "ru": "В вопросе be перед подлежащим: \"Is she…?\", а не \"She is…?\"."
         }
-      ],
-      "ref": "verb-be"
+      ]
     },
     {
       "type": "reading",
