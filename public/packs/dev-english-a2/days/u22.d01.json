@@ -1,0 +1,604 @@
+{
+  "id": "u22.d01",
+  "title": {
+    "en": "The man whose car broke down",
+    "ru": "Человек, чья машина сломалась"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.relative-clauses",
+    "vocab.personality"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u22.d01.vocab",
+      "title": {
+        "en": "People around us",
+        "ru": "Люди вокруг нас"
+      },
+      "words": [
+        {
+          "word": "neighbour",
+          "ru": "сосед",
+          "ipa": "/ˈneɪbər/",
+          "example": "My neighbour is kind.",
+          "exampleRu": "Мой сосед добрый.",
+          "audio": {
+            "src": "media/audio/u22.d01.vocab.neighbour.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "owner",
+          "ru": "владелец",
+          "ipa": "/ˈoʊnər/",
+          "example": "The owner of the shop is friendly.",
+          "exampleRu": "Владелец магазина приветливый.",
+          "audio": {
+            "src": "media/audio/u22.d01.vocab.owner.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "colleague",
+          "ru": "коллега",
+          "ipa": "/ˈkɒliːɡ/",
+          "example": "A colleague whose desk is next to mine.",
+          "exampleRu": "Коллега, чей стол рядом с моим.",
+          "audio": {
+            "src": "media/audio/u22.d01.vocab.colleague.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "relative",
+          "ru": "родственник",
+          "ipa": "/ˈrelətɪv/",
+          "example": "She's a distant relative.",
+          "exampleRu": "Она дальняя родственница.",
+          "audio": {
+            "src": "media/audio/u22.d01.vocab.relative.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "stranger",
+          "ru": "незнакомец",
+          "ipa": "/ˈstreɪndʒər/",
+          "example": "A stranger helped me.",
+          "exampleRu": "Незнакомец помог мне.",
+          "audio": {
+            "src": "media/audio/u22.d01.vocab.stranger.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "friendly",
+          "ru": "дружелюбный",
+          "ipa": "/ˈfrendli/",
+          "example": "He's very friendly.",
+          "exampleRu": "Он очень дружелюбный.",
+          "audio": {
+            "src": "media/audio/u22.d01.vocab.friendly.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "belong",
+          "ru": "принадлежать",
+          "ipa": "/bɪˈlɒŋ/",
+          "example": "Whose bag is this? It belongs to Sam.",
+          "exampleRu": "Чья это сумка? Она принадлежит Сэму.",
+          "audio": {
+            "src": "media/audio/u22.d01.vocab.belong.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "whose",
+          "ru": "чей",
+          "ipa": "/huːz/",
+          "example": "The girl whose dog ran away.",
+          "exampleRu": "Девочка, чья собака убежала.",
+          "audio": {
+            "src": "media/audio/u22.d01.vocab.whose.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "recognise",
+          "ru": "узнавать",
+          "ipa": "/ˈrekəɡnaɪz/",
+          "example": "I didn't recognise him.",
+          "exampleRu": "Я его не узнал.",
+          "audio": {
+            "src": "media/audio/u22.d01.vocab.recognise.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "famous",
+          "ru": "знаменитый",
+          "ipa": "/ˈfeɪməs/",
+          "example": "A famous writer.",
+          "exampleRu": "Знаменитый писатель.",
+          "audio": {
+            "src": "media/audio/u22.d01.vocab.famous.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u22.d01.grammar",
+      "title": {
+        "en": "whose (possession)",
+        "ru": "whose (принадлежность)"
+      },
+      "rule": {
+        "en": "Use \"whose\" in a relative clause to show that something belongs to the person or thing you are describing. It replaces his/her/its/their.",
+        "ru": "Используй «whose» в относительном придаточном, чтобы показать, что что-то принадлежит человеку или предмету, о котором говоришь. Оно заменяет his/her/its/their."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "whose + noun",
+            "ru": "whose + существительное"
+          },
+          "formula": "the person whose + noun + verb",
+          "examples": [
+            {
+              "en": "That's the man whose car broke down.",
+              "ru": "Это человек, чья машина сломалась."
+            }
+          ],
+          "ref": "relative-clauses"
+        },
+        {
+          "label": {
+            "en": "people & things",
+            "ru": "люди и предметы"
+          },
+          "formula": "whose (for people and things)",
+          "examples": [
+            {
+              "en": "A book whose cover is torn.",
+              "ru": "Книга, обложка которой порвана."
+            }
+          ],
+          "ref": "relative-clauses"
+        },
+        {
+          "label": {
+            "en": "who vs whose",
+            "ru": "who и whose"
+          },
+          "formula": "who + verb · whose + noun",
+          "examples": [
+            {
+              "en": "The girl who called. / The girl whose phone rang.",
+              "ru": "Девочка, которая звонила. / Девочка, чей телефон зазвонил."
+            }
+          ],
+          "ref": "relative-clauses"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"whose\" shows possession; do not confuse it with \"who's\" (= who is).",
+          "ru": "«whose» — принадлежность; не путай с «who's» (= who is)."
+        },
+        {
+          "en": "\"whose\" is followed by a noun: \"the man whose car\", not \"the man whose\".",
+          "ru": "После «whose» идёт существительное: «the man whose car», а не «the man whose»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u22.d01.reading",
+      "title": {
+        "en": "The helpful neighbour",
+        "ru": "Отзывчивый сосед"
+      },
+      "blocks": [
+        {
+          "id": "u22.d01.reading.b1",
+          "en": "Our street is full of interesting people. There's a woman whose garden is the most beautiful on the road, and a man whose dog knows more tricks than most humans. Everyone knows the family whose children play music every evening.",
+          "ru": "Наша улица полна интересных людей. Есть женщина, чей сад — самый красивый на всей дороге, и мужчина, чья собака знает больше трюков, чем многие люди. Все знают семью, чьи дети каждый вечер играют музыку.",
+          "audio": {
+            "src": "media/audio/u22.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u22.d01.reading.b2",
+          "en": "Last week, a driver whose car broke down stopped outside my house. My neighbour, whose garage is full of tools, came out to help. \"That's the kind of street this is,\" he said — a place whose people always help each other.",
+          "ru": "На прошлой неделе у моего дома остановился водитель, чья машина сломалась. Мой сосед, чей гараж полон инструментов, вышел помочь. «Вот такая у нас улица», — сказал он: место, чьи жители всегда помогают друг другу.",
+          "audio": {
+            "src": "media/audio/u22.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "trick",
+          "ru": "трюк",
+          "ipa": "/trɪk/"
+        },
+        {
+          "word": "garage",
+          "ru": "гараж",
+          "ipa": "/ˈɡærɑːʒ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u22.d01.listening",
+      "title": {
+        "en": "Whose is it?",
+        "ru": "Чьё это?"
+      },
+      "audio": {
+        "src": "media/audio/u22.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Do you know the woman who just left?",
+          "ru": "Ты знаешь женщину, которая только что ушла?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "The one whose car is red? That's my boss.",
+          "ru": "Ту, чья машина красная? Это моя начальница."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "And the man whose phone kept ringing?",
+          "ru": "А мужчина, чей телефон всё звонил?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "That's her husband, whose office is upstairs.",
+          "ru": "Это её муж, чей офис наверху."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u22.d01.ex.l.01",
+          "instruction": {
+            "en": "Whose car is red?",
+            "ru": "Чья машина красная?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The woman ___ car is red is the boss.",
+          "options": [
+            "whose",
+            "who's",
+            "who"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u22.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u22.d01.ex.c.01",
+          "instruction": {
+            "en": "Possession.",
+            "ru": "Принадлежность."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "That's the boy ___ bike was stolen.",
+          "options": [
+            "whose",
+            "who's",
+            "which"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u22.d01.ex.g.01",
+          "instruction": {
+            "en": "whose + noun.",
+            "ru": "whose + существительное."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "She's the author ___ books I love. (possession)",
+          "answers": [
+            "whose"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u22.d01.ex.c.02",
+          "instruction": {
+            "en": "who or whose?",
+            "ru": "who или whose?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The man ___ lives next door is a doctor.",
+          "options": [
+            "who",
+            "whose",
+            "which"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u22.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "variants": [
+            "The girl who's dog ran away cried.",
+            "The girl whose dog ran away cried."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u22.d01.ex.c.03",
+          "instruction": {
+            "en": "who or whose?",
+            "ru": "who или whose?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The family ___ house we visited was very kind.",
+          "options": [
+            "whose",
+            "who",
+            "which"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u22.d01.ex.g.02",
+          "instruction": {
+            "en": "Complete the clause.",
+            "ru": "Заверши придаточное."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "That's the woman ___ garden won a prize. (possession)",
+          "answers": [
+            "whose"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u22.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "tokens": [
+            "He",
+            "is",
+            "the",
+            "man",
+            "whose",
+            "car",
+            "broke",
+            "down"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u22.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.personality"
+          ],
+          "pairs": [
+            {
+              "left": "neighbour",
+              "right": "сосед"
+            },
+            {
+              "left": "owner",
+              "right": "владелец"
+            },
+            {
+              "left": "relative",
+              "right": "родственник"
+            },
+            {
+              "left": "stranger",
+              "right": "незнакомец"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u22.d01.ex.c.04",
+          "instruction": {
+            "en": "Choose the pronoun.",
+            "ru": "Выбери местоимение."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "It's a company ___ products are famous.",
+          "options": [
+            "whose",
+            "who",
+            "who's"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u22.d01.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "variants": [
+            "The man whose is tall.",
+            "The man who is tall."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u22.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это человек, чья машина сломалась.",
+          "answers": [
+            "That's the man whose car broke down.",
+            "This is the man whose car broke down."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "that's the man who's car broke down",
+                "that's the man which car broke down",
+                "that's the man whose car break down"
+              ],
+              "explanation": {
+                "en": "whose (not who's) + noun: the man whose car broke down.",
+                "ru": "whose (не who's) + существительное: the man whose car broke down."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u22.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я знаю девочку, чей телефон зазвонил.",
+          "answers": [
+            "I know the girl whose phone rang."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i know the girl who's phone rang",
+                "i know the girl which phone rang",
+                "i know the girl whose phone ring"
+              ],
+              "explanation": {
+                "en": "whose + noun for possession: the girl whose phone rang.",
+                "ru": "whose + существительное для принадлежности: the girl whose phone rang."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

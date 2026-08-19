@@ -1,0 +1,601 @@
+{
+  "id": "u22.d04",
+  "title": {
+    "en": "The book I read",
+    "ru": "Книга, которую я прочитал"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.relative-clauses",
+    "vocab.personality"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u22.d04.vocab",
+      "title": {
+        "en": "Everyday things",
+        "ru": "Повседневные вещи"
+      },
+      "words": [
+        {
+          "word": "thing",
+          "ru": "вещь",
+          "ipa": "/θɪŋ/",
+          "example": "The thing I need most.",
+          "exampleRu": "Вещь, которая мне нужнее всего.",
+          "audio": {
+            "src": "media/audio/u22.d04.vocab.thing.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "person",
+          "ru": "человек",
+          "ipa": "/ˈpɜːrsn/",
+          "example": "The person I met.",
+          "exampleRu": "Человек, которого я встретил.",
+          "audio": {
+            "src": "media/audio/u22.d04.vocab.person.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "film",
+          "ru": "фильм",
+          "ipa": "/fɪlm/",
+          "example": "The film we saw.",
+          "exampleRu": "Фильм, который мы посмотрели.",
+          "audio": {
+            "src": "media/audio/u22.d04.vocab.film.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "restaurant",
+          "ru": "ресторан",
+          "ipa": "/ˈrestrɒnt/",
+          "example": "The restaurant we tried.",
+          "exampleRu": "Ресторан, который мы попробовали.",
+          "audio": {
+            "src": "media/audio/u22.d04.vocab.restaurant.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "gift",
+          "ru": "подарок",
+          "ipa": "/ɡɪft/",
+          "example": "The gift she gave me.",
+          "exampleRu": "Подарок, который она мне дала.",
+          "audio": {
+            "src": "media/audio/u22.d04.vocab.gift.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "advice",
+          "ru": "совет",
+          "ipa": "/ədˈvaɪs/",
+          "example": "The advice he gave.",
+          "exampleRu": "Совет, который он дал.",
+          "audio": {
+            "src": "media/audio/u22.d04.vocab.advice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "idea",
+          "ru": "идея",
+          "ipa": "/aɪˈdɪə/",
+          "example": "The idea we discussed.",
+          "exampleRu": "Идея, которую мы обсуждали.",
+          "audio": {
+            "src": "media/audio/u22.d04.vocab.idea.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "song",
+          "ru": "песня",
+          "ipa": "/sɒŋ/",
+          "example": "The song you played.",
+          "exampleRu": "Песня, которую ты включил.",
+          "audio": {
+            "src": "media/audio/u22.d04.vocab.song.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "photo",
+          "ru": "фотография",
+          "ipa": "/ˈfoʊtoʊ/",
+          "example": "The photo I took.",
+          "exampleRu": "Фото, которое я сделал.",
+          "audio": {
+            "src": "media/audio/u22.d04.vocab.photo.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "place",
+          "ru": "место",
+          "ipa": "/pleɪs/",
+          "example": "The place we visited.",
+          "exampleRu": "Место, которое мы посетили.",
+          "audio": {
+            "src": "media/audio/u22.d04.vocab.place.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u22.d04.grammar",
+      "title": {
+        "en": "Leaving out the pronoun",
+        "ru": "Опускаем местоимение"
+      },
+      "rule": {
+        "en": "When the relative pronoun is the OBJECT of the clause (someone does something TO it), you can leave it out. \"The book that I read\" = \"The book I read\".",
+        "ru": "Когда относительное местоимение — ДОПОЛНЕНИЕ придаточного (над ним совершают действие), его можно опустить. «The book that I read» = «The book I read»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "object → can omit",
+            "ru": "дополнение → можно опустить"
+          },
+          "formula": "the book (that) I read",
+          "examples": [
+            {
+              "en": "The film (that) we saw was great.",
+              "ru": "Фильм, который мы посмотрели, был отличным."
+            }
+          ],
+          "ref": "relative-clauses"
+        },
+        {
+          "label": {
+            "en": "subject → keep it",
+            "ru": "подлежащее → оставить"
+          },
+          "formula": "the man who called (keep \"who\")",
+          "examples": [
+            {
+              "en": "The man who called is my boss. (can't omit)",
+              "ru": "Человек, который звонил, — мой начальник. (нельзя опустить)"
+            }
+          ],
+          "ref": "relative-clauses"
+        },
+        {
+          "label": {
+            "en": "preposition at the end",
+            "ru": "предлог в конце"
+          },
+          "formula": "the person (who) I spoke to",
+          "examples": [
+            {
+              "en": "The person I spoke to was kind.",
+              "ru": "Человек, с которым я говорил, был добр."
+            }
+          ],
+          "ref": "relative-clauses"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Omit the pronoun only when it is the object: \"the book I read\", not \"the man called me\".",
+          "ru": "Опускай местоимение только когда оно дополнение: «the book I read», а не «the man called me»."
+        },
+        {
+          "en": "Keep the pronoun when it is the subject: \"the man who called\".",
+          "ru": "Оставляй местоимение, если оно подлежащее: «the man who called»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u22.d04.reading",
+      "title": {
+        "en": "A perfect evening",
+        "ru": "Идеальный вечер"
+      },
+      "blocks": [
+        {
+          "id": "u22.d04.reading.b1",
+          "en": "The restaurant we chose was small but wonderful. The waiter recommended a dish I had never tried, and it was the best meal I have had in months. The wine they served came from a village nobody had heard of.",
+          "ru": "Ресторан, который мы выбрали, был маленьким, но чудесным. Официант посоветовал блюдо, которое я никогда не пробовал, и это была лучшая еда за последние месяцы. Вино, что нам подали, было из деревни, о которой никто не слышал.",
+          "audio": {
+            "src": "media/audio/u22.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u22.d04.reading.b2",
+          "en": "The people we met there were friendly, and the music they played was perfect. \"This is a place I want to come back to,\" I said. It was an evening I will never forget — one of those nights everything goes right.",
+          "ru": "Люди, которых мы там встретили, были дружелюбны, а музыка, что они играли, — идеальной. «Это место, куда я хочу вернуться», — сказал я. Это был вечер, который я никогда не забуду, — одна из тех ночей, когда всё идёт как надо.",
+          "audio": {
+            "src": "media/audio/u22.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "dish",
+          "ru": "блюдо",
+          "ipa": "/dɪʃ/"
+        },
+        {
+          "word": "recommend",
+          "ru": "рекомендовать",
+          "ipa": "/ˌrekəˈmend/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u22.d04.listening",
+      "title": {
+        "en": "The gift",
+        "ru": "Подарок"
+      },
+      "audio": {
+        "src": "media/audio/u22.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Did you like the present I gave you?",
+          "ru": "Тебе понравился подарок, который я подарил?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "I loved it! It's the best gift I've ever received.",
+          "ru": "Обожаю его! Это лучший подарок, что я когда-либо получал."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "It came from the shop we visited last month.",
+          "ru": "Он из магазина, который мы посетили в прошлом месяце."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "The one I liked so much? Perfect choice!",
+          "ru": "Тот, что мне так понравился? Идеальный выбор!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u22.d04.ex.l.01",
+          "instruction": {
+            "en": "The gift is…",
+            "ru": "Подарок…"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The best gift he's ever ___ .",
+          "options": [
+            "received",
+            "receive",
+            "receiving"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u22.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u22.d04.ex.c.01",
+          "instruction": {
+            "en": "Can we omit?",
+            "ru": "Можно опустить?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "Which is correct and natural?",
+          "options": [
+            "The film we saw",
+            "The film we saw it",
+            "The film what we saw"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u22.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "variants": [
+            "The man who I met him was kind.",
+            "The man I met was kind."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u22.d04.ex.c.02",
+          "instruction": {
+            "en": "Subject — keep it.",
+            "ru": "Подлежащее — оставь."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The woman ___ lives here is a nurse.",
+          "options": [
+            "who",
+            "(nothing)",
+            "whom"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u22.d04.ex.g.01",
+          "instruction": {
+            "en": "Preposition at the end.",
+            "ru": "Предлог в конце."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The person I spoke ___ was helpful. (to)",
+          "answers": [
+            "to"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u22.d04.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "variants": [
+            "This is the book I read it last week.",
+            "This is the book I read last week."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u22.d04.ex.c.03",
+          "instruction": {
+            "en": "Object — can omit.",
+            "ru": "Дополнение — можно опустить."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "Which is correct?",
+          "options": [
+            "The song you played",
+            "The song played you",
+            "The song what you played"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u22.d04.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "tokens": [
+            "The",
+            "restaurant",
+            "we",
+            "tried",
+            "was",
+            "great"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u22.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.personality"
+          ],
+          "pairs": [
+            {
+              "left": "advice",
+              "right": "совет"
+            },
+            {
+              "left": "gift",
+              "right": "подарок"
+            },
+            {
+              "left": "idea",
+              "right": "идея"
+            },
+            {
+              "left": "place",
+              "right": "место"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u22.d04.ex.c.04",
+          "instruction": {
+            "en": "Keep or omit?",
+            "ru": "Оставить или опустить?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The keys ___ on the table are mine.",
+          "options": [
+            "that are",
+            "are",
+            "which"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u22.d04.ex.g.02",
+          "instruction": {
+            "en": "Omit the object pronoun.",
+            "ru": "Опусти местоимение-дополнение."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The advice she gave ___ was useful. (leave blank — nothing needed)",
+          "answers": [
+            "me"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u22.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Фильм, который мы посмотрели, был отличным.",
+          "answers": [
+            "The film we saw was great.",
+            "The film that we saw was great."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the film we saw it was great",
+                "the film what we saw was great",
+                "the film who we saw was great"
+              ],
+              "explanation": {
+                "en": "Object pronoun can be omitted; no extra \"it\": The film we saw was great.",
+                "ru": "Местоимение-дополнение можно опустить; без лишнего «it»: The film we saw was great."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u22.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Человек, с которым я говорил, был очень добр.",
+          "answers": [
+            "The person I spoke to was very kind.",
+            "The person who I spoke to was very kind."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the person i spoke was very kind",
+                "the person with whom i spoke was very kind",
+                "the person i spoke to him was very kind"
+              ],
+              "explanation": {
+                "en": "Preposition at the end, no extra pronoun: The person I spoke to was very kind.",
+                "ru": "Предлог в конце, без лишнего местоимения: The person I spoke to was very kind."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

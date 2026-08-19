@@ -1,0 +1,604 @@
+{
+  "id": "u22.d03",
+  "title": {
+    "en": "My brother, who lives in Rome",
+    "ru": "Мой брат, который живёт в Риме"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.non-defining-clauses",
+    "grammar.relative-clauses",
+    "vocab.personality"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u22.d03.vocab",
+      "title": {
+        "en": "Extra information",
+        "ru": "Дополнительная информация"
+      },
+      "words": [
+        {
+          "word": "actually",
+          "ru": "на самом деле",
+          "ipa": "/ˈæktʃuəli/",
+          "example": "He's actually my cousin.",
+          "exampleRu": "На самом деле он мой двоюродный брат.",
+          "audio": {
+            "src": "media/audio/u22.d03.vocab.actually.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "by the way",
+          "ru": "кстати",
+          "ipa": "/baɪ ðə weɪ/",
+          "example": "By the way, she called.",
+          "exampleRu": "Кстати, она звонила.",
+          "audio": {
+            "src": "media/audio/u22.d03.vocab.bytheway.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "brilliant",
+          "ru": "блестящий",
+          "ipa": "/ˈbrɪljənt/",
+          "example": "She's a brilliant doctor.",
+          "exampleRu": "Она блестящий врач.",
+          "audio": {
+            "src": "media/audio/u22.d03.vocab.brilliant.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "award",
+          "ru": "награда",
+          "ipa": "/əˈwɔːrd/",
+          "example": "He won an award.",
+          "exampleRu": "Он получил награду.",
+          "audio": {
+            "src": "media/audio/u22.d03.vocab.award.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "founded",
+          "ru": "основал",
+          "ipa": "/ˈfaʊndɪd/",
+          "example": "The company, founded in 1990.",
+          "exampleRu": "Компания, основанная в 1990.",
+          "audio": {
+            "src": "media/audio/u22.d03.vocab.founded.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "successful",
+          "ru": "успешный",
+          "ipa": "/səkˈsesfl/",
+          "example": "A successful writer.",
+          "exampleRu": "Успешный писатель.",
+          "audio": {
+            "src": "media/audio/u22.d03.vocab.successful.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "retire",
+          "ru": "выходить на пенсию",
+          "ipa": "/rɪˈtaɪər/",
+          "example": "He retired last year.",
+          "exampleRu": "Он вышел на пенсию в прошлом году.",
+          "audio": {
+            "src": "media/audio/u22.d03.vocab.retire.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "charity",
+          "ru": "благотворительность",
+          "ipa": "/ˈtʃærɪti/",
+          "example": "She works for a charity.",
+          "exampleRu": "Она работает в благотворительной организации.",
+          "audio": {
+            "src": "media/audio/u22.d03.vocab.charity.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "abroad",
+          "ru": "за границей",
+          "ipa": "/əˈbrɔːd/",
+          "example": "They live abroad.",
+          "exampleRu": "Они живут за границей.",
+          "audio": {
+            "src": "media/audio/u22.d03.vocab.abroad.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "nowadays",
+          "ru": "в наши дни",
+          "ipa": "/ˈnaʊədeɪz/",
+          "example": "Nowadays he travels a lot.",
+          "exampleRu": "В наши дни он много путешествует.",
+          "audio": {
+            "src": "media/audio/u22.d03.vocab.nowadays.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u22.d03.grammar",
+      "title": {
+        "en": "Defining vs non-defining",
+        "ru": "Уточняющие и добавочные"
+      },
+      "rule": {
+        "en": "A defining clause tells you WHICH one and has no commas. A non-defining clause adds EXTRA information between commas, and you cannot use \"that\" or leave out the pronoun.",
+        "ru": "Уточняющее придаточное говорит, О КАКОМ именно идёт речь, и без запятых. Добавочное даёт ДОПОЛНИТЕЛЬНУЮ информацию в запятых; в нём нельзя «that» и нельзя опускать местоимение."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "defining (no commas)",
+            "ru": "уточняющее (без запятых)"
+          },
+          "formula": "The man who called is my boss.",
+          "examples": [
+            {
+              "en": "The book that I read was great.",
+              "ru": "Книга, которую я прочитал, была отличной."
+            }
+          ],
+          "ref": "relative-clauses"
+        },
+        {
+          "label": {
+            "en": "non-defining (commas)",
+            "ru": "добавочное (в запятых)"
+          },
+          "formula": "…, who/which …, …",
+          "examples": [
+            {
+              "en": "My brother, who lives in Rome, is a doctor.",
+              "ru": "Мой брат, который живёт в Риме, — врач."
+            }
+          ],
+          "ref": "non-defining-clauses"
+        },
+        {
+          "label": {
+            "en": "no \"that\" in non-defining",
+            "ru": "без \"that\" в добавочном"
+          },
+          "formula": "use who/which, not that",
+          "examples": [
+            {
+              "en": "This car, which is new, was cheap.",
+              "ru": "Эта машина, которая новая, была дешёвой."
+            }
+          ],
+          "ref": "non-defining-clauses"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Non-defining clauses need commas and use who/which, never \"that\".",
+          "ru": "Добавочные — в запятых и с who/which, никогда «that»."
+        },
+        {
+          "en": "Non-defining clauses give extra info you could remove: \"My car, which is red, is old\".",
+          "ru": "Добавочные дают info, которую можно убрать: «My car, which is red, is old»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u22.d03.reading",
+      "title": {
+        "en": "A remarkable family",
+        "ru": "Необычная семья"
+      },
+      "blocks": [
+        {
+          "id": "u22.d03.reading.b1",
+          "en": "My aunt, who lives in Canada, is a famous scientist. Her husband, whose paintings sell all over the world, is an artist. Their daughter, who is only nineteen, has already started her own company.",
+          "ru": "Моя тётя, которая живёт в Канаде, — известный учёный. Её муж, чьи картины продаются по всему миру, — художник. Их дочь, которой всего девятнадцать, уже открыла собственную компанию.",
+          "audio": {
+            "src": "media/audio/u22.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u22.d03.reading.b2",
+          "en": "The company, which she founded last year, helps students find jobs. \"My family, who I don't see often, always inspire me,\" she says. Her town, where she grew up, is proud of her — a place that produces remarkable people.",
+          "ru": "Компания, которую она основала в прошлом году, помогает студентам находить работу. «Моя семья, которую я вижу нечасто, всегда меня вдохновляет», — говорит она. Её город, где она выросла, гордится ею — место, что рождает выдающихся людей.",
+          "audio": {
+            "src": "media/audio/u22.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "scientist",
+          "ru": "учёный",
+          "ipa": "/ˈsaɪəntɪst/"
+        },
+        {
+          "word": "inspire",
+          "ru": "вдохновлять",
+          "ipa": "/ɪnˈspaɪər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u22.d03.listening",
+      "title": {
+        "en": "Tell me about her",
+        "ru": "Расскажи о ней"
+      },
+      "audio": {
+        "src": "media/audio/u22.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Who's that in the photo?",
+          "ru": "Кто это на фото?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "That's my sister, who lives in Australia.",
+          "ru": "Это моя сестра, которая живёт в Австралии."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "And the house behind her?",
+          "ru": "А дом за ней?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "That's her home, which she bought last year.",
+          "ru": "Это её дом, который она купила в прошлом году."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u22.d03.ex.l.01",
+          "instruction": {
+            "en": "Where does the sister live?",
+            "ru": "Где живёт сестра?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "His sister, ___ lives in Australia.",
+          "options": [
+            "who",
+            "that",
+            "which"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u22.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u22.d03.ex.c.01",
+          "instruction": {
+            "en": "Extra information.",
+            "ru": "Доп. информация."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "My car, ___ is quite old, still runs well.",
+          "options": [
+            "which",
+            "that",
+            "who"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u22.d03.ex.c.02",
+          "instruction": {
+            "en": "Which is non-defining?",
+            "ru": "Какое добавочное?"
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "Mr Lee, ___ teaches maths, is very kind.",
+          "options": [
+            "who",
+            "that",
+            "which"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u22.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "variants": [
+            "My brother that lives in Rome is a doctor.",
+            "My brother, who lives in Rome, is a doctor."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u22.d03.ex.g.01",
+          "instruction": {
+            "en": "Non-defining (thing).",
+            "ru": "Добавочное (о вещи)."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "This book, ___ I finished yesterday, was great. (thing)",
+          "answers": [
+            "which"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u22.d03.ex.c.03",
+          "instruction": {
+            "en": "Defining (no commas).",
+            "ru": "Уточняющее (без запятых)."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The woman ___ called you is waiting.",
+          "options": [
+            "who",
+            "whom",
+            "whose"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u22.d03.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "variants": [
+            "Paris, that is the capital of France, is beautiful.",
+            "Paris, which is the capital of France, is beautiful."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "order-words",
+          "id": "u22.d03.ex.o.01",
+          "instruction": {
+            "en": "Add extra information.",
+            "ru": "Добавь информацию."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "tokens": [
+            "My",
+            "aunt",
+            "who",
+            "lives",
+            "abroad",
+            "is",
+            "a",
+            "nurse"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u22.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.personality"
+          ],
+          "pairs": [
+            {
+              "left": "successful",
+              "right": "успешный"
+            },
+            {
+              "left": "retire",
+              "right": "выходить на пенсию"
+            },
+            {
+              "left": "charity",
+              "right": "благотворительность"
+            },
+            {
+              "left": "award",
+              "right": "награда"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u22.d03.ex.c.04",
+          "instruction": {
+            "en": "Non-defining pronoun.",
+            "ru": "Местоимение в добавочном."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "The film, ___ won an award, was amazing.",
+          "options": [
+            "which",
+            "that",
+            "what"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u22.d03.ex.g.02",
+          "instruction": {
+            "en": "Non-defining (person).",
+            "ru": "Добавочное (человек)."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "My boss, ___ is very busy, still found time. (person)",
+          "answers": [
+            "who"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u22.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.non-defining-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мой брат, который живёт в Риме, — врач.",
+          "answers": [
+            "My brother, who lives in Rome, is a doctor."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "my brother that lives in rome is a doctor",
+                "my brother which lives in rome is a doctor",
+                "my brother who lives in rome is a doctor"
+              ],
+              "explanation": {
+                "en": "Non-defining: commas + who (not that): My brother, who lives in Rome, is a doctor.",
+                "ru": "Добавочное: запятые + who (не that): My brother, who lives in Rome, is a doctor."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u22.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.non-defining-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Эта книга, которую я прочитал вчера, была отличной.",
+          "answers": [
+            "This book, which I read yesterday, was great."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "this book that i read yesterday was great",
+                "this book which i read yesterday was great",
+                "this book, that i read yesterday, was great"
+              ],
+              "explanation": {
+                "en": "Non-defining uses which + commas, not that: This book, which I read yesterday, was great.",
+                "ru": "Добавочное — which + запятые, не that: This book, which I read yesterday, was great."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

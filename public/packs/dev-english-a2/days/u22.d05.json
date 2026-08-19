@@ -1,0 +1,603 @@
+{
+  "id": "u22.d05",
+  "title": {
+    "en": "The kind of person who…",
+    "ru": "Человек, который…"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "functions.describing",
+    "vocab.personality"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u22.d05.vocab",
+      "title": {
+        "en": "Describing people",
+        "ru": "Описываем людей"
+      },
+      "words": [
+        {
+          "word": "generous",
+          "ru": "щедрый",
+          "ipa": "/ˈdʒenərəs/",
+          "example": "She's very generous.",
+          "exampleRu": "Она очень щедрая.",
+          "audio": {
+            "src": "media/audio/u22.d05.vocab.generous.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reliable",
+          "ru": "надёжный",
+          "ipa": "/rɪˈlaɪəbl/",
+          "example": "He's reliable.",
+          "exampleRu": "Он надёжный.",
+          "audio": {
+            "src": "media/audio/u22.d05.vocab.reliable.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ambitious",
+          "ru": "амбициозный",
+          "ipa": "/æmˈbɪʃəs/",
+          "example": "An ambitious student.",
+          "exampleRu": "Амбициозный студент.",
+          "audio": {
+            "src": "media/audio/u22.d05.vocab.ambitious.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "patient",
+          "ru": "терпеливый",
+          "ipa": "/ˈpeɪʃnt/",
+          "example": "Teachers must be patient.",
+          "exampleRu": "Учителя должны быть терпеливыми.",
+          "audio": {
+            "src": "media/audio/u22.d05.vocab.patient.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "honest",
+          "ru": "честный",
+          "ipa": "/ˈɒnɪst/",
+          "example": "An honest answer.",
+          "exampleRu": "Честный ответ.",
+          "audio": {
+            "src": "media/audio/u22.d05.vocab.honest.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "confident",
+          "ru": "уверенный",
+          "ipa": "/ˈkɒnfɪdənt/",
+          "example": "She seems confident.",
+          "exampleRu": "Она кажется уверенной.",
+          "audio": {
+            "src": "media/audio/u22.d05.vocab.confident.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "creative",
+          "ru": "творческий",
+          "ipa": "/kriˈeɪtɪv/",
+          "example": "A creative mind.",
+          "exampleRu": "Творческий ум.",
+          "audio": {
+            "src": "media/audio/u22.d05.vocab.creative.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "type",
+          "ru": "тип",
+          "ipa": "/taɪp/",
+          "example": "He's the type who helps.",
+          "exampleRu": "Он из тех, кто помогает.",
+          "audio": {
+            "src": "media/audio/u22.d05.vocab.type.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sort",
+          "ru": "сорт, вид",
+          "ipa": "/sɔːrt/",
+          "example": "The sort of place I like.",
+          "exampleRu": "Такое место, какое мне нравится.",
+          "audio": {
+            "src": "media/audio/u22.d05.vocab.sort.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "describe",
+          "ru": "описывать",
+          "ipa": "/dɪˈskraɪb/",
+          "example": "Describe your best friend.",
+          "exampleRu": "Опиши лучшего друга.",
+          "audio": {
+            "src": "media/audio/u22.d05.vocab.describe.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u22.d05.grammar",
+      "title": {
+        "en": "Describing with relative clauses",
+        "ru": "Описываем через придаточные"
+      },
+      "rule": {
+        "en": "Relative clauses are perfect for describing people and places. Use \"the kind/type of person who…\" and \"a place where…\" to give a clear picture.",
+        "ru": "Относительные придаточные идеальны для описания людей и мест. Используй «the kind/type of person who…» и «a place where…», чтобы дать ясную картину."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "the kind of person who",
+            "ru": "человек, который"
+          },
+          "formula": "the type/kind of person who + verb",
+          "examples": [
+            {
+              "en": "She's the kind of person who always helps.",
+              "ru": "Она из тех, кто всегда помогает."
+            }
+          ],
+          "ref": "relative-clauses"
+        },
+        {
+          "label": {
+            "en": "a place where",
+            "ru": "место, где"
+          },
+          "formula": "a place where + subject + verb",
+          "examples": [
+            {
+              "en": "It's a place where I feel calm.",
+              "ru": "Это место, где я чувствую спокойствие."
+            }
+          ],
+          "ref": "relative-clauses"
+        },
+        {
+          "label": {
+            "en": "with whose/that",
+            "ru": "с whose/that"
+          },
+          "formula": "someone whose … / something that …",
+          "examples": [
+            {
+              "en": "A friend whose advice I trust.",
+              "ru": "Друг, чьим советам я доверяю."
+            }
+          ],
+          "ref": "relative-clauses"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"the kind of person who\" + verb: describes a type of person.",
+          "ru": "«the kind of person who» + глагол: описывает тип человека."
+        },
+        {
+          "en": "Combine clauses to describe richly: \"a friend who listens and whose advice I trust\".",
+          "ru": "Соединяй придаточные для богатого описания: «a friend who listens and whose advice I trust»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u22.d05.reading",
+      "title": {
+        "en": "My best friend",
+        "ru": "Мой лучший друг"
+      },
+      "blocks": [
+        {
+          "id": "u22.d05.reading.b1",
+          "en": "My best friend, Dan, is the kind of person who always listens. He's someone whose advice I completely trust, and a friend who never judges. He's honest, patient, and incredibly reliable.",
+          "ru": "Мой лучший друг Дэн — из тех, кто всегда выслушает. Это человек, чьим советам я полностью доверяю, и друг, который никогда не осуждает. Он честный, терпеливый и невероятно надёжный.",
+          "audio": {
+            "src": "media/audio/u22.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u22.d05.reading.b2",
+          "en": "We often go to a small café where we can talk for hours. It's the sort of place where nobody rushes you. \"A good friend,\" Dan says, \"is someone you can call at three in the morning.\" He's exactly that kind of friend.",
+          "ru": "Мы часто ходим в маленькое кафе, где можем говорить часами. Это такое место, где тебя никто не торопит. «Хороший друг, — говорит Дэн, — это тот, кому можно позвонить в три часа ночи». Он именно такой друг.",
+          "audio": {
+            "src": "media/audio/u22.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "judge",
+          "ru": "осуждать, судить",
+          "ipa": "/dʒʌdʒ/"
+        },
+        {
+          "word": "rush",
+          "ru": "торопить",
+          "ipa": "/rʌʃ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u22.d05.listening",
+      "title": {
+        "en": "What is she like?",
+        "ru": "Какая она?"
+      },
+      "audio": {
+        "src": "media/audio/u22.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "What's your new manager like?",
+          "ru": "Какая твоя новая начальница?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "She's the kind of person who really listens.",
+          "ru": "Она из тех, кто действительно слушает."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "That's rare. Is she good at her job?",
+          "ru": "Это редкость. Она хороша в своём деле?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Very. She's someone whose decisions everyone trusts.",
+          "ru": "Очень. Это человек, чьим решениям все доверяют."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u22.d05.ex.l.01",
+          "instruction": {
+            "en": "What kind of person is she?",
+            "ru": "Какой она человек?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.describing"
+          ],
+          "prompt": "Someone ___ decisions people trust.",
+          "options": [
+            "whose",
+            "who's",
+            "which"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u22.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u22.d05.ex.c.01",
+          "instruction": {
+            "en": "Describe a type.",
+            "ru": "Опиши тип."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "He's the kind of person ___ never gives up.",
+          "options": [
+            "who",
+            "which",
+            "whose"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u22.d05.ex.c.02",
+          "instruction": {
+            "en": "Describe a place.",
+            "ru": "Опиши место."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "It's a place ___ I always feel welcome.",
+          "options": [
+            "where",
+            "which",
+            "who"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u22.d05.ex.g.01",
+          "instruction": {
+            "en": "whose.",
+            "ru": "whose."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "She's a leader ___ ideas inspire people. (possession)",
+          "answers": [
+            "whose"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u22.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "variants": [
+            "He's the type who help everyone.",
+            "He's the type who helps everyone."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u22.d05.ex.c.03",
+          "instruction": {
+            "en": "Choose the pronoun.",
+            "ru": "Выбери местоимение."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "A friend ___ you can always trust is rare.",
+          "options": [
+            "(that) ",
+            "what",
+            "whose"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u22.d05.ex.g.02",
+          "instruction": {
+            "en": "a place where.",
+            "ru": "место, где."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "It's the sort of place ___ time slows down. (place)",
+          "answers": [
+            "where"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u22.d05.ex.o.01",
+          "instruction": {
+            "en": "Describe a person.",
+            "ru": "Опиши человека."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "tokens": [
+            "She's",
+            "someone",
+            "who",
+            "always",
+            "tells",
+            "the",
+            "truth"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u22.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.personality"
+          ],
+          "pairs": [
+            {
+              "left": "generous",
+              "right": "щедрый"
+            },
+            {
+              "left": "reliable",
+              "right": "надёжный"
+            },
+            {
+              "left": "honest",
+              "right": "честный"
+            },
+            {
+              "left": "patient",
+              "right": "терпеливый"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u22.d05.ex.c.04",
+          "instruction": {
+            "en": "Rich description.",
+            "ru": "Богатое описание."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "He's a colleague ___ opinion I really respect.",
+          "options": [
+            "whose",
+            "who",
+            "who's"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u22.d05.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "variants": [
+            "It's a place which I feel calm.",
+            "It's a place where I feel calm."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u22.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.describing",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она из тех, кто всегда помогает.",
+          "answers": [
+            "She's the kind of person who always helps.",
+            "She is the kind of person who always helps."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she is the kind of person which always helps",
+                "she is the kind of person who always help",
+                "she is a kind of person who always helps"
+              ],
+              "explanation": {
+                "en": "the kind of person who + verb(-s): who always helps.",
+                "ru": "the kind of person who + глагол(-s): who always helps."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u22.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.describing",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это место, где я чувствую спокойствие.",
+          "answers": [
+            "It's a place where I feel calm.",
+            "It is a place where I feel calm."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "it is a place which i feel calm",
+                "it is a place where i feel calm in",
+                "it is a place when i feel calm"
+              ],
+              "explanation": {
+                "en": "a place where + clause: a place where I feel calm.",
+                "ru": "a place where + придаточное: a place where I feel calm."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

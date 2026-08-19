@@ -3004,5 +3004,94 @@
       "future-time-clauses",
       "present-continuous"
     ]
+  },
+  {
+    "id": "non-defining-clauses",
+    "title": {
+      "en": "Relative clauses extended (whose, where, when, non-defining)",
+      "ru": "Относительные придаточные: whose, where, when, добавочные"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "Beyond who/which/that, relative clauses use \"whose\" for possession, \"where\" for places and \"when\" for times. And there are two kinds: defining (no commas) and non-defining (extra info between commas).",
+      "ru": "Кроме who/which/that, в относительных придаточных есть «whose» для принадлежности, «where» для мест и «when» для времени. И есть два вида: уточняющие (без запятых) и добавочные (доп. информация в запятых)."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "whose — possession",
+          "ru": "whose — принадлежность"
+        },
+        "text": {
+          "en": "\"whose\" shows that something belongs to the person or thing. It is followed by a noun and works for people and things.\n\nThat's the man whose car broke down.\nA book whose cover is torn.\n\nDo not confuse \"whose\" (possession) with \"who's\" (= who is).",
+          "ru": "«whose» показывает, что что-то принадлежит человеку или предмету. За ним идёт существительное; годится для людей и вещей.\n\nThat's the man whose car broke down.\nA book whose cover is torn.\n\nНе путай «whose» (принадлежность) с «who's» (= who is)."
+        },
+        "examples": [
+          {
+            "en": "The girl whose phone rang left the room.",
+            "ru": "Девочка, чей телефон зазвонил, вышла из комнаты."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "where and when",
+          "ru": "where и when"
+        },
+        "text": {
+          "en": "Use \"where\" for a place and \"when\" for a time. Do not add an extra preposition after \"where\".\n\nThis is the town where I grew up.\nI remember the day when we met.\n(NOT \"the town where I grew up in\")",
+          "ru": "Используй «where» для места и «when» для времени. Не добавляй лишний предлог после «where».\n\nThis is the town where I grew up.\nI remember the day when we met.\n(НЕ «the town where I grew up in»)"
+        },
+        "examples": [
+          {
+            "en": "The café where we first met has closed.",
+            "ru": "Кафе, где мы впервые встретились, закрылось."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Defining vs non-defining",
+          "ru": "Уточняющие и добавочные"
+        },
+        "text": {
+          "en": "A DEFINING clause says which one and has NO commas: \"The man who called is my boss.\" A NON-DEFINING clause adds extra info between COMMAS and cannot use \"that\": \"My brother, who lives in Rome, is a doctor.\"",
+          "ru": "УТОЧНЯЮЩЕЕ говорит, о каком именно, и БЕЗ запятых: «The man who called is my boss.» ДОБАВОЧНОЕ даёт доп. info в ЗАПЯТЫХ и не может использовать «that»: «My brother, who lives in Rome, is a doctor.»"
+        },
+        "examples": [
+          {
+            "en": "This car, which is new, was cheap.",
+            "ru": "Эта машина, которая новая, была дешёвой."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Leaving out the pronoun",
+          "ru": "Опускаем местоимение"
+        },
+        "text": {
+          "en": "When the relative pronoun is the OBJECT, you can leave it out (only in defining clauses).\n\nThe book (that) I read was great.\nThe person (who) I spoke to was kind.\n\nBut keep it when it is the SUBJECT: \"the man who called\".",
+          "ru": "Когда местоимение — ДОПОЛНЕНИЕ, его можно опустить (только в уточняющих).\n\nThe book (that) I read was great.\nThe person (who) I spoke to was kind.\n\nНо оставляй, если это ПОДЛЕЖАЩЕЕ: «the man who called»."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Non-defining clauses need commas and who/which, never \"that\".",
+        "ru": "Добавочные — в запятых и с who/which, никогда «that»."
+      },
+      {
+        "en": "No extra preposition after \"where\": \"the town where I live\", not \"where I live in\".",
+        "ru": "Без лишнего предлога после «where»: «the town where I live», а не «where I live in»."
+      },
+      {
+        "en": "You can omit the pronoun only when it is the object: \"the book I read\".",
+        "ru": "Опускать местоимение можно только когда оно дополнение: «the book I read»."
+      }
+    ],
+    "seeAlso": [
+      "relative-clauses"
+    ]
   }
 ]

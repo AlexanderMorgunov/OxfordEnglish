@@ -1,0 +1,605 @@
+{
+  "id": "u22.d02",
+  "title": {
+    "en": "The town where I grew up",
+    "ru": "Город, где я вырос"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.relative-clauses",
+    "vocab.town"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u22.d02.vocab",
+      "title": {
+        "en": "Places & times",
+        "ru": "Места и время"
+      },
+      "words": [
+        {
+          "word": "village",
+          "ru": "деревня",
+          "ipa": "/ˈvɪlɪdʒ/",
+          "example": "A quiet village.",
+          "exampleRu": "Тихая деревня.",
+          "audio": {
+            "src": "media/audio/u22.d02.vocab.village.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "area",
+          "ru": "район, местность",
+          "ipa": "/ˈeəriə/",
+          "example": "It's a nice area.",
+          "exampleRu": "Это приятный район.",
+          "audio": {
+            "src": "media/audio/u22.d02.vocab.area.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "building",
+          "ru": "здание",
+          "ipa": "/ˈbɪldɪŋ/",
+          "example": "An old building.",
+          "exampleRu": "Старое здание.",
+          "audio": {
+            "src": "media/audio/u22.d02.vocab.building.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "corner",
+          "ru": "угол",
+          "ipa": "/ˈkɔːrnər/",
+          "example": "The shop on the corner.",
+          "exampleRu": "Магазин на углу.",
+          "audio": {
+            "src": "media/audio/u22.d02.vocab.corner.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "grow up",
+          "ru": "расти, взрослеть",
+          "ipa": "/ɡroʊ ʌp/",
+          "example": "I grew up here.",
+          "exampleRu": "Я вырос здесь.",
+          "audio": {
+            "src": "media/audio/u22.d02.vocab.growup.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "moment",
+          "ru": "момент",
+          "ipa": "/ˈmoʊmənt/",
+          "example": "The moment when we met.",
+          "exampleRu": "Момент, когда мы встретились.",
+          "audio": {
+            "src": "media/audio/u22.d02.vocab.moment.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "period",
+          "ru": "период",
+          "ipa": "/ˈpɪəriəd/",
+          "example": "A difficult period.",
+          "exampleRu": "Трудный период.",
+          "audio": {
+            "src": "media/audio/u22.d02.vocab.period.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "spot",
+          "ru": "место",
+          "ipa": "/spɒt/",
+          "example": "A quiet spot by the river.",
+          "exampleRu": "Тихое место у реки.",
+          "audio": {
+            "src": "media/audio/u22.d02.vocab.spot.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "memory",
+          "ru": "воспоминание",
+          "ipa": "/ˈmeməri/",
+          "example": "Happy memories.",
+          "exampleRu": "Счастливые воспоминания.",
+          "audio": {
+            "src": "media/audio/u22.d02.vocab.memory.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "nearby",
+          "ru": "поблизости",
+          "ipa": "/nɪərˈbaɪ/",
+          "example": "There's a park nearby.",
+          "exampleRu": "Поблизости есть парк.",
+          "audio": {
+            "src": "media/audio/u22.d02.vocab.nearby.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u22.d02.grammar",
+      "title": {
+        "en": "where and when",
+        "ru": "where и when"
+      },
+      "rule": {
+        "en": "Use \"where\" in a relative clause to talk about a PLACE and \"when\" to talk about a TIME. They replace \"in which\" / \"at which\".",
+        "ru": "Используй «where» в относительном придаточном для МЕСТА и «when» для ВРЕМЕНИ. Они заменяют «in which» / «at which»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "where (place)",
+            "ru": "where (место)"
+          },
+          "formula": "the place where + subject + verb",
+          "examples": [
+            {
+              "en": "This is the town where I grew up.",
+              "ru": "Это город, где я вырос."
+            }
+          ],
+          "ref": "relative-clauses"
+        },
+        {
+          "label": {
+            "en": "when (time)",
+            "ru": "when (время)"
+          },
+          "formula": "the day when + subject + verb",
+          "examples": [
+            {
+              "en": "I remember the day when we met.",
+              "ru": "Я помню день, когда мы встретились."
+            }
+          ],
+          "ref": "relative-clauses"
+        },
+        {
+          "label": {
+            "en": "no extra preposition",
+            "ru": "без лишнего предлога"
+          },
+          "formula": "where = in/at which",
+          "examples": [
+            {
+              "en": "The house where I live. (not \"where I live in\")",
+              "ru": "Дом, где я живу."
+            }
+          ],
+          "ref": "relative-clauses"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use \"where\" for places, not \"which\": \"the town where I live\".",
+          "ru": "Для мест — «where», а не «which»: «the town where I live»."
+        },
+        {
+          "en": "Do not add a preposition after \"where\": \"where I live\", not \"where I live in\".",
+          "ru": "Не добавляй предлог после «where»: «where I live», а не «where I live in»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u22.d02.reading",
+      "title": {
+        "en": "Going back home",
+        "ru": "Возвращение домой"
+      },
+      "blocks": [
+        {
+          "id": "u22.d02.reading.b1",
+          "en": "Last summer I visited the village where I grew up. I walked past the school where I learned to read and the little shop where we bought sweets after class. Everything felt smaller than I remembered.",
+          "ru": "Прошлым летом я побывал в деревне, где вырос. Я прошёл мимо школы, где научился читать, и маленького магазина, где мы покупали сладости после уроков. Всё казалось меньше, чем я помнил.",
+          "audio": {
+            "src": "media/audio/u22.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u22.d02.reading.b2",
+          "en": "I found the bench where my grandfather used to sit. I still remember the summer when he taught me to fish. It's a place where time seems to slow down — a quiet corner of the world where my happiest memories live.",
+          "ru": "Я нашёл скамейку, где обычно сидел мой дед. Я до сих пор помню лето, когда он учил меня рыбачить. Это место, где время будто замедляется, — тихий уголок мира, где живут мои самые счастливые воспоминания.",
+          "audio": {
+            "src": "media/audio/u22.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "bench",
+          "ru": "скамейка",
+          "ipa": "/bentʃ/"
+        },
+        {
+          "word": "sweets",
+          "ru": "сладости",
+          "ipa": "/swiːts/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u22.d02.listening",
+      "title": {
+        "en": "Where did you meet?",
+        "ru": "Где вы познакомились?"
+      },
+      "audio": {
+        "src": "media/audio/u22.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Where did you two first meet?",
+          "ru": "Где вы двое впервые встретились?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "At the café where I used to work.",
+          "ru": "В кафе, где я раньше работала."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Do you remember the day when you met?",
+          "ru": "Ты помнишь день, когда вы познакомились?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Of course. It was the day when it snowed in April.",
+          "ru": "Конечно. Это был день, когда в апреле выпал снег."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u22.d02.ex.l.01",
+          "instruction": {
+            "en": "Where did they meet?",
+            "ru": "Где они познакомились?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.relative-clauses"
+          ],
+          "prompt": "At the café ___ she used to work.",
+          "options": [
+            "where",
+            "which",
+            "when"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u22.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u22.d02.ex.c.01",
+          "instruction": {
+            "en": "Place.",
+            "ru": "Место."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "This is the house ___ I was born.",
+          "options": [
+            "where",
+            "which",
+            "who"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u22.d02.ex.g.01",
+          "instruction": {
+            "en": "Time.",
+            "ru": "Время."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "I'll never forget the day ___ we met. (time word)",
+          "answers": [
+            "when"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u22.d02.ex.c.02",
+          "instruction": {
+            "en": "where or which?",
+            "ru": "where или which?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The city ___ they live is very old.",
+          "options": [
+            "where",
+            "which",
+            "when"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u22.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "variants": [
+            "The town where I live in is small.",
+            "The town where I live is small."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u22.d02.ex.g.02",
+          "instruction": {
+            "en": "Place.",
+            "ru": "Место."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "That's the restaurant ___ we had dinner. (place)",
+          "answers": [
+            "where"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u22.d02.ex.c.03",
+          "instruction": {
+            "en": "Time.",
+            "ru": "Время."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "Summer is the season ___ I feel happiest.",
+          "options": [
+            "when",
+            "where",
+            "which"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u22.d02.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "tokens": [
+            "This",
+            "is",
+            "the",
+            "village",
+            "where",
+            "I",
+            "grew",
+            "up"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u22.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.town"
+          ],
+          "pairs": [
+            {
+              "left": "village",
+              "right": "деревня"
+            },
+            {
+              "left": "area",
+              "right": "район"
+            },
+            {
+              "left": "corner",
+              "right": "угол"
+            },
+            {
+              "left": "nearby",
+              "right": "поблизости"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u22.d02.ex.c.04",
+          "instruction": {
+            "en": "Choose the word.",
+            "ru": "Выбери слово."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "There was a moment ___ everything changed.",
+          "options": [
+            "when",
+            "where",
+            "whose"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u22.d02.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "variants": [
+            "The place which I grew up is quiet.",
+            "The place where I grew up is quiet."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u22.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это город, где я вырос.",
+          "answers": [
+            "This is the town where I grew up.",
+            "This is the city where I grew up."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "this is the town which i grew up",
+                "this is the town where i grew up in",
+                "this is the town when i grew up"
+              ],
+              "explanation": {
+                "en": "where for a place, no extra preposition: the town where I grew up.",
+                "ru": "where для места, без лишнего предлога: the town where I grew up."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u22.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я помню день, когда мы встретились.",
+          "answers": [
+            "I remember the day when we met.",
+            "I remember the day we met."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i remember the day where we met",
+                "i remember the day which we met",
+                "i remember the day when we meet"
+              ],
+              "explanation": {
+                "en": "when for a time: the day when we met.",
+                "ru": "when для времени: the day when we met."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
