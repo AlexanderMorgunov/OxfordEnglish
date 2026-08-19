@@ -1,0 +1,597 @@
+{
+  "id": "u25.d05",
+  "title": {
+    "en": "How much do you need?",
+    "ru": "Сколько тебе нужно?"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "functions.shopping",
+    "vocab.shopping"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u25.d05.vocab",
+      "title": {
+        "en": "At the market",
+        "ru": "На рынке"
+      },
+      "words": [
+        {
+          "word": "bottle",
+          "ru": "бутылка",
+          "ipa": "/ˈbɒtl/",
+          "example": "A bottle of water.",
+          "exampleRu": "Бутылка воды.",
+          "audio": {
+            "src": "media/audio/u25.d05.vocab.bottle.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "packet",
+          "ru": "пачка",
+          "ipa": "/ˈpækɪt/",
+          "example": "A packet of biscuits.",
+          "exampleRu": "Пачка печенья.",
+          "audio": {
+            "src": "media/audio/u25.d05.vocab.packet.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "jar",
+          "ru": "банка",
+          "ipa": "/dʒɑːr/",
+          "example": "A jar of honey.",
+          "exampleRu": "Банка мёда.",
+          "audio": {
+            "src": "media/audio/u25.d05.vocab.jar.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "kilo",
+          "ru": "килограмм",
+          "ipa": "/ˈkiːloʊ/",
+          "example": "A kilo of apples.",
+          "exampleRu": "Килограмм яблок.",
+          "audio": {
+            "src": "media/audio/u25.d05.vocab.kilo.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "slice",
+          "ru": "ломтик",
+          "ipa": "/slaɪs/",
+          "example": "A slice of bread.",
+          "exampleRu": "Ломтик хлеба.",
+          "audio": {
+            "src": "media/audio/u25.d05.vocab.slice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dozen",
+          "ru": "дюжина",
+          "ipa": "/ˈdʌzn/",
+          "example": "A dozen eggs.",
+          "exampleRu": "Дюжина яиц.",
+          "audio": {
+            "src": "media/audio/u25.d05.vocab.dozen.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pair",
+          "ru": "пара",
+          "ipa": "/peər/",
+          "example": "A pair of gloves.",
+          "exampleRu": "Пара перчаток.",
+          "audio": {
+            "src": "media/audio/u25.d05.vocab.pair.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "loaf",
+          "ru": "буханка",
+          "ipa": "/loʊf/",
+          "example": "A loaf of bread.",
+          "exampleRu": "Буханка хлеба.",
+          "audio": {
+            "src": "media/audio/u25.d05.vocab.loaf.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tin",
+          "ru": "консервная банка",
+          "ipa": "/tɪn/",
+          "example": "A tin of beans.",
+          "exampleRu": "Банка фасоли.",
+          "audio": {
+            "src": "media/audio/u25.d05.vocab.tin.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fewer",
+          "ru": "меньше",
+          "ipa": "/ˈfjuːər/",
+          "example": "Buy fewer sweets.",
+          "exampleRu": "Покупай меньше сладостей.",
+          "audio": {
+            "src": "media/audio/u25.d05.vocab.fewer.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u25.d05.grammar",
+      "title": {
+        "en": "Asking about and buying amounts",
+        "ru": "Спрашиваем и покупаем количества"
+      },
+      "rule": {
+        "en": "At the shop, ask \"How much…?\" (uncountable) or \"How many…?\" (plural), and buy amounts with containers and measures: \"a bottle of\", \"a kilo of\", \"a packet of\".",
+        "ru": "В магазине спрашивай «How much…?» (неисчисляемое) или «How many…?» (мн. число) и покупай количества через ёмкости и меры: «a bottle of», «a kilo of», «a packet of»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "How much / How many",
+            "ru": "How much / How many"
+          },
+          "formula": "How much + uncountable · How many + plural",
+          "examples": [
+            {
+              "en": "How much rice? How many apples?",
+              "ru": "Сколько риса? Сколько яблок?"
+            }
+          ],
+          "ref": "quantifiers-b1"
+        },
+        {
+          "label": {
+            "en": "a … of",
+            "ru": "a … of"
+          },
+          "formula": "a bottle/kilo/packet + of + noun",
+          "examples": [
+            {
+              "en": "A kilo of tomatoes, please.",
+              "ru": "Килограмм помидоров, пожалуйста."
+            }
+          ],
+          "ref": "quantifiers-b1"
+        },
+        {
+          "label": {
+            "en": "fewer / less",
+            "ru": "fewer / less"
+          },
+          "formula": "fewer + plural · less + uncountable",
+          "examples": [
+            {
+              "en": "fewer bags · less plastic",
+              "ru": "меньше пакетов · меньше пластика"
+            }
+          ],
+          "ref": "quantifiers-b1"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"How much\" + uncountable, \"How many\" + plural: \"How much bread?\", \"How many rolls?\"",
+          "ru": "«How much» + неисч., «How many» + мн.: «How much bread?», «How many rolls?»"
+        },
+        {
+          "en": "\"fewer\" for countable, \"less\" for uncountable: \"fewer bottles\", \"less water\".",
+          "ru": "«fewer» — исчисляемое, «less» — неисчисляемое: «fewer bottles», «less water»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u25.d05.reading",
+      "title": {
+        "en": "At the market",
+        "ru": "На рынке"
+      },
+      "blocks": [
+        {
+          "id": "u25.d05.reading.b1",
+          "en": "\"How much do we need?\" asked Leo at the market. \"A kilo of apples, a bottle of milk, and a loaf of bread,\" said his mum. \"And how many eggs?\" \"A dozen. Oh, and a jar of honey and a packet of tea.\"",
+          "ru": "«Сколько нам нужно?» — спросил Лео на рынке. «Килограмм яблок, бутылку молока и буханку хлеба, — сказала мама. — И сколько яиц?» «Дюжину. Ах да, и банку мёда и пачку чая».",
+          "audio": {
+            "src": "media/audio/u25.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u25.d05.reading.b2",
+          "en": "\"That's plenty,\" Leo said. \"We're buying less sugar than last week, and fewer sweets too.\" His mum smiled. \"Good. We eat too many sweets anyway. A few pieces of fruit are much better.\"",
+          "ru": "«Этого достаточно, — сказал Лео. — Сахара берём меньше, чем на прошлой неделе, и сладостей тоже меньше». Мама улыбнулась. «Хорошо. Мы и так едим слишком много сладкого. Несколько фруктов гораздо полезнее».",
+          "audio": {
+            "src": "media/audio/u25.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "market",
+          "ru": "рынок",
+          "ipa": "/ˈmɑːrkɪt/"
+        },
+        {
+          "word": "piece",
+          "ru": "кусочек",
+          "ipa": "/piːs/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u25.d05.listening",
+      "title": {
+        "en": "How many?",
+        "ru": "Сколько?"
+      },
+      "audio": {
+        "src": "media/audio/u25.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "How many apples would you like?",
+          "ru": "Сколько яблок вам?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "A kilo, please. And a bottle of juice.",
+          "ru": "Килограмм, пожалуйста. И бутылку сока."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Anything else?",
+          "ru": "Что-нибудь ещё?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Yes, a dozen eggs and a loaf of bread.",
+          "ru": "Да, дюжину яиц и буханку хлеба."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u25.d05.ex.l.01",
+          "instruction": {
+            "en": "How many eggs?",
+            "ru": "Сколько яиц?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.shopping"
+          ],
+          "prompt": "A ___ .",
+          "options": [
+            "dozen",
+            "kilo",
+            "bottle"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u25.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u25.d05.ex.c.01",
+          "instruction": {
+            "en": "much or many?",
+            "ru": "much или many?"
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "prompt": "How ___ bread do we need?",
+          "options": [
+            "much",
+            "many",
+            "lot"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u25.d05.ex.c.02",
+          "instruction": {
+            "en": "much or many?",
+            "ru": "much или many?"
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "prompt": "How ___ eggs are left?",
+          "options": [
+            "many",
+            "much",
+            "lot of"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u25.d05.ex.g.01",
+          "instruction": {
+            "en": "a … of.",
+            "ru": "a … of."
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "prompt": "Can I have a bottle ___ water? (of)",
+          "answers": [
+            "of"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u25.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "variants": [
+            "A kilo of apple, please.",
+            "A kilo of apples, please."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u25.d05.ex.c.03",
+          "instruction": {
+            "en": "fewer or less?",
+            "ru": "fewer или less?"
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "prompt": "We should buy ___ plastic bags.",
+          "options": [
+            "fewer",
+            "less",
+            "much"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u25.d05.ex.g.02",
+          "instruction": {
+            "en": "a … of.",
+            "ru": "a … of."
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "prompt": "I'd like a ___ of bread, please. (whole bread)",
+          "answers": [
+            "loaf"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u25.d05.ex.o.01",
+          "instruction": {
+            "en": "Order at a shop.",
+            "ru": "Закажи в магазине."
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "tokens": [
+            "A",
+            "kilo",
+            "of",
+            "tomatoes",
+            "please"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u25.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.shopping"
+          ],
+          "pairs": [
+            {
+              "left": "bottle",
+              "right": "бутылка"
+            },
+            {
+              "left": "packet",
+              "right": "пачка"
+            },
+            {
+              "left": "dozen",
+              "right": "дюжина"
+            },
+            {
+              "left": "loaf",
+              "right": "буханка"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u25.d05.ex.c.04",
+          "instruction": {
+            "en": "less + uncountable.",
+            "ru": "less + неисч."
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "prompt": "Try to use ___ water.",
+          "options": [
+            "less",
+            "fewer",
+            "many"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u25.d05.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "variants": [
+            "How much apples do you want?",
+            "How many apples do you want?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u25.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.shopping",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Сколько хлеба нам нужно?",
+          "answers": [
+            "How much bread do we need?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "how many bread do we need",
+                "how much breads do we need",
+                "how much bread we need"
+              ],
+              "explanation": {
+                "en": "How much + uncountable: How much bread do we need?",
+                "ru": "How much + неисчисляемое: How much bread do we need?"
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u25.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.shopping",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Килограмм яблок, пожалуйста.",
+          "answers": [
+            "A kilo of apples, please."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "a kilo of apple please",
+                "kilo of apples please",
+                "a kilo apples please"
+              ],
+              "explanation": {
+                "en": "a kilo OF apples (plural): A kilo of apples, please.",
+                "ru": "a kilo OF apples (мн. число): A kilo of apples, please."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

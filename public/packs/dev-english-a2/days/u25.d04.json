@@ -1,0 +1,599 @@
+{
+  "id": "u25.d04",
+  "title": {
+    "en": "A few, a little, most",
+    "ru": "A few, a little, most"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.quantifiers",
+    "vocab.food"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u25.d04.vocab",
+      "title": {
+        "en": "Quantities of food",
+        "ru": "Количества еды"
+      },
+      "words": [
+        {
+          "word": "several",
+          "ru": "несколько",
+          "ipa": "/ˈsevrəl/",
+          "example": "Several apples.",
+          "exampleRu": "Несколько яблок.",
+          "audio": {
+            "src": "media/audio/u25.d04.vocab.several.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "most",
+          "ru": "большинство",
+          "ipa": "/moʊst/",
+          "example": "Most people agree.",
+          "exampleRu": "Большинство согласны.",
+          "audio": {
+            "src": "media/audio/u25.d04.vocab.most.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "a couple",
+          "ru": "пара",
+          "ipa": "/ə ˈkʌpl/",
+          "example": "A couple of eggs.",
+          "exampleRu": "Пара яиц.",
+          "audio": {
+            "src": "media/audio/u25.d04.vocab.acouple.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hardly any",
+          "ru": "почти нет",
+          "ipa": "/ˈhɑːrdli ˈeni/",
+          "example": "Hardly any milk left.",
+          "exampleRu": "Молока почти не осталось.",
+          "audio": {
+            "src": "media/audio/u25.d04.vocab.hardlyany.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ingredient",
+          "ru": "ингредиент",
+          "ipa": "/ɪnˈɡriːdiənt/",
+          "example": "Fresh ingredients.",
+          "exampleRu": "Свежие ингредиенты.",
+          "audio": {
+            "src": "media/audio/u25.d04.vocab.ingredient.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "recipe",
+          "ru": "рецепт",
+          "ipa": "/ˈresɪpi/",
+          "example": "A simple recipe.",
+          "exampleRu": "Простой рецепт.",
+          "audio": {
+            "src": "media/audio/u25.d04.vocab.recipe.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "flour",
+          "ru": "мука",
+          "ipa": "/ˈflaʊər/",
+          "example": "Add a little flour.",
+          "exampleRu": "Добавь немного муки.",
+          "audio": {
+            "src": "media/audio/u25.d04.vocab.flour.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fresh",
+          "ru": "свежий",
+          "ipa": "/freʃ/",
+          "example": "Fresh vegetables.",
+          "exampleRu": "Свежие овощи.",
+          "audio": {
+            "src": "media/audio/u25.d04.vocab.fresh.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "taste",
+          "ru": "вкус; пробовать",
+          "ipa": "/teɪst/",
+          "example": "It has a nice taste.",
+          "exampleRu": "У него приятный вкус.",
+          "audio": {
+            "src": "media/audio/u25.d04.vocab.taste.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "spice",
+          "ru": "специя",
+          "ipa": "/spaɪs/",
+          "example": "A few spices.",
+          "exampleRu": "Немного специй.",
+          "audio": {
+            "src": "media/audio/u25.d04.vocab.spice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u25.d04.grammar",
+      "title": {
+        "en": "a few / a little / most / none",
+        "ru": "a few / a little / most / none"
+      },
+      "rule": {
+        "en": "\"a few\" + plural (some, positive), \"a little\" + uncountable (some). \"few/little\" (without \"a\") means \"almost none\". \"most\" = the majority, \"none\" = not any.",
+        "ru": "«a few» + мн. число (немного, положительно), «a little» + неисчисляемое (немного). «few/little» (без «a») = «почти нет». «most» = большинство, «none» = ни одного."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "a few / a little",
+            "ru": "a few / a little"
+          },
+          "formula": "a few + plural · a little + uncountable",
+          "examples": [
+            {
+              "en": "a few apples · a little milk",
+              "ru": "несколько яблок · немного молока"
+            }
+          ],
+          "ref": "quantifiers-b1"
+        },
+        {
+          "label": {
+            "en": "few / little (almost none)",
+            "ru": "few / little (почти нет)"
+          },
+          "formula": "few + plural · little + uncountable",
+          "examples": [
+            {
+              "en": "Few people came. There's little time.",
+              "ru": "Мало кто пришёл. Времени мало."
+            }
+          ],
+          "ref": "quantifiers-b1"
+        },
+        {
+          "label": {
+            "en": "most / none of",
+            "ru": "most / none of"
+          },
+          "formula": "most (of) + noun · none of + noun",
+          "examples": [
+            {
+              "en": "Most people agree. None of them came.",
+              "ru": "Большинство согласны. Никто из них не пришёл."
+            }
+          ],
+          "ref": "quantifiers-b1"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"a few\" = plural, \"a little\" = uncountable: \"a few eggs\", \"a little sugar\".",
+          "ru": "«a few» = мн. число, «a little» = неисчисляемое: «a few eggs», «a little sugar»."
+        },
+        {
+          "en": "\"few/little\" (no \"a\") is negative: \"few friends\" = almost no friends.",
+          "ru": "«few/little» (без «a») отрицательно: «few friends» = почти нет друзей."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u25.d04.reading",
+      "title": {
+        "en": "A simple recipe",
+        "ru": "Простой рецепт"
+      },
+      "blocks": [
+        {
+          "id": "u25.d04.reading.b1",
+          "en": "This recipe needs only a few ingredients. You'll need a little flour, a couple of eggs, and some milk. Most people already have these at home. Add a little sugar and a few spices for flavour.",
+          "ru": "Для этого рецепта нужно лишь несколько ингредиентов. Понадобится немного муки, пара яиц и молоко. У большинства людей это уже есть дома. Добавь немного сахара и пару специй для вкуса.",
+          "audio": {
+            "src": "media/audio/u25.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u25.d04.reading.b2",
+          "en": "Mix everything together. There's very little work involved, and it takes hardly any time. Most of the flavour comes from the fresh fruit on top. None of my friends can believe how easy it is — a few minutes and it's done!",
+          "ru": "Смешай всё вместе. Работы совсем немного, и времени почти не нужно. Большая часть вкуса — от свежих фруктов сверху. Никто из моих друзей не верит, как это просто — пара минут, и готово!",
+          "audio": {
+            "src": "media/audio/u25.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "flavour",
+          "ru": "вкус, аромат",
+          "ipa": "/ˈfleɪvər/"
+        },
+        {
+          "word": "mix",
+          "ru": "смешивать",
+          "ipa": "/mɪks/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u25.d04.listening",
+      "title": {
+        "en": "Do we have enough?",
+        "ru": "У нас хватит?"
+      },
+      "audio": {
+        "src": "media/audio/u25.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Do we have everything for the cake?",
+          "ru": "У нас есть всё для торта?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Almost. We have a little flour and a few eggs.",
+          "ru": "Почти. Есть немного муки и пара яиц."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "What about sugar?",
+          "ru": "А сахар?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Hardly any. We need to buy some.",
+          "ru": "Почти нет. Нужно купить."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u25.d04.ex.l.01",
+          "instruction": {
+            "en": "How much sugar is there?",
+            "ru": "Сколько сахара?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.quantifiers"
+          ],
+          "prompt": "Hardly ___ .",
+          "options": [
+            "any",
+            "some",
+            "much"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u25.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u25.d04.ex.c.01",
+          "instruction": {
+            "en": "a few or a little?",
+            "ru": "a few или a little?"
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "prompt": "Add ___ salt to the soup.",
+          "options": [
+            "a little",
+            "a few",
+            "many"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u25.d04.ex.c.02",
+          "instruction": {
+            "en": "a few or a little?",
+            "ru": "a few или a little?"
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "prompt": "I have ___ friends in this city.",
+          "options": [
+            "a few",
+            "a little",
+            "much"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u25.d04.ex.g.01",
+          "instruction": {
+            "en": "most of.",
+            "ru": "most of."
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "prompt": "___ of the students passed. (majority)",
+          "answers": [
+            "Most"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u25.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "variants": [
+            "I have a little apples.",
+            "I have a few apples."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u25.d04.ex.c.03",
+          "instruction": {
+            "en": "none of.",
+            "ru": "none of."
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "prompt": "___ of them wanted to come.",
+          "options": [
+            "None",
+            "No",
+            "Any"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u25.d04.ex.g.02",
+          "instruction": {
+            "en": "a little + uncountable.",
+            "ru": "a little + неисч."
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "prompt": "There's ___ little milk in the fridge. (some)",
+          "answers": [
+            "a"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u25.d04.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "tokens": [
+            "We",
+            "need",
+            "a",
+            "few",
+            "more",
+            "eggs"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u25.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.food"
+          ],
+          "pairs": [
+            {
+              "left": "several",
+              "right": "несколько"
+            },
+            {
+              "left": "ingredient",
+              "right": "ингредиент"
+            },
+            {
+              "left": "recipe",
+              "right": "рецепт"
+            },
+            {
+              "left": "spice",
+              "right": "специя"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u25.d04.ex.c.04",
+          "instruction": {
+            "en": "few (almost none).",
+            "ru": "few (почти нет)."
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "prompt": "___ people know this secret.",
+          "options": [
+            "Few",
+            "A few",
+            "Little"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u25.d04.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "variants": [
+            "Most of people agree.",
+            "Most people agree."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u25.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.quantifiers",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Добавь немного молока.",
+          "answers": [
+            "Add a little milk."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "add a few milk",
+                "add little milk",
+                "add a little milks"
+              ],
+              "explanation": {
+                "en": "a little + uncountable: a little milk.",
+                "ru": "a little + неисчисляемое: a little milk."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u25.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.quantifiers",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У меня несколько яблок.",
+          "answers": [
+            "I have a few apples."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i have a little apples",
+                "i have few apples",
+                "i have a few apple"
+              ],
+              "explanation": {
+                "en": "a few + plural: a few apples.",
+                "ru": "a few + мн. число: a few apples."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

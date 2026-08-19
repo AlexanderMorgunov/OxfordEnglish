@@ -1,0 +1,598 @@
+{
+  "id": "u25.d02",
+  "title": {
+    "en": "Too much, too many",
+    "ru": "Слишком много"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.quantifiers",
+    "vocab.money"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u25.d02.vocab",
+      "title": {
+        "en": "Amounts",
+        "ru": "Количества"
+      },
+      "words": [
+        {
+          "word": "amount",
+          "ru": "количество (неисч.)",
+          "ipa": "/əˈmaʊnt/",
+          "example": "A large amount of water.",
+          "exampleRu": "Большое количество воды.",
+          "audio": {
+            "src": "media/audio/u25.d02.vocab.amount.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "number",
+          "ru": "количество (исч.)",
+          "ipa": "/ˈnʌmbər/",
+          "example": "A number of people.",
+          "exampleRu": "Ряд людей.",
+          "audio": {
+            "src": "media/audio/u25.d02.vocab.number.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "spend",
+          "ru": "тратить",
+          "ipa": "/spend/",
+          "example": "I spend too much.",
+          "exampleRu": "Я трачу слишком много.",
+          "audio": {
+            "src": "media/audio/u25.d02.vocab.spend.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "save",
+          "ru": "экономить",
+          "ipa": "/seɪv/",
+          "example": "We need to save money.",
+          "exampleRu": "Нам нужно копить деньги.",
+          "audio": {
+            "src": "media/audio/u25.d02.vocab.save.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "waste",
+          "ru": "тратить впустую",
+          "ipa": "/weɪst/",
+          "example": "Don't waste food.",
+          "exampleRu": "Не переводи еду.",
+          "audio": {
+            "src": "media/audio/u25.d02.vocab.waste.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "budget",
+          "ru": "бюджет",
+          "ipa": "/ˈbʌdʒɪt/",
+          "example": "Keep to your budget.",
+          "exampleRu": "Держись бюджета.",
+          "audio": {
+            "src": "media/audio/u25.d02.vocab.budget.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "plenty",
+          "ru": "много, достаточно",
+          "ipa": "/ˈplenti/",
+          "example": "There's plenty of time.",
+          "exampleRu": "Времени полно.",
+          "audio": {
+            "src": "media/audio/u25.d02.vocab.plenty.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sugar",
+          "ru": "сахар",
+          "ipa": "/ˈʃʊɡər/",
+          "example": "Too much sugar is bad.",
+          "exampleRu": "Слишком много сахара вредно.",
+          "audio": {
+            "src": "media/audio/u25.d02.vocab.sugar.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "portion",
+          "ru": "порция",
+          "ipa": "/ˈpɔːrʃn/",
+          "example": "A big portion.",
+          "exampleRu": "Большая порция.",
+          "audio": {
+            "src": "media/audio/u25.d02.vocab.portion.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reduce",
+          "ru": "сокращать",
+          "ipa": "/rɪˈdjuːs/",
+          "example": "Reduce the amount.",
+          "exampleRu": "Уменьши количество.",
+          "audio": {
+            "src": "media/audio/u25.d02.vocab.reduce.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u25.d02.grammar",
+      "title": {
+        "en": "too much / too many / enough",
+        "ru": "too much / too many / enough"
+      },
+      "rule": {
+        "en": "\"too much\" (uncountable) and \"too many\" (plural) mean more than you want — a problem. \"enough\" means the right amount. \"not enough\" means less than you need.",
+        "ru": "«too much» (неисчисляемое) и «too many» (мн. число) — больше, чем нужно (проблема). «enough» — достаточно. «not enough» — меньше, чем нужно."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "too much / too many",
+            "ru": "too much / too many"
+          },
+          "formula": "too much + uncountable · too many + plural",
+          "examples": [
+            {
+              "en": "too much sugar · too many people",
+              "ru": "слишком много сахара · слишком много людей"
+            }
+          ],
+          "ref": "too-enough"
+        },
+        {
+          "label": {
+            "en": "enough + noun",
+            "ru": "enough + существительное"
+          },
+          "formula": "enough + noun",
+          "examples": [
+            {
+              "en": "We have enough chairs.",
+              "ru": "У нас достаточно стульев."
+            }
+          ],
+          "ref": "too-enough"
+        },
+        {
+          "label": {
+            "en": "not enough",
+            "ru": "not enough"
+          },
+          "formula": "not enough + noun",
+          "examples": [
+            {
+              "en": "There isn't enough time.",
+              "ru": "Времени недостаточно."
+            }
+          ],
+          "ref": "too-enough"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"too much\" with uncountable, \"too many\" with countable plural nouns.",
+          "ru": "«too much» с неисчисляемым, «too many» с исчисляемым во множественном."
+        },
+        {
+          "en": "\"too\" means a problem; \"enough\" means the right amount, \"not enough\" means too little.",
+          "ru": "«too» — проблема; «enough» — достаточно, «not enough» — слишком мало."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u25.d02.reading",
+      "title": {
+        "en": "Saving money",
+        "ru": "Экономим деньги"
+      },
+      "blocks": [
+        {
+          "id": "u25.d02.reading.b1",
+          "en": "\"I spend too much money,\" Dan admitted. \"And I buy too many things I don't need.\" His sister smiled. \"The problem is you don't save enough. You waste too much on coffee and eat out too often.\"",
+          "ru": "«Я трачу слишком много денег, — признался Дэн. — И покупаю слишком много ненужных вещей». Сестра улыбнулась. «Проблема в том, что ты недостаточно откладываешь. Ты слишком много тратишь на кофе и слишком часто ешь вне дома».",
+          "audio": {
+            "src": "media/audio/u25.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u25.d02.reading.b2",
+          "en": "\"You're right. There isn't enough left at the end of the month.\" So Dan made a budget. \"Now I have enough for the important things, and even a little extra. I don't buy too many snacks, and I've got plenty of savings.\"",
+          "ru": "«Ты права. К концу месяца ничего не остаётся». Поэтому Дэн составил бюджет. «Теперь мне хватает на важное и даже немного сверху. Я не покупаю слишком много снеков, и у меня полно сбережений».",
+          "audio": {
+            "src": "media/audio/u25.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "admit",
+          "ru": "признавать",
+          "ipa": "/ədˈmɪt/"
+        },
+        {
+          "word": "savings",
+          "ru": "сбережения",
+          "ipa": "/ˈseɪvɪŋz/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u25.d02.listening",
+      "title": {
+        "en": "Too much?",
+        "ru": "Слишком много?"
+      },
+      "audio": {
+        "src": "media/audio/u25.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "This recipe has too much sugar.",
+          "ru": "В этом рецепте слишком много сахара."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "And too many eggs, I think.",
+          "ru": "И слишком много яиц, по-моему."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Do we have enough flour?",
+          "ru": "У нас достаточно муки?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "No, there isn't enough. We need more.",
+          "ru": "Нет, недостаточно. Нужно ещё."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u25.d02.ex.l.01",
+          "instruction": {
+            "en": "What is there too much of?",
+            "ru": "Чего слишком много?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.quantifiers"
+          ],
+          "prompt": "Too much ___ .",
+          "options": [
+            "sugar",
+            "eggs",
+            "flour"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u25.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u25.d02.ex.c.01",
+          "instruction": {
+            "en": "much or many?",
+            "ru": "much или many?"
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "prompt": "You drink too ___ coffee.",
+          "options": [
+            "much",
+            "many",
+            "lot"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u25.d02.ex.c.02",
+          "instruction": {
+            "en": "much or many?",
+            "ru": "much или many?"
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "prompt": "There are too ___ cars in the city.",
+          "options": [
+            "many",
+            "much",
+            "lot of"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u25.d02.ex.g.01",
+          "instruction": {
+            "en": "enough + noun.",
+            "ru": "enough + существительное."
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "prompt": "We don't have ___ money for it. (enough)",
+          "answers": [
+            "enough"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u25.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "variants": [
+            "There are too much people.",
+            "There are too many people."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u25.d02.ex.c.03",
+          "instruction": {
+            "en": "not enough.",
+            "ru": "not enough."
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "prompt": "There isn't ___ time to finish.",
+          "options": [
+            "enough",
+            "too much",
+            "too many"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u25.d02.ex.g.02",
+          "instruction": {
+            "en": "too + uncountable.",
+            "ru": "too + неисч."
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "prompt": "There is too ___ noise in here. (uncountable)",
+          "answers": [
+            "much"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u25.d02.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "tokens": [
+            "I",
+            "spend",
+            "too",
+            "much",
+            "money"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u25.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.money"
+          ],
+          "pairs": [
+            {
+              "left": "amount",
+              "right": "количество"
+            },
+            {
+              "left": "budget",
+              "right": "бюджет"
+            },
+            {
+              "left": "plenty",
+              "right": "много"
+            },
+            {
+              "left": "reduce",
+              "right": "сокращать"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u25.d02.ex.c.04",
+          "instruction": {
+            "en": "plenty of.",
+            "ru": "plenty of."
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "prompt": "Don't worry, we have ___ of time.",
+          "options": [
+            "plenty",
+            "too many",
+            "enough of"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u25.d02.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "variants": [
+            "I have too many homework.",
+            "I have too much homework."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u25.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.quantifiers",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты ешь слишком много сахара.",
+          "answers": [
+            "You eat too much sugar."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you eat too many sugar",
+                "you eat too much sugars",
+                "you eat so much sugar"
+              ],
+              "explanation": {
+                "en": "too much + uncountable: too much sugar.",
+                "ru": "too much + неисчисляемое: too much sugar."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u25.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.quantifiers",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "В городе слишком много машин.",
+          "answers": [
+            "There are too many cars in the city.",
+            "There are too many cars in town."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "there are too much cars",
+                "there is too many cars",
+                "there are too many car"
+              ],
+              "explanation": {
+                "en": "too many + plural: too many cars.",
+                "ru": "too many + мн. число: too many cars."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

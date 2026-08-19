@@ -1,0 +1,601 @@
+{
+  "id": "u25.d01",
+  "title": {
+    "en": "It was such a good day",
+    "ru": "Это был такой хороший день"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.so-such",
+    "vocab.feelings"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u25.d01.vocab",
+      "title": {
+        "en": "Strong reactions",
+        "ru": "Сильные впечатления"
+      },
+      "words": [
+        {
+          "word": "amazing",
+          "ru": "потрясающий",
+          "ipa": "/əˈmeɪzɪŋ/",
+          "example": "It was an amazing trip.",
+          "exampleRu": "Это была потрясающая поездка.",
+          "audio": {
+            "src": "media/audio/u25.d01.vocab.amazing.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "terrible",
+          "ru": "ужасный",
+          "ipa": "/ˈterəbl/",
+          "example": "The weather was terrible.",
+          "exampleRu": "Погода была ужасной.",
+          "audio": {
+            "src": "media/audio/u25.d01.vocab.terrible.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "crowd",
+          "ru": "толпа",
+          "ipa": "/kraʊd/",
+          "example": "There was such a crowd.",
+          "exampleRu": "Была такая толпа.",
+          "audio": {
+            "src": "media/audio/u25.d01.vocab.crowd.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "noise",
+          "ru": "шум",
+          "ipa": "/nɔɪz/",
+          "example": "So much noise!",
+          "exampleRu": "Столько шума!",
+          "audio": {
+            "src": "media/audio/u25.d01.vocab.noise.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "delicious",
+          "ru": "вкусный",
+          "ipa": "/dɪˈlɪʃəs/",
+          "example": "The food was so delicious.",
+          "exampleRu": "Еда была такой вкусной.",
+          "audio": {
+            "src": "media/audio/u25.d01.vocab.delicious.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "exciting",
+          "ru": "захватывающий",
+          "ipa": "/ɪkˈsaɪtɪŋ/",
+          "example": "Such an exciting game!",
+          "exampleRu": "Такая захватывающая игра!",
+          "audio": {
+            "src": "media/audio/u25.d01.vocab.exciting.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "expensive",
+          "ru": "дорогой",
+          "ipa": "/ɪkˈspensɪv/",
+          "example": "It was so expensive.",
+          "exampleRu": "Это было так дорого.",
+          "audio": {
+            "src": "media/audio/u25.d01.vocab.expensive.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "crowded",
+          "ru": "переполненный",
+          "ipa": "/ˈkraʊdɪd/",
+          "example": "The beach was so crowded.",
+          "exampleRu": "Пляж был так переполнен.",
+          "audio": {
+            "src": "media/audio/u25.d01.vocab.crowded.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "view",
+          "ru": "вид",
+          "ipa": "/vjuː/",
+          "example": "Such a beautiful view.",
+          "exampleRu": "Такой красивый вид.",
+          "audio": {
+            "src": "media/audio/u25.d01.vocab.view.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "unforgettable",
+          "ru": "незабываемый",
+          "ipa": "/ˌʌnfərˈɡetəbl/",
+          "example": "An unforgettable evening.",
+          "exampleRu": "Незабываемый вечер.",
+          "audio": {
+            "src": "media/audio/u25.d01.vocab.unforgettable.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u25.d01.grammar",
+      "title": {
+        "en": "so and such",
+        "ru": "so и such"
+      },
+      "rule": {
+        "en": "Use \"so\" before an adjective or adverb, and \"such\" before a noun (with or without an adjective). Both add emphasis — they make the feeling stronger.",
+        "ru": "Используй «so» перед прилагательным или наречием, а «such» — перед существительным (с прилагательным или без). Оба усиливают — делают впечатление сильнее."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "so + adjective",
+            "ru": "so + прилагательное"
+          },
+          "formula": "so + adjective/adverb",
+          "examples": [
+            {
+              "en": "The film was so good.",
+              "ru": "Фильм был таким хорошим."
+            }
+          ],
+          "ref": "quantifiers-b1"
+        },
+        {
+          "label": {
+            "en": "such + (a) noun",
+            "ru": "such + (a) существительное"
+          },
+          "formula": "such (a) + (adjective) + noun",
+          "examples": [
+            {
+              "en": "It was such a good film.",
+              "ru": "Это был такой хороший фильм."
+            }
+          ],
+          "ref": "quantifiers-b1"
+        },
+        {
+          "label": {
+            "en": "so much / so many",
+            "ru": "so much / so many"
+          },
+          "formula": "so much + uncountable · so many + plural",
+          "examples": [
+            {
+              "en": "There was so much noise and so many people.",
+              "ru": "Было столько шума и столько людей."
+            }
+          ],
+          "ref": "quantifiers-b1"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"so\" + adjective, \"such\" + noun: \"so hot\" but \"such a hot day\".",
+          "ru": "«so» + прилагательное, «such» + существительное: «so hot», но «such a hot day»."
+        },
+        {
+          "en": "\"so much\" with uncountable, \"so many\" with plural nouns.",
+          "ru": "«so much» с неисчисляемым, «so many» с множественным числом."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u25.d01.reading",
+      "title": {
+        "en": "A day at the fair",
+        "ru": "День на ярмарке"
+      },
+      "blocks": [
+        {
+          "id": "u25.d01.reading.b1",
+          "en": "The summer fair was such a wonderful event. There were so many people that it was hard to move, and there was so much to see. The music was so loud and the lights were so bright that the children were amazed.",
+          "ru": "Летняя ярмарка была таким чудесным событием. Людей было столько, что трудно было пройти, и столько всего можно было увидеть. Музыка была такой громкой, а огни такими яркими, что дети были поражены.",
+          "audio": {
+            "src": "media/audio/u25.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u25.d01.reading.b2",
+          "en": "\"It's such a beautiful evening,\" said Mum. The food smelled so delicious that we bought far too much. By the end, we were so tired but so happy. It was such a perfect day that nobody wanted to go home.",
+          "ru": "«Такой прекрасный вечер», — сказала мама. Еда пахла так вкусно, что мы купили слишком много. К концу мы так устали, но были так счастливы. Это был такой идеальный день, что никто не хотел идти домой.",
+          "audio": {
+            "src": "media/audio/u25.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "fair",
+          "ru": "ярмарка",
+          "ipa": "/feər/"
+        },
+        {
+          "word": "bright",
+          "ru": "яркий",
+          "ipa": "/braɪt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u25.d01.listening",
+      "title": {
+        "en": "How was it?",
+        "ru": "Как всё прошло?"
+      },
+      "audio": {
+        "src": "media/audio/u25.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "How was the concert?",
+          "ru": "Как концерт?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Amazing! It was such a great show.",
+          "ru": "Потрясающе! Это было такое отличное шоу."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Was it crowded?",
+          "ru": "Было много народу?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "So crowded! There were so many people.",
+          "ru": "Очень! Столько людей."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u25.d01.ex.l.01",
+          "instruction": {
+            "en": "How many people were there?",
+            "ru": "Сколько было людей?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.so-such"
+          ],
+          "prompt": "There were so ___ people.",
+          "options": [
+            "many",
+            "much",
+            "lot"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u25.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u25.d01.ex.c.01",
+          "instruction": {
+            "en": "so or such?",
+            "ru": "so или such?"
+          },
+          "tags": [
+            "grammar.so-such"
+          ],
+          "prompt": "The weather was ___ nice.",
+          "options": [
+            "so",
+            "such",
+            "such a"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u25.d01.ex.c.02",
+          "instruction": {
+            "en": "so or such?",
+            "ru": "so или such?"
+          },
+          "tags": [
+            "grammar.so-such"
+          ],
+          "prompt": "It was ___ a nice day.",
+          "options": [
+            "such",
+            "so",
+            "so a"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u25.d01.ex.g.01",
+          "instruction": {
+            "en": "so + adjective.",
+            "ru": "so + прилагательное."
+          },
+          "tags": [
+            "grammar.so-such"
+          ],
+          "prompt": "The bag was ___ heavy I couldn't lift it. (emphasis)",
+          "answers": [
+            "so"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u25.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.so-such"
+          ],
+          "variants": [
+            "It was a so good film.",
+            "It was such a good film."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u25.d01.ex.c.03",
+          "instruction": {
+            "en": "so much or so many?",
+            "ru": "so much или so many?"
+          },
+          "tags": [
+            "grammar.so-such"
+          ],
+          "prompt": "There was ___ noise!",
+          "options": [
+            "so much",
+            "so many",
+            "such"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u25.d01.ex.g.02",
+          "instruction": {
+            "en": "such + noun.",
+            "ru": "such + существительное."
+          },
+          "tags": [
+            "grammar.so-such"
+          ],
+          "prompt": "They are ___ kind people. (emphasis)",
+          "answers": [
+            "such"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u25.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.so-such"
+          ],
+          "tokens": [
+            "It",
+            "was",
+            "such",
+            "a",
+            "beautiful",
+            "view"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u25.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.feelings"
+          ],
+          "pairs": [
+            {
+              "left": "amazing",
+              "right": "потрясающий"
+            },
+            {
+              "left": "crowded",
+              "right": "переполненный"
+            },
+            {
+              "left": "delicious",
+              "right": "вкусный"
+            },
+            {
+              "left": "view",
+              "right": "вид"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u25.d01.ex.c.04",
+          "instruction": {
+            "en": "so many + plural.",
+            "ru": "so many + мн. число."
+          },
+          "tags": [
+            "grammar.so-such"
+          ],
+          "prompt": "I have ___ things to do today.",
+          "options": [
+            "so many",
+            "so much",
+            "such"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u25.d01.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.so-such"
+          ],
+          "variants": [
+            "The tea was such hot.",
+            "The tea was so hot."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u25.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.so-such",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это был такой хороший день.",
+          "answers": [
+            "It was such a good day.",
+            "It was such a nice day."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "it was so good day",
+                "it was such good day",
+                "it was a so good day"
+              ],
+              "explanation": {
+                "en": "such + a + adjective + noun: such a good day.",
+                "ru": "such + a + прилагательное + существительное: such a good day."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u25.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.so-such",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Было так жарко.",
+          "answers": [
+            "It was so hot.",
+            "It was so hot outside."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "it was such hot",
+                "it was so much hot",
+                "it was such a hot"
+              ],
+              "explanation": {
+                "en": "so + adjective: It was so hot.",
+                "ru": "so + прилагательное: It was so hot."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

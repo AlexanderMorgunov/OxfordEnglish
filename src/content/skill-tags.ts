@@ -94,6 +94,9 @@ export const SKILL_TAGS = [
   'grammar.used-to',
   'grammar.be-used-to',
   'grammar.passive-report',
+  'grammar.so-such',
+  'grammar.all-every-each',
+  'grammar.quantifiers',
 
   // functions (everyday communication)
   'functions.ordering',

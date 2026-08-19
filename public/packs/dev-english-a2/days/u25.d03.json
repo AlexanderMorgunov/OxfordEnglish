@@ -1,0 +1,601 @@
+{
+  "id": "u25.d03",
+  "title": {
+    "en": "All, every, each",
+    "ru": "All, every, each"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.all-every-each",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u25.d03.vocab",
+      "title": {
+        "en": "Groups & wholes",
+        "ru": "Группы и целое"
+      },
+      "words": [
+        {
+          "word": "everyone",
+          "ru": "все, каждый",
+          "ipa": "/ˈevriwʌn/",
+          "example": "Everyone is here.",
+          "exampleRu": "Все здесь.",
+          "audio": {
+            "src": "media/audio/u25.d03.vocab.everyone.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "everything",
+          "ru": "всё",
+          "ipa": "/ˈevriθɪŋ/",
+          "example": "Everything is ready.",
+          "exampleRu": "Всё готово.",
+          "audio": {
+            "src": "media/audio/u25.d03.vocab.everything.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "group",
+          "ru": "группа",
+          "ipa": "/ɡruːp/",
+          "example": "The whole group came.",
+          "exampleRu": "Пришла вся группа.",
+          "audio": {
+            "src": "media/audio/u25.d03.vocab.group.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "member",
+          "ru": "участник",
+          "ipa": "/ˈmembər/",
+          "example": "Each member has a task.",
+          "exampleRu": "У каждого участника есть задача.",
+          "audio": {
+            "src": "media/audio/u25.d03.vocab.member.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "whole",
+          "ru": "целый",
+          "ipa": "/hoʊl/",
+          "example": "The whole day.",
+          "exampleRu": "Весь день.",
+          "audio": {
+            "src": "media/audio/u25.d03.vocab.whole.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "single",
+          "ru": "единственный",
+          "ipa": "/ˈsɪŋɡl/",
+          "example": "Every single one.",
+          "exampleRu": "Каждый до единого.",
+          "audio": {
+            "src": "media/audio/u25.d03.vocab.single.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "individual",
+          "ru": "отдельный",
+          "ipa": "/ˌɪndɪˈvɪdʒuəl/",
+          "example": "Each individual matters.",
+          "exampleRu": "Каждый важен.",
+          "audio": {
+            "src": "media/audio/u25.d03.vocab.individual.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "team",
+          "ru": "команда",
+          "ipa": "/tiːm/",
+          "example": "All the team agreed.",
+          "exampleRu": "Вся команда согласилась.",
+          "audio": {
+            "src": "media/audio/u25.d03.vocab.team.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "daily",
+          "ru": "ежедневный",
+          "ipa": "/ˈdeɪli/",
+          "example": "A daily routine.",
+          "exampleRu": "Ежедневный распорядок.",
+          "audio": {
+            "src": "media/audio/u25.d03.vocab.daily.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "none",
+          "ru": "ни один",
+          "ipa": "/nʌn/",
+          "example": "None of them came.",
+          "exampleRu": "Никто из них не пришёл.",
+          "audio": {
+            "src": "media/audio/u25.d03.vocab.none.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u25.d03.grammar",
+      "title": {
+        "en": "all / every / each / whole",
+        "ru": "all / every / each / whole"
+      },
+      "rule": {
+        "en": "\"every\" and \"each\" + singular noun (every day, each person). \"all\" + plural or uncountable (all the students, all day). \"whole\" + singular noun (the whole day). \"each\" stresses one at a time.",
+        "ru": "«every» и «each» + существительное в единственном (every day, each person). «all» + множественное или неисчисляемое (all the students, all day). «whole» + существительное в единственном (the whole day). «each» подчёркивает «по одному»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "every / each + singular",
+            "ru": "every / each + ед. число"
+          },
+          "formula": "every/each + singular noun + singular verb",
+          "examples": [
+            {
+              "en": "Every student has a book. Each one is different.",
+              "ru": "У каждого студента есть книга. Каждая своя."
+            }
+          ],
+          "ref": "quantifiers-b1"
+        },
+        {
+          "label": {
+            "en": "all + plural/uncountable",
+            "ru": "all + мн./неисч."
+          },
+          "formula": "all (the) + plural/uncountable",
+          "examples": [
+            {
+              "en": "All the students passed. I worked all day.",
+              "ru": "Все студенты сдали. Я работал весь день."
+            }
+          ],
+          "ref": "quantifiers-b1"
+        },
+        {
+          "label": {
+            "en": "the whole + singular",
+            "ru": "the whole + ед. число"
+          },
+          "formula": "the whole + singular noun",
+          "examples": [
+            {
+              "en": "I read the whole book.",
+              "ru": "Я прочитал всю книгу."
+            }
+          ],
+          "ref": "quantifiers-b1"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"every/each\" take a singular noun and verb: \"every day is\", not \"every days are\".",
+          "ru": "«every/each» — единственное число и глагол: «every day is», а не «every days are»."
+        },
+        {
+          "en": "\"the whole day\" = \"all day\" (both mean the entire day).",
+          "ru": "«the whole day» = «all day» (оба — весь день)."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u25.d03.reading",
+      "title": {
+        "en": "The school trip",
+        "ru": "Школьная поездка"
+      },
+      "blocks": [
+        {
+          "id": "u25.d03.reading.b1",
+          "en": "Every year, the whole class goes on a trip. This year, all the students voted for the mountains. Each child had to bring a bag, and every bag was checked before we left. Everyone was excited.",
+          "ru": "Каждый год весь класс едет в поездку. В этом году все ученики проголосовали за горы. Каждый ребёнок должен был взять рюкзак, и каждый рюкзак проверили перед отъездом. Все были в восторге.",
+          "audio": {
+            "src": "media/audio/u25.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u25.d03.reading.b2",
+          "en": "We spent the whole day walking, and every single view was beautiful. In the evening, each student shared a story around the fire. \"All of us will remember this,\" said the teacher. \"Every one of you was wonderful today.\"",
+          "ru": "Мы весь день ходили пешком, и каждый вид был прекрасен. Вечером каждый ученик рассказал историю у костра. «Все мы это запомним, — сказал учитель. — Каждый из вас был сегодня замечательным».",
+          "audio": {
+            "src": "media/audio/u25.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "vote",
+          "ru": "голосовать",
+          "ipa": "/voʊt/"
+        },
+        {
+          "word": "share",
+          "ru": "делиться",
+          "ipa": "/ʃeər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u25.d03.listening",
+      "title": {
+        "en": "Is everyone here?",
+        "ru": "Все здесь?"
+      },
+      "audio": {
+        "src": "media/audio/u25.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Is everyone here?",
+          "ru": "Все здесь?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Almost. Each person has signed in.",
+          "ru": "Почти. Каждый отметился."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Did all the tickets arrive?",
+          "ru": "Все билеты пришли?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Yes, every single one.",
+          "ru": "Да, все до единого."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u25.d03.ex.l.01",
+          "instruction": {
+            "en": "How many tickets arrived?",
+            "ru": "Сколько билетов пришло?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.all-every-each"
+          ],
+          "prompt": "Every ___ one.",
+          "options": [
+            "single",
+            "singles",
+            "all"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u25.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u25.d03.ex.c.01",
+          "instruction": {
+            "en": "every + singular.",
+            "ru": "every + ед. число."
+          },
+          "tags": [
+            "grammar.all-every-each"
+          ],
+          "prompt": "___ student has a laptop.",
+          "options": [
+            "Every",
+            "All",
+            "Whole"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u25.d03.ex.c.02",
+          "instruction": {
+            "en": "all + plural.",
+            "ru": "all + мн. число."
+          },
+          "tags": [
+            "grammar.all-every-each"
+          ],
+          "prompt": "___ the students passed the exam.",
+          "options": [
+            "All",
+            "Every",
+            "Each"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u25.d03.ex.g.01",
+          "instruction": {
+            "en": "the whole.",
+            "ru": "the whole."
+          },
+          "tags": [
+            "grammar.all-every-each"
+          ],
+          "prompt": "I read the ___ book in one night. (entire)",
+          "answers": [
+            "whole"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u25.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.all-every-each"
+          ],
+          "variants": [
+            "Every students have a book.",
+            "Every student has a book."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u25.d03.ex.c.03",
+          "instruction": {
+            "en": "each (one at a time).",
+            "ru": "each (по одному)."
+          },
+          "tags": [
+            "grammar.all-every-each"
+          ],
+          "prompt": "___ child got a different gift.",
+          "options": [
+            "Each",
+            "All",
+            "Whole"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u25.d03.ex.g.02",
+          "instruction": {
+            "en": "all + time.",
+            "ru": "all + время."
+          },
+          "tags": [
+            "grammar.all-every-each"
+          ],
+          "prompt": "We walked ___ day. (entire day, 2 words: all + ?)",
+          "answers": [
+            "day"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u25.d03.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.all-every-each"
+          ],
+          "tokens": [
+            "Every",
+            "day",
+            "is",
+            "a",
+            "new",
+            "start"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u25.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "everyone",
+              "right": "все"
+            },
+            {
+              "left": "whole",
+              "right": "целый"
+            },
+            {
+              "left": "individual",
+              "right": "отдельный"
+            },
+            {
+              "left": "none",
+              "right": "ни один"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u25.d03.ex.c.04",
+          "instruction": {
+            "en": "Choose the word.",
+            "ru": "Выбери слово."
+          },
+          "tags": [
+            "grammar.all-every-each"
+          ],
+          "prompt": "___ of them came to the party.",
+          "options": [
+            "All",
+            "Every",
+            "Whole"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u25.d03.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.all-every-each"
+          ],
+          "variants": [
+            "I worked whole day.",
+            "I worked the whole day."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u25.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.all-every-each",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Каждый ученик получил книгу.",
+          "answers": [
+            "Every student got a book.",
+            "Each student got a book."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "every students got a book",
+                "all student got a book",
+                "every student get a book"
+              ],
+              "explanation": {
+                "en": "every + singular noun: Every student got a book.",
+                "ru": "every + существительное в ед. числе: Every student got a book."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u25.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.all-every-each",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я работал весь день.",
+          "answers": [
+            "I worked all day.",
+            "I worked the whole day."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i worked whole day",
+                "i worked all the day",
+                "i worked every day"
+              ],
+              "explanation": {
+                "en": "all day / the whole day (entire day): I worked all day.",
+                "ru": "all day / the whole day (весь день): I worked all day."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

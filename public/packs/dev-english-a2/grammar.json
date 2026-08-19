@@ -3324,5 +3324,96 @@
       "passive-extended",
       "reported-speech"
     ]
+  },
+  {
+    "id": "quantifiers-b1",
+    "title": {
+      "en": "Quantity: so/such, all/every/each, a few/a little",
+      "ru": "Количество: so/such, all/every/each, a few/a little"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "A toolkit for talking about amount and emphasis: \"so/such\" for emphasis, \"too much/many\" and \"enough\" for problems, \"all/every/each\" for groups, and \"a few/a little/most/none\" for quantities.",
+      "ru": "Набор для разговора о количестве и усилении: «so/such» — усиление, «too much/many» и «enough» — проблемы, «all/every/each» — группы, «a few/a little/most/none» — количества."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "so and such (emphasis)",
+          "ru": "so и such (усиление)"
+        },
+        "text": {
+          "en": "\"so\" goes before an adjective/adverb; \"such\" goes before a noun.\n\nThe film was so good.\nIt was such a good film.\nThere was so much noise and so many people.",
+          "ru": "«so» — перед прилагательным/наречием; «such» — перед существительным.\n\nThe film was so good.\nIt was such a good film.\nThere was so much noise and so many people."
+        },
+        "examples": [
+          {
+            "en": "It was such a hot day that we stayed inside.",
+            "ru": "Был такой жаркий день, что мы остались дома."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "too much/many, enough",
+          "ru": "too much/many, enough"
+        },
+        "text": {
+          "en": "\"too much\" (uncountable) and \"too many\" (plural) = more than you want. \"enough\" = the right amount; \"not enough\" = too little.\n\ntoo much sugar · too many cars · enough chairs · not enough time",
+          "ru": "«too much» (неисч.) и «too many» (мн.) = больше, чем нужно. «enough» = достаточно; «not enough» = слишком мало.\n\ntoo much sugar · too many cars · enough chairs · not enough time"
+        },
+        "examples": [
+          {
+            "en": "There are too many people and not enough seats.",
+            "ru": "Слишком много людей и мало мест."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "all / every / each / whole",
+          "ru": "all / every / each / whole"
+        },
+        "text": {
+          "en": "\"every/each\" + singular; \"all\" + plural/uncountable; \"the whole\" + singular; \"each\" stresses one at a time.\n\nEvery student has a book.\nAll the students passed.\nI read the whole book.\nEach child got a different gift.",
+          "ru": "«every/each» + ед. число; «all» + мн./неисч.; «the whole» + ед. число; «each» — «по одному».\n\nEvery student has a book.\nAll the students passed.\nI read the whole book.\nEach child got a different gift."
+        },
+        "examples": [
+          {
+            "en": "I worked all day / the whole day.",
+            "ru": "Я работал весь день."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "a few / a little / most / none",
+          "ru": "a few / a little / most / none"
+        },
+        "text": {
+          "en": "\"a few\" + plural, \"a little\" + uncountable (= some). Without \"a\", \"few/little\" = almost none. \"most\" = the majority, \"none of\" = not any.\n\na few apples · a little milk · few friends · little time · most people · none of them",
+          "ru": "«a few» + мн., «a little» + неисч. (= немного). Без «a» — «few/little» = почти нет. «most» = большинство, «none of» = ни один.\n\na few apples · a little milk · few friends · little time · most people · none of them"
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "\"so\" + adjective but \"such\" + noun: \"so hot\" vs \"such a hot day\".",
+        "ru": "«so» + прилагательное, «such» + существительное: «so hot» и «such a hot day»."
+      },
+      {
+        "en": "\"every/each\" take a singular noun and verb; \"all\" takes a plural.",
+        "ru": "«every/each» — существительное и глагол в ед. числе; «all» — во мн. числе."
+      },
+      {
+        "en": "\"a few/fewer\" for countable, \"a little/less\" for uncountable.",
+        "ru": "«a few/fewer» — исчисляемое, «a little/less» — неисчисляемое."
+      }
+    ],
+    "seeAlso": [
+      "too-enough",
+      "some-any",
+      "comparatives"
+    ]
   }
 ]
