@@ -3,10 +3,9 @@ import type { Section } from '@/content/schema';
 import { packMediaUrl } from '@/content/loader';
 import { PixelImage, SegmentedToggle } from '@/shared/ui';
 import { useVocabStore } from '@/features/vocab/vocabStore';
-import { canSpeak, playClip, speakWord, speakPassage, cancelSpeech } from '@/shared/lib/audio';
+import { canSpeak, playClip, speakWord } from '@/shared/lib/audio';
 import { translateWord } from '@/features/vocab/translate';
 import { addWordCard, addPhraseCard } from '@/features/srs/service';
-import { useUiLang } from '@/features/i18n/uiLang';
 import { WordToken, type Gloss } from '@/features/reader/reading-text';
 
 type ReadingSection = Extract<Section, { type: 'reading' }>;
@@ -49,25 +48,15 @@ function ReadingBlock({
   audioUrl,
   rate,
   glossary,
-  lang,
-  speaking,
-  activeWord,
-  onRead,
 }: {
   en: string;
   ru?: string;
   audioUrl?: string;
   rate: number;
   glossary: Map<string, Gloss>;
-  lang: 'en' | 'ru';
-  speaking: boolean;
-  activeWord: number;
-  onRead: () => void;
 }) {
   const [showRu, setShowRu] = useState(false);
   const tokens = useMemo(() => en.split(/(\b[a-zA-Z']+\b)/), [en]);
-
-  let wordIndex = -1;
 
   return (
     <div className="border-b border-line pb-4 last:border-b-0">
@@ -82,35 +71,14 @@ function ReadingBlock({
             ▶
           </button>
         )}
-        {canSpeak() && (
-          <button
-            type="button"
-            aria-label={
-              speaking
-                ? lang === 'ru'
-                  ? 'Остановить'
-                  : 'Stop'
-                : lang === 'ru'
-                  ? 'Читать с подсветкой слов'
-                  : 'Read aloud with word highlighting'
-            }
-            aria-pressed={speaking}
-            className="mr-1.5 align-middle text-teal transition-opacity hover:opacity-80"
-            onClick={onRead}
-          >
-            {speaking ? '⏹' : '🔆'}
-          </button>
-        )}
         {tokens.map((tok, i) => {
           if (!/^[a-zA-Z']+$/.test(tok)) return <span key={i}>{tok}</span>;
-          wordIndex += 1;
           return (
             <WordToken
               key={i}
               word={tok}
               gloss={glossary.get(tok.toLowerCase())}
               sentence={en}
-              highlighted={speaking && wordIndex === activeWord}
             />
           );
         })}
@@ -139,39 +107,15 @@ type ReadingRateKey = keyof typeof READING_RATES;
 
 export function ReadingSectionView({ section }: { section: ReadingSection }) {
   const load = useVocabStore((s) => s.load);
-  const lang = useUiLang((s) => s.lang);
   const [rateKey, setRateKey] = useState<ReadingRateKey>('0.75');
   const textRef = useRef<HTMLDivElement>(null);
   const [phrase, setPhrase] = useState<string | null>(null);
   const [phraseSaved, setPhraseSaved] = useState(false);
-  const [speakingId, setSpeakingId] = useState<string | null>(null);
-  const [activeWord, setActiveWord] = useState(-1);
   useEffect(() => {
     void load();
   }, [load]);
 
-  // Only one paragraph reads at a time (speech synthesis is global); stop on unmount.
-  useEffect(() => () => cancelSpeech(), []);
-
   const rate = READING_RATES[rateKey];
-  const readBlock = (id: string, text: string) => {
-    if (speakingId === id) {
-      cancelSpeech();
-      setSpeakingId(null);
-      setActiveWord(-1);
-      return;
-    }
-    setSpeakingId(id);
-    setActiveWord(-1);
-    speakPassage(text, {
-      rate,
-      onWord: setActiveWord,
-      onEnd: () => {
-        setSpeakingId(null);
-        setActiveWord(-1);
-      },
-    });
-  };
 
   // A multi-word selection inside the reading text becomes a savable phrase
   // ("took a train") — the single-word path is the WordToken popover.
@@ -256,10 +200,6 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
             audioUrl={block.audio ? packMediaUrl(block.audio.src) : undefined}
             rate={rate}
             glossary={glossary}
-            lang={lang}
-            speaking={speakingId === block.id}
-            activeWord={activeWord}
-            onRead={() => readBlock(block.id, block.en)}
           />
         ))}
       </div>
