@@ -3,7 +3,7 @@ import { Button, Popover } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import { canSpeak, speakWord, speakPassage, cancelSpeech } from '@/shared/lib/audio';
-import { translateWord } from '@/features/vocab/translate';
+import { translateWord, translateText } from '@/features/vocab/translate';
 import { addWordCard } from '@/features/srs/service';
 import { AiAction } from '@/features/ai/AiAction';
 import { wordInContext } from '@/features/ai/functions';
@@ -117,42 +117,87 @@ function Paragraph({
   onRead: () => void;
 }) {
   const tokens = useMemo(() => text.split(/(\b[a-zA-Z']+\b)/), [text]);
+  const [showTr, setShowTr] = useState(false);
+  const [tr, setTr] = useState<string | null | undefined>(undefined);
+  const [loading, setLoading] = useState(false);
   let wordIndex = -1;
+
+  const toggleTr = async () => {
+    if (showTr) {
+      setShowTr(false);
+      return;
+    }
+    setShowTr(true);
+    if (tr === undefined && !loading) {
+      setLoading(true);
+      setTr(await translateText(text));
+      setLoading(false);
+    }
+  };
+
   return (
-    <p className="text-lg leading-relaxed">
-      {canSpeak() && (
-        <button
-          type="button"
-          aria-label={
-            speaking
-              ? lang === 'ru'
-                ? 'Остановить'
-                : 'Stop'
-              : lang === 'ru'
-                ? 'Читать с подсветкой слов'
-                : 'Read aloud with word highlighting'
-          }
-          aria-pressed={speaking}
-          className="mr-1.5 align-middle text-teal transition-opacity hover:opacity-80"
-          onClick={onRead}
-        >
-          {speaking ? '⏹' : '🔆'}
-        </button>
-      )}
-      {tokens.map((tok, i) => {
-        if (!/^[a-zA-Z']+$/.test(tok)) return <span key={i}>{tok}</span>;
-        wordIndex += 1;
-        return (
-          <WordToken
-            key={i}
-            word={tok}
-            gloss={glossary?.get(tok.toLowerCase())}
-            sentence={text}
-            highlighted={speaking && wordIndex === activeWord}
-          />
-        );
-      })}
-    </p>
+    <div>
+      <p className="text-lg leading-relaxed">
+        {canSpeak() && (
+          <button
+            type="button"
+            aria-label={
+              speaking
+                ? lang === 'ru'
+                  ? 'Остановить'
+                  : 'Stop'
+                : lang === 'ru'
+                  ? 'Читать с подсветкой слов'
+                  : 'Read aloud with word highlighting'
+            }
+            aria-pressed={speaking}
+            className="mr-1.5 align-middle text-teal transition-opacity hover:opacity-80"
+            onClick={onRead}
+          >
+            {speaking ? '⏹' : '🔆'}
+          </button>
+        )}
+        {tokens.map((tok, i) => {
+          if (!/^[a-zA-Z']+$/.test(tok)) return <span key={i}>{tok}</span>;
+          wordIndex += 1;
+          return (
+            <WordToken
+              key={i}
+              word={tok}
+              gloss={glossary?.get(tok.toLowerCase())}
+              sentence={text}
+              highlighted={speaking && wordIndex === activeWord}
+            />
+          );
+        })}
+      </p>
+      <button
+        type="button"
+        aria-expanded={showTr}
+        onClick={() => void toggleTr()}
+        className="mt-1 font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
+      >
+        {showTr
+          ? lang === 'ru'
+            ? 'скрыть перевод'
+            : 'hide translation'
+          : lang === 'ru'
+            ? 'показать перевод'
+            : 'show translation'}
+      </button>
+      {showTr &&
+        (loading ? (
+          <p className="mt-1 font-mono text-2xs text-faint">
+            {lang === 'ru' ? 'перевод…' : 'translating…'}
+          </p>
+        ) : tr ? (
+          <p className="mt-1 text-base leading-relaxed text-muted text-pretty">{tr}</p>
+        ) : (
+          <p className="mt-1 font-mono text-2xs text-faint">
+            {lang === 'ru' ? 'перевод недоступен (нет сети?)' : 'translation unavailable (offline?)'}
+          </p>
+        ))}
+    </div>
   );
 }
 
