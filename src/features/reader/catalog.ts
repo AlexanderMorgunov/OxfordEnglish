@@ -1,3 +1,4 @@
+import { db } from '@/db/db';
 import type { ParsedBook } from './parse';
 import { parseStorybookMd } from './parse/storybook';
 
@@ -37,8 +38,29 @@ export async function openCatalogBook(entry: CatalogEntry): Promise<ParsedBook> 
     return res.json();
   }
   if (entry.kind === 'remote' && entry.mdUrl) {
+    try {
+      const hit = await db.catalogCache.get(entry.id);
+      if (hit) return hit.book as ParsedBook;
+    } catch {
+      // cache unavailable — fall through to network
+    }
     const md = await (await fetch(entry.mdUrl)).text();
-    return parseStorybookMd(md, entry.title);
+    const book = parseStorybookMd(md, entry.title);
+    try {
+      await db.catalogCache.put({ id: entry.id, book, cachedAt: Date.now() });
+    } catch {
+      // best-effort cache
+    }
+    return book;
   }
   throw new Error('catalog entry has no source');
+}
+
+/** Ids of remote catalog books already downloaded — the shelf marks these available offline. */
+export async function cachedCatalogIds(): Promise<Set<string>> {
+  try {
+    return new Set((await db.catalogCache.toArray()).map((e) => e.id));
+  } catch {
+    return new Set();
+  }
 }

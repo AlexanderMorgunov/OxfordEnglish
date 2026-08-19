@@ -31,6 +31,7 @@ test('v2 upgrade preserves v1 data and adds the books table', async () => {
     translations: 'word',
   });
   v2.version(2).stores({ books: 'id, addedAt' });
+  v2.version(3).stores({ catalogCache: 'id, cachedAt' });
   await v2.open();
 
   expect(await v2.table('wordStatus').count()).toBe(1);
@@ -40,6 +41,10 @@ test('v2 upgrade preserves v1 data and adds the books table', async () => {
   expect(await v2.table('books').count()).toBe(0);
   await v2.table('books').add({ id: 'b1', title: 'T', format: 'epub', addedAt: 1, chapterCount: 3, lastChapter: 0 });
   expect(await v2.table('books').count()).toBe(1);
+
+  // v3 adds catalogCache without disturbing anything above
+  await v2.table('catalogCache').add({ id: 'c1', book: { title: 'X', chapters: [] }, cachedAt: 1 });
+  expect(await v2.table('catalogCache').count()).toBe(1);
   v2.close();
   await Dexie.delete(name);
 });

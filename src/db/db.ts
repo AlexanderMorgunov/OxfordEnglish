@@ -62,6 +62,13 @@ export interface BookRecord {
   lastChapter: number;
 }
 
+/** A remote catalog book fetched once and kept for offline rereading. `book` is a ParsedBook. */
+export interface CatalogCacheEntry {
+  id: string;
+  book: unknown;
+  cachedAt: number;
+}
+
 const db = new Dexie('oxford-english') as Dexie & {
   attempts: EntityTable<ExerciseAttempt, 'id'>;
   wordStatus: EntityTable<WordStatus, 'word'>;
@@ -69,6 +76,7 @@ const db = new Dexie('oxford-english') as Dexie & {
   checkpoints: EntityTable<CheckpointResult, 'id'>;
   translations: EntityTable<WordTranslation, 'word'>;
   books: EntityTable<BookRecord, 'id'>;
+  catalogCache: EntityTable<CatalogCacheEntry, 'id'>;
 };
 
 db.version(1).stores({
@@ -81,6 +89,10 @@ db.version(1).stores({
 
 db.version(2).stores({
   books: 'id, addedAt',
+});
+
+db.version(3).stores({
+  catalogCache: 'id, cachedAt',
 });
 
 export { db };

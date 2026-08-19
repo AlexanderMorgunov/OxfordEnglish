@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { useLearner } from '@/features/learner/store';
-import { loadCatalog, type CatalogEntry } from './catalog';
+import { loadCatalog, cachedCatalogIds, type CatalogEntry } from './catalog';
 
 const ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
@@ -11,10 +11,12 @@ export function RecommendedShelf() {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const level = useLearner((s) => s.level);
   const [books, setBooks] = useState<CatalogEntry[] | null>(null);
+  const [cached, setCached] = useState<Set<string>>(new Set());
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     void loadCatalog().then(setBooks);
+    void cachedCatalogIds().then(setCached);
   }, []);
 
   if (!books || books.length === 0) return null;
@@ -47,20 +49,25 @@ export function RecommendedShelf() {
             <span className="shrink-0 rounded-sm bg-surface-2 px-1.5 py-0.5 font-mono text-2xs text-teal">
               {b.level}
             </span>
-            <span
-              className="shrink-0 font-mono text-2xs text-muted"
-              title={
-                b.kind === 'bundled'
-                  ? ru
-                    ? 'доступна офлайн'
-                    : 'available offline'
-                  : ru
-                    ? 'загрузится при открытии'
-                    : 'downloads when opened'
-              }
-            >
-              {b.kind === 'bundled' ? '●' : '↓'}
-            </span>
+            {(() => {
+              const offline = b.kind === 'bundled' || cached.has(b.id);
+              return (
+                <span
+                  className="shrink-0 font-mono text-2xs text-muted"
+                  title={
+                    offline
+                      ? ru
+                        ? 'доступна офлайн'
+                        : 'available offline'
+                      : ru
+                        ? 'загрузится при открытии'
+                        : 'downloads when opened'
+                  }
+                >
+                  {offline ? '●' : '↓'}
+                </span>
+              );
+            })()}
           </Card>
         ))}
       </div>
