@@ -1,0 +1,597 @@
+{
+  "id": "u20.d01",
+  "title": {
+    "en": "I enjoy cooking",
+    "ru": "Я люблю готовить"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.gerund-infinitive",
+    "vocab.hobbies"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u20.d01.vocab",
+      "title": {
+        "en": "Likes & habits",
+        "ru": "Вкусы и привычки"
+      },
+      "words": [
+        {
+          "word": "enjoy",
+          "ru": "наслаждаться",
+          "ipa": "/ɪnˈdʒɔɪ/",
+          "example": "I enjoy reading.",
+          "exampleRu": "Я люблю читать.",
+          "audio": {
+            "src": "media/audio/u20.d01.vocab.enjoy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mind",
+          "ru": "возражать",
+          "ipa": "/maɪnd/",
+          "example": "I don't mind waiting.",
+          "exampleRu": "Я не против подождать.",
+          "audio": {
+            "src": "media/audio/u20.d01.vocab.mind.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "avoid",
+          "ru": "избегать",
+          "ipa": "/əˈvɔɪd/",
+          "example": "She avoids eating late.",
+          "exampleRu": "Она избегает есть поздно.",
+          "audio": {
+            "src": "media/audio/u20.d01.vocab.avoid.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "practise",
+          "ru": "практиковаться",
+          "ipa": "/ˈpræktɪs/",
+          "example": "He practises playing daily.",
+          "exampleRu": "Он занимается игрой ежедневно.",
+          "audio": {
+            "src": "media/audio/u20.d01.vocab.practise.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "finish",
+          "ru": "заканчивать",
+          "ipa": "/ˈfɪnɪʃ/",
+          "example": "I finished cleaning.",
+          "exampleRu": "Я закончил уборку.",
+          "audio": {
+            "src": "media/audio/u20.d01.vocab.finish.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "keep",
+          "ru": "продолжать",
+          "ipa": "/kiːp/",
+          "example": "Keep trying!",
+          "exampleRu": "Продолжай пытаться!",
+          "audio": {
+            "src": "media/audio/u20.d01.vocab.keep.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "suggest",
+          "ru": "предлагать",
+          "ipa": "/səˈdʒest/",
+          "example": "She suggested going out.",
+          "exampleRu": "Она предложила пойти погулять.",
+          "audio": {
+            "src": "media/audio/u20.d01.vocab.suggest.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "imagine",
+          "ru": "представлять",
+          "ipa": "/ɪˈmædʒɪn/",
+          "example": "Imagine living there.",
+          "exampleRu": "Представь, что живёшь там.",
+          "audio": {
+            "src": "media/audio/u20.d01.vocab.imagine.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hobby",
+          "ru": "хобби",
+          "ipa": "/ˈhɒbi/",
+          "example": "Cooking is my hobby.",
+          "exampleRu": "Готовка — моё хобби.",
+          "audio": {
+            "src": "media/audio/u20.d01.vocab.hobby.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fun",
+          "ru": "весёлый; веселье",
+          "ipa": "/fʌn/",
+          "example": "Dancing is fun.",
+          "exampleRu": "Танцевать весело.",
+          "audio": {
+            "src": "media/audio/u20.d01.vocab.fun.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u20.d01.grammar",
+      "title": {
+        "en": "Verb + -ing (gerund)",
+        "ru": "Глагол + -ing (герундий)"
+      },
+      "rule": {
+        "en": "Some verbs are followed by the -ing form (the gerund). Common ones: enjoy, mind, avoid, finish, keep, practise, suggest, imagine. Learn these as a group.",
+        "ru": "После некоторых глаголов идёт форма на -ing (герундий). Частые: enjoy, mind, avoid, finish, keep, practise, suggest, imagine. Запоминай их группой."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "enjoy / like + -ing",
+            "ru": "enjoy / like + -ing"
+          },
+          "formula": "enjoy/mind/avoid + verb-ing",
+          "examples": [
+            {
+              "en": "I enjoy cooking.",
+              "ru": "Я люблю готовить."
+            }
+          ],
+          "ref": "gerund-infinitive"
+        },
+        {
+          "label": {
+            "en": "finish / keep + -ing",
+            "ru": "finish / keep + -ing"
+          },
+          "formula": "finish/keep/practise + verb-ing",
+          "examples": [
+            {
+              "en": "She kept talking for an hour.",
+              "ru": "Она говорила без остановки целый час."
+            }
+          ],
+          "ref": "gerund-infinitive"
+        },
+        {
+          "label": {
+            "en": "suggest / imagine + -ing",
+            "ru": "suggest / imagine + -ing"
+          },
+          "formula": "suggest/imagine + verb-ing",
+          "examples": [
+            {
+              "en": "He suggested taking a break.",
+              "ru": "Он предложил сделать перерыв."
+            }
+          ],
+          "ref": "gerund-infinitive"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After these verbs use -ing, not \"to\": \"I enjoy cooking\", not \"I enjoy to cook\".",
+          "ru": "После этих глаголов — -ing, а не «to»: «I enjoy cooking», а не «I enjoy to cook»."
+        },
+        {
+          "en": "\"suggest\" takes -ing, not \"to\": \"suggested going\", not \"suggested to go\".",
+          "ru": "«suggest» с -ing, не «to»: «suggested going», а не «suggested to go»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u20.d01.reading",
+      "title": {
+        "en": "A free afternoon",
+        "ru": "Свободный день"
+      },
+      "blocks": [
+        {
+          "id": "u20.d01.reading.b1",
+          "en": "On Sundays, Leo enjoys doing nothing. He avoids checking his email and keeps his phone in a drawer. \"I don't mind spending the whole day at home,\" he says. \"I like reading, cooking, and watching old films.\"",
+          "ru": "По воскресеньям Лео любит ничего не делать. Он избегает проверять почту и держит телефон в ящике. «Я не против провести весь день дома, — говорит он. — Люблю читать, готовить и смотреть старые фильмы».",
+          "audio": {
+            "src": "media/audio/u20.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u20.d01.reading.b2",
+          "en": "This Sunday, his friend suggested going for a walk. \"Good idea,\" said Leo, \"but first I want to finish making lunch.\" They spent the afternoon walking in the park and imagining what they would do on holiday.",
+          "ru": "В это воскресенье друг предложил пойти прогуляться. «Хорошая идея, — сказал Лео, — но сначала я хочу доготовить обед». Они провели день, гуляя в парке и представляя, что будут делать в отпуске.",
+          "audio": {
+            "src": "media/audio/u20.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "drawer",
+          "ru": "ящик",
+          "ipa": "/drɔːr/"
+        },
+        {
+          "word": "holiday",
+          "ru": "отпуск, каникулы",
+          "ipa": "/ˈhɒlɪdeɪ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u20.d01.listening",
+      "title": {
+        "en": "What do you like doing?",
+        "ru": "Что тебе нравится делать?"
+      },
+      "audio": {
+        "src": "media/audio/u20.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "What do you like doing at the weekend?",
+          "ru": "Что ты любишь делать по выходным?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "I enjoy hiking and I love cooking.",
+          "ru": "Я люблю ходить в походы и обожаю готовить."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Do you mind getting up early for a hike?",
+          "ru": "Тебя не смущает вставать рано ради похода?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Not at all. I don't mind waking up at six.",
+          "ru": "Совсем нет. Я не против встать в шесть."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u20.d01.ex.l.01",
+          "instruction": {
+            "en": "What does she enjoy?",
+            "ru": "Что ей нравится?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "She enjoys ___ and cooking.",
+          "options": [
+            "hiking",
+            "to hike",
+            "hike"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u20.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u20.d01.ex.g.01",
+          "instruction": {
+            "en": "enjoy + -ing.",
+            "ru": "enjoy + -ing."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "I enjoy ___ in the sea. (swim)",
+          "answers": [
+            "swimming"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u20.d01.ex.c.01",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "Would you mind ___ the window?",
+          "options": [
+            "opening",
+            "to open",
+            "open"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u20.d01.ex.g.02",
+          "instruction": {
+            "en": "finish + -ing.",
+            "ru": "finish + -ing."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "Have you finished ___ your homework? (do)",
+          "answers": [
+            "doing"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u20.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "variants": [
+            "I enjoy to read.",
+            "I enjoy reading."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u20.d01.ex.c.02",
+          "instruction": {
+            "en": "avoid + -ing.",
+            "ru": "avoid + -ing."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "She avoids ___ junk food.",
+          "options": [
+            "eating",
+            "to eat",
+            "eat"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u20.d01.ex.g.03",
+          "instruction": {
+            "en": "keep + -ing.",
+            "ru": "keep + -ing."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "Don't stop! Keep ___ . (try)",
+          "answers": [
+            "trying"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u20.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "tokens": [
+            "He",
+            "suggested",
+            "taking",
+            "a",
+            "short",
+            "break"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u20.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.hobbies"
+          ],
+          "pairs": [
+            {
+              "left": "avoid",
+              "right": "избегать"
+            },
+            {
+              "left": "suggest",
+              "right": "предлагать"
+            },
+            {
+              "left": "mind",
+              "right": "возражать"
+            },
+            {
+              "left": "keep",
+              "right": "продолжать"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u20.d01.ex.c.03",
+          "instruction": {
+            "en": "suggest + -ing.",
+            "ru": "suggest + -ing."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "They suggested ___ to the beach.",
+          "options": [
+            "going",
+            "to go",
+            "go"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u20.d01.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "variants": [
+            "Do you mind to wait?",
+            "Do you mind waiting?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u20.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.gerund-infinitive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я люблю готовить для друзей.",
+          "answers": [
+            "I enjoy cooking for friends.",
+            "I like cooking for friends."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i enjoy to cook for friends",
+                "i enjoy cook for friends",
+                "i enjoy cooking for the friends"
+              ],
+              "explanation": {
+                "en": "enjoy + -ing: I enjoy cooking for friends.",
+                "ru": "enjoy + -ing: I enjoy cooking for friends."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u20.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.gerund-infinitive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она не против подождать.",
+          "answers": [
+            "She doesn't mind waiting."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she doesn't mind to wait",
+                "she not mind waiting",
+                "she doesn't mind wait"
+              ],
+              "explanation": {
+                "en": "mind + -ing: She doesn't mind waiting.",
+                "ru": "mind + -ing: She doesn't mind waiting."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

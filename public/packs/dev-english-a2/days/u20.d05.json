@@ -1,0 +1,597 @@
+{
+  "id": "u20.d05",
+  "title": {
+    "en": "I'd rather stay in",
+    "ru": "Я бы лучше остался дома"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "functions.preferences",
+    "vocab.hobbies"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u20.d05.vocab",
+      "title": {
+        "en": "Preferences",
+        "ru": "Предпочтения"
+      },
+      "words": [
+        {
+          "word": "prefer",
+          "ru": "предпочитать",
+          "ipa": "/prɪˈfɜːr/",
+          "example": "I prefer tea to coffee.",
+          "exampleRu": "Я предпочитаю чай кофе.",
+          "audio": {
+            "src": "media/audio/u20.d05.vocab.prefer.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "rather",
+          "ru": "скорее, лучше",
+          "ipa": "/ˈrɑːðər/",
+          "example": "I'd rather walk.",
+          "exampleRu": "Я бы лучше пошёл пешком.",
+          "audio": {
+            "src": "media/audio/u20.d05.vocab.rather.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "favourite",
+          "ru": "любимый",
+          "ipa": "/ˈfeɪvərɪt/",
+          "example": "It's my favourite song.",
+          "exampleRu": "Это моя любимая песня.",
+          "audio": {
+            "src": "media/audio/u20.d05.vocab.favourite.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "enjoy",
+          "ru": "наслаждаться",
+          "ipa": "/ɪnˈdʒɔɪ/",
+          "example": "I really enjoy it.",
+          "exampleRu": "Мне это очень нравится.",
+          "audio": {
+            "src": "media/audio/u20.d05.vocab.enjoy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hate",
+          "ru": "ненавидеть",
+          "ipa": "/heɪt/",
+          "example": "I hate getting up early.",
+          "exampleRu": "Ненавижу рано вставать.",
+          "audio": {
+            "src": "media/audio/u20.d05.vocab.hate.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mind",
+          "ru": "возражать",
+          "ipa": "/maɪnd/",
+          "example": "I don't mind either.",
+          "exampleRu": "Мне всё равно.",
+          "audio": {
+            "src": "media/audio/u20.d05.vocab.mind.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "choice",
+          "ru": "выбор",
+          "ipa": "/tʃɔɪs/",
+          "example": "It's your choice.",
+          "exampleRu": "Это твой выбор.",
+          "audio": {
+            "src": "media/audio/u20.d05.vocab.choice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "depend",
+          "ru": "зависеть",
+          "ipa": "/dɪˈpend/",
+          "example": "It depends on the weather.",
+          "exampleRu": "Это зависит от погоды.",
+          "audio": {
+            "src": "media/audio/u20.d05.vocab.depend.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "both",
+          "ru": "оба",
+          "ipa": "/boʊθ/",
+          "example": "I like both.",
+          "exampleRu": "Мне нравятся оба.",
+          "audio": {
+            "src": "media/audio/u20.d05.vocab.both.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "neither",
+          "ru": "ни тот, ни другой",
+          "ipa": "/ˈnaɪðər/",
+          "example": "Neither, thanks.",
+          "exampleRu": "Ни то, ни другое, спасибо.",
+          "audio": {
+            "src": "media/audio/u20.d05.vocab.neither.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u20.d05.grammar",
+      "title": {
+        "en": "Talking about preferences",
+        "ru": "Как говорить о предпочтениях"
+      },
+      "rule": {
+        "en": "To say what you like more, use \"prefer X to Y\", \"I'd rather + bare verb\", and \"I'd prefer to + verb\". Add \"because\" to give a reason.",
+        "ru": "Чтобы сказать, что нравится больше: «prefer X to Y», «I'd rather + голый глагол», «I'd prefer to + глагол». Добавь «because» для причины."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "prefer X to Y",
+            "ru": "prefer X to Y"
+          },
+          "formula": "prefer + noun/-ing + to + noun/-ing",
+          "examples": [
+            {
+              "en": "I prefer tea to coffee. / I prefer reading to watching TV.",
+              "ru": "Я предпочитаю чай кофе. / Чтение — телевизору."
+            }
+          ],
+          "ref": "gerund-infinitive"
+        },
+        {
+          "label": {
+            "en": "I'd rather + verb",
+            "ru": "I'd rather + глагол"
+          },
+          "formula": "would rather + bare verb",
+          "examples": [
+            {
+              "en": "I'd rather stay in tonight.",
+              "ru": "Сегодня я бы лучше остался дома."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "I'd prefer to + verb",
+            "ru": "I'd prefer to + глагол"
+          },
+          "formula": "would prefer + to + verb",
+          "examples": [
+            {
+              "en": "I'd prefer to walk, if that's okay.",
+              "ru": "Я бы предпочёл пойти пешком, если можно."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"I'd rather\" takes the bare verb: \"I'd rather go\", not \"I'd rather to go\".",
+          "ru": "«I'd rather» — голый глагол: «I'd rather go», а не «I'd rather to go»."
+        },
+        {
+          "en": "\"prefer\" uses \"to\" between the two things: \"prefer tea to coffee\", not \"prefer tea than coffee\".",
+          "ru": "«prefer» соединяет через «to»: «prefer tea to coffee», а не «prefer tea than coffee»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u20.d05.reading",
+      "title": {
+        "en": "A night in or a night out?",
+        "ru": "Дома или в город?"
+      },
+      "blocks": [
+        {
+          "id": "u20.d05.reading.b1",
+          "en": "\"What do you want to do tonight?\" asked Nina. \"Honestly, I'd rather stay in,\" said Omar. \"I prefer relaxing at home to going to loud places.\" Nina laughed. \"I usually prefer going out, but tonight I don't mind either.\"",
+          "ru": "«Что хочешь сегодня делать?» — спросила Нина. «Честно, я бы лучше остался дома, — сказал Омар. — Я предпочитаю отдыхать дома, а не ходить по шумным местам». Нина засмеялась. «Обычно я предпочитаю гулять, но сегодня мне всё равно».",
+          "audio": {
+            "src": "media/audio/u20.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u20.d05.reading.b2",
+          "en": "\"We could cook something,\" Omar suggested. \"I'd prefer to make pasta.\" \"Perfect,\" said Nina. \"I love cooking together. It depends on the mood, but a quiet night sounds great to me too.\"",
+          "ru": "«Можем что-нибудь приготовить, — предложил Омар. — Я бы предпочёл сделать пасту». «Отлично, — сказала Нина. — Обожаю готовить вместе. Всё зависит от настроения, но тихий вечер и мне по душе».",
+          "audio": {
+            "src": "media/audio/u20.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "loud",
+          "ru": "шумный, громкий",
+          "ipa": "/laʊd/"
+        },
+        {
+          "word": "mood",
+          "ru": "настроение",
+          "ipa": "/muːd/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u20.d05.listening",
+      "title": {
+        "en": "Tea or coffee?",
+        "ru": "Чай или кофе?"
+      },
+      "audio": {
+        "src": "media/audio/u20.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Would you like tea or coffee?",
+          "ru": "Чай или кофе?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "I'd prefer tea, please. I prefer it to coffee.",
+          "ru": "Я бы предпочёл чай, пожалуйста. Я предпочитаю его кофе."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Sure. And would you rather sit inside or outside?",
+          "ru": "Конечно. А ты бы предпочёл сидеть внутри или снаружи?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "I'd rather sit outside — it's a lovely day.",
+          "ru": "Я бы лучше сел на улице — прекрасный день."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u20.d05.ex.l.01",
+          "instruction": {
+            "en": "Where does he want to sit?",
+            "ru": "Где он хочет сидеть?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.preferences"
+          ],
+          "prompt": "He'd rather sit ___ .",
+          "options": [
+            "outside",
+            "inside",
+            "at home"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u20.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u20.d05.ex.c.01",
+          "instruction": {
+            "en": "prefer X to Y.",
+            "ru": "prefer X to Y."
+          },
+          "tags": [
+            "functions.preferences"
+          ],
+          "prompt": "I prefer coffee ___ tea.",
+          "options": [
+            "to",
+            "than",
+            "from"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u20.d05.ex.c.02",
+          "instruction": {
+            "en": "I'd rather + verb.",
+            "ru": "I'd rather + глагол."
+          },
+          "tags": [
+            "functions.preferences"
+          ],
+          "prompt": "I'd rather ___ at home tonight.",
+          "options": [
+            "stay",
+            "to stay",
+            "staying"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u20.d05.ex.g.01",
+          "instruction": {
+            "en": "I'd prefer to.",
+            "ru": "I'd prefer to."
+          },
+          "tags": [
+            "functions.preferences"
+          ],
+          "prompt": "I'd prefer ___ walk, if you don't mind. (to)",
+          "answers": [
+            "to"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u20.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.preferences"
+          ],
+          "variants": [
+            "I'd rather to go by train.",
+            "I'd rather go by train."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u20.d05.ex.c.03",
+          "instruction": {
+            "en": "Give a preference.",
+            "ru": "Вырази предпочтение."
+          },
+          "tags": [
+            "functions.preferences"
+          ],
+          "prompt": "She prefers reading ___ watching TV.",
+          "options": [
+            "to",
+            "than",
+            "that"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u20.d05.ex.g.02",
+          "instruction": {
+            "en": "It depends.",
+            "ru": "Зависит."
+          },
+          "tags": [
+            "functions.preferences"
+          ],
+          "prompt": "It ___ on the weather. (depend)",
+          "answers": [
+            "depends"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u20.d05.ex.o.01",
+          "instruction": {
+            "en": "State a preference.",
+            "ru": "Вырази предпочтение."
+          },
+          "tags": [
+            "functions.preferences"
+          ],
+          "tokens": [
+            "I'd",
+            "rather",
+            "stay",
+            "in",
+            "tonight"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u20.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.hobbies"
+          ],
+          "pairs": [
+            {
+              "left": "rather",
+              "right": "скорее, лучше"
+            },
+            {
+              "left": "favourite",
+              "right": "любимый"
+            },
+            {
+              "left": "choice",
+              "right": "выбор"
+            },
+            {
+              "left": "neither",
+              "right": "ни тот, ни другой"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u20.d05.ex.c.04",
+          "instruction": {
+            "en": "would rather + bare verb.",
+            "ru": "would rather + голый глагол."
+          },
+          "tags": [
+            "functions.preferences"
+          ],
+          "prompt": "Would you rather ___ or stay?",
+          "options": [
+            "leave",
+            "to leave",
+            "leaving"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u20.d05.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.preferences"
+          ],
+          "variants": [
+            "I prefer tea than coffee.",
+            "I prefer tea to coffee."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u20.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.preferences",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я бы лучше остался дома сегодня.",
+          "answers": [
+            "I'd rather stay in tonight.",
+            "I would rather stay in tonight.",
+            "I'd rather stay home tonight."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i'd rather to stay in tonight",
+                "i would rather staying in tonight",
+                "i rather stay in tonight"
+              ],
+              "explanation": {
+                "en": "would rather + bare verb: I'd rather stay in tonight.",
+                "ru": "would rather + голый глагол: I'd rather stay in tonight."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u20.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.preferences",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я предпочитаю чай кофе.",
+          "answers": [
+            "I prefer tea to coffee."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i prefer tea than coffee",
+                "i prefer tea that coffee",
+                "i prefer the tea to the coffee"
+              ],
+              "explanation": {
+                "en": "prefer X to Y: I prefer tea to coffee.",
+                "ru": "prefer X to Y: I prefer tea to coffee."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

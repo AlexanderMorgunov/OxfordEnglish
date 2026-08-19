@@ -2824,5 +2824,94 @@
       "modals-obligation",
       "might-may"
     ]
+  },
+  {
+    "id": "gerund-infinitive",
+    "title": {
+      "en": "Gerunds & infinitives (-ing or to?)",
+      "ru": "Герундий и инфинитив (-ing или to?)"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "After one verb, you often need another verb — but should it be the -ing form or \"to + verb\"? The choice depends on the first verb. Some take -ing, some take \"to\", and a few take either.",
+      "ru": "После одного глагола часто нужен другой — но в какой форме, -ing или «to + глагол»? Выбор зависит от первого глагола. Одни требуют -ing, другие «to», немногие — любую."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "Verbs + -ing",
+          "ru": "Глаголы + -ing"
+        },
+        "text": {
+          "en": "These verbs are followed by the -ing form: enjoy, mind, avoid, finish, keep, practise, suggest, imagine.\n\nI enjoy cooking.\nWould you mind waiting?\nHe suggested going out.",
+          "ru": "После этих глаголов идёт форма на -ing: enjoy, mind, avoid, finish, keep, practise, suggest, imagine.\n\nI enjoy cooking.\nWould you mind waiting?\nHe suggested going out."
+        },
+        "examples": [
+          {
+            "en": "She kept talking for an hour.",
+            "ru": "Она говорила без остановки целый час."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Verbs + to-infinitive",
+          "ru": "Глаголы + инфинитив с to"
+        },
+        "text": {
+          "en": "These verbs are followed by \"to + verb\": want, need, hope, decide, plan, promise, learn, offer, refuse, manage, agree, afford.\n\nI want to learn Spanish.\nThey decided to move.\nShe offered to help.",
+          "ru": "После этих глаголов идёт «to + глагол»: want, need, hope, decide, plan, promise, learn, offer, refuse, manage, agree, afford.\n\nI want to learn Spanish.\nThey decided to move.\nShe offered to help."
+        },
+        "examples": [
+          {
+            "en": "We managed to catch the last train.",
+            "ru": "Нам удалось успеть на последний поезд."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "-ing as a noun and after prepositions",
+          "ru": "-ing как существительное и после предлогов"
+        },
+        "text": {
+          "en": "Use the -ing form as the subject of a sentence, and ALWAYS after a preposition (in, at, of, before, instead of, worth).\n\nSwimming is good for you.\nShe's good at drawing.\nIt's worth trying.",
+          "ru": "Используй форму на -ing как подлежащее и ВСЕГДА после предлога (in, at, of, before, instead of, worth).\n\nSwimming is good for you.\nShe's good at drawing.\nIt's worth trying."
+        },
+        "examples": [
+          {
+            "en": "I'm interested in learning to cook.",
+            "ru": "Мне интересно научиться готовить."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "When the meaning changes",
+          "ru": "Когда меняется смысл"
+        },
+        "text": {
+          "en": "With stop, remember, forget and try, the two forms mean different things.\n\nHe stopped smoking. (quit) — He stopped to smoke. (paused in order to)\nRemember to lock the door. (a task) — I remember locking it. (a memory)",
+          "ru": "У stop, remember, forget, try две формы значат разное.\n\nHe stopped smoking. (бросил) — He stopped to smoke. (остановился, чтобы покурить)\nRemember to lock the door. (дело) — I remember locking it. (воспоминание)"
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "After a preposition, always use -ing: \"good at cooking\", not \"good at to cook\".",
+        "ru": "После предлога — всегда -ing: «good at cooking», а не «good at to cook»."
+      },
+      {
+        "en": "\"want/decide/hope\" take \"to\": \"I want to go\", not \"I want going\".",
+        "ru": "«want/decide/hope» с «to»: «I want to go», а не «I want going»."
+      },
+      {
+        "en": "\"enjoy/avoid/suggest\" take -ing: \"enjoy reading\", not \"enjoy to read\".",
+        "ru": "«enjoy/avoid/suggest» с -ing: «enjoy reading», а не «enjoy to read»."
+      }
+    ],
+    "seeAlso": [
+      "modals-can"
+    ]
   }
 ]

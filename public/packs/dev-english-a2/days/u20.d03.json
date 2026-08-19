@@ -1,0 +1,598 @@
+{
+  "id": "u20.d03",
+  "title": {
+    "en": "Swimming is good for you",
+    "ru": "Плавание полезно"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.gerund-infinitive",
+    "vocab.hobbies"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u20.d03.vocab",
+      "title": {
+        "en": "Activities & feelings",
+        "ru": "Занятия и чувства"
+      },
+      "words": [
+        {
+          "word": "interested",
+          "ru": "заинтересованный",
+          "ipa": "/ˈɪntrəstɪd/",
+          "example": "I'm interested in learning.",
+          "exampleRu": "Мне интересно учиться.",
+          "audio": {
+            "src": "media/audio/u20.d03.vocab.interested.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "good at",
+          "ru": "хорош в",
+          "ipa": "/ɡʊd ət/",
+          "example": "She's good at drawing.",
+          "exampleRu": "Она хорошо рисует.",
+          "audio": {
+            "src": "media/audio/u20.d03.vocab.goodat.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "afraid of",
+          "ru": "боящийся",
+          "ipa": "/əˈfreɪd əv/",
+          "example": "He's afraid of flying.",
+          "exampleRu": "Он боится летать.",
+          "audio": {
+            "src": "media/audio/u20.d03.vocab.afraidof.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tired of",
+          "ru": "уставший от",
+          "ipa": "/ˈtaɪərd əv/",
+          "example": "I'm tired of waiting.",
+          "exampleRu": "Я устал ждать.",
+          "audio": {
+            "src": "media/audio/u20.d03.vocab.tiredof.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "instead of",
+          "ru": "вместо",
+          "ipa": "/ɪnˈsted əv/",
+          "example": "Walk instead of driving.",
+          "exampleRu": "Ходи пешком вместо езды.",
+          "audio": {
+            "src": "media/audio/u20.d03.vocab.insteadof.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "before",
+          "ru": "перед, до",
+          "ipa": "/bɪˈfɔːr/",
+          "example": "Think before speaking.",
+          "exampleRu": "Думай, прежде чем говорить.",
+          "audio": {
+            "src": "media/audio/u20.d03.vocab.before.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "worth",
+          "ru": "стоящий",
+          "ipa": "/wɜːrθ/",
+          "example": "It's worth trying.",
+          "exampleRu": "Стоит попробовать.",
+          "audio": {
+            "src": "media/audio/u20.d03.vocab.worth.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "healthy",
+          "ru": "полезный, здоровый",
+          "ipa": "/ˈhelθi/",
+          "example": "Running is healthy.",
+          "exampleRu": "Бег полезен.",
+          "audio": {
+            "src": "media/audio/u20.d03.vocab.healthy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "relaxing",
+          "ru": "расслабляющий",
+          "ipa": "/rɪˈlæksɪŋ/",
+          "example": "Reading is relaxing.",
+          "exampleRu": "Чтение расслабляет.",
+          "audio": {
+            "src": "media/audio/u20.d03.vocab.relaxing.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "boring",
+          "ru": "скучный",
+          "ipa": "/ˈbɔːrɪŋ/",
+          "example": "Waiting is boring.",
+          "exampleRu": "Ждать скучно.",
+          "audio": {
+            "src": "media/audio/u20.d03.vocab.boring.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u20.d03.grammar",
+      "title": {
+        "en": "The -ing form as a noun",
+        "ru": "Форма -ing как существительное"
+      },
+      "rule": {
+        "en": "The -ing form can act like a noun. Use it as the subject of a sentence, and always after a preposition (in, at, of, before, instead of, etc.).",
+        "ru": "Форма -ing может вести себя как существительное. Используй её как подлежащее и всегда после предлога (in, at, of, before, instead of и т. д.)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "as the subject",
+            "ru": "как подлежащее"
+          },
+          "formula": "Verb-ing + is/was …",
+          "examples": [
+            {
+              "en": "Swimming is good for you.",
+              "ru": "Плавание полезно."
+            }
+          ],
+          "ref": "gerund-infinitive"
+        },
+        {
+          "label": {
+            "en": "after a preposition",
+            "ru": "после предлога"
+          },
+          "formula": "preposition + verb-ing",
+          "examples": [
+            {
+              "en": "She's good at cooking.",
+              "ru": "Она хорошо готовит."
+            }
+          ],
+          "ref": "gerund-infinitive"
+        },
+        {
+          "label": {
+            "en": "after \"worth\" / \"instead of\"",
+            "ru": "после \"worth\" / \"instead of\""
+          },
+          "formula": "worth/instead of + verb-ing",
+          "examples": [
+            {
+              "en": "It's worth trying.",
+              "ru": "Стоит попробовать."
+            }
+          ],
+          "ref": "gerund-infinitive"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Always -ing after a preposition: \"interested in learning\", not \"interested in to learn\".",
+          "ru": "После предлога — всегда -ing: «interested in learning», а не «interested in to learn»."
+        },
+        {
+          "en": "Use -ing as the subject: \"Smoking is bad\", not \"To smoke is bad\" (less natural).",
+          "ru": "Как подлежащее — -ing: «Smoking is bad», а не «To smoke is bad» (звучит менее естественно)."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u20.d03.reading",
+      "title": {
+        "en": "A healthy change",
+        "ru": "Полезная перемена"
+      },
+      "blocks": [
+        {
+          "id": "u20.d03.reading.b1",
+          "en": "Last year, Sam was tired of feeling unfit. He knew that sitting all day was bad for him, and he was interested in getting healthier. Instead of taking the bus, he started walking to work.",
+          "ru": "В прошлом году Сэм устал чувствовать себя не в форме. Он знал, что сидеть весь день вредно, и хотел стать здоровее. Вместо автобуса он начал ходить на работу пешком.",
+          "audio": {
+            "src": "media/audio/u20.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u20.d03.reading.b2",
+          "en": "\"Walking is a great way to start the day,\" he says. \"I'm not good at running, but I love cycling too. Before making this change, I was always tired. Now I think it's worth spending an hour a day being active.\"",
+          "ru": "«Прогулка — отличный способ начать день, — говорит он. — Я плохо бегаю, но обожаю велосипед. До этой перемены я всё время уставал. Теперь я считаю, что стоит тратить час в день на активность».",
+          "audio": {
+            "src": "media/audio/u20.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "unfit",
+          "ru": "не в форме",
+          "ipa": "/ʌnˈfɪt/"
+        },
+        {
+          "word": "cycling",
+          "ru": "езда на велосипеде",
+          "ipa": "/ˈsaɪklɪŋ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u20.d03.listening",
+      "title": {
+        "en": "Are you good at it?",
+        "ru": "У тебя хорошо получается?"
+      },
+      "audio": {
+        "src": "media/audio/u20.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Are you good at cooking?",
+          "ru": "Ты хорошо готовишь?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Not really, but I'm interested in learning.",
+          "ru": "Не особо, но мне интересно научиться."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Cooking at home is much healthier than eating out.",
+          "ru": "Готовить дома гораздо полезнее, чем есть в кафе."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "True. It's worth trying, at least.",
+          "ru": "Верно. Стоит хотя бы попробовать."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u20.d03.ex.l.01",
+          "instruction": {
+            "en": "What is she interested in?",
+            "ru": "Чем она интересуется?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "She's interested in ___ .",
+          "options": [
+            "learning",
+            "to learn",
+            "learn"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u20.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u20.d03.ex.g.01",
+          "instruction": {
+            "en": "As the subject.",
+            "ru": "Как подлежащее."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "___ is a great way to relax. (read)",
+          "answers": [
+            "Reading"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u20.d03.ex.c.01",
+          "instruction": {
+            "en": "After a preposition.",
+            "ru": "После предлога."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "She's good at ___ pictures.",
+          "options": [
+            "drawing",
+            "to draw",
+            "draw"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u20.d03.ex.g.02",
+          "instruction": {
+            "en": "after \"before\".",
+            "ru": "после \"before\"."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "Think before ___ . (speak)",
+          "answers": [
+            "speaking"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u20.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "variants": [
+            "I'm interested in to learn Spanish.",
+            "I'm interested in learning Spanish."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u20.d03.ex.c.02",
+          "instruction": {
+            "en": "after \"instead of\".",
+            "ru": "после \"instead of\"."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "He walked instead of ___ .",
+          "options": [
+            "driving",
+            "to drive",
+            "drive"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u20.d03.ex.g.03",
+          "instruction": {
+            "en": "after \"worth\".",
+            "ru": "после \"worth\"."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "This film is worth ___ . (watch)",
+          "answers": [
+            "watching"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u20.d03.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "tokens": [
+            "Swimming",
+            "is",
+            "good",
+            "for",
+            "your",
+            "health"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u20.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.hobbies"
+          ],
+          "pairs": [
+            {
+              "left": "afraid of",
+              "right": "боящийся"
+            },
+            {
+              "left": "tired of",
+              "right": "уставший от"
+            },
+            {
+              "left": "worth",
+              "right": "стоящий"
+            },
+            {
+              "left": "instead of",
+              "right": "вместо"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u20.d03.ex.c.03",
+          "instruction": {
+            "en": "after \"of\".",
+            "ru": "после \"of\"."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "I'm tired of ___ the same food.",
+          "options": [
+            "eating",
+            "to eat",
+            "eat"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u20.d03.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "variants": [
+            "To smoking is bad for you.",
+            "Smoking is bad for you."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u20.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.gerund-infinitive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он боится летать.",
+          "answers": [
+            "He's afraid of flying.",
+            "He is afraid of flying."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he is afraid of to fly",
+                "he afraid of flying",
+                "he is afraid to flying"
+              ],
+              "explanation": {
+                "en": "afraid of + -ing: He is afraid of flying.",
+                "ru": "afraid of + -ing: He is afraid of flying."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u20.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.gerund-infinitive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Бег полезен для здоровья.",
+          "answers": [
+            "Running is good for your health.",
+            "Running is healthy."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "to run is good for your health",
+                "run is good for health",
+                "running is good for the health"
+              ],
+              "explanation": {
+                "en": "-ing as subject: Running is good for your health.",
+                "ru": "-ing как подлежащее: Running is good for your health."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

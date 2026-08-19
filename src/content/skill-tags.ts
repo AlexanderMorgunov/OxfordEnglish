@@ -87,6 +87,7 @@ export const SKILL_TAGS = [
   'grammar.reported-questions',
   'grammar.modals-deduction',
   'grammar.modals-deduction-past',
+  'grammar.gerund-infinitive',
 
   // functions (everyday communication)
   'functions.ordering',
@@ -110,6 +111,7 @@ export const SKILL_TAGS = [
   'functions.work',
   'functions.news',
   'functions.speculating',
+  'functions.preferences',
 
   // vocabulary (developer-life + everyday themes)
   'vocab.work',

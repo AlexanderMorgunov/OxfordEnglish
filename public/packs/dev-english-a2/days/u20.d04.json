@@ -1,0 +1,600 @@
+{
+  "id": "u20.d04",
+  "title": {
+    "en": "Remember to lock the door",
+    "ru": "Не забудь запереть дверь"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.gerund-infinitive",
+    "vocab.hobbies"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u20.d04.vocab",
+      "title": {
+        "en": "Both forms",
+        "ru": "Обе формы"
+      },
+      "words": [
+        {
+          "word": "stop",
+          "ru": "останавливать(ся)",
+          "ipa": "/stɒp/",
+          "example": "He stopped smoking.",
+          "exampleRu": "Он бросил курить.",
+          "audio": {
+            "src": "media/audio/u20.d04.vocab.stop.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "remember",
+          "ru": "помнить",
+          "ipa": "/rɪˈmembər/",
+          "example": "Remember to call.",
+          "exampleRu": "Не забудь позвонить.",
+          "audio": {
+            "src": "media/audio/u20.d04.vocab.remember.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "forget",
+          "ru": "забывать",
+          "ipa": "/fərˈɡet/",
+          "example": "I forgot to lock it.",
+          "exampleRu": "Я забыл запереть.",
+          "audio": {
+            "src": "media/audio/u20.d04.vocab.forget.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "try",
+          "ru": "пытаться; пробовать",
+          "ipa": "/traɪ/",
+          "example": "Try to relax.",
+          "exampleRu": "Постарайся расслабиться.",
+          "audio": {
+            "src": "media/audio/u20.d04.vocab.try.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "begin",
+          "ru": "начинать",
+          "ipa": "/bɪˈɡɪn/",
+          "example": "It began to rain.",
+          "exampleRu": "Начался дождь.",
+          "audio": {
+            "src": "media/audio/u20.d04.vocab.begin.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "start",
+          "ru": "начинать",
+          "ipa": "/stɑːrt/",
+          "example": "She started singing.",
+          "exampleRu": "Она запела.",
+          "audio": {
+            "src": "media/audio/u20.d04.vocab.start.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "prefer",
+          "ru": "предпочитать",
+          "ipa": "/prɪˈfɜːr/",
+          "example": "I prefer walking.",
+          "exampleRu": "Я предпочитаю ходить пешком.",
+          "audio": {
+            "src": "media/audio/u20.d04.vocab.prefer.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "continue",
+          "ru": "продолжать",
+          "ipa": "/kənˈtɪnjuː/",
+          "example": "They continued playing.",
+          "exampleRu": "Они продолжили играть.",
+          "audio": {
+            "src": "media/audio/u20.d04.vocab.continue.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mean",
+          "ru": "означать; намереваться",
+          "ipa": "/miːn/",
+          "example": "I didn't mean to hurt you.",
+          "exampleRu": "Я не хотел тебя обидеть.",
+          "audio": {
+            "src": "media/audio/u20.d04.vocab.mean.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "need",
+          "ru": "нуждаться",
+          "ipa": "/niːd/",
+          "example": "You need to rest.",
+          "exampleRu": "Тебе нужно отдохнуть.",
+          "audio": {
+            "src": "media/audio/u20.d04.vocab.need.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u20.d04.grammar",
+      "title": {
+        "en": "Both forms — sometimes the meaning changes",
+        "ru": "Обе формы — иногда смысл меняется"
+      },
+      "rule": {
+        "en": "Some verbs (begin, start, continue, like, prefer) take either form with little difference. But with stop, remember, forget and try, the two forms mean different things.",
+        "ru": "Некоторые глаголы (begin, start, continue, like, prefer) берут любую форму почти без разницы. Но у stop, remember, forget, try две формы значат разное."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "either form (same)",
+            "ru": "любая форма (одно и то же)"
+          },
+          "formula": "begin/start/continue + -ing OR to",
+          "examples": [
+            {
+              "en": "It started to rain. = It started raining.",
+              "ru": "Начался дождь."
+            }
+          ],
+          "ref": "gerund-infinitive"
+        },
+        {
+          "label": {
+            "en": "stop + -ing vs to",
+            "ru": "stop + -ing и to"
+          },
+          "formula": "stop doing (quit) · stop to do (pause in order to)",
+          "examples": [
+            {
+              "en": "He stopped smoking. / He stopped to smoke.",
+              "ru": "Он бросил курить. / Он остановился, чтобы покурить."
+            }
+          ],
+          "ref": "gerund-infinitive"
+        },
+        {
+          "label": {
+            "en": "remember/forget + to vs -ing",
+            "ru": "remember/forget + to и -ing"
+          },
+          "formula": "remember to do (a task) · remember doing (a memory)",
+          "examples": [
+            {
+              "en": "Remember to lock the door. / I remember locking it.",
+              "ru": "Не забудь запереть дверь. / Помню, что запер её."
+            }
+          ],
+          "ref": "gerund-infinitive"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"stop -ing\" = quit; \"stop to do\" = pause in order to do something else.",
+          "ru": "«stop -ing» = бросить; «stop to do» = остановиться, чтобы сделать другое."
+        },
+        {
+          "en": "\"remember to do\" = don't forget a task; \"remember doing\" = have a memory of it.",
+          "ru": "«remember to do» = не забыть о деле; «remember doing» = помнить, как делал."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u20.d04.reading",
+      "title": {
+        "en": "A forgetful morning",
+        "ru": "Забывчивое утро"
+      },
+      "blocks": [
+        {
+          "id": "u20.d04.reading.b1",
+          "en": "Ben tried to leave the house on time, but it was a difficult morning. He forgot to take his keys and remembered leaving them on the kitchen table. On the way, he stopped to buy coffee, then continued walking to the station.",
+          "ru": "Бен пытался выйти из дома вовремя, но утро выдалось трудным. Он забыл взять ключи и вспомнил, что оставил их на кухонном столе. По дороге он остановился купить кофе, а потом пошёл дальше на станцию.",
+          "audio": {
+            "src": "media/audio/u20.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u20.d04.reading.b2",
+          "en": "\"I really need to be more organised,\" he thought. \"I must remember to check my bag before I leave.\" He began to laugh when he realised he had also forgotten his lunch. \"Well, at least I stopped worrying about being perfect.\"",
+          "ru": "«Мне правда нужно быть организованнее, — подумал он. — Надо не забывать проверять сумку перед выходом». Он начал смеяться, когда понял, что забыл и обед. «Что ж, по крайней мере я перестал переживать из-за того, чтобы быть идеальным».",
+          "audio": {
+            "src": "media/audio/u20.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "organised",
+          "ru": "организованный",
+          "ipa": "/ˈɔːrɡənaɪzd/"
+        },
+        {
+          "word": "realise",
+          "ru": "осознавать",
+          "ipa": "/ˈrɪəlaɪz/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u20.d04.listening",
+      "title": {
+        "en": "Did you remember?",
+        "ru": "Ты не забыл?"
+      },
+      "audio": {
+        "src": "media/audio/u20.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Did you remember to lock the door?",
+          "ru": "Ты не забыл запереть дверь?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Yes, and I remember turning off the lights too.",
+          "ru": "Да, и помню, что выключил свет."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Great. Let's stop to get petrol on the way.",
+          "ru": "Отлично. Давай остановимся заправиться по пути."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Good idea. I don't want to stop worrying about the tank.",
+          "ru": "Хорошая мысль. Не хочу переживать из-за бака."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u20.d04.ex.l.01",
+          "instruction": {
+            "en": "What did he not forget?",
+            "ru": "О чём он не забыл?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "He remembered ___ the door.",
+          "options": [
+            "to lock",
+            "locking",
+            "lock"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u20.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u20.d04.ex.c.01",
+          "instruction": {
+            "en": "Quit the habit.",
+            "ru": "Бросить привычку."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "The doctor told him to stop ___ .",
+          "options": [
+            "smoking",
+            "to smoke",
+            "smoke"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u20.d04.ex.c.02",
+          "instruction": {
+            "en": "Pause to do something.",
+            "ru": "Остановиться, чтобы сделать."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "On the walk, we stopped ___ some photos.",
+          "options": [
+            "to take",
+            "taking",
+            "take"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u20.d04.ex.g.01",
+          "instruction": {
+            "en": "Don't forget a task.",
+            "ru": "Не забудь о деле."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "Please remember ___ the milk. (buy)",
+          "answers": [
+            "to buy"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u20.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "variants": [
+            "It started to raining.",
+            "It started to rain."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u20.d04.ex.c.03",
+          "instruction": {
+            "en": "A memory.",
+            "ru": "Воспоминание."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "I remember ___ this song as a child.",
+          "options": [
+            "hearing",
+            "to hear",
+            "hear"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u20.d04.ex.g.02",
+          "instruction": {
+            "en": "either form (start).",
+            "ru": "любая форма (start)."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "She started ___ the piano at six. (play — use -ing)",
+          "answers": [
+            "playing"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u20.d04.ex.o.01",
+          "instruction": {
+            "en": "Give a reminder.",
+            "ru": "Напомни."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "tokens": [
+            "Remember",
+            "to",
+            "turn",
+            "off",
+            "the",
+            "oven"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u20.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.hobbies"
+          ],
+          "pairs": [
+            {
+              "left": "prefer",
+              "right": "предпочитать"
+            },
+            {
+              "left": "continue",
+              "right": "продолжать"
+            },
+            {
+              "left": "mean",
+              "right": "намереваться"
+            },
+            {
+              "left": "forget",
+              "right": "забывать"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u20.d04.ex.c.04",
+          "instruction": {
+            "en": "try to do (make an effort).",
+            "ru": "try to do (стараться)."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "Try ___ calm — everything is fine.",
+          "options": [
+            "to stay",
+            "staying",
+            "stay"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u20.d04.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "variants": [
+            "I forgot locking the door and someone came in.",
+            "I forgot to lock the door and someone came in."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u20.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.gerund-infinitive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он бросил курить в прошлом году.",
+          "answers": [
+            "He stopped smoking last year."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he stopped to smoke last year",
+                "he stopped smoke last year",
+                "he stop smoking last year"
+              ],
+              "explanation": {
+                "en": "stop + -ing = quit: He stopped smoking last year.",
+                "ru": "stop + -ing = бросить: He stopped smoking last year."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u20.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.gerund-infinitive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Не забудь запереть дверь.",
+          "answers": [
+            "Remember to lock the door.",
+            "Don't forget to lock the door."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "remember locking the door",
+                "remember lock the door",
+                "remember to locking the door"
+              ],
+              "explanation": {
+                "en": "remember to do (a task): Remember to lock the door.",
+                "ru": "remember to do (дело): Remember to lock the door."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

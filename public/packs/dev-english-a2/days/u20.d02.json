@@ -1,0 +1,598 @@
+{
+  "id": "u20.d02",
+  "title": {
+    "en": "I want to learn",
+    "ru": "Я хочу научиться"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.gerund-infinitive",
+    "vocab.hobbies"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u20.d02.vocab",
+      "title": {
+        "en": "Plans & decisions",
+        "ru": "Планы и решения"
+      },
+      "words": [
+        {
+          "word": "decide",
+          "ru": "решать",
+          "ipa": "/dɪˈsaɪd/",
+          "example": "I decided to stay.",
+          "exampleRu": "Я решил остаться.",
+          "audio": {
+            "src": "media/audio/u20.d02.vocab.decide.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hope",
+          "ru": "надеяться",
+          "ipa": "/hoʊp/",
+          "example": "I hope to see you soon.",
+          "exampleRu": "Надеюсь скоро тебя увидеть.",
+          "audio": {
+            "src": "media/audio/u20.d02.vocab.hope.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "promise",
+          "ru": "обещать",
+          "ipa": "/ˈprɒmɪs/",
+          "example": "He promised to call.",
+          "exampleRu": "Он обещал позвонить.",
+          "audio": {
+            "src": "media/audio/u20.d02.vocab.promise.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "learn",
+          "ru": "учиться",
+          "ipa": "/lɜːrn/",
+          "example": "She's learning to drive.",
+          "exampleRu": "Она учится водить.",
+          "audio": {
+            "src": "media/audio/u20.d02.vocab.learn.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "plan",
+          "ru": "планировать",
+          "ipa": "/plæn/",
+          "example": "We plan to travel.",
+          "exampleRu": "Мы планируем путешествовать.",
+          "audio": {
+            "src": "media/audio/u20.d02.vocab.plan.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "offer",
+          "ru": "предлагать",
+          "ipa": "/ˈɒfər/",
+          "example": "He offered to help.",
+          "exampleRu": "Он предложил помочь.",
+          "audio": {
+            "src": "media/audio/u20.d02.vocab.offer.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "refuse",
+          "ru": "отказываться",
+          "ipa": "/rɪˈfjuːz/",
+          "example": "She refused to answer.",
+          "exampleRu": "Она отказалась отвечать.",
+          "audio": {
+            "src": "media/audio/u20.d02.vocab.refuse.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "manage",
+          "ru": "суметь",
+          "ipa": "/ˈmænɪdʒ/",
+          "example": "I managed to finish.",
+          "exampleRu": "Мне удалось закончить.",
+          "audio": {
+            "src": "media/audio/u20.d02.vocab.manage.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "afford",
+          "ru": "позволить себе",
+          "ipa": "/əˈfɔːrd/",
+          "example": "We can't afford to wait.",
+          "exampleRu": "Мы не можем позволить себе ждать.",
+          "audio": {
+            "src": "media/audio/u20.d02.vocab.afford.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "agree",
+          "ru": "соглашаться",
+          "ipa": "/əˈɡriː/",
+          "example": "They agreed to meet.",
+          "exampleRu": "Они согласились встретиться.",
+          "audio": {
+            "src": "media/audio/u20.d02.vocab.agree.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u20.d02.grammar",
+      "title": {
+        "en": "Verb + to-infinitive",
+        "ru": "Глагол + инфинитив с to"
+      },
+      "rule": {
+        "en": "Many verbs are followed by \"to + verb\" (the to-infinitive). Common ones: want, decide, hope, need, promise, learn, plan, offer, refuse, manage, agree. This group is just as important as the -ing group.",
+        "ru": "После многих глаголов идёт «to + глагол» (инфинитив с to). Частые: want, decide, hope, need, promise, learn, plan, offer, refuse, manage, agree. Эта группа так же важна, как группа с -ing."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "want / need + to",
+            "ru": "want / need + to"
+          },
+          "formula": "want/need/hope + to + verb",
+          "examples": [
+            {
+              "en": "I want to learn Spanish.",
+              "ru": "Я хочу выучить испанский."
+            }
+          ],
+          "ref": "gerund-infinitive"
+        },
+        {
+          "label": {
+            "en": "decide / plan + to",
+            "ru": "decide / plan + to"
+          },
+          "formula": "decide/plan/agree + to + verb",
+          "examples": [
+            {
+              "en": "We decided to move.",
+              "ru": "Мы решили переехать."
+            }
+          ],
+          "ref": "gerund-infinitive"
+        },
+        {
+          "label": {
+            "en": "promise / offer + to",
+            "ru": "promise / offer + to"
+          },
+          "formula": "promise/offer/refuse + to + verb",
+          "examples": [
+            {
+              "en": "She offered to drive.",
+              "ru": "Она предложила сесть за руль."
+            }
+          ],
+          "ref": "gerund-infinitive"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "These verbs need \"to + verb\", not -ing: \"I want to go\", not \"I want going\".",
+          "ru": "Этим глаголам нужен «to + глагол», не -ing: «I want to go», а не «I want going»."
+        },
+        {
+          "en": "Use the bare verb after \"to\": \"hope to see\", not \"hope to seeing\".",
+          "ru": "После «to» — начальная форма: «hope to see», а не «hope to seeing»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u20.d02.reading",
+      "title": {
+        "en": "A new goal",
+        "ru": "Новая цель"
+      },
+      "blocks": [
+        {
+          "id": "u20.d02.reading.b1",
+          "en": "This year, Maya decided to learn to swim. She had always wanted to, but she was afraid of water. \"I promised myself to try,\" she said. She planned to take one lesson a week and hoped to swim a whole length by summer.",
+          "ru": "В этом году Майя решила научиться плавать. Ей всегда этого хотелось, но она боялась воды. «Я пообещала себе попробовать», — сказала она. Она планировала брать по одному уроку в неделю и надеялась к лету проплыть целую дорожку.",
+          "audio": {
+            "src": "media/audio/u20.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u20.d02.reading.b2",
+          "en": "At first she wanted to give up, but her teacher offered to help her more. After three months, she managed to swim across the pool. \"I couldn't afford to quit,\" she laughed. \"Now I can't wait to try the sea.\"",
+          "ru": "Сначала она хотела бросить, но учитель предложил помогать ей больше. Через три месяца ей удалось переплыть бассейн. «Я не могла позволить себе сдаться», — засмеялась она. «Теперь мне не терпится попробовать море».",
+          "audio": {
+            "src": "media/audio/u20.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "give up",
+          "ru": "сдаваться",
+          "ipa": "/ɡɪv ʌp/"
+        },
+        {
+          "word": "length",
+          "ru": "дорожка (в бассейне)",
+          "ipa": "/leŋθ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u20.d02.listening",
+      "title": {
+        "en": "What are your plans?",
+        "ru": "Какие у тебя планы?"
+      },
+      "audio": {
+        "src": "media/audio/u20.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "What do you plan to do this summer?",
+          "ru": "Что ты планируешь делать летом?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "I hope to travel around Italy.",
+          "ru": "Надеюсь поездить по Италии."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Nice! Did you decide to go alone?",
+          "ru": "Здорово! Ты решила ехать одна?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "No, a friend agreed to come with me.",
+          "ru": "Нет, подруга согласилась поехать со мной."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u20.d02.ex.l.01",
+          "instruction": {
+            "en": "What does she hope to do?",
+            "ru": "Что она надеется сделать?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "She hopes ___ around Italy.",
+          "options": [
+            "to travel",
+            "travelling",
+            "travel"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u20.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u20.d02.ex.g.01",
+          "instruction": {
+            "en": "want + to.",
+            "ru": "want + to."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "I want ___ a new language. (learn)",
+          "answers": [
+            "to learn"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u20.d02.ex.c.01",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "They decided ___ early.",
+          "options": [
+            "to leave",
+            "leaving",
+            "leave"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u20.d02.ex.g.02",
+          "instruction": {
+            "en": "promise + to.",
+            "ru": "promise + to."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "He promised ___ back soon. (come)",
+          "answers": [
+            "to come"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u20.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "variants": [
+            "I hope seeing you soon.",
+            "I hope to see you soon."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u20.d02.ex.c.02",
+          "instruction": {
+            "en": "manage + to.",
+            "ru": "manage + to."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "We managed ___ the last train.",
+          "options": [
+            "to catch",
+            "catching",
+            "catch"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u20.d02.ex.g.03",
+          "instruction": {
+            "en": "offer + to.",
+            "ru": "offer + to."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "She offered ___ me with the bags. (help)",
+          "answers": [
+            "to help"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u20.d02.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "tokens": [
+            "We",
+            "plan",
+            "to",
+            "visit",
+            "the",
+            "museum"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u20.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.hobbies"
+          ],
+          "pairs": [
+            {
+              "left": "decide",
+              "right": "решать"
+            },
+            {
+              "left": "refuse",
+              "right": "отказываться"
+            },
+            {
+              "left": "afford",
+              "right": "позволить себе"
+            },
+            {
+              "left": "agree",
+              "right": "соглашаться"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u20.d02.ex.c.03",
+          "instruction": {
+            "en": "refuse + to.",
+            "ru": "refuse + to."
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "prompt": "The child refused ___ his vegetables.",
+          "options": [
+            "to eat",
+            "eating",
+            "eat"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u20.d02.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.gerund-infinitive"
+          ],
+          "variants": [
+            "She learned to driving.",
+            "She learned to drive."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u20.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.gerund-infinitive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я хочу научиться играть на гитаре.",
+          "answers": [
+            "I want to learn to play the guitar.",
+            "I want to learn how to play the guitar."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i want learn to play",
+                "i want to learn playing the guitar",
+                "i want learning to play the guitar"
+              ],
+              "explanation": {
+                "en": "want + to + verb: I want to learn to play the guitar.",
+                "ru": "want + to + глагол: I want to learn to play the guitar."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u20.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.gerund-infinitive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Они решили остаться дома.",
+          "answers": [
+            "They decided to stay at home.",
+            "They decided to stay home."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "they decided staying at home",
+                "they decided stay at home",
+                "they decided to staying home"
+              ],
+              "explanation": {
+                "en": "decide + to + verb: They decided to stay at home.",
+                "ru": "decide + to + глагол: They decided to stay at home."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
