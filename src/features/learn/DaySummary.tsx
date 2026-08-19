@@ -9,6 +9,7 @@ type Props = {
   day: Day;
   next: NextDay | null;
   checkpointUnitId?: string | null;
+  levelExitId?: string | null;
   onRedo?: () => void;
 };
 
@@ -17,7 +18,7 @@ const nextClass =
   'tracking-[0.02em] bg-teal text-ink font-semibold transition-[opacity,scale] duration-150 ' +
   'hover:opacity-90 active:scale-[0.96] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal';
 
-export function DaySummary({ day, next, checkpointUnitId, onRedo }: Props) {
+export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }: Props) {
   const results = useSessionResults((s) => s.results);
   const exercises = dayExercises(day);
   if (exercises.length === 0) return null;
@@ -65,16 +66,28 @@ export function DaySummary({ day, next, checkpointUnitId, onRedo }: Props) {
         <p className="mt-4 text-sm text-teal">Отличная работа — без ошибок! ✓</p>
       ) : null}
 
-      {checkpointUnitId && (
+      {levelExitId ? (
         <Link
-          to={`/checkpoint/${checkpointUnitId}`}
-          className="mt-4 block rounded-sm border border-amber-dim bg-amber-dim/10 px-3.5 py-2.5 text-sm hover:border-amber"
+          to={`/checkpoint/exit-${levelExitId.toLowerCase()}`}
+          className="mt-4 block rounded-sm border border-teal-dim bg-teal-dim/10 px-3.5 py-2.5 text-sm hover:border-teal"
         >
-          <span className="font-mono text-2xs uppercase tracking-[0.08em] text-amber">
-            конец юнита
+          <span className="font-mono text-2xs uppercase tracking-[0.08em] text-teal">
+            конец уровня {levelExitId}
           </span>
-          <span className="ml-2">Пройти контрольную по юниту →</span>
+          <span className="ml-2">Пройти итоговый тест уровня {levelExitId} →</span>
         </Link>
+      ) : (
+        checkpointUnitId && (
+          <Link
+            to={`/checkpoint/${checkpointUnitId}`}
+            className="mt-4 block rounded-sm border border-amber-dim bg-amber-dim/10 px-3.5 py-2.5 text-sm hover:border-amber"
+          >
+            <span className="font-mono text-2xs uppercase tracking-[0.08em] text-amber">
+              конец юнита
+            </span>
+            <span className="ml-2">Пройти контрольную по юниту →</span>
+          </Link>
+        )
       )}
 
       <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-line pt-5">

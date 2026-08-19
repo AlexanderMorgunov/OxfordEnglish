@@ -26,6 +26,37 @@ export function buildCheckpoint(
   return shuffle([...picked, ...others.slice(0, interleave)]);
 }
 
+/**
+ * Assemble a level exit test: a broad sample across every unit of that level,
+ * round-robin so no single unit dominates the coverage.
+ */
+export function buildLevelExit(
+  pack: LoadedPack,
+  level: string,
+  count = 20
+): Exercise[] {
+  const byUnit = pack.units
+    .map((u) => ({
+      pool: shuffle(
+        u.days
+          .filter((d) => d.level === level)
+          .flatMap((d) => d.sections)
+          .flatMap((s) => (s.type === 'practice' || s.type === 'listening' ? s.exercises : []))
+      ),
+    }))
+    .filter((u) => u.pool.length > 0);
+
+  const picked: Exercise[] = [];
+  let round = 0;
+  while (picked.length < count && byUnit.some((u) => u.pool.length > 0)) {
+    const u = byUnit[round % byUnit.length];
+    const e = u?.pool.pop();
+    if (e) picked.push(e);
+    round += 1;
+  }
+  return shuffle(picked);
+}
+
 /** For each weak tag, which days teach it — the personal review plan (§5.6). */
 export function reviewPlan(
   pack: LoadedPack,

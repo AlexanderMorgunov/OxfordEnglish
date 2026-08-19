@@ -27,6 +27,20 @@ function unitCheckpointOf(pack: LoadedPack, dayId: string): string | null {
   return last && last.id === dayId ? unit.id : null;
 }
 
+/** A level needs a real tier's worth of days before an exit test is meaningful. */
+const MIN_EXIT_DAYS = 5;
+
+/** level when `dayId` is the LAST day of its level — the point to offer an exit test. */
+function levelExitOf(pack: LoadedPack, dayId: string): string | null {
+  const all = pack.units.flatMap((u) => u.days);
+  const day = all.find((d) => d.id === dayId);
+  if (!day?.level) return null;
+  const sameLevel = all.filter((d) => d.level === day.level);
+  if (sameLevel.length < MIN_EXIT_DAYS) return null;
+  const last = sameLevel[sameLevel.length - 1];
+  return last && last.id === dayId ? day.level : null;
+}
+
 const SECTION_LABEL: Record<string, string> = {
   grammar: 'grammar',
   vocabulary: 'vocabulary',
@@ -111,6 +125,7 @@ export function DayPage() {
           day={day}
           next={pack ? nextDayOf(pack, day.id) : null}
           checkpointUnitId={pack ? unitCheckpointOf(pack, day.id) : null}
+          levelExitId={pack ? levelExitOf(pack, day.id) : null}
           onRedo={redo}
         />
       </div>

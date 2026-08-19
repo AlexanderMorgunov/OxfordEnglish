@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { CheckpointResult, ExerciseAttempt } from '@/db/db';
+import { useContentStore } from '@/content/store';
 import { Card, Eyebrow } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import {
@@ -75,12 +76,23 @@ export function ProgressPage() {
   const [attempts, setAttempts] = useState<ExerciseAttempt[] | null>(null);
   const [vocab, setVocab] = useState(0);
   const [history, setHistory] = useState<CheckpointResult[]>([]);
+  const { pack, load } = useContentStore();
 
   useEffect(() => {
+    void load();
     void loadAttempts().then(setAttempts);
     void vocabSize().then(setVocab);
     void checkpointHistory().then(setHistory);
-  }, []);
+  }, [load]);
+
+  const exitLevels = (() => {
+    if (!pack) return [];
+    const counts = new Map<string, number>();
+    for (const d of pack.units.flatMap((u) => u.days)) {
+      if (d.level) counts.set(d.level, (counts.get(d.level) ?? 0) + 1);
+    }
+    return [...counts].filter(([, n]) => n >= 5).map(([level]) => level);
+  })();
 
   const map = attempts ? skillMap(attempts) : [];
   const streak = attempts ? currentStreak(attempts, new Date()) : 0;
@@ -144,6 +156,20 @@ export function ProgressPage() {
                   {pct(h.score / h.total)} · {h.score}/{h.total}
                 </span>
               </Card>
+            ))}
+          </div>
+        )}
+
+        {exitLevels.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {exitLevels.map((level) => (
+              <Link
+                key={level}
+                to={`/checkpoint/exit-${level.toLowerCase()}`}
+                className="rounded-sm border border-teal-dim bg-teal-dim/10 px-3 py-1.5 font-mono text-xs text-teal hover:border-teal"
+              >
+                {level} exit test →
+              </Link>
             ))}
           </div>
         )}
