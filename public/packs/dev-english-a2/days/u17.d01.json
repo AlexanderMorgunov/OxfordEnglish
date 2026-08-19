@@ -1,0 +1,598 @@
+{
+  "id": "u17.d01",
+  "title": {
+    "en": "I've been working all day",
+    "ru": "Я весь день работаю"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.present-perfect-continuous",
+    "vocab.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u17.d01.vocab",
+      "title": {
+        "en": "Work & effort",
+        "ru": "Работа и усилия"
+      },
+      "words": [
+        {
+          "word": "project",
+          "ru": "проект",
+          "ipa": "/ˈprɒdʒekt/",
+          "example": "I've been working on a big project.",
+          "exampleRu": "Я работаю над большим проектом.",
+          "audio": {
+            "src": "media/audio/u17.d01.vocab.project.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "deadline",
+          "ru": "срок сдачи",
+          "ipa": "/ˈdedlaɪn/",
+          "example": "The deadline is on Friday.",
+          "exampleRu": "Срок — в пятницу.",
+          "audio": {
+            "src": "media/audio/u17.d01.vocab.deadline.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "busy",
+          "ru": "занятой",
+          "ipa": "/ˈbɪzi/",
+          "example": "I've been really busy lately.",
+          "exampleRu": "В последнее время я очень занят.",
+          "audio": {
+            "src": "media/audio/u17.d01.vocab.busy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "effort",
+          "ru": "усилие",
+          "ipa": "/ˈefərt/",
+          "example": "It took a lot of effort.",
+          "exampleRu": "Это потребовало много усилий.",
+          "audio": {
+            "src": "media/audio/u17.d01.vocab.effort.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "task",
+          "ru": "задача",
+          "ipa": "/tɑːsk/",
+          "example": "I have a few tasks to finish.",
+          "exampleRu": "Мне нужно закончить пару задач.",
+          "audio": {
+            "src": "media/audio/u17.d01.vocab.task.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "meeting",
+          "ru": "совещание",
+          "ipa": "/ˈmiːtɪŋ/",
+          "example": "We've been in meetings all day.",
+          "exampleRu": "Мы весь день на совещаниях.",
+          "audio": {
+            "src": "media/audio/u17.d01.vocab.meeting.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tired",
+          "ru": "усталый",
+          "ipa": "/ˈtaɪərd/",
+          "example": "I'm tired — I've been working since eight.",
+          "exampleRu": "Я устал — работаю с восьми.",
+          "audio": {
+            "src": "media/audio/u17.d01.vocab.tired.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "finish",
+          "ru": "заканчивать",
+          "ipa": "/ˈfɪnɪʃ/",
+          "example": "I want to finish this today.",
+          "exampleRu": "Хочу закончить это сегодня.",
+          "audio": {
+            "src": "media/audio/u17.d01.vocab.finish.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "report",
+          "ru": "отчёт",
+          "ipa": "/rɪˈpɔːrt/",
+          "example": "She's been writing the report.",
+          "exampleRu": "Она пишет отчёт.",
+          "audio": {
+            "src": "media/audio/u17.d01.vocab.report.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "all day",
+          "ru": "весь день",
+          "ipa": "/ɔːl deɪ/",
+          "example": "He's been coding all day.",
+          "exampleRu": "Он весь день пишет код.",
+          "audio": {
+            "src": "media/audio/u17.d01.vocab.allday.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u17.d01.grammar",
+      "title": {
+        "en": "Present perfect continuous",
+        "ru": "Present perfect continuous"
+      },
+      "rule": {
+        "en": "Use the present perfect continuous (have/has been + -ing) for an action that started in the past and is still going on, or has just stopped — with the focus on the activity itself.",
+        "ru": "Present perfect continuous (have/has been + -ing) — действие, которое началось в прошлом и всё ещё идёт (или только что закончилось); акцент на самом процессе."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "positive",
+            "ru": "утверждение"
+          },
+          "formula": "have/has been + verb-ing",
+          "examples": [
+            {
+              "en": "I've been working all day.",
+              "ru": "Я работаю весь день."
+            }
+          ],
+          "ref": "present-perfect-continuous"
+        },
+        {
+          "label": {
+            "en": "negative",
+            "ru": "отрицание"
+          },
+          "formula": "haven't/hasn't been + verb-ing",
+          "examples": [
+            {
+              "en": "She hasn't been sleeping well.",
+              "ru": "Она плохо спит в последнее время."
+            }
+          ],
+          "ref": "present-perfect-continuous"
+        },
+        {
+          "label": {
+            "en": "question",
+            "ru": "вопрос"
+          },
+          "formula": "Have/Has + subject + been + verb-ing?",
+          "examples": [
+            {
+              "en": "What have you been doing?",
+              "ru": "Чем ты занимался?"
+            }
+          ],
+          "ref": "present-perfect-continuous"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Keep \"been\" in: \"I have BEEN working\", not \"I have working\".",
+          "ru": "Не теряй «been»: «I have BEEN working», а не «I have working»."
+        },
+        {
+          "en": "Same \"have/has been\" for the whole verb — only the main verb takes -ing.",
+          "ru": "Одно «have/has been» на всё сказуемое — окончание -ing только у смыслового глагола."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u17.d01.reading",
+      "title": {
+        "en": "A long day",
+        "ru": "Длинный день"
+      },
+      "blocks": [
+        {
+          "id": "u17.d01.reading.b1",
+          "en": "It's six o'clock and Marco is still at his desk. He has been working since eight this morning, and he hasn't even stopped for lunch. His team has been preparing for a big product launch, and the deadline is tomorrow.",
+          "ru": "Шесть часов, а Марко всё ещё за столом. Он работает с восьми утра и даже не прервался на обед. Его команда готовится к большому запуску продукта, и срок — завтра.",
+          "audio": {
+            "src": "media/audio/u17.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u17.d01.reading.b2",
+          "en": "\"I've been staring at this screen for ten hours,\" he says. \"My eyes hurt.\" But he is happy: the project has been going well, and everyone has been helping each other. Soon they will finish, and then he will finally go home.",
+          "ru": "«Я десять часов смотрю в этот экран, — говорит он. — Глаза болят». Но он доволен: проект идёт хорошо, и все помогают друг другу. Скоро они закончат, и тогда он наконец пойдёт домой.",
+          "audio": {
+            "src": "media/audio/u17.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "launch",
+          "ru": "запуск",
+          "ipa": "/lɔːntʃ/"
+        },
+        {
+          "word": "stare",
+          "ru": "пристально смотреть",
+          "ipa": "/steər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u17.d01.listening",
+      "title": {
+        "en": "You look tired",
+        "ru": "Ты выглядишь усталым"
+      },
+      "audio": {
+        "src": "media/audio/u17.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "You look exhausted. What have you been doing?",
+          "ru": "Ты выглядишь измотанным. Чем ты занимался?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "I've been working on the report all day.",
+          "ru": "Я весь день работал над отчётом."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Have you had a break?",
+          "ru": "Ты делал перерыв?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "No, I haven't. I've been sitting here since nine.",
+          "ru": "Нет. Я сижу здесь с девяти."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u17.d01.ex.l.01",
+          "instruction": {
+            "en": "What has he been doing?",
+            "ru": "Чем он занимался?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "He has been working on the ___ .",
+          "options": [
+            "report",
+            "launch",
+            "break"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u17.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u17.d01.ex.g.01",
+          "instruction": {
+            "en": "Present perfect continuous.",
+            "ru": "Present perfect continuous."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "I ___ been working all day. (have)",
+          "answers": [
+            "have",
+            "'ve"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u17.d01.ex.g.02",
+          "instruction": {
+            "en": "Add the -ing verb.",
+            "ru": "Добавь глагол на -ing."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "She has been ___ the report. (write)",
+          "answers": [
+            "writing"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u17.d01.ex.c.01",
+          "instruction": {
+            "en": "have or has?",
+            "ru": "have или has?"
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "He ___ been coding since morning.",
+          "options": [
+            "has",
+            "have",
+            "is"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u17.d01.ex.c.02",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "We have ___ preparing for the launch.",
+          "options": [
+            "been",
+            "being",
+            "be"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u17.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "variants": [
+            "I have working all day.",
+            "I have been working all day."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u17.d01.ex.g.03",
+          "instruction": {
+            "en": "Question.",
+            "ru": "Вопрос."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "What ___ you been doing? (have)",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u17.d01.ex.c.03",
+          "instruction": {
+            "en": "Negative.",
+            "ru": "Отрицание."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "She ___ been sleeping well lately.",
+          "options": [
+            "hasn't",
+            "haven't",
+            "isn't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u17.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a question.",
+            "ru": "Составь вопрос."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "tokens": [
+            "What",
+            "have",
+            "you",
+            "been",
+            "working",
+            "on"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u17.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "deadline",
+              "right": "срок сдачи"
+            },
+            {
+              "left": "effort",
+              "right": "усилие"
+            },
+            {
+              "left": "busy",
+              "right": "занятой"
+            },
+            {
+              "left": "task",
+              "right": "задача"
+            }
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u17.d01.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "variants": [
+            "He has been work since eight.",
+            "He has been working since eight."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u17.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я весь день работаю над проектом.",
+          "answers": [
+            "I've been working on the project all day.",
+            "I have been working on the project all day."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i work on the project all day",
+                "i am working on the project all day",
+                "i have work on the project"
+              ],
+              "explanation": {
+                "en": "Ongoing effort up to now → have been working: I have been working on the project all day.",
+                "ru": "Продолжающееся усилие до сейчас → have been working: I have been working on the project all day."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u17.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Чем ты занимался?",
+          "answers": [
+            "What have you been doing?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "what you been doing",
+                "what have you doing",
+                "what did you been doing"
+              ],
+              "explanation": {
+                "en": "have + been + -ing: What have you been doing?",
+                "ru": "have + been + -ing: What have you been doing?"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

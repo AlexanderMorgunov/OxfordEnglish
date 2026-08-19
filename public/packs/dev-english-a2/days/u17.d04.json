@@ -1,0 +1,603 @@
+{
+  "id": "u17.d04",
+  "title": {
+    "en": "Tired but happy",
+    "ru": "Устал, но доволен"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.present-perfect-continuous",
+    "vocab.feelings"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u17.d04.vocab",
+      "title": {
+        "en": "States & signs",
+        "ru": "Состояния и признаки"
+      },
+      "words": [
+        {
+          "word": "exhausted",
+          "ru": "измотанный",
+          "ipa": "/ɪɡˈzɔːstɪd/",
+          "example": "I'm exhausted after work.",
+          "exampleRu": "Я измотан после работы.",
+          "audio": {
+            "src": "media/audio/u17.d04.vocab.exhausted.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "out of breath",
+          "ru": "запыхавшийся",
+          "ipa": "/aʊt əv breθ/",
+          "example": "You're out of breath!",
+          "exampleRu": "Ты запыхался!",
+          "audio": {
+            "src": "media/audio/u17.d04.vocab.outofbreath.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sweat",
+          "ru": "потеть; пот",
+          "ipa": "/swet/",
+          "example": "He's sweating a lot.",
+          "exampleRu": "Он сильно потеет.",
+          "audio": {
+            "src": "media/audio/u17.d04.vocab.sweat.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dirty",
+          "ru": "грязный",
+          "ipa": "/ˈdɜːrti/",
+          "example": "Your shoes are dirty.",
+          "exampleRu": "Твои ботинки грязные.",
+          "audio": {
+            "src": "media/audio/u17.d04.vocab.dirty.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wet",
+          "ru": "мокрый",
+          "ipa": "/wet/",
+          "example": "Your hair is wet.",
+          "exampleRu": "У тебя мокрые волосы.",
+          "audio": {
+            "src": "media/audio/u17.d04.vocab.wet.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "garden",
+          "ru": "сад",
+          "ipa": "/ˈɡɑːrdn/",
+          "example": "I've been working in the garden.",
+          "exampleRu": "Я работал в саду.",
+          "audio": {
+            "src": "media/audio/u17.d04.vocab.garden.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cry",
+          "ru": "плакать",
+          "ipa": "/kraɪ/",
+          "example": "Her eyes are red from crying.",
+          "exampleRu": "Её глаза красные от слёз.",
+          "audio": {
+            "src": "media/audio/u17.d04.vocab.cry.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "run",
+          "ru": "бегать",
+          "ipa": "/rʌn/",
+          "example": "I've been running.",
+          "exampleRu": "Я бегал.",
+          "audio": {
+            "src": "media/audio/u17.d04.vocab.run.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reason",
+          "ru": "причина",
+          "ipa": "/ˈriːzn/",
+          "example": "That's the reason I'm late.",
+          "exampleRu": "Вот причина, почему я опоздал.",
+          "audio": {
+            "src": "media/audio/u17.d04.vocab.reason.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "relax",
+          "ru": "расслабляться",
+          "ipa": "/rɪˈlæks/",
+          "example": "I need to relax now.",
+          "exampleRu": "Мне нужно расслабиться.",
+          "audio": {
+            "src": "media/audio/u17.d04.vocab.relax.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u17.d04.grammar",
+      "title": {
+        "en": "Explaining what you can see",
+        "ru": "Объясняем видимое"
+      },
+      "rule": {
+        "en": "We often use the present perfect continuous to explain a present situation or a visible result: someone is tired, wet or out of breath BECAUSE they have been doing something.",
+        "ru": "Present perfect continuous часто объясняет нынешнее состояние или видимый результат: кто-то устал, промок или запыхался, ПОТОМУ ЧТО что-то делал."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "because … have been",
+            "ru": "because … have been"
+          },
+          "formula": "… because + have been + -ing",
+          "examples": [
+            {
+              "en": "I'm tired because I've been running.",
+              "ru": "Я устал, потому что бегал."
+            }
+          ],
+          "ref": "present-perfect-continuous"
+        },
+        {
+          "label": {
+            "en": "You look … Have you been…?",
+            "ru": "Ты выглядишь… Ты…?"
+          },
+          "formula": "Have you been + -ing?",
+          "examples": [
+            {
+              "en": "Your eyes are red. Have you been crying?",
+              "ru": "У тебя красные глаза. Ты плакал?"
+            }
+          ],
+          "ref": "present-perfect-continuous"
+        },
+        {
+          "label": {
+            "en": "visible result",
+            "ru": "видимый результат"
+          },
+          "formula": "It's wet — it has been raining.",
+          "examples": [
+            {
+              "en": "The ground is wet. It's been raining.",
+              "ru": "Земля мокрая. Шёл дождь."
+            }
+          ],
+          "ref": "present-perfect-continuous"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The clue is a present result; the reason is the continuous: \"You're dirty — have you been gardening?\"",
+          "ru": "Подсказка — нынешний результат; причина — длительная форма: «You're dirty — have you been gardening?»"
+        },
+        {
+          "en": "Do not drop \"been\": \"Have you been crying?\", not \"Have you crying?\".",
+          "ru": "Не теряй «been»: «Have you been crying?», а не «Have you crying?»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u17.d04.reading",
+      "title": {
+        "en": "What happened to you?",
+        "ru": "Что с тобой случилось?"
+      },
+      "blocks": [
+        {
+          "id": "u17.d04.reading.b1",
+          "en": "Tom came home late, wet and covered in mud. \"What have you been doing?\" asked his sister. \"You look terrible!\" Tom smiled. He had a good reason: he had been helping a neighbour find her lost dog in the rain.",
+          "ru": "Том пришёл домой поздно, мокрый и в грязи. «Чем ты занимался? — спросила сестра. — Ты ужасно выглядишь!» Том улыбнулся. У него была веская причина: он под дождём помогал соседке искать потерявшуюся собаку.",
+          "audio": {
+            "src": "media/audio/u17.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u17.d04.reading.b2",
+          "en": "\"We've been walking around the park for two hours,\" he said, \"but we found her in the end.\" He was exhausted and out of breath, but he was happy. Now he just wanted a hot shower and a chance to relax.",
+          "ru": "«Мы два часа ходили по парку, — сказал он, — но в итоге нашли её». Он был измотан и запыхался, но был счастлив. Теперь он хотел лишь горячий душ и возможность отдохнуть.",
+          "audio": {
+            "src": "media/audio/u17.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "mud",
+          "ru": "грязь",
+          "ipa": "/mʌd/"
+        },
+        {
+          "word": "neighbour",
+          "ru": "сосед(ка)",
+          "ipa": "/ˈneɪbər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u17.d04.listening",
+      "title": {
+        "en": "You look a mess!",
+        "ru": "Ну и вид у тебя!"
+      },
+      "audio": {
+        "src": "media/audio/u17.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "You're all wet! Have you been swimming?",
+          "ru": "Ты весь мокрый! Ты плавал?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "No, I've been running in the rain.",
+          "ru": "Нет, я бегал под дождём."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "And why are your hands dirty?",
+          "ru": "А почему руки грязные?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "I fell over. I've been sitting in a puddle!",
+          "ru": "Я упал. Я сидел в луже!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u17.d04.ex.l.01",
+          "instruction": {
+            "en": "Why is he wet?",
+            "ru": "Почему он мокрый?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "He has been ___ in the rain.",
+          "options": [
+            "running",
+            "swimming",
+            "sitting"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u17.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u17.d04.ex.c.01",
+          "instruction": {
+            "en": "Explain the state.",
+            "ru": "Объясни состояние."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "You're out of breath! Have you ___ running?",
+          "options": [
+            "been",
+            "being",
+            "be"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u17.d04.ex.g.01",
+          "instruction": {
+            "en": "Give the reason.",
+            "ru": "Назови причину."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "I'm tired because I ___ been working. (have)",
+          "answers": [
+            "have",
+            "'ve"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u17.d04.ex.c.02",
+          "instruction": {
+            "en": "Visible result.",
+            "ru": "Видимый результат."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "The ground is wet. It ___ raining.",
+          "options": [
+            "has been",
+            "has",
+            "is"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u17.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "variants": [
+            "Have you crying?",
+            "Have you been crying?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u17.d04.ex.c.03",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "Your clothes are dirty. ___ you been gardening?",
+          "options": [
+            "Have",
+            "Has",
+            "Did"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u17.d04.ex.g.02",
+          "instruction": {
+            "en": "Add the -ing verb.",
+            "ru": "Добавь глагол на -ing."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "Her eyes are red. She's been ___ . (cry)",
+          "answers": [
+            "crying"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u17.d04.ex.o.01",
+          "instruction": {
+            "en": "Ask about the reason.",
+            "ru": "Спроси о причине."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "tokens": [
+            "Have",
+            "you",
+            "been",
+            "working",
+            "in",
+            "the",
+            "garden"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u17.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.feelings"
+          ],
+          "pairs": [
+            {
+              "left": "exhausted",
+              "right": "измотанный"
+            },
+            {
+              "left": "wet",
+              "right": "мокрый"
+            },
+            {
+              "left": "reason",
+              "right": "причина"
+            },
+            {
+              "left": "relax",
+              "right": "расслабляться"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u17.d04.ex.c.04",
+          "instruction": {
+            "en": "Because + continuous.",
+            "ru": "Because + длительная."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "I'm hungry because I ___ working through lunch.",
+          "options": [
+            "have been",
+            "have",
+            "was"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u17.d04.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "variants": [
+            "He's tired because he running all day.",
+            "He's tired because he has been running all day."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u17.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У тебя красные глаза. Ты плакал?",
+          "answers": [
+            "Your eyes are red. Have you been crying?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "have you crying",
+                "did you been crying",
+                "have you cried"
+              ],
+              "explanation": {
+                "en": "Have you been + -ing: Have you been crying?",
+                "ru": "Have you been + -ing: Have you been crying?"
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u17.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Земля мокрая, потому что шёл дождь.",
+          "answers": [
+            "The ground is wet because it's been raining.",
+            "The ground is wet because it has been raining."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "because it was raining",
+                "because it has rained",
+                "because it is raining"
+              ],
+              "explanation": {
+                "en": "Recent ongoing cause → has been raining.",
+                "ru": "Недавняя длящаяся причина → has been raining."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

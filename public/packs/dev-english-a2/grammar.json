@@ -2579,5 +2579,90 @@
       "past-continuous",
       "past-simple"
     ]
+  },
+  {
+    "id": "present-perfect-continuous",
+    "title": {
+      "en": "Present perfect continuous (have been doing)",
+      "ru": "Present perfect continuous (have been doing)"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "Use the present perfect continuous (have/has been + -ing) for an action that began in the past and is still going on, or has only just stopped — with the focus on the activity and how long it has lasted.",
+      "ru": "Present perfect continuous (have/has been + -ing) — действие, которое началось в прошлом и всё ещё идёт (или только что прекратилось); акцент на самом процессе и его длительности."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "The form: have/has been + -ing",
+          "ru": "Форма: have/has been + -ing"
+        },
+        "text": {
+          "en": "Build it with have/has + been + the -ing form. \"been\" never changes.\n\nI have been working.\nShe has been studying.\n\nNegative: haven't/hasn't been + -ing. Question: Have/Has + subject + been + -ing?\n\nI haven't been sleeping well.\nWhat have you been doing?",
+          "ru": "Строится из have/has + been + форма на -ing. «been» не меняется.\n\nI have been working. — Я работаю (уже некоторое время).\nShe has been studying. — Она занимается.\n\nОтрицание: haven't/hasn't been + -ing. Вопрос: Have/Has + подлежащее + been + -ing?\n\nI haven't been sleeping well. — Я плохо сплю в последнее время.\nWhat have you been doing? — Чем ты занимался?"
+        },
+        "examples": [
+          {
+            "en": "I've been waiting for an hour.",
+            "ru": "Я жду уже час."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "for / since — how long",
+          "ru": "for / since — как долго"
+        },
+        "text": {
+          "en": "This tense loves \"for\" (a length of time) and \"since\" (a starting point). Ask about duration with \"How long have you been…?\"\n\nI've been learning English for two years.\nShe's been working here since 2021.\nHow long have you been waiting?",
+          "ru": "Это время любит «for» (отрезок времени) и «since» (точку начала). О длительности спрашивают через «How long have you been…?»\n\nI've been learning English for two years. — Я учу английский два года.\nShe's been working here since 2021. — Она работает здесь с 2021 года.\nHow long have you been waiting? — Как долго ты ждёшь?"
+        },
+        "examples": [
+          {
+            "en": "They've been living here since March.",
+            "ru": "Они живут здесь с марта."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Continuous vs. simple: activity vs. result",
+          "ru": "Длительная и простая: процесс и результат"
+        },
+        "text": {
+          "en": "Use the CONTINUOUS for the activity or how long; use the SIMPLE for a finished result or how many.\n\nI've been reading all afternoon. (activity — maybe not finished)\nI've read three books this month. (result — a number)\n\nOften both appear together: She's been writing for an hour and has written two pages.",
+          "ru": "Длительную форму — для процесса или длительности; простую — для завершённого результата или количества.\n\nI've been reading all afternoon. — Я читаю весь день (процесс, возможно, не закончен).\nI've read three books this month. — Я прочитал три книги за месяц (результат, число).\n\nЧасто идут вместе: She's been writing for an hour and has written two pages."
+        }
+      },
+      {
+        "heading": {
+          "en": "Explaining what you can see",
+          "ru": "Объясняем видимое"
+        },
+        "text": {
+          "en": "We use it to explain a present situation or a visible result — someone is tired, wet or dirty because of a recent activity.\n\nI'm tired because I've been running.\nYour eyes are red. Have you been crying?\nThe ground is wet — it's been raining.",
+          "ru": "Им объясняют нынешнюю ситуацию или видимый результат — кто-то устал, промок или испачкался из-за недавнего действия.\n\nI'm tired because I've been running. — Я устал, потому что бегал.\nYour eyes are red. Have you been crying? — У тебя красные глаза. Ты плакал?\nThe ground is wet — it's been raining. — Земля мокрая — шёл дождь."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Do not drop \"been\": \"I have been working\", NOT \"I have working\".",
+        "ru": "Не теряй «been»: «I have been working», а не «I have working»."
+      },
+      {
+        "en": "Only the main verb takes -ing: \"have been doing\", not \"have been did\".",
+        "ru": "Окончание -ing только у смыслового глагола: «have been doing», а не «have been did»."
+      },
+      {
+        "en": "State verbs (know, like, be) usually stay simple: \"I have known her for years\", not \"I have been knowing\".",
+        "ru": "Глаголы состояния (know, like, be) обычно в простой форме: «I have known her for years», а не «I have been knowing»."
+      }
+    ],
+    "seeAlso": [
+      "present-perfect",
+      "present-perfect-signals",
+      "perfect-vs-past"
+    ]
   }
 ]

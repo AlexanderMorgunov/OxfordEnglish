@@ -82,6 +82,8 @@ export const SKILL_TAGS = [
   'grammar.past-perfect-vs-past',
   'grammar.narrative-tenses',
   'grammar.time-linkers',
+  'grammar.present-perfect-continuous',
+  'grammar.perfect-continuous-vs-simple',
 
   // functions (everyday communication)
   'functions.ordering',
@@ -102,6 +104,7 @@ export const SKILL_TAGS = [
   'functions.hypothetical',
   'functions.storytelling',
   'functions.travel',
+  'functions.work',
 
   // vocabulary (developer-life + everyday themes)
   'vocab.work',

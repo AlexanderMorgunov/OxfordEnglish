@@ -1,0 +1,600 @@
+{
+  "id": "u17.d02",
+  "title": {
+    "en": "How long have you been…?",
+    "ru": "Как долго ты…?"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.present-perfect-continuous",
+    "vocab.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u17.d02.vocab",
+      "title": {
+        "en": "Learning & progress",
+        "ru": "Учёба и прогресс"
+      },
+      "words": [
+        {
+          "word": "learn",
+          "ru": "учить, изучать",
+          "ipa": "/lɜːrn/",
+          "example": "I've been learning English for two years.",
+          "exampleRu": "Я учу английский два года.",
+          "audio": {
+            "src": "media/audio/u17.d02.vocab.learn.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "practise",
+          "ru": "практиковаться",
+          "ipa": "/ˈpræktɪs/",
+          "example": "She's been practising every day.",
+          "exampleRu": "Она практикуется каждый день.",
+          "audio": {
+            "src": "media/audio/u17.d02.vocab.practise.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "improve",
+          "ru": "улучшать(ся)",
+          "ipa": "/ɪmˈpruːv/",
+          "example": "My English has been improving.",
+          "exampleRu": "Мой английский улучшается.",
+          "audio": {
+            "src": "media/audio/u17.d02.vocab.improve.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "recently",
+          "ru": "недавно",
+          "ipa": "/ˈriːsntli/",
+          "example": "I've been busy recently.",
+          "exampleRu": "В последнее время я занят.",
+          "audio": {
+            "src": "media/audio/u17.d02.vocab.recently.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lately",
+          "ru": "в последнее время",
+          "ipa": "/ˈleɪtli/",
+          "example": "Have you been sleeping well lately?",
+          "exampleRu": "Ты хорошо спишь в последнее время?",
+          "audio": {
+            "src": "media/audio/u17.d02.vocab.lately.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "skill",
+          "ru": "навык",
+          "ipa": "/skɪl/",
+          "example": "He's been building new skills.",
+          "exampleRu": "Он развивает новые навыки.",
+          "audio": {
+            "src": "media/audio/u17.d02.vocab.skill.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "progress",
+          "ru": "прогресс",
+          "ipa": "/ˈprɒɡres/",
+          "example": "You've made good progress.",
+          "exampleRu": "Ты сделал хороший прогресс.",
+          "audio": {
+            "src": "media/audio/u17.d02.vocab.progress.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "course",
+          "ru": "курс",
+          "ipa": "/kɔːrs/",
+          "example": "I've been taking an online course.",
+          "exampleRu": "Я прохожу онлайн-курс.",
+          "audio": {
+            "src": "media/audio/u17.d02.vocab.course.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "since",
+          "ru": "с (какого-то момента)",
+          "ipa": "/sɪns/",
+          "example": "I've been here since Monday.",
+          "exampleRu": "Я здесь с понедельника.",
+          "audio": {
+            "src": "media/audio/u17.d02.vocab.since.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "for",
+          "ru": "в течение",
+          "ipa": "/fɔːr/",
+          "example": "I've known her for years.",
+          "exampleRu": "Я знаю её много лет.",
+          "audio": {
+            "src": "media/audio/u17.d02.vocab.for.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u17.d02.grammar",
+      "title": {
+        "en": "for / since with the continuous",
+        "ru": "for / since с длительной формой"
+      },
+      "rule": {
+        "en": "The present perfect continuous is often used with \"for\" (a length of time) and \"since\" (a starting point) to say how long an activity has been going on. Ask about it with \"How long have you been…?\"",
+        "ru": "Present perfect continuous часто идёт с «for» (отрезок времени) и «since» (точка начала), чтобы сказать, как долго длится действие. Спрашивают через «How long have you been…?»"
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "for + period",
+            "ru": "for + период"
+          },
+          "formula": "have been + -ing + for …",
+          "examples": [
+            {
+              "en": "I've been learning English for two years.",
+              "ru": "Я учу английский два года."
+            }
+          ],
+          "ref": "present-perfect-signals"
+        },
+        {
+          "label": {
+            "en": "since + point",
+            "ru": "since + точка"
+          },
+          "formula": "have been + -ing + since …",
+          "examples": [
+            {
+              "en": "She's been working here since 2021.",
+              "ru": "Она работает здесь с 2021 года."
+            }
+          ],
+          "ref": "present-perfect-signals"
+        },
+        {
+          "label": {
+            "en": "How long…?",
+            "ru": "Как долго…?"
+          },
+          "formula": "How long have you been + -ing?",
+          "examples": [
+            {
+              "en": "How long have you been waiting?",
+              "ru": "Как долго ты ждёшь?"
+            }
+          ],
+          "ref": "present-perfect-continuous"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"for\" + a length (for two hours); \"since\" + a start point (since Monday).",
+          "ru": "«for» + отрезок (for two hours); «since» + точка начала (since Monday)."
+        },
+        {
+          "en": "Use the continuous for the activity: \"How long have you been studying?\"",
+          "ru": "Для процесса — длительная форма: «How long have you been studying?»"
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u17.d02.reading",
+      "title": {
+        "en": "Learning the guitar",
+        "ru": "Учусь играть на гитаре"
+      },
+      "blocks": [
+        {
+          "id": "u17.d02.reading.b1",
+          "en": "Dan has been learning the guitar for about a year. He hasn't been taking lessons — he's been teaching himself from videos online. \"I've been practising almost every evening since last spring,\" he says.",
+          "ru": "Дэн учится играть на гитаре около года. Он не берёт уроки — учится сам по видео в интернете. «Я практикуюсь почти каждый вечер с прошлой весны», — говорит он.",
+          "audio": {
+            "src": "media/audio/u17.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u17.d02.reading.b2",
+          "en": "At first it was hard, but he has been making real progress. His fingers used to hurt, and he couldn't play a single song. Now he has been playing for his friends, and they say he's getting good.",
+          "ru": "Сначала было трудно, но он делает реальный прогресс. Раньше пальцы болели, и он не мог сыграть ни одной песни. Теперь он играет для друзей, и они говорят, что у него хорошо получается.",
+          "audio": {
+            "src": "media/audio/u17.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "teach yourself",
+          "ru": "учиться самому",
+          "ipa": "/tiːtʃ jɔːrˈself/"
+        },
+        {
+          "word": "getting good",
+          "ru": "становиться лучше",
+          "ipa": "/ˈɡetɪŋ ɡʊd/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u17.d02.listening",
+      "title": {
+        "en": "How long?",
+        "ru": "Как долго?"
+      },
+      "audio": {
+        "src": "media/audio/u17.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "How long have you been learning English?",
+          "ru": "Как долго ты учишь английский?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "I've been learning it for about three years.",
+          "ru": "Я учу его около трёх лет."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "And have you been practising every day?",
+          "ru": "И ты практикуешься каждый день?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Since January, yes. My speaking has really been improving.",
+          "ru": "С января — да. Моя речь заметно улучшается."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u17.d02.ex.l.01",
+          "instruction": {
+            "en": "How long has she been learning?",
+            "ru": "Как долго она учит?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "For about ___ years.",
+          "options": [
+            "three",
+            "two",
+            "five"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u17.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u17.d02.ex.c.01",
+          "instruction": {
+            "en": "for or since?",
+            "ru": "for или since?"
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "I've been waiting ___ two hours.",
+          "options": [
+            "for",
+            "since",
+            "from"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u17.d02.ex.c.02",
+          "instruction": {
+            "en": "for or since?",
+            "ru": "for или since?"
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "She's been working here ___ 2021.",
+          "options": [
+            "since",
+            "for",
+            "during"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u17.d02.ex.g.01",
+          "instruction": {
+            "en": "Ask how long.",
+            "ru": "Спроси как долго."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "How long ___ you been living here? (have)",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u17.d02.ex.g.02",
+          "instruction": {
+            "en": "for + period.",
+            "ru": "for + период."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "I've been studying ___ three years. (for)",
+          "answers": [
+            "for"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u17.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "variants": [
+            "I've been learning English since two years.",
+            "I've been learning English for two years."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u17.d02.ex.c.03",
+          "instruction": {
+            "en": "Choose the tense.",
+            "ru": "Выбери время."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "How long ___ you been feeling ill?",
+          "options": [
+            "have",
+            "has",
+            "did"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u17.d02.ex.o.01",
+          "instruction": {
+            "en": "Ask about duration.",
+            "ru": "Спроси о длительности."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "tokens": [
+            "How",
+            "long",
+            "have",
+            "you",
+            "been",
+            "waiting"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u17.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "improve",
+              "right": "улучшать(ся)"
+            },
+            {
+              "left": "skill",
+              "right": "навык"
+            },
+            {
+              "left": "recently",
+              "right": "недавно"
+            },
+            {
+              "left": "course",
+              "right": "курс"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u17.d02.ex.c.04",
+          "instruction": {
+            "en": "since + point.",
+            "ru": "since + точка."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "prompt": "It ___ been raining since morning.",
+          "options": [
+            "has",
+            "have",
+            "is"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u17.d02.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-perfect-continuous"
+          ],
+          "variants": [
+            "How long you have been working?",
+            "How long have you been working?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u17.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я учу английский два года.",
+          "answers": [
+            "I've been learning English for two years.",
+            "I have been learning English for two years."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i learn english for two years",
+                "i've been learning english since two years",
+                "i am learning english for two years"
+              ],
+              "explanation": {
+                "en": "for + period with the continuous: I have been learning English for two years.",
+                "ru": "for + период с длительной формой: I have been learning English for two years."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u17.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-perfect-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Как долго ты здесь работаешь?",
+          "answers": [
+            "How long have you been working here?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "how long you work here",
+                "how long are you working here",
+                "how long do you work here"
+              ],
+              "explanation": {
+                "en": "How long + have + been + -ing: How long have you been working here?",
+                "ru": "How long + have + been + -ing: How long have you been working here?"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

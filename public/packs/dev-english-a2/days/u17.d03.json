@@ -1,0 +1,602 @@
+{
+  "id": "u17.d03",
+  "title": {
+    "en": "Been doing vs. done",
+    "ru": "Процесс или результат"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.perfect-continuous-vs-simple",
+    "grammar.present-perfect-continuous",
+    "vocab.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u17.d03.vocab",
+      "title": {
+        "en": "Process & result",
+        "ru": "Процесс и результат"
+      },
+      "words": [
+        {
+          "word": "read",
+          "ru": "читать",
+          "ipa": "/riːd/",
+          "example": "I've been reading this book.",
+          "exampleRu": "Я читаю эту книгу.",
+          "audio": {
+            "src": "media/audio/u17.d03.vocab.read.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "build",
+          "ru": "строить, создавать",
+          "ipa": "/bɪld/",
+          "example": "They've built three houses.",
+          "exampleRu": "Они построили три дома.",
+          "audio": {
+            "src": "media/audio/u17.d03.vocab.build.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "paint",
+          "ru": "красить, рисовать",
+          "ipa": "/peɪnt/",
+          "example": "She's been painting the room.",
+          "exampleRu": "Она красит комнату.",
+          "audio": {
+            "src": "media/audio/u17.d03.vocab.paint.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "clean",
+          "ru": "убирать, чистить",
+          "ipa": "/kliːn/",
+          "example": "I've cleaned the whole flat.",
+          "exampleRu": "Я убрал всю квартиру.",
+          "audio": {
+            "src": "media/audio/u17.d03.vocab.clean.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "write",
+          "ru": "писать",
+          "ipa": "/raɪt/",
+          "example": "He's written ten emails.",
+          "exampleRu": "Он написал десять писем.",
+          "audio": {
+            "src": "media/audio/u17.d03.vocab.write.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fix",
+          "ru": "чинить",
+          "ipa": "/fɪks/",
+          "example": "I've been fixing the bug.",
+          "exampleRu": "Я чиню баг.",
+          "audio": {
+            "src": "media/audio/u17.d03.vocab.fix.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "complete",
+          "ru": "завершать",
+          "ipa": "/kəmˈpliːt/",
+          "example": "We've completed the task.",
+          "exampleRu": "Мы завершили задачу.",
+          "audio": {
+            "src": "media/audio/u17.d03.vocab.complete.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "so far",
+          "ru": "пока что",
+          "ipa": "/soʊ fɑːr/",
+          "example": "I've read three chapters so far.",
+          "exampleRu": "Пока я прочитал три главы.",
+          "audio": {
+            "src": "media/audio/u17.d03.vocab.sofar.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "result",
+          "ru": "результат",
+          "ipa": "/rɪˈzʌlt/",
+          "example": "Look at the result!",
+          "exampleRu": "Посмотри на результат!",
+          "audio": {
+            "src": "media/audio/u17.d03.vocab.result.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "process",
+          "ru": "процесс",
+          "ipa": "/ˈprɒses/",
+          "example": "It's a long process.",
+          "exampleRu": "Это долгий процесс.",
+          "audio": {
+            "src": "media/audio/u17.d03.vocab.process.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u17.d03.grammar",
+      "title": {
+        "en": "Continuous vs. simple",
+        "ru": "Длительная и простая форма"
+      },
+      "rule": {
+        "en": "Use the present perfect CONTINUOUS to focus on the activity or how long it has gone on. Use the present perfect SIMPLE to focus on the finished result or how many.",
+        "ru": "Present perfect CONTINUOUS — акцент на процессе или длительности. Present perfect SIMPLE — акцент на завершённом результате или количестве."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "continuous → activity",
+            "ru": "длительная → процесс"
+          },
+          "formula": "have been + -ing",
+          "examples": [
+            {
+              "en": "I've been reading all afternoon.",
+              "ru": "Я читаю весь день."
+            }
+          ],
+          "ref": "present-perfect-continuous"
+        },
+        {
+          "label": {
+            "en": "simple → result",
+            "ru": "простая → результат"
+          },
+          "formula": "have + past participle",
+          "examples": [
+            {
+              "en": "I've read three books this month.",
+              "ru": "Я прочитал три книги за месяц."
+            }
+          ],
+          "ref": "present-perfect"
+        },
+        {
+          "label": {
+            "en": "how long vs how many",
+            "ru": "как долго и сколько"
+          },
+          "formula": "been -ing (how long) · V3 (how many)",
+          "examples": [
+            {
+              "en": "She's been writing for an hour and has written two pages.",
+              "ru": "Она пишет уже час и написала две страницы."
+            }
+          ],
+          "ref": "perfect-vs-past"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Finished result / a number → simple: \"I have written three emails\".",
+          "ru": "Завершённый результат / число → простая: «I have written three emails»."
+        },
+        {
+          "en": "Ongoing activity / how long → continuous: \"I have been writing emails all day\".",
+          "ru": "Продолжающийся процесс / как долго → длительная: «I have been writing emails all day»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u17.d03.reading",
+      "title": {
+        "en": "Painting the flat",
+        "ru": "Красим квартиру"
+      },
+      "blocks": [
+        {
+          "id": "u17.d03.reading.b1",
+          "en": "Nina and Sam have been painting their flat all weekend. They have already finished the kitchen and one bedroom. \"We've been working since Saturday morning,\" says Nina, \"and we've painted four rooms so far.\"",
+          "ru": "Нина и Сэм красят квартиру все выходные. Они уже закончили кухню и одну спальню. «Мы работаем с утра субботы, — говорит Нина, — и пока покрасили четыре комнаты».",
+          "audio": {
+            "src": "media/audio/u17.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u17.d03.reading.b2",
+          "en": "There is paint on their hands and in their hair. They are tired because they have been standing on ladders for hours. But the flat looks great, and they have almost completed the job.",
+          "ru": "У них краска на руках и в волосах. Они устали, потому что часами стоят на стремянках. Но квартира выглядит отлично, и работа почти завершена.",
+          "audio": {
+            "src": "media/audio/u17.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "ladder",
+          "ru": "стремянка, лестница",
+          "ipa": "/ˈlædər/"
+        },
+        {
+          "word": "weekend",
+          "ru": "выходные",
+          "ipa": "/ˈwiːkend/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u17.d03.listening",
+      "title": {
+        "en": "Why are you dirty?",
+        "ru": "Почему ты грязный?"
+      },
+      "audio": {
+        "src": "media/audio/u17.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Why are your hands so dirty?",
+          "ru": "Почему у тебя такие грязные руки?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "I've been fixing my bike.",
+          "ru": "Я чинил велосипед."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Have you finished?",
+          "ru": "Ты закончил?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Almost. I've fixed the wheel, but not the brakes yet.",
+          "ru": "Почти. Колесо починил, а тормоза ещё нет."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u17.d03.ex.l.01",
+          "instruction": {
+            "en": "What has he done?",
+            "ru": "Что он сделал?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.perfect-continuous-vs-simple"
+          ],
+          "prompt": "He has ___ the wheel.",
+          "options": [
+            "fixed",
+            "been fixing",
+            "fix"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u17.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u17.d03.ex.c.01",
+          "instruction": {
+            "en": "Process or result?",
+            "ru": "Процесс или результат?"
+          },
+          "tags": [
+            "grammar.perfect-continuous-vs-simple"
+          ],
+          "prompt": "I'm tired. I ___ running.",
+          "options": [
+            "have been",
+            "have",
+            "am"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u17.d03.ex.c.02",
+          "instruction": {
+            "en": "A finished number.",
+            "ru": "Готовое число."
+          },
+          "tags": [
+            "grammar.perfect-continuous-vs-simple"
+          ],
+          "prompt": "She ___ three reports today.",
+          "options": [
+            "has written",
+            "has been writing",
+            "is writing"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u17.d03.ex.g.01",
+          "instruction": {
+            "en": "Continuous (how long).",
+            "ru": "Длительная (как долго)."
+          },
+          "tags": [
+            "grammar.perfect-continuous-vs-simple"
+          ],
+          "prompt": "I've ___ reading for two hours. (be)",
+          "answers": [
+            "been"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u17.d03.ex.c.03",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.perfect-continuous-vs-simple"
+          ],
+          "prompt": "Look! Someone ___ the whole cake.",
+          "options": [
+            "has eaten",
+            "has been eating",
+            "eats"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u17.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.perfect-continuous-vs-simple"
+          ],
+          "variants": [
+            "I've been read three books.",
+            "I've read three books."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u17.d03.ex.c.04",
+          "instruction": {
+            "en": "Ongoing activity.",
+            "ru": "Продолжающийся процесс."
+          },
+          "tags": [
+            "grammar.perfect-continuous-vs-simple"
+          ],
+          "prompt": "My eyes hurt — I ___ at the screen all day.",
+          "options": [
+            "have been staring",
+            "have stared",
+            "stare"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u17.d03.ex.g.02",
+          "instruction": {
+            "en": "Simple (result).",
+            "ru": "Простая (результат)."
+          },
+          "tags": [
+            "grammar.perfect-continuous-vs-simple"
+          ],
+          "prompt": "We've ___ the task. (complete)",
+          "answers": [
+            "completed"
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u17.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "build",
+              "right": "строить"
+            },
+            {
+              "left": "fix",
+              "right": "чинить"
+            },
+            {
+              "left": "result",
+              "right": "результат"
+            },
+            {
+              "left": "process",
+              "right": "процесс"
+            }
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u17.d03.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.perfect-continuous-vs-simple"
+          ],
+          "tokens": [
+            "I",
+            "have",
+            "painted",
+            "four",
+            "rooms",
+            "today"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u17.d03.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.perfect-continuous-vs-simple"
+          ],
+          "variants": [
+            "She has been writing two pages.",
+            "She has written two pages."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u17.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.perfect-continuous-vs-simple",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я устал, потому что весь день бегал.",
+          "answers": [
+            "I'm tired because I've been running all day.",
+            "I am tired because I have been running all day."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i am tired because i ran all day",
+                "i'm tired because i have run all day",
+                "i am tired because i run all day"
+              ],
+              "explanation": {
+                "en": "Ongoing cause → continuous: I have been running all day.",
+                "ru": "Продолжающаяся причина → длительная: I have been running all day."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u17.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.perfect-continuous-vs-simple",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я прочитал три книги в этом месяце.",
+          "answers": [
+            "I've read three books this month.",
+            "I have read three books this month."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i've been reading three books this month",
+                "i read three books this month",
+                "i have been read three books"
+              ],
+              "explanation": {
+                "en": "A finished number → simple: I have read three books this month.",
+                "ru": "Готовое число → простая: I have read three books this month."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
