@@ -184,7 +184,8 @@
               "en": "She had cooked dinner before the guests arrived.",
               "ru": "Она приготовила ужин до прихода гостей."
             }
-          ]
+          ],
+          "ref": "past-perfect"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "After they had eaten, they watched a film.",
               "ru": "После еды они посмотрели фильм."
             }
-          ]
+          ],
+          "ref": "past-perfect"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "He was tired because he had worked all night.",
               "ru": "Он устал, потому что работал всю ночь."
             }
-          ]
+          ],
+          "ref": "past-perfect"
         }
       ],
       "pitfalls": [
@@ -447,6 +450,121 @@
           "prompt": "Он устал, потому что работал всю ночь.",
           "answers": [
             "He was tired because he had worked all night."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u16.d02.ex.b.01",
+          "instruction": {
+            "en": "Earlier action.",
+            "ru": "Более раннее действие."
+          },
+          "tags": [
+            "grammar.past-perfect-vs-past"
+          ],
+          "prompt": "He was hungry because he ___ breakfast.",
+          "options": [
+            "hadn't had",
+            "didn't have",
+            "doesn't have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u16.d02.ex.b.02",
+          "instruction": {
+            "en": "After + past perfect.",
+            "ru": "After + past perfect."
+          },
+          "tags": [
+            "grammar.past-perfect-vs-past"
+          ],
+          "prompt": "After she ___ finished, she went home. (have)",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u16.d02.ex.b.03",
+          "instruction": {
+            "en": "Simple sequence.",
+            "ru": "Простая последовательность."
+          },
+          "tags": [
+            "grammar.past-perfect-vs-past"
+          ],
+          "prompt": "I got up, ___ , and left the house.",
+          "options": [
+            "got dressed",
+            "had got dressed",
+            "get dressed"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u16.d02.ex.b.04",
+          "instruction": {
+            "en": "Which was first?",
+            "ru": "Что было первым?"
+          },
+          "tags": [
+            "grammar.past-perfect-vs-past"
+          ],
+          "prompt": "The film ___ when we got to the cinema.",
+          "options": [
+            "had started",
+            "started",
+            "starts"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u16.d02.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.past-perfect-vs-past"
+          ],
+          "variants": [
+            "I had woken up and had run to the door.",
+            "I woke up and ran to the door."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u16.d02.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-perfect-vs-past",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он устал, потому что работал всю ночь.",
+          "answers": [
+            "He was tired because he had worked all night."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "because he has worked all night",
+                "because he worked all night",
+                "because he had work all night"
+              ],
+              "explanation": {
+                "en": "The earlier cause → past perfect: because he had worked all night.",
+                "ru": "Более ранняя причина → past perfect: because he had worked all night."
+              }
+            }
           ]
         }
       ]

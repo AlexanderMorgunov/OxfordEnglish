@@ -2337,5 +2337,247 @@
       "past-simple",
       "passive"
     ]
+  },
+  {
+    "id": "second-conditional",
+    "title": {
+      "en": "Second conditional (if I had… I would…)",
+      "ru": "Второй тип условия (if I had… I would…)"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "The second conditional talks about an imaginary or unlikely situation now or in the future. The \"if\" part uses the past simple, and the result uses \"would + verb\".",
+      "ru": "Второй тип условия — о воображаемой или маловероятной ситуации сейчас или в будущем. В части с «if» — past simple, в результате — «would + глагол»."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "The form: If + past, would + verb",
+          "ru": "Форма: If + past, would + глагол"
+        },
+        "text": {
+          "en": "Use the past simple after \"if\" (even though you mean now), and \"would + bare verb\" in the result. The past tense here does not mean the past — it signals \"this is imaginary\".\n\nIf I had more time, I would read more.\nIf she won the lottery, she would buy a house.\n\nNegative result: wouldn’t.",
+          "ru": "После «if» — past simple (хотя речь о настоящем), в результате — «would + голый глагол». Прошедшее время здесь не о прошлом — оно сигналит «это воображаемое».\n\nIf I had more time, I would read more. — Будь у меня больше времени, я бы читал больше.\nIf she won the lottery, she would buy a house. — Выиграй она в лотерею, купила бы дом.\n\nОтрицательный результат: wouldn’t."
+        },
+        "examples": [
+          {
+            "en": "If I were rich, I would travel the world.",
+            "ru": "Будь я богат, я бы объездил весь мир."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "were for all persons",
+          "ru": "were для всех лиц"
+        },
+        "text": {
+          "en": "In the second conditional, use \"were\" for every person — including I, he, she, it. \"If I were you\" is the classic example, used to give advice.\n\nIf I were you, I would take the job.\nIf he were here, he would help.\n\n\"If I was\" is heard in casual speech, but \"were\" is the correct form to learn.",
+          "ru": "Во втором типе условия используй «were» для всех лиц — включая I, he, she, it. «If I were you» — классический пример для совета.\n\nIf I were you, I would take the job. — На твоём месте я бы взял эту работу.\nIf he were here, he would help. — Будь он здесь, он бы помог.\n\n«If I was» встречается в разговорной речи, но правильная форма для запоминания — «were»."
+        },
+        "examples": [
+          {
+            "en": "If I were you, I would not wait.",
+            "ru": "На твоём месте я бы не ждал."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "could / might in the result",
+          "ru": "could / might в результате"
+        },
+        "text": {
+          "en": "Instead of \"would\", you can use \"could\" (would be able to) or \"might\" (would perhaps) in the result.\n\nIf I spoke French, I could work in Paris.\nIf we left now, we might catch the train.",
+          "ru": "Вместо «would» в результате можно использовать «could» (смог бы) или «might» (возможно, бы).\n\nIf I spoke French, I could work in Paris. — Знай я французский, я мог бы работать в Париже.\nIf we left now, we might catch the train. — Выйди мы сейчас, могли бы успеть на поезд."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "No \"would\" in the if-part: \"If I had money, I would travel\", NOT \"If I would have money…\".",
+        "ru": "В части с «if» нет «would»: «If I had money, I would travel», а не «If I would have money…»."
+      },
+      {
+        "en": "Do not mix with the first conditional: second uses past + would (\"If we left, we would…\"), not present + will.",
+        "ru": "Не путай с первым типом: во втором — past + would («If we left, we would…»), а не present + will."
+      }
+    ],
+    "seeAlso": [
+      "conditionals-0-1",
+      "wish"
+    ]
+  },
+  {
+    "id": "wish",
+    "title": {
+      "en": "wish (I wish I knew…)",
+      "ru": "wish (I wish I knew…)"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "Use \"wish + past simple\" to talk about something you would like to be different now — a regret or a longing about the present.",
+      "ru": "Используй «wish + past simple», чтобы сказать о том, что хотелось бы изменить сейчас — сожаление или мечта о настоящем."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "wish + past simple",
+          "ru": "wish + past simple"
+        },
+        "text": {
+          "en": "To say you want a present situation to be different, use \"wish\" + past simple. Like the second conditional, the past form signals \"imaginary\", not real past.\n\nI wish I had more free time. (but I do not)\nI wish I knew the answer. (but I do not)",
+          "ru": "Чтобы сказать, что хочешь, чтобы настоящее было другим, используй «wish» + past simple. Как и во втором типе условия, прошедшая форма означает «воображаемое», а не реальное прошлое.\n\nI wish I had more free time. — Жаль, что у меня мало свободного времени.\nI wish I knew the answer. — Жаль, что я не знаю ответа."
+        },
+        "examples": [
+          {
+            "en": "I wish it were summer.",
+            "ru": "Жаль, что сейчас не лето."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "wish I were / wish I could",
+          "ru": "wish I were / wish I could"
+        },
+        "text": {
+          "en": "Use \"were\" for all persons after wish, and \"could\" to wish about ability.\n\nI wish I were taller.\nI wish I could speak three languages.",
+          "ru": "После wish используй «were» для всех лиц, а «could» — чтобы мечтать об умении.\n\nI wish I were taller. — Жаль, что я не выше.\nI wish I could speak three languages. — Жаль, что я не говорю на трёх языках."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "wish + past, not present: \"I wish I had a car\", NOT \"I wish I have a car\".",
+        "ru": "wish + прошедшее, не настоящее: «I wish I had a car», а не «I wish I have a car»."
+      },
+      {
+        "en": "Meaning is negative about now: \"I wish I knew\" means \"I do not know\".",
+        "ru": "Смысл отрицателен о настоящем: «I wish I knew» значит «я не знаю»."
+      }
+    ],
+    "seeAlso": [
+      "second-conditional"
+    ]
+  },
+  {
+    "id": "past-perfect",
+    "title": {
+      "en": "Past perfect (had + V3): the earlier past",
+      "ru": "Past perfect (had + V3): более раннее прошлое"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "When you tell a story in the past and need to mention something that happened even EARLIER, use the past perfect: \"had + past participle\".",
+      "ru": "Когда рассказываешь о прошлом и нужно упомянуть то, что случилось ещё РАНЬШЕ, используй past perfect: «had + причастие прошедшего времени»."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "The form: had + V3",
+          "ru": "Форма: had + V3"
+        },
+        "text": {
+          "en": "Use \"had\" (for all persons) + the past participle for the earlier of two past actions.\n\nWhen I arrived, the train had already left. (first it left, then I arrived)\nShe realised she had forgotten her keys.\n\nNegative: hadn’t. Question: Had you seen it before?",
+          "ru": "Используй «had» (для всех лиц) + причастие для более раннего из двух прошлых действий.\n\nWhen I arrived, the train had already left. — Когда я пришёл, поезд уже ушёл (сначала ушёл, потом я пришёл).\nShe realised she had forgotten her keys. — Она поняла, что забыла ключи.\n\nОтрицание: hadn’t. Вопрос: Had you seen it before?"
+        },
+        "examples": [
+          {
+            "en": "By the time we got there, the shop had closed.",
+            "ru": "К тому времени, как мы добрались, магазин закрылся."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Why it matters: the order of events",
+          "ru": "Зачем оно: порядок событий"
+        },
+        "text": {
+          "en": "The past perfect makes clear which action came first. Compare:\n\nWhen he arrived, she left. (she left after he arrived)\nWhen he arrived, she had left. (she left before he arrived)",
+          "ru": "Past perfect показывает, какое действие было первым. Сравни:\n\nWhen he arrived, she left. — Когда он пришёл, она ушла (после его прихода).\nWhen he arrived, she had left. — Когда он пришёл, она уже ушла (до его прихода)."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Use had + past participle (V3), not the base verb: \"had forgotten\", NOT \"had forget\".",
+        "ru": "Нужно had + причастие (V3), а не начальная форма: «had forgotten», а не «had forget»."
+      },
+      {
+        "en": "Only use it for the EARLIER action; the later one stays in the past simple.",
+        "ru": "Используй только для более РАННЕГО действия; более позднее остаётся в past simple."
+      }
+    ],
+    "seeAlso": [
+      "narrative-tenses",
+      "past-simple"
+    ]
+  },
+  {
+    "id": "narrative-tenses",
+    "title": {
+      "en": "Narrative tenses: telling a story in the past",
+      "ru": "Времена в рассказе: как рассказать историю в прошлом"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "A good story mixes three past tenses: the past continuous sets the scene, the past simple moves the action forward, and the past perfect fills in earlier background. Time linkers glue them together.",
+      "ru": "Хорошая история сочетает три прошедших времени: past continuous задаёт фон, past simple двигает действие, past perfect добавляет более раннюю предысторию. Связки времени соединяют их."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "Set the scene: past continuous",
+          "ru": "Задай фон: past continuous"
+        },
+        "text": {
+          "en": "Use \"was/were + -ing\" for the background — what was going on when the main events happened.\n\nIt was raining and the house was quiet.\nWhile she was sleeping, someone knocked at the door.",
+          "ru": "Используй «was/were + -ing» для фона — того, что происходило, когда случились главные события.\n\nIt was raining and the house was quiet. — Шёл дождь, и в доме было тихо.\nWhile she was sleeping, someone knocked at the door. — Пока она спала, кто-то постучал в дверь."
+        },
+        "examples": [
+          {
+            "en": "The sun was shining when we set off.",
+            "ru": "Светило солнце, когда мы отправились."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Move the action: past simple",
+          "ru": "Двигай действие: past simple"
+        },
+        "text": {
+          "en": "Use the past simple for the main, completed events — the things that happen one after another.\n\nSuddenly she heard a noise. She stood up and opened the door.",
+          "ru": "Используй past simple для главных завершённых событий — того, что происходит одно за другим.\n\nSuddenly she heard a noise. She stood up and opened the door. — Вдруг она услышала шум. Она встала и открыла дверь."
+        }
+      },
+      {
+        "heading": {
+          "en": "Fill in earlier background: past perfect + time linkers",
+          "ru": "Добавь раннюю предысторию: past perfect + связки"
+        },
+        "text": {
+          "en": "Use the past perfect (had + V3) for something that had happened before the story moment, and link events with words like when, while, as soon as, by the time, after, until.\n\nHe was tired because he had worked all night.\nBy the time we arrived, the film had started.\nAs soon as she arrived, we left.",
+          "ru": "Используй past perfect (had + V3) для того, что произошло до момента истории, и связывай события словами when, while, as soon as, by the time, after, until.\n\nHe was tired because he had worked all night. — Он устал, потому что работал всю ночь.\nBy the time we arrived, the film had started. — К тому времени, как мы пришли, фильм начался.\nAs soon as she arrived, we left. — Как только она пришла, мы ушли."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Background action = past continuous, single event = past simple: \"While I was cooking, the phone rang\".",
+        "ru": "Фон = past continuous, отдельное событие = past simple: «While I was cooking, the phone rang»."
+      },
+      {
+        "en": "Use the past perfect only for the earlier action, not for the whole story.",
+        "ru": "Используй past perfect только для более раннего действия, а не для всей истории."
+      }
+    ],
+    "seeAlso": [
+      "past-perfect",
+      "past-continuous",
+      "past-simple"
+    ]
   }
 ]

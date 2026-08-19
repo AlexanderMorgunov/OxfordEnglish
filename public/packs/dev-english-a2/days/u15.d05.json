@@ -460,6 +460,129 @@
             "Personally, I would choose the future.",
             "Personally, I'd choose the future."
           ]
+        },
+        {
+          "type": "choice",
+          "id": "u15.d05.ex.b.01",
+          "instruction": {
+            "en": "Open a hypothetical.",
+            "ru": "Открой гипотезу."
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "prompt": "___ you could travel in time. Where would you go?",
+          "options": [
+            "Imagine",
+            "Imagined",
+            "Imagining"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u15.d05.ex.b.02",
+          "instruction": {
+            "en": "Give your own view.",
+            "ru": "Вырази своё мнение."
+          },
+          "tags": [
+            "functions.opinions"
+          ],
+          "prompt": "___ , I would choose freedom over money.",
+          "options": [
+            "Personally",
+            "Person",
+            "In person"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u15.d05.ex.b.03",
+          "instruction": {
+            "en": "Say it is uncertain.",
+            "ru": "Скажи, что зависит."
+          },
+          "tags": [
+            "functions.opinions"
+          ],
+          "tokens": [
+            "It",
+            "depends",
+            "on",
+            "the",
+            "person"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u15.d05.ex.b.04",
+          "instruction": {
+            "en": "Open with suppose.",
+            "ru": "Начни с suppose."
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "prompt": "___ you had a free day. What would you do? (imagine/suppose)",
+          "answers": [
+            "Suppose",
+            "Imagine"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u15.d05.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "variants": [
+            "Suppose you will win. What would you do?",
+            "Suppose you won. What would you do?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u15.d05.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.opinions",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Лично я бы предпочёл жить у моря.",
+          "answers": [
+            "Personally, I would prefer to live by the sea.",
+            "Personally, I'd prefer to live by the sea."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "personally i would prefer live",
+                "i personally would prefer"
+              ],
+              "explanation": {
+                "en": "prefer TO + verb: I would prefer to live by the sea.",
+                "ru": "prefer TO + глагол: I would prefer to live by the sea."
+              }
+            }
+          ]
         }
       ]
     }

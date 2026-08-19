@@ -458,6 +458,131 @@
           "answers": [
             "You won't believe what happened!"
           ]
+        },
+        {
+          "type": "choice",
+          "id": "u16.d05.ex.b.01",
+          "instruction": {
+            "en": "Open a story.",
+            "ru": "Начни историю."
+          },
+          "tags": [
+            "functions.storytelling"
+          ],
+          "prompt": "___ upon a time, there was a small village.",
+          "options": [
+            "Once",
+            "One",
+            "At once"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u16.d05.ex.b.02",
+          "instruction": {
+            "en": "Order the story.",
+            "ru": "Расставь по порядку."
+          },
+          "tags": [
+            "functions.storytelling"
+          ],
+          "tokens": [
+            "In",
+            "the",
+            "end",
+            "everything",
+            "was",
+            "fine"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u16.d05.ex.b.03",
+          "instruction": {
+            "en": "React to a story.",
+            "ru": "Отреагируй на историю."
+          },
+          "tags": [
+            "functions.storytelling"
+          ],
+          "prompt": "I won the prize! — ___ ! Congratulations!",
+          "options": [
+            "No way",
+            "No way out",
+            "Any way"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u16.d05.ex.b.04",
+          "instruction": {
+            "en": "Order words.",
+            "ru": "Слова-порядок."
+          },
+          "tags": [
+            "functions.storytelling"
+          ],
+          "prompt": "At first it went wrong, but ___ the end it was fine. (word)",
+          "answers": [
+            "in"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u16.d05.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.storytelling"
+          ],
+          "variants": [
+            "We met a friend I hadn't seen for ten years.",
+            "We met a friend I didn't see for ten years."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u16.d05.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.storytelling",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты не поверишь, что случилось вчера!",
+          "answers": [
+            "You won't believe what happened yesterday!",
+            "You will not believe what happened yesterday!"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you won't believe what happened",
+                "you not believe what happened",
+                "you will not believe what happen"
+              ],
+              "explanation": {
+                "en": "Report a past event: what happened (past simple).",
+                "ru": "Расскажи о прошлом: what happened (past simple)."
+              }
+            }
+          ]
         }
       ]
     }

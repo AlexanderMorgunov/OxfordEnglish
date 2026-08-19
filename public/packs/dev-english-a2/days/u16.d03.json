@@ -184,7 +184,8 @@
               "en": "It was raining and the house was quiet.",
               "ru": "Шёл дождь, в доме было тихо."
             }
-          ]
+          ],
+          "ref": "narrative-tenses"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "Suddenly, she heard a noise.",
               "ru": "Вдруг она услышала шум."
             }
-          ]
+          ],
+          "ref": "narrative-tenses"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "Someone had left the window open.",
               "ru": "Кто-то оставил окно открытым."
             }
-          ]
+          ],
+          "ref": "narrative-tenses"
         }
       ],
       "pitfalls": [
@@ -445,6 +448,119 @@
           "answers": [
             "While she was sleeping, someone knocked at the door.",
             "While she was sleeping, someone knocked on the door."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u16.d03.ex.b.01",
+          "instruction": {
+            "en": "Scene: past continuous.",
+            "ru": "Фон: past continuous."
+          },
+          "tags": [
+            "grammar.narrative-tenses"
+          ],
+          "prompt": "The birds ___ and the sun was warm. (sing)",
+          "answers": [
+            "were singing"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u16.d03.ex.b.02",
+          "instruction": {
+            "en": "Event: past simple.",
+            "ru": "Событие: past simple."
+          },
+          "tags": [
+            "grammar.narrative-tenses"
+          ],
+          "prompt": "While we were talking, the lights ___ off. (go)",
+          "answers": [
+            "went"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u16.d03.ex.b.03",
+          "instruction": {
+            "en": "Background: which tense?",
+            "ru": "Предыстория: какое время?"
+          },
+          "tags": [
+            "grammar.narrative-tenses"
+          ],
+          "prompt": "The ground was wet because it ___ all night.",
+          "options": [
+            "had rained",
+            "rained",
+            "was raining"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u16.d03.ex.b.04",
+          "instruction": {
+            "en": "Choose the scene tense.",
+            "ru": "Выбери время фона."
+          },
+          "tags": [
+            "grammar.narrative-tenses"
+          ],
+          "prompt": "When I came in, the children ___ .",
+          "options": [
+            "were playing",
+            "played",
+            "play"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u16.d03.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.narrative-tenses"
+          ],
+          "variants": [
+            "While I cooked, the phone was ringing.",
+            "While I was cooking, the phone rang."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u16.d03.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.narrative-tenses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Пока она читала, кто-то постучал в дверь.",
+          "answers": [
+            "While she was reading, someone knocked at the door.",
+            "While she was reading, someone knocked on the door."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "while she read, someone knocked",
+                "while she was reading, someone was knocking",
+                "while she reading"
+              ],
+              "explanation": {
+                "en": "Background = past continuous, single event = past simple: While she was reading, someone knocked.",
+                "ru": "Фон = past continuous, событие = past simple: While she was reading, someone knocked."
+              }
+            }
           ]
         }
       ]

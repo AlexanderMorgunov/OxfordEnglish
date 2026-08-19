@@ -185,7 +185,8 @@
               "en": "By the time we arrived, the film had started.",
               "ru": "К нашему приходу фильм уже начался."
             }
-          ]
+          ],
+          "ref": "narrative-tenses"
         },
         {
           "label": {
@@ -198,7 +199,8 @@
               "en": "As soon as she arrived, we left.",
               "ru": "Как только она пришла, мы ушли."
             }
-          ]
+          ],
+          "ref": "narrative-tenses"
         },
         {
           "label": {
@@ -211,7 +213,8 @@
               "en": "We waited until the rain stopped.",
               "ru": "Мы ждали, пока дождь не прекратился."
             }
-          ]
+          ],
+          "ref": "narrative-tenses"
         }
       ],
       "pitfalls": [
@@ -448,6 +451,122 @@
           "answers": [
             "By the time we arrived, the train had already left.",
             "By the time we arrived, the train had left."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u16.d04.ex.b.01",
+          "instruction": {
+            "en": "by the time → ?",
+            "ru": "by the time → ?"
+          },
+          "tags": [
+            "grammar.time-linkers"
+          ],
+          "prompt": "By the time the police came, the thief ___ .",
+          "options": [
+            "had escaped",
+            "escaped",
+            "escapes"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u16.d04.ex.b.02",
+          "instruction": {
+            "en": "Link two events.",
+            "ru": "Свяжи два события."
+          },
+          "tags": [
+            "grammar.time-linkers"
+          ],
+          "prompt": "___ soon as the bell rang, everyone stood up. (word)",
+          "answers": [
+            "As"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u16.d04.ex.b.03",
+          "instruction": {
+            "en": "End point.",
+            "ru": "Конечная точка."
+          },
+          "tags": [
+            "grammar.time-linkers"
+          ],
+          "prompt": "We stayed at the beach ___ it got dark.",
+          "options": [
+            "until",
+            "by",
+            "during"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u16.d04.ex.b.04",
+          "instruction": {
+            "en": "Which happened first?",
+            "ru": "Что было первым?"
+          },
+          "tags": [
+            "grammar.time-linkers"
+          ],
+          "prompt": "By the time dinner was ready, the guests ___ .",
+          "options": [
+            "had arrived",
+            "arrived",
+            "were arriving"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u16.d04.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.time-linkers"
+          ],
+          "variants": [
+            "By the time we arrived, the film started.",
+            "By the time we arrived, the film had started."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u16.d04.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.time-linkers",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Как только мы сели, поезд тронулся.",
+          "answers": [
+            "As soon as we sat down, the train left.",
+            "As soon as we sat down, the train started."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "as soon as we sat down, the train was leaving",
+                "as soon as we sat",
+                "when we sat down the train left"
+              ],
+              "explanation": {
+                "en": "As soon as + past, then past simple: As soon as we sat down, the train left.",
+                "ru": "As soon as + past, затем past simple: As soon as we sat down, the train left."
+              }
+            }
           ]
         }
       ]

@@ -184,7 +184,8 @@
               "en": "When I arrived, the train had already left.",
               "ru": "Когда я пришёл, поезд уже ушёл."
             }
-          ]
+          ],
+          "ref": "past-perfect"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "She hadn't finished when we called.",
               "ru": "Она не закончила, когда мы позвонили."
             }
-          ]
+          ],
+          "ref": "past-perfect"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "Had you met him before that day?",
               "ru": "Ты встречал его до того дня?"
             }
-          ]
+          ],
+          "ref": "past-perfect"
         }
       ],
       "pitfalls": [
@@ -444,6 +447,119 @@
           "prompt": "Когда я пришёл, поезд уже ушёл.",
           "answers": [
             "When I arrived, the train had already left."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u16.d01.ex.b.01",
+          "instruction": {
+            "en": "Past perfect: had + V3.",
+            "ru": "Past perfect: had + V3."
+          },
+          "tags": [
+            "grammar.past-perfect"
+          ],
+          "prompt": "When we arrived, the guests ___ already left. (have)",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u16.d01.ex.b.02",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие."
+          },
+          "tags": [
+            "grammar.past-perfect"
+          ],
+          "prompt": "She could not get in because she ___ her key. (lose)",
+          "answers": [
+            "had lost"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u16.d01.ex.b.03",
+          "instruction": {
+            "en": "Which action was earlier?",
+            "ru": "Какое действие было раньше?"
+          },
+          "tags": [
+            "grammar.past-perfect"
+          ],
+          "prompt": "By the time I got home, everyone ___ .",
+          "options": [
+            "had gone to bed",
+            "goes to bed",
+            "go to bed"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u16.d01.ex.b.04",
+          "instruction": {
+            "en": "Negative.",
+            "ru": "Отрицание."
+          },
+          "tags": [
+            "grammar.past-perfect"
+          ],
+          "prompt": "I did not recognise her — we ___ met before.",
+          "options": [
+            "hadn't",
+            "haven't",
+            "didn't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u16.d01.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.past-perfect"
+          ],
+          "variants": [
+            "When he arrived, she has already gone.",
+            "When he arrived, she had already gone."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u16.d01.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-perfect",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Когда я проснулся, дождь уже перестал.",
+          "answers": [
+            "When I woke up, the rain had already stopped.",
+            "When I woke up, it had already stopped raining."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the rain has already stopped",
+                "the rain already stopped when",
+                "the rain had already stop"
+              ],
+              "explanation": {
+                "en": "Earlier past → had + V3: the rain had already stopped.",
+                "ru": "Более раннее прошлое → had + V3: the rain had already stopped."
+              }
+            }
           ]
         }
       ]

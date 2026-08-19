@@ -184,7 +184,8 @@
               "en": "If I spoke French, I could work in Paris.",
               "ru": "Знай я французский, я мог бы работать в Париже."
             }
-          ]
+          ],
+          "ref": "second-conditional"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "If we left now, we might catch the train.",
               "ru": "Если бы мы вышли сейчас, могли бы успеть на поезд."
             }
-          ]
+          ],
+          "ref": "second-conditional"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "What would you do if you lost your phone?",
               "ru": "Что бы ты сделал, если бы потерял телефон?"
             }
-          ]
+          ],
+          "ref": "second-conditional"
         }
       ],
       "pitfalls": [
@@ -447,6 +450,119 @@
           "prompt": "Что бы ты сделал, если бы потерял телефон?",
           "answers": [
             "What would you do if you lost your phone?"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u15.d02.ex.b.01",
+          "instruction": {
+            "en": "Ability in the result.",
+            "ru": "Возможность в результате."
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "If I had a bike, I ___ get there faster.",
+          "options": [
+            "could",
+            "can",
+            "will"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u15.d02.ex.b.02",
+          "instruction": {
+            "en": "Hypothetical question.",
+            "ru": "Гипотетический вопрос."
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "What would you do if you ___ a ghost? (see)",
+          "answers": [
+            "saw"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u15.d02.ex.b.03",
+          "instruction": {
+            "en": "Possible result.",
+            "ru": "Возможный результат."
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "If we left now, we ___ catch the early train.",
+          "options": [
+            "might",
+            "will",
+            "can"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u15.d02.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "variants": [
+            "If we left now, we will catch the train.",
+            "If we left now, we would catch the train."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u15.d02.ex.b.05",
+          "instruction": {
+            "en": "Question form.",
+            "ru": "Вопросительная форма."
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "Where ___ you go if you had a free week? (would)",
+          "answers": [
+            "would"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u15.d02.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.second-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Что бы ты сделал, если бы выиграл миллион?",
+          "answers": [
+            "What would you do if you won a million?",
+            "What would you do if you won a million dollars?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "if you win a million",
+                "if you would win",
+                "what will you do if you won"
+              ],
+              "explanation": {
+                "en": "If + past, would in the question: What would you do if you won…?",
+                "ru": "If + past, would в вопросе: What would you do if you won…?"
+              }
+            }
           ]
         }
       ]

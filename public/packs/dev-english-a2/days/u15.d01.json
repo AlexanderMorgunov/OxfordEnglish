@@ -184,7 +184,8 @@
               "en": "If I had more time, I would learn to paint.",
               "ru": "Если бы у меня было больше времени, я бы научился рисовать."
             }
-          ]
+          ],
+          "ref": "second-conditional"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "If I were rich, I would travel the world.",
               "ru": "Будь я богат, я бы объехал весь мир."
             }
-          ]
+          ],
+          "ref": "second-conditional"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "If I won the lottery, I wouldn't quit my job.",
               "ru": "Даже выиграв в лотерею, я бы не бросил работу."
             }
-          ]
+          ],
+          "ref": "second-conditional"
         }
       ],
       "pitfalls": [
@@ -462,6 +465,120 @@
           "answers": [
             "If I were rich, I would travel.",
             "If I were rich, I'd travel."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u15.d01.ex.b.01",
+          "instruction": {
+            "en": "The if-clause: past simple.",
+            "ru": "Часть с if: past simple."
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "If I ___ rich, I would help people. (be)",
+          "answers": [
+            "were",
+            "was"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u15.d01.ex.b.02",
+          "instruction": {
+            "en": "The result: would + verb.",
+            "ru": "Результат: would + глагол."
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "If he studied harder, he ___ pass. (would)",
+          "answers": [
+            "would"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u15.d01.ex.b.03",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "If we ___ a car, we would drive there.",
+          "options": [
+            "had",
+            "have",
+            "would have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u15.d01.ex.b.04",
+          "instruction": {
+            "en": "Negative result.",
+            "ru": "Отрицательный результат."
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "prompt": "If I lived in the city, I ___ need a car.",
+          "options": [
+            "wouldn't",
+            "won't",
+            "don't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u15.d01.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.second-conditional"
+          ],
+          "variants": [
+            "If I would have money, I would travel.",
+            "If I had money, I would travel."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u15.d01.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.second-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Если бы я знал ответ, я бы тебе сказал.",
+          "answers": [
+            "If I knew the answer, I would tell you.",
+            "If I knew the answer, I'd tell you."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "if i would know",
+                "if i knew the answer, i will tell",
+                "if i know the answer"
+              ],
+              "explanation": {
+                "en": "Second conditional: If + past, would + verb — If I knew…, I would tell you.",
+                "ru": "Второй тип: If + past, would + глагол — If I knew…, I would tell you."
+              }
+            }
           ]
         }
       ]

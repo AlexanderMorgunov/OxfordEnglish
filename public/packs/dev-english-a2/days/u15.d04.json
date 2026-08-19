@@ -186,7 +186,8 @@
               "en": "If I were you, I wouldn't rush the decision.",
               "ru": "На твоём месте я бы не торопился с решением."
             }
-          ]
+          ],
+          "ref": "second-conditional"
         },
         {
           "label": {
@@ -199,7 +200,8 @@
               "en": "You could talk to her first. I'd probably wait.",
               "ru": "Ты мог бы сначала поговорить с ней. Я бы, наверное, подождал."
             }
-          ]
+          ],
+          "ref": "second-conditional"
         },
         {
           "label": {
@@ -212,7 +214,8 @@
               "en": "In your position, I would take the risk.",
               "ru": "На твоём месте я бы рискнул."
             }
-          ]
+          ],
+          "ref": "second-conditional"
         }
       ],
       "pitfalls": [
@@ -448,6 +451,123 @@
           "answers": [
             "If I were you, I wouldn't rush.",
             "If I were you, I wouldn't hurry."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u15.d04.ex.b.01",
+          "instruction": {
+            "en": "Advice: were or was?",
+            "ru": "Совет: were или was?"
+          },
+          "tags": [
+            "grammar.hypothetical-advice"
+          ],
+          "prompt": "If I ___ you, I would apologise.",
+          "options": [
+            "were",
+            "was",
+            "am"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u15.d04.ex.b.02",
+          "instruction": {
+            "en": "Softer advice.",
+            "ru": "Мягкий совет."
+          },
+          "tags": [
+            "grammar.hypothetical-advice"
+          ],
+          "prompt": "You ___ try talking to her first.",
+          "options": [
+            "could",
+            "would",
+            "must"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u15.d04.ex.b.03",
+          "instruction": {
+            "en": "Complete the advice.",
+            "ru": "Закончи совет."
+          },
+          "tags": [
+            "grammar.hypothetical-advice"
+          ],
+          "prompt": "In your ___ , I would wait a week. (place/position)",
+          "answers": [
+            "position",
+            "place"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u15.d04.ex.b.04",
+          "instruction": {
+            "en": "Give advice with would.",
+            "ru": "Дай совет с would."
+          },
+          "tags": [
+            "grammar.hypothetical-advice"
+          ],
+          "prompt": "If I were in your shoes, I ___ accept.",
+          "options": [
+            "would",
+            "will",
+            "am"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u15.d04.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.hypothetical-advice"
+          ],
+          "variants": [
+            "If I was you, I would wait.",
+            "If I were you, I would wait."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u15.d04.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.hypothetical-advice",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "На твоём месте я бы не соглашался.",
+          "answers": [
+            "If I were you, I wouldn't agree.",
+            "If I were you, I would not agree."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "if i was you",
+                "if i am you",
+                "if i were you, i won't agree"
+              ],
+              "explanation": {
+                "en": "If I WERE you, I WOULDN’T agree.",
+                "ru": "If I WERE you, I WOULDN’T agree."
+              }
+            }
           ]
         }
       ]

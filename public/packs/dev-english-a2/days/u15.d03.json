@@ -184,7 +184,8 @@
               "en": "I wish I had more free time.",
               "ru": "Жаль, что у меня мало свободного времени."
             }
-          ]
+          ],
+          "ref": "wish"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "I wish I were taller.",
               "ru": "Жаль, что я не выше ростом."
             }
-          ]
+          ],
+          "ref": "wish"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "I wish I could speak Chinese.",
               "ru": "Жаль, что я не умею говорить по-китайски."
             }
-          ]
+          ],
+          "ref": "wish"
         }
       ],
       "pitfalls": [
@@ -444,6 +447,119 @@
           "prompt": "Жаль, что я не знаю ответа.",
           "answers": [
             "I wish I knew the answer."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u15.d03.ex.b.01",
+          "instruction": {
+            "en": "wish + past simple.",
+            "ru": "wish + past simple."
+          },
+          "tags": [
+            "grammar.wish"
+          ],
+          "prompt": "I wish I ___ a bigger flat. (have)",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u15.d03.ex.b.02",
+          "instruction": {
+            "en": "wish + were.",
+            "ru": "wish + were."
+          },
+          "tags": [
+            "grammar.wish"
+          ],
+          "prompt": "I wish it ___ warmer today.",
+          "options": [
+            "were",
+            "is",
+            "would"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u15.d03.ex.b.03",
+          "instruction": {
+            "en": "wish + could.",
+            "ru": "wish + could."
+          },
+          "tags": [
+            "grammar.wish"
+          ],
+          "prompt": "I wish I ___ play the guitar. (can)",
+          "answers": [
+            "could"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u15.d03.ex.b.04",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.wish"
+          ],
+          "prompt": "I wish I ___ more about computers.",
+          "options": [
+            "knew",
+            "know",
+            "known"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u15.d03.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.wish"
+          ],
+          "variants": [
+            "I wish I have a car.",
+            "I wish I had a car."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u15.d03.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.wish",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Жаль, что я живу так далеко.",
+          "answers": [
+            "I wish I didn't live so far away.",
+            "I wish I lived closer."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i wish i live",
+                "i wish i not live",
+                "i wish i am living"
+              ],
+              "explanation": {
+                "en": "wish + past simple: I wish I lived closer.",
+                "ru": "wish + past simple: I wish I lived closer."
+              }
+            }
           ]
         }
       ]
