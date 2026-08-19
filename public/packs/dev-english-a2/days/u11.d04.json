@@ -185,7 +185,8 @@
               "en": "It might rain later.",
               "ru": "Возможно, позже пойдёт дождь."
             }
-          ]
+          ],
+          "ref": "might-may"
         },
         {
           "label": {
@@ -198,7 +199,8 @@
               "en": "I might not pass the exam.",
               "ru": "Возможно, я не сдам экзамен."
             }
-          ]
+          ],
+          "ref": "might-may"
         },
         {
           "label": {
@@ -454,6 +456,119 @@
           "answers": [
             "I might be late.",
             "I may be late."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u11.d04.ex.b.01",
+          "instruction": {
+            "en": "Possibility.",
+            "ru": "Возможность."
+          },
+          "tags": [
+            "grammar.might-may"
+          ],
+          "prompt": "Take a coat — it ___ get cold. (might)",
+          "answers": [
+            "might"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u11.d04.ex.b.02",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.might-may"
+          ],
+          "prompt": "I am not sure. I ___ come to the party.",
+          "options": [
+            "may",
+            "must",
+            "have to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u11.d04.ex.b.03",
+          "instruction": {
+            "en": "Negative possibility.",
+            "ru": "Отрицательная возможность."
+          },
+          "tags": [
+            "grammar.might-may"
+          ],
+          "prompt": "She ___ not be at home now. (might)",
+          "answers": [
+            "might"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u11.d04.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.might-may"
+          ],
+          "variants": [
+            "It might to rain later.",
+            "It might rain later."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u11.d04.ex.b.05",
+          "instruction": {
+            "en": "Short answer.",
+            "ru": "Краткий ответ."
+          },
+          "tags": [
+            "grammar.might-may"
+          ],
+          "prompt": "\"Will you join us?\" — \"I ___.\"",
+          "options": [
+            "might",
+            "might to",
+            "will might"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u11.d04.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.might-may",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Возможно, завтра пойдёт снег.",
+          "answers": [
+            "It might snow tomorrow.",
+            "It may snow tomorrow."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "it might to snow",
+                "it will might snow",
+                "maybe it snow tomorrow"
+              ],
+              "explanation": {
+                "en": "might + bare verb: It might snow tomorrow.",
+                "ru": "might + голый глагол: It might snow tomorrow."
+              }
+            }
           ]
         }
       ]

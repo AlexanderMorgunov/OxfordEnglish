@@ -457,6 +457,129 @@
           "answers": [
             "I have a headache."
           ]
+        },
+        {
+          "type": "choice",
+          "id": "u11.d05.ex.b.01",
+          "instruction": {
+            "en": "Describe a symptom.",
+            "ru": "Опиши симптом."
+          },
+          "tags": [
+            "functions.doctor"
+          ],
+          "prompt": "I ___ a sore throat.",
+          "options": [
+            "have",
+            "am",
+            "do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u11.d05.ex.b.02",
+          "instruction": {
+            "en": "Ask how they feel.",
+            "ru": "Спроси о самочувствии."
+          },
+          "tags": [
+            "functions.doctor"
+          ],
+          "tokens": [
+            "How",
+            "do",
+            "you",
+            "feel",
+            "today"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u11.d05.ex.b.03",
+          "instruction": {
+            "en": "Give advice.",
+            "ru": "Дай совет."
+          },
+          "tags": [
+            "functions.doctor"
+          ],
+          "prompt": "You have a fever. You ___ stay in bed.",
+          "options": [
+            "should",
+            "shouldn't",
+            "mustn't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u11.d05.ex.b.04",
+          "instruction": {
+            "en": "Say what hurts.",
+            "ru": "Скажи, что болит."
+          },
+          "tags": [
+            "functions.doctor"
+          ],
+          "prompt": "My back ___. (hurt)",
+          "answers": [
+            "hurts"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u11.d05.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.doctor"
+          ],
+          "variants": [
+            "I am ill since Monday.",
+            "I have been ill since Monday."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u11.d05.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.doctor",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Тебе стоит выпить лекарство.",
+          "answers": [
+            "You should take some medicine.",
+            "You should take medicine."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you should to take",
+                "you should drink medicine",
+                "you should take a medicine"
+              ],
+              "explanation": {
+                "en": "You TAKE medicine (not drink), should + bare verb: You should take some medicine.",
+                "ru": "Лекарство TAKE (не drink), should + голый глагол: You should take some medicine."
+              }
+            }
+          ]
         }
       ]
     }

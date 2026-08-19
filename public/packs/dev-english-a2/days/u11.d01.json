@@ -184,7 +184,8 @@
               "en": "You must wear a helmet.",
               "ru": "Ты должен надеть шлем."
             }
-          ]
+          ],
+          "ref": "modals-obligation"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "You mustn't use your phone here.",
               "ru": "Здесь нельзя пользоваться телефоном."
             }
-          ]
+          ],
+          "ref": "modals-obligation"
         }
       ],
       "pitfalls": [
@@ -435,6 +437,120 @@
           "answers": [
             "You mustn't eat here.",
             "You must not eat here."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u11.d01.ex.b.01",
+          "instruction": {
+            "en": "Obligation.",
+            "ru": "Обязанность."
+          },
+          "tags": [
+            "grammar.must"
+          ],
+          "prompt": "Drivers ___ stop at a red light.",
+          "options": [
+            "must",
+            "mustn't",
+            "don't have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u11.d01.ex.b.02",
+          "instruction": {
+            "en": "Prohibition.",
+            "ru": "Запрет."
+          },
+          "tags": [
+            "grammar.must"
+          ],
+          "prompt": "You ___ use your phone during the exam.",
+          "options": [
+            "mustn't",
+            "must",
+            "have to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u11.d01.ex.b.03",
+          "instruction": {
+            "en": "Base verb after must.",
+            "ru": "Голый глагол после must."
+          },
+          "tags": [
+            "grammar.must"
+          ],
+          "prompt": "You must ___ quiet in the library. (be)",
+          "answers": [
+            "be"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u11.d01.ex.b.04",
+          "instruction": {
+            "en": "Prohibition (mustn't).",
+            "ru": "Запрет (mustn't)."
+          },
+          "tags": [
+            "grammar.must"
+          ],
+          "prompt": "You ___ touch the paintings. (must not)",
+          "answers": [
+            "mustn't",
+            "must not"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u11.d01.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.must"
+          ],
+          "variants": [
+            "You must to wear a seatbelt.",
+            "You must wear a seatbelt."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u11.d01.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.must",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Здесь нельзя фотографировать.",
+          "answers": [
+            "You mustn't take photos here.",
+            "You must not take photos here."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you must to take",
+                "you mustn't to take",
+                "you cannot photos"
+              ],
+              "explanation": {
+                "en": "mustn’t + bare verb: You mustn’t take photos here.",
+                "ru": "mustn’t + голый глагол: You mustn’t take photos here."
+              }
+            }
           ]
         }
       ]

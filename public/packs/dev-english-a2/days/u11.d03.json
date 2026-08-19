@@ -184,7 +184,8 @@
               "en": "You should drink more water.",
               "ru": "Тебе стоит пить больше воды."
             }
-          ]
+          ],
+          "ref": "modals-obligation"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "You shouldn't eat so late.",
               "ru": "Тебе не стоит есть так поздно."
             }
-          ]
+          ],
+          "ref": "modals-obligation"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "Should I see a doctor?",
               "ru": "Мне стоит сходить к врачу?"
             }
-          ]
+          ],
+          "ref": "modals-obligation"
         }
       ],
       "pitfalls": [
@@ -447,6 +450,119 @@
           "prompt": "Тебе стоит больше спать.",
           "answers": [
             "You should sleep more."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u11.d03.ex.b.01",
+          "instruction": {
+            "en": "Good advice.",
+            "ru": "Хороший совет."
+          },
+          "tags": [
+            "grammar.should"
+          ],
+          "prompt": "You have a headache. You ___ take a rest.",
+          "options": [
+            "should",
+            "shouldn't",
+            "must not"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u11.d03.ex.b.02",
+          "instruction": {
+            "en": "Bad idea.",
+            "ru": "Плохая идея."
+          },
+          "tags": [
+            "grammar.should"
+          ],
+          "prompt": "It is late. You ___ drink coffee now.",
+          "options": [
+            "shouldn't",
+            "should",
+            "have to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u11.d03.ex.b.03",
+          "instruction": {
+            "en": "Ask for advice.",
+            "ru": "Спроси совета."
+          },
+          "tags": [
+            "grammar.should"
+          ],
+          "prompt": "___ I take an umbrella? (should)",
+          "answers": [
+            "Should"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u11.d03.ex.b.04",
+          "instruction": {
+            "en": "Base verb after should.",
+            "ru": "Голый глагол после should."
+          },
+          "tags": [
+            "grammar.should"
+          ],
+          "prompt": "You should ___ more vegetables. (eat)",
+          "answers": [
+            "eat"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u11.d03.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.should"
+          ],
+          "variants": [
+            "You should to see a doctor.",
+            "You should see a doctor."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u11.d03.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.should",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Тебе не стоит так много работать.",
+          "answers": [
+            "You shouldn't work so much.",
+            "You should not work so much."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you should not to work",
+                "you shouldn't to work",
+                "you not should work"
+              ],
+              "explanation": {
+                "en": "shouldn’t + bare verb: You shouldn’t work so much.",
+                "ru": "shouldn’t + голый глагол: You shouldn’t work so much."
+              }
+            }
           ]
         }
       ]

@@ -1647,5 +1647,149 @@
       "future-forms",
       "present-simple"
     ]
+  },
+  {
+    "id": "modals-obligation",
+    "title": {
+      "en": "must, have to, should — rules and advice",
+      "ru": "must, have to, should — правила и советы"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "These modal verbs talk about rules, necessity and advice. All of them are followed by the bare verb (no \"to\" after must/should, but \"to\" is part of \"have to\").",
+      "ru": "Эти модальные глаголы говорят о правилах, необходимости и советах. После всех идёт «голый» глагол (после must/should — без «to», но «to» — часть самого «have to»)."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "must / mustn’t — a strong rule",
+          "ru": "must / mustn’t — строгое правило"
+        },
+        "text": {
+          "en": "\"must + verb\" means something is necessary — often a rule the speaker feels strongly about.\n\nYou must wear a helmet.\nYou must wash your hands.\n\n\"mustn’t (must not) + verb\" means it is PROHIBITED — do not do it.\n\nYou mustn’t smoke here. (it is forbidden)\n\nAfter must, use the bare verb: \"must wear\", NOT \"must to wear\".",
+          "ru": "«must + глагол» — что-то необходимо, часто строгое правило, важное для говорящего.\n\nYou must wear a helmet. — Ты обязан носить шлем.\nYou must wash your hands. — Нужно мыть руки.\n\n«mustn’t (must not) + глагол» — ЗАПРЕЩЕНО, не делай этого.\n\nYou mustn’t smoke here. — Здесь нельзя курить (запрещено).\n\nПосле must — «голый» глагол: «must wear», а не «must to wear»."
+        },
+        "examples": [
+          {
+            "en": "Visitors must show a ticket.",
+            "ru": "Посетители обязаны показать билет."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "have to / don’t have to — necessity from outside",
+          "ru": "have to / don’t have to — необходимость извне"
+        },
+        "text": {
+          "en": "\"have to / has to + verb\" is very close to \"must\" and often used for rules that come from outside (your job, the law).\n\nShe has to wear a uniform. (the job requires it)\n\n\"don’t/doesn’t have to\" is different — it means it is NOT necessary (but you can if you want).\n\nIt is Sunday. We don’t have to work. (we can, but we do not need to)\n\nPast form: had to. Yesterday I had to stay late.",
+          "ru": "«have to / has to + глагол» очень близко к «must» и часто используется для правил извне (работа, закон).\n\nShe has to wear a uniform. — Она должна носить форму (требует работа).\n\n«don’t/doesn’t have to» — иное: значит НЕ обязательно (но можно, если хочешь).\n\nIt is Sunday. We don’t have to work. — Воскресенье. Нам не нужно работать (можем, но не обязаны).\n\nПрошедшее: had to. Yesterday I had to stay late. — Вчера мне пришлось задержаться."
+        },
+        "examples": [
+          {
+            "en": "He has to go now.",
+            "ru": "Ему нужно идти сейчас."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "mustn’t vs don’t have to — do not confuse them",
+          "ru": "mustn’t и don’t have to — не путай"
+        },
+        "text": {
+          "en": "These look similar but are opposites.\n\nYou mustn’t park here. = it is forbidden.\nYou don’t have to park here. = you can park somewhere else; it is not required.",
+          "ru": "Похожи, но противоположны.\n\nYou mustn’t park here. = запрещено парковаться.\nYou don’t have to park here. = можно припарковаться в другом месте; это не обязательно."
+        }
+      },
+      {
+        "heading": {
+          "en": "should / shouldn’t — advice",
+          "ru": "should / shouldn’t — совет"
+        },
+        "text": {
+          "en": "\"should + verb\" gives advice — it is a good idea, not a rule.\n\nYou are tired. You should rest.\nYou shouldn’t go out with a cold.\n\nQuestion: Should I see a doctor?\n\nAfter should, use the bare verb: \"should sleep\", NOT \"should to sleep\".",
+          "ru": "«should + глагол» даёт совет — это хорошая идея, а не правило.\n\nYou are tired. You should rest. — Ты устал. Тебе стоит отдохнуть.\nYou shouldn’t go out with a cold. — С простудой не стоит выходить.\n\nВопрос: Should I see a doctor? — Стоит ли мне сходить к врачу?\n\nПосле should — «голый» глагол: «should sleep», а не «should to sleep»."
+        },
+        "examples": [
+          {
+            "en": "You should drink more water.",
+            "ru": "Тебе стоит пить больше воды."
+          }
+        ]
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "No \"to\" after must/should: \"must wear\", \"should rest\" — NOT \"must to wear\".",
+        "ru": "После must/should нет «to»: «must wear», «should rest» — а не «must to wear»."
+      },
+      {
+        "en": "has to for he/she/it: \"He has to go\", NOT \"He have to go\".",
+        "ru": "has to для he/she/it: «He has to go», а не «He have to go»."
+      },
+      {
+        "en": "mustn’t = forbidden; don’t have to = not necessary. They are opposites.",
+        "ru": "mustn’t = запрещено; don’t have to = не обязательно. Это противоположности."
+      }
+    ],
+    "seeAlso": [
+      "might-may",
+      "modals-can"
+    ]
+  },
+  {
+    "id": "might-may",
+    "title": {
+      "en": "might / may — possibility (it might rain)",
+      "ru": "might / may — возможность (it might rain)"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "\"might\" and \"may\" say that something is possible but not certain — a good \"maybe\". Both are followed by the bare verb.",
+      "ru": "«might» и «may» говорят, что что-то возможно, но не точно — вежливое «может быть». После обоих идёт «голый» глагол."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "might / may + verb",
+          "ru": "might / may + глагол"
+        },
+        "text": {
+          "en": "Use \"might\" or \"may\" + bare verb for something that is perhaps true or perhaps going to happen. They mean almost the same; \"might\" is a little less certain.\n\nIt might rain later.\nI may be late — the traffic is bad.\n\nAfter might/may, use the bare verb: \"might rain\", NOT \"might to rain\".",
+          "ru": "Используй «might» или «may» + «голый» глагол для того, что, возможно, верно или, возможно, произойдёт. Значат почти одно; «might» чуть менее уверенно.\n\nIt might rain later. — Возможно, позже пойдёт дождь.\nI may be late — the traffic is bad. — Я, может быть, опоздаю — пробки.\n\nПосле might/may — «голый» глагол: «might rain», а не «might to rain»."
+        },
+        "examples": [
+          {
+            "en": "She might come to the party.",
+            "ru": "Она, возможно, придёт на вечеринку."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "The negative: might not / may not",
+          "ru": "Отрицание: might not / may not"
+        },
+        "text": {
+          "en": "\"might not / may not + verb\" means it is possible that something will NOT happen.\n\nI might not have time tomorrow.\nHe may not know the answer.\n\nShort answers: \"Will you come?\" — \"I might.\" / \"Maybe.\"",
+          "ru": "«might not / may not + глагол» — возможно, что чего-то НЕ будет.\n\nI might not have time tomorrow. — Возможно, у меня не будет времени завтра.\nHe may not know the answer. — Он, может быть, не знает ответа.\n\nКраткие ответы: «Will you come?» — «I might.» / «Maybe.»"
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "No \"to\" after might/may: \"might rain\", NOT \"might to rain\".",
+        "ru": "После might/may нет «to»: «might rain», а не «might to rain»."
+      },
+      {
+        "en": "Do not add -s for he/she/it: \"She might come\", NOT \"She mights come\".",
+        "ru": "Не добавляй -s для he/she/it: «She might come», а не «She mights come»."
+      }
+    ],
+    "seeAlso": [
+      "modals-obligation",
+      "future-forms"
+    ]
   }
 ]
