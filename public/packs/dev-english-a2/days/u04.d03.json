@@ -184,7 +184,8 @@
               "en": "We merged the branch.",
               "ru": "Мы влили ветку."
             }
-          ]
+          ],
+          "ref": "past-simple"
         }
       ]
     },
@@ -346,6 +347,165 @@
           "prompt": "Он задеплоил приложение в продакшн.",
           "answers": [
             "He deployed the app to production."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d03.ex.b.01",
+          "instruction": {
+            "en": "Past simple (irregular).",
+            "ru": "Past simple (неправильный)."
+          },
+          "tags": [
+            "grammar.past-simple.irregular"
+          ],
+          "prompt": "I ___ the code yesterday. (write)",
+          "answers": [
+            "wrote"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d03.ex.b.02",
+          "instruction": {
+            "en": "Past simple (regular).",
+            "ru": "Past simple (правильный)."
+          },
+          "tags": [
+            "grammar.past-simple.regular"
+          ],
+          "prompt": "We ___ the change. (revert)",
+          "answers": [
+            "reverted"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u04.d03.ex.b.03",
+          "instruction": {
+            "en": "Past simple.",
+            "ru": "Past simple."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "She ___ a new branch.",
+          "options": [
+            "created",
+            "creates",
+            "did create"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u04.d03.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "variants": [
+            "Yesterday he build the app.",
+            "Yesterday he built the app."
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "he build",
+                "yesterday he build"
+              ],
+              "explanation": {
+                "en": "build is irregular: build → built.",
+                "ru": "build — неправильный: build → built."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d03.ex.b.05",
+          "instruction": {
+            "en": "Past simple.",
+            "ru": "Past simple."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "The test ___ an error. (show)",
+          "answers": [
+            "showed"
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u04.d03.ex.b.06",
+          "instruction": {
+            "en": "Match verb and its past form.",
+            "ru": "Сопоставь глагол и прошедшее."
+          },
+          "tags": [
+            "grammar.past-simple.irregular"
+          ],
+          "pairs": [
+            {
+              "left": "write",
+              "right": "wrote"
+            },
+            {
+              "left": "break",
+              "right": "broke"
+            },
+            {
+              "left": "run",
+              "right": "ran"
+            }
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u04.d03.ex.b.07",
+          "instruction": {
+            "en": "Report a release.",
+            "ru": "Сообщи о релизе."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "tokens": [
+            "We",
+            "released",
+            "the",
+            "new",
+            "version"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u04.d03.ex.b.08",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-simple",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мы откатили изменение.",
+          "answers": [
+            "We rolled back the change.",
+            "We reverted the change."
           ]
         }
       ]

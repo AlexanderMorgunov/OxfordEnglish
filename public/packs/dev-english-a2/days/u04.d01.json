@@ -188,7 +188,8 @@
               "en": "We merged the feature branch this morning.",
               "ru": "Мы влили ветку с фичей сегодня утром."
             }
-          ]
+          ],
+          "ref": "past-simple"
         },
         {
           "label": {
@@ -201,7 +202,8 @@
               "en": "She wrote the tests and the pipeline ran green.",
               "ru": "Она написала тесты, и пайплайн прошёл."
             }
-          ]
+          ],
+          "ref": "past-simple"
         },
         {
           "label": {
@@ -214,7 +216,8 @@
               "en": "The build didn't pass, so I didn't push to main.",
               "ru": "Билд не прошёл, поэтому я не запушил в main."
             }
-          ]
+          ],
+          "ref": "past-simple"
         },
         {
           "label": {
@@ -227,7 +230,8 @@
               "en": "Did you review my pull request?",
               "ru": "Ты посмотрел мой пул-реквест?"
             }
-          ]
+          ],
+          "ref": "past-simple"
         }
       ],
       "pitfalls": [
@@ -239,8 +243,7 @@
           "en": "In questions the past is carried by 'did', so the main verb stays base: 'Did you merge?', not 'Did you merged?'.",
           "ru": "В вопросе прошедшее время несёт 'did', основной глагол — в начальной форме: 'Did you merge?', а не 'Did you merged?'."
         }
-      ],
-      "ref": "past-simple"
+      ]
     },
     {
       "type": "reading",
@@ -490,6 +493,115 @@
           "answers": [
             "Yesterday I fixed the bug.",
             "I fixed the bug yesterday."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d01.ex.b.01",
+          "instruction": {
+            "en": "Past simple (regular).",
+            "ru": "Past simple (правильный)."
+          },
+          "tags": [
+            "grammar.past-simple.regular"
+          ],
+          "prompt": "We ___ to the beach. (walk)",
+          "answers": [
+            "walked"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d01.ex.b.02",
+          "instruction": {
+            "en": "Past simple (irregular).",
+            "ru": "Past simple (неправильный)."
+          },
+          "tags": [
+            "grammar.past-simple.irregular"
+          ],
+          "prompt": "We ___ by train. (go)",
+          "answers": [
+            "went"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u04.d01.ex.b.03",
+          "instruction": {
+            "en": "Question in the past.",
+            "ru": "Вопрос в прошедшем."
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "prompt": "___ you like the trip?",
+          "options": [
+            "Did",
+            "Do",
+            "Was",
+            "Does"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u04.d01.ex.b.04",
+          "instruction": {
+            "en": "Which question is correct?",
+            "ru": "Какой вопрос верный?"
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "variants": [
+            "Did you went there?",
+            "Did you go there?"
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "did you went"
+              ],
+              "explanation": {
+                "en": "After did use the base verb: \"Did you go?\", not \"Did you went?\".",
+                "ru": "После did — начальная форма: «Did you go?», а не «Did you went?»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d01.ex.b.05",
+          "instruction": {
+            "en": "Past simple.",
+            "ru": "Past simple."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "She ___ the report before lunch. (finish)",
+          "answers": [
+            "finished"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u04.d01.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-simple",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Вчера я задеплоил новую версию.",
+          "answers": [
+            "Yesterday I deployed the new version.",
+            "I deployed the new version yesterday."
           ]
         }
       ]

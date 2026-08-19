@@ -289,6 +289,146 @@
           "answers": [
             "Let's try something."
           ]
+        },
+        {
+          "type": "choice",
+          "id": "u04.d05.ex.b.01",
+          "instruction": {
+            "en": "Listening tip.",
+            "ru": "Совет по аудированию."
+          },
+          "tags": [
+            "listening.gist"
+          ],
+          "prompt": "Listen in ___ , not word by word.",
+          "options": [
+            "chunks",
+            "words",
+            "letters"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d05.ex.b.02",
+          "instruction": {
+            "en": "Ask to repeat.",
+            "ru": "Попроси повторить."
+          },
+          "tags": [
+            "functions.small-talk"
+          ],
+          "prompt": "Can you ___ that, please? (repeat)",
+          "answers": [
+            "repeat"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d05.ex.b.03",
+          "instruction": {
+            "en": "Past simple (irregular).",
+            "ru": "Past simple (неправильный)."
+          },
+          "tags": [
+            "grammar.past-simple.irregular"
+          ],
+          "prompt": "At last I ___ the whole sentence. (understand)",
+          "answers": [
+            "understood"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u04.d05.ex.b.04",
+          "instruction": {
+            "en": "Adverb.",
+            "ru": "Наречие."
+          },
+          "tags": [
+            "grammar.adverbs-manner"
+          ],
+          "prompt": "Please play it more ___ .",
+          "options": [
+            "slowly",
+            "slow",
+            "slowest"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "match",
+          "id": "u04.d05.ex.b.05",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "phrase",
+              "right": "фраза"
+            },
+            {
+              "left": "meaning",
+              "right": "значение"
+            },
+            {
+              "left": "whole",
+              "right": "целый"
+            }
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u04.d05.ex.b.06",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "variants": [
+            "I no understand.",
+            "I don't understand."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d05.ex.b.07",
+          "instruction": {
+            "en": "Present simple question.",
+            "ru": "Вопрос present simple."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "What does this phrase ___ ? (mean)",
+          "answers": [
+            "mean"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u04.d05.ex.b.08",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.small-talk",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Повтори медленнее, пожалуйста.",
+          "answers": [
+            "Please repeat it more slowly.",
+            "Repeat it more slowly, please."
+          ]
         }
       ]
     }

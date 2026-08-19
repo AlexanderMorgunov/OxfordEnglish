@@ -184,7 +184,8 @@
               "en": "I deployed the app.",
               "ru": "Я задеплоил приложение."
             }
-          ]
+          ],
+          "ref": "past-simple"
         }
       ]
     },
@@ -367,6 +368,127 @@
           "prompt": "Сервер упал ночью.",
           "answers": [
             "The server went down at night."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d04.ex.b.01",
+          "instruction": {
+            "en": "Past simple.",
+            "ru": "Past simple."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "I ___ the manager. (call)",
+          "answers": [
+            "called"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d04.ex.b.02",
+          "instruction": {
+            "en": "Past simple.",
+            "ru": "Past simple."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "She ___ the problem. (explain)",
+          "answers": [
+            "explained"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u04.d04.ex.b.03",
+          "instruction": {
+            "en": "Past simple (irregular).",
+            "ru": "Past simple (неправильный)."
+          },
+          "tags": [
+            "grammar.past-simple.irregular"
+          ],
+          "prompt": "He ___ the email an hour ago.",
+          "options": [
+            "sent",
+            "sended",
+            "did send"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u04.d04.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.past-simple.regular"
+          ],
+          "variants": [
+            "She helpd me.",
+            "She helped me."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d04.ex.b.05",
+          "instruction": {
+            "en": "Past simple.",
+            "ru": "Past simple."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "They ___ the meeting. (join)",
+          "answers": [
+            "joined"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u04.d04.ex.b.06",
+          "instruction": {
+            "en": "Report the bug.",
+            "ru": "Сообщи о баге."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "tokens": [
+            "I",
+            "reported",
+            "the",
+            "bug",
+            "yesterday"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u04.d04.ex.b.07",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-simple",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он ответил на все вопросы.",
+          "answers": [
+            "He answered all the questions."
           ]
         }
       ]

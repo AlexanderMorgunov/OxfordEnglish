@@ -184,7 +184,8 @@
               "en": "Did the tests pass?",
               "ru": "Тесты прошли?"
             }
-          ]
+          ],
+          "ref": "past-simple"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "When did the app crash — before or after the deploy?",
               "ru": "Когда приложение упало — до или после деплоя?"
             }
-          ]
+          ],
+          "ref": "past-simple"
         }
       ],
       "pitfalls": [
@@ -392,6 +394,161 @@
           "prompt": "Тесты прошли?",
           "answers": [
             "Did the tests pass?"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u04.d02.ex.b.01",
+          "instruction": {
+            "en": "Yes/No question.",
+            "ru": "Общий вопрос."
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "prompt": "___ you fix the bug last night?",
+          "options": [
+            "Did",
+            "Do",
+            "Was",
+            "Does"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d02.ex.b.02",
+          "instruction": {
+            "en": "Wh- question.",
+            "ru": "Специальный вопрос."
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "prompt": "When ___ the app crash? (do)",
+          "answers": [
+            "did"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u04.d02.ex.b.03",
+          "instruction": {
+            "en": "Which question is correct?",
+            "ru": "Какой вопрос верный?"
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "variants": [
+            "What did you did?",
+            "What did you do?"
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "did you did",
+                "what did you did"
+              ],
+              "explanation": {
+                "en": "Only one past marker: \"What did you do?\", not \"did you did\".",
+                "ru": "Только один показатель прошедшего: «What did you do?», а не «did you did»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d02.ex.b.04",
+          "instruction": {
+            "en": "Did + subject + base.",
+            "ru": "Did + подлежащее + основа."
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "prompt": "___ she finish the report? (do)",
+          "answers": [
+            "Did"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u04.d02.ex.b.05",
+          "instruction": {
+            "en": "Wh- question.",
+            "ru": "Специальный вопрос."
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "prompt": "Where ___ you go after work?",
+          "options": [
+            "did",
+            "was",
+            "do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u04.d02.ex.b.06",
+          "instruction": {
+            "en": "Ask about the email.",
+            "ru": "Спроси про письмо."
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "tokens": [
+            "Did",
+            "you",
+            "see",
+            "the",
+            "email"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u04.d02.ex.b.07",
+          "instruction": {
+            "en": "Subject question — no did.",
+            "ru": "Вопрос к подлежащему — без did."
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "prompt": "Who ___ the server? — Nobody knows.",
+          "options": [
+            "broke",
+            "did break",
+            "breaked"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u04.d02.ex.b.08",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-simple.question",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Что случилось вчера?",
+          "answers": [
+            "What happened yesterday?"
           ]
         }
       ]
