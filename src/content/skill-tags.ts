@@ -84,6 +84,7 @@ export const SKILL_TAGS = [
   'grammar.time-linkers',
   'grammar.present-perfect-continuous',
   'grammar.perfect-continuous-vs-simple',
+  'grammar.reported-questions',
 
   // functions (everyday communication)
   'functions.ordering',
@@ -105,6 +106,7 @@ export const SKILL_TAGS = [
   'functions.storytelling',
   'functions.travel',
   'functions.work',
+  'functions.news',
 
   // vocabulary (developer-life + everyday themes)
   'vocab.work',
@@ -144,6 +146,7 @@ export const SKILL_TAGS = [
   'vocab.choices',
   'vocab.life',
   'vocab.stories',
+  'vocab.news',
 
   // reading
   'reading.gist',

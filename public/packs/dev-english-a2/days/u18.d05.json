@@ -1,0 +1,602 @@
+{
+  "id": "u18.d05",
+  "title": {
+    "en": "Did you hear the news?",
+    "ru": "Ты слышал новость?"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "functions.news",
+    "vocab.news"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u18.d05.vocab",
+      "title": {
+        "en": "Reacting to news",
+        "ru": "Реакция на новости"
+      },
+      "words": [
+        {
+          "word": "headline",
+          "ru": "заголовок",
+          "ipa": "/ˈhedlaɪn/",
+          "example": "Did you see the headline?",
+          "exampleRu": "Ты видел заголовок?",
+          "audio": {
+            "src": "media/audio/u18.d05.vocab.headline.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "article",
+          "ru": "статья",
+          "ipa": "/ˈɑːrtɪkl/",
+          "example": "I read an article about it.",
+          "exampleRu": "Я читал об этом статью.",
+          "audio": {
+            "src": "media/audio/u18.d05.vocab.article.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "believe",
+          "ru": "верить",
+          "ipa": "/bɪˈliːv/",
+          "example": "I can't believe it!",
+          "exampleRu": "Не могу поверить!",
+          "audio": {
+            "src": "media/audio/u18.d05.vocab.believe.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "shocking",
+          "ru": "шокирующий",
+          "ipa": "/ˈʃɒkɪŋ/",
+          "example": "That's shocking news.",
+          "exampleRu": "Это шокирующая новость.",
+          "audio": {
+            "src": "media/audio/u18.d05.vocab.shocking.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "amazing",
+          "ru": "потрясающий",
+          "ipa": "/əˈmeɪzɪŋ/",
+          "example": "That's amazing!",
+          "exampleRu": "Это потрясающе!",
+          "audio": {
+            "src": "media/audio/u18.d05.vocab.amazing.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "guess",
+          "ru": "угадывать",
+          "ipa": "/ɡes/",
+          "example": "Guess what happened!",
+          "exampleRu": "Угадай, что случилось!",
+          "audio": {
+            "src": "media/audio/u18.d05.vocab.guess.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "honestly",
+          "ru": "честно говоря",
+          "ipa": "/ˈɒnɪstli/",
+          "example": "Honestly, I was surprised.",
+          "exampleRu": "Честно говоря, я удивился.",
+          "audio": {
+            "src": "media/audio/u18.d05.vocab.honestly.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "seriously",
+          "ru": "серьёзно",
+          "ipa": "/ˈsɪəriəsli/",
+          "example": "Seriously? That's crazy!",
+          "exampleRu": "Серьёзно? С ума сойти!",
+          "audio": {
+            "src": "media/audio/u18.d05.vocab.seriously.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "spread",
+          "ru": "распространять(ся)",
+          "ipa": "/spred/",
+          "example": "The news spread fast.",
+          "exampleRu": "Новость быстро разлетелась.",
+          "audio": {
+            "src": "media/audio/u18.d05.vocab.spread.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "update",
+          "ru": "обновление",
+          "ipa": "/ˈʌpdeɪt/",
+          "example": "Any update on the story?",
+          "exampleRu": "Есть новости по этой истории?",
+          "audio": {
+            "src": "media/audio/u18.d05.vocab.update.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u18.d05.grammar",
+      "title": {
+        "en": "Sharing and reacting to news",
+        "ru": "Как делиться новостями и реагировать"
+      },
+      "rule": {
+        "en": "To share news, open with \"Did you hear…?\" or \"Guess what!\" and report it with \"Apparently…\" or \"They say…\". To react, use short phrases like \"No way!\", \"Really?\" and \"That's amazing!\"",
+        "ru": "Чтобы поделиться новостью, начни с «Did you hear…?» или «Guess what!» и передай её через «Apparently…» или «They say…». Для реакции — короткие фразы: «No way!», «Really?», «That's amazing!»"
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "open the news",
+            "ru": "начать новость"
+          },
+          "formula": "Did you hear …? / Guess what!",
+          "examples": [
+            {
+              "en": "Guess what! Tom got the job.",
+              "ru": "Угадай что! Том получил работу."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "report it",
+            "ru": "передать её"
+          },
+          "formula": "Apparently … / They say …",
+          "examples": [
+            {
+              "en": "Apparently, they are moving abroad.",
+              "ru": "Судя по всему, они переезжают за границу."
+            }
+          ],
+          "ref": "reported-speech"
+        },
+        {
+          "label": {
+            "en": "react",
+            "ru": "отреагировать"
+          },
+          "formula": "No way! / Really? / That's amazing!",
+          "examples": [
+            {
+              "en": "\"She won the prize.\" — \"No way! That's amazing!\"",
+              "ru": "«Она выиграла приз.» — «Не может быть! Это потрясающе!»"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"Apparently\" = \"I heard but I'm not 100% sure\" — perfect for passing on news.",
+          "ru": "«Apparently» = «я слышал, но не уверен на 100 %» — идеально для передачи новостей."
+        },
+        {
+          "en": "Keep reactions short and natural: \"Really?\", \"No way!\", \"That's great!\"",
+          "ru": "Держи реакции короткими и живыми: «Really?», «No way!», «That's great!»"
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u18.d05.reading",
+      "title": {
+        "en": "Big news at the office",
+        "ru": "Большая новость в офисе"
+      },
+      "blocks": [
+        {
+          "id": "u18.d05.reading.b1",
+          "en": "\"Guess what!\" said Priya as she came in. \"Did you hear about Daniel?\" I said I hadn't. \"Apparently, he's leaving the company. They say he got a job at a huge tech firm.\"",
+          "ru": "«Угадай что! — сказала Прия, входя. — Ты слышал про Дэниела?» Я сказал, что нет. «Судя по всему, он уходит из компании. Говорят, он получил работу в огромной технологической фирме».",
+          "audio": {
+            "src": "media/audio/u18.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u18.d05.reading.b2",
+          "en": "\"No way!\" I said. \"When did that happen?\" Priya told me that she had only found out that morning. \"Honestly, the news spread across the whole office in an hour. Everyone's talking about it.\"",
+          "ru": "«Не может быть! — сказал я. — Когда это случилось?» Прия сказала мне, что узнала только тем утром. «Честно, новость облетела весь офис за час. Все об этом говорят».",
+          "audio": {
+            "src": "media/audio/u18.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "firm",
+          "ru": "фирма",
+          "ipa": "/fɜːrm/"
+        },
+        {
+          "word": "whole",
+          "ru": "весь",
+          "ipa": "/hoʊl/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u18.d05.listening",
+      "title": {
+        "en": "You won't believe it",
+        "ru": "Ты не поверишь"
+      },
+      "audio": {
+        "src": "media/audio/u18.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Guess what! You won't believe it.",
+          "ru": "Угадай что! Ты не поверишь."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "What? Tell me!",
+          "ru": "Что? Рассказывай!"
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Apparently, Sara is moving to Japan.",
+          "ru": "Судя по всему, Сара переезжает в Японию."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "No way! That's amazing!",
+          "ru": "Не может быть! Это потрясающе!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u18.d05.ex.l.01",
+          "instruction": {
+            "en": "Where is Sara moving?",
+            "ru": "Куда переезжает Сара?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.news"
+          ],
+          "prompt": "To ___ .",
+          "options": [
+            "Japan",
+            "London",
+            "Spain"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u18.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u18.d05.ex.c.01",
+          "instruction": {
+            "en": "Open the news.",
+            "ru": "Начни новость."
+          },
+          "tags": [
+            "functions.news"
+          ],
+          "prompt": "___ you hear about the new office?",
+          "options": [
+            "Did",
+            "Have",
+            "Are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u18.d05.ex.c.02",
+          "instruction": {
+            "en": "Report a rumour.",
+            "ru": "Передай слух."
+          },
+          "tags": [
+            "functions.news"
+          ],
+          "prompt": "___ , they are closing the shop.",
+          "options": [
+            "Apparently",
+            "Honestly",
+            "Seriously"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u18.d05.ex.g.01",
+          "instruction": {
+            "en": "Share it.",
+            "ru": "Поделись."
+          },
+          "tags": [
+            "functions.news"
+          ],
+          "prompt": "___ what! I got the job. (guess)",
+          "answers": [
+            "Guess"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u18.d05.ex.c.03",
+          "instruction": {
+            "en": "React.",
+            "ru": "Отреагируй."
+          },
+          "tags": [
+            "functions.news"
+          ],
+          "prompt": "\"She won the race.\" — \"___ way! That's amazing!\"",
+          "options": [
+            "No",
+            "Any",
+            "Some"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u18.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.news"
+          ],
+          "variants": [
+            "They say he is leaving.",
+            "They say he is leave."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u18.d05.ex.c.04",
+          "instruction": {
+            "en": "Report with \"they say\".",
+            "ru": "Передай через \"they say\"."
+          },
+          "tags": [
+            "functions.news"
+          ],
+          "prompt": "They ___ the film is great.",
+          "options": [
+            "say",
+            "said me",
+            "tell"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u18.d05.ex.o.01",
+          "instruction": {
+            "en": "Open with a question.",
+            "ru": "Начни с вопроса."
+          },
+          "tags": [
+            "functions.news"
+          ],
+          "tokens": [
+            "Did",
+            "you",
+            "hear",
+            "the",
+            "big",
+            "news"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u18.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.news"
+          ],
+          "pairs": [
+            {
+              "left": "headline",
+              "right": "заголовок"
+            },
+            {
+              "left": "shocking",
+              "right": "шокирующий"
+            },
+            {
+              "left": "spread",
+              "right": "распространяться"
+            },
+            {
+              "left": "update",
+              "right": "обновление"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u18.d05.ex.c.05",
+          "instruction": {
+            "en": "React with surprise.",
+            "ru": "Отреагируй удивлённо."
+          },
+          "tags": [
+            "functions.news"
+          ],
+          "prompt": "\"He quit his job.\" — \"___? Why?\"",
+          "options": [
+            "Really",
+            "Please",
+            "Sorry"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u18.d05.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.news"
+          ],
+          "variants": [
+            "Guess what happened!",
+            "Guess what did happen!"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u18.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.news",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты слышал новость?",
+          "answers": [
+            "Did you hear the news?",
+            "Have you heard the news?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "did you heard the news",
+                "you heard the news",
+                "did you hear news"
+              ],
+              "explanation": {
+                "en": "Did you hear the news? / Have you heard the news?",
+                "ru": "Did you hear the news? / Have you heard the news?"
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u18.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.news",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Судя по всему, они переезжают за границу.",
+          "answers": [
+            "Apparently, they are moving abroad.",
+            "Apparently they are moving abroad."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "apparently they moving abroad",
+                "apparent they are moving abroad",
+                "apparently they move abroad"
+              ],
+              "explanation": {
+                "en": "Apparently + present continuous: they are moving abroad.",
+                "ru": "Apparently + present continuous: they are moving abroad."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

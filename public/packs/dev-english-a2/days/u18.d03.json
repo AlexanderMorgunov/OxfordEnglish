@@ -1,0 +1,601 @@
+{
+  "id": "u18.d03",
+  "title": {
+    "en": "She told me to wait",
+    "ru": "Она велела мне подождать"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.reported-speech",
+    "vocab.news"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u18.d03.vocab",
+      "title": {
+        "en": "Orders & requests",
+        "ru": "Приказы и просьбы"
+      },
+      "words": [
+        {
+          "word": "tell",
+          "ru": "велеть, говорить",
+          "ipa": "/tel/",
+          "example": "She told me to wait.",
+          "exampleRu": "Она велела мне подождать.",
+          "audio": {
+            "src": "media/audio/u18.d03.vocab.tell.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "order",
+          "ru": "приказывать",
+          "ipa": "/ˈɔːrdər/",
+          "example": "The officer ordered them to stop.",
+          "exampleRu": "Офицер приказал им остановиться.",
+          "audio": {
+            "src": "media/audio/u18.d03.vocab.order.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "warn",
+          "ru": "предупреждать",
+          "ipa": "/wɔːrn/",
+          "example": "He warned us not to be late.",
+          "exampleRu": "Он предупредил нас не опаздывать.",
+          "audio": {
+            "src": "media/audio/u18.d03.vocab.warn.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "advise",
+          "ru": "советовать",
+          "ipa": "/ədˈvaɪz/",
+          "example": "She advised me to rest.",
+          "exampleRu": "Она посоветовала мне отдохнуть.",
+          "audio": {
+            "src": "media/audio/u18.d03.vocab.advise.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "remind",
+          "ru": "напоминать",
+          "ipa": "/rɪˈmaɪnd/",
+          "example": "Remind me to call him.",
+          "exampleRu": "Напомни мне позвонить ему.",
+          "audio": {
+            "src": "media/audio/u18.d03.vocab.remind.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "allow",
+          "ru": "разрешать",
+          "ipa": "/əˈlaʊ/",
+          "example": "They allowed us to leave.",
+          "exampleRu": "Нам разрешили уйти.",
+          "audio": {
+            "src": "media/audio/u18.d03.vocab.allow.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "refuse",
+          "ru": "отказываться",
+          "ipa": "/rɪˈfjuːz/",
+          "example": "He refused to help.",
+          "exampleRu": "Он отказался помочь.",
+          "audio": {
+            "src": "media/audio/u18.d03.vocab.refuse.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "encourage",
+          "ru": "поощрять",
+          "ipa": "/ɪnˈkʌrɪdʒ/",
+          "example": "She encouraged me to try.",
+          "exampleRu": "Она подбодрила меня попробовать.",
+          "audio": {
+            "src": "media/audio/u18.d03.vocab.encourage.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "request",
+          "ru": "просьба; просить",
+          "ipa": "/rɪˈkwest/",
+          "example": "It was a polite request.",
+          "exampleRu": "Это была вежливая просьба.",
+          "audio": {
+            "src": "media/audio/u18.d03.vocab.request.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "instruction",
+          "ru": "указание",
+          "ipa": "/ɪnˈstrʌkʃən/",
+          "example": "Follow the instructions.",
+          "exampleRu": "Следуй указаниям.",
+          "audio": {
+            "src": "media/audio/u18.d03.vocab.instruction.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u18.d03.grammar",
+      "title": {
+        "en": "Reported commands & requests",
+        "ru": "Косвенные приказы и просьбы"
+      },
+      "rule": {
+        "en": "To report an order or request, use \"tell/ask + person + to + verb\". For a negative command, use \"not to + verb\". No backshift is needed — the infinitive does the work.",
+        "ru": "Чтобы передать приказ или просьбу: «tell/ask + человек + to + глагол». Для отрицания — «not to + глагол». Сдвиг времени не нужен — работает инфинитив."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "tell someone to …",
+            "ru": "tell someone to …"
+          },
+          "formula": "told + person + to + verb",
+          "examples": [
+            {
+              "en": "\"Wait here.\" → She told me to wait there.",
+              "ru": "«Подожди здесь.» → Она велела мне подождать там."
+            }
+          ],
+          "ref": "reported-speech"
+        },
+        {
+          "label": {
+            "en": "ask someone to …",
+            "ru": "ask someone to …"
+          },
+          "formula": "asked + person + to + verb",
+          "examples": [
+            {
+              "en": "\"Please help.\" → He asked me to help.",
+              "ru": "«Помоги, пожалуйста.» → Он попросил меня помочь."
+            }
+          ],
+          "ref": "reported-speech"
+        },
+        {
+          "label": {
+            "en": "negative: not to …",
+            "ru": "отрицание: not to …"
+          },
+          "formula": "told/asked + person + not to + verb",
+          "examples": [
+            {
+              "en": "\"Don't be late.\" → She told us not to be late.",
+              "ru": "«Не опаздывайте.» → Она велела нам не опаздывать."
+            }
+          ],
+          "ref": "reported-speech"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use \"to + verb\", not \"that\": \"told me to wait\", not \"told me that wait\".",
+          "ru": "Используй «to + глагол», не «that»: «told me to wait», а не «told me that wait»."
+        },
+        {
+          "en": "Negative goes before \"to\": \"not to be late\", not \"to not be late\".",
+          "ru": "Отрицание перед «to»: «not to be late», а не «to not be late»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u18.d03.reading",
+      "title": {
+        "en": "The safety briefing",
+        "ru": "Инструктаж по безопасности"
+      },
+      "blocks": [
+        {
+          "id": "u18.d03.reading.b1",
+          "en": "Before the trip, the guide gave us some instructions. She told us to stay together and asked us not to touch the animals. She also warned us not to leave the path.",
+          "ru": "Перед поездкой гид дала нам указания. Она велела нам держаться вместе и попросила не трогать животных. Ещё она предупредила нас не сходить с тропы.",
+          "audio": {
+            "src": "media/audio/u18.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u18.d03.reading.b2",
+          "en": "She reminded everyone to bring water and advised us to wear strong shoes. One man refused to follow the rules, so she told him to wait in the bus. In the end, everyone else had a wonderful day.",
+          "ru": "Она напомнила всем взять воду и посоветовала надеть крепкую обувь. Один мужчина отказался соблюдать правила, поэтому она велела ему ждать в автобусе. В итоге все остальные прекрасно провели день.",
+          "audio": {
+            "src": "media/audio/u18.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "guide",
+          "ru": "гид",
+          "ipa": "/ɡaɪd/"
+        },
+        {
+          "word": "path",
+          "ru": "тропа",
+          "ipa": "/pɑːθ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u18.d03.listening",
+      "title": {
+        "en": "What did the doctor say?",
+        "ru": "Что сказал врач?"
+      },
+      "audio": {
+        "src": "media/audio/u18.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "What did the doctor say?",
+          "ru": "Что сказал врач?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "She told me to rest for a week.",
+          "ru": "Она велела мне отдыхать неделю."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Anything else?",
+          "ru": "Что-то ещё?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Yes, she advised me not to drink coffee.",
+          "ru": "Да, посоветовала не пить кофе."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u18.d03.ex.l.01",
+          "instruction": {
+            "en": "What did the doctor tell him?",
+            "ru": "Что велел врач?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.reported-speech"
+          ],
+          "prompt": "She told him ___ rest.",
+          "options": [
+            "to",
+            "that",
+            "for"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u18.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u18.d03.ex.c.01",
+          "instruction": {
+            "en": "Report the order.",
+            "ru": "Передай приказ."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "She told me ___ wait.",
+          "options": [
+            "to",
+            "that",
+            "for"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u18.d03.ex.g.01",
+          "instruction": {
+            "en": "ask + person + to.",
+            "ru": "ask + человек + to."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "\"Please help.\" → He asked me ___ help. (to)",
+          "answers": [
+            "to"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u18.d03.ex.c.02",
+          "instruction": {
+            "en": "Negative command.",
+            "ru": "Отрицательный приказ."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "She told us ___ be late.",
+          "options": [
+            "not to",
+            "to not",
+            "don't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u18.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "variants": [
+            "He told me that wait.",
+            "He told me to wait."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u18.d03.ex.g.02",
+          "instruction": {
+            "en": "not to + verb.",
+            "ru": "not to + глагол."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "\"Don't touch it.\" → She told me ___ touch it. (not to)",
+          "answers": [
+            "not to"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u18.d03.ex.c.03",
+          "instruction": {
+            "en": "Choose the verb.",
+            "ru": "Выбери глагол."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "The teacher ___ us to be quiet.",
+          "options": [
+            "told",
+            "said",
+            "spoke"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u18.d03.ex.o.01",
+          "instruction": {
+            "en": "Report the request.",
+            "ru": "Передай просьбу."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "tokens": [
+            "She",
+            "asked",
+            "me",
+            "to",
+            "close",
+            "the",
+            "door"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u18.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.news"
+          ],
+          "pairs": [
+            {
+              "left": "warn",
+              "right": "предупреждать"
+            },
+            {
+              "left": "advise",
+              "right": "советовать"
+            },
+            {
+              "left": "remind",
+              "right": "напоминать"
+            },
+            {
+              "left": "refuse",
+              "right": "отказываться"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u18.d03.ex.c.04",
+          "instruction": {
+            "en": "Word order.",
+            "ru": "Порядок слов."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "He warned us ___ out late.",
+          "options": [
+            "not to stay",
+            "to not stay",
+            "don't stay"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u18.d03.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "variants": [
+            "She told me to not worry.",
+            "She told me not to worry."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u18.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.reported-speech",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она велела мне подождать.",
+          "answers": [
+            "She told me to wait."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she told me wait",
+                "she said me to wait",
+                "she told me that wait"
+              ],
+              "explanation": {
+                "en": "tell + person + to + verb: She told me to wait.",
+                "ru": "tell + человек + to + глагол: She told me to wait."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u18.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.reported-speech",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он попросил меня не опаздывать.",
+          "answers": [
+            "He asked me not to be late."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he asked me to not be late",
+                "he asked me don't be late",
+                "he asked me not be late"
+              ],
+              "explanation": {
+                "en": "not to + verb: He asked me not to be late.",
+                "ru": "not to + глагол: He asked me not to be late."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

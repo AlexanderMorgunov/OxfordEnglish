@@ -1,0 +1,601 @@
+{
+  "id": "u18.d04",
+  "title": {
+    "en": "That day, the next day",
+    "ru": "В тот день, на следующий"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.reported-speech",
+    "vocab.news"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u18.d04.vocab",
+      "title": {
+        "en": "Time & place words",
+        "ru": "Слова времени и места"
+      },
+      "words": [
+        {
+          "word": "yesterday",
+          "ru": "вчера",
+          "ipa": "/ˈjestərdeɪ/",
+          "example": "He said he had called the day before.",
+          "exampleRu": "Он сказал, что звонил накануне.",
+          "audio": {
+            "src": "media/audio/u18.d04.vocab.yesterday.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tomorrow",
+          "ru": "завтра",
+          "ipa": "/təˈmɒroʊ/",
+          "example": "She said she would come the next day.",
+          "exampleRu": "Она сказала, что придёт на следующий день.",
+          "audio": {
+            "src": "media/audio/u18.d04.vocab.tomorrow.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "now",
+          "ru": "сейчас",
+          "ipa": "/naʊ/",
+          "example": "He said he was busy then.",
+          "exampleRu": "Он сказал, что был занят тогда.",
+          "audio": {
+            "src": "media/audio/u18.d04.vocab.now.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "here",
+          "ru": "здесь",
+          "ipa": "/hɪər/",
+          "example": "She said she liked it there.",
+          "exampleRu": "Она сказала, что ей там нравится.",
+          "audio": {
+            "src": "media/audio/u18.d04.vocab.here.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ago",
+          "ru": "назад",
+          "ipa": "/əˈɡoʊ/",
+          "example": "He said it had happened a week before.",
+          "exampleRu": "Он сказал, что это случилось неделей раньше.",
+          "audio": {
+            "src": "media/audio/u18.d04.vocab.ago.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "today",
+          "ru": "сегодня",
+          "ipa": "/təˈdeɪ/",
+          "example": "She said she was leaving that day.",
+          "exampleRu": "Она сказала, что уезжает в тот день.",
+          "audio": {
+            "src": "media/audio/u18.d04.vocab.today.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "this",
+          "ru": "этот",
+          "ipa": "/ðɪs/",
+          "example": "He said that book was his.",
+          "exampleRu": "Он сказал, что та книга — его.",
+          "audio": {
+            "src": "media/audio/u18.d04.vocab.this.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "gossip",
+          "ru": "сплетни",
+          "ipa": "/ˈɡɒsɪp/",
+          "example": "That's just gossip.",
+          "exampleRu": "Это просто сплетни.",
+          "audio": {
+            "src": "media/audio/u18.d04.vocab.gossip.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "rumour",
+          "ru": "слух",
+          "ipa": "/ˈruːmər/",
+          "example": "I've heard a rumour.",
+          "exampleRu": "Я слышал слух.",
+          "audio": {
+            "src": "media/audio/u18.d04.vocab.rumour.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "apparently",
+          "ru": "по-видимому",
+          "ipa": "/əˈpærəntli/",
+          "example": "Apparently, they broke up.",
+          "exampleRu": "Судя по всему, они расстались.",
+          "audio": {
+            "src": "media/audio/u18.d04.vocab.apparently.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u18.d04.grammar",
+      "title": {
+        "en": "Time and place changes",
+        "ru": "Изменение слов времени и места"
+      },
+      "rule": {
+        "en": "When you report words later or in another place, time and place words often change too: now → then, today → that day, tomorrow → the next day, here → there, this → that.",
+        "ru": "Когда пересказываешь слова позже или в другом месте, слова времени и места тоже меняются: now → then, today → that day, tomorrow → the next day, here → there, this → that."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "now → then",
+            "ru": "now → then"
+          },
+          "formula": "\"I'm busy now\" → said he was busy then",
+          "examples": [
+            {
+              "en": "\"I am busy now.\" → He said he was busy then.",
+              "ru": "«Я сейчас занят.» → Он сказал, что был тогда занят."
+            }
+          ],
+          "ref": "reported-speech"
+        },
+        {
+          "label": {
+            "en": "tomorrow → the next day",
+            "ru": "tomorrow → the next day"
+          },
+          "formula": "\"I'll go tomorrow\" → said he would go the next day",
+          "examples": [
+            {
+              "en": "\"I will call tomorrow.\" → She said she would call the next day.",
+              "ru": "«Я позвоню завтра.» → Она сказала, что позвонит на следующий день."
+            }
+          ],
+          "ref": "reported-speech"
+        },
+        {
+          "label": {
+            "en": "here → there, this → that",
+            "ru": "here → there, this → that"
+          },
+          "formula": "here → there · this → that",
+          "examples": [
+            {
+              "en": "\"I like it here.\" → He said he liked it there.",
+              "ru": "«Мне здесь нравится.» → Он сказал, что ему там нравится."
+            }
+          ],
+          "ref": "reported-speech"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"today\" reported later becomes \"that day\"; \"tomorrow\" becomes \"the next day\".",
+          "ru": "«today» при пересказе позже становится «that day»; «tomorrow» — «the next day»."
+        },
+        {
+          "en": "\"ago\" becomes \"before\": \"two days ago\" → \"two days before\".",
+          "ru": "«ago» становится «before»: «two days ago» → «two days before»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u18.d04.reading",
+      "title": {
+        "en": "Passing on the news",
+        "ru": "Передаём новости"
+      },
+      "blocks": [
+        {
+          "id": "u18.d04.reading.b1",
+          "en": "When I met Sara, she was full of news. She said that Tom had got a new job the week before and that he would move to London the next month. She also told me that Anna was getting married that summer.",
+          "ru": "Когда я встретил Сару, она была полна новостей. Она сказала, что Том неделей раньше получил новую работу и что в следующем месяце он переедет в Лондон. Ещё она сказала мне, что Анна выходит замуж тем летом.",
+          "audio": {
+            "src": "media/audio/u18.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u18.d04.reading.b2",
+          "en": "\"Apparently, they had been planning it for a year,\" she said. I was surprised. I told her that I hadn't heard anything about it. \"Well,\" she laughed, \"now you have — but don't tell anyone I told you!\"",
+          "ru": "«Судя по всему, они планировали это целый год», — сказала она. Я удивился. Я сказал ей, что ничего об этом не слышал. «Что ж, — засмеялась она, — теперь услышал — только не говори никому, что это я тебе рассказала!»",
+          "audio": {
+            "src": "media/audio/u18.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "get married",
+          "ru": "жениться, выходить замуж",
+          "ipa": "/ɡet ˈmærid/"
+        },
+        {
+          "word": "surprised",
+          "ru": "удивлённый",
+          "ipa": "/sərˈpraɪzd/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u18.d04.listening",
+      "title": {
+        "en": "Did you hear?",
+        "ru": "Ты слышал?"
+      },
+      "audio": {
+        "src": "media/audio/u18.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Did you hear about Mark?",
+          "ru": "Ты слышал про Марка?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "No, what happened?",
+          "ru": "Нет, что случилось?"
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Apparently he told everyone he was moving abroad the next year.",
+          "ru": "Судя по всему, он всем сказал, что на следующий год переезжает за границу."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Really? He never mentioned it to me!",
+          "ru": "Правда? Мне он ни разу об этом не говорил!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u18.d04.ex.l.01",
+          "instruction": {
+            "en": "When is he moving?",
+            "ru": "Когда он переезжает?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.reported-speech"
+          ],
+          "prompt": "The ___ year.",
+          "options": [
+            "next",
+            "last",
+            "same"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u18.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u18.d04.ex.c.01",
+          "instruction": {
+            "en": "now → then.",
+            "ru": "now → then."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "\"I'm tired now.\" → He said he was tired ___ .",
+          "options": [
+            "then",
+            "now",
+            "today"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u18.d04.ex.g.01",
+          "instruction": {
+            "en": "tomorrow → the next day.",
+            "ru": "tomorrow → the next day."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "\"I'll come tomorrow.\" → She said she would come the ___ day. (next)",
+          "answers": [
+            "next"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u18.d04.ex.c.02",
+          "instruction": {
+            "en": "here → there.",
+            "ru": "here → there."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "\"I like it here.\" → He said he liked it ___ .",
+          "options": [
+            "there",
+            "here",
+            "then"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u18.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "variants": [
+            "She said she would call tomorrow.",
+            "She said she would call the next day."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u18.d04.ex.g.02",
+          "instruction": {
+            "en": "this → that.",
+            "ru": "this → that."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "\"This is mine.\" → He said ___ was his. (that)",
+          "answers": [
+            "that"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u18.d04.ex.c.03",
+          "instruction": {
+            "en": "ago → before.",
+            "ru": "ago → before."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "\"I saw it two days ago.\" → He said he had seen it two days ___ .",
+          "options": [
+            "before",
+            "ago",
+            "then"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u18.d04.ex.o.01",
+          "instruction": {
+            "en": "Report the news.",
+            "ru": "Передай новость."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "tokens": [
+            "She",
+            "said",
+            "she",
+            "was",
+            "busy",
+            "that",
+            "day"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u18.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.news"
+          ],
+          "pairs": [
+            {
+              "left": "gossip",
+              "right": "сплетни"
+            },
+            {
+              "left": "rumour",
+              "right": "слух"
+            },
+            {
+              "left": "apparently",
+              "right": "по-видимому"
+            },
+            {
+              "left": "ago",
+              "right": "назад"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u18.d04.ex.c.04",
+          "instruction": {
+            "en": "today → that day.",
+            "ru": "today → that day."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "\"I'm leaving today.\" → She said she was leaving that ___ .",
+          "options": [
+            "day",
+            "today",
+            "time"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u18.d04.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "variants": [
+            "He said he had arrived the day before.",
+            "He said he arrived yesterday."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u18.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.reported-speech",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она сказала, что позвонит на следующий день.",
+          "answers": [
+            "She said she would call the next day."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she said she would call tomorrow",
+                "she said she will call the next day",
+                "she said she call the next day"
+              ],
+              "explanation": {
+                "en": "tomorrow → the next day; will → would.",
+                "ru": "tomorrow → the next day; will → would."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u18.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.reported-speech",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он сказал, что был занят тогда.",
+          "answers": [
+            "He said he was busy then."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he said he is busy then",
+                "he said he was busy now",
+                "he said he busy then"
+              ],
+              "explanation": {
+                "en": "now → then + backshift: He said he was busy then.",
+                "ru": "now → then + сдвиг: He said he was busy then."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

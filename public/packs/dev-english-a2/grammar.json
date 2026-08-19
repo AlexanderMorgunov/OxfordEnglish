@@ -2664,5 +2664,84 @@
       "present-perfect-signals",
       "perfect-vs-past"
     ]
+  },
+  {
+    "id": "reported-questions",
+    "title": {
+      "en": "Reported questions & commands",
+      "ru": "Косвенные вопросы и приказы"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "When you report a question, use normal word order (no do/does/did) and \"if\"/\"whether\" for yes/no questions. To report an order or request, use \"tell/ask someone to + verb\".",
+      "ru": "В косвенном вопросе — обычный порядок слов (без do/does/did) и «if»/«whether» для да/нет-вопросов. Чтобы передать приказ или просьбу — «tell/ask someone to + глагол»."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "Reported wh- questions",
+          "ru": "Косвенные wh-вопросы"
+        },
+        "text": {
+          "en": "Keep the question word (where, what, why…), then use normal word order — subject before verb — and no do/does/did. The verb usually backshifts.\n\n\"Where do you live?\" → He asked where I lived.\n\"What time does it start?\" → She asked what time it started.",
+          "ru": "Сохрани вопросительное слово (where, what, why…), затем обычный порядок — подлежащее перед глаголом — и без do/does/did. Глагол обычно сдвигается назад.\n\n\"Where do you live?\" → He asked where I lived.\n\"What time does it start?\" → She asked what time it started."
+        },
+        "examples": [
+          {
+            "en": "\"Why are you sad?\" → She asked why I was sad.",
+            "ru": "«Почему ты грустишь?» → Она спросила, почему я грущу."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Yes/no questions → if / whether",
+          "ru": "Да/нет-вопросы → if / whether"
+        },
+        "text": {
+          "en": "For a yes/no question, join it with \"if\" or \"whether\" and again use normal word order.\n\n\"Are you ready?\" → She asked if I was ready.\n\"Do you like it?\" → He asked whether I liked it.",
+          "ru": "Для да/нет-вопроса используй «if» или «whether» и снова обычный порядок слов.\n\n\"Are you ready?\" → She asked if I was ready.\n\"Do you like it?\" → He asked whether I liked it."
+        },
+        "examples": [
+          {
+            "en": "\"Can you swim?\" → He asked if I could swim.",
+            "ru": "«Ты умеешь плавать?» → Он спросил, умею ли я плавать."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Reported commands & requests",
+          "ru": "Косвенные приказы и просьбы"
+        },
+        "text": {
+          "en": "To report an order or a request, use \"tell/ask + person + to + verb\". For a negative, put \"not\" before \"to\".\n\n\"Wait here.\" → She told me to wait.\n\"Please help.\" → He asked me to help.\n\"Don't be late.\" → She told us not to be late.",
+          "ru": "Чтобы передать приказ или просьбу — «tell/ask + человек + to + глагол». Для отрицания ставь «not» перед «to».\n\n\"Wait here.\" → She told me to wait.\n\"Please help.\" → He asked me to help.\n\"Don't be late.\" → She told us not to be late."
+        },
+        "examples": [
+          {
+            "en": "\"Sit down.\" → The teacher told us to sit down.",
+            "ru": "«Садитесь.» → Учитель велел нам сесть."
+          }
+        ]
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "No do/does/did and normal order: \"where I lived\", not \"where did I live\".",
+        "ru": "Без do/does/did и обычный порядок: «where I lived», а не «where did I live»."
+      },
+      {
+        "en": "Commands use \"to + verb\", not \"that\": \"told me to wait\", not \"told me that wait\".",
+        "ru": "Приказы — «to + глагол», не «that»: «told me to wait», а не «told me that wait»."
+      },
+      {
+        "en": "Negative command: \"not to\" before the verb: \"told us not to be late\".",
+        "ru": "Отрицательный приказ: «not to» перед глаголом: «told us not to be late»."
+      }
+    ],
+    "seeAlso": [
+      "reported-speech"
+    ]
   }
 ]
