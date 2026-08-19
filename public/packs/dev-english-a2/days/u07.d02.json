@@ -184,7 +184,8 @@
               "en": "I have some bread, but I don't have any butter.",
               "ru": "У меня есть хлеб, но нет масла."
             }
-          ]
+          ],
+          "ref": "some-any"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "How much sugar? How many eggs?",
               "ru": "Сколько сахара? Сколько яиц?"
             }
-          ]
+          ],
+          "ref": "some-any"
         }
       ],
       "pitfalls": [
@@ -398,6 +400,160 @@
           "answers": [
             "We have some bread.",
             "We have got some bread."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u07.d02.ex.b.01",
+          "instruction": {
+            "en": "much or many?",
+            "ru": "much или many?"
+          },
+          "tags": [
+            "grammar.countable-uncountable"
+          ],
+          "prompt": "How ___ sugar do you take?",
+          "options": [
+            "much",
+            "many"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u07.d02.ex.b.02",
+          "instruction": {
+            "en": "much or many?",
+            "ru": "much или many?"
+          },
+          "tags": [
+            "grammar.countable-uncountable"
+          ],
+          "prompt": "How ___ eggs do we need?",
+          "options": [
+            "many",
+            "much"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u07.d02.ex.b.03",
+          "instruction": {
+            "en": "some or any?",
+            "ru": "some или any?"
+          },
+          "tags": [
+            "grammar.some-any"
+          ],
+          "prompt": "I don't have ___ money.",
+          "options": [
+            "any",
+            "some",
+            "much of"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u07.d02.ex.b.04",
+          "instruction": {
+            "en": "some (positive).",
+            "ru": "some (утверждение)."
+          },
+          "tags": [
+            "grammar.some-any"
+          ],
+          "prompt": "There is ___ milk in the fridge.",
+          "answers": [
+            "some"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u07.d02.ex.b.05",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.countable-uncountable"
+          ],
+          "variants": [
+            "How much apples?",
+            "How many apples?"
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "how much apples"
+              ],
+              "explanation": {
+                "en": "Countable → many: \"How many apples?\"",
+                "ru": "Исчисляемое → many: «How many apples?»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u07.d02.ex.b.06",
+          "instruction": {
+            "en": "Choose the quantifier.",
+            "ru": "Выбери слово количества."
+          },
+          "tags": [
+            "grammar.countable-uncountable"
+          ],
+          "prompt": "There is ___ water in the bottle.",
+          "options": [
+            "a lot of",
+            "many",
+            "a few"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "match",
+          "id": "u07.d02.ex.b.07",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.food"
+          ],
+          "pairs": [
+            {
+              "left": "bread",
+              "right": "хлеб"
+            },
+            {
+              "left": "rice",
+              "right": "рис"
+            },
+            {
+              "left": "cheese",
+              "right": "сыр"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u07.d02.ex.b.08",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.countable-uncountable",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Сколько яиц нам нужно?",
+          "answers": [
+            "How many eggs do we need?"
           ]
         }
       ]

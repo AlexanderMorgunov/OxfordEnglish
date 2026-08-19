@@ -468,6 +468,135 @@
             "Could we have the bill, please?",
             "Can I have the bill, please?"
           ]
+        },
+        {
+          "type": "choice",
+          "id": "u07.d05.ex.b.01",
+          "instruction": {
+            "en": "Order politely.",
+            "ru": "Закажи вежливо."
+          },
+          "tags": [
+            "functions.ordering"
+          ],
+          "prompt": "___ have the fish, please.",
+          "options": [
+            "I'll",
+            "I",
+            "Me"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u07.d05.ex.b.02",
+          "instruction": {
+            "en": "Ask for the bill.",
+            "ru": "Попроси счёт."
+          },
+          "tags": [
+            "functions.ordering"
+          ],
+          "tokens": [
+            "Could",
+            "we",
+            "have",
+            "the",
+            "bill"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u07.d05.ex.b.03",
+          "instruction": {
+            "en": "Book a table.",
+            "ru": "Забронируй столик."
+          },
+          "tags": [
+            "functions.ordering"
+          ],
+          "tokens": [
+            "I",
+            "want",
+            "to",
+            "book",
+            "a",
+            "table"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u07.d05.ex.b.04",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "functions.ordering"
+          ],
+          "variants": [
+            "I have the soup, please.",
+            "I'll have the soup, please."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u07.d05.ex.b.05",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.restaurant"
+          ],
+          "pairs": [
+            {
+              "left": "starter",
+              "right": "закуска"
+            },
+            {
+              "left": "bill",
+              "right": "счёт"
+            },
+            {
+              "left": "tip",
+              "right": "чаевые"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u07.d05.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.ordering",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Можно счёт, пожалуйста?",
+          "answers": [
+            "Could we have the bill, please?",
+            "Can I have the bill, please?"
+          ]
         }
       ]
     }

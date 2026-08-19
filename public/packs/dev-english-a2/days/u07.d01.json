@@ -407,6 +407,186 @@
             "Can I have the bill, please?",
             "Can I have the bill please?"
           ]
+        },
+        {
+          "type": "choice",
+          "id": "u07.d01.ex.b.01",
+          "instruction": {
+            "en": "Order politely.",
+            "ru": "Закажи вежливо."
+          },
+          "tags": [
+            "functions.ordering"
+          ],
+          "prompt": "___ I have a coffee, please?",
+          "options": [
+            "Can",
+            "Do",
+            "Am"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u07.d01.ex.b.02",
+          "instruction": {
+            "en": "Offer.",
+            "ru": "Предложи."
+          },
+          "tags": [
+            "functions.ordering"
+          ],
+          "prompt": "___ you like a dessert?",
+          "options": [
+            "Would",
+            "Do",
+            "Are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u07.d01.ex.b.03",
+          "instruction": {
+            "en": "Ask for the menu.",
+            "ru": "Попроси меню."
+          },
+          "tags": [
+            "functions.ordering"
+          ],
+          "tokens": [
+            "Can",
+            "I",
+            "have",
+            "the",
+            "menu"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u07.d01.ex.b.04",
+          "instruction": {
+            "en": "a cup ___ tea",
+            "ru": "a cup ___ tea"
+          },
+          "tags": [
+            "vocab.cafe"
+          ],
+          "prompt": "A cup ___ tea, please.",
+          "answers": [
+            "of"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u07.d01.ex.b.05",
+          "instruction": {
+            "en": "some (uncountable).",
+            "ru": "some (неисчисл.)."
+          },
+          "tags": [
+            "grammar.some-any"
+          ],
+          "prompt": "Can I have ___ water, please?",
+          "answers": [
+            "some"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u07.d01.ex.b.06",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "functions.ordering"
+          ],
+          "variants": [
+            "Can I have bill, please?",
+            "Can I have the bill, please?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u07.d01.ex.b.07",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.cafe"
+          ],
+          "pairs": [
+            {
+              "left": "menu",
+              "right": "меню"
+            },
+            {
+              "left": "waiter",
+              "right": "официант"
+            },
+            {
+              "left": "bill",
+              "right": "счёт"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u07.d01.ex.b.08",
+          "instruction": {
+            "en": "Ready ___ order.",
+            "ru": "Готовы ___ заказать."
+          },
+          "tags": [
+            "functions.ordering"
+          ],
+          "prompt": "Are you ready ___ order?",
+          "options": [
+            "to",
+            "for",
+            "of"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u07.d01.ex.b.09",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.ordering",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Можно счёт, пожалуйста?",
+          "answers": [
+            "Can I have the bill, please?",
+            "Could I have the bill, please?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "can i have bill",
+                "have bill please"
+              ],
+              "explanation": {
+                "en": "Use \"the bill\": \"Can I have the bill, please?\"",
+                "ru": "Нужен «the bill»: «Can I have the bill, please?»."
+              }
+            }
+          ]
         }
       ]
     }

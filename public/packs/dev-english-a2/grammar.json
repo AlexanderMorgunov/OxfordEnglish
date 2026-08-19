@@ -642,5 +642,50 @@
       { "en": "\"between\" needs two things: \"between the sofa and the wall\".", "ru": "«between» — между двумя предметами: «between the sofa and the wall»." }
     ],
     "seeAlso": ["there-is"]
+  },
+  {
+    "id": "some-any",
+    "title": { "en": "some / any / much / many", "ru": "some / any / much / many" },
+    "level": "A2",
+    "summary": {
+      "en": "Talk about quantity — with countable and uncountable nouns.",
+      "ru": "Говорим о количестве — с исчисляемыми и неисчисляемыми."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "Countable vs uncountable", "ru": "Исчисляемые и неисчисляемые" },
+        "text": {
+          "en": "Countable nouns can be counted (one apple, two apples). Uncountable nouns cannot (water, money, bread) — no plural, no \"a\". This choice controls the words below.",
+          "ru": "Исчисляемые можно посчитать (one apple, two apples). Неисчисляемые — нельзя (water, money, bread): нет множественного, нет «a». От этого зависят слова ниже."
+        }
+      },
+      {
+        "heading": { "en": "some / any", "ru": "some / any" },
+        "text": {
+          "en": "some in positive sentences; any in questions and negatives. Both work with plurals and uncountables.",
+          "ru": "some — в утверждениях; any — в вопросах и отрицаниях. Оба — с множественным и неисчисляемым."
+        },
+        "examples": [
+          { "en": "I have some water.", "ru": "У меня есть немного воды." },
+          { "en": "Is there any milk? — No, there isn't any.", "ru": "Есть молоко? — Нет." }
+        ]
+      },
+      {
+        "heading": { "en": "much / many / a lot of", "ru": "much / many / a lot of" },
+        "text": {
+          "en": "much + uncountable, many + countable — mostly in questions and negatives. In positives \"a lot of\" is more natural for both. \"How much…?\" for uncountable, \"How many…?\" for countable.",
+          "ru": "much + неисчисляемое, many + исчисляемое — в основном в вопросах и отрицаниях. В утверждениях естественнее «a lot of» для обоих. «How much…?» — о неисчисляемом, «How many…?» — об исчисляемом."
+        },
+        "examples": [
+          { "en": "How much sugar? How many eggs?", "ru": "Сколько сахара? Сколько яиц?" },
+          { "en": "There is a lot of traffic.", "ru": "Много машин на дороге." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "Uncountable nouns take no \"a\" and no plural: \"some water\", not \"a water\" / \"waters\".", "ru": "Неисчисляемые — без «a» и без множественного: «some water», а не «a water» / «waters»." },
+      { "en": "\"How much\" for uncountable, \"How many\" for countable.", "ru": "«How much» — неисчисляемое, «How many» — исчисляемое." }
+    ],
+    "seeAlso": ["there-is", "articles"]
   }
 ]

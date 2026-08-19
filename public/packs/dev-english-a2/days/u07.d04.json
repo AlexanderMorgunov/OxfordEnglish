@@ -472,6 +472,126 @@
             "cap"
           ],
           "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u07.d04.ex.b.01",
+          "instruction": {
+            "en": "a few or a little?",
+            "ru": "a few или a little?"
+          },
+          "tags": [
+            "grammar.few-little"
+          ],
+          "prompt": "I have ___ apples.",
+          "options": [
+            "a few",
+            "a little",
+            "much"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u07.d04.ex.b.02",
+          "instruction": {
+            "en": "a few or a little?",
+            "ru": "a few или a little?"
+          },
+          "tags": [
+            "grammar.few-little"
+          ],
+          "prompt": "There is ___ milk in the cup.",
+          "options": [
+            "a little",
+            "a few",
+            "many"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u07.d04.ex.b.03",
+          "instruction": {
+            "en": "one or ones?",
+            "ru": "one или ones?"
+          },
+          "tags": [
+            "grammar.one-ones"
+          ],
+          "prompt": "Which cups? The blue ___ .",
+          "answers": [
+            "ones"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u07.d04.ex.b.04",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.few-little"
+          ],
+          "variants": [
+            "I have a little apples.",
+            "I have a few apples."
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "a little apples"
+              ],
+              "explanation": {
+                "en": "Countable → a few: \"a few apples\", not \"a little apples\".",
+                "ru": "Исчисляемое → a few: «a few apples», а не «a little apples»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u07.d04.ex.b.05",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.food"
+          ],
+          "pairs": [
+            {
+              "left": "bottle",
+              "right": "бутылка"
+            },
+            {
+              "left": "slice",
+              "right": "ломтик"
+            },
+            {
+              "left": "bowl",
+              "right": "миска"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u07.d04.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.few-little",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У меня есть немного молока.",
+          "answers": [
+            "I have a little milk."
+          ]
         }
       ]
     }

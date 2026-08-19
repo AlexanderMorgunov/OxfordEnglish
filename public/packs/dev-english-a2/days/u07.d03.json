@@ -484,6 +484,124 @@
           "answers": [
             "The food was delicious."
           ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u07.d03.ex.b.01",
+          "instruction": {
+            "en": "a or some?",
+            "ru": "a или some?"
+          },
+          "tags": [
+            "grammar.some-any"
+          ],
+          "prompt": "I'd like ___ water, please.",
+          "answers": [
+            "some"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u07.d03.ex.b.02",
+          "instruction": {
+            "en": "a or some?",
+            "ru": "a или some?"
+          },
+          "tags": [
+            "grammar.some-any"
+          ],
+          "prompt": "I'd like ___ sandwich.",
+          "answers": [
+            "a"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u07.d03.ex.b.03",
+          "instruction": {
+            "en": "Polite order.",
+            "ru": "Вежливый заказ."
+          },
+          "tags": [
+            "grammar.would-like"
+          ],
+          "prompt": "___ you like a dessert?",
+          "options": [
+            "Would",
+            "Do",
+            "Are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u07.d03.ex.b.04",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.some-any"
+          ],
+          "variants": [
+            "I'd like a soup.",
+            "I'd like some soup."
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "a soup"
+              ],
+              "explanation": {
+                "en": "Uncountable food takes \"some\": \"some soup\", not \"a soup\".",
+                "ru": "С неисчисляемой едой — «some»: «some soup», а не «a soup»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u07.d03.ex.b.05",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.cafe"
+          ],
+          "pairs": [
+            {
+              "left": "starter",
+              "right": "закуска"
+            },
+            {
+              "left": "bill",
+              "right": "счёт"
+            },
+            {
+              "left": "delicious",
+              "right": "вкусный"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u07.d03.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.would-like",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мне суп и кофе, пожалуйста.",
+          "answers": [
+            "I'd like some soup and a coffee, please.",
+            "I'll have soup and a coffee, please."
+          ]
         }
       ]
     }
