@@ -3174,5 +3174,155 @@
       "past-continuous",
       "comparatives"
     ]
+  },
+  {
+    "id": "passive-extended",
+    "title": {
+      "en": "The passive in all tenses (and \"it is said that\")",
+      "ru": "Пассив во всех временах (и «it is said that»)"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "The passive (be + past participle) can be used in every tense and after modals. It is also used to report general beliefs with \"It is said that…\" and \"He is thought to…\".",
+      "ru": "Пассив (be + причастие) можно использовать в любом времени и после модальных. Ещё им сообщают общие мнения: «It is said that…» и «He is thought to…»."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "The passive across tenses",
+          "ru": "Пассив в разных временах"
+        },
+        "text": {
+          "en": "Change the verb \"be\", keep the past participle:\n\nPresent: The cars are made here.\nPast: The bridge was built in 1990.\nPresent perfect: The road has been repaired.\nFuture: The museum will be opened in May.",
+          "ru": "Меняй глагол «be», причастие оставляй:\n\nНастоящее: The cars are made here.\nПрошедшее: The bridge was built in 1990.\nPerfect: The road has been repaired.\nБудущее: The museum will be opened in May."
+        },
+        "examples": [
+          {
+            "en": "The letters have been sent.",
+            "ru": "Письма отправлены."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Modal passives: can/must/should be done",
+          "ru": "Модальный пассив: can/must/should be done"
+        },
+        "text": {
+          "en": "After a modal or \"will\", use \"be + past participle\".\n\nGlass can be recycled.\nRules must be followed.\nThis could be improved.",
+          "ru": "После модального или «will» — «be + причастие».\n\nGlass can be recycled.\nRules must be followed.\nThis could be improved."
+        },
+        "examples": [
+          {
+            "en": "Seatbelts must be worn.",
+            "ru": "Ремни должны быть пристёгнуты."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Describing processes",
+          "ru": "Описание процессов"
+        },
+        "text": {
+          "en": "Use the present passive with sequence words to describe how things are made.\n\nFirst, the beans are picked. Then they are washed and dried. Finally, the coffee is packed.",
+          "ru": "Используй настоящий пассив со словами последовательности, чтобы описать, как что-то делают.\n\nFirst, the beans are picked. Then they are washed and dried. Finally, the coffee is packed."
+        },
+        "examples": [
+          {
+            "en": "The bottles are cleaned and filled by machine.",
+            "ru": "Бутылки моют и наполняют машиной."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Reporting passives: it is said that…",
+          "ru": "Пассив сообщения: it is said that…"
+        },
+        "text": {
+          "en": "To report a general belief without naming who, use \"It is said/believed/thought that + clause\" or \"Subject + is said/believed to + verb\".\n\nIt is said that the castle is haunted.\nShe is believed to be very rich.\nThe team is expected to win.",
+          "ru": "Чтобы передать общее мнение, не называя, кто так думает: «It is said/believed/thought that + предложение» или «Подлежащее + is said/believed to + глагол».\n\nIt is said that the castle is haunted.\nShe is believed to be very rich.\nThe team is expected to win."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Keep \"be/been\" in the passive: \"has been built\", \"can be done\" — not \"has built\", \"can done\".",
+        "ru": "Сохраняй «be/been» в пассиве: «has been built», «can be done» — не «has built», «can done»."
+      },
+      {
+        "en": "\"It is said THAT + clause\" but \"He is said TO + verb\".",
+        "ru": "«It is said THAT + предложение», но «He is said TO + глагол»."
+      },
+      {
+        "en": "Match \"be\" to the subject: \"the beans are picked\", \"the coffee is packed\".",
+        "ru": "Согласуй «be» с подлежащим: «the beans are picked», «the coffee is packed»."
+      }
+    ],
+    "seeAlso": [
+      "passive",
+      "passive-report"
+    ]
+  },
+  {
+    "id": "passive-report",
+    "title": {
+      "en": "Reporting with the passive (it is said that…)",
+      "ru": "Сообщение через пассив (it is said that…)"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "When you want to report what people generally say or believe, without naming a source, use impersonal passive structures.",
+      "ru": "Когда хочешь передать, что люди в целом говорят или думают, не называя источник, используй безличный пассив."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "It is said/believed/thought that…",
+          "ru": "It is said/believed/thought that…"
+        },
+        "text": {
+          "en": "Start with \"It\" + is + past participle + \"that\" + a full clause.\n\nIt is said that the shop will close.\nIt is believed that the painting is a fake.\nIt is thought that prices will rise.",
+          "ru": "Начни с «It» + is + причастие + «that» + полное предложение.\n\nIt is said that the shop will close.\nIt is believed that the painting is a fake.\nIt is thought that prices will rise."
+        },
+        "examples": [
+          {
+            "en": "It is reported that the roads are closed.",
+            "ru": "Сообщается, что дороги перекрыты."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Subject + is said to + verb",
+          "ru": "Подлежащее + is said to + глагол"
+        },
+        "text": {
+          "en": "Put the subject first, then \"is said/believed/expected/known to + verb\".\n\nShe is said to be very kind.\nHe is known to work hard.\nThe team is expected to win.",
+          "ru": "Сначала подлежащее, потом «is said/believed/expected/known to + глагол».\n\nShe is said to be very kind.\nHe is known to work hard.\nThe team is expected to win."
+        },
+        "examples": [
+          {
+            "en": "The building is believed to be 500 years old.",
+            "ru": "Считается, что зданию 500 лет."
+          }
+        ]
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "\"It is said THAT + clause\" but \"He is said TO + verb\" — do not mix them.",
+        "ru": "«It is said THAT + предложение», но «He is said TO + глагол» — не смешивай."
+      },
+      {
+        "en": "These sound formal and objective — good for news, science and reports.",
+        "ru": "Звучат официально и объективно — хороши для новостей, науки и отчётов."
+      }
+    ],
+    "seeAlso": [
+      "passive-extended",
+      "reported-speech"
+    ]
   }
 ]

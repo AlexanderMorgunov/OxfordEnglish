@@ -93,6 +93,7 @@ export const SKILL_TAGS = [
   'grammar.non-defining-clauses',
   'grammar.used-to',
   'grammar.be-used-to',
+  'grammar.passive-report',
 
   // functions (everyday communication)
   'functions.ordering',
@@ -158,6 +159,7 @@ export const SKILL_TAGS = [
   'vocab.stories',
   'vocab.news',
   'vocab.mystery',
+  'vocab.science',
 
   // reading
   'reading.gist',

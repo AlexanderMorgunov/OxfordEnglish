@@ -1,0 +1,596 @@
+{
+  "id": "u24.d01",
+  "title": {
+    "en": "It has been done",
+    "ru": "Это уже сделано"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.passive",
+    "vocab.science"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u24.d01.vocab",
+      "title": {
+        "en": "Making & building",
+        "ru": "Создание и строительство"
+      },
+      "words": [
+        {
+          "word": "build",
+          "ru": "строить",
+          "ipa": "/bɪld/",
+          "example": "The bridge was built in 1990.",
+          "exampleRu": "Мост построили в 1990.",
+          "audio": {
+            "src": "media/audio/u24.d01.vocab.build.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "design",
+          "ru": "проектировать",
+          "ipa": "/dɪˈzaɪn/",
+          "example": "The car was designed in Italy.",
+          "exampleRu": "Машину спроектировали в Италии.",
+          "audio": {
+            "src": "media/audio/u24.d01.vocab.design.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "invent",
+          "ru": "изобретать",
+          "ipa": "/ɪnˈvent/",
+          "example": "The phone was invented long ago.",
+          "exampleRu": "Телефон изобрели давно.",
+          "audio": {
+            "src": "media/audio/u24.d01.vocab.invent.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "produce",
+          "ru": "производить",
+          "ipa": "/prəˈdjuːs/",
+          "example": "The goods are produced here.",
+          "exampleRu": "Товары производят здесь.",
+          "audio": {
+            "src": "media/audio/u24.d01.vocab.produce.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "discover",
+          "ru": "открывать",
+          "ipa": "/dɪˈskʌvər/",
+          "example": "A new planet was discovered.",
+          "exampleRu": "Открыли новую планету.",
+          "audio": {
+            "src": "media/audio/u24.d01.vocab.discover.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "repair",
+          "ru": "ремонтировать",
+          "ipa": "/rɪˈpeər/",
+          "example": "The road has been repaired.",
+          "exampleRu": "Дорогу отремонтировали.",
+          "audio": {
+            "src": "media/audio/u24.d01.vocab.repair.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "deliver",
+          "ru": "доставлять",
+          "ipa": "/dɪˈlɪvər/",
+          "example": "The parcel has been delivered.",
+          "exampleRu": "Посылку доставили.",
+          "audio": {
+            "src": "media/audio/u24.d01.vocab.deliver.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "complete",
+          "ru": "завершать",
+          "ipa": "/kəmˈpliːt/",
+          "example": "The work has been completed.",
+          "exampleRu": "Работа завершена.",
+          "audio": {
+            "src": "media/audio/u24.d01.vocab.complete.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "factory",
+          "ru": "фабрика, завод",
+          "ipa": "/ˈfæktəri/",
+          "example": "It's made in a factory.",
+          "exampleRu": "Это делают на заводе.",
+          "audio": {
+            "src": "media/audio/u24.d01.vocab.factory.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "material",
+          "ru": "материал",
+          "ipa": "/məˈtɪəriəl/",
+          "example": "Strong materials are used.",
+          "exampleRu": "Используются прочные материалы.",
+          "audio": {
+            "src": "media/audio/u24.d01.vocab.material.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u24.d01.grammar",
+      "title": {
+        "en": "Perfect passive: has/have been + V3",
+        "ru": "Перфектный пассив: has/have been + V3"
+      },
+      "rule": {
+        "en": "The passive can be used in any tense. In the present perfect passive, use \"has/have been + past participle\" to say something has been done, without saying who did it.",
+        "ru": "Пассив можно использовать в любом времени. В present perfect passive — «has/have been + причастие», чтобы сказать, что что-то сделано, не называя, кто."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "present passive (review)",
+            "ru": "настоящий пассив (повтор)"
+          },
+          "formula": "am/is/are + V3",
+          "examples": [
+            {
+              "en": "These cars are made in Japan.",
+              "ru": "Эти машины делают в Японии."
+            }
+          ],
+          "ref": "passive"
+        },
+        {
+          "label": {
+            "en": "present perfect passive",
+            "ru": "perfect passive"
+          },
+          "formula": "has/have been + V3",
+          "examples": [
+            {
+              "en": "The road has been repaired.",
+              "ru": "Дорогу отремонтировали."
+            }
+          ],
+          "ref": "passive-extended"
+        },
+        {
+          "label": {
+            "en": "past passive (review)",
+            "ru": "прошедший пассив (повтор)"
+          },
+          "formula": "was/were + V3",
+          "examples": [
+            {
+              "en": "The bridge was built in 1990.",
+              "ru": "Мост построили в 1990."
+            }
+          ],
+          "ref": "passive"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Perfect passive keeps \"been\": \"has been repaired\", not \"has repaired\" (that's active).",
+          "ru": "В перфектном пассиве есть «been»: «has been repaired», а не «has repaired» (это актив)."
+        },
+        {
+          "en": "Use the past participle (V3): \"has been built\", not \"has been build\".",
+          "ru": "Нужно причастие (V3): «has been built», а не «has been build»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u24.d01.reading",
+      "title": {
+        "en": "The new bridge",
+        "ru": "Новый мост"
+      },
+      "blocks": [
+        {
+          "id": "u24.d01.reading.b1",
+          "en": "After two years of work, the new bridge has finally been completed. It was designed by a famous engineer and built by a local company. Strong steel and concrete were used to make it safe.",
+          "ru": "После двух лет работы новый мост наконец достроен. Его спроектировал известный инженер, а построила местная компания. Для прочности использовали крепкую сталь и бетон.",
+          "audio": {
+            "src": "media/audio/u24.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u24.d01.reading.b2",
+          "en": "The old bridge, which was built over a hundred years ago, has been closed. \"Everything has been checked and tested,\" said the mayor. \"The new bridge will be opened to traffic next week.\" Thousands of cars are expected every day.",
+          "ru": "Старый мост, который построили больше ста лет назад, закрыли. «Всё проверено и испытано, — сказал мэр. — Новый мост откроют для движения на следующей неделе». Ожидаются тысячи машин ежедневно.",
+          "audio": {
+            "src": "media/audio/u24.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "steel",
+          "ru": "сталь",
+          "ipa": "/stiːl/"
+        },
+        {
+          "word": "concrete",
+          "ru": "бетон",
+          "ipa": "/ˈkɒŋkriːt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u24.d01.listening",
+      "title": {
+        "en": "Is it ready?",
+        "ru": "Готово?"
+      },
+      "audio": {
+        "src": "media/audio/u24.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Is the report ready?",
+          "ru": "Отчёт готов?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Yes, it has been finished and sent.",
+          "ru": "Да, он закончен и отправлен."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Great. And the meeting room?",
+          "ru": "Отлично. А переговорная?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "It has been booked for three o'clock.",
+          "ru": "Забронирована на три часа."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u24.d01.ex.l.01",
+          "instruction": {
+            "en": "What happened to the report?",
+            "ru": "Что с отчётом?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.passive"
+          ],
+          "prompt": "It has been ___ and sent.",
+          "options": [
+            "finished",
+            "finish",
+            "finishing"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u24.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u24.d01.ex.g.01",
+          "instruction": {
+            "en": "Present perfect passive.",
+            "ru": "Perfect passive."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The road has ___ repaired. (be)",
+          "answers": [
+            "been"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u24.d01.ex.c.01",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The parcel ___ been delivered.",
+          "options": [
+            "has",
+            "is",
+            "was"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u24.d01.ex.g.02",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The house has been ___ . (sell)",
+          "answers": [
+            "sold"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u24.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "The bridge has been build.",
+            "The bridge has been built."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u24.d01.ex.c.02",
+          "instruction": {
+            "en": "Present passive.",
+            "ru": "Настоящий пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "These phones ___ made in Korea.",
+          "options": [
+            "are",
+            "have",
+            "has"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u24.d01.ex.g.03",
+          "instruction": {
+            "en": "Perfect passive.",
+            "ru": "Perfect passive."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The work ___ been completed. (has/have)",
+          "answers": [
+            "has"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u24.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a passive sentence.",
+            "ru": "Составь пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "tokens": [
+            "The",
+            "letter",
+            "has",
+            "been",
+            "sent"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u24.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.science"
+          ],
+          "pairs": [
+            {
+              "left": "invent",
+              "right": "изобретать"
+            },
+            {
+              "left": "produce",
+              "right": "производить"
+            },
+            {
+              "left": "discover",
+              "right": "открывать"
+            },
+            {
+              "left": "factory",
+              "right": "завод"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u24.d01.ex.c.03",
+          "instruction": {
+            "en": "Keep \"been\".",
+            "ru": "Сохрани «been»."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The car ___ been repaired already.",
+          "options": [
+            "has",
+            "have",
+            "is"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u24.d01.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "The tickets has been booked.",
+            "The tickets have been booked."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u24.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Дорогу уже отремонтировали.",
+          "answers": [
+            "The road has already been repaired.",
+            "The road has been repaired already."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the road has already repaired",
+                "the road is already repaired",
+                "the road has been repair already"
+              ],
+              "explanation": {
+                "en": "Perfect passive: has been repaired.",
+                "ru": "Perfect passive: has been repaired."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u24.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Эти машины делают в Германии.",
+          "answers": [
+            "These cars are made in Germany.",
+            "These cars are produced in Germany."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "these cars make in germany",
+                "these cars is made in germany",
+                "these cars are make in germany"
+              ],
+              "explanation": {
+                "en": "Present passive: are made.",
+                "ru": "Настоящий пассив: are made."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

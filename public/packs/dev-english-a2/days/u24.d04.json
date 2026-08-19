@@ -1,0 +1,603 @@
+{
+  "id": "u24.d04",
+  "title": {
+    "en": "It is said that…",
+    "ru": "Говорят, что…"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.passive-report",
+    "grammar.passive",
+    "vocab.science"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u24.d04.vocab",
+      "title": {
+        "en": "Reporting beliefs",
+        "ru": "Сообщаем мнения"
+      },
+      "words": [
+        {
+          "word": "believe",
+          "ru": "полагать",
+          "ipa": "/bɪˈliːv/",
+          "example": "It is believed to be true.",
+          "exampleRu": "Считается, что это правда.",
+          "audio": {
+            "src": "media/audio/u24.d04.vocab.believe.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "claim",
+          "ru": "утверждать",
+          "ipa": "/kleɪm/",
+          "example": "It is claimed that it works.",
+          "exampleRu": "Утверждают, что это работает.",
+          "audio": {
+            "src": "media/audio/u24.d04.vocab.claim.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "report",
+          "ru": "сообщать",
+          "ipa": "/rɪˈpɔːrt/",
+          "example": "It is reported that prices will rise.",
+          "exampleRu": "Сообщают, что цены вырастут.",
+          "audio": {
+            "src": "media/audio/u24.d04.vocab.report.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "expect",
+          "ru": "ожидать",
+          "ipa": "/ɪkˈspekt/",
+          "example": "He is expected to win.",
+          "exampleRu": "Ожидается, что он победит.",
+          "audio": {
+            "src": "media/audio/u24.d04.vocab.expect.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "consider",
+          "ru": "считать",
+          "ipa": "/kənˈsɪdər/",
+          "example": "It is considered safe.",
+          "exampleRu": "Это считается безопасным.",
+          "audio": {
+            "src": "media/audio/u24.d04.vocab.consider.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "estimate",
+          "ru": "оценивать",
+          "ipa": "/ˈestɪmeɪt/",
+          "example": "It is estimated at a million.",
+          "exampleRu": "Оценивается в миллион.",
+          "audio": {
+            "src": "media/audio/u24.d04.vocab.estimate.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "known",
+          "ru": "известный",
+          "ipa": "/noʊn/",
+          "example": "She is known to be honest.",
+          "exampleRu": "Известно, что она честна.",
+          "audio": {
+            "src": "media/audio/u24.d04.vocab.known.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "thought",
+          "ru": "считается (think)",
+          "ipa": "/θɔːt/",
+          "example": "It is thought to be old.",
+          "exampleRu": "Считается, что это старое.",
+          "audio": {
+            "src": "media/audio/u24.d04.vocab.thought.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "rumour",
+          "ru": "слух",
+          "ipa": "/ˈruːmər/",
+          "example": "It is only a rumour.",
+          "exampleRu": "Это лишь слух.",
+          "audio": {
+            "src": "media/audio/u24.d04.vocab.rumour.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "expert",
+          "ru": "эксперт",
+          "ipa": "/ˈekspɜːrt/",
+          "example": "Experts say it is safe.",
+          "exampleRu": "Эксперты говорят, что это безопасно.",
+          "audio": {
+            "src": "media/audio/u24.d04.vocab.expert.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u24.d04.grammar",
+      "title": {
+        "en": "It is said that / He is said to",
+        "ru": "It is said that / He is said to"
+      },
+      "rule": {
+        "en": "To report what people generally believe or say, without naming them, use \"It is said/believed/thought that…\" or \"He/She is said/believed to…\". Common with news and science.",
+        "ru": "Чтобы передать, что люди в целом думают или говорят, не называя их, используй «It is said/believed/thought that…» или «He/She is said/believed to…». Часто в новостях и науке."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "It is said that + clause",
+            "ru": "It is said that + предложение"
+          },
+          "formula": "It is said/believed/thought that …",
+          "examples": [
+            {
+              "en": "It is said that the castle is haunted.",
+              "ru": "Говорят, что в замке водятся привидения."
+            }
+          ],
+          "ref": "passive-report"
+        },
+        {
+          "label": {
+            "en": "He is said to + verb",
+            "ru": "He is said to + глагол"
+          },
+          "formula": "subject + is said/believed to + verb",
+          "examples": [
+            {
+              "en": "She is believed to be very rich.",
+              "ru": "Считается, что она очень богата."
+            }
+          ],
+          "ref": "passive-report"
+        },
+        {
+          "label": {
+            "en": "is expected to / known to",
+            "ru": "is expected to / known to"
+          },
+          "formula": "is expected/known to + verb",
+          "examples": [
+            {
+              "en": "The team is expected to win.",
+              "ru": "Ожидается, что команда победит."
+            }
+          ],
+          "ref": "passive-report"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"It is said THAT + clause\" but \"He is said TO + verb\".",
+          "ru": "«It is said THAT + предложение», но «He is said TO + глагол»."
+        },
+        {
+          "en": "Use these to sound objective — you report a belief without saying whose.",
+          "ru": "Так звучишь объективно — передаёшь мнение, не называя чьё."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u24.d04.reading",
+      "title": {
+        "en": "The mystery island",
+        "ru": "Загадочный остров"
+      },
+      "blocks": [
+        {
+          "id": "u24.d04.reading.b1",
+          "en": "It is said that a small island in the Pacific holds a great secret. It is believed that treasure was hidden there hundreds of years ago. The island is thought to be dangerous, and few people are allowed to visit.",
+          "ru": "Говорят, что маленький остров в Тихом океане хранит большую тайну. Считается, что сотни лет назад там спрятали сокровища. Остров считают опасным, и мало кому разрешают его посещать.",
+          "audio": {
+            "src": "media/audio/u24.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u24.d04.reading.b2",
+          "en": "One local man is known to have searched for the treasure for forty years. He is said to have found old maps, but nothing more. \"It is estimated that thousands have tried,\" a historian explained. \"But the secret is still believed to be safe.\"",
+          "ru": "Известно, что один местный житель искал сокровища сорок лет. Говорят, он нашёл старые карты, но не более того. «По оценкам, пытались тысячи, — объяснил историк. — Но тайна, как считают, всё ещё в сохранности».",
+          "audio": {
+            "src": "media/audio/u24.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "treasure",
+          "ru": "сокровище",
+          "ipa": "/ˈtreʒər/"
+        },
+        {
+          "word": "historian",
+          "ru": "историк",
+          "ipa": "/hɪˈstɔːriən/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u24.d04.listening",
+      "title": {
+        "en": "Is it true?",
+        "ru": "Это правда?"
+      },
+      "audio": {
+        "src": "media/audio/u24.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Is it true the shop is closing?",
+          "ru": "Правда, что магазин закрывается?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "It is said that it will close next month.",
+          "ru": "Говорят, он закроется в следующем месяце."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Who told you?",
+          "ru": "Кто тебе сказал?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "No one exactly. It's believed to be true, though.",
+          "ru": "Никто конкретно. Но считается, что это правда."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u24.d04.ex.l.01",
+          "instruction": {
+            "en": "What is said about the shop?",
+            "ru": "Что говорят о магазине?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.passive-report"
+          ],
+          "prompt": "It is said that it ___ close.",
+          "options": [
+            "will",
+            "is",
+            "has"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u24.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u24.d04.ex.g.01",
+          "instruction": {
+            "en": "It is said that.",
+            "ru": "It is said that."
+          },
+          "tags": [
+            "grammar.passive-report"
+          ],
+          "prompt": "It ___ said that prices will rise. (be)",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u24.d04.ex.c.01",
+          "instruction": {
+            "en": "that or to?",
+            "ru": "that или to?"
+          },
+          "tags": [
+            "grammar.passive-report"
+          ],
+          "prompt": "It is believed ___ the story is true.",
+          "options": [
+            "that",
+            "to",
+            "for"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u24.d04.ex.c.02",
+          "instruction": {
+            "en": "He is said to.",
+            "ru": "He is said to."
+          },
+          "tags": [
+            "grammar.passive-report"
+          ],
+          "prompt": "She is said ___ be very kind.",
+          "options": [
+            "to",
+            "that",
+            "for"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u24.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.passive-report"
+          ],
+          "variants": [
+            "It is said the castle to be old.",
+            "It is said that the castle is old."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u24.d04.ex.g.02",
+          "instruction": {
+            "en": "is expected to.",
+            "ru": "is expected to."
+          },
+          "tags": [
+            "grammar.passive-report"
+          ],
+          "prompt": "The team is expected ___ win. (to)",
+          "answers": [
+            "to"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u24.d04.ex.c.03",
+          "instruction": {
+            "en": "Choose the verb.",
+            "ru": "Выбери глагол."
+          },
+          "tags": [
+            "grammar.passive-report"
+          ],
+          "prompt": "It is ___ that the medicine is safe.",
+          "options": [
+            "thought",
+            "think",
+            "thinking"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u24.d04.ex.o.01",
+          "instruction": {
+            "en": "Report a belief.",
+            "ru": "Передай мнение."
+          },
+          "tags": [
+            "grammar.passive-report"
+          ],
+          "tokens": [
+            "It",
+            "is",
+            "believed",
+            "that",
+            "he",
+            "is",
+            "rich"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u24.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.science"
+          ],
+          "pairs": [
+            {
+              "left": "claim",
+              "right": "утверждать"
+            },
+            {
+              "left": "consider",
+              "right": "считать"
+            },
+            {
+              "left": "estimate",
+              "right": "оценивать"
+            },
+            {
+              "left": "expert",
+              "right": "эксперт"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u24.d04.ex.c.04",
+          "instruction": {
+            "en": "is known to.",
+            "ru": "is known to."
+          },
+          "tags": [
+            "grammar.passive-report"
+          ],
+          "prompt": "He is known ___ be honest.",
+          "options": [
+            "to",
+            "that",
+            "for"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u24.d04.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.passive-report"
+          ],
+          "variants": [
+            "He is said that he is famous.",
+            "He is said to be famous."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u24.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive-report",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Говорят, что замок очень старый.",
+          "answers": [
+            "It is said that the castle is very old."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "it is said the castle very old",
+                "they say that the castle is old",
+                "it is said to the castle is old"
+              ],
+              "explanation": {
+                "en": "It is said THAT + clause: It is said that the castle is very old.",
+                "ru": "It is said THAT + предложение: It is said that the castle is very old."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u24.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive-report",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Считается, что она очень богата.",
+          "answers": [
+            "She is believed to be very rich.",
+            "She is thought to be very rich."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she is believed that she is rich",
+                "she is believed very rich",
+                "it is believed her to be rich"
+              ],
+              "explanation": {
+                "en": "subject + is believed TO + verb: She is believed to be very rich.",
+                "ru": "подлежащее + is believed TO + глагол: She is believed to be very rich."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

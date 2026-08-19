@@ -1,0 +1,595 @@
+{
+  "id": "u24.d02",
+  "title": {
+    "en": "It can be done",
+    "ru": "Это можно сделать"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.passive",
+    "vocab.science"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u24.d02.vocab",
+      "title": {
+        "en": "Rules & possibilities",
+        "ru": "Правила и возможности"
+      },
+      "words": [
+        {
+          "word": "allow",
+          "ru": "разрешать",
+          "ipa": "/əˈlaʊ/",
+          "example": "Phones are not allowed here.",
+          "exampleRu": "Телефоны здесь не разрешены.",
+          "audio": {
+            "src": "media/audio/u24.d02.vocab.allow.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "require",
+          "ru": "требовать",
+          "ipa": "/rɪˈkwaɪər/",
+          "example": "A ticket is required.",
+          "exampleRu": "Требуется билет.",
+          "audio": {
+            "src": "media/audio/u24.d02.vocab.require.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "recycle",
+          "ru": "перерабатывать",
+          "ipa": "/riːˈsaɪkl/",
+          "example": "Glass can be recycled.",
+          "exampleRu": "Стекло можно переработать.",
+          "audio": {
+            "src": "media/audio/u24.d02.vocab.recycle.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "protect",
+          "ru": "защищать",
+          "ipa": "/prəˈtekt/",
+          "example": "Nature must be protected.",
+          "exampleRu": "Природу нужно защищать.",
+          "audio": {
+            "src": "media/audio/u24.d02.vocab.protect.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "solve",
+          "ru": "решать",
+          "ipa": "/sɒlv/",
+          "example": "The problem can be solved.",
+          "exampleRu": "Проблему можно решить.",
+          "audio": {
+            "src": "media/audio/u24.d02.vocab.solve.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "improve",
+          "ru": "улучшать",
+          "ipa": "/ɪmˈpruːv/",
+          "example": "It could be improved.",
+          "exampleRu": "Это можно улучшить.",
+          "audio": {
+            "src": "media/audio/u24.d02.vocab.improve.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "prevent",
+          "ru": "предотвращать",
+          "ipa": "/prɪˈvent/",
+          "example": "Accidents can be prevented.",
+          "exampleRu": "Аварии можно предотвратить.",
+          "audio": {
+            "src": "media/audio/u24.d02.vocab.prevent.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "charge",
+          "ru": "заряжать",
+          "ipa": "/tʃɑːrdʒ/",
+          "example": "The battery can be charged fast.",
+          "exampleRu": "Батарею можно быстро зарядить.",
+          "audio": {
+            "src": "media/audio/u24.d02.vocab.charge.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "rule",
+          "ru": "правило",
+          "ipa": "/ruːl/",
+          "example": "Rules must be followed.",
+          "exampleRu": "Правила нужно соблюдать.",
+          "audio": {
+            "src": "media/audio/u24.d02.vocab.rule.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "method",
+          "ru": "метод",
+          "ipa": "/ˈmeθəd/",
+          "example": "A new method is being used.",
+          "exampleRu": "Используется новый метод.",
+          "audio": {
+            "src": "media/audio/u24.d02.vocab.method.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u24.d02.grammar",
+      "title": {
+        "en": "Future & modal passives",
+        "ru": "Будущий и модальный пассив"
+      },
+      "rule": {
+        "en": "After \"will\" and modal verbs (can, must, should…), make the passive with \"be + past participle\". This is very common for rules, plans and possibilities.",
+        "ru": "После «will» и модальных (can, must, should…) пассив строится как «be + причастие». Очень частое в правилах, планах и возможностях."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "future passive",
+            "ru": "будущий пассив"
+          },
+          "formula": "will be + V3",
+          "examples": [
+            {
+              "en": "The bridge will be opened next week.",
+              "ru": "Мост откроют на следующей неделе."
+            }
+          ],
+          "ref": "passive-extended"
+        },
+        {
+          "label": {
+            "en": "can/could be + V3",
+            "ru": "can/could be + V3"
+          },
+          "formula": "can/could be + V3",
+          "examples": [
+            {
+              "en": "Glass can be recycled.",
+              "ru": "Стекло можно переработать."
+            }
+          ],
+          "ref": "passive-extended"
+        },
+        {
+          "label": {
+            "en": "must/should be + V3",
+            "ru": "must/should be + V3"
+          },
+          "formula": "must/should be + V3",
+          "examples": [
+            {
+              "en": "Nature must be protected.",
+              "ru": "Природу нужно защищать."
+            }
+          ],
+          "ref": "passive-extended"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After a modal or \"will\", always use \"be + V3\": \"can be done\", not \"can done\".",
+          "ru": "После модального или «will» — всегда «be + V3»: «can be done», а не «can done»."
+        },
+        {
+          "en": "The modal never changes: \"must be built\", \"will be built\" (bare \"be\").",
+          "ru": "Модальный не меняется: «must be built», «will be built» (голое «be»)."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u24.d02.reading",
+      "title": {
+        "en": "A greener city",
+        "ru": "Более зелёный город"
+      },
+      "blocks": [
+        {
+          "id": "u24.d02.reading.b1",
+          "en": "Next year, big changes will be made to our city. More trees will be planted, and old buses will be replaced with electric ones. \"Pollution can be reduced,\" the mayor said, \"but rules must be followed by everyone.\"",
+          "ru": "В следующем году в нашем городе произойдут большие перемены. Посадят больше деревьев, а старые автобусы заменят электрическими. «Загрязнение можно снизить, — сказал мэр, — но правила должны соблюдаться всеми».",
+          "audio": {
+            "src": "media/audio/u24.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u24.d02.reading.b2",
+          "en": "New bike lanes will be built, and cars will not be allowed in the centre. \"Waste should be recycled, and energy must be saved. Together, a lot can be done,\" she added. \"The city will be transformed within five years.\"",
+          "ru": "Построят новые велодорожки, а машины не пустят в центр. «Отходы следует перерабатывать, а энергию нужно экономить. Вместе можно сделать многое, — добавила она. — Город преобразится за пять лет».",
+          "audio": {
+            "src": "media/audio/u24.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "pollution",
+          "ru": "загрязнение",
+          "ipa": "/pəˈluːʃn/"
+        },
+        {
+          "word": "waste",
+          "ru": "отходы",
+          "ipa": "/weɪst/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u24.d02.listening",
+      "title": {
+        "en": "Can it be fixed?",
+        "ru": "Это можно починить?"
+      },
+      "audio": {
+        "src": "media/audio/u24.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "My laptop is broken. Can it be fixed?",
+          "ru": "Мой ноутбук сломан. Его можно починить?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Yes, it can be repaired by tomorrow.",
+          "ru": "Да, его можно починить к завтрашнему дню."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Great. Should anything be backed up first?",
+          "ru": "Отлично. Что-то нужно сначала сохранить?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Yes, your files should be saved before we start.",
+          "ru": "Да, ваши файлы стоит сохранить до начала."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u24.d02.ex.l.01",
+          "instruction": {
+            "en": "When can it be repaired?",
+            "ru": "Когда починят?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.passive"
+          ],
+          "prompt": "It can be repaired by ___ .",
+          "options": [
+            "tomorrow",
+            "today",
+            "Monday"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u24.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u24.d02.ex.g.01",
+          "instruction": {
+            "en": "Future passive.",
+            "ru": "Будущий пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The results will ___ announced tomorrow. (be)",
+          "answers": [
+            "be"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u24.d02.ex.c.01",
+          "instruction": {
+            "en": "can + passive.",
+            "ru": "can + пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "Paper ___ be recycled easily.",
+          "options": [
+            "can",
+            "can to",
+            "cans"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u24.d02.ex.g.02",
+          "instruction": {
+            "en": "must + passive.",
+            "ru": "must + пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "Seatbelts must ___ worn at all times. (be)",
+          "answers": [
+            "be"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u24.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "The problem can solved.",
+            "The problem can be solved."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u24.d02.ex.c.02",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The museum will ___ opened in May.",
+          "options": [
+            "be",
+            "been",
+            "being"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u24.d02.ex.g.03",
+          "instruction": {
+            "en": "should + passive.",
+            "ru": "should + пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "Waste should ___ recycled. (be)",
+          "answers": [
+            "be"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u24.d02.ex.o.01",
+          "instruction": {
+            "en": "Make a passive rule.",
+            "ru": "Составь правило в пассиве."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "tokens": [
+            "Phones",
+            "must",
+            "be",
+            "switched",
+            "off"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u24.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.science"
+          ],
+          "pairs": [
+            {
+              "left": "recycle",
+              "right": "перерабатывать"
+            },
+            {
+              "left": "protect",
+              "right": "защищать"
+            },
+            {
+              "left": "prevent",
+              "right": "предотвращать"
+            },
+            {
+              "left": "method",
+              "right": "метод"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u24.d02.ex.c.03",
+          "instruction": {
+            "en": "could + passive.",
+            "ru": "could + пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "This design could ___ improved.",
+          "options": [
+            "be",
+            "been",
+            "being"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u24.d02.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "The rules must be follow.",
+            "The rules must be followed."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u24.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Стекло можно переработать.",
+          "answers": [
+            "Glass can be recycled."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "glass can recycled",
+                "glass can be recycle",
+                "glass can to be recycled"
+              ],
+              "explanation": {
+                "en": "can be + V3: Glass can be recycled.",
+                "ru": "can be + V3: Glass can be recycled."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u24.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мост откроют на следующей неделе.",
+          "answers": [
+            "The bridge will be opened next week.",
+            "The bridge will be opened next week."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the bridge will open next week by workers",
+                "the bridge will be open next week",
+                "the bridge will opened next week"
+              ],
+              "explanation": {
+                "en": "will be + V3: The bridge will be opened next week.",
+                "ru": "will be + V3: The bridge will be opened next week."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

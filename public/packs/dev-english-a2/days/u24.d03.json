@@ -1,0 +1,597 @@
+{
+  "id": "u24.d03",
+  "title": {
+    "en": "How coffee is made",
+    "ru": "Как делают кофе"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.passive",
+    "vocab.science"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u24.d03.vocab",
+      "title": {
+        "en": "Steps of a process",
+        "ru": "Этапы процесса"
+      },
+      "words": [
+        {
+          "word": "pick",
+          "ru": "собирать",
+          "ipa": "/pɪk/",
+          "example": "The beans are picked by hand.",
+          "exampleRu": "Зёрна собирают вручную.",
+          "audio": {
+            "src": "media/audio/u24.d03.vocab.pick.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wash",
+          "ru": "мыть",
+          "ipa": "/wɒʃ/",
+          "example": "They are washed carefully.",
+          "exampleRu": "Их тщательно моют.",
+          "audio": {
+            "src": "media/audio/u24.d03.vocab.wash.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dry",
+          "ru": "сушить",
+          "ipa": "/draɪ/",
+          "example": "The leaves are dried in the sun.",
+          "exampleRu": "Листья сушат на солнце.",
+          "audio": {
+            "src": "media/audio/u24.d03.vocab.dry.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "roast",
+          "ru": "обжаривать",
+          "ipa": "/roʊst/",
+          "example": "The beans are roasted.",
+          "exampleRu": "Зёрна обжаривают.",
+          "audio": {
+            "src": "media/audio/u24.d03.vocab.roast.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "grind",
+          "ru": "молоть",
+          "ipa": "/ɡraɪnd/",
+          "example": "Then they are ground.",
+          "exampleRu": "Затем их мелют.",
+          "audio": {
+            "src": "media/audio/u24.d03.vocab.grind.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pack",
+          "ru": "упаковывать",
+          "ipa": "/pæk/",
+          "example": "The coffee is packed in bags.",
+          "exampleRu": "Кофе упаковывают в пакеты.",
+          "audio": {
+            "src": "media/audio/u24.d03.vocab.pack.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "stage",
+          "ru": "этап",
+          "ipa": "/steɪdʒ/",
+          "example": "The first stage is picking.",
+          "exampleRu": "Первый этап — сбор.",
+          "audio": {
+            "src": "media/audio/u24.d03.vocab.stage.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "process",
+          "ru": "процесс",
+          "ipa": "/ˈprɒses/",
+          "example": "It's a long process.",
+          "exampleRu": "Это долгий процесс.",
+          "audio": {
+            "src": "media/audio/u24.d03.vocab.process.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "finally",
+          "ru": "наконец",
+          "ipa": "/ˈfaɪnəli/",
+          "example": "Finally, it's sold.",
+          "exampleRu": "Наконец его продают.",
+          "audio": {
+            "src": "media/audio/u24.d03.vocab.finally.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ship",
+          "ru": "отправлять",
+          "ipa": "/ʃɪp/",
+          "example": "The product is shipped abroad.",
+          "exampleRu": "Продукт отправляют за границу.",
+          "audio": {
+            "src": "media/audio/u24.d03.vocab.ship.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u24.d03.grammar",
+      "title": {
+        "en": "The passive for processes",
+        "ru": "Пассив для описания процессов"
+      },
+      "rule": {
+        "en": "When we describe a process, we use the present passive and sequence words (first, then, next, after that, finally). The focus is on the steps, not on who does them.",
+        "ru": "Когда описываем процесс, используем настоящий пассив и слова последовательности (first, then, next, after that, finally). Важны этапы, а не тот, кто их делает."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "present passive steps",
+            "ru": "этапы в present passive"
+          },
+          "formula": "First, the X is/are + V3",
+          "examples": [
+            {
+              "en": "First, the beans are picked.",
+              "ru": "Сначала зёрна собирают."
+            }
+          ],
+          "ref": "passive-extended"
+        },
+        {
+          "label": {
+            "en": "sequence words",
+            "ru": "слова последовательности"
+          },
+          "formula": "first · then · next · after that · finally",
+          "examples": [
+            {
+              "en": "Then they are washed and dried.",
+              "ru": "Затем их моют и сушат."
+            }
+          ],
+          "ref": "passive-extended"
+        },
+        {
+          "label": {
+            "en": "cause with by",
+            "ru": "причина через by"
+          },
+          "formula": "… is done by hand / by machine",
+          "examples": [
+            {
+              "en": "The beans are picked by hand.",
+              "ru": "Зёрна собирают вручную."
+            }
+          ],
+          "ref": "passive"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Match the verb to the subject: \"the beans ARE picked\", \"the coffee IS packed\".",
+          "ru": "Согласуй глагол с подлежащим: «the beans ARE picked», «the coffee IS packed»."
+        },
+        {
+          "en": "Use \"by hand / by machine\" for how, \"by + person\" for who.",
+          "ru": "Используй «by hand / by machine» для «как», «by + человек» для «кто»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u24.d03.reading",
+      "title": {
+        "en": "From bean to cup",
+        "ru": "От зерна до чашки"
+      },
+      "blocks": [
+        {
+          "id": "u24.d03.reading.b1",
+          "en": "Have you ever wondered how coffee is made? First, the ripe red beans are picked, usually by hand. Then they are washed and dried in the sun for several days. After that, the dried beans are sent to a factory.",
+          "ru": "Вы когда-нибудь задумывались, как делают кофе? Сначала спелые красные зёрна собирают, обычно вручную. Затем их моют и несколько дней сушат на солнце. После этого сухие зёрна отправляют на фабрику.",
+          "audio": {
+            "src": "media/audio/u24.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u24.d03.reading.b2",
+          "en": "At the factory, the beans are roasted at a high temperature until they turn brown. Next, they are ground into powder. Finally, the coffee is packed into bags and shipped to shops around the world. All this is done before your morning cup is made.",
+          "ru": "На фабрике зёрна обжаривают при высокой температуре, пока они не станут коричневыми. Затем их мелют в порошок. Наконец, кофе упаковывают в пакеты и отправляют в магазины по всему миру. Всё это делается ещё до того, как готовят вашу утреннюю чашку.",
+          "audio": {
+            "src": "media/audio/u24.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "ripe",
+          "ru": "спелый",
+          "ipa": "/raɪp/"
+        },
+        {
+          "word": "powder",
+          "ru": "порошок",
+          "ipa": "/ˈpaʊdər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u24.d03.listening",
+      "title": {
+        "en": "How is it made?",
+        "ru": "Как это делают?"
+      },
+      "audio": {
+        "src": "media/audio/u24.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "How is chocolate made?",
+          "ru": "Как делают шоколад?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "First, the beans are dried and roasted.",
+          "ru": "Сначала зёрна сушат и обжаривают."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "And then?",
+          "ru": "А потом?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Then they're ground, and sugar is added.",
+          "ru": "Затем их мелют и добавляют сахар."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u24.d03.ex.l.01",
+          "instruction": {
+            "en": "What happens first?",
+            "ru": "Что происходит сначала?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.passive"
+          ],
+          "prompt": "The beans are dried and ___ .",
+          "options": [
+            "roasted",
+            "roast",
+            "roasting"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u24.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u24.d03.ex.g.01",
+          "instruction": {
+            "en": "Present passive.",
+            "ru": "Настоящий пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "First, the fruit ___ picked. (be)",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u24.d03.ex.c.01",
+          "instruction": {
+            "en": "Agree the verb.",
+            "ru": "Согласуй глагол."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The beans ___ washed and dried.",
+          "options": [
+            "are",
+            "is",
+            "be"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u24.d03.ex.g.02",
+          "instruction": {
+            "en": "Sequence word.",
+            "ru": "Слово порядка."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "___ , the coffee is packed and sold. (last step)",
+          "answers": [
+            "Finally"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u24.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "The leaves is dried in the sun.",
+            "The leaves are dried in the sun."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u24.d03.ex.c.02",
+          "instruction": {
+            "en": "by hand or by machine?",
+            "ru": "вручную или машиной?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The best beans are picked ___ hand.",
+          "options": [
+            "by",
+            "with",
+            "on"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u24.d03.ex.g.03",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "Then the beans are ___ into powder. (grind)",
+          "answers": [
+            "ground"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u24.d03.ex.o.01",
+          "instruction": {
+            "en": "Describe a step.",
+            "ru": "Опиши этап."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "tokens": [
+            "The",
+            "beans",
+            "are",
+            "roasted",
+            "and",
+            "ground"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u24.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.science"
+          ],
+          "pairs": [
+            {
+              "left": "roast",
+              "right": "обжаривать"
+            },
+            {
+              "left": "grind",
+              "right": "молоть"
+            },
+            {
+              "left": "stage",
+              "right": "этап"
+            },
+            {
+              "left": "ship",
+              "right": "отправлять"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u24.d03.ex.c.03",
+          "instruction": {
+            "en": "Sequence.",
+            "ru": "Последовательность."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "___ they are washed, they are dried.",
+          "options": [
+            "After",
+            "Finally",
+            "Before that"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u24.d03.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "The coffee is pack in bags.",
+            "The coffee is packed in bags."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u24.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Сначала зёрна собирают вручную.",
+          "answers": [
+            "First, the beans are picked by hand.",
+            "First the beans are picked by hand."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "first the beans pick by hand",
+                "first the beans is picked by hand",
+                "first the beans are pick by hand"
+              ],
+              "explanation": {
+                "en": "the beans ARE picked by hand.",
+                "ru": "the beans ARE picked by hand."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u24.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Затем их моют и сушат.",
+          "answers": [
+            "Then they are washed and dried."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "then they wash and dry",
+                "then they is washed and dried",
+                "then they are wash and dried"
+              ],
+              "explanation": {
+                "en": "they ARE washed and dried.",
+                "ru": "they ARE washed and dried."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

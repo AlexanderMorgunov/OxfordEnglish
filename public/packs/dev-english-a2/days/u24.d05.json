@@ -1,0 +1,602 @@
+{
+  "id": "u24.d05",
+  "title": {
+    "en": "Explaining how it works",
+    "ru": "Объясняем, как это работает"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "functions.describing",
+    "vocab.science"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u24.d05.vocab",
+      "title": {
+        "en": "Explaining clearly",
+        "ru": "Объясняем понятно"
+      },
+      "words": [
+        {
+          "word": "step",
+          "ru": "шаг",
+          "ipa": "/step/",
+          "example": "The first step is easy.",
+          "exampleRu": "Первый шаг простой.",
+          "audio": {
+            "src": "media/audio/u24.d05.vocab.step.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "instructions",
+          "ru": "инструкции",
+          "ipa": "/ɪnˈstrʌkʃnz/",
+          "example": "Read the instructions.",
+          "exampleRu": "Прочитай инструкции.",
+          "audio": {
+            "src": "media/audio/u24.d05.vocab.instructions.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "device",
+          "ru": "устройство",
+          "ipa": "/dɪˈvaɪs/",
+          "example": "It's a clever device.",
+          "exampleRu": "Это умное устройство.",
+          "audio": {
+            "src": "media/audio/u24.d05.vocab.device.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "button",
+          "ru": "кнопка",
+          "ipa": "/ˈbʌtn/",
+          "example": "Press the button.",
+          "exampleRu": "Нажми кнопку.",
+          "audio": {
+            "src": "media/audio/u24.d05.vocab.button.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "machine",
+          "ru": "машина, механизм",
+          "ipa": "/məˈʃiːn/",
+          "example": "The machine is easy to use.",
+          "exampleRu": "Машиной легко пользоваться.",
+          "audio": {
+            "src": "media/audio/u24.d05.vocab.machine.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "connect",
+          "ru": "подключать",
+          "ipa": "/kəˈnekt/",
+          "example": "Connect the cable.",
+          "exampleRu": "Подключи кабель.",
+          "audio": {
+            "src": "media/audio/u24.d05.vocab.connect.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "switch on",
+          "ru": "включать",
+          "ipa": "/swɪtʃ ɒn/",
+          "example": "Switch it on.",
+          "exampleRu": "Включи это.",
+          "audio": {
+            "src": "media/audio/u24.d05.vocab.switchon.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "work",
+          "ru": "работать, функционировать",
+          "ipa": "/wɜːrk/",
+          "example": "How does it work?",
+          "exampleRu": "Как это работает?",
+          "audio": {
+            "src": "media/audio/u24.d05.vocab.work.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "simple",
+          "ru": "простой",
+          "ipa": "/ˈsɪmpl/",
+          "example": "It's very simple.",
+          "exampleRu": "Это очень просто.",
+          "audio": {
+            "src": "media/audio/u24.d05.vocab.simple.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "explain",
+          "ru": "объяснять",
+          "ipa": "/ɪkˈspleɪn/",
+          "example": "Let me explain.",
+          "exampleRu": "Дай объясню.",
+          "audio": {
+            "src": "media/audio/u24.d05.vocab.explain.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u24.d05.grammar",
+      "title": {
+        "en": "Describing how something works",
+        "ru": "Как описать работу чего-либо"
+      },
+      "rule": {
+        "en": "To explain a process or how a device works, combine sequence words (first, then, after that, finally) with the passive (for what happens) or imperatives (for instructions).",
+        "ru": "Чтобы объяснить процесс или работу устройства, сочетай слова последовательности (first, then, after that, finally) с пассивом (что происходит) или повелением (инструкции)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "sequence + passive",
+            "ru": "последовательность + пассив"
+          },
+          "formula": "First … is done, then … is done",
+          "examples": [
+            {
+              "en": "First, the water is heated; then it is filtered.",
+              "ru": "Сначала воду нагревают, затем фильтруют."
+            }
+          ],
+          "ref": "passive-extended"
+        },
+        {
+          "label": {
+            "en": "instructions (imperative)",
+            "ru": "инструкции (повеление)"
+          },
+          "formula": "Press … / Connect … / Switch on …",
+          "examples": [
+            {
+              "en": "Press the button and wait.",
+              "ru": "Нажми кнопку и подожди."
+            }
+          ],
+          "ref": "imperatives"
+        },
+        {
+          "label": {
+            "en": "explaining how",
+            "ru": "объясняем как"
+          },
+          "formula": "It works by + -ing",
+          "examples": [
+            {
+              "en": "It works by using solar power.",
+              "ru": "Оно работает за счёт солнечной энергии."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Passive for the process, imperative for the reader's actions: \"the coffee is made\" vs \"press start\".",
+          "ru": "Пассив — для процесса, повеление — для действий читателя: «the coffee is made» и «press start»."
+        },
+        {
+          "en": "\"It works by + -ing\": \"It works by heating the air\".",
+          "ru": "«It works by + -ing»: «It works by heating the air»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u24.d05.reading",
+      "title": {
+        "en": "How a kettle works",
+        "ru": "Как работает чайник"
+      },
+      "blocks": [
+        {
+          "id": "u24.d05.reading.b1",
+          "en": "Have you ever wondered how an electric kettle works? It's actually very simple. First, water is poured into the kettle. Then the kettle is switched on, and electricity is passed through a metal part inside.",
+          "ru": "Вы когда-нибудь задумывались, как работает электрический чайник? На самом деле всё очень просто. Сначала в чайник наливают воду. Затем чайник включают, и через металлическую часть внутри пропускают электричество.",
+          "audio": {
+            "src": "media/audio/u24.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u24.d05.reading.b2",
+          "en": "This part gets very hot, and the heat is passed to the water. After a minute or two, the water begins to boil. Finally, the kettle switches off by itself. \"It works by turning electricity into heat,\" the teacher explained. \"Nothing needs to be done except pressing one button.\"",
+          "ru": "Эта часть сильно нагревается, и тепло передаётся воде. Через минуту-другую вода начинает кипеть. Наконец чайник выключается сам. «Он работает, превращая электричество в тепло, — объяснил учитель. — Ничего делать не нужно, кроме как нажать одну кнопку».",
+          "audio": {
+            "src": "media/audio/u24.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "kettle",
+          "ru": "чайник",
+          "ipa": "/ˈketl/"
+        },
+        {
+          "word": "boil",
+          "ru": "кипеть",
+          "ipa": "/bɔɪl/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u24.d05.listening",
+      "title": {
+        "en": "How do I use it?",
+        "ru": "Как этим пользоваться?"
+      },
+      "audio": {
+        "src": "media/audio/u24.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "How do I use this coffee machine?",
+          "ru": "Как пользоваться этой кофемашиной?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "It's easy. First, water is added at the back.",
+          "ru": "Просто. Сначала сзади заливают воду."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "And then?",
+          "ru": "А потом?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Then you press the green button and the coffee is made.",
+          "ru": "Потом нажимаешь зелёную кнопку, и кофе готовится."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u24.d05.ex.l.01",
+          "instruction": {
+            "en": "What is added first?",
+            "ru": "Что добавляют сначала?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.describing"
+          ],
+          "prompt": "First, ___ is added.",
+          "options": [
+            "water",
+            "coffee",
+            "milk"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u24.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u24.d05.ex.g.01",
+          "instruction": {
+            "en": "Sequence.",
+            "ru": "Последовательность."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "___ , the water is heated. (step one word)",
+          "answers": [
+            "First"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u24.d05.ex.c.01",
+          "instruction": {
+            "en": "Passive step.",
+            "ru": "Этап в пассиве."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "Then the beans ___ ground.",
+          "options": [
+            "are",
+            "is",
+            "be"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u24.d05.ex.c.02",
+          "instruction": {
+            "en": "Instruction.",
+            "ru": "Инструкция."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "___ the button and wait.",
+          "options": [
+            "Press",
+            "Pressing",
+            "To press"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u24.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "variants": [
+            "It works by heat the water.",
+            "It works by heating the water."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u24.d05.ex.g.02",
+          "instruction": {
+            "en": "Last step.",
+            "ru": "Последний шаг."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "___ , the coffee is ready. (last step word)",
+          "answers": [
+            "Finally"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u24.d05.ex.c.03",
+          "instruction": {
+            "en": "It works by + -ing.",
+            "ru": "It works by + -ing."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "The device works by ___ solar power.",
+          "options": [
+            "using",
+            "use",
+            "to use"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u24.d05.ex.o.01",
+          "instruction": {
+            "en": "Give an instruction.",
+            "ru": "Дай инструкцию."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "tokens": [
+            "Connect",
+            "the",
+            "cable",
+            "and",
+            "switch",
+            "it",
+            "on"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u24.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.science"
+          ],
+          "pairs": [
+            {
+              "left": "device",
+              "right": "устройство"
+            },
+            {
+              "left": "machine",
+              "right": "машина"
+            },
+            {
+              "left": "connect",
+              "right": "подключать"
+            },
+            {
+              "left": "button",
+              "right": "кнопка"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u24.d05.ex.c.04",
+          "instruction": {
+            "en": "Middle step.",
+            "ru": "Средний шаг."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "___ that, the water is filtered.",
+          "options": [
+            "After",
+            "Finally",
+            "First"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u24.d05.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "variants": [
+            "First you press start, then coffee is make.",
+            "First you press start, then coffee is made."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u24.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.describing",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Сначала в чайник наливают воду.",
+          "answers": [
+            "First, water is poured into the kettle.",
+            "First water is poured into the kettle."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "first water pours into the kettle",
+                "first you pour water in the kettle and water is",
+                "first water is pour into the kettle"
+              ],
+              "explanation": {
+                "en": "First, water IS poured into the kettle.",
+                "ru": "First, water IS poured into the kettle."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u24.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.describing",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Оно работает за счёт солнечной энергии.",
+          "answers": [
+            "It works by using solar power.",
+            "It works using solar power."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "it works by use solar power",
+                "it works with solar power by using",
+                "it work by using solar power"
+              ],
+              "explanation": {
+                "en": "It works by + -ing: It works by using solar power.",
+                "ru": "It works by + -ing: It works by using solar power."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
