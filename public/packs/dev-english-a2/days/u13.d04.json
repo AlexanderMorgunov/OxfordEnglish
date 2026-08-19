@@ -185,7 +185,8 @@
               "en": "Someone is at the door.",
               "ru": "Кто-то у двери."
             }
-          ]
+          ],
+          "ref": "indefinite-pronouns"
         },
         {
           "label": {
@@ -198,7 +199,8 @@
               "en": "Is there anything to eat?",
               "ru": "Есть что-нибудь поесть?"
             }
-          ]
+          ],
+          "ref": "indefinite-pronouns"
         },
         {
           "label": {
@@ -211,7 +213,8 @@
               "en": "There is nothing in the box.",
               "ru": "В коробке ничего нет."
             }
-          ]
+          ],
+          "ref": "indefinite-pronouns"
         }
       ],
       "pitfalls": [
@@ -447,6 +450,123 @@
           "answers": [
             "Someone is here.",
             "There is someone here."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u13.d04.ex.b.01",
+          "instruction": {
+            "en": "Positive.",
+            "ru": "Утверждение."
+          },
+          "tags": [
+            "grammar.indefinite-pronouns"
+          ],
+          "prompt": "I left my bag ___ in the house.",
+          "options": [
+            "somewhere",
+            "anywhere",
+            "nowhere"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u13.d04.ex.b.02",
+          "instruction": {
+            "en": "Question.",
+            "ru": "Вопрос."
+          },
+          "tags": [
+            "grammar.indefinite-pronouns"
+          ],
+          "prompt": "Is there ___ here who speaks French?",
+          "options": [
+            "anyone",
+            "someone",
+            "no one"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u13.d04.ex.b.03",
+          "instruction": {
+            "en": "Negative meaning.",
+            "ru": "Отрицательный смысл."
+          },
+          "tags": [
+            "grammar.indefinite-pronouns"
+          ],
+          "prompt": "The room was empty — there was ___ there. (no one)",
+          "answers": [
+            "no one",
+            "nobody"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u13.d04.ex.b.04",
+          "instruction": {
+            "en": "After a negative verb.",
+            "ru": "После отрицательного глагола."
+          },
+          "tags": [
+            "grammar.indefinite-pronouns"
+          ],
+          "prompt": "I did not eat ___ this morning.",
+          "options": [
+            "anything",
+            "something",
+            "nothing"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u13.d04.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.indefinite-pronouns"
+          ],
+          "variants": [
+            "I don't know nothing.",
+            "I don't know anything."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u13.d04.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.indefinite-pronouns",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "В сумке ничего нет.",
+          "answers": [
+            "There is nothing in the bag.",
+            "There isn't anything in the bag."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "there is not nothing",
+                "there isn't nothing",
+                "there is anything in the bag"
+              ],
+              "explanation": {
+                "en": "One negative only: There is nothing… OR There is not anything…",
+                "ru": "Только одно отрицание: There is nothing… ИЛИ There is not anything…"
+              }
+            }
           ]
         }
       ]

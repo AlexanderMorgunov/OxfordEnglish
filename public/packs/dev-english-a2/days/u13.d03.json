@@ -184,7 +184,8 @@
               "en": "The man who helped me was kind.",
               "ru": "Человек, который мне помог, был добрым."
             }
-          ]
+          ],
+          "ref": "relative-clauses"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "This is the app which saves my work.",
               "ru": "Это приложение, которое сохраняет мою работу."
             }
-          ]
+          ],
+          "ref": "relative-clauses"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "A doctor is a person that helps you.",
               "ru": "Врач — это человек, который тебе помогает."
             }
-          ]
+          ],
+          "ref": "relative-clauses"
         }
       ],
       "pitfalls": [
@@ -449,6 +452,122 @@
           "answers": [
             "This is the app which saves my work.",
             "This is the app that saves my work."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u13.d03.ex.b.01",
+          "instruction": {
+            "en": "People.",
+            "ru": "О людях."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The woman ___ lives next door is a nurse.",
+          "options": [
+            "who",
+            "which",
+            "what"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u13.d03.ex.b.02",
+          "instruction": {
+            "en": "Things.",
+            "ru": "О вещах."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "I found the keys ___ were on the table.",
+          "options": [
+            "which",
+            "who",
+            "whose"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u13.d03.ex.b.03",
+          "instruction": {
+            "en": "People — who.",
+            "ru": "О людях — who."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "A teacher is someone ___ helps you learn. (people)",
+          "answers": [
+            "who",
+            "that"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u13.d03.ex.b.04",
+          "instruction": {
+            "en": "Both people and things.",
+            "ru": "И люди, и вещи."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "This is the phone ___ I want.",
+          "options": [
+            "that",
+            "who",
+            "where"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u13.d03.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "variants": [
+            "The man who he helped me was kind.",
+            "The man who helped me was kind."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u13.d03.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это книга, которую я люблю.",
+          "answers": [
+            "This is the book which I love.",
+            "This is the book that I love."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the book who i love",
+                "this is the book what i love"
+              ],
+              "explanation": {
+                "en": "Things → which/that (not who/what): the book which I love.",
+                "ru": "О вещах → which/that (не who/what): the book which I love."
+              }
+            }
           ]
         }
       ]

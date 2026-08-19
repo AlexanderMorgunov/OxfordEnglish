@@ -184,7 +184,8 @@
               "en": "If it rains, we'll stay at home.",
               "ru": "Если пойдёт дождь, мы останемся дома."
             }
-          ]
+          ],
+          "ref": "conditionals-0-1"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "If it's sunny, we won't take umbrellas.",
               "ru": "Если будет солнечно, зонты не возьмём."
             }
-          ]
+          ],
+          "ref": "conditionals-0-1"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "What will you do if it snows?",
               "ru": "Что ты будешь делать, если пойдёт снег?"
             }
-          ]
+          ],
+          "ref": "conditionals-0-1"
         }
       ],
       "pitfalls": [
@@ -446,6 +449,120 @@
           "answers": [
             "If it rains, we will stay at home.",
             "If it rains, we'll stay home."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u13.d02.ex.b.01",
+          "instruction": {
+            "en": "The if-part: present.",
+            "ru": "Часть с if: present."
+          },
+          "tags": [
+            "grammar.first-conditional"
+          ],
+          "prompt": "If she ___ time, she will help. (have)",
+          "answers": [
+            "has"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u13.d02.ex.b.02",
+          "instruction": {
+            "en": "The result: will.",
+            "ru": "Результат: will."
+          },
+          "tags": [
+            "grammar.first-conditional"
+          ],
+          "prompt": "If we leave now, we ___ the train. (catch)",
+          "answers": [
+            "will catch",
+            "'ll catch"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u13.d02.ex.b.03",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.first-conditional"
+          ],
+          "prompt": "If it is cold, I ___ a coat.",
+          "options": [
+            "will wear",
+            "wear will",
+            "am wearing"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u13.d02.ex.b.04",
+          "instruction": {
+            "en": "Negative result.",
+            "ru": "Отрицательный результат."
+          },
+          "tags": [
+            "grammar.first-conditional"
+          ],
+          "prompt": "If you do not hurry, you ___ be late.",
+          "options": [
+            "will",
+            "won't",
+            "are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u13.d02.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.first-conditional"
+          ],
+          "variants": [
+            "If it will rain, we will stay in.",
+            "If it rains, we will stay in."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u13.d02.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.first-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Если ты придёшь, мы будем рады.",
+          "answers": [
+            "If you come, we will be happy.",
+            "If you come, we'll be happy."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "if you will come",
+                "if you come, we happy",
+                "if you comes"
+              ],
+              "explanation": {
+                "en": "No \"will\" in the if-part: If you come, we will be happy.",
+                "ru": "В части с if нет «will»: If you come, we will be happy."
+              }
+            }
           ]
         }
       ]

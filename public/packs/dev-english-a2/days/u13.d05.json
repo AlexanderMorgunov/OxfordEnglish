@@ -200,7 +200,8 @@
               "en": "I like tea. — So do I. I don't smoke. — Neither do I.",
               "ru": "Я люблю чай. — И я. Я не курю. — И я нет."
             }
-          ]
+          ],
+          "ref": "so-neither-tags"
         },
         {
           "label": {
@@ -213,7 +214,8 @@
               "en": "It's cold today, isn't it?",
               "ru": "Сегодня холодно, не так ли?"
             }
-          ]
+          ],
+          "ref": "so-neither-tags"
         }
       ],
       "pitfalls": [
@@ -453,6 +455,121 @@
           "answers": [
             "In my opinion, English is useful.",
             "I think English is useful."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u13.d05.ex.b.01",
+          "instruction": {
+            "en": "Agree (positive).",
+            "ru": "Согласись (положительно)."
+          },
+          "tags": [
+            "grammar.so-neither"
+          ],
+          "prompt": "\"I love pizza.\" — \"___ do I.\"",
+          "options": [
+            "So",
+            "Neither",
+            "Too"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u13.d05.ex.b.02",
+          "instruction": {
+            "en": "Agree (negative).",
+            "ru": "Согласись (отрицательно)."
+          },
+          "tags": [
+            "grammar.so-neither"
+          ],
+          "prompt": "\"I have not seen it.\" — \"___ have I.\"",
+          "options": [
+            "Neither",
+            "So",
+            "Either"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u13.d05.ex.b.03",
+          "instruction": {
+            "en": "Question tag (positive → negative).",
+            "ru": "Хвостик (плюс → минус)."
+          },
+          "tags": [
+            "grammar.question-tags"
+          ],
+          "prompt": "You are coming, ___ you?",
+          "answers": [
+            "aren't"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u13.d05.ex.b.04",
+          "instruction": {
+            "en": "Dependent preposition.",
+            "ru": "Зависимый предлог."
+          },
+          "tags": [
+            "grammar.dependent-prepositions"
+          ],
+          "prompt": "I am interested ___ history.",
+          "options": [
+            "in",
+            "on",
+            "at"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u13.d05.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.question-tags"
+          ],
+          "variants": [
+            "She likes tea, isn't she?",
+            "She likes tea, doesn't she?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u13.d05.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.dependent-prepositions",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я согласен с тобой.",
+          "answers": [
+            "I agree with you."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i am agree",
+                "i agree to you",
+                "i am agree with you"
+              ],
+              "explanation": {
+                "en": "agree is a verb (no \"am\"), agree WITH a person: I agree with you.",
+                "ru": "agree — глагол (без «am»), agree WITH человеком: I agree with you."
+              }
+            }
           ]
         }
       ]

@@ -1954,5 +1954,258 @@
       "past-simple",
       "present-perfect-signals"
     ]
+  },
+  {
+    "id": "conditionals-0-1",
+    "title": {
+      "en": "Conditionals: zero and first (if…)",
+      "ru": "Условные: нулевой и первый (if…)"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "A conditional sentence has two parts: an \"if\" part (the condition) and a result. The zero conditional talks about facts that are always true; the first conditional talks about a real future possibility.",
+      "ru": "В условном предложении две части: часть с «if» (условие) и результат. Нулевой тип — о фактах, которые всегда верны; первый тип — о реальной возможности в будущем."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "Zero conditional — general truths",
+          "ru": "Нулевой тип — общие истины"
+        },
+        "text": {
+          "en": "Use present simple in BOTH parts for things that are always true — science, rules, habits.\n\nIf you heat ice, it melts.\nPlants die if they do not get water.\n\nYou can swap the parts; put a comma when \"if\" comes first.",
+          "ru": "В ОБЕИХ частях present simple — для того, что всегда верно: наука, правила, привычки.\n\nIf you heat ice, it melts. — Если нагреть лёд, он тает.\nPlants die if they do not get water. — Растения гибнут, если не получают воды.\n\nЧасти можно поменять местами; ставь запятую, когда «if» идёт первым."
+        },
+        "examples": [
+          {
+            "en": "If it rains, the ground gets wet.",
+            "ru": "Если идёт дождь, земля становится мокрой."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "First conditional — real future",
+          "ru": "Первый тип — реальное будущее"
+        },
+        "text": {
+          "en": "For a real possibility in the future, use present simple after \"if\" and \"will + verb\" in the result. Note: NO \"will\" in the if-part.\n\nIf it rains, we will stay in.\nIf you help me, I will finish faster.\n\nNegative result: won’t. Question: What will you do if it rains?",
+          "ru": "Для реальной возможности в будущем: после «if» — present simple, в результате — «will + глагол». Внимание: в части с «if» «will» НЕТ.\n\nIf it rains, we will stay in. — Если пойдёт дождь, мы останемся дома.\nIf you help me, I will finish faster. — Если поможешь, я закончу быстрее.\n\nОтрицательный результат: won’t. Вопрос: What will you do if it rains?"
+        },
+        "examples": [
+          {
+            "en": "If you study, you will pass the exam.",
+            "ru": "Если будешь учиться, сдашь экзамен."
+          }
+        ]
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "No \"will\" in the if-part: \"If it rains, we will stay\", NOT \"If it will rain…\".",
+        "ru": "В части с «if» нет «will»: «If it rains, we will stay», а не «If it will rain…»."
+      },
+      {
+        "en": "Zero conditional uses present in both parts: \"If you heat ice, it melts\" (not \"will melt\").",
+        "ru": "Нулевой тип — present в обеих частях: «If you heat ice, it melts» (не «will melt»)."
+      }
+    ],
+    "seeAlso": [
+      "future-time-clauses",
+      "present-simple"
+    ]
+  },
+  {
+    "id": "relative-clauses",
+    "title": {
+      "en": "Relative clauses: who, which, that",
+      "ru": "Относительные придаточные: who, which, that"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "A relative clause adds information about a noun using who (for people), which (for things), or that (for both). It saves you from starting a new sentence.",
+      "ru": "Относительное придаточное добавляет информацию о существительном через who (о людях), which (о вещах) или that (о том и другом). Это избавляет от нового предложения."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "who — for people",
+          "ru": "who — о людях"
+        },
+        "text": {
+          "en": "Use \"who\" to say more about a person. It replaces the person, so do NOT add another subject.\n\nThe man who helped me was kind. (NOT \"the man who he helped me\")\nShe is the teacher who taught us English.",
+          "ru": "Используй «who», чтобы сказать больше о человеке. Оно заменяет человека, поэтому НЕ добавляй ещё одно подлежащее.\n\nThe man who helped me was kind. — Человек, который мне помог, был добрым (НЕ «the man who he helped me»).\nShe is the teacher who taught us English. — Она учитель, который учил нас английскому."
+        },
+        "examples": [
+          {
+            "en": "I know a girl who speaks five languages.",
+            "ru": "Я знаю девушку, которая говорит на пяти языках."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "which — for things",
+          "ru": "which — о вещах"
+        },
+        "text": {
+          "en": "Use \"which\" for objects, animals and ideas.\n\nThis is the app which saves my work.\nThe book which I read was boring.",
+          "ru": "Используй «which» для предметов, животных и идей.\n\nThis is the app which saves my work. — Это приложение, которое сохраняет мою работу.\nThe book which I read was boring. — Книга, которую я читал, была скучной."
+        },
+        "examples": [
+          {
+            "en": "The train which goes to Rome is late.",
+            "ru": "Поезд, который идёт в Рим, опаздывает."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "that — for both",
+          "ru": "that — о том и другом"
+        },
+        "text": {
+          "en": "\"that\" can replace who OR which in everyday English, especially in speaking.\n\nA doctor is a person that helps you.\nThis is the phone that I want.",
+          "ru": "«that» может заменить who ИЛИ which в обычном английском, особенно в речи.\n\nA doctor is a person that helps you. — Врач — это человек, который тебе помогает.\nThis is the phone that I want. — Это телефон, который я хочу."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Do not repeat the subject: \"the man who helped me\", NOT \"the man who he helped me\".",
+        "ru": "Не повторяй подлежащее: «the man who helped me», а не «the man who he helped me»."
+      },
+      {
+        "en": "Use \"who\" for people, \"which\" for things; \"that\" works for both.",
+        "ru": "«who» — о людях, «which» — о вещах; «that» — о том и другом."
+      }
+    ],
+    "seeAlso": [
+      "indefinite-pronouns"
+    ]
+  },
+  {
+    "id": "indefinite-pronouns",
+    "title": {
+      "en": "someone, anything, nowhere — indefinite pronouns",
+      "ru": "someone, anything, nowhere — неопределённые местоимения"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "These words are built from some-/any-/no- plus -one/-thing/-where. The choice follows the same logic as some/any: some- in positives, any- in questions and negatives, no- for a negative meaning with a positive verb.",
+      "ru": "Эти слова строятся из some-/any-/no- плюс -one/-thing/-where. Выбор по той же логике, что some/any: some- в утверждениях, any- в вопросах и отрицаниях, no- для отрицательного смысла с положительным глаголом."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "some- in positive sentences",
+          "ru": "some- в утверждениях"
+        },
+        "text": {
+          "en": "Use someone/somebody, something, somewhere in positive statements.\n\nSomeone is at the door.\nI need something to eat.\nThey went somewhere warm.",
+          "ru": "Используй someone/somebody, something, somewhere в утверждениях.\n\nSomeone is at the door. — Кто-то у двери.\nI need something to eat. — Мне нужно что-нибудь поесть.\nThey went somewhere warm. — Они уехали куда-то, где тепло."
+        },
+        "examples": [
+          {
+            "en": "There is somebody in the garden.",
+            "ru": "В саду кто-то есть."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "any- in questions and negatives",
+          "ru": "any- в вопросах и отрицаниях"
+        },
+        "text": {
+          "en": "Use anyone/anybody, anything, anywhere in questions and after a negative verb.\n\nIs there anything to eat?\nI cannot see anyone.\nWe did not go anywhere.",
+          "ru": "Используй anyone/anybody, anything, anywhere в вопросах и после отрицательного глагола.\n\nIs there anything to eat? — Есть что-нибудь поесть?\nI cannot see anyone. — Я никого не вижу.\nWe did not go anywhere. — Мы никуда не ходили."
+        },
+        "examples": [
+          {
+            "en": "Did you meet anybody there?",
+            "ru": "Ты там кого-нибудь встретил?"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "no- = not any (one negative only)",
+          "ru": "no- = not any (одно отрицание)"
+        },
+        "text": {
+          "en": "no one/nobody, nothing, nowhere already mean \"not any\". Use them with a POSITIVE verb — English allows only one negative.\n\nThere is nothing in the box. (NOT \"is not nothing\")\nI have nowhere to go.\n\nSo: \"I do not have anything\" = \"I have nothing\". Never combine \"not\" with \"nothing\".",
+          "ru": "no one/nobody, nothing, nowhere уже значат «ничего/никого». Используй их с ПОЛОЖИТЕЛЬНЫМ глаголом — в английском только одно отрицание.\n\nThere is nothing in the box. — В коробке ничего нет (НЕ «is not nothing»).\nI have nowhere to go. — Мне некуда идти.\n\nИтак: «I do not have anything» = «I have nothing». Никогда не совмещай «not» и «nothing»."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "One negative only: \"I do not have anything\" OR \"I have nothing\" — NOT \"I do not have nothing\".",
+        "ru": "Только одно отрицание: «I do not have anything» ИЛИ «I have nothing» — а не «I do not have nothing»."
+      },
+      {
+        "en": "any- (not some-) in questions/negatives: \"Is there anything?\", NOT \"Is there something?\" (neutral question).",
+        "ru": "any- (не some-) в вопросах/отрицаниях: «Is there anything?», а не «Is there something?» (нейтральный вопрос)."
+      }
+    ],
+    "seeAlso": [
+      "some-any",
+      "relative-clauses"
+    ]
+  },
+  {
+    "id": "so-neither-tags",
+    "title": {
+      "en": "Agreeing: So do I / Neither do I, and question tags",
+      "ru": "Согласие: So do I / Neither do I и разделительные вопросы"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "To agree with a statement, use \"So + auxiliary + I\" (positive) or \"Neither + auxiliary + I\" (negative). Question tags are short questions you add to the end of a sentence to check or invite agreement.",
+      "ru": "Чтобы согласиться, используй «So + вспомогательный + I» (положительно) или «Neither + вспомогательный + I» (отрицательно). Разделительные вопросы — короткие «хвостики» в конце предложения для проверки или приглашения согласиться."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "So do I / Neither do I",
+          "ru": "So do I / Neither do I"
+        },
+        "text": {
+          "en": "To agree with a POSITIVE sentence, say \"So + auxiliary + I\". To agree with a NEGATIVE one, say \"Neither + auxiliary + I\". The auxiliary matches the first sentence (do/does, am/is/are, have, will…).\n\n\"I like coffee.\" — \"So do I.\"\n\"I do not smoke.\" — \"Neither do I.\"\n\"I am tired.\" — \"So am I.\"",
+          "ru": "Чтобы согласиться с ПОЛОЖИТЕЛЬНЫМ предложением, скажи «So + вспомогательный + I». С ОТРИЦАТЕЛЬНЫМ — «Neither + вспомогательный + I». Вспомогательный совпадает с первым предложением (do/does, am/is/are, have, will…).\n\n«I like coffee.» — «So do I.» — «И я тоже.»\n«I do not smoke.» — «Neither do I.» — «И я тоже нет.»\n«I am tired.» — «So am I.»"
+        },
+        "examples": [
+          {
+            "en": "\"I have been to Spain.\" — \"So have I.\"",
+            "ru": "«Я был в Испании.» — «И я тоже.»"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Question tags",
+          "ru": "Разделительные вопросы (хвостики)"
+        },
+        "text": {
+          "en": "A question tag is a mini-question at the end. A positive sentence takes a negative tag, and a negative sentence takes a positive tag. The tag repeats the auxiliary.\n\nIt is cold today, isn’t it?\nYou like tea, don’t you?\nShe can’t swim, can she?",
+          "ru": "Хвостик — это мини-вопрос в конце. К положительному предложению — отрицательный хвостик, к отрицательному — положительный. Хвостик повторяет вспомогательный глагол.\n\nIt is cold today, isn’t it? — Сегодня холодно, не так ли?\nYou like tea, don’t you? — Ты любишь чай, да?\nShe can’t swim, can she? — Она не умеет плавать, ведь так?"
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Match the auxiliary: \"I like…\" → \"So do I\"; \"I am…\" → \"So am I\".",
+        "ru": "Совмещай вспомогательный: «I like…» → «So do I»; «I am…» → «So am I»."
+      },
+      {
+        "en": "Positive sentence → negative tag, and vice versa: \"It is cold, isn’t it?\"",
+        "ru": "Положительное предложение → отрицательный хвостик, и наоборот: «It is cold, isn’t it?»"
+      }
+    ],
+    "seeAlso": [
+      "question-tags",
+      "verb-be"
+    ]
   }
 ]

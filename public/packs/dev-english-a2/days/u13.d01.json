@@ -185,7 +185,8 @@
               "en": "If you heat ice, it melts.",
               "ru": "Если нагреть лёд, он тает."
             }
-          ]
+          ],
+          "ref": "conditionals-0-1"
         },
         {
           "label": {
@@ -198,7 +199,8 @@
               "en": "Plants die if they don't get water.",
               "ru": "Растения гибнут, если не получают воды."
             }
-          ]
+          ],
+          "ref": "conditionals-0-1"
         }
       ],
       "pitfalls": [
@@ -434,6 +436,117 @@
           "answers": [
             "If the sun shines, the ice melts.",
             "If the sun shines, ice melts."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u13.d01.ex.b.01",
+          "instruction": {
+            "en": "Zero conditional.",
+            "ru": "Нулевой тип."
+          },
+          "tags": [
+            "grammar.zero-conditional"
+          ],
+          "prompt": "If you drop a glass, it ___ . (break)",
+          "answers": [
+            "breaks"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u13.d01.ex.b.02",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.zero-conditional"
+          ],
+          "prompt": "Water ___ if you cool it to zero.",
+          "options": [
+            "freezes",
+            "will freeze",
+            "froze"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u13.d01.ex.b.03",
+          "instruction": {
+            "en": "Both verbs present.",
+            "ru": "Оба глагола в present."
+          },
+          "tags": [
+            "grammar.zero-conditional"
+          ],
+          "prompt": "If people ___ too fast, they get tired. (run)",
+          "answers": [
+            "run"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u13.d01.ex.b.04",
+          "instruction": {
+            "en": "General truth.",
+            "ru": "Общая истина."
+          },
+          "tags": [
+            "grammar.zero-conditional"
+          ],
+          "prompt": "If the sun ___, the ice melts.",
+          "options": [
+            "shines",
+            "will shine",
+            "shine"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u13.d01.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.zero-conditional"
+          ],
+          "variants": [
+            "If you heat ice, it will melt.",
+            "If you heat ice, it melts."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u13.d01.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.zero-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Если нагреть воду, она кипит.",
+          "answers": [
+            "If you heat water, it boils."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "if you heat water, it will boil",
+                "if you will heat water"
+              ],
+              "explanation": {
+                "en": "Zero conditional: present in both parts — If you heat water, it boils.",
+                "ru": "Нулевой тип: present в обеих частях — If you heat water, it boils."
+              }
+            }
           ]
         }
       ]
