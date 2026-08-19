@@ -132,12 +132,23 @@ audio on by default (assisted repeated reading).
 - **Word Wise-style pre-rendered inline glosses** — overlaps our tap model; don't build both
   without validating which A2/B1 Russian learners prefer (pre-rendered vs on-demand).
 
-## 3. Recommended near-term slice
+## 3. Recommended near-term slice — REVISED per audit (§5)
 
-Ship **A (word-status coloring) + B (sentence translation) + C (comfort controls)** as the
-first wave — all P0, all reuse existing data/pipelines, together they most move reading from
-"decode" toward "acquire". Then **D (personal-coverage steering)** and **G+H (position/stats/
-offline)**. Treat **I's auto-scroll** as a small polish rider on A/B.
+The original "A+B+C together" wave was wrong: A is medium-cost with prerequisites, not a
+same-wave freebie, and D was misclassified. Corrected first wave — genuinely low cost, no
+shared-file *semantic* rewrite, each delivers on a promise the app already makes:
+
+1. **H — offline cache of remote catalog books.** Purely additive (a Dexie/OPFS store behind
+   `openCatalogBook`); makes the shelf's existing "available offline" badge true.
+2. **G — persist scroll/paragraph position + minimal stats.** One `BookRecord` field + a
+   scroll listener; reuses `books` + FSRS counts.
+3. **C — reading-comfort controls**, token-stepped (not a slider), edited in the shared
+   `Paragraph` typography (affects the course reader too — a deliberate decision).
+
+Then **A as its own project** (see §5); **B** sequenced after A (shares token nesting); **E**
+strictly behind a manual toggle (quota); **D deferred** until a per-book vocab profile is
+precomputed into `catalog.json`. Cheap correctness fix to do alongside: WordToken lookup
+degrades *silently* offline — give it the same "unavailable" state `Paragraph` has.
 
 ## 4. Open questions / risks (for the reviewer)
 
@@ -153,3 +164,50 @@ offline)**. Treat **I's auto-scroll** as a small polish rider on A/B.
   keep each behind the simplest possible toggle first.
 - **Does word-status coloring belong in the *course* reader too**, or only the book reader?
   (`WordToken` is shared — a change affects both.)
+
+## 5. Independent audit — corrections (folded in)
+
+An independent code-grounded audit corrected several cost/priority claims above. Deltas:
+
+**Overstated / wrong:**
+- **A is NOT "a rendering pass."** `WordToken` reads only `vocabStore.statuses`; it has no
+  frequency index, `stems()`, or level threshold — so "never-seen" coloring would light up
+  *the/is/and* for a learner who has marked nothing. Useful coloring must thread `freq` +
+  `stems()` + `rankThreshold` (today only in `ChapterStudy` via `loadFreq`) into a
+  **paragraph-level** status pass (per-token subscribe + per-token `stems()` is a perf trap).
+  Realistic cost **medium**; it is its own project, not same-wave with B/C.
+- **Drop the FSRS framing for A** — coloring uses `statuses` only; FSRS cards are never read.
+- **`unknown`/`ignored` statuses are dead code** — nothing writes them (`setStatus` only ever
+  gets `learning`/`known`). The `unknown` underline branch and `--color-word-unknown` are
+  currently unreachable. So §0's "underlines learning/unknown" is really one live state.
+- **known = no marking is already decided**: `--color-word-known: transparent` in `app.css`.
+  Dimming known words toward `--color-faint` (~2.8:1) would violate the body-text contrast
+  floor. Resolve the "dim/none" waffle to **none**.
+- **D is not P0.** Per-book personal coverage needs each book's full text — `CatalogEntry`
+  carries none, so it means fetch+parse+tokenize **every** catalog book on shelf load
+  (network for remote → offline-hostile). And with an empty known-set it collapses to the
+  `level` term — i.e. reproduces the CEFR sort. Cheap only if a per-book vocab profile is
+  **precomputed in `catalog.json`** (a content-pipeline task). Defer.
+- **Caching does not mitigate B/E quota** — it keys on exact text; sentences never repeat
+  (hit rate ≈0). The quota-dangerous feature is **E** (bulk auto-surface), not B. Keep E
+  behind a manual toggle.
+- **C is mislocated** — typography lives in the shared `Paragraph` (`reading-text.tsx`), not
+  `BookView`; must be token-stepped per CLAUDE.md, and it touches the course reader too.
+
+**Missing items added:**
+- **An `ignored` action is a required sub-item of A** — in fiction, character/place names are
+  a big share of never-seen tokens; without "ignore" in the WordToken popover, coloring leaves
+  every name permanently lit. Data model already supports `ignored`.
+- **WordToken lookup fails silently offline** (shows no translation, no error) — unlike
+  `Paragraph`. Cheap, worth fixing regardless.
+- **No continuous cross-paragraph read-aloud** — `speakPassage` runs per paragraph; the
+  reading-while-listening segmentation benefit needs continuous playback, so I is bigger than
+  an "auto-scroll rider" (auto-scroll within one visible paragraph is nearly pointless).
+- **Shared-`WordToken` blast radius**: A/B/C/F all edit `reading-text.tsx`, rendered by the
+  course reader too (where a hand-authored glossary governs emphasis) — decide the
+  course-vs-book scope *before* A.
+- **Theme is currently dark-only** — "pass contrast in both themes" is forward-looking (light
+  theme is a v2 plan), not a present blocker.
+- **Estimator over-counts** — a token is "known" if *any* stem hits (`seed`→`see`), inflating
+  coverage; so the real known-% is likely *below* the 92% we cite, strengthening the honesty
+  concern and further undercutting D's "flag books below 95%" precision.
