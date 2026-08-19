@@ -53,17 +53,11 @@ export function wordSpans(text: string): WordSpan[] {
 }
 
 /**
- * "Whether the `boundary` event actually fires here" — Safari on iOS reports it in the
- * API but never emits it (no `charLength`), so we self-calibrate: the first passage that
- * gets zero boundary events flips this to false, and every later passage uses the
- * word-by-word fallback that highlights on each word's `start`. No UA sniffing.
- */
-let boundaryWorks: boolean | 'unknown' = 'unknown';
-
-/**
- * Read a passage aloud, calling `onWord(index)` as each word is spoken so the caller can
- * highlight it. Uses one natural utterance with `boundary` where that works, and falls
- * back to chained per-word utterances on engines (iOS Safari) where it does not.
+ * Read a passage aloud as ONE natural utterance, calling `onWord(index)` as each word is
+ * spoken (via `boundary` events) so the caller can highlight it. Where `boundary` does not
+ * fire — Safari on iOS reports the event but never emits it — the audio still plays
+ * naturally; only the live highlight is absent. We never chop the text into per-word
+ * utterances: natural speech matters more for listening-while-reading than the highlight.
  */
 export function speakPassage(
   text: string,
@@ -79,59 +73,19 @@ export function speakPassage(
   const myToken = speechToken;
   const alive = () => myToken === speechToken;
   const spans = wordSpans(text);
-  const rate = opts.rate ?? 1;
-
-  const speakPerWord = () => {
-    let i = 0;
-    const next = () => {
-      if (!alive()) return;
-      if (i >= spans.length) {
-        done();
-        return;
-      }
-      const span = spans[i]!;
-      const idx = i;
-      const u = new SpeechSynthesisUtterance(text.slice(span.start, span.end));
-      u.lang = 'en-US';
-      u.rate = rate;
-      u.onstart = () => {
-        if (alive()) opts.onWord?.(idx);
-      };
-      u.onend = () => {
-        i += 1;
-        next();
-      };
-      u.onerror = () => {
-        i += 1;
-        next();
-      };
-      window.speechSynthesis.speak(u);
-    };
-    next();
-  };
-
-  if (boundaryWorks === false || spans.length === 0) {
-    speakPerWord();
-    return;
-  }
 
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'en-US';
-  u.rate = rate;
-  let sawBoundary = false;
+  u.rate = opts.rate ?? 1;
   u.onboundary = (e: SpeechSynthesisEvent) => {
     if (!alive() || (e.name && e.name !== 'word')) return;
-    sawBoundary = true;
-    boundaryWorks = true;
     const at = e.charIndex;
     let idx = spans.findIndex((s) => at >= s.start && at < s.end);
     if (idx < 0) idx = spans.findIndex((s) => s.start >= at);
     if (idx >= 0) opts.onWord?.(idx);
   };
   u.onend = () => {
-    if (!alive()) return;
-    if (!sawBoundary && boundaryWorks === 'unknown') boundaryWorks = false;
-    done();
+    if (alive()) done();
   };
   u.onerror = () => {
     if (alive()) done();
