@@ -43,7 +43,8 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
     setAiState('idle');
   }, [text]);
 
-  if (!coverage || coverage.total < 20) return null;
+  // Hide the panel rather than show a misleading "0%" if the frequency list failed to load.
+  if (!coverage || coverage.total < 20 || (freq && freq.size === 0)) return null;
 
   const pct = Math.round(coverage.coverage * 100);
   const verdict = ru
