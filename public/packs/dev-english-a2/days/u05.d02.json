@@ -185,7 +185,8 @@
               "en": "At 8pm I was reading.",
               "ru": "В 8 вечера я читал."
             }
-          ]
+          ],
+          "ref": "past-continuous"
         },
         {
           "label": {
@@ -198,7 +199,8 @@
               "en": "They were waiting at the station.",
               "ru": "Они ждали на вокзале."
             }
-          ]
+          ],
+          "ref": "past-continuous"
         },
         {
           "label": {
@@ -211,7 +213,8 @@
               "en": "What were you doing?",
               "ru": "Что ты делал?"
             }
-          ]
+          ],
+          "ref": "past-continuous"
         }
       ],
       "pitfalls": [
@@ -433,6 +436,122 @@
         {
           "type": "translate",
           "id": "u05.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Что ты делал в семь вечера?",
+          "answers": [
+            "What were you doing at seven?",
+            "What were you doing at 7pm?"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u05.d02.ex.b.01",
+          "instruction": {
+            "en": "Past continuous (was).",
+            "ru": "Past continuous (was)."
+          },
+          "tags": [
+            "grammar.past-continuous"
+          ],
+          "prompt": "At 8pm I ___ a book. (read)",
+          "answers": [
+            "was reading"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u05.d02.ex.b.02",
+          "instruction": {
+            "en": "Past continuous (were).",
+            "ru": "Past continuous (were)."
+          },
+          "tags": [
+            "grammar.past-continuous"
+          ],
+          "prompt": "They ___ at the station. (wait)",
+          "answers": [
+            "were waiting"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u05.d02.ex.b.03",
+          "instruction": {
+            "en": "was or were?",
+            "ru": "was или were?"
+          },
+          "tags": [
+            "grammar.past-continuous"
+          ],
+          "prompt": "We ___ running to the train.",
+          "options": [
+            "were",
+            "was",
+            "are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u05.d02.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.past-continuous"
+          ],
+          "variants": [
+            "She were driving.",
+            "She was driving."
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "she were"
+              ],
+              "explanation": {
+                "en": "For I/he/she/it use was: \"She was driving\".",
+                "ru": "Для I/he/she/it — was: «She was driving»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u05.d02.ex.b.05",
+          "instruction": {
+            "en": "Ask about a past moment.",
+            "ru": "Спроси про момент в прошлом."
+          },
+          "tags": [
+            "grammar.past-continuous"
+          ],
+          "tokens": [
+            "What",
+            "were",
+            "you",
+            "doing"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u05.d02.ex.b.06",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."

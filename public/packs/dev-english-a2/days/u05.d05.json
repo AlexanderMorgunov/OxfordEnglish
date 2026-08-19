@@ -461,6 +461,138 @@
             "Sorry I'm late.",
             "I'm sorry for being late."
           ]
+        },
+        {
+          "type": "choice",
+          "id": "u05.d05.ex.b.01",
+          "instruction": {
+            "en": "Apologize.",
+            "ru": "Извинись."
+          },
+          "tags": [
+            "functions.apologizing"
+          ],
+          "prompt": "I'm sorry ___ being late.",
+          "options": [
+            "for",
+            "to",
+            "of"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u05.d05.ex.b.02",
+          "instruction": {
+            "en": "Reply to \"Thank you\".",
+            "ru": "Ответь на «Спасибо»."
+          },
+          "tags": [
+            "functions.thanking"
+          ],
+          "prompt": "Thank you! — ___",
+          "options": [
+            "You're welcome",
+            "I'm sorry",
+            "Please"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u05.d05.ex.b.03",
+          "instruction": {
+            "en": "Say thank you.",
+            "ru": "Скажи спасибо."
+          },
+          "tags": [
+            "functions.thanking"
+          ],
+          "tokens": [
+            "Thank",
+            "you",
+            "for",
+            "your",
+            "help"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u05.d05.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.apologizing"
+          ],
+          "variants": [
+            "Sorry for be late.",
+            "Sorry for being late."
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "for be late"
+              ],
+              "explanation": {
+                "en": "After \"sorry for\" use -ing: \"sorry for being late\".",
+                "ru": "После «sorry for» — -ing: «sorry for being late»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u05.d05.ex.b.05",
+          "instruction": {
+            "en": "Match the word.",
+            "ru": "Сопоставь слово."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "mistake",
+              "right": "ошибка"
+            },
+            {
+              "left": "fault",
+              "right": "вина"
+            },
+            {
+              "left": "forgive",
+              "right": "прощать"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u05.d05.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.apologizing",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Извини, что опоздал.",
+          "answers": [
+            "I'm sorry I'm late.",
+            "Sorry I'm late.",
+            "I'm sorry for being late."
+          ]
         }
       ]
     }

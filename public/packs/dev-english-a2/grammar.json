@@ -549,5 +549,43 @@
       { "en": "Same form for all persons: \"he can\", not \"he cans\".", "ru": "Форма одна для всех лиц: «he can», а не «he cans»." }
     ],
     "seeAlso": ["present-simple"]
+  },
+  {
+    "id": "past-continuous",
+    "title": { "en": "Past Continuous", "ru": "Past Continuous (прошедшее длительное)" },
+    "level": "A2",
+    "summary": {
+      "en": "An action that was in progress at a moment in the past.",
+      "ru": "Действие, которое шло в определённый момент в прошлом."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "Form: was/were + -ing", "ru": "Форма: was/were + -ing" },
+        "text": {
+          "en": "was (I/he/she/it) or were (we/you/they) + the -ing form. It sets the background of a story — what was already happening.",
+          "ru": "was (I/he/she/it) или were (we/you/they) + глагол с -ing. Задаёт фон истории — то, что уже происходило.\n\n• I/he/she/it → was working\n• we/you/they → were working"
+        },
+        "examples": [
+          { "en": "At 8pm I was reading.", "ru": "В 8 вечера я читал." },
+          { "en": "They were waiting at the station.", "ru": "Они ждали на вокзале." }
+        ]
+      },
+      {
+        "heading": { "en": "with when / while", "ru": "с when / while" },
+        "text": {
+          "en": "A long background action (past continuous) is often interrupted by a short action (past simple). Use \"while\" with the long -ing action and \"when\" with the short one.",
+          "ru": "Длинное фоновое действие (past continuous) часто прерывается коротким (past simple). «while» — с длинным -ing действием, «when» — с коротким."
+        },
+        "examples": [
+          { "en": "While I was cooking, the phone rang.", "ru": "Пока я готовил, зазвонил телефон." },
+          { "en": "I was walking home when I met him.", "ru": "Я шёл домой, когда встретил его." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "Choose was or were by the subject: I/he/she/it → was, we/you/they → were.", "ru": "was или were — по подлежащему: I/he/she/it → was, we/you/they → were." },
+      { "en": "The long action = continuous, the short interrupting one = past simple.", "ru": "Длинное действие — continuous, короткое прерывающее — past simple." }
+    ],
+    "seeAlso": ["past-simple", "present-continuous"]
   }
 ]

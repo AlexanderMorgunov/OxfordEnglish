@@ -184,7 +184,8 @@
               "en": "While I was cooking, the phone rang.",
               "ru": "Пока я готовил, зазвонил телефон."
             }
-          ]
+          ],
+          "ref": "past-continuous"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "I was walking when I fell.",
               "ru": "Я шёл, когда упал."
             }
-          ]
+          ],
+          "ref": "past-continuous"
         }
       ],
       "pitfalls": [
@@ -419,6 +421,124 @@
         {
           "type": "translate",
           "id": "u05.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-vs-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я шёл, когда упал.",
+          "answers": [
+            "I was walking when I fell."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u05.d03.ex.b.01",
+          "instruction": {
+            "en": "Long action → continuous.",
+            "ru": "Длинное действие → continuous."
+          },
+          "tags": [
+            "grammar.past-vs-continuous"
+          ],
+          "prompt": "While I ___ , the phone rang. (cook)",
+          "answers": [
+            "was cooking"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u05.d03.ex.b.02",
+          "instruction": {
+            "en": "Short action → past simple.",
+            "ru": "Короткое действие → past simple."
+          },
+          "tags": [
+            "grammar.past-vs-continuous"
+          ],
+          "prompt": "I was walking when I ___ . (fall)",
+          "answers": [
+            "fell"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "when i was fall",
+                "when i falling"
+              ],
+              "explanation": {
+                "en": "The short interrupting action is past simple: \"when I fell\".",
+                "ru": "Короткое прерывающее действие — past simple: «when I fell»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u05.d03.ex.b.03",
+          "instruction": {
+            "en": "when or while?",
+            "ru": "when или while?"
+          },
+          "tags": [
+            "grammar.past-vs-continuous"
+          ],
+          "prompt": "___ she was reading, the lights went off.",
+          "options": [
+            "While",
+            "When",
+            "So"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u05.d03.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.past-vs-continuous"
+          ],
+          "variants": [
+            "While I walked, it was raining.",
+            "While I was walking, it started to rain."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u05.d03.ex.b.05",
+          "instruction": {
+            "en": "Match the verb.",
+            "ru": "Сопоставь глагол."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "slip",
+              "right": "поскользнуться"
+            },
+            {
+              "left": "drop",
+              "right": "уронить"
+            },
+            {
+              "left": "hurt",
+              "right": "ушибить"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u05.d03.ex.b.06",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."

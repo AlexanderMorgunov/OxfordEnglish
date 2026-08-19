@@ -448,6 +448,117 @@
           "answers": [
             "It was cold but sunny."
           ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u05.d04.ex.b.01",
+          "instruction": {
+            "en": "Make an adverb (+ -ly).",
+            "ru": "Образуй наречие (+ -ly)."
+          },
+          "tags": [
+            "grammar.adverbs-manner"
+          ],
+          "prompt": "She drives ___ . (careful)",
+          "answers": [
+            "carefully"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u05.d04.ex.b.02",
+          "instruction": {
+            "en": "good or well?",
+            "ru": "good или well?"
+          },
+          "tags": [
+            "grammar.adverbs-manner"
+          ],
+          "prompt": "He plays the guitar ___ .",
+          "options": [
+            "well",
+            "good",
+            "goodly"
+          ],
+          "correctIndex": 0,
+          "commonErrors": [
+            {
+              "match": [
+                "plays good",
+                "guitar good"
+              ],
+              "explanation": {
+                "en": "\"good\" is an adjective; the adverb is \"well\": \"plays well\".",
+                "ru": "«good» — прилагательное; наречие — «well»: «plays well»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u05.d04.ex.b.03",
+          "instruction": {
+            "en": "so or because?",
+            "ru": "so или because?"
+          },
+          "tags": [
+            "grammar.connectors"
+          ],
+          "prompt": "It was late, ___ we went home.",
+          "options": [
+            "so",
+            "because",
+            "but"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u05.d04.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.adverbs-manner"
+          ],
+          "variants": [
+            "She speaks English slow.",
+            "She speaks English slowly."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u05.d04.ex.b.05",
+          "instruction": {
+            "en": "adjective → adverb.",
+            "ru": "прилагательное → наречие."
+          },
+          "tags": [
+            "grammar.adverbs-manner"
+          ],
+          "prompt": "He finished the work ___ . (quick)",
+          "answers": [
+            "quickly"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u05.d04.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.connectors",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Было холодно, но солнечно.",
+          "answers": [
+            "It was cold but sunny."
+          ]
         }
       ]
     }

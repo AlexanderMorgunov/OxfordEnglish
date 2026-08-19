@@ -185,7 +185,8 @@
               "en": "We walked to the beach.",
               "ru": "Мы пошли на пляж."
             }
-          ]
+          ],
+          "ref": "past-simple"
         },
         {
           "label": {
@@ -198,7 +199,8 @@
               "en": "We went by train. We had lunch there.",
               "ru": "Мы поехали на поезде. Там мы пообедали."
             }
-          ]
+          ],
+          "ref": "past-simple"
         },
         {
           "label": {
@@ -211,7 +213,8 @@
               "en": "Did you like it? It didn't rain.",
               "ru": "Тебе понравилось? Дождя не было."
             }
-          ]
+          ],
+          "ref": "past-simple"
         }
       ],
       "pitfalls": [
@@ -433,6 +436,125 @@
         {
           "type": "translate",
           "id": "u05.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-simple",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Погода была солнечной.",
+          "answers": [
+            "The weather was sunny.",
+            "It was sunny."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u05.d01.ex.b.01",
+          "instruction": {
+            "en": "Past simple (regular).",
+            "ru": "Past simple (правильный)."
+          },
+          "tags": [
+            "grammar.past-simple.regular"
+          ],
+          "prompt": "We ___ along the river. (walk)",
+          "answers": [
+            "walked"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u05.d01.ex.b.02",
+          "instruction": {
+            "en": "Past simple (irregular).",
+            "ru": "Past simple (неправильный)."
+          },
+          "tags": [
+            "grammar.past-simple.irregular"
+          ],
+          "prompt": "We ___ to the mountains. (go)",
+          "answers": [
+            "went"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u05.d01.ex.b.03",
+          "instruction": {
+            "en": "Question in the past.",
+            "ru": "Вопрос в прошедшем."
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "prompt": "___ the weather good?",
+          "options": [
+            "Was",
+            "Did",
+            "Were",
+            "Is"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u05.d01.ex.b.04",
+          "instruction": {
+            "en": "Which question is correct?",
+            "ru": "Какой вопрос верный?"
+          },
+          "tags": [
+            "grammar.past-simple.question"
+          ],
+          "variants": [
+            "Did you went by car?",
+            "Did you go by car?"
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "did you went"
+              ],
+              "explanation": {
+                "en": "After did use the base verb: \"Did you go?\".",
+                "ru": "После did — начальная форма: «Did you go?»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u05.d01.ex.b.05",
+          "instruction": {
+            "en": "Match the weather word.",
+            "ru": "Сопоставь слово о погоде."
+          },
+          "tags": [
+            "vocab.weather"
+          ],
+          "pairs": [
+            {
+              "left": "rain",
+              "right": "дождь"
+            },
+            {
+              "left": "snow",
+              "right": "снег"
+            },
+            {
+              "left": "wind",
+              "right": "ветер"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u05.d01.ex.b.06",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."
