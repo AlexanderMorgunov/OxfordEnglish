@@ -445,6 +445,116 @@
           "answers": [
             "I want to learn to swim."
           ]
+        },
+        {
+          "type": "choice",
+          "id": "u03.d04.ex.b.01",
+          "instruction": {
+            "en": "After enjoy → ?",
+            "ru": "После enjoy → ?"
+          },
+          "tags": [
+            "grammar.verb-ing-vs-to"
+          ],
+          "prompt": "I enjoy ___ .",
+          "options": [
+            "reading",
+            "to read"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u03.d04.ex.b.02",
+          "instruction": {
+            "en": "After want → to.",
+            "ru": "После want → to."
+          },
+          "tags": [
+            "grammar.verb-ing-vs-to"
+          ],
+          "prompt": "I want ___ English. (learn)",
+          "answers": [
+            "to learn"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u03.d04.ex.b.03",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.verb-ing-vs-to"
+          ],
+          "variants": [
+            "She enjoys to cook.",
+            "She enjoys cooking."
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "enjoys to",
+                "enjoy to"
+              ],
+              "explanation": {
+                "en": "After enjoy use -ing: \"enjoys cooking\", not \"enjoys to cook\".",
+                "ru": "После enjoy — -ing: «enjoys cooking», а не «enjoys to cook»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u03.d04.ex.b.04",
+          "instruction": {
+            "en": "to for purpose.",
+            "ru": "to для цели."
+          },
+          "tags": [
+            "grammar.to-purpose"
+          ],
+          "prompt": "I use a map ___ the way. (find)",
+          "answers": [
+            "to find"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u03.d04.ex.b.05",
+          "instruction": {
+            "en": "After hate → ?",
+            "ru": "После hate → ?"
+          },
+          "tags": [
+            "grammar.verb-ing-vs-to"
+          ],
+          "prompt": "He hates ___ in queues.",
+          "options": [
+            "waiting",
+            "to wait",
+            "wait"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u03.d04.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.verb-ing-vs-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я хочу научиться плавать.",
+          "answers": [
+            "I want to learn to swim."
+          ]
         }
       ]
     }

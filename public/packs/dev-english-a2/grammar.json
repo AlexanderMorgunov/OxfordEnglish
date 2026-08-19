@@ -464,5 +464,90 @@
       { "en": "Match the verb to the noun: \"there is one book\", \"there are two books\".", "ru": "Согласуй глагол с существительным: «there is one book», «there are two books»." }
     ],
     "seeAlso": ["some-any", "articles"]
+  },
+  {
+    "id": "present-vs-continuous",
+    "title": { "en": "Present Simple vs Present Continuous", "ru": "Present Simple и Present Continuous" },
+    "level": "A2",
+    "summary": {
+      "en": "\"usually\" vs \"now\" — how to choose between the two present tenses.",
+      "ru": "«обычно» vs «сейчас» — как выбрать между двумя настоящими временами."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "The key difference", "ru": "Главное различие" },
+        "text": {
+          "en": "Present Simple = routines, habits, facts (things in general). Present Continuous = an action happening right now or around now. The marker words tell you which one.",
+          "ru": "Present Simple = привычки, распорядок, факты (вообще). Present Continuous = действие прямо сейчас или в этот период.\n\nМаркеры:\n• Simple: usually, always, every day, on Mondays, often, never\n• Continuous: now, at the moment, right now, Look!, Listen!"
+        },
+        "examples": [
+          { "en": "I usually walk to work. (routine → Simple)", "ru": "Обычно я хожу на работу пешком." },
+          { "en": "Today I am driving. (now → Continuous)", "ru": "Сегодня я еду на машине." }
+        ]
+      },
+      {
+        "heading": { "en": "Stative verbs stay simple", "ru": "Глаголы состояния — только simple" },
+        "text": {
+          "en": "Some verbs describe a state, not an action, and are almost never used in the -ing form: know, like, love, want, need, understand, believe.",
+          "ru": "Некоторые глаголы описывают состояние, а не действие, и почти никогда не ставятся в -ing: know, like, love, want, need, understand, believe.\n\nМы говорим «I know», а не «I am knowing»."
+        },
+        "examples": [
+          { "en": "I know the answer.", "ru": "Я знаю ответ. (не «I am knowing»)" },
+          { "en": "She wants a coffee.", "ru": "Она хочет кофе. (не «is wanting»)" }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "Time words help: usually/every day → Simple; now/at the moment → Continuous.", "ru": "Помогают маркеры: usually/every day → Simple; now/at the moment → Continuous." },
+      { "en": "Don't use stative verbs in -ing: \"I know\", not \"I am knowing\".", "ru": "Глаголы состояния не ставь в -ing: «I know», а не «I am knowing»." }
+    ],
+    "seeAlso": ["present-simple", "present-continuous"]
+  },
+  {
+    "id": "modals-can",
+    "title": { "en": "Ability: can / could / be able to", "ru": "Умение: can / could / be able to" },
+    "level": "A2",
+    "summary": {
+      "en": "Say what you are able to do — now or in the past.",
+      "ru": "Говорим, что умеешь делать — сейчас или в прошлом."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "can — ability now", "ru": "can — умение сейчас" },
+        "text": {
+          "en": "can + the base verb (no \"to\", no -s). It's the same for all persons: I can, he can, we can. Negative: can't (cannot).",
+          "ru": "can + начальная форма глагола (без «to», без -s). Форма одна для всех лиц: I can, he can, we can. Отрицание: can't (cannot)."
+        },
+        "examples": [
+          { "en": "I can swim.", "ru": "Я умею плавать." },
+          { "en": "He can't drive.", "ru": "Он не умеет водить." }
+        ]
+      },
+      {
+        "heading": { "en": "could — ability in the past", "ru": "could — умение в прошлом" },
+        "text": {
+          "en": "could is the past of can. Use it for an ability you had before.",
+          "ru": "could — прошедшее от can. Для умения, которое было раньше."
+        },
+        "examples": [
+          { "en": "I could swim when I was five.", "ru": "Я умел плавать в пять лет." }
+        ]
+      },
+      {
+        "heading": { "en": "be able to — other tenses", "ru": "be able to — другие времена" },
+        "text": {
+          "en": "can has no future or perfect form, so we use \"be able to\" there.",
+          "ru": "У can нет будущего и перфекта, поэтому там используем «be able to»."
+        },
+        "examples": [
+          { "en": "I will be able to help tomorrow.", "ru": "Завтра я смогу помочь." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "No \"to\" after can/could: \"I can swim\", not \"I can to swim\".", "ru": "После can/could нет «to»: «I can swim», а не «I can to swim»." },
+      { "en": "Same form for all persons: \"he can\", not \"he cans\".", "ru": "Форма одна для всех лиц: «he can», а не «he cans»." }
+    ],
+    "seeAlso": ["present-simple"]
   }
 ]

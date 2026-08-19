@@ -185,7 +185,8 @@
               "en": "I play football every Sunday.",
               "ru": "Я играю в футбол каждое воскресенье."
             }
-          ]
+          ],
+          "ref": "present-vs-continuous"
         },
         {
           "label": {
@@ -198,7 +199,8 @@
               "en": "I am playing football now.",
               "ru": "Я сейчас играю в футбол."
             }
-          ]
+          ],
+          "ref": "present-vs-continuous"
         }
       ],
       "pitfalls": [
@@ -432,6 +434,117 @@
           "answers": [
             "He is cooking lunch now.",
             "He is cooking lunch."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u03.d02.ex.b.01",
+          "instruction": {
+            "en": "Routine → present simple.",
+            "ru": "Привычка → present simple."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "He usually ___ football on Sundays. (play)",
+          "answers": [
+            "plays"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u03.d02.ex.b.02",
+          "instruction": {
+            "en": "Now → present continuous.",
+            "ru": "Сейчас → present continuous."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "Look! It ___ now. (rain)",
+          "answers": [
+            "is raining"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u03.d02.ex.b.03",
+          "instruction": {
+            "en": "Stative verb.",
+            "ru": "Глагол состояния."
+          },
+          "tags": [
+            "grammar.stative-verbs"
+          ],
+          "prompt": "I ___ this song.",
+          "options": [
+            "like",
+            "am liking"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u03.d02.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.stative-verbs"
+          ],
+          "variants": [
+            "I am knowing the answer.",
+            "I know the answer."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u03.d02.ex.b.05",
+          "instruction": {
+            "en": "every week → ?",
+            "ru": "каждую неделю → ?"
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "She ___ tennis every week.",
+          "options": [
+            "plays",
+            "is playing",
+            "playing"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u03.d02.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-vs-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Сейчас он готовит обед.",
+          "answers": [
+            "He is cooking lunch now.",
+            "He's cooking lunch now."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he cook",
+                "he cooks lunch now"
+              ],
+              "explanation": {
+                "en": "\"now\" needs the continuous: \"He is cooking lunch now.\"",
+                "ru": "«now» требует continuous: «He is cooking lunch now»."
+              }
+            }
           ]
         }
       ]

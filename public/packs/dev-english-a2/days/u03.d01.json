@@ -185,7 +185,8 @@
               "en": "She is waving.",
               "ru": "Она машет."
             }
-          ]
+          ],
+          "ref": "present-continuous"
         },
         {
           "label": {
@@ -198,7 +199,8 @@
               "en": "What are you doing?",
               "ru": "Что ты делаешь?"
             }
-          ]
+          ],
+          "ref": "present-continuous"
         }
       ],
       "pitfalls": [
@@ -210,8 +212,7 @@
           "en": "Spelling of -ing: wave → waving (drop e), sit → sitting (double the t).",
           "ru": "Написание -ing: wave → waving (убираем e), sit → sitting (удваиваем t)."
         }
-      ],
-      "ref": "present-continuous"
+      ]
     },
     {
       "type": "reading",
@@ -387,6 +388,177 @@
           "answers": [
             "I am listening.",
             "I'm listening."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u03.d01.ex.b.01",
+          "instruction": {
+            "en": "Present continuous (now).",
+            "ru": "Present continuous (сейчас)."
+          },
+          "tags": [
+            "grammar.present-continuous"
+          ],
+          "prompt": "I ___ on a bug now. (work)",
+          "answers": [
+            "am working"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u03.d01.ex.b.02",
+          "instruction": {
+            "en": "Present continuous.",
+            "ru": "Present continuous."
+          },
+          "tags": [
+            "grammar.present-continuous"
+          ],
+          "prompt": "She ___ an email. (write)",
+          "answers": [
+            "is writing"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u03.d01.ex.b.03",
+          "instruction": {
+            "en": "Ask about now.",
+            "ru": "Спроси про сейчас."
+          },
+          "tags": [
+            "grammar.present-continuous"
+          ],
+          "prompt": "___ you working now?",
+          "options": [
+            "Are",
+            "Do",
+            "Is",
+            "Does"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u03.d01.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-continuous"
+          ],
+          "variants": [
+            "I working now.",
+            "I am working now."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u03.d01.ex.b.05",
+          "instruction": {
+            "en": "Happening now.",
+            "ru": "Происходит сейчас."
+          },
+          "tags": [
+            "grammar.present-continuous"
+          ],
+          "prompt": "Look! It ___ .",
+          "options": [
+            "is raining",
+            "rains",
+            "rain"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u03.d01.ex.b.06",
+          "instruction": {
+            "en": "Present continuous (plural).",
+            "ru": "Present continuous (мн.)."
+          },
+          "tags": [
+            "grammar.present-continuous"
+          ],
+          "prompt": "They ___ for the build. (wait)",
+          "answers": [
+            "are waiting"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u03.d01.ex.b.07",
+          "instruction": {
+            "en": "Ask what someone is doing.",
+            "ru": "Спроси, что человек делает."
+          },
+          "tags": [
+            "grammar.present-continuous"
+          ],
+          "tokens": [
+            "What",
+            "are",
+            "you",
+            "doing"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u03.d01.ex.b.08",
+          "instruction": {
+            "en": "now vs usually.",
+            "ru": "сейчас vs обычно."
+          },
+          "tags": [
+            "grammar.present-continuous"
+          ],
+          "prompt": "Right now she ___ the code.",
+          "options": [
+            "is testing",
+            "tests",
+            "test"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u03.d01.ex.b.09",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он сейчас читает документацию.",
+          "answers": [
+            "He is reading the docs.",
+            "He's reading the docs.",
+            "He is reading the documentation."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he read",
+                "he reading",
+                "he is read"
+              ],
+              "explanation": {
+                "en": "Use am/is/are + verb-ing: \"He is reading…\".",
+                "ru": "Нужно am/is/are + глагол-ing: «He is reading…»."
+              }
+            }
           ]
         }
       ]

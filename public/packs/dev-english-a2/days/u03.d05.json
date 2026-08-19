@@ -186,7 +186,8 @@
               "en": "Could you help me, please?",
               "ru": "Не мог бы ты помочь?"
             }
-          ]
+          ],
+          "ref": "modals-can"
         },
         {
           "label": {
@@ -199,7 +200,8 @@
               "en": "Can I borrow your pen?",
               "ru": "Можно взять твою ручку?"
             }
-          ]
+          ],
+          "ref": "modals-can"
         },
         {
           "label": {
@@ -447,6 +449,128 @@
         {
           "type": "translate",
           "id": "u03.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.requests",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Можно взять твою ручку?",
+          "answers": [
+            "Can I borrow your pen?",
+            "Could I borrow your pen?"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u03.d05.ex.b.01",
+          "instruction": {
+            "en": "Polite request.",
+            "ru": "Вежливая просьба."
+          },
+          "tags": [
+            "functions.requests"
+          ],
+          "prompt": "___ you help me, please?",
+          "options": [
+            "Could",
+            "Do",
+            "Are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u03.d05.ex.b.02",
+          "instruction": {
+            "en": "Ask for permission.",
+            "ru": "Попроси разрешения."
+          },
+          "tags": [
+            "functions.requests"
+          ],
+          "tokens": [
+            "Can",
+            "I",
+            "borrow",
+            "your",
+            "pen"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u03.d05.ex.b.03",
+          "instruction": {
+            "en": "Make an offer.",
+            "ru": "Сделай предложение."
+          },
+          "tags": [
+            "functions.offers"
+          ],
+          "prompt": "___ you like some tea?",
+          "options": [
+            "Would",
+            "Do",
+            "Are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u03.d05.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.requests"
+          ],
+          "variants": [
+            "Could you to open the door?",
+            "Could you open the door?"
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "could you to",
+                "can you to"
+              ],
+              "explanation": {
+                "en": "No \"to\" after could/can: \"Could you open…\", not \"Could you to open…\".",
+                "ru": "После could/can нет «to»: «Could you open…», а не «Could you to open…»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u03.d05.ex.b.05",
+          "instruction": {
+            "en": "Ask permission.",
+            "ru": "Попроси разрешения."
+          },
+          "tags": [
+            "functions.requests"
+          ],
+          "prompt": "___ I ask a favour? (can)",
+          "answers": [
+            "Can"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u03.d05.ex.b.06",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."

@@ -184,7 +184,8 @@
               "en": "I can swim.",
               "ru": "Я умею плавать."
             }
-          ]
+          ],
+          "ref": "modals-can"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "I could swim at five.",
               "ru": "Я умел плавать в пять лет."
             }
-          ]
+          ],
+          "ref": "modals-can"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "She is able to drive.",
               "ru": "Она умеет водить."
             }
-          ]
+          ],
+          "ref": "modals-can"
         }
       ],
       "pitfalls": [
@@ -445,6 +448,118 @@
           "answers": [
             "She can drive a car.",
             "She can drive."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u03.d03.ex.b.01",
+          "instruction": {
+            "en": "Ask about ability.",
+            "ru": "Спроси об умении."
+          },
+          "tags": [
+            "grammar.modals-ability"
+          ],
+          "prompt": "___ you swim?",
+          "answers": [
+            "Can"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u03.d03.ex.b.02",
+          "instruction": {
+            "en": "Ability now.",
+            "ru": "Умение сейчас."
+          },
+          "tags": [
+            "grammar.modals-ability"
+          ],
+          "prompt": "He ___ ride a bike.",
+          "options": [
+            "can",
+            "cans",
+            "can to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u03.d03.ex.b.03",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.modals-ability"
+          ],
+          "variants": [
+            "I can to drive.",
+            "I can drive."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u03.d03.ex.b.04",
+          "instruction": {
+            "en": "Past ability.",
+            "ru": "Умение в прошлом."
+          },
+          "tags": [
+            "grammar.modals-ability"
+          ],
+          "prompt": "Ten years ago I ___ run fast. (can)",
+          "answers": [
+            "could"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u03.d03.ex.b.05",
+          "instruction": {
+            "en": "Ability.",
+            "ru": "Умение."
+          },
+          "tags": [
+            "grammar.modals-ability"
+          ],
+          "prompt": "She ___ speak three languages.",
+          "options": [
+            "can",
+            "cans",
+            "could to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u03.d03.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.modals-ability",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она умеет водить машину.",
+          "answers": [
+            "She can drive a car.",
+            "She can drive."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "can to drive",
+                "cans drive"
+              ],
+              "explanation": {
+                "en": "No \"to\" after can, same form for all: \"She can drive\".",
+                "ru": "После can нет «to», форма одна: «She can drive»."
+              }
+            }
           ]
         }
       ]
