@@ -184,7 +184,8 @@
               "en": "Walk along the street and across the square.",
               "ru": "Иди по улице и через площадь."
             }
-          ]
+          ],
+          "ref": "prepositions-place"
         },
         {
           "label": {
@@ -210,7 +211,8 @@
               "en": "Come out of the station and go towards the bridge.",
               "ru": "Выйди из вокзала и иди к мосту."
             }
-          ]
+          ],
+          "ref": "prepositions-place"
         }
       ],
       "pitfalls": [
@@ -448,6 +450,122 @@
           "answers": [
             "Go through the park.",
             "Walk through the park."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u08.d03.ex.b.01",
+          "instruction": {
+            "en": "Choose the preposition.",
+            "ru": "Выбери предлог."
+          },
+          "tags": [
+            "grammar.prepositions-movement"
+          ],
+          "prompt": "Walk ___ the park — it is faster.",
+          "options": [
+            "through",
+            "along",
+            "across"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u08.d03.ex.b.02",
+          "instruction": {
+            "en": "Choose the preposition.",
+            "ru": "Выбери предлог."
+          },
+          "tags": [
+            "grammar.prepositions-movement"
+          ],
+          "prompt": "Go ___ the bridge to the other side.",
+          "options": [
+            "across",
+            "into",
+            "past"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u08.d03.ex.b.03",
+          "instruction": {
+            "en": "Choose the preposition.",
+            "ru": "Выбери предлог."
+          },
+          "tags": [
+            "grammar.prepositions-movement"
+          ],
+          "prompt": "The bus goes ___ the museum but does not stop.",
+          "options": [
+            "past",
+            "out of",
+            "along"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u08.d03.ex.b.04",
+          "instruction": {
+            "en": "Entering a place.",
+            "ru": "Входим внутрь."
+          },
+          "tags": [
+            "grammar.prepositions-movement"
+          ],
+          "prompt": "Come ___ the shop, it is cold outside. (enter)",
+          "answers": [
+            "into",
+            "in"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u08.d03.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.prepositions-movement"
+          ],
+          "variants": [
+            "Walk across the street then turn.",
+            "Walk through the street then turn."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u08.d03.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.prepositions-movement",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Иди вдоль реки.",
+          "answers": [
+            "Walk along the river.",
+            "Go along the river."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "along of the river",
+                "walk on the river"
+              ],
+              "explanation": {
+                "en": "No \"of\" after along: walk along the river.",
+                "ru": "После along нет «of»: walk along the river."
+              }
+            }
           ]
         }
       ]

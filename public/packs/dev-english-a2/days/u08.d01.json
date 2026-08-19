@@ -406,6 +406,178 @@
             "There is a shop near here.",
             "There is a shop nearby."
           ]
+        },
+        {
+          "type": "choice",
+          "id": "u08.d01.ex.b.01",
+          "instruction": {
+            "en": "is or are?",
+            "ru": "is или are?"
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "prompt": "There ___ two banks in this street.",
+          "options": [
+            "are",
+            "is",
+            "be"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u08.d01.ex.b.02",
+          "instruction": {
+            "en": "is or are?",
+            "ru": "is или are?"
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "prompt": "There ___ a bus stop near the school.",
+          "options": [
+            "is",
+            "are",
+            "have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u08.d01.ex.b.03",
+          "instruction": {
+            "en": "Ask where.",
+            "ru": "Спроси где."
+          },
+          "tags": [
+            "grammar.questions"
+          ],
+          "prompt": "___ is the station? (where)",
+          "answers": [
+            "Where"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u08.d01.ex.b.04",
+          "instruction": {
+            "en": "Ask where — plural.",
+            "ru": "Спроси где — множественное."
+          },
+          "tags": [
+            "grammar.questions"
+          ],
+          "prompt": "___ are the toilets? (where)",
+          "answers": [
+            "Where"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u08.d01.ex.b.05",
+          "instruction": {
+            "en": "Say what is not there.",
+            "ru": "Скажи, чего нет."
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "prompt": "There ___ a cinema in our town. (is not)",
+          "answers": [
+            "isn't",
+            "is not"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u08.d01.ex.b.06",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.questions"
+          ],
+          "variants": [
+            "Where the bank is?",
+            "Where is the bank?"
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "where the bank"
+              ],
+              "explanation": {
+                "en": "In a question, the verb comes before the subject: Where is the bank?",
+                "ru": "В вопросе глагол стоит перед подлежащим: Where is the bank?"
+              }
+            }
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u08.d01.ex.b.07",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "variants": [
+            "There are a park near here.",
+            "There is a park near here."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u08.d01.ex.b.08",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.questions",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Где почта?",
+          "answers": [
+            "Where is the post office?",
+            "Where's the post office?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "where is post office",
+                "where the post"
+              ],
+              "explanation": {
+                "en": "Use the article: Where is THE post office?",
+                "ru": "Нужен артикль: Where is THE post office?"
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u08.d01.ex.b.09",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.there-is",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Здесь есть два магазина.",
+          "answers": [
+            "There are two shops here."
+          ]
         }
       ]
     }

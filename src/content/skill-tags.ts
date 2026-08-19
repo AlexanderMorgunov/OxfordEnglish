@@ -66,6 +66,7 @@ export const SKILL_TAGS = [
   'grammar.first-conditional',
   'grammar.relative-clauses',
   'grammar.indefinite-pronouns',
+  'grammar.questions',
   'grammar.question-tags',
   'grammar.so-neither',
   'grammar.dependent-prepositions',
@@ -100,6 +101,7 @@ export const SKILL_TAGS = [
   'functions.opinions',
   'functions.hypothetical',
   'functions.storytelling',
+  'functions.travel',
 
   // vocabulary (developer-life + everyday themes)
   'vocab.work',

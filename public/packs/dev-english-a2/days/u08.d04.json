@@ -213,7 +213,8 @@
               "en": "First go to the bank, then to the post office.",
               "ru": "Сначала в банк, потом на почту."
             }
-          ]
+          ],
+          "ref": "articles"
         }
       ],
       "pitfalls": [
@@ -473,6 +474,103 @@
           "prompt": "Оба магазина открыты.",
           "answers": [
             "Both shops are open."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u08.d04.ex.b.01",
+          "instruction": {
+            "en": "both or all?",
+            "ru": "both или all?"
+          },
+          "tags": [
+            "grammar.both-all"
+          ],
+          "prompt": "There are three banks and ___ of them are open.",
+          "options": [
+            "all",
+            "both",
+            "every"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u08.d04.ex.b.02",
+          "instruction": {
+            "en": "another or other?",
+            "ru": "another или other?"
+          },
+          "tags": [
+            "grammar.another-other"
+          ],
+          "prompt": "This café is full. Let us try ___ one.",
+          "options": [
+            "another",
+            "other",
+            "others"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u08.d04.ex.b.03",
+          "instruction": {
+            "en": "the + place.",
+            "ru": "the + место."
+          },
+          "tags": [
+            "grammar.articles"
+          ],
+          "prompt": "She is at ___ station, waiting for the train. (the)",
+          "answers": [
+            "the"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u08.d04.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.another-other"
+          ],
+          "variants": [
+            "I want other coffee, please.",
+            "I want another coffee, please."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u08.d04.ex.b.05",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.both-all",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Оба магазина закрыты.",
+          "answers": [
+            "Both shops are closed.",
+            "Both of the shops are closed."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "both shops is",
+                "both shop are"
+              ],
+              "explanation": {
+                "en": "both + plural noun + are: Both shops are closed.",
+                "ru": "both + существительное во мн. числе + are: Both shops are closed."
+              }
+            }
           ]
         }
       ]

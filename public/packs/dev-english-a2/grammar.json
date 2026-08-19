@@ -1,7 +1,10 @@
 [
   {
     "id": "present-simple",
-    "title": { "en": "Present Simple", "ru": "Present Simple (настоящее простое)" },
+    "title": {
+      "en": "Present Simple",
+      "ru": "Present Simple (настоящее простое)"
+    },
     "level": "A2",
     "summary": {
       "en": "For routines, habits and facts — what is generally true.",
@@ -9,63 +12,123 @@
     },
     "blocks": [
       {
-        "heading": { "en": "When we use it", "ru": "Когда используем" },
+        "heading": {
+          "en": "When we use it",
+          "ru": "Когда используем"
+        },
         "text": {
           "en": "Present Simple describes things that happen regularly (routines and habits) and things that are always true (facts). It is not about this exact moment now — for that we use Present Continuous.",
           "ru": "Present Simple описывает то, что происходит регулярно (привычки, распорядок дня), и то, что верно всегда (факты). Это НЕ про момент прямо сейчас — для «сейчас» есть Present Continuous.\n\nОбрати внимание на слова-маркеры: always (всегда), usually (обычно), often (часто), sometimes (иногда), never (никогда), every day (каждый день), on Mondays (по понедельникам). Если видишь их — почти всегда нужен Present Simple."
         },
         "examples": [
-          { "en": "I work in an office.", "ru": "Я работаю в офисе. (вообще, это моя работа)" },
-          { "en": "She usually gets up at seven.", "ru": "Она обычно встаёт в семь." },
-          { "en": "Water boils at 100 degrees.", "ru": "Вода кипит при 100 градусах. (факт)" }
+          {
+            "en": "I work in an office.",
+            "ru": "Я работаю в офисе. (вообще, это моя работа)"
+          },
+          {
+            "en": "She usually gets up at seven.",
+            "ru": "Она обычно встаёт в семь."
+          },
+          {
+            "en": "Water boils at 100 degrees.",
+            "ru": "Вода кипит при 100 градусах. (факт)"
+          }
         ]
       },
       {
-        "heading": { "en": "How to build it", "ru": "Как строится" },
+        "heading": {
+          "en": "How to build it",
+          "ru": "Как строится"
+        },
         "text": {
           "en": "For I / you / we / they use the base verb. For he / she / it add -s to the verb. That -s is the thing learners forget most often, so watch for it.",
           "ru": "С I / you / we / they берём глагол в начальной форме. С he / she / it добавляем к глаголу -s. Именно это -s чаще всего забывают — следи за ним.\n\nСхема:\n• I / you / we / they + глагол → I work, they play\n• he / she / it + глагол + s → he works, she plays"
         },
         "examples": [
-          { "en": "I / you / we / they play football.", "ru": "Я / ты / мы / они играем в футбол." },
-          { "en": "He plays football.", "ru": "Он играет в футбол. (play → plays)" },
-          { "en": "My sister lives in Moscow.", "ru": "Моя сестра живёт в Москве. (live → lives)" }
+          {
+            "en": "I / you / we / they play football.",
+            "ru": "Я / ты / мы / они играем в футбол."
+          },
+          {
+            "en": "He plays football.",
+            "ru": "Он играет в футбол. (play → plays)"
+          },
+          {
+            "en": "My sister lives in Moscow.",
+            "ru": "Моя сестра живёт в Москве. (live → lives)"
+          }
         ]
       },
       {
-        "heading": { "en": "Questions and negatives: do / does", "ru": "Вопросы и отрицания: do / does" },
+        "heading": {
+          "en": "Questions and negatives: do / does",
+          "ru": "Вопросы и отрицания: do / does"
+        },
         "text": {
           "en": "To ask a question or make a negative, use the helper do (I/you/we/they) or does (he/she/it) — and the main verb goes back to its base form (no -s!).",
           "ru": "Чтобы задать вопрос или сказать отрицание, используем вспомогательный глагол do (с I/you/we/they) или does (с he/she/it). При этом основной глагол возвращается в начальную форму — без -s! Само -s «переходит» в does."
         },
         "examples": [
-          { "en": "Do you like coffee?", "ru": "Ты любишь кофе?" },
-          { "en": "Does she work here? — Yes, she does.", "ru": "Она здесь работает? — Да." },
-          { "en": "He doesn't (does not) eat meat.", "ru": "Он не ест мясо. (не «doesn't eats»!)" }
+          {
+            "en": "Do you like coffee?",
+            "ru": "Ты любишь кофе?"
+          },
+          {
+            "en": "Does she work here? — Yes, she does.",
+            "ru": "Она здесь работает? — Да."
+          },
+          {
+            "en": "He doesn't (does not) eat meat.",
+            "ru": "Он не ест мясо. (не «doesn't eats»!)"
+          }
         ]
       },
       {
-        "heading": { "en": "Spelling of the -s", "ru": "Правописание -s (3-е лицо)" },
+        "heading": {
+          "en": "Spelling of the -s",
+          "ru": "Правописание -s (3-е лицо)"
+        },
         "text": {
           "en": "Usually just add -s. But: after -s, -sh, -ch, -x, -o add -es; and if the verb ends in consonant + y, change y to -ies.",
           "ru": "Обычно просто добавляем -s. Но есть нюансы:\n• после -s, -sh, -ch, -x, -o → добавляем -es: watch → watches, go → goes\n• согласная + y → меняем y на -ies: study → studies, try → tries\n• гласная + y → просто -s: play → plays"
         },
         "examples": [
-          { "en": "watch → watches, go → goes", "ru": "смотрит, идёт" },
-          { "en": "study → studies, fly → flies", "ru": "учится, летает" }
+          {
+            "en": "watch → watches, go → goes",
+            "ru": "смотрит, идёт"
+          },
+          {
+            "en": "study → studies, fly → flies",
+            "ru": "учится, летает"
+          }
         ]
       }
     ],
     "pitfalls": [
-      { "en": "Don't forget -s for he/she/it: \"he works\", not \"he work\".", "ru": "Не забывай -s для he/she/it: «he works», а не «he work»." },
-      { "en": "After does/doesn't use the base verb: \"Does he work?\", not \"Does he works?\".", "ru": "После does/doesn't — начальная форма: «Does he work?», а не «Does he works?»." },
-      { "en": "Russian has no such helper — \"do/does\" has no direct translation, it's just grammar.", "ru": "В русском нет такого вспомогательного глагола — «do/does» не переводится отдельным словом, это просто часть грамматики." }
+      {
+        "en": "Don't forget -s for he/she/it: \"he works\", not \"he work\".",
+        "ru": "Не забывай -s для he/she/it: «he works», а не «he work»."
+      },
+      {
+        "en": "After does/doesn't use the base verb: \"Does he work?\", not \"Does he works?\".",
+        "ru": "После does/doesn't — начальная форма: «Does he work?», а не «Does he works?»."
+      },
+      {
+        "en": "Russian has no such helper — \"do/does\" has no direct translation, it's just grammar.",
+        "ru": "В русском нет такого вспомогательного глагола — «do/does» не переводится отдельным словом, это просто часть грамматики."
+      }
     ],
-    "seeAlso": ["present-continuous", "articles"]
+    "seeAlso": [
+      "present-continuous",
+      "articles"
+    ]
   },
   {
     "id": "articles",
-    "title": { "en": "Articles: a / an / the", "ru": "Артикли: a / an / the" },
+    "title": {
+      "en": "Articles: a / an / the",
+      "ru": "Артикли: a / an / the"
+    },
     "level": "A1",
     "summary": {
       "en": "a/an for a new thing, the for a known one, no article for things in general.",
@@ -73,58 +136,108 @@
     },
     "blocks": [
       {
-        "heading": { "en": "Why this is hard for us", "ru": "Почему это трудно для нас" },
+        "heading": {
+          "en": "Why this is hard for us",
+          "ru": "Почему это трудно для нас"
+        },
         "text": {
           "en": "Russian has no articles at all, so this is a completely new idea. In English almost every singular countable noun needs an article (or another word like my/this). The choice depends on whether the listener knows WHICH thing you mean.",
           "ru": "В русском артиклей нет вообще, поэтому это совершенно новая идея. В английском почти каждое исчисляемое существительное в единственном числе требует артикль (или другое слово вроде my/this). Выбор зависит от одного: понимает ли собеседник, о КАКОМ именно предмете речь."
         }
       },
       {
-        "heading": { "en": "a / an — a new thing (any one)", "ru": "a / an — новое (любой такой)" },
+        "heading": {
+          "en": "a / an — a new thing (any one)",
+          "ru": "a / an — новое (любой такой)"
+        },
         "text": {
           "en": "Use a/an when you mention a countable thing for the FIRST time, or when it doesn't matter which one. Use a before a consonant sound and an before a vowel sound. We also use a/an with jobs.",
           "ru": "Ставим a/an, когда называем исчисляемый предмет ВПЕРВЫЕ или когда неважно, какой именно. Перед согласным звуком — a, перед гласным звуком — an (важен именно звук, а не буква). Ещё a/an используется с профессиями."
         },
         "examples": [
-          { "en": "I have a dog.", "ru": "У меня есть собака. (какая-то, впервые упомянули)" },
-          { "en": "an apple, an hour", "ru": "яблоко, час (звук гласный → an)" },
-          { "en": "She is a teacher.", "ru": "Она учитель. (профессия → a)" }
+          {
+            "en": "I have a dog.",
+            "ru": "У меня есть собака. (какая-то, впервые упомянули)"
+          },
+          {
+            "en": "an apple, an hour",
+            "ru": "яблоко, час (звук гласный → an)"
+          },
+          {
+            "en": "She is a teacher.",
+            "ru": "Она учитель. (профессия → a)"
+          }
         ]
       },
       {
-        "heading": { "en": "the — a known thing", "ru": "the — известное" },
+        "heading": {
+          "en": "the — a known thing",
+          "ru": "the — известное"
+        },
         "text": {
           "en": "Use the when both of you know WHICH thing is meant: it was already mentioned, or there is only one of it, or it's clear from the situation.",
           "ru": "Ставим the, когда обоим ясно, о КАКОМ предмете речь: он уже упоминался, или он единственный, или это понятно из ситуации.\n\nТипичный переход: первое упоминание → a, второе → the."
         },
         "examples": [
-          { "en": "I have a car. The car is red.", "ru": "У меня есть машина. Эта машина красная. (второе упоминание → the)" },
-          { "en": "the sun, the internet", "ru": "солнце, интернет (единственные в своём роде → the)" },
-          { "en": "Close the door, please.", "ru": "Закрой дверь, пожалуйста. (понятно, какую)" }
+          {
+            "en": "I have a car. The car is red.",
+            "ru": "У меня есть машина. Эта машина красная. (второе упоминание → the)"
+          },
+          {
+            "en": "the sun, the internet",
+            "ru": "солнце, интернет (единственные в своём роде → the)"
+          },
+          {
+            "en": "Close the door, please.",
+            "ru": "Закрой дверь, пожалуйста. (понятно, какую)"
+          }
         ]
       },
       {
-        "heading": { "en": "no article — things in general", "ru": "без артикля — о предметах вообще" },
+        "heading": {
+          "en": "no article — things in general",
+          "ru": "без артикля — о предметах вообще"
+        },
         "text": {
           "en": "Don't use an article with plural or uncountable nouns when you talk about them in general. Compare: \"Dogs are friendly\" (dogs in general) vs \"The dogs are hungry\" (these specific dogs).",
           "ru": "Не ставим артикль перед множественным числом и неисчисляемыми, когда говорим о них в общем смысле. Сравни: «Dogs are friendly» (собаки вообще) и «The dogs are hungry» (эти конкретные собаки)."
         },
         "examples": [
-          { "en": "I like coffee.", "ru": "Я люблю кофе. (вообще, неисчисляемое)" },
-          { "en": "Cats are independent.", "ru": "Кошки независимы. (кошки вообще)" }
+          {
+            "en": "I like coffee.",
+            "ru": "Я люблю кофе. (вообще, неисчисляемое)"
+          },
+          {
+            "en": "Cats are independent.",
+            "ru": "Кошки независимы. (кошки вообще)"
+          }
         ]
       }
     ],
     "pitfalls": [
-      { "en": "a/an is only for singular countable nouns — never \"a water\", \"a money\".", "ru": "a/an — только с исчисляемыми в единственном числе: нельзя «a water», «a money»." },
-      { "en": "It's about sound, not letter: \"an hour\" (h is silent), \"a university\" (sounds like 'you').", "ru": "Важен звук, а не буква: «an hour» (h не читается), «a university» (звучит как «ю»)." },
-      { "en": "First mention → a, second mention → the.", "ru": "Первое упоминание → a, повторное → the." }
+      {
+        "en": "a/an is only for singular countable nouns — never \"a water\", \"a money\".",
+        "ru": "a/an — только с исчисляемыми в единственном числе: нельзя «a water», «a money»."
+      },
+      {
+        "en": "It's about sound, not letter: \"an hour\" (h is silent), \"a university\" (sounds like 'you').",
+        "ru": "Важен звук, а не буква: «an hour» (h не читается), «a university» (звучит как «ю»)."
+      },
+      {
+        "en": "First mention → a, second mention → the.",
+        "ru": "Первое упоминание → a, повторное → the."
+      }
     ],
-    "seeAlso": ["present-simple"]
+    "seeAlso": [
+      "present-simple"
+    ]
   },
   {
     "id": "past-simple",
-    "title": { "en": "Past Simple", "ru": "Past Simple (прошедшее простое)" },
+    "title": {
+      "en": "Past Simple",
+      "ru": "Past Simple (прошедшее простое)"
+    },
     "level": "A2",
     "summary": {
       "en": "For finished actions in the past, usually with a time word.",
@@ -132,59 +245,107 @@
     },
     "blocks": [
       {
-        "heading": { "en": "When we use it", "ru": "Когда используем" },
+        "heading": {
+          "en": "When we use it",
+          "ru": "Когда используем"
+        },
         "text": {
           "en": "Past Simple is for an action that started and finished in the past. It usually goes with time words: yesterday, last week, in 2020, two days ago, when I was a child.",
           "ru": "Past Simple — для действия, которое началось и закончилось в прошлом. Обычно рядом есть слово времени: yesterday (вчера), last week (на прошлой неделе), in 2020, two days ago (два дня назад), when I was a child (когда я был ребёнком)."
         },
         "examples": [
-          { "en": "I watched a film yesterday.", "ru": "Вчера я посмотрел фильм." },
-          { "en": "We went to Italy last summer.", "ru": "Прошлым летом мы ездили в Италию." }
+          {
+            "en": "I watched a film yesterday.",
+            "ru": "Вчера я посмотрел фильм."
+          },
+          {
+            "en": "We went to Italy last summer.",
+            "ru": "Прошлым летом мы ездили в Италию."
+          }
         ]
       },
       {
-        "heading": { "en": "Regular verbs: + -ed", "ru": "Правильные глаголы: + -ed" },
+        "heading": {
+          "en": "Regular verbs: + -ed",
+          "ru": "Правильные глаголы: + -ed"
+        },
         "text": {
           "en": "Most verbs are regular: just add -ed. Spelling notes: verb ending in -e → add -d (like → liked); consonant + y → -ied (study → studied); short stressed vowel + consonant → double it (stop → stopped).",
           "ru": "Большинство глаголов правильные: просто добавляем -ed. Нюансы правописания:\n• глагол на -e → добавляем -d: like → liked\n• согласная + y → -ied: study → studied\n• короткий ударный гласный + согласная → удваиваем согласную: stop → stopped"
         },
         "examples": [
-          { "en": "work → worked, play → played", "ru": "работал, играл" },
-          { "en": "study → studied, stop → stopped", "ru": "учился, остановился" }
+          {
+            "en": "work → worked, play → played",
+            "ru": "работал, играл"
+          },
+          {
+            "en": "study → studied, stop → stopped",
+            "ru": "учился, остановился"
+          }
         ]
       },
       {
-        "heading": { "en": "Irregular verbs", "ru": "Неправильные глаголы" },
+        "heading": {
+          "en": "Irregular verbs",
+          "ru": "Неправильные глаголы"
+        },
         "text": {
           "en": "Many common verbs are irregular — they change form and you have to learn them by heart. There is no rule; a good learner keeps a list and practises them.",
           "ru": "Многие частые глаголы неправильные — они меняют форму, и их нужно учить наизусть. Правила нет; заведи список и повторяй их.\n\nСамые частые: go → went, have → had, see → saw, do → did, make → made, take → took, come → came, get → got."
         },
         "examples": [
-          { "en": "go → went, have → had, see → saw", "ru": "пошёл, имел, видел" },
-          { "en": "I saw him yesterday.", "ru": "Я видел его вчера. (see → saw)" }
+          {
+            "en": "go → went, have → had, see → saw",
+            "ru": "пошёл, имел, видел"
+          },
+          {
+            "en": "I saw him yesterday.",
+            "ru": "Я видел его вчера. (see → saw)"
+          }
         ]
       },
       {
-        "heading": { "en": "Questions and negatives: did", "ru": "Вопросы и отрицания: did" },
+        "heading": {
+          "en": "Questions and negatives: did",
+          "ru": "Вопросы и отрицания: did"
+        },
         "text": {
           "en": "For questions and negatives use the helper did (for all persons), and the main verb goes back to its base form — no -ed, no irregular change.",
           "ru": "Для вопросов и отрицаний используем вспомогательный did (для всех лиц), а основной глагол возвращается в начальную форму — без -ed и без изменения. Прошедшее время «уходит» в did."
         },
         "examples": [
-          { "en": "Did you see the film?", "ru": "Ты видел фильм? (не «did you saw»)" },
-          { "en": "I didn't (did not) go to work.", "ru": "Я не ходил на работу." }
+          {
+            "en": "Did you see the film?",
+            "ru": "Ты видел фильм? (не «did you saw»)"
+          },
+          {
+            "en": "I didn't (did not) go to work.",
+            "ru": "Я не ходил на работу."
+          }
         ]
       }
     ],
     "pitfalls": [
-      { "en": "After did/didn't use the base verb: \"Did you go?\", not \"Did you went?\".", "ru": "После did/didn't — начальная форма: «Did you go?», а не «Did you went?»." },
-      { "en": "Irregular verbs have no rule — learn them by heart.", "ru": "Неправильные глаголы не подчиняются правилу — учи наизусть." }
+      {
+        "en": "After did/didn't use the base verb: \"Did you go?\", not \"Did you went?\".",
+        "ru": "После did/didn't — начальная форма: «Did you go?», а не «Did you went?»."
+      },
+      {
+        "en": "Irregular verbs have no rule — learn them by heart.",
+        "ru": "Неправильные глаголы не подчиняются правилу — учи наизусть."
+      }
     ],
-    "seeAlso": ["present-perfect", "articles"]
+    "seeAlso": [
+      "present-perfect",
+      "articles"
+    ]
   },
   {
     "id": "present-perfect",
-    "title": { "en": "Present Perfect", "ru": "Present Perfect (настоящее совершённое)" },
+    "title": {
+      "en": "Present Perfect",
+      "ru": "Present Perfect (настоящее совершённое)"
+    },
     "level": "A2",
     "summary": {
       "en": "Links the past to now — experience or result, with no exact time.",
@@ -192,41 +353,74 @@
     },
     "blocks": [
       {
-        "heading": { "en": "The main idea", "ru": "Главная идея" },
+        "heading": {
+          "en": "The main idea",
+          "ru": "Главная идея"
+        },
         "text": {
           "en": "Present Perfect connects a past action to the present. We don't say WHEN it happened — the time is not important, only the result or the experience now. This tense often confuses Russian speakers because Russian uses the past tense here.",
           "ru": "Present Perfect связывает прошлое действие с настоящим. Мы НЕ говорим, когда именно это было — время неважно, важен результат или опыт сейчас. Это время часто путает русскоговорящих, потому что в русском тут используется прошедшее время.\n\nСравни:\n• I have lost my keys. → Я потерял ключи (и сейчас их нет — результат в настоящем).\n• I lost my keys yesterday. → есть слово «вчера» → Past Simple."
         },
         "examples": [
-          { "en": "I have finished my work.", "ru": "Я закончил работу. (и теперь свободен — результат сейчас)" },
-          { "en": "She has broken her phone.", "ru": "Она разбила телефон. (и он не работает сейчас)" }
+          {
+            "en": "I have finished my work.",
+            "ru": "Я закончил работу. (и теперь свободен — результат сейчас)"
+          },
+          {
+            "en": "She has broken her phone.",
+            "ru": "Она разбила телефон. (и он не работает сейчас)"
+          }
         ]
       },
       {
-        "heading": { "en": "How to build it", "ru": "Как строится" },
+        "heading": {
+          "en": "How to build it",
+          "ru": "Как строится"
+        },
         "text": {
           "en": "have / has + the third form of the verb (past participle). Use have with I/you/we/they and has with he/she/it. The third form is the same list you learn for irregular verbs (see → seen, do → done, be → been); for regular verbs it's just -ed.",
           "ru": "have / has + третья форма глагола (причастие). have — с I/you/we/they, has — с he/she/it. Третья форма — это тот же список неправильных глаголов (see → seen, do → done, be → been); у правильных глаголов это просто -ed."
         },
         "examples": [
-          { "en": "I have seen this film.", "ru": "Я видел этот фильм. (see → seen)" },
-          { "en": "He has done his homework.", "ru": "Он сделал домашку. (do → done)" }
+          {
+            "en": "I have seen this film.",
+            "ru": "Я видел этот фильм. (see → seen)"
+          },
+          {
+            "en": "He has done his homework.",
+            "ru": "Он сделал домашку. (do → done)"
+          }
         ]
       },
       {
-        "heading": { "en": "Typical words: ever, never, just, yet, already, for, since", "ru": "Типичные слова: ever, never, just, yet, already, for, since" },
+        "heading": {
+          "en": "Typical words: ever, never, just, yet, already, for, since",
+          "ru": "Типичные слова: ever, never, just, yet, already, for, since"
+        },
         "text": {
           "en": "ever/never — life experience (Have you ever…? / I have never…). just — a moment ago. already — sooner than expected. yet — in questions and negatives. for + a period (for two years). since + a starting point (since 2020).",
           "ru": "ever/never — жизненный опыт (Have you ever…? / I have never…). just — только что. already — уже (раньше, чем ожидали). yet — в вопросах и отрицаниях (пока/уже). for + промежуток (for two years — два года). since + момент начала (since 2020 — с 2020)."
         },
         "examples": [
-          { "en": "Have you ever been abroad?", "ru": "Ты когда-нибудь был за границей?" },
-          { "en": "I have lived here for five years.", "ru": "Я живу здесь пять лет." },
-          { "en": "She has just arrived.", "ru": "Она только что пришла." }
+          {
+            "en": "Have you ever been abroad?",
+            "ru": "Ты когда-нибудь был за границей?"
+          },
+          {
+            "en": "I have lived here for five years.",
+            "ru": "Я живу здесь пять лет."
+          },
+          {
+            "en": "She has just arrived.",
+            "ru": "Она только что пришла."
+          }
         ]
       },
       {
-        "heading": { "en": "Present Perfect vs Past Simple", "ru": "Present Perfect и Past Simple" },
+        "heading": {
+          "en": "Present Perfect vs Past Simple",
+          "ru": "Present Perfect и Past Simple"
+        },
         "text": {
           "en": "The key test: is there an exact past time? If YES (yesterday, in 2019, an hour ago) → Past Simple. If NO exact time, and it matters now → Present Perfect.",
           "ru": "Главная проверка: есть ли точное время в прошлом? Если ДА (yesterday, in 2019, час назад) → Past Simple. Если точного времени НЕТ, а важен результат сейчас → Present Perfect.\n\n• I have visited Rome. (когда-то, важно что был опыт)\n• I visited Rome in 2019. (есть год → Past Simple)"
@@ -234,15 +428,29 @@
       }
     ],
     "pitfalls": [
-      { "en": "Don't use Present Perfect with a finished-time word: \"I have seen it yesterday\" is wrong — say \"I saw it yesterday\".", "ru": "Не используй Present Perfect со словом о завершённом времени: «I have seen it yesterday» — ошибка, нужно «I saw it yesterday»." },
-      { "en": "Use has for he/she/it: \"she has gone\", not \"she have gone\".", "ru": "Для he/she/it — has: «she has gone», а не «she have gone»." },
-      { "en": "The third form ≠ the past form for many verbs: go → went (past) → gone (third).", "ru": "Третья форма ≠ прошедшая у многих глаголов: go → went (прошедшее) → gone (третья)." }
+      {
+        "en": "Don't use Present Perfect with a finished-time word: \"I have seen it yesterday\" is wrong — say \"I saw it yesterday\".",
+        "ru": "Не используй Present Perfect со словом о завершённом времени: «I have seen it yesterday» — ошибка, нужно «I saw it yesterday»."
+      },
+      {
+        "en": "Use has for he/she/it: \"she has gone\", not \"she have gone\".",
+        "ru": "Для he/she/it — has: «she has gone», а не «she have gone»."
+      },
+      {
+        "en": "The third form ≠ the past form for many verbs: go → went (past) → gone (third).",
+        "ru": "Третья форма ≠ прошедшая у многих глаголов: go → went (прошедшее) → gone (третья)."
+      }
     ],
-    "seeAlso": ["past-simple"]
+    "seeAlso": [
+      "past-simple"
+    ]
   },
   {
     "id": "verb-be",
-    "title": { "en": "The verb \"be\": am / is / are", "ru": "Глагол \"be\": am / is / are" },
+    "title": {
+      "en": "The verb \"be\": am / is / are",
+      "ru": "Глагол \"be\": am / is / are"
+    },
     "level": "A1",
     "summary": {
       "en": "The most important verb — says who or what someone/something is.",
@@ -250,49 +458,92 @@
     },
     "blocks": [
       {
-        "heading": { "en": "Three forms", "ru": "Три формы" },
+        "heading": {
+          "en": "Three forms",
+          "ru": "Три формы"
+        },
         "text": {
           "en": "\"be\" changes with the subject: I am, he/she/it is, we/you/they are. In Russian we usually drop this verb (\"Я студент\"), but in English it is almost never dropped.",
           "ru": "\"be\" меняется по подлежащему:\n• I am (я есть)\n• he / she / it is (он/она/оно есть)\n• we / you / they are (мы/вы/они есть)\n\nВ русском мы обычно опускаем этот глагол («Я студент»), но в английском его почти никогда не выбрасывают. Короткие формы: I'm, he's, she's, it's, we're, you're, they're."
         },
         "examples": [
-          { "en": "I am a student. (I'm a student)", "ru": "Я студент." },
-          { "en": "She is from Spain. (She's from Spain)", "ru": "Она из Испании." },
-          { "en": "We are friends. (We're friends)", "ru": "Мы друзья." }
+          {
+            "en": "I am a student. (I'm a student)",
+            "ru": "Я студент."
+          },
+          {
+            "en": "She is from Spain. (She's from Spain)",
+            "ru": "Она из Испании."
+          },
+          {
+            "en": "We are friends. (We're friends)",
+            "ru": "Мы друзья."
+          }
         ]
       },
       {
-        "heading": { "en": "Negatives", "ru": "Отрицания" },
+        "heading": {
+          "en": "Negatives",
+          "ru": "Отрицания"
+        },
         "text": {
           "en": "Add not after be: I am not, he is not (isn't), we are not (aren't).",
           "ru": "Добавляем not после be: I am not, he is not (isn't), we are not (aren't)."
         },
         "examples": [
-          { "en": "I'm not tired.", "ru": "Я не устал." },
-          { "en": "He isn't at home.", "ru": "Его нет дома." }
+          {
+            "en": "I'm not tired.",
+            "ru": "Я не устал."
+          },
+          {
+            "en": "He isn't at home.",
+            "ru": "Его нет дома."
+          }
         ]
       },
       {
-        "heading": { "en": "Questions: Am/Is/Are + subject … ?", "ru": "Вопросы: Am/Is/Are + подлежащее … ?" },
+        "heading": {
+          "en": "Questions: Am/Is/Are + subject … ?",
+          "ru": "Вопросы: Am/Is/Are + подлежащее … ?"
+        },
         "text": {
           "en": "To ask, put be BEFORE the subject. Short answers keep be: Yes, I am. / No, she isn't.",
           "ru": "Чтобы спросить, ставим be ПЕРЕД подлежащим: Are you…? Is she…? Am I…?\n\nКраткие ответы сохраняют be: Yes, I am. / No, she isn't. (нельзя просто «Yes, I»)."
         },
         "examples": [
-          { "en": "Are you from Russia? — Yes, I am.", "ru": "Ты из России? — Да." },
-          { "en": "Is she your sister? — No, she isn't.", "ru": "Она твоя сестра? — Нет." }
+          {
+            "en": "Are you from Russia? — Yes, I am.",
+            "ru": "Ты из России? — Да."
+          },
+          {
+            "en": "Is she your sister? — No, she isn't.",
+            "ru": "Она твоя сестра? — Нет."
+          }
         ]
       }
     ],
     "pitfalls": [
-      { "en": "Don't drop be: \"I am a teacher\", not \"I a teacher\".", "ru": "Не выбрасывай be: «I am a teacher», а не «I a teacher»." },
-      { "en": "In questions be comes first: \"Are you ready?\", not \"You are ready?\".", "ru": "В вопросе be на первом месте: «Are you ready?», а не «You are ready?»." }
+      {
+        "en": "Don't drop be: \"I am a teacher\", not \"I a teacher\".",
+        "ru": "Не выбрасывай be: «I am a teacher», а не «I a teacher»."
+      },
+      {
+        "en": "In questions be comes first: \"Are you ready?\", not \"You are ready?\".",
+        "ru": "В вопросе be на первом месте: «Are you ready?», а не «You are ready?»."
+      }
     ],
-    "seeAlso": ["pronouns", "possessives", "present-simple"]
+    "seeAlso": [
+      "pronouns",
+      "possessives",
+      "present-simple"
+    ]
   },
   {
     "id": "pronouns",
-    "title": { "en": "Personal pronouns: I / me, he / him …", "ru": "Личные местоимения: I / me, he / him …" },
+    "title": {
+      "en": "Personal pronouns: I / me, he / him …",
+      "ru": "Личные местоимения: I / me, he / him …"
+    },
     "level": "A1",
     "summary": {
       "en": "Subject pronouns do the action; object pronouns receive it.",
@@ -300,27 +551,51 @@
     },
     "blocks": [
       {
-        "heading": { "en": "Two sets", "ru": "Два набора" },
+        "heading": {
+          "en": "Two sets",
+          "ru": "Два набора"
+        },
         "text": {
           "en": "Subject (before the verb): I, you, he, she, it, we, they. Object (after the verb or a preposition): me, you, him, her, it, us, them.",
           "ru": "Подлежащее (перед глаголом): I, you, he, she, it, we, they.\nДополнение (после глагола или предлога): me, you, him, her, it, us, them.\n\nПары: I → me, he → him, she → her, we → us, they → them (you и it не меняются)."
         },
         "examples": [
-          { "en": "I know her. She knows me.", "ru": "Я знаю её. Она знает меня." },
-          { "en": "We saw them. They saw us.", "ru": "Мы видели их. Они видели нас." },
-          { "en": "Give it to him.", "ru": "Дай это ему." }
+          {
+            "en": "I know her. She knows me.",
+            "ru": "Я знаю её. Она знает меня."
+          },
+          {
+            "en": "We saw them. They saw us.",
+            "ru": "Мы видели их. Они видели нас."
+          },
+          {
+            "en": "Give it to him.",
+            "ru": "Дай это ему."
+          }
         ]
       }
     ],
     "pitfalls": [
-      { "en": "After a verb or preposition use the object form: \"with me\", not \"with I\".", "ru": "После глагола или предлога — форма дополнения: «with me», а не «with I»." },
-      { "en": "Don't repeat the subject: \"My brother he works\" → \"My brother works\".", "ru": "Не дублируй подлежащее: «My brother he works» → «My brother works»." }
+      {
+        "en": "After a verb or preposition use the object form: \"with me\", not \"with I\".",
+        "ru": "После глагола или предлога — форма дополнения: «with me», а не «with I»."
+      },
+      {
+        "en": "Don't repeat the subject: \"My brother he works\" → \"My brother works\".",
+        "ru": "Не дублируй подлежащее: «My brother he works» → «My brother works»."
+      }
     ],
-    "seeAlso": ["possessives", "verb-be"]
+    "seeAlso": [
+      "possessives",
+      "verb-be"
+    ]
   },
   {
     "id": "possessives",
-    "title": { "en": "Possessives: my / your / his … and mine / yours", "ru": "Притяжательные: my / your / his … и mine / yours" },
+    "title": {
+      "en": "Possessives: my / your / his … and mine / yours",
+      "ru": "Притяжательные: my / your / his … и mine / yours"
+    },
     "level": "A1",
     "summary": {
       "en": "Show who something belongs to.",
@@ -328,38 +603,71 @@
     },
     "blocks": [
       {
-        "heading": { "en": "Before a noun: my, your, his, her, its, our, their", "ru": "Перед существительным: my, your, his, her, its, our, their" },
+        "heading": {
+          "en": "Before a noun: my, your, his, her, its, our, their",
+          "ru": "Перед существительным: my, your, his, her, its, our, their"
+        },
         "text": {
           "en": "These words go BEFORE a noun to say whose it is. Careful: his = his (of a man), her = her (of a woman) — the form matches the OWNER, not the thing.",
           "ru": "Эти слова ставятся ПЕРЕД существительным и говорят, чьё это:\n• I → my (мой)\n• you → your (твой)\n• he → his (его)\n• she → her (её)\n• it → its (его/её, о предмете)\n• we → our (наш)\n• they → their (их)\n\nВажно: форма зависит от ВЛАДЕЛЬЦА, а не от предмета. «his wife» — жена мужчины, «her husband» — муж женщины."
         },
         "examples": [
-          { "en": "This is my phone.", "ru": "Это мой телефон." },
-          { "en": "Marco loves his wife.", "ru": "Марко любит свою жену. (владелец — мужчина → his)" },
-          { "en": "Anna and her brother.", "ru": "Анна и её брат. (владелец — женщина → her)" }
+          {
+            "en": "This is my phone.",
+            "ru": "Это мой телефон."
+          },
+          {
+            "en": "Marco loves his wife.",
+            "ru": "Марко любит свою жену. (владелец — мужчина → his)"
+          },
+          {
+            "en": "Anna and her brother.",
+            "ru": "Анна и её брат. (владелец — женщина → her)"
+          }
         ]
       },
       {
-        "heading": { "en": "Without a noun: mine, yours, his, hers, ours, theirs", "ru": "Без существительного: mine, yours, his, hers, ours, theirs" },
+        "heading": {
+          "en": "Without a noun: mine, yours, his, hers, ours, theirs",
+          "ru": "Без существительного: mine, yours, his, hers, ours, theirs"
+        },
         "text": {
           "en": "When you don't repeat the noun, use the second form. \"Whose is this? — It's mine.\"",
           "ru": "Когда не повторяем существительное, берём вторую форму:\n• my → mine, your → yours, her → hers, our → ours, their → theirs (his не меняется).\n\nВопрос о владельце: «Whose…?» (чей?)."
         },
         "examples": [
-          { "en": "It is my phone. → It is mine.", "ru": "Это мой телефон. → Это мой." },
-          { "en": "Whose keys are these? — They're hers.", "ru": "Чьи это ключи? — Её." }
+          {
+            "en": "It is my phone. → It is mine.",
+            "ru": "Это мой телефон. → Это мой."
+          },
+          {
+            "en": "Whose keys are these? — They're hers.",
+            "ru": "Чьи это ключи? — Её."
+          }
         ]
       }
     ],
     "pitfalls": [
-      { "en": "\"its\" (no apostrophe) = belonging to it; \"it's\" = it is. Different words!", "ru": "«its» (без апострофа) — принадлежность; «it's» — это «it is». Разные слова!" },
-      { "en": "The form matches the owner: a man → his, a woman → her.", "ru": "Форма — по владельцу: мужчина → his, женщина → her." }
+      {
+        "en": "\"its\" (no apostrophe) = belonging to it; \"it's\" = it is. Different words!",
+        "ru": "«its» (без апострофа) — принадлежность; «it's» — это «it is». Разные слова!"
+      },
+      {
+        "en": "The form matches the owner: a man → his, a woman → her.",
+        "ru": "Форма — по владельцу: мужчина → his, женщина → her."
+      }
     ],
-    "seeAlso": ["pronouns", "verb-be"]
+    "seeAlso": [
+      "pronouns",
+      "verb-be"
+    ]
   },
   {
     "id": "have-got",
-    "title": { "en": "have got / has got", "ru": "have got / has got (иметь)" },
+    "title": {
+      "en": "have got / has got",
+      "ru": "have got / has got (иметь)"
+    },
     "level": "A1",
     "summary": {
       "en": "A common way to talk about possession, family and features.",
@@ -367,36 +675,63 @@
     },
     "blocks": [
       {
-        "heading": { "en": "Form", "ru": "Форма" },
+        "heading": {
+          "en": "Form",
+          "ru": "Форма"
+        },
         "text": {
           "en": "I/you/we/they have got; he/she/it has got. Short: I've got, she's got. It means the same as \"have\" but is very common in British English, especially in speech.",
           "ru": "I/you/we/they have got; he/she/it has got. Кратко: I've got, she's got.\n\nЗначит то же, что и «have» (иметь), но очень часто используется в британском английском, особенно в речи."
         },
         "examples": [
-          { "en": "I've got a car.", "ru": "У меня есть машина." },
-          { "en": "She's got two brothers.", "ru": "У неё два брата." }
+          {
+            "en": "I've got a car.",
+            "ru": "У меня есть машина."
+          },
+          {
+            "en": "She's got two brothers.",
+            "ru": "У неё два брата."
+          }
         ]
       },
       {
-        "heading": { "en": "Questions and negatives", "ru": "Вопросы и отрицания" },
+        "heading": {
+          "en": "Questions and negatives",
+          "ru": "Вопросы и отрицания"
+        },
         "text": {
           "en": "Put have/has before the subject for questions; add not for negatives (haven't got / hasn't got).",
           "ru": "Для вопроса ставим have/has перед подлежащим; для отрицания добавляем not (haven't got / hasn't got)."
         },
         "examples": [
-          { "en": "Have you got a phone? — Yes, I have.", "ru": "У тебя есть телефон? — Да." },
-          { "en": "He hasn't got a car.", "ru": "У него нет машины." }
+          {
+            "en": "Have you got a phone? — Yes, I have.",
+            "ru": "У тебя есть телефон? — Да."
+          },
+          {
+            "en": "He hasn't got a car.",
+            "ru": "У него нет машины."
+          }
         ]
       }
     ],
     "pitfalls": [
-      { "en": "Use has got for he/she/it: \"she has got\", not \"she have got\".", "ru": "Для he/she/it — has got: «she has got», а не «she have got»." }
+      {
+        "en": "Use has got for he/she/it: \"she has got\", not \"she have got\".",
+        "ru": "Для he/she/it — has got: «she has got», а не «she have got»."
+      }
     ],
-    "seeAlso": ["verb-be", "there-is"]
+    "seeAlso": [
+      "verb-be",
+      "there-is"
+    ]
   },
   {
     "id": "present-continuous",
-    "title": { "en": "Present Continuous", "ru": "Present Continuous (настоящее длительное)" },
+    "title": {
+      "en": "Present Continuous",
+      "ru": "Present Continuous (настоящее длительное)"
+    },
     "level": "A2",
     "summary": {
       "en": "For an action happening now, at this moment.",
@@ -404,18 +739,30 @@
     },
     "blocks": [
       {
-        "heading": { "en": "Form: be + verb-ing", "ru": "Форма: be + глагол-ing" },
+        "heading": {
+          "en": "Form: be + verb-ing",
+          "ru": "Форма: be + глагол-ing"
+        },
         "text": {
           "en": "am / is / are + the -ing form of the verb. Spelling: make → making (drop -e), sit → sitting (double the consonant), run → running.",
           "ru": "am / is / are + глагол с окончанием -ing.\n\nПравописание -ing:\n• глагол на -e → убираем -e: make → making\n• короткий ударный гласный + согласная → удваиваем: sit → sitting, run → running\n• обычно просто +ing: play → playing"
         },
         "examples": [
-          { "en": "I am reading now.", "ru": "Я сейчас читаю." },
-          { "en": "She is cooking dinner.", "ru": "Она готовит ужин (прямо сейчас)." }
+          {
+            "en": "I am reading now.",
+            "ru": "Я сейчас читаю."
+          },
+          {
+            "en": "She is cooking dinner.",
+            "ru": "Она готовит ужин (прямо сейчас)."
+          }
         ]
       },
       {
-        "heading": { "en": "When to use it", "ru": "Когда используем" },
+        "heading": {
+          "en": "When to use it",
+          "ru": "Когда используем"
+        },
         "text": {
           "en": "Right now (Look! It's raining) or around now (I'm reading a good book this week). Marker words: now, at the moment, right now, Look!, Listen!.",
           "ru": "Прямо сейчас (Look! It's raining — Смотри! Идёт дождь) или в этот период (I'm reading a good book this week). Слова-маркеры: now, at the moment, right now, Look!, Listen!."
@@ -423,14 +770,26 @@
       }
     ],
     "pitfalls": [
-      { "en": "Stative verbs (know, like, want, need) are not used in -ing: \"I know\", not \"I am knowing\".", "ru": "Глаголы состояния (know, like, want, need) не ставят в -ing: «I know», а не «I am knowing»." },
-      { "en": "Don't forget be: \"I am working\", not \"I working\".", "ru": "Не забывай be: «I am working», а не «I working»." }
+      {
+        "en": "Stative verbs (know, like, want, need) are not used in -ing: \"I know\", not \"I am knowing\".",
+        "ru": "Глаголы состояния (know, like, want, need) не ставят в -ing: «I know», а не «I am knowing»."
+      },
+      {
+        "en": "Don't forget be: \"I am working\", not \"I working\".",
+        "ru": "Не забывай be: «I am working», а не «I working»."
+      }
     ],
-    "seeAlso": ["present-simple", "verb-be"]
+    "seeAlso": [
+      "present-simple",
+      "verb-be"
+    ]
   },
   {
     "id": "there-is",
-    "title": { "en": "there is / there are", "ru": "there is / there are (есть, имеется)" },
+    "title": {
+      "en": "there is / there are",
+      "ru": "there is / there are (есть, имеется)"
+    },
     "level": "A2",
     "summary": {
       "en": "Says that something exists or is in a place.",
@@ -438,36 +797,63 @@
     },
     "blocks": [
       {
-        "heading": { "en": "One vs many", "ru": "Один или много" },
+        "heading": {
+          "en": "One vs many",
+          "ru": "Один или много"
+        },
         "text": {
           "en": "there is + one thing (singular/uncountable); there are + many (plural). Short: there's. This structure has no direct Russian word — it's like «здесь есть…».",
           "ru": "there is + один предмет (единственное/неисчисляемое); there are + много (множественное). Кратко: there's.\n\nОтдельного слова в русском нет — это как «здесь есть…», «имеется…»."
         },
         "examples": [
-          { "en": "There is a shop on the corner.", "ru": "На углу есть магазин." },
-          { "en": "There are two windows in the room.", "ru": "В комнате два окна." }
+          {
+            "en": "There is a shop on the corner.",
+            "ru": "На углу есть магазин."
+          },
+          {
+            "en": "There are two windows in the room.",
+            "ru": "В комнате два окна."
+          }
         ]
       },
       {
-        "heading": { "en": "Questions and negatives", "ru": "Вопросы и отрицания" },
+        "heading": {
+          "en": "Questions and negatives",
+          "ru": "Вопросы и отрицания"
+        },
         "text": {
           "en": "Is there…? / Are there…? for questions; There isn't / There aren't for negatives. Use some in positive plurals and any in questions/negatives.",
           "ru": "Is there…? / Are there…? — вопрос; There isn't / There aren't — отрицание. С множественным: some в утверждении, any в вопросе и отрицании."
         },
         "examples": [
-          { "en": "Is there any milk? — No, there isn't.", "ru": "Есть молоко? — Нет." },
-          { "en": "There aren't any free seats.", "ru": "Свободных мест нет." }
+          {
+            "en": "Is there any milk? — No, there isn't.",
+            "ru": "Есть молоко? — Нет."
+          },
+          {
+            "en": "There aren't any free seats.",
+            "ru": "Свободных мест нет."
+          }
         ]
       }
     ],
     "pitfalls": [
-      { "en": "Match the verb to the noun: \"there is one book\", \"there are two books\".", "ru": "Согласуй глагол с существительным: «there is one book», «there are two books»." }
+      {
+        "en": "Match the verb to the noun: \"there is one book\", \"there are two books\".",
+        "ru": "Согласуй глагол с существительным: «there is one book», «there are two books»."
+      }
     ],
-    "seeAlso": ["some-any", "articles"]
+    "seeAlso": [
+      "some-any",
+      "articles"
+    ]
   },
   {
     "id": "present-vs-continuous",
-    "title": { "en": "Present Simple vs Present Continuous", "ru": "Present Simple и Present Continuous" },
+    "title": {
+      "en": "Present Simple vs Present Continuous",
+      "ru": "Present Simple и Present Continuous"
+    },
     "level": "A2",
     "summary": {
       "en": "\"usually\" vs \"now\" — how to choose between the two present tenses.",
@@ -475,37 +861,67 @@
     },
     "blocks": [
       {
-        "heading": { "en": "The key difference", "ru": "Главное различие" },
+        "heading": {
+          "en": "The key difference",
+          "ru": "Главное различие"
+        },
         "text": {
           "en": "Present Simple = routines, habits, facts (things in general). Present Continuous = an action happening right now or around now. The marker words tell you which one.",
           "ru": "Present Simple = привычки, распорядок, факты (вообще). Present Continuous = действие прямо сейчас или в этот период.\n\nМаркеры:\n• Simple: usually, always, every day, on Mondays, often, never\n• Continuous: now, at the moment, right now, Look!, Listen!"
         },
         "examples": [
-          { "en": "I usually walk to work. (routine → Simple)", "ru": "Обычно я хожу на работу пешком." },
-          { "en": "Today I am driving. (now → Continuous)", "ru": "Сегодня я еду на машине." }
+          {
+            "en": "I usually walk to work. (routine → Simple)",
+            "ru": "Обычно я хожу на работу пешком."
+          },
+          {
+            "en": "Today I am driving. (now → Continuous)",
+            "ru": "Сегодня я еду на машине."
+          }
         ]
       },
       {
-        "heading": { "en": "Stative verbs stay simple", "ru": "Глаголы состояния — только simple" },
+        "heading": {
+          "en": "Stative verbs stay simple",
+          "ru": "Глаголы состояния — только simple"
+        },
         "text": {
           "en": "Some verbs describe a state, not an action, and are almost never used in the -ing form: know, like, love, want, need, understand, believe.",
           "ru": "Некоторые глаголы описывают состояние, а не действие, и почти никогда не ставятся в -ing: know, like, love, want, need, understand, believe.\n\nМы говорим «I know», а не «I am knowing»."
         },
         "examples": [
-          { "en": "I know the answer.", "ru": "Я знаю ответ. (не «I am knowing»)" },
-          { "en": "She wants a coffee.", "ru": "Она хочет кофе. (не «is wanting»)" }
+          {
+            "en": "I know the answer.",
+            "ru": "Я знаю ответ. (не «I am knowing»)"
+          },
+          {
+            "en": "She wants a coffee.",
+            "ru": "Она хочет кофе. (не «is wanting»)"
+          }
         ]
       }
     ],
     "pitfalls": [
-      { "en": "Time words help: usually/every day → Simple; now/at the moment → Continuous.", "ru": "Помогают маркеры: usually/every day → Simple; now/at the moment → Continuous." },
-      { "en": "Don't use stative verbs in -ing: \"I know\", not \"I am knowing\".", "ru": "Глаголы состояния не ставь в -ing: «I know», а не «I am knowing»." }
+      {
+        "en": "Time words help: usually/every day → Simple; now/at the moment → Continuous.",
+        "ru": "Помогают маркеры: usually/every day → Simple; now/at the moment → Continuous."
+      },
+      {
+        "en": "Don't use stative verbs in -ing: \"I know\", not \"I am knowing\".",
+        "ru": "Глаголы состояния не ставь в -ing: «I know», а не «I am knowing»."
+      }
     ],
-    "seeAlso": ["present-simple", "present-continuous"]
+    "seeAlso": [
+      "present-simple",
+      "present-continuous"
+    ]
   },
   {
     "id": "modals-can",
-    "title": { "en": "Ability: can / could / be able to", "ru": "Умение: can / could / be able to" },
+    "title": {
+      "en": "Ability: can / could / be able to",
+      "ru": "Умение: can / could / be able to"
+    },
     "level": "A2",
     "summary": {
       "en": "Say what you are able to do — now or in the past.",
@@ -513,46 +929,78 @@
     },
     "blocks": [
       {
-        "heading": { "en": "can — ability now", "ru": "can — умение сейчас" },
+        "heading": {
+          "en": "can — ability now",
+          "ru": "can — умение сейчас"
+        },
         "text": {
           "en": "can + the base verb (no \"to\", no -s). It's the same for all persons: I can, he can, we can. Negative: can't (cannot).",
           "ru": "can + начальная форма глагола (без «to», без -s). Форма одна для всех лиц: I can, he can, we can. Отрицание: can't (cannot)."
         },
         "examples": [
-          { "en": "I can swim.", "ru": "Я умею плавать." },
-          { "en": "He can't drive.", "ru": "Он не умеет водить." }
+          {
+            "en": "I can swim.",
+            "ru": "Я умею плавать."
+          },
+          {
+            "en": "He can't drive.",
+            "ru": "Он не умеет водить."
+          }
         ]
       },
       {
-        "heading": { "en": "could — ability in the past", "ru": "could — умение в прошлом" },
+        "heading": {
+          "en": "could — ability in the past",
+          "ru": "could — умение в прошлом"
+        },
         "text": {
           "en": "could is the past of can. Use it for an ability you had before.",
           "ru": "could — прошедшее от can. Для умения, которое было раньше."
         },
         "examples": [
-          { "en": "I could swim when I was five.", "ru": "Я умел плавать в пять лет." }
+          {
+            "en": "I could swim when I was five.",
+            "ru": "Я умел плавать в пять лет."
+          }
         ]
       },
       {
-        "heading": { "en": "be able to — other tenses", "ru": "be able to — другие времена" },
+        "heading": {
+          "en": "be able to — other tenses",
+          "ru": "be able to — другие времена"
+        },
         "text": {
           "en": "can has no future or perfect form, so we use \"be able to\" there.",
           "ru": "У can нет будущего и перфекта, поэтому там используем «be able to»."
         },
         "examples": [
-          { "en": "I will be able to help tomorrow.", "ru": "Завтра я смогу помочь." }
+          {
+            "en": "I will be able to help tomorrow.",
+            "ru": "Завтра я смогу помочь."
+          }
         ]
       }
     ],
     "pitfalls": [
-      { "en": "No \"to\" after can/could: \"I can swim\", not \"I can to swim\".", "ru": "После can/could нет «to»: «I can swim», а не «I can to swim»." },
-      { "en": "Same form for all persons: \"he can\", not \"he cans\".", "ru": "Форма одна для всех лиц: «he can», а не «he cans»." }
+      {
+        "en": "No \"to\" after can/could: \"I can swim\", not \"I can to swim\".",
+        "ru": "После can/could нет «to»: «I can swim», а не «I can to swim»."
+      },
+      {
+        "en": "Same form for all persons: \"he can\", not \"he cans\".",
+        "ru": "Форма одна для всех лиц: «he can», а не «he cans»."
+      }
     ],
-    "seeAlso": ["present-simple"]
+    "seeAlso": [
+      "present-simple"
+    ]
   },
   {
     "id": "past-continuous",
-    "title": { "en": "Past Continuous", "ru": "Past Continuous (прошедшее длительное)" },
+    "title": {
+      "en": "Past Continuous",
+      "ru": "Past Continuous (прошедшее длительное)"
+    },
     "level": "A2",
     "summary": {
       "en": "An action that was in progress at a moment in the past.",
@@ -560,37 +1008,67 @@
     },
     "blocks": [
       {
-        "heading": { "en": "Form: was/were + -ing", "ru": "Форма: was/were + -ing" },
+        "heading": {
+          "en": "Form: was/were + -ing",
+          "ru": "Форма: was/were + -ing"
+        },
         "text": {
           "en": "was (I/he/she/it) or were (we/you/they) + the -ing form. It sets the background of a story — what was already happening.",
           "ru": "was (I/he/she/it) или were (we/you/they) + глагол с -ing. Задаёт фон истории — то, что уже происходило.\n\n• I/he/she/it → was working\n• we/you/they → were working"
         },
         "examples": [
-          { "en": "At 8pm I was reading.", "ru": "В 8 вечера я читал." },
-          { "en": "They were waiting at the station.", "ru": "Они ждали на вокзале." }
+          {
+            "en": "At 8pm I was reading.",
+            "ru": "В 8 вечера я читал."
+          },
+          {
+            "en": "They were waiting at the station.",
+            "ru": "Они ждали на вокзале."
+          }
         ]
       },
       {
-        "heading": { "en": "with when / while", "ru": "с when / while" },
+        "heading": {
+          "en": "with when / while",
+          "ru": "с when / while"
+        },
         "text": {
           "en": "A long background action (past continuous) is often interrupted by a short action (past simple). Use \"while\" with the long -ing action and \"when\" with the short one.",
           "ru": "Длинное фоновое действие (past continuous) часто прерывается коротким (past simple). «while» — с длинным -ing действием, «when» — с коротким."
         },
         "examples": [
-          { "en": "While I was cooking, the phone rang.", "ru": "Пока я готовил, зазвонил телефон." },
-          { "en": "I was walking home when I met him.", "ru": "Я шёл домой, когда встретил его." }
+          {
+            "en": "While I was cooking, the phone rang.",
+            "ru": "Пока я готовил, зазвонил телефон."
+          },
+          {
+            "en": "I was walking home when I met him.",
+            "ru": "Я шёл домой, когда встретил его."
+          }
         ]
       }
     ],
     "pitfalls": [
-      { "en": "Choose was or were by the subject: I/he/she/it → was, we/you/they → were.", "ru": "was или were — по подлежащему: I/he/she/it → was, we/you/they → were." },
-      { "en": "The long action = continuous, the short interrupting one = past simple.", "ru": "Длинное действие — continuous, короткое прерывающее — past simple." }
+      {
+        "en": "Choose was or were by the subject: I/he/she/it → was, we/you/they → were.",
+        "ru": "was или were — по подлежащему: I/he/she/it → was, we/you/they → were."
+      },
+      {
+        "en": "The long action = continuous, the short interrupting one = past simple.",
+        "ru": "Длинное действие — continuous, короткое прерывающее — past simple."
+      }
     ],
-    "seeAlso": ["past-simple", "present-continuous"]
+    "seeAlso": [
+      "past-simple",
+      "present-continuous"
+    ]
   },
   {
     "id": "demonstratives",
-    "title": { "en": "this / that / these / those", "ru": "this / that / these / those" },
+    "title": {
+      "en": "this / that / these / those",
+      "ru": "this / that / these / those"
+    },
     "level": "A2",
     "summary": {
       "en": "Point to things — near or far, one or many.",
@@ -598,26 +1076,46 @@
     },
     "blocks": [
       {
-        "heading": { "en": "Near vs far, one vs many", "ru": "Близко/далеко, один/много" },
+        "heading": {
+          "en": "Near vs far, one vs many",
+          "ru": "Близко/далеко, один/много"
+        },
         "text": {
           "en": "this = one thing near you; these = many near. that = one thing far; those = many far.",
           "ru": "this = один предмет близко; these = много близко. that = один предмет далеко; those = много далеко.\n\n• близко: this (один) / these (много)\n• далеко: that (один) / those (много)"
         },
         "examples": [
-          { "en": "This is my key. These are my books.", "ru": "Это мой ключ. Это мои книги." },
-          { "en": "That is your bag. Those are your shoes.", "ru": "То — твоя сумка. То — твои туфли." }
+          {
+            "en": "This is my key. These are my books.",
+            "ru": "Это мой ключ. Это мои книги."
+          },
+          {
+            "en": "That is your bag. Those are your shoes.",
+            "ru": "То — твоя сумка. То — твои туфли."
+          }
         ]
       }
     ],
     "pitfalls": [
-      { "en": "these/those are plural: \"these books\", not \"this books\".", "ru": "these/those — множественное: «these books», а не «this books»." },
-      { "en": "this/these = here (near), that/those = there (far).", "ru": "this/these = здесь (близко), that/those = там (далеко)." }
+      {
+        "en": "these/those are plural: \"these books\", not \"this books\".",
+        "ru": "these/those — множественное: «these books», а не «this books»."
+      },
+      {
+        "en": "this/these = here (near), that/those = there (far).",
+        "ru": "this/these = здесь (близко), that/those = там (далеко)."
+      }
     ],
-    "seeAlso": ["articles"]
+    "seeAlso": [
+      "articles"
+    ]
   },
   {
     "id": "prepositions-place",
-    "title": { "en": "Prepositions of place: in / on / under …", "ru": "Предлоги места: in / on / under …" },
+    "title": {
+      "en": "Prepositions of place: in / on / under …",
+      "ru": "Предлоги места: in / on / under …"
+    },
     "level": "A2",
     "summary": {
       "en": "Say where something is.",
@@ -625,27 +1123,50 @@
     },
     "blocks": [
       {
-        "heading": { "en": "The common ones", "ru": "Основные" },
+        "heading": {
+          "en": "The common ones",
+          "ru": "Основные"
+        },
         "text": {
           "en": "in = inside a closed space; on = on a surface; under = below. next to = beside; between = with something on each side; behind / in front of = at the back / at the front.",
           "ru": "in = внутри закрытого пространства; on = на поверхности; under = под. next to = рядом; between = между (с двух сторон); behind / in front of = сзади / спереди."
         },
         "examples": [
-          { "en": "The keys are on the table.", "ru": "Ключи на столе." },
-          { "en": "The cat is under the bed.", "ru": "Кот под кроватью." },
-          { "en": "The lamp is next to the sofa.", "ru": "Лампа рядом с диваном." }
+          {
+            "en": "The keys are on the table.",
+            "ru": "Ключи на столе."
+          },
+          {
+            "en": "The cat is under the bed.",
+            "ru": "Кот под кроватью."
+          },
+          {
+            "en": "The lamp is next to the sofa.",
+            "ru": "Лампа рядом с диваном."
+          }
         ]
       }
     ],
     "pitfalls": [
-      { "en": "Use \"on\" for surfaces, \"in\" for closed spaces: \"on the wall\", \"in the box\".", "ru": "«on» — для поверхностей, «in» — для закрытых пространств: «on the wall», «in the box»." },
-      { "en": "\"between\" needs two things: \"between the sofa and the wall\".", "ru": "«between» — между двумя предметами: «between the sofa and the wall»." }
+      {
+        "en": "Use \"on\" for surfaces, \"in\" for closed spaces: \"on the wall\", \"in the box\".",
+        "ru": "«on» — для поверхностей, «in» — для закрытых пространств: «on the wall», «in the box»."
+      },
+      {
+        "en": "\"between\" needs two things: \"between the sofa and the wall\".",
+        "ru": "«between» — между двумя предметами: «between the sofa and the wall»."
+      }
     ],
-    "seeAlso": ["there-is"]
+    "seeAlso": [
+      "there-is"
+    ]
   },
   {
     "id": "some-any",
-    "title": { "en": "some / any / much / many", "ru": "some / any / much / many" },
+    "title": {
+      "en": "some / any / much / many",
+      "ru": "some / any / much / many"
+    },
     "level": "A2",
     "summary": {
       "en": "Talk about quantity — with countable and uncountable nouns.",
@@ -653,39 +1174,157 @@
     },
     "blocks": [
       {
-        "heading": { "en": "Countable vs uncountable", "ru": "Исчисляемые и неисчисляемые" },
+        "heading": {
+          "en": "Countable vs uncountable",
+          "ru": "Исчисляемые и неисчисляемые"
+        },
         "text": {
           "en": "Countable nouns can be counted (one apple, two apples). Uncountable nouns cannot (water, money, bread) — no plural, no \"a\". This choice controls the words below.",
           "ru": "Исчисляемые можно посчитать (one apple, two apples). Неисчисляемые — нельзя (water, money, bread): нет множественного, нет «a». От этого зависят слова ниже."
         }
       },
       {
-        "heading": { "en": "some / any", "ru": "some / any" },
+        "heading": {
+          "en": "some / any",
+          "ru": "some / any"
+        },
         "text": {
           "en": "some in positive sentences; any in questions and negatives. Both work with plurals and uncountables.",
           "ru": "some — в утверждениях; any — в вопросах и отрицаниях. Оба — с множественным и неисчисляемым."
         },
         "examples": [
-          { "en": "I have some water.", "ru": "У меня есть немного воды." },
-          { "en": "Is there any milk? — No, there isn't any.", "ru": "Есть молоко? — Нет." }
+          {
+            "en": "I have some water.",
+            "ru": "У меня есть немного воды."
+          },
+          {
+            "en": "Is there any milk? — No, there isn't any.",
+            "ru": "Есть молоко? — Нет."
+          }
         ]
       },
       {
-        "heading": { "en": "much / many / a lot of", "ru": "much / many / a lot of" },
+        "heading": {
+          "en": "much / many / a lot of",
+          "ru": "much / many / a lot of"
+        },
         "text": {
           "en": "much + uncountable, many + countable — mostly in questions and negatives. In positives \"a lot of\" is more natural for both. \"How much…?\" for uncountable, \"How many…?\" for countable.",
           "ru": "much + неисчисляемое, many + исчисляемое — в основном в вопросах и отрицаниях. В утверждениях естественнее «a lot of» для обоих. «How much…?» — о неисчисляемом, «How many…?» — об исчисляемом."
         },
         "examples": [
-          { "en": "How much sugar? How many eggs?", "ru": "Сколько сахара? Сколько яиц?" },
-          { "en": "There is a lot of traffic.", "ru": "Много машин на дороге." }
+          {
+            "en": "How much sugar? How many eggs?",
+            "ru": "Сколько сахара? Сколько яиц?"
+          },
+          {
+            "en": "There is a lot of traffic.",
+            "ru": "Много машин на дороге."
+          }
         ]
       }
     ],
     "pitfalls": [
-      { "en": "Uncountable nouns take no \"a\" and no plural: \"some water\", not \"a water\" / \"waters\".", "ru": "Неисчисляемые — без «a» и без множественного: «some water», а не «a water» / «waters»." },
-      { "en": "\"How much\" for uncountable, \"How many\" for countable.", "ru": "«How much» — неисчисляемое, «How many» — исчисляемое." }
+      {
+        "en": "Uncountable nouns take no \"a\" and no plural: \"some water\", not \"a water\" / \"waters\".",
+        "ru": "Неисчисляемые — без «a» и без множественного: «some water», а не «a water» / «waters»."
+      },
+      {
+        "en": "\"How much\" for uncountable, \"How many\" for countable.",
+        "ru": "«How much» — неисчисляемое, «How many» — исчисляемое."
+      }
     ],
-    "seeAlso": ["there-is", "articles"]
+    "seeAlso": [
+      "there-is",
+      "articles"
+    ]
+  },
+  {
+    "id": "imperatives",
+    "title": {
+      "en": "The imperative (giving directions & instructions)",
+      "ru": "Повелительное наклонение (указания и инструкции)"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "The imperative is the form you use to tell someone to do something: give a direction, an instruction, a warning or an invitation. It uses the bare verb with no subject.",
+      "ru": "Повелительное наклонение — это форма, которой мы просим или велим что-то сделать: даём указание дороги, инструкцию, предупреждение или приглашение. Берётся «голый» глагол без подлежащего."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "How to make it",
+          "ru": "Как образуется"
+        },
+        "text": {
+          "en": "Take the base form of the verb (the infinitive without \"to\") and use it alone. There is NO subject and NO auxiliary — you do not say \"you\", \"do\" or \"are\".\n\nGo straight on.\nTurn left at the bank.\nTake the second street on the right.\n\nThe same form works for one person or many people — English does not change it.",
+          "ru": "Берём начальную форму глагола (инфинитив без «to») и ставим её саму по себе. Нет подлежащего и нет вспомогательного глагола — мы не говорим «you», «do» или «are».\n\nGo straight on. — Иди прямо.\nTurn left at the bank. — Поверни налево у банка.\nTake the second street on the right. — Сверни во вторую улицу направо.\n\nОдна и та же форма годится и для одного человека, и для многих — в английском она не меняется."
+        },
+        "examples": [
+          {
+            "en": "Cross the road here.",
+            "ru": "Перейди дорогу здесь."
+          },
+          {
+            "en": "Wait for me at the station.",
+            "ru": "Подожди меня на станции."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "The negative: dont + verb",
+          "ru": "Отрицание: dont + глагол"
+        },
+        "text": {
+          "en": "To tell someone NOT to do something, put \"do not\" (usually shortened to \"dont\") in front of the verb.\n\nDont turn here.\nDont cross on the red light.\nDont worry.\n\nThis is true even though there is no subject — the negative imperative always uses do/dont.",
+          "ru": "Чтобы велеть НЕ делать что-то, ставим перед глаголом «do not» (обычно сокращают до «dont»).\n\nDont turn here. — Не поворачивай здесь.\nDont cross on the red light. — Не переходи на красный.\nDont worry. — Не волнуйся.\n\nЭто так, хотя подлежащего нет: отрицательное повеление всегда с do/dont."
+        },
+        "examples": [
+          {
+            "en": "Dont go past the bank — stop before it.",
+            "ru": "Не проходи мимо банка — остановись перед ним."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Making it polite",
+          "ru": "Как смягчить"
+        },
+        "text": {
+          "en": "A bare imperative can sound abrupt. Add \"please\", or start with \"Could you…?\" to be more polite.\n\nTurn left, please.\nPlease take a seat.\nCould you tell me the way to the station? (a polite question, not an order)",
+          "ru": "«Голое» повеление может звучать резко. Добавь «please» или начни с «Could you…?», чтобы было вежливее.\n\nTurn left, please. — Поверни налево, пожалуйста.\nPlease take a seat. — Присаживайтесь, пожалуйста.\nCould you tell me the way to the station? — Не подскажете дорогу к станции? (вежливый вопрос, а не приказ)"
+        }
+      },
+      {
+        "heading": {
+          "en": "Lets — an invitation",
+          "ru": "Lets — приглашение сделать вместе"
+        },
+        "text": {
+          "en": "To suggest doing something together, use \"Lets\" (= let us) + verb.\n\nLets go.\nLets take a taxi.\nLets not wait here.",
+          "ru": "Чтобы предложить сделать что-то вместе, используем «Lets» (= let us) + глагол.\n\nLets go. — Пойдём.\nLets take a taxi. — Давай возьмём такси.\nLets not wait here. — Давай не будем здесь ждать."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Do not add a subject. Say \"Turn left\", NOT \"You turn left\" (that is a normal sentence, not an instruction).",
+        "ru": "Не добавляй подлежащее. Говори «Turn left», а не «You turn left» (это уже обычное предложение, а не указание)."
+      },
+      {
+        "en": "The negative always needs dont: \"Dont turn here\", NOT \"Not turn here\".",
+        "ru": "В отрицании всегда нужен dont: «Dont turn here», а не «Not turn here»."
+      },
+      {
+        "en": "Use the bare verb, not the -ing form: \"Go straight\", NOT \"Going straight\".",
+        "ru": "Бери «голый» глагол, а не форму на -ing: «Go straight», а не «Going straight»."
+      }
+    ],
+    "seeAlso": [
+      "prepositions-place",
+      "modals-can"
+    ]
   }
 ]

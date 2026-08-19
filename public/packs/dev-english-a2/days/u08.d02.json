@@ -185,7 +185,8 @@
               "en": "Go straight on and turn right.",
               "ru": "Иди прямо и поверни направо."
             }
-          ]
+          ],
+          "ref": "imperatives"
         },
         {
           "label": {
@@ -211,7 +212,8 @@
               "en": "Don't turn here — go past the park.",
               "ru": "Не поворачивай здесь — иди мимо парка."
             }
-          ]
+          ],
+          "ref": "imperatives"
         }
       ],
       "pitfalls": [
@@ -459,6 +461,130 @@
           "answers": [
             "Go straight on and turn left.",
             "Go straight and turn left."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u08.d02.ex.b.01",
+          "instruction": {
+            "en": "Give a direction.",
+            "ru": "Дай указание."
+          },
+          "tags": [
+            "grammar.imperatives"
+          ],
+          "prompt": "___ the first street on the right.",
+          "options": [
+            "Take",
+            "Taking",
+            "You take"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u08.d02.ex.b.02",
+          "instruction": {
+            "en": "Give a direction.",
+            "ru": "Дай указание."
+          },
+          "tags": [
+            "grammar.imperatives"
+          ],
+          "prompt": "___ straight on to the lights.",
+          "options": [
+            "Go",
+            "Going",
+            "To go"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u08.d02.ex.b.03",
+          "instruction": {
+            "en": "Tell someone not to do it.",
+            "ru": "Скажи не делать этого."
+          },
+          "tags": [
+            "grammar.imperatives"
+          ],
+          "prompt": "___ cross here — use the bridge. (not)",
+          "answers": [
+            "Don't",
+            "Do not"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u08.d02.ex.b.04",
+          "instruction": {
+            "en": "Give the direction.",
+            "ru": "Составь указание."
+          },
+          "tags": [
+            "grammar.imperatives"
+          ],
+          "prompt": "left / at / turn / the / bank",
+          "tokens": [
+            "Turn",
+            "left",
+            "at",
+            "the",
+            "bank"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u08.d02.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.imperatives"
+          ],
+          "variants": [
+            "Not turn here.",
+            "Don't turn here."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u08.d02.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.imperatives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Иди прямо и поверни налево.",
+          "answers": [
+            "Go straight on and turn left.",
+            "Go straight and turn left."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you go straight",
+                "go straight and you turn"
+              ],
+              "explanation": {
+                "en": "An imperative has no subject: Go straight… Turn left…",
+                "ru": "В повелении нет подлежащего: Go straight… Turn left…"
+              }
+            }
           ]
         }
       ]

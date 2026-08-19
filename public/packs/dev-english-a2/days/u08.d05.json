@@ -462,6 +462,151 @@
           "answers": [
             "How do I get to the station?"
           ]
+        },
+        {
+          "type": "order-words",
+          "id": "u08.d05.ex.b.01",
+          "instruction": {
+            "en": "Ask the way politely.",
+            "ru": "Вежливо спроси дорогу."
+          },
+          "tags": [
+            "functions.directions"
+          ],
+          "prompt": "me / how / I / do / to / the / get / station / excuse",
+          "tokens": [
+            "Excuse",
+            "me",
+            "how",
+            "do",
+            "I",
+            "get",
+            "to",
+            "the",
+            "station"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u08.d05.ex.b.02",
+          "instruction": {
+            "en": "Buy a ticket.",
+            "ru": "Купи билет."
+          },
+          "tags": [
+            "functions.travel"
+          ],
+          "prompt": "A ___ to London, please. (one way)",
+          "options": [
+            "single",
+            "return",
+            "both"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u08.d05.ex.b.03",
+          "instruction": {
+            "en": "Ask if a place is nearby.",
+            "ru": "Спроси, есть ли место рядом."
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "prompt": "___ a pharmacy near here?",
+          "options": [
+            "Is there",
+            "There is",
+            "Have there"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u08.d05.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.directions"
+          ],
+          "variants": [
+            "How I can get to the market?",
+            "How do I get to the market?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u08.d05.ex.b.05",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.travel"
+          ],
+          "pairs": [
+            {
+              "left": "single",
+              "right": "билет в одну сторону"
+            },
+            {
+              "left": "return",
+              "right": "билет туда-обратно"
+            },
+            {
+              "left": "platform",
+              "right": "платформа"
+            },
+            {
+              "left": "timetable",
+              "right": "расписание"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u08.d05.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.there-is",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Извините, здесь рядом есть банк?",
+          "answers": [
+            "Excuse me, is there a bank near here?",
+            "Excuse me, is there a bank nearby?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "there is a bank near here?",
+                "is there bank near"
+              ],
+              "explanation": {
+                "en": "Question order + article: Is there A bank near here?",
+                "ru": "Порядок вопроса + артикль: Is there A bank near here?"
+              }
+            }
+          ]
         }
       ]
     }
