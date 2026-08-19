@@ -10,7 +10,7 @@ import { wordInContext } from '@/features/ai/functions';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { useLearner } from '@/features/learner/store';
 import { classifyWord, loadFreq, rankThresholdFor, type FreqIndex, type WordMark } from './difficulty';
-import { useReaderSettings } from './settings';
+import { useReaderSettings, FONT_CLASSES, LEADING_CLASSES } from './settings';
 import { toSentences } from './parse/text';
 
 export type Gloss = { ru?: string; ipa?: string };
@@ -132,6 +132,7 @@ function Paragraph({
   activeWord,
   onRead,
   classify,
+  typoClass,
 }: {
   text: string;
   glossary?: Map<string, Gloss>;
@@ -140,6 +141,7 @@ function Paragraph({
   activeWord: number;
   onRead: () => void;
   classify?: (word: string) => WordMark | undefined;
+  typoClass: string;
 }) {
   const sentences = useMemo(() => toSentences(text), [text]);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
@@ -162,7 +164,7 @@ function Paragraph({
   };
 
   return (
-    <p className="text-lg leading-relaxed">
+    <p className={typoClass}>
       {canSpeak() && (
         <button
           type="button"
@@ -241,6 +243,11 @@ export function ReadingText({
   const loadVocab = useVocabStore((s) => s.load);
   const coloring = useReaderSettings((s) => s.coloring);
   const toggleColoring = useReaderSettings((s) => s.toggleColoring);
+  const fontStep = useReaderSettings((s) => s.fontStep);
+  const lineStep = useReaderSettings((s) => s.lineStep);
+  const setFontStep = useReaderSettings((s) => s.setFontStep);
+  const setLineStep = useReaderSettings((s) => s.setLineStep);
+  const typoClass = `${FONT_CLASSES[fontStep] ?? FONT_CLASSES[1]} ${LEADING_CLASSES[lineStep] ?? LEADING_CLASSES[0]}`;
   const [freq, setFreq] = useState<FreqIndex | null>(null);
   const [speakingIdx, setSpeakingIdx] = useState(-1);
   const [activeWord, setActiveWord] = useState(-1);
@@ -279,6 +286,35 @@ export function ReadingText({
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+        <div className="flex items-center gap-1.5" role="group" aria-label={ru ? 'Размер текста' : 'Text size'}>
+          <button
+            type="button"
+            aria-label={ru ? 'Меньше' : 'Smaller'}
+            disabled={fontStep === 0}
+            onClick={() => setFontStep(fontStep - 1)}
+            className="font-mono text-2xs text-teal hover:underline disabled:text-faint disabled:no-underline"
+          >
+            A−
+          </button>
+          <button
+            type="button"
+            aria-label={ru ? 'Больше' : 'Larger'}
+            disabled={fontStep === FONT_CLASSES.length - 1}
+            onClick={() => setFontStep(fontStep + 1)}
+            className="font-mono text-2xs text-teal hover:underline disabled:text-faint disabled:no-underline"
+          >
+            A+
+          </button>
+          <button
+            type="button"
+            aria-label={ru ? 'Межстрочный интервал' : 'Line spacing'}
+            aria-pressed={lineStep === 1}
+            onClick={() => setLineStep(lineStep === 1 ? 0 : 1)}
+            className="font-mono text-2xs text-teal hover:underline"
+          >
+            ↕
+          </button>
+        </div>
         <button
           type="button"
           onClick={toggleColoring}
@@ -315,6 +351,7 @@ export function ReadingText({
           activeWord={activeWord}
           onRead={() => read(i, p)}
           classify={classify}
+          typoClass={typoClass}
         />
       ))}
     </div>
