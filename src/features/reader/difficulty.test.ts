@@ -1,7 +1,7 @@
 import { test, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { stems, tokenize, estimateCoverage, type FreqIndex } from './difficulty';
+import { stems, tokenize, estimateCoverage, classifyWord, type FreqIndex } from './difficulty';
 
 const realFreq = (): FreqIndex => {
   const data = JSON.parse(readFileSync(resolve(process.cwd(), 'public/reader/en-freq.json'), 'utf8'));
@@ -48,6 +48,26 @@ test('the suffix stripper lifts coverage vs raw surface lookup', () => {
   const rawKnown = tokens.filter((t) => (freq.get(t) ?? Infinity) <= 3000).length;
   const raw = rawKnown / tokens.length;
   expect(withStems).toBeGreaterThanOrEqual(raw);
+});
+
+test('classifyWord: explicit status wins, else frequency band decides', () => {
+  const freq: FreqIndex = new Map([
+    ['the', 1],
+    ['walk', 900],
+    ['quokka', 8000],
+  ]);
+  const opts = { freq, rankThreshold: 1500 };
+  // explicit personal status always wins
+  expect(classifyWord('anything', { ...opts, status: 'known' })).toBe('known');
+  expect(classifyWord('anything', { ...opts, status: 'learning' })).toBe('learning');
+  expect(classifyWord('anything', { ...opts, status: 'ignored' })).toBe('ignored');
+  expect(classifyWord('anything', { ...opts, status: 'unknown' })).toBe('new');
+  // unmarked: frequent enough for the level → known (via a stem too)
+  expect(classifyWord('the', opts)).toBe('known');
+  expect(classifyWord('walked', opts)).toBe('known'); // walk is in band
+  // unmarked and above the band / not in list → new
+  expect(classifyWord('quokka', opts)).toBe('new'); // rank 8000 > 1500
+  expect(classifyWord('zzyzx', opts)).toBe('new'); // not in list
 });
 
 test('personal vocabulary counts as known', () => {

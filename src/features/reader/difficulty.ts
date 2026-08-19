@@ -109,6 +109,23 @@ export function estimateCoverage(
   };
 }
 
+export type WordMark = 'known' | 'learning' | 'new' | 'ignored';
+
+/**
+ * Classify a word for in-text status coloring: an explicit personal status wins; otherwise
+ * a word frequent enough for the learner's level counts as known, and the rest are "new".
+ */
+export function classifyWord(
+  word: string,
+  opts: { status?: string; freq: FreqIndex; rankThreshold: number }
+): WordMark {
+  const s = opts.status;
+  if (s === 'known' || s === 'ignored' || s === 'learning') return s;
+  if (s === 'unknown') return 'new';
+  const rank = Math.min(...stems(word).map((x) => opts.freq.get(x) ?? Infinity));
+  return rank <= opts.rankThreshold ? 'known' : 'new';
+}
+
 let freqPromise: Promise<FreqIndex> | null = null;
 
 /** Load the shipped frequency list once; rank = position in the list. */
