@@ -30,12 +30,42 @@ export function playClip(url: string, rate = 1): void {
   void audio.play();
 }
 
+let cachedVoice: SpeechSynthesisVoice | null | undefined;
+
+/**
+ * Pick the best available English voice. The browser default is often the plainest one;
+ * modern engines ship far better "Natural/Neural" voices we can opt into. Prefer a local
+ * voice among equals so read-aloud still works offline.
+ */
+function pickVoice(): SpeechSynthesisVoice | null {
+  const voices = window.speechSynthesis.getVoices();
+  const en = voices.filter((v) => /^en([-_]|$)/i.test(v.lang));
+  if (!en.length) return null;
+  const score = (v: SpeechSynthesisVoice) =>
+    (/natural|neural|enhanced|premium/i.test(v.name) ? 8 : 0) +
+    (/google|microsoft|siri|samantha|aria|jenny|guy/i.test(v.name) ? 4 : 0) +
+    (/en-US/i.test(v.lang) ? 2 : 0) +
+    (v.localService ? 1 : 0);
+  return [...en].sort((a, b) => score(b) - score(a))[0] ?? null;
+}
+
+function bestVoice(): SpeechSynthesisVoice | null {
+  if (cachedVoice === undefined) cachedVoice = canSpeak() ? pickVoice() : null;
+  return cachedVoice ?? null;
+}
+
+function applyVoice(u: SpeechSynthesisUtterance): void {
+  const v = bestVoice();
+  if (v) u.voice = v;
+  u.lang = 'en-US';
+}
+
 /** Speak a word in American English (browser synthesis). Cancels any prior utterance. */
 export function speakWord(word: string): void {
   if (!canSpeak()) return;
   cancelSpeech();
   const utterance = new SpeechSynthesisUtterance(word);
-  utterance.lang = 'en-US';
+  applyVoice(utterance);
   window.speechSynthesis.speak(utterance);
 }
 
@@ -75,7 +105,7 @@ export function speakPassage(
   const spans = wordSpans(text);
 
   const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-US';
+  applyVoice(u);
   u.rate = opts.rate ?? 1;
   u.onboundary = (e: SpeechSynthesisEvent) => {
     if (!alive() || (e.name && e.name !== 'word')) return;
@@ -98,5 +128,12 @@ if (typeof document !== 'undefined') {
     if (!document.hidden) return;
     stopClip();
     cancelSpeech();
+  });
+}
+
+// Voices load asynchronously in most browsers; re-pick once they arrive.
+if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+  window.speechSynthesis.addEventListener?.('voiceschanged', () => {
+    cachedVoice = pickVoice();
   });
 }
