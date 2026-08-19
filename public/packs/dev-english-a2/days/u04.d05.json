@@ -429,6 +429,70 @@
             "Please repeat it more slowly.",
             "Repeat it more slowly, please."
           ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d05.ex.b.09",
+          "instruction": {
+            "en": "Past simple (irregular).",
+            "ru": "Past simple (неправильный)."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "I ___ my keys at home yesterday. (leave)",
+          "answers": [
+            "left"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "leaved",
+                "leaved"
+              ],
+              "explanation": {
+                "en": "leave is irregular: leave → left.",
+                "ru": "leave — неправильный: leave → left."
+              }
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u04.d05.ex.b.10",
+          "instruction": {
+            "en": "Catch the weak word.",
+            "ru": "Услышь безударное слово."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "\"I went ___ the shop.\" — which word is weak (unstressed)?",
+          "options": [
+            "to",
+            "went",
+            "shop"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u04.d05.ex.b.11",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-simple",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Извини, повтори, пожалуйста?",
+          "answers": [
+            "Sorry, can you repeat that?",
+            "Sorry, could you repeat that?",
+            "Sorry, can you say that again?"
+          ]
         }
       ]
     }
