@@ -34,7 +34,12 @@ export function getCatalogEntry(id: string): Promise<CatalogEntry | undefined> {
 
 /** Resolve a catalog entry to a readable book: shipped JSON for bundled, live fetch for remote. */
 export async function openCatalogBook(entry: CatalogEntry): Promise<ParsedBook> {
+  const book = await resolveCatalogBook(entry);
   void track('book_open', { source: 'catalog', level: entry.level });
+  return book;
+}
+
+async function resolveCatalogBook(entry: CatalogEntry): Promise<ParsedBook> {
   if (entry.kind === 'bundled' && entry.path) {
     const res = await fetch(`${import.meta.env.BASE_URL}${entry.path}`);
     return res.json();

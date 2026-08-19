@@ -39,9 +39,10 @@ export async function getBook(id: string): Promise<BookRecord | undefined> {
 }
 
 export async function openBook(record: BookRecord): Promise<ParsedBook> {
-  void track('book_open', { source: 'imported', format: record.format });
   const file = await getBookFile(record.id);
-  return parseBook(file, record.format);
+  const parsed = await parseBook(file, record.format);
+  void track('book_open', { source: 'imported', format: record.format });
+  return parsed;
 }
 
 export async function removeBook(id: string): Promise<void> {

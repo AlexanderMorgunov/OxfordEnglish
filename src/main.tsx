@@ -13,11 +13,13 @@ import '@fontsource/jetbrains-mono/600.css';
 import './app.css';
 import { router } from '@/router';
 import { initAnalytics } from '@/features/analytics/analytics';
+import { initPwaInstall } from '@/features/pwa/install';
 
 const rootEl = document.getElementById('root');
 if (!rootEl) throw new Error('Root element #root not found');
 
 initAnalytics();
+initPwaInstall();
 
 createRoot(rootEl).render(
   <StrictMode>

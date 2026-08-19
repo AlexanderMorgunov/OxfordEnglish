@@ -15,19 +15,13 @@ export default defineConfig({
       manifest: {
         name: 'English for Developers',
         short_name: 'en/dev',
-        description: 'Offline-first English course for developers, A2 → B1.',
+        description: 'Offline-first English course for developers, A1 → B1, with a book reader.',
         theme_color: '#12141c',
         background_color: '#12141c',
         display: 'standalone',
         start_url: '/',
         icons: [
-          { src: 'icons/app-256.png', sizes: '256x256', type: 'image/png' },
-          {
-            src: 'icons/app-256.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable',
-          },
+          { src: 'icons/app-256.png', sizes: '256x256', type: 'image/png', purpose: 'any' },
         ],
       },
       workbox: {

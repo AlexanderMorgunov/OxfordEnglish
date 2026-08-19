@@ -1,16 +1,17 @@
 import { NavLink, Outlet, ScrollRestoration } from 'react-router-dom';
 import { useLearner } from '@/features/learner/store';
+import { InstallPrompt } from '@/features/pwa/InstallPrompt';
 
 const NAV = [
-  { to: '/', label: 'today', end: true, devOnly: false },
-  { to: '/grammar', label: 'grammar', end: false, devOnly: false },
-  { to: '/review', label: 'review', end: false, devOnly: false },
-  { to: '/progress', label: 'progress', end: false, devOnly: false },
-  { to: '/vocabulary', label: 'vocab', end: false, devOnly: false },
-  { to: '/library', label: 'library', end: false, devOnly: false },
-  { to: '/settings', label: 'settings', end: false, devOnly: false },
-  { to: '/support', label: 'support', end: false, devOnly: false },
-  { to: '/kitchen-sink', label: 'kit', end: false, devOnly: true },
+  { to: '/', label: 'today', end: true, devOnly: false, tour: undefined },
+  { to: '/grammar', label: 'grammar', end: false, devOnly: false, tour: undefined },
+  { to: '/review', label: 'review', end: false, devOnly: false, tour: 'nav-review' },
+  { to: '/progress', label: 'progress', end: false, devOnly: false, tour: undefined },
+  { to: '/vocabulary', label: 'vocab', end: false, devOnly: false, tour: undefined },
+  { to: '/library', label: 'library', end: false, devOnly: false, tour: 'nav-library' },
+  { to: '/settings', label: 'settings', end: false, devOnly: false, tour: 'nav-settings' },
+  { to: '/support', label: 'support', end: false, devOnly: false, tour: undefined },
+  { to: '/kitchen-sink', label: 'kit', end: false, devOnly: true, tour: undefined },
 ] as const;
 
 export function AppLayout() {
@@ -34,6 +35,7 @@ export function AppLayout() {
                 key={item.to}
                 to={item.to}
                 end={item.end}
+                data-tour={item.tour}
                 className={({ isActive }) =>
                   [
                     'font-mono text-xs rounded-sm px-2.5 py-1.5 transition-colors',
@@ -50,6 +52,8 @@ export function AppLayout() {
           </nav>
         </div>
       </header>
+
+      <InstallPrompt />
 
       <main className="mx-auto max-w-3xl px-5 py-8 pb-20">
         <Outlet />

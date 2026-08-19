@@ -4,16 +4,26 @@ import { useContentStore } from '@/content/store';
 import { useSolvedExercises } from '@/features/progress/useCompletion';
 import { dayProgress, unitProgress } from '@/features/progress/completion';
 import { useLearner } from '@/features/learner/store';
+import { useUiLang } from '@/features/i18n/uiLang';
+import { onboardingSeen, startTour } from '@/features/onboarding/tour';
 import { Card, PixelImage } from '@/shared/ui';
 
 export function DashboardPage() {
   const { status, pack, error, load } = useContentStore();
   const solved = useSolvedExercises();
   const { level, recommendedUnitId, placementDone } = useLearner();
+  const lang = useUiLang((s) => s.lang);
 
   useEffect(() => {
     void load();
   }, [load]);
+
+  useEffect(() => {
+    if (status !== 'ready' || onboardingSeen()) return;
+    // Defer one frame so the start card and nav are painted before highlighting.
+    const t = window.setTimeout(() => startTour(lang), 400);
+    return () => window.clearTimeout(t);
+  }, [status, lang]);
 
   const recommended = pack?.units.find((u) => u.id === recommendedUnitId);
   const recommendedDay = recommended?.days[0];
@@ -27,7 +37,7 @@ export function DashboardPage() {
             English for <span className="text-amber">developers</span>
           </h1>
           <p className="max-w-prose text-lg text-muted text-pretty">
-            A structured daily route from A2 to B1 — grammar, reading, listening
+            A structured daily route from A1 to B1 — grammar, reading, listening
             and practice, in the language you already think in: commits.
           </p>
         </div>
@@ -56,7 +66,10 @@ export function DashboardPage() {
       {status === 'ready' && pack && (
         <>
           {!placementDone ? (
-            <Card className="mb-6 flex flex-wrap items-center justify-between gap-3 border-violet-dim bg-violet-dim/15">
+            <Card
+              data-tour="start"
+              className="mb-6 flex flex-wrap items-center justify-between gap-3 border-violet-dim bg-violet-dim/15"
+            >
               <div>
                 <p className="mb-0.5 font-mono text-2xs uppercase tracking-[0.08em] text-violet">
                   new here?
@@ -73,7 +86,10 @@ export function DashboardPage() {
               </Link>
             </Card>
           ) : recommended && recommendedDay ? (
-            <Card className="mb-6 flex flex-wrap items-center justify-between gap-3 border-teal-dim">
+            <Card
+              data-tour="start"
+              className="mb-6 flex flex-wrap items-center justify-between gap-3 border-teal-dim"
+            >
               <div>
                 <p className="mb-0.5 font-mono text-2xs uppercase tracking-[0.08em] text-teal">
                   your level: {level}

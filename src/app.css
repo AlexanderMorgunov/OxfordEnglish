@@ -125,3 +125,49 @@ body {
     letter-spacing: var(--tracking-eyebrow);
   }
 }
+
+/* ================================================================
+   Onboarding tour (driver.js) — retheme its light default to our tokens
+   ================================================================ */
+.driver-popover {
+  background-color: var(--color-surface) !important;
+  color: var(--color-content) !important;
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+}
+.driver-popover-title {
+  color: var(--color-content);
+  font-family: var(--font-body);
+}
+.driver-popover-description {
+  color: var(--color-muted);
+  font-family: var(--font-body);
+}
+.driver-popover-progress-text {
+  color: var(--color-muted);
+}
+.driver-popover-close-btn {
+  color: var(--color-muted);
+}
+.driver-popover-navigation-btns button {
+  background-color: var(--color-surface-2);
+  color: var(--color-content);
+  text-shadow: none;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+}
+.driver-popover-navigation-btns button:hover {
+  background-color: var(--color-line);
+}
+.driver-popover-arrow-side-left.driver-popover-arrow {
+  border-left-color: var(--color-surface) !important;
+}
+.driver-popover-arrow-side-right.driver-popover-arrow {
+  border-right-color: var(--color-surface) !important;
+}
+.driver-popover-arrow-side-top.driver-popover-arrow {
+  border-top-color: var(--color-surface) !important;
+}
+.driver-popover-arrow-side-bottom.driver-popover-arrow {
+  border-bottom-color: var(--color-surface) !important;
+}
