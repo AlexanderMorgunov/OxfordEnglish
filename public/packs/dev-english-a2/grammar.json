@@ -1791,5 +1791,168 @@
       "modals-obligation",
       "future-forms"
     ]
+  },
+  {
+    "id": "present-perfect-signals",
+    "title": {
+      "en": "Words with the present perfect: just, already, yet, for, since",
+      "ru": "Слова с present perfect: just, already, yet, for, since"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "Certain little words go together with the present perfect (have/has + V3). They tell you when — recently, sooner than expected, or over a period up to now.",
+      "ru": "С present perfect (have/has + V3) идут определённые словечки. Они показывают когда — недавно, раньше ожидаемого или за период вплоть до сейчас."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "just — a moment ago",
+          "ru": "just — только что"
+        },
+        "text": {
+          "en": "\"have/has just + V3\" means a very short time ago. Put \"just\" between have and the participle.\n\nI have just finished my work.\nShe has just left.",
+          "ru": "«have/has just + V3» — совсем недавно. Ставь «just» между have и причастием.\n\nI have just finished my work. — Я только что закончил работу.\nShe has just left. — Она только что ушла."
+        },
+        "examples": [
+          {
+            "en": "We have just arrived.",
+            "ru": "Мы только что приехали."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "already — sooner than expected",
+          "ru": "already — раньше, чем ожидалось"
+        },
+        "text": {
+          "en": "\"have/has already + V3\" means something happened before now, perhaps earlier than you thought. It goes in the middle, in positive sentences.\n\nI have already seen this film.\nHe has already eaten.",
+          "ru": "«have/has already + V3» — что-то уже произошло, возможно, раньше ожидаемого. Стоит в середине, в утвердительных предложениях.\n\nI have already seen this film. — Я уже видел этот фильм.\nHe has already eaten. — Он уже поел."
+        },
+        "examples": [
+          {
+            "en": "They have already gone home.",
+            "ru": "Они уже ушли домой."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "yet — in questions and negatives",
+          "ru": "yet — в вопросах и отрицаниях"
+        },
+        "text": {
+          "en": "\"yet\" means \"up to now\". Use it at the END of questions and negative sentences.\n\nHave you eaten yet? (question)\nI have not finished yet. (negative)\n\nDo not use \"already\" in a negative — use \"yet\": \"I have not finished yet\", NOT \"I have not finished already\".",
+          "ru": "«yet» значит «до сих пор». Ставь в КОНЦЕ вопросов и отрицаний.\n\nHave you eaten yet? — Ты уже поел? (вопрос)\nI have not finished yet. — Я ещё не закончил. (отрицание)\n\nНе используй «already» в отрицании — нужен «yet»: «I have not finished yet», а не «I have not finished already»."
+        },
+        "examples": [
+          {
+            "en": "Has the bus arrived yet?",
+            "ru": "Автобус уже пришёл?"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "for + period, since + point",
+          "ru": "for + период, since + момент"
+        },
+        "text": {
+          "en": "For actions that started in the past and continue now, use the present perfect with:\n\n\"for\" + a length of time: for five years, for two weeks.\n\"since\" + a starting point: since 2019, since Monday, since I was a child.\n\nI have lived here for five years.\nShe has worked here since 2019.\n\nAsk about duration with \"How long…?\": How long have you known him?",
+          "ru": "Для действий, начавшихся в прошлом и длящихся сейчас, используем present perfect с:\n\n«for» + отрезок времени: for five years, for two weeks.\n«since» + точка начала: since 2019, since Monday, since I was a child.\n\nI have lived here for five years. — Я живу здесь пять лет.\nShe has worked here since 2019. — Она работает здесь с 2019 года.\n\nСпрашивай о длительности через «How long…?»: How long have you known him?"
+        },
+        "examples": [
+          {
+            "en": "We have been friends since school.",
+            "ru": "Мы дружим со школы."
+          }
+        ]
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "\"yet\" (not \"already\") in negatives and questions: \"I have not finished yet\".",
+        "ru": "«yet» (не «already») в отрицаниях и вопросах: «I have not finished yet»."
+      },
+      {
+        "en": "\"for\" + a period, \"since\" + a start point: \"for five years\", \"since 2019\" — NOT \"since five years\".",
+        "ru": "«for» + период, «since» + точка: «for five years», «since 2019» — а не «since five years»."
+      }
+    ],
+    "seeAlso": [
+      "present-perfect",
+      "perfect-vs-past"
+    ]
+  },
+  {
+    "id": "perfect-vs-past",
+    "title": {
+      "en": "Present perfect vs past simple (have you seen / did you see)",
+      "ru": "Present perfect и past simple (have you seen / did you see)"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "Use the present perfect for experiences with NO stated time (\"Have you ever seen it?\"). Use the past simple when you SAY when it happened (\"I saw it yesterday\").",
+      "ru": "Present perfect — для опыта БЕЗ указания времени («Have you ever seen it?»). Past simple — когда ГОВОРИШЬ, когда это было («I saw it yesterday»)."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "Present perfect — no time word",
+          "ru": "Present perfect — без слова времени"
+        },
+        "text": {
+          "en": "Use \"have/has + V3\" for life experience, when the exact time is not important or not mentioned.\n\nHave you ever seen this film?\nI have been to Paris. (at some point in my life)",
+          "ru": "Используй «have/has + V3» для жизненного опыта, когда точное время неважно или не названо.\n\nHave you ever seen this film? — Ты когда-нибудь видел этот фильм?\nI have been to Paris. — Я был в Париже (когда-то в жизни)."
+        },
+        "examples": [
+          {
+            "en": "She has never eaten sushi.",
+            "ru": "Она никогда не ела суши."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Past simple — with a finished time",
+          "ru": "Past simple — с законченным временем"
+        },
+        "text": {
+          "en": "As soon as you give a finished time (yesterday, last week, in 2020, two days ago), switch to the past simple.\n\nI saw it yesterday. (NOT \"I have seen it yesterday\")\nShe bought a new phone last week.",
+          "ru": "Как только называешь законченное время (yesterday, last week, in 2020, two days ago), переходи на past simple.\n\nI saw it yesterday. — Я видел это вчера (НЕ «I have seen it yesterday»).\nShe bought a new phone last week. — Она купила новый телефон на прошлой неделе."
+        },
+        "examples": [
+          {
+            "en": "We arrived two hours ago.",
+            "ru": "Мы приехали два часа назад."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "The natural pair: perfect, then past",
+          "ru": "Естественная пара: сначала perfect, потом past"
+        },
+        "text": {
+          "en": "In real conversation you often open with the present perfect, then move to the past simple for the details.\n\n\"Have you been to Italy?\" — \"Yes, I have. I went there last summer. It was beautiful.\"",
+          "ru": "В живой речи часто начинают с present perfect, а потом переходят на past simple для деталей.\n\n«Have you been to Italy?» — «Yes, I have. I went there last summer. It was beautiful.»"
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Never use the present perfect with \"yesterday/last week\": \"I saw it yesterday\", NOT \"I have seen it yesterday\".",
+        "ru": "Не используй present perfect с «yesterday/last week»: «I saw it yesterday», а не «I have seen it yesterday»."
+      },
+      {
+        "en": "Answer a present-perfect question with have/has: \"Have you been there?\" — \"Yes, I have\" (NOT \"Yes, I did\").",
+        "ru": "На вопрос в present perfect отвечай have/has: «Have you been there?» — «Yes, I have» (а не «Yes, I did»)."
+      }
+    ],
+    "seeAlso": [
+      "present-perfect",
+      "past-simple",
+      "present-perfect-signals"
+    ]
   }
 ]

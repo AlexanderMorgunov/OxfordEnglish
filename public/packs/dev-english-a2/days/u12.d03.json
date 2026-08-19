@@ -184,7 +184,8 @@
               "en": "I have lived here for five years.",
               "ru": "Я живу здесь пять лет."
             }
-          ]
+          ],
+          "ref": "present-perfect-signals"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "I have known her since 2015.",
               "ru": "Я знаю её с 2015 года."
             }
-          ]
+          ],
+          "ref": "present-perfect-signals"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "How long have you worked here?",
               "ru": "Как долго ты здесь работаешь?"
             }
-          ]
+          ],
+          "ref": "present-perfect-signals"
         }
       ],
       "pitfalls": [
@@ -448,6 +451,119 @@
           "answers": [
             "I have known her for five years.",
             "I've known her for five years."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u12.d03.ex.b.01",
+          "instruction": {
+            "en": "for or since?",
+            "ru": "for или since?"
+          },
+          "tags": [
+            "grammar.for-since"
+          ],
+          "prompt": "We have been married ___ ten years.",
+          "options": [
+            "for",
+            "since",
+            "from"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u12.d03.ex.b.02",
+          "instruction": {
+            "en": "for or since?",
+            "ru": "for или since?"
+          },
+          "tags": [
+            "grammar.for-since"
+          ],
+          "prompt": "He has had this car ___ last summer.",
+          "options": [
+            "since",
+            "for",
+            "during"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d03.ex.b.03",
+          "instruction": {
+            "en": "Ask how long.",
+            "ru": "Спроси как долго."
+          },
+          "tags": [
+            "grammar.for-since"
+          ],
+          "prompt": "How long ___ they lived here? (have)",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d03.ex.b.04",
+          "instruction": {
+            "en": "for + period.",
+            "ru": "for + период."
+          },
+          "tags": [
+            "grammar.for-since"
+          ],
+          "prompt": "I have studied English ___ three years. (for)",
+          "answers": [
+            "for"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u12.d03.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.for-since"
+          ],
+          "variants": [
+            "I have known her since ten years.",
+            "I have known her for ten years."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u12.d03.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.for-since",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она работает здесь с понедельника.",
+          "answers": [
+            "She has worked here since Monday.",
+            "She has been working here since Monday."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "since monday",
+                "she works here since",
+                "for monday"
+              ],
+              "explanation": {
+                "en": "Present perfect + since a point: She has worked here since Monday.",
+                "ru": "Present perfect + since с точкой времени: She has worked here since Monday."
+              }
+            }
           ]
         }
       ]

@@ -458,6 +458,129 @@
           "answers": [
             "Have you ever been abroad?"
           ]
+        },
+        {
+          "type": "order-words",
+          "id": "u12.d05.ex.b.01",
+          "instruction": {
+            "en": "Ask about an experience.",
+            "ru": "Спроси об опыте."
+          },
+          "tags": [
+            "functions.experiences"
+          ],
+          "tokens": [
+            "Have",
+            "you",
+            "ever",
+            "tried",
+            "skiing"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u12.d05.ex.b.02",
+          "instruction": {
+            "en": "Short answer.",
+            "ru": "Краткий ответ."
+          },
+          "tags": [
+            "functions.experiences"
+          ],
+          "prompt": "Have you finished? — No, I ___ .",
+          "options": [
+            "haven't",
+            "didn't",
+            "don't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u12.d05.ex.b.03",
+          "instruction": {
+            "en": "Ask for details.",
+            "ru": "Спроси детали."
+          },
+          "tags": [
+            "functions.experiences"
+          ],
+          "prompt": "I have been to Rome. — Really? ___ did you go there?",
+          "options": [
+            "When",
+            "Have",
+            "How long"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d05.ex.b.04",
+          "instruction": {
+            "en": "Positive short answer.",
+            "ru": "Утвердительный краткий ответ."
+          },
+          "tags": [
+            "functions.experiences"
+          ],
+          "prompt": "Have you seen it? — Yes, I ___ . (have)",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u12.d05.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.experiences"
+          ],
+          "variants": [
+            "Have you been there? — Yes, I did.",
+            "Have you been there? — Yes, I have."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u12.d05.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.experiences",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты когда-нибудь пробовал сноуборд?",
+          "answers": [
+            "Have you ever tried snowboarding?",
+            "Have you ever tried a snowboard?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "did you ever try",
+                "have you ever try",
+                "have you tried ever"
+              ],
+              "explanation": {
+                "en": "Have you ever + V3: Have you ever tried snowboarding?",
+                "ru": "Have you ever + V3: Have you ever tried snowboarding?"
+              }
+            }
+          ]
         }
       ]
     }

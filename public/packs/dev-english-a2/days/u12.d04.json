@@ -185,7 +185,8 @@
               "en": "Have you seen this film?",
               "ru": "Ты видел этот фильм?"
             }
-          ]
+          ],
+          "ref": "perfect-vs-past"
         },
         {
           "label": {
@@ -198,7 +199,8 @@
               "en": "Did you see it yesterday?",
               "ru": "Ты видел это вчера?"
             }
-          ]
+          ],
+          "ref": "perfect-vs-past"
         },
         {
           "label": {
@@ -211,7 +213,8 @@
               "en": "I've been to Rome. I went there in 2019.",
               "ru": "Я был в Риме. Я ездил туда в 2019."
             }
-          ]
+          ],
+          "ref": "perfect-vs-past"
         }
       ],
       "pitfalls": [
@@ -447,6 +450,121 @@
           "answers": [
             "I saw this film yesterday.",
             "I saw that film yesterday."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u12.d04.ex.b.01",
+          "instruction": {
+            "en": "No time given.",
+            "ru": "Времени нет."
+          },
+          "tags": [
+            "grammar.perfect-vs-past"
+          ],
+          "prompt": "___ you ever broken a bone?",
+          "options": [
+            "Have",
+            "Did",
+            "Do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u12.d04.ex.b.02",
+          "instruction": {
+            "en": "With a time word.",
+            "ru": "Со словом времени."
+          },
+          "tags": [
+            "grammar.perfect-vs-past"
+          ],
+          "prompt": "We ___ to the beach last Sunday.",
+          "options": [
+            "went",
+            "have gone",
+            "have been"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d04.ex.b.03",
+          "instruction": {
+            "en": "Past simple with a time word.",
+            "ru": "Past simple со словом времени."
+          },
+          "tags": [
+            "grammar.perfect-vs-past"
+          ],
+          "prompt": "She ___ her keys yesterday. (lose)",
+          "answers": [
+            "lost"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u12.d04.ex.b.04",
+          "instruction": {
+            "en": "Choose the tense.",
+            "ru": "Выбери время."
+          },
+          "tags": [
+            "grammar.perfect-vs-past"
+          ],
+          "prompt": "I ___ this film three times. (in my life)",
+          "options": [
+            "have seen",
+            "saw",
+            "see"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u12.d04.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.perfect-vs-past"
+          ],
+          "variants": [
+            "I have seen it yesterday.",
+            "I saw it yesterday."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u12.d04.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.perfect-vs-past",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я закончил работу два часа назад.",
+          "answers": [
+            "I finished the work two hours ago.",
+            "I finished work two hours ago."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i have finished the work two hours ago",
+                "i have finished work two hours ago"
+              ],
+              "explanation": {
+                "en": "With \"ago\" use past simple: I finished the work two hours ago.",
+                "ru": "С «ago» — past simple: I finished the work two hours ago."
+              }
+            }
           ]
         }
       ]

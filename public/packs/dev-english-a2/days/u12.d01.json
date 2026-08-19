@@ -184,7 +184,8 @@
               "en": "I have visited Paris.",
               "ru": "Я был в Париже."
             }
-          ]
+          ],
+          "ref": "present-perfect"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "Have you ever been abroad?",
               "ru": "Ты когда-нибудь был за границей?"
             }
-          ]
+          ],
+          "ref": "present-perfect"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "She has never eaten sushi.",
               "ru": "Она никогда не ела суши."
             }
-          ]
+          ],
+          "ref": "present-perfect"
         }
       ],
       "pitfalls": [
@@ -446,6 +449,116 @@
           "answers": [
             "I have never been to Japan.",
             "I've never been to Japan."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d01.ex.b.01",
+          "instruction": {
+            "en": "Present perfect.",
+            "ru": "Present perfect."
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "prompt": "They ___ finished the project. (have)",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d01.ex.b.02",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие прошедшего времени."
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "prompt": "I have ___ this book twice. (read)",
+          "answers": [
+            "read"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u12.d01.ex.b.03",
+          "instruction": {
+            "en": "have or has?",
+            "ru": "have или has?"
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "prompt": "My sister ___ never flown in a plane.",
+          "options": [
+            "has",
+            "have",
+            "is"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d01.ex.b.04",
+          "instruction": {
+            "en": "Ever in a question.",
+            "ru": "Ever в вопросе."
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "prompt": "___ you ever eaten sushi? (have)",
+          "answers": [
+            "Have"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u12.d01.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "variants": [
+            "Have you ever went abroad?",
+            "Have you ever been abroad?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u12.d01.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-perfect",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я никогда не был в Лондоне.",
+          "answers": [
+            "I have never been to London.",
+            "I've never been to London."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i have never been in london",
+                "i never was in london",
+                "i have never go to london"
+              ],
+              "explanation": {
+                "en": "been TO a place: I have never been to London.",
+                "ru": "been TO места: I have never been to London."
+              }
+            }
           ]
         }
       ]

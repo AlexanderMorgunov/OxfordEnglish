@@ -184,7 +184,8 @@
               "en": "I've just finished my work.",
               "ru": "Я только что закончил работу."
             }
-          ]
+          ],
+          "ref": "present-perfect-signals"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "She has already left.",
               "ru": "Она уже ушла."
             }
-          ]
+          ],
+          "ref": "present-perfect-signals"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "Have you eaten yet? I haven't eaten yet.",
               "ru": "Ты уже поел? Я ещё не поел."
             }
-          ]
+          ],
+          "ref": "present-perfect-signals"
         }
       ],
       "pitfalls": [
@@ -448,6 +451,123 @@
           "answers": [
             "I have just sent the email.",
             "I've just sent the email."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u12.d02.ex.b.01",
+          "instruction": {
+            "en": "A moment ago.",
+            "ru": "Только что."
+          },
+          "tags": [
+            "grammar.just-yet-already"
+          ],
+          "prompt": "Do not call her — she has ___ gone to bed.",
+          "options": [
+            "just",
+            "yet",
+            "ever"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u12.d02.ex.b.02",
+          "instruction": {
+            "en": "Sooner than expected.",
+            "ru": "Раньше ожидаемого."
+          },
+          "tags": [
+            "grammar.just-yet-already"
+          ],
+          "prompt": "You can relax — I have ___ done the dishes.",
+          "options": [
+            "already",
+            "yet",
+            "since"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d02.ex.b.03",
+          "instruction": {
+            "en": "Question with yet.",
+            "ru": "Вопрос с yet."
+          },
+          "tags": [
+            "grammar.just-yet-already"
+          ],
+          "prompt": "Have you finished your homework ___ ?",
+          "answers": [
+            "yet"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u12.d02.ex.b.04",
+          "instruction": {
+            "en": "Negative.",
+            "ru": "Отрицание."
+          },
+          "tags": [
+            "grammar.just-yet-already"
+          ],
+          "prompt": "The train has not arrived ___ .",
+          "options": [
+            "yet",
+            "already",
+            "just"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u12.d02.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.just-yet-already"
+          ],
+          "variants": [
+            "I haven't finished already.",
+            "I haven't finished yet."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u12.d02.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.just-yet-already",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я только что отправил письмо.",
+          "answers": [
+            "I have just sent the email.",
+            "I've just sent the email.",
+            "I have just sent the letter."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i just sent",
+                "i have sent just",
+                "i have just send"
+              ],
+              "explanation": {
+                "en": "just goes between have and V3: I have just sent…",
+                "ru": "just стоит между have и V3: I have just sent…"
+              }
+            }
           ]
         }
       ]
