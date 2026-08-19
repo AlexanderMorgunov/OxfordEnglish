@@ -1,0 +1,600 @@
+{
+  "id": "u26.d03",
+  "title": {
+    "en": "I wish I had studied",
+    "ru": "Жаль, что я не учился"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.wish-past",
+    "vocab.dreams"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u26.d03.vocab",
+      "title": {
+        "en": "Looking back with regret",
+        "ru": "Оглядываемся с сожалением"
+      },
+      "words": [
+        {
+          "word": "wish",
+          "ru": "желать; жаль",
+          "ipa": "/wɪʃ/",
+          "example": "I wish I had known.",
+          "exampleRu": "Жаль, что я не знал.",
+          "audio": {
+            "src": "media/audio/u26.d03.vocab.wish.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sorry",
+          "ru": "сожалеющий",
+          "ipa": "/ˈsɒri/",
+          "example": "I'm sorry I said that.",
+          "exampleRu": "Жаль, что я это сказал.",
+          "audio": {
+            "src": "media/audio/u26.d03.vocab.sorry.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "regret",
+          "ru": "сожаление",
+          "ipa": "/rɪˈɡret/",
+          "example": "My only regret.",
+          "exampleRu": "Моё единственное сожаление.",
+          "audio": {
+            "src": "media/audio/u26.d03.vocab.regret.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "opportunity",
+          "ru": "возможность",
+          "ipa": "/ˌɒpərˈtjuːnəti/",
+          "example": "A lost opportunity.",
+          "exampleRu": "Упущенная возможность.",
+          "audio": {
+            "src": "media/audio/u26.d03.vocab.opportunity.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "effort",
+          "ru": "усилие",
+          "ipa": "/ˈefərt/",
+          "example": "I wish I'd made more effort.",
+          "exampleRu": "Жаль, что я не старался больше.",
+          "audio": {
+            "src": "media/audio/u26.d03.vocab.effort.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "listen",
+          "ru": "слушать",
+          "ipa": "/ˈlɪsn/",
+          "example": "I wish I had listened.",
+          "exampleRu": "Жаль, что я не послушал.",
+          "audio": {
+            "src": "media/audio/u26.d03.vocab.listen.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "spend",
+          "ru": "проводить",
+          "ipa": "/spend/",
+          "example": "I wish I'd spent more time.",
+          "exampleRu": "Жаль, что я не проводил больше времени.",
+          "audio": {
+            "src": "media/audio/u26.d03.vocab.spend.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "save",
+          "ru": "сохранять, копить",
+          "ipa": "/seɪv/",
+          "example": "I wish I had saved money.",
+          "exampleRu": "Жаль, что я не откладывал денег.",
+          "audio": {
+            "src": "media/audio/u26.d03.vocab.save.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "honest",
+          "ru": "честный",
+          "ipa": "/ˈɒnɪst/",
+          "example": "I wish I'd been honest.",
+          "exampleRu": "Жаль, что я не был честен.",
+          "audio": {
+            "src": "media/audio/u26.d03.vocab.honest.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "choice",
+          "ru": "выбор",
+          "ipa": "/tʃɔɪs/",
+          "example": "A different choice.",
+          "exampleRu": "Другой выбор.",
+          "audio": {
+            "src": "media/audio/u26.d03.vocab.choice.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u26.d03.grammar",
+      "title": {
+        "en": "wish + past perfect",
+        "ru": "wish + past perfect"
+      },
+      "rule": {
+        "en": "Use \"wish + past perfect\" to express a REGRET about the past — something you are sorry happened or did not happen. It is like the \"if\" part of a third conditional.",
+        "ru": "Используй «wish + past perfect», чтобы выразить СОЖАЛЕНИЕ о прошлом — о том, что случилось или не случилось. Похоже на часть «if» третьего типа условия."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "wish + had + V3",
+            "ru": "wish + had + V3"
+          },
+          "formula": "I wish I had + past participle",
+          "examples": [
+            {
+              "en": "I wish I had studied harder.",
+              "ru": "Жаль, что я не учился усерднее."
+            }
+          ],
+          "ref": "third-conditional"
+        },
+        {
+          "label": {
+            "en": "regret an action",
+            "ru": "сожаление о действии"
+          },
+          "formula": "I wish I hadn't + V3",
+          "examples": [
+            {
+              "en": "I wish I hadn't said that.",
+              "ru": "Жаль, что я это сказал."
+            }
+          ],
+          "ref": "third-conditional"
+        },
+        {
+          "label": {
+            "en": "present wish (review)",
+            "ru": "сожаление о настоящем (повтор)"
+          },
+          "formula": "I wish + past simple (now)",
+          "examples": [
+            {
+              "en": "I wish I knew the answer. (now)",
+              "ru": "Жаль, что я не знаю ответа. (сейчас)"
+            }
+          ],
+          "ref": "wish"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "For a PAST regret use the past perfect: \"I wish I had studied\" (I didn't study).",
+          "ru": "Для сожаления о ПРОШЛОМ — past perfect: «I wish I had studied» (я не учился)."
+        },
+        {
+          "en": "For a PRESENT wish use the past simple: \"I wish I knew\" (I don't know now).",
+          "ru": "Для сожаления о НАСТОЯЩЕМ — past simple: «I wish I knew» (не знаю сейчас)."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u26.d03.reading",
+      "title": {
+        "en": "Grandfather's advice",
+        "ru": "Совет деда"
+      },
+      "blocks": [
+        {
+          "id": "u26.d03.reading.b1",
+          "en": "\"I have only a few regrets,\" my grandfather said. \"But I wish I had travelled more when I was young. I wish I hadn't spent so many years worrying about small things. Time goes so fast.\"",
+          "ru": "«У меня всего пара сожалений, — сказал дед. — Но жаль, что я мало путешествовал в молодости. Жаль, что я потратил столько лет на переживания о мелочах. Время летит так быстро».",
+          "audio": {
+            "src": "media/audio/u26.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u26.d03.reading.b2",
+          "en": "\"I wish I had told people I loved them more often,\" he added. \"And I wish I'd learned to play the piano. But you're still young. Don't wait until you have to say 'I wish I had.' Do the things now that your future self will thank you for.\"",
+          "ru": "«Жаль, что я не говорил чаще людям, что люблю их, — добавил он. — И жаль, что я не научился играть на пианино. Но ты ещё молод. Не жди, пока придётся сказать „жаль, что я не...\". Делай сейчас то, за что будущий ты скажет спасибо».",
+          "audio": {
+            "src": "media/audio/u26.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "worry",
+          "ru": "переживать",
+          "ipa": "/ˈwʌri/"
+        },
+        {
+          "word": "thank",
+          "ru": "благодарить",
+          "ipa": "/θæŋk/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u26.d03.listening",
+      "title": {
+        "en": "Any regrets?",
+        "ru": "Есть сожаления?"
+      },
+      "audio": {
+        "src": "media/audio/u26.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Do you have any regrets about school?",
+          "ru": "Жалеешь о чём-нибудь со школы?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "I wish I had worked harder.",
+          "ru": "Жаль, что я не старался усерднее."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Same here. And I wish I hadn't been so shy.",
+          "ru": "Я тоже. И жаль, что я был таким застенчивым."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Well, we can't change the past.",
+          "ru": "Что ж, прошлое не изменить."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u26.d03.ex.l.01",
+          "instruction": {
+            "en": "What does she regret?",
+            "ru": "О чём она жалеет?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.wish-past"
+          ],
+          "prompt": "She wishes she ___ worked harder.",
+          "options": [
+            "had",
+            "has",
+            "would"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u26.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u26.d03.ex.g.01",
+          "instruction": {
+            "en": "wish + past perfect.",
+            "ru": "wish + past perfect."
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "prompt": "I wish I ___ studied more. (have)",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u26.d03.ex.c.01",
+          "instruction": {
+            "en": "Regret an action.",
+            "ru": "Сожаление о действии."
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "prompt": "I wish I ___ said that — it was rude.",
+          "options": [
+            "hadn't",
+            "haven't",
+            "didn't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u26.d03.ex.g.02",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие."
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "prompt": "She wishes she had ___ the chance. (take)",
+          "answers": [
+            "taken"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u26.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "variants": [
+            "I wish I studied harder at school.",
+            "I wish I had studied harder at school."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u26.d03.ex.c.02",
+          "instruction": {
+            "en": "Past or present wish?",
+            "ru": "Прошлое или настоящее?"
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "prompt": "I wish I ___ listened to your advice last year.",
+          "options": [
+            "had",
+            "have",
+            "listen"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u26.d03.ex.g.03",
+          "instruction": {
+            "en": "Regret (negative).",
+            "ru": "Сожаление (отрицание)."
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "prompt": "I wish I ___ spent all my money. (had not)",
+          "answers": [
+            "hadn't"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u26.d03.ex.o.01",
+          "instruction": {
+            "en": "Express regret.",
+            "ru": "Вырази сожаление."
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "tokens": [
+            "I",
+            "wish",
+            "I",
+            "had",
+            "saved",
+            "more",
+            "money"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u26.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.dreams"
+          ],
+          "pairs": [
+            {
+              "left": "regret",
+              "right": "сожаление"
+            },
+            {
+              "left": "opportunity",
+              "right": "возможность"
+            },
+            {
+              "left": "effort",
+              "right": "усилие"
+            },
+            {
+              "left": "choice",
+              "right": "выбор"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u26.d03.ex.c.03",
+          "instruction": {
+            "en": "Present wish (review).",
+            "ru": "Сожаление о настоящем."
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "prompt": "I wish I ___ the answer now.",
+          "options": [
+            "knew",
+            "had known",
+            "know"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u26.d03.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "variants": [
+            "I wish I have gone to the party.",
+            "I wish I had gone to the party."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u26.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.wish-past",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Жаль, что я не учился усерднее.",
+          "answers": [
+            "I wish I had studied harder.",
+            "I wish I'd studied harder."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i wish i studied harder",
+                "i wish i have studied harder",
+                "i wish i would study harder"
+              ],
+              "explanation": {
+                "en": "wish + past perfect for a past regret: I wish I had studied harder.",
+                "ru": "wish + past perfect для сожаления о прошлом: I wish I had studied harder."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u26.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.wish-past",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Жаль, что я это сказал.",
+          "answers": [
+            "I wish I hadn't said that.",
+            "I wish I had not said that."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i wish i didn't say that",
+                "i wish i haven't said that",
+                "i wish i wouldn't say that"
+              ],
+              "explanation": {
+                "en": "wish + hadn't + V3: I wish I hadn't said that.",
+                "ru": "wish + hadn't + V3: I wish I hadn't said that."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

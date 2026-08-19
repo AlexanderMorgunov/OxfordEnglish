@@ -3415,5 +3415,97 @@
       "some-any",
       "comparatives"
     ]
+  },
+  {
+    "id": "third-conditional",
+    "title": {
+      "en": "Third & mixed conditionals, wish (past)",
+      "ru": "Третий и смешанный типы условия, wish (о прошлом)"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "The third conditional imagines a different PAST (\"If I had known, I would have come\"). A mixed conditional links a past condition to a present result. \"wish + past perfect\" expresses a past regret.",
+      "ru": "Третий тип условия воображает другое ПРОШЛОЕ («If I had known, I would have come»). Смешанный связывает прошлое условие с нынешним результатом. «wish + past perfect» выражает сожаление о прошлом."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "Third conditional",
+          "ru": "Третий тип условия"
+        },
+        "text": {
+          "en": "For an impossible past (something that did not happen), use \"If + past perfect, would have + past participle\".\n\nIf I had known, I would have come.\nIf she had studied, she would have passed.\nIf we hadn't left late, we wouldn't have missed it.",
+          "ru": "Для невозможного прошлого (того, чего не было) — «If + past perfect, would have + причастие».\n\nIf I had known, I would have come.\nIf she had studied, she would have passed.\nIf we hadn't left late, we wouldn't have missed it."
+        },
+        "examples": [
+          {
+            "en": "If you had asked, I would have helped.",
+            "ru": "Если бы ты попросил, я бы помог."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "would/could/might have + V3",
+          "ru": "would/could/might have + V3"
+        },
+        "text": {
+          "en": "In the result, \"would have\" = certain, \"could have\" = would have been able to, \"might have\" = possible. Never write \"would of\".\n\nWe could have won the game.\nYou might have got hurt.\nI would have called you.",
+          "ru": "В результате «would have» = точно, «could have» = смог бы, «might have» = возможно. Никогда не пиши «would of».\n\nWe could have won the game.\nYou might have got hurt.\nI would have called you."
+        },
+        "examples": [
+          {
+            "en": "It could have been much worse.",
+            "ru": "Могло быть гораздо хуже."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "wish + past perfect (past regret)",
+          "ru": "wish + past perfect (сожаление о прошлом)"
+        },
+        "text": {
+          "en": "To regret the past, use \"wish + past perfect\". Compare with \"wish + past simple\" for a present wish.\n\nI wish I had studied harder. (past regret)\nI wish I hadn't said that. (past regret)\nI wish I knew the answer. (present wish)",
+          "ru": "Чтобы сожалеть о прошлом — «wish + past perfect». Сравни с «wish + past simple» для настоящего.\n\nI wish I had studied harder. (сожаление о прошлом)\nI wish I hadn't said that. (сожаление о прошлом)\nI wish I knew the answer. (сожаление о настоящем)"
+        },
+        "examples": [
+          {
+            "en": "I wish I had travelled more when I was young.",
+            "ru": "Жаль, что я мало путешествовал в молодости."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Mixed conditionals",
+          "ru": "Смешанные условные"
+        },
+        "text": {
+          "en": "A mixed conditional links a PAST condition to a PRESENT result: \"If + past perfect, would + verb (now)\".\n\nIf I had studied medicine, I would be a doctor now.\nIf she hadn't moved, she would be happier now.\n\nNote: the result is \"would be\" (now), not \"would have been\" (then).",
+          "ru": "Смешанное условие связывает ПРОШЛОЕ условие с НАСТОЯЩИМ результатом: «If + past perfect, would + глагол (сейчас)».\n\nIf I had studied medicine, I would be a doctor now.\nIf she hadn't moved, she would be happier now.\n\nВнимание: результат — «would be» (сейчас), а не «would have been» (тогда)."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Past perfect after \"if\": \"If I had known\", not \"If I would have known\".",
+        "ru": "После «if» — past perfect: «If I had known», а не «If I would have known»."
+      },
+      {
+        "en": "Never \"would of / could of\" — always \"would have / could have\".",
+        "ru": "Никогда «would of / could of» — всегда «would have / could have»."
+      },
+      {
+        "en": "Mixed: past condition → present result uses \"would + verb\", not \"would have + V3\".",
+        "ru": "Смешанное: прошлое условие → нынешний результат с «would + глагол», а не «would have + V3»."
+      }
+    ],
+    "seeAlso": [
+      "second-conditional",
+      "conditionals-0-1",
+      "wish",
+      "past-perfect"
+    ]
   }
 ]

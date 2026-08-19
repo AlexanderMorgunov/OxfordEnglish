@@ -1,0 +1,601 @@
+{
+  "id": "u26.d02",
+  "title": {
+    "en": "It could have been worse",
+    "ru": "Могло быть и хуже"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.third-conditional",
+    "vocab.life"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u26.d02.vocab",
+      "title": {
+        "en": "What might have been",
+        "ru": "Что могло бы быть"
+      },
+      "words": [
+        {
+          "word": "avoid",
+          "ru": "избегать",
+          "ipa": "/əˈvɔɪd/",
+          "example": "We could have avoided it.",
+          "exampleRu": "Мы могли бы этого избежать.",
+          "audio": {
+            "src": "media/audio/u26.d02.vocab.avoid.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "succeed",
+          "ru": "преуспевать",
+          "ipa": "/səkˈsiːd/",
+          "example": "You might have succeeded.",
+          "exampleRu": "Ты мог бы преуспеть.",
+          "audio": {
+            "src": "media/audio/u26.d02.vocab.succeed.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fail",
+          "ru": "провалиться",
+          "ipa": "/feɪl/",
+          "example": "I could have failed.",
+          "exampleRu": "Я мог бы провалиться.",
+          "audio": {
+            "src": "media/audio/u26.d02.vocab.fail.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "injure",
+          "ru": "травмировать",
+          "ipa": "/ˈɪndʒər/",
+          "example": "He could have injured himself.",
+          "exampleRu": "Он мог бы пораниться.",
+          "audio": {
+            "src": "media/audio/u26.d02.vocab.injure.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "helpful",
+          "ru": "полезный",
+          "ipa": "/ˈhelpfl/",
+          "example": "That would have been helpful.",
+          "exampleRu": "Это было бы полезно.",
+          "audio": {
+            "src": "media/audio/u26.d02.vocab.helpful.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ruin",
+          "ru": "испортить",
+          "ipa": "/ˈruːɪn/",
+          "example": "The rain could have ruined it.",
+          "exampleRu": "Дождь мог всё испортить.",
+          "audio": {
+            "src": "media/audio/u26.d02.vocab.ruin.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "possible",
+          "ru": "возможный",
+          "ipa": "/ˈpɒsəbl/",
+          "example": "It was possible.",
+          "exampleRu": "Это было возможно.",
+          "audio": {
+            "src": "media/audio/u26.d02.vocab.possible.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lucky",
+          "ru": "везучий",
+          "ipa": "/ˈlʌki/",
+          "example": "We were lucky.",
+          "exampleRu": "Нам повезло.",
+          "audio": {
+            "src": "media/audio/u26.d02.vocab.lucky.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "prevent",
+          "ru": "предотвращать",
+          "ipa": "/prɪˈvent/",
+          "example": "We could have prevented it.",
+          "exampleRu": "Мы могли бы это предотвратить.",
+          "audio": {
+            "src": "media/audio/u26.d02.vocab.prevent.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "outcome",
+          "ru": "исход",
+          "ipa": "/ˈaʊtkʌm/",
+          "example": "A better outcome.",
+          "exampleRu": "Лучший исход.",
+          "audio": {
+            "src": "media/audio/u26.d02.vocab.outcome.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u26.d02.grammar",
+      "title": {
+        "en": "would/could/might have + V3",
+        "ru": "would/could/might have + V3"
+      },
+      "rule": {
+        "en": "In the result of a third conditional, \"would have\" = certain result, \"could have\" = would have been able to, \"might have\" = a possible result. All use \"have + past participle\".",
+        "ru": "В результате третьего типа условия «would have» = точный результат, «could have» = смог бы, «might have» = возможный результат. Все с «have + причастие»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "would have (certain)",
+            "ru": "would have (точно)"
+          },
+          "formula": "would have + V3",
+          "examples": [
+            {
+              "en": "I would have called you.",
+              "ru": "Я бы тебе позвонил."
+            }
+          ],
+          "ref": "third-conditional"
+        },
+        {
+          "label": {
+            "en": "could have (able to)",
+            "ru": "could have (смог бы)"
+          },
+          "formula": "could have + V3",
+          "examples": [
+            {
+              "en": "We could have won the game.",
+              "ru": "Мы могли бы выиграть игру."
+            }
+          ],
+          "ref": "third-conditional"
+        },
+        {
+          "label": {
+            "en": "might have (possible)",
+            "ru": "might have (возможно)"
+          },
+          "formula": "might have + V3",
+          "examples": [
+            {
+              "en": "You might have got hurt.",
+              "ru": "Ты мог бы пораниться."
+            }
+          ],
+          "ref": "third-conditional"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "All three use \"have + V3\": \"could have won\", not \"could have win\".",
+          "ru": "Все три с «have + V3»: «could have won», а не «could have win»."
+        },
+        {
+          "en": "Never write \"would of / could of\" — it is \"would have / could have\".",
+          "ru": "Никогда не пиши «would of / could of» — это «would have / could have»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u26.d02.reading",
+      "title": {
+        "en": "A lucky escape",
+        "ru": "Счастливая случайность"
+      },
+      "blocks": [
+        {
+          "id": "u26.d02.reading.b1",
+          "en": "It could have been a disaster. If the driver hadn't stopped in time, someone might have been badly hurt. \"We were so lucky,\" said Ben. \"If I had crossed a second earlier, the car would have hit me.\"",
+          "ru": "Это могло обернуться катастрофой. Если бы водитель не остановился вовремя, кто-то мог бы серьёзно пострадать. «Нам так повезло, — сказал Бен. — Если бы я перешёл секундой раньше, машина бы меня сбила».",
+          "audio": {
+            "src": "media/audio/u26.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u26.d02.reading.b2",
+          "en": "\"You should have looked both ways,\" his friend said. \"I know. It could have been much worse. But if the driver hadn't been paying attention, he couldn't have stopped so fast.\" They both agreed it had been a lucky escape.",
+          "ru": "«Надо было смотреть в обе стороны», — сказал друг. «Знаю. Могло быть гораздо хуже. Но если бы водитель не был внимателен, он бы не смог так быстро затормозить». Оба согласились, что легко отделались.",
+          "audio": {
+            "src": "media/audio/u26.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "disaster",
+          "ru": "катастрофа",
+          "ipa": "/dɪˈzɑːstər/"
+        },
+        {
+          "word": "attention",
+          "ru": "внимание",
+          "ipa": "/əˈtenʃn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u26.d02.listening",
+      "title": {
+        "en": "Close call",
+        "ru": "Пронесло"
+      },
+      "audio": {
+        "src": "media/audio/u26.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "That was close! The glass nearly fell.",
+          "ru": "Чуть не случилось! Стакан почти упал."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "It could have broken.",
+          "ru": "Он мог бы разбиться."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "And someone might have got cut.",
+          "ru": "И кто-то мог бы порезаться."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "If you hadn't caught it, it would have been a mess.",
+          "ru": "Если бы ты его не поймал, был бы беспорядок."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u26.d02.ex.l.01",
+          "instruction": {
+            "en": "What could have happened?",
+            "ru": "Что могло случиться?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.third-conditional"
+          ],
+          "prompt": "It ___ have broken.",
+          "options": [
+            "could",
+            "will",
+            "would of"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u26.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u26.d02.ex.c.01",
+          "instruction": {
+            "en": "able to (past).",
+            "ru": "смог бы."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "With more time, we ___ have finished.",
+          "options": [
+            "could",
+            "can",
+            "could of"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u26.d02.ex.g.01",
+          "instruction": {
+            "en": "might have + V3.",
+            "ru": "might have + V3."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "Be careful! You might have ___ yourself. (hurt)",
+          "answers": [
+            "hurt"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u26.d02.ex.c.02",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "If we had left earlier, we ___ have avoided the traffic.",
+          "options": [
+            "would",
+            "will",
+            "would of"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u26.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "variants": [
+            "We could of won the match.",
+            "We could have won the match."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u26.d02.ex.c.03",
+          "instruction": {
+            "en": "Possible result.",
+            "ru": "Возможный результат."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "Without a helmet, he ___ have been injured.",
+          "options": [
+            "might",
+            "will",
+            "might of"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u26.d02.ex.g.02",
+          "instruction": {
+            "en": "have + V3.",
+            "ru": "have + V3."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "You could have ___ me — I was free! (call)",
+          "answers": [
+            "called"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u26.d02.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "tokens": [
+            "We",
+            "could",
+            "have",
+            "missed",
+            "the",
+            "flight"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u26.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.life"
+          ],
+          "pairs": [
+            {
+              "left": "avoid",
+              "right": "избегать"
+            },
+            {
+              "left": "prevent",
+              "right": "предотвращать"
+            },
+            {
+              "left": "lucky",
+              "right": "везучий"
+            },
+            {
+              "left": "outcome",
+              "right": "исход"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u26.d02.ex.c.04",
+          "instruction": {
+            "en": "would have.",
+            "ru": "would have."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "If you had asked, I ___ have helped.",
+          "options": [
+            "would",
+            "will",
+            "would've had"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u26.d02.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "variants": [
+            "It might have broke.",
+            "It might have broken."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u26.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.third-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мы могли бы выиграть игру.",
+          "answers": [
+            "We could have won the game.",
+            "We could have won the match."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "we could of won the game",
+                "we could have win the game",
+                "we could won the game"
+              ],
+              "explanation": {
+                "en": "could have + V3 (not \"could of\"): We could have won the game.",
+                "ru": "could have + V3 (не «could of»): We could have won the game."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u26.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.third-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты мог бы пораниться.",
+          "answers": [
+            "You could have hurt yourself.",
+            "You might have hurt yourself."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you could of hurt yourself",
+                "you could have hurt you",
+                "you could have hurted yourself"
+              ],
+              "explanation": {
+                "en": "could have + V3 + yourself: You could have hurt yourself.",
+                "ru": "could have + V3 + yourself: You could have hurt yourself."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

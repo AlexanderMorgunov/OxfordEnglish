@@ -97,6 +97,9 @@ export const SKILL_TAGS = [
   'grammar.so-such',
   'grammar.all-every-each',
   'grammar.quantifiers',
+  'grammar.third-conditional',
+  'grammar.mixed-conditional',
+  'grammar.wish-past',
 
   // functions (everyday communication)
   'functions.ordering',

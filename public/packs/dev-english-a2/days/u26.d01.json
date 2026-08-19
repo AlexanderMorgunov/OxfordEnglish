@@ -1,0 +1,602 @@
+{
+  "id": "u26.d01",
+  "title": {
+    "en": "If I had known",
+    "ru": "Если бы я знал"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.third-conditional",
+    "vocab.life"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u26.d01.vocab",
+      "title": {
+        "en": "Regrets & the past",
+        "ru": "Сожаления и прошлое"
+      },
+      "words": [
+        {
+          "word": "regret",
+          "ru": "сожалеть",
+          "ipa": "/rɪˈɡret/",
+          "example": "I regret my choice.",
+          "exampleRu": "Я сожалею о своём выборе.",
+          "audio": {
+            "src": "media/audio/u26.d01.vocab.regret.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mistake",
+          "ru": "ошибка",
+          "ipa": "/mɪˈsteɪk/",
+          "example": "It was a big mistake.",
+          "exampleRu": "Это была большая ошибка.",
+          "audio": {
+            "src": "media/audio/u26.d01.vocab.mistake.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "chance",
+          "ru": "шанс",
+          "ipa": "/tʃɑːns/",
+          "example": "I missed my chance.",
+          "exampleRu": "Я упустил свой шанс.",
+          "audio": {
+            "src": "media/audio/u26.d01.vocab.chance.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "realise",
+          "ru": "осознавать",
+          "ipa": "/ˈrɪəlaɪz/",
+          "example": "I didn't realise.",
+          "exampleRu": "Я не понимал.",
+          "audio": {
+            "src": "media/audio/u26.d01.vocab.realise.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "warn",
+          "ru": "предупреждать",
+          "ipa": "/wɔːrn/",
+          "example": "Nobody warned me.",
+          "exampleRu": "Никто меня не предупредил.",
+          "audio": {
+            "src": "media/audio/u26.d01.vocab.warn.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "decision",
+          "ru": "решение",
+          "ipa": "/dɪˈsɪʒn/",
+          "example": "A hard decision.",
+          "exampleRu": "Трудное решение.",
+          "audio": {
+            "src": "media/audio/u26.d01.vocab.decision.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "differently",
+          "ru": "иначе",
+          "ipa": "/ˈdɪfrəntli/",
+          "example": "I would have done it differently.",
+          "exampleRu": "Я бы сделал это иначе.",
+          "audio": {
+            "src": "media/audio/u26.d01.vocab.differently.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "result",
+          "ru": "результат",
+          "ipa": "/rɪˈzʌlt/",
+          "example": "The result was bad.",
+          "exampleRu": "Результат был плохим.",
+          "audio": {
+            "src": "media/audio/u26.d01.vocab.result.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "prepare",
+          "ru": "готовиться",
+          "ipa": "/prɪˈpeər/",
+          "example": "I should have prepared.",
+          "exampleRu": "Мне стоило подготовиться.",
+          "audio": {
+            "src": "media/audio/u26.d01.vocab.prepare.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "careful",
+          "ru": "осторожный",
+          "ipa": "/ˈkeərfl/",
+          "example": "If only I'd been careful.",
+          "exampleRu": "Если бы я только был осторожен.",
+          "audio": {
+            "src": "media/audio/u26.d01.vocab.careful.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u26.d01.grammar",
+      "title": {
+        "en": "Third conditional",
+        "ru": "Третий тип условия"
+      },
+      "rule": {
+        "en": "The third conditional talks about an IMPOSSIBLE past — something that did not happen. Use \"If + past perfect, would have + past participle\". It often expresses regret.",
+        "ru": "Третий тип условия — о НЕВОЗМОЖНОМ прошлом, о том, чего не было. «If + past perfect, would have + причастие». Часто выражает сожаление."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "If + past perfect, would have",
+            "ru": "If + past perfect, would have"
+          },
+          "formula": "If + had + V3, would have + V3",
+          "examples": [
+            {
+              "en": "If I had known, I would have come.",
+              "ru": "Если бы я знал, я бы пришёл."
+            }
+          ],
+          "ref": "third-conditional"
+        },
+        {
+          "label": {
+            "en": "the real situation",
+            "ru": "реальная ситуация"
+          },
+          "formula": "(I didn't know, so I didn't come)",
+          "examples": [
+            {
+              "en": "If she had studied, she would have passed.",
+              "ru": "Если бы она училась, она бы сдала."
+            }
+          ],
+          "ref": "third-conditional"
+        },
+        {
+          "label": {
+            "en": "negative",
+            "ru": "отрицание"
+          },
+          "formula": "If … hadn't …, wouldn't have …",
+          "examples": [
+            {
+              "en": "If we hadn't left late, we wouldn't have missed it.",
+              "ru": "Если бы мы не вышли поздно, мы бы не опоздали."
+            }
+          ],
+          "ref": "third-conditional"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use the past perfect after \"if\": \"If I had known\", not \"If I would have known\".",
+          "ru": "После «if» — past perfect: «If I had known», а не «If I would have known»."
+        },
+        {
+          "en": "The result is \"would have + V3\": \"I would have come\", not \"I would came\".",
+          "ru": "Результат — «would have + V3»: «I would have come», а не «I would came»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u26.d01.reading",
+      "title": {
+        "en": "The missed opportunity",
+        "ru": "Упущенная возможность"
+      },
+      "blocks": [
+        {
+          "id": "u26.d01.reading.b1",
+          "en": "Tom often thinks about the job he didn't take. \"If I had accepted it, my life would have been completely different,\" he says. \"I would have moved abroad and learned a new language. But I was scared, so I said no.\"",
+          "ru": "Том часто думает о работе, которую не принял. «Если бы я согласился, моя жизнь была бы совсем другой, — говорит он. — Я бы уехал за границу и выучил новый язык. Но я испугался, поэтому отказался».",
+          "audio": {
+            "src": "media/audio/u26.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u26.d01.reading.b2",
+          "en": "\"If someone had told me how much I'd regret it, I would have been braver.\" Still, he learned something. \"If I hadn't made that mistake, I wouldn't have understood how important it is to take chances. So maybe it wasn't all bad.\"",
+          "ru": "«Если бы кто-то сказал мне, как сильно я буду жалеть, я был бы смелее». И всё же он кое-чему научился. «Если бы я не совершил той ошибки, я бы не понял, как важно рисковать. Так что, может, не всё так плохо».",
+          "audio": {
+            "src": "media/audio/u26.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "accept",
+          "ru": "принимать",
+          "ipa": "/əkˈsept/"
+        },
+        {
+          "word": "brave",
+          "ru": "смелый",
+          "ipa": "/breɪv/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u26.d01.listening",
+      "title": {
+        "en": "What went wrong?",
+        "ru": "Что пошло не так?"
+      },
+      "audio": {
+        "src": "media/audio/u26.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "We got completely lost yesterday.",
+          "ru": "Вчера мы совсем заблудились."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "If you had used a map, it wouldn't have happened.",
+          "ru": "Если бы вы взяли карту, этого бы не случилось."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "I know. And we were late too.",
+          "ru": "Знаю. И ещё опоздали."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "If you'd left earlier, you would have been on time.",
+          "ru": "Если бы вы вышли раньше, вы бы успели."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u26.d01.ex.l.01",
+          "instruction": {
+            "en": "What was the advice?",
+            "ru": "Какой был совет?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.third-conditional"
+          ],
+          "prompt": "If they had used a map, it ___ have happened.",
+          "options": [
+            "wouldn't",
+            "would",
+            "won't"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u26.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u26.d01.ex.g.01",
+          "instruction": {
+            "en": "If + past perfect.",
+            "ru": "If + past perfect."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "If I ___ known, I would have called. (have)",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u26.d01.ex.g.02",
+          "instruction": {
+            "en": "would have + V3.",
+            "ru": "would have + V3."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "If she had studied, she ___ have passed. (would)",
+          "answers": [
+            "would"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u26.d01.ex.c.01",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "If we had left earlier, we ___ have caught the train.",
+          "options": [
+            "would",
+            "will",
+            "would had"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u26.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "variants": [
+            "If I would have known, I would have come.",
+            "If I had known, I would have come."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u26.d01.ex.c.02",
+          "instruction": {
+            "en": "Negative result.",
+            "ru": "Отрицательный результат."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "If he had driven carefully, he ___ have crashed.",
+          "options": [
+            "wouldn't",
+            "would",
+            "won't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u26.d01.ex.g.03",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "If they had asked, I would have ___ . (help)",
+          "answers": [
+            "helped"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u26.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "tokens": [
+            "If",
+            "I",
+            "had",
+            "known",
+            "I",
+            "would",
+            "have",
+            "come"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u26.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.life"
+          ],
+          "pairs": [
+            {
+              "left": "regret",
+              "right": "сожалеть"
+            },
+            {
+              "left": "chance",
+              "right": "шанс"
+            },
+            {
+              "left": "decision",
+              "right": "решение"
+            },
+            {
+              "left": "warn",
+              "right": "предупреждать"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u26.d01.ex.c.03",
+          "instruction": {
+            "en": "Impossible past.",
+            "ru": "Невозможное прошлое."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "If it ___ rained, we would have stayed home.",
+          "options": [
+            "had",
+            "has",
+            "would have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u26.d01.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "variants": [
+            "If she had asked, I would helped her.",
+            "If she had asked, I would have helped her."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u26.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.third-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Если бы я знал, я бы пришёл.",
+          "answers": [
+            "If I had known, I would have come.",
+            "If I'd known, I'd have come."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "if i would have known i would have come",
+                "if i knew i would have come",
+                "if i had known i would came"
+              ],
+              "explanation": {
+                "en": "If + past perfect, would have + V3: If I had known, I would have come.",
+                "ru": "If + past perfect, would have + V3: If I had known, I would have come."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u26.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.third-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Если бы она училась, она бы сдала экзамен.",
+          "answers": [
+            "If she had studied, she would have passed the exam.",
+            "If she'd studied, she would have passed the exam."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "if she studied she would have passed",
+                "if she had studied she would passed",
+                "if she would have studied she would have passed"
+              ],
+              "explanation": {
+                "en": "If + had studied, would have passed.",
+                "ru": "If + had studied, would have passed."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

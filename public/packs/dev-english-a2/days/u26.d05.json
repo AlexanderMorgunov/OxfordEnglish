@@ -1,0 +1,605 @@
+{
+  "id": "u26.d05",
+  "title": {
+    "en": "Looking back, moving on",
+    "ru": "Оглядываясь и двигаясь дальше"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "functions.hypothetical",
+    "vocab.dreams"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u26.d05.vocab",
+      "title": {
+        "en": "Reflection & the future",
+        "ru": "Размышления и будущее"
+      },
+      "words": [
+        {
+          "word": "reflect",
+          "ru": "размышлять",
+          "ipa": "/rɪˈflekt/",
+          "example": "I like to reflect on the year.",
+          "exampleRu": "Мне нравится размышлять о годе.",
+          "audio": {
+            "src": "media/audio/u26.d05.vocab.reflect.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "journey",
+          "ru": "путь, путешествие",
+          "ipa": "/ˈdʒɜːrni/",
+          "example": "It's been quite a journey.",
+          "exampleRu": "Это был непростой путь.",
+          "audio": {
+            "src": "media/audio/u26.d05.vocab.journey.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "progress",
+          "ru": "прогресс",
+          "ipa": "/ˈprɒɡres/",
+          "example": "I've made real progress.",
+          "exampleRu": "Я добился настоящего прогресса.",
+          "audio": {
+            "src": "media/audio/u26.d05.vocab.progress.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "confident",
+          "ru": "уверенный",
+          "ipa": "/ˈkɒnfɪdənt/",
+          "example": "I feel more confident.",
+          "exampleRu": "Я чувствую себя увереннее.",
+          "audio": {
+            "src": "media/audio/u26.d05.vocab.confident.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "proud",
+          "ru": "гордый",
+          "ipa": "/praʊd/",
+          "example": "I'm proud of myself.",
+          "exampleRu": "Я горжусь собой.",
+          "audio": {
+            "src": "media/audio/u26.d05.vocab.proud.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "challenge",
+          "ru": "вызов",
+          "ipa": "/ˈtʃælɪndʒ/",
+          "example": "The next challenge.",
+          "exampleRu": "Следующий вызов.",
+          "audio": {
+            "src": "media/audio/u26.d05.vocab.challenge.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "goal",
+          "ru": "цель",
+          "ipa": "/ɡoʊl/",
+          "example": "A new goal.",
+          "exampleRu": "Новая цель.",
+          "audio": {
+            "src": "media/audio/u26.d05.vocab.goal.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "achieve",
+          "ru": "достигать",
+          "ipa": "/əˈtʃiːv/",
+          "example": "You can achieve it.",
+          "exampleRu": "Ты можешь этого достичь.",
+          "audio": {
+            "src": "media/audio/u26.d05.vocab.achieve.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "grateful",
+          "ru": "благодарный",
+          "ipa": "/ˈɡreɪtfl/",
+          "example": "I'm grateful for the help.",
+          "exampleRu": "Я благодарен за помощь.",
+          "audio": {
+            "src": "media/audio/u26.d05.vocab.grateful.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ahead",
+          "ru": "впереди",
+          "ipa": "/əˈhed/",
+          "example": "The road ahead.",
+          "exampleRu": "Дорога впереди.",
+          "audio": {
+            "src": "media/audio/u26.d05.vocab.ahead.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u26.d05.grammar",
+      "title": {
+        "en": "Reflecting on how far you have come",
+        "ru": "Размышляем о пройденном пути"
+      },
+      "rule": {
+        "en": "To reflect on the past and look ahead, combine everything you have learned: present perfect for what you have done, \"used to\" for how you were, and conditionals for what could be.",
+        "ru": "Чтобы поразмыслить о прошлом и заглянуть вперёд, объедини всё изученное: present perfect для того, что ты сделал, «used to» для того, каким ты был, и условные для того, что могло бы быть."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "how far you have come",
+            "ru": "как далеко ты продвинулся"
+          },
+          "formula": "I have + past participle",
+          "examples": [
+            {
+              "en": "I've learned so much this year.",
+              "ru": "Я так многому научился в этом году."
+            }
+          ],
+          "ref": "present-perfect"
+        },
+        {
+          "label": {
+            "en": "how you have changed",
+            "ru": "как ты изменился"
+          },
+          "formula": "I used to … , but now …",
+          "examples": [
+            {
+              "en": "I used to be shy, but now I'm confident.",
+              "ru": "Раньше я был застенчив, а теперь уверен."
+            }
+          ],
+          "ref": "used-to"
+        },
+        {
+          "label": {
+            "en": "what could be next",
+            "ru": "что может быть дальше"
+          },
+          "formula": "If I keep going, I will/could …",
+          "examples": [
+            {
+              "en": "If I keep practising, I'll be fluent.",
+              "ru": "Если продолжу заниматься, я заговорю свободно."
+            }
+          ],
+          "ref": "conditionals-0-1"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Celebrate progress with the present perfect: \"I have improved a lot\".",
+          "ru": "Отмечай прогресс через present perfect: «I have improved a lot»."
+        },
+        {
+          "en": "You now have the whole B1 toolkit — tenses, modals, conditionals and more.",
+          "ru": "Теперь у тебя весь инструментарий B1 — времена, модальные, условные и другое."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u26.d05.reading",
+      "title": {
+        "en": "The end of the beginning",
+        "ru": "Конец начала"
+      },
+      "blocks": [
+        {
+          "id": "u26.d05.reading.b1",
+          "en": "When you started this course, English used to feel like a mountain. If someone had told you how much you would learn, you might not have believed them. But look how far you've come. You've studied tenses, modals, conditionals and hundreds of new words.",
+          "ru": "Когда ты начинал этот курс, английский казался горой. Если бы кто-то сказал тебе, как много ты выучишь, ты, возможно, не поверил бы. Но посмотри, как далеко ты продвинулся. Ты изучил времена, модальные, условные и сотни новых слов.",
+          "audio": {
+            "src": "media/audio/u26.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u26.d05.reading.b2",
+          "en": "You used to hesitate; now you can express regrets, tell stories, and imagine other lives. This is the bridge to B2, where the ideas grow richer and the conversations deeper. If you keep going, you'll be amazed at what comes next. The journey isn't over — it's just getting interesting.",
+          "ru": "Раньше ты запинался; теперь можешь выражать сожаления, рассказывать истории и представлять иные жизни. Это мост к B2, где идеи станут богаче, а разговоры — глубже. Если продолжишь, ты поразишься тому, что будет дальше. Путь не окончен — он только становится интересным.",
+          "audio": {
+            "src": "media/audio/u26.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "hesitate",
+          "ru": "колебаться, запинаться",
+          "ipa": "/ˈhezɪteɪt/"
+        },
+        {
+          "word": "bridge",
+          "ru": "мост",
+          "ipa": "/brɪdʒ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u26.d05.listening",
+      "title": {
+        "en": "How do you feel?",
+        "ru": "Как ты себя чувствуешь?"
+      },
+      "audio": {
+        "src": "media/audio/u26.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "How do you feel about your English now?",
+          "ru": "Как ты сейчас относишься к своему английскому?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Much more confident. I've learned so much.",
+          "ru": "Гораздо увереннее. Я так много узнал."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "What's next for you?",
+          "ru": "Что дальше?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "If I keep practising, I'll be ready for B2 soon.",
+          "ru": "Если продолжу заниматься, скоро буду готов к B2."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u26.d05.ex.l.01",
+          "instruction": {
+            "en": "What will happen if he keeps practising?",
+            "ru": "Что будет, если он продолжит?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.hypothetical"
+          ],
+          "prompt": "He'll be ready for ___ soon.",
+          "options": [
+            "B2",
+            "A2",
+            "B1"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u26.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u26.d05.ex.c.01",
+          "instruction": {
+            "en": "How far you have come.",
+            "ru": "Как далеко ты продвинулся."
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "prompt": "I ___ learned a lot this year.",
+          "options": [
+            "have",
+            "am",
+            "was"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u26.d05.ex.c.02",
+          "instruction": {
+            "en": "How you have changed.",
+            "ru": "Как ты изменился."
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "prompt": "I ___ to be shy, but now I speak up.",
+          "options": [
+            "used",
+            "use",
+            "am used"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u26.d05.ex.g.01",
+          "instruction": {
+            "en": "First conditional (future).",
+            "ru": "Первый тип (будущее)."
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "prompt": "If I keep practising, I ___ improve. (will)",
+          "answers": [
+            "will"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u26.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "variants": [
+            "I've made a lot of progress.",
+            "I've make a lot of progress."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u26.d05.ex.c.03",
+          "instruction": {
+            "en": "Third conditional (reflect).",
+            "ru": "Третий тип (размышление)."
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "prompt": "If I hadn't started, I ___ have learned all this.",
+          "options": [
+            "wouldn't",
+            "would",
+            "won't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u26.d05.ex.g.02",
+          "instruction": {
+            "en": "Present perfect.",
+            "ru": "Present perfect."
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "prompt": "You ___ come a long way. (have)",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u26.d05.ex.o.01",
+          "instruction": {
+            "en": "Look ahead.",
+            "ru": "Загляни вперёд."
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "tokens": [
+            "If",
+            "I",
+            "keep",
+            "going",
+            "I",
+            "will",
+            "reach",
+            "B2"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u26.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.dreams"
+          ],
+          "pairs": [
+            {
+              "left": "journey",
+              "right": "путь"
+            },
+            {
+              "left": "confident",
+              "right": "уверенный"
+            },
+            {
+              "left": "goal",
+              "right": "цель"
+            },
+            {
+              "left": "grateful",
+              "right": "благодарный"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u26.d05.ex.c.04",
+          "instruction": {
+            "en": "Express pride.",
+            "ru": "Вырази гордость."
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "prompt": "I'm really ___ of my progress.",
+          "options": [
+            "proud",
+            "prouder",
+            "pride"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u26.d05.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.hypothetical"
+          ],
+          "variants": [
+            "I used to couldn't speak English.",
+            "I used to be unable to speak English."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u26.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.hypothetical",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я так многому научился в этом году.",
+          "answers": [
+            "I've learned so much this year.",
+            "I have learned so much this year."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i learned so much this year",
+                "i have learn so much this year",
+                "i am learned so much this year"
+              ],
+              "explanation": {
+                "en": "Present perfect for your progress: I have learned so much this year.",
+                "ru": "Present perfect для прогресса: I have learned so much this year."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u26.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.hypothetical",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Если я продолжу заниматься, я скоро буду готов к B2.",
+          "answers": [
+            "If I keep practising, I'll be ready for B2 soon.",
+            "If I keep practising, I will be ready for B2 soon."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "if i will keep practising i will be ready",
+                "if i keep practising i will ready for b2",
+                "if i keep practise i will be ready"
+              ],
+              "explanation": {
+                "en": "First conditional: If I keep practising, I will be ready.",
+                "ru": "Первый тип: If I keep practising, I will be ready."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
