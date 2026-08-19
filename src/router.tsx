@@ -10,6 +10,7 @@ import { CheckpointPage } from '@/pages/CheckpointPage';
 import { ProgressPage } from '@/pages/ProgressPage';
 import { VocabularyPage } from '@/pages/VocabularyPage';
 import { SettingsPage } from '@/pages/SettingsPage';
+import { SupportPage } from '@/pages/SupportPage';
 import { KitchenSinkPage } from '@/pages/KitchenSinkPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 
@@ -27,6 +28,7 @@ export const router = createBrowserRouter([
       { path: '/progress', element: <ProgressPage /> },
       { path: '/vocabulary', element: <VocabularyPage /> },
       { path: '/settings', element: <SettingsPage /> },
+      { path: '/support', element: <SupportPage /> },
       { path: '/kitchen-sink', element: <KitchenSinkPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
