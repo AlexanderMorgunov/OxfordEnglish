@@ -184,7 +184,8 @@
               "en": "I am going to visit my family.",
               "ru": "Я собираюсь навестить семью."
             }
-          ]
+          ],
+          "ref": "future-forms"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "We aren't going to travel this year.",
               "ru": "В этом году мы не собираемся путешествовать."
             }
-          ]
+          ],
+          "ref": "future-forms"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "What are you going to do next week?",
               "ru": "Что ты собираешься делать на следующей неделе?"
             }
-          ]
+          ],
+          "ref": "future-forms"
         }
       ],
       "pitfalls": [
@@ -446,6 +449,115 @@
             "I am going to study English.",
             "I'm going to study English.",
             "I am going to learn English."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d01.ex.b.01",
+          "instruction": {
+            "en": "be going to (positive).",
+            "ru": "be going to (утверждение)."
+          },
+          "tags": [
+            "grammar.going-to"
+          ],
+          "prompt": "They ___ going to buy a car. (be)",
+          "answers": [
+            "are"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u10.d01.ex.b.02",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.going-to"
+          ],
+          "prompt": "We ___ going to move to a new flat.",
+          "options": [
+            "are",
+            "is",
+            "be"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d01.ex.b.03",
+          "instruction": {
+            "en": "Negative.",
+            "ru": "Отрицание."
+          },
+          "tags": [
+            "grammar.going-to"
+          ],
+          "prompt": "He is ___ going to come tonight. (not)",
+          "answers": [
+            "not"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d01.ex.b.04",
+          "instruction": {
+            "en": "Question.",
+            "ru": "Вопрос."
+          },
+          "tags": [
+            "grammar.going-to"
+          ],
+          "prompt": "___ she going to call us? (be)",
+          "answers": [
+            "Is"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u10.d01.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.going-to"
+          ],
+          "variants": [
+            "She going to travel.",
+            "She is going to travel."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u10.d01.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.going-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Что ты будешь делать завтра?",
+          "answers": [
+            "What are you going to do tomorrow?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "what you going to do",
+                "what are you going do",
+                "what will you going to do"
+              ],
+              "explanation": {
+                "en": "Question: What ARE you going TO do?",
+                "ru": "Вопрос: What ARE you going TO do?"
+              }
+            }
           ]
         }
       ]

@@ -460,6 +460,129 @@
             "Can I speak to Anna?",
             "Can I speak to Anna, please?"
           ]
+        },
+        {
+          "type": "choice",
+          "id": "u10.d05.ex.b.01",
+          "instruction": {
+            "en": "Answer the phone.",
+            "ru": "Ответь на звонок."
+          },
+          "tags": [
+            "functions.phone"
+          ],
+          "prompt": "Hello, ___ Anna speaking.",
+          "options": [
+            "this is",
+            "I am",
+            "here is"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u10.d05.ex.b.02",
+          "instruction": {
+            "en": "Offer to take a message.",
+            "ru": "Предложи передать сообщение."
+          },
+          "tags": [
+            "functions.phone"
+          ],
+          "tokens": [
+            "Can",
+            "I",
+            "take",
+            "a",
+            "message"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u10.d05.ex.b.03",
+          "instruction": {
+            "en": "Say you will call again.",
+            "ru": "Скажи, что перезвонишь."
+          },
+          "tags": [
+            "functions.phone"
+          ],
+          "prompt": "He's busy. I ___ call back later.",
+          "options": [
+            "'ll",
+            "am",
+            "going"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d05.ex.b.04",
+          "instruction": {
+            "en": "Ask to speak to someone.",
+            "ru": "Попроси позвать человека."
+          },
+          "tags": [
+            "functions.phone"
+          ],
+          "prompt": "Can I ___ to Mr Lee, please? (speak)",
+          "answers": [
+            "speak"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u10.d05.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.phone"
+          ],
+          "variants": [
+            "Who is calling, please?",
+            "Who is call, please?"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u10.d05.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.phone",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Можно оставить сообщение?",
+          "answers": [
+            "Can I leave a message?",
+            "Could I leave a message?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "can i leave message",
+                "can i take a message?",
+                "can i leave the message"
+              ],
+              "explanation": {
+                "en": "You LEAVE a message; the other person TAKES it: Can I leave a message?",
+                "ru": "Ты LEAVE (оставляешь) сообщение; собеседник TAKE (принимает): Can I leave a message?"
+              }
+            }
+          ]
         }
       ]
     }

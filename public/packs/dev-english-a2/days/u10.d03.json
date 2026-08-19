@@ -185,7 +185,8 @@
               "en": "We are going to paint the flat.",
               "ru": "Мы собираемся покрасить квартиру."
             }
-          ]
+          ],
+          "ref": "future-forms"
         },
         {
           "label": {
@@ -198,7 +199,8 @@
               "en": "The phone is ringing. I'll get it.",
               "ru": "Телефон звонит. Я возьму."
             }
-          ]
+          ],
+          "ref": "future-forms"
         },
         {
           "label": {
@@ -211,7 +213,8 @@
               "en": "I'm meeting Tom at six on Friday.",
               "ru": "Я встречаюсь с Томом в шесть в пятницу."
             }
-          ]
+          ],
+          "ref": "future-forms"
         }
       ],
       "pitfalls": [
@@ -449,6 +452,123 @@
           "answers": [
             "I am meeting my friend at seven.",
             "I'm meeting a friend at seven."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u10.d03.ex.b.01",
+          "instruction": {
+            "en": "A plan you have.",
+            "ru": "Готовый план."
+          },
+          "tags": [
+            "grammar.will-vs-going-to"
+          ],
+          "prompt": "We ___ going to visit Grandma on Sunday.",
+          "options": [
+            "are",
+            "will",
+            "do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u10.d03.ex.b.02",
+          "instruction": {
+            "en": "Decision now.",
+            "ru": "Решение сейчас."
+          },
+          "tags": [
+            "grammar.will-vs-going-to"
+          ],
+          "prompt": "Someone is at the door. I ___ open it.",
+          "options": [
+            "'ll",
+            "am going to",
+            "open"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d03.ex.b.03",
+          "instruction": {
+            "en": "Arrangement (present continuous).",
+            "ru": "Договорённость (present continuous)."
+          },
+          "tags": [
+            "grammar.present-continuous-future"
+          ],
+          "prompt": "I ___ my friends at the cinema at eight. (meet)",
+          "answers": [
+            "am meeting",
+            "'m meeting"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u10.d03.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.will-vs-going-to"
+          ],
+          "variants": [
+            "I think I help you.",
+            "I think I will help you."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u10.d03.ex.b.05",
+          "instruction": {
+            "en": "Choose the natural future.",
+            "ru": "Выбери естественное будущее."
+          },
+          "tags": [
+            "grammar.present-continuous-future"
+          ],
+          "prompt": "What ___ you doing this weekend?",
+          "options": [
+            "are",
+            "will",
+            "do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u10.d03.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-continuous-future",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я встречаюсь с Томом в шесть завтра.",
+          "answers": [
+            "I am meeting Tom at six tomorrow.",
+            "I'm meeting Tom at six tomorrow."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i will meet tom at six",
+                "i meet tom at six",
+                "i meeting tom"
+              ],
+              "explanation": {
+                "en": "Fixed arrangement → present continuous: I am meeting Tom at six.",
+                "ru": "Назначенная встреча → present continuous: I am meeting Tom at six."
+              }
+            }
           ]
         }
       ]

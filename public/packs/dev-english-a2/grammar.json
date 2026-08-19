@@ -1502,5 +1502,150 @@
     "seeAlso": [
       "comparatives"
     ]
+  },
+  {
+    "id": "future-forms",
+    "title": {
+      "en": "Talking about the future: going to, will, present continuous",
+      "ru": "Как говорить о будущем: going to, will, present continuous"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "English has three main ways to talk about the future. Which one you pick depends on WHY you are talking about it: a plan you already made, a decision at the moment of speaking, or a fixed arrangement.",
+      "ru": "В английском три основных способа говорить о будущем. Выбор зависит от того, ПОЧЕМУ вы о нём говорите: заранее готовый план, решение прямо сейчас или назначенная договорённость."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "be going to — a plan or an intention",
+          "ru": "be going to — план или намерение"
+        },
+        "text": {
+          "en": "Use \"am/is/are going to + verb\" for something you have already decided to do, or when you can see it coming.\n\nI am going to visit my family next week. (already decided)\nLook at those clouds — it is going to rain. (you can see it)\n\nNegative: is/are not going to. Question: What are you going to do?",
+          "ru": "Используй «am/is/are going to + глагол» для того, что вы уже решили сделать, или когда это видно заранее.\n\nI am going to visit my family next week. — Я собираюсь навестить семью на следующей неделе (уже решено).\nLook at those clouds — it is going to rain. — Посмотри на тучи — будет дождь (это видно).\n\nОтрицание: is/are not going to. Вопрос: What are you going to do?"
+        },
+        "examples": [
+          {
+            "en": "She is going to study medicine.",
+            "ru": "Она собирается изучать медицину."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "will — a decision now, a prediction, an offer",
+          "ru": "will — решение сейчас, предсказание, предложение помощи"
+        },
+        "text": {
+          "en": "Use \"will ('ll) + base verb\" for a decision you make AT THE MOMENT of speaking, for a prediction (often with \"I think\"), and for offers and promises.\n\nThe phone is ringing — I will get it. (decide now)\nI think it will rain tomorrow. (prediction)\nYou look tired. I will help you. (offer)\n\nNegative: will not = won’t. After will, use the bare verb: \"I will call\" — NOT \"I will to call\".",
+          "ru": "Используй «will ('ll) + начальная форма» для решения, принятого В МОМЕНТ речи, для предсказания (часто с «I think») и для предложений помощи и обещаний.\n\nThe phone is ringing — I will get it. — Телефон звонит — я возьму (решаю сейчас).\nI think it will rain tomorrow. — Думаю, завтра будет дождь (предсказание).\nYou look tired. I will help you. — Ты устал. Я помогу (предложение).\n\nОтрицание: will not = won’t. После will — «голый» глагол: «I will call», а не «I will to call»."
+        },
+        "examples": [
+          {
+            "en": "Do not worry, I won’t be late.",
+            "ru": "Не волнуйся, я не опоздаю."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "present continuous — a fixed arrangement",
+          "ru": "present continuous — назначенная договорённость"
+        },
+        "text": {
+          "en": "Use \"am/is/are + -ing\" with a future time for arrangements you have fixed with other people (a meeting, a ticket booked).\n\nI am meeting Tom at six. (we agreed on it)\nWe are flying to Rome on Friday. (tickets booked)\n\nIt feels more definite than \"going to\" because it is already arranged.",
+          "ru": "Используй «am/is/are + -ing» с указанием будущего времени для договорённостей, назначенных с другими людьми (встреча, купленный билет).\n\nI am meeting Tom at six. — Я встречаюсь с Томом в шесть (договорились).\nWe are flying to Rome on Friday. — Мы летим в Рим в пятницу (билеты куплены).\n\nЗвучит определённее, чем «going to», потому что уже назначено."
+        },
+        "examples": [
+          {
+            "en": "What are you doing this weekend?",
+            "ru": "Что ты делаешь в эти выходные?"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "will vs going to — the quick rule",
+          "ru": "will или going to — короткое правило"
+        },
+        "text": {
+          "en": "Already decided before now → going to.\nDeciding right now, as you speak → will.\n\n\"We are going to paint the flat.\" (we planned it earlier)\n\"That bag looks heavy — I’ll carry it.\" (decided this second)",
+          "ru": "Решено до этого момента → going to.\nРешаешь прямо сейчас, в момент речи → will.\n\n«We are going to paint the flat.» — Мы собираемся покрасить квартиру (спланировали раньше).\n«That bag looks heavy — I’ll carry it.» — Сумка тяжёлая — я понесу (решил сию секунду)."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "After \"will\" use the bare verb: \"I will call\", NOT \"I will to call\".",
+        "ru": "После «will» — «голый» глагол: «I will call», а не «I will to call»."
+      },
+      {
+        "en": "Do not drop \"be\" from going to: \"I am going to study\", NOT \"I going to study\".",
+        "ru": "Не теряй «be» в going to: «I am going to study», а не «I going to study»."
+      },
+      {
+        "en": "For a fixed arrangement, present continuous is more natural than \"will\": \"I am meeting Tom at six\".",
+        "ru": "Для назначенной встречи естественнее present continuous, а не «will»: «I am meeting Tom at six»."
+      }
+    ],
+    "seeAlso": [
+      "future-time-clauses",
+      "present-continuous",
+      "modals-can"
+    ]
+  },
+  {
+    "id": "future-time-clauses",
+    "title": {
+      "en": "Future time clauses (when I get home, I will call)",
+      "ru": "Придаточные времени в будущем (when I get home, I will call)"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "After words like when, as soon as, before, after and until, English uses the PRESENT simple for a future action — not \"will\". The main clause still uses \"will\".",
+      "ru": "После слов when, as soon as, before, after, until английский ставит для будущего действия PRESENT simple, а не «will». В главной части «will» остаётся."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "The rule: present after when / as soon as",
+          "ru": "Правило: present после when / as soon as"
+        },
+        "text": {
+          "en": "Even though both actions are in the future, the part after when/as soon as/before/after/until stays in the present simple.\n\nI will call you when I get home. (NOT \"when I will get\")\nAs soon as the bus arrives, we will leave.\nWait here until I come back.",
+          "ru": "Хотя оба действия в будущем, часть после when/as soon as/before/after/until остаётся в present simple.\n\nI will call you when I get home. — Я позвоню, когда приду домой (НЕ «when I will get»).\nAs soon as the bus arrives, we will leave. — Как только придёт автобус, мы уедем.\nWait here until I come back. — Подожди здесь, пока я не вернусь."
+        },
+        "examples": [
+          {
+            "en": "Before you leave, turn off the lights.",
+            "ru": "Перед тем как уйти, выключи свет."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Either order works",
+          "ru": "Порядок частей любой"
+        },
+        "text": {
+          "en": "You can start with either clause. If the time clause comes first, put a comma after it.\n\nI will text you when I arrive.\nWhen I arrive, I will text you.",
+          "ru": "Можно начать с любой части. Если придаточное времени идёт первым, после него ставится запятая.\n\nI will text you when I arrive. — Я напишу тебе, когда приеду.\nWhen I arrive, I will text you. — Когда приеду, я тебе напишу."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "No \"will\" after when/as soon as/before/after/until: \"when I get home\", NOT \"when I will get home\".",
+        "ru": "Нет «will» после when/as soon as/before/after/until: «when I get home», а не «when I will get home»."
+      },
+      {
+        "en": "The main clause still needs \"will\": \"I will call you when I get home\".",
+        "ru": "В главной части «will» нужен: «I will call you when I get home»."
+      }
+    ],
+    "seeAlso": [
+      "future-forms",
+      "present-simple"
+    ]
   }
 ]

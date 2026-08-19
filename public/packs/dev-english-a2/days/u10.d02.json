@@ -184,7 +184,8 @@
               "en": "I think it will rain.",
               "ru": "Думаю, будет дождь."
             }
-          ]
+          ],
+          "ref": "future-forms"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "You look tired. I'll help you.",
               "ru": "Ты устал. Я помогу."
             }
-          ]
+          ],
+          "ref": "future-forms"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "Don't worry, I won't be late.",
               "ru": "Не волнуйся, я не опоздаю."
             }
-          ]
+          ],
+          "ref": "future-forms"
         }
       ],
       "pitfalls": [
@@ -446,6 +449,120 @@
           "answers": [
             "I will call you later.",
             "I'll call you later."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u10.d02.ex.b.01",
+          "instruction": {
+            "en": "Prediction.",
+            "ru": "Предсказание."
+          },
+          "tags": [
+            "grammar.will"
+          ],
+          "prompt": "I think the team ___ win.",
+          "options": [
+            "will",
+            "is going",
+            "goes to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u10.d02.ex.b.02",
+          "instruction": {
+            "en": "Quick offer.",
+            "ru": "Быстрое предложение."
+          },
+          "tags": [
+            "grammar.will"
+          ],
+          "prompt": "That bag is heavy — I ___ carry it.",
+          "options": [
+            "'ll",
+            "am",
+            "going"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d02.ex.b.03",
+          "instruction": {
+            "en": "Negative (won't).",
+            "ru": "Отрицание (won't)."
+          },
+          "tags": [
+            "grammar.will"
+          ],
+          "prompt": "I promise I ___ forget. (will not)",
+          "answers": [
+            "won't",
+            "will not"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d02.ex.b.04",
+          "instruction": {
+            "en": "Bare verb after will.",
+            "ru": "Голый глагол после will."
+          },
+          "tags": [
+            "grammar.will"
+          ],
+          "prompt": "I ___ help you with the bags. (will)",
+          "answers": [
+            "will"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u10.d02.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.will"
+          ],
+          "variants": [
+            "I will to call you later.",
+            "I will call you later."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u10.d02.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.will",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Думаю, завтра будет холодно.",
+          "answers": [
+            "I think it will be cold tomorrow.",
+            "I think it'll be cold tomorrow."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "it will to be",
+                "it will cold",
+                "i think it will be cold tomorrow?"
+              ],
+              "explanation": {
+                "en": "will + bare verb: it will BE cold.",
+                "ru": "will + голый глагол: it will BE cold."
+              }
+            }
           ]
         }
       ]

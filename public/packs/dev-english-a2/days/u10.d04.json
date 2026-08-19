@@ -199,7 +199,8 @@
               "en": "I'll call you when I arrive.",
               "ru": "Я позвоню, когда приеду."
             }
-          ]
+          ],
+          "ref": "future-time-clauses"
         },
         {
           "label": {
@@ -212,7 +213,8 @@
               "en": "Text me before you leave.",
               "ru": "Напиши перед уходом."
             }
-          ]
+          ],
+          "ref": "future-time-clauses"
         }
       ],
       "pitfalls": [
@@ -450,6 +452,120 @@
             "I will call you when I arrive.",
             "I'll call you when I arrive.",
             "I will call when I arrive."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u10.d04.ex.b.01",
+          "instruction": {
+            "en": "Make a suggestion.",
+            "ru": "Предложи."
+          },
+          "tags": [
+            "grammar.shall-lets"
+          ],
+          "prompt": "___ we go to the park?",
+          "options": [
+            "Shall",
+            "Will",
+            "Do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d04.ex.b.02",
+          "instruction": {
+            "en": "Suggest with let's.",
+            "ru": "Предложи с let's."
+          },
+          "tags": [
+            "grammar.shall-lets"
+          ],
+          "prompt": "___ take a taxi. (let us)",
+          "answers": [
+            "Let's",
+            "Let us"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u10.d04.ex.b.03",
+          "instruction": {
+            "en": "Time clause — no will.",
+            "ru": "Придаточное времени — без will."
+          },
+          "tags": [
+            "grammar.future-time-clauses"
+          ],
+          "prompt": "As soon as the film ___, we will go home.",
+          "options": [
+            "ends",
+            "will end",
+            "is ending"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d04.ex.b.04",
+          "instruction": {
+            "en": "Before + present.",
+            "ru": "Before + present."
+          },
+          "tags": [
+            "grammar.future-time-clauses"
+          ],
+          "prompt": "Turn off the lights before you ___. (leave)",
+          "answers": [
+            "leave"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u10.d04.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.future-time-clauses"
+          ],
+          "variants": [
+            "I will call you when I will arrive.",
+            "I will call you when I arrive."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u10.d04.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.future-time-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Позвони мне, когда закончишь.",
+          "answers": [
+            "Call me when you finish.",
+            "Phone me when you finish."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "when you will finish",
+                "when you finished",
+                "when will you finish"
+              ],
+              "explanation": {
+                "en": "No \"will\" after when: call me when you finish.",
+                "ru": "После when нет «will»: call me when you finish."
+              }
+            }
           ]
         }
       ]
