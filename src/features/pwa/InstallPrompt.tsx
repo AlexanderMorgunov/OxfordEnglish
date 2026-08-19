@@ -11,6 +11,14 @@ import {
 
 const DISMISS_KEY = 'pwa.install.dismissed';
 
+function wasDismissed(): boolean {
+  try {
+    return localStorage.getItem(DISMISS_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
 function useCanInstall(): boolean {
   return useSyncExternalStore(subscribeInstall, canInstall, () => false);
 }
@@ -18,9 +26,7 @@ function useCanInstall(): boolean {
 export function InstallPrompt() {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const installable = useCanInstall();
-  const [dismissed, setDismissed] = useState(
-    () => localStorage.getItem(DISMISS_KEY) === '1'
-  );
+  const [dismissed, setDismissed] = useState(wasDismissed);
 
   if (dismissed || isStandalone()) return null;
 
@@ -28,7 +34,11 @@ export function InstallPrompt() {
   if (!installable && !ios) return null;
 
   const dismiss = () => {
-    localStorage.setItem(DISMISS_KEY, '1');
+    try {
+      localStorage.setItem(DISMISS_KEY, '1');
+    } catch {
+      // ignore storage failures
+    }
     setDismissed(true);
   };
 

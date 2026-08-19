@@ -6,11 +6,20 @@ import type { UiLang } from '@/features/i18n/uiLang';
 const SEEN_KEY = 'onboarding.seen';
 
 export function onboardingSeen(): boolean {
-  return localStorage.getItem(SEEN_KEY) === '1';
+  try {
+    return localStorage.getItem(SEEN_KEY) === '1';
+  } catch {
+    // storage blocked (private mode / webview) — treat as already seen, never loop the tour
+    return true;
+  }
 }
 
 export function markOnboardingSeen(): void {
-  localStorage.setItem(SEEN_KEY, '1');
+  try {
+    localStorage.setItem(SEEN_KEY, '1');
+  } catch {
+    // ignore storage failures
+  }
 }
 
 type TourStep = { el: string; title: [ru: string, en: string]; body: [ru: string, en: string] };
@@ -38,14 +47,6 @@ const STEPS: TourStep[] = [
     body: [
       'Импортируйте свою книгу (EPUB/FB2/DOCX) или выберите из каталога. Тапните слово — перевод и карточка; из главы собираются упражнения.',
       'Import your own book (EPUB/FB2/DOCX) or pick one from the catalog. Tap a word for a translation and a card; exercises are built from each chapter.',
-    ],
-  },
-  {
-    el: '[data-tour="nav-settings"]',
-    title: ['Настройки', 'Settings'],
-    body: [
-      'Язык интерфейса, уровень, резервная копия прогресса и опциональный AI-помощник по вашему ключу.',
-      'Interface language, level, a backup of your progress, and an optional AI helper with your own key.',
     ],
   },
 ];
