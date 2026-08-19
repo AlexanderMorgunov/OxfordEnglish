@@ -18,7 +18,8 @@ npm-debug.log*
 /skinBagNotes/
 
 # --- Private strategy/monetization plan: keep out of the public repo ---
-/docs/plans/GLOBAL_PLAN.md
+# Internal planning / strategy / marketing docs — private, never in the public repo.
+/docs/plans/
 
 # --- Content Forge authoring tool: large/derived data, never committed ---
 tools/content-forge/node_modules/
