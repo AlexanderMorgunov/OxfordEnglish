@@ -131,6 +131,19 @@
       "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0024_the-sick-hyena.md"
     },
     {
+      "id": "the-tale-of-peter-rabbit",
+      "title": "The Tale of Peter Rabbit",
+      "author": "Beatrix Potter",
+      "level": "A2",
+      "license": {
+        "type": "public-domain",
+        "attribution": "Beatrix Potter · public domain",
+        "sourceUrl": "https://www.gutenberg.org/ebooks/14838"
+      },
+      "kind": "bundled",
+      "path": "reader/catalog/the-tale-of-peter-rabbit.json"
+    },
+    {
       "id": "zanele-situ-my-story",
       "title": "Zanele Situ: My Story",
       "author": "Liz Sparg",
@@ -142,6 +155,19 @@
       },
       "kind": "remote",
       "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0017_zanele-situ-my-story.md"
+    },
+    {
+      "id": "alice-s-adventures-in-wonderland",
+      "title": "Alice's Adventures in Wonderland",
+      "author": "Lewis Carroll",
+      "level": "B1",
+      "license": {
+        "type": "public-domain",
+        "attribution": "Lewis Carroll · public domain",
+        "sourceUrl": "https://www.gutenberg.org/ebooks/11"
+      },
+      "kind": "bundled",
+      "path": "reader/catalog/alice-s-adventures-in-wonderland.json"
     },
     {
       "id": "anansi-and-wisdom",
@@ -209,6 +235,19 @@
       "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0010_the-animals-of-uganda.md"
     },
     {
+      "id": "the-wonderful-wizard-of-oz",
+      "title": "The Wonderful Wizard of Oz",
+      "author": "L. Frank Baum",
+      "level": "B1",
+      "license": {
+        "type": "public-domain",
+        "attribution": "L. Frank Baum · public domain",
+        "sourceUrl": "https://www.gutenberg.org/ebooks/55"
+      },
+      "kind": "bundled",
+      "path": "reader/catalog/the-wonderful-wizard-of-oz.json"
+    },
+    {
       "id": "together-we-re-strong",
       "title": "Together We're Strong",
       "author": "Liesl Jobson",
@@ -235,6 +274,45 @@
       "path": "reader/catalog/what-are-you-doing.json"
     },
     {
+      "id": "a-christmas-carol",
+      "title": "A Christmas Carol",
+      "author": "Charles Dickens",
+      "level": "B2",
+      "license": {
+        "type": "public-domain",
+        "attribution": "Charles Dickens · public domain",
+        "sourceUrl": "https://www.gutenberg.org/ebooks/46"
+      },
+      "kind": "bundled",
+      "path": "reader/catalog/a-christmas-carol.json"
+    },
+    {
+      "id": "the-happy-prince-and-other-tales",
+      "title": "The Happy Prince and Other Tales",
+      "author": "Oscar Wilde",
+      "level": "B2",
+      "license": {
+        "type": "public-domain",
+        "attribution": "Oscar Wilde · public domain",
+        "sourceUrl": "https://www.gutenberg.org/ebooks/902"
+      },
+      "kind": "bundled",
+      "path": "reader/catalog/the-happy-prince-and-other-tales.json"
+    },
+    {
+      "id": "the-time-machine",
+      "title": "The Time Machine",
+      "author": "H. G. Wells",
+      "level": "B2",
+      "license": {
+        "type": "public-domain",
+        "attribution": "H. G. Wells · public domain",
+        "sourceUrl": "https://www.gutenberg.org/ebooks/35"
+      },
+      "kind": "bundled",
+      "path": "reader/catalog/the-time-machine.json"
+    },
+    {
       "id": "why-is-yayeri-great",
       "title": "Why is Yayeri great?",
       "author": "Michael Oguttu",
@@ -248,6 +326,19 @@
       "path": "reader/catalog/why-is-yayeri-great.json"
     },
     {
+      "id": "frankenstein",
+      "title": "Frankenstein",
+      "author": "Mary Shelley",
+      "level": "C1",
+      "license": {
+        "type": "public-domain",
+        "attribution": "Mary Shelley · public domain",
+        "sourceUrl": "https://www.gutenberg.org/ebooks/84"
+      },
+      "kind": "bundled",
+      "path": "reader/catalog/frankenstein.json"
+    },
+    {
       "id": "girl-called-norah",
       "title": "Girl called Norah",
       "author": "Annet Ssebaggala",
@@ -259,6 +350,19 @@
       },
       "kind": "bundled",
       "path": "reader/catalog/girl-called-norah.json"
+    },
+    {
+      "id": "the-picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "author": "Oscar Wilde",
+      "level": "C1",
+      "license": {
+        "type": "public-domain",
+        "attribution": "Oscar Wilde · public domain",
+        "sourceUrl": "https://www.gutenberg.org/ebooks/174"
+      },
+      "kind": "bundled",
+      "path": "reader/catalog/the-picture-of-dorian-gray.json"
     }
   ]
 }
