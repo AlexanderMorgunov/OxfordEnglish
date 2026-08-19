@@ -13,6 +13,7 @@ import { SettingsPage } from '@/pages/SettingsPage';
 import { SupportPage } from '@/pages/SupportPage';
 import { LibraryPage } from '@/pages/LibraryPage';
 import { BookReaderPage } from '@/pages/BookReaderPage';
+import { CatalogReaderPage } from '@/pages/CatalogReaderPage';
 import { KitchenSinkPage } from '@/pages/KitchenSinkPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
       { path: '/progress', element: <ProgressPage /> },
       { path: '/vocabulary', element: <VocabularyPage /> },
       { path: '/library', element: <LibraryPage /> },
+      { path: '/library/catalog/:catalogId', element: <CatalogReaderPage /> },
       { path: '/library/:bookId', element: <BookReaderPage /> },
       { path: '/settings', element: <SettingsPage /> },
       { path: '/support', element: <SupportPage /> },

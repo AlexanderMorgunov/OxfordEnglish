@@ -1,0 +1,264 @@
+{
+  "books": [
+    {
+      "id": "a-very-tall-man",
+      "title": "A very tall man",
+      "author": "Cornelius Gulere",
+      "level": "A2",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Cornelius Gulere, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0001_a-very-tall-man.md"
+      },
+      "kind": "bundled",
+      "path": "reader/catalog/a-very-tall-man.json"
+    },
+    {
+      "id": "anansi-and-turtle",
+      "title": "Anansi and Turtle",
+      "author": "Ghanaian folktale",
+      "level": "A2",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Ghanaian folktale, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0005_anansi-and-turtle.md"
+      },
+      "kind": "remote",
+      "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0005_anansi-and-turtle.md"
+    },
+    {
+      "id": "dembe-the-shopkeeper",
+      "title": "Dembe the shopkeeper",
+      "author": "Annet Ssebaggala",
+      "level": "A2",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Annet Ssebaggala, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0021_dembe-the-shopkeeper.md"
+      },
+      "kind": "remote",
+      "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0021_dembe-the-shopkeeper.md"
+    },
+    {
+      "id": "father-and-son",
+      "title": "Father and son",
+      "author": "Frista Nattabira",
+      "level": "A2",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Frista Nattabira, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0011_father-and-son.md"
+      },
+      "kind": "remote",
+      "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0011_father-and-son.md"
+    },
+    {
+      "id": "goat-dog-and-cow",
+      "title": "Goat, Dog, and Cow",
+      "author": "Fabian Wakholi",
+      "level": "A2",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Fabian Wakholi, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0004_goat-dog-and-cow.md"
+      },
+      "kind": "bundled",
+      "path": "reader/catalog/goat-dog-and-cow.json"
+    },
+    {
+      "id": "letter-to-mum",
+      "title": "Letter to mum",
+      "author": "Ursula Nafula",
+      "level": "A2",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Ursula Nafula, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0013_letter-to-mum.md"
+      },
+      "kind": "remote",
+      "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0013_letter-to-mum.md"
+    },
+    {
+      "id": "my-first-day-at-the-market",
+      "title": "My first day at the market",
+      "author": "Timothy Kabare, Ursula Nafula",
+      "level": "A2",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Timothy Kabare, Ursula Nafula, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0019_my-first-day-at-the-market.md"
+      },
+      "kind": "remote",
+      "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0019_my-first-day-at-the-market.md"
+    },
+    {
+      "id": "my-friend-coco",
+      "title": "My friend Coco",
+      "author": "Ursula Nafula",
+      "level": "A2",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Ursula Nafula, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0016_my-friend-coco.md"
+      },
+      "kind": "remote",
+      "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0016_my-friend-coco.md"
+    },
+    {
+      "id": "my-village",
+      "title": "My Village",
+      "author": "Wendy Parry",
+      "level": "A2",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Wendy Parry, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0012_my-village.md"
+      },
+      "kind": "remote",
+      "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0012_my-village.md"
+    },
+    {
+      "id": "the-sick-hyena",
+      "title": "The Sick Hyena",
+      "author": "Mozambican folktale",
+      "level": "A2",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Mozambican folktale, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0024_the-sick-hyena.md"
+      },
+      "kind": "remote",
+      "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0024_the-sick-hyena.md"
+    },
+    {
+      "id": "zanele-situ-my-story",
+      "title": "Zanele Situ: My Story",
+      "author": "Liz Sparg",
+      "level": "A2",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Liz Sparg, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0017_zanele-situ-my-story.md"
+      },
+      "kind": "remote",
+      "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0017_zanele-situ-my-story.md"
+    },
+    {
+      "id": "anansi-and-wisdom",
+      "title": "Anansi and Wisdom",
+      "author": "Ghanaian folktale",
+      "level": "B1",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Ghanaian folktale, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0006_anansi-and-wisdom.md"
+      },
+      "kind": "bundled",
+      "path": "reader/catalog/anansi-and-wisdom.json"
+    },
+    {
+      "id": "lion-that-wanted-friendship",
+      "title": "Lion that wanted friendship",
+      "author": "Joachim Muhindo",
+      "level": "B1",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Joachim Muhindo, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0023_lion-that-wanted-friendship.md"
+      },
+      "kind": "remote",
+      "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0023_lion-that-wanted-friendship.md"
+    },
+    {
+      "id": "my-baby-boy",
+      "title": "My baby boy.",
+      "author": "Cissy Namugerwa, Nanyonga Allen",
+      "level": "B1",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Cissy Namugerwa, Nanyonga Allen, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0022_my-baby-boy.md"
+      },
+      "kind": "remote",
+      "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0022_my-baby-boy.md"
+    },
+    {
+      "id": "pickpocketer",
+      "title": "Pickpocketer",
+      "author": "Kate Nkwane",
+      "level": "B1",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Kate Nkwane, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0020_pickpocketer.md"
+      },
+      "kind": "remote",
+      "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0020_pickpocketer.md"
+    },
+    {
+      "id": "the-animals-of-uganda",
+      "title": "The Animals of Uganda",
+      "author": "Wendy Parry",
+      "level": "B1",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Wendy Parry, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0010_the-animals-of-uganda.md"
+      },
+      "kind": "remote",
+      "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0010_the-animals-of-uganda.md"
+    },
+    {
+      "id": "together-we-re-strong",
+      "title": "Together We're Strong",
+      "author": "Liesl Jobson",
+      "level": "B1",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Liesl Jobson, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0015_together-were-strong.md"
+      },
+      "kind": "remote",
+      "mdUrl": "https://raw.githubusercontent.com/global-asp/asp-source/master/en/0015_together-were-strong.md"
+    },
+    {
+      "id": "what-are-you-doing",
+      "title": "What are you doing?",
+      "author": "Nina Orange",
+      "level": "B1",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Nina Orange, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0008_what-are-you-doing.md"
+      },
+      "kind": "bundled",
+      "path": "reader/catalog/what-are-you-doing.json"
+    },
+    {
+      "id": "why-is-yayeri-great",
+      "title": "Why is Yayeri great?",
+      "author": "Michael Oguttu",
+      "level": "B2",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Michael Oguttu, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0018_why-is-yayeri-great.md"
+      },
+      "kind": "bundled",
+      "path": "reader/catalog/why-is-yayeri-great.json"
+    },
+    {
+      "id": "girl-called-norah",
+      "title": "Girl called Norah",
+      "author": "Annet Ssebaggala",
+      "level": "C1",
+      "license": {
+        "type": "CC-BY",
+        "attribution": "Annet Ssebaggala, African Storybook (global-asp), CC-BY",
+        "sourceUrl": "https://github.com/global-asp/asp-source/blob/master/en/0014_girl-called-norah.md"
+      },
+      "kind": "bundled",
+      "path": "reader/catalog/girl-called-norah.json"
+    }
+  ]
+}
