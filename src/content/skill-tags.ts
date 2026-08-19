@@ -125,6 +125,9 @@ export const SKILL_TAGS = [
   'functions.speculating',
   'functions.preferences',
 
+  // reader (exercises generated from imported books)
+  'reader.vocab',
+
   // vocabulary (developer-life + everyday themes)
   'vocab.work',
   'vocab.dev',

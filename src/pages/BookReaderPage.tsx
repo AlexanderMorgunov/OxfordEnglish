@@ -6,6 +6,7 @@ import { useUiLang } from '@/features/i18n/uiLang';
 import { getBook, openBook, saveProgress } from '@/features/reader/service';
 import type { ParsedBook } from '@/features/reader/parse';
 import { ReadingText } from '@/features/reader/reading-text';
+import { ChapterStudy } from '@/features/reader/ChapterStudy';
 
 export function BookReaderPage() {
   const { bookId } = useParams();
@@ -105,6 +106,8 @@ export function BookReaderPage() {
       <div className="mb-6">{nav}</div>
 
       <ReadingText paragraphs={paragraphs} />
+
+      <ChapterStudy text={ch.text} idPrefix={`reader.${record.id}.${chapter}`} />
 
       <div className="mt-8 border-t border-line pt-5">{nav}</div>
     </article>
