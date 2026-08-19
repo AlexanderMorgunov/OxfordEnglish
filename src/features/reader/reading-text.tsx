@@ -88,7 +88,9 @@ export function WordToken({
       {loading && <p className="mt-1 font-mono text-2xs text-faint">translating…</p>}
       {failed && !translation && (
         <p className="mt-1 font-mono text-2xs text-faint">
-          {lang === 'ru' ? 'перевод недоступен (нет сети?)' : 'translation unavailable (offline?)'}
+          {lang === 'ru'
+            ? 'перевод недоступен — нет сети или дневной лимит словаря'
+            : 'unavailable — offline or the free dictionary’s daily limit'}
         </p>
       )}
       <div className="mt-2">

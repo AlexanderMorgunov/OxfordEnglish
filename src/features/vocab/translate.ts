@@ -5,6 +5,9 @@ type MyMemoryResponse = { responseData?: { translatedText?: string } };
 
 const MM_LIMIT = 480; // MyMemory anonymous per-request character cap
 
+/** A real en→ru translation is Cyrillic; a Latin result means MyMemory echoed the source. */
+const hasCyrillic = (s: string) => /[а-яё]/i.test(s);
+
 async function mymemory(text: string): Promise<string | null> {
   try {
     const res = await fetch(
@@ -13,7 +16,8 @@ async function mymemory(text: string): Promise<string | null> {
     if (!res.ok) return null;
     const data = (await res.json()) as MyMemoryResponse;
     const ru = data.responseData?.translatedText?.trim();
-    if (!ru || /MYMEMORY WARNING|QUERY LENGTH LIMIT/i.test(ru)) return null;
+    // Reject the daily-limit warning, the length-limit note, and any non-Russian echo.
+    if (!ru || /MYMEMORY WARNING|QUERY LENGTH LIMIT/i.test(ru) || !hasCyrillic(ru)) return null;
     return ru;
   } catch {
     return null;
@@ -50,7 +54,7 @@ export async function translateText(text: string): Promise<string | null> {
   if (!key) return null;
   try {
     const cached = await db.translations.get(key);
-    if (cached) return cached.ru;
+    if (cached && hasCyrillic(cached.ru)) return cached.ru; // skip stale bad caches
   } catch {
     // ignore cache miss
   }
@@ -79,25 +83,16 @@ export async function translateWord(word: string): Promise<string | null> {
   const w = word.toLowerCase();
   try {
     const cached = await db.translations.get(w);
-    if (cached) return cached.ru;
+    if (cached && hasCyrillic(cached.ru)) return cached.ru; // skip stale bad caches (source echoes, warnings)
   } catch {
     // ignore cache miss
   }
+  const ru = await mymemory(w);
+  if (ru === null) return null; // offline, daily limit, or a non-Russian echo — degrade visibly
   try {
-    const res = await fetch(
-      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(w)}&langpair=en|ru`
-    );
-    if (!res.ok) return null;
-    const data = (await res.json()) as MyMemoryResponse;
-    const ru = data.responseData?.translatedText?.trim();
-    if (!ru) return null;
-    try {
-      await db.translations.put({ word: w, ru, source: 'mymemory' });
-    } catch {
-      // best-effort cache
-    }
-    return ru;
+    await db.translations.put({ word: w, ru, source: 'mymemory' });
   } catch {
-    return null;
+    // best-effort cache
   }
+  return ru;
 }
