@@ -184,7 +184,8 @@
               "en": "I usually work, but yesterday I rested.",
               "ru": "Обычно я работаю, но вчера отдыхал."
             }
-          ]
+          ],
+          "ref": "past-simple"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "I have been to many parties.",
               "ru": "Я был на многих вечеринках."
             }
-          ]
+          ],
+          "ref": "present-perfect"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "We are going to celebrate tonight.",
               "ru": "Сегодня вечером мы будем праздновать."
             }
-          ]
+          ],
+          "ref": "future-forms"
         }
       ],
       "pitfalls": [
@@ -445,6 +448,119 @@
           "answers": [
             "Yesterday we celebrated a birthday.",
             "We celebrated a birthday yesterday."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d01.ex.b.01",
+          "instruction": {
+            "en": "Past simple.",
+            "ru": "Past simple."
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "prompt": "Last night we ___ our exams. (finish)",
+          "answers": [
+            "finished"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d01.ex.b.02",
+          "instruction": {
+            "en": "Choose the tense.",
+            "ru": "Выбери время."
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "prompt": "Next week I ___ going to visit my parents.",
+          "options": [
+            "am",
+            "will",
+            "have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d01.ex.b.03",
+          "instruction": {
+            "en": "Present perfect.",
+            "ru": "Present perfect."
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "prompt": "We ___ just booked the tickets. (have)",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d01.ex.b.04",
+          "instruction": {
+            "en": "Which tense fits \"usually\"?",
+            "ru": "Какое время для \"usually\"?"
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "prompt": "We usually ___ New Year at home.",
+          "options": [
+            "celebrate",
+            "are celebrating",
+            "celebrated"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u14.d01.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "variants": [
+            "I have seen her yesterday.",
+            "I saw her yesterday."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u14.d01.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.review",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Завтра мы устроим вечеринку.",
+          "answers": [
+            "Tomorrow we are going to have a party.",
+            "Tomorrow we're going to have a party.",
+            "We will have a party tomorrow."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "tomorrow we have a party",
+                "tomorrow we having a party"
+              ],
+              "explanation": {
+                "en": "Future plan → going to / will: we are going to have a party.",
+                "ru": "План на будущее → going to / will: we are going to have a party."
+              }
+            }
           ]
         }
       ]

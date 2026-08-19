@@ -185,7 +185,8 @@
               "en": "I usually walk, but now I am driving.",
               "ru": "Обычно я хожу пешком, но сейчас еду за рулём."
             }
-          ]
+          ],
+          "ref": "present-vs-continuous"
         },
         {
           "label": {
@@ -198,7 +199,8 @@
               "en": "I saw it yesterday. I have seen it before.",
               "ru": "Я видел это вчера. Я видел это раньше."
             }
-          ]
+          ],
+          "ref": "perfect-vs-past"
         },
         {
           "label": {
@@ -211,7 +213,8 @@
               "en": "I'm meeting Tom at six. It will be fun.",
               "ru": "Я встречаюсь с Томом в шесть. Будет весело."
             }
-          ]
+          ],
+          "ref": "future-forms"
         }
       ],
       "pitfalls": [
@@ -456,6 +459,121 @@
           "answers": [
             "I am doing my homework now.",
             "I'm doing my homework."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d04.ex.b.01",
+          "instruction": {
+            "en": "Right now.",
+            "ru": "Прямо сейчас."
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "prompt": "Be quiet — the baby ___ .",
+          "options": [
+            "is sleeping",
+            "sleeps",
+            "slept"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u14.d04.ex.b.02",
+          "instruction": {
+            "en": "Experience (ever).",
+            "ru": "Опыт (ever)."
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "prompt": "___ you ever eaten Thai food?",
+          "options": [
+            "Have",
+            "Did",
+            "Do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d04.ex.b.03",
+          "instruction": {
+            "en": "Habit (every day).",
+            "ru": "Привычка (каждый день)."
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "prompt": "She ___ to work by bus every day. (go)",
+          "answers": [
+            "goes"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d04.ex.b.04",
+          "instruction": {
+            "en": "Fixed plan.",
+            "ru": "Назначенный план."
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "prompt": "I ___ my dentist at three tomorrow.",
+          "options": [
+            "am seeing",
+            "see",
+            "have seen"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u14.d04.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "variants": [
+            "I am knowing the answer.",
+            "I know the answer."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u14.d04.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.review",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Сейчас я делаю домашнее задание.",
+          "answers": [
+            "I am doing my homework now.",
+            "I'm doing my homework now."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i do my homework now",
+                "i am do my homework"
+              ],
+              "explanation": {
+                "en": "Happening now → present continuous: I am doing my homework now.",
+                "ru": "Происходит сейчас → present continuous: I am doing my homework now."
+              }
+            }
           ]
         }
       ]

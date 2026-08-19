@@ -184,7 +184,8 @@
               "en": "She said she was tired.",
               "ru": "Она сказала, что устала."
             }
-          ]
+          ],
+          "ref": "reported-speech"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "He told me that he was late.",
               "ru": "Он сказал мне, что опаздывает."
             }
-          ]
+          ],
+          "ref": "reported-speech"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "He said he would come.",
               "ru": "Он сказал, что придёт."
             }
-          ]
+          ],
+          "ref": "reported-speech"
         }
       ],
       "pitfalls": [
@@ -445,6 +448,119 @@
           "answers": [
             "She said she was tired.",
             "She said that she was tired."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d03.ex.b.01",
+          "instruction": {
+            "en": "say or tell?",
+            "ru": "say или tell?"
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "He ___ that he was hungry.",
+          "options": [
+            "said",
+            "told",
+            "told to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d03.ex.b.02",
+          "instruction": {
+            "en": "present → past.",
+            "ru": "настоящее → прошедшее."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "\"I live here.\" → She said she ___ there. (live)",
+          "answers": [
+            "lived"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d03.ex.b.03",
+          "instruction": {
+            "en": "can → could.",
+            "ru": "can → could."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "\"I can drive.\" → He said he ___ drive. (can)",
+          "answers": [
+            "could"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d03.ex.b.04",
+          "instruction": {
+            "en": "tell + person.",
+            "ru": "tell + человек."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "She ___ me that the shop was closed.",
+          "options": [
+            "told",
+            "said",
+            "says"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u14.d03.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "variants": [
+            "She said me she was happy.",
+            "She told me she was happy."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u14.d03.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.reported-speech",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он сказал, что поможет мне.",
+          "answers": [
+            "He said he would help me.",
+            "He told me he would help me."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he said me he would help",
+                "he said he will help",
+                "he told he would help"
+              ],
+              "explanation": {
+                "en": "say (no person) / tell me; will → would: He said he would help me.",
+                "ru": "say (без человека) / tell me; will → would: He said he would help me."
+              }
+            }
           ]
         }
       ]

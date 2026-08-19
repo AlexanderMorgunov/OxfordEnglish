@@ -197,7 +197,8 @@
               "en": "You should rest. You must not be late.",
               "ru": "Тебе стоит отдохнуть. Нельзя опаздывать."
             }
-          ]
+          ],
+          "ref": "modals-obligation"
         },
         {
           "label": {
@@ -210,7 +211,8 @@
               "en": "If you practise, you will improve.",
               "ru": "Если будешь заниматься, ты станешь лучше."
             }
-          ]
+          ],
+          "ref": "conditionals-0-1"
         }
       ],
       "pitfalls": [
@@ -456,6 +458,122 @@
           "answers": [
             "If you practise, you will improve.",
             "If you practice, you will improve."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d05.ex.b.01",
+          "instruction": {
+            "en": "Modal: possibility.",
+            "ru": "Модальный: возможность."
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "prompt": "Take an umbrella — it ___ rain.",
+          "options": [
+            "might",
+            "must",
+            "should"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d05.ex.b.02",
+          "instruction": {
+            "en": "Superlative.",
+            "ru": "Превосходная."
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "prompt": "It was ___ day of my life. (good)",
+          "answers": [
+            "the best"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d05.ex.b.03",
+          "instruction": {
+            "en": "Passive.",
+            "ru": "Пассив."
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "prompt": "The room ___ cleaned every day.",
+          "options": [
+            "is",
+            "has",
+            "does"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d05.ex.b.04",
+          "instruction": {
+            "en": "First conditional.",
+            "ru": "Первый тип условия."
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "prompt": "If it rains, we ___ at home. (stay)",
+          "answers": [
+            "will stay",
+            "'ll stay"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d05.ex.b.05",
+          "instruction": {
+            "en": "for or since?",
+            "ru": "for или since?"
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "prompt": "I have lived here ___ 2019.",
+          "options": [
+            "since",
+            "for",
+            "from"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u14.d05.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.review",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Тебе стоит больше заниматься.",
+          "answers": [
+            "You should study more.",
+            "You should practise more."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you should to study",
+                "you must study more",
+                "you should studies"
+              ],
+              "explanation": {
+                "en": "should + bare verb: You should study more.",
+                "ru": "should + голый глагол: You should study more."
+              }
+            }
           ]
         }
       ]

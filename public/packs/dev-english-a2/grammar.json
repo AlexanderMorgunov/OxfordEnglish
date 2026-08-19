@@ -2207,5 +2207,135 @@
       "question-tags",
       "verb-be"
     ]
+  },
+  {
+    "id": "passive",
+    "title": {
+      "en": "The passive (English is spoken here)",
+      "ru": "Страдательный залог (English is spoken here)"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "Use the passive when the action matters more than who does it, or when you do not know who does it. Form it with the verb \"be\" + the past participle (V3).",
+      "ru": "Пассив нужен, когда важнее само действие, а не тот, кто его делает, или когда неизвестно, кто делает. Строится через глагол «be» + причастие прошедшего времени (V3)."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "Present passive: am/is/are + V3",
+          "ru": "Настоящий пассив: am/is/are + V3"
+        },
+        "text": {
+          "en": "Take the right form of \"be\" in the present and add the past participle.\n\nEnglish is spoken here.\nThese cars are made in Japan.\nThe office is cleaned every day.",
+          "ru": "Возьми нужную форму «be» в настоящем и добавь причастие прошедшего времени.\n\nEnglish is spoken here. — Здесь говорят по-английски.\nThese cars are made in Japan. — Эти машины делают в Японии.\nThe office is cleaned every day. — Офис убирают каждый день."
+        },
+        "examples": [
+          {
+            "en": "Coffee is grown in Brazil.",
+            "ru": "Кофе выращивают в Бразилии."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Past passive: was/were + V3",
+          "ru": "Прошедший пассив: was/were + V3"
+        },
+        "text": {
+          "en": "For the past, use \"was\" or \"were\" + the past participle.\n\nThe bridge was built in 1990.\nThe letters were sent yesterday.\n\nWatch the participle — it must be V3, not the base verb: \"was built\", NOT \"was build\".",
+          "ru": "Для прошедшего используй «was» или «were» + причастие.\n\nThe bridge was built in 1990. — Мост построили в 1990 году.\nThe letters were sent yesterday. — Письма отправили вчера.\n\nСледи за причастием — нужна форма V3, а не начальная: «was built», а не «was build»."
+        },
+        "examples": [
+          {
+            "en": "America was discovered in 1492.",
+            "ru": "Америку открыли в 1492 году."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "by + the doer",
+          "ru": "by + деятель"
+        },
+        "text": {
+          "en": "If you do want to say who did it, add \"by + person\" at the end.\n\nThis song is loved by everyone.\nHamlet was written by Shakespeare.\n\nBut often the doer is unknown or unimportant, so \"by…\" is left out.",
+          "ru": "Если всё же хочешь назвать деятеля, добавь «by + человек» в конце.\n\nThis song is loved by everyone. — Эту песню любят все.\nHamlet was written by Shakespeare. — «Гамлета» написал Шекспир.\n\nНо часто деятель неизвестен или неважен, поэтому «by…» опускают."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Use the past participle (V3), not the base verb: \"was built\", NOT \"was build\".",
+        "ru": "Нужно причастие (V3), а не начальная форма: «was built», а не «was build»."
+      },
+      {
+        "en": "Do not forget \"be\": \"English is spoken here\", NOT \"English spoken here\".",
+        "ru": "Не теряй «be»: «English is spoken here», а не «English spoken here»."
+      }
+    ],
+    "seeAlso": [
+      "past-simple",
+      "present-perfect"
+    ]
+  },
+  {
+    "id": "reported-speech",
+    "title": {
+      "en": "Reported speech (she said she was tired)",
+      "ru": "Косвенная речь (she said she was tired)"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "When you report what someone said, the verb usually moves one step back into the past. You also choose between \"say\" and \"tell\".",
+      "ru": "Когда пересказываешь чужие слова, глагол обычно сдвигается на шаг назад в прошлое. Ещё нужно выбрать между «say» и «tell»."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "Move the tense back",
+          "ru": "Сдвигай время назад"
+        },
+        "text": {
+          "en": "Present becomes past, \"will\" becomes \"would\", \"can\" becomes \"could\".\n\n\"I am tired.\" → She said she was tired.\n\"I will help.\" → He said he would help.\n\"I can swim.\" → She said she could swim.",
+          "ru": "Настоящее становится прошедшим, «will» → «would», «can» → «could».\n\n«I am tired.» → She said she was tired. — Она сказала, что устала.\n«I will help.» → He said he would help. — Он сказал, что поможет.\n«I can swim.» → She said she could swim. — Она сказала, что умеет плавать."
+        },
+        "examples": [
+          {
+            "en": "\"I live in Rome.\" → He said he lived in Rome.",
+            "ru": "«Я живу в Риме.» → Он сказал, что живёт в Риме."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "say vs tell",
+          "ru": "say и tell"
+        },
+        "text": {
+          "en": "Use \"tell\" when you mention the listener; use \"say\" when you do not.\n\nShe told me that she was busy. (tell + person)\nShe said that she was busy. (say, no person)\n\nSo it is \"tell someone\", but \"say (that)…\" with no person right after.",
+          "ru": "Используй «tell», когда называешь слушателя; «say» — когда нет.\n\nShe told me that she was busy. — Она сказала мне, что занята. (tell + человек)\nShe said that she was busy. — Она сказала, что занята. (say, без человека)\n\nИтак: «tell someone», но «say (that)…» без человека сразу после."
+        },
+        "examples": [
+          {
+            "en": "He told us a story.",
+            "ru": "Он рассказал нам историю."
+          }
+        ]
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "\"tell\" needs a person, \"say\" does not: \"She told me…\", \"She said…\" — NOT \"She said me…\".",
+        "ru": "«tell» требует человека, «say» — нет: «She told me…», «She said…» — а не «She said me…»."
+      },
+      {
+        "en": "Shift the tense back: \"I am tired\" → \"She said she was tired\".",
+        "ru": "Сдвигай время назад: «I am tired» → «She said she was tired»."
+      }
+    ],
+    "seeAlso": [
+      "past-simple",
+      "passive"
+    ]
   }
 ]

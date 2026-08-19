@@ -184,7 +184,8 @@
               "en": "English is spoken here.",
               "ru": "Здесь говорят по-английски."
             }
-          ]
+          ],
+          "ref": "passive"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "The bridge was built in 1990.",
               "ru": "Мост построили в 1990."
             }
-          ]
+          ],
+          "ref": "passive"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "The book was written by a teacher.",
               "ru": "Книгу написал учитель."
             }
-          ]
+          ],
+          "ref": "passive"
         }
       ],
       "pitfalls": [
@@ -444,6 +447,116 @@
           "prompt": "Здесь говорят по-английски.",
           "answers": [
             "English is spoken here."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d02.ex.b.01",
+          "instruction": {
+            "en": "Present passive.",
+            "ru": "Настоящий пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The rooms ___ cleaned every morning. (be)",
+          "answers": [
+            "are"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d02.ex.b.02",
+          "instruction": {
+            "en": "Past passive.",
+            "ru": "Прошедший пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The book ___ written in 1998. (be)",
+          "answers": [
+            "was"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d02.ex.b.03",
+          "instruction": {
+            "en": "Choose the passive.",
+            "ru": "Выбери пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "This bread ___ baked fresh every day.",
+          "options": [
+            "is",
+            "has",
+            "does"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d02.ex.b.04",
+          "instruction": {
+            "en": "Add the doer.",
+            "ru": "Добавь деятеля."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The song was written ___ a famous singer. (doer)",
+          "answers": [
+            "by"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u14.d02.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "The house was build in 2000.",
+            "The house was built in 2000."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u14.d02.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Этот мост построили сто лет назад.",
+          "answers": [
+            "This bridge was built a hundred years ago.",
+            "The bridge was built a hundred years ago."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "was build",
+                "was builded",
+                "is built a hundred years ago"
+              ],
+              "explanation": {
+                "en": "Past passive: was + built (V3): was built.",
+                "ru": "Прошедший пассив: was + built (V3): was built."
+              }
+            }
           ]
         }
       ]
