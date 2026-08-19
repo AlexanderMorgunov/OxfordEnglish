@@ -1,0 +1,599 @@
+{
+  "id": "u19.d05",
+  "title": {
+    "en": "What do you think happened?",
+    "ru": "Как думаешь, что произошло?"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "functions.speculating",
+    "vocab.mystery"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u19.d05.vocab",
+      "title": {
+        "en": "Speculating",
+        "ru": "Строим предположения"
+      },
+      "words": [
+        {
+          "word": "imagine",
+          "ru": "представлять",
+          "ipa": "/ɪˈmædʒɪn/",
+          "example": "I imagine he's happy.",
+          "exampleRu": "Представляю, он счастлив.",
+          "audio": {
+            "src": "media/audio/u19.d05.vocab.imagine.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "expect",
+          "ru": "ожидать",
+          "ipa": "/ɪkˈspekt/",
+          "example": "I expect they'll be late.",
+          "exampleRu": "Думаю, они опоздают.",
+          "audio": {
+            "src": "media/audio/u19.d05.vocab.expect.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "assume",
+          "ru": "предполагать",
+          "ipa": "/əˈsjuːm/",
+          "example": "I assume you agree.",
+          "exampleRu": "Полагаю, ты согласен.",
+          "audio": {
+            "src": "media/audio/u19.d05.vocab.assume.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wonder",
+          "ru": "задаваться вопросом",
+          "ipa": "/ˈwʌndər/",
+          "example": "I wonder what happened.",
+          "exampleRu": "Интересно, что случилось.",
+          "audio": {
+            "src": "media/audio/u19.d05.vocab.wonder.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "seem like",
+          "ru": "выглядеть как",
+          "ipa": "/siːm laɪk/",
+          "example": "It seems like a trick.",
+          "exampleRu": "Похоже на трюк.",
+          "audio": {
+            "src": "media/audio/u19.d05.vocab.seemlike.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "look like",
+          "ru": "выглядеть как",
+          "ipa": "/lʊk laɪk/",
+          "example": "It looks like rain.",
+          "exampleRu": "Похоже, будет дождь.",
+          "audio": {
+            "src": "media/audio/u19.d05.vocab.looklike.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "guess",
+          "ru": "догадка; догадываться",
+          "ipa": "/ɡes/",
+          "example": "That's just a guess.",
+          "exampleRu": "Это лишь догадка.",
+          "audio": {
+            "src": "media/audio/u19.d05.vocab.guess.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "opinion",
+          "ru": "мнение",
+          "ipa": "/əˈpɪnjən/",
+          "example": "In my opinion, he's right.",
+          "exampleRu": "По-моему, он прав.",
+          "audio": {
+            "src": "media/audio/u19.d05.vocab.opinion.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "theory",
+          "ru": "теория",
+          "ipa": "/ˈθɪəri/",
+          "example": "I have a theory.",
+          "exampleRu": "У меня есть теория.",
+          "audio": {
+            "src": "media/audio/u19.d05.vocab.theory.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "probably",
+          "ru": "вероятно",
+          "ipa": "/ˈprɒbəbli/",
+          "example": "They're probably fine.",
+          "exampleRu": "Они, вероятно, в порядке.",
+          "audio": {
+            "src": "media/audio/u19.d05.vocab.probably.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u19.d05.grammar",
+      "title": {
+        "en": "Speculating politely",
+        "ru": "Как строить предположения"
+      },
+      "rule": {
+        "en": "To speculate, soften your guess with phrases like \"I think…\", \"Maybe…\", \"It looks like…\", \"I'd say…\". Combine them with deduction modals for natural, careful English.",
+        "ru": "Чтобы строить предположения, смягчай догадку фразами «I think…», «Maybe…», «It looks like…», «I'd say…». Сочетай их с модальными догадок — так речь звучит естественно и осторожно."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "soft opening",
+            "ru": "мягкое начало"
+          },
+          "formula": "I think / Maybe / Perhaps …",
+          "examples": [
+            {
+              "en": "I think they missed the train.",
+              "ru": "Думаю, они опоздали на поезд."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "from appearance",
+            "ru": "по внешнему виду"
+          },
+          "formula": "It looks like … / It seems …",
+          "examples": [
+            {
+              "en": "It looks like it's going to rain.",
+              "ru": "Похоже, пойдёт дождь."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "with a modal",
+            "ru": "с модальным"
+          },
+          "formula": "They must be … / could have …",
+          "examples": [
+            {
+              "en": "They could have got lost.",
+              "ru": "Они могли заблудиться."
+            }
+          ],
+          "ref": "modals-deduction"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"It looks like\" + a noun or clause: \"It looks like rain / It looks like he's tired\".",
+          "ru": "«It looks like» + существительное или предложение: «It looks like rain / It looks like he's tired»."
+        },
+        {
+          "en": "Speculation is polite English — soften with \"I think\", \"maybe\", \"probably\".",
+          "ru": "Предположение — это вежливая речь — смягчай через «I think», «maybe», «probably»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u19.d05.reading",
+      "title": {
+        "en": "The strange photo",
+        "ru": "Странная фотография"
+      },
+      "blocks": [
+        {
+          "id": "u19.d05.reading.b1",
+          "en": "My friends were looking at an old photo. \"What do you think is happening here?\" asked Ben. \"It looks like a party,\" said Mia. \"Everyone seems happy, and there's a cake — so it's probably a birthday.\"",
+          "ru": "Мои друзья рассматривали старую фотографию. «Как думаете, что тут происходит?» — спросил Бен. «Похоже на вечеринку, — сказала Мия. — Все кажутся счастливыми, и есть торт — так что, вероятно, это день рождения».",
+          "audio": {
+            "src": "media/audio/u19.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u19.d05.reading.b2",
+          "en": "\"Maybe,\" said Ben, \"but they're all wearing coats. I think it must be winter, and they could be outside.\" \"Good point,\" said Mia. \"I'd say it was taken years ago — look at the old car. It seems like a happy day, whatever it was.\"",
+          "ru": "«Может быть, — сказал Бен, — но все в пальто. Думаю, это, наверное, зима, и они, возможно, на улице». «Верно подмечено, — сказала Мия. — Я бы сказала, снимок сделан много лет назад — посмотри на старую машину. Похоже, это был счастливый день, чем бы он ни был».",
+          "audio": {
+            "src": "media/audio/u19.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "point",
+          "ru": "замечание, мысль",
+          "ipa": "/pɔɪnt/"
+        },
+        {
+          "word": "whatever",
+          "ru": "что бы ни",
+          "ipa": "/wɒtˈevər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u19.d05.listening",
+      "title": {
+        "en": "Where are they?",
+        "ru": "Где они?"
+      },
+      "audio": {
+        "src": "media/audio/u19.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "The others are really late. What do you think happened?",
+          "ru": "Остальные сильно опаздывают. Как думаешь, что случилось?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "I don't know. Maybe they got lost.",
+          "ru": "Не знаю. Может, они заблудились."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Or they could be stuck in traffic.",
+          "ru": "Или застряли в пробке."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "I'd say they probably forgot the time. Let's call them.",
+          "ru": "Я бы сказал, они, скорее всего, забыли о времени. Давай позвоним."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u19.d05.ex.l.01",
+          "instruction": {
+            "en": "What is one guess?",
+            "ru": "Одна из догадок?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.speculating"
+          ],
+          "prompt": "They ___ be stuck in traffic.",
+          "options": [
+            "could",
+            "can't",
+            "must not"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u19.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u19.d05.ex.c.01",
+          "instruction": {
+            "en": "Soft opening.",
+            "ru": "Мягкое начало."
+          },
+          "tags": [
+            "functions.speculating"
+          ],
+          "prompt": "___ they missed the bus.",
+          "options": [
+            "Maybe",
+            "Must",
+            "Can't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u19.d05.ex.c.02",
+          "instruction": {
+            "en": "From appearance.",
+            "ru": "По внешнему виду."
+          },
+          "tags": [
+            "functions.speculating"
+          ],
+          "prompt": "It ___ like it's going to rain.",
+          "options": [
+            "looks",
+            "look",
+            "looking"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u19.d05.ex.g.01",
+          "instruction": {
+            "en": "Give an opinion.",
+            "ru": "Вырази мнение."
+          },
+          "tags": [
+            "functions.speculating"
+          ],
+          "prompt": "In my ___ , he made the right choice. (opinion)",
+          "answers": [
+            "opinion"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u19.d05.ex.c.03",
+          "instruction": {
+            "en": "Speculate with a modal.",
+            "ru": "Предположи с модальным."
+          },
+          "tags": [
+            "functions.speculating"
+          ],
+          "prompt": "They aren't here yet — they ___ have got lost.",
+          "options": [
+            "could",
+            "can't",
+            "must not"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u19.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.speculating"
+          ],
+          "variants": [
+            "It looks like he is tired.",
+            "It looks like he tired."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u19.d05.ex.c.04",
+          "instruction": {
+            "en": "Careful guess.",
+            "ru": "Осторожная догадка."
+          },
+          "tags": [
+            "functions.speculating"
+          ],
+          "prompt": "I ___ they'll be here soon.",
+          "options": [
+            "expect",
+            "expecting",
+            "expects"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u19.d05.ex.o.01",
+          "instruction": {
+            "en": "Ask for a theory.",
+            "ru": "Спроси мнение."
+          },
+          "tags": [
+            "functions.speculating"
+          ],
+          "tokens": [
+            "What",
+            "do",
+            "you",
+            "think",
+            "happened"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u19.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.mystery"
+          ],
+          "pairs": [
+            {
+              "left": "assume",
+              "right": "предполагать"
+            },
+            {
+              "left": "wonder",
+              "right": "задаваться вопросом"
+            },
+            {
+              "left": "theory",
+              "right": "теория"
+            },
+            {
+              "left": "imagine",
+              "right": "представлять"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u19.d05.ex.c.05",
+          "instruction": {
+            "en": "Soften the guess.",
+            "ru": "Смягчи догадку."
+          },
+          "tags": [
+            "functions.speculating"
+          ],
+          "prompt": "They're ___ still at work.",
+          "options": [
+            "probably",
+            "probable",
+            "probability"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u19.d05.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.speculating"
+          ],
+          "variants": [
+            "I think that maybe he forgot.",
+            "I think he probably forgot."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u19.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.speculating",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Похоже, будет дождь.",
+          "answers": [
+            "It looks like it's going to rain.",
+            "It looks like rain."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "it looks like will rain",
+                "it look like rain",
+                "it looks like it will rain"
+              ],
+              "explanation": {
+                "en": "It looks like + clause: It looks like it is going to rain.",
+                "ru": "It looks like + предложение: It looks like it is going to rain."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u19.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.speculating",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Думаю, они, наверное, забыли о времени.",
+          "answers": [
+            "I think they probably forgot the time."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i think they probably forget the time",
+                "i think maybe they forgot the time",
+                "i think they forgot probably the time"
+              ],
+              "explanation": {
+                "en": "I think + they probably + past: I think they probably forgot the time.",
+                "ru": "I think + they probably + прошедшее: I think they probably forgot the time."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

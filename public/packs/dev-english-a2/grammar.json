@@ -2743,5 +2743,86 @@
     "seeAlso": [
       "reported-speech"
     ]
+  },
+  {
+    "id": "modals-deduction",
+    "title": {
+      "en": "Modals of deduction (must / can't / might be)",
+      "ru": "Модальные догадки (must / can't / might be)"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "Modal verbs let you say how sure you are about a situation. \"must\" = you are almost certain it is true; \"can't\" = almost certain it is not; \"might/may/could\" = it is possible. For the past, add \"have + V3\".",
+      "ru": "Модальные глаголы показывают, насколько ты уверен в ситуации. «must» = почти уверен, что так; «can't» = почти уверен, что не так; «might/may/could» = возможно. Для прошлого добавь «have + V3»."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "Present: must / can't / might be",
+          "ru": "Настоящее: must / can't / might be"
+        },
+        "text": {
+          "en": "Use the bare verb after the modal. \"must\" for a confident yes, \"can't\" for a confident no, and \"might/may/could\" for a possibility.\n\nThe lights are on — he must be home.\nShe just ate — she can't be hungry.\nHe isn't answering — he might be busy.",
+          "ru": "После модального — «голый» глагол. «must» — уверенное «да», «can't» — уверенное «нет», «might/may/could» — возможность.\n\nThe lights are on — he must be home.\nShe just ate — she can't be hungry.\nHe isn't answering — he might be busy."
+        },
+        "examples": [
+          {
+            "en": "You've worked all day — you must be tired.",
+            "ru": "Ты работал весь день — ты, наверное, устал."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Sure \"no\": can't, not mustn't",
+          "ru": "Уверенное «нет»: can't, а не mustn't"
+        },
+        "text": {
+          "en": "For \"I'm sure it isn't true\", use \"can't\", NOT \"mustn't\". \"mustn't\" means \"it is forbidden\", which is completely different.\n\nThat can't be right. (I'm sure it's wrong)\nYou mustn't park here. (it's forbidden — different meaning)",
+          "ru": "Для «я уверен, что это не так» — «can't», а НЕ «mustn't». «mustn't» значит «запрещено» — совсем другое.\n\nThat can't be right. (уверен, что неверно)\nYou mustn't park here. (запрещено — другой смысл)"
+        },
+        "examples": [
+          {
+            "en": "He can't be forty — he looks so young!",
+            "ru": "Ему не может быть сорок — он такой молодой!"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Past: must / can't / might have + V3",
+          "ru": "Прошлое: must / can't / might have + V3"
+        },
+        "text": {
+          "en": "To guess about the past, use modal + have + past participle.\n\nThe ground is wet — it must have rained.\nHe can't have seen me — I was hidden.\nShe might have missed the bus.\n\nIn speech \"have\" sounds like \"of\", but always write \"must have\", never \"must of\".",
+          "ru": "Чтобы догадываться о прошлом — модальный + have + причастие.\n\nThe ground is wet — it must have rained.\nHe can't have seen me — I was hidden.\nShe might have missed the bus.\n\nВ речи «have» звучит как «of», но пиши всегда «must have», не «must of»."
+        },
+        "examples": [
+          {
+            "en": "The cup is warm — he must have just left.",
+            "ru": "Чашка тёплая — он, должно быть, только что ушёл."
+          }
+        ]
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Confident \"no\" is \"can't/can't have\", not \"mustn't\": \"She can't be serious\".",
+        "ru": "Уверенное «нет» — «can't/can't have», не «mustn't»: «She can't be serious»."
+      },
+      {
+        "en": "Past deduction uses have + V3: \"must have gone\", not \"must went\" or \"must of gone\".",
+        "ru": "Догадка о прошлом — have + V3: «must have gone», а не «must went» или «must of gone»."
+      },
+      {
+        "en": "Bare verb after the modal: \"must be\", \"might be\" — not \"must to be\".",
+        "ru": "«Голый» глагол после модального: «must be», «might be» — не «must to be»."
+      }
+    ],
+    "seeAlso": [
+      "modals-can",
+      "modals-obligation",
+      "might-may"
+    ]
   }
 ]

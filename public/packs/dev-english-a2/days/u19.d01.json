@@ -1,0 +1,602 @@
+{
+  "id": "u19.d01",
+  "title": {
+    "en": "He must be tired",
+    "ru": "Он, наверное, устал"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.modals-deduction",
+    "vocab.mystery"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u19.d01.vocab",
+      "title": {
+        "en": "Guessing & signs",
+        "ru": "Догадки и признаки"
+      },
+      "words": [
+        {
+          "word": "sure",
+          "ru": "уверенный",
+          "ipa": "/ʃʊər/",
+          "example": "I'm sure he's at home.",
+          "exampleRu": "Я уверен, он дома.",
+          "audio": {
+            "src": "media/audio/u19.d01.vocab.sure.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "certain",
+          "ru": "уверенный, точный",
+          "ipa": "/ˈsɜːrtn/",
+          "example": "It's almost certain.",
+          "exampleRu": "Это почти наверняка.",
+          "audio": {
+            "src": "media/audio/u19.d01.vocab.certain.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "obvious",
+          "ru": "очевидный",
+          "ipa": "/ˈɒbviəs/",
+          "example": "The answer is obvious.",
+          "exampleRu": "Ответ очевиден.",
+          "audio": {
+            "src": "media/audio/u19.d01.vocab.obvious.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "guess",
+          "ru": "догадываться",
+          "ipa": "/ɡes/",
+          "example": "Let me guess.",
+          "exampleRu": "Дай угадаю.",
+          "audio": {
+            "src": "media/audio/u19.d01.vocab.guess.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "probably",
+          "ru": "вероятно",
+          "ipa": "/ˈprɒbəbli/",
+          "example": "He's probably asleep.",
+          "exampleRu": "Он, вероятно, спит.",
+          "audio": {
+            "src": "media/audio/u19.d01.vocab.probably.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "seem",
+          "ru": "казаться",
+          "ipa": "/siːm/",
+          "example": "She seems happy.",
+          "exampleRu": "Она кажется счастливой.",
+          "audio": {
+            "src": "media/audio/u19.d01.vocab.seem.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "clue",
+          "ru": "подсказка, улика",
+          "ipa": "/kluː/",
+          "example": "There's a clue on the table.",
+          "exampleRu": "На столе есть улика.",
+          "audio": {
+            "src": "media/audio/u19.d01.vocab.clue.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tired",
+          "ru": "усталый",
+          "ipa": "/ˈtaɪərd/",
+          "example": "He looks tired.",
+          "exampleRu": "Он выглядит усталым.",
+          "audio": {
+            "src": "media/audio/u19.d01.vocab.tired.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "awake",
+          "ru": "бодрствующий",
+          "ipa": "/əˈweɪk/",
+          "example": "Are you still awake?",
+          "exampleRu": "Ты ещё не спишь?",
+          "audio": {
+            "src": "media/audio/u19.d01.vocab.awake.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reason",
+          "ru": "причина",
+          "ipa": "/ˈriːzn/",
+          "example": "There must be a reason.",
+          "exampleRu": "Должна быть причина.",
+          "audio": {
+            "src": "media/audio/u19.d01.vocab.reason.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u19.d01.grammar",
+      "title": {
+        "en": "Deduction: must / can't / might",
+        "ru": "Догадки: must / can't / might"
+      },
+      "rule": {
+        "en": "Use modals to say how sure you are about a situation now. \"must be\" = you are sure it is true; \"can't be\" = you are sure it is not true; \"might/may/could be\" = it is possible.",
+        "ru": "Модальные глаголы показывают, насколько ты уверен в ситуации сейчас. «must be» = уверен, что это так; «can't be» = уверен, что это не так; «might/may/could be» = возможно."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "must be (sure yes)",
+            "ru": "must be (точно да)"
+          },
+          "formula": "must + verb (be/have/know…)",
+          "examples": [
+            {
+              "en": "The lights are on — he must be home.",
+              "ru": "Свет горит — он, наверное, дома."
+            }
+          ],
+          "ref": "modals-deduction"
+        },
+        {
+          "label": {
+            "en": "can't be (sure no)",
+            "ru": "can't be (точно нет)"
+          },
+          "formula": "can't + verb",
+          "examples": [
+            {
+              "en": "She just ate — she can't be hungry.",
+              "ru": "Она только поела — она не может быть голодной."
+            }
+          ],
+          "ref": "modals-deduction"
+        },
+        {
+          "label": {
+            "en": "might/may/could (possible)",
+            "ru": "might/may/could (возможно)"
+          },
+          "formula": "might/may/could + verb",
+          "examples": [
+            {
+              "en": "He isn't answering — he might be busy.",
+              "ru": "Он не отвечает — возможно, он занят."
+            }
+          ],
+          "ref": "modals-deduction"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "For \"sure it isn't\", use \"can't\", not \"mustn't\": \"She can't be at work\" (mustn't = forbidden).",
+          "ru": "Для «точно не» — «can't», а не «mustn't»: «She can't be at work» (mustn't = запрещено)."
+        },
+        {
+          "en": "Use the bare verb after these modals: \"must be\", not \"must to be\".",
+          "ru": "«Голый» глагол после этих модальных: «must be», а не «must to be»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u19.d01.reading",
+      "title": {
+        "en": "The empty office",
+        "ru": "Пустой офис"
+      },
+      "blocks": [
+        {
+          "id": "u19.d01.reading.b1",
+          "en": "It's nine in the evening and the office lights are still on. \"Someone must be working late,\" thought the guard. He could hear typing, so a person must be there. But the door was locked from the inside.",
+          "ru": "Девять вечера, а свет в офисе всё ещё горит. «Кто-то, наверное, работает допоздна», — подумал охранник. Он слышал стук клавиш, значит, там точно кто-то есть. Но дверь была заперта изнутри.",
+          "audio": {
+            "src": "media/audio/u19.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u19.d01.reading.b2",
+          "en": "\"It can't be a cleaner — they finished hours ago,\" he said to himself. \"And it might be the new manager; she often stays late.\" He knocked, but nobody answered. Something strange was going on.",
+          "ru": "«Это не может быть уборщик — они закончили давно», — сказал он себе. «А может, это новая начальница; она часто задерживается». Он постучал, но никто не ответил. Происходило что-то странное.",
+          "audio": {
+            "src": "media/audio/u19.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "guard",
+          "ru": "охранник",
+          "ipa": "/ɡɑːrd/"
+        },
+        {
+          "word": "typing",
+          "ru": "печатание",
+          "ipa": "/ˈtaɪpɪŋ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u19.d01.listening",
+      "title": {
+        "en": "Whose bag?",
+        "ru": "Чья сумка?"
+      },
+      "audio": {
+        "src": "media/audio/u19.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Whose bag is this?",
+          "ru": "Чья это сумка?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "It must be Tom's. He was here a minute ago.",
+          "ru": "Наверное, Тома. Он был здесь минуту назад."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "It can't be his — his bag is black.",
+          "ru": "Не может быть его — у него чёрная сумка."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Then it might be Sara's. Let's ask her.",
+          "ru": "Тогда, может, Сары. Спросим её."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u19.d01.ex.l.01",
+          "instruction": {
+            "en": "Why isn't it Tom's bag?",
+            "ru": "Почему это не сумка Тома?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.modals-deduction"
+          ],
+          "prompt": "His bag ___ be black.",
+          "options": [
+            "must",
+            "can't",
+            "might"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u19.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u19.d01.ex.c.01",
+          "instruction": {
+            "en": "Sure it's true.",
+            "ru": "Точно так."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "The lights are on. Someone ___ be home.",
+          "options": [
+            "must",
+            "can't",
+            "may not"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u19.d01.ex.c.02",
+          "instruction": {
+            "en": "Sure it's not true.",
+            "ru": "Точно не так."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "She just left. She ___ be here.",
+          "options": [
+            "can't",
+            "must",
+            "might"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u19.d01.ex.g.01",
+          "instruction": {
+            "en": "Possible.",
+            "ru": "Возможно."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "He isn't answering. He ___ be busy. (might)",
+          "answers": [
+            "might",
+            "may",
+            "could"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u19.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "variants": [
+            "She mustn't be tired, she just woke up.",
+            "She can't be tired, she just woke up."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u19.d01.ex.c.03",
+          "instruction": {
+            "en": "Bare verb.",
+            "ru": "«Голый» глагол."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "You ___ be joking!",
+          "options": [
+            "must",
+            "must to",
+            "musts"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u19.d01.ex.g.02",
+          "instruction": {
+            "en": "Sure it's not so.",
+            "ru": "Точно нет."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "That ___ be right — it's impossible. (can not)",
+          "answers": [
+            "can't",
+            "cannot"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u19.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a deduction.",
+            "ru": "Составь догадку."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "tokens": [
+            "He",
+            "must",
+            "be",
+            "very",
+            "tired"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u19.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.mystery"
+          ],
+          "pairs": [
+            {
+              "left": "clue",
+              "right": "улика"
+            },
+            {
+              "left": "obvious",
+              "right": "очевидный"
+            },
+            {
+              "left": "seem",
+              "right": "казаться"
+            },
+            {
+              "left": "probably",
+              "right": "вероятно"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u19.d01.ex.c.04",
+          "instruction": {
+            "en": "Choose the modal.",
+            "ru": "Выбери модальный."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "The ground is wet. It ___ be raining outside.",
+          "options": [
+            "must",
+            "can't",
+            "mustn't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u19.d01.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "variants": [
+            "He must to be at work.",
+            "He must be at work."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u19.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.modals-deduction",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он, наверное, дома — свет горит.",
+          "answers": [
+            "He must be home — the lights are on.",
+            "He must be at home — the lights are on."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he must to be home",
+                "he must be home, the lights are on?",
+                "he should be home"
+              ],
+              "explanation": {
+                "en": "must + bare verb for a sure guess: He must be home.",
+                "ru": "must + голый глагол для уверенной догадки: He must be home."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u19.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.modals-deduction",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это не может быть правдой.",
+          "answers": [
+            "That can't be true.",
+            "It can't be true."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "that mustn't be true",
+                "that cannot true",
+                "that can't be truth"
+              ],
+              "explanation": {
+                "en": "For 'sure it isn't' use can't: That can't be true.",
+                "ru": "Для «точно нет» — can't: That can't be true."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

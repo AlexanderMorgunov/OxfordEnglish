@@ -1,0 +1,605 @@
+{
+  "id": "u19.d04",
+  "title": {
+    "en": "Solving the mystery",
+    "ru": "Раскрываем тайну"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.modals-deduction",
+    "grammar.modals-deduction-past",
+    "vocab.mystery"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u19.d04.vocab",
+      "title": {
+        "en": "Detectives & clues",
+        "ru": "Детективы и улики"
+      },
+      "words": [
+        {
+          "word": "detective",
+          "ru": "детектив",
+          "ipa": "/dɪˈtektɪv/",
+          "example": "The detective studied the room.",
+          "exampleRu": "Детектив осмотрел комнату.",
+          "audio": {
+            "src": "media/audio/u19.d04.vocab.detective.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "witness",
+          "ru": "свидетель",
+          "ipa": "/ˈwɪtnəs/",
+          "example": "A witness saw the car.",
+          "exampleRu": "Свидетель видел машину.",
+          "audio": {
+            "src": "media/audio/u19.d04.vocab.witness.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "suspect",
+          "ru": "подозреваемый",
+          "ipa": "/ˈsʌspekt/",
+          "example": "There are three suspects.",
+          "exampleRu": "Есть трое подозреваемых.",
+          "audio": {
+            "src": "media/audio/u19.d04.vocab.suspect.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "prove",
+          "ru": "доказывать",
+          "ipa": "/pruːv/",
+          "example": "Can you prove it?",
+          "exampleRu": "Ты можешь это доказать?",
+          "audio": {
+            "src": "media/audio/u19.d04.vocab.prove.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "guilty",
+          "ru": "виновный",
+          "ipa": "/ˈɡɪlti/",
+          "example": "He looks guilty.",
+          "exampleRu": "Он выглядит виновным.",
+          "audio": {
+            "src": "media/audio/u19.d04.vocab.guilty.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "innocent",
+          "ru": "невиновный",
+          "ipa": "/ˈɪnəsnt/",
+          "example": "She is innocent.",
+          "exampleRu": "Она невиновна.",
+          "audio": {
+            "src": "media/audio/u19.d04.vocab.innocent.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "discover",
+          "ru": "обнаруживать",
+          "ipa": "/dɪˈskʌvər/",
+          "example": "They discovered the truth.",
+          "exampleRu": "Они узнали правду.",
+          "audio": {
+            "src": "media/audio/u19.d04.vocab.discover.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "explain",
+          "ru": "объяснять",
+          "ipa": "/ɪkˈspleɪn/",
+          "example": "That explains everything.",
+          "exampleRu": "Это всё объясняет.",
+          "audio": {
+            "src": "media/audio/u19.d04.vocab.explain.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "strange",
+          "ru": "странный",
+          "ipa": "/streɪndʒ/",
+          "example": "Something strange happened.",
+          "exampleRu": "Случилось что-то странное.",
+          "audio": {
+            "src": "media/audio/u19.d04.vocab.strange.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "case",
+          "ru": "дело",
+          "ipa": "/keɪs/",
+          "example": "It was a hard case.",
+          "exampleRu": "Это было трудное дело.",
+          "audio": {
+            "src": "media/audio/u19.d04.vocab.case.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u19.d04.grammar",
+      "title": {
+        "en": "Reasoning from evidence",
+        "ru": "Рассуждение по уликам"
+      },
+      "rule": {
+        "en": "Detectives mix present and past deduction. Use present modals (must/can't/might be) for the situation now, and modal + have + V3 for what happened before.",
+        "ru": "Детективы совмещают догадки о настоящем и прошлом. Present-модальные (must/can't/might be) — о ситуации сейчас, модальный + have + V3 — о том, что случилось раньше."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "now: must/can't be",
+            "ru": "сейчас: must/can't be"
+          },
+          "formula": "must/can't/might + be",
+          "examples": [
+            {
+              "en": "The window is open — someone must be inside.",
+              "ru": "Окно открыто — внутри точно кто-то есть."
+            }
+          ],
+          "ref": "modals-deduction"
+        },
+        {
+          "label": {
+            "en": "before: must have + V3",
+            "ru": "раньше: must have + V3"
+          },
+          "formula": "must/can't/might have + V3",
+          "examples": [
+            {
+              "en": "The cup is warm — he must have just left.",
+              "ru": "Чашка тёплая — он, должно быть, только что ушёл."
+            }
+          ],
+          "ref": "modals-deduction"
+        },
+        {
+          "label": {
+            "en": "drawing a conclusion",
+            "ru": "делаем вывод"
+          },
+          "formula": "So it must be … / can't have been …",
+          "examples": [
+            {
+              "en": "So the thief can't have been a stranger.",
+              "ru": "Значит, вором не мог быть чужак."
+            }
+          ],
+          "ref": "modals-deduction"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Present state → \"must be\"; past action → \"must have been/done\".",
+          "ru": "Настоящее состояние → «must be»; прошлое действие → «must have been/done»."
+        },
+        {
+          "en": "\"can't\" (not \"mustn't\") for a confident negative conclusion.",
+          "ru": "«can't» (не «mustn't») для уверенного отрицательного вывода."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u19.d04.reading",
+      "title": {
+        "en": "The locked room",
+        "ru": "Запертая комната"
+      },
+      "blocks": [
+        {
+          "id": "u19.d04.reading.b1",
+          "en": "Detective Ross looked around the locked room. The tea was still warm, so the owner must have left only minutes ago. But the door was locked from the inside — he can't have gone through it. \"There must be another way out,\" Ross thought.",
+          "ru": "Детектив Росс осмотрел запертую комнату. Чай был ещё тёплым, значит, хозяин ушёл всего пару минут назад. Но дверь была заперта изнутри — через неё он выйти не мог. «Должен быть другой выход», — подумал Росс.",
+          "audio": {
+            "src": "media/audio/u19.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u19.d04.reading.b2",
+          "en": "He noticed an open window. \"He must have climbed out here. It can't have been easy — it's on the second floor.\" Then he saw a rope. \"That explains it. The owner might be in danger, or he could be running from someone. Either way, I need to find him fast.\"",
+          "ru": "Он заметил открытое окно. «Должно быть, он вылез здесь. Это было непросто — второй этаж». Потом он увидел верёвку. «Вот и объяснение. Хозяин, возможно, в опасности, или он от кого-то бежит. В любом случае мне нужно быстро его найти».",
+          "audio": {
+            "src": "media/audio/u19.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "rope",
+          "ru": "верёвка",
+          "ipa": "/roʊp/"
+        },
+        {
+          "word": "danger",
+          "ru": "опасность",
+          "ipa": "/ˈdeɪndʒər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u19.d04.listening",
+      "title": {
+        "en": "The wet umbrella",
+        "ru": "Мокрый зонт"
+      },
+      "audio": {
+        "src": "media/audio/u19.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "His umbrella is wet. It must have rained.",
+          "ru": "Его зонт мокрый. Должно быть, шёл дождь."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "But the sky is clear now.",
+          "ru": "Но небо сейчас чистое."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Then he must have gone out earlier, when it was raining.",
+          "ru": "Значит, он выходил раньше, когда шёл дождь."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "You're right. He can't have been home all morning.",
+          "ru": "Ты прав. Он не мог быть дома всё утро."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u19.d04.ex.l.01",
+          "instruction": {
+            "en": "What can we conclude?",
+            "ru": "Какой вывод?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.modals-deduction-past"
+          ],
+          "prompt": "He ___ have gone out earlier.",
+          "options": [
+            "must",
+            "can't",
+            "mustn't"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u19.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u19.d04.ex.c.01",
+          "instruction": {
+            "en": "Present state.",
+            "ru": "Настоящее состояние."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "The car is here, so she ___ be at home.",
+          "options": [
+            "must",
+            "can't",
+            "must have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u19.d04.ex.c.02",
+          "instruction": {
+            "en": "Past action.",
+            "ru": "Прошлое действие."
+          },
+          "tags": [
+            "grammar.modals-deduction-past"
+          ],
+          "prompt": "The plate is empty. He ___ have eaten already.",
+          "options": [
+            "must",
+            "can't",
+            "mustn't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u19.d04.ex.g.01",
+          "instruction": {
+            "en": "Sure negative (now).",
+            "ru": "Точно нет (сейчас)."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "Her coat is here, so she ___ be outside. (can not)",
+          "answers": [
+            "can't",
+            "cannot"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u19.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.modals-deduction-past"
+          ],
+          "variants": [
+            "He must be left already.",
+            "He must have left already."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u19.d04.ex.c.03",
+          "instruction": {
+            "en": "Possible past.",
+            "ru": "Возможное прошлое."
+          },
+          "tags": [
+            "grammar.modals-deduction-past"
+          ],
+          "prompt": "The lights are off. They ___ have gone to bed.",
+          "options": [
+            "might",
+            "can't",
+            "must not"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u19.d04.ex.g.02",
+          "instruction": {
+            "en": "Present deduction.",
+            "ru": "Догадка о настоящем."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "Nobody answers. They ___ be out. (must)",
+          "answers": [
+            "must"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u19.d04.ex.o.01",
+          "instruction": {
+            "en": "Draw a conclusion.",
+            "ru": "Сделай вывод."
+          },
+          "tags": [
+            "grammar.modals-deduction-past"
+          ],
+          "tokens": [
+            "The",
+            "thief",
+            "must",
+            "have",
+            "known",
+            "the",
+            "code"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u19.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.mystery"
+          ],
+          "pairs": [
+            {
+              "left": "witness",
+              "right": "свидетель"
+            },
+            {
+              "left": "guilty",
+              "right": "виновный"
+            },
+            {
+              "left": "prove",
+              "right": "доказывать"
+            },
+            {
+              "left": "case",
+              "right": "дело"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u19.d04.ex.c.04",
+          "instruction": {
+            "en": "Now or before?",
+            "ru": "Сейчас или раньше?"
+          },
+          "tags": [
+            "grammar.modals-deduction-past"
+          ],
+          "prompt": "The engine is warm — someone ___ have driven it recently.",
+          "options": [
+            "must",
+            "can't",
+            "must be"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u19.d04.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.modals-deduction-past"
+          ],
+          "variants": [
+            "It mustn't have been him — he was abroad.",
+            "It can't have been him — he was abroad."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u19.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.modals-deduction-past",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Чай ещё тёплый — он, должно быть, только что ушёл.",
+          "answers": [
+            "The tea is still warm — he must have just left.",
+            "The tea is still warm, he must have just left."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he must just left",
+                "he must have just leave",
+                "he must of just left"
+              ],
+              "explanation": {
+                "en": "must have + V3: he must have just left.",
+                "ru": "must have + V3: he must have just left."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u19.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.modals-deduction",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Внутри точно кто-то есть.",
+          "answers": [
+            "Someone must be inside.",
+            "There must be someone inside."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "someone must to be inside",
+                "someone must inside",
+                "someone can be inside"
+              ],
+              "explanation": {
+                "en": "must + be for a sure present guess: Someone must be inside.",
+                "ru": "must + be для уверенной догадки о настоящем: Someone must be inside."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

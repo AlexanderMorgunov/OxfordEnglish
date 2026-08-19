@@ -1,0 +1,603 @@
+{
+  "id": "u19.d02",
+  "title": {
+    "en": "It could be anyone",
+    "ru": "Это может быть кто угодно"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.modals-deduction",
+    "vocab.mystery"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u19.d02.vocab",
+      "title": {
+        "en": "Certainty & doubt",
+        "ru": "Уверенность и сомнение"
+      },
+      "words": [
+        {
+          "word": "possible",
+          "ru": "возможный",
+          "ipa": "/ˈpɒsəbl/",
+          "example": "It's possible.",
+          "exampleRu": "Это возможно.",
+          "audio": {
+            "src": "media/audio/u19.d02.vocab.possible.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "likely",
+          "ru": "вероятный",
+          "ipa": "/ˈlaɪkli/",
+          "example": "That's likely.",
+          "exampleRu": "Это вероятно.",
+          "audio": {
+            "src": "media/audio/u19.d02.vocab.likely.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "unlikely",
+          "ru": "маловероятный",
+          "ipa": "/ʌnˈlaɪkli/",
+          "example": "It's unlikely to rain.",
+          "exampleRu": "Дождь маловероятен.",
+          "audio": {
+            "src": "media/audio/u19.d02.vocab.unlikely.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "doubt",
+          "ru": "сомнение",
+          "ipa": "/daʊt/",
+          "example": "I have my doubts.",
+          "exampleRu": "У меня есть сомнения.",
+          "audio": {
+            "src": "media/audio/u19.d02.vocab.doubt.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "perhaps",
+          "ru": "возможно",
+          "ipa": "/pərˈhæps/",
+          "example": "Perhaps she forgot.",
+          "exampleRu": "Возможно, она забыла.",
+          "audio": {
+            "src": "media/audio/u19.d02.vocab.perhaps.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "definitely",
+          "ru": "определённо",
+          "ipa": "/ˈdefɪnətli/",
+          "example": "That's definitely true.",
+          "exampleRu": "Это определённо правда.",
+          "audio": {
+            "src": "media/audio/u19.d02.vocab.definitely.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "suspect",
+          "ru": "подозревать",
+          "ipa": "/səˈspekt/",
+          "example": "I suspect he knows.",
+          "exampleRu": "Подозреваю, что он знает.",
+          "audio": {
+            "src": "media/audio/u19.d02.vocab.suspect.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "evidence",
+          "ru": "доказательство",
+          "ipa": "/ˈevɪdəns/",
+          "example": "There's no evidence.",
+          "exampleRu": "Доказательств нет.",
+          "audio": {
+            "src": "media/audio/u19.d02.vocab.evidence.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "suppose",
+          "ru": "полагать",
+          "ipa": "/səˈpoʊz/",
+          "example": "I suppose so.",
+          "exampleRu": "Полагаю, да.",
+          "audio": {
+            "src": "media/audio/u19.d02.vocab.suppose.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "maybe",
+          "ru": "может быть",
+          "ipa": "/ˈmeɪbi/",
+          "example": "Maybe. I'm not sure.",
+          "exampleRu": "Может быть. Не уверен.",
+          "audio": {
+            "src": "media/audio/u19.d02.vocab.maybe.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u19.d02.grammar",
+      "title": {
+        "en": "Degrees of certainty",
+        "ru": "Степени уверенности"
+      },
+      "rule": {
+        "en": "Modals show HOW sure you are, from certain to just possible: must (almost certain yes) → could/may/might (possible) → can't (certain no). Choose the modal that matches your level of certainty.",
+        "ru": "Модальные показывают, НАСКОЛЬКО ты уверен — от уверенности до простой возможности: must (почти точно да) → could/may/might (возможно) → can't (точно нет). Выбирай модальный под свою степень уверенности."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "almost certain",
+            "ru": "почти точно"
+          },
+          "formula": "must (yes) · can't (no)",
+          "examples": [
+            {
+              "en": "She must know the answer. / She can't be serious.",
+              "ru": "Она наверняка знает ответ. / Она не может быть серьёзной."
+            }
+          ],
+          "ref": "modals-deduction"
+        },
+        {
+          "label": {
+            "en": "possible",
+            "ru": "возможно"
+          },
+          "formula": "may / might / could",
+          "examples": [
+            {
+              "en": "It could be anyone. / They may be late.",
+              "ru": "Это может быть кто угодно. / Они, возможно, опоздают."
+            }
+          ],
+          "ref": "modals-deduction"
+        },
+        {
+          "label": {
+            "en": "negative possibility",
+            "ru": "возможно, что нет"
+          },
+          "formula": "might not / may not",
+          "examples": [
+            {
+              "en": "She might not come.",
+              "ru": "Она, возможно, не придёт."
+            }
+          ],
+          "ref": "modals-deduction"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"could\" here means possibility, not ability: \"It could be true\".",
+          "ru": "«could» здесь — возможность, а не умение: «It could be true»."
+        },
+        {
+          "en": "For a negative possibility use \"might not\", but for a sure \"no\" use \"can't\".",
+          "ru": "Для «возможно, нет» — «might not», а для уверенного «нет» — «can't»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u19.d02.reading",
+      "title": {
+        "en": "The missing phone",
+        "ru": "Пропавший телефон"
+      },
+      "blocks": [
+        {
+          "id": "u19.d02.reading.b1",
+          "en": "Kate couldn't find her phone. \"It might be in my bag,\" she thought, \"or it could be in the car.\" She checked both — nothing. \"It can't be far,\" she said. \"I definitely had it this morning.\"",
+          "ru": "Кейт не могла найти телефон. «Он, может, в сумке, — подумала она, — или в машине». Она проверила оба места — ничего. «Далеко он быть не может, — сказала она. — Утром он точно был у меня».",
+          "audio": {
+            "src": "media/audio/u19.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u19.d02.reading.b2",
+          "en": "Then she remembered calling a friend from the kitchen. \"I suppose I might have left it there.\" She was right — it was on the kitchen table. \"It's likely I put it down when I made coffee,\" she laughed.",
+          "ru": "Потом она вспомнила, что звонила подруге из кухни. «Полагаю, я могла оставить его там». Она была права — телефон лежал на кухонном столе. «Наверное, я положила его, когда делала кофе», — засмеялась она.",
+          "audio": {
+            "src": "media/audio/u19.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "far",
+          "ru": "далеко",
+          "ipa": "/fɑːr/"
+        },
+        {
+          "word": "put down",
+          "ru": "положить",
+          "ipa": "/pʊt daʊn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u19.d02.listening",
+      "title": {
+        "en": "Who is at the door?",
+        "ru": "Кто за дверью?"
+      },
+      "audio": {
+        "src": "media/audio/u19.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Someone's at the door. Who could it be?",
+          "ru": "Кто-то у двери. Кто бы это мог быть?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "It might be the postman.",
+          "ru": "Может, почтальон."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "At this time? It's unlikely.",
+          "ru": "В такое время? Вряд ли."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Then it must be your brother. He said he'd visit.",
+          "ru": "Тогда это, наверное, твой брат. Он говорил, что зайдёт."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u19.d02.ex.l.01",
+          "instruction": {
+            "en": "Who is probably at the door?",
+            "ru": "Кто, скорее всего, у двери?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.modals-deduction"
+          ],
+          "prompt": "It ___ be her brother.",
+          "options": [
+            "must",
+            "can't",
+            "may not"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u19.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u19.d02.ex.c.01",
+          "instruction": {
+            "en": "Possible.",
+            "ru": "Возможно."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "I'm not sure who called. It ___ be my boss.",
+          "options": [
+            "could",
+            "can't",
+            "must not"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u19.d02.ex.c.02",
+          "instruction": {
+            "en": "Almost certain.",
+            "ru": "Почти точно."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "He hasn't eaten all day. He ___ be hungry.",
+          "options": [
+            "must",
+            "can't",
+            "might not"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u19.d02.ex.g.01",
+          "instruction": {
+            "en": "Negative possibility.",
+            "ru": "Возможно, нет."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "She ___ not come — she's very busy. (might)",
+          "answers": [
+            "might",
+            "may"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u19.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "variants": [
+            "It can be anyone.",
+            "It could be anyone."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u19.d02.ex.c.03",
+          "instruction": {
+            "en": "Sure no.",
+            "ru": "Точно нет."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "That story ___ be true — it makes no sense.",
+          "options": [
+            "can't",
+            "must",
+            "might"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u19.d02.ex.g.02",
+          "instruction": {
+            "en": "Possible (may).",
+            "ru": "Возможно (may)."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "They ___ be at home now. (may)",
+          "answers": [
+            "may",
+            "might",
+            "could"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u19.d02.ex.o.01",
+          "instruction": {
+            "en": "Express possibility.",
+            "ru": "Вырази возможность."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "tokens": [
+            "They",
+            "might",
+            "be",
+            "stuck",
+            "in",
+            "traffic"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u19.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.mystery"
+          ],
+          "pairs": [
+            {
+              "left": "likely",
+              "right": "вероятный"
+            },
+            {
+              "left": "doubt",
+              "right": "сомнение"
+            },
+            {
+              "left": "evidence",
+              "right": "доказательство"
+            },
+            {
+              "left": "suspect",
+              "right": "подозревать"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u19.d02.ex.c.04",
+          "instruction": {
+            "en": "Choose the strongest guess.",
+            "ru": "Выбери самую уверенную догадку."
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "prompt": "The streets are white. It ___ have snowed.",
+          "options": [
+            "must",
+            "might",
+            "can't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u19.d02.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.modals-deduction"
+          ],
+          "variants": [
+            "He must not be the thief, he was abroad.",
+            "He can't be the thief, he was abroad."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u19.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.modals-deduction",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это может быть кто угодно.",
+          "answers": [
+            "It could be anyone.",
+            "It might be anyone."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "it can be anyone",
+                "it could to be anyone",
+                "it could anyone"
+              ],
+              "explanation": {
+                "en": "could/might + be for possibility: It could be anyone.",
+                "ru": "could/might + be для возможности: It could be anyone."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u19.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.modals-deduction",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она, наверное, знает ответ.",
+          "answers": [
+            "She must know the answer."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she must to know the answer",
+                "she must knows the answer",
+                "she should know the answer"
+              ],
+              "explanation": {
+                "en": "must + bare verb: She must know the answer.",
+                "ru": "must + голый глагол: She must know the answer."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
