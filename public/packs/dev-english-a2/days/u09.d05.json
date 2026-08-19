@@ -459,6 +459,127 @@
           "answers": [
             "Can I pay by card?"
           ]
+        },
+        {
+          "type": "choice",
+          "id": "u09.d05.ex.b.01",
+          "instruction": {
+            "en": "Ask the price.",
+            "ru": "Спроси цену."
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "prompt": "___ do these shoes cost?",
+          "options": [
+            "How much",
+            "How many",
+            "How long"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u09.d05.ex.b.02",
+          "instruction": {
+            "en": "Say you will buy it.",
+            "ru": "Скажи, что берёшь."
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "tokens": [
+            "I",
+            "will",
+            "take",
+            "them"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u09.d05.ex.b.03",
+          "instruction": {
+            "en": "Pay in cash.",
+            "ru": "Оплата наличными."
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "prompt": "Can I pay ___ cash?",
+          "options": [
+            "in",
+            "by",
+            "with"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u09.d05.ex.b.04",
+          "instruction": {
+            "en": "Ask for a size.",
+            "ru": "Спроси размер."
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "prompt": "Do you have this ___ a bigger size? (in)",
+          "answers": [
+            "in"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u09.d05.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.shopping"
+          ],
+          "variants": [
+            "How much cost this jacket?",
+            "How much is this jacket?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u09.d05.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.shopping",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Можно померить это?",
+          "answers": [
+            "Can I try this on?",
+            "Can I try it on?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "can i try this",
+                "can i measure this",
+                "can i try on this"
+              ],
+              "explanation": {
+                "en": "Use \"try on\": Can I try this on?",
+                "ru": "Оборот «try on»: Can I try this on?"
+              }
+            }
+          ]
         }
       ]
     }

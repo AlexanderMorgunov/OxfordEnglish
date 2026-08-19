@@ -1326,5 +1326,181 @@
       "prepositions-place",
       "modals-can"
     ]
+  },
+  {
+    "id": "comparatives",
+    "title": {
+      "en": "Comparatives & superlatives (bigger, the biggest, as big as)",
+      "ru": "Сравнительная и превосходная степень (bigger, the biggest, as big as)"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "Use comparatives to compare two things (A is bigger than B), superlatives to pick one out of a group (the biggest of all), and \"as … as\" to say two things are equal.",
+      "ru": "Сравнительная степень сравнивает два предмета (A больше, чем B), превосходная выделяет один из группы (самый большой), а «as … as» говорит, что два предмета одинаковы."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "Comparative: short adjectives + -er than",
+          "ru": "Сравнительная: короткие прилагательные + -er than"
+        },
+        "text": {
+          "en": "For short adjectives (one syllable, and two-syllable ones ending in -y), add -er and use \"than\" before the second thing.\n\ncheap → cheaper\nbig → bigger (double the last letter)\neasy → easier (y → i)\n\nThis shirt is cheaper than that one.\nMoscow is bigger than my town.",
+          "ru": "К коротким прилагательным (один слог, а также двусложные на -y) добавляем -er и ставим «than» перед вторым предметом.\n\ncheap → cheaper\nbig → bigger (удваиваем последнюю букву)\neasy → easier (y → i)\n\nThis shirt is cheaper than that one. — Эта рубашка дешевле той.\nMoscow is bigger than my town. — Москва больше моего города."
+        },
+        "examples": [
+          {
+            "en": "Today is warmer than yesterday.",
+            "ru": "Сегодня теплее, чем вчера."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Comparative: long adjectives + more … than",
+          "ru": "Сравнительная: длинные прилагательные + more … than"
+        },
+        "text": {
+          "en": "For longer adjectives (two or more syllables), do NOT add -er. Put \"more\" in front instead.\n\nexpensive → more expensive\npopular → more popular\n\nThis coat is more expensive than the jacket.\n\nNever use both together: NOT \"more cheaper\".",
+          "ru": "Для длинных прилагательных (два и больше слогов) НЕ добавляем -er. Вместо этого ставим впереди «more».\n\nexpensive → more expensive\npopular → more popular\n\nThis coat is more expensive than the jacket. — Это пальто дороже куртки.\n\nНикогда не совмещай оба способа: НЕ «more cheaper»."
+        },
+        "examples": [
+          {
+            "en": "Her phone is more modern than mine.",
+            "ru": "Её телефон современнее моего."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Superlative: the …-est / the most …",
+          "ru": "Превосходная: the …-est / the most …"
+        },
+        "text": {
+          "en": "To say something is the top of a group, use \"the\" + -est for short adjectives, or \"the most\" for long ones.\n\ncheap → the cheapest\nbig → the biggest\nexpensive → the most expensive\n\nThis is the cheapest shop in town.\nIt is the most popular brand.\n\nDo not forget \"the\".",
+          "ru": "Чтобы сказать, что предмет — вершина группы, используем «the» + -est для коротких и «the most» для длинных.\n\ncheap → the cheapest\nbig → the biggest\nexpensive → the most expensive\n\nThis is the cheapest shop in town. — Это самый дешёвый магазин в городе.\nIt is the most popular brand. — Это самый популярный бренд.\n\nНе забывай «the»."
+        },
+        "examples": [
+          {
+            "en": "He is the tallest in the class.",
+            "ru": "Он самый высокий в классе."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Irregular: good / bad / far",
+          "ru": "Неправильные: good / bad / far"
+        },
+        "text": {
+          "en": "A few common adjectives change completely — learn them by heart.\n\ngood → better → the best\nbad → worse → the worst\nfar → further → the furthest\n\nThese shoes are better than the old ones.\nIt was the worst day of the week.",
+          "ru": "Несколько частых прилагательных меняются целиком — выучи наизусть.\n\ngood → better → the best\nbad → worse → the worst\nfar → further → the furthest\n\nThese shoes are better than the old ones. — Эти туфли лучше старых.\nIt was the worst day of the week. — Это был худший день недели."
+        }
+      },
+      {
+        "heading": {
+          "en": "Equal things: as … as",
+          "ru": "Одинаковые предметы: as … as"
+        },
+        "text": {
+          "en": "To say two things are the same, put the adjective between \"as … as\". For a difference, use \"not as … as\".\n\nHe is as tall as me.\nThis shop is not as cheap as that one.\n\nRelated phrases: the same as, different from.\nMy bag is the same as yours.\nThis one is different from that one.",
+          "ru": "Чтобы сказать, что два предмета одинаковы, ставим прилагательное между «as … as». Для различия — «not as … as».\n\nHe is as tall as me. — Он такой же высокий, как я.\nThis shop is not as cheap as that one. — Этот магазин не такой дешёвый, как тот.\n\nСвязанные обороты: the same as, different from.\nMy bag is the same as yours. — Моя сумка такая же, как твоя.\nThis one is different from that one. — Этот отличается от того."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Never combine -er and more: say \"cheaper\", NOT \"more cheaper\".",
+        "ru": "Не совмещай -er и more: «cheaper», а не «more cheaper»."
+      },
+      {
+        "en": "Superlatives need \"the\": \"the cheapest\", NOT just \"cheapest\".",
+        "ru": "Превосходной нужен «the»: «the cheapest», а не просто «cheapest»."
+      },
+      {
+        "en": "Use \"than\" for comparatives, NOT \"as\" or \"then\": \"bigger than\", not \"bigger as\".",
+        "ru": "Со сравнительной идёт «than», а не «as» или «then»: «bigger than»."
+      },
+      {
+        "en": "With \"as … as\" use \"as\", not \"so\": \"as tall as\", NOT \"so tall as\".",
+        "ru": "С «as … as» — «as», а не «so»: «as tall as», а не «so tall as»."
+      }
+    ],
+    "seeAlso": [
+      "too-enough"
+    ]
+  },
+  {
+    "id": "too-enough",
+    "title": {
+      "en": "too / enough (too big, not big enough)",
+      "ru": "too / enough (слишком большой, недостаточно большой)"
+    },
+    "level": "A2",
+    "summary": {
+      "en": "\"too\" means more than you want (a problem). \"enough\" means the right amount or more. Their word order is different, so learn the position carefully.",
+      "ru": "«too» — больше, чем нужно (проблема). «enough» — достаточно или больше. Порядок слов у них разный, запомни позицию."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "too + adjective",
+          "ru": "too + прилагательное"
+        },
+        "text": {
+          "en": "\"too\" goes BEFORE the adjective and means \"more than is good\".\n\nThis coat is too expensive. (so I cannot buy it)\nThe tea is too hot to drink.\n\nIt always feels negative — something is a problem.",
+          "ru": "«too» стоит ПЕРЕД прилагательным и значит «больше, чем хорошо».\n\nThis coat is too expensive. — Это пальто слишком дорогое (поэтому не могу купить).\nThe tea is too hot to drink. — Чай слишком горячий, чтобы пить.\n\nВсегда с отрицательным оттенком — что-то мешает."
+        },
+        "examples": [
+          {
+            "en": "These shoes are too small for me.",
+            "ru": "Эти туфли мне слишком малы."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "adjective + enough",
+          "ru": "прилагательное + enough"
+        },
+        "text": {
+          "en": "\"enough\" goes AFTER the adjective and means \"as much as you need\".\n\nThe room is big enough for a bed.\nHe is not old enough to drive. (less than needed)\n\nNote the order: adjective first, then enough — NOT \"enough big\".",
+          "ru": "«enough» стоит ПОСЛЕ прилагательного и значит «столько, сколько нужно».\n\nThe room is big enough for a bed. — Комната достаточно большая для кровати.\nHe is not old enough to drive. — Он недостаточно взрослый, чтобы водить.\n\nЗапомни порядок: сначала прилагательное, потом enough — НЕ «enough big»."
+        },
+        "examples": [
+          {
+            "en": "Is the water warm enough?",
+            "ru": "Вода достаточно тёплая?"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "enough + noun",
+          "ru": "enough + существительное"
+        },
+        "text": {
+          "en": "Before a NOUN, \"enough\" goes BEFORE it.\n\nI do not have enough money.\nWe have enough chairs for everyone.\n\nSo: enough + noun, but adjective + enough. The noun and the adjective sit on opposite sides of \"enough\".",
+          "ru": "Перед СУЩЕСТВИТЕЛЬНЫМ «enough» ставится ПЕРЕД ним.\n\nI do not have enough money. — У меня недостаточно денег.\nWe have enough chairs for everyone. — У нас достаточно стульев для всех.\n\nИтак: enough + существительное, но прилагательное + enough. Существительное и прилагательное стоят по разные стороны от «enough»."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Adjective before enough: \"big enough\", NOT \"enough big\".",
+        "ru": "Прилагательное перед enough: «big enough», а не «enough big»."
+      },
+      {
+        "en": "But noun after enough: \"enough money\", NOT \"money enough\".",
+        "ru": "А существительное после enough: «enough money», а не «money enough»."
+      },
+      {
+        "en": "\"too\" is not the same as \"very\": \"too hot\" means it is a problem; \"very hot\" is just strong.",
+        "ru": "«too» — не то же, что «very»: «too hot» — это проблема; «very hot» — просто сильно."
+      }
+    ],
+    "seeAlso": [
+      "comparatives"
+    ]
   }
 ]

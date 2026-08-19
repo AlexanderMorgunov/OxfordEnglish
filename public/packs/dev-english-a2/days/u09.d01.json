@@ -184,7 +184,8 @@
               "en": "This shirt is cheaper than that one.",
               "ru": "Эта рубашка дешевле той."
             }
-          ]
+          ],
+          "ref": "comparatives"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "This coat is more expensive than the jacket.",
               "ru": "Это пальто дороже куртки."
             }
-          ]
+          ],
+          "ref": "comparatives"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "These shoes are better than the old ones.",
               "ru": "Эта обувь лучше старой."
             }
-          ]
+          ],
+          "ref": "comparatives"
         }
       ],
       "pitfalls": [
@@ -444,6 +447,120 @@
           "prompt": "Эта куртка теплее.",
           "answers": [
             "This jacket is warmer."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u09.d01.ex.b.01",
+          "instruction": {
+            "en": "Comparative (short).",
+            "ru": "Сравнительная (короткое)."
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "prompt": "A train is ___ than a bus. (fast)",
+          "answers": [
+            "faster"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u09.d01.ex.b.02",
+          "instruction": {
+            "en": "Comparative (double letter).",
+            "ru": "Сравнительная (удвоение)."
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "prompt": "This box is ___ than that one. (big)",
+          "answers": [
+            "bigger"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u09.d01.ex.b.03",
+          "instruction": {
+            "en": "Long adjective.",
+            "ru": "Длинное прилагательное."
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "prompt": "This film is ___ than the book.",
+          "options": [
+            "more interesting",
+            "interestinger",
+            "more interestinger"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u09.d01.ex.b.04",
+          "instruction": {
+            "en": "Irregular.",
+            "ru": "Неправильное."
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "prompt": "My cold is ___ today than yesterday.",
+          "options": [
+            "worse",
+            "worser",
+            "more bad"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u09.d01.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "variants": [
+            "She is more taller than me.",
+            "She is taller than me."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u09.d01.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.comparatives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Эта книга интереснее, чем фильм.",
+          "answers": [
+            "This book is more interesting than the film.",
+            "This book is more interesting than the movie."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "more interestinger",
+                "interestinger",
+                "interesting than",
+                "interesting then"
+              ],
+              "explanation": {
+                "en": "Long adjectives: more interesting THAN (not -er, not \"then\").",
+                "ru": "Длинные прилагательные: more interesting THAN (без -er, не «then»)."
+              }
+            }
           ]
         }
       ]

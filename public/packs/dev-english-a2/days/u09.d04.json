@@ -185,7 +185,8 @@
               "en": "This coat is too expensive.",
               "ru": "Это пальто слишком дорогое."
             }
-          ]
+          ],
+          "ref": "too-enough"
         },
         {
           "label": {
@@ -198,7 +199,8 @@
               "en": "It is not big enough.",
               "ru": "Оно недостаточно большое."
             }
-          ]
+          ],
+          "ref": "too-enough"
         },
         {
           "label": {
@@ -211,7 +213,8 @@
               "en": "I don't have enough money.",
               "ru": "У меня недостаточно денег."
             }
-          ]
+          ],
+          "ref": "too-enough"
         }
       ],
       "pitfalls": [
@@ -468,6 +471,119 @@
           "prompt": "Это слишком дорого.",
           "answers": [
             "It is too expensive."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u09.d04.ex.b.01",
+          "instruction": {
+            "en": "too or enough?",
+            "ru": "too или enough?"
+          },
+          "tags": [
+            "grammar.too-enough"
+          ],
+          "prompt": "The soup is ___ hot. I cannot eat it.",
+          "options": [
+            "too",
+            "enough",
+            "very much"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u09.d04.ex.b.02",
+          "instruction": {
+            "en": "adjective + enough.",
+            "ru": "прилагательное + enough."
+          },
+          "tags": [
+            "grammar.too-enough"
+          ],
+          "prompt": "He is not tall ___ to reach the shelf. (enough)",
+          "answers": [
+            "enough"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u09.d04.ex.b.03",
+          "instruction": {
+            "en": "enough + noun.",
+            "ru": "enough + существительное."
+          },
+          "tags": [
+            "grammar.too-enough"
+          ],
+          "prompt": "We do not have ___ chairs for everyone. (enough)",
+          "answers": [
+            "enough"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u09.d04.ex.b.04",
+          "instruction": {
+            "en": "Word order.",
+            "ru": "Порядок слов."
+          },
+          "tags": [
+            "grammar.too-enough"
+          ],
+          "prompt": "This room is ___ for a bed.",
+          "options": [
+            "big enough",
+            "enough big",
+            "too big enough"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u09.d04.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.too-enough"
+          ],
+          "variants": [
+            "The car is enough fast.",
+            "The car is fast enough."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u09.d04.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.too-enough",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У меня недостаточно денег.",
+          "answers": [
+            "I don't have enough money.",
+            "I do not have enough money."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "enough money",
+                "money enough",
+                "not enough of money"
+              ],
+              "explanation": {
+                "en": "enough goes before a noun: enough money.",
+                "ru": "enough стоит перед существительным: enough money."
+              }
+            }
           ]
         }
       ]

@@ -184,7 +184,8 @@
               "en": "She is as kind as her sister.",
               "ru": "Она такая же добрая, как её сестра."
             }
-          ]
+          ],
+          "ref": "comparatives"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "He is not as tall as me.",
               "ru": "Он не такой высокий, как я."
             }
-          ]
+          ],
+          "ref": "comparatives"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "This bag is the same as mine. Yours is different from mine.",
               "ru": "Эта сумка такая же, как моя. Твоя отличается от моей."
             }
-          ]
+          ],
+          "ref": "comparatives"
         }
       ],
       "pitfalls": [
@@ -448,6 +451,119 @@
           "prompt": "Он такой же добрый, как ты.",
           "answers": [
             "He is as kind as you."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u09.d03.ex.b.01",
+          "instruction": {
+            "en": "Equal: as … as.",
+            "ru": "Одинаково: as … as."
+          },
+          "tags": [
+            "grammar.as-as"
+          ],
+          "prompt": "This bag is ___ heavy ___ mine.",
+          "answers": [
+            "as",
+            "as"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u09.d03.ex.b.02",
+          "instruction": {
+            "en": "Not equal.",
+            "ru": "Не одинаково."
+          },
+          "tags": [
+            "grammar.as-as"
+          ],
+          "prompt": "Today is ___ cold as yesterday — it is warmer.",
+          "options": [
+            "not as",
+            "not so much",
+            "no as"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u09.d03.ex.b.03",
+          "instruction": {
+            "en": "Choose the phrase.",
+            "ru": "Выбери оборот."
+          },
+          "tags": [
+            "grammar.as-as"
+          ],
+          "prompt": "Her coat is different ___ mine.",
+          "options": [
+            "from",
+            "than",
+            "of"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u09.d03.ex.b.04",
+          "instruction": {
+            "en": "The same as.",
+            "ru": "Такой же, как."
+          },
+          "tags": [
+            "grammar.as-as"
+          ],
+          "prompt": "My phone is the same ___ yours.",
+          "answers": [
+            "as"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u09.d03.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.as-as"
+          ],
+          "variants": [
+            "He runs as fast than me.",
+            "He runs as fast as me."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u09.d03.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.as-as",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Этот дом не такой большой, как тот.",
+          "answers": [
+            "This house is not as big as that one."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "as big than",
+                "not so big as",
+                "as big as that house"
+              ],
+              "explanation": {
+                "en": "Use \"as … as\": not as big as that one.",
+                "ru": "Оборот «as … as»: not as big as that one."
+              }
+            }
           ]
         }
       ]

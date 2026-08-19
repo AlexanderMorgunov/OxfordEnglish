@@ -184,7 +184,8 @@
               "en": "This is the cheapest shop.",
               "ru": "Это самый дешёвый магазин."
             }
-          ]
+          ],
+          "ref": "comparatives"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "It is the most popular brand.",
               "ru": "Это самый популярный бренд."
             }
-          ]
+          ],
+          "ref": "comparatives"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "It is the best shop in town.",
               "ru": "Это лучший магазин в городе."
             }
-          ]
+          ],
+          "ref": "comparatives"
         }
       ],
       "pitfalls": [
@@ -444,6 +447,119 @@
           "prompt": "Это лучший магазин в городе.",
           "answers": [
             "It is the best shop in town."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u09.d02.ex.b.01",
+          "instruction": {
+            "en": "Superlative (short).",
+            "ru": "Превосходная (короткое)."
+          },
+          "tags": [
+            "grammar.superlatives"
+          ],
+          "prompt": "This is ___ river in the country. (long)",
+          "answers": [
+            "the longest"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u09.d02.ex.b.02",
+          "instruction": {
+            "en": "Superlative (long).",
+            "ru": "Превосходная (длинное)."
+          },
+          "tags": [
+            "grammar.superlatives"
+          ],
+          "prompt": "It is ___ film of the year.",
+          "options": [
+            "the most popular",
+            "the popularest",
+            "most popular"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u09.d02.ex.b.03",
+          "instruction": {
+            "en": "Irregular.",
+            "ru": "Неправильное."
+          },
+          "tags": [
+            "grammar.superlatives"
+          ],
+          "prompt": "This is ___ day of my life!",
+          "options": [
+            "the best",
+            "the goodest",
+            "the most good"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u09.d02.ex.b.04",
+          "instruction": {
+            "en": "Add the article.",
+            "ru": "Добавь артикль."
+          },
+          "tags": [
+            "grammar.superlatives"
+          ],
+          "prompt": "It was ___ worst film I have ever seen. (the)",
+          "answers": [
+            "the"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u09.d02.ex.b.05",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.superlatives"
+          ],
+          "variants": [
+            "It is most cheapest shop.",
+            "It is the cheapest shop."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u09.d02.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.superlatives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это самый дорогой ресторан в городе.",
+          "answers": [
+            "It is the most expensive restaurant in town.",
+            "This is the most expensive restaurant in town."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "most expensive restaurant",
+                "the expensivest",
+                "the most expensivest"
+              ],
+              "explanation": {
+                "en": "Superlative of a long adjective needs \"the most\": the most expensive.",
+                "ru": "Превосходная длинного прилагательного — «the most»: the most expensive."
+              }
+            }
           ]
         }
       ]
