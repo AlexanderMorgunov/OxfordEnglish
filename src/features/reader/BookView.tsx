@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Button } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import type { ParsedBook } from './parse';
@@ -24,8 +24,37 @@ export function BookView({
     const next = Math.max(0, Math.min(idx, book.chapters.length - 1));
     setChapter(next);
     onChapter?.(next);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Persist and restore the scroll position per chapter, so a reader resumes exactly where
+  // they left off (not just at the chapter top).
+  useEffect(() => {
+    const key = `${idPrefix}.pos.${chapter}`;
+    let saved = 0;
+    try {
+      saved = Number(localStorage.getItem(key)) || 0;
+    } catch {
+      // ignore
+    }
+    const raf = requestAnimationFrame(() => window.scrollTo(0, saved));
+    let writeRaf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(writeRaf);
+      writeRaf = requestAnimationFrame(() => {
+        try {
+          localStorage.setItem(key, String(Math.round(window.scrollY)));
+        } catch {
+          // best-effort
+        }
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(raf);
+      cancelAnimationFrame(writeRaf);
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, [idPrefix, chapter]);
 
   const ch = book.chapters[chapter]!;
   const paragraphs = useMemo(() => ch.text.split(/\n{2,}/).filter(Boolean), [ch]);

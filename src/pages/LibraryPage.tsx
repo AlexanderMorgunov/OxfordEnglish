@@ -120,7 +120,12 @@ export function LibraryPage() {
                 <p className="truncate font-semibold">{b.title}</p>
                 <p className="truncate font-mono text-2xs uppercase tracking-[0.06em] text-muted">
                   {b.author ? `${b.author} · ` : ''}
-                  {b.format} · {b.chapterCount} {ru ? 'глав' : 'ch.'}
+                  {b.format} ·{' '}
+                  {b.lastChapter > 0
+                    ? ru
+                      ? `глава ${b.lastChapter + 1}/${b.chapterCount}`
+                      : `ch. ${b.lastChapter + 1}/${b.chapterCount}`
+                    : `${b.chapterCount} ${ru ? 'глав' : 'ch.'}`}
                 </p>
               </Link>
               <button
