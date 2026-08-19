@@ -4,7 +4,11 @@ import { Button, Card, Eyebrow, Input, Option } from '@/shared/ui';
 import { PROVIDERS, type AiProviderId } from '@/features/ai/provider';
 import { isConfigured, useAiStore } from '@/features/ai/store';
 import { exportData, importData } from '@/features/progress/backup';
-import { isAnalyticsEnabled, setAnalyticsEnabled } from '@/features/analytics/analytics';
+import {
+  analyticsConfigured,
+  isAnalyticsEnabled,
+  setAnalyticsEnabled,
+} from '@/features/analytics/analytics';
 import { useLearner } from '@/features/learner/store';
 import { useUiLang } from '@/features/i18n/uiLang';
 import type { Level } from '@/content/schema';
@@ -267,17 +271,23 @@ export function SettingsPage() {
         <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
           анонимная статистика · anonymous usage
         </p>
-        <p className="mb-4 text-sm text-muted text-pretty">
-          Полностью анонимные, обезличенные события (открытие приложения,
-          завершённый день) — чтобы понимать, помогает ли приложение учиться.
-          Без личных данных, без содержимого. Можно выключить в любой момент.
-        </p>
-        <Option
-          state={analytics ? 'chosen' : 'default'}
-          onClick={toggleAnalytics}
-        >
-          {analytics ? 'Включена' : 'Выключена'}
-        </Option>
+        {analyticsConfigured() ? (
+          <>
+            <p className="mb-4 text-sm text-muted text-pretty">
+              Полностью анонимные, обезличенные события (открытие приложения,
+              завершённый день) — чтобы понимать, помогает ли приложение учиться.
+              Без личных данных, без содержимого. Можно выключить в любой момент.
+            </p>
+            <Option state={analytics ? 'chosen' : 'default'} onClick={toggleAnalytics}>
+              {analytics ? 'Включена' : 'Выключена'}
+            </Option>
+          </>
+        ) : (
+          <p className="text-sm text-muted text-pretty">
+            Сейчас ничего не собирается и не отправляется — сервер статистики не
+            подключён. Приложение работает полностью локально.
+          </p>
+        )}
       </div>
     </section>
   );

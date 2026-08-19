@@ -6,15 +6,31 @@ const FIRST_SEEN_KEY = 'analytics.firstSeen';
 const OPT_OUT_KEY = 'analytics.optOut';
 const DAY_MS = 86_400_000;
 const MAX_BATCH = 50;
+const MAX_QUEUE = 500;
+
+/** crypto.randomUUID is undefined outside a secure context (e.g. plain-http LAN testing). */
+function randomId(): string {
+  try {
+    return crypto.randomUUID();
+  } catch {
+    return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+  }
+}
 
 /** Random, non-identifying id kept only in this browser. Never derived from user data. */
 function anonId(): string {
   let id = localStorage.getItem(ANON_KEY);
   if (!id) {
-    id = crypto.randomUUID();
+    id = randomId();
     localStorage.setItem(ANON_KEY, id);
   }
   return id;
+}
+
+/** True only when analytics is actually configured — the UI uses this to avoid claiming
+ *  collection is happening while the app ships with no endpoint. */
+export function analyticsConfigured(): boolean {
+  return ANALYTICS_ENDPOINT !== '';
 }
 
 function firstSeen(): number {
@@ -54,6 +70,12 @@ export async function track(
   if (!active()) return;
   try {
     await db.analyticsQueue.add({ event, props, ts: Date.now() });
+    // Bound the queue so a mistyped or dead endpoint can't grow IndexedDB without limit.
+    const excess = (await db.analyticsQueue.count()) - MAX_QUEUE;
+    if (excess > 0) {
+      const stale = await db.analyticsQueue.orderBy('ts').limit(excess).primaryKeys();
+      await db.analyticsQueue.bulkDelete(stale);
+    }
   } catch {
     // queue is best-effort; a full/absent IndexedDB must never break the app
   }

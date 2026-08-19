@@ -7,6 +7,10 @@ import { track } from '@/features/analytics/analytics';
 import { Card, ProgressBar } from '@/shared/ui';
 
 export type NextDay = { unitId: string; dayId: string; title: string };
+
+/** Days already counted this session — revisiting a finished day (e.g. back from /review)
+ *  must not re-fire day_complete and inflate completion metrics. */
+const tracked = new Set<string>();
 type Props = {
   day: Day;
   next: NextDay | null;
@@ -32,7 +36,10 @@ export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }:
   const reviewTags = [...new Set(missed.flatMap((e) => results[e.id]?.tags ?? []))];
 
   useEffect(() => {
-    if (done) void track('day_complete', { dayId: day.id, firstTry, total });
+    if (done && !tracked.has(day.id)) {
+      tracked.add(day.id);
+      void track('day_complete', { dayId: day.id, firstTry, total });
+    }
   }, [done, day.id, firstTry, total]);
 
   if (total === 0) return null;

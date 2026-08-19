@@ -1,4 +1,5 @@
 import { db, type BookRecord } from '@/db/db';
+import { track } from '@/features/analytics/analytics';
 import { detectFormat, parseBook, type ParsedBook } from './parse';
 import { saveBookFile, getBookFile, deleteBookFile, opfsAvailable } from './storage';
 
@@ -38,6 +39,7 @@ export async function getBook(id: string): Promise<BookRecord | undefined> {
 }
 
 export async function openBook(record: BookRecord): Promise<ParsedBook> {
+  void track('book_open', { source: 'imported', format: record.format });
   const file = await getBookFile(record.id);
   return parseBook(file, record.format);
 }
