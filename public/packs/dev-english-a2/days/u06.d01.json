@@ -185,7 +185,8 @@
               "en": "There is a sofa in the room.",
               "ru": "В комнате есть диван."
             }
-          ]
+          ],
+          "ref": "there-is"
         },
         {
           "label": {
@@ -198,7 +199,8 @@
               "en": "There are two chairs.",
               "ru": "Есть два стула."
             }
-          ]
+          ],
+          "ref": "there-is"
         },
         {
           "label": {
@@ -211,7 +213,8 @@
               "en": "Is there a table? There aren't any windows.",
               "ru": "Есть стол? Окон нет."
             }
-          ]
+          ],
+          "ref": "there-is"
         }
       ],
       "pitfalls": [
@@ -433,6 +436,123 @@
         {
           "type": "translate",
           "id": "u06.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.there-is",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "В комнате есть стол.",
+          "answers": [
+            "There is a table in the room."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u06.d01.ex.b.01",
+          "instruction": {
+            "en": "is or are?",
+            "ru": "is или are?"
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "prompt": "There ___ a sofa in the room.",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u06.d01.ex.b.02",
+          "instruction": {
+            "en": "is or are?",
+            "ru": "is или are?"
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "prompt": "There ___ two windows.",
+          "answers": [
+            "are"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u06.d01.ex.b.03",
+          "instruction": {
+            "en": "some or any?",
+            "ru": "some или any?"
+          },
+          "tags": [
+            "grammar.some-any"
+          ],
+          "prompt": "Is there ___ milk in the kitchen?",
+          "options": [
+            "any",
+            "some",
+            "a"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u06.d01.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.there-is"
+          ],
+          "variants": [
+            "There is two chairs.",
+            "There are two chairs."
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "there is two"
+              ],
+              "explanation": {
+                "en": "Plural → there are: \"There are two chairs\".",
+                "ru": "Множественное → there are: «There are two chairs»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u06.d01.ex.b.05",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.house"
+          ],
+          "pairs": [
+            {
+              "left": "kitchen",
+              "right": "кухня"
+            },
+            {
+              "left": "bedroom",
+              "right": "спальня"
+            },
+            {
+              "left": "bathroom",
+              "right": "ванная"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u06.d01.ex.b.06",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."

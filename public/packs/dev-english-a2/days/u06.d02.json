@@ -184,7 +184,8 @@
               "en": "The keys are on the table.",
               "ru": "Ключи на столе."
             }
-          ]
+          ],
+          "ref": "prepositions-place"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "The lamp is next to the bed.",
               "ru": "Лампа рядом с кроватью."
             }
-          ]
+          ],
+          "ref": "prepositions-place"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "The car is in front of the house.",
               "ru": "Машина перед домом."
             }
-          ]
+          ],
+          "ref": "prepositions-place"
         }
       ],
       "pitfalls": [
@@ -435,6 +438,126 @@
         {
           "type": "translate",
           "id": "u06.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.prepositions-place",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Кот под столом.",
+          "answers": [
+            "The cat is under the table."
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u06.d02.ex.b.01",
+          "instruction": {
+            "en": "on, in or under?",
+            "ru": "on, in или under?"
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "prompt": "The books are ___ the shelf.",
+          "answers": [
+            "on"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u06.d02.ex.b.02",
+          "instruction": {
+            "en": "Choose the preposition.",
+            "ru": "Выбери предлог."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "prompt": "The lamp is ___ the bed.",
+          "options": [
+            "next to",
+            "between",
+            "in"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u06.d02.ex.b.03",
+          "instruction": {
+            "en": "Choose the preposition.",
+            "ru": "Выбери предлог."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "prompt": "The car is ___ the house.",
+          "options": [
+            "in front of",
+            "on",
+            "under"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u06.d02.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "variants": [
+            "The picture is in the wall.",
+            "The picture is on the wall."
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "in the wall"
+              ],
+              "explanation": {
+                "en": "Use \"on\" for surfaces: \"on the wall\".",
+                "ru": "Для поверхностей — «on»: «on the wall»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u06.d02.ex.b.05",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.furniture"
+          ],
+          "pairs": [
+            {
+              "left": "shelf",
+              "right": "полка"
+            },
+            {
+              "left": "mirror",
+              "right": "зеркало"
+            },
+            {
+              "left": "carpet",
+              "right": "ковёр"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u06.d02.ex.b.06",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."

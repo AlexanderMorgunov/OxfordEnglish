@@ -184,7 +184,8 @@
               "en": "This is my key. These are my books.",
               "ru": "Это мой ключ. Это мои книги."
             }
-          ]
+          ],
+          "ref": "demonstratives"
         },
         {
           "label": {
@@ -197,7 +198,8 @@
               "en": "That is your bag. Those are your shoes.",
               "ru": "То — твоя сумка. То — твои туфли."
             }
-          ]
+          ],
+          "ref": "demonstratives"
         },
         {
           "label": {
@@ -210,7 +212,8 @@
               "en": "What is this? What are those?",
               "ru": "Что это? Что то?"
             }
-          ]
+          ],
+          "ref": "demonstratives"
         }
       ],
       "pitfalls": [
@@ -436,6 +439,127 @@
         {
           "type": "translate",
           "id": "u06.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.demonstratives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это мои ключи.",
+          "answers": [
+            "These are my keys."
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u06.d03.ex.b.01",
+          "instruction": {
+            "en": "this or these?",
+            "ru": "this или these?"
+          },
+          "tags": [
+            "grammar.demonstratives"
+          ],
+          "prompt": "___ books are mine. (near)",
+          "options": [
+            "These",
+            "This",
+            "That"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u06.d03.ex.b.02",
+          "instruction": {
+            "en": "that or those?",
+            "ru": "that или those?"
+          },
+          "tags": [
+            "grammar.demonstratives"
+          ],
+          "prompt": "___ is your bag over there. (far)",
+          "options": [
+            "That",
+            "Those",
+            "These"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u06.d03.ex.b.03",
+          "instruction": {
+            "en": "Near + plural.",
+            "ru": "Близко + множ."
+          },
+          "tags": [
+            "grammar.demonstratives"
+          ],
+          "prompt": "___ cushions here are soft.",
+          "answers": [
+            "These",
+            "these"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u06.d03.ex.b.04",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.demonstratives"
+          ],
+          "variants": [
+            "This are my shoes.",
+            "These are my shoes."
+          ],
+          "correctIndex": 1,
+          "commonErrors": [
+            {
+              "match": [
+                "this are"
+              ],
+              "explanation": {
+                "en": "Plural near → these: \"These are my shoes\".",
+                "ru": "Множественное близко → these: «These are my shoes»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u06.d03.ex.b.05",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.house"
+          ],
+          "pairs": [
+            {
+              "left": "curtain",
+              "right": "штора"
+            },
+            {
+              "left": "garden",
+              "right": "сад"
+            },
+            {
+              "left": "drawer",
+              "right": "ящик"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u06.d03.ex.b.06",
           "instruction": {
             "en": "Translate into English.",
             "ru": "Переведи на английский."

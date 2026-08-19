@@ -445,6 +445,136 @@
           "answers": [
             "It is a small quiet flat."
           ]
+        },
+        {
+          "type": "choice",
+          "id": "u06.d05.ex.b.01",
+          "instruction": {
+            "en": "looks or looks like?",
+            "ru": "looks или looks like?"
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "She ___ friendly.",
+          "options": [
+            "looks",
+            "looks like",
+            "look"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u06.d05.ex.b.02",
+          "instruction": {
+            "en": "looks or looks like?",
+            "ru": "looks или looks like?"
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "The house ___ a castle.",
+          "options": [
+            "looks like",
+            "looks",
+            "is like"
+          ],
+          "correctIndex": 0,
+          "commonErrors": [
+            {
+              "match": [
+                "house looks a castle",
+                "looks castle"
+              ],
+              "explanation": {
+                "en": "Before a noun use \"looks like\": \"looks like a castle\".",
+                "ru": "Перед существительным — «looks like»: «looks like a castle»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u06.d05.ex.b.03",
+          "instruction": {
+            "en": "Describe a feature (has).",
+            "ru": "Опиши деталь (has)."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "prompt": "The room ___ two windows.",
+          "answers": [
+            "has"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u06.d05.ex.b.04",
+          "instruction": {
+            "en": "Describe the flat.",
+            "ru": "Опиши квартиру."
+          },
+          "tags": [
+            "functions.describing"
+          ],
+          "tokens": [
+            "It",
+            "is",
+            "a",
+            "quiet",
+            "flat"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u06.d05.ex.b.05",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.house"
+          ],
+          "pairs": [
+            {
+              "left": "quiet",
+              "right": "тихий"
+            },
+            {
+              "left": "view",
+              "right": "вид"
+            },
+            {
+              "left": "modern",
+              "right": "современный"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u06.d05.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.describing",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это маленькая тихая квартира.",
+          "answers": [
+            "It is a small quiet flat."
+          ]
         }
       ]
     }

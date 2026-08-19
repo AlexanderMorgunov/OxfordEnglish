@@ -454,6 +454,122 @@
           "answers": [
             "This book is interesting."
           ]
+        },
+        {
+          "type": "order-words",
+          "id": "u06.d04.ex.b.01",
+          "instruction": {
+            "en": "Put the adjectives in order.",
+            "ru": "Поставь прилагательные по порядку."
+          },
+          "tags": [
+            "grammar.adjective-order"
+          ],
+          "tokens": [
+            "a",
+            "big",
+            "old",
+            "house"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u06.d04.ex.b.02",
+          "instruction": {
+            "en": "-ed or -ing?",
+            "ru": "-ed или -ing?"
+          },
+          "tags": [
+            "grammar.ed-ing-adjectives"
+          ],
+          "prompt": "The film was ___ .",
+          "options": [
+            "boring",
+            "bored"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u06.d04.ex.b.03",
+          "instruction": {
+            "en": "-ed or -ing?",
+            "ru": "-ed или -ing?"
+          },
+          "tags": [
+            "grammar.ed-ing-adjectives"
+          ],
+          "prompt": "I am ___ . Let's do something.",
+          "options": [
+            "bored",
+            "boring"
+          ],
+          "correctIndex": 0,
+          "commonErrors": [
+            {
+              "match": [
+                "i am boring"
+              ],
+              "explanation": {
+                "en": "\"I am bored\" = the feeling; \"I am boring\" means you are dull!",
+                "ru": "«I am bored» — чувство; «I am boring» значит, что ты скучный!"
+              }
+            }
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u06.d04.ex.b.04",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.adjective-order"
+          ],
+          "variants": [
+            "a red big bag",
+            "a big red bag"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u06.d04.ex.b.05",
+          "instruction": {
+            "en": "-ing adjective.",
+            "ru": "Прилагательное на -ing."
+          },
+          "tags": [
+            "grammar.ed-ing-adjectives"
+          ],
+          "prompt": "This book is very ___ . (interest)",
+          "answers": [
+            "interesting"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u06.d04.ex.b.06",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.ed-ing-adjectives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Эта книга интересная.",
+          "answers": [
+            "This book is interesting."
+          ]
         }
       ]
     }

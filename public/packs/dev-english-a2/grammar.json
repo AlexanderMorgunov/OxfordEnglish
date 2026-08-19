@@ -587,5 +587,60 @@
       { "en": "The long action = continuous, the short interrupting one = past simple.", "ru": "Длинное действие — continuous, короткое прерывающее — past simple." }
     ],
     "seeAlso": ["past-simple", "present-continuous"]
+  },
+  {
+    "id": "demonstratives",
+    "title": { "en": "this / that / these / those", "ru": "this / that / these / those" },
+    "level": "A2",
+    "summary": {
+      "en": "Point to things — near or far, one or many.",
+      "ru": "Указываем на предметы — близко или далеко, один или много."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "Near vs far, one vs many", "ru": "Близко/далеко, один/много" },
+        "text": {
+          "en": "this = one thing near you; these = many near. that = one thing far; those = many far.",
+          "ru": "this = один предмет близко; these = много близко. that = один предмет далеко; those = много далеко.\n\n• близко: this (один) / these (много)\n• далеко: that (один) / those (много)"
+        },
+        "examples": [
+          { "en": "This is my key. These are my books.", "ru": "Это мой ключ. Это мои книги." },
+          { "en": "That is your bag. Those are your shoes.", "ru": "То — твоя сумка. То — твои туфли." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "these/those are plural: \"these books\", not \"this books\".", "ru": "these/those — множественное: «these books», а не «this books»." },
+      { "en": "this/these = here (near), that/those = there (far).", "ru": "this/these = здесь (близко), that/those = там (далеко)." }
+    ],
+    "seeAlso": ["articles"]
+  },
+  {
+    "id": "prepositions-place",
+    "title": { "en": "Prepositions of place: in / on / under …", "ru": "Предлоги места: in / on / under …" },
+    "level": "A2",
+    "summary": {
+      "en": "Say where something is.",
+      "ru": "Говорим, где находится предмет."
+    },
+    "blocks": [
+      {
+        "heading": { "en": "The common ones", "ru": "Основные" },
+        "text": {
+          "en": "in = inside a closed space; on = on a surface; under = below. next to = beside; between = with something on each side; behind / in front of = at the back / at the front.",
+          "ru": "in = внутри закрытого пространства; on = на поверхности; under = под. next to = рядом; between = между (с двух сторон); behind / in front of = сзади / спереди."
+        },
+        "examples": [
+          { "en": "The keys are on the table.", "ru": "Ключи на столе." },
+          { "en": "The cat is under the bed.", "ru": "Кот под кроватью." },
+          { "en": "The lamp is next to the sofa.", "ru": "Лампа рядом с диваном." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "Use \"on\" for surfaces, \"in\" for closed spaces: \"on the wall\", \"in the box\".", "ru": "«on» — для поверхностей, «in» — для закрытых пространств: «on the wall», «in the box»." },
+      { "en": "\"between\" needs two things: \"between the sofa and the wall\".", "ru": "«between» — между двумя предметами: «between the sofa and the wall»." }
+    ],
+    "seeAlso": ["there-is"]
   }
 ]
