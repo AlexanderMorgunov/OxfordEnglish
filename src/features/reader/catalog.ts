@@ -63,6 +63,34 @@ async function resolveCatalogBook(entry: CatalogEntry): Promise<ParsedBook> {
   throw new Error('catalog entry has no source');
 }
 
+const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+
+/** Narrow-reading picks: same author first, then closest level. Compounds vocab repetition
+ *  (Krashen, "Narrow Reading") — reading more of one author/level recycles the same words. */
+export function relatedCatalog(
+  entries: CatalogEntry[],
+  current: CatalogEntry,
+  limit = 4
+): CatalogEntry[] {
+  const author = current.author?.trim().toLowerCase();
+  const lvl = LEVEL_ORDER.indexOf(current.level);
+  return entries
+    .filter((e) => e.id !== current.id)
+    .map((e) => {
+      const sameAuthor = author && e.author?.trim().toLowerCase() === author ? 1 : 0;
+      const levelGap = Math.abs(LEVEL_ORDER.indexOf(e.level) - lvl);
+      return { e, sameAuthor, levelGap };
+    })
+    .sort(
+      (a, b) =>
+        b.sameAuthor - a.sameAuthor ||
+        a.levelGap - b.levelGap ||
+        a.e.title.localeCompare(b.e.title)
+    )
+    .slice(0, limit)
+    .map((x) => x.e);
+}
+
 /** Ids of remote catalog books already downloaded — the shelf marks these available offline. */
 export async function cachedCatalogIds(): Promise<Set<string>> {
   try {

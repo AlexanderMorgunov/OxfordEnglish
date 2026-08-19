@@ -5,6 +5,7 @@ import { useUiLang } from '@/features/i18n/uiLang';
 import type { ParsedBook } from '@/features/reader/parse';
 import { getCatalogEntry, openCatalogBook, type CatalogEntry } from '@/features/reader/catalog';
 import { BookView } from '@/features/reader/BookView';
+import { RelatedShelf } from '@/features/reader/RelatedShelf';
 
 export function CatalogReaderPage() {
   const { catalogId } = useParams();
@@ -74,6 +75,8 @@ export function CatalogReaderPage() {
           {ru ? 'источник' : 'source'}
         </a>
       </p>
+
+      <RelatedShelf current={entry} />
     </article>
   );
 }
