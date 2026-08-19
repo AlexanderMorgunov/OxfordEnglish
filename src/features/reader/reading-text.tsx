@@ -11,6 +11,7 @@ import { useUiLang } from '@/features/i18n/uiLang';
 import { useLearner } from '@/features/learner/store';
 import { classifyWord, loadFreq, rankThresholdFor, type FreqIndex, type WordMark } from './difficulty';
 import { useReaderSettings } from './settings';
+import { toSentences } from './parse/text';
 
 export type Gloss = { ru?: string; ipa?: string };
 
@@ -140,89 +141,88 @@ function Paragraph({
   onRead: () => void;
   classify?: (word: string) => WordMark | undefined;
 }) {
-  const tokens = useMemo(() => text.split(/(\b[a-zA-Z']+\b)/), [text]);
-  const [showTr, setShowTr] = useState(false);
-  const [tr, setTr] = useState<string | null | undefined>(undefined);
-  const [loading, setLoading] = useState(false);
+  const sentences = useMemo(() => toSentences(text), [text]);
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const [trs, setTrs] = useState<Record<number, string | null>>({});
+  const [loadingIdx, setLoadingIdx] = useState<number | null>(null);
   let wordIndex = -1;
 
-  const toggleTr = async () => {
-    if (showTr) {
-      setShowTr(false);
+  const toggleSentence = async (idx: number, sentence: string) => {
+    if (openIdx === idx) {
+      setOpenIdx(null);
       return;
     }
-    setShowTr(true);
-    if (tr === undefined && !loading) {
-      setLoading(true);
-      setTr(await translateText(text));
-      setLoading(false);
+    setOpenIdx(idx); // one at a time — keeps the reading unit small
+    if (!(idx in trs) && loadingIdx !== idx) {
+      setLoadingIdx(idx);
+      const ru = await translateText(sentence);
+      setTrs((t) => ({ ...t, [idx]: ru }));
+      setLoadingIdx(null);
     }
   };
 
   return (
-    <div>
-      <p className="text-lg leading-relaxed">
-        {canSpeak() && (
-          <button
-            type="button"
-            aria-label={
-              speaking
-                ? lang === 'ru'
-                  ? 'Остановить'
-                  : 'Stop'
-                : lang === 'ru'
-                  ? 'Читать с подсветкой слов'
-                  : 'Read aloud with word highlighting'
-            }
-            aria-pressed={speaking}
-            className="mr-1.5 align-middle text-teal transition-opacity hover:opacity-80"
-            onClick={onRead}
-          >
-            {speaking ? '⏹' : '🔆'}
-          </button>
-        )}
-        {tokens.map((tok, i) => {
-          if (!/^[a-zA-Z']+$/.test(tok)) return <span key={i}>{tok}</span>;
-          wordIndex += 1;
-          return (
-            <WordToken
-              key={i}
-              word={tok}
-              gloss={glossary?.get(tok.toLowerCase())}
-              sentence={text}
-              highlighted={speaking && wordIndex === activeWord}
-              mark={classify?.(tok)}
-            />
-          );
-        })}
-      </p>
-      <button
-        type="button"
-        aria-expanded={showTr}
-        onClick={() => void toggleTr()}
-        className="mt-1 font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
-      >
-        {showTr
-          ? lang === 'ru'
-            ? 'скрыть перевод'
-            : 'hide translation'
-          : lang === 'ru'
-            ? 'показать перевод'
-            : 'show translation'}
-      </button>
-      {showTr &&
-        (loading ? (
-          <p className="mt-1 font-mono text-2xs text-faint">
-            {lang === 'ru' ? 'перевод…' : 'translating…'}
-          </p>
-        ) : tr ? (
-          <p className="mt-1 text-base leading-relaxed text-muted text-pretty">{tr}</p>
-        ) : (
-          <p className="mt-1 font-mono text-2xs text-faint">
-            {lang === 'ru' ? 'перевод недоступен (нет сети?)' : 'translation unavailable (offline?)'}
-          </p>
-        ))}
-    </div>
+    <p className="text-lg leading-relaxed">
+      {canSpeak() && (
+        <button
+          type="button"
+          aria-label={
+            speaking
+              ? lang === 'ru'
+                ? 'Остановить'
+                : 'Stop'
+              : lang === 'ru'
+                ? 'Читать с подсветкой слов'
+                : 'Read aloud with word highlighting'
+          }
+          aria-pressed={speaking}
+          className="mr-1.5 align-middle text-teal transition-opacity hover:opacity-80"
+          onClick={onRead}
+        >
+          {speaking ? '⏹' : '🔆'}
+        </button>
+      )}
+      {sentences.map((sentence, si) => {
+        const open = openIdx === si;
+        return (
+          <span key={si}>
+            {sentence.split(/(\b[a-zA-Z']+\b)/).map((tok, i) => {
+              if (!/^[a-zA-Z']+$/.test(tok)) return <span key={i}>{tok}</span>;
+              wordIndex += 1;
+              const idx = wordIndex;
+              return (
+                <WordToken
+                  key={i}
+                  word={tok}
+                  gloss={glossary?.get(tok.toLowerCase())}
+                  sentence={sentence}
+                  highlighted={speaking && idx === activeWord}
+                  mark={classify?.(tok)}
+                />
+              );
+            })}
+            <button
+              type="button"
+              aria-label={lang === 'ru' ? 'перевод предложения' : 'translate sentence'}
+              aria-pressed={open}
+              onClick={() => void toggleSentence(si, sentence)}
+              className="ml-0.5 align-super font-mono text-2xs text-teal hover:underline"
+            >
+              {open ? '×' : 'ru'}
+            </button>{' '}
+            {open && (
+              <span className="text-base text-muted">
+                {loadingIdx === si
+                  ? `(${lang === 'ru' ? 'перевод…' : 'translating…'})`
+                  : trs[si]
+                    ? `(${trs[si]}) `
+                    : `(${lang === 'ru' ? 'перевод недоступен' : 'translation unavailable'}) `}
+              </span>
+            )}
+          </span>
+        );
+      })}
+    </p>
   );
 }
 
