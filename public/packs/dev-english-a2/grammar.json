@@ -3093,5 +3093,86 @@
     "seeAlso": [
       "relative-clauses"
     ]
+  },
+  {
+    "id": "used-to",
+    "title": {
+      "en": "used to, would, be used to",
+      "ru": "used to, would, be used to"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "Three similar-looking structures with different jobs. \"used to + verb\" = a past habit or state. \"would + verb\" = a repeated past action. \"be used to + -ing\" = accustomed to something.",
+      "ru": "Три похожие на вид конструкции с разными задачами. «used to + глагол» = прошлая привычка или состояние. «would + глагол» = повторяющееся действие в прошлом. «be used to + -ing» = привык к чему-то."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "used to + verb (past habit/state)",
+          "ru": "used to + глагол (прошлая привычка/состояние)"
+        },
+        "text": {
+          "en": "Use it for something that was true in the past but is not now — habits AND states. It has no present form.\n\nI used to play outside every day. (habit)\nThere used to be a shop here. (state)\n\nNegative/question drop the -d: \"didn't use to\", \"Did you use to…?\"",
+          "ru": "Используй для того, что было в прошлом, но не сейчас — привычки И состояния. Настоящей формы нет.\n\nI used to play outside every day. (привычка)\nThere used to be a shop here. (состояние)\n\nВ отрицании/вопросе -d теряется: «didn't use to», «Did you use to…?»"
+        },
+        "examples": [
+          {
+            "en": "I didn't use to like coffee.",
+            "ru": "Раньше я не любил кофе."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "would + verb (repeated past action)",
+          "ru": "would + глагол (повторяющееся действие)"
+        },
+        "text": {
+          "en": "Use \"would\" for repeated ACTIONS in the past — but NOT for states. It is common in nostalgic storytelling.\n\nEvery summer we would visit the sea.\nGrandma would tell us stories.\n\nBut NOT states: \"I used to be shy\", not \"I would be shy\".",
+          "ru": "Используй «would» для повторяющихся ДЕЙСТВИЙ в прошлом — но НЕ для состояний. Часто в ностальгических рассказах.\n\nEvery summer we would visit the sea.\nGrandma would tell us stories.\n\nНо НЕ состояния: «I used to be shy», а не «I would be shy»."
+        },
+        "examples": [
+          {
+            "en": "On Sundays we would gather for lunch.",
+            "ru": "По воскресеньям мы собирались на обед."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "be / get used to + -ing (accustomed)",
+          "ru": "be / get used to + -ing (привык)"
+        },
+        "text": {
+          "en": "This is completely different. \"be used to + -ing/noun\" means you ARE accustomed to something; \"get used to\" means you are BECOMING accustomed. Use -ing, not the bare verb.\n\nI'm used to getting up early.\nShe's getting used to the cold.\nI'm not used to driving here.",
+          "ru": "Это совсем другое. «be used to + -ing/существительное» = ты ПРИВЫК; «get used to» = ПРИВЫКАЕШЬ. Форма -ing, а не голый глагол.\n\nI'm used to getting up early.\nShe's getting used to the cold.\nI'm not used to driving here."
+        },
+        "examples": [
+          {
+            "en": "After a month, he got used to the noise.",
+            "ru": "Через месяц он привык к шуму."
+          }
+        ]
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "\"used to + verb\" (past) ≠ \"be used to + -ing\" (accustomed): \"I used to live\" vs \"I'm used to living\".",
+        "ru": "«used to + глагол» (прошлое) ≠ «be used to + -ing» (привык): «I used to live» и «I'm used to living»."
+      },
+      {
+        "en": "\"would\" cannot describe a past state — use \"used to\" for states.",
+        "ru": "«would» не описывает прошлое состояние — для состояний «used to»."
+      },
+      {
+        "en": "Negative/question of \"used to\" drops the -d: \"didn't use to\".",
+        "ru": "В отрицании/вопросе «used to» теряет -d: «didn't use to»."
+      }
+    ],
+    "seeAlso": [
+      "past-simple",
+      "past-continuous",
+      "comparatives"
+    ]
   }
 ]

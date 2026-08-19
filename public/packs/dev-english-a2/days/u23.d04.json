@@ -1,0 +1,607 @@
+{
+  "id": "u23.d04",
+  "title": {
+    "en": "Three ways to look back",
+    "ru": "Три взгляда в прошлое"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.used-to",
+    "grammar.be-used-to",
+    "vocab.life"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u23.d04.vocab",
+      "title": {
+        "en": "Change over time",
+        "ru": "Перемены со временем"
+      },
+      "words": [
+        {
+          "word": "change",
+          "ru": "меняться; перемена",
+          "ipa": "/tʃeɪndʒ/",
+          "example": "Life has changed.",
+          "exampleRu": "Жизнь изменилась.",
+          "audio": {
+            "src": "media/audio/u23.d04.vocab.change.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "develop",
+          "ru": "развиваться",
+          "ipa": "/dɪˈveləp/",
+          "example": "The town has developed.",
+          "exampleRu": "Город развился.",
+          "audio": {
+            "src": "media/audio/u23.d04.vocab.develop.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "modern",
+          "ru": "современный",
+          "ipa": "/ˈmɒdərn/",
+          "example": "A modern city.",
+          "exampleRu": "Современный город.",
+          "audio": {
+            "src": "media/audio/u23.d04.vocab.modern.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "past",
+          "ru": "прошлое",
+          "ipa": "/pɑːst/",
+          "example": "In the past, it was quiet.",
+          "exampleRu": "В прошлом было тихо.",
+          "audio": {
+            "src": "media/audio/u23.d04.vocab.past.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "compare",
+          "ru": "сравнивать",
+          "ipa": "/kəmˈpeər/",
+          "example": "Compare then and now.",
+          "exampleRu": "Сравни тогда и сейчас.",
+          "audio": {
+            "src": "media/audio/u23.d04.vocab.compare.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "progress",
+          "ru": "прогресс",
+          "ipa": "/ˈprɒɡres/",
+          "example": "There's been progress.",
+          "exampleRu": "Есть прогресс.",
+          "audio": {
+            "src": "media/audio/u23.d04.vocab.progress.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "habit",
+          "ru": "привычка",
+          "ipa": "/ˈhæbɪt/",
+          "example": "An old habit.",
+          "exampleRu": "Старая привычка.",
+          "audio": {
+            "src": "media/audio/u23.d04.vocab.habit.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "familiar",
+          "ru": "знакомый",
+          "ipa": "/fəˈmɪliər/",
+          "example": "It feels familiar.",
+          "exampleRu": "Это кажется знакомым.",
+          "audio": {
+            "src": "media/audio/u23.d04.vocab.familiar.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fade",
+          "ru": "угасать",
+          "ipa": "/feɪd/",
+          "example": "Memories fade.",
+          "exampleRu": "Воспоминания угасают.",
+          "audio": {
+            "src": "media/audio/u23.d04.vocab.fade.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "generation",
+          "ru": "поколение",
+          "ipa": "/ˌdʒenəˈreɪʃn/",
+          "example": "The older generation.",
+          "exampleRu": "Старшее поколение.",
+          "audio": {
+            "src": "media/audio/u23.d04.vocab.generation.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u23.d04.grammar",
+      "title": {
+        "en": "Choosing the right one",
+        "ru": "Выбираем нужную форму"
+      },
+      "rule": {
+        "en": "Three forms, three uses: \"used to\" for past habits AND states; \"would\" for past repeated actions only; \"be/get used to\" for being or becoming accustomed (present or past).",
+        "ru": "Три формы, три задачи: «used to» — прошлые привычки И состояния; «would» — только повторяющиеся действия в прошлом; «be/get used to» — быть или становиться привычным (сейчас или в прошлом)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "used to (habit + state)",
+            "ru": "used to (привычка + состояние)"
+          },
+          "formula": "used to + verb",
+          "examples": [
+            {
+              "en": "I used to live here. / I used to smoke.",
+              "ru": "Раньше я здесь жил. / Раньше я курил."
+            }
+          ],
+          "ref": "used-to"
+        },
+        {
+          "label": {
+            "en": "would (action only)",
+            "ru": "would (только действие)"
+          },
+          "formula": "would + verb (repeated action)",
+          "examples": [
+            {
+              "en": "We would swim every day. (NOT \"would be tall\")",
+              "ru": "Мы плавали каждый день."
+            }
+          ],
+          "ref": "used-to"
+        },
+        {
+          "label": {
+            "en": "be used to (accustomed)",
+            "ru": "be used to (привык)"
+          },
+          "formula": "be/get used to + -ing/noun",
+          "examples": [
+            {
+              "en": "I'm used to it now.",
+              "ru": "Теперь я к этому привык."
+            }
+          ],
+          "ref": "used-to"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"would\" cannot describe a past state: \"I used to be shy\", not \"I would be shy\".",
+          "ru": "«would» не описывает прошлое состояние: «I used to be shy», а не «I would be shy»."
+        },
+        {
+          "en": "\"used to + verb\" (past habit) ≠ \"be used to + -ing\" (accustomed).",
+          "ru": "«used to + глагол» (прошлая привычка) ≠ «be used to + -ing» (привык)."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u23.d04.reading",
+      "title": {
+        "en": "Then and now",
+        "ru": "Тогда и сейчас"
+      },
+      "blocks": [
+        {
+          "id": "u23.d04.reading.b1",
+          "en": "My town used to be a quiet fishing village. Every morning, the fishermen would sail out at dawn, and the market would fill with people by nine. There used to be no cars, only bicycles and boats.",
+          "ru": "Мой город раньше был тихой рыбацкой деревней. Каждое утро рыбаки выходили в море на рассвете, а к девяти рынок заполнялся людьми. Раньше не было машин — только велосипеды и лодки.",
+          "audio": {
+            "src": "media/audio/u23.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u23.d04.reading.b2",
+          "en": "Now it's a busy town, and at first the older people couldn't get used to the change. But people adapt. \"I'm used to the traffic now,\" my grandmother says, \"though I still miss how things used to be. We would know everyone's name back then.\"",
+          "ru": "Теперь это оживлённый город, и поначалу старшие не могли привыкнуть к переменам. Но люди приспосабливаются. «Теперь я привыкла к движению, — говорит бабушка, — хотя всё ещё скучаю по тому, как было. Тогда мы знали всех по именам».",
+          "audio": {
+            "src": "media/audio/u23.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "fisherman",
+          "ru": "рыбак",
+          "ipa": "/ˈfɪʃərmən/"
+        },
+        {
+          "word": "dawn",
+          "ru": "рассвет",
+          "ipa": "/dɔːn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u23.d04.listening",
+      "title": {
+        "en": "Has it changed?",
+        "ru": "Изменилось?"
+      },
+      "audio": {
+        "src": "media/audio/u23.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Has your neighbourhood changed much?",
+          "ru": "Твой район сильно изменился?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "A lot. There used to be a park where the mall is now.",
+          "ru": "Очень. Там, где сейчас торговый центр, раньше был парк."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Do you miss it?",
+          "ru": "Скучаешь по нему?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "I did, but I'm used to the new one now.",
+          "ru": "Скучал, но теперь привык к новому."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u23.d04.ex.l.01",
+          "instruction": {
+            "en": "What was there before?",
+            "ru": "Что было раньше?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.used-to"
+          ],
+          "prompt": "There used to ___ a park.",
+          "options": [
+            "be",
+            "been",
+            "being"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u23.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u23.d04.ex.c.01",
+          "instruction": {
+            "en": "Past state.",
+            "ru": "Прошлое состояние."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "I ___ be very shy as a child.",
+          "options": [
+            "used to",
+            "would",
+            "am used to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u23.d04.ex.c.02",
+          "instruction": {
+            "en": "Repeated action.",
+            "ru": "Повторяющееся действие."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "Every Friday we ___ order pizza.",
+          "options": [
+            "would",
+            "are used to",
+            "use"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u23.d04.ex.c.03",
+          "instruction": {
+            "en": "Accustomed now.",
+            "ru": "Привык сейчас."
+          },
+          "tags": [
+            "grammar.be-used-to"
+          ],
+          "prompt": "I ___ working nights now — it's fine.",
+          "options": [
+            "'m used to",
+            "used to",
+            "would"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u23.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "variants": [
+            "I would be afraid of the dark.",
+            "I used to be afraid of the dark."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u23.d04.ex.c.04",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.be-used-to"
+          ],
+          "prompt": "She's not ___ to the noise yet.",
+          "options": [
+            "used",
+            "use",
+            "using"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u23.d04.ex.g.01",
+          "instruction": {
+            "en": "Past habit.",
+            "ru": "Прошлая привычка."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "There ___ to be a cinema here. (used)",
+          "answers": [
+            "used"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u23.d04.ex.o.01",
+          "instruction": {
+            "en": "Describe the past.",
+            "ru": "Опиши прошлое."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "tokens": [
+            "We",
+            "used",
+            "to",
+            "know",
+            "all",
+            "our",
+            "neighbours"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u23.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.life"
+          ],
+          "pairs": [
+            {
+              "left": "develop",
+              "right": "развиваться"
+            },
+            {
+              "left": "compare",
+              "right": "сравнивать"
+            },
+            {
+              "left": "generation",
+              "right": "поколение"
+            },
+            {
+              "left": "familiar",
+              "right": "знакомый"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u23.d04.ex.c.05",
+          "instruction": {
+            "en": "would or used to?",
+            "ru": "would или used to?"
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "My grandfather ___ have a big beard. (state)",
+          "options": [
+            "used to",
+            "would",
+            "is used to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u23.d04.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.be-used-to"
+          ],
+          "variants": [
+            "I'm used to get up early.",
+            "I'm used to getting up early."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u23.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.used-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Раньше я был застенчивым, но теперь я привык выступать перед людьми.",
+          "answers": [
+            "I used to be shy, but now I'm used to speaking in front of people.",
+            "I used to be shy, but now I am used to speaking in front of people."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i would be shy but now i used to speak",
+                "i used to be shy but now i'm used to speak",
+                "i use to be shy but now i am used to speaking"
+              ],
+              "explanation": {
+                "en": "used to be (state) + be used to + -ing (accustomed).",
+                "ru": "used to be (состояние) + be used to + -ing (привык)."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u23.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.used-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Каждое лето мы ездили в горы.",
+          "answers": [
+            "Every summer we would go to the mountains.",
+            "Every summer we used to go to the mountains."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "every summer we are used to go to the mountains",
+                "every summer we would went to the mountains",
+                "every summer we will go to the mountains"
+              ],
+              "explanation": {
+                "en": "would/used to + bare verb for a repeated action.",
+                "ru": "would/used to + голый глагол для повторяющегося действия."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -91,6 +91,8 @@ export const SKILL_TAGS = [
   'grammar.future-continuous',
   'grammar.be-about-to',
   'grammar.non-defining-clauses',
+  'grammar.used-to',
+  'grammar.be-used-to',
 
   // functions (everyday communication)
   'functions.ordering',

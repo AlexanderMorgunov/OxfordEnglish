@@ -1,0 +1,605 @@
+{
+  "id": "u23.d02",
+  "title": {
+    "en": "Every summer we would visit",
+    "ru": "Каждое лето мы приезжали"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.used-to",
+    "vocab.life"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u23.d02.vocab",
+      "title": {
+        "en": "Traditions & routines",
+        "ru": "Традиции и распорядок"
+      },
+      "words": [
+        {
+          "word": "tradition",
+          "ru": "традиция",
+          "ipa": "/trəˈdɪʃn/",
+          "example": "It was a family tradition.",
+          "exampleRu": "Это была семейная традиция.",
+          "audio": {
+            "src": "media/audio/u23.d02.vocab.tradition.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "seaside",
+          "ru": "побережье",
+          "ipa": "/ˈsiːsaɪd/",
+          "example": "We went to the seaside.",
+          "exampleRu": "Мы ездили на побережье.",
+          "audio": {
+            "src": "media/audio/u23.d02.vocab.seaside.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "gather",
+          "ru": "собираться",
+          "ipa": "/ˈɡæðər/",
+          "example": "The family would gather.",
+          "exampleRu": "Семья собиралась.",
+          "audio": {
+            "src": "media/audio/u23.d02.vocab.gather.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "spend",
+          "ru": "проводить (время)",
+          "ipa": "/spend/",
+          "example": "We would spend hours playing.",
+          "exampleRu": "Мы часами играли.",
+          "audio": {
+            "src": "media/audio/u23.d02.vocab.spend.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "whole",
+          "ru": "целый",
+          "ipa": "/hoʊl/",
+          "example": "The whole afternoon.",
+          "exampleRu": "Весь день.",
+          "audio": {
+            "src": "media/audio/u23.d02.vocab.whole.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "campfire",
+          "ru": "костёр",
+          "ipa": "/ˈkæmpfaɪər/",
+          "example": "We sat by the campfire.",
+          "exampleRu": "Мы сидели у костра.",
+          "audio": {
+            "src": "media/audio/u23.d02.vocab.campfire.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sunset",
+          "ru": "закат",
+          "ipa": "/ˈsʌnset/",
+          "example": "We watched the sunset.",
+          "exampleRu": "Мы смотрели на закат.",
+          "audio": {
+            "src": "media/audio/u23.d02.vocab.sunset.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "storytelling",
+          "ru": "рассказывание историй",
+          "ipa": "/ˈstɔːritelɪŋ/",
+          "example": "Grandpa loved storytelling.",
+          "exampleRu": "Дедушка любил рассказывать истории.",
+          "audio": {
+            "src": "media/audio/u23.d02.vocab.storytelling.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "countryside",
+          "ru": "сельская местность",
+          "ipa": "/ˈkʌntrisaɪd/",
+          "example": "We drove to the countryside.",
+          "exampleRu": "Мы ехали за город.",
+          "audio": {
+            "src": "media/audio/u23.d02.vocab.countryside.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "forever",
+          "ru": "вечно",
+          "ipa": "/fərˈevər/",
+          "example": "Those summers felt like forever.",
+          "exampleRu": "Те лета казались вечностью.",
+          "audio": {
+            "src": "media/audio/u23.d02.vocab.forever.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u23.d02.grammar",
+      "title": {
+        "en": "would for repeated past actions",
+        "ru": "would для повторяющихся действий в прошлом"
+      },
+      "rule": {
+        "en": "Use \"would + verb\" for repeated ACTIONS in the past — like \"used to\", but only for actions, not states. It is common in stories about the past.",
+        "ru": "Используй «would + глагол» для повторяющихся ДЕЙСТВИЙ в прошлом — как «used to», но только для действий, не состояний. Часто в рассказах о прошлом."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "would + verb (action)",
+            "ru": "would + глагол (действие)"
+          },
+          "formula": "would + verb",
+          "examples": [
+            {
+              "en": "Every summer we would visit the sea.",
+              "ru": "Каждое лето мы ездили на море."
+            }
+          ],
+          "ref": "used-to"
+        },
+        {
+          "label": {
+            "en": "with time markers",
+            "ru": "со словами времени"
+          },
+          "formula": "Every day/summer … would …",
+          "examples": [
+            {
+              "en": "On Sundays, we would gather for lunch.",
+              "ru": "По воскресеньям мы собирались на обед."
+            }
+          ],
+          "ref": "used-to"
+        },
+        {
+          "label": {
+            "en": "NOT for states",
+            "ru": "НЕ для состояний"
+          },
+          "formula": "states → used to (not would)",
+          "examples": [
+            {
+              "en": "I used to have long hair. (NOT \"would have\")",
+              "ru": "Раньше у меня были длинные волосы."
+            }
+          ],
+          "ref": "used-to"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"would\" works for repeated actions, but NOT for past states: use \"used to\" for states.",
+          "ru": "«would» — для повторяющихся действий, но НЕ для состояний: для состояний — «used to»."
+        },
+        {
+          "en": "\"We would visit\" ✓ (action), but \"We would live there\" ✗ → \"used to live\".",
+          "ru": "«We would visit» ✓ (действие), но «We would live there» ✗ → «used to live»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u23.d02.reading",
+      "title": {
+        "en": "Summers by the sea",
+        "ru": "Лето у моря"
+      },
+      "blocks": [
+        {
+          "id": "u23.d02.reading.b1",
+          "en": "Every summer, our whole family would drive to the seaside. We would leave early in the morning, and my father would sing old songs the whole way. When we arrived, we would run straight to the water.",
+          "ru": "Каждое лето вся наша семья ездила на побережье. Мы выезжали рано утром, и отец всю дорогу пел старые песни. Приехав, мы сразу бежали к воде.",
+          "audio": {
+            "src": "media/audio/u23.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u23.d02.reading.b2",
+          "en": "In the evenings, we would sit by a campfire and my grandmother would tell stories. We would watch the sunset and stay up late. Those summers used to feel endless. I would give anything to live one of those days again.",
+          "ru": "По вечерам мы сидели у костра, и бабушка рассказывала истории. Мы смотрели на закат и не ложились допоздна. Те лета казались бесконечными. Я бы всё отдал, чтобы прожить один из тех дней снова.",
+          "audio": {
+            "src": "media/audio/u23.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "endless",
+          "ru": "бесконечный",
+          "ipa": "/ˈendləs/"
+        },
+        {
+          "word": "straight",
+          "ru": "прямо",
+          "ipa": "/streɪt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u23.d02.listening",
+      "title": {
+        "en": "Family traditions",
+        "ru": "Семейные традиции"
+      },
+      "audio": {
+        "src": "media/audio/u23.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "What did you do on holidays as a child?",
+          "ru": "Что ты делал в праздники в детстве?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Every year we would visit my aunt in the mountains.",
+          "ru": "Каждый год мы ездили к тёте в горы."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "That sounds lovely.",
+          "ru": "Звучит чудесно."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "It was. We would hike all day and cook outside.",
+          "ru": "Так и было. Мы весь день ходили в походы и готовили на улице."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u23.d02.ex.l.01",
+          "instruction": {
+            "en": "What did they do every year?",
+            "ru": "Что они делали каждый год?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.used-to"
+          ],
+          "prompt": "They would ___ their aunt.",
+          "options": [
+            "visit",
+            "visited",
+            "visiting"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u23.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u23.d02.ex.g.01",
+          "instruction": {
+            "en": "Repeated action.",
+            "ru": "Повторяющееся действие."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "Every summer we ___ go camping. (would)",
+          "answers": [
+            "would"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u23.d02.ex.c.01",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "On Sundays, my mother ___ bake bread.",
+          "options": [
+            "would",
+            "used",
+            "was"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u23.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "variants": [
+            "We would have a red car.",
+            "We used to have a red car."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u23.d02.ex.g.02",
+          "instruction": {
+            "en": "Add the verb.",
+            "ru": "Добавь глагол."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "Grandpa would ___ us stories every night. (tell)",
+          "answers": [
+            "tell"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u23.d02.ex.c.02",
+          "instruction": {
+            "en": "Action or state?",
+            "ru": "Действие или состояние?"
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "As kids, we ___ play in the garden for hours.",
+          "options": [
+            "would",
+            "were",
+            "are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u23.d02.ex.c.03",
+          "instruction": {
+            "en": "State → used to.",
+            "ru": "Состояние → used to."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "I ___ be afraid of dogs when I was little.",
+          "options": [
+            "used to",
+            "would",
+            "will"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u23.d02.ex.o.01",
+          "instruction": {
+            "en": "Describe a routine.",
+            "ru": "Опиши распорядок."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "tokens": [
+            "Every",
+            "summer",
+            "we",
+            "would",
+            "go",
+            "to",
+            "the",
+            "sea"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u23.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.life"
+          ],
+          "pairs": [
+            {
+              "left": "tradition",
+              "right": "традиция"
+            },
+            {
+              "left": "gather",
+              "right": "собираться"
+            },
+            {
+              "left": "sunset",
+              "right": "закат"
+            },
+            {
+              "left": "countryside",
+              "right": "сельская местность"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u23.d02.ex.c.04",
+          "instruction": {
+            "en": "Repeated past action.",
+            "ru": "Повторяющееся действие."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "He ___ walk to work every morning.",
+          "options": [
+            "would",
+            "was",
+            "is"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u23.d02.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "variants": [
+            "We would visited grandma every year.",
+            "We would visit grandma every year."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u23.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.used-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Каждое лето мы ездили на море.",
+          "answers": [
+            "Every summer we would go to the sea.",
+            "Every summer we used to go to the sea."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "every summer we would went to the sea",
+                "every summer we would going to the sea",
+                "every summer we will go to the sea"
+              ],
+              "explanation": {
+                "en": "would + bare verb for a repeated past action: we would go to the sea.",
+                "ru": "would + голый глагол для повторяющегося действия: we would go to the sea."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u23.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.used-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "По вечерам бабушка рассказывала нам истории.",
+          "answers": [
+            "In the evenings, my grandmother would tell us stories.",
+            "In the evenings, grandma would tell us stories."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "grandmother would told us stories",
+                "grandmother would telling us stories",
+                "grandmother will tell us stories"
+              ],
+              "explanation": {
+                "en": "would + bare verb: would tell us stories.",
+                "ru": "would + голый глагол: would tell us stories."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,601 @@
+{
+  "id": "u23.d03",
+  "title": {
+    "en": "I'm used to it now",
+    "ru": "Теперь я привык"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.be-used-to",
+    "vocab.life"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u23.d03.vocab",
+      "title": {
+        "en": "Getting used to change",
+        "ru": "Привыкаем к переменам"
+      },
+      "words": [
+        {
+          "word": "abroad",
+          "ru": "за границей",
+          "ipa": "/əˈbrɔːd/",
+          "example": "Living abroad is hard at first.",
+          "exampleRu": "Жить за границей сначала трудно.",
+          "audio": {
+            "src": "media/audio/u23.d03.vocab.abroad.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "climate",
+          "ru": "климат",
+          "ipa": "/ˈklaɪmət/",
+          "example": "The climate is different.",
+          "exampleRu": "Климат другой.",
+          "audio": {
+            "src": "media/audio/u23.d03.vocab.climate.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "routine",
+          "ru": "распорядок",
+          "ipa": "/ruːˈtiːn/",
+          "example": "A new routine.",
+          "exampleRu": "Новый распорядок.",
+          "audio": {
+            "src": "media/audio/u23.d03.vocab.routine.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "adapt",
+          "ru": "приспосабливаться",
+          "ipa": "/əˈdæpt/",
+          "example": "It takes time to adapt.",
+          "exampleRu": "Нужно время, чтобы приспособиться.",
+          "audio": {
+            "src": "media/audio/u23.d03.vocab.adapt.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "strange",
+          "ru": "странный",
+          "ipa": "/streɪndʒ/",
+          "example": "It felt strange at first.",
+          "exampleRu": "Сначала было странно.",
+          "audio": {
+            "src": "media/audio/u23.d03.vocab.strange.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "normal",
+          "ru": "нормальный",
+          "ipa": "/ˈnɔːrml/",
+          "example": "Now it feels normal.",
+          "exampleRu": "Теперь это кажется нормальным.",
+          "audio": {
+            "src": "media/audio/u23.d03.vocab.normal.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "schedule",
+          "ru": "график",
+          "ipa": "/ˈʃedjuːl/",
+          "example": "A busy schedule.",
+          "exampleRu": "Плотный график.",
+          "audio": {
+            "src": "media/audio/u23.d03.vocab.schedule.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "challenge",
+          "ru": "испытание",
+          "ipa": "/ˈtʃælɪndʒ/",
+          "example": "It was a challenge.",
+          "exampleRu": "Это было испытанием.",
+          "audio": {
+            "src": "media/audio/u23.d03.vocab.challenge.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "gradually",
+          "ru": "постепенно",
+          "ipa": "/ˈɡrædʒuəli/",
+          "example": "Gradually, it got easier.",
+          "exampleRu": "Постепенно стало легче.",
+          "audio": {
+            "src": "media/audio/u23.d03.vocab.gradually.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "settle in",
+          "ru": "обживаться",
+          "ipa": "/ˈsetl ɪn/",
+          "example": "It took a month to settle in.",
+          "exampleRu": "На то, чтобы обжиться, ушёл месяц.",
+          "audio": {
+            "src": "media/audio/u23.d03.vocab.settlein.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u23.d03.grammar",
+      "title": {
+        "en": "be used to / get used to",
+        "ru": "be used to / get used to"
+      },
+      "rule": {
+        "en": "\"be used to + -ing/noun\" means you are ACCUSTOMED to something (it feels normal now). \"get used to\" means you are becoming accustomed. Note the -ing form, not the bare verb.",
+        "ru": "«be used to + -ing/существительное» значит, что ты ПРИВЫК к чему-то (теперь это нормально). «get used to» — привыкаешь. Внимание: форма -ing, а не голый глагол."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "be used to + -ing",
+            "ru": "be used to + -ing"
+          },
+          "formula": "am/is/are used to + verb-ing/noun",
+          "examples": [
+            {
+              "en": "I'm used to getting up early.",
+              "ru": "Я привык рано вставать."
+            }
+          ],
+          "ref": "used-to"
+        },
+        {
+          "label": {
+            "en": "get used to (become)",
+            "ru": "get used to (привыкать)"
+          },
+          "formula": "get used to + verb-ing/noun",
+          "examples": [
+            {
+              "en": "She's getting used to the cold.",
+              "ru": "Она привыкает к холоду."
+            }
+          ],
+          "ref": "used-to"
+        },
+        {
+          "label": {
+            "en": "not used to",
+            "ru": "не привык"
+          },
+          "formula": "not used to + -ing/noun",
+          "examples": [
+            {
+              "en": "I'm not used to driving here.",
+              "ru": "Я не привык здесь водить."
+            }
+          ],
+          "ref": "used-to"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"be used to\" + -ing or a noun, NOT the bare verb: \"used to living\", not \"used to live\".",
+          "ru": "«be used to» + -ing или существительное, НЕ голый глагол: «used to living», а не «used to live»."
+        },
+        {
+          "en": "Do not confuse with \"used to + verb\" (past habit): \"I used to live\" vs \"I'm used to living\".",
+          "ru": "Не путай с «used to + глагол» (прошлая привычка): «I used to live» и «I'm used to living»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u23.d03.reading",
+      "title": {
+        "en": "A new country",
+        "ru": "Новая страна"
+      },
+      "blocks": [
+        {
+          "id": "u23.d03.reading.b1",
+          "en": "When Elena first moved to Norway, everything felt strange. She wasn't used to the long, dark winters, and she wasn't used to eating dinner so early. \"At first, I couldn't get used to the silence,\" she said.",
+          "ru": "Когда Елена только переехала в Норвегию, всё казалось странным. Она не привыкла к долгим тёмным зимам и к такому раннему ужину. «Сначала я никак не могла привыкнуть к тишине», — сказала она.",
+          "audio": {
+            "src": "media/audio/u23.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u23.d03.reading.b2",
+          "en": "But gradually, she adapted. \"Now I'm used to the cold, and I'm even getting used to skiing to work! It's funny how you get used to almost anything. This place used to feel foreign, but now it feels like home.\"",
+          "ru": "Но постепенно она приспособилась. «Теперь я привыкла к холоду и даже привыкаю ездить на работу на лыжах! Забавно, как ко всему привыкаешь. Раньше это место казалось чужим, а теперь ощущается как дом».",
+          "audio": {
+            "src": "media/audio/u23.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "foreign",
+          "ru": "чужой, иностранный",
+          "ipa": "/ˈfɒrən/"
+        },
+        {
+          "word": "silence",
+          "ru": "тишина",
+          "ipa": "/ˈsaɪləns/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u23.d03.listening",
+      "title": {
+        "en": "How is the new job?",
+        "ru": "Как новая работа?"
+      },
+      "audio": {
+        "src": "media/audio/u23.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "How's the new job? Long hours?",
+          "ru": "Как новая работа? Длинный день?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Yes, but I'm getting used to it.",
+          "ru": "Да, но я привыкаю."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Are you used to the early starts?",
+          "ru": "Ты привык к ранним подъёмам?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Almost. I'm not used to waking up at five yet.",
+          "ru": "Почти. К подъёму в пять пока не привык."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u23.d03.ex.l.01",
+          "instruction": {
+            "en": "What is he getting used to?",
+            "ru": "К чему он привыкает?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.be-used-to"
+          ],
+          "prompt": "He's getting used to ___ .",
+          "options": [
+            "it",
+            "do it",
+            "be it"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u23.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u23.d03.ex.c.01",
+          "instruction": {
+            "en": "be used to + -ing.",
+            "ru": "be used to + -ing."
+          },
+          "tags": [
+            "grammar.be-used-to"
+          ],
+          "prompt": "I'm used to ___ up early.",
+          "options": [
+            "getting",
+            "get",
+            "got"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u23.d03.ex.g.01",
+          "instruction": {
+            "en": "get used to.",
+            "ru": "get used to."
+          },
+          "tags": [
+            "grammar.be-used-to"
+          ],
+          "prompt": "She's getting used to ___ in a big city. (live)",
+          "answers": [
+            "living"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u23.d03.ex.c.02",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.be-used-to"
+          ],
+          "prompt": "He isn't used to ___ so much.",
+          "options": [
+            "walking",
+            "walk",
+            "walked"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u23.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.be-used-to"
+          ],
+          "variants": [
+            "I'm used to live here now.",
+            "I'm used to living here now."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u23.d03.ex.c.03",
+          "instruction": {
+            "en": "not used to.",
+            "ru": "не привык."
+          },
+          "tags": [
+            "grammar.be-used-to"
+          ],
+          "prompt": "They're ___ used to the noise yet.",
+          "options": [
+            "not",
+            "don't",
+            "no"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u23.d03.ex.g.02",
+          "instruction": {
+            "en": "+ noun.",
+            "ru": "+ существительное."
+          },
+          "tags": [
+            "grammar.be-used-to"
+          ],
+          "prompt": "I'm not used to ___ weather. (this)",
+          "answers": [
+            "this"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u23.d03.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.be-used-to"
+          ],
+          "tokens": [
+            "I'm",
+            "used",
+            "to",
+            "working",
+            "from",
+            "home"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u23.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.life"
+          ],
+          "pairs": [
+            {
+              "left": "adapt",
+              "right": "приспосабливаться"
+            },
+            {
+              "left": "gradually",
+              "right": "постепенно"
+            },
+            {
+              "left": "settle in",
+              "right": "обживаться"
+            },
+            {
+              "left": "climate",
+              "right": "климат"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u23.d03.ex.c.04",
+          "instruction": {
+            "en": "Becoming accustomed.",
+            "ru": "Привыкаем."
+          },
+          "tags": [
+            "grammar.be-used-to"
+          ],
+          "prompt": "It was hard, but I ___ used to it.",
+          "options": [
+            "got",
+            "used",
+            "was"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u23.d03.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.be-used-to"
+          ],
+          "variants": [
+            "She's used to drive on the left.",
+            "She's used to driving on the left."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u23.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.be-used-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Теперь я привык рано вставать.",
+          "answers": [
+            "I'm used to getting up early now.",
+            "I am used to getting up early now."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i'm used to get up early now",
+                "i used to get up early now",
+                "i'm used to getting up early now?"
+              ],
+              "explanation": {
+                "en": "be used to + -ing: I am used to getting up early.",
+                "ru": "be used to + -ing: I am used to getting up early."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u23.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.be-used-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я не привык здесь водить.",
+          "answers": [
+            "I'm not used to driving here.",
+            "I am not used to driving here."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i'm not used to drive here",
+                "i not used to driving here",
+                "i'm not use to driving here"
+              ],
+              "explanation": {
+                "en": "not used to + -ing: I am not used to driving here.",
+                "ru": "not used to + -ing: I am not used to driving here."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

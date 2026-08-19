@@ -1,0 +1,597 @@
+{
+  "id": "u23.d01",
+  "title": {
+    "en": "I used to play outside",
+    "ru": "Раньше я играл на улице"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.used-to",
+    "vocab.life"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u23.d01.vocab",
+      "title": {
+        "en": "Childhood & the past",
+        "ru": "Детство и прошлое"
+      },
+      "words": [
+        {
+          "word": "childhood",
+          "ru": "детство",
+          "ipa": "/ˈtʃaɪldhʊd/",
+          "example": "In my childhood, we played outside.",
+          "exampleRu": "В детстве мы играли на улице.",
+          "audio": {
+            "src": "media/audio/u23.d01.vocab.childhood.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "used to",
+          "ru": "раньше (бывало)",
+          "ipa": "/ˈjuːst tə/",
+          "example": "I used to live here.",
+          "exampleRu": "Раньше я здесь жил.",
+          "audio": {
+            "src": "media/audio/u23.d01.vocab.usedto.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "grandparents",
+          "ru": "бабушка и дедушка",
+          "ipa": "/ˈɡrænpeərənts/",
+          "example": "We visited our grandparents.",
+          "exampleRu": "Мы навещали бабушку и дедушку.",
+          "audio": {
+            "src": "media/audio/u23.d01.vocab.grandparents.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "neighbourhood",
+          "ru": "район",
+          "ipa": "/ˈneɪbərhʊd/",
+          "example": "The neighbourhood has changed.",
+          "exampleRu": "Район изменился.",
+          "audio": {
+            "src": "media/audio/u23.d01.vocab.neighbourhood.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "field",
+          "ru": "поле",
+          "ipa": "/fiːld/",
+          "example": "There used to be a field here.",
+          "exampleRu": "Раньше здесь было поле.",
+          "audio": {
+            "src": "media/audio/u23.d01.vocab.field.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "collect",
+          "ru": "собирать",
+          "ipa": "/kəˈlekt/",
+          "example": "I used to collect stamps.",
+          "exampleRu": "Раньше я собирал марки.",
+          "audio": {
+            "src": "media/audio/u23.d01.vocab.collect.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "nowadays",
+          "ru": "в наши дни",
+          "ipa": "/ˈnaʊədeɪz/",
+          "example": "Nowadays it's different.",
+          "exampleRu": "В наши дни всё иначе.",
+          "audio": {
+            "src": "media/audio/u23.d01.vocab.nowadays.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "no longer",
+          "ru": "больше не",
+          "ipa": "/noʊ ˈlɒŋɡər/",
+          "example": "He no longer works here.",
+          "exampleRu": "Он больше здесь не работает.",
+          "audio": {
+            "src": "media/audio/u23.d01.vocab.nolonger.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "back then",
+          "ru": "тогда, в те времена",
+          "ipa": "/bæk ðen/",
+          "example": "Back then, life was slower.",
+          "exampleRu": "Тогда жизнь была медленнее.",
+          "audio": {
+            "src": "media/audio/u23.d01.vocab.backthen.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "memory",
+          "ru": "воспоминание",
+          "ipa": "/ˈmeməri/",
+          "example": "A happy memory.",
+          "exampleRu": "Счастливое воспоминание.",
+          "audio": {
+            "src": "media/audio/u23.d01.vocab.memory.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u23.d01.grammar",
+      "title": {
+        "en": "used to",
+        "ru": "used to"
+      },
+      "rule": {
+        "en": "Use \"used to + verb\" for a habit or a state that was true in the past but is not true now. It is only for the past — there is no present form.",
+        "ru": "Используй «used to + глагол» для привычки или состояния, которое было в прошлом, но не сейчас. Это только для прошлого — настоящей формы нет."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "past habit",
+            "ru": "прошлая привычка"
+          },
+          "formula": "used to + verb",
+          "examples": [
+            {
+              "en": "I used to play outside every day.",
+              "ru": "Раньше я каждый день играл на улице."
+            }
+          ],
+          "ref": "used-to"
+        },
+        {
+          "label": {
+            "en": "past state",
+            "ru": "прошлое состояние"
+          },
+          "formula": "used to + be/have/like…",
+          "examples": [
+            {
+              "en": "There used to be a shop here.",
+              "ru": "Раньше здесь был магазин."
+            }
+          ],
+          "ref": "used-to"
+        },
+        {
+          "label": {
+            "en": "negative / question",
+            "ru": "отрицание / вопрос"
+          },
+          "formula": "didn't use to · Did you use to …?",
+          "examples": [
+            {
+              "en": "I didn't use to like coffee. Did you use to smoke?",
+              "ru": "Раньше я не любил кофе. Ты раньше курил?"
+            }
+          ],
+          "ref": "used-to"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "In negatives and questions, drop the -d: \"didn't use to\", \"Did you use to…?\"",
+          "ru": "В отрицании и вопросе теряется -d: «didn't use to», «Did you use to…?»"
+        },
+        {
+          "en": "\"used to\" is only past — for a present habit use the present simple: \"I usually walk\".",
+          "ru": "«used to» — только прошлое; для настоящей привычки — present simple: «I usually walk»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u23.d01.reading",
+      "title": {
+        "en": "How things were",
+        "ru": "Как всё было"
+      },
+      "blocks": [
+        {
+          "id": "u23.d01.reading.b1",
+          "en": "When my grandfather was young, life used to be very different. There didn't use to be televisions or phones. Children used to play in the streets until dark, and everyone used to know their neighbours.",
+          "ru": "Когда мой дед был молод, жизнь была совсем другой. Раньше не было телевизоров и телефонов. Дети играли на улицах до темноты, и все знали своих соседей.",
+          "audio": {
+            "src": "media/audio/u23.d01.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u23.d01.reading.b2",
+          "en": "\"We used to grow our own vegetables,\" he told me. \"And on Sundays, the whole family used to eat together.\" There used to be a small cinema in town, but it closed years ago. \"Things change,\" he said, \"but the memories stay.\"",
+          "ru": "«Мы сами выращивали овощи, — рассказал он мне. — А по воскресеньям вся семья ела вместе». Раньше в городе был маленький кинотеатр, но он закрылся много лет назад. «Всё меняется, — сказал он, — но воспоминания остаются».",
+          "audio": {
+            "src": "media/audio/u23.d01.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "grow",
+          "ru": "выращивать",
+          "ipa": "/ɡroʊ/"
+        },
+        {
+          "word": "cinema",
+          "ru": "кинотеатр",
+          "ipa": "/ˈsɪnəmə/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u23.d01.listening",
+      "title": {
+        "en": "Did you use to…?",
+        "ru": "Ты раньше…?"
+      },
+      "audio": {
+        "src": "media/audio/u23.d01.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Did you use to live in the countryside?",
+          "ru": "Ты раньше жил в деревне?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Yes, I did. We used to have a big garden.",
+          "ru": "Да. У нас был большой сад."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Did you use to like it?",
+          "ru": "Тебе нравилось?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "I didn't use to, but now I miss it.",
+          "ru": "Раньше нет, но теперь скучаю по нему."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u23.d01.ex.l.01",
+          "instruction": {
+            "en": "What did they have?",
+            "ru": "Что у них было?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.used-to"
+          ],
+          "prompt": "They used to ___ a big garden.",
+          "options": [
+            "have",
+            "had",
+            "having"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u23.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u23.d01.ex.g.01",
+          "instruction": {
+            "en": "Past habit.",
+            "ru": "Прошлая привычка."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "I ___ to play football every weekend. (used)",
+          "answers": [
+            "used"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u23.d01.ex.c.01",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "There ___ to be a shop on this corner.",
+          "options": [
+            "used",
+            "use",
+            "uses"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u23.d01.ex.g.02",
+          "instruction": {
+            "en": "Negative.",
+            "ru": "Отрицание."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "I didn't ___ to like vegetables. (use)",
+          "answers": [
+            "use"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u23.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "variants": [
+            "I use to live in London.",
+            "I used to live in London."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u23.d01.ex.c.02",
+          "instruction": {
+            "en": "Question.",
+            "ru": "Вопрос."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "___ you use to walk to school?",
+          "options": [
+            "Did",
+            "Do",
+            "Were"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u23.d01.ex.g.03",
+          "instruction": {
+            "en": "Past state.",
+            "ru": "Прошлое состояние."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "My hair ___ to be much longer. (used)",
+          "answers": [
+            "used"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u23.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "tokens": [
+            "We",
+            "used",
+            "to",
+            "visit",
+            "our",
+            "grandparents"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u23.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.life"
+          ],
+          "pairs": [
+            {
+              "left": "childhood",
+              "right": "детство"
+            },
+            {
+              "left": "neighbourhood",
+              "right": "район"
+            },
+            {
+              "left": "collect",
+              "right": "собирать"
+            },
+            {
+              "left": "back then",
+              "right": "тогда"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u23.d01.ex.c.03",
+          "instruction": {
+            "en": "Negative form.",
+            "ru": "Отрицательная форма."
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "prompt": "She ___ use to eat meat.",
+          "options": [
+            "didn't",
+            "doesn't",
+            "wasn't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u23.d01.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.used-to"
+          ],
+          "variants": [
+            "Did you used to smoke?",
+            "Did you use to smoke?"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u23.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.used-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Раньше я жил у моря.",
+          "answers": [
+            "I used to live by the sea.",
+            "I used to live near the sea."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i use to live by the sea",
+                "i used to lived by the sea",
+                "i was used to live by the sea"
+              ],
+              "explanation": {
+                "en": "used to + bare verb: I used to live by the sea.",
+                "ru": "used to + голый глагол: I used to live by the sea."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u23.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.used-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Раньше здесь был кинотеатр.",
+          "answers": [
+            "There used to be a cinema here."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "there use to be a cinema here",
+                "there used to have a cinema here",
+                "here used to be a cinema"
+              ],
+              "explanation": {
+                "en": "There used to be…: There used to be a cinema here.",
+                "ru": "There used to be…: There used to be a cinema here."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
