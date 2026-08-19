@@ -32,6 +32,7 @@ test('v2 upgrade preserves v1 data and adds the books table', async () => {
   });
   v2.version(2).stores({ books: 'id, addedAt' });
   v2.version(3).stores({ catalogCache: 'id, cachedAt' });
+  v2.version(4).stores({ analyticsQueue: '++id, ts' });
   await v2.open();
 
   expect(await v2.table('wordStatus').count()).toBe(1);
@@ -45,6 +46,11 @@ test('v2 upgrade preserves v1 data and adds the books table', async () => {
   // v3 adds catalogCache without disturbing anything above
   await v2.table('catalogCache').add({ id: 'c1', book: { title: 'X', chapters: [] }, cachedAt: 1 });
   expect(await v2.table('catalogCache').count()).toBe(1);
+
+  // v4 adds analyticsQueue, again leaving prior stores intact
+  await v2.table('analyticsQueue').add({ event: 'app_open', ts: 1 });
+  expect(await v2.table('analyticsQueue').count()).toBe(1);
+  expect(await v2.table('wordStatus').count()).toBe(1);
   v2.close();
   await Dexie.delete(name);
 });

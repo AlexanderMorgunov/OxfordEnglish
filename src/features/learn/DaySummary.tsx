@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import type { Day } from '@/content/schema';
 import { useSessionResults } from '@/features/progress/sessionResults';
 import { dayExercises } from '@/features/progress/completion';
+import { track } from '@/features/analytics/analytics';
 import { Card, ProgressBar } from '@/shared/ui';
 
 export type NextDay = { unitId: string; dayId: string; title: string };
@@ -21,13 +23,19 @@ const nextClass =
 export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }: Props) {
   const results = useSessionResults((s) => s.results);
   const exercises = dayExercises(day);
-  if (exercises.length === 0) return null;
+  const total = exercises.length;
 
   const attempted = exercises.filter((e) => results[e.id]);
-  const done = attempted.length === exercises.length;
+  const done = total > 0 && attempted.length === total;
   const firstTry = attempted.filter((e) => results[e.id]?.firstCorrect).length;
   const missed = attempted.filter((e) => results[e.id] && !results[e.id]!.firstCorrect);
   const reviewTags = [...new Set(missed.flatMap((e) => results[e.id]?.tags ?? []))];
+
+  useEffect(() => {
+    if (done) void track('day_complete', { dayId: day.id, firstTry, total });
+  }, [done, day.id, firstTry, total]);
+
+  if (total === 0) return null;
 
   return (
     <Card className={done ? 'border-teal-dim' : ''}>

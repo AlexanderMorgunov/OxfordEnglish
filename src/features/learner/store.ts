@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import type { Level } from '@/content/schema';
+import { track } from '@/features/analytics/analytics';
 
 const KEY = 'oxford-learner';
 
@@ -40,6 +41,7 @@ export const useLearner = create<LearnerStore>((set) => ({
     set(() => {
       const next: LearnerState = { level, recommendedUnitId, placementDone: true };
       persist(next);
+      void track('placement_done', { level });
       return next;
     }),
   setLevel: (level, recommendedUnitId) =>

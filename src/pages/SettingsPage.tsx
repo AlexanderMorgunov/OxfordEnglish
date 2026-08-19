@@ -4,6 +4,7 @@ import { Button, Card, Eyebrow, Input, Option } from '@/shared/ui';
 import { PROVIDERS, type AiProviderId } from '@/features/ai/provider';
 import { isConfigured, useAiStore } from '@/features/ai/store';
 import { exportData, importData } from '@/features/progress/backup';
+import { isAnalyticsEnabled, setAnalyticsEnabled } from '@/features/analytics/analytics';
 import { useLearner } from '@/features/learner/store';
 import { useUiLang } from '@/features/i18n/uiLang';
 import type { Level } from '@/content/schema';
@@ -53,6 +54,13 @@ export function SettingsPage() {
 
   const { level, placementDone, setLevel } = useLearner();
   const { lang, setLang } = useUiLang();
+
+  const [analytics, setAnalytics] = useState(isAnalyticsEnabled());
+  const toggleAnalytics = () => {
+    const next = !analytics;
+    setAnalyticsEnabled(next);
+    setAnalytics(next);
+  };
 
   const [dataMsg, setDataMsg] = useState('');
   const doExport = async () => {
@@ -253,6 +261,23 @@ export function SettingsPage() {
           </label>
           {dataMsg && <span className="font-mono text-2xs text-teal">{dataMsg}</span>}
         </div>
+      </div>
+
+      <div className="mt-10 border-t border-line pt-8">
+        <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
+          анонимная статистика · anonymous usage
+        </p>
+        <p className="mb-4 text-sm text-muted text-pretty">
+          Полностью анонимные, обезличенные события (открытие приложения,
+          завершённый день) — чтобы понимать, помогает ли приложение учиться.
+          Без личных данных, без содержимого. Можно выключить в любой момент.
+        </p>
+        <Option
+          state={analytics ? 'chosen' : 'default'}
+          onClick={toggleAnalytics}
+        >
+          {analytics ? 'Включена' : 'Выключена'}
+        </Option>
       </div>
     </section>
   );

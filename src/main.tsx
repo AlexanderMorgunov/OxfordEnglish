@@ -12,9 +12,12 @@ import '@fontsource/jetbrains-mono/600.css';
 
 import './app.css';
 import { router } from '@/router';
+import { initAnalytics } from '@/features/analytics/analytics';
 
 const rootEl = document.getElementById('root');
 if (!rootEl) throw new Error('Root element #root not found');
+
+initAnalytics();
 
 createRoot(rootEl).render(
   <StrictMode>

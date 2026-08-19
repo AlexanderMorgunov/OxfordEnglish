@@ -69,6 +69,14 @@ export interface CatalogCacheEntry {
   cachedAt: number;
 }
 
+/** One queued anonymous analytics event, awaiting a flush to the ingestion endpoint. */
+export interface AnalyticsEvent {
+  id?: number;
+  event: string;
+  props?: Record<string, string | number | boolean>;
+  ts: number;
+}
+
 const db = new Dexie('oxford-english') as Dexie & {
   attempts: EntityTable<ExerciseAttempt, 'id'>;
   wordStatus: EntityTable<WordStatus, 'word'>;
@@ -77,6 +85,7 @@ const db = new Dexie('oxford-english') as Dexie & {
   translations: EntityTable<WordTranslation, 'word'>;
   books: EntityTable<BookRecord, 'id'>;
   catalogCache: EntityTable<CatalogCacheEntry, 'id'>;
+  analyticsQueue: EntityTable<AnalyticsEvent, 'id'>;
 };
 
 db.version(1).stores({
@@ -93,6 +102,10 @@ db.version(2).stores({
 
 db.version(3).stores({
   catalogCache: 'id, cachedAt',
+});
+
+db.version(4).stores({
+  analyticsQueue: '++id, ts',
 });
 
 export { db };
