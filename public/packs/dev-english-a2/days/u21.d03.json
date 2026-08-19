@@ -1,0 +1,597 @@
+{
+  "id": "u21.d03",
+  "title": {
+    "en": "The train leaves at six",
+    "ru": "Поезд отходит в шесть"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.future-continuous",
+    "vocab.plans"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u21.d03.vocab",
+      "title": {
+        "en": "Timetables",
+        "ru": "Расписания"
+      },
+      "words": [
+        {
+          "word": "depart",
+          "ru": "отправляться",
+          "ipa": "/dɪˈpɑːrt/",
+          "example": "The bus departs at eight.",
+          "exampleRu": "Автобус отправляется в восемь.",
+          "audio": {
+            "src": "media/audio/u21.d03.vocab.depart.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "open",
+          "ru": "открывать(ся)",
+          "ipa": "/ˈoʊpən/",
+          "example": "The shop opens at nine.",
+          "exampleRu": "Магазин открывается в девять.",
+          "audio": {
+            "src": "media/audio/u21.d03.vocab.open.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "close",
+          "ru": "закрывать(ся)",
+          "ipa": "/kloʊz/",
+          "example": "It closes at ten.",
+          "exampleRu": "Он закрывается в десять.",
+          "audio": {
+            "src": "media/audio/u21.d03.vocab.close.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "begin",
+          "ru": "начинаться",
+          "ipa": "/bɪˈɡɪn/",
+          "example": "The class begins at two.",
+          "exampleRu": "Занятие начинается в два.",
+          "audio": {
+            "src": "media/audio/u21.d03.vocab.begin.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "gate",
+          "ru": "выход (в аэропорту)",
+          "ipa": "/ɡeɪt/",
+          "example": "Go to gate five.",
+          "exampleRu": "Идите к выходу пять.",
+          "audio": {
+            "src": "media/audio/u21.d03.vocab.gate.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "board",
+          "ru": "садиться (на рейс)",
+          "ipa": "/bɔːrd/",
+          "example": "We board at noon.",
+          "exampleRu": "Посадка в полдень.",
+          "audio": {
+            "src": "media/audio/u21.d03.vocab.board.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "delay",
+          "ru": "задержка",
+          "ipa": "/dɪˈleɪ/",
+          "example": "There's a short delay.",
+          "exampleRu": "Небольшая задержка.",
+          "audio": {
+            "src": "media/audio/u21.d03.vocab.delay.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "timetable",
+          "ru": "расписание",
+          "ipa": "/ˈtaɪmteɪbl/",
+          "example": "Check the timetable.",
+          "exampleRu": "Посмотри расписание.",
+          "audio": {
+            "src": "media/audio/u21.d03.vocab.timetable.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "platform",
+          "ru": "платформа",
+          "ipa": "/ˈplætfɔːrm/",
+          "example": "The train is on platform two.",
+          "exampleRu": "Поезд на платформе два.",
+          "audio": {
+            "src": "media/audio/u21.d03.vocab.platform.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ticket",
+          "ru": "билет",
+          "ipa": "/ˈtɪkɪt/",
+          "example": "I bought a ticket.",
+          "exampleRu": "Я купил билет.",
+          "audio": {
+            "src": "media/audio/u21.d03.vocab.ticket.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u21.d03.grammar",
+      "title": {
+        "en": "Present simple for timetables",
+        "ru": "Present simple для расписаний"
+      },
+      "rule": {
+        "en": "For a fixed timetable or schedule (trains, films, shops), use the PRESENT simple, even about the future. This is common for public events with set times.",
+        "ru": "Для чёткого расписания (поезда, фильмы, магазины) используй PRESENT simple, даже говоря о будущем. Так говорят о событиях с точным временем."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "timetable → present simple",
+            "ru": "расписание → present simple"
+          },
+          "formula": "The train leaves at 6.",
+          "examples": [
+            {
+              "en": "The train leaves at six tomorrow.",
+              "ru": "Поезд отходит завтра в шесть."
+            }
+          ],
+          "ref": "future-forms-extended"
+        },
+        {
+          "label": {
+            "en": "shops / events",
+            "ru": "магазины / события"
+          },
+          "formula": "opens / closes / starts / begins",
+          "examples": [
+            {
+              "en": "The museum opens at ten on Sundays.",
+              "ru": "Музей открывается в десять по воскресеньям."
+            }
+          ],
+          "ref": "future-forms-extended"
+        },
+        {
+          "label": {
+            "en": "question",
+            "ru": "вопрос"
+          },
+          "formula": "What time does it start?",
+          "examples": [
+            {
+              "en": "What time does the film start?",
+              "ru": "Во сколько начинается фильм?"
+            }
+          ],
+          "ref": "future-forms-extended"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Timetables use present simple: \"The train leaves at 6\", not \"will leave\".",
+          "ru": "Расписания — present simple: «The train leaves at 6», а не «will leave»."
+        },
+        {
+          "en": "Third person needs -s: \"The shop opens\", \"the film starts\".",
+          "ru": "В 3-м лице нужен -s: «The shop opens», «the film starts»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u21.d03.reading",
+      "title": {
+        "en": "A day of connections",
+        "ru": "День пересадок"
+      },
+      "blocks": [
+        {
+          "id": "u21.d03.reading.b1",
+          "en": "Anna checked her timetable carefully. \"The train leaves at 6:15 and arrives at 8:30. Then my flight departs at 10, so I board at 9:20.\" She liked to plan everything to the minute.",
+          "ru": "Анна внимательно посмотрела расписание. «Поезд отходит в 6:15 и прибывает в 8:30. Потом мой рейс вылетает в 10, так что посадка в 9:20». Она любила планировать всё до минуты.",
+          "audio": {
+            "src": "media/audio/u21.d03.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u21.d03.reading.b2",
+          "en": "\"The airport shops open at 6, so I'll have time for a coffee,\" she thought. \"And the gate closes 20 minutes before take-off.\" Everything fit together perfectly — unless, of course, there was a delay.",
+          "ru": "«Магазины в аэропорту открываются в 6, так что успею на кофе, — подумала она. — А выход закрывается за 20 минут до вылета». Всё складывалось идеально — если, конечно, не будет задержки.",
+          "audio": {
+            "src": "media/audio/u21.d03.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "take-off",
+          "ru": "взлёт",
+          "ipa": "/ˈteɪkɒf/"
+        },
+        {
+          "word": "connection",
+          "ru": "пересадка",
+          "ipa": "/kəˈnekʃən/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u21.d03.listening",
+      "title": {
+        "en": "What time does it leave?",
+        "ru": "Во сколько отправление?"
+      },
+      "audio": {
+        "src": "media/audio/u21.d03.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "What time does the next train leave?",
+          "ru": "Во сколько отходит следующий поезд?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "It leaves at 6:15 from platform two.",
+          "ru": "Он отходит в 6:15 с платформы два."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "And when does it arrive?",
+          "ru": "А когда прибывает?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "It arrives at 8:30, if there's no delay.",
+          "ru": "Прибывает в 8:30, если не будет задержки."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u21.d03.ex.l.01",
+          "instruction": {
+            "en": "When does the train leave?",
+            "ru": "Во сколько отходит поезд?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.future-continuous"
+          ],
+          "prompt": "It ___ at 6:15.",
+          "options": [
+            "leaves",
+            "will leave",
+            "leaving"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u21.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u21.d03.ex.g.01",
+          "instruction": {
+            "en": "Timetable.",
+            "ru": "Расписание."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "prompt": "The film ___ at eight tonight. (start)",
+          "answers": [
+            "starts"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u21.d03.ex.c.01",
+          "instruction": {
+            "en": "Choose the tense.",
+            "ru": "Выбери время."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "prompt": "The shop ___ at nine tomorrow.",
+          "options": [
+            "opens",
+            "will open",
+            "is opening"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u21.d03.ex.g.02",
+          "instruction": {
+            "en": "Third person -s.",
+            "ru": "3-е лицо -s."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "prompt": "The bus ___ at 7:45. (depart)",
+          "answers": [
+            "departs"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u21.d03.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "variants": [
+            "The train will leave at six every day.",
+            "The train leaves at six every day."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u21.d03.ex.c.02",
+          "instruction": {
+            "en": "Question.",
+            "ru": "Вопрос."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "prompt": "What time ___ the museum close?",
+          "options": [
+            "does",
+            "is",
+            "will"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u21.d03.ex.g.03",
+          "instruction": {
+            "en": "Events.",
+            "ru": "События."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "prompt": "The concert ___ at nine. (begin)",
+          "answers": [
+            "begins"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u21.d03.ex.o.01",
+          "instruction": {
+            "en": "Ask about a timetable.",
+            "ru": "Спроси про расписание."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "tokens": [
+            "What",
+            "time",
+            "does",
+            "the",
+            "film",
+            "start"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u21.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.plans"
+          ],
+          "pairs": [
+            {
+              "left": "depart",
+              "right": "отправляться"
+            },
+            {
+              "left": "gate",
+              "right": "выход"
+            },
+            {
+              "left": "delay",
+              "right": "задержка"
+            },
+            {
+              "left": "board",
+              "right": "садиться на рейс"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u21.d03.ex.c.03",
+          "instruction": {
+            "en": "Fixed schedule.",
+            "ru": "Фиксированное расписание."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "prompt": "Our flight ___ at noon, so let's be early.",
+          "options": [
+            "leaves",
+            "will leave",
+            "is leaving"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u21.d03.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "variants": [
+            "The class begin at two.",
+            "The class begins at two."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u21.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.future-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Поезд отходит в шесть.",
+          "answers": [
+            "The train leaves at six."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the train will leave at six",
+                "the train leave at six",
+                "the train is leaving at six"
+              ],
+              "explanation": {
+                "en": "Timetable → present simple: The train leaves at six.",
+                "ru": "Расписание → present simple: The train leaves at six."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u21.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.future-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Во сколько открывается магазин?",
+          "answers": [
+            "What time does the shop open?",
+            "When does the shop open?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "what time the shop opens",
+                "what time does the shop opens",
+                "what time will the shop open"
+              ],
+              "explanation": {
+                "en": "What time does the shop open?",
+                "ru": "What time does the shop open?"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

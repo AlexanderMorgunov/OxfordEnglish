@@ -88,6 +88,8 @@ export const SKILL_TAGS = [
   'grammar.modals-deduction',
   'grammar.modals-deduction-past',
   'grammar.gerund-infinitive',
+  'grammar.future-continuous',
+  'grammar.be-about-to',
 
   // functions (everyday communication)
   'functions.ordering',

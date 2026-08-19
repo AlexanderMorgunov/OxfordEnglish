@@ -1,0 +1,605 @@
+{
+  "id": "u21.d04",
+  "title": {
+    "en": "Which future?",
+    "ru": "Какое будущее?"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.future-continuous",
+    "grammar.be-about-to",
+    "vocab.plans"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u21.d04.vocab",
+      "title": {
+        "en": "Deciding & predicting",
+        "ru": "Решения и прогнозы"
+      },
+      "words": [
+        {
+          "word": "decide",
+          "ru": "решать",
+          "ipa": "/dɪˈsaɪd/",
+          "example": "I'll decide later.",
+          "exampleRu": "Я решу позже.",
+          "audio": {
+            "src": "media/audio/u21.d04.vocab.decide.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "predict",
+          "ru": "предсказывать",
+          "ipa": "/prɪˈdɪkt/",
+          "example": "Experts predict rain.",
+          "exampleRu": "Эксперты предсказывают дождь.",
+          "audio": {
+            "src": "media/audio/u21.d04.vocab.predict.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "arrange",
+          "ru": "договариваться",
+          "ipa": "/əˈreɪndʒ/",
+          "example": "We've arranged to meet.",
+          "exampleRu": "Мы договорились встретиться.",
+          "audio": {
+            "src": "media/audio/u21.d04.vocab.arrange.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "expect",
+          "ru": "ожидать",
+          "ipa": "/ɪkˈspekt/",
+          "example": "I expect she'll be late.",
+          "exampleRu": "Думаю, она опоздает.",
+          "audio": {
+            "src": "media/audio/u21.d04.vocab.expect.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "probably",
+          "ru": "вероятно",
+          "ipa": "/ˈprɒbəbli/",
+          "example": "It'll probably rain.",
+          "exampleRu": "Наверное, будет дождь.",
+          "audio": {
+            "src": "media/audio/u21.d04.vocab.probably.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "definitely",
+          "ru": "определённо",
+          "ipa": "/ˈdefɪnətli/",
+          "example": "I'll definitely come.",
+          "exampleRu": "Я точно приду.",
+          "audio": {
+            "src": "media/audio/u21.d04.vocab.definitely.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "appointment",
+          "ru": "встреча, приём",
+          "ipa": "/əˈpɔɪntmənt/",
+          "example": "I have an appointment.",
+          "exampleRu": "У меня назначена встреча.",
+          "audio": {
+            "src": "media/audio/u21.d04.vocab.appointment.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "deadline",
+          "ru": "срок",
+          "ipa": "/ˈdedlaɪn/",
+          "example": "The deadline is Monday.",
+          "exampleRu": "Срок — понедельник.",
+          "audio": {
+            "src": "media/audio/u21.d04.vocab.deadline.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "diary",
+          "ru": "ежедневник",
+          "ipa": "/ˈdaɪəri/",
+          "example": "It's in my diary.",
+          "exampleRu": "Это записано в ежедневнике.",
+          "audio": {
+            "src": "media/audio/u21.d04.vocab.diary.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "prediction",
+          "ru": "предсказание",
+          "ipa": "/prɪˈdɪkʃn/",
+          "example": "That's my prediction.",
+          "exampleRu": "Таков мой прогноз.",
+          "audio": {
+            "src": "media/audio/u21.d04.vocab.prediction.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u21.d04.grammar",
+      "title": {
+        "en": "Choosing the right future",
+        "ru": "Выбираем нужное будущее"
+      },
+      "rule": {
+        "en": "Pick your future form by meaning: \"will\" for a prediction or a decision now; \"going to\" for a plan or evidence; present continuous for an arrangement; future continuous for an action in progress; \"be about to\" for the very next moment.",
+        "ru": "Выбирай форму будущего по смыслу: «will» — прогноз или решение сейчас; «going to» — план или видимые признаки; present continuous — договорённость; future continuous — действие в процессе; «be about to» — следующий миг."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "will (predict/decide now)",
+            "ru": "will (прогноз/решение сейчас)"
+          },
+          "formula": "will + verb",
+          "examples": [
+            {
+              "en": "I think it will rain. / I'll get it!",
+              "ru": "Думаю, будет дождь. / Я открою!"
+            }
+          ],
+          "ref": "future-forms"
+        },
+        {
+          "label": {
+            "en": "present continuous (arrangement)",
+            "ru": "present continuous (договорённость)"
+          },
+          "formula": "am/is/are + -ing + future time",
+          "examples": [
+            {
+              "en": "I'm meeting Sam at six.",
+              "ru": "Я встречаюсь с Сэмом в шесть."
+            }
+          ],
+          "ref": "future-forms"
+        },
+        {
+          "label": {
+            "en": "future continuous / about to",
+            "ru": "future continuous / about to"
+          },
+          "formula": "will be + -ing · be about to + verb",
+          "examples": [
+            {
+              "en": "At six I'll be driving. / We're about to start.",
+              "ru": "В шесть я буду за рулём. / Мы вот-вот начнём."
+            }
+          ],
+          "ref": "future-forms-extended"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "An arrangement with a person → present continuous: \"I'm seeing the doctor at 3\".",
+          "ru": "Договорённость с человеком → present continuous: «I'm seeing the doctor at 3»."
+        },
+        {
+          "en": "An action in progress at a future time → future continuous: \"I'll be working\".",
+          "ru": "Действие в процессе в будущем → future continuous: «I'll be working»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u21.d04.reading",
+      "title": {
+        "en": "A busy week ahead",
+        "ru": "Насыщенная неделя впереди"
+      },
+      "blocks": [
+        {
+          "id": "u21.d04.reading.b1",
+          "en": "\"Next week is going to be busy,\" said Priya, looking at her diary. \"On Monday I'm meeting a client at ten. By Wednesday afternoon I'll be preparing for the big presentation. I think it will go well — I've worked hard.\"",
+          "ru": "«Следующая неделя будет напряжённой», — сказала Прия, глядя в ежедневник. «В понедельник в десять встречаюсь с клиентом. К среде я буду готовиться к большой презентации. Думаю, всё пройдёт хорошо — я много работала».",
+          "audio": {
+            "src": "media/audio/u21.d04.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u21.d04.reading.b2",
+          "en": "\"The deadline is Friday, so I'm working late all week. Right now, actually, I'm about to start on the slides.\" She smiled. \"This time next Saturday, I'll be relaxing with no emails to answer.\"",
+          "ru": "«Срок — пятница, так что всю неделю работаю допоздна. Прямо сейчас, кстати, я вот-вот займусь слайдами». Она улыбнулась. «В это время в следующую субботу я буду отдыхать, и никаких писем».",
+          "audio": {
+            "src": "media/audio/u21.d04.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "client",
+          "ru": "клиент",
+          "ipa": "/ˈklaɪənt/"
+        },
+        {
+          "word": "slides",
+          "ru": "слайды",
+          "ipa": "/slaɪdz/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u21.d04.listening",
+      "title": {
+        "en": "Making plans",
+        "ru": "Строим планы"
+      },
+      "audio": {
+        "src": "media/audio/u21.d04.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "What are you doing on Saturday?",
+          "ru": "Что делаешь в субботу?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "I'm meeting friends in the morning.",
+          "ru": "Утром встречаюсь с друзьями."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "And in the evening?",
+          "ru": "А вечером?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "I'm not sure. I'll probably stay in and relax.",
+          "ru": "Не уверен. Наверное, останусь дома и отдохну."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u21.d04.ex.l.01",
+          "instruction": {
+            "en": "What is the morning plan?",
+            "ru": "Какой план на утро?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.future-continuous"
+          ],
+          "prompt": "She's ___ friends in the morning.",
+          "options": [
+            "meeting",
+            "meet",
+            "met"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u21.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u21.d04.ex.c.01",
+          "instruction": {
+            "en": "An arrangement.",
+            "ru": "Договорённость."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "prompt": "I ___ the dentist at three tomorrow.",
+          "options": [
+            "am seeing",
+            "will see",
+            "see"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u21.d04.ex.c.02",
+          "instruction": {
+            "en": "A decision now.",
+            "ru": "Решение сейчас."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "prompt": "The phone's ringing. I ___ answer it.",
+          "options": [
+            "'ll",
+            "am",
+            "was"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u21.d04.ex.c.03",
+          "instruction": {
+            "en": "Action in progress.",
+            "ru": "Действие в процессе."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "prompt": "Don't call at eight — I ___ be driving.",
+          "options": [
+            "will",
+            "am",
+            "do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u21.d04.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "variants": [
+            "I will meet Sam at six tomorrow (arrangement).",
+            "I'm meeting Sam at six tomorrow."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u21.d04.ex.c.04",
+          "instruction": {
+            "en": "Very soon.",
+            "ru": "Совсем скоро."
+          },
+          "tags": [
+            "grammar.be-about-to"
+          ],
+          "prompt": "Quick, sit down — the show is about to ___ .",
+          "options": [
+            "start",
+            "starting",
+            "starts"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u21.d04.ex.g.01",
+          "instruction": {
+            "en": "Prediction.",
+            "ru": "Прогноз."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "prompt": "I think it ___ probably rain later. (will)",
+          "answers": [
+            "will"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u21.d04.ex.o.01",
+          "instruction": {
+            "en": "Describe an arrangement.",
+            "ru": "Опиши договорённость."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "tokens": [
+            "I'm",
+            "meeting",
+            "a",
+            "client",
+            "at",
+            "ten"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u21.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.plans"
+          ],
+          "pairs": [
+            {
+              "left": "arrange",
+              "right": "договариваться"
+            },
+            {
+              "left": "predict",
+              "right": "предсказывать"
+            },
+            {
+              "left": "appointment",
+              "right": "встреча"
+            },
+            {
+              "left": "deadline",
+              "right": "срок"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u21.d04.ex.c.05",
+          "instruction": {
+            "en": "In progress later.",
+            "ru": "В процессе позже."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "prompt": "This time next week I ___ be lying on a beach.",
+          "options": [
+            "'ll",
+            "am",
+            "was"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u21.d04.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "variants": [
+            "The train will leave at six (timetable).",
+            "The train leaves at six."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u21.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.future-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я встречаюсь с врачом в три завтра.",
+          "answers": [
+            "I'm seeing the doctor at three tomorrow.",
+            "I am seeing the doctor at three tomorrow."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i will see the doctor at three tomorrow",
+                "i see the doctor at three tomorrow",
+                "i am see the doctor at three"
+              ],
+              "explanation": {
+                "en": "Arrangement → present continuous: I am seeing the doctor at three.",
+                "ru": "Договорённость → present continuous: I am seeing the doctor at three."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u21.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.future-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "В это время в следующую субботу я буду отдыхать.",
+          "answers": [
+            "This time next Saturday I'll be relaxing.",
+            "This time next Saturday I will be relaxing."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "this time next saturday i will relax",
+                "this time next saturday i relax",
+                "this time next saturday i'll relaxing"
+              ],
+              "explanation": {
+                "en": "Action in progress → future continuous: I will be relaxing.",
+                "ru": "Действие в процессе → future continuous: I will be relaxing."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

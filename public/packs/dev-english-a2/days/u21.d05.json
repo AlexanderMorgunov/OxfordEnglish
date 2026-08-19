@@ -1,0 +1,600 @@
+{
+  "id": "u21.d05",
+  "title": {
+    "en": "Let's arrange it",
+    "ru": "Давай договоримся"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "functions.arrangements",
+    "vocab.plans"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u21.d05.vocab",
+      "title": {
+        "en": "Arranging",
+        "ru": "Договариваемся"
+      },
+      "words": [
+        {
+          "word": "free",
+          "ru": "свободный",
+          "ipa": "/friː/",
+          "example": "Are you free on Friday?",
+          "exampleRu": "Ты свободен в пятницу?",
+          "audio": {
+            "src": "media/audio/u21.d05.vocab.free.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "busy",
+          "ru": "занятой",
+          "ipa": "/ˈbɪzi/",
+          "example": "I'm busy that day.",
+          "exampleRu": "В тот день я занят.",
+          "audio": {
+            "src": "media/audio/u21.d05.vocab.busy.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "suit",
+          "ru": "подходить",
+          "ipa": "/suːt/",
+          "example": "Does Monday suit you?",
+          "exampleRu": "Понедельник тебе подходит?",
+          "audio": {
+            "src": "media/audio/u21.d05.vocab.suit.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "available",
+          "ru": "доступный, свободный",
+          "ipa": "/əˈveɪləbl/",
+          "example": "I'm available after lunch.",
+          "exampleRu": "Я свободен после обеда.",
+          "audio": {
+            "src": "media/audio/u21.d05.vocab.available.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "confirm",
+          "ru": "подтверждать",
+          "ipa": "/kənˈfɜːrm/",
+          "example": "I'll confirm tomorrow.",
+          "exampleRu": "Я подтвержу завтра.",
+          "audio": {
+            "src": "media/audio/u21.d05.vocab.confirm.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "postpone",
+          "ru": "откладывать",
+          "ipa": "/poʊstˈpoʊn/",
+          "example": "Can we postpone it?",
+          "exampleRu": "Можем перенести?",
+          "audio": {
+            "src": "media/audio/u21.d05.vocab.postpone.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cancel",
+          "ru": "отменять",
+          "ipa": "/ˈkænsl/",
+          "example": "They cancelled the trip.",
+          "exampleRu": "Они отменили поездку.",
+          "audio": {
+            "src": "media/audio/u21.d05.vocab.cancel.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "meet up",
+          "ru": "встречаться",
+          "ipa": "/miːt ʌp/",
+          "example": "Let's meet up soon.",
+          "exampleRu": "Давай скоро встретимся.",
+          "audio": {
+            "src": "media/audio/u21.d05.vocab.meetup.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fix",
+          "ru": "назначать (время)",
+          "ipa": "/fɪks/",
+          "example": "Let's fix a time.",
+          "exampleRu": "Давай назначим время.",
+          "audio": {
+            "src": "media/audio/u21.d05.vocab.fix.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "calendar",
+          "ru": "календарь",
+          "ipa": "/ˈkælɪndər/",
+          "example": "It's in my calendar.",
+          "exampleRu": "Это в моём календаре.",
+          "audio": {
+            "src": "media/audio/u21.d05.vocab.calendar.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u21.d05.grammar",
+      "title": {
+        "en": "Arranging to meet",
+        "ru": "Как договориться о встрече"
+      },
+      "rule": {
+        "en": "To arrange plans, ask \"Are you free…?\" or \"Does … suit you?\", suggest a time, and confirm. Use the present continuous for the arrangement you make.",
+        "ru": "Чтобы договориться: спроси «Are you free…?» или «Does … suit you?», предложи время и подтверди. Для договорённости используй present continuous."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "ask about free time",
+            "ru": "спросить о свободном времени"
+          },
+          "formula": "Are you free …? / Does … suit you?",
+          "examples": [
+            {
+              "en": "Are you free on Friday?",
+              "ru": "Ты свободен в пятницу?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "suggest / confirm",
+            "ru": "предложить / подтвердить"
+          },
+          "formula": "How about …? / Let's say …",
+          "examples": [
+            {
+              "en": "How about seven? — Great, let's say seven.",
+              "ru": "Как насчёт семи? — Отлично, договорились на семь."
+            }
+          ],
+          "ref": "future-forms"
+        },
+        {
+          "label": {
+            "en": "the arrangement",
+            "ru": "договорённость"
+          },
+          "formula": "So we're meeting at …",
+          "examples": [
+            {
+              "en": "So we're meeting at seven on Friday.",
+              "ru": "Итак, встречаемся в семь в пятницу."
+            }
+          ],
+          "ref": "future-forms"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use present continuous for a fixed arrangement: \"We're meeting at seven\".",
+          "ru": "Для назначенной встречи — present continuous: «We're meeting at seven»."
+        },
+        {
+          "en": "\"Does Monday suit you?\" is a natural way to check a time.",
+          "ru": "«Does Monday suit you?» — естественный способ уточнить время."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u21.d05.reading",
+      "title": {
+        "en": "Finding a time",
+        "ru": "Ищем время"
+      },
+      "blocks": [
+        {
+          "id": "u21.d05.reading.b1",
+          "en": "\"Let's meet up this week,\" said Tom. \"Are you free on Tuesday?\" \"Tuesday doesn't suit me,\" said Amy. \"I'm working late. How about Thursday?\" \"Thursday's perfect. What time suits you?\"",
+          "ru": "«Давай встретимся на этой неделе, — сказал Том. — Ты свободна во вторник?» «Вторник мне не подходит, — сказала Эми. — Я работаю допоздна. Как насчёт четверга?» «Четверг отлично. Во сколько тебе удобно?»",
+          "audio": {
+            "src": "media/audio/u21.d05.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u21.d05.reading.b2",
+          "en": "\"Let's say six at the café near the station.\" \"Great, I'll put it in my calendar. So we're meeting on Thursday at six — I'll confirm in the morning.\" \"Perfect. See you then!\"",
+          "ru": "«Давай в шесть в кафе у станции». «Отлично, запишу в календарь. Итак, встречаемся в четверг в шесть — подтвержу утром». «Отлично. До встречи!»",
+          "audio": {
+            "src": "media/audio/u21.d05.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "near",
+          "ru": "рядом с",
+          "ipa": "/nɪər/"
+        },
+        {
+          "word": "perfect",
+          "ru": "идеальный",
+          "ipa": "/ˈpɜːrfɪkt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u21.d05.listening",
+      "title": {
+        "en": "Are you free?",
+        "ru": "Ты свободен?"
+      },
+      "audio": {
+        "src": "media/audio/u21.d05.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Are you free on Saturday afternoon?",
+          "ru": "Ты свободен в субботу днём?"
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Let me check. Yes, I'm available after two.",
+          "ru": "Дай проверю. Да, я свободен после двух."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Great. Shall we say three at the park?",
+          "ru": "Отлично. Скажем, в три в парке?"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Perfect. So we're meeting at three on Saturday.",
+          "ru": "Отлично. Значит, встречаемся в три в субботу."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u21.d05.ex.l.01",
+          "instruction": {
+            "en": "When are they meeting?",
+            "ru": "Когда они встречаются?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.arrangements"
+          ],
+          "prompt": "At ___ on Saturday.",
+          "options": [
+            "three",
+            "two",
+            "four"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u21.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u21.d05.ex.c.01",
+          "instruction": {
+            "en": "Ask about free time.",
+            "ru": "Спроси о свободном времени."
+          },
+          "tags": [
+            "functions.arrangements"
+          ],
+          "prompt": "Are you ___ on Friday?",
+          "options": [
+            "free",
+            "freely",
+            "freedom"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u21.d05.ex.c.02",
+          "instruction": {
+            "en": "Check a time.",
+            "ru": "Уточни время."
+          },
+          "tags": [
+            "functions.arrangements"
+          ],
+          "prompt": "Does Monday ___ you?",
+          "options": [
+            "suit",
+            "suits",
+            "suiting"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u21.d05.ex.g.01",
+          "instruction": {
+            "en": "The arrangement.",
+            "ru": "Договорённость."
+          },
+          "tags": [
+            "functions.arrangements"
+          ],
+          "prompt": "So we ___ meeting at seven. (be)",
+          "answers": [
+            "are",
+            "'re"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u21.d05.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.arrangements"
+          ],
+          "variants": [
+            "Let's say at seven o'clock.",
+            "Let's say at seven o'clock at."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u21.d05.ex.c.03",
+          "instruction": {
+            "en": "Suggest a time.",
+            "ru": "Предложи время."
+          },
+          "tags": [
+            "functions.arrangements"
+          ],
+          "prompt": "___ about three at the café?",
+          "options": [
+            "How",
+            "What",
+            "When"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u21.d05.ex.g.02",
+          "instruction": {
+            "en": "Confirm.",
+            "ru": "Подтверди."
+          },
+          "tags": [
+            "functions.arrangements"
+          ],
+          "prompt": "I'll ___ the time tomorrow morning. (confirm)",
+          "answers": [
+            "confirm"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u21.d05.ex.o.01",
+          "instruction": {
+            "en": "Ask if free.",
+            "ru": "Спроси, свободен ли."
+          },
+          "tags": [
+            "functions.arrangements"
+          ],
+          "tokens": [
+            "Are",
+            "you",
+            "free",
+            "on",
+            "Friday",
+            "evening"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u21.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.plans"
+          ],
+          "pairs": [
+            {
+              "left": "available",
+              "right": "свободный"
+            },
+            {
+              "left": "postpone",
+              "right": "откладывать"
+            },
+            {
+              "left": "cancel",
+              "right": "отменять"
+            },
+            {
+              "left": "confirm",
+              "right": "подтверждать"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u21.d05.ex.c.04",
+          "instruction": {
+            "en": "Move a meeting.",
+            "ru": "Перенеси встречу."
+          },
+          "tags": [
+            "functions.arrangements"
+          ],
+          "prompt": "I'm busy — can we ___ it to Friday?",
+          "options": [
+            "postpone",
+            "postponing",
+            "postponed"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u21.d05.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "functions.arrangements"
+          ],
+          "variants": [
+            "We are meet at six on Friday.",
+            "We're meeting at six on Friday."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u21.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.arrangements",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты свободен в пятницу?",
+          "answers": [
+            "Are you free on Friday?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "do you free on friday",
+                "are you free in friday",
+                "you are free on friday"
+              ],
+              "explanation": {
+                "en": "Are you free on Friday?",
+                "ru": "Are you free on Friday?"
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u21.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.arrangements",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Итак, мы встречаемся в семь в четверг.",
+          "answers": [
+            "So we're meeting at seven on Thursday.",
+            "So we are meeting at seven on Thursday."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "so we meet at seven on thursday",
+                "so we will meet at seven on thursday",
+                "so we are meet at seven on thursday"
+              ],
+              "explanation": {
+                "en": "Arrangement → present continuous: we are meeting at seven.",
+                "ru": "Договорённость → present continuous: we are meeting at seven."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

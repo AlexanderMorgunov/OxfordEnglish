@@ -2913,5 +2913,96 @@
     "seeAlso": [
       "modals-can"
     ]
+  },
+  {
+    "id": "future-forms-extended",
+    "title": {
+      "en": "Future forms extended (future continuous, be about to)",
+      "ru": "Расширенные формы будущего (future continuous, be about to)"
+    },
+    "level": "B1",
+    "summary": {
+      "en": "Beyond will and going to, English has more ways to talk about the future: the future continuous for an action in progress, \"be about to\" for the very next moment, and the present simple for timetables.",
+      "ru": "Кроме will и going to, в английском есть и другие способы говорить о будущем: future continuous для действия в процессе, «be about to» для следующего мига и present simple для расписаний."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "Future continuous: will be + -ing",
+          "ru": "Future continuous: will be + -ing"
+        },
+        "text": {
+          "en": "Use it for an action that will be IN PROGRESS at a certain future time.\n\nThis time tomorrow, I'll be flying to Rome.\nAt 8pm they'll be having dinner.\nWhat will you be doing this evening?",
+          "ru": "Используй для действия, которое будет ИДТИ в определённый момент в будущем.\n\nThis time tomorrow, I'll be flying to Rome.\nAt 8pm they'll be having dinner.\nWhat will you be doing this evening?"
+        },
+        "examples": [
+          {
+            "en": "Don't call at nine — I'll be working.",
+            "ru": "Не звони в девять — я буду работать."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "be about to + verb",
+          "ru": "be about to + глагол"
+        },
+        "text": {
+          "en": "Use it for something that will happen in the very next moment — stronger than \"going to\".\n\nHurry — the train is about to leave.\nI'm just about to call you.\nShe was on the point of leaving. (= about to leave)",
+          "ru": "Используй для того, что произойдёт в следующий миг — настойчивее, чем «going to».\n\nHurry — the train is about to leave.\nI'm just about to call you.\nShe was on the point of leaving. (= about to leave)"
+        },
+        "examples": [
+          {
+            "en": "Sit down — the film is about to start.",
+            "ru": "Садись — фильм вот-вот начнётся."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Present simple for timetables",
+          "ru": "Present simple для расписаний"
+        },
+        "text": {
+          "en": "For fixed schedules (trains, films, shops), use the present simple even about the future.\n\nThe train leaves at six.\nThe museum opens at ten.\nWhat time does the film start?",
+          "ru": "Для чётких расписаний (поезда, фильмы, магазины) — present simple, даже о будущем.\n\nThe train leaves at six.\nThe museum opens at ten.\nWhat time does the film start?"
+        },
+        "examples": [
+          {
+            "en": "Our flight departs at noon.",
+            "ru": "Наш рейс вылетает в полдень."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Which future to choose",
+          "ru": "Какое будущее выбрать"
+        },
+        "text": {
+          "en": "will = prediction or decision now; going to = plan or evidence; present continuous = arrangement; future continuous = in progress; be about to = the next moment; present simple = timetable.",
+          "ru": "will = прогноз или решение сейчас; going to = план или признаки; present continuous = договорённость; future continuous = в процессе; be about to = следующий миг; present simple = расписание."
+        }
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Keep \"be\" in the future continuous: \"will be working\", not \"will working\".",
+        "ru": "Не теряй «be» в future continuous: «will be working», а не «will working»."
+      },
+      {
+        "en": "\"be about to\" + bare verb: \"about to leave\", not \"about to leaving\".",
+        "ru": "«be about to» + голый глагол: «about to leave», а не «about to leaving»."
+      },
+      {
+        "en": "Timetables use present simple: \"the train leaves at six\", not \"will leave\".",
+        "ru": "Расписания — present simple: «the train leaves at six», а не «will leave»."
+      }
+    ],
+    "seeAlso": [
+      "future-forms",
+      "future-time-clauses",
+      "present-continuous"
+    ]
   }
 ]

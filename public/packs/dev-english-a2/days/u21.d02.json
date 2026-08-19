@@ -1,0 +1,601 @@
+{
+  "id": "u21.d02",
+  "title": {
+    "en": "I'm about to leave",
+    "ru": "Я вот-вот уйду"
+  },
+  "estimatedMinutes": 120,
+  "level": "B1",
+  "tags": [
+    "grammar.be-about-to",
+    "vocab.plans"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u21.d02.vocab",
+      "title": {
+        "en": "Just before",
+        "ru": "Прямо перед"
+      },
+      "words": [
+        {
+          "word": "ready",
+          "ru": "готовый",
+          "ipa": "/ˈredi/",
+          "example": "I'm ready to go.",
+          "exampleRu": "Я готов идти.",
+          "audio": {
+            "src": "media/audio/u21.d02.vocab.ready.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "leave",
+          "ru": "уходить",
+          "ipa": "/liːv/",
+          "example": "We're about to leave.",
+          "exampleRu": "Мы вот-вот уйдём.",
+          "audio": {
+            "src": "media/audio/u21.d02.vocab.leave.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "start",
+          "ru": "начинать(ся)",
+          "ipa": "/stɑːrt/",
+          "example": "The film is about to start.",
+          "exampleRu": "Фильм вот-вот начнётся.",
+          "audio": {
+            "src": "media/audio/u21.d02.vocab.start.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "almost",
+          "ru": "почти",
+          "ipa": "/ˈɔːlmoʊst/",
+          "example": "I'm almost done.",
+          "exampleRu": "Я почти закончил.",
+          "audio": {
+            "src": "media/audio/u21.d02.vocab.almost.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "just",
+          "ru": "только что; прямо",
+          "ipa": "/dʒʌst/",
+          "example": "I'm just about to call.",
+          "exampleRu": "Я как раз собираюсь позвонить.",
+          "audio": {
+            "src": "media/audio/u21.d02.vocab.just.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hurry",
+          "ru": "спешить",
+          "ipa": "/ˈhʌri/",
+          "example": "Hurry, we're late!",
+          "exampleRu": "Скорее, мы опаздываем!",
+          "audio": {
+            "src": "media/audio/u21.d02.vocab.hurry.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "catch",
+          "ru": "успевать, ловить",
+          "ipa": "/kætʃ/",
+          "example": "I need to catch the bus.",
+          "exampleRu": "Мне нужно успеть на автобус.",
+          "audio": {
+            "src": "media/audio/u21.d02.vocab.catch.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "point",
+          "ru": "момент (on the point of)",
+          "ipa": "/pɔɪnt/",
+          "example": "I was on the point of leaving.",
+          "exampleRu": "Я как раз собирался уходить.",
+          "audio": {
+            "src": "media/audio/u21.d02.vocab.point.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "immediately",
+          "ru": "немедленно",
+          "ipa": "/ɪˈmiːdiətli/",
+          "example": "Come immediately.",
+          "exampleRu": "Приходи немедленно.",
+          "audio": {
+            "src": "media/audio/u21.d02.vocab.immediately.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "event",
+          "ru": "событие",
+          "ipa": "/ɪˈvent/",
+          "example": "The event is about to begin.",
+          "exampleRu": "Мероприятие вот-вот начнётся.",
+          "audio": {
+            "src": "media/audio/u21.d02.vocab.event.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u21.d02.grammar",
+      "title": {
+        "en": "be about to",
+        "ru": "be about to"
+      },
+      "rule": {
+        "en": "Use \"be about to + verb\" for something that will happen very soon — in the next moment. It is stronger and more immediate than \"going to\".",
+        "ru": "Используй «be about to + глагол» для того, что произойдёт совсем скоро — в следующий миг. Это ближе и настойчивее, чем «going to»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "be about to + verb",
+            "ru": "be about to + глагол"
+          },
+          "formula": "am/is/are about to + verb",
+          "examples": [
+            {
+              "en": "Hurry — the train is about to leave.",
+              "ru": "Скорее — поезд вот-вот тронется."
+            }
+          ],
+          "ref": "future-forms-extended"
+        },
+        {
+          "label": {
+            "en": "just about to",
+            "ru": "just about to"
+          },
+          "formula": "be just about to + verb",
+          "examples": [
+            {
+              "en": "I'm just about to call you.",
+              "ru": "Я как раз собираюсь тебе позвонить."
+            }
+          ],
+          "ref": "future-forms-extended"
+        },
+        {
+          "label": {
+            "en": "on the point of + -ing",
+            "ru": "on the point of + -ing"
+          },
+          "formula": "be on the point of + verb-ing",
+          "examples": [
+            {
+              "en": "She was on the point of leaving.",
+              "ru": "Она как раз собиралась уходить."
+            }
+          ],
+          "ref": "future-forms-extended"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"about to\" + bare verb: \"about to leave\", not \"about to leaving\".",
+          "ru": "«about to» + голый глагол: «about to leave», а не «about to leaving»."
+        },
+        {
+          "en": "\"on the point of\" + -ing: \"on the point of crying\".",
+          "ru": "«on the point of» + -ing: «on the point of crying»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u21.d02.reading",
+      "title": {
+        "en": "Just in time",
+        "ru": "Как раз вовремя"
+      },
+      "blocks": [
+        {
+          "id": "u21.d02.reading.b1",
+          "en": "The doors were about to close when Marco ran onto the train. He was just about to give up when he saw it still at the platform. \"I almost missed it,\" he thought, out of breath.",
+          "ru": "Двери уже закрывались, когда Марко вбежал в вагон. Он как раз собирался сдаться, когда увидел, что поезд ещё на платформе. «Чуть не опоздал», — подумал он, тяжело дыша.",
+          "audio": {
+            "src": "media/audio/u21.d02.reading.b1.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u21.d02.reading.b2",
+          "en": "He sat down and checked his phone. His sister had written: \"Where are you? The show is about to start!\" Marco smiled. \"On my way,\" he replied. \"I'll be there before the lights go down.\"",
+          "ru": "Он сел и проверил телефон. Сестра написала: «Ты где? Спектакль вот-вот начнётся!» Марко улыбнулся. «Уже еду, — ответил он. — Буду до того, как погаснет свет».",
+          "audio": {
+            "src": "media/audio/u21.d02.reading.b2.wav",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "give up",
+          "ru": "сдаваться",
+          "ipa": "/ɡɪv ʌp/"
+        },
+        {
+          "word": "platform",
+          "ru": "платформа",
+          "ipa": "/ˈplætfɔːrm/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u21.d02.listening",
+      "title": {
+        "en": "Are you ready?",
+        "ru": "Ты готов?"
+      },
+      "audio": {
+        "src": "media/audio/u21.d02.listening.wav",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Are you ready? We're about to leave.",
+          "ru": "Готов? Мы сейчас выходим."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Almost! I'm just about to put my shoes on.",
+          "ru": "Почти! Я как раз надеваю обувь."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Hurry — the taxi is about to arrive.",
+          "ru": "Скорее — такси вот-вот приедет."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "Okay, okay, I'm coming right now!",
+          "ru": "Хорошо, хорошо, я уже иду!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u21.d02.ex.l.01",
+          "instruction": {
+            "en": "What is about to happen?",
+            "ru": "Что вот-вот произойдёт?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.be-about-to"
+          ],
+          "prompt": "The taxi is about to ___ .",
+          "options": [
+            "arrive",
+            "arriving",
+            "arrived"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u21.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u21.d02.ex.c.01",
+          "instruction": {
+            "en": "Very soon.",
+            "ru": "Совсем скоро."
+          },
+          "tags": [
+            "grammar.be-about-to"
+          ],
+          "prompt": "Quick! The film is about to ___ .",
+          "options": [
+            "start",
+            "starting",
+            "started"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u21.d02.ex.g.01",
+          "instruction": {
+            "en": "be about to.",
+            "ru": "be about to."
+          },
+          "tags": [
+            "grammar.be-about-to"
+          ],
+          "prompt": "We ___ about to have dinner. (be)",
+          "answers": [
+            "are",
+            "'re"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u21.d02.ex.c.02",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.be-about-to"
+          ],
+          "prompt": "I'm just about to ___ the house.",
+          "options": [
+            "leave",
+            "leaving",
+            "left"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u21.d02.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.be-about-to"
+          ],
+          "variants": [
+            "The train is about to leaving.",
+            "The train is about to leave."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u21.d02.ex.g.02",
+          "instruction": {
+            "en": "on the point of + -ing.",
+            "ru": "on the point of + -ing."
+          },
+          "tags": [
+            "grammar.be-about-to"
+          ],
+          "prompt": "She was on the point of ___ . (cry)",
+          "answers": [
+            "crying"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u21.d02.ex.c.03",
+          "instruction": {
+            "en": "Add the verb.",
+            "ru": "Добавь глагол."
+          },
+          "tags": [
+            "grammar.be-about-to"
+          ],
+          "prompt": "Don't go — the meeting is about to ___ .",
+          "options": [
+            "begin",
+            "beginning",
+            "began"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u21.d02.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.be-about-to"
+          ],
+          "tokens": [
+            "We",
+            "are",
+            "about",
+            "to",
+            "leave",
+            "now"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u21.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.plans"
+          ],
+          "pairs": [
+            {
+              "left": "almost",
+              "right": "почти"
+            },
+            {
+              "left": "hurry",
+              "right": "спешить"
+            },
+            {
+              "left": "immediately",
+              "right": "немедленно"
+            },
+            {
+              "left": "event",
+              "right": "событие"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u21.d02.ex.c.04",
+          "instruction": {
+            "en": "just about to.",
+            "ru": "just about to."
+          },
+          "tags": [
+            "grammar.be-about-to"
+          ],
+          "prompt": "I was just about to ___ you!",
+          "options": [
+            "call",
+            "calling",
+            "called"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u21.d02.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.be-about-to"
+          ],
+          "variants": [
+            "He is about leave.",
+            "He is about to leave."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u21.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.be-about-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Поезд вот-вот тронется.",
+          "answers": [
+            "The train is about to leave."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the train is about to leaving",
+                "the train about to leave",
+                "the train is about leave"
+              ],
+              "explanation": {
+                "en": "be about to + bare verb: The train is about to leave.",
+                "ru": "be about to + голый глагол: The train is about to leave."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u21.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.be-about-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я как раз собирался тебе позвонить.",
+          "answers": [
+            "I was just about to call you.",
+            "I was just about to phone you."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i was just about to calling you",
+                "i just about to call you",
+                "i was just about call you"
+              ],
+              "explanation": {
+                "en": "was just about to + verb: I was just about to call you.",
+                "ru": "was just about to + глагол: I was just about to call you."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
