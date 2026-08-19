@@ -1,4 +1,5 @@
 import { complete, type AiConfig } from './provider';
+import type { Exercise } from '@/content/schema';
 
 function cacheGet(key: string): string | undefined {
   try {
@@ -79,6 +80,70 @@ export function hint(
     { role: 'system', content: system },
     { role: 'user', content: user },
   ]);
+}
+
+type AiItem = { q?: unknown; options?: unknown; answer?: unknown };
+
+/** Coerce the model's loose JSON into valid choice exercises, dropping anything malformed. */
+export function coerceExercises(raw: string, idPrefix: string): Exercise[] {
+  const start = raw.indexOf('[');
+  const end = raw.lastIndexOf(']');
+  if (start < 0 || end <= start) return [];
+  let items: AiItem[];
+  try {
+    items = JSON.parse(raw.slice(start, end + 1));
+  } catch {
+    return [];
+  }
+  if (!Array.isArray(items)) return [];
+  const out: Exercise[] = [];
+  items.forEach((it, i) => {
+    const q = typeof it?.q === 'string' ? it.q : '';
+    const answer = typeof it?.answer === 'string' ? it.answer.trim() : '';
+    const options = Array.isArray(it?.options)
+      ? [...new Set(it.options.filter((o): o is string => typeof o === 'string').map((o) => o.trim()))]
+      : [];
+    if (!q.includes('___') || answer === '' || options.length < 2 || !options.includes(answer)) return;
+    out.push({
+      type: 'choice',
+      id: `${idPrefix}.ai.${i}`,
+      instruction: {
+        en: 'Choose the missing word from the text.',
+        ru: 'Выбери пропущенное слово из текста.',
+      },
+      tags: ['reader.vocab'],
+      prompt: q,
+      options,
+      correctIndex: options.indexOf(answer),
+    });
+  });
+  return out;
+}
+
+/** Generate vocabulary exercises from a chapter with the AI (the "both" option alongside deterministic). */
+export async function generateReaderExercises(
+  config: AiConfig,
+  ctx: { text: string; targets: string[]; idPrefix: string; count?: number }
+): Promise<Exercise[]> {
+  const n = ctx.count ?? 6;
+  const targetLine = ctx.targets.length
+    ? `По возможности проверяй эти слова: ${ctx.targets.slice(0, 12).join(', ')}.\n`
+    : '';
+  const system =
+    'Ты — преподаватель английского. Составляешь задания на понимание слов по тексту. ' +
+    'Отвечай СТРОГО одним JSON-массивом, без пояснений и markdown.';
+  const user =
+    `Фрагмент главы:\n"""${ctx.text.slice(0, 1500)}"""\n` +
+    targetLine +
+    `Составь ${n} заданий «выбери пропущенное слово». Для каждого возьми предложение ИЗ текста, ` +
+    'замени одно содержательное слово на ___ и дай 4 варианта: один верный (исходное слово) и три ' +
+    'правдоподобных неверных той же части речи. Формат каждого элемента: ' +
+    '{"q":"предложение с ___","options":["w1","w2","w3","w4"],"answer":"верное"}. Только JSON-массив.';
+  const raw = await complete(config, [
+    { role: 'system', content: system },
+    { role: 'user', content: user },
+  ]);
+  return coerceExercises(raw, ctx.idPrefix);
 }
 
 export function wordInContext(

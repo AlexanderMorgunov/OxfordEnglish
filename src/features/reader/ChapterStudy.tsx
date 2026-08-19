@@ -5,6 +5,8 @@ import { useUiLang } from '@/features/i18n/uiLang';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import { useLearner } from '@/features/learner/store';
 import { ExerciseView } from '@/features/practice/exercises/ExerciseView';
+import { useAiStore, isConfigured } from '@/features/ai/store';
+import { generateReaderExercises } from '@/features/ai/functions';
 import { estimateCoverage, loadFreq, rankThresholdFor, type FreqIndex } from './difficulty';
 import { generateExercises } from './exercises';
 
@@ -13,8 +15,11 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
   const level = useLearner((s) => s.level);
   const statuses = useVocabStore((s) => s.statuses);
   const loadVocab = useVocabStore((s) => s.load);
+  const aiConfig = useAiStore((s) => s.config);
+  const aiReady = isConfigured(aiConfig);
   const [freq, setFreq] = useState<FreqIndex | null>(null);
   const [exercises, setExercises] = useState<Exercise[] | null>(null);
+  const [aiState, setAiState] = useState<'idle' | 'loading' | 'error'>('idle');
 
   useEffect(() => {
     void loadVocab();
@@ -33,7 +38,10 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
     [freq, text, known, rankThreshold]
   );
 
-  useEffect(() => setExercises(null), [text]);
+  useEffect(() => {
+    setExercises(null);
+    setAiState('idle');
+  }, [text]);
 
   if (!coverage || coverage.total < 20) return null;
 
@@ -58,6 +66,19 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
     );
   };
 
+  const generateAi = async () => {
+    if (!coverage || !isConfigured(aiConfig)) return;
+    setAiState('loading');
+    try {
+      const targets = [...coverage.unknown.keys()];
+      const made = await generateReaderExercises(aiConfig, { text, targets, idPrefix });
+      setExercises(made);
+      setAiState(made.length ? 'idle' : 'error');
+    } catch {
+      setAiState('error');
+    }
+  };
+
   return (
     <Card className="mt-8 border-line">
       <p className="font-mono text-2xs uppercase tracking-[0.08em] text-muted">
@@ -72,9 +93,32 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
       </p>
 
       {exercises === null ? (
-        <Button className="mt-4" variant="ghost" onClick={generate}>
-          {ru ? 'Упражнения из этой главы' : 'Exercises from this chapter'}
-        </Button>
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <Button variant="ghost" onClick={generate}>
+            {ru ? 'Упражнения из этой главы' : 'Exercises from this chapter'}
+          </Button>
+          {aiReady && (
+            <Button
+              variant="ghost"
+              className="border-violet-dim text-violet"
+              disabled={aiState === 'loading'}
+              onClick={() => void generateAi()}
+            >
+              {aiState === 'loading'
+                ? ru
+                  ? 'AI думает…'
+                  : 'AI thinking…'
+                : ru
+                  ? 'AI-упражнения'
+                  : 'AI exercises'}
+            </Button>
+          )}
+          {aiState === 'error' && (
+            <span className="font-mono text-2xs text-coral">
+              {ru ? 'AI не справился — попробуй детерминированные' : 'AI failed — try the deterministic set'}
+            </span>
+          )}
+        </div>
       ) : exercises.length === 0 ? (
         <p className="mt-4 text-sm text-muted">
           {ru
