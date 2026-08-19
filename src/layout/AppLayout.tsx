@@ -7,6 +7,7 @@ const NAV = [
   { to: '/review', label: 'review', end: false, devOnly: false },
   { to: '/progress', label: 'progress', end: false, devOnly: false },
   { to: '/vocabulary', label: 'vocab', end: false, devOnly: false },
+  { to: '/library', label: 'library', end: false, devOnly: false },
   { to: '/settings', label: 'settings', end: false, devOnly: false },
   { to: '/support', label: 'support', end: false, devOnly: false },
   { to: '/kitchen-sink', label: 'kit', end: false, devOnly: true },

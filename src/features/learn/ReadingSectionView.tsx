@@ -1,18 +1,15 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Section } from '@/content/schema';
 import { packMediaUrl } from '@/content/loader';
-import { Button, PixelImage, Popover, SegmentedToggle } from '@/shared/ui';
-import { cn } from '@/shared/lib/cn';
+import { PixelImage, SegmentedToggle } from '@/shared/ui';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import { canSpeak, playClip, speakWord, speakPassage, cancelSpeech } from '@/shared/lib/audio';
 import { translateWord } from '@/features/vocab/translate';
 import { addWordCard, addPhraseCard } from '@/features/srs/service';
-import { AiAction } from '@/features/ai/AiAction';
-import { wordInContext } from '@/features/ai/functions';
 import { useUiLang } from '@/features/i18n/uiLang';
+import { WordToken, type Gloss } from '@/features/reader/reading-text';
 
 type ReadingSection = Extract<Section, { type: 'reading' }>;
-type Gloss = { ru?: string; ipa?: string };
 
 function GlossaryRow({ word, ipa, ru }: { word: string; ipa?: string; ru?: string }) {
   const [saved, setSaved] = useState(false);
@@ -43,97 +40,6 @@ function GlossaryRow({ word, ipa, ru }: { word: string; ipa?: string; ru?: strin
         {saved ? '✓ в повторении' : '+ review'}
       </button>
     </div>
-  );
-}
-
-function WordToken({
-  word,
-  gloss,
-  sentence,
-  highlighted,
-}: {
-  word: string;
-  gloss?: Gloss;
-  sentence: string;
-  highlighted?: boolean;
-}) {
-  const status = useVocabStore((s) => s.statuses.get(word.toLowerCase()));
-  const setStatus = useVocabStore((s) => s.setStatus);
-  const lang = useUiLang((s) => s.lang);
-  const [fetched, setFetched] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [done, setDone] = useState(false);
-
-  const openLookup = () => {
-    if (gloss?.ru || done) return;
-    setDone(true);
-    setLoading(true);
-    void translateWord(word).then((ru) => {
-      setFetched(ru);
-      setLoading(false);
-    });
-  };
-  const translation = gloss?.ru ?? fetched ?? undefined;
-  const marked = status === 'learning' || status === 'unknown';
-
-  return (
-    <Popover
-      trigger={
-        <button
-          type="button"
-          onClick={openLookup}
-          className={cn(
-            'cursor-pointer rounded-[2px]',
-            marked
-              ? 'underline decoration-2 underline-offset-4'
-              : 'hover:bg-surface-2',
-            status === 'learning' && '[text-decoration-color:var(--color-word-learning)]',
-            status === 'unknown' && '[text-decoration-color:var(--color-word-unknown)]',
-            highlighted && 'bg-teal-dim text-ink'
-          )}
-        >
-          {word}
-        </button>
-      }
-    >
-      <div className="flex items-center gap-2">
-        <p className="font-mono text-sm text-content">{word}</p>
-        {canSpeak() && (
-          <button
-            type="button"
-            aria-label={`Pronounce ${word}`}
-            className="text-teal transition-opacity hover:opacity-80"
-            onClick={() => speakWord(word)}
-          >
-            🔊
-          </button>
-        )}
-      </div>
-      {gloss?.ipa && <p className="font-mono text-xs text-muted">{gloss.ipa}</p>}
-      {translation && <p className="mt-1 text-sm text-content">{translation}</p>}
-      {loading && <p className="mt-1 font-mono text-2xs text-faint">translating…</p>}
-      <div className="mt-2">
-        <AiAction
-          label={lang === 'ru' ? 'значение в контексте (AI)' : 'meaning in context (AI)'}
-          run={(config) => wordInContext(config, word, sentence)}
-        />
-      </div>
-      <div className="mt-2.5 flex gap-1.5">
-        <Button
-          size="sm"
-          variant="ghost"
-          onClick={() => {
-            void setStatus(word, 'learning');
-            void addWordCard(word, translation ?? word, undefined);
-          }}
-        >
-          learning
-        </Button>
-        <Button size="sm" variant="ghost" onClick={() => void setStatus(word, 'known')}>
-          known
-        </Button>
-      </div>
-    </Popover>
   );
 }
 

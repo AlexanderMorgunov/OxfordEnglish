@@ -50,12 +50,25 @@ export interface CheckpointResult {
   tagBreakdown: { tag: string; correct: number; total: number }[];
 }
 
+/** A user-imported book. The file itself lives in OPFS; this is only its metadata. */
+export interface BookRecord {
+  id: string;
+  title: string;
+  author?: string;
+  format: 'epub' | 'fb2' | 'docx';
+  addedAt: number;
+  chapterCount: number;
+  /** Reading position: last chapter index opened. */
+  lastChapter: number;
+}
+
 const db = new Dexie('oxford-english') as Dexie & {
   attempts: EntityTable<ExerciseAttempt, 'id'>;
   wordStatus: EntityTable<WordStatus, 'word'>;
   srsCards: EntityTable<SrsCard, 'id'>;
   checkpoints: EntityTable<CheckpointResult, 'id'>;
   translations: EntityTable<WordTranslation, 'word'>;
+  books: EntityTable<BookRecord, 'id'>;
 };
 
 db.version(1).stores({
@@ -64,6 +77,10 @@ db.version(1).stores({
   srsCards: 'id, due, *tags',
   checkpoints: '++id, unitId, timestamp',
   translations: 'word',
+});
+
+db.version(2).stores({
+  books: 'id, addedAt',
 });
 
 export { db };

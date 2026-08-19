@@ -11,6 +11,8 @@ import { ProgressPage } from '@/pages/ProgressPage';
 import { VocabularyPage } from '@/pages/VocabularyPage';
 import { SettingsPage } from '@/pages/SettingsPage';
 import { SupportPage } from '@/pages/SupportPage';
+import { LibraryPage } from '@/pages/LibraryPage';
+import { BookReaderPage } from '@/pages/BookReaderPage';
 import { KitchenSinkPage } from '@/pages/KitchenSinkPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 
@@ -27,6 +29,8 @@ export const router = createBrowserRouter([
       { path: '/checkpoint/:unitId', element: <CheckpointPage /> },
       { path: '/progress', element: <ProgressPage /> },
       { path: '/vocabulary', element: <VocabularyPage /> },
+      { path: '/library', element: <LibraryPage /> },
+      { path: '/library/:bookId', element: <BookReaderPage /> },
       { path: '/settings', element: <SettingsPage /> },
       { path: '/support', element: <SupportPage /> },
       { path: '/kitchen-sink', element: <KitchenSinkPage /> },
