@@ -58,6 +58,7 @@ export function SettingsPage() {
 
   const { level, placementDone, setLevel } = useLearner();
   const { lang, setLang } = useUiLang();
+  const ru = lang === 'ru';
 
   const [analytics, setAnalytics] = useState(isAnalyticsEnabled());
   const toggleAnalytics = () => {
@@ -113,28 +114,39 @@ export function SettingsPage() {
       </div>
 
       <Eyebrow className="mb-3.5">config · ai (byok)</Eyebrow>
-      <h1 className="mb-2 text-2xl font-bold tracking-tight">AI assistant</h1>
+      <h1 className="mb-2 text-2xl font-bold tracking-tight">{ru ? 'AI-помощник' : 'AI assistant'}</h1>
       <p className="mb-8 text-muted text-pretty">
-        Optional. The app works fully without it. Your key is stored only in this
-        browser and requests go straight to the provider — no server of ours.
+        {ru
+          ? 'Опционально. Приложение полностью работает и без него. Ключ хранится только в этом браузере, запросы идут напрямую к провайдеру — без нашего сервера.'
+          : 'Optional. The app works fully without it. Your key is stored only in this browser and requests go straight to the provider — no server of ours.'}
       </p>
 
       <Card className="mb-4 border-violet-dim bg-violet-dim/15">
         <p className="mb-1 font-mono text-2xs uppercase tracking-[0.08em] text-violet">
-          before you add a key
+          {ru ? 'перед тем как добавить ключ' : 'before you add a key'}
         </p>
         <p className="text-sm leading-relaxed text-pretty">
-          Free tiers almost always mean your requests may be used to train the
-          provider's models. For learning sentences that's usually fine — but you
-          should know. <b className="text-content">No card needed:</b> Groq,
-          OpenRouter, Cerebras. Gemini now asks for a card, and OpenAI blocks
-          direct browser calls (CORS).
+          {ru ? (
+            <>
+              На бесплатных тарифах ваши запросы почти всегда могут использоваться для обучения
+              моделей провайдера. Для учебных предложений это обычно ок — но знайте.{' '}
+              <b className="text-content">Без карты:</b> Groq, OpenRouter, Cerebras. Gemini теперь
+              просит карту, а OpenAI блокирует прямые запросы из браузера (CORS).
+            </>
+          ) : (
+            <>
+              Free tiers almost always mean your requests may be used to train the provider's
+              models. For learning sentences that's usually fine — but you should know.{' '}
+              <b className="text-content">No card needed:</b> Groq, OpenRouter, Cerebras. Gemini now
+              asks for a card, and OpenAI blocks direct browser calls (CORS).
+            </>
+          )}
         </p>
       </Card>
 
       <div className="mb-4">
         <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          provider
+          {ru ? 'провайдер' : 'provider'}
         </p>
         <div className="flex flex-wrap gap-2">
           {PROVIDER_IDS.map((id) => (
@@ -145,7 +157,7 @@ export function SettingsPage() {
             >
               {PROVIDERS[id].label}
               {PROVIDERS[id].noCard && id !== 'custom' && (
-                <span className="ml-2 text-2xs text-teal">no card</span>
+                <span className="ml-2 text-2xs text-teal">{ru ? 'без карты' : 'no card'}</span>
               )}
             </Option>
           ))}
@@ -157,7 +169,7 @@ export function SettingsPage() {
             rel="noreferrer"
             className="mt-2 inline-block font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
           >
-            get a free key →
+            {ru ? 'получить бесплатный ключ →' : 'get a free key →'}
           </a>
         )}
       </div>
@@ -165,7 +177,7 @@ export function SettingsPage() {
       <div className="mb-4 flex flex-col gap-3">
         <label className="flex flex-col gap-1.5">
           <span className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-            api key
+            {ru ? 'api-ключ' : 'api key'}
           </span>
           <Input
             type="password"
@@ -176,14 +188,14 @@ export function SettingsPage() {
         </label>
         <label className="flex flex-col gap-1.5">
           <span className="flex items-center justify-between font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-            model
+            {ru ? 'модель' : 'model'}
             {model !== PROVIDERS[provider].model && PROVIDERS[provider].model && (
               <button
                 type="button"
                 className="text-teal hover:underline"
                 onClick={() => setModel(PROVIDERS[provider].model)}
               >
-                ↺ сбросить на {PROVIDERS[provider].model}
+                {ru ? 'сбросить на' : 'reset to'} {PROVIDERS[provider].model}
               </button>
             )}
           </span>
@@ -205,24 +217,28 @@ export function SettingsPage() {
 
       <div className="flex items-center gap-3">
         <Button onClick={save} disabled={!apiKey.trim() || !model.trim()}>
-          Save key
+          {ru ? 'Сохранить ключ' : 'Save key'}
         </Button>
         {isConfigured(config) && (
           <Button variant="ghost" onClick={clear}>
-            Remove key
+            {ru ? 'Удалить ключ' : 'Remove key'}
           </Button>
         )}
-        {saved && <span className="font-mono text-2xs text-teal">✓ saved</span>}
+        {saved && <span className="font-mono text-2xs text-teal">{ru ? '✓ сохранено' : '✓ saved'}</span>}
       </div>
 
       <div className="mt-10 border-t border-line pt-8">
         <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          your level
+          {ru ? 'ваш уровень' : 'your level'}
         </p>
         <p className="mb-4 text-sm text-muted text-pretty">
           {placementDone
-            ? 'Set by the placement test. Change it here or retake the test.'
-            : 'Not set yet. Take the placement test, or choose a level to start from.'}
+            ? ru
+              ? 'Задан тестом на уровень. Измените здесь или пройдите тест заново.'
+              : 'Set by the placement test. Change it here or retake the test.'
+            : ru
+              ? 'Ещё не задан. Пройдите тест на уровень или выберите, с какого начать.'
+              : 'Not set yet. Take the placement test, or choose a level to start from.'}
         </p>
         <div className="mb-3 flex flex-wrap gap-2">
           {LEVELS.map((lv) => (
@@ -239,24 +255,31 @@ export function SettingsPage() {
           to="/placement"
           className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
         >
-          {placementDone ? 'retake placement test →' : 'take placement test →'}
+          {placementDone
+            ? ru
+              ? 'пройти тест заново →'
+              : 'retake placement test →'
+            : ru
+              ? 'пройти тест на уровень →'
+              : 'take placement test →'}
         </Link>
       </div>
 
       <div className="mt-10 border-t border-line pt-8">
         <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          your data
+          {ru ? 'ваши данные' : 'your data'}
         </p>
         <p className="mb-4 text-sm text-muted text-pretty">
-          Progress, SRS cards and word status live only in this browser. Export a
-          backup or move it to another device.
+          {ru
+            ? 'Прогресс, карточки повторения и статусы слов живут только в этом браузере. Сделайте резервную копию или перенесите на другое устройство.'
+            : 'Progress, SRS cards and word status live only in this browser. Export a backup or move it to another device.'}
         </p>
         <div className="flex flex-wrap items-center gap-3">
           <Button variant="ghost" onClick={() => void doExport()}>
-            Export JSON
+            {ru ? 'Экспорт JSON' : 'Export JSON'}
           </Button>
           <label className="cursor-pointer rounded-sm border border-line bg-ink px-4 py-2.5 font-mono text-sm text-content transition-colors hover:border-teal-dim">
-            Import JSON
+            {ru ? 'Импорт JSON' : 'Import JSON'}
             <input
               type="file"
               accept="application/json"

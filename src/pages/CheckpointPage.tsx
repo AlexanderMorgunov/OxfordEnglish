@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import type { Exercise } from '@/content/schema';
 import { useContentStore } from '@/content/store';
+import { useUiLang } from '@/features/i18n/uiLang';
 import { Button, Card, Eyebrow, PageStub } from '@/shared/ui';
 import { ExerciseView } from '@/features/practice/exercises/ExerciseView';
 import { buildCheckpoint, buildLevelExit, reviewPlan } from '@/features/checkpoint/build';
@@ -22,8 +23,10 @@ const EXIT_PASS = 0.8;
 const NEXT_LEVEL: Record<string, string> = { A2: 'B1', B1: 'B2', B2: 'C1' };
 
 export function CheckpointPage() {
+  const ru = useUiLang((s) => s.lang) === 'ru';
   const { unitId } = useParams();
   const exitLevel = unitId?.startsWith('exit-') ? unitId.slice(5).toUpperCase() : null;
+  const exitLabel = (lvl: string) => (ru ? `итоговый тест ${lvl}` : `${lvl} exit test`);
   const { status, pack, load } = useContentStore();
   const sessionStart = useRef(Date.now());
   const [exercises, setExercises] = useState<Exercise[] | null>(null);
@@ -74,10 +77,10 @@ export function CheckpointPage() {
   );
 
   if (status === 'idle' || status === 'loading') {
-    return <p className="font-mono text-sm text-muted">loading…</p>;
+    return <p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading…'}</p>;
   }
   if (!exercises || exercises.length === 0) {
-    return <PageStub eyebrow="checkpoint" title="Nothing to test yet" />;
+    return <PageStub eyebrow="checkpoint" title={ru ? 'Пока нечего проверять' : 'Nothing to test yet'} />;
   }
 
   if (result) {
@@ -85,15 +88,15 @@ export function CheckpointPage() {
     const passed = ratio >= EXIT_PASS;
     const nextLevel = exitLevel ? NEXT_LEVEL[exitLevel] : null;
     return (
-      <section aria-label="Checkpoint result">
+      <section aria-label={ru ? 'Результат контрольной' : 'Checkpoint result'}>
         <Eyebrow className="mb-3.5">
-          {exitLevel ? `${exitLevel} exit test` : unitId} · result
+          {exitLevel ? exitLabel(exitLevel) : unitId} · result
         </Eyebrow>
         <h1 className="mb-2 text-3xl font-bold tracking-tight tabular-nums">
           {pct(ratio)}
         </h1>
         <p className="mb-8 text-muted">
-          {result.score} / {result.total} on first try
+          {result.score} / {result.total} {ru ? 'с первой попытки' : 'on first try'}
         </p>
 
         {exitLevel && (
@@ -101,20 +104,23 @@ export function CheckpointPage() {
             {passed ? (
               <p className="text-base">
                 <span className="font-mono text-2xs uppercase tracking-[0.08em] text-teal">
-                  passed
+                  {ru ? 'сдано' : 'passed'}
                 </span>
                 <span className="ml-2">
-                  Отличный результат — ты готов к уровню {nextLevel}! 🎉
+                  {ru
+                    ? `Отличный результат — вы готовы к уровню ${nextLevel}! 🎉`
+                    : `Great result — you're ready for ${nextLevel}! 🎉`}
                 </span>
               </p>
             ) : (
               <p className="text-base">
                 <span className="font-mono text-2xs uppercase tracking-[0.08em] text-amber">
-                  почти
+                  {ru ? 'почти' : 'almost'}
                 </span>
                 <span className="ml-2">
-                  Нужно {pct(EXIT_PASS)}, чтобы перейти на {nextLevel}. Повтори слабые
-                  темы ниже и попробуй снова.
+                  {ru
+                    ? `Нужно ${pct(EXIT_PASS)}, чтобы перейти на ${nextLevel}. Повторите слабые темы ниже и попробуйте снова.`
+                    : `You need ${pct(EXIT_PASS)} to move up to ${nextLevel}. Review the weak topics below and try again.`}
                 </span>
               </p>
             )}
@@ -122,7 +128,7 @@ export function CheckpointPage() {
         )}
 
         <p className="mb-3 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          by tag
+          {ru ? 'по темам' : 'by tag'}
         </p>
         <div className="mb-8 flex flex-col gap-2">
           {result.breakdown.map((b) => (
@@ -138,13 +144,13 @@ export function CheckpointPage() {
         {result.plan.length > 0 && (
           <Card className="border-amber-dim">
             <p className="mb-2 font-mono text-2xs uppercase tracking-[0.08em] text-amber">
-              review plan
+              {ru ? 'план повторения' : 'review plan'}
             </p>
             <ul className="flex flex-col gap-2">
               {result.plan.map((p) => (
                 <li key={p.tag} className="text-sm">
                   <span className="font-mono text-content">{p.tag}</span>{' '}
-                  <span className="text-muted">— revisit </span>
+                  <span className="text-muted">{ru ? '— повторить ' : '— revisit '}</span>
                   {p.dayIds.map((id, i) => (
                     <span key={id}>
                       {i > 0 && <span className="text-muted">, </span>}
@@ -166,19 +172,21 @@ export function CheckpointPage() {
   }
 
   return (
-    <section aria-label="Checkpoint">
+    <section aria-label={ru ? 'Контрольная' : 'Checkpoint'}>
       <Eyebrow className="mb-3.5">
-        {exitLevel ? `${exitLevel} exit test` : `${unitId} · checkpoint`}
+        {exitLevel ? exitLabel(exitLevel) : `${unitId} · checkpoint`}
       </Eyebrow>
       <h1 className="mb-2 text-2xl font-bold tracking-tight">
-        {exitLevel ? `${exitLevel} exit test` : 'Unit checkpoint'}
+        {exitLevel ? exitLabel(exitLevel) : ru ? 'Контрольная по юниту' : 'Unit checkpoint'}
       </h1>
       <p className="mb-8 text-muted">
         {exitLevel
-          ? `${exercises.length} questions from across ${exitLevel}. Score ${pct(
-              EXIT_PASS
-            )} to be ready for the next level.`
-          : `${exercises.length} mixed questions, interleaved. Answer them, then finish for a per-tag report.`}
+          ? ru
+            ? `${exercises.length} вопросов по всему уровню ${exitLevel}. Наберите ${pct(EXIT_PASS)}, чтобы быть готовым к следующему уровню.`
+            : `${exercises.length} questions from across ${exitLevel}. Score ${pct(EXIT_PASS)} to be ready for the next level.`
+          : ru
+            ? `${exercises.length} смешанных вопросов вперемешку. Ответьте на них, затем завершите — получите разбор по темам.`
+            : `${exercises.length} mixed questions, interleaved. Answer them, then finish for a per-tag report.`}
       </p>
 
       <div className="flex flex-col gap-3.5">
@@ -188,7 +196,7 @@ export function CheckpointPage() {
       </div>
 
       <Button className="mt-6" onClick={() => void finish()}>
-        {exitLevel ? 'Finish test' : 'Finish checkpoint'}
+        {exitLevel ? (ru ? 'Завершить тест' : 'Finish test') : ru ? 'Завершить контрольную' : 'Finish checkpoint'}
       </Button>
     </section>
   );

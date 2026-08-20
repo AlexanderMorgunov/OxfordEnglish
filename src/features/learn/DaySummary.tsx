@@ -4,6 +4,7 @@ import type { Day } from '@/content/schema';
 import { useSessionResults } from '@/features/progress/sessionResults';
 import { dayExercises } from '@/features/progress/completion';
 import { track } from '@/features/analytics/analytics';
+import { useUiLang } from '@/features/i18n/uiLang';
 import { Card, ProgressBar } from '@/shared/ui';
 
 export type NextDay = { unitId: string; dayId: string; title: string };
@@ -25,6 +26,7 @@ const nextClass =
   'hover:opacity-90 active:scale-[0.96] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal';
 
 export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }: Props) {
+  const ru = useUiLang((s) => s.lang) === 'ru';
   const results = useSessionResults((s) => s.results);
   const exercises = dayExercises(day);
   const total = exercises.length;
@@ -46,20 +48,26 @@ export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }:
 
   return (
     <Card className={done ? 'border-teal-dim' : ''}>
-      <p className="eyebrow mb-3.5">{done ? 'день завершён' : 'итоги дня'}</p>
+      <p className="eyebrow mb-3.5">
+        {done ? (ru ? 'день завершён' : 'day complete') : ru ? 'итоги дня' : 'day summary'}
+      </p>
 
-      <ProgressBar value={attempted.length} max={exercises.length} label="упражнения" />
+      <ProgressBar
+        value={attempted.length}
+        max={exercises.length}
+        label={ru ? 'упражнения' : 'exercises'}
+      />
 
       <p className="mt-4 text-sm text-muted">
-        С первой попытки:{' '}
+        {ru ? 'С первой попытки: ' : 'First try: '}
         <span className="font-mono tabular-nums text-content">
-          {firstTry} из {exercises.length}
+          {firstTry} {ru ? 'из' : 'of'} {exercises.length}
         </span>
       </p>
 
       {reviewTags.length > 0 ? (
         <div className="mt-4">
-          <p className="mb-2 text-sm text-content">Стоит повторить:</p>
+          <p className="mb-2 text-sm text-content">{ru ? 'Стоит повторить:' : 'Worth reviewing:'}</p>
           <div className="flex flex-wrap gap-1.5">
             {reviewTags.map((tag) => (
               <span
@@ -74,11 +82,13 @@ export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }:
             to="/review"
             className="mt-3 inline-block font-mono text-xs text-teal hover:underline"
           >
-            → повторить в тренажёре
+            {ru ? '→ повторить в тренажёре' : '→ practise in the trainer'}
           </Link>
         </div>
       ) : done ? (
-        <p className="mt-4 text-sm text-teal">Отличная работа — без ошибок! ✓</p>
+        <p className="mt-4 text-sm text-teal">
+          {ru ? 'Отличная работа — без ошибок! ✓' : 'Great work — no mistakes! ✓'}
+        </p>
       ) : null}
 
       {levelExitId ? (
@@ -87,9 +97,11 @@ export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }:
           className="mt-4 block rounded-sm border border-teal-dim bg-teal-dim/10 px-3.5 py-2.5 text-sm hover:border-teal"
         >
           <span className="font-mono text-2xs uppercase tracking-[0.08em] text-teal">
-            конец уровня {levelExitId}
+            {ru ? `конец уровня ${levelExitId}` : `end of level ${levelExitId}`}
           </span>
-          <span className="ml-2">Пройти итоговый тест уровня {levelExitId} →</span>
+          <span className="ml-2">
+            {ru ? `Пройти итоговый тест уровня ${levelExitId} →` : `Take the ${levelExitId} exit test →`}
+          </span>
         </Link>
       ) : (
         checkpointUnitId && (
@@ -98,9 +110,11 @@ export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }:
             className="mt-4 block rounded-sm border border-amber-dim bg-amber-dim/10 px-3.5 py-2.5 text-sm hover:border-amber"
           >
             <span className="font-mono text-2xs uppercase tracking-[0.08em] text-amber">
-              конец юнита
+              {ru ? 'конец юнита' : 'end of unit'}
             </span>
-            <span className="ml-2">Пройти контрольную по юниту →</span>
+            <span className="ml-2">
+              {ru ? 'Пройти контрольную по юниту →' : 'Take the unit checkpoint →'}
+            </span>
           </Link>
         )
       )}
@@ -108,11 +122,11 @@ export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }:
       <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-line pt-5">
         {next ? (
           <Link to={`/course/${next.unitId}/day/${next.dayId}`} className={nextClass}>
-            Следующий день →
+            {ru ? 'Следующий день →' : 'Next day →'}
           </Link>
         ) : (
           <Link to="/" className={nextClass}>
-            На главную →
+            {ru ? 'На главную →' : 'To dashboard →'}
           </Link>
         )}
         {onRedo && (
@@ -121,7 +135,7 @@ export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }:
             onClick={onRedo}
             className="font-mono text-2xs uppercase tracking-[0.08em] text-muted hover:text-content"
           >
-            ↻ пройти заново
+            {ru ? '↻ пройти заново' : '↻ redo'}
           </button>
         )}
         {next && (
