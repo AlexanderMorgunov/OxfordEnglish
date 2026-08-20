@@ -101,6 +101,22 @@ export const SKILL_TAGS = [
   'grammar.mixed-conditional',
   'grammar.wish-past',
 
+  // B2 grammar
+  'grammar.past-modals',
+  'grammar.should-have',
+  'grammar.causative',
+  'grammar.passive-report-advanced',
+  'grammar.reporting-verbs',
+  'grammar.reduced-relatives',
+  'grammar.participle-clauses',
+  'grammar.wish-would',
+  'grammar.conditionals-review',
+  'grammar.unless-provided',
+  'grammar.cleft',
+  'grammar.inversion',
+  'grammar.emphasis',
+  'grammar.concession',
+
   // functions (everyday communication)
   'functions.ordering',
   'functions.small-talk',
@@ -124,6 +140,7 @@ export const SKILL_TAGS = [
   'functions.news',
   'functions.speculating',
   'functions.preferences',
+  'functions.regret',
 
   // reader (exercises generated from imported books)
   'reader.vocab',

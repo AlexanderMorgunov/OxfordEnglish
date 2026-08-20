@@ -1,0 +1,599 @@
+{
+  "id": "u27.d01",
+  "title": {
+    "en": "I should have known",
+    "ru": "Мне стоило догадаться"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.should-have",
+    "vocab.life",
+    "functions.regret"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u27.d01.vocab",
+      "title": {
+        "en": "Regret & hindsight",
+        "ru": "Сожаление и хайндсайт"
+      },
+      "words": [
+        {
+          "word": "hindsight",
+          "ru": "оглядываясь назад",
+          "ipa": "/ˈhaɪndsaɪt/",
+          "example": "In hindsight, I should have waited.",
+          "exampleRu": "Оглядываясь назад, мне стоило подождать.",
+          "audio": {
+            "src": "media/audio/u27.d01.vocab.hindsight.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "blame",
+          "ru": "винить",
+          "ipa": "/bleɪm/",
+          "example": "Don't blame yourself.",
+          "exampleRu": "Не вини себя.",
+          "audio": {
+            "src": "media/audio/u27.d01.vocab.blame.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "avoid",
+          "ru": "избегать",
+          "ipa": "/əˈvɔɪd/",
+          "example": "We could have avoided this.",
+          "exampleRu": "Мы могли бы этого избежать.",
+          "audio": {
+            "src": "media/audio/u27.d01.vocab.avoid.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "prevent",
+          "ru": "предотвращать",
+          "ipa": "/prɪˈvent/",
+          "example": "It could have been prevented.",
+          "exampleRu": "Это можно было предотвратить.",
+          "audio": {
+            "src": "media/audio/u27.d01.vocab.prevent.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ignore",
+          "ru": "игнорировать",
+          "ipa": "/ɪɡˈnɔːr/",
+          "example": "You shouldn't have ignored the warning.",
+          "exampleRu": "Тебе не стоило игнорировать предупреждение.",
+          "audio": {
+            "src": "media/audio/u27.d01.vocab.ignore.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "admit",
+          "ru": "признавать",
+          "ipa": "/ədˈmɪt/",
+          "example": "He admitted his mistake.",
+          "exampleRu": "Он признал свою ошибку.",
+          "audio": {
+            "src": "media/audio/u27.d01.vocab.admit.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "obvious",
+          "ru": "очевидный",
+          "ipa": "/ˈɒbviəs/",
+          "example": "It seems obvious now.",
+          "exampleRu": "Теперь это кажется очевидным.",
+          "audio": {
+            "src": "media/audio/u27.d01.vocab.obvious.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "aware",
+          "ru": "осведомлённый",
+          "ipa": "/əˈweər/",
+          "example": "I wasn't aware of the risk.",
+          "exampleRu": "Я не знал о риске.",
+          "audio": {
+            "src": "media/audio/u27.d01.vocab.aware.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "consequence",
+          "ru": "последствие",
+          "ipa": "/ˈkɒnsɪkwəns/",
+          "example": "There were serious consequences.",
+          "exampleRu": "Были серьёзные последствия.",
+          "audio": {
+            "src": "media/audio/u27.d01.vocab.consequence.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "foolish",
+          "ru": "глупый",
+          "ipa": "/ˈfuːlɪʃ/",
+          "example": "It was a foolish decision.",
+          "exampleRu": "Это было глупое решение.",
+          "audio": {
+            "src": "media/audio/u27.d01.vocab.foolish.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u27.d01.grammar",
+      "title": {
+        "en": "should / shouldn’t have",
+        "ru": "should / shouldn’t have"
+      },
+      "rule": {
+        "en": "Past modals judge a past action you can’t change. \"should have + V3\" = a good idea you DIDN’T do (regret). \"shouldn’t have + V3\" = something you DID that was wrong (criticism). \"could have + V3\" = a possibility you missed.",
+        "ru": "Прошлые модальные оценивают действие, которое уже не изменить. «should have + V3» = было бы хорошо, но ты НЕ сделал (сожаление). «shouldn’t have + V3» = ты СДЕЛАЛ, и это было зря (критика). «could have + V3» = упущенная возможность."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "regret (you didn’t)",
+            "ru": "сожаление (не сделал)"
+          },
+          "formula": "should have + V3",
+          "examples": [
+            {
+              "en": "I should have saved the file.",
+              "ru": "Мне стоило сохранить файл."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "criticism (you did)",
+            "ru": "критика (сделал)"
+          },
+          "formula": "shouldn't have + V3",
+          "examples": [
+            {
+              "en": "You shouldn't have deleted it.",
+              "ru": "Тебе не стоило это удалять."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "missed possibility",
+            "ru": "упущенная возможность"
+          },
+          "formula": "could have + V3",
+          "examples": [
+            {
+              "en": "We could have won.",
+              "ru": "Мы могли бы победить."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Write \"should have\", never \"should of\" (they just sound the same).",
+          "ru": "Пиши «should have», никогда «should of» (они просто одинаково звучат)."
+        },
+        {
+          "en": "Use the past participle: \"should have gone\", not \"should have went\".",
+          "ru": "Причастие: «should have gone», а не «should have went»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u27.d01.reading",
+      "title": {
+        "en": "What went wrong",
+        "ru": "Что пошло не так"
+      },
+      "blocks": [
+        {
+          "id": "u27.d01.reading.b1",
+          "en": "Our launch failed, and I keep replaying it. We should have tested with real users first; instead, we guessed. I shouldn't have ignored the early warnings from the team — they were obvious in hindsight. We could have prevented most of the bugs with one more week.",
+          "ru": "Наш запуск провалился, и я постоянно это прокручиваю. Нам стоило сначала протестировать на реальных пользователях; вместо этого мы гадали. Мне не стоило игнорировать ранние предупреждения команды — оглядываясь назад, они были очевидны. Мы могли бы предотвратить большинство багов за ещё одну неделю.",
+          "audio": {
+            "src": "media/audio/u27.d01.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u27.d01.reading.b2",
+          "en": "Still, I try not to blame myself too much. Everyone makes foolish calls under pressure. I've admitted what went wrong, and now I'm aware of the consequences of rushing. Next time we won't guess — that's the one good thing I got out of it.",
+          "ru": "И всё же я стараюсь не слишком себя винить. Все принимают глупые решения под давлением. Я признал, что пошло не так, и теперь осознаю последствия спешки. В следующий раз мы не будем гадать — это единственное хорошее, что я из этого вынес.",
+          "audio": {
+            "src": "media/audio/u27.d01.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "launch",
+          "ru": "запуск",
+          "ipa": "/lɔːntʃ/"
+        },
+        {
+          "word": "rush",
+          "ru": "спешить",
+          "ipa": "/rʌʃ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u27.d01.listening",
+      "title": {
+        "en": "The missed deadline",
+        "ru": "Сорванный срок"
+      },
+      "audio": {
+        "src": "media/audio/u27.d01.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "The client is furious about the deadline.",
+          "ru": "Клиент в ярости из-за срока."
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "We should have told them earlier that we were behind.",
+          "ru": "Нам стоило раньше сказать им, что мы отстаём."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "You're right. And I shouldn't have promised Friday.",
+          "ru": "Ты прав. И мне не стоило обещать пятницу."
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "We could have avoided all this with a quick call.",
+          "ru": "Мы могли бы всего этого избежать одним звонком."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u27.d01.ex.l.01",
+          "instruction": {
+            "en": "What does the second speaker regret?",
+            "ru": "О чём жалеет второй говорящий?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.should-have"
+          ],
+          "prompt": "I ___ have promised Friday.",
+          "options": [
+            "shouldn't",
+            "should",
+            "won't"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u27.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u27.d01.ex.g.01",
+          "instruction": {
+            "en": "should have + V3 (regret).",
+            "ru": "should have + V3 (сожаление)."
+          },
+          "tags": [
+            "grammar.should-have"
+          ],
+          "prompt": "I ___ have tested it first. (should)",
+          "answers": [
+            "should"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u27.d01.ex.g.02",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие."
+          },
+          "tags": [
+            "grammar.should-have"
+          ],
+          "prompt": "You should have ___ me. (tell)",
+          "answers": [
+            "told"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u27.d01.ex.c.01",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.should-have"
+          ],
+          "prompt": "We ___ have booked earlier — now it’s full.",
+          "options": [
+            "should",
+            "will",
+            "should had"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u27.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.should-have"
+          ],
+          "variants": [
+            "I should of called you.",
+            "I should have called you."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u27.d01.ex.c.02",
+          "instruction": {
+            "en": "Criticism of a past action.",
+            "ru": "Критика прошлого действия."
+          },
+          "tags": [
+            "grammar.should-have"
+          ],
+          "prompt": "You ___ have ignored the warning.",
+          "options": [
+            "shouldn't",
+            "won't",
+            "should"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u27.d01.ex.g.03",
+          "instruction": {
+            "en": "could have + V3 (missed possibility).",
+            "ru": "could have + V3 (упущенная возможность)."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "It ___ have been prevented. (can)",
+          "answers": [
+            "could"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u27.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.should-have"
+          ],
+          "tokens": [
+            "We",
+            "should",
+            "have",
+            "asked",
+            "for",
+            "help"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u27.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.life"
+          ],
+          "pairs": [
+            {
+              "left": "hindsight",
+              "right": "оглядываясь назад"
+            },
+            {
+              "left": "blame",
+              "right": "винить"
+            },
+            {
+              "left": "prevent",
+              "right": "предотвращать"
+            },
+            {
+              "left": "aware",
+              "right": "осведомлённый"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u27.d01.ex.c.03",
+          "instruction": {
+            "en": "shouldn’t have + V3.",
+            "ru": "shouldn't have + V3."
+          },
+          "tags": [
+            "grammar.should-have"
+          ],
+          "prompt": "She ___ have said that — it was rude.",
+          "options": [
+            "shouldn't",
+            "didn't",
+            "not should"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u27.d01.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.should-have"
+          ],
+          "variants": [
+            "You should have went to the doctor.",
+            "You should have gone to the doctor."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u27.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.should-have",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мне стоило подготовиться.",
+          "answers": [
+            "I should have prepared.",
+            "I should've prepared."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i should prepared",
+                "i should have prepare",
+                "i should of prepared"
+              ],
+              "explanation": {
+                "en": "should have + V3: I should have prepared.",
+                "ru": "should have + V3: I should have prepared."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u27.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.should-have",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Тебе не стоило игнорировать предупреждение.",
+          "answers": [
+            "You shouldn't have ignored the warning.",
+            "You should not have ignored the warning."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you shouldn't ignore the warning",
+                "you shouldn't have ignore the warning",
+                "you should not ignored the warning"
+              ],
+              "explanation": {
+                "en": "shouldn't have + V3: You shouldn't have ignored the warning.",
+                "ru": "shouldn't have + V3: You shouldn't have ignored the warning."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

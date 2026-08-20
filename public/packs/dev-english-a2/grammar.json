@@ -3507,5 +3507,60 @@
       "wish",
       "past-perfect"
     ]
+  },
+  {
+    "id": "past-modals",
+    "title": {
+      "en": "Past modals: should have, could have, must have",
+      "ru": "Прошлые модальные: should have, could have, must have"
+    },
+    "level": "B2",
+    "summary": {
+      "en": "Modal + have + V3 comments on the past. \"should have\" = regret; \"shouldn’t have\" = criticism; \"could have\" = a missed possibility; \"must have / might have / can’t have\" = a deduction about the past.",
+      "ru": "Модальный + have + V3 комментирует прошлое. «should have» = сожаление; «shouldn’t have» = критика; «could have» = упущенная возможность; «must have / might have / can’t have» = дедукция о прошлом."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "Regret & criticism",
+          "ru": "Сожаление и критика"
+        },
+        "text": {
+          "en": "\"should have + V3\" = the right thing you didn’t do. \"shouldn’t have + V3\" = the wrong thing you did.",
+          "ru": "«should have + V3» = правильное, что ты не сделал. «shouldn’t have + V3» = неправильное, что ты сделал."
+        },
+        "examples": [
+          {
+            "en": "I should have listened. You shouldn’t have shouted.",
+            "ru": "Мне стоило послушать. Тебе не стоило кричать."
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Past deduction",
+          "ru": "Дедукция о прошлом"
+        },
+        "text": {
+          "en": "\"must have\" = I’m sure it happened. \"can’t have\" = I’m sure it didn’t. \"might/could have\" = maybe.",
+          "ru": "«must have» = уверен, что было. «can’t have» = уверен, что не было. «might/could have» = может быть."
+        },
+        "examples": [
+          {
+            "en": "She must have left. He can’t have known.",
+            "ru": "Она, должно быть, ушла. Он не мог знать."
+          }
+        ]
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "\"should of\" is wrong — it’s \"should have\" / \"should’ve\".",
+        "ru": "«should of» — ошибка, надо «should have» / «should’ve»."
+      }
+    ],
+    "seeAlso": [
+      "modals-deduction"
+    ]
   }
 ]
