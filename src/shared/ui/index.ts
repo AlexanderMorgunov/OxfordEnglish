@@ -3,6 +3,7 @@ export { Card } from './Card';
 export { Console } from './Console';
 export { Eyebrow } from './Eyebrow';
 export { Input } from './Input';
+export { LevelDivider } from './LevelDivider';
 export { Option } from './Option';
 export { PageStub } from './PageStub';
 export { PixelImage } from './PixelImage';

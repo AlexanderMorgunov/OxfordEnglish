@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useContentStore } from '@/content/store';
 import { useSolvedExercises } from '@/features/progress/useCompletion';
@@ -6,7 +6,10 @@ import { dayProgress, unitProgress } from '@/features/progress/completion';
 import { useLearner } from '@/features/learner/store';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { onboardingSeen, startTour } from '@/features/onboarding/tour';
-import { Card, PixelImage } from '@/shared/ui';
+import { Card, LevelDivider, PixelImage } from '@/shared/ui';
+import type { LoadedUnit } from '@/content/loader';
+
+const unitLevel = (unit: LoadedUnit) => unit.days.find((d) => d.level)?.level;
 
 export function DashboardPage() {
   const { status, pack, error, load } = useContentStore();
@@ -114,10 +117,15 @@ export function DashboardPage() {
           ) : null}
 
           <div className="flex flex-col gap-6">
-          {pack.units.map((unit) => {
+          {pack.units.map((unit, i) => {
             const up = unitProgress(unit, solved);
+            const lvl = unitLevel(unit);
+            const prevLvl = i > 0 ? unitLevel(pack.units[i - 1]!) : undefined;
+            const showDivider = lvl != null && lvl !== prevLvl;
             return (
-              <div key={unit.id}>
+              <Fragment key={unit.id}>
+              {showDivider && <LevelDivider level={lvl} ru={lang === 'ru'} />}
+              <div>
                 <p className="mb-3 flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.14em] text-muted">
                   <span>{unit.title.en}</span>
                   {placementDone && unit.id === recommendedUnitId && (
@@ -181,6 +189,7 @@ export function DashboardPage() {
                   })}
                 </div>
               </div>
+              </Fragment>
             );
           })}
           </div>

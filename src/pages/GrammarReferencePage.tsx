@@ -2,16 +2,24 @@ import { useEffect } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { useContentStore } from '@/content/store';
 import { useUiLang, tr } from '@/features/i18n/uiLang';
-import { Card, Eyebrow, PageStub } from '@/shared/ui';
+import { Card, Eyebrow, LevelDivider, PageStub } from '@/shared/ui';
+import { LEVEL_ORDER } from '@/shared/levels';
+import type { Level } from '@/content/schema';
 
 export function GrammarIndexPage() {
   const { status, pack, load } = useContentStore();
   const lang = useUiLang((s) => s.lang);
+  const ru = lang === 'ru';
   useEffect(() => {
     void load();
   }, [load]);
 
   const articles = pack?.grammar ?? [];
+  const byLevel = LEVEL_ORDER.map((lvl) => ({
+    level: lvl as Level,
+    items: articles.filter((a) => a.level === lvl),
+  })).filter((g) => g.items.length > 0);
+  const noLevel = articles.filter((a) => !a.level);
 
   return (
     <section aria-label="Grammar reference" className="max-w-prose">
@@ -34,23 +42,29 @@ export function GrammarIndexPage() {
         </p>
       )}
 
-      <div className="flex flex-col gap-2.5">
-        {articles.map((a) => (
-          <Link
-            key={a.id}
-            to={`/grammar/${a.id}`}
-            className="group flex items-center justify-between rounded-md border border-line bg-surface px-4 py-3.5 transition-colors hover:border-teal-dim"
-          >
-            <span className="flex items-baseline gap-3">
-              {a.level && <span className="font-mono text-2xs text-teal">{a.level}</span>}
+      {[...byLevel, ...(noLevel.length ? [{ level: null, items: noLevel }] : [])].map((group) => (
+        <div key={group.level ?? 'other'} className="mb-8 flex flex-col gap-2.5">
+          {group.level ? (
+            <LevelDivider level={group.level} ru={ru} />
+          ) : (
+            <p className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
+              {ru ? 'без уровня' : 'other'}
+            </p>
+          )}
+          {group.items.map((a) => (
+            <Link
+              key={a.id}
+              to={`/grammar/${a.id}`}
+              className="group flex items-center justify-between rounded-md border border-line bg-surface px-4 py-3.5 transition-colors hover:border-teal-dim"
+            >
               <span className="text-base">{tr(a.title, lang)}</span>
-            </span>
-            <span className="max-w-[45%] truncate font-mono text-2xs text-muted">
-              {tr(a.summary, lang)}
-            </span>
-          </Link>
-        ))}
-      </div>
+              <span className="max-w-[45%] truncate font-mono text-2xs text-muted">
+                {tr(a.summary, lang)}
+              </span>
+            </Link>
+          ))}
+        </div>
+      ))}
     </section>
   );
 }
