@@ -16,6 +16,7 @@ export function DashboardPage() {
   const solved = useSolvedExercises();
   const { level, recommendedUnitId, placementDone } = useLearner();
   const lang = useUiLang((s) => s.lang);
+  const ru = lang === 'ru';
 
   useEffect(() => {
     void load();
@@ -32,7 +33,7 @@ export function DashboardPage() {
   const recommendedDay = recommended?.days[0];
 
   return (
-    <section aria-label="Dashboard">
+    <section aria-label={ru ? 'Главная' : 'Dashboard'}>
       <div className="mb-8 flex items-start justify-between gap-4">
         <div>
           <p className="eyebrow mb-3.5">today</p>
@@ -40,8 +41,9 @@ export function DashboardPage() {
             English for <span className="text-amber">developers</span>
           </h1>
           <p className="max-w-prose text-lg text-muted text-pretty">
-            A structured daily route from A1 to B1 — grammar, reading, listening
-            and practice, in the language you already think in: commits.
+            {ru
+              ? 'Ежедневный маршрут от A1 к B1 — грамматика, чтение, аудирование и практика, на языке, на котором вы уже думаете: коммиты.'
+              : 'A structured daily route from A1 to B1 — grammar, reading, listening and practice, in the language you already think in: commits.'}
           </p>
         </div>
         <PixelImage
@@ -54,13 +56,13 @@ export function DashboardPage() {
       </div>
 
       {status === 'loading' && (
-        <p className="font-mono text-sm text-muted">loading pack…</p>
+        <p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading pack…'}</p>
       )}
 
       {status === 'error' && (
         <Card className="border-coral">
           <p className="font-mono text-sm text-coral">
-            ✕ failed to load content pack
+            {ru ? '✕ не удалось загрузить контент' : '✕ failed to load content pack'}
           </p>
           <p className="mt-2 text-sm text-muted">{error}</p>
         </Card>
@@ -75,17 +77,19 @@ export function DashboardPage() {
             >
               <div>
                 <p className="mb-0.5 font-mono text-2xs uppercase tracking-[0.08em] text-violet">
-                  new here?
+                  {ru ? 'впервые здесь?' : 'new here?'}
                 </p>
                 <p className="text-sm text-pretty">
-                  Take a 5-minute placement test to find your starting point.
+                  {ru
+                    ? 'Пройдите 5-минутный тест, чтобы найти свою точку старта.'
+                    : 'Take a 5-minute placement test to find your starting point.'}
                 </p>
               </div>
               <Link
                 to="/placement"
                 className="inline-flex shrink-0 items-center gap-2 rounded-sm bg-violet px-4 py-2.5 text-sm font-mono font-semibold text-ink transition-opacity hover:opacity-90"
               >
-                Take the test →
+                {ru ? 'Пройти тест →' : 'Take the test →'}
               </Link>
             </Card>
           ) : recommended && recommendedDay ? (
@@ -95,10 +99,11 @@ export function DashboardPage() {
             >
               <div>
                 <p className="mb-0.5 font-mono text-2xs uppercase tracking-[0.08em] text-teal">
-                  your level: {level}
+                  {ru ? 'ваш уровень' : 'your level'}: {level}
                 </p>
                 <p className="text-sm text-pretty">
-                  Recommended start: <b className="text-content">{recommended.title.en}</b>{' '}
+                  {ru ? 'Рекомендуем начать с: ' : 'Recommended start: '}
+                  <b className="text-content">{recommended.title.en}</b>{' '}
                   <span className="font-mono text-2xs text-muted">· {recommendedDay.id}</span>
                 </p>
               </div>
@@ -107,10 +112,10 @@ export function DashboardPage() {
                   to={`/course/${recommended.id}/day/${recommendedDay.id}`}
                   className="inline-flex items-center gap-2 rounded-sm bg-teal px-4 py-2.5 text-sm font-mono font-semibold text-ink transition-opacity hover:opacity-90"
                 >
-                  Start →
+                  {ru ? 'Начать →' : 'Start →'}
                 </Link>
                 <Link to="/placement" className="font-mono text-2xs text-muted hover:text-content">
-                  retake
+                  {ru ? 'заново' : 'retake'}
                 </Link>
               </div>
             </Card>
@@ -130,16 +135,16 @@ export function DashboardPage() {
                   <span>{unit.title.en}</span>
                   {placementDone && unit.id === recommendedUnitId && (
                     <span className="rounded-sm bg-teal/15 px-1.5 py-0.5 text-2xs text-teal normal-case tracking-normal">
-                      ▶ start here
+                      {ru ? '▶ начать тут' : '▶ start here'}
                     </span>
                   )}
                   {unit.days.length === 0 ? (
                     <span className="text-faint normal-case tracking-normal">
-                      · soon
+                      {ru ? '· скоро' : '· soon'}
                     </span>
                   ) : up.state === 'done' ? (
                     <span className="rounded-sm bg-teal/15 px-1.5 py-0.5 text-2xs text-teal normal-case tracking-normal">
-                      ✓ done
+                      {ru ? '✓ готово' : '✓ done'}
                     </span>
                   ) : up.state === 'in-progress' ? (
                     <span className="text-2xs text-amber tabular-nums normal-case tracking-normal">
@@ -182,7 +187,8 @@ export function DashboardPage() {
                           </span>
                         </span>
                         <span className="font-mono text-2xs tabular-nums text-muted">
-                          ~{day.estimatedMinutes} min · {day.sections.length} sections
+                          ~{day.estimatedMinutes} {ru ? 'мин' : 'min'} · {day.sections.length}{' '}
+                          {ru ? 'разделов' : 'sections'}
                         </span>
                       </Link>
                     );

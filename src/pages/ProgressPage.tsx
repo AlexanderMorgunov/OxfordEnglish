@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { CheckpointResult, ExerciseAttempt } from '@/db/db';
 import { useContentStore } from '@/content/store';
+import { useUiLang } from '@/features/i18n/uiLang';
 import { Card, Eyebrow } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import {
@@ -52,7 +53,7 @@ function SkillRow({ stat }: { stat: TagStat }) {
   );
 }
 
-function ActivityStrip({ days }: { days: Set<string> }) {
+function ActivityStrip({ days, ru }: { days: Set<string>; ru: boolean }) {
   const today = new Date();
   const cells = Array.from({ length: 14 }, (_, i) => {
     const d = new Date(today);
@@ -65,7 +66,7 @@ function ActivityStrip({ days }: { days: Set<string> }) {
         <div
           key={i}
           className={cn('h-4 w-4 rounded-sm', active ? 'bg-teal' : 'bg-surface-2')}
-          title={active ? 'active' : 'no activity'}
+          title={active ? (ru ? 'активность' : 'active') : ru ? 'нет активности' : 'no activity'}
         />
       ))}
     </div>
@@ -73,6 +74,7 @@ function ActivityStrip({ days }: { days: Set<string> }) {
 }
 
 export function ProgressPage() {
+  const ru = useUiLang((s) => s.lang) === 'ru';
   const [attempts, setAttempts] = useState<ExerciseAttempt[] | null>(null);
   const [vocab, setVocab] = useState(0);
   const [history, setHistory] = useState<CheckpointResult[]>([]);
@@ -99,30 +101,32 @@ export function ProgressPage() {
   const days = attempts ? activeDays(attempts) : new Set<string>();
 
   return (
-    <section aria-label="Progress">
+    <section aria-label={ru ? 'Прогресс' : 'Progress'}>
       <Eyebrow className="mb-3.5">metrics</Eyebrow>
-      <h1 className="mb-8 text-2xl font-bold tracking-tight">Progress</h1>
+      <h1 className="mb-8 text-2xl font-bold tracking-tight">{ru ? 'Прогресс' : 'Progress'}</h1>
 
       <div className="mb-8 flex flex-wrap gap-3">
-        <Stat label="streak" value={`${streak}d`} />
-        <Stat label="vocabulary" value={vocab} />
-        <Stat label="days active" value={days.size} />
+        <Stat label={ru ? 'серия' : 'streak'} value={`${streak}${ru ? 'дн' : 'd'}`} />
+        <Stat label={ru ? 'словарь' : 'vocabulary'} value={vocab} />
+        <Stat label={ru ? 'дней с занятиями' : 'days active'} value={days.size} />
       </div>
 
       <div className="mb-8">
         <p className="mb-3 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          activity · last 14 days
+          {ru ? 'активность · последние 14 дней' : 'activity · last 14 days'}
         </p>
-        <ActivityStrip days={days} />
+        <ActivityStrip days={days} ru={ru} />
       </div>
 
       <div className="mb-8">
         <p className="mb-3 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          skill map · weakest first
+          {ru ? 'карта навыков · слабое первым' : 'skill map · weakest first'}
         </p>
         {map.length === 0 ? (
           <p className="text-sm text-muted">
-            No attempts yet — do a day's practice and your weak spots show up here.
+            {ru
+              ? 'Пока нет попыток — пройдите практику дня, и слабые места появятся здесь.'
+              : "No attempts yet — do a day's practice and your weak spots show up here."}
           </p>
         ) : (
           <div className="flex flex-col gap-3.5">
@@ -136,24 +140,24 @@ export function ProgressPage() {
       <div>
         <div className="mb-3 flex items-center justify-between">
           <p className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-            checkpoints
+            {ru ? 'контрольные' : 'checkpoints'}
           </p>
           <Link
             to="/checkpoint/u01"
             className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
           >
-            start unit 1 →
+            {ru ? 'начать юнит 1 →' : 'start unit 1 →'}
           </Link>
         </div>
         {history.length === 0 ? (
-          <p className="text-sm text-muted">No checkpoints taken yet.</p>
+          <p className="text-sm text-muted">{ru ? 'Контрольных ещё не было.' : 'No checkpoints taken yet.'}</p>
         ) : (
           <div className="flex flex-col gap-2">
             {history.map((h) => (
               <Card key={h.id} className="flex items-center justify-between">
                 <span className="font-mono text-sm">{h.unitId}</span>
                 <span className="font-mono text-sm tabular-nums text-teal">
-                  {pct(h.score / h.total)} · {h.score}/{h.total}
+                  {h.total > 0 ? pct(h.score / h.total) : '—'} · {h.score}/{h.total}
                 </span>
               </Card>
             ))}
@@ -168,7 +172,7 @@ export function ProgressPage() {
                 to={`/checkpoint/exit-${level.toLowerCase()}`}
                 className="rounded-sm border border-teal-dim bg-teal-dim/10 px-3 py-1.5 font-mono text-xs text-teal hover:border-teal"
               >
-                {level} exit test →
+                {ru ? `итоговый тест ${level} →` : `${level} exit test →`}
               </Link>
             ))}
           </div>

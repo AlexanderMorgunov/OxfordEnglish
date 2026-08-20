@@ -61,7 +61,7 @@ export type BandScore = { correct: number; total: number };
 export type PlacementOutcome = {
   level: Level;
   recommendedUnitId: string;
-  message: string;
+  message: { ru: string; en: string };
   b1Ready: boolean;
 };
 
@@ -76,7 +76,10 @@ export function scorePlacement(scores: Record<Band, BandScore>): PlacementOutcom
     return {
       level: 'A1',
       recommendedUnitId: 'u00',
-      message: 'Start from the basics — the A1 refresh will set you up.',
+      message: {
+        ru: 'Начнём с основ — повторение A1 задаст фундамент.',
+        en: 'Start from the basics — the A1 refresh will set you up.',
+      },
       b1Ready: false,
     };
   }
@@ -84,7 +87,10 @@ export function scorePlacement(scores: Record<Band, BandScore>): PlacementOutcom
     return {
       level: 'A2',
       recommendedUnitId: 'u01',
-      message: 'You have the basics — start the course from the beginning.',
+      message: {
+        ru: 'Основы есть — начните курс с самого начала.',
+        en: 'You have the basics — start the course from the beginning.',
+      },
       b1Ready: false,
     };
   }
@@ -92,14 +98,20 @@ export function scorePlacement(scores: Record<Band, BandScore>): PlacementOutcom
     return {
       level: 'A2',
       recommendedUnitId: 'u10',
-      message: 'Solid A2 — jump ahead to futures and the present perfect.',
+      message: {
+        ru: 'Уверенный A2 — перепрыгните к будущим временам и present perfect.',
+        en: 'Solid A2 — jump ahead to futures and the present perfect.',
+      },
       b1Ready: false,
     };
   }
   return {
     level: 'B1',
     recommendedUnitId: 'u15',
-    message: "Excellent — you're ready for B1. Start the B1 units.",
+    message: {
+      ru: 'Отлично — вы готовы к B1. Начните юниты B1.',
+      en: "Excellent — you're ready for B1. Start the B1 units.",
+    },
     b1Ready: true,
   };
 }
