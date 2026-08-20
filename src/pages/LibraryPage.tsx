@@ -34,15 +34,19 @@ export function LibraryPage() {
       setError(
         msg === 'unsupported-format'
           ? ru
-            ? 'Пока поддерживаются EPUB, FB2 и DOCX.'
-            : 'Only EPUB, FB2 and DOCX are supported so far.'
-          : msg === 'offline-storage-unavailable'
+            ? 'Пока поддерживаются EPUB, FB2, DOCX и PDF.'
+            : 'Only EPUB, FB2, DOCX and PDF are supported so far.'
+          : msg === 'pdf-no-text-layer'
             ? ru
-              ? 'Твой браузер не поддерживает офлайн-хранение книг.'
-              : 'Your browser does not support offline book storage.'
-            : ru
-              ? 'Не удалось открыть файл — возможно, он повреждён или в неподдерживаемом формате.'
-              : 'Could not open the file — it may be corrupt or in an unsupported format.'
+              ? 'В этом PDF нет текстового слоя (похоже на скан). Попробуй EPUB или FB2.'
+              : 'This PDF has no text layer (looks scanned). Try EPUB or FB2 instead.'
+            : msg === 'offline-storage-unavailable'
+              ? ru
+                ? 'Твой браузер не поддерживает офлайн-хранение книг.'
+                : 'Your browser does not support offline book storage.'
+              : ru
+                ? 'Не удалось открыть файл — возможно, он повреждён или в неподдерживаемом формате.'
+                : 'Could not open the file — it may be corrupt or in an unsupported format.'
       );
     } finally {
       setBusy(false);
@@ -62,7 +66,7 @@ export function LibraryPage() {
             <input
               ref={inputRef}
               type="file"
-              accept=".epub,.fb2,.fb2.zip,.docx"
+              accept=".epub,.fb2,.fb2.zip,.docx,.pdf"
               className="hidden"
               onChange={(e) => {
                 const f = e.target.files?.[0];
@@ -109,8 +113,8 @@ export function LibraryPage() {
       {books.length === 0 ? (
         <p className="text-sm text-muted">
           {ru
-            ? 'Пока пусто. Добавь книгу в EPUB, FB2 или DOCX — и читай со словарём и озвучкой.'
-            : 'Nothing here yet. Add an EPUB, FB2 or DOCX book and read it with lookup and audio.'}
+            ? 'Пока пусто. Добавь книгу в EPUB, FB2, DOCX или PDF — и читай со словарём и озвучкой. PDF читается «как получится»: лучше всего EPUB/FB2.'
+            : 'Nothing here yet. Add an EPUB, FB2, DOCX or PDF book and read it with lookup and audio. PDF is best-effort — EPUB/FB2 read best.'}
         </p>
       ) : (
         <div className="flex flex-col gap-2">

@@ -55,7 +55,7 @@ export interface BookRecord {
   id: string;
   title: string;
   author?: string;
-  format: 'epub' | 'fb2' | 'docx';
+  format: 'epub' | 'fb2' | 'docx' | 'pdf';
   addedAt: number;
   chapterCount: number;
   /** Reading position: last chapter index opened. */

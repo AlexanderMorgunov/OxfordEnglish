@@ -6,12 +6,12 @@ import { parseDocx } from './docx';
 import { detectFormat } from './index';
 import { htmlToText, toSentences } from './text';
 
-test('detectFormat maps extensions, ignores pdf/mobi', () => {
+test('detectFormat maps extensions, ignores unsupported ones', () => {
   expect(detectFormat('a.epub')).toBe('epub');
   expect(detectFormat('a.FB2')).toBe('fb2');
   expect(detectFormat('book.fb2.zip')).toBe('fb2');
   expect(detectFormat('a.docx')).toBe('docx');
-  expect(detectFormat('a.pdf')).toBeNull();
+  expect(detectFormat('a.pdf')).toBe('pdf');
   expect(detectFormat('a.mobi')).toBeNull();
 });
 

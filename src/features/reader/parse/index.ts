@@ -10,9 +10,10 @@ const EXT: Record<string, BookFormat> = {
   epub: 'epub',
   fb2: 'fb2',
   docx: 'docx',
+  pdf: 'pdf',
 };
 
-/** Best-effort format from a filename; null for anything we do not read yet (pdf, mobi…). */
+/** Best-effort format from a filename; null for anything we do not read yet (mobi, azw…). */
 export function detectFormat(filename: string): BookFormat | null {
   const lower = filename.toLowerCase();
   if (lower.endsWith('.fb2.zip')) return 'fb2';
@@ -49,6 +50,11 @@ export async function parseBook(file: File, format: BookFormat): Promise<ParsedB
         return parseFb2(decodeXml(files[name]!));
       }
       return parseFb2(decodeXml(bytes));
+    }
+    case 'pdf': {
+      // Lazy-loaded so pdf.js (~1 MB) stays out of the main bundle until a PDF is opened.
+      const { parsePdf } = await import('./pdf');
+      return parsePdf(bytes);
     }
   }
 }

@@ -1,4 +1,4 @@
-export type BookFormat = 'epub' | 'fb2' | 'docx';
+export type BookFormat = 'epub' | 'fb2' | 'docx' | 'pdf';
 
 export type Chapter = {
   /** Stable id within the book (spine index or section index). */
