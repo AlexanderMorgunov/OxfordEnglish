@@ -33,6 +33,7 @@ test('v2 upgrade preserves v1 data and adds the books table', async () => {
   v2.version(2).stores({ books: 'id, addedAt' });
   v2.version(3).stores({ catalogCache: 'id, cachedAt' });
   v2.version(4).stores({ analyticsQueue: '++id, ts' });
+  v2.version(5).stores({ feedbackOutbox: '++id, createdAt' });
   await v2.open();
 
   expect(await v2.table('wordStatus').count()).toBe(1);
@@ -51,6 +52,11 @@ test('v2 upgrade preserves v1 data and adds the books table', async () => {
   await v2.table('analyticsQueue').add({ event: 'app_open', ts: 1 });
   expect(await v2.table('analyticsQueue').count()).toBe(1);
   expect(await v2.table('wordStatus').count()).toBe(1);
+
+  // v5 adds feedbackOutbox, prior stores still intact
+  await v2.table('feedbackOutbox').add({ body: { message: 'hi' }, createdAt: 1 });
+  expect(await v2.table('feedbackOutbox').count()).toBe(1);
+  expect(await v2.table('books').count()).toBe(1);
   v2.close();
   await Dexie.delete(name);
 });

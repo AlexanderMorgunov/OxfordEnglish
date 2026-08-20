@@ -10,6 +10,7 @@ const NAV = [
   { to: '/vocabulary', label: 'vocab', end: false, devOnly: false, tour: undefined },
   { to: '/library', label: 'library', end: false, devOnly: false, tour: 'nav-library' },
   { to: '/settings', label: 'settings', end: false, devOnly: false, tour: 'nav-settings' },
+  { to: '/feedback', label: 'feedback', end: false, devOnly: false, tour: undefined },
   { to: '/support', label: 'support', end: false, devOnly: false, tour: undefined },
   { to: '/kitchen-sink', label: 'kit', end: false, devOnly: true, tour: undefined },
 ] as const;

@@ -14,12 +14,14 @@ import './app.css';
 import { router } from '@/router';
 import { initAnalytics } from '@/features/analytics/analytics';
 import { initPwaInstall } from '@/features/pwa/install';
+import { initFeedback } from '@/features/feedback/service';
 
 const rootEl = document.getElementById('root');
 if (!rootEl) throw new Error('Root element #root not found');
 
 initAnalytics();
 initPwaInstall();
+initFeedback();
 
 createRoot(rootEl).render(
   <StrictMode>

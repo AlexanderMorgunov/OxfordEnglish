@@ -77,6 +77,13 @@ export interface AnalyticsEvent {
   ts: number;
 }
 
+/** A user-composed feedback message awaiting delivery (kept so it survives an offline submit). */
+export interface FeedbackOutboxItem {
+  id?: number;
+  body: Record<string, string | number | boolean>;
+  createdAt: number;
+}
+
 const db = new Dexie('oxford-english') as Dexie & {
   attempts: EntityTable<ExerciseAttempt, 'id'>;
   wordStatus: EntityTable<WordStatus, 'word'>;
@@ -86,6 +93,7 @@ const db = new Dexie('oxford-english') as Dexie & {
   books: EntityTable<BookRecord, 'id'>;
   catalogCache: EntityTable<CatalogCacheEntry, 'id'>;
   analyticsQueue: EntityTable<AnalyticsEvent, 'id'>;
+  feedbackOutbox: EntityTable<FeedbackOutboxItem, 'id'>;
 };
 
 db.version(1).stores({
@@ -106,6 +114,10 @@ db.version(3).stores({
 
 db.version(4).stores({
   analyticsQueue: '++id, ts',
+});
+
+db.version(5).stores({
+  feedbackOutbox: '++id, createdAt',
 });
 
 export { db };
