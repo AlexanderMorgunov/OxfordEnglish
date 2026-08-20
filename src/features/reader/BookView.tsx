@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Button } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import type { ParsedBook } from './parse';
+import { paginateChapters } from './paginate';
 import { ReadingText } from './reading-text';
 import { ChapterStudy } from './ChapterStudy';
 
@@ -18,10 +19,12 @@ export function BookView({
   onChapter?: (index: number) => void;
 }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
-  const [chapter, setChapter] = useState(Math.min(Math.max(initialChapter, 0), book.chapters.length - 1));
+  // Long chapters are paginated so one render never mounts tens of thousands of word tokens.
+  const chapters = useMemo(() => paginateChapters(book.chapters), [book]);
+  const [chapter, setChapter] = useState(Math.min(Math.max(initialChapter, 0), chapters.length - 1));
 
   const go = (idx: number) => {
-    const next = Math.max(0, Math.min(idx, book.chapters.length - 1));
+    const next = Math.max(0, Math.min(idx, chapters.length - 1));
     setChapter(next);
     onChapter?.(next);
   };
@@ -56,9 +59,9 @@ export function BookView({
     };
   }, [idPrefix, chapter]);
 
-  const ch = book.chapters[chapter]!;
+  const ch = chapters[chapter]!;
   const paragraphs = useMemo(() => ch.text.split(/\n{2,}/).filter(Boolean), [ch]);
-  const multi = book.chapters.length > 1;
+  const multi = chapters.length > 1;
 
   const nav = multi ? (
     <div className="flex items-center justify-between gap-3">
@@ -71,7 +74,7 @@ export function BookView({
         onChange={(e) => go(Number(e.target.value))}
         className="max-w-[55%] truncate rounded-sm border border-line bg-surface px-2 py-1 font-mono text-xs text-muted"
       >
-        {book.chapters.map((c, i) => (
+        {chapters.map((c, i) => (
           <option key={c.id} value={i}>
             {i + 1}. {c.title ?? (ru ? 'Глава' : 'Chapter') + ' ' + (i + 1)}
           </option>
@@ -80,7 +83,7 @@ export function BookView({
       <Button
         variant="ghost"
         size="sm"
-        disabled={chapter >= book.chapters.length - 1}
+        disabled={chapter >= chapters.length - 1}
         onClick={() => go(chapter + 1)}
       >
         {ru ? 'далее' : 'next'} →

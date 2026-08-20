@@ -1,6 +1,8 @@
-import { NavLink, Outlet, ScrollRestoration } from 'react-router-dom';
+import { Suspense } from 'react';
+import { NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import { useLearner } from '@/features/learner/store';
 import { InstallPrompt } from '@/features/pwa/InstallPrompt';
+import { ErrorBoundary } from '@/shared/ui';
 
 const NAV = [
   { to: '/', label: 'today', end: true, devOnly: false, tour: undefined },
@@ -17,6 +19,7 @@ const NAV = [
 
 export function AppLayout() {
   const level = useLearner((s) => s.level);
+  const location = useLocation();
   return (
     <div className="min-h-screen">
       <header className="border-b border-line bg-surface/60 backdrop-blur">
@@ -31,7 +34,7 @@ export function AppLayout() {
             </span>
           </NavLink>
           <nav className="flex flex-wrap items-center gap-1">
-            {NAV.map((item) => (
+            {NAV.filter((item) => !item.devOnly || import.meta.env.DEV).map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
@@ -57,7 +60,11 @@ export function AppLayout() {
       <InstallPrompt />
 
       <main className="mx-auto max-w-3xl px-5 py-8 pb-20">
-        <Outlet />
+        <ErrorBoundary resetKey={location.pathname}>
+          <Suspense fallback={<p className="font-mono text-sm text-muted">loading…</p>}>
+            <Outlet />
+          </Suspense>
+        </ErrorBoundary>
       </main>
       {/* New paths open at the top; returning to a seen path restores its scroll. */}
       <ScrollRestoration getKey={(location) => location.pathname} />

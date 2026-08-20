@@ -1,16 +1,29 @@
 import { db, type SrsCard } from '@/db/db';
 
 export async function exportData(): Promise<string> {
-  const [attempts, wordStatus, srsCards, checkpoints, translations] =
+  const [attempts, wordStatus, srsCards, checkpoints, translations, catalogCache] =
     await Promise.all([
       db.attempts.toArray(),
       db.wordStatus.toArray(),
       db.srsCards.toArray(),
       db.checkpoints.toArray(),
       db.translations.toArray(),
+      db.catalogCache.toArray(),
     ]);
   return JSON.stringify(
-    { version: 1, exportedAt: Date.now(), attempts, wordStatus, srsCards, checkpoints, translations },
+    {
+      version: 2,
+      exportedAt: Date.now(),
+      attempts,
+      wordStatus,
+      srsCards,
+      checkpoints,
+      translations,
+      // Self-contained offline catalog books (parsed JSON). `books` (imported files) is omitted:
+      // the file itself lives in OPFS, not in this JSON, so restoring the index would list files
+      // that aren't present.
+      catalogCache,
+    },
     null,
     2
   );
@@ -36,19 +49,32 @@ type Backup = {
   srsCards?: SrsCard[];
   checkpoints?: unknown[];
   translations?: unknown[];
+  catalogCache?: unknown[];
 };
+
+/** Drop the autoincrement primary key so imported rows append instead of overwriting the target
+ *  device's rows by a colliding id. */
+function stripId(rows: unknown[]): unknown[] {
+  return rows.map((r) => {
+    const { id: _id, ...rest } = r as { id?: number };
+    return rest;
+  });
+}
 
 export async function importData(json: string): Promise<void> {
   const data = JSON.parse(json) as Backup;
   await db.transaction(
     'rw',
-    [db.attempts, db.wordStatus, db.srsCards, db.checkpoints, db.translations],
+    [db.attempts, db.wordStatus, db.srsCards, db.checkpoints, db.translations, db.catalogCache],
     async () => {
-      if (data.attempts) await db.attempts.bulkPut(data.attempts as never);
+      // `++id` stores: append (a merge across devices), never bulkPut-by-id (which would clobber).
+      if (data.attempts) await db.attempts.bulkAdd(stripId(data.attempts) as never);
+      if (data.checkpoints) await db.checkpoints.bulkAdd(stripId(data.checkpoints) as never);
+      // Natural-key stores: merge by key.
       if (data.wordStatus) await db.wordStatus.bulkPut(data.wordStatus as never);
       if (data.srsCards) await db.srsCards.bulkPut(data.srsCards.map(reviveCard));
-      if (data.checkpoints) await db.checkpoints.bulkPut(data.checkpoints as never);
       if (data.translations) await db.translations.bulkPut(data.translations as never);
+      if (data.catalogCache) await db.catalogCache.bulkPut(data.catalogCache as never);
     }
   );
 }

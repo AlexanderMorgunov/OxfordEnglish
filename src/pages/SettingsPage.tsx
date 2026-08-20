@@ -79,9 +79,13 @@ export function SettingsPage() {
   const doImport = async (file: File) => {
     try {
       await importData(await file.text());
-      setDataMsg('✓ imported — reload to see it');
-    } catch (e) {
-      setDataMsg(`✕ ${(e as Error).message}`);
+      setDataMsg(lang === 'ru' ? '✓ импортировано — перезагрузите страницу' : '✓ imported — reload to see it');
+    } catch {
+      setDataMsg(
+        lang === 'ru'
+          ? '✕ не удалось прочитать файл — выберите файл резервной копии (.json)'
+          : '✕ could not read the file — pick a backup (.json) file'
+      );
     }
   };
 

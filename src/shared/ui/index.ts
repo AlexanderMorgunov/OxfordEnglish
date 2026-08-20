@@ -1,6 +1,7 @@
 export { Button } from './Button';
 export { Card } from './Card';
 export { Console } from './Console';
+export { ErrorBoundary } from './ErrorBoundary';
 export { Eyebrow } from './Eyebrow';
 export { Input } from './Input';
 export { LevelDivider } from './LevelDivider';
