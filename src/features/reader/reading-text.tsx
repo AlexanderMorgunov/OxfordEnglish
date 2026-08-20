@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Popover } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import { canSpeak, speakWord, speakPassage, cancelSpeech } from '@/shared/lib/audio';
 import { translateWord, translateText } from '@/features/vocab/translate';
-import { addWordCard } from '@/features/srs/service';
+import { addWordCard, addPhraseCard } from '@/features/srs/service';
 import { AiAction } from '@/features/ai/AiAction';
 import { wordInContext } from '@/features/ai/functions';
 import { useUiLang } from '@/features/i18n/uiLang';
@@ -254,11 +254,43 @@ export function ReadingText({
   const [speakingIdx, setSpeakingIdx] = useState(-1);
   const [activeWord, setActiveWord] = useState(-1);
 
+  const textRef = useRef<HTMLDivElement>(null);
+  const [phrase, setPhrase] = useState<string | null>(null);
+  const [phraseRu, setPhraseRu] = useState<string | null>(null);
+  const [phraseLoading, setPhraseLoading] = useState(false);
+  const [phraseSaved, setPhraseSaved] = useState(false);
+
   useEffect(() => {
     void loadVocab();
     void loadFreq().then(setFreq);
   }, [loadVocab]);
   useEffect(() => () => cancelSpeech(), []);
+
+  // A multi-word selection becomes a savable phrase ("took a train"); single-word taps stay
+  // on the WordToken popover. English is phrasal-verb/idiom-heavy — word-by-word misleads.
+  const onSelect = () => {
+    const sel = window.getSelection();
+    const text = sel?.toString().trim().replace(/\s+/g, ' ') ?? '';
+    const inside = sel?.anchorNode ? (textRef.current?.contains(sel.anchorNode) ?? false) : false;
+    if (inside && text.includes(' ') && text.length <= 80) {
+      setPhrase(text);
+      setPhraseRu(null);
+      setPhraseSaved(false);
+      setPhraseLoading(true);
+      void translateText(text).then((tr) => {
+        setPhraseRu(tr);
+        setPhraseLoading(false);
+      });
+    } else {
+      setPhrase(null);
+    }
+  };
+
+  const savePhrase = () => {
+    if (!phrase) return;
+    setPhraseSaved(true);
+    void addPhraseCard(phrase, phraseRu ?? phrase, undefined);
+  };
 
   const rankThreshold = rankThresholdFor(level);
   const classify = useMemo(() => {
@@ -343,19 +375,68 @@ export function ReadingText({
           </span>
         )}
       </div>
-      {paragraphs.map((p, i) => (
-        <Paragraph
-          key={i}
-          text={p}
-          glossary={glossary}
-          lang={lang}
-          speaking={speakingIdx === i}
-          activeWord={activeWord}
-          onRead={() => read(i, p)}
-          classify={classify}
-          typoClass={typoClass}
-        />
-      ))}
+      {phrase && (
+        <div className="sticky top-2 z-10 flex flex-wrap items-center gap-2 rounded-sm border border-teal-dim bg-surface-2 px-3 py-2 text-sm shadow-md">
+          <span className="font-mono text-teal">{phrase}</span>
+          {canSpeak() && (
+            <button
+              type="button"
+              aria-label={ru ? `Произнести ${phrase}` : `Pronounce ${phrase}`}
+              className="text-teal transition-opacity hover:opacity-80"
+              onClick={() => speakWord(phrase)}
+            >
+              🔊
+            </button>
+          )}
+          <span className="text-muted">
+            {phraseLoading
+              ? ru
+                ? 'перевод…'
+                : 'translating…'
+              : phraseRu
+                ? `— ${phraseRu}`
+                : ru
+                  ? '— перевод недоступен'
+                  : '— translation unavailable'}
+          </span>
+          <button
+            type="button"
+            disabled={phraseSaved}
+            className="ml-auto font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline disabled:text-faint disabled:no-underline"
+            onClick={savePhrase}
+          >
+            {phraseSaved ? (ru ? '✓ сохранено' : '✓ saved') : ru ? '+ в словарь' : '+ save'}
+          </button>
+          <button
+            type="button"
+            aria-label={ru ? 'Закрыть' : 'Dismiss'}
+            className="font-mono text-2xs text-muted hover:text-content"
+            onClick={() => setPhrase(null)}
+          >
+            ×
+          </button>
+        </div>
+      )}
+      <div
+        ref={textRef}
+        className="flex flex-col gap-4"
+        onMouseUp={onSelect}
+        onTouchEnd={onSelect}
+      >
+        {paragraphs.map((p, i) => (
+          <Paragraph
+            key={i}
+            text={p}
+            glossary={glossary}
+            lang={lang}
+            speaking={speakingIdx === i}
+            activeWord={activeWord}
+            onRead={() => read(i, p)}
+            classify={classify}
+            typoClass={typoClass}
+          />
+        ))}
+      </div>
     </div>
   );
 }
