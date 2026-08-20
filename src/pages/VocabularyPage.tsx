@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { db } from '@/db/db';
-import { Eyebrow } from '@/shared/ui';
+import { Button, Eyebrow, Input } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { canSpeak, speakWord } from '@/shared/lib/audio';
 import { translateWord } from '@/features/vocab/translate';
 import { useVocabStore } from '@/features/vocab/vocabStore';
+import { addTerm, setTranslation } from '@/features/vocab/manage';
 import {
   buildLexicon,
   matchesFilter,
@@ -48,6 +49,13 @@ export function VocabularyPage() {
   const [filter, setFilter] = useState<LexiconFilter>('all');
   const [sort, setSort] = useState<LexiconSort>('recent');
   const [q, setQ] = useState('');
+
+  const [adding, setAdding] = useState(false);
+  const [newTerm, setNewTerm] = useState('');
+  const [newTr, setNewTr] = useState('');
+  const [newCtx, setNewCtx] = useState('');
+  const [editKey, setEditKey] = useState<string | null>(null);
+  const [draft, setDraft] = useState('');
 
   const reload = useCallback(async () => {
     try {
@@ -102,6 +110,24 @@ export function VocabularyPage() {
     const ruText = await translateWord(e.display);
     if (ruText) setEntries((prev) => prev?.map((x) => (x.key === e.key ? { ...x, translation: ruText } : x)) ?? prev);
   };
+  const startEdit = (e: LexiconEntry) => {
+    setEditKey(e.key);
+    setDraft(e.translation ?? '');
+  };
+  const saveEdit = async (e: LexiconEntry) => {
+    await setTranslation(e, draft);
+    setEditKey(null);
+    await reload();
+  };
+  const addNew = async () => {
+    if (!newTerm.trim()) return;
+    await addTerm(newTerm, newTr, newCtx);
+    setNewTerm('');
+    setNewTr('');
+    setNewCtx('');
+    setAdding(false);
+    await reload();
+  };
 
   return (
     <section aria-label={ru ? 'Словарь' : 'Vocabulary'}>
@@ -119,7 +145,50 @@ export function VocabularyPage() {
         </Link>
       </div>
 
-      {entries !== null && entries.length === 0 ? (
+      <div className="mb-6">
+        {adding ? (
+          <div className="flex flex-col gap-2.5 rounded-lg border border-line bg-surface p-4">
+            <Input
+              placeholder={ru ? 'слово или фраза (англ.)' : 'word or phrase (English)'}
+              value={newTerm}
+              onChange={(e) => setNewTerm(e.target.value)}
+              autoFocus
+            />
+            <Input
+              placeholder={ru ? 'перевод (необязательно)' : 'translation (optional)'}
+              value={newTr}
+              onChange={(e) => setNewTr(e.target.value)}
+            />
+            <Input
+              placeholder={ru ? 'пример/контекст (необязательно)' : 'example/context (optional)'}
+              value={newCtx}
+              onChange={(e) => setNewCtx(e.target.value)}
+            />
+            <div className="flex items-center gap-3">
+              <Button onClick={() => void addNew()} disabled={!newTerm.trim()}>
+                {ru ? 'Добавить' : 'Add'}
+              </Button>
+              <button
+                type="button"
+                onClick={() => setAdding(false)}
+                className="font-mono text-2xs uppercase tracking-[0.08em] text-muted hover:text-content"
+              >
+                {ru ? 'отмена' : 'cancel'}
+              </button>
+            </div>
+          </div>
+        ) : (
+          <button
+            type="button"
+            onClick={() => setAdding(true)}
+            className="rounded-sm border border-line px-3 py-2 font-mono text-2xs uppercase tracking-[0.08em] text-teal transition-colors hover:border-teal-dim"
+          >
+            {ru ? '＋ добавить слово или фразу' : '＋ add a word or phrase'}
+          </button>
+        )}
+      </div>
+
+      {entries !== null && entries.length === 0 && !adding ? (
         <div className="rounded-lg border border-line bg-surface p-5">
           <p className="text-sm text-pretty text-muted">
             {ru
@@ -215,19 +284,62 @@ export function VocabularyPage() {
                       </span>
                     )}
                   </span>
-                  <span className="text-sm text-muted">
-                    {e.translation ? (
-                      e.translation
-                    ) : (
+                  {editKey === e.key ? (
+                    <span className="flex items-center gap-1.5">
+                      <input
+                        value={draft}
+                        onChange={(ev) => setDraft(ev.target.value)}
+                        onKeyDown={(ev) => {
+                          if (ev.key === 'Enter') void saveEdit(e);
+                          if (ev.key === 'Escape') setEditKey(null);
+                        }}
+                        autoFocus
+                        aria-label={ru ? 'Перевод' : 'Translation'}
+                        className="w-40 rounded-sm border border-teal-dim bg-ink px-2 py-1 text-sm text-content focus:border-teal"
+                      />
                       <button
                         type="button"
-                        onClick={() => void translateOne(e)}
+                        onClick={() => void saveEdit(e)}
                         className="font-mono text-2xs text-teal hover:underline"
                       >
-                        {ru ? '— перевести' : '— translate'}
+                        {ru ? 'ок' : 'ok'}
                       </button>
-                    )}
-                  </span>
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-1.5 text-sm text-muted">
+                      {e.translation ? (
+                        <>
+                          {e.translation}
+                          <button
+                            type="button"
+                            aria-label={ru ? 'Изменить перевод' : 'Edit translation'}
+                            onClick={() => startEdit(e)}
+                            className="text-2xs text-muted transition-colors hover:text-teal"
+                          >
+                            ✎
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <button
+                            type="button"
+                            onClick={() => void translateOne(e)}
+                            className="font-mono text-2xs text-teal hover:underline"
+                          >
+                            {ru ? '— перевести' : '— translate'}
+                          </button>
+                          <button
+                            type="button"
+                            aria-label={ru ? 'Ввести перевод' : 'Enter translation'}
+                            onClick={() => startEdit(e)}
+                            className="text-2xs text-muted transition-colors hover:text-teal"
+                          >
+                            ✎
+                          </button>
+                        </>
+                      )}
+                    </span>
+                  )}
                 </div>
 
                 {e.context && (
