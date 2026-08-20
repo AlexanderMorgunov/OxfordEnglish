@@ -19,7 +19,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['icons/app-256.png'],
+      includeAssets: ['icons/app-256.png', 'icons/app-512.png', 'icons/app-512-maskable.png'],
       manifest: {
         name: 'English for Developers',
         short_name: 'en/dev',
@@ -30,6 +30,8 @@ export default defineConfig({
         start_url: '/',
         icons: [
           { src: 'icons/app-256.png', sizes: '256x256', type: 'image/png', purpose: 'any' },
+          { src: 'icons/app-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+          { src: 'icons/app-512-maskable.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
       },
       workbox: {
