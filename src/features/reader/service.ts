@@ -5,6 +5,18 @@ import { saveBookFile, getBookFile, deleteBookFile, opfsAvailable } from './stor
 
 export type ImportResult = { record: BookRecord; book: ParsedBook };
 
+// Only PDF is worth caching: its parse walks every page through pdf.js, unlike the cheap
+// EPUB/FB2/DOCX parsers. Reuses the catalogCache store (keys never collide — UUID vs slug).
+const parseCacheKey = (id: string) => `pdf:${id}`;
+
+async function cacheParsed(id: string, book: ParsedBook): Promise<void> {
+  try {
+    await db.catalogCache.put({ id: parseCacheKey(id), book, cachedAt: Date.now() });
+  } catch {
+    // best-effort cache
+  }
+}
+
 export async function importBook(file: File): Promise<ImportResult> {
   if (!opfsAvailable()) throw new Error('offline-storage-unavailable');
   const format = detectFormat(file.name);
@@ -23,6 +35,7 @@ export async function importBook(file: File): Promise<ImportResult> {
     lastChapter: 0,
   };
   await db.books.add(record);
+  if (format === 'pdf') await cacheParsed(id, book);
   return { record, book };
 }
 
@@ -39,8 +52,20 @@ export async function getBook(id: string): Promise<BookRecord | undefined> {
 }
 
 export async function openBook(record: BookRecord): Promise<ParsedBook> {
+  if (record.format === 'pdf') {
+    try {
+      const hit = await db.catalogCache.get(parseCacheKey(record.id));
+      if (hit) {
+        void track('book_open', { source: 'imported', format: record.format });
+        return hit.book as ParsedBook;
+      }
+    } catch {
+      // cache unavailable — fall through to a fresh parse
+    }
+  }
   const file = await getBookFile(record.id);
   const parsed = await parseBook(file, record.format);
+  if (record.format === 'pdf') await cacheParsed(record.id, parsed);
   void track('book_open', { source: 'imported', format: record.format });
   return parsed;
 }
@@ -48,6 +73,11 @@ export async function openBook(record: BookRecord): Promise<ParsedBook> {
 export async function removeBook(id: string): Promise<void> {
   await deleteBookFile(id);
   await db.books.delete(id);
+  try {
+    await db.catalogCache.delete(parseCacheKey(id));
+  } catch {
+    // best-effort cleanup of the parse cache
+  }
 }
 
 export async function saveProgress(id: string, chapter: number): Promise<void> {
