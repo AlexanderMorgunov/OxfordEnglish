@@ -161,7 +161,6 @@ export function DashboardPage() {
                       <Link
                         key={day.id}
                         to={`/course/${unit.id}/day/${day.id}`}
-                        aria-label={`${day.title.en}${done ? ' — completed' : inProgress ? ' — in progress' : ''}`}
                         className={[
                           'group flex items-center justify-between rounded-md border bg-surface px-4 py-3.5 transition-colors hover:border-teal-dim',
                           done ? 'border-teal-dim/60' : 'border-line',
@@ -185,6 +184,11 @@ export function DashboardPage() {
                           <span className={done ? 'text-base text-muted' : 'text-base'}>
                             {day.title.en}
                           </span>
+                          {(done || inProgress) && (
+                            <span className="sr-only">
+                              {done ? (ru ? '— завершён' : '— completed') : ru ? '— в процессе' : '— in progress'}
+                            </span>
+                          )}
                         </span>
                         <span className="font-mono text-2xs tabular-nums text-muted">
                           ~{day.estimatedMinutes} {ru ? 'мин' : 'min'} · {day.sections.length}{' '}
