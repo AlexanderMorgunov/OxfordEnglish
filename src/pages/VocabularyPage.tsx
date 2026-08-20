@@ -49,6 +49,10 @@ export function VocabularyPage() {
   const [filter, setFilter] = useState<LexiconFilter>('all');
   const [sort, setSort] = useState<LexiconSort>('recent');
   const [q, setQ] = useState('');
+  // Cap the rendered rows so a multi-thousand-term lexicon doesn't mount tens of thousands of
+  // nodes or re-render the whole list on every search keystroke.
+  const [limit, setLimit] = useState(100);
+  useEffect(() => setLimit(100), [q, filter, sort]);
 
   const [adding, setAdding] = useState(false);
   const [newTerm, setNewTerm] = useState('');
@@ -248,7 +252,7 @@ export function VocabularyPage() {
           </p>
 
           <ul className="flex flex-col gap-2" role="group" aria-label={ru ? 'Словарь' : 'Vocabulary list'}>
-            {view.map((e) => (
+            {view.slice(0, limit).map((e) => (
               <li key={e.key} className="rounded-md border border-line bg-surface px-4 py-3">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                   <span className="flex items-baseline gap-2">
@@ -371,6 +375,16 @@ export function VocabularyPage() {
               </li>
             ))}
           </ul>
+
+          {view.length > limit && (
+            <button
+              type="button"
+              onClick={() => setLimit((l) => l + 200)}
+              className="mt-4 w-full rounded-md border border-line py-2.5 font-mono text-2xs uppercase tracking-[0.08em] text-teal transition-colors hover:border-teal-dim"
+            >
+              {ru ? `Показать ещё (${view.length - limit})` : `Show more (${view.length - limit})`}
+            </button>
+          )}
         </>
       )}
     </section>
