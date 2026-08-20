@@ -6,6 +6,8 @@ type VocabState = {
   ready: boolean;
   load: () => Promise<void>;
   setStatus: (word: string, status: WordStatusValue) => Promise<void>;
+  /** Reclassify without counting it as an encounter — for the vocabulary manager, not reading. */
+  updateStatus: (word: string, status: WordStatusValue) => Promise<void>;
 };
 
 export const useVocabStore = create<VocabState>((set, get) => ({
@@ -35,6 +37,23 @@ export const useVocabStore = create<VocabState>((set, get) => ({
       });
     } catch {
       // best-effort — word status is non-critical if IndexedDB is unavailable
+    }
+  },
+  updateStatus: async (rawWord, status) => {
+    const word = rawWord.toLowerCase();
+    const next = new Map(get().statuses);
+    next.set(word, status);
+    set({ statuses: next });
+    try {
+      const existing = await db.wordStatus.get(word);
+      await db.wordStatus.put({
+        word,
+        status,
+        firstSeenAt: existing?.firstSeenAt ?? Date.now(),
+        encounters: existing?.encounters ?? 0, // reclassification is not a new sighting
+      });
+    } catch {
+      // best-effort
     }
   },
 }));

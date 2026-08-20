@@ -105,7 +105,7 @@ export function WordToken({
           variant="ghost"
           onClick={() => {
             void setStatus(word, 'learning');
-            void addWordCard(word, translation ?? word, undefined);
+            void addWordCard(word, translation ?? word, sentence);
           }}
         >
           learning
