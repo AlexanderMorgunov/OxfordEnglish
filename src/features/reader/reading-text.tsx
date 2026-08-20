@@ -127,6 +127,7 @@ export function WordToken({
 }
 
 function Paragraph({
+  index,
   text,
   glossary,
   lang,
@@ -136,6 +137,7 @@ function Paragraph({
   classify,
   typoClass,
 }: {
+  index: number;
   text: string;
   glossary?: Map<string, Gloss>;
   lang: 'en' | 'ru';
@@ -166,7 +168,7 @@ function Paragraph({
   };
 
   return (
-    <p className={typoClass}>
+    <p className={typoClass} data-para={index}>
       {canSpeak() && (
         <button
           type="button"
@@ -176,8 +178,8 @@ function Paragraph({
                 ? 'Остановить'
                 : 'Stop'
               : lang === 'ru'
-                ? 'Читать с подсветкой слов'
-                : 'Read aloud with word highlighting'
+                ? 'Читать вслух с этого места'
+                : 'Read aloud from here'
           }
           aria-pressed={speaking}
           className="mr-1.5 align-middle text-teal transition-opacity hover:opacity-80"
@@ -253,6 +255,11 @@ export function ReadingText({
   const [freq, setFreq] = useState<FreqIndex | null>(null);
   const [speakingIdx, setSpeakingIdx] = useState(-1);
   const [activeWord, setActiveWord] = useState(-1);
+  const playingRef = useRef(false);
+  const reduceMotion = useMemo(
+    () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false,
+    []
+  );
 
   const textRef = useRef<HTMLDivElement>(null);
   const [phrase, setPhrase] = useState<string | null>(null);
@@ -264,7 +271,13 @@ export function ReadingText({
     void loadVocab();
     void loadFreq().then(setFreq);
   }, [loadVocab]);
-  useEffect(() => () => cancelSpeech(), []);
+  useEffect(
+    () => () => {
+      playingRef.current = false;
+      cancelSpeech();
+    },
+    []
+  );
 
   // A multi-word selection becomes a savable phrase ("took a train"); single-word taps stay
   // on the WordToken popover. English is phrasal-verb/idiom-heavy — word-by-word misleads.
@@ -299,22 +312,43 @@ export function ReadingText({
       classifyWord(w, { status: statuses.get(w.toLowerCase()), freq, rankThreshold });
   }, [coloring, freq, statuses, rankThreshold]);
 
-  const read = (idx: number, text: string) => {
-    if (speakingIdx === idx) {
-      cancelSpeech();
-      setSpeakingIdx(-1);
-      setActiveWord(-1);
+  // Continuous read-aloud: after each paragraph ends, advance to the next and scroll it into
+  // view. Reading-while-listening works only when playback flows across paragraphs, not stops.
+  const scrollToPara = (i: number) => {
+    const el = textRef.current?.querySelector(`[data-para="${i}"]`);
+    el?.scrollIntoView({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+  };
+
+  const speakFrom = (i: number) => {
+    if (i < 0 || i >= paragraphs.length) {
+      stopReading();
       return;
     }
-    setSpeakingIdx(idx);
+    setSpeakingIdx(i);
     setActiveWord(-1);
-    speakPassage(text, {
+    scrollToPara(i);
+    speakPassage(paragraphs[i]!, {
       onWord: setActiveWord,
       onEnd: () => {
-        setSpeakingIdx(-1);
-        setActiveWord(-1);
+        if (playingRef.current) speakFrom(i + 1);
       },
     });
+  };
+
+  const stopReading = () => {
+    playingRef.current = false;
+    cancelSpeech();
+    setSpeakingIdx(-1);
+    setActiveWord(-1);
+  };
+
+  const read = (idx: number) => {
+    if (playingRef.current && speakingIdx === idx) {
+      stopReading();
+      return;
+    }
+    playingRef.current = true;
+    speakFrom(idx);
   };
 
   return (
@@ -426,12 +460,13 @@ export function ReadingText({
         {paragraphs.map((p, i) => (
           <Paragraph
             key={i}
+            index={i}
             text={p}
             glossary={glossary}
             lang={lang}
             speaking={speakingIdx === i}
             activeWord={activeWord}
-            onRead={() => read(i, p)}
+            onRead={() => read(i)}
             classify={classify}
             typoClass={typoClass}
           />
