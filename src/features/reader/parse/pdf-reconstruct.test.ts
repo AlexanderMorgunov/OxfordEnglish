@@ -45,6 +45,14 @@ test('stripRunningLines drops page numbers and repeated headers', () => {
   expect(out.flat().map((l) => l.text)).toEqual(['one', 'two', 'three']);
 });
 
+test('stripRunningLines drops table-of-contents lines with dot leaders', () => {
+  const toc = { text: '1.1 Topological Spaces . . . . . . . . . . . 2', x: 10, y: 400, height: 10 };
+  const body = { text: 'A real sentence of prose.', x: 10, y: 380, height: 10 };
+  const ellipsis = { text: 'She paused... then spoke.', x: 10, y: 360, height: 10 };
+  const out = stripRunningLines([[toc, body, ellipsis]]);
+  expect(out[0]!.map((l) => l.text)).toEqual(['A real sentence of prose.', 'She paused... then spoke.']);
+});
+
 test('assembleParagraphs merges a paragraph flowing across a page break', () => {
   const pages = [
     ['A sentence that runs on'],

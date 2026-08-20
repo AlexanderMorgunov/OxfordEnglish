@@ -59,13 +59,16 @@ export function groupLines(items: TextItem[], tol = 0.6): Line[] {
 }
 
 const isPageNumber = (s: string) => /^[\s\-—–]*\d{1,4}[\s\-—–]*$/.test(s);
+/** A run of dot leaders ("Chapter 1 . . . . 5") — an unmistakable table-of-contents/index line. */
+const isLeaderLine = (s: string) => /(?:\.\s*){5,}/.test(s);
 const normEdge = (s: string) => s.replace(/\d+/g, '#').trim().toLowerCase();
 
 /** Drop page numbers and running headers/footers (edge lines repeated across many pages). */
 export function stripRunningLines(pages: Line[][]): Line[][] {
   const n = pages.length;
+  const dropAlways = (l: Line) => isPageNumber(l.text) || isLeaderLine(l.text);
   if (n < 3) {
-    return pages.map((ls) => ls.filter((l) => !isPageNumber(l.text)));
+    return pages.map((ls) => ls.filter((l) => !dropAlways(l)));
   }
   const freq = new Map<string, number>();
   for (const ls of pages) {
@@ -82,7 +85,7 @@ export function stripRunningLines(pages: Line[][]): Line[][] {
   );
   return pages.map((ls) =>
     ls.filter((l, i) => {
-      if (isPageNumber(l.text)) return false;
+      if (dropAlways(l)) return false;
       const edge = i === 0 || i === ls.length - 1;
       return !(edge && running.has(normEdge(l.text)));
     })
