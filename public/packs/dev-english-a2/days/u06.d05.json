@@ -27,7 +27,7 @@
           "example": "The room is comfortable.",
           "exampleRu": "Комната уютная.",
           "audio": {
-            "src": "media/audio/u06.d05.vocab.comfortable.wav",
+            "src": "media/audio/u06.d05.vocab.comfortable.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "It is a modern flat.",
           "exampleRu": "Это современная квартира.",
           "audio": {
-            "src": "media/audio/u06.d05.vocab.modern.wav",
+            "src": "media/audio/u06.d05.vocab.modern.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "The street is quiet.",
           "exampleRu": "Улица тихая.",
           "audio": {
-            "src": "media/audio/u06.d05.vocab.quiet.wav",
+            "src": "media/audio/u06.d05.vocab.quiet.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "There is a nice view.",
           "exampleRu": "Отсюда красивый вид.",
           "audio": {
-            "src": "media/audio/u06.d05.vocab.view.wav",
+            "src": "media/audio/u06.d05.vocab.view.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "I live on the third floor.",
           "exampleRu": "Я живу на третьем этаже.",
           "audio": {
-            "src": "media/audio/u06.d05.vocab.floor.wav",
+            "src": "media/audio/u06.d05.vocab.floor.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "It is near the park.",
           "exampleRu": "Это рядом с парком.",
           "audio": {
-            "src": "media/audio/u06.d05.vocab.near.wav",
+            "src": "media/audio/u06.d05.vocab.near.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "It looks like a small castle.",
           "exampleRu": "Он выглядит как маленький замок.",
           "audio": {
-            "src": "media/audio/u06.d05.vocab.lookslike.wav",
+            "src": "media/audio/u06.d05.vocab.lookslike.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "My neighbours are friendly.",
           "exampleRu": "Мои соседи дружелюбные.",
           "audio": {
-            "src": "media/audio/u06.d05.vocab.friendly.wav",
+            "src": "media/audio/u06.d05.vocab.friendly.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "The kitchen is clean.",
           "exampleRu": "Кухня чистая.",
           "audio": {
-            "src": "media/audio/u06.d05.vocab.clean.wav",
+            "src": "media/audio/u06.d05.vocab.clean.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "This is my favourite room.",
           "exampleRu": "Это моя любимая комната.",
           "audio": {
-            "src": "media/audio/u06.d05.vocab.favourite.wav",
+            "src": "media/audio/u06.d05.vocab.favourite.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -225,7 +225,7 @@
           "en": "My favourite place is my grandmother's house. It is an old but comfortable house near a small lake. It has a big garden and a quiet street.",
           "ru": "Моё любимое место — дом бабушки. Это старый, но уютный дом у небольшого озера. У него большой сад и тихая улица.",
           "audio": {
-            "src": "media/audio/u06.d05.reading.b1.wav",
+            "src": "media/audio/u06.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -237,7 +237,7 @@
           "en": "My grandmother is short and has grey hair and kind eyes. She always looks happy. When I am there, everything is calm and I feel at home.",
           "ru": "Бабушка невысокая, с седыми волосами и добрыми глазами. Она всегда выглядит счастливой. Когда я там, всё спокойно, и я чувствую себя как дома.",
           "audio": {
-            "src": "media/audio/u06.d05.reading.b2.wav",
+            "src": "media/audio/u06.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -266,7 +266,7 @@
         "ru": "Расскажи о своей квартире"
       },
       "audio": {
-        "src": "media/audio/u06.d05.listening.wav",
+        "src": "media/audio/u06.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

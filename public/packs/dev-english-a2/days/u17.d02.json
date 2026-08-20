@@ -26,7 +26,7 @@
           "example": "I've been learning English for two years.",
           "exampleRu": "Я учу английский два года.",
           "audio": {
-            "src": "media/audio/u17.d02.vocab.learn.wav",
+            "src": "media/audio/u17.d02.vocab.learn.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "She's been practising every day.",
           "exampleRu": "Она практикуется каждый день.",
           "audio": {
-            "src": "media/audio/u17.d02.vocab.practise.wav",
+            "src": "media/audio/u17.d02.vocab.practise.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "My English has been improving.",
           "exampleRu": "Мой английский улучшается.",
           "audio": {
-            "src": "media/audio/u17.d02.vocab.improve.wav",
+            "src": "media/audio/u17.d02.vocab.improve.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I've been busy recently.",
           "exampleRu": "В последнее время я занят.",
           "audio": {
-            "src": "media/audio/u17.d02.vocab.recently.wav",
+            "src": "media/audio/u17.d02.vocab.recently.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Have you been sleeping well lately?",
           "exampleRu": "Ты хорошо спишь в последнее время?",
           "audio": {
-            "src": "media/audio/u17.d02.vocab.lately.wav",
+            "src": "media/audio/u17.d02.vocab.lately.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "He's been building new skills.",
           "exampleRu": "Он развивает новые навыки.",
           "audio": {
-            "src": "media/audio/u17.d02.vocab.skill.wav",
+            "src": "media/audio/u17.d02.vocab.skill.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "You've made good progress.",
           "exampleRu": "Ты сделал хороший прогресс.",
           "audio": {
-            "src": "media/audio/u17.d02.vocab.progress.wav",
+            "src": "media/audio/u17.d02.vocab.progress.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I've been taking an online course.",
           "exampleRu": "Я прохожу онлайн-курс.",
           "audio": {
-            "src": "media/audio/u17.d02.vocab.course.wav",
+            "src": "media/audio/u17.d02.vocab.course.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I've been here since Monday.",
           "exampleRu": "Я здесь с понедельника.",
           "audio": {
-            "src": "media/audio/u17.d02.vocab.since.wav",
+            "src": "media/audio/u17.d02.vocab.since.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "I've known her for years.",
           "exampleRu": "Я знаю её много лет.",
           "audio": {
-            "src": "media/audio/u17.d02.vocab.for.wav",
+            "src": "media/audio/u17.d02.vocab.for.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Dan has been learning the guitar for about a year. He hasn't been taking lessons — he's been teaching himself from videos online. \"I've been practising almost every evening since last spring,\" he says.",
           "ru": "Дэн учится играть на гитаре около года. Он не берёт уроки — учится сам по видео в интернете. «Я практикуюсь почти каждый вечер с прошлой весны», — говорит он.",
           "audio": {
-            "src": "media/audio/u17.d02.reading.b1.wav",
+            "src": "media/audio/u17.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "At first it was hard, but he has been making real progress. His fingers used to hurt, and he couldn't play a single song. Now he has been playing for his friends, and they say he's getting good.",
           "ru": "Сначала было трудно, но он делает реальный прогресс. Раньше пальцы болели, и он не мог сыграть ни одной песни. Теперь он играет для друзей, и они говорят, что у него хорошо получается.",
           "audio": {
-            "src": "media/audio/u17.d02.reading.b2.wav",
+            "src": "media/audio/u17.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Как долго?"
       },
       "audio": {
-        "src": "media/audio/u17.d02.listening.wav",
+        "src": "media/audio/u17.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

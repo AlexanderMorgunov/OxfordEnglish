@@ -26,7 +26,7 @@
           "example": "I'm ready to go.",
           "exampleRu": "Я готов идти.",
           "audio": {
-            "src": "media/audio/u21.d02.vocab.ready.wav",
+            "src": "media/audio/u21.d02.vocab.ready.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "We're about to leave.",
           "exampleRu": "Мы вот-вот уйдём.",
           "audio": {
-            "src": "media/audio/u21.d02.vocab.leave.wav",
+            "src": "media/audio/u21.d02.vocab.leave.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "The film is about to start.",
           "exampleRu": "Фильм вот-вот начнётся.",
           "audio": {
-            "src": "media/audio/u21.d02.vocab.start.wav",
+            "src": "media/audio/u21.d02.vocab.start.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I'm almost done.",
           "exampleRu": "Я почти закончил.",
           "audio": {
-            "src": "media/audio/u21.d02.vocab.almost.wav",
+            "src": "media/audio/u21.d02.vocab.almost.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I'm just about to call.",
           "exampleRu": "Я как раз собираюсь позвонить.",
           "audio": {
-            "src": "media/audio/u21.d02.vocab.just.wav",
+            "src": "media/audio/u21.d02.vocab.just.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Hurry, we're late!",
           "exampleRu": "Скорее, мы опаздываем!",
           "audio": {
-            "src": "media/audio/u21.d02.vocab.hurry.wav",
+            "src": "media/audio/u21.d02.vocab.hurry.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "I need to catch the bus.",
           "exampleRu": "Мне нужно успеть на автобус.",
           "audio": {
-            "src": "media/audio/u21.d02.vocab.catch.wav",
+            "src": "media/audio/u21.d02.vocab.catch.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I was on the point of leaving.",
           "exampleRu": "Я как раз собирался уходить.",
           "audio": {
-            "src": "media/audio/u21.d02.vocab.point.wav",
+            "src": "media/audio/u21.d02.vocab.point.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Come immediately.",
           "exampleRu": "Приходи немедленно.",
           "audio": {
-            "src": "media/audio/u21.d02.vocab.immediately.wav",
+            "src": "media/audio/u21.d02.vocab.immediately.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "The event is about to begin.",
           "exampleRu": "Мероприятие вот-вот начнётся.",
           "audio": {
-            "src": "media/audio/u21.d02.vocab.event.wav",
+            "src": "media/audio/u21.d02.vocab.event.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "The doors were about to close when Marco ran onto the train. He was just about to give up when he saw it still at the platform. \"I almost missed it,\" he thought, out of breath.",
           "ru": "Двери уже закрывались, когда Марко вбежал в вагон. Он как раз собирался сдаться, когда увидел, что поезд ещё на платформе. «Чуть не опоздал», — подумал он, тяжело дыша.",
           "audio": {
-            "src": "media/audio/u21.d02.reading.b1.wav",
+            "src": "media/audio/u21.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "He sat down and checked his phone. His sister had written: \"Where are you? The show is about to start!\" Marco smiled. \"On my way,\" he replied. \"I'll be there before the lights go down.\"",
           "ru": "Он сел и проверил телефон. Сестра написала: «Ты где? Спектакль вот-вот начнётся!» Марко улыбнулся. «Уже еду, — ответил он. — Буду до того, как погаснет свет».",
           "audio": {
-            "src": "media/audio/u21.d02.reading.b2.wav",
+            "src": "media/audio/u21.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Ты готов?"
       },
       "audio": {
-        "src": "media/audio/u21.d02.listening.wav",
+        "src": "media/audio/u21.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

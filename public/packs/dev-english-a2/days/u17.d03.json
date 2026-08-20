@@ -27,7 +27,7 @@
           "example": "I've been reading this book.",
           "exampleRu": "Я читаю эту книгу.",
           "audio": {
-            "src": "media/audio/u17.d03.vocab.read.wav",
+            "src": "media/audio/u17.d03.vocab.read.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "They've built three houses.",
           "exampleRu": "Они построили три дома.",
           "audio": {
-            "src": "media/audio/u17.d03.vocab.build.wav",
+            "src": "media/audio/u17.d03.vocab.build.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "She's been painting the room.",
           "exampleRu": "Она красит комнату.",
           "audio": {
-            "src": "media/audio/u17.d03.vocab.paint.wav",
+            "src": "media/audio/u17.d03.vocab.paint.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "I've cleaned the whole flat.",
           "exampleRu": "Я убрал всю квартиру.",
           "audio": {
-            "src": "media/audio/u17.d03.vocab.clean.wav",
+            "src": "media/audio/u17.d03.vocab.clean.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "He's written ten emails.",
           "exampleRu": "Он написал десять писем.",
           "audio": {
-            "src": "media/audio/u17.d03.vocab.write.wav",
+            "src": "media/audio/u17.d03.vocab.write.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "I've been fixing the bug.",
           "exampleRu": "Я чиню баг.",
           "audio": {
-            "src": "media/audio/u17.d03.vocab.fix.wav",
+            "src": "media/audio/u17.d03.vocab.fix.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "We've completed the task.",
           "exampleRu": "Мы завершили задачу.",
           "audio": {
-            "src": "media/audio/u17.d03.vocab.complete.wav",
+            "src": "media/audio/u17.d03.vocab.complete.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "I've read three chapters so far.",
           "exampleRu": "Пока я прочитал три главы.",
           "audio": {
-            "src": "media/audio/u17.d03.vocab.sofar.wav",
+            "src": "media/audio/u17.d03.vocab.sofar.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "Look at the result!",
           "exampleRu": "Посмотри на результат!",
           "audio": {
-            "src": "media/audio/u17.d03.vocab.result.wav",
+            "src": "media/audio/u17.d03.vocab.result.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "It's a long process.",
           "exampleRu": "Это долгий процесс.",
           "audio": {
-            "src": "media/audio/u17.d03.vocab.process.wav",
+            "src": "media/audio/u17.d03.vocab.process.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "Nina and Sam have been painting their flat all weekend. They have already finished the kitchen and one bedroom. \"We've been working since Saturday morning,\" says Nina, \"and we've painted four rooms so far.\"",
           "ru": "Нина и Сэм красят квартиру все выходные. Они уже закончили кухню и одну спальню. «Мы работаем с утра субботы, — говорит Нина, — и пока покрасили четыре комнаты».",
           "audio": {
-            "src": "media/audio/u17.d03.reading.b1.wav",
+            "src": "media/audio/u17.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "There is paint on their hands and in their hair. They are tired because they have been standing on ladders for hours. But the flat looks great, and they have almost completed the job.",
           "ru": "У них краска на руках и в волосах. Они устали, потому что часами стоят на стремянках. Но квартира выглядит отлично, и работа почти завершена.",
           "audio": {
-            "src": "media/audio/u17.d03.reading.b2.wav",
+            "src": "media/audio/u17.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Почему ты грязный?"
       },
       "audio": {
-        "src": "media/audio/u17.d03.listening.wav",
+        "src": "media/audio/u17.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

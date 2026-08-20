@@ -26,7 +26,7 @@
           "example": "Hello, everyone!",
           "exampleRu": "Всем привет!",
           "audio": {
-            "src": "media/audio/u01.d05.vocab.hello.wav",
+            "src": "media/audio/u01.d05.vocab.hello.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "Goodbye, see you tomorrow.",
           "exampleRu": "Пока, до завтра.",
           "audio": {
-            "src": "media/audio/u01.d05.vocab.goodbye.wav",
+            "src": "media/audio/u01.d05.vocab.goodbye.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "Welcome to our team!",
           "exampleRu": "Добро пожаловать в команду!",
           "audio": {
-            "src": "media/audio/u01.d05.vocab.welcome.wav",
+            "src": "media/audio/u01.d05.vocab.welcome.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Sit down, please.",
           "exampleRu": "Садитесь, пожалуйста.",
           "audio": {
-            "src": "media/audio/u01.d05.vocab.please.wav",
+            "src": "media/audio/u01.d05.vocab.please.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Thanks a lot!",
           "exampleRu": "Большое спасибо!",
           "audio": {
-            "src": "media/audio/u01.d05.vocab.thanks.wav",
+            "src": "media/audio/u01.d05.vocab.thanks.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Excuse me, what is your name?",
           "exampleRu": "Извините, как вас зовут?",
           "audio": {
-            "src": "media/audio/u01.d05.vocab.excuseme.wav",
+            "src": "media/audio/u01.d05.vocab.excuseme.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "I am glad to meet you.",
           "exampleRu": "Рад познакомиться.",
           "audio": {
-            "src": "media/audio/u01.d05.vocab.glad.wav",
+            "src": "media/audio/u01.d05.vocab.glad.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "We work together.",
           "exampleRu": "Мы работаем вместе.",
           "audio": {
-            "src": "media/audio/u01.d05.vocab.together.wav",
+            "src": "media/audio/u01.d05.vocab.together.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "See you again!",
           "exampleRu": "До новой встречи!",
           "audio": {
-            "src": "media/audio/u01.d05.vocab.again.wav",
+            "src": "media/audio/u01.d05.vocab.again.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Hello, everyone.",
           "exampleRu": "Всем привет.",
           "audio": {
-            "src": "media/audio/u01.d05.vocab.everyone.wav",
+            "src": "media/audio/u01.d05.vocab.everyone.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -208,7 +208,7 @@
           "en": "Hello, everyone! My name is Priya and I am your new colleague. I am from India and I am an engineer.",
           "ru": "Всем привет! Меня зовут Прия, я ваш новый коллега. Я из Индии и я инженер.",
           "audio": {
-            "src": "media/audio/u01.d05.reading.b1.wav",
+            "src": "media/audio/u01.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -220,7 +220,7 @@
           "en": "I have got a husband and a young daughter. I am glad to meet you all, and I hope we work well together!",
           "ru": "У меня есть муж и маленькая дочь. Рада со всеми познакомиться и надеюсь, мы будем хорошо работать вместе!",
           "audio": {
-            "src": "media/audio/u01.d05.reading.b2.wav",
+            "src": "media/audio/u01.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -249,7 +249,7 @@
         "ru": "Приятно познакомиться"
       },
       "audio": {
-        "src": "media/audio/u01.d05.listening.wav",
+        "src": "media/audio/u01.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

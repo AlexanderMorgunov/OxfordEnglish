@@ -26,7 +26,7 @@
           "example": "In the future, cars will fly.",
           "exampleRu": "В будущем машины будут летать.",
           "audio": {
-            "src": "media/audio/u21.d01.vocab.future.wav",
+            "src": "media/audio/u21.d01.vocab.future.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I'll be there soon.",
           "exampleRu": "Я скоро буду.",
           "audio": {
-            "src": "media/audio/u21.d01.vocab.soon.wav",
+            "src": "media/audio/u21.d01.vocab.soon.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "See you later.",
           "exampleRu": "Увидимся позже.",
           "audio": {
-            "src": "media/audio/u21.d01.vocab.later.wav",
+            "src": "media/audio/u21.d01.vocab.later.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "My flight is at noon.",
           "exampleRu": "Мой рейс в полдень.",
           "audio": {
-            "src": "media/audio/u21.d01.vocab.flight.wav",
+            "src": "media/audio/u21.d01.vocab.flight.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "We arrive at six.",
           "exampleRu": "Мы прибываем в шесть.",
           "audio": {
-            "src": "media/audio/u21.d01.vocab.arrive.wav",
+            "src": "media/audio/u21.d01.vocab.arrive.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Check the schedule.",
           "exampleRu": "Проверь расписание.",
           "audio": {
-            "src": "media/audio/u21.d01.vocab.schedule.wav",
+            "src": "media/audio/u21.d01.vocab.schedule.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "This time tomorrow I'll be relaxing.",
           "exampleRu": "В это время завтра я буду отдыхать.",
           "audio": {
-            "src": "media/audio/u21.d01.vocab.relax.wav",
+            "src": "media/audio/u21.d01.vocab.relax.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "They'll be living abroad.",
           "exampleRu": "Они будут жить за границей.",
           "audio": {
-            "src": "media/audio/u21.d01.vocab.abroad.wav",
+            "src": "media/audio/u21.d01.vocab.abroad.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "At that moment, we'll be flying.",
           "exampleRu": "В тот момент мы будем в полёте.",
           "audio": {
-            "src": "media/audio/u21.d01.vocab.moment.wav",
+            "src": "media/audio/u21.d01.vocab.moment.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "What are your plans?",
           "exampleRu": "Какие у тебя планы?",
           "audio": {
-            "src": "media/audio/u21.d01.vocab.plan.wav",
+            "src": "media/audio/u21.d01.vocab.plan.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "It's Friday evening, and three friends are talking about the weekend. \"This time tomorrow, I'll be lying on a beach,\" said Kim. \"My flight leaves at seven in the morning.\" The others laughed with envy.",
           "ru": "Вечер пятницы, трое друзей обсуждают выходные. «В это время завтра я буду лежать на пляже, — сказала Ким. — Мой рейс в семь утра». Друзья засмеялись с завистью.",
           "audio": {
-            "src": "media/audio/u21.d01.reading.b1.wav",
+            "src": "media/audio/u21.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"Well, I'll be working,\" said Tom. \"At this exact moment next week, I'll be sitting in a meeting.\" \"And I'll be moving house,\" said Sara. \"By Sunday night, we'll all be doing very different things.\"",
           "ru": "«А я буду работать, — сказал Том. — Ровно в этот момент через неделю я буду сидеть на совещании». «А я буду переезжать, — сказала Сара. — К вечеру воскресенья мы все будем заниматься совсем разными вещами».",
           "audio": {
-            "src": "media/audio/u21.d01.reading.b2.wav",
+            "src": "media/audio/u21.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Завтра в шесть"
       },
       "audio": {
-        "src": "media/audio/u21.d01.listening.wav",
+        "src": "media/audio/u21.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

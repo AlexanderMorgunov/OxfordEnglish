@@ -26,7 +26,7 @@
           "example": "I enjoy reading.",
           "exampleRu": "Я люблю читать.",
           "audio": {
-            "src": "media/audio/u20.d01.vocab.enjoy.wav",
+            "src": "media/audio/u20.d01.vocab.enjoy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I don't mind waiting.",
           "exampleRu": "Я не против подождать.",
           "audio": {
-            "src": "media/audio/u20.d01.vocab.mind.wav",
+            "src": "media/audio/u20.d01.vocab.mind.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "She avoids eating late.",
           "exampleRu": "Она избегает есть поздно.",
           "audio": {
-            "src": "media/audio/u20.d01.vocab.avoid.wav",
+            "src": "media/audio/u20.d01.vocab.avoid.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "He practises playing daily.",
           "exampleRu": "Он занимается игрой ежедневно.",
           "audio": {
-            "src": "media/audio/u20.d01.vocab.practise.wav",
+            "src": "media/audio/u20.d01.vocab.practise.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I finished cleaning.",
           "exampleRu": "Я закончил уборку.",
           "audio": {
-            "src": "media/audio/u20.d01.vocab.finish.wav",
+            "src": "media/audio/u20.d01.vocab.finish.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Keep trying!",
           "exampleRu": "Продолжай пытаться!",
           "audio": {
-            "src": "media/audio/u20.d01.vocab.keep.wav",
+            "src": "media/audio/u20.d01.vocab.keep.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "She suggested going out.",
           "exampleRu": "Она предложила пойти погулять.",
           "audio": {
-            "src": "media/audio/u20.d01.vocab.suggest.wav",
+            "src": "media/audio/u20.d01.vocab.suggest.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "Imagine living there.",
           "exampleRu": "Представь, что живёшь там.",
           "audio": {
-            "src": "media/audio/u20.d01.vocab.imagine.wav",
+            "src": "media/audio/u20.d01.vocab.imagine.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Cooking is my hobby.",
           "exampleRu": "Готовка — моё хобби.",
           "audio": {
-            "src": "media/audio/u20.d01.vocab.hobby.wav",
+            "src": "media/audio/u20.d01.vocab.hobby.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Dancing is fun.",
           "exampleRu": "Танцевать весело.",
           "audio": {
-            "src": "media/audio/u20.d01.vocab.fun.wav",
+            "src": "media/audio/u20.d01.vocab.fun.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "On Sundays, Leo enjoys doing nothing. He avoids checking his email and keeps his phone in a drawer. \"I don't mind spending the whole day at home,\" he says. \"I like reading, cooking, and watching old films.\"",
           "ru": "По воскресеньям Лео любит ничего не делать. Он избегает проверять почту и держит телефон в ящике. «Я не против провести весь день дома, — говорит он. — Люблю читать, готовить и смотреть старые фильмы».",
           "audio": {
-            "src": "media/audio/u20.d01.reading.b1.wav",
+            "src": "media/audio/u20.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "This Sunday, his friend suggested going for a walk. \"Good idea,\" said Leo, \"but first I want to finish making lunch.\" They spent the afternoon walking in the park and imagining what they would do on holiday.",
           "ru": "В это воскресенье друг предложил пойти прогуляться. «Хорошая идея, — сказал Лео, — но сначала я хочу доготовить обед». Они провели день, гуляя в парке и представляя, что будут делать в отпуске.",
           "audio": {
-            "src": "media/audio/u20.d01.reading.b2.wav",
+            "src": "media/audio/u20.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Что тебе нравится делать?"
       },
       "audio": {
-        "src": "media/audio/u20.d01.listening.wav",
+        "src": "media/audio/u20.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

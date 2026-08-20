@@ -26,7 +26,7 @@
           "example": "She's very generous.",
           "exampleRu": "Она очень щедрая.",
           "audio": {
-            "src": "media/audio/u22.d05.vocab.generous.wav",
+            "src": "media/audio/u22.d05.vocab.generous.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "He's reliable.",
           "exampleRu": "Он надёжный.",
           "audio": {
-            "src": "media/audio/u22.d05.vocab.reliable.wav",
+            "src": "media/audio/u22.d05.vocab.reliable.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "An ambitious student.",
           "exampleRu": "Амбициозный студент.",
           "audio": {
-            "src": "media/audio/u22.d05.vocab.ambitious.wav",
+            "src": "media/audio/u22.d05.vocab.ambitious.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Teachers must be patient.",
           "exampleRu": "Учителя должны быть терпеливыми.",
           "audio": {
-            "src": "media/audio/u22.d05.vocab.patient.wav",
+            "src": "media/audio/u22.d05.vocab.patient.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "An honest answer.",
           "exampleRu": "Честный ответ.",
           "audio": {
-            "src": "media/audio/u22.d05.vocab.honest.wav",
+            "src": "media/audio/u22.d05.vocab.honest.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "She seems confident.",
           "exampleRu": "Она кажется уверенной.",
           "audio": {
-            "src": "media/audio/u22.d05.vocab.confident.wav",
+            "src": "media/audio/u22.d05.vocab.confident.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "A creative mind.",
           "exampleRu": "Творческий ум.",
           "audio": {
-            "src": "media/audio/u22.d05.vocab.creative.wav",
+            "src": "media/audio/u22.d05.vocab.creative.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "He's the type who helps.",
           "exampleRu": "Он из тех, кто помогает.",
           "audio": {
-            "src": "media/audio/u22.d05.vocab.type.wav",
+            "src": "media/audio/u22.d05.vocab.type.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "The sort of place I like.",
           "exampleRu": "Такое место, какое мне нравится.",
           "audio": {
-            "src": "media/audio/u22.d05.vocab.sort.wav",
+            "src": "media/audio/u22.d05.vocab.sort.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Describe your best friend.",
           "exampleRu": "Опиши лучшего друга.",
           "audio": {
-            "src": "media/audio/u22.d05.vocab.describe.wav",
+            "src": "media/audio/u22.d05.vocab.describe.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "My best friend, Dan, is the kind of person who always listens. He's someone whose advice I completely trust, and a friend who never judges. He's honest, patient, and incredibly reliable.",
           "ru": "Мой лучший друг Дэн — из тех, кто всегда выслушает. Это человек, чьим советам я полностью доверяю, и друг, который никогда не осуждает. Он честный, терпеливый и невероятно надёжный.",
           "audio": {
-            "src": "media/audio/u22.d05.reading.b1.wav",
+            "src": "media/audio/u22.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "We often go to a small café where we can talk for hours. It's the sort of place where nobody rushes you. \"A good friend,\" Dan says, \"is someone you can call at three in the morning.\" He's exactly that kind of friend.",
           "ru": "Мы часто ходим в маленькое кафе, где можем говорить часами. Это такое место, где тебя никто не торопит. «Хороший друг, — говорит Дэн, — это тот, кому можно позвонить в три часа ночи». Он именно такой друг.",
           "audio": {
-            "src": "media/audio/u22.d05.reading.b2.wav",
+            "src": "media/audio/u22.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Какая она?"
       },
       "audio": {
-        "src": "media/audio/u22.d05.listening.wav",
+        "src": "media/audio/u22.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

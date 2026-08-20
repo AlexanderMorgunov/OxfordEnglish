@@ -26,7 +26,7 @@
           "example": "What is her age?",
           "exampleRu": "Сколько ей лет?",
           "audio": {
-            "src": "media/audio/u01.d02.vocab.age.wav",
+            "src": "media/audio/u01.d02.vocab.age.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "What is your address?",
           "exampleRu": "Какой у тебя адрес?",
           "audio": {
-            "src": "media/audio/u01.d02.vocab.address.wav",
+            "src": "media/audio/u01.d02.vocab.address.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "Have you got my phone number?",
           "exampleRu": "У тебя есть мой номер?",
           "audio": {
-            "src": "media/audio/u01.d02.vocab.phonenumber.wav",
+            "src": "media/audio/u01.d02.vocab.phonenumber.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Send me an email.",
           "exampleRu": "Напиши мне на почту.",
           "audio": {
-            "src": "media/audio/u01.d02.vocab.email.wav",
+            "src": "media/audio/u01.d02.vocab.email.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "She has got a good job.",
           "exampleRu": "У неё хорошая работа.",
           "audio": {
-            "src": "media/audio/u01.d02.vocab.job.wav",
+            "src": "media/audio/u01.d02.vocab.job.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "They are married.",
           "exampleRu": "Они женаты.",
           "audio": {
-            "src": "media/audio/u01.d02.vocab.married.wav",
+            "src": "media/audio/u01.d02.vocab.married.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "He is single.",
           "exampleRu": "Он холост.",
           "audio": {
-            "src": "media/audio/u01.d02.vocab.single.wav",
+            "src": "media/audio/u01.d02.vocab.single.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "She has got long hair.",
           "exampleRu": "У неё длинные волосы.",
           "audio": {
-            "src": "media/audio/u01.d02.vocab.hair.wav",
+            "src": "media/audio/u01.d02.vocab.hair.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "He has got blue eyes.",
           "exampleRu": "У него голубые глаза.",
           "audio": {
-            "src": "media/audio/u01.d02.vocab.eyes.wav",
+            "src": "media/audio/u01.d02.vocab.eyes.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "My brother is tall.",
           "exampleRu": "Мой брат высокий.",
           "audio": {
-            "src": "media/audio/u01.d02.vocab.tall.wav",
+            "src": "media/audio/u01.d02.vocab.tall.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -166,7 +166,7 @@
           "example": "She wears glasses.",
           "exampleRu": "Она носит очки.",
           "audio": {
-            "src": "media/audio/u01.d02.vocab.glasses.wav",
+            "src": "media/audio/u01.d02.vocab.glasses.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -180,7 +180,7 @@
           "example": "They are young.",
           "exampleRu": "Они молодые.",
           "audio": {
-            "src": "media/audio/u01.d02.vocab.young.wav",
+            "src": "media/audio/u01.d02.vocab.young.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -254,7 +254,7 @@
           "en": "I have got a new colleague. Her name is Sofia and she has got a great job in our team.",
           "ru": "У меня новый коллега. Её зовут София, и у неё отличная работа в нашей команде.",
           "audio": {
-            "src": "media/audio/u01.d02.reading.b1.wav",
+            "src": "media/audio/u01.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -266,7 +266,7 @@
           "en": "She has got short hair and green eyes, and she wears glasses. She is young and she is not married.",
           "ru": "У неё короткие волосы и зелёные глаза, и она носит очки. Она молодая и не замужем.",
           "audio": {
-            "src": "media/audio/u01.d02.reading.b2.wav",
+            "src": "media/audio/u01.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -295,7 +295,7 @@
         "ru": "Контакты"
       },
       "audio": {
-        "src": "media/audio/u01.d02.listening.wav",
+        "src": "media/audio/u01.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

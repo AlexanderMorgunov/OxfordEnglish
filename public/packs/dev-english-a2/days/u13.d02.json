@@ -26,7 +26,7 @@
           "example": "Flowers grow in spring.",
           "exampleRu": "Весной растут цветы.",
           "audio": {
-            "src": "media/audio/u13.d02.vocab.spring.wav",
+            "src": "media/audio/u13.d02.vocab.spring.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "Summer is hot.",
           "exampleRu": "Лето жаркое.",
           "audio": {
-            "src": "media/audio/u13.d02.vocab.summer.wav",
+            "src": "media/audio/u13.d02.vocab.summer.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "Leaves fall in autumn.",
           "exampleRu": "Осенью падают листья.",
           "audio": {
-            "src": "media/audio/u13.d02.vocab.autumn.wav",
+            "src": "media/audio/u13.d02.vocab.autumn.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Winter is cold.",
           "exampleRu": "Зима холодная.",
           "audio": {
-            "src": "media/audio/u13.d02.vocab.winter.wav",
+            "src": "media/audio/u13.d02.vocab.winter.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "My favourite season is spring.",
           "exampleRu": "Моё любимое время года — весна.",
           "audio": {
-            "src": "media/audio/u13.d02.vocab.season.wav",
+            "src": "media/audio/u13.d02.vocab.season.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "It is warm today.",
           "exampleRu": "Сегодня тепло.",
           "audio": {
-            "src": "media/audio/u13.d02.vocab.warm.wav",
+            "src": "media/audio/u13.d02.vocab.warm.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "The evening is cool.",
           "exampleRu": "Вечер прохладный.",
           "audio": {
-            "src": "media/audio/u13.d02.vocab.cool.wav",
+            "src": "media/audio/u13.d02.vocab.cool.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "A storm is coming.",
           "exampleRu": "Приближается гроза.",
           "audio": {
-            "src": "media/audio/u13.d02.vocab.storm.wav",
+            "src": "media/audio/u13.d02.vocab.storm.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I love the sunshine.",
           "exampleRu": "Я люблю солнечный свет.",
           "audio": {
-            "src": "media/audio/u13.d02.vocab.sunshine.wav",
+            "src": "media/audio/u13.d02.vocab.sunshine.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Take an umbrella.",
           "exampleRu": "Возьми зонт.",
           "audio": {
-            "src": "media/audio/u13.d02.vocab.umbrella.wav",
+            "src": "media/audio/u13.d02.vocab.umbrella.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "The weather is not sure this weekend. If it is sunny, we will go to the mountains. If it rains, we will stay at home and watch films.",
           "ru": "На эти выходные погода неясная. Если будет солнечно, поедем в горы. Если пойдёт дождь, останемся дома и будем смотреть фильмы.",
           "audio": {
-            "src": "media/audio/u13.d02.reading.b1.wav",
+            "src": "media/audio/u13.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "If there is a storm, we won't drive at all. \"If you come with us, bring an umbrella,\" said Mia. \"It will be safer if we plan for the rain.\"",
           "ru": "Если будет гроза, вообще не поедем. «Если поедешь с нами, возьми зонт», — сказала Мия. «Будет надёжнее, если рассчитаем на дождь».",
           "audio": {
-            "src": "media/audio/u13.d02.reading.b2.wav",
+            "src": "media/audio/u13.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Если пойдёт снег…"
       },
       "audio": {
-        "src": "media/audio/u13.d02.listening.wav",
+        "src": "media/audio/u13.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

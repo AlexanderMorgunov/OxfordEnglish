@@ -26,7 +26,7 @@
           "example": "Cars are made in factories.",
           "exampleRu": "Машины делают на заводах.",
           "audio": {
-            "src": "media/audio/u14.d02.vocab.make.wav",
+            "src": "media/audio/u14.d02.vocab.make.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "The bridge was built in 1990.",
           "exampleRu": "Мост построили в 1990.",
           "audio": {
-            "src": "media/audio/u14.d02.vocab.build.wav",
+            "src": "media/audio/u14.d02.vocab.build.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "English is used everywhere.",
           "exampleRu": "Английский используют повсюду.",
           "audio": {
-            "src": "media/audio/u14.d02.vocab.use.wav",
+            "src": "media/audio/u14.d02.vocab.use.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Spanish is spoken in Mexico.",
           "exampleRu": "В Мексике говорят по-испански.",
           "audio": {
-            "src": "media/audio/u14.d02.vocab.speak.wav",
+            "src": "media/audio/u14.d02.vocab.speak.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The phone was invented long ago.",
           "exampleRu": "Телефон изобрели давно.",
           "audio": {
-            "src": "media/audio/u14.d02.vocab.invent.wav",
+            "src": "media/audio/u14.d02.vocab.invent.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Coffee is produced in Brazil.",
           "exampleRu": "Кофе производят в Бразилии.",
           "audio": {
-            "src": "media/audio/u14.d02.vocab.produce.wav",
+            "src": "media/audio/u14.d02.vocab.produce.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "These books are sold online.",
           "exampleRu": "Эти книги продают онлайн.",
           "audio": {
-            "src": "media/audio/u14.d02.vocab.sell.wav",
+            "src": "media/audio/u14.d02.vocab.sell.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "The room is cleaned every day.",
           "exampleRu": "Комнату убирают каждый день.",
           "audio": {
-            "src": "media/audio/u14.d02.vocab.clean.wav",
+            "src": "media/audio/u14.d02.vocab.clean.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "She works in a factory.",
           "exampleRu": "Она работает на заводе.",
           "audio": {
-            "src": "media/audio/u14.d02.vocab.factory.wav",
+            "src": "media/audio/u14.d02.vocab.factory.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "It is famous around the world.",
           "exampleRu": "Это известно по всему миру.",
           "audio": {
-            "src": "media/audio/u14.d02.vocab.famous.wav",
+            "src": "media/audio/u14.d02.vocab.famous.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Chocolate is loved all over the world. The cocoa is grown in warm countries and the beans are sent to factories. There the chocolate is made and packed.",
           "ru": "Шоколад любят во всём мире. Какао выращивают в тёплых странах, а бобы отправляют на фабрики. Там шоколад делают и упаковывают.",
           "audio": {
-            "src": "media/audio/u14.d02.reading.b1.wav",
+            "src": "media/audio/u14.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "The first chocolate bar was made in England in the 19th century. Today millions of bars are sold every day. Chocolate is enjoyed by people of all ages.",
           "ru": "Первую плитку шоколада сделали в Англии в XIX веке. Сегодня миллионы плиток продают каждый день. Шоколадом наслаждаются люди всех возрастов.",
           "audio": {
-            "src": "media/audio/u14.d02.reading.b2.wav",
+            "src": "media/audio/u14.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Где это делают?"
       },
       "audio": {
-        "src": "media/audio/u14.d02.listening.wav",
+        "src": "media/audio/u14.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

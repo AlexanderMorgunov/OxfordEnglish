@@ -26,7 +26,7 @@
           "example": "What is your plan?",
           "exampleRu": "Какой у тебя план?",
           "audio": {
-            "src": "media/audio/u10.d01.vocab.plan.wav",
+            "src": "media/audio/u10.d01.vocab.plan.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "We are going on holiday.",
           "exampleRu": "Мы едем в отпуск.",
           "audio": {
-            "src": "media/audio/u10.d01.vocab.holiday.wav",
+            "src": "media/audio/u10.d01.vocab.holiday.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "Her ambition is to travel.",
           "exampleRu": "Её мечта — путешествовать.",
           "audio": {
-            "src": "media/audio/u10.d01.vocab.ambition.wav",
+            "src": "media/audio/u10.d01.vocab.ambition.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "It is my dream.",
           "exampleRu": "Это моя мечта.",
           "audio": {
-            "src": "media/audio/u10.d01.vocab.dream.wav",
+            "src": "media/audio/u10.d01.vocab.dream.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Think about the future.",
           "exampleRu": "Подумай о будущем.",
           "audio": {
-            "src": "media/audio/u10.d01.vocab.future.wav",
+            "src": "media/audio/u10.d01.vocab.future.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "My goal is to learn English.",
           "exampleRu": "Моя цель — выучить английский.",
           "audio": {
-            "src": "media/audio/u10.d01.vocab.goal.wav",
+            "src": "media/audio/u10.d01.vocab.goal.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "next week",
           "exampleRu": "на следующей неделе",
           "audio": {
-            "src": "media/audio/u10.d01.vocab.next.wav",
+            "src": "media/audio/u10.d01.vocab.next.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "See you soon.",
           "exampleRu": "До скорого.",
           "audio": {
-            "src": "media/audio/u10.d01.vocab.soon.wav",
+            "src": "media/audio/u10.d01.vocab.soon.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I hope to visit Paris.",
           "exampleRu": "Надеюсь побывать в Париже.",
           "audio": {
-            "src": "media/audio/u10.d01.vocab.hope.wav",
+            "src": "media/audio/u10.d01.vocab.hope.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "What are your plans for the weekend?",
           "exampleRu": "Какие планы на выходные?",
           "audio": {
-            "src": "media/audio/u10.d01.vocab.weekend.wav",
+            "src": "media/audio/u10.d01.vocab.weekend.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "This summer we are going to have a long holiday. We are going to travel to Italy and stay near the sea for two weeks.",
           "ru": "Этим летом у нас будет долгий отпуск. Мы собираемся поехать в Италию и пожить у моря две недели.",
           "audio": {
-            "src": "media/audio/u10.d01.reading.b1.wav",
+            "src": "media/audio/u10.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "My sister is going to learn to swim, and I am going to read a lot of books. We are not going to work at all. It is going to be great!",
           "ru": "Сестра собирается научиться плавать, а я собираюсь читать много книг. Мы совсем не будем работать. Это будет здорово!",
           "audio": {
-            "src": "media/audio/u10.d01.reading.b2.wav",
+            "src": "media/audio/u10.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Планы на выходные"
       },
       "audio": {
-        "src": "media/audio/u10.d01.listening.wav",
+        "src": "media/audio/u10.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

@@ -26,7 +26,7 @@
           "example": "There was a small accident.",
           "exampleRu": "Произошла небольшая авария.",
           "audio": {
-            "src": "media/audio/u05.d03.vocab.accident.wav",
+            "src": "media/audio/u05.d03.vocab.accident.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "He fell on the ice.",
           "exampleRu": "Он упал на льду.",
           "audio": {
-            "src": "media/audio/u05.d03.vocab.fall.wav",
+            "src": "media/audio/u05.d03.vocab.fall.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "She broke her phone.",
           "exampleRu": "Она разбила телефон.",
           "audio": {
-            "src": "media/audio/u05.d03.vocab.break.wav",
+            "src": "media/audio/u05.d03.vocab.break.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I hurt my arm.",
           "exampleRu": "Я ушиб руку.",
           "audio": {
-            "src": "media/audio/u05.d03.vocab.hurt.wav",
+            "src": "media/audio/u05.d03.vocab.hurt.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "He dropped his keys.",
           "exampleRu": "Он уронил ключи.",
           "audio": {
-            "src": "media/audio/u05.d03.vocab.drop.wav",
+            "src": "media/audio/u05.d03.vocab.drop.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "She slipped on the floor.",
           "exampleRu": "Она поскользнулась на полу.",
           "audio": {
-            "src": "media/audio/u05.d03.vocab.slip.wav",
+            "src": "media/audio/u05.d03.vocab.slip.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Suddenly, the lights went off.",
           "exampleRu": "Вдруг погас свет.",
           "audio": {
-            "src": "media/audio/u05.d03.vocab.suddenly.wav",
+            "src": "media/audio/u05.d03.vocab.suddenly.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "Luckily, nobody was hurt.",
           "exampleRu": "К счастью, никто не пострадал.",
           "audio": {
-            "src": "media/audio/u05.d03.vocab.luckily.wav",
+            "src": "media/audio/u05.d03.vocab.luckily.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Be careful!",
           "exampleRu": "Будь осторожен!",
           "audio": {
-            "src": "media/audio/u05.d03.vocab.careful.wav",
+            "src": "media/audio/u05.d03.vocab.careful.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "What happened?",
           "exampleRu": "Что случилось?",
           "audio": {
-            "src": "media/audio/u05.d03.vocab.happen.wav",
+            "src": "media/audio/u05.d03.vocab.happen.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -226,7 +226,7 @@
           "en": "Yesterday morning it was raining. While Tom was running to the bus, he slipped and fell. He dropped his bag and his coffee.",
           "ru": "Вчера утром шёл дождь. Пока Том бежал к автобусу, он поскользнулся и упал. Он уронил сумку и кофе.",
           "audio": {
-            "src": "media/audio/u05.d03.reading.b1.wav",
+            "src": "media/audio/u05.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -238,7 +238,7 @@
           "en": "Luckily, he didn't hurt himself. A woman was passing and helped him. \"Are you okay?\" she asked. Tom smiled and said, \"Yes, thank you!\"",
           "ru": "К счастью, он не ушибся. Мимо проходила женщина и помогла ему. «Вы в порядке?» — спросила она. Том улыбнулся и сказал: «Да, спасибо!»",
           "audio": {
-            "src": "media/audio/u05.d03.reading.b2.wav",
+            "src": "media/audio/u05.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -267,7 +267,7 @@
         "ru": "Что случилось?"
       },
       "audio": {
-        "src": "media/audio/u05.d03.listening.wav",
+        "src": "media/audio/u05.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

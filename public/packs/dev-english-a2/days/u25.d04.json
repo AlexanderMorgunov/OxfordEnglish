@@ -26,7 +26,7 @@
           "example": "Several apples.",
           "exampleRu": "Несколько яблок.",
           "audio": {
-            "src": "media/audio/u25.d04.vocab.several.wav",
+            "src": "media/audio/u25.d04.vocab.several.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "Most people agree.",
           "exampleRu": "Большинство согласны.",
           "audio": {
-            "src": "media/audio/u25.d04.vocab.most.wav",
+            "src": "media/audio/u25.d04.vocab.most.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "A couple of eggs.",
           "exampleRu": "Пара яиц.",
           "audio": {
-            "src": "media/audio/u25.d04.vocab.acouple.wav",
+            "src": "media/audio/u25.d04.vocab.acouple.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Hardly any milk left.",
           "exampleRu": "Молока почти не осталось.",
           "audio": {
-            "src": "media/audio/u25.d04.vocab.hardlyany.wav",
+            "src": "media/audio/u25.d04.vocab.hardlyany.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Fresh ingredients.",
           "exampleRu": "Свежие ингредиенты.",
           "audio": {
-            "src": "media/audio/u25.d04.vocab.ingredient.wav",
+            "src": "media/audio/u25.d04.vocab.ingredient.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "A simple recipe.",
           "exampleRu": "Простой рецепт.",
           "audio": {
-            "src": "media/audio/u25.d04.vocab.recipe.wav",
+            "src": "media/audio/u25.d04.vocab.recipe.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Add a little flour.",
           "exampleRu": "Добавь немного муки.",
           "audio": {
-            "src": "media/audio/u25.d04.vocab.flour.wav",
+            "src": "media/audio/u25.d04.vocab.flour.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "Fresh vegetables.",
           "exampleRu": "Свежие овощи.",
           "audio": {
-            "src": "media/audio/u25.d04.vocab.fresh.wav",
+            "src": "media/audio/u25.d04.vocab.fresh.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "It has a nice taste.",
           "exampleRu": "У него приятный вкус.",
           "audio": {
-            "src": "media/audio/u25.d04.vocab.taste.wav",
+            "src": "media/audio/u25.d04.vocab.taste.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "A few spices.",
           "exampleRu": "Немного специй.",
           "audio": {
-            "src": "media/audio/u25.d04.vocab.spice.wav",
+            "src": "media/audio/u25.d04.vocab.spice.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "This recipe needs only a few ingredients. You'll need a little flour, a couple of eggs, and some milk. Most people already have these at home. Add a little sugar and a few spices for flavour.",
           "ru": "Для этого рецепта нужно лишь несколько ингредиентов. Понадобится немного муки, пара яиц и молоко. У большинства людей это уже есть дома. Добавь немного сахара и пару специй для вкуса.",
           "audio": {
-            "src": "media/audio/u25.d04.reading.b1.wav",
+            "src": "media/audio/u25.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "Mix everything together. There's very little work involved, and it takes hardly any time. Most of the flavour comes from the fresh fruit on top. None of my friends can believe how easy it is — a few minutes and it's done!",
           "ru": "Смешай всё вместе. Работы совсем немного, и времени почти не нужно. Большая часть вкуса — от свежих фруктов сверху. Никто из моих друзей не верит, как это просто — пара минут, и готово!",
           "audio": {
-            "src": "media/audio/u25.d04.reading.b2.wav",
+            "src": "media/audio/u25.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "У нас хватит?"
       },
       "audio": {
-        "src": "media/audio/u25.d04.listening.wav",
+        "src": "media/audio/u25.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

@@ -26,7 +26,7 @@
           "example": "We reverted the change.",
           "exampleRu": "Мы откатили изменение.",
           "audio": {
-            "src": "media/audio/u04.d03.vocab.revert.wav",
+            "src": "media/audio/u04.d03.vocab.revert.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "A small change.",
           "exampleRu": "Небольшое изменение.",
           "audio": {
-            "src": "media/audio/u04.d03.vocab.change.wav",
+            "src": "media/audio/u04.d03.vocab.change.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "The last commit.",
           "exampleRu": "Последний коммит.",
           "audio": {
-            "src": "media/audio/u04.d03.vocab.commit.wav",
+            "src": "media/audio/u04.d03.vocab.commit.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "A feature branch.",
           "exampleRu": "Ветка с фичей.",
           "audio": {
-            "src": "media/audio/u04.d03.vocab.branch.wav",
+            "src": "media/audio/u04.d03.vocab.branch.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "A new release.",
           "exampleRu": "Новый релиз.",
           "audio": {
-            "src": "media/audio/u04.d03.vocab.release.wav",
+            "src": "media/audio/u04.d03.vocab.release.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "An error in the log.",
           "exampleRu": "Ошибка в логе.",
           "audio": {
-            "src": "media/audio/u04.d03.vocab.error.wav",
+            "src": "media/audio/u04.d03.vocab.error.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Check the log.",
           "exampleRu": "Проверь лог.",
           "audio": {
-            "src": "media/audio/u04.d03.vocab.log.wav",
+            "src": "media/audio/u04.d03.vocab.log.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "We did a rollback.",
           "exampleRu": "Мы сделали откат.",
           "audio": {
-            "src": "media/audio/u04.d03.vocab.rollback.wav",
+            "src": "media/audio/u04.d03.vocab.rollback.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "A small incident.",
           "exampleRu": "Небольшой инцидент.",
           "audio": {
-            "src": "media/audio/u04.d03.vocab.incident.wav",
+            "src": "media/audio/u04.d03.vocab.incident.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "The test failed.",
           "exampleRu": "Тест упал.",
           "audio": {
-            "src": "media/audio/u04.d03.vocab.test.wav",
+            "src": "media/audio/u04.d03.vocab.test.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -201,7 +201,7 @@
           "id": "u04.d03.reading.b1",
           "en": "Yesterday was a normal work day. I fixed a bug, wrote a test, and my teammate reviewed the pull request. We merged the branch and went home.",
           "audio": {
-            "src": "media/audio/u04.d03.reading.b1.wav",
+            "src": "media/audio/u04.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -232,7 +232,7 @@
         "ru": "Откат"
       },
       "audio": {
-        "src": "media/audio/u04.d03.listen2.wav",
+        "src": "media/audio/u04.d03.listen2.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

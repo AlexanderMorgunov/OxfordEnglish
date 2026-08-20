@@ -26,7 +26,7 @@
           "example": "The house was quiet.",
           "exampleRu": "В доме было тихо.",
           "audio": {
-            "src": "media/audio/u16.d03.vocab.quiet.wav",
+            "src": "media/audio/u16.d03.vocab.quiet.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "It was dark outside.",
           "exampleRu": "На улице было темно.",
           "audio": {
-            "src": "media/audio/u16.d03.vocab.dark.wav",
+            "src": "media/audio/u16.d03.vocab.dark.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "She heard a noise.",
           "exampleRu": "Она услышала шум.",
           "audio": {
-            "src": "media/audio/u16.d03.vocab.noise.wav",
+            "src": "media/audio/u16.d03.vocab.noise.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "A shadow moved on the wall.",
           "exampleRu": "На стене шевельнулась тень.",
           "audio": {
-            "src": "media/audio/u16.d03.vocab.shadow.wav",
+            "src": "media/audio/u16.d03.vocab.shadow.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "She was very careful.",
           "exampleRu": "Она была очень осторожна.",
           "audio": {
-            "src": "media/audio/u16.d03.vocab.careful.wav",
+            "src": "media/audio/u16.d03.vocab.careful.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "He whispered a name.",
           "exampleRu": "Он прошептал имя.",
           "audio": {
-            "src": "media/audio/u16.d03.vocab.whisper.wav",
+            "src": "media/audio/u16.d03.vocab.whisper.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "A figure appeared at the door.",
           "exampleRu": "В дверях появилась фигура.",
           "audio": {
-            "src": "media/audio/u16.d03.vocab.appear.wav",
+            "src": "media/audio/u16.d03.vocab.appear.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "She could hardly breathe.",
           "exampleRu": "Она едва дышала.",
           "audio": {
-            "src": "media/audio/u16.d03.vocab.breathe.wav",
+            "src": "media/audio/u16.d03.vocab.breathe.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "It turned out to be the cat.",
           "exampleRu": "Это оказался кот.",
           "audio": {
-            "src": "media/audio/u16.d03.vocab.turnout.wav",
+            "src": "media/audio/u16.d03.vocab.turnout.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "What a relief!",
           "exampleRu": "Какое облегчение!",
           "audio": {
-            "src": "media/audio/u16.d03.vocab.relief.wav",
+            "src": "media/audio/u16.d03.vocab.relief.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "It was late, and Lena was reading in bed. The rain was falling softly and the whole house was quiet. She had locked all the doors before going upstairs, so she felt safe. Then, suddenly, she heard a noise downstairs.",
           "ru": "Было поздно, и Лена читала в постели. Тихо шёл дождь, весь дом молчал. Перед тем как подняться, она заперла все двери, поэтому чувствовала себя спокойно. И вдруг снизу донёсся шум.",
           "audio": {
-            "src": "media/audio/u16.d03.reading.b1.wav",
+            "src": "media/audio/u16.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "She froze. Someone — or something — was moving in the kitchen. Her heart was beating fast as she walked carefully down the stairs. A shadow appeared near the table. But when she turned on the light, it turned out that the cat had knocked over a cup. What a relief!",
           "ru": "Она замерла. Кто-то — или что-то — двигался на кухне. Сердце колотилось, пока она осторожно спускалась по лестнице. У стола появилась тень. Но когда она включила свет, оказалось, что это кот опрокинул чашку. Какое облегчение!",
           "audio": {
-            "src": "media/audio/u16.d03.reading.b2.wav",
+            "src": "media/audio/u16.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Когда это случилось"
       },
       "audio": {
-        "src": "media/audio/u16.d03.listening.wav",
+        "src": "media/audio/u16.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

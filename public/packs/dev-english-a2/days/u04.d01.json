@@ -26,7 +26,7 @@
           "example": "I deployed the build.",
           "exampleRu": "Я задеплоил билд.",
           "audio": {
-            "src": "media/audio/u04.d01.vocab.deployed.wav",
+            "src": "media/audio/u04.d01.vocab.deployed.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "We merged the branch.",
           "exampleRu": "Мы влили ветку.",
           "audio": {
-            "src": "media/audio/u04.d01.vocab.merged.wav",
+            "src": "media/audio/u04.d01.vocab.merged.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "She fixed the bug.",
           "exampleRu": "Она починила баг.",
           "audio": {
-            "src": "media/audio/u04.d01.vocab.fixed.wav",
+            "src": "media/audio/u04.d01.vocab.fixed.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "He wrote the tests.",
           "exampleRu": "Он написал тесты.",
           "audio": {
-            "src": "media/audio/u04.d01.vocab.wrote.wav",
+            "src": "media/audio/u04.d01.vocab.wrote.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The pipeline built the app.",
           "exampleRu": "Пайплайн собрал приложение.",
           "audio": {
-            "src": "media/audio/u04.d01.vocab.built.wav",
+            "src": "media/audio/u04.d01.vocab.built.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "The commit broke the build.",
           "exampleRu": "Коммит сломал сборку.",
           "audio": {
-            "src": "media/audio/u04.d01.vocab.broke.wav",
+            "src": "media/audio/u04.d01.vocab.broke.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "I pushed to main.",
           "exampleRu": "Я запушил в main.",
           "audio": {
-            "src": "media/audio/u04.d01.vocab.pushed.wav",
+            "src": "media/audio/u04.d01.vocab.pushed.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "We shipped the feature.",
           "exampleRu": "Мы выкатили фичу.",
           "audio": {
-            "src": "media/audio/u04.d01.vocab.shipped.wav",
+            "src": "media/audio/u04.d01.vocab.shipped.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "He reviewed my code.",
           "exampleRu": "Он проверил мой код.",
           "audio": {
-            "src": "media/audio/u04.d01.vocab.reviewed.wav",
+            "src": "media/audio/u04.d01.vocab.reviewed.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "The tests ran green.",
           "exampleRu": "Тесты прошли.",
           "audio": {
-            "src": "media/audio/u04.d01.vocab.ran.wav",
+            "src": "media/audio/u04.d01.vocab.ran.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -269,7 +269,7 @@
           "en": "Yesterday was a busy day. In the morning I deployed the new build to production and it worked without any problems.",
           "ru": "Вчера был напряжённый день. Утром я задеплоил новый билд в продакшн, и он заработал без проблем.",
           "audio": {
-            "src": "media/audio/u04.d01.reading.b1.wav",
+            "src": "media/audio/u04.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
           "en": "Then I found a bug in the login flow. I fixed it, wrote a test, and my teammate reviewed the pull request.",
           "ru": "Потом я нашёл баг в логине. Я починил его, написал тест, и коллега посмотрел пул-реквест.",
           "audio": {
-            "src": "media/audio/u04.d01.reading.b2.wav",
+            "src": "media/audio/u04.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -293,7 +293,7 @@
           "en": "The last commit broke the build, so we did not push it to main. We reverted the change and went home.",
           "ru": "Последний коммит сломал сборку, поэтому мы не запушили его в main. Мы откатили изменение и пошли домой.",
           "audio": {
-            "src": "media/audio/u04.d01.reading.b3.wav",
+            "src": "media/audio/u04.d01.reading.b3.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -332,7 +332,7 @@
         "ru": "Вчерашняя работа"
       },
       "audio": {
-        "src": "media/audio/u04.d01.listen2.wav",
+        "src": "media/audio/u04.d01.listen2.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

@@ -29,7 +29,7 @@
           "example": "I agree with you.",
           "exampleRu": "Я с тобой согласен.",
           "audio": {
-            "src": "media/audio/u13.d05.vocab.agree.wav",
+            "src": "media/audio/u13.d05.vocab.agree.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -43,7 +43,7 @@
           "example": "I disagree.",
           "exampleRu": "Я не согласен.",
           "audio": {
-            "src": "media/audio/u13.d05.vocab.disagree.wav",
+            "src": "media/audio/u13.d05.vocab.disagree.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -57,7 +57,7 @@
           "example": "In my opinion, it's true.",
           "exampleRu": "По-моему, это правда.",
           "audio": {
-            "src": "media/audio/u13.d05.vocab.opinion.wav",
+            "src": "media/audio/u13.d05.vocab.opinion.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -71,7 +71,7 @@
           "example": "I think it's a good idea.",
           "exampleRu": "Думаю, это хорошая идея.",
           "audio": {
-            "src": "media/audio/u13.d05.vocab.think.wav",
+            "src": "media/audio/u13.d05.vocab.think.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -85,7 +85,7 @@
           "example": "You are right.",
           "exampleRu": "Ты прав.",
           "audio": {
-            "src": "media/audio/u13.d05.vocab.right.wav",
+            "src": "media/audio/u13.d05.vocab.right.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -99,7 +99,7 @@
           "example": "I think that's wrong.",
           "exampleRu": "Думаю, это неправильно.",
           "audio": {
-            "src": "media/audio/u13.d05.vocab.wrong.wav",
+            "src": "media/audio/u13.d05.vocab.wrong.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -113,7 +113,7 @@
           "example": "That's true.",
           "exampleRu": "Это правда.",
           "audio": {
-            "src": "media/audio/u13.d05.vocab.true.wav",
+            "src": "media/audio/u13.d05.vocab.true.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -127,7 +127,7 @@
           "example": "I'm interested in music.",
           "exampleRu": "Я интересуюсь музыкой.",
           "audio": {
-            "src": "media/audio/u13.d05.vocab.interestedin.wav",
+            "src": "media/audio/u13.d05.vocab.interestedin.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -141,7 +141,7 @@
           "example": "She is good at maths.",
           "exampleRu": "Она хороша в математике.",
           "audio": {
-            "src": "media/audio/u13.d05.vocab.goodat.wav",
+            "src": "media/audio/u13.d05.vocab.goodat.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -155,7 +155,7 @@
           "example": "He is afraid of dogs.",
           "exampleRu": "Он боится собак.",
           "audio": {
-            "src": "media/audio/u13.d05.vocab.afraidof.wav",
+            "src": "media/audio/u13.d05.vocab.afraidof.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -242,7 +242,7 @@
           "en": "\"I think winter is the best season,\" said Tom. \"Really? I don't agree,\" said Mia. \"In my opinion, summer is better.\" \"You love the sea, don't you?\" \"Yes, I do!\"",
           "ru": "«Думаю, зима — лучшее время года», — сказал Том. «Правда? Не согласна», — сказала Мия. «По-моему, лето лучше». «Ты ведь любишь море?» «Да!»",
           "audio": {
-            "src": "media/audio/u13.d05.reading.b1.wav",
+            "src": "media/audio/u13.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -254,7 +254,7 @@
           "en": "\"I'm interested in winter sports,\" said Tom. \"So am I, actually,\" said Mia. \"But I'm afraid of the cold.\" \"Neither of us likes storms, that's for sure!\" They both laughed.",
           "ru": "«Мне интересны зимние виды спорта», — сказал Том. «Мне вообще-то тоже», — сказала Мия. «Но я боюсь холода». «Грозы точно никто из нас не любит!» Оба засмеялись.",
           "audio": {
-            "src": "media/audio/u13.d05.reading.b2.wav",
+            "src": "media/audio/u13.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -283,7 +283,7 @@
         "ru": "И я тоже"
       },
       "audio": {
-        "src": "media/audio/u13.d05.listening.wav",
+        "src": "media/audio/u13.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

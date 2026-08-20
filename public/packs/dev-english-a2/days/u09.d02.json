@@ -26,7 +26,7 @@
           "example": "The price is good.",
           "exampleRu": "Цена хорошая.",
           "audio": {
-            "src": "media/audio/u09.d02.vocab.price.wav",
+            "src": "media/audio/u09.d02.vocab.price.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "The shoes are on sale.",
           "exampleRu": "Обувь на распродаже.",
           "audio": {
-            "src": "media/audio/u09.d02.vocab.sale.wav",
+            "src": "media/audio/u09.d02.vocab.sale.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "There is a big discount.",
           "exampleRu": "Большая скидка.",
           "audio": {
-            "src": "media/audio/u09.d02.vocab.discount.wav",
+            "src": "media/audio/u09.d02.vocab.discount.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Can I try on this dress?",
           "exampleRu": "Можно примерить это платье?",
           "audio": {
-            "src": "media/audio/u09.d02.vocab.tryon.wav",
+            "src": "media/audio/u09.d02.vocab.tryon.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "These shoes fit well.",
           "exampleRu": "Эта обувь хорошо сидит.",
           "audio": {
-            "src": "media/audio/u09.d02.vocab.fit.wav",
+            "src": "media/audio/u09.d02.vocab.fit.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "The quality is high.",
           "exampleRu": "Качество высокое.",
           "audio": {
-            "src": "media/audio/u09.d02.vocab.quality.wav",
+            "src": "media/audio/u09.d02.vocab.quality.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "This shop is popular.",
           "exampleRu": "Этот магазин популярный.",
           "audio": {
-            "src": "media/audio/u09.d02.vocab.popular.wav",
+            "src": "media/audio/u09.d02.vocab.popular.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "It is a famous brand.",
           "exampleRu": "Это известный бренд.",
           "audio": {
-            "src": "media/audio/u09.d02.vocab.brand.wav",
+            "src": "media/audio/u09.d02.vocab.brand.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "The customer is happy.",
           "exampleRu": "Покупатель доволен.",
           "audio": {
-            "src": "media/audio/u09.d02.vocab.customer.wav",
+            "src": "media/audio/u09.d02.vocab.customer.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Saturday is the busiest day.",
           "exampleRu": "Суббота — самый занятой день.",
           "audio": {
-            "src": "media/audio/u09.d02.vocab.busy.wav",
+            "src": "media/audio/u09.d02.vocab.busy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "City Style is the biggest clothes shop in town. It is also the most popular, because it has the best prices and good quality clothes.",
           "ru": "City Style — самый большой магазин одежды в городе. Ещё и самый популярный, потому что у него лучшие цены и качественная одежда.",
           "audio": {
-            "src": "media/audio/u09.d02.reading.b1.wav",
+            "src": "media/audio/u09.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "On Saturday it is the busiest. That day they have the biggest sale, with the cheapest shoes and the most beautiful dresses. Customers love it.",
           "ru": "В субботу там больше всего людей. В этот день самая большая распродажа: самая дешёвая обувь и самые красивые платья. Покупатели в восторге.",
           "audio": {
-            "src": "media/audio/u09.d02.reading.b2.wav",
+            "src": "media/audio/u09.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Самый дешёвый"
       },
       "audio": {
-        "src": "media/audio/u09.d02.listening.wav",
+        "src": "media/audio/u09.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

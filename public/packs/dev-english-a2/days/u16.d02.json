@@ -26,7 +26,7 @@
           "example": "I had eaten before I left.",
           "exampleRu": "Я поел перед уходом.",
           "audio": {
-            "src": "media/audio/u16.d02.vocab.before.wav",
+            "src": "media/audio/u16.d02.vocab.before.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "After she had left, he called.",
           "exampleRu": "После её ухода он позвонил.",
           "audio": {
-            "src": "media/audio/u16.d02.vocab.after.wav",
+            "src": "media/audio/u16.d02.vocab.after.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "They had already eaten.",
           "exampleRu": "Они уже поели.",
           "audio": {
-            "src": "media/audio/u16.d02.vocab.already.wav",
+            "src": "media/audio/u16.d02.vocab.already.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "The film had just started.",
           "exampleRu": "Фильм только начался.",
           "audio": {
-            "src": "media/audio/u16.d02.vocab.just.wav",
+            "src": "media/audio/u16.d02.vocab.just.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Once she had finished, she relaxed.",
           "exampleRu": "Как только она закончила, расслабилась.",
           "audio": {
-            "src": "media/audio/u16.d02.vocab.once.wav",
+            "src": "media/audio/u16.d02.vocab.once.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "He returned after the show had ended.",
           "exampleRu": "Он вернулся после конца шоу.",
           "audio": {
-            "src": "media/audio/u16.d02.vocab.return.wav",
+            "src": "media/audio/u16.d02.vocab.return.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "She explained what had happened.",
           "exampleRu": "Она объяснила, что случилось.",
           "audio": {
-            "src": "media/audio/u16.d02.vocab.explain.wav",
+            "src": "media/audio/u16.d02.vocab.explain.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "We discovered the truth later.",
           "exampleRu": "Правду мы узнали позже.",
           "audio": {
-            "src": "media/audio/u16.d02.vocab.discover.wav",
+            "src": "media/audio/u16.d02.vocab.discover.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "That was the reason he was late.",
           "exampleRu": "Вот почему он опоздал.",
           "audio": {
-            "src": "media/audio/u16.d02.vocab.reason.wav",
+            "src": "media/audio/u16.d02.vocab.reason.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Finally, everything made sense.",
           "exampleRu": "Наконец всё стало ясно.",
           "audio": {
-            "src": "media/audio/u16.d02.vocab.finally.wav",
+            "src": "media/audio/u16.d02.vocab.finally.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "When Marco finally arrived at the meeting, everyone was annoyed. But once he had explained what happened, they understood. On the way, he had stopped to help an old woman who had fallen on the ice.",
           "ru": "Когда Марко наконец пришёл на встречу, все были раздражены. Но как только он объяснил, что произошло, все поняли. По дороге он остановился помочь пожилой женщине, которая упала на льду.",
           "audio": {
-            "src": "media/audio/u16.d02.reading.b1.wav",
+            "src": "media/audio/u16.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "He had called an ambulance and waited with her until it came. By the time he reached the office, the meeting had already started, but nobody minded any more. He had done the right thing, and that was the reason he was late.",
           "ru": "Он вызвал скорую и ждал с ней, пока та не приехала. К моменту, когда он добрался до офиса, встреча уже началась, но теперь это никого не смущало. Он поступил правильно — вот почему он опоздал.",
           "audio": {
-            "src": "media/audio/u16.d02.reading.b2.wav",
+            "src": "media/audio/u16.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Что произошло?"
       },
       "audio": {
-        "src": "media/audio/u16.d02.listening.wav",
+        "src": "media/audio/u16.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

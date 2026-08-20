@@ -26,7 +26,7 @@
           "example": "It was a difficult choice.",
           "exampleRu": "Это был трудный выбор.",
           "audio": {
-            "src": "media/audio/u15.d02.vocab.choice.wav",
+            "src": "media/audio/u15.d02.vocab.choice.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I can't decide.",
           "exampleRu": "Я не могу решить.",
           "audio": {
-            "src": "media/audio/u15.d02.vocab.decide.wav",
+            "src": "media/audio/u15.d02.vocab.decide.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "There are two options.",
           "exampleRu": "Есть два варианта.",
           "audio": {
-            "src": "media/audio/u15.d02.vocab.option.wav",
+            "src": "media/audio/u15.d02.vocab.option.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I would stay home instead.",
           "exampleRu": "Вместо этого я бы остался дома.",
           "audio": {
-            "src": "media/audio/u15.d02.vocab.instead.wav",
+            "src": "media/audio/u15.d02.vocab.instead.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I would rather walk.",
           "exampleRu": "Я бы лучше пошёл пешком.",
           "audio": {
-            "src": "media/audio/u15.d02.vocab.rather.wav",
+            "src": "media/audio/u15.d02.vocab.rather.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "You should consider it.",
           "exampleRu": "Тебе стоит это обдумать.",
           "audio": {
-            "src": "media/audio/u15.d02.vocab.consider.wav",
+            "src": "media/audio/u15.d02.vocab.consider.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "It's a big risk.",
           "exampleRu": "Это большой риск.",
           "audio": {
-            "src": "media/audio/u15.d02.vocab.risk.wav",
+            "src": "media/audio/u15.d02.vocab.risk.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "It depends on the money.",
           "exampleRu": "Это зависит от денег.",
           "audio": {
-            "src": "media/audio/u15.d02.vocab.dependon.wav",
+            "src": "media/audio/u15.d02.vocab.dependon.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Don't give up.",
           "exampleRu": "Не сдавайся.",
           "audio": {
-            "src": "media/audio/u15.d02.vocab.giveup.wav",
+            "src": "media/audio/u15.d02.vocab.giveup.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "It would be worth it.",
           "exampleRu": "Оно бы того стоило.",
           "audio": {
-            "src": "media/audio/u15.d02.vocab.worthit.wav",
+            "src": "media/audio/u15.d02.vocab.worthit.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Marta has a difficult choice. A company in another city has offered her a better job, but she would have to leave her friends and family. \"If I took it, I could earn more and grow faster,\" she thinks, \"but I might feel lonely there.\"",
           "ru": "У Марты трудный выбор. Компания в другом городе предложила ей работу получше, но пришлось бы оставить друзей и семью. «Если бы я согласилась, я могла бы больше зарабатывать и быстрее расти, — думает она, — но могла бы чувствовать себя одиноко».",
           "audio": {
-            "src": "media/audio/u15.d02.reading.b1.wav",
+            "src": "media/audio/u15.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "Her friend asked, \"What would you do if the money were the same here?\" Marta smiled. \"Honestly, I would stay. But the risk might be worth it. It really depends on how brave I feel.\"",
           "ru": "Подруга спросила: «А что бы ты сделала, если бы деньги здесь были такими же?» Марта улыбнулась. «Честно, я бы осталась. Но риск, возможно, того стоит. Всё зависит от того, насколько я смелая».",
           "audio": {
-            "src": "media/audio/u15.d02.reading.b2.wav",
+            "src": "media/audio/u15.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Если бы у тебя был выбор"
       },
       "audio": {
-        "src": "media/audio/u15.d02.listening.wav",
+        "src": "media/audio/u15.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

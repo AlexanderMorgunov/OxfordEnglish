@@ -28,7 +28,7 @@
           "example": "Can you help me?",
           "exampleRu": "Можешь мне помочь?",
           "audio": {
-            "src": "media/audio/u03.d05.vocab.help.wav",
+            "src": "media/audio/u03.d05.vocab.help.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -42,7 +42,7 @@
           "example": "Can I borrow your pen?",
           "exampleRu": "Можно взять твою ручку?",
           "audio": {
-            "src": "media/audio/u03.d05.vocab.borrow.wav",
+            "src": "media/audio/u03.d05.vocab.borrow.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -56,7 +56,7 @@
           "example": "Could you lend me a book?",
           "exampleRu": "Не одолжишь мне книгу?",
           "audio": {
-            "src": "media/audio/u03.d05.vocab.lend.wav",
+            "src": "media/audio/u03.d05.vocab.lend.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -70,7 +70,7 @@
           "example": "Can you pass the salt?",
           "exampleRu": "Передашь соль?",
           "audio": {
-            "src": "media/audio/u03.d05.vocab.pass.wav",
+            "src": "media/audio/u03.d05.vocab.pass.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -84,7 +84,7 @@
           "example": "Can you carry this?",
           "exampleRu": "Можешь понести это?",
           "audio": {
-            "src": "media/audio/u03.d05.vocab.carry.wav",
+            "src": "media/audio/u03.d05.vocab.carry.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -98,7 +98,7 @@
           "example": "Please wait a moment.",
           "exampleRu": "Подождите минутку.",
           "audio": {
-            "src": "media/audio/u03.d05.vocab.wait.wav",
+            "src": "media/audio/u03.d05.vocab.wait.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -112,7 +112,7 @@
           "example": "Can you open the door?",
           "exampleRu": "Можешь открыть дверь?",
           "audio": {
-            "src": "media/audio/u03.d05.vocab.open.wav",
+            "src": "media/audio/u03.d05.vocab.open.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -126,7 +126,7 @@
           "example": "Could you close the window?",
           "exampleRu": "Не закроешь окно?",
           "audio": {
-            "src": "media/audio/u03.d05.vocab.close.wav",
+            "src": "media/audio/u03.d05.vocab.close.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -140,7 +140,7 @@
           "example": "Sure, no problem.",
           "exampleRu": "Конечно, без проблем.",
           "audio": {
-            "src": "media/audio/u03.d05.vocab.sure.wav",
+            "src": "media/audio/u03.d05.vocab.sure.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -154,7 +154,7 @@
           "example": "Can I ask a favour?",
           "exampleRu": "Можно попросить об услуге?",
           "audio": {
-            "src": "media/audio/u03.d05.vocab.favour.wav",
+            "src": "media/audio/u03.d05.vocab.favour.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "It was a busy morning at the office. Nina had a lot of work. 'Could you help me with this report?' she asked Tom. 'Sure, no problem,' he said.",
           "ru": "В офисе было занятое утро. У Нины было много работы. «Не мог бы ты помочь с отчётом?» — спросила она Тома. «Конечно, без проблем», — ответил он.",
           "audio": {
-            "src": "media/audio/u03.d05.reading.b1.wav",
+            "src": "media/audio/u03.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "Later Tom said, 'Would you like a coffee?' 'Yes, please,' said Nina. 'And can I borrow your charger?' 'Of course. I'll bring it now.'",
           "ru": "Позже Том сказал: «Хочешь кофе?» «Да, пожалуйста», — сказала Нина. «И можно взять твою зарядку?» «Конечно. Сейчас принесу.»",
           "audio": {
-            "src": "media/audio/u03.d05.reading.b2.wav",
+            "src": "media/audio/u03.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "В офисе"
       },
       "audio": {
-        "src": "media/audio/u03.d05.listening.wav",
+        "src": "media/audio/u03.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

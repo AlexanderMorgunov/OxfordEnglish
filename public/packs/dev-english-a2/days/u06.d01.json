@@ -27,7 +27,7 @@
           "example": "They have a big house.",
           "exampleRu": "У них большой дом.",
           "audio": {
-            "src": "media/audio/u06.d01.vocab.house.wav",
+            "src": "media/audio/u06.d01.vocab.house.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "I live in a small flat.",
           "exampleRu": "Я живу в маленькой квартире.",
           "audio": {
-            "src": "media/audio/u06.d01.vocab.flat.wav",
+            "src": "media/audio/u06.d01.vocab.flat.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "This room is bright.",
           "exampleRu": "Эта комната светлая.",
           "audio": {
-            "src": "media/audio/u06.d01.vocab.room.wav",
+            "src": "media/audio/u06.d01.vocab.room.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "The kitchen is small.",
           "exampleRu": "Кухня маленькая.",
           "audio": {
-            "src": "media/audio/u06.d01.vocab.kitchen.wav",
+            "src": "media/audio/u06.d01.vocab.kitchen.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "There are two bedrooms.",
           "exampleRu": "Есть две спальни.",
           "audio": {
-            "src": "media/audio/u06.d01.vocab.bedroom.wav",
+            "src": "media/audio/u06.d01.vocab.bedroom.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "The bathroom is next to the bedroom.",
           "exampleRu": "Ванная рядом со спальней.",
           "audio": {
-            "src": "media/audio/u06.d01.vocab.bathroom.wav",
+            "src": "media/audio/u06.d01.vocab.bathroom.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "There is a table in the kitchen.",
           "exampleRu": "На кухне есть стол.",
           "audio": {
-            "src": "media/audio/u06.d01.vocab.table.wav",
+            "src": "media/audio/u06.d01.vocab.table.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "There are four chairs.",
           "exampleRu": "Есть четыре стула.",
           "audio": {
-            "src": "media/audio/u06.d01.vocab.chair.wav",
+            "src": "media/audio/u06.d01.vocab.chair.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "The bed is comfortable.",
           "exampleRu": "Кровать удобная.",
           "audio": {
-            "src": "media/audio/u06.d01.vocab.bed.wav",
+            "src": "media/audio/u06.d01.vocab.bed.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "There is a sofa in the living room.",
           "exampleRu": "В гостиной есть диван.",
           "audio": {
-            "src": "media/audio/u06.d01.vocab.sofa.wav",
+            "src": "media/audio/u06.d01.vocab.sofa.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "I have a new flat in the city. It is not big, but it is comfortable. There is a small kitchen, one bedroom and a bright living room.",
           "ru": "У меня новая квартира в городе. Она небольшая, но уютная. Есть маленькая кухня, одна спальня и светлая гостиная.",
           "audio": {
-            "src": "media/audio/u06.d01.reading.b1.wav",
+            "src": "media/audio/u06.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "In the living room there is a soft sofa and a low table. There are two big windows, so the room is full of light. I love my new home.",
           "ru": "В гостиной стоит мягкий диван и низкий стол. Есть два больших окна, поэтому в комнате много света. Я люблю свой новый дом.",
           "audio": {
-            "src": "media/audio/u06.d01.reading.b2.wav",
+            "src": "media/audio/u06.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Есть ли сад?"
       },
       "audio": {
-        "src": "media/audio/u06.d01.listening.wav",
+        "src": "media/audio/u06.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

@@ -26,7 +26,7 @@
           "example": "The door is open.",
           "exampleRu": "Дверь открыта.",
           "audio": {
-            "src": "media/audio/u06.d02.vocab.door.wav",
+            "src": "media/audio/u06.d02.vocab.door.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "A picture is on the wall.",
           "exampleRu": "Картина на стене.",
           "audio": {
-            "src": "media/audio/u06.d02.vocab.wall.wav",
+            "src": "media/audio/u06.d02.vocab.wall.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "The cat is on the floor.",
           "exampleRu": "Кот на полу.",
           "audio": {
-            "src": "media/audio/u06.d02.vocab.floor.wav",
+            "src": "media/audio/u06.d02.vocab.floor.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "The lamp is next to the bed.",
           "exampleRu": "Лампа рядом с кроватью.",
           "audio": {
-            "src": "media/audio/u06.d02.vocab.lamp.wav",
+            "src": "media/audio/u06.d02.vocab.lamp.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The books are on the shelf.",
           "exampleRu": "Книги на полке.",
           "audio": {
-            "src": "media/audio/u06.d02.vocab.shelf.wav",
+            "src": "media/audio/u06.d02.vocab.shelf.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "There is a carpet under the table.",
           "exampleRu": "Под столом ковёр.",
           "audio": {
-            "src": "media/audio/u06.d02.vocab.carpet.wav",
+            "src": "media/audio/u06.d02.vocab.carpet.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "The mirror is behind the door.",
           "exampleRu": "Зеркало за дверью.",
           "audio": {
-            "src": "media/audio/u06.d02.vocab.mirror.wav",
+            "src": "media/audio/u06.d02.vocab.mirror.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "My laptop is on the desk.",
           "exampleRu": "Мой ноутбук на столе.",
           "audio": {
-            "src": "media/audio/u06.d02.vocab.desk.wav",
+            "src": "media/audio/u06.d02.vocab.desk.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "The picture is between two windows.",
           "exampleRu": "Картина между двух окон.",
           "audio": {
-            "src": "media/audio/u06.d02.vocab.picture.wav",
+            "src": "media/audio/u06.d02.vocab.picture.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "The cups are in the cupboard.",
           "exampleRu": "Чашки в шкафу.",
           "audio": {
-            "src": "media/audio/u06.d02.vocab.cupboard.wav",
+            "src": "media/audio/u06.d02.vocab.cupboard.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "My desk is next to the window. On the desk there is a laptop and a small lamp. Under the desk there is a box with old books.",
           "ru": "Мой стол стоит у окна. На столе ноутбук и маленькая лампа. Под столом коробка со старыми книгами.",
           "audio": {
-            "src": "media/audio/u06.d02.reading.b1.wav",
+            "src": "media/audio/u06.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "Behind the desk there is a shelf on the wall. Between the two windows there is a picture of the sea. I like to work here.",
           "ru": "За столом на стене полка. Между двумя окнами картина с морем. Мне нравится тут работать.",
           "audio": {
-            "src": "media/audio/u06.d02.reading.b2.wav",
+            "src": "media/audio/u06.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Где мои ключи?"
       },
       "audio": {
-        "src": "media/audio/u06.d02.listening.wav",
+        "src": "media/audio/u06.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

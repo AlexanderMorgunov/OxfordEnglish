@@ -26,7 +26,7 @@
           "example": "Did you see the headline?",
           "exampleRu": "Ты видел заголовок?",
           "audio": {
-            "src": "media/audio/u18.d05.vocab.headline.wav",
+            "src": "media/audio/u18.d05.vocab.headline.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I read an article about it.",
           "exampleRu": "Я читал об этом статью.",
           "audio": {
-            "src": "media/audio/u18.d05.vocab.article.wav",
+            "src": "media/audio/u18.d05.vocab.article.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "I can't believe it!",
           "exampleRu": "Не могу поверить!",
           "audio": {
-            "src": "media/audio/u18.d05.vocab.believe.wav",
+            "src": "media/audio/u18.d05.vocab.believe.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "That's shocking news.",
           "exampleRu": "Это шокирующая новость.",
           "audio": {
-            "src": "media/audio/u18.d05.vocab.shocking.wav",
+            "src": "media/audio/u18.d05.vocab.shocking.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "That's amazing!",
           "exampleRu": "Это потрясающе!",
           "audio": {
-            "src": "media/audio/u18.d05.vocab.amazing.wav",
+            "src": "media/audio/u18.d05.vocab.amazing.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Guess what happened!",
           "exampleRu": "Угадай, что случилось!",
           "audio": {
-            "src": "media/audio/u18.d05.vocab.guess.wav",
+            "src": "media/audio/u18.d05.vocab.guess.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Honestly, I was surprised.",
           "exampleRu": "Честно говоря, я удивился.",
           "audio": {
-            "src": "media/audio/u18.d05.vocab.honestly.wav",
+            "src": "media/audio/u18.d05.vocab.honestly.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "Seriously? That's crazy!",
           "exampleRu": "Серьёзно? С ума сойти!",
           "audio": {
-            "src": "media/audio/u18.d05.vocab.seriously.wav",
+            "src": "media/audio/u18.d05.vocab.seriously.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "The news spread fast.",
           "exampleRu": "Новость быстро разлетелась.",
           "audio": {
-            "src": "media/audio/u18.d05.vocab.spread.wav",
+            "src": "media/audio/u18.d05.vocab.spread.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Any update on the story?",
           "exampleRu": "Есть новости по этой истории?",
           "audio": {
-            "src": "media/audio/u18.d05.vocab.update.wav",
+            "src": "media/audio/u18.d05.vocab.update.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -238,7 +238,7 @@
           "en": "\"Guess what!\" said Priya as she came in. \"Did you hear about Daniel?\" I said I hadn't. \"Apparently, he's leaving the company. They say he got a job at a huge tech firm.\"",
           "ru": "«Угадай что! — сказала Прия, входя. — Ты слышал про Дэниела?» Я сказал, что нет. «Судя по всему, он уходит из компании. Говорят, он получил работу в огромной технологической фирме».",
           "audio": {
-            "src": "media/audio/u18.d05.reading.b1.wav",
+            "src": "media/audio/u18.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -250,7 +250,7 @@
           "en": "\"No way!\" I said. \"When did that happen?\" Priya told me that she had only found out that morning. \"Honestly, the news spread across the whole office in an hour. Everyone's talking about it.\"",
           "ru": "«Не может быть! — сказал я. — Когда это случилось?» Прия сказала мне, что узнала только тем утром. «Честно, новость облетела весь офис за час. Все об этом говорят».",
           "audio": {
-            "src": "media/audio/u18.d05.reading.b2.wav",
+            "src": "media/audio/u18.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -279,7 +279,7 @@
         "ru": "Ты не поверишь"
       },
       "audio": {
-        "src": "media/audio/u18.d05.listening.wav",
+        "src": "media/audio/u18.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

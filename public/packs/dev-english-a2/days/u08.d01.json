@@ -27,7 +27,7 @@
           "example": "Turn left here.",
           "exampleRu": "Поверни здесь налево.",
           "audio": {
-            "src": "media/audio/u08.d01.vocab.left.wav",
+            "src": "media/audio/u08.d01.vocab.left.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "Turn right at the bank.",
           "exampleRu": "Поверни направо у банка.",
           "audio": {
-            "src": "media/audio/u08.d01.vocab.right.wav",
+            "src": "media/audio/u08.d01.vocab.right.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "Go straight on.",
           "exampleRu": "Иди прямо.",
           "audio": {
-            "src": "media/audio/u08.d01.vocab.straight.wav",
+            "src": "media/audio/u08.d01.vocab.straight.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "The shop is on the corner.",
           "exampleRu": "Магазин на углу.",
           "audio": {
-            "src": "media/audio/u08.d01.vocab.corner.wav",
+            "src": "media/audio/u08.d01.vocab.corner.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "Cross the street.",
           "exampleRu": "Перейди улицу.",
           "audio": {
-            "src": "media/audio/u08.d01.vocab.street.wav",
+            "src": "media/audio/u08.d01.vocab.street.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "Where is the station?",
           "exampleRu": "Где вокзал?",
           "audio": {
-            "src": "media/audio/u08.d01.vocab.station.wav",
+            "src": "media/audio/u08.d01.vocab.station.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "The bank is near here.",
           "exampleRu": "Банк тут рядом.",
           "audio": {
-            "src": "media/audio/u08.d01.vocab.bank.wav",
+            "src": "media/audio/u08.d01.vocab.bank.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "It is near the café.",
           "exampleRu": "Это рядом с кафе.",
           "audio": {
-            "src": "media/audio/u08.d01.vocab.near.wav",
+            "src": "media/audio/u08.d01.vocab.near.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "It is next to the bank.",
           "exampleRu": "Это рядом с банком.",
           "audio": {
-            "src": "media/audio/u08.d01.vocab.nextto.wav",
+            "src": "media/audio/u08.d01.vocab.nextto.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "The park is opposite the shop.",
           "exampleRu": "Парк напротив магазина.",
           "audio": {
-            "src": "media/audio/u08.d01.vocab.opposite.wav",
+            "src": "media/audio/u08.d01.vocab.opposite.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -225,7 +225,7 @@
           "id": "u08.d01.reading.b1",
           "en": "Where can I get water.",
           "audio": {
-            "src": "media/audio/u08.d01.reading.b1.wav",
+            "src": "media/audio/u08.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -236,7 +236,7 @@
           "id": "u08.d01.reading.b2",
           "en": "There is some water in the pot.",
           "audio": {
-            "src": "media/audio/u08.d01.reading.b2.wav",
+            "src": "media/audio/u08.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -247,7 +247,7 @@
           "id": "u08.d01.reading.b3",
           "en": "It is too hot.",
           "audio": {
-            "src": "media/audio/u08.d01.reading.b3.wav",
+            "src": "media/audio/u08.d01.reading.b3.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -258,7 +258,7 @@
           "id": "u08.d01.reading.b4",
           "en": "Can this water be cold.",
           "audio": {
-            "src": "media/audio/u08.d01.reading.b4.wav",
+            "src": "media/audio/u08.d01.reading.b4.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -292,7 +292,7 @@
         "ru": "Спрашиваем дорогу"
       },
       "audio": {
-        "src": "media/audio/u08.d01.listening.wav",
+        "src": "media/audio/u08.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

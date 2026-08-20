@@ -27,7 +27,7 @@
           "example": "I am working on a bug.",
           "exampleRu": "Я работаю над багом.",
           "audio": {
-            "src": "media/audio/u03.d01.vocab.working.wav",
+            "src": "media/audio/u03.d01.vocab.working.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "She is writing an email.",
           "exampleRu": "Она пишет письмо.",
           "audio": {
-            "src": "media/audio/u03.d01.vocab.writing.wav",
+            "src": "media/audio/u03.d01.vocab.writing.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "He is reading the docs.",
           "exampleRu": "Он читает документацию.",
           "audio": {
-            "src": "media/audio/u03.d01.vocab.reading.wav",
+            "src": "media/audio/u03.d01.vocab.reading.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "We are testing the app.",
           "exampleRu": "Мы тестируем приложение.",
           "audio": {
-            "src": "media/audio/u03.d01.vocab.testing.wav",
+            "src": "media/audio/u03.d01.vocab.testing.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "I am waiting for the build.",
           "exampleRu": "Я жду сборку.",
           "audio": {
-            "src": "media/audio/u03.d01.vocab.waiting.wav",
+            "src": "media/audio/u03.d01.vocab.waiting.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "She is calling the client.",
           "exampleRu": "Она звонит клиенту.",
           "audio": {
-            "src": "media/audio/u03.d01.vocab.calling.wav",
+            "src": "media/audio/u03.d01.vocab.calling.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "I am looking at the logs.",
           "exampleRu": "Я смотрю логи.",
           "audio": {
-            "src": "media/audio/u03.d01.vocab.looking.wav",
+            "src": "media/audio/u03.d01.vocab.looking.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "He is fixing the error.",
           "exampleRu": "Он чинит ошибку.",
           "audio": {
-            "src": "media/audio/u03.d01.vocab.fixing.wav",
+            "src": "media/audio/u03.d01.vocab.fixing.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "We are meeting now.",
           "exampleRu": "Мы сейчас на встрече.",
           "audio": {
-            "src": "media/audio/u03.d01.vocab.meeting.wav",
+            "src": "media/audio/u03.d01.vocab.meeting.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "I am learning English.",
           "exampleRu": "Я учу английский.",
           "audio": {
-            "src": "media/audio/u03.d01.vocab.learning.wav",
+            "src": "media/audio/u03.d01.vocab.learning.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -228,7 +228,7 @@
           "en": "I am singing. She is waving. I am clapping. She is stretching.",
           "ru": "Я пою. Она машет. Я хлопаю. Она потягивается.",
           "audio": {
-            "src": "media/audio/u03.d01.reading.b1.wav",
+            "src": "media/audio/u03.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "He is calling. I am answering. She is listening. What are you doing?",
           "ru": "Он зовёт. Я отвечаю. Она слушает. Что ты делаешь?",
           "audio": {
-            "src": "media/audio/u03.d01.reading.b2.wav",
+            "src": "media/audio/u03.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -274,7 +274,7 @@
         "ru": "На созвоне"
       },
       "audio": {
-        "src": "media/audio/u03.d01.listening.wav",
+        "src": "media/audio/u03.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

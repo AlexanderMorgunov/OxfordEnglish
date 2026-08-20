@@ -29,7 +29,7 @@
           "example": "This shop is closed.",
           "exampleRu": "Этот магазин закрыт.",
           "audio": {
-            "src": "media/audio/u08.d04.vocab.shop.wav",
+            "src": "media/audio/u08.d04.vocab.shop.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -43,7 +43,7 @@
           "example": "The supermarket is big.",
           "exampleRu": "Супермаркет большой.",
           "audio": {
-            "src": "media/audio/u08.d04.vocab.supermarket.wav",
+            "src": "media/audio/u08.d04.vocab.supermarket.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -57,7 +57,7 @@
           "example": "Bread is fresh at the bakery.",
           "exampleRu": "В пекарне свежий хлеб.",
           "audio": {
-            "src": "media/audio/u08.d04.vocab.bakery.wav",
+            "src": "media/audio/u08.d04.vocab.bakery.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -71,7 +71,7 @@
           "example": "The pharmacy is next to the bank.",
           "exampleRu": "Аптека рядом с банком.",
           "audio": {
-            "src": "media/audio/u08.d04.vocab.pharmacy.wav",
+            "src": "media/audio/u08.d04.vocab.pharmacy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -85,7 +85,7 @@
           "example": "I bought it at the bookshop.",
           "exampleRu": "Я купил это в книжном.",
           "audio": {
-            "src": "media/audio/u08.d04.vocab.bookshop.wav",
+            "src": "media/audio/u08.d04.vocab.bookshop.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -99,7 +99,7 @@
           "example": "Go to the bank first.",
           "exampleRu": "Сначала зайди в банк.",
           "audio": {
-            "src": "media/audio/u08.d04.vocab.bank.wav",
+            "src": "media/audio/u08.d04.vocab.bank.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -113,7 +113,7 @@
           "example": "The post office closes at five.",
           "exampleRu": "Почта закрывается в пять.",
           "audio": {
-            "src": "media/audio/u08.d04.vocab.postoffice.wav",
+            "src": "media/audio/u08.d04.vocab.postoffice.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -127,7 +127,7 @@
           "example": "We buy fruit at the market.",
           "exampleRu": "Мы покупаем фрукты на рынке.",
           "audio": {
-            "src": "media/audio/u08.d04.vocab.market.wav",
+            "src": "media/audio/u08.d04.vocab.market.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -141,7 +141,7 @@
           "example": "The shopping centre is new.",
           "exampleRu": "Торговый центр новый.",
           "audio": {
-            "src": "media/audio/u08.d04.vocab.centre.wav",
+            "src": "media/audio/u08.d04.vocab.centre.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -155,7 +155,7 @@
           "example": "Both shops are open.",
           "exampleRu": "Оба магазина открыты.",
           "audio": {
-            "src": "media/audio/u08.d04.vocab.open.wav",
+            "src": "media/audio/u08.d04.vocab.open.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "There are two supermarkets in the centre. Both are open on Saturday, but all the small shops close early. I usually go to the bank first.",
           "ru": "В центре два супермаркета. Оба открыты в субботу, но все маленькие магазины закрываются рано. Обычно я сначала иду в банк.",
           "audio": {
-            "src": "media/audio/u08.d04.reading.b1.wav",
+            "src": "media/audio/u08.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "Yesterday one bakery was closed, so I went to another one across the road. The other shops — the bookshop and the pharmacy — were open.",
           "ru": "Вчера одна пекарня была закрыта, поэтому я пошёл в другую через дорогу. Остальные магазины — книжный и аптека — были открыты.",
           "audio": {
-            "src": "media/audio/u08.d04.reading.b2.wav",
+            "src": "media/audio/u08.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Они открыты?"
       },
       "audio": {
-        "src": "media/audio/u08.d04.listening.wav",
+        "src": "media/audio/u08.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"
@@ -447,7 +447,7 @@
             "pronunciation"
           ],
           "audio": {
-            "src": "media/audio/u08.d04.ex.mp.01.wav",
+            "src": "media/audio/u08.d04.ex.mp.01.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"

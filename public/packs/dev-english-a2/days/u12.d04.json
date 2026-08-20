@@ -27,7 +27,7 @@
           "example": "My computer is new.",
           "exampleRu": "Мой компьютер новый.",
           "audio": {
-            "src": "media/audio/u12.d04.vocab.computer.wav",
+            "src": "media/audio/u12.d04.vocab.computer.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "The internet is slow.",
           "exampleRu": "Интернет медленный.",
           "audio": {
-            "src": "media/audio/u12.d04.vocab.internet.wav",
+            "src": "media/audio/u12.d04.vocab.internet.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "I sent an email.",
           "exampleRu": "Я отправил письмо.",
           "audio": {
-            "src": "media/audio/u12.d04.vocab.email.wav",
+            "src": "media/audio/u12.d04.vocab.email.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "I got your message.",
           "exampleRu": "Я получил твоё сообщение.",
           "audio": {
-            "src": "media/audio/u12.d04.vocab.message.wav",
+            "src": "media/audio/u12.d04.vocab.message.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "This app is useful.",
           "exampleRu": "Это приложение полезное.",
           "audio": {
-            "src": "media/audio/u12.d04.vocab.app.wav",
+            "src": "media/audio/u12.d04.vocab.app.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "The screen is big.",
           "exampleRu": "Экран большой.",
           "audio": {
-            "src": "media/audio/u12.d04.vocab.screen.wav",
+            "src": "media/audio/u12.d04.vocab.screen.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "I have downloaded the file.",
           "exampleRu": "Я скачал файл.",
           "audio": {
-            "src": "media/audio/u12.d04.vocab.download.wav",
+            "src": "media/audio/u12.d04.vocab.download.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "I bought it online.",
           "exampleRu": "Я купил это онлайн.",
           "audio": {
-            "src": "media/audio/u12.d04.vocab.online.wav",
+            "src": "media/audio/u12.d04.vocab.online.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "The app needs an update.",
           "exampleRu": "Приложению нужно обновление.",
           "audio": {
-            "src": "media/audio/u12.d04.vocab.update.wav",
+            "src": "media/audio/u12.d04.vocab.update.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "I forgot my password.",
           "exampleRu": "Я забыл пароль.",
           "audio": {
-            "src": "media/audio/u12.d04.vocab.password.wav",
+            "src": "media/audio/u12.d04.vocab.password.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "\"Have you seen the new phone?\" asked Leo. \"Yes, I bought one last week!\" said Mia. \"I have already downloaded all my apps and photos.\"",
           "ru": "«Ты видел новый телефон?» — спросил Лео. «Да, я купила такой на прошлой неделе!» — сказала Мия. «Я уже скачала все приложения и фото».",
           "audio": {
-            "src": "media/audio/u12.d04.reading.b1.wav",
+            "src": "media/audio/u12.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "\"Has it got a good screen?\" \"Yes, it's great. I have never had such a fast phone. I updated it yesterday and now it works perfectly.\"",
           "ru": "«У него хороший экран?» «Да, отличный. У меня никогда не было такого быстрого телефона. Вчера я его обновила, и теперь он работает идеально».",
           "audio": {
-            "src": "media/audio/u12.d04.reading.b2.wav",
+            "src": "media/audio/u12.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Have you или did you?"
       },
       "audio": {
-        "src": "media/audio/u12.d04.listening.wav",
+        "src": "media/audio/u12.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"
@@ -422,7 +422,7 @@
             "pronunciation"
           ],
           "audio": {
-            "src": "media/audio/u12.d04.ex.mp.01.wav",
+            "src": "media/audio/u12.d04.ex.mp.01.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"

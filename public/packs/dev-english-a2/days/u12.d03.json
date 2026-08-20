@@ -26,7 +26,7 @@
           "example": "It is a great achievement.",
           "exampleRu": "Это большое достижение.",
           "audio": {
-            "src": "media/audio/u12.d03.vocab.achievement.wav",
+            "src": "media/audio/u12.d03.vocab.achievement.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "She has won a prize.",
           "exampleRu": "Она выиграла приз.",
           "audio": {
-            "src": "media/audio/u12.d03.vocab.win.wav",
+            "src": "media/audio/u12.d03.vocab.win.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "He won first prize.",
           "exampleRu": "Он получил первый приз.",
           "audio": {
-            "src": "media/audio/u12.d03.vocab.prize.wav",
+            "src": "media/audio/u12.d03.vocab.prize.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I have learned to drive.",
           "exampleRu": "Я научился водить.",
           "audio": {
-            "src": "media/audio/u12.d03.vocab.learn.wav",
+            "src": "media/audio/u12.d03.vocab.learn.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "They have built a house.",
           "exampleRu": "Они построили дом.",
           "audio": {
-            "src": "media/audio/u12.d03.vocab.build.wav",
+            "src": "media/audio/u12.d03.vocab.build.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "The project was a success.",
           "exampleRu": "Проект был успешным.",
           "audio": {
-            "src": "media/audio/u12.d03.vocab.success.wav",
+            "src": "media/audio/u12.d03.vocab.success.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "She has a good career.",
           "exampleRu": "У неё хорошая карьера.",
           "audio": {
-            "src": "media/audio/u12.d03.vocab.career.wav",
+            "src": "media/audio/u12.d03.vocab.career.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I have reached my goal.",
           "exampleRu": "Я достиг своей цели.",
           "audio": {
-            "src": "media/audio/u12.d03.vocab.goal.wav",
+            "src": "media/audio/u12.d03.vocab.goal.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I have lived here since 2020.",
           "exampleRu": "Я живу здесь с 2020 года.",
           "audio": {
-            "src": "media/audio/u12.d03.vocab.since.wav",
+            "src": "media/audio/u12.d03.vocab.since.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "I have known her for years.",
           "exampleRu": "Я знаю её много лет.",
           "audio": {
-            "src": "media/audio/u12.d03.vocab.for.wav",
+            "src": "media/audio/u12.d03.vocab.for.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "I have known my best friend Nina since school. We have been friends for more than ten years. She has lived in the same city since she was born.",
           "ru": "Я знаю свою лучшую подругу Нину со школы. Мы дружим больше десяти лет. Она живёт в одном и том же городе с самого рождения.",
           "audio": {
-            "src": "media/audio/u12.d03.reading.b1.wav",
+            "src": "media/audio/u12.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "Nina has worked as a nurse for six years, and she has won a prize for her work. It is a real achievement. I am proud of her.",
           "ru": "Нина работает медсестрой уже шесть лет и получила награду за свою работу. Это настоящее достижение. Я горжусь ею.",
           "audio": {
-            "src": "media/audio/u12.d03.reading.b2.wav",
+            "src": "media/audio/u12.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Как долго?"
       },
       "audio": {
-        "src": "media/audio/u12.d03.listening.wav",
+        "src": "media/audio/u12.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

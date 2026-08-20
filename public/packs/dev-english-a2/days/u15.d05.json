@@ -27,7 +27,7 @@
           "example": "Imagine you could fly.",
           "exampleRu": "Представь, что ты умеешь летать.",
           "audio": {
-            "src": "media/audio/u15.d05.vocab.imagine.wav",
+            "src": "media/audio/u15.d05.vocab.imagine.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "Suppose it rained tomorrow.",
           "exampleRu": "Предположим, завтра пойдёт дождь.",
           "audio": {
-            "src": "media/audio/u15.d05.vocab.suppose.wav",
+            "src": "media/audio/u15.d05.vocab.suppose.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "Leave now, otherwise you'll be late.",
           "exampleRu": "Уходи сейчас, иначе опоздаешь.",
           "audio": {
-            "src": "media/audio/u15.d05.vocab.otherwise.wav",
+            "src": "media/audio/u15.d05.vocab.otherwise.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "Honestly, I don't know.",
           "exampleRu": "Честно говоря, не знаю.",
           "audio": {
-            "src": "media/audio/u15.d05.vocab.honestly.wav",
+            "src": "media/audio/u15.d05.vocab.honestly.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "Personally, I would say yes.",
           "exampleRu": "Лично я бы сказал «да».",
           "audio": {
-            "src": "media/audio/u15.d05.vocab.personally.wav",
+            "src": "media/audio/u15.d05.vocab.personally.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "Perhaps you're right.",
           "exampleRu": "Возможно, ты прав.",
           "audio": {
-            "src": "media/audio/u15.d05.vocab.perhaps.wav",
+            "src": "media/audio/u15.d05.vocab.perhaps.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "I would definitely go.",
           "exampleRu": "Я бы точно пошёл.",
           "audio": {
-            "src": "media/audio/u15.d05.vocab.definitely.wav",
+            "src": "media/audio/u15.d05.vocab.definitely.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "It depends on you.",
           "exampleRu": "Это зависит от тебя.",
           "audio": {
-            "src": "media/audio/u15.d05.vocab.depends.wav",
+            "src": "media/audio/u15.d05.vocab.depends.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "I see your point of view.",
           "exampleRu": "Я понимаю твою точку зрения.",
           "audio": {
-            "src": "media/audio/u15.d05.vocab.pointofview.wav",
+            "src": "media/audio/u15.d05.vocab.pointofview.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "I totally agree.",
           "exampleRu": "Полностью согласен.",
           "audio": {
-            "src": "media/audio/u15.d05.vocab.agree.wav",
+            "src": "media/audio/u15.d05.vocab.agree.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -238,7 +238,7 @@
           "en": "At dinner, someone asked a simple question: \"If you could live in any time in history, when would you choose?\" Everyone had a different point of view. \"Personally, I would pick the future,\" said Lena. \"Imagine the technology!\"",
           "ru": "За ужином кто-то задал простой вопрос: «Если бы ты мог жить в любую эпоху, что бы ты выбрал?» У каждого была своя точка зрения. «Лично я бы выбрала будущее, — сказала Лена. — Представьте технологии!»",
           "audio": {
-            "src": "media/audio/u15.d05.reading.b1.wav",
+            "src": "media/audio/u15.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -250,7 +250,7 @@
           "en": "\"Honestly, I disagree,\" said Marco. \"Suppose there were no problems left to solve — I think I'd be bored. It depends on what you want from life. For me, the present is exactly the right time.\"",
           "ru": "«Честно, я не согласен, — сказал Марко. — Предположим, не осталось бы нерешённых задач — думаю, мне было бы скучно. Всё зависит от того, чего хочешь от жизни. Для меня настоящее — самое подходящее время».",
           "audio": {
-            "src": "media/audio/u15.d05.reading.b2.wav",
+            "src": "media/audio/u15.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -279,7 +279,7 @@
         "ru": "Если бы ты мог выбрать"
       },
       "audio": {
-        "src": "media/audio/u15.d05.listening.wav",
+        "src": "media/audio/u15.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

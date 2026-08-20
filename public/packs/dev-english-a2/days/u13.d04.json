@@ -27,7 +27,7 @@
           "example": "I was surprised.",
           "exampleRu": "Я был удивлён.",
           "audio": {
-            "src": "media/audio/u13.d04.vocab.surprised.wav",
+            "src": "media/audio/u13.d04.vocab.surprised.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "She looks worried.",
           "exampleRu": "Она выглядит обеспокоенной.",
           "audio": {
-            "src": "media/audio/u13.d04.vocab.worried.wav",
+            "src": "media/audio/u13.d04.vocab.worried.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "The kids are excited.",
           "exampleRu": "Дети в восторге.",
           "audio": {
-            "src": "media/audio/u13.d04.vocab.excited.wav",
+            "src": "media/audio/u13.d04.vocab.excited.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "Don't be afraid.",
           "exampleRu": "Не бойся.",
           "audio": {
-            "src": "media/audio/u13.d04.vocab.afraid.wav",
+            "src": "media/audio/u13.d04.vocab.afraid.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "I'm glad to see you.",
           "exampleRu": "Рад тебя видеть.",
           "audio": {
-            "src": "media/audio/u13.d04.vocab.glad.wav",
+            "src": "media/audio/u13.d04.vocab.glad.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "He was upset.",
           "exampleRu": "Он был расстроен.",
           "audio": {
-            "src": "media/audio/u13.d04.vocab.upset.wav",
+            "src": "media/audio/u13.d04.vocab.upset.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "Stay calm.",
           "exampleRu": "Сохраняй спокойствие.",
           "audio": {
-            "src": "media/audio/u13.d04.vocab.calm.wav",
+            "src": "media/audio/u13.d04.vocab.calm.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "I'm proud of you.",
           "exampleRu": "Я горжусь тобой.",
           "audio": {
-            "src": "media/audio/u13.d04.vocab.proud.wav",
+            "src": "media/audio/u13.d04.vocab.proud.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "Someone is here.",
           "exampleRu": "Здесь кто-то есть.",
           "audio": {
-            "src": "media/audio/u13.d04.vocab.someone.wav",
+            "src": "media/audio/u13.d04.vocab.someone.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "There is nothing here.",
           "exampleRu": "Здесь ничего нет.",
           "audio": {
-            "src": "media/audio/u13.d04.vocab.nothing.wav",
+            "src": "media/audio/u13.d04.vocab.nothing.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "It was late and I was a little worried. Suddenly, someone knocked at the door. \"Is anyone there?\" I asked. Nobody answered. I heard nothing.",
           "ru": "Было поздно, и я немного нервничал. Вдруг кто-то постучал в дверь. «Есть кто-нибудь?» — спросил я. Никто не ответил. Я ничего не услышал.",
           "audio": {
-            "src": "media/audio/u13.d04.reading.b1.wav",
+            "src": "media/audio/u13.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "I opened the door. There was nobody outside, but there was something on the floor — a small box. Inside was a note from a friend. I was surprised and glad.",
           "ru": "Я открыл дверь. Снаружи никого не было, но что-то лежало на полу — маленькая коробка. Внутри записка от друга. Я был удивлён и рад.",
           "audio": {
-            "src": "media/audio/u13.d04.reading.b2.wav",
+            "src": "media/audio/u13.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Есть кто-нибудь?"
       },
       "audio": {
-        "src": "media/audio/u13.d04.listening.wav",
+        "src": "media/audio/u13.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"
@@ -422,7 +422,7 @@
             "pronunciation"
           ],
           "audio": {
-            "src": "media/audio/u13.d04.ex.mp.01.wav",
+            "src": "media/audio/u13.d04.ex.mp.01.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"

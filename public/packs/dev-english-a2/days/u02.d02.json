@@ -26,7 +26,7 @@
           "example": "I study English.",
           "exampleRu": "Я учу английский.",
           "audio": {
-            "src": "media/audio/u02.d02.vocab.study.wav",
+            "src": "media/audio/u02.d02.vocab.study.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "She teaches maths.",
           "exampleRu": "Она преподаёт математику.",
           "audio": {
-            "src": "media/audio/u02.d02.vocab.teach.wav",
+            "src": "media/audio/u02.d02.vocab.teach.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "He drives a bus.",
           "exampleRu": "Он водит автобус.",
           "audio": {
-            "src": "media/audio/u02.d02.vocab.drive.wav",
+            "src": "media/audio/u02.d02.vocab.drive.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I work in an office.",
           "exampleRu": "Я работаю в офисе.",
           "audio": {
-            "src": "media/audio/u02.d02.vocab.office.wav",
+            "src": "media/audio/u02.d02.vocab.office.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "A big company.",
           "exampleRu": "Большая компания.",
           "audio": {
-            "src": "media/audio/u02.d02.vocab.company.wav",
+            "src": "media/audio/u02.d02.vocab.company.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "We have a meeting.",
           "exampleRu": "У нас совещание.",
           "audio": {
-            "src": "media/audio/u02.d02.vocab.meeting.wav",
+            "src": "media/audio/u02.d02.vocab.meeting.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "I take a break.",
           "exampleRu": "Я делаю перерыв.",
           "audio": {
-            "src": "media/audio/u02.d02.vocab.break.wav",
+            "src": "media/audio/u02.d02.vocab.break.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I don't work at the weekend.",
           "exampleRu": "Я не работаю на выходных.",
           "audio": {
-            "src": "media/audio/u02.d02.vocab.weekend.wav",
+            "src": "media/audio/u02.d02.vocab.weekend.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "He starts early.",
           "exampleRu": "Он начинает рано.",
           "audio": {
-            "src": "media/audio/u02.d02.vocab.early.wav",
+            "src": "media/audio/u02.d02.vocab.early.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "She finishes late.",
           "exampleRu": "Она заканчивает поздно.",
           "audio": {
-            "src": "media/audio/u02.d02.vocab.late.wav",
+            "src": "media/audio/u02.d02.vocab.late.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -166,7 +166,7 @@
           "example": "I help my team.",
           "exampleRu": "Я помогаю команде.",
           "audio": {
-            "src": "media/audio/u02.d02.vocab.help.wav",
+            "src": "media/audio/u02.d02.vocab.help.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -180,7 +180,7 @@
           "example": "My boss is nice.",
           "exampleRu": "Мой начальник приятный.",
           "audio": {
-            "src": "media/audio/u02.d02.vocab.boss.wav",
+            "src": "media/audio/u02.d02.vocab.boss.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -254,7 +254,7 @@
           "en": "My sister teaches at a school, and my brother drives a bus. They both start early and finish late.",
           "ru": "Моя сестра преподаёт в школе, а брат водит автобус. Оба начинают рано и заканчивают поздно.",
           "audio": {
-            "src": "media/audio/u02.d02.reading.b1.wav",
+            "src": "media/audio/u02.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -266,7 +266,7 @@
           "en": "I work in an office for a big company. I don't work at the weekend, but my boss often does.",
           "ru": "Я работаю в офисе в большой компании. По выходным я не работаю, а мой начальник часто работает.",
           "audio": {
-            "src": "media/audio/u02.d02.reading.b2.wav",
+            "src": "media/audio/u02.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -295,7 +295,7 @@
         "ru": "В офисе"
       },
       "audio": {
-        "src": "media/audio/u02.d02.listening.wav",
+        "src": "media/audio/u02.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

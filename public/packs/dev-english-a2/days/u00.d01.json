@@ -27,7 +27,7 @@
           "example": "My name is Anna.",
           "exampleRu": "Меня зовут Анна.",
           "audio": {
-            "src": "media/audio/u00.d01.vocab.name.wav",
+            "src": "media/audio/u00.d01.vocab.name.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "What is your age?",
           "exampleRu": "Сколько тебе лет?",
           "audio": {
-            "src": "media/audio/u00.d01.vocab.age.wav",
+            "src": "media/audio/u00.d01.vocab.age.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "I live in a big city.",
           "exampleRu": "Я живу в большом городе.",
           "audio": {
-            "src": "media/audio/u00.d01.vocab.city.wav",
+            "src": "media/audio/u00.d01.vocab.city.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "Russia is a big country.",
           "exampleRu": "Россия — большая страна.",
           "audio": {
-            "src": "media/audio/u00.d01.vocab.country.wav",
+            "src": "media/audio/u00.d01.vocab.country.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "She is a student.",
           "exampleRu": "Она студентка.",
           "audio": {
-            "src": "media/audio/u00.d01.vocab.student.wav",
+            "src": "media/audio/u00.d01.vocab.student.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "He is a teacher.",
           "exampleRu": "Он учитель.",
           "audio": {
-            "src": "media/audio/u00.d01.vocab.teacher.wav",
+            "src": "media/audio/u00.d01.vocab.teacher.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "The car is red.",
           "exampleRu": "Машина красная.",
           "audio": {
-            "src": "media/audio/u00.d01.vocab.red.wav",
+            "src": "media/audio/u00.d01.vocab.red.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "The sky is blue.",
           "exampleRu": "Небо синее.",
           "audio": {
-            "src": "media/audio/u00.d01.vocab.blue.wav",
+            "src": "media/audio/u00.d01.vocab.blue.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "The grass is green.",
           "exampleRu": "Трава зелёная.",
           "audio": {
-            "src": "media/audio/u00.d01.vocab.green.wav",
+            "src": "media/audio/u00.d01.vocab.green.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "This is my first lesson.",
           "exampleRu": "Это мой первый урок.",
           "audio": {
-            "src": "media/audio/u00.d01.vocab.first.wav",
+            "src": "media/audio/u00.d01.vocab.first.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -167,7 +167,7 @@
           "example": "She won second place.",
           "exampleRu": "Она заняла второе место.",
           "audio": {
-            "src": "media/audio/u00.d01.vocab.second.wav",
+            "src": "media/audio/u00.d01.vocab.second.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -181,7 +181,7 @@
           "example": "He is thirty years old.",
           "exampleRu": "Ему тридцать лет.",
           "audio": {
-            "src": "media/audio/u00.d01.vocab.thirty.wav",
+            "src": "media/audio/u00.d01.vocab.thirty.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -275,7 +275,7 @@
           "en": "Hello! My name is Anna. I am twenty-five years old and I am from Poland. I am a student.",
           "ru": "Привет! Меня зовут Анна. Мне двадцать пять лет, и я из Польши. Я студентка.",
           "audio": {
-            "src": "media/audio/u00.d01.reading.b1.wav",
+            "src": "media/audio/u00.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -287,7 +287,7 @@
           "en": "This is my friend Tom. He is a teacher. He is British and he lives in a small city. We are good friends.",
           "ru": "Это мой друг Том. Он учитель. Он британец и живёт в маленьком городе. Мы хорошие друзья.",
           "audio": {
-            "src": "media/audio/u00.d01.reading.b2.wav",
+            "src": "media/audio/u00.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -316,7 +316,7 @@
         "ru": "Приятно познакомиться"
       },
       "audio": {
-        "src": "media/audio/u00.d01.listening.wav",
+        "src": "media/audio/u00.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

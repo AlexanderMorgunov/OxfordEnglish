@@ -26,7 +26,7 @@
           "example": "See a doctor.",
           "exampleRu": "Сходи к врачу.",
           "audio": {
-            "src": "media/audio/u11.d03.vocab.doctor.wav",
+            "src": "media/audio/u11.d03.vocab.doctor.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "Take your medicine.",
           "exampleRu": "Прими лекарство.",
           "audio": {
-            "src": "media/audio/u11.d03.vocab.medicine.wav",
+            "src": "media/audio/u11.d03.vocab.medicine.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "You should rest.",
           "exampleRu": "Тебе стоит отдохнуть.",
           "audio": {
-            "src": "media/audio/u11.d03.vocab.rest.wav",
+            "src": "media/audio/u11.d03.vocab.rest.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "You should exercise more.",
           "exampleRu": "Тебе стоит больше двигаться.",
           "audio": {
-            "src": "media/audio/u11.d03.vocab.exercise.wav",
+            "src": "media/audio/u11.d03.vocab.exercise.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I feel tired.",
           "exampleRu": "Я чувствую усталость.",
           "audio": {
-            "src": "media/audio/u11.d03.vocab.tired.wav",
+            "src": "media/audio/u11.d03.vocab.tired.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "I have a headache.",
           "exampleRu": "У меня болит голова.",
           "audio": {
-            "src": "media/audio/u11.d03.vocab.headache.wav",
+            "src": "media/audio/u11.d03.vocab.headache.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "She has a cold.",
           "exampleRu": "Она простудилась.",
           "audio": {
-            "src": "media/audio/u11.d03.vocab.cold.wav",
+            "src": "media/audio/u11.d03.vocab.cold.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "He feels sick.",
           "exampleRu": "Ему нездоровится.",
           "audio": {
-            "src": "media/audio/u11.d03.vocab.sick.wav",
+            "src": "media/audio/u11.d03.vocab.sick.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I feel better today.",
           "exampleRu": "Сегодня мне лучше.",
           "audio": {
-            "src": "media/audio/u11.d03.vocab.better.wav",
+            "src": "media/audio/u11.d03.vocab.better.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "You should sleep more.",
           "exampleRu": "Тебе стоит больше спать.",
           "audio": {
-            "src": "media/audio/u11.d03.vocab.sleep.wav",
+            "src": "media/audio/u11.d03.vocab.sleep.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Tom always feels tired and he often has a headache. His friend says, \"You should sleep more and you shouldn't drink so much coffee.\"",
           "ru": "Том всё время устал и часто с головной болью. Друг говорит: «Тебе стоит больше спать и не стоит пить столько кофе».",
           "audio": {
-            "src": "media/audio/u11.d03.reading.b1.wav",
+            "src": "media/audio/u11.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"You should also exercise and eat healthy food. And you shouldn't work at night.\" Tom followed the advice, and after a week he felt much better.",
           "ru": "«Ещё тебе стоит заниматься спортом и есть здоровую еду. И не стоит работать по ночам». Том последовал совету и через неделю почувствовал себя гораздо лучше.",
           "audio": {
-            "src": "media/audio/u11.d03.reading.b2.wav",
+            "src": "media/audio/u11.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Я простудился"
       },
       "audio": {
-        "src": "media/audio/u11.d03.listening.wav",
+        "src": "media/audio/u11.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

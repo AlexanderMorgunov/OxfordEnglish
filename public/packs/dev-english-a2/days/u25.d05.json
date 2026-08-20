@@ -26,7 +26,7 @@
           "example": "A bottle of water.",
           "exampleRu": "Бутылка воды.",
           "audio": {
-            "src": "media/audio/u25.d05.vocab.bottle.wav",
+            "src": "media/audio/u25.d05.vocab.bottle.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "A packet of biscuits.",
           "exampleRu": "Пачка печенья.",
           "audio": {
-            "src": "media/audio/u25.d05.vocab.packet.wav",
+            "src": "media/audio/u25.d05.vocab.packet.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "A jar of honey.",
           "exampleRu": "Банка мёда.",
           "audio": {
-            "src": "media/audio/u25.d05.vocab.jar.wav",
+            "src": "media/audio/u25.d05.vocab.jar.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "A kilo of apples.",
           "exampleRu": "Килограмм яблок.",
           "audio": {
-            "src": "media/audio/u25.d05.vocab.kilo.wav",
+            "src": "media/audio/u25.d05.vocab.kilo.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "A slice of bread.",
           "exampleRu": "Ломтик хлеба.",
           "audio": {
-            "src": "media/audio/u25.d05.vocab.slice.wav",
+            "src": "media/audio/u25.d05.vocab.slice.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "A dozen eggs.",
           "exampleRu": "Дюжина яиц.",
           "audio": {
-            "src": "media/audio/u25.d05.vocab.dozen.wav",
+            "src": "media/audio/u25.d05.vocab.dozen.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "A pair of gloves.",
           "exampleRu": "Пара перчаток.",
           "audio": {
-            "src": "media/audio/u25.d05.vocab.pair.wav",
+            "src": "media/audio/u25.d05.vocab.pair.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "A loaf of bread.",
           "exampleRu": "Буханка хлеба.",
           "audio": {
-            "src": "media/audio/u25.d05.vocab.loaf.wav",
+            "src": "media/audio/u25.d05.vocab.loaf.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "A tin of beans.",
           "exampleRu": "Банка фасоли.",
           "audio": {
-            "src": "media/audio/u25.d05.vocab.tin.wav",
+            "src": "media/audio/u25.d05.vocab.tin.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Buy fewer sweets.",
           "exampleRu": "Покупай меньше сладостей.",
           "audio": {
-            "src": "media/audio/u25.d05.vocab.fewer.wav",
+            "src": "media/audio/u25.d05.vocab.fewer.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "\"How much do we need?\" asked Leo at the market. \"A kilo of apples, a bottle of milk, and a loaf of bread,\" said his mum. \"And how many eggs?\" \"A dozen. Oh, and a jar of honey and a packet of tea.\"",
           "ru": "«Сколько нам нужно?» — спросил Лео на рынке. «Килограмм яблок, бутылку молока и буханку хлеба, — сказала мама. — И сколько яиц?» «Дюжину. Ах да, и банку мёда и пачку чая».",
           "audio": {
-            "src": "media/audio/u25.d05.reading.b1.wav",
+            "src": "media/audio/u25.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"That's plenty,\" Leo said. \"We're buying less sugar than last week, and fewer sweets too.\" His mum smiled. \"Good. We eat too many sweets anyway. A few pieces of fruit are much better.\"",
           "ru": "«Этого достаточно, — сказал Лео. — Сахара берём меньше, чем на прошлой неделе, и сладостей тоже меньше». Мама улыбнулась. «Хорошо. Мы и так едим слишком много сладкого. Несколько фруктов гораздо полезнее».",
           "audio": {
-            "src": "media/audio/u25.d05.reading.b2.wav",
+            "src": "media/audio/u25.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Сколько?"
       },
       "audio": {
-        "src": "media/audio/u25.d05.listening.wav",
+        "src": "media/audio/u25.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

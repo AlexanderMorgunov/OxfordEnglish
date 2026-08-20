@@ -26,7 +26,7 @@
           "example": "I miss those days.",
           "exampleRu": "Я скучаю по тем дням.",
           "audio": {
-            "src": "media/audio/u23.d05.vocab.miss.wav",
+            "src": "media/audio/u23.d05.vocab.miss.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I remember it well.",
           "exampleRu": "Я хорошо это помню.",
           "audio": {
-            "src": "media/audio/u23.d05.vocab.remember.wav",
+            "src": "media/audio/u23.d05.vocab.remember.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "I feel nostalgic.",
           "exampleRu": "Мне ностальгически грустно.",
           "audio": {
-            "src": "media/audio/u23.d05.vocab.nostalgic.wav",
+            "src": "media/audio/u23.d05.vocab.nostalgic.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Things have improved.",
           "exampleRu": "Всё стало лучше.",
           "audio": {
-            "src": "media/audio/u23.d05.vocab.improve.wav",
+            "src": "media/audio/u23.d05.vocab.improve.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Some things got worse.",
           "exampleRu": "Кое-что стало хуже.",
           "audio": {
-            "src": "media/audio/u23.d05.vocab.worse.wav",
+            "src": "media/audio/u23.d05.vocab.worse.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Life was simpler.",
           "exampleRu": "Жизнь была проще.",
           "audio": {
-            "src": "media/audio/u23.d05.vocab.simpler.wav",
+            "src": "media/audio/u23.d05.vocab.simpler.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Technology has changed everything.",
           "exampleRu": "Технологии всё изменили.",
           "audio": {
-            "src": "media/audio/u23.d05.vocab.technology.wav",
+            "src": "media/audio/u23.d05.vocab.technology.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "The pace of life is faster.",
           "exampleRu": "Темп жизни быстрее.",
           "audio": {
-            "src": "media/audio/u23.d05.vocab.pace.wav",
+            "src": "media/audio/u23.d05.vocab.pace.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "We value time more now.",
           "exampleRu": "Теперь мы больше ценим время.",
           "audio": {
-            "src": "media/audio/u23.d05.vocab.value.wav",
+            "src": "media/audio/u23.d05.vocab.value.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "I appreciate it more now.",
           "exampleRu": "Теперь я это больше ценю.",
           "audio": {
-            "src": "media/audio/u23.d05.vocab.appreciate.wav",
+            "src": "media/audio/u23.d05.vocab.appreciate.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -239,7 +239,7 @@
           "en": "\"Life has changed so much,\" my grandmother said. \"We used to write letters and wait weeks for a reply. Now you send a message and get an answer in seconds. In some ways it's better, but I miss the excitement of waiting.\"",
           "ru": "«Жизнь так изменилась, — сказала бабушка. — Раньше мы писали письма и неделями ждали ответа. Теперь ты отправляешь сообщение и получаешь ответ за секунды. В чём-то это лучше, но я скучаю по волнению ожидания».",
           "audio": {
-            "src": "media/audio/u23.d05.reading.b1.wav",
+            "src": "media/audio/u23.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -251,7 +251,7 @@
           "en": "\"Everything is faster now,\" she went on. \"We used to sit together in the evening and talk for hours. I feel a little nostalgic about those quiet days. But I appreciate how easy it is to see your face on a screen. The world has changed — and so have we.\"",
           "ru": "«Теперь всё быстрее, — продолжала она. — Раньше по вечерам мы сидели вместе и часами разговаривали. Мне немного ностальгически грустно по тем тихим дням. Но я ценю, как легко теперь видеть твоё лицо на экране. Мир изменился — и мы вместе с ним».",
           "audio": {
-            "src": "media/audio/u23.d05.reading.b2.wav",
+            "src": "media/audio/u23.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -280,7 +280,7 @@
         "ru": "Лучше или хуже?"
       },
       "audio": {
-        "src": "media/audio/u23.d05.listening.wav",
+        "src": "media/audio/u23.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

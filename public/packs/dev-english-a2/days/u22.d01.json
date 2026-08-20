@@ -26,7 +26,7 @@
           "example": "My neighbour is kind.",
           "exampleRu": "Мой сосед добрый.",
           "audio": {
-            "src": "media/audio/u22.d01.vocab.neighbour.wav",
+            "src": "media/audio/u22.d01.vocab.neighbour.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "The owner of the shop is friendly.",
           "exampleRu": "Владелец магазина приветливый.",
           "audio": {
-            "src": "media/audio/u22.d01.vocab.owner.wav",
+            "src": "media/audio/u22.d01.vocab.owner.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "A colleague whose desk is next to mine.",
           "exampleRu": "Коллега, чей стол рядом с моим.",
           "audio": {
-            "src": "media/audio/u22.d01.vocab.colleague.wav",
+            "src": "media/audio/u22.d01.vocab.colleague.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "She's a distant relative.",
           "exampleRu": "Она дальняя родственница.",
           "audio": {
-            "src": "media/audio/u22.d01.vocab.relative.wav",
+            "src": "media/audio/u22.d01.vocab.relative.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "A stranger helped me.",
           "exampleRu": "Незнакомец помог мне.",
           "audio": {
-            "src": "media/audio/u22.d01.vocab.stranger.wav",
+            "src": "media/audio/u22.d01.vocab.stranger.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "He's very friendly.",
           "exampleRu": "Он очень дружелюбный.",
           "audio": {
-            "src": "media/audio/u22.d01.vocab.friendly.wav",
+            "src": "media/audio/u22.d01.vocab.friendly.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Whose bag is this? It belongs to Sam.",
           "exampleRu": "Чья это сумка? Она принадлежит Сэму.",
           "audio": {
-            "src": "media/audio/u22.d01.vocab.belong.wav",
+            "src": "media/audio/u22.d01.vocab.belong.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "The girl whose dog ran away.",
           "exampleRu": "Девочка, чья собака убежала.",
           "audio": {
-            "src": "media/audio/u22.d01.vocab.whose.wav",
+            "src": "media/audio/u22.d01.vocab.whose.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I didn't recognise him.",
           "exampleRu": "Я его не узнал.",
           "audio": {
-            "src": "media/audio/u22.d01.vocab.recognise.wav",
+            "src": "media/audio/u22.d01.vocab.recognise.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "A famous writer.",
           "exampleRu": "Знаменитый писатель.",
           "audio": {
-            "src": "media/audio/u22.d01.vocab.famous.wav",
+            "src": "media/audio/u22.d01.vocab.famous.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Our street is full of interesting people. There's a woman whose garden is the most beautiful on the road, and a man whose dog knows more tricks than most humans. Everyone knows the family whose children play music every evening.",
           "ru": "Наша улица полна интересных людей. Есть женщина, чей сад — самый красивый на всей дороге, и мужчина, чья собака знает больше трюков, чем многие люди. Все знают семью, чьи дети каждый вечер играют музыку.",
           "audio": {
-            "src": "media/audio/u22.d01.reading.b1.wav",
+            "src": "media/audio/u22.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "Last week, a driver whose car broke down stopped outside my house. My neighbour, whose garage is full of tools, came out to help. \"That's the kind of street this is,\" he said — a place whose people always help each other.",
           "ru": "На прошлой неделе у моего дома остановился водитель, чья машина сломалась. Мой сосед, чей гараж полон инструментов, вышел помочь. «Вот такая у нас улица», — сказал он: место, чьи жители всегда помогают друг другу.",
           "audio": {
-            "src": "media/audio/u22.d01.reading.b2.wav",
+            "src": "media/audio/u22.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Чьё это?"
       },
       "audio": {
-        "src": "media/audio/u22.d01.listening.wav",
+        "src": "media/audio/u22.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

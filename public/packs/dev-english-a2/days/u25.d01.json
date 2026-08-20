@@ -26,7 +26,7 @@
           "example": "It was an amazing trip.",
           "exampleRu": "Это была потрясающая поездка.",
           "audio": {
-            "src": "media/audio/u25.d01.vocab.amazing.wav",
+            "src": "media/audio/u25.d01.vocab.amazing.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "The weather was terrible.",
           "exampleRu": "Погода была ужасной.",
           "audio": {
-            "src": "media/audio/u25.d01.vocab.terrible.wav",
+            "src": "media/audio/u25.d01.vocab.terrible.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "There was such a crowd.",
           "exampleRu": "Была такая толпа.",
           "audio": {
-            "src": "media/audio/u25.d01.vocab.crowd.wav",
+            "src": "media/audio/u25.d01.vocab.crowd.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "So much noise!",
           "exampleRu": "Столько шума!",
           "audio": {
-            "src": "media/audio/u25.d01.vocab.noise.wav",
+            "src": "media/audio/u25.d01.vocab.noise.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The food was so delicious.",
           "exampleRu": "Еда была такой вкусной.",
           "audio": {
-            "src": "media/audio/u25.d01.vocab.delicious.wav",
+            "src": "media/audio/u25.d01.vocab.delicious.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Such an exciting game!",
           "exampleRu": "Такая захватывающая игра!",
           "audio": {
-            "src": "media/audio/u25.d01.vocab.exciting.wav",
+            "src": "media/audio/u25.d01.vocab.exciting.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "It was so expensive.",
           "exampleRu": "Это было так дорого.",
           "audio": {
-            "src": "media/audio/u25.d01.vocab.expensive.wav",
+            "src": "media/audio/u25.d01.vocab.expensive.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "The beach was so crowded.",
           "exampleRu": "Пляж был так переполнен.",
           "audio": {
-            "src": "media/audio/u25.d01.vocab.crowded.wav",
+            "src": "media/audio/u25.d01.vocab.crowded.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Such a beautiful view.",
           "exampleRu": "Такой красивый вид.",
           "audio": {
-            "src": "media/audio/u25.d01.vocab.view.wav",
+            "src": "media/audio/u25.d01.vocab.view.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "An unforgettable evening.",
           "exampleRu": "Незабываемый вечер.",
           "audio": {
-            "src": "media/audio/u25.d01.vocab.unforgettable.wav",
+            "src": "media/audio/u25.d01.vocab.unforgettable.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "The summer fair was such a wonderful event. There were so many people that it was hard to move, and there was so much to see. The music was so loud and the lights were so bright that the children were amazed.",
           "ru": "Летняя ярмарка была таким чудесным событием. Людей было столько, что трудно было пройти, и столько всего можно было увидеть. Музыка была такой громкой, а огни такими яркими, что дети были поражены.",
           "audio": {
-            "src": "media/audio/u25.d01.reading.b1.wav",
+            "src": "media/audio/u25.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"It's such a beautiful evening,\" said Mum. The food smelled so delicious that we bought far too much. By the end, we were so tired but so happy. It was such a perfect day that nobody wanted to go home.",
           "ru": "«Такой прекрасный вечер», — сказала мама. Еда пахла так вкусно, что мы купили слишком много. К концу мы так устали, но были так счастливы. Это был такой идеальный день, что никто не хотел идти домой.",
           "audio": {
-            "src": "media/audio/u25.d01.reading.b2.wav",
+            "src": "media/audio/u25.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Как всё прошло?"
       },
       "audio": {
-        "src": "media/audio/u25.d01.listening.wav",
+        "src": "media/audio/u25.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

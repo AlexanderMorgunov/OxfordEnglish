@@ -26,7 +26,7 @@
           "example": "The first step is easy.",
           "exampleRu": "Первый шаг простой.",
           "audio": {
-            "src": "media/audio/u24.d05.vocab.step.wav",
+            "src": "media/audio/u24.d05.vocab.step.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "Read the instructions.",
           "exampleRu": "Прочитай инструкции.",
           "audio": {
-            "src": "media/audio/u24.d05.vocab.instructions.wav",
+            "src": "media/audio/u24.d05.vocab.instructions.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "It's a clever device.",
           "exampleRu": "Это умное устройство.",
           "audio": {
-            "src": "media/audio/u24.d05.vocab.device.wav",
+            "src": "media/audio/u24.d05.vocab.device.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Press the button.",
           "exampleRu": "Нажми кнопку.",
           "audio": {
-            "src": "media/audio/u24.d05.vocab.button.wav",
+            "src": "media/audio/u24.d05.vocab.button.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The machine is easy to use.",
           "exampleRu": "Машиной легко пользоваться.",
           "audio": {
-            "src": "media/audio/u24.d05.vocab.machine.wav",
+            "src": "media/audio/u24.d05.vocab.machine.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Connect the cable.",
           "exampleRu": "Подключи кабель.",
           "audio": {
-            "src": "media/audio/u24.d05.vocab.connect.wav",
+            "src": "media/audio/u24.d05.vocab.connect.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Switch it on.",
           "exampleRu": "Включи это.",
           "audio": {
-            "src": "media/audio/u24.d05.vocab.switchon.wav",
+            "src": "media/audio/u24.d05.vocab.switchon.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "How does it work?",
           "exampleRu": "Как это работает?",
           "audio": {
-            "src": "media/audio/u24.d05.vocab.work.wav",
+            "src": "media/audio/u24.d05.vocab.work.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "It's very simple.",
           "exampleRu": "Это очень просто.",
           "audio": {
-            "src": "media/audio/u24.d05.vocab.simple.wav",
+            "src": "media/audio/u24.d05.vocab.simple.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Let me explain.",
           "exampleRu": "Дай объясню.",
           "audio": {
-            "src": "media/audio/u24.d05.vocab.explain.wav",
+            "src": "media/audio/u24.d05.vocab.explain.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -239,7 +239,7 @@
           "en": "Have you ever wondered how an electric kettle works? It's actually very simple. First, water is poured into the kettle. Then the kettle is switched on, and electricity is passed through a metal part inside.",
           "ru": "Вы когда-нибудь задумывались, как работает электрический чайник? На самом деле всё очень просто. Сначала в чайник наливают воду. Затем чайник включают, и через металлическую часть внутри пропускают электричество.",
           "audio": {
-            "src": "media/audio/u24.d05.reading.b1.wav",
+            "src": "media/audio/u24.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -251,7 +251,7 @@
           "en": "This part gets very hot, and the heat is passed to the water. After a minute or two, the water begins to boil. Finally, the kettle switches off by itself. \"It works by turning electricity into heat,\" the teacher explained. \"Nothing needs to be done except pressing one button.\"",
           "ru": "Эта часть сильно нагревается, и тепло передаётся воде. Через минуту-другую вода начинает кипеть. Наконец чайник выключается сам. «Он работает, превращая электричество в тепло, — объяснил учитель. — Ничего делать не нужно, кроме как нажать одну кнопку».",
           "audio": {
-            "src": "media/audio/u24.d05.reading.b2.wav",
+            "src": "media/audio/u24.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -280,7 +280,7 @@
         "ru": "Как этим пользоваться?"
       },
       "audio": {
-        "src": "media/audio/u24.d05.listening.wav",
+        "src": "media/audio/u24.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

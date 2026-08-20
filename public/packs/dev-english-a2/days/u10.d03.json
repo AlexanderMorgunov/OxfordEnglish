@@ -27,7 +27,7 @@
           "example": "I have a meeting at ten.",
           "exampleRu": "У меня встреча в десять.",
           "audio": {
-            "src": "media/audio/u10.d03.vocab.meeting.wav",
+            "src": "media/audio/u10.d03.vocab.meeting.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "a doctor's appointment",
           "exampleRu": "приём у врача",
           "audio": {
-            "src": "media/audio/u10.d03.vocab.appointment.wav",
+            "src": "media/audio/u10.d03.vocab.appointment.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "We are having a party.",
           "exampleRu": "Мы устраиваем вечеринку.",
           "audio": {
-            "src": "media/audio/u10.d03.vocab.party.wav",
+            "src": "media/audio/u10.d03.vocab.party.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "We are having dinner at eight.",
           "exampleRu": "Мы ужинаем в восемь.",
           "audio": {
-            "src": "media/audio/u10.d03.vocab.dinner.wav",
+            "src": "media/audio/u10.d03.vocab.dinner.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "What is the date today?",
           "exampleRu": "Какое сегодня число?",
           "audio": {
-            "src": "media/audio/u10.d03.vocab.date.wav",
+            "src": "media/audio/u10.d03.vocab.date.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "I will invite my friends.",
           "exampleRu": "Я приглашу друзей.",
           "audio": {
-            "src": "media/audio/u10.d03.vocab.invite.wav",
+            "src": "media/audio/u10.d03.vocab.invite.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "I am busy on Friday.",
           "exampleRu": "Я занят в пятницу.",
           "audio": {
-            "src": "media/audio/u10.d03.vocab.busy.wav",
+            "src": "media/audio/u10.d03.vocab.busy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "Are you free tonight?",
           "exampleRu": "Ты свободен сегодня вечером?",
           "audio": {
-            "src": "media/audio/u10.d03.vocab.free.wav",
+            "src": "media/audio/u10.d03.vocab.free.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "What are you doing tonight?",
           "exampleRu": "Что ты делаешь сегодня вечером?",
           "audio": {
-            "src": "media/audio/u10.d03.vocab.tonight.wav",
+            "src": "media/audio/u10.d03.vocab.tonight.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "I am leaving tomorrow.",
           "exampleRu": "Я уезжаю завтра.",
           "audio": {
-            "src": "media/audio/u10.d03.vocab.tomorrow.wav",
+            "src": "media/audio/u10.d03.vocab.tomorrow.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "Next week is busy. On Monday I'm seeing the dentist at nine. On Wednesday I'm meeting a client, and on Friday we're having a small party at home.",
           "ru": "Следующая неделя насыщенная. В понедельник в девять я иду к стоматологу. В среду встречаюсь с клиентом, а в пятницу у нас дома небольшая вечеринка.",
           "audio": {
-            "src": "media/audio/u10.d03.reading.b1.wav",
+            "src": "media/audio/u10.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "I'm also going to start a new course soon. \"The bell is ringing — I'll open the door,\" said my brother. He is always ready to help.",
           "ru": "Ещё я скоро собираюсь начать новый курс. «Звонок в дверь — я открою», — сказал брат. Он всегда готов помочь.",
           "audio": {
-            "src": "media/audio/u10.d03.reading.b2.wav",
+            "src": "media/audio/u10.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Ты свободен в пятницу?"
       },
       "audio": {
-        "src": "media/audio/u10.d03.listening.wav",
+        "src": "media/audio/u10.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

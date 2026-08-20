@@ -27,7 +27,7 @@
           "example": "I made a decision.",
           "exampleRu": "Я принял решение.",
           "audio": {
-            "src": "media/audio/u14.d04.vocab.makeadecision.wav",
+            "src": "media/audio/u14.d04.vocab.makeadecision.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "Let's take a photo.",
           "exampleRu": "Давай сделаем фото.",
           "audio": {
-            "src": "media/audio/u14.d04.vocab.takeaphoto.wav",
+            "src": "media/audio/u14.d04.vocab.takeaphoto.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "I have breakfast at eight.",
           "exampleRu": "Я завтракаю в восемь.",
           "audio": {
-            "src": "media/audio/u14.d04.vocab.havebreakfast.wav",
+            "src": "media/audio/u14.d04.vocab.havebreakfast.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "She does her homework.",
           "exampleRu": "Она делает домашнее задание.",
           "audio": {
-            "src": "media/audio/u14.d04.vocab.dohomework.wav",
+            "src": "media/audio/u14.d04.vocab.dohomework.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "I caught the bus.",
           "exampleRu": "Я успел на автобус.",
           "audio": {
-            "src": "media/audio/u14.d04.vocab.catchabus.wav",
+            "src": "media/audio/u14.d04.vocab.catchabus.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "He told a story.",
           "exampleRu": "Он рассказал историю.",
           "audio": {
-            "src": "media/audio/u14.d04.vocab.tellastory.wav",
+            "src": "media/audio/u14.d04.vocab.tellastory.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "She gave me advice.",
           "exampleRu": "Она дала мне совет.",
           "audio": {
-            "src": "media/audio/u14.d04.vocab.giveadvice.wav",
+            "src": "media/audio/u14.d04.vocab.giveadvice.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "He makes friends easily.",
           "exampleRu": "Он легко заводит друзей.",
           "audio": {
-            "src": "media/audio/u14.d04.vocab.makefriends.wav",
+            "src": "media/audio/u14.d04.vocab.makefriends.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "Take care of yourself.",
           "exampleRu": "Береги себя.",
           "audio": {
-            "src": "media/audio/u14.d04.vocab.takecare.wav",
+            "src": "media/audio/u14.d04.vocab.takecare.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "We had a lot of fun.",
           "exampleRu": "Мы отлично повеселились.",
           "audio": {
-            "src": "media/audio/u14.d04.vocab.havefun.wav",
+            "src": "media/audio/u14.d04.vocab.havefun.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "I usually have breakfast at seven and catch the bus to work. But today I am working from home, so I am still drinking my coffee at nine.",
           "ru": "Обычно я завтракаю в семь и еду на автобусе на работу. Но сегодня работаю из дома, поэтому в девять всё ещё пью кофе.",
           "audio": {
-            "src": "media/audio/u14.d04.reading.b1.wav",
+            "src": "media/audio/u14.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "I have already answered ten emails this morning. Yesterday I made an important decision about a new project. Tomorrow I am going to tell my team about it.",
           "ru": "Сегодня утром я уже ответил на десять писем. Вчера я принял важное решение о новом проекте. Завтра расскажу о нём команде.",
           "audio": {
-            "src": "media/audio/u14.d04.reading.b2.wav",
+            "src": "media/audio/u14.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Прямо сейчас"
       },
       "audio": {
-        "src": "media/audio/u14.d04.listening.wav",
+        "src": "media/audio/u14.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"
@@ -431,7 +431,7 @@
             "pronunciation"
           ],
           "audio": {
-            "src": "media/audio/u14.d04.ex.mp.01.wav",
+            "src": "media/audio/u14.d04.ex.mp.01.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"

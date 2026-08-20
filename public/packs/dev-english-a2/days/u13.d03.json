@@ -26,7 +26,7 @@
           "example": "She is a kind person.",
           "exampleRu": "Она добрый человек.",
           "audio": {
-            "src": "media/audio/u13.d03.vocab.person.wav",
+            "src": "media/audio/u13.d03.vocab.person.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "My neighbour is friendly.",
           "exampleRu": "Мой сосед дружелюбный.",
           "audio": {
-            "src": "media/audio/u13.d03.vocab.neighbour.wav",
+            "src": "media/audio/u13.d03.vocab.neighbour.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "It is a useful tool.",
           "exampleRu": "Это полезный инструмент.",
           "audio": {
-            "src": "media/audio/u13.d03.vocab.tool.wav",
+            "src": "media/audio/u13.d03.vocab.tool.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "The machine is broken.",
           "exampleRu": "Механизм сломан.",
           "audio": {
-            "src": "media/audio/u13.d03.vocab.machine.wav",
+            "src": "media/audio/u13.d03.vocab.machine.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "A dog is a good pet.",
           "exampleRu": "Собака — хороший питомец.",
           "audio": {
-            "src": "media/audio/u13.d03.vocab.pet.wav",
+            "src": "media/audio/u13.d03.vocab.pet.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "This is the place where I grew up.",
           "exampleRu": "Это место, где я вырос.",
           "audio": {
-            "src": "media/audio/u13.d03.vocab.place.wav",
+            "src": "media/audio/u13.d03.vocab.place.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "It is a thing that helps.",
           "exampleRu": "Это вещь, которая помогает.",
           "audio": {
-            "src": "media/audio/u13.d03.vocab.thing.wav",
+            "src": "media/audio/u13.d03.vocab.thing.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "A phone is useful.",
           "exampleRu": "Телефон полезен.",
           "audio": {
-            "src": "media/audio/u13.d03.vocab.useful.wav",
+            "src": "media/audio/u13.d03.vocab.useful.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "He is a famous writer.",
           "exampleRu": "Он известный писатель.",
           "audio": {
-            "src": "media/audio/u13.d03.vocab.famous.wav",
+            "src": "media/audio/u13.d03.vocab.famous.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "The wheel is a great invention.",
           "exampleRu": "Колесо — великое изобретение.",
           "audio": {
-            "src": "media/audio/u13.d03.vocab.invention.wav",
+            "src": "media/audio/u13.d03.vocab.invention.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "A teacher is a person who helps you learn. A doctor is someone who helps you when you are ill. A friend is a person who is always there for you.",
           "ru": "Учитель — это человек, который помогает тебе учиться. Врач — тот, кто помогает, когда ты болен. Друг — человек, который всегда рядом.",
           "audio": {
-            "src": "media/audio/u13.d03.reading.b1.wav",
+            "src": "media/audio/u13.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "A phone is a thing which connects people. The internet is an invention that changed the world. These are things that make life easier every day.",
           "ru": "Телефон — вещь, которая соединяет людей. Интернет — изобретение, которое изменило мир. Это вещи, которые каждый день упрощают жизнь.",
           "audio": {
-            "src": "media/audio/u13.d03.reading.b2.wav",
+            "src": "media/audio/u13.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Кто она?"
       },
       "audio": {
-        "src": "media/audio/u13.d03.listening.wav",
+        "src": "media/audio/u13.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

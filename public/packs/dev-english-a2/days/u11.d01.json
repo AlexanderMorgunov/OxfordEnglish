@@ -26,7 +26,7 @@
           "example": "Exercise is good for the body.",
           "exampleRu": "Упражнения полезны для тела.",
           "audio": {
-            "src": "media/audio/u11.d01.vocab.body.wav",
+            "src": "media/audio/u11.d01.vocab.body.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "My head hurts.",
           "exampleRu": "У меня болит голова.",
           "audio": {
-            "src": "media/audio/u11.d01.vocab.head.wav",
+            "src": "media/audio/u11.d01.vocab.head.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "He broke his arm.",
           "exampleRu": "Он сломал руку.",
           "audio": {
-            "src": "media/audio/u11.d01.vocab.arm.wav",
+            "src": "media/audio/u11.d01.vocab.arm.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "My leg is tired.",
           "exampleRu": "У меня устала нога.",
           "audio": {
-            "src": "media/audio/u11.d01.vocab.leg.wav",
+            "src": "media/audio/u11.d01.vocab.leg.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Wash your hands.",
           "exampleRu": "Помой руки.",
           "audio": {
-            "src": "media/audio/u11.d01.vocab.hand.wav",
+            "src": "media/audio/u11.d01.vocab.hand.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "My foot hurts.",
           "exampleRu": "У меня болит нога.",
           "audio": {
-            "src": "media/audio/u11.d01.vocab.foot.wav",
+            "src": "media/audio/u11.d01.vocab.foot.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "My back is sore.",
           "exampleRu": "У меня болит спина.",
           "audio": {
-            "src": "media/audio/u11.d01.vocab.back.wav",
+            "src": "media/audio/u11.d01.vocab.back.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I have a stomach ache.",
           "exampleRu": "У меня болит живот.",
           "audio": {
-            "src": "media/audio/u11.d01.vocab.stomach.wav",
+            "src": "media/audio/u11.d01.vocab.stomach.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Stay healthy.",
           "exampleRu": "Будь здоров.",
           "audio": {
-            "src": "media/audio/u11.d01.vocab.healthy.wav",
+            "src": "media/audio/u11.d01.vocab.healthy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "You must wear a helmet.",
           "exampleRu": "Нужно надеть шлем.",
           "audio": {
-            "src": "media/audio/u11.d01.vocab.helmet.wav",
+            "src": "media/audio/u11.d01.vocab.helmet.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -226,7 +226,7 @@
           "en": "There are some rules at the gym. You must wear clean shoes and you must bring a towel. You must drink a lot of water when you train.",
           "ru": "В зале есть правила. Нужно быть в чистой обуви и приносить полотенце. Во время тренировки нужно пить много воды.",
           "audio": {
-            "src": "media/audio/u11.d01.reading.b1.wav",
+            "src": "media/audio/u11.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -238,7 +238,7 @@
           "en": "You mustn't eat in the training room, and you mustn't drop the weights on the floor. If you follow the rules, your body will be healthy and strong.",
           "ru": "Нельзя есть в тренировочном зале и нельзя бросать веса на пол. Если соблюдать правила, тело будет здоровым и сильным.",
           "audio": {
-            "src": "media/audio/u11.d01.reading.b2.wav",
+            "src": "media/audio/u11.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -267,7 +267,7 @@
         "ru": "В бассейне"
       },
       "audio": {
-        "src": "media/audio/u11.d01.listening.wav",
+        "src": "media/audio/u11.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

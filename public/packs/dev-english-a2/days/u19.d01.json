@@ -26,7 +26,7 @@
           "example": "I'm sure he's at home.",
           "exampleRu": "Я уверен, он дома.",
           "audio": {
-            "src": "media/audio/u19.d01.vocab.sure.wav",
+            "src": "media/audio/u19.d01.vocab.sure.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "It's almost certain.",
           "exampleRu": "Это почти наверняка.",
           "audio": {
-            "src": "media/audio/u19.d01.vocab.certain.wav",
+            "src": "media/audio/u19.d01.vocab.certain.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "The answer is obvious.",
           "exampleRu": "Ответ очевиден.",
           "audio": {
-            "src": "media/audio/u19.d01.vocab.obvious.wav",
+            "src": "media/audio/u19.d01.vocab.obvious.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Let me guess.",
           "exampleRu": "Дай угадаю.",
           "audio": {
-            "src": "media/audio/u19.d01.vocab.guess.wav",
+            "src": "media/audio/u19.d01.vocab.guess.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "He's probably asleep.",
           "exampleRu": "Он, вероятно, спит.",
           "audio": {
-            "src": "media/audio/u19.d01.vocab.probably.wav",
+            "src": "media/audio/u19.d01.vocab.probably.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "She seems happy.",
           "exampleRu": "Она кажется счастливой.",
           "audio": {
-            "src": "media/audio/u19.d01.vocab.seem.wav",
+            "src": "media/audio/u19.d01.vocab.seem.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "There's a clue on the table.",
           "exampleRu": "На столе есть улика.",
           "audio": {
-            "src": "media/audio/u19.d01.vocab.clue.wav",
+            "src": "media/audio/u19.d01.vocab.clue.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "He looks tired.",
           "exampleRu": "Он выглядит усталым.",
           "audio": {
-            "src": "media/audio/u19.d01.vocab.tired.wav",
+            "src": "media/audio/u19.d01.vocab.tired.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Are you still awake?",
           "exampleRu": "Ты ещё не спишь?",
           "audio": {
-            "src": "media/audio/u19.d01.vocab.awake.wav",
+            "src": "media/audio/u19.d01.vocab.awake.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "There must be a reason.",
           "exampleRu": "Должна быть причина.",
           "audio": {
-            "src": "media/audio/u19.d01.vocab.reason.wav",
+            "src": "media/audio/u19.d01.vocab.reason.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "It's nine in the evening and the office lights are still on. \"Someone must be working late,\" thought the guard. He could hear typing, so a person must be there. But the door was locked from the inside.",
           "ru": "Девять вечера, а свет в офисе всё ещё горит. «Кто-то, наверное, работает допоздна», — подумал охранник. Он слышал стук клавиш, значит, там точно кто-то есть. Но дверь была заперта изнутри.",
           "audio": {
-            "src": "media/audio/u19.d01.reading.b1.wav",
+            "src": "media/audio/u19.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"It can't be a cleaner — they finished hours ago,\" he said to himself. \"And it might be the new manager; she often stays late.\" He knocked, but nobody answered. Something strange was going on.",
           "ru": "«Это не может быть уборщик — они закончили давно», — сказал он себе. «А может, это новая начальница; она часто задерживается». Он постучал, но никто не ответил. Происходило что-то странное.",
           "audio": {
-            "src": "media/audio/u19.d01.reading.b2.wav",
+            "src": "media/audio/u19.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Чья сумка?"
       },
       "audio": {
-        "src": "media/audio/u19.d01.listening.wav",
+        "src": "media/audio/u19.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

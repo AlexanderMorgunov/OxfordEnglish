@@ -26,7 +26,7 @@
           "example": "She is a doctor.",
           "exampleRu": "Она врач.",
           "audio": {
-            "src": "media/audio/u01.d03.vocab.doctor.wav",
+            "src": "media/audio/u01.d03.vocab.doctor.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "He is an engineer.",
           "exampleRu": "Он инженер.",
           "audio": {
-            "src": "media/audio/u01.d03.vocab.engineer.wav",
+            "src": "media/audio/u01.d03.vocab.engineer.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "The driver is here.",
           "exampleRu": "Водитель здесь.",
           "audio": {
-            "src": "media/audio/u01.d03.vocab.driver.wav",
+            "src": "media/audio/u01.d03.vocab.driver.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "My aunt is a nurse.",
           "exampleRu": "Моя тётя медсестра.",
           "audio": {
-            "src": "media/audio/u01.d03.vocab.nurse.wav",
+            "src": "media/audio/u01.d03.vocab.nurse.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Ask the manager.",
           "exampleRu": "Спроси менеджера.",
           "audio": {
-            "src": "media/audio/u01.d03.vocab.manager.wav",
+            "src": "media/audio/u01.d03.vocab.manager.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "She is a famous artist.",
           "exampleRu": "Она известная художница.",
           "audio": {
-            "src": "media/audio/u01.d03.vocab.artist.wav",
+            "src": "media/audio/u01.d03.vocab.artist.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "My boss is kind.",
           "exampleRu": "Мой начальник добрый.",
           "audio": {
-            "src": "media/audio/u01.d03.vocab.boss.wav",
+            "src": "media/audio/u01.d03.vocab.boss.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "He is my colleague.",
           "exampleRu": "Он мой коллега.",
           "audio": {
-            "src": "media/audio/u01.d03.vocab.colleague.wav",
+            "src": "media/audio/u01.d03.vocab.colleague.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Our neighbour is nice.",
           "exampleRu": "Наш сосед приятный.",
           "audio": {
-            "src": "media/audio/u01.d03.vocab.neighbour.wav",
+            "src": "media/audio/u01.d03.vocab.neighbour.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Do you know her?",
           "exampleRu": "Ты её знаешь?",
           "audio": {
-            "src": "media/audio/u01.d03.vocab.know.wav",
+            "src": "media/audio/u01.d03.vocab.know.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -166,7 +166,7 @@
           "example": "I meet them every day.",
           "exampleRu": "Я встречаю их каждый день.",
           "audio": {
-            "src": "media/audio/u01.d03.vocab.meet.wav",
+            "src": "media/audio/u01.d03.vocab.meet.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -180,7 +180,7 @@
           "example": "Call me tonight.",
           "exampleRu": "Позвони мне вечером.",
           "audio": {
-            "src": "media/audio/u01.d03.vocab.call.wav",
+            "src": "media/audio/u01.d03.vocab.call.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -254,7 +254,7 @@
           "en": "Anna is a manager. Everyone in the office knows her, and she knows them all by name.",
           "ru": "Анна — менеджер. Все в офисе её знают, и она знает всех по имени.",
           "audio": {
-            "src": "media/audio/u01.d03.reading.b1.wav",
+            "src": "media/audio/u01.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -266,7 +266,7 @@
           "en": "Her colleague Ben is an engineer. Anna calls him every morning, and he helps her with the reports.",
           "ru": "Её коллега Бен — инженер. Анна звонит ему каждое утро, и он помогает ей с отчётами.",
           "audio": {
-            "src": "media/audio/u01.d03.reading.b2.wav",
+            "src": "media/audio/u01.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -295,7 +295,7 @@
         "ru": "Кто есть кто?"
       },
       "audio": {
-        "src": "media/audio/u01.d03.listening.wav",
+        "src": "media/audio/u01.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

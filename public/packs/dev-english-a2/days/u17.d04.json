@@ -26,7 +26,7 @@
           "example": "I'm exhausted after work.",
           "exampleRu": "Я измотан после работы.",
           "audio": {
-            "src": "media/audio/u17.d04.vocab.exhausted.wav",
+            "src": "media/audio/u17.d04.vocab.exhausted.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "You're out of breath!",
           "exampleRu": "Ты запыхался!",
           "audio": {
-            "src": "media/audio/u17.d04.vocab.outofbreath.wav",
+            "src": "media/audio/u17.d04.vocab.outofbreath.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "He's sweating a lot.",
           "exampleRu": "Он сильно потеет.",
           "audio": {
-            "src": "media/audio/u17.d04.vocab.sweat.wav",
+            "src": "media/audio/u17.d04.vocab.sweat.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Your shoes are dirty.",
           "exampleRu": "Твои ботинки грязные.",
           "audio": {
-            "src": "media/audio/u17.d04.vocab.dirty.wav",
+            "src": "media/audio/u17.d04.vocab.dirty.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Your hair is wet.",
           "exampleRu": "У тебя мокрые волосы.",
           "audio": {
-            "src": "media/audio/u17.d04.vocab.wet.wav",
+            "src": "media/audio/u17.d04.vocab.wet.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "I've been working in the garden.",
           "exampleRu": "Я работал в саду.",
           "audio": {
-            "src": "media/audio/u17.d04.vocab.garden.wav",
+            "src": "media/audio/u17.d04.vocab.garden.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Her eyes are red from crying.",
           "exampleRu": "Её глаза красные от слёз.",
           "audio": {
-            "src": "media/audio/u17.d04.vocab.cry.wav",
+            "src": "media/audio/u17.d04.vocab.cry.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I've been running.",
           "exampleRu": "Я бегал.",
           "audio": {
-            "src": "media/audio/u17.d04.vocab.run.wav",
+            "src": "media/audio/u17.d04.vocab.run.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "That's the reason I'm late.",
           "exampleRu": "Вот причина, почему я опоздал.",
           "audio": {
-            "src": "media/audio/u17.d04.vocab.reason.wav",
+            "src": "media/audio/u17.d04.vocab.reason.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "I need to relax now.",
           "exampleRu": "Мне нужно расслабиться.",
           "audio": {
-            "src": "media/audio/u17.d04.vocab.relax.wav",
+            "src": "media/audio/u17.d04.vocab.relax.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Tom came home late, wet and covered in mud. \"What have you been doing?\" asked his sister. \"You look terrible!\" Tom smiled. He had a good reason: he had been helping a neighbour find her lost dog in the rain.",
           "ru": "Том пришёл домой поздно, мокрый и в грязи. «Чем ты занимался? — спросила сестра. — Ты ужасно выглядишь!» Том улыбнулся. У него была веская причина: он под дождём помогал соседке искать потерявшуюся собаку.",
           "audio": {
-            "src": "media/audio/u17.d04.reading.b1.wav",
+            "src": "media/audio/u17.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"We've been walking around the park for two hours,\" he said, \"but we found her in the end.\" He was exhausted and out of breath, but he was happy. Now he just wanted a hot shower and a chance to relax.",
           "ru": "«Мы два часа ходили по парку, — сказал он, — но в итоге нашли её». Он был измотан и запыхался, но был счастлив. Теперь он хотел лишь горячий душ и возможность отдохнуть.",
           "audio": {
-            "src": "media/audio/u17.d04.reading.b2.wav",
+            "src": "media/audio/u17.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Ну и вид у тебя!"
       },
       "audio": {
-        "src": "media/audio/u17.d04.listening.wav",
+        "src": "media/audio/u17.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

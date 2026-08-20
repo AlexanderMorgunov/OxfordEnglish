@@ -26,7 +26,7 @@
           "example": "The bridge was built in 1990.",
           "exampleRu": "Мост построили в 1990.",
           "audio": {
-            "src": "media/audio/u24.d01.vocab.build.wav",
+            "src": "media/audio/u24.d01.vocab.build.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "The car was designed in Italy.",
           "exampleRu": "Машину спроектировали в Италии.",
           "audio": {
-            "src": "media/audio/u24.d01.vocab.design.wav",
+            "src": "media/audio/u24.d01.vocab.design.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "The phone was invented long ago.",
           "exampleRu": "Телефон изобрели давно.",
           "audio": {
-            "src": "media/audio/u24.d01.vocab.invent.wav",
+            "src": "media/audio/u24.d01.vocab.invent.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "The goods are produced here.",
           "exampleRu": "Товары производят здесь.",
           "audio": {
-            "src": "media/audio/u24.d01.vocab.produce.wav",
+            "src": "media/audio/u24.d01.vocab.produce.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "A new planet was discovered.",
           "exampleRu": "Открыли новую планету.",
           "audio": {
-            "src": "media/audio/u24.d01.vocab.discover.wav",
+            "src": "media/audio/u24.d01.vocab.discover.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "The road has been repaired.",
           "exampleRu": "Дорогу отремонтировали.",
           "audio": {
-            "src": "media/audio/u24.d01.vocab.repair.wav",
+            "src": "media/audio/u24.d01.vocab.repair.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "The parcel has been delivered.",
           "exampleRu": "Посылку доставили.",
           "audio": {
-            "src": "media/audio/u24.d01.vocab.deliver.wav",
+            "src": "media/audio/u24.d01.vocab.deliver.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "The work has been completed.",
           "exampleRu": "Работа завершена.",
           "audio": {
-            "src": "media/audio/u24.d01.vocab.complete.wav",
+            "src": "media/audio/u24.d01.vocab.complete.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "It's made in a factory.",
           "exampleRu": "Это делают на заводе.",
           "audio": {
-            "src": "media/audio/u24.d01.vocab.factory.wav",
+            "src": "media/audio/u24.d01.vocab.factory.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Strong materials are used.",
           "exampleRu": "Используются прочные материалы.",
           "audio": {
-            "src": "media/audio/u24.d01.vocab.material.wav",
+            "src": "media/audio/u24.d01.vocab.material.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "After two years of work, the new bridge has finally been completed. It was designed by a famous engineer and built by a local company. Strong steel and concrete were used to make it safe.",
           "ru": "После двух лет работы новый мост наконец достроен. Его спроектировал известный инженер, а построила местная компания. Для прочности использовали крепкую сталь и бетон.",
           "audio": {
-            "src": "media/audio/u24.d01.reading.b1.wav",
+            "src": "media/audio/u24.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "The old bridge, which was built over a hundred years ago, has been closed. \"Everything has been checked and tested,\" said the mayor. \"The new bridge will be opened to traffic next week.\" Thousands of cars are expected every day.",
           "ru": "Старый мост, который построили больше ста лет назад, закрыли. «Всё проверено и испытано, — сказал мэр. — Новый мост откроют для движения на следующей неделе». Ожидаются тысячи машин ежедневно.",
           "audio": {
-            "src": "media/audio/u24.d01.reading.b2.wav",
+            "src": "media/audio/u24.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Готово?"
       },
       "audio": {
-        "src": "media/audio/u24.d01.listening.wav",
+        "src": "media/audio/u24.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

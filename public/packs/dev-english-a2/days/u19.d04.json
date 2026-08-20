@@ -27,7 +27,7 @@
           "example": "The detective studied the room.",
           "exampleRu": "Детектив осмотрел комнату.",
           "audio": {
-            "src": "media/audio/u19.d04.vocab.detective.wav",
+            "src": "media/audio/u19.d04.vocab.detective.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "A witness saw the car.",
           "exampleRu": "Свидетель видел машину.",
           "audio": {
-            "src": "media/audio/u19.d04.vocab.witness.wav",
+            "src": "media/audio/u19.d04.vocab.witness.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "There are three suspects.",
           "exampleRu": "Есть трое подозреваемых.",
           "audio": {
-            "src": "media/audio/u19.d04.vocab.suspect.wav",
+            "src": "media/audio/u19.d04.vocab.suspect.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "Can you prove it?",
           "exampleRu": "Ты можешь это доказать?",
           "audio": {
-            "src": "media/audio/u19.d04.vocab.prove.wav",
+            "src": "media/audio/u19.d04.vocab.prove.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "He looks guilty.",
           "exampleRu": "Он выглядит виновным.",
           "audio": {
-            "src": "media/audio/u19.d04.vocab.guilty.wav",
+            "src": "media/audio/u19.d04.vocab.guilty.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "She is innocent.",
           "exampleRu": "Она невиновна.",
           "audio": {
-            "src": "media/audio/u19.d04.vocab.innocent.wav",
+            "src": "media/audio/u19.d04.vocab.innocent.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "They discovered the truth.",
           "exampleRu": "Они узнали правду.",
           "audio": {
-            "src": "media/audio/u19.d04.vocab.discover.wav",
+            "src": "media/audio/u19.d04.vocab.discover.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "That explains everything.",
           "exampleRu": "Это всё объясняет.",
           "audio": {
-            "src": "media/audio/u19.d04.vocab.explain.wav",
+            "src": "media/audio/u19.d04.vocab.explain.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "Something strange happened.",
           "exampleRu": "Случилось что-то странное.",
           "audio": {
-            "src": "media/audio/u19.d04.vocab.strange.wav",
+            "src": "media/audio/u19.d04.vocab.strange.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "It was a hard case.",
           "exampleRu": "Это было трудное дело.",
           "audio": {
-            "src": "media/audio/u19.d04.vocab.case.wav",
+            "src": "media/audio/u19.d04.vocab.case.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "Detective Ross looked around the locked room. The tea was still warm, so the owner must have left only minutes ago. But the door was locked from the inside — he can't have gone through it. \"There must be another way out,\" Ross thought.",
           "ru": "Детектив Росс осмотрел запертую комнату. Чай был ещё тёплым, значит, хозяин ушёл всего пару минут назад. Но дверь была заперта изнутри — через неё он выйти не мог. «Должен быть другой выход», — подумал Росс.",
           "audio": {
-            "src": "media/audio/u19.d04.reading.b1.wav",
+            "src": "media/audio/u19.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "He noticed an open window. \"He must have climbed out here. It can't have been easy — it's on the second floor.\" Then he saw a rope. \"That explains it. The owner might be in danger, or he could be running from someone. Either way, I need to find him fast.\"",
           "ru": "Он заметил открытое окно. «Должно быть, он вылез здесь. Это было непросто — второй этаж». Потом он увидел верёвку. «Вот и объяснение. Хозяин, возможно, в опасности, или он от кого-то бежит. В любом случае мне нужно быстро его найти».",
           "audio": {
-            "src": "media/audio/u19.d04.reading.b2.wav",
+            "src": "media/audio/u19.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Мокрый зонт"
       },
       "audio": {
-        "src": "media/audio/u19.d04.listening.wav",
+        "src": "media/audio/u19.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

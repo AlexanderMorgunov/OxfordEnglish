@@ -26,7 +26,7 @@
           "example": "I have just finished.",
           "exampleRu": "Я только что закончил.",
           "audio": {
-            "src": "media/audio/u12.d02.vocab.finish.wav",
+            "src": "media/audio/u12.d02.vocab.finish.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "The film has already started.",
           "exampleRu": "Фильм уже начался.",
           "audio": {
-            "src": "media/audio/u12.d02.vocab.start.wav",
+            "src": "media/audio/u12.d02.vocab.start.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "They have just arrived.",
           "exampleRu": "Они только что приехали.",
           "audio": {
-            "src": "media/audio/u12.d02.vocab.arrive.wav",
+            "src": "media/audio/u12.d02.vocab.arrive.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "She has already left.",
           "exampleRu": "Она уже ушла.",
           "audio": {
-            "src": "media/audio/u12.d02.vocab.leave.wav",
+            "src": "media/audio/u12.d02.vocab.leave.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I have already sent the email.",
           "exampleRu": "Я уже отправил письмо.",
           "audio": {
-            "src": "media/audio/u12.d02.vocab.send.wav",
+            "src": "media/audio/u12.d02.vocab.send.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Have you bought the tickets yet?",
           "exampleRu": "Ты уже купил билеты?",
           "audio": {
-            "src": "media/audio/u12.d02.vocab.buy.wav",
+            "src": "media/audio/u12.d02.vocab.buy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "I haven't packed yet.",
           "exampleRu": "Я ещё не собрал вещи.",
           "audio": {
-            "src": "media/audio/u12.d02.vocab.pack.wav",
+            "src": "media/audio/u12.d02.vocab.pack.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "Are you ready yet?",
           "exampleRu": "Ты уже готов?",
           "audio": {
-            "src": "media/audio/u12.d02.vocab.ready.wav",
+            "src": "media/audio/u12.d02.vocab.ready.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I have just called him.",
           "exampleRu": "Я только что ему позвонил.",
           "audio": {
-            "src": "media/audio/u12.d02.vocab.just.wav",
+            "src": "media/audio/u12.d02.vocab.just.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "She has already eaten.",
           "exampleRu": "Она уже поела.",
           "audio": {
-            "src": "media/audio/u12.d02.vocab.already.wav",
+            "src": "media/audio/u12.d02.vocab.already.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "We are leaving in an hour, and I am nervous. I have already packed my bag and I have just bought the train tickets. But I haven't called a taxi yet.",
           "ru": "Мы уезжаем через час, и я нервничаю. Я уже собрал сумку и только что купил билеты на поезд. Но такси ещё не вызвал.",
           "audio": {
-            "src": "media/audio/u12.d02.reading.b1.wav",
+            "src": "media/audio/u12.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"Have you found your passport yet?\" asked my wife. \"Yes, I've just found it.\" \"Good. I've already locked the door. We're ready!\"",
           "ru": "«Ты уже нашёл паспорт?» — спросила жена. «Да, только что нашёл». «Хорошо. Я уже закрыла дверь. Мы готовы!»",
           "audio": {
-            "src": "media/audio/u12.d02.reading.b2.wav",
+            "src": "media/audio/u12.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Ты уже готов?"
       },
       "audio": {
-        "src": "media/audio/u12.d02.listening.wav",
+        "src": "media/audio/u12.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

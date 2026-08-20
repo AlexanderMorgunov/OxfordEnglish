@@ -27,7 +27,7 @@
           "example": "Reading is my hobby.",
           "exampleRu": "Чтение — моё хобби.",
           "audio": {
-            "src": "media/audio/u03.d02.vocab.hobby.wav",
+            "src": "media/audio/u03.d02.vocab.hobby.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "I play football on Sundays.",
           "exampleRu": "Я играю в футбол по воскресеньям.",
           "audio": {
-            "src": "media/audio/u03.d02.vocab.football.wav",
+            "src": "media/audio/u03.d02.vocab.football.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "She plays the guitar.",
           "exampleRu": "Она играет на гитаре.",
           "audio": {
-            "src": "media/audio/u03.d02.vocab.guitar.wav",
+            "src": "media/audio/u03.d02.vocab.guitar.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "I like drawing.",
           "exampleRu": "Мне нравится рисовать.",
           "audio": {
-            "src": "media/audio/u03.d02.vocab.drawing.wav",
+            "src": "media/audio/u03.d02.vocab.drawing.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "He is cooking dinner now.",
           "exampleRu": "Он сейчас готовит ужин.",
           "audio": {
-            "src": "media/audio/u03.d02.vocab.cooking.wav",
+            "src": "media/audio/u03.d02.vocab.cooking.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "Running is good for you.",
           "exampleRu": "Бег полезен.",
           "audio": {
-            "src": "media/audio/u03.d02.vocab.running.wav",
+            "src": "media/audio/u03.d02.vocab.running.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "We go swimming on Fridays.",
           "exampleRu": "Мы ходим плавать по пятницам.",
           "audio": {
-            "src": "media/audio/u03.d02.vocab.swimming.wav",
+            "src": "media/audio/u03.d02.vocab.swimming.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "Gaming is his hobby.",
           "exampleRu": "Видеоигры — его хобби.",
           "audio": {
-            "src": "media/audio/u03.d02.vocab.gaming.wav",
+            "src": "media/audio/u03.d02.vocab.gaming.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "I listen to music every day.",
           "exampleRu": "Я слушаю музыку каждый день.",
           "audio": {
-            "src": "media/audio/u03.d02.vocab.music.wav",
+            "src": "media/audio/u03.d02.vocab.music.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "What do you do in your free time?",
           "exampleRu": "Что ты делаешь в свободное время?",
           "audio": {
-            "src": "media/audio/u03.d02.vocab.freetime.wav",
+            "src": "media/audio/u03.d02.vocab.freetime.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -227,7 +227,7 @@
           "en": "Sam usually works from Monday to Friday. On weekends he relaxes. He often plays football with friends and cooks a big lunch.",
           "ru": "Сэм обычно работает с понедельника по пятницу. На выходных он отдыхает. Часто играет в футбол с друзьями и готовит большой обед.",
           "audio": {
-            "src": "media/audio/u03.d02.reading.b1.wav",
+            "src": "media/audio/u03.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -239,7 +239,7 @@
           "en": "But it is Saturday now, and it is raining. So today Sam is not playing football. He is sitting at home, drawing and listening to music.",
           "ru": "Но сейчас суббота, и идёт дождь. Поэтому сегодня Сэм не играет в футбол. Он сидит дома, рисует и слушает музыку.",
           "audio": {
-            "src": "media/audio/u03.d02.reading.b2.wav",
+            "src": "media/audio/u03.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -268,7 +268,7 @@
         "ru": "Что ты делаешь сегодня?"
       },
       "audio": {
-        "src": "media/audio/u03.d02.listening.wav",
+        "src": "media/audio/u03.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

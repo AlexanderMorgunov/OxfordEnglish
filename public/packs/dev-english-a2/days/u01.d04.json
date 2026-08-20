@@ -26,7 +26,7 @@
           "example": "She is very kind.",
           "exampleRu": "Она очень добрая.",
           "audio": {
-            "src": "media/audio/u01.d04.vocab.kind.wav",
+            "src": "media/audio/u01.d04.vocab.kind.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "My brother is funny.",
           "exampleRu": "Мой брат смешной.",
           "audio": {
-            "src": "media/audio/u01.d04.vocab.funny.wav",
+            "src": "media/audio/u01.d04.vocab.funny.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "He is clever.",
           "exampleRu": "Он умный.",
           "audio": {
-            "src": "media/audio/u01.d04.vocab.clever.wav",
+            "src": "media/audio/u01.d04.vocab.clever.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "The neighbours are friendly.",
           "exampleRu": "Соседи дружелюбные.",
           "audio": {
-            "src": "media/audio/u01.d04.vocab.friendly.wav",
+            "src": "media/audio/u01.d04.vocab.friendly.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "She is quiet.",
           "exampleRu": "Она тихая.",
           "audio": {
-            "src": "media/audio/u01.d04.vocab.quiet.wav",
+            "src": "media/audio/u01.d04.vocab.quiet.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "They are happy.",
           "exampleRu": "Они счастливы.",
           "audio": {
-            "src": "media/audio/u01.d04.vocab.happy.wav",
+            "src": "media/audio/u01.d04.vocab.happy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "He is short.",
           "exampleRu": "Он низкий.",
           "audio": {
-            "src": "media/audio/u01.d04.vocab.short.wav",
+            "src": "media/audio/u01.d04.vocab.short.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "He has got a beard.",
           "exampleRu": "У него борода.",
           "audio": {
-            "src": "media/audio/u01.d04.vocab.beard.wav",
+            "src": "media/audio/u01.d04.vocab.beard.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Whose bag is this?",
           "exampleRu": "Чья это сумка?",
           "audio": {
-            "src": "media/audio/u01.d04.vocab.bag.wav",
+            "src": "media/audio/u01.d04.vocab.bag.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "These keys are mine.",
           "exampleRu": "Эти ключи мои.",
           "audio": {
-            "src": "media/audio/u01.d04.vocab.keys.wav",
+            "src": "media/audio/u01.d04.vocab.keys.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -166,7 +166,7 @@
           "example": "Is this your phone?",
           "exampleRu": "Это твой телефон?",
           "audio": {
-            "src": "media/audio/u01.d04.vocab.phone.wav",
+            "src": "media/audio/u01.d04.vocab.phone.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -180,7 +180,7 @@
           "example": "That coat is hers.",
           "exampleRu": "То пальто её.",
           "audio": {
-            "src": "media/audio/u01.d04.vocab.coat.wav",
+            "src": "media/audio/u01.d04.vocab.coat.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -254,7 +254,7 @@
           "en": "After the party there were things everywhere. Whose bag is this? It is mine. And whose keys are these?",
           "ru": "После вечеринки всюду были вещи. Чья это сумка? Моя. А чьи это ключи?",
           "audio": {
-            "src": "media/audio/u01.d04.reading.b1.wav",
+            "src": "media/audio/u01.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -266,7 +266,7 @@
           "en": "The keys are hers, and that coat is his. Our friends are kind and funny, but they are not very quiet!",
           "ru": "Ключи её, а то пальто его. Наши друзья добрые и смешные, но не очень тихие!",
           "audio": {
-            "src": "media/audio/u01.d04.reading.b2.wav",
+            "src": "media/audio/u01.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -295,7 +295,7 @@
         "ru": "Бюро находок"
       },
       "audio": {
-        "src": "media/audio/u01.d04.listening.wav",
+        "src": "media/audio/u01.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"
@@ -405,7 +405,7 @@
             "pronunciation"
           ],
           "audio": {
-            "src": "media/audio/u01.d04.mp.live.wav",
+            "src": "media/audio/u01.d04.mp.live.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"

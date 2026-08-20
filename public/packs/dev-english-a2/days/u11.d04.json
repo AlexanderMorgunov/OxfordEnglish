@@ -27,7 +27,7 @@
           "example": "The school is near.",
           "exampleRu": "Школа рядом.",
           "audio": {
-            "src": "media/audio/u11.d04.vocab.school.wav",
+            "src": "media/audio/u11.d04.vocab.school.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "Our teacher is kind.",
           "exampleRu": "Наш учитель добрый.",
           "audio": {
-            "src": "media/audio/u11.d04.vocab.teacher.wav",
+            "src": "media/audio/u11.d04.vocab.teacher.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "The exam is on Monday.",
           "exampleRu": "Экзамен в понедельник.",
           "audio": {
-            "src": "media/audio/u11.d04.vocab.exam.wav",
+            "src": "media/audio/u11.d04.vocab.exam.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "I have a lot of homework.",
           "exampleRu": "У меня много домашки.",
           "audio": {
-            "src": "media/audio/u11.d04.vocab.homework.wav",
+            "src": "media/audio/u11.d04.vocab.homework.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "The lesson starts at nine.",
           "exampleRu": "Урок начинается в девять.",
           "audio": {
-            "src": "media/audio/u11.d04.vocab.lesson.wav",
+            "src": "media/audio/u11.d04.vocab.lesson.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "I study every evening.",
           "exampleRu": "Я занимаюсь каждый вечер.",
           "audio": {
-            "src": "media/audio/u11.d04.vocab.study.wav",
+            "src": "media/audio/u11.d04.vocab.study.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "We learn English.",
           "exampleRu": "Мы учим английский.",
           "audio": {
-            "src": "media/audio/u11.d04.vocab.learn.wav",
+            "src": "media/audio/u11.d04.vocab.learn.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "Maths is my favourite subject.",
           "exampleRu": "Математика — мой любимый предмет.",
           "audio": {
-            "src": "media/audio/u11.d04.vocab.subject.wav",
+            "src": "media/audio/u11.d04.vocab.subject.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "She got a good grade.",
           "exampleRu": "Она получила хорошую оценку.",
           "audio": {
-            "src": "media/audio/u11.d04.vocab.grade.wav",
+            "src": "media/audio/u11.d04.vocab.grade.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "Maybe I'll pass.",
           "exampleRu": "Может быть, я сдам.",
           "audio": {
-            "src": "media/audio/u11.d04.vocab.maybe.wav",
+            "src": "media/audio/u11.d04.vocab.maybe.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Anna has an important exam tomorrow. She studied a lot, but she is nervous. \"I might pass, or I might not,\" she says. \"The exam may be difficult.\"",
           "ru": "Завтра у Анны важный экзамен. Она много готовилась, но нервничает. «Может, сдам, а может, и нет», — говорит она. «Экзамен может быть сложным».",
           "audio": {
-            "src": "media/audio/u11.d04.reading.b1.wav",
+            "src": "media/audio/u11.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "Her teacher says, \"Don't worry. You know the subject well. You may get a good grade. And if it rains, we might do the exam in the library.\"",
           "ru": "Учитель говорит: «Не переживай. Ты хорошо знаешь предмет. Возможно, получишь хорошую оценку. А если пойдёт дождь, экзамен, может быть, проведём в библиотеке».",
           "audio": {
-            "src": "media/audio/u11.d04.reading.b2.wav",
+            "src": "media/audio/u11.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Возможно"
       },
       "audio": {
-        "src": "media/audio/u11.d04.listening.wav",
+        "src": "media/audio/u11.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"
@@ -428,7 +428,7 @@
             "pronunciation"
           ],
           "audio": {
-            "src": "media/audio/u11.d04.ex.mp.01.wav",
+            "src": "media/audio/u11.d04.ex.mp.01.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"

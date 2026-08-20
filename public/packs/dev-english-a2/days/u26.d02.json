@@ -26,7 +26,7 @@
           "example": "We could have avoided it.",
           "exampleRu": "Мы могли бы этого избежать.",
           "audio": {
-            "src": "media/audio/u26.d02.vocab.avoid.wav",
+            "src": "media/audio/u26.d02.vocab.avoid.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "You might have succeeded.",
           "exampleRu": "Ты мог бы преуспеть.",
           "audio": {
-            "src": "media/audio/u26.d02.vocab.succeed.wav",
+            "src": "media/audio/u26.d02.vocab.succeed.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "I could have failed.",
           "exampleRu": "Я мог бы провалиться.",
           "audio": {
-            "src": "media/audio/u26.d02.vocab.fail.wav",
+            "src": "media/audio/u26.d02.vocab.fail.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "He could have injured himself.",
           "exampleRu": "Он мог бы пораниться.",
           "audio": {
-            "src": "media/audio/u26.d02.vocab.injure.wav",
+            "src": "media/audio/u26.d02.vocab.injure.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "That would have been helpful.",
           "exampleRu": "Это было бы полезно.",
           "audio": {
-            "src": "media/audio/u26.d02.vocab.helpful.wav",
+            "src": "media/audio/u26.d02.vocab.helpful.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "The rain could have ruined it.",
           "exampleRu": "Дождь мог всё испортить.",
           "audio": {
-            "src": "media/audio/u26.d02.vocab.ruin.wav",
+            "src": "media/audio/u26.d02.vocab.ruin.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "It was possible.",
           "exampleRu": "Это было возможно.",
           "audio": {
-            "src": "media/audio/u26.d02.vocab.possible.wav",
+            "src": "media/audio/u26.d02.vocab.possible.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "We were lucky.",
           "exampleRu": "Нам повезло.",
           "audio": {
-            "src": "media/audio/u26.d02.vocab.lucky.wav",
+            "src": "media/audio/u26.d02.vocab.lucky.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "We could have prevented it.",
           "exampleRu": "Мы могли бы это предотвратить.",
           "audio": {
-            "src": "media/audio/u26.d02.vocab.prevent.wav",
+            "src": "media/audio/u26.d02.vocab.prevent.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "A better outcome.",
           "exampleRu": "Лучший исход.",
           "audio": {
-            "src": "media/audio/u26.d02.vocab.outcome.wav",
+            "src": "media/audio/u26.d02.vocab.outcome.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "It could have been a disaster. If the driver hadn't stopped in time, someone might have been badly hurt. \"We were so lucky,\" said Ben. \"If I had crossed a second earlier, the car would have hit me.\"",
           "ru": "Это могло обернуться катастрофой. Если бы водитель не остановился вовремя, кто-то мог бы серьёзно пострадать. «Нам так повезло, — сказал Бен. — Если бы я перешёл секундой раньше, машина бы меня сбила».",
           "audio": {
-            "src": "media/audio/u26.d02.reading.b1.wav",
+            "src": "media/audio/u26.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"You should have looked both ways,\" his friend said. \"I know. It could have been much worse. But if the driver hadn't been paying attention, he couldn't have stopped so fast.\" They both agreed it had been a lucky escape.",
           "ru": "«Надо было смотреть в обе стороны», — сказал друг. «Знаю. Могло быть гораздо хуже. Но если бы водитель не был внимателен, он бы не смог так быстро затормозить». Оба согласились, что легко отделались.",
           "audio": {
-            "src": "media/audio/u26.d02.reading.b2.wav",
+            "src": "media/audio/u26.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Пронесло"
       },
       "audio": {
-        "src": "media/audio/u26.d02.listening.wav",
+        "src": "media/audio/u26.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

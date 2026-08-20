@@ -26,7 +26,7 @@
           "example": "There's a shop near my house.",
           "exampleRu": "Рядом с домом есть магазин.",
           "audio": {
-            "src": "media/audio/u02.d04.vocab.shop.wav",
+            "src": "media/audio/u02.d04.vocab.shop.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "The park is big.",
           "exampleRu": "Парк большой.",
           "audio": {
-            "src": "media/audio/u02.d04.vocab.park.wav",
+            "src": "media/audio/u02.d04.vocab.park.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "The station is near.",
           "exampleRu": "Станция близко.",
           "audio": {
-            "src": "media/audio/u02.d04.vocab.station.wav",
+            "src": "media/audio/u02.d04.vocab.station.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I go to the market.",
           "exampleRu": "Я хожу на рынок.",
           "audio": {
-            "src": "media/audio/u02.d04.vocab.market.wav",
+            "src": "media/audio/u02.d04.vocab.market.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "A quiet street.",
           "exampleRu": "Тихая улица.",
           "audio": {
-            "src": "media/audio/u02.d04.vocab.street.wav",
+            "src": "media/audio/u02.d04.vocab.street.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "The shop is near.",
           "exampleRu": "Магазин рядом.",
           "audio": {
-            "src": "media/audio/u02.d04.vocab.near.wav",
+            "src": "media/audio/u02.d04.vocab.near.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "The park is not far.",
           "exampleRu": "Парк недалеко.",
           "audio": {
-            "src": "media/audio/u02.d04.vocab.far.wav",
+            "src": "media/audio/u02.d04.vocab.far.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "On the corner.",
           "exampleRu": "На углу.",
           "audio": {
-            "src": "media/audio/u02.d04.vocab.corner.wav",
+            "src": "media/audio/u02.d04.vocab.corner.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I live in a city.",
           "exampleRu": "Я живу в городе.",
           "audio": {
-            "src": "media/audio/u02.d04.vocab.city.wav",
+            "src": "media/audio/u02.d04.vocab.city.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "A tall building.",
           "exampleRu": "Высокое здание.",
           "audio": {
-            "src": "media/audio/u02.d04.vocab.building.wav",
+            "src": "media/audio/u02.d04.vocab.building.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -166,7 +166,7 @@
           "example": "There are a lot of people.",
           "exampleRu": "Тут много людей.",
           "audio": {
-            "src": "media/audio/u02.d04.vocab.people.wav",
+            "src": "media/audio/u02.d04.vocab.people.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -180,7 +180,7 @@
           "example": "A nice place.",
           "exampleRu": "Приятное место.",
           "audio": {
-            "src": "media/audio/u02.d04.vocab.place.wav",
+            "src": "media/audio/u02.d04.vocab.place.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -254,7 +254,7 @@
           "en": "I live in a small city. There is a shop on the corner and a park near my house.",
           "ru": "Я живу в маленьком городе. На углу есть магазин, а рядом с домом — парк.",
           "audio": {
-            "src": "media/audio/u02.d04.reading.b1.wav",
+            "src": "media/audio/u02.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -266,7 +266,7 @@
           "en": "There are two cafés on my street, but there aren't any big buildings. It is a quiet place with friendly people.",
           "ru": "На моей улице два кафе, но нет больших зданий. Это тихое место с дружелюбными людьми.",
           "audio": {
-            "src": "media/audio/u02.d04.reading.b2.wav",
+            "src": "media/audio/u02.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -295,7 +295,7 @@
         "ru": "Здесь есть магазин?"
       },
       "audio": {
-        "src": "media/audio/u02.d04.listening.wav",
+        "src": "media/audio/u02.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"
@@ -389,7 +389,7 @@
             "pronunciation"
           ],
           "audio": {
-            "src": "media/audio/u02.d04.mp.works.wav",
+            "src": "media/audio/u02.d04.mp.works.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"

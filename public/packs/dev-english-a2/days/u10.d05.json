@@ -27,7 +27,7 @@
           "example": "I'll call you tonight.",
           "exampleRu": "Я позвоню тебе вечером.",
           "audio": {
-            "src": "media/audio/u10.d05.vocab.call.wav",
+            "src": "media/audio/u10.d05.vocab.call.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "Ring me later.",
           "exampleRu": "Позвони мне позже.",
           "audio": {
-            "src": "media/audio/u10.d05.vocab.ring.wav",
+            "src": "media/audio/u10.d05.vocab.ring.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "My phone is off.",
           "exampleRu": "Мой телефон выключен.",
           "audio": {
-            "src": "media/audio/u10.d05.vocab.phone.wav",
+            "src": "media/audio/u10.d05.vocab.phone.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "Can I leave a message?",
           "exampleRu": "Можно оставить сообщение?",
           "audio": {
-            "src": "media/audio/u10.d05.vocab.message.wav",
+            "src": "media/audio/u10.d05.vocab.message.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "I'll text you.",
           "exampleRu": "Я напишу тебе смс.",
           "audio": {
-            "src": "media/audio/u10.d05.vocab.text.wav",
+            "src": "media/audio/u10.d05.vocab.text.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "She didn't answer.",
           "exampleRu": "Она не ответила.",
           "audio": {
-            "src": "media/audio/u10.d05.vocab.answer.wav",
+            "src": "media/audio/u10.d05.vocab.answer.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "Can I speak to Anna?",
           "exampleRu": "Можно поговорить с Анной?",
           "audio": {
-            "src": "media/audio/u10.d05.vocab.speakto.wav",
+            "src": "media/audio/u10.d05.vocab.speakto.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "I'll call you back.",
           "exampleRu": "Я перезвоню.",
           "audio": {
-            "src": "media/audio/u10.d05.vocab.callback.wav",
+            "src": "media/audio/u10.d05.vocab.callback.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "The line is busy.",
           "exampleRu": "Линия занята.",
           "audio": {
-            "src": "media/audio/u10.d05.vocab.busy.wav",
+            "src": "media/audio/u10.d05.vocab.busy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "Don't hang up!",
           "exampleRu": "Не вешай трубку!",
           "audio": {
-            "src": "media/audio/u10.d05.vocab.hangup.wav",
+            "src": "media/audio/u10.d05.vocab.hangup.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -238,7 +238,7 @@
           "en": "\"Hello, this is Ben. Can I speak to Mia, please?\" \"I'm sorry, she's out. Can I take a message?\" \"Yes. Can you tell her I'll call back at six?\"",
           "ru": "«Алло, это Бен. Можно Мию, пожалуйста?» «Извините, её нет. Передать что-нибудь?» «Да. Скажите, что я перезвоню в шесть».",
           "audio": {
-            "src": "media/audio/u10.d05.reading.b1.wav",
+            "src": "media/audio/u10.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -250,7 +250,7 @@
           "en": "Later Ben called again. \"Hi Mia! Shall we meet tonight?\" \"Sure! Let's meet at the café at seven.\" \"Great. See you then!\"",
           "ru": "Позже Бен позвонил снова. «Привет, Мия! Встретимся сегодня?» «Конечно! Давай в кафе в семь». «Отлично. До встречи!»",
           "audio": {
-            "src": "media/audio/u10.d05.reading.b2.wav",
+            "src": "media/audio/u10.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -279,7 +279,7 @@
         "ru": "Можно Тома?"
       },
       "audio": {
-        "src": "media/audio/u10.d05.listening.wav",
+        "src": "media/audio/u10.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

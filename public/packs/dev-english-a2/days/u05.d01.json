@@ -27,7 +27,7 @@
           "example": "The weather was nice.",
           "exampleRu": "Погода была хорошая.",
           "audio": {
-            "src": "media/audio/u05.d01.vocab.weather.wav",
+            "src": "media/audio/u05.d01.vocab.weather.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "The rain stopped.",
           "exampleRu": "Дождь прекратился.",
           "audio": {
-            "src": "media/audio/u05.d01.vocab.rain.wav",
+            "src": "media/audio/u05.d01.vocab.rain.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "There was a lot of snow.",
           "exampleRu": "Было много снега.",
           "audio": {
-            "src": "media/audio/u05.d01.vocab.snow.wav",
+            "src": "media/audio/u05.d01.vocab.snow.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "The wind was strong.",
           "exampleRu": "Ветер был сильный.",
           "audio": {
-            "src": "media/audio/u05.d01.vocab.wind.wav",
+            "src": "media/audio/u05.d01.vocab.wind.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "It was a sunny day.",
           "exampleRu": "Был солнечный день.",
           "audio": {
-            "src": "media/audio/u05.d01.vocab.sunny.wav",
+            "src": "media/audio/u05.d01.vocab.sunny.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "The sky was cloudy.",
           "exampleRu": "Небо было облачным.",
           "audio": {
-            "src": "media/audio/u05.d01.vocab.cloudy.wav",
+            "src": "media/audio/u05.d01.vocab.cloudy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "The morning was cold.",
           "exampleRu": "Утро было холодным.",
           "audio": {
-            "src": "media/audio/u05.d01.vocab.cold.wav",
+            "src": "media/audio/u05.d01.vocab.cold.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "We had a great trip.",
           "exampleRu": "У нас была отличная поездка.",
           "audio": {
-            "src": "media/audio/u05.d01.vocab.trip.wav",
+            "src": "media/audio/u05.d01.vocab.trip.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "The journey was long.",
           "exampleRu": "Дорога была долгой.",
           "audio": {
-            "src": "media/audio/u05.d01.vocab.journey.wav",
+            "src": "media/audio/u05.d01.vocab.journey.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "We looked at the map.",
           "exampleRu": "Мы смотрели на карту.",
           "audio": {
-            "src": "media/audio/u05.d01.vocab.map.wav",
+            "src": "media/audio/u05.d01.vocab.map.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "Last weekend we went to the mountains. The weather was cold but sunny. We took a train and then walked for two hours with a map.",
           "ru": "На прошлых выходных мы поехали в горы. Погода была холодной, но солнечной. Мы сели на поезд, а потом два часа шли с картой.",
           "audio": {
-            "src": "media/audio/u05.d01.reading.b1.wav",
+            "src": "media/audio/u05.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "In the evening it started to rain, so we stayed in a small hotel. We had hot soup and talked about the trip. It was a great journey.",
           "ru": "Вечером пошёл дождь, поэтому мы остановились в маленьком отеле. Мы ели горячий суп и говорили о поездке. Это было отличное путешествие.",
           "audio": {
-            "src": "media/audio/u05.d01.reading.b2.wav",
+            "src": "media/audio/u05.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Как прошёл отпуск?"
       },
       "audio": {
-        "src": "media/audio/u05.d01.listening.wav",
+        "src": "media/audio/u05.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

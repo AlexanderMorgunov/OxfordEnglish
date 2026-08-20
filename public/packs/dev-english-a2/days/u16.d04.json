@@ -27,7 +27,7 @@
           "example": "By the time we arrived, it had ended.",
           "exampleRu": "К нашему приходу всё закончилось.",
           "audio": {
-            "src": "media/audio/u16.d04.vocab.bythetime.wav",
+            "src": "media/audio/u16.d04.vocab.bythetime.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "As soon as he saw me, he smiled.",
           "exampleRu": "Как только он меня увидел, улыбнулся.",
           "audio": {
-            "src": "media/audio/u16.d04.vocab.assoonas.wav",
+            "src": "media/audio/u16.d04.vocab.assoonas.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "We waited until it stopped.",
           "exampleRu": "Мы ждали, пока не прекратилось.",
           "audio": {
-            "src": "media/audio/u16.d04.vocab.until.wav",
+            "src": "media/audio/u16.d04.vocab.until.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "By then, everyone had left.",
           "exampleRu": "К тому моменту все ушли.",
           "audio": {
-            "src": "media/audio/u16.d04.vocab.bythen.wav",
+            "src": "media/audio/u16.d04.vocab.bythen.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "Meanwhile, I was waiting outside.",
           "exampleRu": "Тем временем я ждал снаружи.",
           "audio": {
-            "src": "media/audio/u16.d04.vocab.meanwhile.wav",
+            "src": "media/audio/u16.d04.vocab.meanwhile.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "Eventually, they found the key.",
           "exampleRu": "В конце концов они нашли ключ.",
           "audio": {
-            "src": "media/audio/u16.d04.vocab.eventually.wav",
+            "src": "media/audio/u16.d04.vocab.eventually.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "It happened during the night.",
           "exampleRu": "Это случилось ночью.",
           "audio": {
-            "src": "media/audio/u16.d04.vocab.during.wav",
+            "src": "media/audio/u16.d04.vocab.during.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "She called immediately.",
           "exampleRu": "Она сразу позвонила.",
           "audio": {
-            "src": "media/audio/u16.d04.vocab.immediately.wav",
+            "src": "media/audio/u16.d04.vocab.immediately.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "It was quite late.",
           "exampleRu": "Было довольно поздно.",
           "audio": {
-            "src": "media/audio/u16.d04.vocab.quite.wav",
+            "src": "media/audio/u16.d04.vocab.quite.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "In the end, it was fine.",
           "exampleRu": "В итоге всё обошлось.",
           "audio": {
-            "src": "media/audio/u16.d04.vocab.intheend.wav",
+            "src": "media/audio/u16.d04.vocab.intheend.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "Our flight was delayed for hours. By the time we finally landed, the last train had already gone. Meanwhile, the rain had turned the roads into rivers, and no taxis were waiting outside.",
           "ru": "Наш рейс задержали на несколько часов. К тому времени, как мы наконец приземлились, последний поезд уже ушёл. Тем временем дождь превратил дороги в реки, и снаружи не было ни одного такси.",
           "audio": {
-            "src": "media/audio/u16.d04.reading.b1.wav",
+            "src": "media/audio/u16.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "We waited until a bus appeared, and as soon as it arrived, everyone rushed on. Eventually, quite late and very tired, we reached home. In the end, we laughed about it — it had been a small adventure after all.",
           "ru": "Мы ждали, пока не появился автобус, и как только он подъехал, все ринулись внутрь. В конце концов, довольно поздно и очень уставшие, мы добрались домой. В итоге мы над этим смеялись — всё-таки это было маленькое приключение.",
           "audio": {
-            "src": "media/audio/u16.d04.reading.b2.wav",
+            "src": "media/audio/u16.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "К тому времени…"
       },
       "audio": {
-        "src": "media/audio/u16.d04.listening.wav",
+        "src": "media/audio/u16.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"
@@ -423,7 +423,7 @@
             "pronunciation"
           ],
           "audio": {
-            "src": "media/audio/u16.d04.ex.mp.01.wav",
+            "src": "media/audio/u16.d04.ex.mp.01.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"

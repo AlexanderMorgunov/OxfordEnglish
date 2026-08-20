@@ -26,7 +26,7 @@
           "example": "Phones are not allowed here.",
           "exampleRu": "Телефоны здесь не разрешены.",
           "audio": {
-            "src": "media/audio/u24.d02.vocab.allow.wav",
+            "src": "media/audio/u24.d02.vocab.allow.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "A ticket is required.",
           "exampleRu": "Требуется билет.",
           "audio": {
-            "src": "media/audio/u24.d02.vocab.require.wav",
+            "src": "media/audio/u24.d02.vocab.require.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "Glass can be recycled.",
           "exampleRu": "Стекло можно переработать.",
           "audio": {
-            "src": "media/audio/u24.d02.vocab.recycle.wav",
+            "src": "media/audio/u24.d02.vocab.recycle.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Nature must be protected.",
           "exampleRu": "Природу нужно защищать.",
           "audio": {
-            "src": "media/audio/u24.d02.vocab.protect.wav",
+            "src": "media/audio/u24.d02.vocab.protect.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The problem can be solved.",
           "exampleRu": "Проблему можно решить.",
           "audio": {
-            "src": "media/audio/u24.d02.vocab.solve.wav",
+            "src": "media/audio/u24.d02.vocab.solve.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "It could be improved.",
           "exampleRu": "Это можно улучшить.",
           "audio": {
-            "src": "media/audio/u24.d02.vocab.improve.wav",
+            "src": "media/audio/u24.d02.vocab.improve.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Accidents can be prevented.",
           "exampleRu": "Аварии можно предотвратить.",
           "audio": {
-            "src": "media/audio/u24.d02.vocab.prevent.wav",
+            "src": "media/audio/u24.d02.vocab.prevent.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "The battery can be charged fast.",
           "exampleRu": "Батарею можно быстро зарядить.",
           "audio": {
-            "src": "media/audio/u24.d02.vocab.charge.wav",
+            "src": "media/audio/u24.d02.vocab.charge.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Rules must be followed.",
           "exampleRu": "Правила нужно соблюдать.",
           "audio": {
-            "src": "media/audio/u24.d02.vocab.rule.wav",
+            "src": "media/audio/u24.d02.vocab.rule.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "A new method is being used.",
           "exampleRu": "Используется новый метод.",
           "audio": {
-            "src": "media/audio/u24.d02.vocab.method.wav",
+            "src": "media/audio/u24.d02.vocab.method.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Next year, big changes will be made to our city. More trees will be planted, and old buses will be replaced with electric ones. \"Pollution can be reduced,\" the mayor said, \"but rules must be followed by everyone.\"",
           "ru": "В следующем году в нашем городе произойдут большие перемены. Посадят больше деревьев, а старые автобусы заменят электрическими. «Загрязнение можно снизить, — сказал мэр, — но правила должны соблюдаться всеми».",
           "audio": {
-            "src": "media/audio/u24.d02.reading.b1.wav",
+            "src": "media/audio/u24.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "New bike lanes will be built, and cars will not be allowed in the centre. \"Waste should be recycled, and energy must be saved. Together, a lot can be done,\" she added. \"The city will be transformed within five years.\"",
           "ru": "Построят новые велодорожки, а машины не пустят в центр. «Отходы следует перерабатывать, а энергию нужно экономить. Вместе можно сделать многое, — добавила она. — Город преобразится за пять лет».",
           "audio": {
-            "src": "media/audio/u24.d02.reading.b2.wav",
+            "src": "media/audio/u24.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Это можно починить?"
       },
       "audio": {
-        "src": "media/audio/u24.d02.listening.wav",
+        "src": "media/audio/u24.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

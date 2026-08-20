@@ -27,7 +27,7 @@
           "example": "I'm sorry I'm late.",
           "exampleRu": "Извини, что опоздал.",
           "audio": {
-            "src": "media/audio/u05.d05.vocab.sorry.wav",
+            "src": "media/audio/u05.d05.vocab.sorry.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "I want to apologize.",
           "exampleRu": "Я хочу извиниться.",
           "audio": {
-            "src": "media/audio/u05.d05.vocab.apologize.wav",
+            "src": "media/audio/u05.d05.vocab.apologize.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "I want to thank you.",
           "exampleRu": "Я хочу тебя поблагодарить.",
           "audio": {
-            "src": "media/audio/u05.d05.vocab.thank.wav",
+            "src": "media/audio/u05.d05.vocab.thank.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "Excuse me, please.",
           "exampleRu": "Извините, пожалуйста.",
           "audio": {
-            "src": "media/audio/u05.d05.vocab.excuse.wav",
+            "src": "media/audio/u05.d05.vocab.excuse.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "It was my mistake.",
           "exampleRu": "Это была моя ошибка.",
           "audio": {
-            "src": "media/audio/u05.d05.vocab.mistake.wav",
+            "src": "media/audio/u05.d05.vocab.mistake.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "Sorry I'm late.",
           "exampleRu": "Извини, что опоздал.",
           "audio": {
-            "src": "media/audio/u05.d05.vocab.late.wav",
+            "src": "media/audio/u05.d05.vocab.late.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "Don't worry.",
           "exampleRu": "Не волнуйся.",
           "audio": {
-            "src": "media/audio/u05.d05.vocab.worry.wav",
+            "src": "media/audio/u05.d05.vocab.worry.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "It's not your fault.",
           "exampleRu": "Это не твоя вина.",
           "audio": {
-            "src": "media/audio/u05.d05.vocab.fault.wav",
+            "src": "media/audio/u05.d05.vocab.fault.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "You're welcome.",
           "exampleRu": "Пожалуйста (не за что).",
           "audio": {
-            "src": "media/audio/u05.d05.vocab.welcome.wav",
+            "src": "media/audio/u05.d05.vocab.welcome.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "Please forgive me.",
           "exampleRu": "Пожалуйста, прости меня.",
           "audio": {
-            "src": "media/audio/u05.d05.vocab.forgive.wav",
+            "src": "media/audio/u05.d05.vocab.forgive.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -238,7 +238,7 @@
           "en": "Ben arrived twenty minutes late. \"I'm really sorry for being late,\" he said. \"The bus didn't come.\" \"Don't worry, it's okay,\" said Mia.",
           "ru": "Бен пришёл на двадцать минут позже. «Извини, что опоздал», — сказал он. «Автобус не пришёл». «Не переживай, всё нормально», — сказала Мия.",
           "audio": {
-            "src": "media/audio/u05.d05.reading.b1.wav",
+            "src": "media/audio/u05.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -250,7 +250,7 @@
           "en": "Mia helped Ben with his work all evening. \"Thank you so much for your help,\" he said. \"You're welcome,\" she smiled. \"That's what friends are for.\"",
           "ru": "Мия весь вечер помогала Бену с работой. «Огромное спасибо за помощь», — сказал он. «Пожалуйста», — улыбнулась она. «Для того и друзья».",
           "audio": {
-            "src": "media/audio/u05.d05.reading.b2.wav",
+            "src": "media/audio/u05.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -279,7 +279,7 @@
         "ru": "Извини, что опоздал"
       },
       "audio": {
-        "src": "media/audio/u05.d05.listening.wav",
+        "src": "media/audio/u05.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

@@ -27,7 +27,7 @@
           "example": "Walk down this street.",
           "exampleRu": "Иди вниз по этой улице.",
           "audio": {
-            "src": "media/audio/u08.d02.vocab.street.wav",
+            "src": "media/audio/u08.d02.vocab.street.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "Cross the road here.",
           "exampleRu": "Перейди дорогу здесь.",
           "audio": {
-            "src": "media/audio/u08.d02.vocab.road.wav",
+            "src": "media/audio/u08.d02.vocab.road.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "The café is on the square.",
           "exampleRu": "Кафе на площади.",
           "audio": {
-            "src": "media/audio/u08.d02.vocab.square.wav",
+            "src": "media/audio/u08.d02.vocab.square.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "Go over the bridge.",
           "exampleRu": "Перейди через мост.",
           "audio": {
-            "src": "media/audio/u08.d02.vocab.bridge.wav",
+            "src": "media/audio/u08.d02.vocab.bridge.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "The park is on the left.",
           "exampleRu": "Парк слева.",
           "audio": {
-            "src": "media/audio/u08.d02.vocab.park.wav",
+            "src": "media/audio/u08.d02.vocab.park.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "The museum is near here.",
           "exampleRu": "Музей рядом.",
           "audio": {
-            "src": "media/audio/u08.d02.vocab.museum.wav",
+            "src": "media/audio/u08.d02.vocab.museum.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "Turn right at the library.",
           "exampleRu": "Поверни направо у библиотеки.",
           "audio": {
-            "src": "media/audio/u08.d02.vocab.library.wav",
+            "src": "media/audio/u08.d02.vocab.library.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "The cinema is opposite the bank.",
           "exampleRu": "Кинотеатр напротив банка.",
           "audio": {
-            "src": "media/audio/u08.d02.vocab.cinema.wav",
+            "src": "media/audio/u08.d02.vocab.cinema.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "The shop is on the corner.",
           "exampleRu": "Магазин на углу.",
           "audio": {
-            "src": "media/audio/u08.d02.vocab.corner.wav",
+            "src": "media/audio/u08.d02.vocab.corner.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "Turn left at the traffic lights.",
           "exampleRu": "Поверни налево у светофора.",
           "audio": {
-            "src": "media/audio/u08.d02.vocab.trafficlights.wav",
+            "src": "media/audio/u08.d02.vocab.trafficlights.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Finding the museum is easy. Go straight on down this street and cross the bridge. Then turn left at the traffic lights.",
           "ru": "Найти музей легко. Иди прямо по этой улице и перейди мост. Потом поверни налево у светофора.",
           "audio": {
-            "src": "media/audio/u08.d02.reading.b1.wav",
+            "src": "media/audio/u08.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "Take the first street on the right and go past the library. The museum is on the corner, opposite the park. Don't go too far!",
           "ru": "Сверни на первую улицу направо и пройди мимо библиотеки. Музей на углу, напротив парка. Не уходи слишком далеко!",
           "audio": {
-            "src": "media/audio/u08.d02.reading.b2.wav",
+            "src": "media/audio/u08.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Где парк?"
       },
       "audio": {
-        "src": "media/audio/u08.d02.listening.wav",
+        "src": "media/audio/u08.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

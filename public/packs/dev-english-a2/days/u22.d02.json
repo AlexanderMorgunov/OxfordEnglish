@@ -26,7 +26,7 @@
           "example": "A quiet village.",
           "exampleRu": "Тихая деревня.",
           "audio": {
-            "src": "media/audio/u22.d02.vocab.village.wav",
+            "src": "media/audio/u22.d02.vocab.village.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "It's a nice area.",
           "exampleRu": "Это приятный район.",
           "audio": {
-            "src": "media/audio/u22.d02.vocab.area.wav",
+            "src": "media/audio/u22.d02.vocab.area.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "An old building.",
           "exampleRu": "Старое здание.",
           "audio": {
-            "src": "media/audio/u22.d02.vocab.building.wav",
+            "src": "media/audio/u22.d02.vocab.building.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "The shop on the corner.",
           "exampleRu": "Магазин на углу.",
           "audio": {
-            "src": "media/audio/u22.d02.vocab.corner.wav",
+            "src": "media/audio/u22.d02.vocab.corner.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I grew up here.",
           "exampleRu": "Я вырос здесь.",
           "audio": {
-            "src": "media/audio/u22.d02.vocab.growup.wav",
+            "src": "media/audio/u22.d02.vocab.growup.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "The moment when we met.",
           "exampleRu": "Момент, когда мы встретились.",
           "audio": {
-            "src": "media/audio/u22.d02.vocab.moment.wav",
+            "src": "media/audio/u22.d02.vocab.moment.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "A difficult period.",
           "exampleRu": "Трудный период.",
           "audio": {
-            "src": "media/audio/u22.d02.vocab.period.wav",
+            "src": "media/audio/u22.d02.vocab.period.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "A quiet spot by the river.",
           "exampleRu": "Тихое место у реки.",
           "audio": {
-            "src": "media/audio/u22.d02.vocab.spot.wav",
+            "src": "media/audio/u22.d02.vocab.spot.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Happy memories.",
           "exampleRu": "Счастливые воспоминания.",
           "audio": {
-            "src": "media/audio/u22.d02.vocab.memory.wav",
+            "src": "media/audio/u22.d02.vocab.memory.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "There's a park nearby.",
           "exampleRu": "Поблизости есть парк.",
           "audio": {
-            "src": "media/audio/u22.d02.vocab.nearby.wav",
+            "src": "media/audio/u22.d02.vocab.nearby.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Last summer I visited the village where I grew up. I walked past the school where I learned to read and the little shop where we bought sweets after class. Everything felt smaller than I remembered.",
           "ru": "Прошлым летом я побывал в деревне, где вырос. Я прошёл мимо школы, где научился читать, и маленького магазина, где мы покупали сладости после уроков. Всё казалось меньше, чем я помнил.",
           "audio": {
-            "src": "media/audio/u22.d02.reading.b1.wav",
+            "src": "media/audio/u22.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "I found the bench where my grandfather used to sit. I still remember the summer when he taught me to fish. It's a place where time seems to slow down — a quiet corner of the world where my happiest memories live.",
           "ru": "Я нашёл скамейку, где обычно сидел мой дед. Я до сих пор помню лето, когда он учил меня рыбачить. Это место, где время будто замедляется, — тихий уголок мира, где живут мои самые счастливые воспоминания.",
           "audio": {
-            "src": "media/audio/u22.d02.reading.b2.wav",
+            "src": "media/audio/u22.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Где вы познакомились?"
       },
       "audio": {
-        "src": "media/audio/u22.d02.listening.wav",
+        "src": "media/audio/u22.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

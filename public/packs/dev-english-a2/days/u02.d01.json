@@ -26,7 +26,7 @@
           "example": "I get up at seven.",
           "exampleRu": "Я встаю в семь.",
           "audio": {
-            "src": "media/audio/u02.d01.vocab.getup.wav",
+            "src": "media/audio/u02.d01.vocab.getup.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "She wakes up early.",
           "exampleRu": "Она просыпается рано.",
           "audio": {
-            "src": "media/audio/u02.d01.vocab.wakeup.wav",
+            "src": "media/audio/u02.d01.vocab.wakeup.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "I have breakfast at home.",
           "exampleRu": "Я завтракаю дома.",
           "audio": {
-            "src": "media/audio/u02.d01.vocab.breakfast.wav",
+            "src": "media/audio/u02.d01.vocab.breakfast.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I go to work by bus.",
           "exampleRu": "Я езжу на работу на автобусе.",
           "audio": {
-            "src": "media/audio/u02.d01.vocab.work.wav",
+            "src": "media/audio/u02.d01.vocab.work.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I start work at nine.",
           "exampleRu": "Я начинаю работу в девять.",
           "audio": {
-            "src": "media/audio/u02.d01.vocab.start.wav",
+            "src": "media/audio/u02.d01.vocab.start.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "She finishes at five.",
           "exampleRu": "Она заканчивает в пять.",
           "audio": {
-            "src": "media/audio/u02.d01.vocab.finish.wav",
+            "src": "media/audio/u02.d01.vocab.finish.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "We have lunch together.",
           "exampleRu": "Мы обедаем вместе.",
           "audio": {
-            "src": "media/audio/u02.d01.vocab.lunch.wav",
+            "src": "media/audio/u02.d01.vocab.lunch.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I cook dinner.",
           "exampleRu": "Я готовлю ужин.",
           "audio": {
-            "src": "media/audio/u02.d01.vocab.dinner.wav",
+            "src": "media/audio/u02.d01.vocab.dinner.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "They watch TV.",
           "exampleRu": "Они смотрят телевизор.",
           "audio": {
-            "src": "media/audio/u02.d01.vocab.watch.wav",
+            "src": "media/audio/u02.d01.vocab.watch.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "I go to bed late.",
           "exampleRu": "Я ложусь спать поздно.",
           "audio": {
-            "src": "media/audio/u02.d01.vocab.gotobed.wav",
+            "src": "media/audio/u02.d01.vocab.gotobed.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -166,7 +166,7 @@
           "example": "She is always busy.",
           "exampleRu": "Она всегда занята.",
           "audio": {
-            "src": "media/audio/u02.d01.vocab.always.wav",
+            "src": "media/audio/u02.d01.vocab.always.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -180,7 +180,7 @@
           "example": "I read every day.",
           "exampleRu": "Я читаю каждый день.",
           "audio": {
-            "src": "media/audio/u02.d01.vocab.everyday.wav",
+            "src": "media/audio/u02.d01.vocab.everyday.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -254,7 +254,7 @@
           "en": "I get up at seven and have breakfast at home. I start work at nine and finish at five.",
           "ru": "Я встаю в семь и завтракаю дома. Начинаю работу в девять и заканчиваю в пять.",
           "audio": {
-            "src": "media/audio/u02.d01.reading.b1.wav",
+            "src": "media/audio/u02.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -266,7 +266,7 @@
           "en": "In the evening I cook dinner and watch TV. My wife always reads a book, and we go to bed late.",
           "ru": "Вечером я готовлю ужин и смотрю телевизор. Жена всегда читает книгу, и мы поздно ложимся спать.",
           "audio": {
-            "src": "media/audio/u02.d01.reading.b2.wav",
+            "src": "media/audio/u02.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -295,7 +295,7 @@
         "ru": "Твой распорядок"
       },
       "audio": {
-        "src": "media/audio/u02.d01.listening.wav",
+        "src": "media/audio/u02.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

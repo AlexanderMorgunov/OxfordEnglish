@@ -26,7 +26,7 @@
           "example": "A cup of tea, please.",
           "exampleRu": "Чашку чая, пожалуйста.",
           "audio": {
-            "src": "media/audio/u07.d01.vocab.cup.wav",
+            "src": "media/audio/u07.d01.vocab.cup.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "A glass of water.",
           "exampleRu": "Стакан воды.",
           "audio": {
-            "src": "media/audio/u07.d01.vocab.glass.wav",
+            "src": "media/audio/u07.d01.vocab.glass.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "I like orange juice.",
           "exampleRu": "Я люблю апельсиновый сок.",
           "audio": {
-            "src": "media/audio/u07.d01.vocab.juice.wav",
+            "src": "media/audio/u07.d01.vocab.juice.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "This cake is sweet.",
           "exampleRu": "Этот торт сладкий.",
           "audio": {
-            "src": "media/audio/u07.d01.vocab.cake.wav",
+            "src": "media/audio/u07.d01.vocab.cake.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I have breakfast at eight.",
           "exampleRu": "Я завтракаю в восемь.",
           "audio": {
-            "src": "media/audio/u07.d01.vocab.breakfast.wav",
+            "src": "media/audio/u07.d01.vocab.breakfast.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "No sugar, thank you.",
           "exampleRu": "Без сахара, спасибо.",
           "audio": {
-            "src": "media/audio/u07.d01.vocab.sugar.wav",
+            "src": "media/audio/u07.d01.vocab.sugar.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Tea with milk, please.",
           "exampleRu": "Чай с молоком, пожалуйста.",
           "audio": {
-            "src": "media/audio/u07.d01.vocab.milk.wav",
+            "src": "media/audio/u07.d01.vocab.milk.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "A table for two, please.",
           "exampleRu": "Столик на двоих, пожалуйста.",
           "audio": {
-            "src": "media/audio/u07.d01.vocab.table.wav",
+            "src": "media/audio/u07.d01.vocab.table.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "A coffee, please.",
           "exampleRu": "Кофе, пожалуйста.",
           "audio": {
-            "src": "media/audio/u07.d01.vocab.please.wav",
+            "src": "media/audio/u07.d01.vocab.please.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Thanks a lot!",
           "exampleRu": "Большое спасибо!",
           "audio": {
-            "src": "media/audio/u07.d01.vocab.thanks.wav",
+            "src": "media/audio/u07.d01.vocab.thanks.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -237,7 +237,7 @@
           "en": "It was lunchtime, so I went to a small café near the office. A waiter came and gave me the menu.",
           "ru": "Был обед, и я пошёл в маленькое кафе рядом с офисом. Официант подошёл и дал мне меню.",
           "audio": {
-            "src": "media/audio/u07.d01.reading.b1.wav",
+            "src": "media/audio/u07.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -249,7 +249,7 @@
           "en": "I'd like a coffee and a cheese sandwich, please, I said. Would you like some water too? he asked. Yes, please. Can I have the bill after?",
           "ru": "«Мне, пожалуйста, кофе и сэндвич с сыром», — сказал я. «Хотите ещё воды?» — спросил он. «Да, пожалуйста. Можно потом счёт?»",
           "audio": {
-            "src": "media/audio/u07.d01.reading.b2.wav",
+            "src": "media/audio/u07.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -288,7 +288,7 @@
         "ru": "Заказываем обед"
       },
       "audio": {
-        "src": "media/audio/u07.d01.listening.wav",
+        "src": "media/audio/u07.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

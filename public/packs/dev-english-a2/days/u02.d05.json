@@ -26,7 +26,7 @@
           "example": "I'm fine, thanks.",
           "exampleRu": "Нормально, спасибо.",
           "audio": {
-            "src": "media/audio/u02.d05.vocab.fine.wav",
+            "src": "media/audio/u02.d05.vocab.fine.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I'm very busy today.",
           "exampleRu": "Я сегодня очень занят.",
           "audio": {
-            "src": "media/audio/u02.d05.vocab.busy.wav",
+            "src": "media/audio/u02.d05.vocab.busy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "I'm a bit tired.",
           "exampleRu": "Я немного устал.",
           "audio": {
-            "src": "media/audio/u02.d05.vocab.tired.wav",
+            "src": "media/audio/u02.d05.vocab.tired.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Are you free tonight?",
           "exampleRu": "Ты свободен вечером?",
           "audio": {
-            "src": "media/audio/u02.d05.vocab.free.wav",
+            "src": "media/audio/u02.d05.vocab.free.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Any plans for the weekend?",
           "exampleRu": "Есть планы на выходные?",
           "audio": {
-            "src": "media/audio/u02.d05.vocab.plans.wav",
+            "src": "media/audio/u02.d05.vocab.plans.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "See you later.",
           "exampleRu": "Увидимся позже.",
           "audio": {
-            "src": "media/audio/u02.d05.vocab.later.wav",
+            "src": "media/audio/u02.d05.vocab.later.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Let's meet for coffee.",
           "exampleRu": "Давай встретимся на кофе.",
           "audio": {
-            "src": "media/audio/u02.d05.vocab.meet.wav",
+            "src": "media/audio/u02.d05.vocab.meet.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "A cup of coffee.",
           "exampleRu": "Чашка кофе.",
           "audio": {
-            "src": "media/audio/u02.d05.vocab.coffee.wav",
+            "src": "media/audio/u02.d05.vocab.coffee.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Have a nice weekend!",
           "exampleRu": "Хороших выходных!",
           "audio": {
-            "src": "media/audio/u02.d05.vocab.weekend.wav",
+            "src": "media/audio/u02.d05.vocab.weekend.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Bye, take care!",
           "exampleRu": "Пока, береги себя!",
           "audio": {
-            "src": "media/audio/u02.d05.vocab.takecare.wav",
+            "src": "media/audio/u02.d05.vocab.takecare.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -207,7 +207,7 @@
           "en": "Hi, how are you? I'm fine, thanks, but a bit busy. And you?",
           "ru": "Привет, как дела? Нормально, спасибо, но немного занят. А ты?",
           "audio": {
-            "src": "media/audio/u02.d05.reading.b1.wav",
+            "src": "media/audio/u02.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -219,7 +219,7 @@
           "en": "I'm a bit tired. Any plans for the weekend? Not really. Let's meet for coffee on Saturday! Great, see you later.",
           "ru": "Я немного устал. Планы на выходные? Не особо. Давай в субботу встретимся на кофе! Отлично, увидимся.",
           "audio": {
-            "src": "media/audio/u02.d05.reading.b2.wav",
+            "src": "media/audio/u02.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -248,7 +248,7 @@
         "ru": "Строим планы"
       },
       "audio": {
-        "src": "media/audio/u02.d05.listening.wav",
+        "src": "media/audio/u02.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

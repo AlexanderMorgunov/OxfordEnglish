@@ -27,7 +27,7 @@
           "example": "A different career.",
           "exampleRu": "Другая карьера.",
           "audio": {
-            "src": "media/audio/u26.d04.vocab.career.wav",
+            "src": "media/audio/u26.d04.vocab.career.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "I don't have a degree.",
           "exampleRu": "У меня нет диплома.",
           "audio": {
-            "src": "media/audio/u26.d04.vocab.degree.wav",
+            "src": "media/audio/u26.d04.vocab.degree.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "I'd be wealthy now.",
           "exampleRu": "Сейчас я был бы богат.",
           "audio": {
-            "src": "media/audio/u26.d04.vocab.wealthy.wav",
+            "src": "media/audio/u26.d04.vocab.wealthy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "I'd be fitter now.",
           "exampleRu": "Сейчас я был бы в лучшей форме.",
           "audio": {
-            "src": "media/audio/u26.d04.vocab.fit.wav",
+            "src": "media/audio/u26.d04.vocab.fit.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "I'd be fluent by now.",
           "exampleRu": "Сейчас я бы уже свободно говорил.",
           "audio": {
-            "src": "media/audio/u26.d04.vocab.fluent.wav",
+            "src": "media/audio/u26.d04.vocab.fluent.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "A different path.",
           "exampleRu": "Другой путь.",
           "audio": {
-            "src": "media/audio/u26.d04.vocab.path.wav",
+            "src": "media/audio/u26.d04.vocab.path.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "Every choice has consequences.",
           "exampleRu": "У каждого выбора есть последствия.",
           "audio": {
-            "src": "media/audio/u26.d04.vocab.consequence.wav",
+            "src": "media/audio/u26.d04.vocab.consequence.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "It felt like destiny.",
           "exampleRu": "Это казалось судьбой.",
           "audio": {
-            "src": "media/audio/u26.d04.vocab.destiny.wav",
+            "src": "media/audio/u26.d04.vocab.destiny.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "I've achieved a lot.",
           "exampleRu": "Я многого достиг.",
           "audio": {
-            "src": "media/audio/u26.d04.vocab.achieve.wav",
+            "src": "media/audio/u26.d04.vocab.achieve.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "I'm grateful for it.",
           "exampleRu": "Я за это благодарен.",
           "audio": {
-            "src": "media/audio/u26.d04.vocab.grateful.wav",
+            "src": "media/audio/u26.d04.vocab.grateful.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "Maria sometimes wonders about the choices she made. \"If I had gone to university, I would probably be a teacher now,\" she says. \"And if I hadn't moved to this city, I wouldn't know my best friends.\"",
           "ru": "Мария иногда размышляет о своих выборах. «Если бы я пошла в университет, сейчас я, наверное, была бы учителем, — говорит она. — А если бы не переехала в этот город, я бы не знала своих лучших друзей».",
           "audio": {
-            "src": "media/audio/u26.d04.reading.b1.wav",
+            "src": "media/audio/u26.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "\"But I don't really regret anything. If I had chosen a different path, I wouldn't be the person I am today.\" She smiled. \"Every decision led me here. If things had gone differently, my whole life would be different now — and I'm grateful for the one I have.\"",
           "ru": "«Но я ни о чём особо не жалею. Если бы я выбрала другой путь, я не была бы тем человеком, какой я сегодня». Она улыбнулась. «Каждое решение привело меня сюда. Если бы всё сложилось иначе, вся моя жизнь была бы сейчас другой — и я благодарна за ту, что у меня есть».",
           "audio": {
-            "src": "media/audio/u26.d04.reading.b2.wav",
+            "src": "media/audio/u26.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Что если?"
       },
       "audio": {
-        "src": "media/audio/u26.d04.listening.wav",
+        "src": "media/audio/u26.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

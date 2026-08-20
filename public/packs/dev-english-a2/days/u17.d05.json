@@ -26,7 +26,7 @@
           "example": "I've got a new job.",
           "exampleRu": "У меня новая работа.",
           "audio": {
-            "src": "media/audio/u17.d05.vocab.job.wav",
+            "src": "media/audio/u17.d05.vocab.job.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "She has a good career.",
           "exampleRu": "У неё хорошая карьера.",
           "audio": {
-            "src": "media/audio/u17.d05.vocab.career.wav",
+            "src": "media/audio/u17.d05.vocab.career.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "My colleagues are friendly.",
           "exampleRu": "Мои коллеги дружелюбны.",
           "audio": {
-            "src": "media/audio/u17.d05.vocab.colleague.wav",
+            "src": "media/audio/u17.d05.vocab.colleague.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "My boss is very fair.",
           "exampleRu": "Мой начальник справедлив.",
           "audio": {
-            "src": "media/audio/u17.d05.vocab.boss.wav",
+            "src": "media/audio/u17.d05.vocab.boss.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The salary is not bad.",
           "exampleRu": "Зарплата неплохая.",
           "audio": {
-            "src": "media/audio/u17.d05.vocab.salary.wav",
+            "src": "media/audio/u17.d05.vocab.salary.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "I go to the office twice a week.",
           "exampleRu": "Я езжу в офис дважды в неделю.",
           "audio": {
-            "src": "media/audio/u17.d05.vocab.office.wav",
+            "src": "media/audio/u17.d05.vocab.office.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "I've been working remotely.",
           "exampleRu": "Я работаю удалённо.",
           "audio": {
-            "src": "media/audio/u17.d05.vocab.remote.wav",
+            "src": "media/audio/u17.d05.vocab.remote.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "It's a full-time job.",
           "exampleRu": "Это работа на полную ставку.",
           "audio": {
-            "src": "media/audio/u17.d05.vocab.fulltime.wav",
+            "src": "media/audio/u17.d05.vocab.fulltime.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "She has a lot of experience.",
           "exampleRu": "У неё большой опыт.",
           "audio": {
-            "src": "media/audio/u17.d05.vocab.experience.wav",
+            "src": "media/audio/u17.d05.vocab.experience.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "I've applied for a new role.",
           "exampleRu": "Я подал заявку на новую должность.",
           "audio": {
-            "src": "media/audio/u17.d05.vocab.apply.wav",
+            "src": "media/audio/u17.d05.vocab.apply.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -238,7 +238,7 @@
           "en": "Maria used to work as an accountant, but she wasn't happy. \"I had a good salary,\" she says, \"but I was bored.\" So last year she applied for a job at a design studio. She has been working there for eight months now.",
           "ru": "Мария раньше работала бухгалтером, но не была счастлива. «У меня была хорошая зарплата, — говорит она, — но мне было скучно». Поэтому в прошлом году она подала заявку в дизайн-студию. Сейчас она работает там уже восемь месяцев.",
           "audio": {
-            "src": "media/audio/u17.d05.reading.b1.wav",
+            "src": "media/audio/u17.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -250,7 +250,7 @@
           "en": "\"It's a full-time job and the office is far away, so I've been working from home two days a week. My colleagues are great, and I've been learning so much. For the first time in years, I love my work.\"",
           "ru": "«Это работа на полную ставку, и офис далеко, поэтому два дня в неделю я работаю из дома. Коллеги замечательные, и я так много узнаю. Впервые за годы я люблю свою работу».",
           "audio": {
-            "src": "media/audio/u17.d05.reading.b2.wav",
+            "src": "media/audio/u17.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -279,7 +279,7 @@
         "ru": "Как новая работа?"
       },
       "audio": {
-        "src": "media/audio/u17.d05.listening.wav",
+        "src": "media/audio/u17.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

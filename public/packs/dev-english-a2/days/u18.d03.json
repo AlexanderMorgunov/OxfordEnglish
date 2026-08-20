@@ -26,7 +26,7 @@
           "example": "She told me to wait.",
           "exampleRu": "Она велела мне подождать.",
           "audio": {
-            "src": "media/audio/u18.d03.vocab.tell.wav",
+            "src": "media/audio/u18.d03.vocab.tell.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "The officer ordered them to stop.",
           "exampleRu": "Офицер приказал им остановиться.",
           "audio": {
-            "src": "media/audio/u18.d03.vocab.order.wav",
+            "src": "media/audio/u18.d03.vocab.order.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "He warned us not to be late.",
           "exampleRu": "Он предупредил нас не опаздывать.",
           "audio": {
-            "src": "media/audio/u18.d03.vocab.warn.wav",
+            "src": "media/audio/u18.d03.vocab.warn.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "She advised me to rest.",
           "exampleRu": "Она посоветовала мне отдохнуть.",
           "audio": {
-            "src": "media/audio/u18.d03.vocab.advise.wav",
+            "src": "media/audio/u18.d03.vocab.advise.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Remind me to call him.",
           "exampleRu": "Напомни мне позвонить ему.",
           "audio": {
-            "src": "media/audio/u18.d03.vocab.remind.wav",
+            "src": "media/audio/u18.d03.vocab.remind.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "They allowed us to leave.",
           "exampleRu": "Нам разрешили уйти.",
           "audio": {
-            "src": "media/audio/u18.d03.vocab.allow.wav",
+            "src": "media/audio/u18.d03.vocab.allow.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "He refused to help.",
           "exampleRu": "Он отказался помочь.",
           "audio": {
-            "src": "media/audio/u18.d03.vocab.refuse.wav",
+            "src": "media/audio/u18.d03.vocab.refuse.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "She encouraged me to try.",
           "exampleRu": "Она подбодрила меня попробовать.",
           "audio": {
-            "src": "media/audio/u18.d03.vocab.encourage.wav",
+            "src": "media/audio/u18.d03.vocab.encourage.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "It was a polite request.",
           "exampleRu": "Это была вежливая просьба.",
           "audio": {
-            "src": "media/audio/u18.d03.vocab.request.wav",
+            "src": "media/audio/u18.d03.vocab.request.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Follow the instructions.",
           "exampleRu": "Следуй указаниям.",
           "audio": {
-            "src": "media/audio/u18.d03.vocab.instruction.wav",
+            "src": "media/audio/u18.d03.vocab.instruction.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Before the trip, the guide gave us some instructions. She told us to stay together and asked us not to touch the animals. She also warned us not to leave the path.",
           "ru": "Перед поездкой гид дала нам указания. Она велела нам держаться вместе и попросила не трогать животных. Ещё она предупредила нас не сходить с тропы.",
           "audio": {
-            "src": "media/audio/u18.d03.reading.b1.wav",
+            "src": "media/audio/u18.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "She reminded everyone to bring water and advised us to wear strong shoes. One man refused to follow the rules, so she told him to wait in the bus. In the end, everyone else had a wonderful day.",
           "ru": "Она напомнила всем взять воду и посоветовала надеть крепкую обувь. Один мужчина отказался соблюдать правила, поэтому она велела ему ждать в автобусе. В итоге все остальные прекрасно провели день.",
           "audio": {
-            "src": "media/audio/u18.d03.reading.b2.wav",
+            "src": "media/audio/u18.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Что сказал врач?"
       },
       "audio": {
-        "src": "media/audio/u18.d03.listening.wav",
+        "src": "media/audio/u18.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

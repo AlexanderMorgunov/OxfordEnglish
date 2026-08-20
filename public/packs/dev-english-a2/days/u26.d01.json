@@ -26,7 +26,7 @@
           "example": "I regret my choice.",
           "exampleRu": "Я сожалею о своём выборе.",
           "audio": {
-            "src": "media/audio/u26.d01.vocab.regret.wav",
+            "src": "media/audio/u26.d01.vocab.regret.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "It was a big mistake.",
           "exampleRu": "Это была большая ошибка.",
           "audio": {
-            "src": "media/audio/u26.d01.vocab.mistake.wav",
+            "src": "media/audio/u26.d01.vocab.mistake.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "I missed my chance.",
           "exampleRu": "Я упустил свой шанс.",
           "audio": {
-            "src": "media/audio/u26.d01.vocab.chance.wav",
+            "src": "media/audio/u26.d01.vocab.chance.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I didn't realise.",
           "exampleRu": "Я не понимал.",
           "audio": {
-            "src": "media/audio/u26.d01.vocab.realise.wav",
+            "src": "media/audio/u26.d01.vocab.realise.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Nobody warned me.",
           "exampleRu": "Никто меня не предупредил.",
           "audio": {
-            "src": "media/audio/u26.d01.vocab.warn.wav",
+            "src": "media/audio/u26.d01.vocab.warn.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "A hard decision.",
           "exampleRu": "Трудное решение.",
           "audio": {
-            "src": "media/audio/u26.d01.vocab.decision.wav",
+            "src": "media/audio/u26.d01.vocab.decision.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "I would have done it differently.",
           "exampleRu": "Я бы сделал это иначе.",
           "audio": {
-            "src": "media/audio/u26.d01.vocab.differently.wav",
+            "src": "media/audio/u26.d01.vocab.differently.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "The result was bad.",
           "exampleRu": "Результат был плохим.",
           "audio": {
-            "src": "media/audio/u26.d01.vocab.result.wav",
+            "src": "media/audio/u26.d01.vocab.result.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I should have prepared.",
           "exampleRu": "Мне стоило подготовиться.",
           "audio": {
-            "src": "media/audio/u26.d01.vocab.prepare.wav",
+            "src": "media/audio/u26.d01.vocab.prepare.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "If only I'd been careful.",
           "exampleRu": "Если бы я только был осторожен.",
           "audio": {
-            "src": "media/audio/u26.d01.vocab.careful.wav",
+            "src": "media/audio/u26.d01.vocab.careful.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Tom often thinks about the job he didn't take. \"If I had accepted it, my life would have been completely different,\" he says. \"I would have moved abroad and learned a new language. But I was scared, so I said no.\"",
           "ru": "Том часто думает о работе, которую не принял. «Если бы я согласился, моя жизнь была бы совсем другой, — говорит он. — Я бы уехал за границу и выучил новый язык. Но я испугался, поэтому отказался».",
           "audio": {
-            "src": "media/audio/u26.d01.reading.b1.wav",
+            "src": "media/audio/u26.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"If someone had told me how much I'd regret it, I would have been braver.\" Still, he learned something. \"If I hadn't made that mistake, I wouldn't have understood how important it is to take chances. So maybe it wasn't all bad.\"",
           "ru": "«Если бы кто-то сказал мне, как сильно я буду жалеть, я был бы смелее». И всё же он кое-чему научился. «Если бы я не совершил той ошибки, я бы не понял, как важно рисковать. Так что, может, не всё так плохо».",
           "audio": {
-            "src": "media/audio/u26.d01.reading.b2.wav",
+            "src": "media/audio/u26.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Что пошло не так?"
       },
       "audio": {
-        "src": "media/audio/u26.d01.listening.wav",
+        "src": "media/audio/u26.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

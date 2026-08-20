@@ -27,7 +27,7 @@
           "example": "I was waiting for the bus.",
           "exampleRu": "Я ждал автобус.",
           "audio": {
-            "src": "media/audio/u05.d02.vocab.bus.wav",
+            "src": "media/audio/u05.d02.vocab.bus.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "The train was late.",
           "exampleRu": "Поезд опаздывал.",
           "audio": {
-            "src": "media/audio/u05.d02.vocab.train.wav",
+            "src": "media/audio/u05.d02.vocab.train.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "The plane was landing.",
           "exampleRu": "Самолёт садился.",
           "audio": {
-            "src": "media/audio/u05.d02.vocab.plane.wav",
+            "src": "media/audio/u05.d02.vocab.plane.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "She was driving her car.",
           "exampleRu": "Она вела машину.",
           "audio": {
-            "src": "media/audio/u05.d02.vocab.car.wav",
+            "src": "media/audio/u05.d02.vocab.car.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "I was buying a ticket.",
           "exampleRu": "Я покупал билет.",
           "audio": {
-            "src": "media/audio/u05.d02.vocab.ticket.wav",
+            "src": "media/audio/u05.d02.vocab.ticket.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "We were at the station.",
           "exampleRu": "Мы были на вокзале.",
           "audio": {
-            "src": "media/audio/u05.d02.vocab.station.wav",
+            "src": "media/audio/u05.d02.vocab.station.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "They were waiting at the airport.",
           "exampleRu": "Они ждали в аэропорту.",
           "audio": {
-            "src": "media/audio/u05.d02.vocab.airport.wav",
+            "src": "media/audio/u05.d02.vocab.airport.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "We ran to catch the train.",
           "exampleRu": "Мы бежали, чтобы успеть на поезд.",
           "audio": {
-            "src": "media/audio/u05.d02.vocab.catch.wav",
+            "src": "media/audio/u05.d02.vocab.catch.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "I missed the bus.",
           "exampleRu": "Я опоздал на автобус.",
           "audio": {
-            "src": "media/audio/u05.d02.vocab.miss.wav",
+            "src": "media/audio/u05.d02.vocab.miss.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "The train left from platform two.",
           "exampleRu": "Поезд ушёл со второй платформы.",
           "audio": {
-            "src": "media/audio/u05.d02.vocab.platform.wav",
+            "src": "media/audio/u05.d02.vocab.platform.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "At six o'clock the station was busy. People were running to catch their trains. A woman was buying a ticket and a man was reading a newspaper.",
           "ru": "В шесть часов вокзал был оживлённым. Люди бежали, чтобы успеть на поезда. Женщина покупала билет, а мужчина читал газету.",
           "audio": {
-            "src": "media/audio/u05.d02.reading.b1.wav",
+            "src": "media/audio/u05.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "On platform two, some students were waiting for the train to the city. It was raining, so everybody was standing under the roof.",
           "ru": "На второй платформе студенты ждали поезд в город. Шёл дождь, поэтому все стояли под крышей.",
           "audio": {
-            "src": "media/audio/u05.d02.reading.b2.wav",
+            "src": "media/audio/u05.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "В восемь часов"
       },
       "audio": {
-        "src": "media/audio/u05.d02.listening.wav",
+        "src": "media/audio/u05.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

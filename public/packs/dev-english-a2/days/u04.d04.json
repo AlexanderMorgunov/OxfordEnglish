@@ -26,7 +26,7 @@
           "example": "I reported the bug.",
           "exampleRu": "Я сообщил о баге.",
           "audio": {
-            "src": "media/audio/u04.d04.vocab.reported.wav",
+            "src": "media/audio/u04.d04.vocab.reported.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "She explained the issue.",
           "exampleRu": "Она объяснила проблему.",
           "audio": {
-            "src": "media/audio/u04.d04.vocab.explained.wav",
+            "src": "media/audio/u04.d04.vocab.explained.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "He asked a question.",
           "exampleRu": "Он задал вопрос.",
           "audio": {
-            "src": "media/audio/u04.d04.vocab.asked.wav",
+            "src": "media/audio/u04.d04.vocab.asked.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I answered him.",
           "exampleRu": "Я ответил ему.",
           "audio": {
-            "src": "media/audio/u04.d04.vocab.answered.wav",
+            "src": "media/audio/u04.d04.vocab.answered.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "They helped me.",
           "exampleRu": "Они помогли мне.",
           "audio": {
-            "src": "media/audio/u04.d04.vocab.helped.wav",
+            "src": "media/audio/u04.d04.vocab.helped.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "She joined the call.",
           "exampleRu": "Она присоединилась к звонку.",
           "audio": {
-            "src": "media/audio/u04.d04.vocab.joined.wav",
+            "src": "media/audio/u04.d04.vocab.joined.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "He called me.",
           "exampleRu": "Он позвонил мне.",
           "audio": {
-            "src": "media/audio/u04.d04.vocab.called.wav",
+            "src": "media/audio/u04.d04.vocab.called.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I sent the email.",
           "exampleRu": "Я отправил письмо.",
           "audio": {
-            "src": "media/audio/u04.d04.vocab.sent.wav",
+            "src": "media/audio/u04.d04.vocab.sent.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I opened a ticket.",
           "exampleRu": "Я открыл тикет.",
           "audio": {
-            "src": "media/audio/u04.d04.vocab.opened.wav",
+            "src": "media/audio/u04.d04.vocab.opened.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "We closed the issue.",
           "exampleRu": "Мы закрыли проблему.",
           "audio": {
-            "src": "media/audio/u04.d04.vocab.closed.wav",
+            "src": "media/audio/u04.d04.vocab.closed.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -202,7 +202,7 @@
           "en": "At standup I reported my day. I fixed a bug, merged a branch, and deployed the app. The server went down once, but we reverted the change.",
           "ru": "На стендапе я рассказал про свой день. Я починил баг, влил ветку и задеплоил приложение. Сервер один раз упал, но мы откатили изменение.",
           "audio": {
-            "src": "media/audio/u04.d04.reading.b1.wav",
+            "src": "media/audio/u04.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -236,7 +236,7 @@
         "ru": "На стендапе"
       },
       "audio": {
-        "src": "media/audio/u04.d04.listen2.wav",
+        "src": "media/audio/u04.d04.listen2.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

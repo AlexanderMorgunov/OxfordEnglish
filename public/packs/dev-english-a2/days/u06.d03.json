@@ -26,7 +26,7 @@
           "example": "This is my key.",
           "exampleRu": "Это мой ключ.",
           "audio": {
-            "src": "media/audio/u06.d03.vocab.key.wav",
+            "src": "media/audio/u06.d03.vocab.key.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "That clock is old.",
           "exampleRu": "Те часы старые.",
           "audio": {
-            "src": "media/audio/u06.d03.vocab.clock.wav",
+            "src": "media/audio/u06.d03.vocab.clock.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "These plants are green.",
           "exampleRu": "Эти растения зелёные.",
           "audio": {
-            "src": "media/audio/u06.d03.vocab.plant.wav",
+            "src": "media/audio/u06.d03.vocab.plant.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Those curtains are blue.",
           "exampleRu": "Те шторы синие.",
           "audio": {
-            "src": "media/audio/u06.d03.vocab.curtain.wav",
+            "src": "media/audio/u06.d03.vocab.curtain.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The garden is behind the house.",
           "exampleRu": "Сад за домом.",
           "audio": {
-            "src": "media/audio/u06.d03.vocab.garden.wav",
+            "src": "media/audio/u06.d03.vocab.garden.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "This is the living room.",
           "exampleRu": "Это гостиная.",
           "audio": {
-            "src": "media/audio/u06.d03.vocab.livingroom.wav",
+            "src": "media/audio/u06.d03.vocab.livingroom.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "The keys are in that drawer.",
           "exampleRu": "Ключи в том ящике.",
           "audio": {
-            "src": "media/audio/u06.d03.vocab.drawer.wav",
+            "src": "media/audio/u06.d03.vocab.drawer.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "These cushions are soft.",
           "exampleRu": "Эти подушки мягкие.",
           "audio": {
-            "src": "media/audio/u06.d03.vocab.cushion.wav",
+            "src": "media/audio/u06.d03.vocab.cushion.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "The stairs are near the door.",
           "exampleRu": "Лестница у двери.",
           "audio": {
-            "src": "media/audio/u06.d03.vocab.stairs.wav",
+            "src": "media/audio/u06.d03.vocab.stairs.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "My clothes are in the wardrobe.",
           "exampleRu": "Моя одежда в шкафу.",
           "audio": {
-            "src": "media/audio/u06.d03.vocab.wardrobe.wav",
+            "src": "media/audio/u06.d03.vocab.wardrobe.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "\"Come in! This is the living room. This sofa is new, and these cushions are very soft. That clock on the wall is old — it was my grandmother's.\"",
           "ru": "«Заходи! Это гостиная. Этот диван новый, а эти подушки очень мягкие. Те часы на стене старые — они были бабушкиными».",
           "audio": {
-            "src": "media/audio/u06.d03.reading.b1.wav",
+            "src": "media/audio/u06.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"Those windows look at the garden. And this door goes to the kitchen. Do you like it?\" \"Yes, this house is beautiful!\"",
           "ru": "«Те окна выходят в сад. А эта дверь ведёт на кухню. Тебе нравится?» «Да, этот дом прекрасен!»",
           "audio": {
-            "src": "media/audio/u06.d03.reading.b2.wav",
+            "src": "media/audio/u06.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Что это?"
       },
       "audio": {
-        "src": "media/audio/u06.d03.listening.wav",
+        "src": "media/audio/u06.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

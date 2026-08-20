@@ -26,7 +26,7 @@
           "example": "I decided to stay.",
           "exampleRu": "Я решил остаться.",
           "audio": {
-            "src": "media/audio/u20.d02.vocab.decide.wav",
+            "src": "media/audio/u20.d02.vocab.decide.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I hope to see you soon.",
           "exampleRu": "Надеюсь скоро тебя увидеть.",
           "audio": {
-            "src": "media/audio/u20.d02.vocab.hope.wav",
+            "src": "media/audio/u20.d02.vocab.hope.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "He promised to call.",
           "exampleRu": "Он обещал позвонить.",
           "audio": {
-            "src": "media/audio/u20.d02.vocab.promise.wav",
+            "src": "media/audio/u20.d02.vocab.promise.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "She's learning to drive.",
           "exampleRu": "Она учится водить.",
           "audio": {
-            "src": "media/audio/u20.d02.vocab.learn.wav",
+            "src": "media/audio/u20.d02.vocab.learn.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "We plan to travel.",
           "exampleRu": "Мы планируем путешествовать.",
           "audio": {
-            "src": "media/audio/u20.d02.vocab.plan.wav",
+            "src": "media/audio/u20.d02.vocab.plan.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "He offered to help.",
           "exampleRu": "Он предложил помочь.",
           "audio": {
-            "src": "media/audio/u20.d02.vocab.offer.wav",
+            "src": "media/audio/u20.d02.vocab.offer.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "She refused to answer.",
           "exampleRu": "Она отказалась отвечать.",
           "audio": {
-            "src": "media/audio/u20.d02.vocab.refuse.wav",
+            "src": "media/audio/u20.d02.vocab.refuse.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I managed to finish.",
           "exampleRu": "Мне удалось закончить.",
           "audio": {
-            "src": "media/audio/u20.d02.vocab.manage.wav",
+            "src": "media/audio/u20.d02.vocab.manage.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "We can't afford to wait.",
           "exampleRu": "Мы не можем позволить себе ждать.",
           "audio": {
-            "src": "media/audio/u20.d02.vocab.afford.wav",
+            "src": "media/audio/u20.d02.vocab.afford.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "They agreed to meet.",
           "exampleRu": "Они согласились встретиться.",
           "audio": {
-            "src": "media/audio/u20.d02.vocab.agree.wav",
+            "src": "media/audio/u20.d02.vocab.agree.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "This year, Maya decided to learn to swim. She had always wanted to, but she was afraid of water. \"I promised myself to try,\" she said. She planned to take one lesson a week and hoped to swim a whole length by summer.",
           "ru": "В этом году Майя решила научиться плавать. Ей всегда этого хотелось, но она боялась воды. «Я пообещала себе попробовать», — сказала она. Она планировала брать по одному уроку в неделю и надеялась к лету проплыть целую дорожку.",
           "audio": {
-            "src": "media/audio/u20.d02.reading.b1.wav",
+            "src": "media/audio/u20.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "At first she wanted to give up, but her teacher offered to help her more. After three months, she managed to swim across the pool. \"I couldn't afford to quit,\" she laughed. \"Now I can't wait to try the sea.\"",
           "ru": "Сначала она хотела бросить, но учитель предложил помогать ей больше. Через три месяца ей удалось переплыть бассейн. «Я не могла позволить себе сдаться», — засмеялась она. «Теперь мне не терпится попробовать море».",
           "audio": {
-            "src": "media/audio/u20.d02.reading.b2.wav",
+            "src": "media/audio/u20.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Какие у тебя планы?"
       },
       "audio": {
-        "src": "media/audio/u20.d02.listening.wav",
+        "src": "media/audio/u20.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

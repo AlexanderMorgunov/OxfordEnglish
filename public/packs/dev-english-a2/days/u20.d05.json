@@ -26,7 +26,7 @@
           "example": "I prefer tea to coffee.",
           "exampleRu": "Я предпочитаю чай кофе.",
           "audio": {
-            "src": "media/audio/u20.d05.vocab.prefer.wav",
+            "src": "media/audio/u20.d05.vocab.prefer.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I'd rather walk.",
           "exampleRu": "Я бы лучше пошёл пешком.",
           "audio": {
-            "src": "media/audio/u20.d05.vocab.rather.wav",
+            "src": "media/audio/u20.d05.vocab.rather.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "It's my favourite song.",
           "exampleRu": "Это моя любимая песня.",
           "audio": {
-            "src": "media/audio/u20.d05.vocab.favourite.wav",
+            "src": "media/audio/u20.d05.vocab.favourite.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I really enjoy it.",
           "exampleRu": "Мне это очень нравится.",
           "audio": {
-            "src": "media/audio/u20.d05.vocab.enjoy.wav",
+            "src": "media/audio/u20.d05.vocab.enjoy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I hate getting up early.",
           "exampleRu": "Ненавижу рано вставать.",
           "audio": {
-            "src": "media/audio/u20.d05.vocab.hate.wav",
+            "src": "media/audio/u20.d05.vocab.hate.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "I don't mind either.",
           "exampleRu": "Мне всё равно.",
           "audio": {
-            "src": "media/audio/u20.d05.vocab.mind.wav",
+            "src": "media/audio/u20.d05.vocab.mind.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "It's your choice.",
           "exampleRu": "Это твой выбор.",
           "audio": {
-            "src": "media/audio/u20.d05.vocab.choice.wav",
+            "src": "media/audio/u20.d05.vocab.choice.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "It depends on the weather.",
           "exampleRu": "Это зависит от погоды.",
           "audio": {
-            "src": "media/audio/u20.d05.vocab.depend.wav",
+            "src": "media/audio/u20.d05.vocab.depend.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I like both.",
           "exampleRu": "Мне нравятся оба.",
           "audio": {
-            "src": "media/audio/u20.d05.vocab.both.wav",
+            "src": "media/audio/u20.d05.vocab.both.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Neither, thanks.",
           "exampleRu": "Ни то, ни другое, спасибо.",
           "audio": {
-            "src": "media/audio/u20.d05.vocab.neither.wav",
+            "src": "media/audio/u20.d05.vocab.neither.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -238,7 +238,7 @@
           "en": "\"What do you want to do tonight?\" asked Nina. \"Honestly, I'd rather stay in,\" said Omar. \"I prefer relaxing at home to going to loud places.\" Nina laughed. \"I usually prefer going out, but tonight I don't mind either.\"",
           "ru": "«Что хочешь сегодня делать?» — спросила Нина. «Честно, я бы лучше остался дома, — сказал Омар. — Я предпочитаю отдыхать дома, а не ходить по шумным местам». Нина засмеялась. «Обычно я предпочитаю гулять, но сегодня мне всё равно».",
           "audio": {
-            "src": "media/audio/u20.d05.reading.b1.wav",
+            "src": "media/audio/u20.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -250,7 +250,7 @@
           "en": "\"We could cook something,\" Omar suggested. \"I'd prefer to make pasta.\" \"Perfect,\" said Nina. \"I love cooking together. It depends on the mood, but a quiet night sounds great to me too.\"",
           "ru": "«Можем что-нибудь приготовить, — предложил Омар. — Я бы предпочёл сделать пасту». «Отлично, — сказала Нина. — Обожаю готовить вместе. Всё зависит от настроения, но тихий вечер и мне по душе».",
           "audio": {
-            "src": "media/audio/u20.d05.reading.b2.wav",
+            "src": "media/audio/u20.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -279,7 +279,7 @@
         "ru": "Чай или кофе?"
       },
       "audio": {
-        "src": "media/audio/u20.d05.listening.wav",
+        "src": "media/audio/u20.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

@@ -27,7 +27,7 @@
           "example": "She asked a question.",
           "exampleRu": "Она задала вопрос.",
           "audio": {
-            "src": "media/audio/u18.d02.vocab.ask.wav",
+            "src": "media/audio/u18.d02.vocab.ask.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "I wonder where he is.",
           "exampleRu": "Интересно, где он.",
           "audio": {
-            "src": "media/audio/u18.d02.vocab.wonder.wav",
+            "src": "media/audio/u18.d02.vocab.wonder.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "I asked whether it was true.",
           "exampleRu": "Я спросил, правда ли это.",
           "audio": {
-            "src": "media/audio/u18.d02.vocab.whether.wav",
+            "src": "media/audio/u18.d02.vocab.whether.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "She had a job interview.",
           "exampleRu": "У неё было собеседование.",
           "audio": {
-            "src": "media/audio/u18.d02.vocab.interview.wav",
+            "src": "media/audio/u18.d02.vocab.interview.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "The journalist asked many questions.",
           "exampleRu": "Журналист задал много вопросов.",
           "audio": {
-            "src": "media/audio/u18.d02.vocab.journalist.wav",
+            "src": "media/audio/u18.d02.vocab.journalist.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "He answered every question.",
           "exampleRu": "Он ответил на каждый вопрос.",
           "audio": {
-            "src": "media/audio/u18.d02.vocab.answer.wav",
+            "src": "media/audio/u18.d02.vocab.answer.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "It was a hard question.",
           "exampleRu": "Это был трудный вопрос.",
           "audio": {
-            "src": "media/audio/u18.d02.vocab.question.wav",
+            "src": "media/audio/u18.d02.vocab.question.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "She was curious about the plan.",
           "exampleRu": "Ей было любопытно узнать о плане.",
           "audio": {
-            "src": "media/audio/u18.d02.vocab.curious.wav",
+            "src": "media/audio/u18.d02.vocab.curious.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "I want to find out the truth.",
           "exampleRu": "Я хочу выяснить правду.",
           "audio": {
-            "src": "media/audio/u18.d02.vocab.findout.wav",
+            "src": "media/audio/u18.d02.vocab.findout.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "He asked for more details.",
           "exampleRu": "Он спросил больше подробностей.",
           "audio": {
-            "src": "media/audio/u18.d02.vocab.detail.wav",
+            "src": "media/audio/u18.d02.vocab.detail.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "Yesterday Lena had a job interview. The manager asked her why she wanted the job and where she had worked before. He also asked whether she could start in September.",
           "ru": "Вчера у Лены было собеседование. Менеджер спросил, почему она хочет эту работу и где она работала раньше. Ещё он спросил, может ли она начать в сентябре.",
           "audio": {
-            "src": "media/audio/u18.d02.reading.b1.wav",
+            "src": "media/audio/u18.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "\"He asked me a lot of questions,\" Lena said later. \"He wanted to know if I spoke any other languages and how I dealt with stress. I think it went well — he asked when I could come back for a second interview.\"",
           "ru": "«Он задал мне много вопросов, — рассказала Лена позже. — Он хотел знать, говорю ли я на других языках и как справляюсь со стрессом. Думаю, всё прошло хорошо — он спросил, когда я могу прийти на второе собеседование».",
           "audio": {
-            "src": "media/audio/u18.d02.reading.b2.wav",
+            "src": "media/audio/u18.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "О чём он спросил?"
       },
       "audio": {
-        "src": "media/audio/u18.d02.listening.wav",
+        "src": "media/audio/u18.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

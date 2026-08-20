@@ -26,7 +26,7 @@
           "example": "In my childhood, we played outside.",
           "exampleRu": "В детстве мы играли на улице.",
           "audio": {
-            "src": "media/audio/u23.d01.vocab.childhood.wav",
+            "src": "media/audio/u23.d01.vocab.childhood.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I used to live here.",
           "exampleRu": "Раньше я здесь жил.",
           "audio": {
-            "src": "media/audio/u23.d01.vocab.usedto.wav",
+            "src": "media/audio/u23.d01.vocab.usedto.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "We visited our grandparents.",
           "exampleRu": "Мы навещали бабушку и дедушку.",
           "audio": {
-            "src": "media/audio/u23.d01.vocab.grandparents.wav",
+            "src": "media/audio/u23.d01.vocab.grandparents.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "The neighbourhood has changed.",
           "exampleRu": "Район изменился.",
           "audio": {
-            "src": "media/audio/u23.d01.vocab.neighbourhood.wav",
+            "src": "media/audio/u23.d01.vocab.neighbourhood.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "There used to be a field here.",
           "exampleRu": "Раньше здесь было поле.",
           "audio": {
-            "src": "media/audio/u23.d01.vocab.field.wav",
+            "src": "media/audio/u23.d01.vocab.field.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "I used to collect stamps.",
           "exampleRu": "Раньше я собирал марки.",
           "audio": {
-            "src": "media/audio/u23.d01.vocab.collect.wav",
+            "src": "media/audio/u23.d01.vocab.collect.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Nowadays it's different.",
           "exampleRu": "В наши дни всё иначе.",
           "audio": {
-            "src": "media/audio/u23.d01.vocab.nowadays.wav",
+            "src": "media/audio/u23.d01.vocab.nowadays.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "He no longer works here.",
           "exampleRu": "Он больше здесь не работает.",
           "audio": {
-            "src": "media/audio/u23.d01.vocab.nolonger.wav",
+            "src": "media/audio/u23.d01.vocab.nolonger.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Back then, life was slower.",
           "exampleRu": "Тогда жизнь была медленнее.",
           "audio": {
-            "src": "media/audio/u23.d01.vocab.backthen.wav",
+            "src": "media/audio/u23.d01.vocab.backthen.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "A happy memory.",
           "exampleRu": "Счастливое воспоминание.",
           "audio": {
-            "src": "media/audio/u23.d01.vocab.memory.wav",
+            "src": "media/audio/u23.d01.vocab.memory.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "When my grandfather was young, life used to be very different. There didn't use to be televisions or phones. Children used to play in the streets until dark, and everyone used to know their neighbours.",
           "ru": "Когда мой дед был молод, жизнь была совсем другой. Раньше не было телевизоров и телефонов. Дети играли на улицах до темноты, и все знали своих соседей.",
           "audio": {
-            "src": "media/audio/u23.d01.reading.b1.wav",
+            "src": "media/audio/u23.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"We used to grow our own vegetables,\" he told me. \"And on Sundays, the whole family used to eat together.\" There used to be a small cinema in town, but it closed years ago. \"Things change,\" he said, \"but the memories stay.\"",
           "ru": "«Мы сами выращивали овощи, — рассказал он мне. — А по воскресеньям вся семья ела вместе». Раньше в городе был маленький кинотеатр, но он закрылся много лет назад. «Всё меняется, — сказал он, — но воспоминания остаются».",
           "audio": {
-            "src": "media/audio/u23.d01.reading.b2.wav",
+            "src": "media/audio/u23.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Ты раньше…?"
       },
       "audio": {
-        "src": "media/audio/u23.d01.listening.wav",
+        "src": "media/audio/u23.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

@@ -26,7 +26,7 @@
           "example": "Have you heard the news?",
           "exampleRu": "Ты слышал новости?",
           "audio": {
-            "src": "media/audio/u18.d01.vocab.news.wav",
+            "src": "media/audio/u18.d01.vocab.news.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "They reported an accident.",
           "exampleRu": "Они сообщили об аварии.",
           "audio": {
-            "src": "media/audio/u18.d01.vocab.report.wav",
+            "src": "media/audio/u18.d01.vocab.report.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "The company announced a new phone.",
           "exampleRu": "Компания объявила о новом телефоне.",
           "audio": {
-            "src": "media/audio/u18.d01.vocab.announce.wav",
+            "src": "media/audio/u18.d01.vocab.announce.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "She explained the plan.",
           "exampleRu": "Она объяснила план.",
           "audio": {
-            "src": "media/audio/u18.d01.vocab.explain.wav",
+            "src": "media/audio/u18.d01.vocab.explain.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "He mentioned a problem.",
           "exampleRu": "Он упомянул проблему.",
           "audio": {
-            "src": "media/audio/u18.d01.vocab.mention.wav",
+            "src": "media/audio/u18.d01.vocab.mention.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "They promised to help.",
           "exampleRu": "Они пообещали помочь.",
           "audio": {
-            "src": "media/audio/u18.d01.vocab.promise.wav",
+            "src": "media/audio/u18.d01.vocab.promise.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "He complained about the noise.",
           "exampleRu": "Он пожаловался на шум.",
           "audio": {
-            "src": "media/audio/u18.d01.vocab.complain.wav",
+            "src": "media/audio/u18.d01.vocab.complain.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "She admitted her mistake.",
           "exampleRu": "Она признала ошибку.",
           "audio": {
-            "src": "media/audio/u18.d01.vocab.admit.wav",
+            "src": "media/audio/u18.d01.vocab.admit.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "He replied at once.",
           "exampleRu": "Он ответил сразу.",
           "audio": {
-            "src": "media/audio/u18.d01.vocab.reply.wav",
+            "src": "media/audio/u18.d01.vocab.reply.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "I got your message.",
           "exampleRu": "Я получил твоё сообщение.",
           "audio": {
-            "src": "media/audio/u18.d01.vocab.message.wav",
+            "src": "media/audio/u18.d01.vocab.message.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "This morning my boss sent a message to the whole team. She said that the deadline had changed and that we would have one more week. She also said she was very happy with our work.",
           "ru": "Сегодня утром начальница отправила сообщение всей команде. Она сказала, что срок сдвинулся и что у нас будет ещё одна неделя. Ещё она сказала, что очень довольна нашей работой.",
           "audio": {
-            "src": "media/audio/u18.d01.reading.b1.wav",
+            "src": "media/audio/u18.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "Later, Tom told me that he was worried about the new plan. He said he didn't understand one part of it. I explained it to him, and he replied that everything was clear now.",
           "ru": "Позже Том сказал мне, что переживает из-за нового плана. Он сказал, что не понимает одну его часть. Я объяснил ему, и он ответил, что теперь всё ясно.",
           "audio": {
-            "src": "media/audio/u18.d01.reading.b2.wav",
+            "src": "media/audio/u18.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Что она сказала?"
       },
       "audio": {
-        "src": "media/audio/u18.d01.listening.wav",
+        "src": "media/audio/u18.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

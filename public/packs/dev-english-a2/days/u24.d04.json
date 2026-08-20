@@ -27,7 +27,7 @@
           "example": "It is believed to be true.",
           "exampleRu": "Считается, что это правда.",
           "audio": {
-            "src": "media/audio/u24.d04.vocab.believe.wav",
+            "src": "media/audio/u24.d04.vocab.believe.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "It is claimed that it works.",
           "exampleRu": "Утверждают, что это работает.",
           "audio": {
-            "src": "media/audio/u24.d04.vocab.claim.wav",
+            "src": "media/audio/u24.d04.vocab.claim.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "It is reported that prices will rise.",
           "exampleRu": "Сообщают, что цены вырастут.",
           "audio": {
-            "src": "media/audio/u24.d04.vocab.report.wav",
+            "src": "media/audio/u24.d04.vocab.report.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "He is expected to win.",
           "exampleRu": "Ожидается, что он победит.",
           "audio": {
-            "src": "media/audio/u24.d04.vocab.expect.wav",
+            "src": "media/audio/u24.d04.vocab.expect.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "It is considered safe.",
           "exampleRu": "Это считается безопасным.",
           "audio": {
-            "src": "media/audio/u24.d04.vocab.consider.wav",
+            "src": "media/audio/u24.d04.vocab.consider.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "It is estimated at a million.",
           "exampleRu": "Оценивается в миллион.",
           "audio": {
-            "src": "media/audio/u24.d04.vocab.estimate.wav",
+            "src": "media/audio/u24.d04.vocab.estimate.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "She is known to be honest.",
           "exampleRu": "Известно, что она честна.",
           "audio": {
-            "src": "media/audio/u24.d04.vocab.known.wav",
+            "src": "media/audio/u24.d04.vocab.known.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "It is thought to be old.",
           "exampleRu": "Считается, что это старое.",
           "audio": {
-            "src": "media/audio/u24.d04.vocab.thought.wav",
+            "src": "media/audio/u24.d04.vocab.thought.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "It is only a rumour.",
           "exampleRu": "Это лишь слух.",
           "audio": {
-            "src": "media/audio/u24.d04.vocab.rumour.wav",
+            "src": "media/audio/u24.d04.vocab.rumour.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "Experts say it is safe.",
           "exampleRu": "Эксперты говорят, что это безопасно.",
           "audio": {
-            "src": "media/audio/u24.d04.vocab.expert.wav",
+            "src": "media/audio/u24.d04.vocab.expert.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "It is said that a small island in the Pacific holds a great secret. It is believed that treasure was hidden there hundreds of years ago. The island is thought to be dangerous, and few people are allowed to visit.",
           "ru": "Говорят, что маленький остров в Тихом океане хранит большую тайну. Считается, что сотни лет назад там спрятали сокровища. Остров считают опасным, и мало кому разрешают его посещать.",
           "audio": {
-            "src": "media/audio/u24.d04.reading.b1.wav",
+            "src": "media/audio/u24.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "One local man is known to have searched for the treasure for forty years. He is said to have found old maps, but nothing more. \"It is estimated that thousands have tried,\" a historian explained. \"But the secret is still believed to be safe.\"",
           "ru": "Известно, что один местный житель искал сокровища сорок лет. Говорят, он нашёл старые карты, но не более того. «По оценкам, пытались тысячи, — объяснил историк. — Но тайна, как считают, всё ещё в сохранности».",
           "audio": {
-            "src": "media/audio/u24.d04.reading.b2.wav",
+            "src": "media/audio/u24.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Это правда?"
       },
       "audio": {
-        "src": "media/audio/u24.d04.listening.wav",
+        "src": "media/audio/u24.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

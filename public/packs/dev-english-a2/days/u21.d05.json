@@ -26,7 +26,7 @@
           "example": "Are you free on Friday?",
           "exampleRu": "Ты свободен в пятницу?",
           "audio": {
-            "src": "media/audio/u21.d05.vocab.free.wav",
+            "src": "media/audio/u21.d05.vocab.free.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I'm busy that day.",
           "exampleRu": "В тот день я занят.",
           "audio": {
-            "src": "media/audio/u21.d05.vocab.busy.wav",
+            "src": "media/audio/u21.d05.vocab.busy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "Does Monday suit you?",
           "exampleRu": "Понедельник тебе подходит?",
           "audio": {
-            "src": "media/audio/u21.d05.vocab.suit.wav",
+            "src": "media/audio/u21.d05.vocab.suit.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I'm available after lunch.",
           "exampleRu": "Я свободен после обеда.",
           "audio": {
-            "src": "media/audio/u21.d05.vocab.available.wav",
+            "src": "media/audio/u21.d05.vocab.available.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I'll confirm tomorrow.",
           "exampleRu": "Я подтвержу завтра.",
           "audio": {
-            "src": "media/audio/u21.d05.vocab.confirm.wav",
+            "src": "media/audio/u21.d05.vocab.confirm.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Can we postpone it?",
           "exampleRu": "Можем перенести?",
           "audio": {
-            "src": "media/audio/u21.d05.vocab.postpone.wav",
+            "src": "media/audio/u21.d05.vocab.postpone.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "They cancelled the trip.",
           "exampleRu": "Они отменили поездку.",
           "audio": {
-            "src": "media/audio/u21.d05.vocab.cancel.wav",
+            "src": "media/audio/u21.d05.vocab.cancel.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "Let's meet up soon.",
           "exampleRu": "Давай скоро встретимся.",
           "audio": {
-            "src": "media/audio/u21.d05.vocab.meetup.wav",
+            "src": "media/audio/u21.d05.vocab.meetup.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Let's fix a time.",
           "exampleRu": "Давай назначим время.",
           "audio": {
-            "src": "media/audio/u21.d05.vocab.fix.wav",
+            "src": "media/audio/u21.d05.vocab.fix.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "It's in my calendar.",
           "exampleRu": "Это в моём календаре.",
           "audio": {
-            "src": "media/audio/u21.d05.vocab.calendar.wav",
+            "src": "media/audio/u21.d05.vocab.calendar.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -239,7 +239,7 @@
           "en": "\"Let's meet up this week,\" said Tom. \"Are you free on Tuesday?\" \"Tuesday doesn't suit me,\" said Amy. \"I'm working late. How about Thursday?\" \"Thursday's perfect. What time suits you?\"",
           "ru": "«Давай встретимся на этой неделе, — сказал Том. — Ты свободна во вторник?» «Вторник мне не подходит, — сказала Эми. — Я работаю допоздна. Как насчёт четверга?» «Четверг отлично. Во сколько тебе удобно?»",
           "audio": {
-            "src": "media/audio/u21.d05.reading.b1.wav",
+            "src": "media/audio/u21.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -251,7 +251,7 @@
           "en": "\"Let's say six at the café near the station.\" \"Great, I'll put it in my calendar. So we're meeting on Thursday at six — I'll confirm in the morning.\" \"Perfect. See you then!\"",
           "ru": "«Давай в шесть в кафе у станции». «Отлично, запишу в календарь. Итак, встречаемся в четверг в шесть — подтвержу утром». «Отлично. До встречи!»",
           "audio": {
-            "src": "media/audio/u21.d05.reading.b2.wav",
+            "src": "media/audio/u21.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -280,7 +280,7 @@
         "ru": "Ты свободен?"
       },
       "audio": {
-        "src": "media/audio/u21.d05.listening.wav",
+        "src": "media/audio/u21.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

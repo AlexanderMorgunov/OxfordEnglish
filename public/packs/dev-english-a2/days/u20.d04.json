@@ -26,7 +26,7 @@
           "example": "He stopped smoking.",
           "exampleRu": "Он бросил курить.",
           "audio": {
-            "src": "media/audio/u20.d04.vocab.stop.wav",
+            "src": "media/audio/u20.d04.vocab.stop.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "Remember to call.",
           "exampleRu": "Не забудь позвонить.",
           "audio": {
-            "src": "media/audio/u20.d04.vocab.remember.wav",
+            "src": "media/audio/u20.d04.vocab.remember.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "I forgot to lock it.",
           "exampleRu": "Я забыл запереть.",
           "audio": {
-            "src": "media/audio/u20.d04.vocab.forget.wav",
+            "src": "media/audio/u20.d04.vocab.forget.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Try to relax.",
           "exampleRu": "Постарайся расслабиться.",
           "audio": {
-            "src": "media/audio/u20.d04.vocab.try.wav",
+            "src": "media/audio/u20.d04.vocab.try.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "It began to rain.",
           "exampleRu": "Начался дождь.",
           "audio": {
-            "src": "media/audio/u20.d04.vocab.begin.wav",
+            "src": "media/audio/u20.d04.vocab.begin.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "She started singing.",
           "exampleRu": "Она запела.",
           "audio": {
-            "src": "media/audio/u20.d04.vocab.start.wav",
+            "src": "media/audio/u20.d04.vocab.start.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "I prefer walking.",
           "exampleRu": "Я предпочитаю ходить пешком.",
           "audio": {
-            "src": "media/audio/u20.d04.vocab.prefer.wav",
+            "src": "media/audio/u20.d04.vocab.prefer.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "They continued playing.",
           "exampleRu": "Они продолжили играть.",
           "audio": {
-            "src": "media/audio/u20.d04.vocab.continue.wav",
+            "src": "media/audio/u20.d04.vocab.continue.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I didn't mean to hurt you.",
           "exampleRu": "Я не хотел тебя обидеть.",
           "audio": {
-            "src": "media/audio/u20.d04.vocab.mean.wav",
+            "src": "media/audio/u20.d04.vocab.mean.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "You need to rest.",
           "exampleRu": "Тебе нужно отдохнуть.",
           "audio": {
-            "src": "media/audio/u20.d04.vocab.need.wav",
+            "src": "media/audio/u20.d04.vocab.need.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Ben tried to leave the house on time, but it was a difficult morning. He forgot to take his keys and remembered leaving them on the kitchen table. On the way, he stopped to buy coffee, then continued walking to the station.",
           "ru": "Бен пытался выйти из дома вовремя, но утро выдалось трудным. Он забыл взять ключи и вспомнил, что оставил их на кухонном столе. По дороге он остановился купить кофе, а потом пошёл дальше на станцию.",
           "audio": {
-            "src": "media/audio/u20.d04.reading.b1.wav",
+            "src": "media/audio/u20.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"I really need to be more organised,\" he thought. \"I must remember to check my bag before I leave.\" He began to laugh when he realised he had also forgotten his lunch. \"Well, at least I stopped worrying about being perfect.\"",
           "ru": "«Мне правда нужно быть организованнее, — подумал он. — Надо не забывать проверять сумку перед выходом». Он начал смеяться, когда понял, что забыл и обед. «Что ж, по крайней мере я перестал переживать из-за того, чтобы быть идеальным».",
           "audio": {
-            "src": "media/audio/u20.d04.reading.b2.wav",
+            "src": "media/audio/u20.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Ты не забыл?"
       },
       "audio": {
-        "src": "media/audio/u20.d04.listening.wav",
+        "src": "media/audio/u20.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

@@ -26,7 +26,7 @@
           "example": "We had a big party.",
           "exampleRu": "У нас была большая вечеринка.",
           "audio": {
-            "src": "media/audio/u14.d01.vocab.party.wav",
+            "src": "media/audio/u14.d01.vocab.party.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "Happy birthday!",
           "exampleRu": "С днём рождения!",
           "audio": {
-            "src": "media/audio/u14.d01.vocab.birthday.wav",
+            "src": "media/audio/u14.d01.vocab.birthday.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "I bought a present.",
           "exampleRu": "Я купил подарок.",
           "audio": {
-            "src": "media/audio/u14.d01.vocab.present.wav",
+            "src": "media/audio/u14.d01.vocab.present.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "We celebrate every year.",
           "exampleRu": "Мы празднуем каждый год.",
           "audio": {
-            "src": "media/audio/u14.d01.vocab.celebrate.wav",
+            "src": "media/audio/u14.d01.vocab.celebrate.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The guests arrived at seven.",
           "exampleRu": "Гости пришли в семь.",
           "audio": {
-            "src": "media/audio/u14.d01.vocab.guest.wav",
+            "src": "media/audio/u14.d01.vocab.guest.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Blow out the candles.",
           "exampleRu": "Задуй свечи.",
           "audio": {
-            "src": "media/audio/u14.d01.vocab.candle.wav",
+            "src": "media/audio/u14.d01.vocab.candle.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Their wedding was beautiful.",
           "exampleRu": "Их свадьба была красивой.",
           "audio": {
-            "src": "media/audio/u14.d01.vocab.wedding.wav",
+            "src": "media/audio/u14.d01.vocab.wedding.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I got an invitation.",
           "exampleRu": "Я получил приглашение.",
           "audio": {
-            "src": "media/audio/u14.d01.vocab.invitation.wav",
+            "src": "media/audio/u14.d01.vocab.invitation.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "What a nice gift!",
           "exampleRu": "Какой хороший подарок!",
           "audio": {
-            "src": "media/audio/u14.d01.vocab.gift.wav",
+            "src": "media/audio/u14.d01.vocab.gift.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "It was a special day.",
           "exampleRu": "Это был особенный день.",
           "audio": {
-            "src": "media/audio/u14.d01.vocab.special.wav",
+            "src": "media/audio/u14.d01.vocab.special.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Last Saturday we celebrated my sister's birthday. Ten guests came and we had a big cake with candles. She got a lot of presents.",
           "ru": "В прошлую субботу мы отпраздновали день рождения сестры. Пришло десять гостей, у нас был большой торт со свечами. Она получила много подарков.",
           "audio": {
-            "src": "media/audio/u14.d01.reading.b1.wav",
+            "src": "media/audio/u14.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "She has never had such a happy day. Next year we are going to make an even bigger party. Celebrations always bring the family together.",
           "ru": "У неё никогда не было такого счастливого дня. В следующем году мы устроим ещё большую вечеринку. Праздники всегда собирают семью вместе.",
           "audio": {
-            "src": "media/audio/u14.d01.reading.b2.wav",
+            "src": "media/audio/u14.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Вечеринка"
       },
       "audio": {
-        "src": "media/audio/u14.d01.listening.wav",
+        "src": "media/audio/u14.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

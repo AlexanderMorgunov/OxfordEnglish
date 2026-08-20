@@ -26,7 +26,7 @@
           "example": "I've been working on a big project.",
           "exampleRu": "Я работаю над большим проектом.",
           "audio": {
-            "src": "media/audio/u17.d01.vocab.project.wav",
+            "src": "media/audio/u17.d01.vocab.project.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "The deadline is on Friday.",
           "exampleRu": "Срок — в пятницу.",
           "audio": {
-            "src": "media/audio/u17.d01.vocab.deadline.wav",
+            "src": "media/audio/u17.d01.vocab.deadline.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "I've been really busy lately.",
           "exampleRu": "В последнее время я очень занят.",
           "audio": {
-            "src": "media/audio/u17.d01.vocab.busy.wav",
+            "src": "media/audio/u17.d01.vocab.busy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "It took a lot of effort.",
           "exampleRu": "Это потребовало много усилий.",
           "audio": {
-            "src": "media/audio/u17.d01.vocab.effort.wav",
+            "src": "media/audio/u17.d01.vocab.effort.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I have a few tasks to finish.",
           "exampleRu": "Мне нужно закончить пару задач.",
           "audio": {
-            "src": "media/audio/u17.d01.vocab.task.wav",
+            "src": "media/audio/u17.d01.vocab.task.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "We've been in meetings all day.",
           "exampleRu": "Мы весь день на совещаниях.",
           "audio": {
-            "src": "media/audio/u17.d01.vocab.meeting.wav",
+            "src": "media/audio/u17.d01.vocab.meeting.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "I'm tired — I've been working since eight.",
           "exampleRu": "Я устал — работаю с восьми.",
           "audio": {
-            "src": "media/audio/u17.d01.vocab.tired.wav",
+            "src": "media/audio/u17.d01.vocab.tired.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I want to finish this today.",
           "exampleRu": "Хочу закончить это сегодня.",
           "audio": {
-            "src": "media/audio/u17.d01.vocab.finish.wav",
+            "src": "media/audio/u17.d01.vocab.finish.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "She's been writing the report.",
           "exampleRu": "Она пишет отчёт.",
           "audio": {
-            "src": "media/audio/u17.d01.vocab.report.wav",
+            "src": "media/audio/u17.d01.vocab.report.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "He's been coding all day.",
           "exampleRu": "Он весь день пишет код.",
           "audio": {
-            "src": "media/audio/u17.d01.vocab.allday.wav",
+            "src": "media/audio/u17.d01.vocab.allday.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "It's six o'clock and Marco is still at his desk. He has been working since eight this morning, and he hasn't even stopped for lunch. His team has been preparing for a big product launch, and the deadline is tomorrow.",
           "ru": "Шесть часов, а Марко всё ещё за столом. Он работает с восьми утра и даже не прервался на обед. Его команда готовится к большому запуску продукта, и срок — завтра.",
           "audio": {
-            "src": "media/audio/u17.d01.reading.b1.wav",
+            "src": "media/audio/u17.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"I've been staring at this screen for ten hours,\" he says. \"My eyes hurt.\" But he is happy: the project has been going well, and everyone has been helping each other. Soon they will finish, and then he will finally go home.",
           "ru": "«Я десять часов смотрю в этот экран, — говорит он. — Глаза болят». Но он доволен: проект идёт хорошо, и все помогают друг другу. Скоро они закончат, и тогда он наконец пойдёт домой.",
           "audio": {
-            "src": "media/audio/u17.d01.reading.b2.wav",
+            "src": "media/audio/u17.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Ты выглядишь усталым"
       },
       "audio": {
-        "src": "media/audio/u17.d01.listening.wav",
+        "src": "media/audio/u17.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

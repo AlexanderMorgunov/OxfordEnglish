@@ -27,7 +27,7 @@
           "example": "Can I try this on?",
           "exampleRu": "Можно это примерить?",
           "audio": {
-            "src": "media/audio/u09.d05.vocab.tryon.wav",
+            "src": "media/audio/u09.d05.vocab.tryon.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "The fitting room is over there.",
           "exampleRu": "Примерочная вон там.",
           "audio": {
-            "src": "media/audio/u09.d05.vocab.fittingroom.wav",
+            "src": "media/audio/u09.d05.vocab.fittingroom.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "What size do you need?",
           "exampleRu": "Какой размер вам нужен?",
           "audio": {
-            "src": "media/audio/u09.d05.vocab.size.wav",
+            "src": "media/audio/u09.d05.vocab.size.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "Here is your receipt.",
           "exampleRu": "Вот ваш чек.",
           "audio": {
-            "src": "media/audio/u09.d05.vocab.receipt.wav",
+            "src": "media/audio/u09.d05.vocab.receipt.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "Can I pay by card?",
           "exampleRu": "Можно оплатить картой?",
           "audio": {
-            "src": "media/audio/u09.d05.vocab.card.wav",
+            "src": "media/audio/u09.d05.vocab.card.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "Cash or card?",
           "exampleRu": "Наличные или карта?",
           "audio": {
-            "src": "media/audio/u09.d05.vocab.cash.wav",
+            "src": "media/audio/u09.d05.vocab.cash.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "Can I get a refund?",
           "exampleRu": "Можно вернуть деньги?",
           "audio": {
-            "src": "media/audio/u09.d05.vocab.refund.wav",
+            "src": "media/audio/u09.d05.vocab.refund.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "I'll take it.",
           "exampleRu": "Я это беру.",
           "audio": {
-            "src": "media/audio/u09.d05.vocab.take.wav",
+            "src": "media/audio/u09.d05.vocab.take.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "How much is this?",
           "exampleRu": "Сколько это стоит?",
           "audio": {
-            "src": "media/audio/u09.d05.vocab.howmuch.wav",
+            "src": "media/audio/u09.d05.vocab.howmuch.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "Do you want a bag?",
           "exampleRu": "Вам нужен пакет?",
           "audio": {
-            "src": "media/audio/u09.d05.vocab.bag.wav",
+            "src": "media/audio/u09.d05.vocab.bag.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -238,7 +238,7 @@
           "en": "\"How much is this shirt?\" \"It's twenty pounds.\" \"Can I try it on?\" \"Yes, the fitting room is over there.\" The shirt was a good size and colour.",
           "ru": "«Сколько стоит эта рубашка?» «Двадцать фунтов». «Можно примерить?» «Да, примерочная вон там». Рубашка была подходящего размера и цвета.",
           "audio": {
-            "src": "media/audio/u09.d05.reading.b1.wav",
+            "src": "media/audio/u09.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -250,7 +250,7 @@
           "en": "\"It fits well. I'll take it.\" \"Cash or card?\" \"By card, please.\" \"Here is your receipt. Do you want a bag?\" \"Yes, please. Thank you!\"",
           "ru": "«Хорошо сидит. Беру». «Наличные или карта?» «Картой, пожалуйста». «Вот ваш чек. Пакет нужен?» «Да, спасибо!»",
           "audio": {
-            "src": "media/audio/u09.d05.reading.b2.wav",
+            "src": "media/audio/u09.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -279,7 +279,7 @@
         "ru": "На кассе"
       },
       "audio": {
-        "src": "media/audio/u09.d05.listening.wav",
+        "src": "media/audio/u09.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

@@ -26,7 +26,7 @@
           "example": "A short phrase.",
           "exampleRu": "Короткая фраза.",
           "audio": {
-            "src": "media/audio/u04.d05.vocab.phrase.wav",
+            "src": "media/audio/u04.d05.vocab.phrase.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "Listen for the chunk.",
           "exampleRu": "Слушай целый кусок.",
           "audio": {
-            "src": "media/audio/u04.d05.vocab.chunk.wav",
+            "src": "media/audio/u04.d05.vocab.chunk.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "Repeat after me.",
           "exampleRu": "Повторяй за мной.",
           "audio": {
-            "src": "media/audio/u04.d05.vocab.repeat.wav",
+            "src": "media/audio/u04.d05.vocab.repeat.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Do you understand?",
           "exampleRu": "Ты понимаешь?",
           "audio": {
-            "src": "media/audio/u04.d05.vocab.understand.wav",
+            "src": "media/audio/u04.d05.vocab.understand.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The meaning is clear.",
           "exampleRu": "Значение ясно.",
           "audio": {
-            "src": "media/audio/u04.d05.vocab.meaning.wav",
+            "src": "media/audio/u04.d05.vocab.meaning.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "The whole sentence.",
           "exampleRu": "Всё предложение.",
           "audio": {
-            "src": "media/audio/u04.d05.vocab.whole.wav",
+            "src": "media/audio/u04.d05.vocab.whole.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Listen again.",
           "exampleRu": "Послушай снова.",
           "audio": {
-            "src": "media/audio/u04.d05.vocab.again.wav",
+            "src": "media/audio/u04.d05.vocab.again.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "Speak slowly.",
           "exampleRu": "Говори медленно.",
           "audio": {
-            "src": "media/audio/u04.d05.vocab.slow.wav",
+            "src": "media/audio/u04.d05.vocab.slow.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "A clear voice.",
           "exampleRu": "Ясный голос.",
           "audio": {
-            "src": "media/audio/u04.d05.vocab.clear.wav",
+            "src": "media/audio/u04.d05.vocab.clear.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "The sound of the word.",
           "exampleRu": "Звук слова.",
           "audio": {
-            "src": "media/audio/u04.d05.vocab.sound.wav",
+            "src": "media/audio/u04.d05.vocab.sound.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -201,7 +201,7 @@
           "en": "You will hear a short phrase. Read it once, then close your eyes and listen for the whole chunk.",
           "ru": "Ты услышишь короткую фразу. Прочитай её раз, затем закрой глаза и слушай целый кусок.",
           "audio": {
-            "src": "media/audio/u04.d05.reading.b1.wav",
+            "src": "media/audio/u04.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"

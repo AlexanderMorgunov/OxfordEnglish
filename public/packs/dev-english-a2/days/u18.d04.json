@@ -26,7 +26,7 @@
           "example": "He said he had called the day before.",
           "exampleRu": "Он сказал, что звонил накануне.",
           "audio": {
-            "src": "media/audio/u18.d04.vocab.yesterday.wav",
+            "src": "media/audio/u18.d04.vocab.yesterday.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "She said she would come the next day.",
           "exampleRu": "Она сказала, что придёт на следующий день.",
           "audio": {
-            "src": "media/audio/u18.d04.vocab.tomorrow.wav",
+            "src": "media/audio/u18.d04.vocab.tomorrow.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "He said he was busy then.",
           "exampleRu": "Он сказал, что был занят тогда.",
           "audio": {
-            "src": "media/audio/u18.d04.vocab.now.wav",
+            "src": "media/audio/u18.d04.vocab.now.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "She said she liked it there.",
           "exampleRu": "Она сказала, что ей там нравится.",
           "audio": {
-            "src": "media/audio/u18.d04.vocab.here.wav",
+            "src": "media/audio/u18.d04.vocab.here.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "He said it had happened a week before.",
           "exampleRu": "Он сказал, что это случилось неделей раньше.",
           "audio": {
-            "src": "media/audio/u18.d04.vocab.ago.wav",
+            "src": "media/audio/u18.d04.vocab.ago.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "She said she was leaving that day.",
           "exampleRu": "Она сказала, что уезжает в тот день.",
           "audio": {
-            "src": "media/audio/u18.d04.vocab.today.wav",
+            "src": "media/audio/u18.d04.vocab.today.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "He said that book was his.",
           "exampleRu": "Он сказал, что та книга — его.",
           "audio": {
-            "src": "media/audio/u18.d04.vocab.this.wav",
+            "src": "media/audio/u18.d04.vocab.this.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "That's just gossip.",
           "exampleRu": "Это просто сплетни.",
           "audio": {
-            "src": "media/audio/u18.d04.vocab.gossip.wav",
+            "src": "media/audio/u18.d04.vocab.gossip.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I've heard a rumour.",
           "exampleRu": "Я слышал слух.",
           "audio": {
-            "src": "media/audio/u18.d04.vocab.rumour.wav",
+            "src": "media/audio/u18.d04.vocab.rumour.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Apparently, they broke up.",
           "exampleRu": "Судя по всему, они расстались.",
           "audio": {
-            "src": "media/audio/u18.d04.vocab.apparently.wav",
+            "src": "media/audio/u18.d04.vocab.apparently.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "When I met Sara, she was full of news. She said that Tom had got a new job the week before and that he would move to London the next month. She also told me that Anna was getting married that summer.",
           "ru": "Когда я встретил Сару, она была полна новостей. Она сказала, что Том неделей раньше получил новую работу и что в следующем месяце он переедет в Лондон. Ещё она сказала мне, что Анна выходит замуж тем летом.",
           "audio": {
-            "src": "media/audio/u18.d04.reading.b1.wav",
+            "src": "media/audio/u18.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"Apparently, they had been planning it for a year,\" she said. I was surprised. I told her that I hadn't heard anything about it. \"Well,\" she laughed, \"now you have — but don't tell anyone I told you!\"",
           "ru": "«Судя по всему, они планировали это целый год», — сказала она. Я удивился. Я сказал ей, что ничего об этом не слышал. «Что ж, — засмеялась она, — теперь услышал — только не говори никому, что это я тебе рассказала!»",
           "audio": {
-            "src": "media/audio/u18.d04.reading.b2.wav",
+            "src": "media/audio/u18.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Ты слышал?"
       },
       "audio": {
-        "src": "media/audio/u18.d04.listening.wav",
+        "src": "media/audio/u18.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

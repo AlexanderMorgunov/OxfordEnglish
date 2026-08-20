@@ -26,7 +26,7 @@
           "example": "It's possible.",
           "exampleRu": "Это возможно.",
           "audio": {
-            "src": "media/audio/u19.d02.vocab.possible.wav",
+            "src": "media/audio/u19.d02.vocab.possible.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "That's likely.",
           "exampleRu": "Это вероятно.",
           "audio": {
-            "src": "media/audio/u19.d02.vocab.likely.wav",
+            "src": "media/audio/u19.d02.vocab.likely.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "It's unlikely to rain.",
           "exampleRu": "Дождь маловероятен.",
           "audio": {
-            "src": "media/audio/u19.d02.vocab.unlikely.wav",
+            "src": "media/audio/u19.d02.vocab.unlikely.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I have my doubts.",
           "exampleRu": "У меня есть сомнения.",
           "audio": {
-            "src": "media/audio/u19.d02.vocab.doubt.wav",
+            "src": "media/audio/u19.d02.vocab.doubt.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Perhaps she forgot.",
           "exampleRu": "Возможно, она забыла.",
           "audio": {
-            "src": "media/audio/u19.d02.vocab.perhaps.wav",
+            "src": "media/audio/u19.d02.vocab.perhaps.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "That's definitely true.",
           "exampleRu": "Это определённо правда.",
           "audio": {
-            "src": "media/audio/u19.d02.vocab.definitely.wav",
+            "src": "media/audio/u19.d02.vocab.definitely.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "I suspect he knows.",
           "exampleRu": "Подозреваю, что он знает.",
           "audio": {
-            "src": "media/audio/u19.d02.vocab.suspect.wav",
+            "src": "media/audio/u19.d02.vocab.suspect.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "There's no evidence.",
           "exampleRu": "Доказательств нет.",
           "audio": {
-            "src": "media/audio/u19.d02.vocab.evidence.wav",
+            "src": "media/audio/u19.d02.vocab.evidence.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I suppose so.",
           "exampleRu": "Полагаю, да.",
           "audio": {
-            "src": "media/audio/u19.d02.vocab.suppose.wav",
+            "src": "media/audio/u19.d02.vocab.suppose.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Maybe. I'm not sure.",
           "exampleRu": "Может быть. Не уверен.",
           "audio": {
-            "src": "media/audio/u19.d02.vocab.maybe.wav",
+            "src": "media/audio/u19.d02.vocab.maybe.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Kate couldn't find her phone. \"It might be in my bag,\" she thought, \"or it could be in the car.\" She checked both — nothing. \"It can't be far,\" she said. \"I definitely had it this morning.\"",
           "ru": "Кейт не могла найти телефон. «Он, может, в сумке, — подумала она, — или в машине». Она проверила оба места — ничего. «Далеко он быть не может, — сказала она. — Утром он точно был у меня».",
           "audio": {
-            "src": "media/audio/u19.d02.reading.b1.wav",
+            "src": "media/audio/u19.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "Then she remembered calling a friend from the kitchen. \"I suppose I might have left it there.\" She was right — it was on the kitchen table. \"It's likely I put it down when I made coffee,\" she laughed.",
           "ru": "Потом она вспомнила, что звонила подруге из кухни. «Полагаю, я могла оставить его там». Она была права — телефон лежал на кухонном столе. «Наверное, я положила его, когда делала кофе», — засмеялась она.",
           "audio": {
-            "src": "media/audio/u19.d02.reading.b2.wav",
+            "src": "media/audio/u19.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Кто за дверью?"
       },
       "audio": {
-        "src": "media/audio/u19.d02.listening.wav",
+        "src": "media/audio/u19.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

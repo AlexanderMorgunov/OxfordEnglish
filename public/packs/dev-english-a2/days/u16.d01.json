@@ -26,7 +26,7 @@
           "example": "A strange thing happened.",
           "exampleRu": "Случилась странная вещь.",
           "audio": {
-            "src": "media/audio/u16.d01.vocab.happen.wav",
+            "src": "media/audio/u16.d01.vocab.happen.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I realised I had forgotten my keys.",
           "exampleRu": "Я понял, что забыл ключи.",
           "audio": {
-            "src": "media/audio/u16.d01.vocab.realise.wav",
+            "src": "media/audio/u16.d01.vocab.realise.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "She noticed the door was open.",
           "exampleRu": "Она заметила, что дверь открыта.",
           "audio": {
-            "src": "media/audio/u16.d01.vocab.notice.wav",
+            "src": "media/audio/u16.d01.vocab.notice.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Suddenly, the lights went out.",
           "exampleRu": "Внезапно погас свет.",
           "audio": {
-            "src": "media/audio/u16.d01.vocab.suddenly.wav",
+            "src": "media/audio/u16.d01.vocab.suddenly.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The train had already left.",
           "exampleRu": "Поезд уже ушёл.",
           "audio": {
-            "src": "media/audio/u16.d01.vocab.already.wav",
+            "src": "media/audio/u16.d01.vocab.already.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "I had forgotten his name.",
           "exampleRu": "Я забыл его имя.",
           "audio": {
-            "src": "media/audio/u16.d01.vocab.forget.wav",
+            "src": "media/audio/u16.d01.vocab.forget.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "By the time we arrived, it had finished.",
           "exampleRu": "К нашему приходу всё уже закончилось.",
           "audio": {
-            "src": "media/audio/u16.d01.vocab.arrive.wav",
+            "src": "media/audio/u16.d01.vocab.arrive.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "At that moment, I understood.",
           "exampleRu": "В тот момент я понял.",
           "audio": {
-            "src": "media/audio/u16.d01.vocab.moment.wav",
+            "src": "media/audio/u16.d01.vocab.moment.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "It was a strange story.",
           "exampleRu": "Это была странная история.",
           "audio": {
-            "src": "media/audio/u16.d01.vocab.strange.wav",
+            "src": "media/audio/u16.d01.vocab.strange.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "We ended up walking home.",
           "exampleRu": "В итоге мы пошли домой пешком.",
           "audio": {
-            "src": "media/audio/u16.d01.vocab.endup.wav",
+            "src": "media/audio/u16.d01.vocab.endup.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "When Anna finally got to the station, she realised that the train had already left. She had spent too long saying goodbye to her friends, and now the platform was empty. She hadn't planned for this at all.",
           "ru": "Когда Анна наконец добралась до вокзала, она поняла, что поезд уже ушёл. Она слишком долго прощалась с друзьями, и теперь платформа была пуста. Она совсем этого не планировала.",
           "audio": {
-            "src": "media/audio/u16.d01.reading.b1.wav",
+            "src": "media/audio/u16.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "She checked her bag and realised something worse: she had left her wallet in the taxi. By the time she understood what had happened, the taxi had disappeared into the traffic. In the end, a kind stranger lent her some money for the next train.",
           "ru": "Она проверила сумку и поняла кое-что похуже: она оставила кошелёк в такси. К тому моменту, как она осознала произошедшее, такси уже растворилось в потоке машин. В итоге добрый незнакомец одолжил ей денег на следующий поезд.",
           "audio": {
-            "src": "media/audio/u16.d01.reading.b2.wav",
+            "src": "media/audio/u16.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Слишком поздно"
       },
       "audio": {
-        "src": "media/audio/u16.d01.listening.wav",
+        "src": "media/audio/u16.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

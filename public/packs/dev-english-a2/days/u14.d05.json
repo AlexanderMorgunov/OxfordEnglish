@@ -26,7 +26,7 @@
           "example": "I stayed because it rained.",
           "exampleRu": "Я остался, потому что шёл дождь.",
           "audio": {
-            "src": "media/audio/u14.d05.vocab.because.wav",
+            "src": "media/audio/u14.d05.vocab.because.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "Although it was cold, we went out.",
           "exampleRu": "Хотя было холодно, мы вышли.",
           "audio": {
-            "src": "media/audio/u14.d05.vocab.although.wav",
+            "src": "media/audio/u14.d05.vocab.although.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "It was hard. However, I finished.",
           "exampleRu": "Было тяжело. Однако я закончил.",
           "audio": {
-            "src": "media/audio/u14.d05.vocab.however.wav",
+            "src": "media/audio/u14.d05.vocab.however.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Finally, we arrived.",
           "exampleRu": "Наконец мы приехали.",
           "audio": {
-            "src": "media/audio/u14.d05.vocab.finally.wav",
+            "src": "media/audio/u14.d05.vocab.finally.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I usually get up early.",
           "exampleRu": "Обычно я встаю рано.",
           "audio": {
-            "src": "media/audio/u14.d05.vocab.usually.wav",
+            "src": "media/audio/u14.d05.vocab.usually.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "That's enough.",
           "exampleRu": "Достаточно.",
           "audio": {
-            "src": "media/audio/u14.d05.vocab.enough.wav",
+            "src": "media/audio/u14.d05.vocab.enough.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Both answers are right.",
           "exampleRu": "Оба ответа верны.",
           "audio": {
-            "src": "media/audio/u14.d05.vocab.both.wav",
+            "src": "media/audio/u14.d05.vocab.both.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "Each student has a book.",
           "exampleRu": "У каждого ученика есть книга.",
           "audio": {
-            "src": "media/audio/u14.d05.vocab.each.wav",
+            "src": "media/audio/u14.d05.vocab.each.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Are you ready?",
           "exampleRu": "Ты готов?",
           "audio": {
-            "src": "media/audio/u14.d05.vocab.ready.wav",
+            "src": "media/audio/u14.d05.vocab.ready.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Be proud of your progress.",
           "exampleRu": "Гордись своим прогрессом.",
           "audio": {
-            "src": "media/audio/u14.d05.vocab.proud.wav",
+            "src": "media/audio/u14.d05.vocab.proud.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -239,7 +239,7 @@
           "en": "Congratulations! You have reached the end of the A2 course. You started with simple words, and now you can talk about the past, the future and your experiences.",
           "ru": "Поздравляем! Ты дошёл до конца курса A2. Ты начинал с простых слов, а теперь умеешь говорить о прошлом, будущем и своём опыте.",
           "audio": {
-            "src": "media/audio/u14.d05.reading.b1.wav",
+            "src": "media/audio/u14.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -251,7 +251,7 @@
           "en": "You can ask for things, give advice, make plans and share opinions. If you keep practising, you will soon be ready for B1. Be proud of your progress!",
           "ru": "Ты умеешь просить, давать советы, строить планы и делиться мнением. Если продолжишь заниматься, скоро будешь готов к B1. Гордись своим прогрессом!",
           "audio": {
-            "src": "media/audio/u14.d05.reading.b2.wav",
+            "src": "media/audio/u14.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -280,7 +280,7 @@
         "ru": "Готов к B1"
       },
       "audio": {
-        "src": "media/audio/u14.d05.listening.wav",
+        "src": "media/audio/u14.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

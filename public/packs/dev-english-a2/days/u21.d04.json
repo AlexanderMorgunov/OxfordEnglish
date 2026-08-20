@@ -27,7 +27,7 @@
           "example": "I'll decide later.",
           "exampleRu": "Я решу позже.",
           "audio": {
-            "src": "media/audio/u21.d04.vocab.decide.wav",
+            "src": "media/audio/u21.d04.vocab.decide.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "Experts predict rain.",
           "exampleRu": "Эксперты предсказывают дождь.",
           "audio": {
-            "src": "media/audio/u21.d04.vocab.predict.wav",
+            "src": "media/audio/u21.d04.vocab.predict.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "We've arranged to meet.",
           "exampleRu": "Мы договорились встретиться.",
           "audio": {
-            "src": "media/audio/u21.d04.vocab.arrange.wav",
+            "src": "media/audio/u21.d04.vocab.arrange.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "I expect she'll be late.",
           "exampleRu": "Думаю, она опоздает.",
           "audio": {
-            "src": "media/audio/u21.d04.vocab.expect.wav",
+            "src": "media/audio/u21.d04.vocab.expect.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "It'll probably rain.",
           "exampleRu": "Наверное, будет дождь.",
           "audio": {
-            "src": "media/audio/u21.d04.vocab.probably.wav",
+            "src": "media/audio/u21.d04.vocab.probably.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "I'll definitely come.",
           "exampleRu": "Я точно приду.",
           "audio": {
-            "src": "media/audio/u21.d04.vocab.definitely.wav",
+            "src": "media/audio/u21.d04.vocab.definitely.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "I have an appointment.",
           "exampleRu": "У меня назначена встреча.",
           "audio": {
-            "src": "media/audio/u21.d04.vocab.appointment.wav",
+            "src": "media/audio/u21.d04.vocab.appointment.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "The deadline is Monday.",
           "exampleRu": "Срок — понедельник.",
           "audio": {
-            "src": "media/audio/u21.d04.vocab.deadline.wav",
+            "src": "media/audio/u21.d04.vocab.deadline.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "It's in my diary.",
           "exampleRu": "Это записано в ежедневнике.",
           "audio": {
-            "src": "media/audio/u21.d04.vocab.diary.wav",
+            "src": "media/audio/u21.d04.vocab.diary.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "That's my prediction.",
           "exampleRu": "Таков мой прогноз.",
           "audio": {
-            "src": "media/audio/u21.d04.vocab.prediction.wav",
+            "src": "media/audio/u21.d04.vocab.prediction.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "\"Next week is going to be busy,\" said Priya, looking at her diary. \"On Monday I'm meeting a client at ten. By Wednesday afternoon I'll be preparing for the big presentation. I think it will go well — I've worked hard.\"",
           "ru": "«Следующая неделя будет напряжённой», — сказала Прия, глядя в ежедневник. «В понедельник в десять встречаюсь с клиентом. К среде я буду готовиться к большой презентации. Думаю, всё пройдёт хорошо — я много работала».",
           "audio": {
-            "src": "media/audio/u21.d04.reading.b1.wav",
+            "src": "media/audio/u21.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "\"The deadline is Friday, so I'm working late all week. Right now, actually, I'm about to start on the slides.\" She smiled. \"This time next Saturday, I'll be relaxing with no emails to answer.\"",
           "ru": "«Срок — пятница, так что всю неделю работаю допоздна. Прямо сейчас, кстати, я вот-вот займусь слайдами». Она улыбнулась. «В это время в следующую субботу я буду отдыхать, и никаких писем».",
           "audio": {
-            "src": "media/audio/u21.d04.reading.b2.wav",
+            "src": "media/audio/u21.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Строим планы"
       },
       "audio": {
-        "src": "media/audio/u21.d04.listening.wav",
+        "src": "media/audio/u21.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

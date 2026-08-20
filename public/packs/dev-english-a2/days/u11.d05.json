@@ -27,7 +27,7 @@
           "example": "The doctor is ready.",
           "exampleRu": "Врач готов принять.",
           "audio": {
-            "src": "media/audio/u11.d05.vocab.doctor.wav",
+            "src": "media/audio/u11.d05.vocab.doctor.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "The nurse was kind.",
           "exampleRu": "Медсестра была добрая.",
           "audio": {
-            "src": "media/audio/u11.d05.vocab.nurse.wav",
+            "src": "media/audio/u11.d05.vocab.nurse.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "The patient is waiting.",
           "exampleRu": "Пациент ждёт.",
           "audio": {
-            "src": "media/audio/u11.d05.vocab.patient.wav",
+            "src": "media/audio/u11.d05.vocab.patient.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "I have a pain in my back.",
           "exampleRu": "У меня боль в спине.",
           "audio": {
-            "src": "media/audio/u11.d05.vocab.pain.wav",
+            "src": "media/audio/u11.d05.vocab.pain.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "I have a stomach ache.",
           "exampleRu": "У меня болит живот.",
           "audio": {
-            "src": "media/audio/u11.d05.vocab.ache.wav",
+            "src": "media/audio/u11.d05.vocab.ache.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "What are your symptoms?",
           "exampleRu": "Какие у вас симптомы?",
           "audio": {
-            "src": "media/audio/u11.d05.vocab.symptom.wav",
+            "src": "media/audio/u11.d05.vocab.symptom.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "Here is your prescription.",
           "exampleRu": "Вот ваш рецепт.",
           "audio": {
-            "src": "media/audio/u11.d05.vocab.prescription.wav",
+            "src": "media/audio/u11.d05.vocab.prescription.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "Take one pill a day.",
           "exampleRu": "Принимайте по одной таблетке в день.",
           "audio": {
-            "src": "media/audio/u11.d05.vocab.pill.wav",
+            "src": "media/audio/u11.d05.vocab.pill.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "How do you feel?",
           "exampleRu": "Как вы себя чувствуете?",
           "audio": {
-            "src": "media/audio/u11.d05.vocab.feel.wav",
+            "src": "media/audio/u11.d05.vocab.feel.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "What's the matter?",
           "exampleRu": "Что случилось?",
           "audio": {
-            "src": "media/audio/u11.d05.vocab.matter.wav",
+            "src": "media/audio/u11.d05.vocab.matter.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -238,7 +238,7 @@
           "en": "\"Good morning. What's the matter?\" asked the doctor. \"I feel sick and I have a bad headache,\" said Kate. \"How long have you felt like this?\"",
           "ru": "«Доброе утро. Что случилось?» — спросил врач. «Мне нездоровится и сильно болит голова», — сказала Кейт. «Как давно вы так себя чувствуете?»",
           "audio": {
-            "src": "media/audio/u11.d05.reading.b1.wav",
+            "src": "media/audio/u11.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -250,7 +250,7 @@
           "en": "\"For two days.\" The doctor said, \"You have a cold. You should rest and drink water. Take these pills twice a day. You'll feel better soon.\"",
           "ru": "«Уже два дня». Врач сказал: «У вас простуда. Вам стоит отдыхать и пить воду. Принимайте эти таблетки дважды в день. Скоро станет лучше».",
           "audio": {
-            "src": "media/audio/u11.d05.reading.b2.wav",
+            "src": "media/audio/u11.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -279,7 +279,7 @@
         "ru": "Как вы себя чувствуете?"
       },
       "audio": {
-        "src": "media/audio/u11.d05.listening.wav",
+        "src": "media/audio/u11.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

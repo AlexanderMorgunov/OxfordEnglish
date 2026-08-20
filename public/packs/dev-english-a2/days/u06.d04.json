@@ -28,7 +28,7 @@
           "example": "He is tall.",
           "exampleRu": "Он высокий.",
           "audio": {
-            "src": "media/audio/u06.d04.vocab.tall.wav",
+            "src": "media/audio/u06.d04.vocab.tall.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -42,7 +42,7 @@
           "example": "She is short.",
           "exampleRu": "Она невысокая.",
           "audio": {
-            "src": "media/audio/u06.d04.vocab.short.wav",
+            "src": "media/audio/u06.d04.vocab.short.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -56,7 +56,7 @@
           "example": "They are young.",
           "exampleRu": "Они молодые.",
           "audio": {
-            "src": "media/audio/u06.d04.vocab.young.wav",
+            "src": "media/audio/u06.d04.vocab.young.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -70,7 +70,7 @@
           "example": "He is an old man.",
           "exampleRu": "Он пожилой мужчина.",
           "audio": {
-            "src": "media/audio/u06.d04.vocab.old.wav",
+            "src": "media/audio/u06.d04.vocab.old.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -84,7 +84,7 @@
           "example": "What a beautiful garden!",
           "exampleRu": "Какой красивый сад!",
           "audio": {
-            "src": "media/audio/u06.d04.vocab.beautiful.wav",
+            "src": "media/audio/u06.d04.vocab.beautiful.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -98,7 +98,7 @@
           "example": "The cat is thin.",
           "exampleRu": "Кот худой.",
           "audio": {
-            "src": "media/audio/u06.d04.vocab.thin.wav",
+            "src": "media/audio/u06.d04.vocab.thin.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -112,7 +112,7 @@
           "example": "She has long hair.",
           "exampleRu": "У неё длинные волосы.",
           "audio": {
-            "src": "media/audio/u06.d04.vocab.hair.wav",
+            "src": "media/audio/u06.d04.vocab.hair.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -126,7 +126,7 @@
           "example": "He has blue eyes.",
           "exampleRu": "У него голубые глаза.",
           "audio": {
-            "src": "media/audio/u06.d04.vocab.eyes.wav",
+            "src": "media/audio/u06.d04.vocab.eyes.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -140,7 +140,7 @@
           "example": "The film was boring.",
           "exampleRu": "Фильм был скучным.",
           "audio": {
-            "src": "media/audio/u06.d04.vocab.boring.wav",
+            "src": "media/audio/u06.d04.vocab.boring.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -154,7 +154,7 @@
           "example": "This book is interesting.",
           "exampleRu": "Эта книга интересная.",
           "audio": {
-            "src": "media/audio/u06.d04.vocab.interesting.wav",
+            "src": "media/audio/u06.d04.vocab.interesting.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -239,7 +239,7 @@
           "en": "My best friend Kate is tall and young, with long brown hair and green eyes. She lives in a beautiful old house near the river.",
           "ru": "Моя лучшая подруга Кейт высокая и молодая, с длинными каштановыми волосами и зелёными глазами. Она живёт в красивом старом доме у реки.",
           "audio": {
-            "src": "media/audio/u06.d04.reading.b1.wav",
+            "src": "media/audio/u06.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -251,7 +251,7 @@
           "en": "Kate is never boring. She reads a lot and always has interesting stories. When I am tired or bored, I call her and I feel better.",
           "ru": "Кейт никогда не бывает скучной. Она много читает и всегда рассказывает интересные истории. Когда я устал или мне скучно, я звоню ей и мне становится легче.",
           "audio": {
-            "src": "media/audio/u06.d04.reading.b2.wav",
+            "src": "media/audio/u06.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -280,7 +280,7 @@
         "ru": "Как она выглядит?"
       },
       "audio": {
-        "src": "media/audio/u06.d04.listening.wav",
+        "src": "media/audio/u06.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"
@@ -426,7 +426,7 @@
             "pronunciation"
           ],
           "audio": {
-            "src": "media/audio/u06.d04.ex.mp.01.wav",
+            "src": "media/audio/u06.d04.ex.mp.01.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"

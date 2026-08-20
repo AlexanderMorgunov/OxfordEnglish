@@ -26,7 +26,7 @@
           "example": "Have you been abroad?",
           "exampleRu": "Ты был за границей?",
           "audio": {
-            "src": "media/audio/u12.d01.vocab.abroad.wav",
+            "src": "media/audio/u12.d01.vocab.abroad.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I love to travel.",
           "exampleRu": "Я люблю путешествовать.",
           "audio": {
-            "src": "media/audio/u12.d01.vocab.travel.wav",
+            "src": "media/audio/u12.d01.vocab.travel.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "I have visited Rome.",
           "exampleRu": "Я был в Риме.",
           "audio": {
-            "src": "media/audio/u12.d01.vocab.visit.wav",
+            "src": "media/audio/u12.d01.vocab.visit.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "The flight was long.",
           "exampleRu": "Полёт был долгим.",
           "audio": {
-            "src": "media/audio/u12.d01.vocab.flight.wav",
+            "src": "media/audio/u12.d01.vocab.flight.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Where is my passport?",
           "exampleRu": "Где мой паспорт?",
           "audio": {
-            "src": "media/audio/u12.d01.vocab.passport.wav",
+            "src": "media/audio/u12.d01.vocab.passport.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "It was a great experience.",
           "exampleRu": "Это был отличный опыт.",
           "audio": {
-            "src": "media/audio/u12.d01.vocab.experience.wav",
+            "src": "media/audio/u12.d01.vocab.experience.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Have you ever tried sushi?",
           "exampleRu": "Ты когда-нибудь пробовал суши?",
           "audio": {
-            "src": "media/audio/u12.d01.vocab.ever.wav",
+            "src": "media/audio/u12.d01.vocab.ever.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I have never been to Japan.",
           "exampleRu": "Я никогда не был в Японии.",
           "audio": {
-            "src": "media/audio/u12.d01.vocab.never.wav",
+            "src": "media/audio/u12.d01.vocab.never.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I have seen this film before.",
           "exampleRu": "Я видел этот фильм раньше.",
           "audio": {
-            "src": "media/audio/u12.d01.vocab.before.wav",
+            "src": "media/audio/u12.d01.vocab.before.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "I have been there twice.",
           "exampleRu": "Я был там дважды.",
           "audio": {
-            "src": "media/audio/u12.d01.vocab.twice.wav",
+            "src": "media/audio/u12.d01.vocab.twice.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "My aunt loves travelling. She has visited more than twenty countries. She has seen the mountains of Nepal and has swum in three oceans.",
           "ru": "Моя тётя обожает путешествия. Она побывала более чем в двадцати странах. Она видела горы Непала и плавала в трёх океанах.",
           "audio": {
-            "src": "media/audio/u12.d01.reading.b1.wav",
+            "src": "media/audio/u12.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "She has never been to Australia, but it is her dream. \"Have you ever felt afraid on a trip?\" I asked. \"Never,\" she said. \"Travel is always an adventure.\"",
           "ru": "Она никогда не была в Австралии, но это её мечта. «Ты когда-нибудь боялась в поездке?» — спросил я. «Никогда, — сказала она. — Путешествие всегда приключение».",
           "audio": {
-            "src": "media/audio/u12.d01.reading.b2.wav",
+            "src": "media/audio/u12.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Ты когда-нибудь…?"
       },
       "audio": {
-        "src": "media/audio/u12.d01.listening.wav",
+        "src": "media/audio/u12.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

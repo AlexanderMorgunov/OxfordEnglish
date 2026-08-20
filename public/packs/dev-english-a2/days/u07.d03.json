@@ -26,7 +26,7 @@
           "example": "Can I see the menu, please?",
           "exampleRu": "Можно меню, пожалуйста?",
           "audio": {
-            "src": "media/audio/u07.d03.vocab.menu.wav",
+            "src": "media/audio/u07.d03.vocab.menu.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "The waiter brought our food.",
           "exampleRu": "Официант принёс нашу еду.",
           "audio": {
-            "src": "media/audio/u07.d03.vocab.waiter.wav",
+            "src": "media/audio/u07.d03.vocab.waiter.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "Are you ready to order?",
           "exampleRu": "Вы готовы сделать заказ?",
           "audio": {
-            "src": "media/audio/u07.d03.vocab.order.wav",
+            "src": "media/audio/u07.d03.vocab.order.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Can I have the bill, please?",
           "exampleRu": "Можно счёт, пожалуйста?",
           "audio": {
-            "src": "media/audio/u07.d03.vocab.bill.wav",
+            "src": "media/audio/u07.d03.vocab.bill.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I'd like a coffee.",
           "exampleRu": "Мне кофе.",
           "audio": {
-            "src": "media/audio/u07.d03.vocab.coffee.wav",
+            "src": "media/audio/u07.d03.vocab.coffee.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "She drinks tea in the morning.",
           "exampleRu": "Она пьёт чай утром.",
           "audio": {
-            "src": "media/audio/u07.d03.vocab.tea.wav",
+            "src": "media/audio/u07.d03.vocab.tea.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "A glass of water, please.",
           "exampleRu": "Стакан воды, пожалуйста.",
           "audio": {
-            "src": "media/audio/u07.d03.vocab.water.wav",
+            "src": "media/audio/u07.d03.vocab.water.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I ate a cheese sandwich.",
           "exampleRu": "Я съел сэндвич с сыром.",
           "audio": {
-            "src": "media/audio/u07.d03.vocab.sandwich.wav",
+            "src": "media/audio/u07.d03.vocab.sandwich.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "The salad is fresh.",
           "exampleRu": "Салат свежий.",
           "audio": {
-            "src": "media/audio/u07.d03.vocab.salad.wav",
+            "src": "media/audio/u07.d03.vocab.salad.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "The soup is hot.",
           "exampleRu": "Суп горячий.",
           "audio": {
-            "src": "media/audio/u07.d03.vocab.soup.wav",
+            "src": "media/audio/u07.d03.vocab.soup.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -166,7 +166,7 @@
           "example": "Would you like a dessert?",
           "exampleRu": "Хотите десерт?",
           "audio": {
-            "src": "media/audio/u07.d03.vocab.dessert.wav",
+            "src": "media/audio/u07.d03.vocab.dessert.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -180,7 +180,7 @@
           "example": "This cake is delicious!",
           "exampleRu": "Этот торт вкусный!",
           "audio": {
-            "src": "media/audio/u07.d03.vocab.delicious.wav",
+            "src": "media/audio/u07.d03.vocab.delicious.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -248,7 +248,7 @@
           "en": "It was one o'clock, so my friend and I went to a café for lunch. The waiter gave us the menu and a glass of water.",
           "ru": "Был час дня, и мы с другом пошли в кафе на обед. Официант дал нам меню и стакан воды.",
           "audio": {
-            "src": "media/audio/u07.d03.reading.b1.wav",
+            "src": "media/audio/u07.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -260,7 +260,7 @@
           "en": "I ordered a cheese sandwich and a coffee. My friend had soup and a fresh salad. The food was delicious. After lunch, I asked the waiter for the bill.",
           "ru": "Я заказал сэндвич с сыром и кофе. Друг взял суп и свежий салат. Еда была вкусной. После обеда я попросил у официанта счёт.",
           "audio": {
-            "src": "media/audio/u07.d03.reading.b2.wav",
+            "src": "media/audio/u07.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -289,7 +289,7 @@
         "ru": "Заказываем обед"
       },
       "audio": {
-        "src": "media/audio/u07.d03.listening.wav",
+        "src": "media/audio/u07.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

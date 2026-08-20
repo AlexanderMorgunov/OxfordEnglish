@@ -26,7 +26,7 @@
           "example": "I finished the report.",
           "exampleRu": "Я закончил отчёт.",
           "audio": {
-            "src": "media/audio/u04.d02.vocab.report.wav",
+            "src": "media/audio/u04.d02.vocab.report.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "A hard task.",
           "exampleRu": "Сложная задача.",
           "audio": {
-            "src": "media/audio/u04.d02.vocab.task.wav",
+            "src": "media/audio/u04.d02.vocab.task.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "At the standup.",
           "exampleRu": "На стендапе.",
           "audio": {
-            "src": "media/audio/u04.d02.vocab.standup.wav",
+            "src": "media/audio/u04.d02.vocab.standup.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "My manager asked me.",
           "exampleRu": "Менеджер спросил меня.",
           "audio": {
-            "src": "media/audio/u04.d02.vocab.manager.wav",
+            "src": "media/audio/u04.d02.vocab.manager.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The app crashed.",
           "exampleRu": "Приложение упало.",
           "audio": {
-            "src": "media/audio/u04.d02.vocab.crash.wav",
+            "src": "media/audio/u04.d02.vocab.crash.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "The server went down.",
           "exampleRu": "Сервер упал.",
           "audio": {
-            "src": "media/audio/u04.d02.vocab.server.wav",
+            "src": "media/audio/u04.d02.vocab.server.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Nobody noticed it.",
           "exampleRu": "Никто не заметил.",
           "audio": {
-            "src": "media/audio/u04.d02.vocab.notice.wav",
+            "src": "media/audio/u04.d02.vocab.notice.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I explained the problem.",
           "exampleRu": "Я объяснил проблему.",
           "audio": {
-            "src": "media/audio/u04.d02.vocab.explain.wav",
+            "src": "media/audio/u04.d02.vocab.explain.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Did you finish it?",
           "exampleRu": "Ты это закончил?",
           "audio": {
-            "src": "media/audio/u04.d02.vocab.finish.wav",
+            "src": "media/audio/u04.d02.vocab.finish.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "What happened?",
           "exampleRu": "Что случилось?",
           "audio": {
-            "src": "media/audio/u04.d02.vocab.happen.wav",
+            "src": "media/audio/u04.d02.vocab.happen.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -222,7 +222,7 @@
           "en": "At the standup my manager asked, \"Did you finish the report task?\" I said yes, and I explained what I did.",
           "ru": "На стендапе менеджер спросил: «Ты закончил задачу с отчётом?» Я сказал да и объяснил, что сделал.",
           "audio": {
-            "src": "media/audio/u04.d02.reading.b1.wav",
+            "src": "media/audio/u04.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -234,7 +234,7 @@
           "en": "Then a teammate asked when the server went down. It happened at night, so nobody noticed it until the morning.",
           "ru": "Потом коллега спросил, когда упал сервер. Это случилось ночью, поэтому никто не заметил до утра.",
           "audio": {
-            "src": "media/audio/u04.d02.reading.b2.wav",
+            "src": "media/audio/u04.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -268,7 +268,7 @@
         "ru": "Что случилось?"
       },
       "audio": {
-        "src": "media/audio/u04.d02.listen2.wav",
+        "src": "media/audio/u04.d02.listen2.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

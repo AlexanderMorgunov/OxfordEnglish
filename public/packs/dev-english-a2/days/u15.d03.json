@@ -26,7 +26,7 @@
           "example": "I regret nothing.",
           "exampleRu": "Я ни о чём не жалею.",
           "audio": {
-            "src": "media/audio/u15.d03.vocab.regret.wav",
+            "src": "media/audio/u15.d03.vocab.regret.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I miss my old friends.",
           "exampleRu": "Я скучаю по старым друзьям.",
           "audio": {
-            "src": "media/audio/u15.d03.vocab.miss.wav",
+            "src": "media/audio/u15.d03.vocab.miss.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "Sometimes I feel lonely.",
           "exampleRu": "Иногда мне одиноко.",
           "audio": {
-            "src": "media/audio/u15.d03.vocab.lonely.wav",
+            "src": "media/audio/u15.d03.vocab.lonely.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Don't be jealous.",
           "exampleRu": "Не завидуй.",
           "audio": {
-            "src": "media/audio/u15.d03.vocab.jealous.wav",
+            "src": "media/audio/u15.d03.vocab.jealous.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "She was upset about it.",
           "exampleRu": "Она была этим расстроена.",
           "audio": {
-            "src": "media/audio/u15.d03.vocab.upset.wav",
+            "src": "media/audio/u15.d03.vocab.upset.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "I was disappointed.",
           "exampleRu": "Я был разочарован.",
           "audio": {
-            "src": "media/audio/u15.d03.vocab.disappointed.wav",
+            "src": "media/audio/u15.d03.vocab.disappointed.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "What a relief!",
           "exampleRu": "Какое облегчение!",
           "audio": {
-            "src": "media/audio/u15.d03.vocab.relief.wav",
+            "src": "media/audio/u15.d03.vocab.relief.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I'm proud of you.",
           "exampleRu": "Я горжусь тобой.",
           "audio": {
-            "src": "media/audio/u15.d03.vocab.proud.wav",
+            "src": "media/audio/u15.d03.vocab.proud.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I wish I had more time.",
           "exampleRu": "Жаль, что у меня мало времени.",
           "audio": {
-            "src": "media/audio/u15.d03.vocab.wish.wav",
+            "src": "media/audio/u15.d03.vocab.wish.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "If only I knew!",
           "exampleRu": "Если бы я только знал!",
           "audio": {
-            "src": "media/audio/u15.d03.vocab.ifonly.wav",
+            "src": "media/audio/u15.d03.vocab.ifonly.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Sometimes late in the evening, Daniel thinks about the choices he made. \"I wish I had studied music,\" he says quietly. \"If only I were braver back then, I would have followed my dream instead of a safe career.\"",
           "ru": "Иногда поздним вечером Дэниел думает о сделанном выборе. «Жаль, что я не занялся музыкой, — тихо говорит он. — Если бы я тогда был смелее, я бы пошёл за мечтой, а не за надёжной карьерой».",
           "audio": {
-            "src": "media/audio/u15.d03.reading.b1.wav",
+            "src": "media/audio/u15.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "But he is not really unhappy. \"I wish I could change some things, sure. But I have a good life, kind friends and time to learn now. It's never too late to start again.\"",
           "ru": "Но он не то чтобы несчастлив. «Хотел бы кое-что изменить, конечно. Но у меня хорошая жизнь, добрые друзья и время учиться сейчас. Начать заново никогда не поздно».",
           "audio": {
-            "src": "media/audio/u15.d03.reading.b2.wav",
+            "src": "media/audio/u15.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Жаль, что…"
       },
       "audio": {
-        "src": "media/audio/u15.d03.listening.wav",
+        "src": "media/audio/u15.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

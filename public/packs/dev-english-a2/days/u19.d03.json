@@ -27,7 +27,7 @@
           "example": "What happened here?",
           "exampleRu": "Что здесь случилось?",
           "audio": {
-            "src": "media/audio/u19.d03.vocab.happen.wav",
+            "src": "media/audio/u19.d03.vocab.happen.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "He must have left early.",
           "exampleRu": "Он, должно быть, ушёл рано.",
           "audio": {
-            "src": "media/audio/u19.d03.vocab.leave.wav",
+            "src": "media/audio/u19.d03.vocab.leave.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "Someone broke the window.",
           "exampleRu": "Кто-то разбил окно.",
           "audio": {
-            "src": "media/audio/u19.d03.vocab.break.wav",
+            "src": "media/audio/u19.d03.vocab.break.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "She must have forgotten.",
           "exampleRu": "Она, наверное, забыла.",
           "audio": {
-            "src": "media/audio/u19.d03.vocab.forget.wav",
+            "src": "media/audio/u19.d03.vocab.forget.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "It was a mistake.",
           "exampleRu": "Это была ошибка.",
           "audio": {
-            "src": "media/audio/u19.d03.vocab.mistake.wav",
+            "src": "media/audio/u19.d03.vocab.mistake.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "There were footprints in the mud.",
           "exampleRu": "В грязи были следы.",
           "audio": {
-            "src": "media/audio/u19.d03.vocab.footprint.wav",
+            "src": "media/audio/u19.d03.vocab.footprint.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "He was clearly here.",
           "exampleRu": "Он явно был здесь.",
           "audio": {
-            "src": "media/audio/u19.d03.vocab.clearly.wav",
+            "src": "media/audio/u19.d03.vocab.clearly.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "It happened recently.",
           "exampleRu": "Это случилось недавно.",
           "audio": {
-            "src": "media/audio/u19.d03.vocab.recently.wav",
+            "src": "media/audio/u19.d03.vocab.recently.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "The crime shocked the town.",
           "exampleRu": "Преступление потрясло город.",
           "audio": {
-            "src": "media/audio/u19.d03.vocab.crime.wav",
+            "src": "media/audio/u19.d03.vocab.crime.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "They solved the case.",
           "exampleRu": "Они раскрыли дело.",
           "audio": {
-            "src": "media/audio/u19.d03.vocab.solve.wav",
+            "src": "media/audio/u19.d03.vocab.solve.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "When Mrs Lee came home, her favourite vase was broken on the floor. \"The cat must have knocked it over,\" she thought. But the cat was outside all day. \"Then someone must have come in.\"",
           "ru": "Когда миссис Ли вернулась домой, её любимая ваза лежала разбитой на полу. «Должно быть, её сбил кот», — подумала она. Но кот весь день был на улице. «Тогда, наверное, кто-то заходил».",
           "audio": {
-            "src": "media/audio/u19.d03.reading.b1.wav",
+            "src": "media/audio/u19.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "She noticed the window was open. \"A thief can't have done it — nothing is missing.\" Then she saw muddy footprints. \"My son might have come home for lunch. He could have opened the window and forgotten to close it.\" She was right.",
           "ru": "Она заметила, что окно открыто. «Вор этого сделать не мог — ничего не пропало». Потом она увидела грязные следы. «Может, сын заходил домой на обед. Он мог открыть окно и забыть закрыть». Она была права.",
           "audio": {
-            "src": "media/audio/u19.d03.reading.b2.wav",
+            "src": "media/audio/u19.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Где ты был?"
       },
       "audio": {
-        "src": "media/audio/u19.d03.listening.wav",
+        "src": "media/audio/u19.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

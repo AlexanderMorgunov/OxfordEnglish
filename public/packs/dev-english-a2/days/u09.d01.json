@@ -26,7 +26,7 @@
           "example": "This shirt is nice.",
           "exampleRu": "Эта рубашка красивая.",
           "audio": {
-            "src": "media/audio/u09.d01.vocab.shirt.wav",
+            "src": "media/audio/u09.d01.vocab.shirt.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "The trousers are too long.",
           "exampleRu": "Брюки слишком длинные.",
           "audio": {
-            "src": "media/audio/u09.d01.vocab.trousers.wav",
+            "src": "media/audio/u09.d01.vocab.trousers.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "She bought a red dress.",
           "exampleRu": "Она купила красное платье.",
           "audio": {
-            "src": "media/audio/u09.d01.vocab.dress.wav",
+            "src": "media/audio/u09.d01.vocab.dress.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "These shoes are comfortable.",
           "exampleRu": "Эта обувь удобная.",
           "audio": {
-            "src": "media/audio/u09.d01.vocab.shoes.wav",
+            "src": "media/audio/u09.d01.vocab.shoes.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The jacket is warm.",
           "exampleRu": "Куртка тёплая.",
           "audio": {
-            "src": "media/audio/u09.d01.vocab.jacket.wav",
+            "src": "media/audio/u09.d01.vocab.jacket.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "I need a new coat.",
           "exampleRu": "Мне нужно новое пальто.",
           "audio": {
-            "src": "media/audio/u09.d01.vocab.coat.wav",
+            "src": "media/audio/u09.d01.vocab.coat.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "What size are you?",
           "exampleRu": "Какой у тебя размер?",
           "audio": {
-            "src": "media/audio/u09.d01.vocab.size.wav",
+            "src": "media/audio/u09.d01.vocab.size.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "This shop is cheap.",
           "exampleRu": "Этот магазин дешёвый.",
           "audio": {
-            "src": "media/audio/u09.d01.vocab.cheap.wav",
+            "src": "media/audio/u09.d01.vocab.cheap.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "That coat is expensive.",
           "exampleRu": "То пальто дорогое.",
           "audio": {
-            "src": "media/audio/u09.d01.vocab.expensive.wav",
+            "src": "media/audio/u09.d01.vocab.expensive.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "I like this colour.",
           "exampleRu": "Мне нравится этот цвет.",
           "audio": {
-            "src": "media/audio/u09.d01.vocab.colour.wav",
+            "src": "media/audio/u09.d01.vocab.colour.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "In the shop there were two jackets. The blue one was cheaper, but the black one was warmer and more comfortable. It was also more expensive.",
           "ru": "В магазине было две куртки. Синяя была дешевле, но чёрная — теплее и удобнее. Она была ещё и дороже.",
           "audio": {
-            "src": "media/audio/u09.d01.reading.b1.wav",
+            "src": "media/audio/u09.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "I tried both. The black jacket was bigger and better for winter. \"This one is nicer,\" said my friend. So I bought the black one.",
           "ru": "Я примерил обе. Чёрная куртка была больше и лучше для зимы. «Эта симпатичнее», — сказал друг. Так что я купил чёрную.",
           "audio": {
-            "src": "media/audio/u09.d01.reading.b2.wav",
+            "src": "media/audio/u09.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Какая рубашка?"
       },
       "audio": {
-        "src": "media/audio/u09.d01.listening.wav",
+        "src": "media/audio/u09.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

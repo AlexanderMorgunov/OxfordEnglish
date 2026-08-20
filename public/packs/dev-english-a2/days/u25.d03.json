@@ -26,7 +26,7 @@
           "example": "Everyone is here.",
           "exampleRu": "Все здесь.",
           "audio": {
-            "src": "media/audio/u25.d03.vocab.everyone.wav",
+            "src": "media/audio/u25.d03.vocab.everyone.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "Everything is ready.",
           "exampleRu": "Всё готово.",
           "audio": {
-            "src": "media/audio/u25.d03.vocab.everything.wav",
+            "src": "media/audio/u25.d03.vocab.everything.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "The whole group came.",
           "exampleRu": "Пришла вся группа.",
           "audio": {
-            "src": "media/audio/u25.d03.vocab.group.wav",
+            "src": "media/audio/u25.d03.vocab.group.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Each member has a task.",
           "exampleRu": "У каждого участника есть задача.",
           "audio": {
-            "src": "media/audio/u25.d03.vocab.member.wav",
+            "src": "media/audio/u25.d03.vocab.member.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The whole day.",
           "exampleRu": "Весь день.",
           "audio": {
-            "src": "media/audio/u25.d03.vocab.whole.wav",
+            "src": "media/audio/u25.d03.vocab.whole.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Every single one.",
           "exampleRu": "Каждый до единого.",
           "audio": {
-            "src": "media/audio/u25.d03.vocab.single.wav",
+            "src": "media/audio/u25.d03.vocab.single.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Each individual matters.",
           "exampleRu": "Каждый важен.",
           "audio": {
-            "src": "media/audio/u25.d03.vocab.individual.wav",
+            "src": "media/audio/u25.d03.vocab.individual.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "All the team agreed.",
           "exampleRu": "Вся команда согласилась.",
           "audio": {
-            "src": "media/audio/u25.d03.vocab.team.wav",
+            "src": "media/audio/u25.d03.vocab.team.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "A daily routine.",
           "exampleRu": "Ежедневный распорядок.",
           "audio": {
-            "src": "media/audio/u25.d03.vocab.daily.wav",
+            "src": "media/audio/u25.d03.vocab.daily.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "None of them came.",
           "exampleRu": "Никто из них не пришёл.",
           "audio": {
-            "src": "media/audio/u25.d03.vocab.none.wav",
+            "src": "media/audio/u25.d03.vocab.none.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Every year, the whole class goes on a trip. This year, all the students voted for the mountains. Each child had to bring a bag, and every bag was checked before we left. Everyone was excited.",
           "ru": "Каждый год весь класс едет в поездку. В этом году все ученики проголосовали за горы. Каждый ребёнок должен был взять рюкзак, и каждый рюкзак проверили перед отъездом. Все были в восторге.",
           "audio": {
-            "src": "media/audio/u25.d03.reading.b1.wav",
+            "src": "media/audio/u25.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "We spent the whole day walking, and every single view was beautiful. In the evening, each student shared a story around the fire. \"All of us will remember this,\" said the teacher. \"Every one of you was wonderful today.\"",
           "ru": "Мы весь день ходили пешком, и каждый вид был прекрасен. Вечером каждый ученик рассказал историю у костра. «Все мы это запомним, — сказал учитель. — Каждый из вас был сегодня замечательным».",
           "audio": {
-            "src": "media/audio/u25.d03.reading.b2.wav",
+            "src": "media/audio/u25.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Все здесь?"
       },
       "audio": {
-        "src": "media/audio/u25.d03.listening.wav",
+        "src": "media/audio/u25.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

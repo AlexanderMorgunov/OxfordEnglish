@@ -27,7 +27,7 @@
           "example": "Life has changed.",
           "exampleRu": "Жизнь изменилась.",
           "audio": {
-            "src": "media/audio/u23.d04.vocab.change.wav",
+            "src": "media/audio/u23.d04.vocab.change.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "The town has developed.",
           "exampleRu": "Город развился.",
           "audio": {
-            "src": "media/audio/u23.d04.vocab.develop.wav",
+            "src": "media/audio/u23.d04.vocab.develop.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "A modern city.",
           "exampleRu": "Современный город.",
           "audio": {
-            "src": "media/audio/u23.d04.vocab.modern.wav",
+            "src": "media/audio/u23.d04.vocab.modern.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "In the past, it was quiet.",
           "exampleRu": "В прошлом было тихо.",
           "audio": {
-            "src": "media/audio/u23.d04.vocab.past.wav",
+            "src": "media/audio/u23.d04.vocab.past.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "Compare then and now.",
           "exampleRu": "Сравни тогда и сейчас.",
           "audio": {
-            "src": "media/audio/u23.d04.vocab.compare.wav",
+            "src": "media/audio/u23.d04.vocab.compare.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "There's been progress.",
           "exampleRu": "Есть прогресс.",
           "audio": {
-            "src": "media/audio/u23.d04.vocab.progress.wav",
+            "src": "media/audio/u23.d04.vocab.progress.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "An old habit.",
           "exampleRu": "Старая привычка.",
           "audio": {
-            "src": "media/audio/u23.d04.vocab.habit.wav",
+            "src": "media/audio/u23.d04.vocab.habit.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "It feels familiar.",
           "exampleRu": "Это кажется знакомым.",
           "audio": {
-            "src": "media/audio/u23.d04.vocab.familiar.wav",
+            "src": "media/audio/u23.d04.vocab.familiar.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "Memories fade.",
           "exampleRu": "Воспоминания угасают.",
           "audio": {
-            "src": "media/audio/u23.d04.vocab.fade.wav",
+            "src": "media/audio/u23.d04.vocab.fade.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "The older generation.",
           "exampleRu": "Старшее поколение.",
           "audio": {
-            "src": "media/audio/u23.d04.vocab.generation.wav",
+            "src": "media/audio/u23.d04.vocab.generation.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "My town used to be a quiet fishing village. Every morning, the fishermen would sail out at dawn, and the market would fill with people by nine. There used to be no cars, only bicycles and boats.",
           "ru": "Мой город раньше был тихой рыбацкой деревней. Каждое утро рыбаки выходили в море на рассвете, а к девяти рынок заполнялся людьми. Раньше не было машин — только велосипеды и лодки.",
           "audio": {
-            "src": "media/audio/u23.d04.reading.b1.wav",
+            "src": "media/audio/u23.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "Now it's a busy town, and at first the older people couldn't get used to the change. But people adapt. \"I'm used to the traffic now,\" my grandmother says, \"though I still miss how things used to be. We would know everyone's name back then.\"",
           "ru": "Теперь это оживлённый город, и поначалу старшие не могли привыкнуть к переменам. Но люди приспосабливаются. «Теперь я привыкла к движению, — говорит бабушка, — хотя всё ещё скучаю по тому, как было. Тогда мы знали всех по именам».",
           "audio": {
-            "src": "media/audio/u23.d04.reading.b2.wav",
+            "src": "media/audio/u23.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Изменилось?"
       },
       "audio": {
-        "src": "media/audio/u23.d04.listening.wav",
+        "src": "media/audio/u23.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

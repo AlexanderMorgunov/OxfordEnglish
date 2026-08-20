@@ -26,7 +26,7 @@
           "example": "The beans are picked by hand.",
           "exampleRu": "Зёрна собирают вручную.",
           "audio": {
-            "src": "media/audio/u24.d03.vocab.pick.wav",
+            "src": "media/audio/u24.d03.vocab.pick.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "They are washed carefully.",
           "exampleRu": "Их тщательно моют.",
           "audio": {
-            "src": "media/audio/u24.d03.vocab.wash.wav",
+            "src": "media/audio/u24.d03.vocab.wash.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "The leaves are dried in the sun.",
           "exampleRu": "Листья сушат на солнце.",
           "audio": {
-            "src": "media/audio/u24.d03.vocab.dry.wav",
+            "src": "media/audio/u24.d03.vocab.dry.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "The beans are roasted.",
           "exampleRu": "Зёрна обжаривают.",
           "audio": {
-            "src": "media/audio/u24.d03.vocab.roast.wav",
+            "src": "media/audio/u24.d03.vocab.roast.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Then they are ground.",
           "exampleRu": "Затем их мелют.",
           "audio": {
-            "src": "media/audio/u24.d03.vocab.grind.wav",
+            "src": "media/audio/u24.d03.vocab.grind.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "The coffee is packed in bags.",
           "exampleRu": "Кофе упаковывают в пакеты.",
           "audio": {
-            "src": "media/audio/u24.d03.vocab.pack.wav",
+            "src": "media/audio/u24.d03.vocab.pack.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "The first stage is picking.",
           "exampleRu": "Первый этап — сбор.",
           "audio": {
-            "src": "media/audio/u24.d03.vocab.stage.wav",
+            "src": "media/audio/u24.d03.vocab.stage.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "It's a long process.",
           "exampleRu": "Это долгий процесс.",
           "audio": {
-            "src": "media/audio/u24.d03.vocab.process.wav",
+            "src": "media/audio/u24.d03.vocab.process.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Finally, it's sold.",
           "exampleRu": "Наконец его продают.",
           "audio": {
-            "src": "media/audio/u24.d03.vocab.finally.wav",
+            "src": "media/audio/u24.d03.vocab.finally.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "The product is shipped abroad.",
           "exampleRu": "Продукт отправляют за границу.",
           "audio": {
-            "src": "media/audio/u24.d03.vocab.ship.wav",
+            "src": "media/audio/u24.d03.vocab.ship.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Have you ever wondered how coffee is made? First, the ripe red beans are picked, usually by hand. Then they are washed and dried in the sun for several days. After that, the dried beans are sent to a factory.",
           "ru": "Вы когда-нибудь задумывались, как делают кофе? Сначала спелые красные зёрна собирают, обычно вручную. Затем их моют и несколько дней сушат на солнце. После этого сухие зёрна отправляют на фабрику.",
           "audio": {
-            "src": "media/audio/u24.d03.reading.b1.wav",
+            "src": "media/audio/u24.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "At the factory, the beans are roasted at a high temperature until they turn brown. Next, they are ground into powder. Finally, the coffee is packed into bags and shipped to shops around the world. All this is done before your morning cup is made.",
           "ru": "На фабрике зёрна обжаривают при высокой температуре, пока они не станут коричневыми. Затем их мелют в порошок. Наконец, кофе упаковывают в пакеты и отправляют в магазины по всему миру. Всё это делается ещё до того, как готовят вашу утреннюю чашку.",
           "audio": {
-            "src": "media/audio/u24.d03.reading.b2.wav",
+            "src": "media/audio/u24.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Как это делают?"
       },
       "audio": {
-        "src": "media/audio/u24.d03.listening.wav",
+        "src": "media/audio/u24.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

@@ -26,7 +26,7 @@
           "example": "Living abroad is hard at first.",
           "exampleRu": "Жить за границей сначала трудно.",
           "audio": {
-            "src": "media/audio/u23.d03.vocab.abroad.wav",
+            "src": "media/audio/u23.d03.vocab.abroad.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "The climate is different.",
           "exampleRu": "Климат другой.",
           "audio": {
-            "src": "media/audio/u23.d03.vocab.climate.wav",
+            "src": "media/audio/u23.d03.vocab.climate.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "A new routine.",
           "exampleRu": "Новый распорядок.",
           "audio": {
-            "src": "media/audio/u23.d03.vocab.routine.wav",
+            "src": "media/audio/u23.d03.vocab.routine.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "It takes time to adapt.",
           "exampleRu": "Нужно время, чтобы приспособиться.",
           "audio": {
-            "src": "media/audio/u23.d03.vocab.adapt.wav",
+            "src": "media/audio/u23.d03.vocab.adapt.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "It felt strange at first.",
           "exampleRu": "Сначала было странно.",
           "audio": {
-            "src": "media/audio/u23.d03.vocab.strange.wav",
+            "src": "media/audio/u23.d03.vocab.strange.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Now it feels normal.",
           "exampleRu": "Теперь это кажется нормальным.",
           "audio": {
-            "src": "media/audio/u23.d03.vocab.normal.wav",
+            "src": "media/audio/u23.d03.vocab.normal.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "A busy schedule.",
           "exampleRu": "Плотный график.",
           "audio": {
-            "src": "media/audio/u23.d03.vocab.schedule.wav",
+            "src": "media/audio/u23.d03.vocab.schedule.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "It was a challenge.",
           "exampleRu": "Это было испытанием.",
           "audio": {
-            "src": "media/audio/u23.d03.vocab.challenge.wav",
+            "src": "media/audio/u23.d03.vocab.challenge.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Gradually, it got easier.",
           "exampleRu": "Постепенно стало легче.",
           "audio": {
-            "src": "media/audio/u23.d03.vocab.gradually.wav",
+            "src": "media/audio/u23.d03.vocab.gradually.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "It took a month to settle in.",
           "exampleRu": "На то, чтобы обжиться, ушёл месяц.",
           "audio": {
-            "src": "media/audio/u23.d03.vocab.settlein.wav",
+            "src": "media/audio/u23.d03.vocab.settlein.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "When Elena first moved to Norway, everything felt strange. She wasn't used to the long, dark winters, and she wasn't used to eating dinner so early. \"At first, I couldn't get used to the silence,\" she said.",
           "ru": "Когда Елена только переехала в Норвегию, всё казалось странным. Она не привыкла к долгим тёмным зимам и к такому раннему ужину. «Сначала я никак не могла привыкнуть к тишине», — сказала она.",
           "audio": {
-            "src": "media/audio/u23.d03.reading.b1.wav",
+            "src": "media/audio/u23.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "But gradually, she adapted. \"Now I'm used to the cold, and I'm even getting used to skiing to work! It's funny how you get used to almost anything. This place used to feel foreign, but now it feels like home.\"",
           "ru": "Но постепенно она приспособилась. «Теперь я привыкла к холоду и даже привыкаю ездить на работу на лыжах! Забавно, как ко всему привыкаешь. Раньше это место казалось чужим, а теперь ощущается как дом».",
           "audio": {
-            "src": "media/audio/u23.d03.reading.b2.wav",
+            "src": "media/audio/u23.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Как новая работа?"
       },
       "audio": {
-        "src": "media/audio/u23.d03.listening.wav",
+        "src": "media/audio/u23.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

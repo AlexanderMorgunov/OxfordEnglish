@@ -28,7 +28,7 @@
           "example": "Big changes are coming.",
           "exampleRu": "Грядут большие перемены.",
           "audio": {
-            "src": "media/audio/u15.d04.vocab.change.wav",
+            "src": "media/audio/u15.d04.vocab.change.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -42,7 +42,7 @@
           "example": "They moved abroad.",
           "exampleRu": "Они переехали за границу.",
           "audio": {
-            "src": "media/audio/u15.d04.vocab.move.wav",
+            "src": "media/audio/u15.d04.vocab.move.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -56,7 +56,7 @@
           "example": "It's a serious relationship.",
           "exampleRu": "Это серьёзные отношения.",
           "audio": {
-            "src": "media/audio/u15.d04.vocab.relationship.wav",
+            "src": "media/audio/u15.d04.vocab.relationship.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -70,7 +70,7 @@
           "example": "It's your decision.",
           "exampleRu": "Это твоё решение.",
           "audio": {
-            "src": "media/audio/u15.d04.vocab.decision.wav",
+            "src": "media/audio/u15.d04.vocab.decision.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -84,7 +84,7 @@
           "example": "Can I give you some advice?",
           "exampleRu": "Можно дать тебе совет?",
           "audio": {
-            "src": "media/audio/u15.d04.vocab.advice.wav",
+            "src": "media/audio/u15.d04.vocab.advice.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -98,7 +98,7 @@
           "example": "I advise you to wait.",
           "exampleRu": "Советую тебе подождать.",
           "audio": {
-            "src": "media/audio/u15.d04.vocab.advise.wav",
+            "src": "media/audio/u15.d04.vocab.advise.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -112,7 +112,7 @@
           "example": "Think about your future.",
           "exampleRu": "Подумай о будущем.",
           "audio": {
-            "src": "media/audio/u15.d04.vocab.future.wav",
+            "src": "media/audio/u15.d04.vocab.future.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -126,7 +126,7 @@
           "example": "They want to settle down.",
           "exampleRu": "Они хотят остепениться.",
           "audio": {
-            "src": "media/audio/u15.d04.vocab.settledown.wav",
+            "src": "media/audio/u15.d04.vocab.settledown.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -140,7 +140,7 @@
           "example": "Sometimes you have to take a risk.",
           "exampleRu": "Иногда нужно рискнуть.",
           "audio": {
-            "src": "media/audio/u15.d04.vocab.takearisk.wav",
+            "src": "media/audio/u15.d04.vocab.takearisk.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -154,7 +154,7 @@
           "example": "In your position, I would wait.",
           "exampleRu": "На твоём месте я бы подождал.",
           "audio": {
-            "src": "media/audio/u15.d04.vocab.inyourposition.wav",
+            "src": "media/audio/u15.d04.vocab.inyourposition.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -242,7 +242,7 @@
           "en": "\"I don't know what to do,\" said Sam. \"They offered me a job abroad, but Anna wants to settle down here.\" His brother listened carefully. \"If I were you, I wouldn't decide too quickly. This is about your future, not just one job.\"",
           "ru": "«Я не знаю, что делать, — сказал Сэм. — Мне предложили работу за границей, но Анна хочет осесть здесь». Брат внимательно слушал. «На твоём месте я бы не решал слишком быстро. Речь о твоём будущем, а не об одной работе».",
           "audio": {
-            "src": "media/audio/u15.d04.reading.b1.wav",
+            "src": "media/audio/u15.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -254,7 +254,7 @@
           "en": "\"In your position, I would talk to Anna honestly and think about it together. You could even visit the city first. My advice? Don't take a risk this big alone — but don't give up on your dream either.\"",
           "ru": "«На твоём месте я бы честно поговорил с Анной и подумал вместе. Ты мог бы даже сначала съездить в тот город. Мой совет? Не рискуй так сильно в одиночку — но и от мечты не отказывайся».",
           "audio": {
-            "src": "media/audio/u15.d04.reading.b2.wav",
+            "src": "media/audio/u15.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -283,7 +283,7 @@
         "ru": "Что мне делать?"
       },
       "audio": {
-        "src": "media/audio/u15.d04.listening.wav",
+        "src": "media/audio/u15.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"
@@ -423,7 +423,7 @@
             "pronunciation"
           ],
           "audio": {
-            "src": "media/audio/u15.d04.ex.mp.01.wav",
+            "src": "media/audio/u15.d04.ex.mp.01.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"

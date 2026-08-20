@@ -26,7 +26,7 @@
           "example": "A ticket to the centre, please.",
           "exampleRu": "Билет до центра, пожалуйста.",
           "audio": {
-            "src": "media/audio/u08.d05.vocab.ticket.wav",
+            "src": "media/audio/u08.d05.vocab.ticket.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "A single to London.",
           "exampleRu": "Билет в одну сторону до Лондона.",
           "audio": {
-            "src": "media/audio/u08.d05.vocab.single.wav",
+            "src": "media/audio/u08.d05.vocab.single.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "A return, please.",
           "exampleRu": "Туда-обратно, пожалуйста.",
           "audio": {
-            "src": "media/audio/u08.d05.vocab.return.wav",
+            "src": "media/audio/u08.d05.vocab.return.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "The train leaves from platform three.",
           "exampleRu": "Поезд отходит с третьей платформы.",
           "audio": {
-            "src": "media/audio/u08.d05.vocab.platform.wav",
+            "src": "media/audio/u08.d05.vocab.platform.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Check the timetable.",
           "exampleRu": "Посмотри расписание.",
           "audio": {
-            "src": "media/audio/u08.d05.vocab.timetable.wav",
+            "src": "media/audio/u08.d05.vocab.timetable.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "The fare is two pounds.",
           "exampleRu": "Проезд стоит два фунта.",
           "audio": {
-            "src": "media/audio/u08.d05.vocab.fare.wav",
+            "src": "media/audio/u08.d05.vocab.fare.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Wait at the bus stop.",
           "exampleRu": "Жди на остановке.",
           "audio": {
-            "src": "media/audio/u08.d05.vocab.busstop.wav",
+            "src": "media/audio/u08.d05.vocab.busstop.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "Take the underground.",
           "exampleRu": "Езжай на метро.",
           "audio": {
-            "src": "media/audio/u08.d05.vocab.underground.wav",
+            "src": "media/audio/u08.d05.vocab.underground.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Change at the next station.",
           "exampleRu": "Сделай пересадку на следующей станции.",
           "audio": {
-            "src": "media/audio/u08.d05.vocab.change.wav",
+            "src": "media/audio/u08.d05.vocab.change.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "How do I get to the museum?",
           "exampleRu": "Как добраться до музея?",
           "audio": {
-            "src": "media/audio/u08.d05.vocab.getto.wav",
+            "src": "media/audio/u08.d05.vocab.getto.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -237,7 +237,7 @@
           "en": "\"Excuse me, how do I get to the city centre?\" \"Take the underground. There is a station over there. A single ticket is two pounds.\"",
           "ru": "«Извините, как добраться до центра?» «Езжайте на метро. Станция вон там. Билет в одну сторону стоит два фунта».",
           "audio": {
-            "src": "media/audio/u08.d05.reading.b1.wav",
+            "src": "media/audio/u08.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -249,7 +249,7 @@
           "en": "\"Do I change trains?\" \"Yes, change at the next station. The centre is only four stops away.\" \"Thank you very much!\" \"You're welcome.\"",
           "ru": "«Мне нужна пересадка?» «Да, пересядьте на следующей станции. Центр всего в четырёх остановках». «Большое спасибо!» «Пожалуйста».",
           "audio": {
-            "src": "media/audio/u08.d05.reading.b2.wav",
+            "src": "media/audio/u08.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -278,7 +278,7 @@
         "ru": "Билет, пожалуйста"
       },
       "audio": {
-        "src": "media/audio/u08.d05.listening.wav",
+        "src": "media/audio/u08.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

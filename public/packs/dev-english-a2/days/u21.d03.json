@@ -26,7 +26,7 @@
           "example": "The bus departs at eight.",
           "exampleRu": "Автобус отправляется в восемь.",
           "audio": {
-            "src": "media/audio/u21.d03.vocab.depart.wav",
+            "src": "media/audio/u21.d03.vocab.depart.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "The shop opens at nine.",
           "exampleRu": "Магазин открывается в девять.",
           "audio": {
-            "src": "media/audio/u21.d03.vocab.open.wav",
+            "src": "media/audio/u21.d03.vocab.open.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "It closes at ten.",
           "exampleRu": "Он закрывается в десять.",
           "audio": {
-            "src": "media/audio/u21.d03.vocab.close.wav",
+            "src": "media/audio/u21.d03.vocab.close.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "The class begins at two.",
           "exampleRu": "Занятие начинается в два.",
           "audio": {
-            "src": "media/audio/u21.d03.vocab.begin.wav",
+            "src": "media/audio/u21.d03.vocab.begin.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Go to gate five.",
           "exampleRu": "Идите к выходу пять.",
           "audio": {
-            "src": "media/audio/u21.d03.vocab.gate.wav",
+            "src": "media/audio/u21.d03.vocab.gate.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "We board at noon.",
           "exampleRu": "Посадка в полдень.",
           "audio": {
-            "src": "media/audio/u21.d03.vocab.board.wav",
+            "src": "media/audio/u21.d03.vocab.board.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "There's a short delay.",
           "exampleRu": "Небольшая задержка.",
           "audio": {
-            "src": "media/audio/u21.d03.vocab.delay.wav",
+            "src": "media/audio/u21.d03.vocab.delay.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "Check the timetable.",
           "exampleRu": "Посмотри расписание.",
           "audio": {
-            "src": "media/audio/u21.d03.vocab.timetable.wav",
+            "src": "media/audio/u21.d03.vocab.timetable.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "The train is on platform two.",
           "exampleRu": "Поезд на платформе два.",
           "audio": {
-            "src": "media/audio/u21.d03.vocab.platform.wav",
+            "src": "media/audio/u21.d03.vocab.platform.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "I bought a ticket.",
           "exampleRu": "Я купил билет.",
           "audio": {
-            "src": "media/audio/u21.d03.vocab.ticket.wav",
+            "src": "media/audio/u21.d03.vocab.ticket.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Anna checked her timetable carefully. \"The train leaves at 6:15 and arrives at 8:30. Then my flight departs at 10, so I board at 9:20.\" She liked to plan everything to the minute.",
           "ru": "Анна внимательно посмотрела расписание. «Поезд отходит в 6:15 и прибывает в 8:30. Потом мой рейс вылетает в 10, так что посадка в 9:20». Она любила планировать всё до минуты.",
           "audio": {
-            "src": "media/audio/u21.d03.reading.b1.wav",
+            "src": "media/audio/u21.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"The airport shops open at 6, so I'll have time for a coffee,\" she thought. \"And the gate closes 20 minutes before take-off.\" Everything fit together perfectly — unless, of course, there was a delay.",
           "ru": "«Магазины в аэропорту открываются в 6, так что успею на кофе, — подумала она. — А выход закрывается за 20 минут до вылета». Всё складывалось идеально — если, конечно, не будет задержки.",
           "audio": {
-            "src": "media/audio/u21.d03.reading.b2.wav",
+            "src": "media/audio/u21.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Во сколько отправление?"
       },
       "audio": {
-        "src": "media/audio/u21.d03.listening.wav",
+        "src": "media/audio/u21.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

@@ -26,7 +26,7 @@
           "example": "It was a family tradition.",
           "exampleRu": "Это была семейная традиция.",
           "audio": {
-            "src": "media/audio/u23.d02.vocab.tradition.wav",
+            "src": "media/audio/u23.d02.vocab.tradition.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "We went to the seaside.",
           "exampleRu": "Мы ездили на побережье.",
           "audio": {
-            "src": "media/audio/u23.d02.vocab.seaside.wav",
+            "src": "media/audio/u23.d02.vocab.seaside.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "The family would gather.",
           "exampleRu": "Семья собиралась.",
           "audio": {
-            "src": "media/audio/u23.d02.vocab.gather.wav",
+            "src": "media/audio/u23.d02.vocab.gather.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "We would spend hours playing.",
           "exampleRu": "Мы часами играли.",
           "audio": {
-            "src": "media/audio/u23.d02.vocab.spend.wav",
+            "src": "media/audio/u23.d02.vocab.spend.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The whole afternoon.",
           "exampleRu": "Весь день.",
           "audio": {
-            "src": "media/audio/u23.d02.vocab.whole.wav",
+            "src": "media/audio/u23.d02.vocab.whole.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "We sat by the campfire.",
           "exampleRu": "Мы сидели у костра.",
           "audio": {
-            "src": "media/audio/u23.d02.vocab.campfire.wav",
+            "src": "media/audio/u23.d02.vocab.campfire.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "We watched the sunset.",
           "exampleRu": "Мы смотрели на закат.",
           "audio": {
-            "src": "media/audio/u23.d02.vocab.sunset.wav",
+            "src": "media/audio/u23.d02.vocab.sunset.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "Grandpa loved storytelling.",
           "exampleRu": "Дедушка любил рассказывать истории.",
           "audio": {
-            "src": "media/audio/u23.d02.vocab.storytelling.wav",
+            "src": "media/audio/u23.d02.vocab.storytelling.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "We drove to the countryside.",
           "exampleRu": "Мы ехали за город.",
           "audio": {
-            "src": "media/audio/u23.d02.vocab.countryside.wav",
+            "src": "media/audio/u23.d02.vocab.countryside.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Those summers felt like forever.",
           "exampleRu": "Те лета казались вечностью.",
           "audio": {
-            "src": "media/audio/u23.d02.vocab.forever.wav",
+            "src": "media/audio/u23.d02.vocab.forever.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Every summer, our whole family would drive to the seaside. We would leave early in the morning, and my father would sing old songs the whole way. When we arrived, we would run straight to the water.",
           "ru": "Каждое лето вся наша семья ездила на побережье. Мы выезжали рано утром, и отец всю дорогу пел старые песни. Приехав, мы сразу бежали к воде.",
           "audio": {
-            "src": "media/audio/u23.d02.reading.b1.wav",
+            "src": "media/audio/u23.d02.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "In the evenings, we would sit by a campfire and my grandmother would tell stories. We would watch the sunset and stay up late. Those summers used to feel endless. I would give anything to live one of those days again.",
           "ru": "По вечерам мы сидели у костра, и бабушка рассказывала истории. Мы смотрели на закат и не ложились допоздна. Те лета казались бесконечными. Я бы всё отдал, чтобы прожить один из тех дней снова.",
           "audio": {
-            "src": "media/audio/u23.d02.reading.b2.wav",
+            "src": "media/audio/u23.d02.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Семейные традиции"
       },
       "audio": {
-        "src": "media/audio/u23.d02.listening.wav",
+        "src": "media/audio/u23.d02.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

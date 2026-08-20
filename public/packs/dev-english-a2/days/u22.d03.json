@@ -27,7 +27,7 @@
           "example": "He's actually my cousin.",
           "exampleRu": "На самом деле он мой двоюродный брат.",
           "audio": {
-            "src": "media/audio/u22.d03.vocab.actually.wav",
+            "src": "media/audio/u22.d03.vocab.actually.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "By the way, she called.",
           "exampleRu": "Кстати, она звонила.",
           "audio": {
-            "src": "media/audio/u22.d03.vocab.bytheway.wav",
+            "src": "media/audio/u22.d03.vocab.bytheway.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "She's a brilliant doctor.",
           "exampleRu": "Она блестящий врач.",
           "audio": {
-            "src": "media/audio/u22.d03.vocab.brilliant.wav",
+            "src": "media/audio/u22.d03.vocab.brilliant.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "He won an award.",
           "exampleRu": "Он получил награду.",
           "audio": {
-            "src": "media/audio/u22.d03.vocab.award.wav",
+            "src": "media/audio/u22.d03.vocab.award.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "The company, founded in 1990.",
           "exampleRu": "Компания, основанная в 1990.",
           "audio": {
-            "src": "media/audio/u22.d03.vocab.founded.wav",
+            "src": "media/audio/u22.d03.vocab.founded.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "A successful writer.",
           "exampleRu": "Успешный писатель.",
           "audio": {
-            "src": "media/audio/u22.d03.vocab.successful.wav",
+            "src": "media/audio/u22.d03.vocab.successful.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "He retired last year.",
           "exampleRu": "Он вышел на пенсию в прошлом году.",
           "audio": {
-            "src": "media/audio/u22.d03.vocab.retire.wav",
+            "src": "media/audio/u22.d03.vocab.retire.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "She works for a charity.",
           "exampleRu": "Она работает в благотворительной организации.",
           "audio": {
-            "src": "media/audio/u22.d03.vocab.charity.wav",
+            "src": "media/audio/u22.d03.vocab.charity.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "They live abroad.",
           "exampleRu": "Они живут за границей.",
           "audio": {
-            "src": "media/audio/u22.d03.vocab.abroad.wav",
+            "src": "media/audio/u22.d03.vocab.abroad.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "Nowadays he travels a lot.",
           "exampleRu": "В наши дни он много путешествует.",
           "audio": {
-            "src": "media/audio/u22.d03.vocab.nowadays.wav",
+            "src": "media/audio/u22.d03.vocab.nowadays.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -241,7 +241,7 @@
           "en": "My aunt, who lives in Canada, is a famous scientist. Her husband, whose paintings sell all over the world, is an artist. Their daughter, who is only nineteen, has already started her own company.",
           "ru": "Моя тётя, которая живёт в Канаде, — известный учёный. Её муж, чьи картины продаются по всему миру, — художник. Их дочь, которой всего девятнадцать, уже открыла собственную компанию.",
           "audio": {
-            "src": "media/audio/u22.d03.reading.b1.wav",
+            "src": "media/audio/u22.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -253,7 +253,7 @@
           "en": "The company, which she founded last year, helps students find jobs. \"My family, who I don't see often, always inspire me,\" she says. Her town, where she grew up, is proud of her — a place that produces remarkable people.",
           "ru": "Компания, которую она основала в прошлом году, помогает студентам находить работу. «Моя семья, которую я вижу нечасто, всегда меня вдохновляет», — говорит она. Её город, где она выросла, гордится ею — место, что рождает выдающихся людей.",
           "audio": {
-            "src": "media/audio/u22.d03.reading.b2.wav",
+            "src": "media/audio/u22.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -282,7 +282,7 @@
         "ru": "Расскажи о ней"
       },
       "audio": {
-        "src": "media/audio/u22.d03.listening.wav",
+        "src": "media/audio/u22.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

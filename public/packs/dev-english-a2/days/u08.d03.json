@@ -26,7 +26,7 @@
           "example": "Walk along the river.",
           "exampleRu": "Иди вдоль реки.",
           "audio": {
-            "src": "media/audio/u08.d03.vocab.along.wav",
+            "src": "media/audio/u08.d03.vocab.along.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "Walk across the square.",
           "exampleRu": "Пройди через площадь.",
           "audio": {
-            "src": "media/audio/u08.d03.vocab.across.wav",
+            "src": "media/audio/u08.d03.vocab.across.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "Go past the bank.",
           "exampleRu": "Пройди мимо банка.",
           "audio": {
-            "src": "media/audio/u08.d03.vocab.past.wav",
+            "src": "media/audio/u08.d03.vocab.past.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "Walk through the park.",
           "exampleRu": "Пройди через парк.",
           "audio": {
-            "src": "media/audio/u08.d03.vocab.through.wav",
+            "src": "media/audio/u08.d03.vocab.through.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Go into the building.",
           "exampleRu": "Зайди в здание.",
           "audio": {
-            "src": "media/audio/u08.d03.vocab.into.wav",
+            "src": "media/audio/u08.d03.vocab.into.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Come out of the shop.",
           "exampleRu": "Выйди из магазина.",
           "audio": {
-            "src": "media/audio/u08.d03.vocab.outof.wav",
+            "src": "media/audio/u08.d03.vocab.outof.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Go up the stairs.",
           "exampleRu": "Поднимись по лестнице.",
           "audio": {
-            "src": "media/audio/u08.d03.vocab.up.wav",
+            "src": "media/audio/u08.d03.vocab.up.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "Go down the street.",
           "exampleRu": "Иди вниз по улице.",
           "audio": {
-            "src": "media/audio/u08.d03.vocab.down.wav",
+            "src": "media/audio/u08.d03.vocab.down.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Go over the bridge.",
           "exampleRu": "Перейди через мост.",
           "audio": {
-            "src": "media/audio/u08.d03.vocab.over.wav",
+            "src": "media/audio/u08.d03.vocab.over.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Walk towards the station.",
           "exampleRu": "Иди к вокзалу.",
           "audio": {
-            "src": "media/audio/u08.d03.vocab.towards.wav",
+            "src": "media/audio/u08.d03.vocab.towards.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -239,7 +239,7 @@
           "en": "To get to the station, come out of the hotel and walk along the main street. Go past the market and across the small square.",
           "ru": "Чтобы добраться до вокзала, выйди из отеля и иди по главной улице. Пройди мимо рынка и через маленькую площадь.",
           "audio": {
-            "src": "media/audio/u08.d03.reading.b1.wav",
+            "src": "media/audio/u08.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -251,7 +251,7 @@
           "en": "Then walk through the park and over the bridge. The station is on the other side, towards the river. It takes about ten minutes.",
           "ru": "Потом пройди через парк и через мост. Вокзал на другой стороне, ближе к реке. Это займёт около десяти минут.",
           "audio": {
-            "src": "media/audio/u08.d03.reading.b2.wav",
+            "src": "media/audio/u08.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -280,7 +280,7 @@
         "ru": "Как пройти к магазину?"
       },
       "audio": {
-        "src": "media/audio/u08.d03.listening.wav",
+        "src": "media/audio/u08.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

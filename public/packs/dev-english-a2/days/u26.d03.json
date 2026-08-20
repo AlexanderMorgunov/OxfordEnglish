@@ -26,7 +26,7 @@
           "example": "I wish I had known.",
           "exampleRu": "Жаль, что я не знал.",
           "audio": {
-            "src": "media/audio/u26.d03.vocab.wish.wav",
+            "src": "media/audio/u26.d03.vocab.wish.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I'm sorry I said that.",
           "exampleRu": "Жаль, что я это сказал.",
           "audio": {
-            "src": "media/audio/u26.d03.vocab.sorry.wav",
+            "src": "media/audio/u26.d03.vocab.sorry.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "My only regret.",
           "exampleRu": "Моё единственное сожаление.",
           "audio": {
-            "src": "media/audio/u26.d03.vocab.regret.wav",
+            "src": "media/audio/u26.d03.vocab.regret.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "A lost opportunity.",
           "exampleRu": "Упущенная возможность.",
           "audio": {
-            "src": "media/audio/u26.d03.vocab.opportunity.wav",
+            "src": "media/audio/u26.d03.vocab.opportunity.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I wish I'd made more effort.",
           "exampleRu": "Жаль, что я не старался больше.",
           "audio": {
-            "src": "media/audio/u26.d03.vocab.effort.wav",
+            "src": "media/audio/u26.d03.vocab.effort.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "I wish I had listened.",
           "exampleRu": "Жаль, что я не послушал.",
           "audio": {
-            "src": "media/audio/u26.d03.vocab.listen.wav",
+            "src": "media/audio/u26.d03.vocab.listen.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "I wish I'd spent more time.",
           "exampleRu": "Жаль, что я не проводил больше времени.",
           "audio": {
-            "src": "media/audio/u26.d03.vocab.spend.wav",
+            "src": "media/audio/u26.d03.vocab.spend.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "I wish I had saved money.",
           "exampleRu": "Жаль, что я не откладывал денег.",
           "audio": {
-            "src": "media/audio/u26.d03.vocab.save.wav",
+            "src": "media/audio/u26.d03.vocab.save.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I wish I'd been honest.",
           "exampleRu": "Жаль, что я не был честен.",
           "audio": {
-            "src": "media/audio/u26.d03.vocab.honest.wav",
+            "src": "media/audio/u26.d03.vocab.honest.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "A different choice.",
           "exampleRu": "Другой выбор.",
           "audio": {
-            "src": "media/audio/u26.d03.vocab.choice.wav",
+            "src": "media/audio/u26.d03.vocab.choice.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "\"I have only a few regrets,\" my grandfather said. \"But I wish I had travelled more when I was young. I wish I hadn't spent so many years worrying about small things. Time goes so fast.\"",
           "ru": "«У меня всего пара сожалений, — сказал дед. — Но жаль, что я мало путешествовал в молодости. Жаль, что я потратил столько лет на переживания о мелочах. Время летит так быстро».",
           "audio": {
-            "src": "media/audio/u26.d03.reading.b1.wav",
+            "src": "media/audio/u26.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"I wish I had told people I loved them more often,\" he added. \"And I wish I'd learned to play the piano. But you're still young. Don't wait until you have to say 'I wish I had.' Do the things now that your future self will thank you for.\"",
           "ru": "«Жаль, что я не говорил чаще людям, что люблю их, — добавил он. — И жаль, что я не научился играть на пианино. Но ты ещё молод. Не жди, пока придётся сказать „жаль, что я не...\". Делай сейчас то, за что будущий ты скажет спасибо».",
           "audio": {
-            "src": "media/audio/u26.d03.reading.b2.wav",
+            "src": "media/audio/u26.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Есть сожаления?"
       },
       "audio": {
-        "src": "media/audio/u26.d03.listening.wav",
+        "src": "media/audio/u26.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

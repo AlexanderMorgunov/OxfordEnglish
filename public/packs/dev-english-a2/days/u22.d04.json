@@ -26,7 +26,7 @@
           "example": "The thing I need most.",
           "exampleRu": "Вещь, которая мне нужнее всего.",
           "audio": {
-            "src": "media/audio/u22.d04.vocab.thing.wav",
+            "src": "media/audio/u22.d04.vocab.thing.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "The person I met.",
           "exampleRu": "Человек, которого я встретил.",
           "audio": {
-            "src": "media/audio/u22.d04.vocab.person.wav",
+            "src": "media/audio/u22.d04.vocab.person.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "The film we saw.",
           "exampleRu": "Фильм, который мы посмотрели.",
           "audio": {
-            "src": "media/audio/u22.d04.vocab.film.wav",
+            "src": "media/audio/u22.d04.vocab.film.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "The restaurant we tried.",
           "exampleRu": "Ресторан, который мы попробовали.",
           "audio": {
-            "src": "media/audio/u22.d04.vocab.restaurant.wav",
+            "src": "media/audio/u22.d04.vocab.restaurant.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The gift she gave me.",
           "exampleRu": "Подарок, который она мне дала.",
           "audio": {
-            "src": "media/audio/u22.d04.vocab.gift.wav",
+            "src": "media/audio/u22.d04.vocab.gift.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "The advice he gave.",
           "exampleRu": "Совет, который он дал.",
           "audio": {
-            "src": "media/audio/u22.d04.vocab.advice.wav",
+            "src": "media/audio/u22.d04.vocab.advice.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "The idea we discussed.",
           "exampleRu": "Идея, которую мы обсуждали.",
           "audio": {
-            "src": "media/audio/u22.d04.vocab.idea.wav",
+            "src": "media/audio/u22.d04.vocab.idea.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "The song you played.",
           "exampleRu": "Песня, которую ты включил.",
           "audio": {
-            "src": "media/audio/u22.d04.vocab.song.wav",
+            "src": "media/audio/u22.d04.vocab.song.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "The photo I took.",
           "exampleRu": "Фото, которое я сделал.",
           "audio": {
-            "src": "media/audio/u22.d04.vocab.photo.wav",
+            "src": "media/audio/u22.d04.vocab.photo.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "The place we visited.",
           "exampleRu": "Место, которое мы посетили.",
           "audio": {
-            "src": "media/audio/u22.d04.vocab.place.wav",
+            "src": "media/audio/u22.d04.vocab.place.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "The restaurant we chose was small but wonderful. The waiter recommended a dish I had never tried, and it was the best meal I have had in months. The wine they served came from a village nobody had heard of.",
           "ru": "Ресторан, который мы выбрали, был маленьким, но чудесным. Официант посоветовал блюдо, которое я никогда не пробовал, и это была лучшая еда за последние месяцы. Вино, что нам подали, было из деревни, о которой никто не слышал.",
           "audio": {
-            "src": "media/audio/u22.d04.reading.b1.wav",
+            "src": "media/audio/u22.d04.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "The people we met there were friendly, and the music they played was perfect. \"This is a place I want to come back to,\" I said. It was an evening I will never forget — one of those nights everything goes right.",
           "ru": "Люди, которых мы там встретили, были дружелюбны, а музыка, что они играли, — идеальной. «Это место, куда я хочу вернуться», — сказал я. Это был вечер, который я никогда не забуду, — одна из тех ночей, когда всё идёт как надо.",
           "audio": {
-            "src": "media/audio/u22.d04.reading.b2.wav",
+            "src": "media/audio/u22.d04.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Подарок"
       },
       "audio": {
-        "src": "media/audio/u22.d04.listening.wav",
+        "src": "media/audio/u22.d04.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

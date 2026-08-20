@@ -26,7 +26,7 @@
           "example": "I'm interested in learning.",
           "exampleRu": "Мне интересно учиться.",
           "audio": {
-            "src": "media/audio/u20.d03.vocab.interested.wav",
+            "src": "media/audio/u20.d03.vocab.interested.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "She's good at drawing.",
           "exampleRu": "Она хорошо рисует.",
           "audio": {
-            "src": "media/audio/u20.d03.vocab.goodat.wav",
+            "src": "media/audio/u20.d03.vocab.goodat.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "He's afraid of flying.",
           "exampleRu": "Он боится летать.",
           "audio": {
-            "src": "media/audio/u20.d03.vocab.afraidof.wav",
+            "src": "media/audio/u20.d03.vocab.afraidof.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I'm tired of waiting.",
           "exampleRu": "Я устал ждать.",
           "audio": {
-            "src": "media/audio/u20.d03.vocab.tiredof.wav",
+            "src": "media/audio/u20.d03.vocab.tiredof.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Walk instead of driving.",
           "exampleRu": "Ходи пешком вместо езды.",
           "audio": {
-            "src": "media/audio/u20.d03.vocab.insteadof.wav",
+            "src": "media/audio/u20.d03.vocab.insteadof.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "Think before speaking.",
           "exampleRu": "Думай, прежде чем говорить.",
           "audio": {
-            "src": "media/audio/u20.d03.vocab.before.wav",
+            "src": "media/audio/u20.d03.vocab.before.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "It's worth trying.",
           "exampleRu": "Стоит попробовать.",
           "audio": {
-            "src": "media/audio/u20.d03.vocab.worth.wav",
+            "src": "media/audio/u20.d03.vocab.worth.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "Running is healthy.",
           "exampleRu": "Бег полезен.",
           "audio": {
-            "src": "media/audio/u20.d03.vocab.healthy.wav",
+            "src": "media/audio/u20.d03.vocab.healthy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "Reading is relaxing.",
           "exampleRu": "Чтение расслабляет.",
           "audio": {
-            "src": "media/audio/u20.d03.vocab.relaxing.wav",
+            "src": "media/audio/u20.d03.vocab.relaxing.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Waiting is boring.",
           "exampleRu": "Ждать скучно.",
           "audio": {
-            "src": "media/audio/u20.d03.vocab.boring.wav",
+            "src": "media/audio/u20.d03.vocab.boring.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Last year, Sam was tired of feeling unfit. He knew that sitting all day was bad for him, and he was interested in getting healthier. Instead of taking the bus, he started walking to work.",
           "ru": "В прошлом году Сэм устал чувствовать себя не в форме. Он знал, что сидеть весь день вредно, и хотел стать здоровее. Вместо автобуса он начал ходить на работу пешком.",
           "audio": {
-            "src": "media/audio/u20.d03.reading.b1.wav",
+            "src": "media/audio/u20.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "\"Walking is a great way to start the day,\" he says. \"I'm not good at running, but I love cycling too. Before making this change, I was always tired. Now I think it's worth spending an hour a day being active.\"",
           "ru": "«Прогулка — отличный способ начать день, — говорит он. — Я плохо бегаю, но обожаю велосипед. До этой перемены я всё время уставал. Теперь я считаю, что стоит тратить час в день на активность».",
           "audio": {
-            "src": "media/audio/u20.d03.reading.b2.wav",
+            "src": "media/audio/u20.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "У тебя хорошо получается?"
       },
       "audio": {
-        "src": "media/audio/u20.d03.listening.wav",
+        "src": "media/audio/u20.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

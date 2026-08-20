@@ -27,7 +27,7 @@
           "example": "I love nature.",
           "exampleRu": "Я люблю природу.",
           "audio": {
-            "src": "media/audio/u13.d01.vocab.nature.wav",
+            "src": "media/audio/u13.d01.vocab.nature.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -41,7 +41,7 @@
           "example": "The tree is tall.",
           "exampleRu": "Дерево высокое.",
           "audio": {
-            "src": "media/audio/u13.d01.vocab.tree.wav",
+            "src": "media/audio/u13.d01.vocab.tree.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -55,7 +55,7 @@
           "example": "The river is cold.",
           "exampleRu": "Река холодная.",
           "audio": {
-            "src": "media/audio/u13.d01.vocab.river.wav",
+            "src": "media/audio/u13.d01.vocab.river.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -69,7 +69,7 @@
           "example": "We climbed the mountain.",
           "exampleRu": "Мы взобрались на гору.",
           "audio": {
-            "src": "media/audio/u13.d01.vocab.mountain.wav",
+            "src": "media/audio/u13.d01.vocab.mountain.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -83,7 +83,7 @@
           "example": "The forest is quiet.",
           "exampleRu": "Лес тихий.",
           "audio": {
-            "src": "media/audio/u13.d01.vocab.forest.wav",
+            "src": "media/audio/u13.d01.vocab.forest.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -97,7 +97,7 @@
           "example": "The bird can fly.",
           "exampleRu": "Птица умеет летать.",
           "audio": {
-            "src": "media/audio/u13.d01.vocab.bird.wav",
+            "src": "media/audio/u13.d01.vocab.bird.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -111,7 +111,7 @@
           "example": "Fish live in water.",
           "exampleRu": "Рыбы живут в воде.",
           "audio": {
-            "src": "media/audio/u13.d01.vocab.fish.wav",
+            "src": "media/audio/u13.d01.vocab.fish.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -125,7 +125,7 @@
           "example": "A dog is an animal.",
           "exampleRu": "Собака — это животное.",
           "audio": {
-            "src": "media/audio/u13.d01.vocab.animal.wav",
+            "src": "media/audio/u13.d01.vocab.animal.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -139,7 +139,7 @@
           "example": "Wild animals live in the forest.",
           "exampleRu": "Дикие животные живут в лесу.",
           "audio": {
-            "src": "media/audio/u13.d01.vocab.wild.wav",
+            "src": "media/audio/u13.d01.vocab.wild.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -153,7 +153,7 @@
           "example": "Ice is cold.",
           "exampleRu": "Лёд холодный.",
           "audio": {
-            "src": "media/audio/u13.d01.vocab.ice.wav",
+            "src": "media/audio/u13.d01.vocab.ice.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -227,7 +227,7 @@
           "en": "Nature follows simple rules. If the sun shines, the ice melts. If it rains a lot, the river gets bigger. Birds fly south if the weather gets cold.",
           "ru": "Природа живёт по простым правилам. Если светит солнце, лёд тает. Если много дождя, река становится больше. Птицы летят на юг, если холодает.",
           "audio": {
-            "src": "media/audio/u13.d01.reading.b1.wav",
+            "src": "media/audio/u13.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -239,7 +239,7 @@
           "en": "Animals need nature. If a forest disappears, the animals lose their home. If we protect nature, wild animals and plants live well. It is all connected.",
           "ru": "Животным нужна природа. Если лес исчезает, животные теряют дом. Если мы бережём природу, дикие животные и растения живут хорошо. Всё связано.",
           "audio": {
-            "src": "media/audio/u13.d01.reading.b2.wav",
+            "src": "media/audio/u13.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -268,7 +268,7 @@
         "ru": "Простые факты"
       },
       "audio": {
-        "src": "media/audio/u13.d01.listening.wav",
+        "src": "media/audio/u13.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

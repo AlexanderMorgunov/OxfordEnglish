@@ -26,7 +26,7 @@
           "example": "She dreams of a quiet life.",
           "exampleRu": "Она мечтает о спокойной жизни.",
           "audio": {
-            "src": "media/audio/u15.d01.vocab.dream.wav",
+            "src": "media/audio/u15.d01.vocab.dream.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "His ambition is to start a company.",
           "exampleRu": "Его мечта — открыть компанию.",
           "audio": {
-            "src": "media/audio/u15.d01.vocab.ambition.wav",
+            "src": "media/audio/u15.d01.vocab.ambition.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "Imagine you won the lottery.",
           "exampleRu": "Представь, что ты выиграл в лотерею.",
           "audio": {
-            "src": "media/audio/u15.d01.vocab.imagine.wav",
+            "src": "media/audio/u15.d01.vocab.imagine.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "It was a great opportunity.",
           "exampleRu": "Это была отличная возможность.",
           "audio": {
-            "src": "media/audio/u15.d01.vocab.opportunity.wav",
+            "src": "media/audio/u15.d01.vocab.opportunity.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "Money gives you freedom.",
           "exampleRu": "Деньги дают свободу.",
           "audio": {
-            "src": "media/audio/u15.d01.vocab.freedom.wav",
+            "src": "media/audio/u15.d01.vocab.freedom.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "You can achieve your goals.",
           "exampleRu": "Ты можешь достичь своих целей.",
           "audio": {
-            "src": "media/audio/u15.d01.vocab.achieve.wav",
+            "src": "media/audio/u15.d01.vocab.achieve.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "He never wins the lottery.",
           "exampleRu": "Он никогда не выигрывает в лотерею.",
           "audio": {
-            "src": "media/audio/u15.d01.vocab.lottery.wav",
+            "src": "media/audio/u15.d01.vocab.lottery.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "What would you do with a million?",
           "exampleRu": "Что бы ты сделал с миллионом?",
           "audio": {
-            "src": "media/audio/u15.d01.vocab.million.wav",
+            "src": "media/audio/u15.d01.vocab.million.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I would quit my job.",
           "exampleRu": "Я бы уволился.",
           "audio": {
-            "src": "media/audio/u15.d01.vocab.quit.wav",
+            "src": "media/audio/u15.d01.vocab.quit.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "I would travel the world.",
           "exampleRu": "Я бы объехал весь мир.",
           "audio": {
-            "src": "media/audio/u15.d01.vocab.traveltheworld.wav",
+            "src": "media/audio/u15.d01.vocab.traveltheworld.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "People often imagine what they would do if they suddenly had a lot of money. Some say they would quit their jobs immediately, buy a big house and travel the world for a year.",
           "ru": "Люди часто представляют, что бы они сделали, если бы у них вдруг появилось много денег. Одни говорят, что тут же уволились бы, купили большой дом и год путешествовали по миру.",
           "audio": {
-            "src": "media/audio/u15.d01.reading.b1.wav",
+            "src": "media/audio/u15.d01.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "Others are more careful. \"If I won a million euros, I wouldn't change my whole life,\" says Elena. \"I would keep my job, help my family, and use the freedom to start a small business I really believe in.\"",
           "ru": "«Другие осторожнее. «Если бы я выиграла миллион евро, я бы не стала менять всю жизнь, — говорит Елена. — Я бы оставила работу, помогла семье и использовала свободу, чтобы открыть маленькое дело, в которое действительно верю».",
           "audio": {
-            "src": "media/audio/u15.d01.reading.b2.wav",
+            "src": "media/audio/u15.d01.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Что бы ты сделал?"
       },
       "audio": {
-        "src": "media/audio/u15.d01.listening.wav",
+        "src": "media/audio/u15.d01.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

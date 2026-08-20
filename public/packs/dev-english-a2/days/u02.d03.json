@@ -26,7 +26,7 @@
           "example": "I usually walk to work.",
           "exampleRu": "Я обычно хожу на работу пешком.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.usually.wav",
+            "src": "media/audio/u02.d03.vocab.usually.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "She often works late.",
           "exampleRu": "Она часто работает допоздна.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.often.wav",
+            "src": "media/audio/u02.d03.vocab.often.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "We sometimes eat out.",
           "exampleRu": "Иногда мы едим вне дома.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.sometimes.wav",
+            "src": "media/audio/u02.d03.vocab.sometimes.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "He never drinks coffee.",
           "exampleRu": "Он никогда не пьёт кофе.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.never.wav",
+            "src": "media/audio/u02.d03.vocab.never.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "In the morning I run.",
           "exampleRu": "Утром я бегаю.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.morning.wav",
+            "src": "media/audio/u02.d03.vocab.morning.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "In the afternoon I study.",
           "exampleRu": "Днём я учусь.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.afternoon.wav",
+            "src": "media/audio/u02.d03.vocab.afternoon.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "At night I sleep.",
           "exampleRu": "Ночью я сплю.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.night.wav",
+            "src": "media/audio/u02.d03.vocab.night.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "On Monday I have a meeting.",
           "exampleRu": "В понедельник у меня совещание.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.monday.wav",
+            "src": "media/audio/u02.d03.vocab.monday.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "At the weekend I relax.",
           "exampleRu": "На выходных я отдыхаю.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.weekend.wav",
+            "src": "media/audio/u02.d03.vocab.weekend.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "Once a month.",
           "exampleRu": "Раз в месяц.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.month.wav",
+            "src": "media/audio/u02.d03.vocab.month.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -166,7 +166,7 @@
           "example": "It's a quarter past nine.",
           "exampleRu": "Сейчас четверть десятого.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.quarter.wav",
+            "src": "media/audio/u02.d03.vocab.quarter.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -180,7 +180,7 @@
           "example": "It's half past six.",
           "exampleRu": "Сейчас половина седьмого.",
           "audio": {
-            "src": "media/audio/u02.d03.vocab.halfpast.wav",
+            "src": "media/audio/u02.d03.vocab.halfpast.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "I usually get up early in the morning. On Monday I always have a meeting at nine.",
           "ru": "Обычно я встаю рано утром. В понедельник у меня всегда совещание в девять.",
           "audio": {
-            "src": "media/audio/u02.d03.reading.b1.wav",
+            "src": "media/audio/u02.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -264,7 +264,7 @@
           "en": "At the weekend I never work. I sometimes meet friends in the afternoon, and we often have dinner together.",
           "ru": "На выходных я никогда не работаю. Иногда днём встречаюсь с друзьями, и мы часто ужинаем вместе.",
           "audio": {
-            "src": "media/audio/u02.d03.reading.b2.wav",
+            "src": "media/audio/u02.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -293,7 +293,7 @@
         "ru": "Свободное время"
       },
       "audio": {
-        "src": "media/audio/u02.d03.listening.wav",
+        "src": "media/audio/u02.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

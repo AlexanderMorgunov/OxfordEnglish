@@ -26,7 +26,7 @@
           "example": "The waiter took our order.",
           "exampleRu": "Официант принял заказ.",
           "audio": {
-            "src": "media/audio/u07.d05.vocab.waiter.wav",
+            "src": "media/audio/u07.d05.vocab.waiter.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "Can I see the menu?",
           "exampleRu": "Можно меню?",
           "audio": {
-            "src": "media/audio/u07.d05.vocab.menu.wav",
+            "src": "media/audio/u07.d05.vocab.menu.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "For a starter, soup please.",
           "exampleRu": "На закуску — суп, пожалуйста.",
           "audio": {
-            "src": "media/audio/u07.d05.vocab.starter.wav",
+            "src": "media/audio/u07.d05.vocab.starter.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "For the main course, fish.",
           "exampleRu": "На основное — рыбу.",
           "audio": {
-            "src": "media/audio/u07.d05.vocab.maincourse.wav",
+            "src": "media/audio/u07.d05.vocab.maincourse.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "What is for dessert?",
           "exampleRu": "Что на десерт?",
           "audio": {
-            "src": "media/audio/u07.d05.vocab.dessert.wav",
+            "src": "media/audio/u07.d05.vocab.dessert.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "I want to book a table.",
           "exampleRu": "Хочу забронировать столик.",
           "audio": {
-            "src": "media/audio/u07.d05.vocab.book.wav",
+            "src": "media/audio/u07.d05.vocab.book.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Are you ready to order?",
           "exampleRu": "Готовы заказать?",
           "audio": {
-            "src": "media/audio/u07.d05.vocab.order.wav",
+            "src": "media/audio/u07.d05.vocab.order.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "Could we have the bill?",
           "exampleRu": "Можно счёт?",
           "audio": {
-            "src": "media/audio/u07.d05.vocab.bill.wav",
+            "src": "media/audio/u07.d05.vocab.bill.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "We left a tip.",
           "exampleRu": "Мы оставили чаевые.",
           "audio": {
-            "src": "media/audio/u07.d05.vocab.tip.wav",
+            "src": "media/audio/u07.d05.vocab.tip.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "The food was delicious.",
           "exampleRu": "Еда была вкусной.",
           "audio": {
-            "src": "media/audio/u07.d05.vocab.delicious.wav",
+            "src": "media/audio/u07.d05.vocab.delicious.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -237,7 +237,7 @@
           "en": "On Friday we went to a restaurant for dinner. We booked a table for two near the window. The waiter brought the menu and some water.",
           "ru": "В пятницу мы пошли ужинать в ресторан. Мы забронировали столик на двоих у окна. Официант принёс меню и воду.",
           "audio": {
-            "src": "media/audio/u07.d05.reading.b1.wav",
+            "src": "media/audio/u07.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -249,7 +249,7 @@
           "en": "For a starter I had soup, and for the main course I had fish with rice. It was delicious. At the end we asked for the bill and left a tip.",
           "ru": "На закуску я взял суп, а на основное — рыбу с рисом. Было вкусно. В конце мы попросили счёт и оставили чаевые.",
           "audio": {
-            "src": "media/audio/u07.d05.reading.b2.wav",
+            "src": "media/audio/u07.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -278,7 +278,7 @@
         "ru": "Готовы заказать?"
       },
       "audio": {
-        "src": "media/audio/u07.d05.listening.wav",
+        "src": "media/audio/u07.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

@@ -26,7 +26,7 @@
           "example": "I like to reflect on the year.",
           "exampleRu": "Мне нравится размышлять о годе.",
           "audio": {
-            "src": "media/audio/u26.d05.vocab.reflect.wav",
+            "src": "media/audio/u26.d05.vocab.reflect.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "It's been quite a journey.",
           "exampleRu": "Это был непростой путь.",
           "audio": {
-            "src": "media/audio/u26.d05.vocab.journey.wav",
+            "src": "media/audio/u26.d05.vocab.journey.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "I've made real progress.",
           "exampleRu": "Я добился настоящего прогресса.",
           "audio": {
-            "src": "media/audio/u26.d05.vocab.progress.wav",
+            "src": "media/audio/u26.d05.vocab.progress.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I feel more confident.",
           "exampleRu": "Я чувствую себя увереннее.",
           "audio": {
-            "src": "media/audio/u26.d05.vocab.confident.wav",
+            "src": "media/audio/u26.d05.vocab.confident.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "I'm proud of myself.",
           "exampleRu": "Я горжусь собой.",
           "audio": {
-            "src": "media/audio/u26.d05.vocab.proud.wav",
+            "src": "media/audio/u26.d05.vocab.proud.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "The next challenge.",
           "exampleRu": "Следующий вызов.",
           "audio": {
-            "src": "media/audio/u26.d05.vocab.challenge.wav",
+            "src": "media/audio/u26.d05.vocab.challenge.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "A new goal.",
           "exampleRu": "Новая цель.",
           "audio": {
-            "src": "media/audio/u26.d05.vocab.goal.wav",
+            "src": "media/audio/u26.d05.vocab.goal.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "You can achieve it.",
           "exampleRu": "Ты можешь этого достичь.",
           "audio": {
-            "src": "media/audio/u26.d05.vocab.achieve.wav",
+            "src": "media/audio/u26.d05.vocab.achieve.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I'm grateful for the help.",
           "exampleRu": "Я благодарен за помощь.",
           "audio": {
-            "src": "media/audio/u26.d05.vocab.grateful.wav",
+            "src": "media/audio/u26.d05.vocab.grateful.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "The road ahead.",
           "exampleRu": "Дорога впереди.",
           "audio": {
-            "src": "media/audio/u26.d05.vocab.ahead.wav",
+            "src": "media/audio/u26.d05.vocab.ahead.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "When you started this course, English used to feel like a mountain. If someone had told you how much you would learn, you might not have believed them. But look how far you've come. You've studied tenses, modals, conditionals and hundreds of new words.",
           "ru": "Когда ты начинал этот курс, английский казался горой. Если бы кто-то сказал тебе, как много ты выучишь, ты, возможно, не поверил бы. Но посмотри, как далеко ты продвинулся. Ты изучил времена, модальные, условные и сотни новых слов.",
           "audio": {
-            "src": "media/audio/u26.d05.reading.b1.wav",
+            "src": "media/audio/u26.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "You used to hesitate; now you can express regrets, tell stories, and imagine other lives. This is the bridge to B2, where the ideas grow richer and the conversations deeper. If you keep going, you'll be amazed at what comes next. The journey isn't over — it's just getting interesting.",
           "ru": "Раньше ты запинался; теперь можешь выражать сожаления, рассказывать истории и представлять иные жизни. Это мост к B2, где идеи станут богаче, а разговоры — глубже. Если продолжишь, ты поразишься тому, что будет дальше. Путь не окончен — он только становится интересным.",
           "audio": {
-            "src": "media/audio/u26.d05.reading.b2.wav",
+            "src": "media/audio/u26.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Как ты себя чувствуешь?"
       },
       "audio": {
-        "src": "media/audio/u26.d05.listening.wav",
+        "src": "media/audio/u26.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

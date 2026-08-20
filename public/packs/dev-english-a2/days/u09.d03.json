@@ -26,7 +26,7 @@
           "example": "She is very kind.",
           "exampleRu": "Она очень добрая.",
           "audio": {
-            "src": "media/audio/u09.d03.vocab.kind.wav",
+            "src": "media/audio/u09.d03.vocab.kind.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "He is funny.",
           "exampleRu": "Он весёлый.",
           "audio": {
-            "src": "media/audio/u09.d03.vocab.funny.wav",
+            "src": "media/audio/u09.d03.vocab.funny.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "She is clever.",
           "exampleRu": "Она умная.",
           "audio": {
-            "src": "media/audio/u09.d03.vocab.clever.wav",
+            "src": "media/audio/u09.d03.vocab.clever.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "The staff are friendly.",
           "exampleRu": "Персонал дружелюбный.",
           "audio": {
-            "src": "media/audio/u09.d03.vocab.friendly.wav",
+            "src": "media/audio/u09.d03.vocab.friendly.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "The cat is lazy.",
           "exampleRu": "Кот ленивый.",
           "audio": {
-            "src": "media/audio/u09.d03.vocab.lazy.wav",
+            "src": "media/audio/u09.d03.vocab.lazy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "He is a bit shy.",
           "exampleRu": "Он немного застенчивый.",
           "audio": {
-            "src": "media/audio/u09.d03.vocab.shy.wav",
+            "src": "media/audio/u09.d03.vocab.shy.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "Be polite to guests.",
           "exampleRu": "Будь вежлив с гостями.",
           "audio": {
-            "src": "media/audio/u09.d03.vocab.polite.wav",
+            "src": "media/audio/u09.d03.vocab.polite.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "She is honest.",
           "exampleRu": "Она честная.",
           "audio": {
-            "src": "media/audio/u09.d03.vocab.honest.wav",
+            "src": "media/audio/u09.d03.vocab.honest.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "The boy is brave.",
           "exampleRu": "Мальчик храбрый.",
           "audio": {
-            "src": "media/audio/u09.d03.vocab.brave.wav",
+            "src": "media/audio/u09.d03.vocab.brave.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "He is hard-working.",
           "exampleRu": "Он трудолюбивый.",
           "audio": {
-            "src": "media/audio/u09.d03.vocab.hardworking.wav",
+            "src": "media/audio/u09.d03.vocab.hardworking.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -240,7 +240,7 @@
           "en": "Max and Sam are good friends, but they are very different. Max is quiet and shy, and Sam is as funny as a clown. He talks a lot.",
           "ru": "Макс и Сэм — хорошие друзья, но они очень разные. Макс тихий и застенчивый, а Сэм весёлый, как клоун. Он много говорит.",
           "audio": {
-            "src": "media/audio/u09.d03.reading.b1.wav",
+            "src": "media/audio/u09.d03.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -252,7 +252,7 @@
           "en": "They are not the same, but both are kind and honest. Max is as clever as Sam, and Sam is as hard-working as Max. That's why they work well together.",
           "ru": "Они не одинаковые, но оба добрые и честные. Макс такой же умный, как Сэм, а Сэм такой же трудолюбивый, как Макс. Поэтому они хорошо работают вместе.",
           "audio": {
-            "src": "media/audio/u09.d03.reading.b2.wav",
+            "src": "media/audio/u09.d03.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -281,7 +281,7 @@
         "ru": "Они похожи?"
       },
       "audio": {
-        "src": "media/audio/u09.d03.listening.wav",
+        "src": "media/audio/u09.d03.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

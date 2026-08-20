@@ -26,7 +26,7 @@
           "example": "I imagine he's happy.",
           "exampleRu": "Представляю, он счастлив.",
           "audio": {
-            "src": "media/audio/u19.d05.vocab.imagine.wav",
+            "src": "media/audio/u19.d05.vocab.imagine.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "I expect they'll be late.",
           "exampleRu": "Думаю, они опоздают.",
           "audio": {
-            "src": "media/audio/u19.d05.vocab.expect.wav",
+            "src": "media/audio/u19.d05.vocab.expect.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "I assume you agree.",
           "exampleRu": "Полагаю, ты согласен.",
           "audio": {
-            "src": "media/audio/u19.d05.vocab.assume.wav",
+            "src": "media/audio/u19.d05.vocab.assume.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "I wonder what happened.",
           "exampleRu": "Интересно, что случилось.",
           "audio": {
-            "src": "media/audio/u19.d05.vocab.wonder.wav",
+            "src": "media/audio/u19.d05.vocab.wonder.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "It seems like a trick.",
           "exampleRu": "Похоже на трюк.",
           "audio": {
-            "src": "media/audio/u19.d05.vocab.seemlike.wav",
+            "src": "media/audio/u19.d05.vocab.seemlike.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "It looks like rain.",
           "exampleRu": "Похоже, будет дождь.",
           "audio": {
-            "src": "media/audio/u19.d05.vocab.looklike.wav",
+            "src": "media/audio/u19.d05.vocab.looklike.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "That's just a guess.",
           "exampleRu": "Это лишь догадка.",
           "audio": {
-            "src": "media/audio/u19.d05.vocab.guess.wav",
+            "src": "media/audio/u19.d05.vocab.guess.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "In my opinion, he's right.",
           "exampleRu": "По-моему, он прав.",
           "audio": {
-            "src": "media/audio/u19.d05.vocab.opinion.wav",
+            "src": "media/audio/u19.d05.vocab.opinion.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "I have a theory.",
           "exampleRu": "У меня есть теория.",
           "audio": {
-            "src": "media/audio/u19.d05.vocab.theory.wav",
+            "src": "media/audio/u19.d05.vocab.theory.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "They're probably fine.",
           "exampleRu": "Они, вероятно, в порядке.",
           "audio": {
-            "src": "media/audio/u19.d05.vocab.probably.wav",
+            "src": "media/audio/u19.d05.vocab.probably.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -238,7 +238,7 @@
           "en": "My friends were looking at an old photo. \"What do you think is happening here?\" asked Ben. \"It looks like a party,\" said Mia. \"Everyone seems happy, and there's a cake — so it's probably a birthday.\"",
           "ru": "Мои друзья рассматривали старую фотографию. «Как думаете, что тут происходит?» — спросил Бен. «Похоже на вечеринку, — сказала Мия. — Все кажутся счастливыми, и есть торт — так что, вероятно, это день рождения».",
           "audio": {
-            "src": "media/audio/u19.d05.reading.b1.wav",
+            "src": "media/audio/u19.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -250,7 +250,7 @@
           "en": "\"Maybe,\" said Ben, \"but they're all wearing coats. I think it must be winter, and they could be outside.\" \"Good point,\" said Mia. \"I'd say it was taken years ago — look at the old car. It seems like a happy day, whatever it was.\"",
           "ru": "«Может быть, — сказал Бен, — но все в пальто. Думаю, это, наверное, зима, и они, возможно, на улице». «Верно подмечено, — сказала Мия. — Я бы сказала, снимок сделан много лет назад — посмотри на старую машину. Похоже, это был счастливый день, чем бы он ни был».",
           "audio": {
-            "src": "media/audio/u19.d05.reading.b2.wav",
+            "src": "media/audio/u19.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -279,7 +279,7 @@
         "ru": "Где они?"
       },
       "audio": {
-        "src": "media/audio/u19.d05.listening.wav",
+        "src": "media/audio/u19.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"

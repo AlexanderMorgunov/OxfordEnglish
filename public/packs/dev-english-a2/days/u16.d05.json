@@ -26,7 +26,7 @@
           "example": "Once, when I was a child…",
           "exampleRu": "Однажды, когда я был ребёнком…",
           "audio": {
-            "src": "media/audio/u16.d05.vocab.once.wav",
+            "src": "media/audio/u16.d05.vocab.once.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -40,7 +40,7 @@
           "example": "At first, I was scared.",
           "exampleRu": "Сначала я испугался.",
           "audio": {
-            "src": "media/audio/u16.d05.vocab.atfirst.wav",
+            "src": "media/audio/u16.d05.vocab.atfirst.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -54,7 +54,7 @@
           "example": "Anyway, we finally left.",
           "exampleRu": "В общем, мы наконец ушли.",
           "audio": {
-            "src": "media/audio/u16.d05.vocab.anyway.wav",
+            "src": "media/audio/u16.d05.vocab.anyway.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -68,7 +68,7 @@
           "example": "And guess what happened next!",
           "exampleRu": "И угадай, что было дальше!",
           "audio": {
-            "src": "media/audio/u16.d05.vocab.guesswhat.wav",
+            "src": "media/audio/u16.d05.vocab.guesswhat.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -82,7 +82,7 @@
           "example": "You won't believe this.",
           "exampleRu": "Ты не поверишь.",
           "audio": {
-            "src": "media/audio/u16.d05.vocab.believe.wav",
+            "src": "media/audio/u16.d05.vocab.believe.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -96,7 +96,7 @@
           "example": "It was incredible.",
           "exampleRu": "Это было невероятно.",
           "audio": {
-            "src": "media/audio/u16.d05.vocab.incredible.wav",
+            "src": "media/audio/u16.d05.vocab.incredible.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -110,7 +110,7 @@
           "example": "We thought it was a joke.",
           "exampleRu": "Мы подумали, что это шутка.",
           "audio": {
-            "src": "media/audio/u16.d05.vocab.joke.wav",
+            "src": "media/audio/u16.d05.vocab.joke.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -124,7 +124,7 @@
           "example": "We were so lucky.",
           "exampleRu": "Нам так повезло.",
           "audio": {
-            "src": "media/audio/u16.d05.vocab.lucky.wav",
+            "src": "media/audio/u16.d05.vocab.lucky.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -138,7 +138,7 @@
           "example": "The trip was a nightmare.",
           "exampleRu": "Поездка была кошмаром.",
           "audio": {
-            "src": "media/audio/u16.d05.vocab.nightmare.wav",
+            "src": "media/audio/u16.d05.vocab.nightmare.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -152,7 +152,7 @@
           "example": "In the end, it was worth it.",
           "exampleRu": "В итоге оно того стоило.",
           "audio": {
-            "src": "media/audio/u16.d05.vocab.intheend.wav",
+            "src": "media/audio/u16.d05.vocab.intheend.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -237,7 +237,7 @@
           "en": "\"You won't believe what happened on our holiday,\" Tom laughed. \"At first, everything went wrong. Our flight was cancelled, and when we finally reached the hotel, they had given our room to someone else. It was a total nightmare.\"",
           "ru": "«Ты не поверишь, что случилось в нашем отпуске, — засмеялся Том. — Сначала всё шло не так. Рейс отменили, а когда мы наконец добрались до отеля, наш номер уже отдали кому-то другому. Настоящий кошмар».",
           "audio": {
-            "src": "media/audio/u16.d05.reading.b1.wav",
+            "src": "media/audio/u16.d05.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -249,7 +249,7 @@
           "en": "\"Anyway, the manager felt sorry for us, so he moved us to a much better room by the sea — for free! And guess what: on the first evening, we met an old friend I hadn't seen for ten years. In the end, it turned out to be the best holiday we'd ever had.\"",
           "ru": "«В общем, менеджеру стало нас жаль, и он бесплатно переселил нас в номер получше, у моря! И угадай: в первый же вечер мы встретили старого друга, которого я не видел десять лет. В итоге это оказался лучший отпуск в нашей жизни».",
           "audio": {
-            "src": "media/audio/u16.d05.reading.b2.wav",
+            "src": "media/audio/u16.d05.reading.b2.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
@@ -278,7 +278,7 @@
         "ru": "Угадай что!"
       },
       "audio": {
-        "src": "media/audio/u16.d05.listening.wav",
+        "src": "media/audio/u16.d05.listening.mp3",
         "license": {
           "type": "original",
           "attribution": "Project authors (LLM-assisted)"
