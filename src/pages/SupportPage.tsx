@@ -1,6 +1,12 @@
+import { Link } from 'react-router-dom';
 import { Card, Eyebrow } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { SUPPORT_URL } from '@/features/support/config';
+import {
+  FEATURE_REQUEST_URL,
+  BUG_REPORT_URL,
+  SECURITY_REPORT_URL,
+} from '@/features/community/config';
 
 const linkClass =
   'inline-flex items-center justify-center gap-2 rounded-sm px-5 py-3 text-sm font-mono ' +
@@ -51,6 +57,31 @@ export function SupportPage() {
           ? 'Донат — это добровольная поддержка автора, а не оплата товара или услуги. Он не даёт доступа к платным функциям и не подлежит возврату.'
           : 'A donation is voluntary support for the author, not a payment for goods or a service. It does not grant access to paid features and is non-refundable.'}
       </p>
+
+      <div className="mt-10 border-t border-line pt-8">
+        <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
+          {ru ? 'сообщество и обратная связь' : 'community & feedback'}
+        </p>
+        <p className="mb-4 text-sm text-muted text-pretty">
+          {ru
+            ? 'Всё открыто на GitHub. Обратная связь бесплатна и добровольна — ничего личного мы не собираем.'
+            : "It's all open on GitHub. Feedback is free and voluntary — we collect nothing personal."}
+        </p>
+        <div className="flex flex-col gap-2 text-sm">
+          <a href={FEATURE_REQUEST_URL} target="_blank" rel="noopener noreferrer" className="text-teal hover:underline">
+            {ru ? '💡 Предложить фичу (голосование на GitHub) →' : '💡 Suggest a feature (vote on GitHub) →'}
+          </a>
+          <a href={BUG_REPORT_URL} target="_blank" rel="noopener noreferrer" className="text-teal hover:underline">
+            {ru ? '🐛 Сообщить о баге →' : '🐛 Report a bug →'}
+          </a>
+          <a href={SECURITY_REPORT_URL} target="_blank" rel="noopener noreferrer" className="text-teal hover:underline">
+            {ru ? '🔒 Сообщить об уязвимости (приватно) →' : '🔒 Report a vulnerability (private) →'}
+          </a>
+          <Link to="/credits" className="text-teal hover:underline">
+            {ru ? '🙌 Благодарности и лицензии →' : '🙌 Credits & licenses →'}
+          </Link>
+        </div>
+      </div>
     </section>
   );
 }
