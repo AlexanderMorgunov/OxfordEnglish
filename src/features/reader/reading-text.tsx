@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { createContext, memo, use, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Popover } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import { useVocabStore } from '@/features/vocab/vocabStore';
@@ -15,24 +15,29 @@ import { toSentences } from './parse/text';
 
 export type Gloss = { ru?: string; ipa?: string };
 
-/** A tappable word: status underline, pronounce, translate (glossary → AI), save to review. */
-export function WordToken({
+/** Chapter-level, stable-per-render coloring inputs. Kept in context so a single word's status
+ *  change re-renders only that token, not the whole chapter (thousands of WordTokens). */
+type ReaderCtx = { freq: FreqIndex | null; rankThreshold: number; coloring: boolean };
+const ReaderContext = createContext<ReaderCtx>({ freq: null, rankThreshold: Infinity, coloring: false });
+
+/** A tappable word: status underline, pronounce, translate (glossary → AI), save to review.
+ *  Memoized + self-classifying: it subscribes only to its own status, so marking one word never
+ *  re-renders its neighbours. */
+export const WordToken = memo(function WordToken({
   word,
   gloss,
   sentence,
   highlighted,
-  mark,
 }: {
   word: string;
   gloss?: Gloss;
   sentence: string;
   highlighted?: boolean;
-  /** Precomputed status for coloring (book reader). Falls back to the raw vocab status. */
-  mark?: WordMark;
 }) {
   const status = useVocabStore((s) => s.statuses.get(word.toLowerCase()));
   const setStatus = useVocabStore((s) => s.setStatus);
   const lang = useUiLang((s) => s.lang);
+  const { freq, rankThreshold, coloring } = use(ReaderContext);
   const [fetched, setFetched] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -49,7 +54,9 @@ export function WordToken({
     });
   };
   const translation = gloss?.ru ?? fetched ?? undefined;
-  const raw = mark ?? (status === 'learning' ? 'learning' : status === 'unknown' ? 'new' : undefined);
+  const classified: WordMark | undefined =
+    coloring && freq ? classifyWord(word, { status, freq, rankThreshold }) : undefined;
+  const raw = classified ?? (status === 'learning' ? 'learning' : status === 'unknown' ? 'new' : undefined);
   const visible = raw === 'learning' || raw === 'new' ? raw : undefined;
 
   return (
@@ -124,9 +131,9 @@ export function WordToken({
       </div>
     </Popover>
   );
-}
+});
 
-function Paragraph({
+const Paragraph = memo(function Paragraph({
   index,
   text,
   glossary,
@@ -134,7 +141,6 @@ function Paragraph({
   speaking,
   activeWord,
   onRead,
-  classify,
   typoClass,
 }: {
   index: number;
@@ -143,8 +149,7 @@ function Paragraph({
   lang: 'en' | 'ru';
   speaking: boolean;
   activeWord: number;
-  onRead: () => void;
-  classify?: (word: string) => WordMark | undefined;
+  onRead: (index: number) => void;
   typoClass: string;
 }) {
   const sentences = useMemo(() => toSentences(text), [text]);
@@ -183,7 +188,7 @@ function Paragraph({
           }
           aria-pressed={speaking}
           className="mr-1.5 align-middle text-teal transition-opacity hover:opacity-80"
-          onClick={onRead}
+          onClick={() => onRead(index)}
         >
           {speaking ? '⏹' : '🔆'}
         </button>
@@ -203,7 +208,6 @@ function Paragraph({
                   gloss={glossary?.get(tok.toLowerCase())}
                   sentence={sentence}
                   highlighted={speaking && idx === activeWord}
-                  mark={classify?.(tok)}
                 />
               );
             })}
@@ -230,7 +234,7 @@ function Paragraph({
       })}
     </p>
   );
-}
+});
 
 /** Render paragraphs of reading text with word lookup and per-paragraph read-aloud. */
 export function ReadingText({
@@ -243,7 +247,6 @@ export function ReadingText({
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
   const level = useLearner((s) => s.level);
-  const statuses = useVocabStore((s) => s.statuses);
   const loadVocab = useVocabStore((s) => s.load);
   const coloring = useReaderSettings((s) => s.coloring);
   const toggleColoring = useReaderSettings((s) => s.toggleColoring);
@@ -306,11 +309,10 @@ export function ReadingText({
   };
 
   const rankThreshold = rankThresholdFor(level);
-  const classify = useMemo(() => {
-    if (!coloring || !freq) return undefined;
-    return (w: string): WordMark =>
-      classifyWord(w, { status: statuses.get(w.toLowerCase()), freq, rankThreshold });
-  }, [coloring, freq, statuses, rankThreshold]);
+  const readerCtx = useMemo<ReaderCtx>(
+    () => ({ freq, rankThreshold, coloring }),
+    [freq, rankThreshold, coloring]
+  );
 
   // Continuous read-aloud: after each paragraph ends, advance to the next and scroll it into
   // view. Reading-while-listening works only when playback flows across paragraphs, not stops.
@@ -350,6 +352,10 @@ export function ReadingText({
     playingRef.current = true;
     speakFrom(idx);
   };
+  // Stable identity so a memoized Paragraph isn't re-rendered by a fresh onRead closure each render.
+  const readRef = useRef(read);
+  readRef.current = read;
+  const onRead = useCallback((i: number) => readRef.current(i), []);
 
   return (
     <div className="flex flex-col gap-4">
@@ -451,27 +457,28 @@ export function ReadingText({
           </button>
         </div>
       )}
-      <div
-        ref={textRef}
-        className="flex flex-col gap-4"
-        onMouseUp={onSelect}
-        onTouchEnd={onSelect}
-      >
-        {paragraphs.map((p, i) => (
-          <Paragraph
-            key={i}
-            index={i}
-            text={p}
-            glossary={glossary}
-            lang={lang}
-            speaking={speakingIdx === i}
-            activeWord={activeWord}
-            onRead={() => read(i)}
-            classify={classify}
-            typoClass={typoClass}
-          />
-        ))}
-      </div>
+      <ReaderContext.Provider value={readerCtx}>
+        <div
+          ref={textRef}
+          className="flex flex-col gap-4"
+          onMouseUp={onSelect}
+          onTouchEnd={onSelect}
+        >
+          {paragraphs.map((p, i) => (
+            <Paragraph
+              key={i}
+              index={i}
+              text={p}
+              glossary={glossary}
+              lang={lang}
+              speaking={speakingIdx === i}
+              activeWord={speakingIdx === i ? activeWord : -1}
+              onRead={onRead}
+              typoClass={typoClass}
+            />
+          ))}
+        </div>
+      </ReaderContext.Provider>
     </div>
   );
 }

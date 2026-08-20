@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Exercise } from '@/content/schema';
 import { Button, Card } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
@@ -26,11 +26,18 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
     void loadFreq().then(setFreq);
   }, [loadVocab]);
 
-  const known = useMemo(() => {
+  const built = useMemo(() => {
     const set = new Set<string>();
     for (const [word, status] of statuses) if (status === 'known') set.add(word);
     return set;
   }, [statuses]);
+  // Keep a stable reference while the known-word set's *contents* are unchanged, so a 'learning'
+  // or 'ignored' tap doesn't force estimateCoverage to rescan the whole chapter.
+  const knownRef = useRef(built);
+  if (!(knownRef.current.size === built.size && [...built].every((w) => knownRef.current.has(w)))) {
+    knownRef.current = built;
+  }
+  const known = knownRef.current;
 
   const rankThreshold = rankThresholdFor(level);
   const coverage = useMemo(
