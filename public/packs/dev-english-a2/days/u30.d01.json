@@ -1,0 +1,605 @@
+{
+  "id": "u30.d01",
+  "title": {
+    "en": "The person who changed everything",
+    "ru": "Человек, который всё изменил"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.relative-clauses",
+    "grammar.non-defining-clauses",
+    "vocab.personality"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u30.d01.vocab",
+      "title": {
+        "en": "People around us",
+        "ru": "Люди вокруг нас"
+      },
+      "words": [
+        {
+          "word": "colleague",
+          "ru": "коллега",
+          "ipa": "/ˈkɒliːɡ/",
+          "example": "A colleague recommended it.",
+          "exampleRu": "Коллега порекомендовал это.",
+          "audio": {
+            "src": "media/audio/u30.d01.vocab.colleague.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "relative",
+          "ru": "родственник",
+          "ipa": "/ˈrelətɪv/",
+          "example": "A distant relative called.",
+          "exampleRu": "Позвонил дальний родственник.",
+          "audio": {
+            "src": "media/audio/u30.d01.vocab.relative.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "acquaintance",
+          "ru": "знакомый",
+          "ipa": "/əˈkweɪntəns/",
+          "example": "He is just an acquaintance.",
+          "exampleRu": "Он просто знакомый.",
+          "audio": {
+            "src": "media/audio/u30.d01.vocab.acquaintance.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "neighbour",
+          "ru": "сосед",
+          "ipa": "/ˈneɪbər/",
+          "example": "My neighbour feeds my cat.",
+          "exampleRu": "Сосед кормит мою кошку.",
+          "audio": {
+            "src": "media/audio/u30.d01.vocab.neighbour.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mentor",
+          "ru": "наставник",
+          "ipa": "/ˈmentɔːr/",
+          "example": "She became my mentor.",
+          "exampleRu": "Она стала моим наставником.",
+          "audio": {
+            "src": "media/audio/u30.d01.vocab.mentor.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reliable",
+          "ru": "надёжный",
+          "ipa": "/rɪˈlaɪəbl/",
+          "example": "He is a reliable friend.",
+          "exampleRu": "Он надёжный друг.",
+          "audio": {
+            "src": "media/audio/u30.d01.vocab.reliable.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ambitious",
+          "ru": "амбициозный",
+          "ipa": "/æmˈbɪʃəs/",
+          "example": "She is very ambitious.",
+          "exampleRu": "Она очень амбициозна.",
+          "audio": {
+            "src": "media/audio/u30.d01.vocab.ambitious.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "generous",
+          "ru": "щедрый",
+          "ipa": "/ˈdʒenərəs/",
+          "example": "They were generous hosts.",
+          "exampleRu": "Они были щедрыми хозяевами.",
+          "audio": {
+            "src": "media/audio/u30.d01.vocab.generous.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "stubborn",
+          "ru": "упрямый",
+          "ipa": "/ˈstʌbərn/",
+          "example": "He can be stubborn.",
+          "exampleRu": "Он бывает упрямым.",
+          "audio": {
+            "src": "media/audio/u30.d01.vocab.stubborn.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "thoughtful",
+          "ru": "внимательный",
+          "ipa": "/ˈθɔːtfl/",
+          "example": "That was a thoughtful gift.",
+          "exampleRu": "Это был внимательный подарок.",
+          "audio": {
+            "src": "media/audio/u30.d01.vocab.thoughtful.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u30.d01.grammar",
+      "title": {
+        "en": "Defining vs non-defining relative clauses",
+        "ru": "Определяющие и неопределяющие придаточные"
+      },
+      "rule": {
+        "en": "A defining clause tells you WHICH one and has no commas (that/which/who; the object pronoun can be dropped). A non-defining clause adds extra info, sits between commas, uses who/which/whose — never \"that\" — and the pronoun cannot be dropped.",
+        "ru": "Определяющее придаточное говорит, КАКОЙ именно, и пишется без запятых (that/which/who; местоимение-дополнение можно опустить). Неопределяющее добавляет доп. информацию, стоит в запятых, использует who/which/whose — никогда «that» — и местоимение опустить нельзя."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "defining",
+            "ru": "определяющее"
+          },
+          "formula": "noun + (that/who) + clause — no commas",
+          "examples": [
+            {
+              "en": "The man who called was my boss.",
+              "ru": "Человек, который звонил, — мой начальник."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "non-defining",
+            "ru": "неопределяющее"
+          },
+          "formula": "noun, who/which + clause, …",
+          "examples": [
+            {
+              "en": "My boss, who is from Spain, called.",
+              "ru": "Мой начальник, который из Испании, звонил."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "dropped pronoun",
+            "ru": "опущенное местоимение"
+          },
+          "formula": "noun + (—) + subject + verb",
+          "examples": [
+            {
+              "en": "The book I read was great.",
+              "ru": "Книга, которую я прочитал, была отличной."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Don’t use \"that\" in a non-defining clause: \"My sister, who…\", not \"My sister, that…\".",
+          "ru": "В неопределяющем — не «that»: «My sister, who…», не «My sister, that…»."
+        },
+        {
+          "en": "Only drop the pronoun when it’s the OBJECT: \"the book I read\", not \"the man called me\" → keep \"who\".",
+          "ru": "Опускай местоимение только когда оно ДОПОЛНЕНИЕ: «the book I read», но «the man who called me»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u30.d01.reading",
+      "title": {
+        "en": "My mentor",
+        "ru": "Мой наставник"
+      },
+      "blocks": [
+        {
+          "id": "u30.d01.reading.b1",
+          "en": "The person who changed my career was a manager named Ruth. Ruth, who had run three startups, saw something in me that I couldn’t see myself. The first project she gave me was terrifying, but she was the kind of boss who lets you fail safely.",
+          "ru": "Человеком, который изменил мою карьеру, была руководительница по имени Рут. Рут, у которой за плечами были три стартапа, разглядела во мне то, чего я сам в себе не видел. Первый проект, который она мне дала, был пугающим, но она была из тех начальников, что позволяют безопасно ошибаться.",
+          "audio": {
+            "src": "media/audio/u30.d01.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u30.d01.reading.b2",
+          "en": "The advice she gave me — advice I still repeat today — was simple: ask better questions. Ruth, whose calendar was always full, somehow found an hour every week for me. People who meet her now assume we’re old friends, which, in a way, we are.",
+          "ru": "Совет, который она мне дала, — совет, который я повторяю до сих пор, — был прост: задавай вопросы получше. Рут, чей календарь всегда был забит, каким-то образом находила для меня час каждую неделю. Люди, которые знакомятся с ней сейчас, думают, что мы старые друзья, — что, в каком-то смысле, правда.",
+          "audio": {
+            "src": "media/audio/u30.d01.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "startup",
+          "ru": "стартап",
+          "ipa": "/ˈstɑːtʌp/"
+        },
+        {
+          "word": "terrifying",
+          "ru": "пугающий",
+          "ipa": "/ˈterɪfaɪɪŋ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u30.d01.listening",
+      "title": {
+        "en": "Who’s who",
+        "ru": "Кто есть кто"
+      },
+      "audio": {
+        "src": "media/audio/u30.d01.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Who was that man you were talking to?",
+          "ru": "Кто тот мужчина, с которым ты говорил?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "The one who waved? That’s Paul, a colleague from the Berlin office.",
+          "ru": "Который махал? Это Пол, коллега из берлинского офиса."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "And the woman standing next to him?",
+          "ru": "А женщина рядом с ним?"
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "That’s his wife, who actually designed our new logo.",
+          "ru": "Это его жена, которая, кстати, придумала наш новый логотип."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u30.d01.ex.l.01",
+          "instruction": {
+            "en": "Which clause is non-defining?",
+            "ru": "Какое придаточное неопределяющее?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "That’s his wife, ___ designed our logo.",
+          "options": [
+            "who",
+            "that",
+            "which"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u30.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u30.d01.ex.c.01",
+          "instruction": {
+            "en": "Defining subject.",
+            "ru": "Определяющее (подлежащее)."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The man ___ called was my boss.",
+          "options": [
+            "who",
+            "which",
+            "whose"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u30.d01.ex.c.02",
+          "instruction": {
+            "en": "Non-defining: not \"that\".",
+            "ru": "Неопределяющее: не «that»."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "My sister, ___ lives in Rome, is a chef.",
+          "options": [
+            "who",
+            "that",
+            "which"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u30.d01.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "variants": [
+            "My boss, that is Spanish, called.",
+            "My boss, who is Spanish, called."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u30.d01.ex.c.03",
+          "instruction": {
+            "en": "Can the pronoun be dropped?",
+            "ru": "Можно ли опустить местоимение?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The book ___ I read was great. (object)",
+          "options": [
+            "(nothing)",
+            "who",
+            "whose"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u30.d01.ex.s.02",
+          "instruction": {
+            "en": "Which needs the pronoun?",
+            "ru": "Где нужно местоимение?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "variants": [
+            "The man called me was angry.",
+            "The man who called me was angry."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u30.d01.ex.c.04",
+          "instruction": {
+            "en": "whose = possession.",
+            "ru": "whose = принадлежность."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The woman ___ car was stolen called the police.",
+          "options": [
+            "whose",
+            "who",
+            "which"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u30.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "tokens": [
+            "The",
+            "film",
+            "we",
+            "watched",
+            "was",
+            "boring"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u30.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.personality"
+          ],
+          "pairs": [
+            {
+              "left": "reliable",
+              "right": "надёжный"
+            },
+            {
+              "left": "stubborn",
+              "right": "упрямый"
+            },
+            {
+              "left": "generous",
+              "right": "щедрый"
+            },
+            {
+              "left": "acquaintance",
+              "right": "знакомый"
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u30.d01.ex.g.01",
+          "instruction": {
+            "en": "People → who.",
+            "ru": "Люди → who."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "Those are the neighbours ___ helped us move.",
+          "answers": [
+            "who",
+            "that"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u30.d01.ex.c.05",
+          "instruction": {
+            "en": "Things → which/that.",
+            "ru": "Вещи → which/that."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "This is the phone ___ takes great photos.",
+          "options": [
+            "which",
+            "who",
+            "whose"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u30.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Человек, который звонил, — мой начальник.",
+          "answers": [
+            "The man who called is my boss.",
+            "The man who called is my boss."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the man which called is my boss",
+                "the man called is my boss",
+                "the man who call is my boss"
+              ],
+              "explanation": {
+                "en": "people → who; keep the subject pronoun: The man who called…",
+                "ru": "люди → who; подлежащее не опускается: The man who called…"
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u30.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.non-defining-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Моя сестра, которая живёт в Риме, — повар.",
+          "answers": [
+            "My sister, who lives in Rome, is a chef."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "my sister that lives in rome is a chef",
+                "my sister which lives in rome is a chef",
+                "my sister who live in rome is a chef"
+              ],
+              "explanation": {
+                "en": "non-defining uses who + commas, never that: My sister, who lives…",
+                "ru": "неопределяющее: who + запятые, не that: My sister, who lives…"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,598 @@
+{
+  "id": "u30.d02",
+  "title": {
+    "en": "The town I grew up in",
+    "ru": "Город, в котором я вырос"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.relative-clauses",
+    "vocab.town",
+    "functions.describing"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u30.d02.vocab",
+      "title": {
+        "en": "Places & community",
+        "ru": "Места и сообщество"
+      },
+      "words": [
+        {
+          "word": "hometown",
+          "ru": "родной город",
+          "ipa": "/ˈhəʊmtaʊn/",
+          "example": "I miss my hometown.",
+          "exampleRu": "Скучаю по родному городу.",
+          "audio": {
+            "src": "media/audio/u30.d02.vocab.hometown.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "suburb",
+          "ru": "пригород",
+          "ipa": "/ˈsʌbɜːb/",
+          "example": "They live in a quiet suburb.",
+          "exampleRu": "Они живут в тихом пригороде.",
+          "audio": {
+            "src": "media/audio/u30.d02.vocab.suburb.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "landmark",
+          "ru": "достопримечательность",
+          "ipa": "/ˈlændmɑːk/",
+          "example": "The tower is a landmark.",
+          "exampleRu": "Башня — достопримечательность.",
+          "audio": {
+            "src": "media/audio/u30.d02.vocab.landmark.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "harbour",
+          "ru": "гавань",
+          "ipa": "/ˈhɑːbər/",
+          "example": "Boats fill the harbour.",
+          "exampleRu": "Лодки заполняют гавань.",
+          "audio": {
+            "src": "media/audio/u30.d02.vocab.harbour.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "resident",
+          "ru": "житель",
+          "ipa": "/ˈrezɪdənt/",
+          "example": "Local residents complained.",
+          "exampleRu": "Местные жители жаловались.",
+          "audio": {
+            "src": "media/audio/u30.d02.vocab.resident.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "council",
+          "ru": "совет (муниципальный)",
+          "ipa": "/ˈkaʊnsl/",
+          "example": "The council approved it.",
+          "exampleRu": "Совет одобрил это.",
+          "audio": {
+            "src": "media/audio/u30.d02.vocab.council.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "facility",
+          "ru": "объект, удобство",
+          "ipa": "/fəˈsɪləti/",
+          "example": "The sports facility is new.",
+          "exampleRu": "Спортивный объект новый.",
+          "audio": {
+            "src": "media/audio/u30.d02.vocab.facility.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "outskirts",
+          "ru": "окраина",
+          "ipa": "/ˈaʊtskɜːts/",
+          "example": "We live on the outskirts.",
+          "exampleRu": "Мы живём на окраине.",
+          "audio": {
+            "src": "media/audio/u30.d02.vocab.outskirts.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "heritage",
+          "ru": "наследие",
+          "ipa": "/ˈherɪtɪdʒ/",
+          "example": "The town protects its heritage.",
+          "exampleRu": "Город бережёт своё наследие.",
+          "audio": {
+            "src": "media/audio/u30.d02.vocab.heritage.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "renovate",
+          "ru": "реставрировать",
+          "ipa": "/ˈrenəveɪt/",
+          "example": "They renovated the square.",
+          "exampleRu": "Они отреставрировали площадь.",
+          "audio": {
+            "src": "media/audio/u30.d02.vocab.renovate.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u30.d02.grammar",
+      "title": {
+        "en": "Prepositions in relative clauses; whose",
+        "ru": "Предлоги в придаточных; whose"
+      },
+      "rule": {
+        "en": "In everyday English the preposition goes to the END: \"the house I grew up in\". In formal English it moves before whom/which: \"the house in which I grew up\". Use \"whose\" for possession: \"the writer whose book won\".",
+        "ru": "В обычной речи предлог ставится в КОНЦЕ: «the house I grew up in». В формальной — перед whom/which: «the house in which I grew up». «whose» — для принадлежности: «the writer whose book won»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "informal",
+            "ru": "неформально"
+          },
+          "formula": "noun + (that/—) + subject + verb + prep",
+          "examples": [
+            {
+              "en": "The town I grew up in is small.",
+              "ru": "Город, в котором я вырос, маленький."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "formal",
+            "ru": "формально"
+          },
+          "formula": "noun + prep + whom/which + clause",
+          "examples": [
+            {
+              "en": "The person to whom I spoke was kind.",
+              "ru": "Человек, с которым я говорил, был добр."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "whose",
+            "ru": "whose"
+          },
+          "formula": "noun + whose + noun + verb",
+          "examples": [
+            {
+              "en": "The family whose house burned down.",
+              "ru": "Семья, чей дом сгорел."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After a preposition use \"whom/which\", never \"who/that\": \"to whom\", not \"to who\".",
+          "ru": "После предлога — «whom/which», не «who/that»: «to whom», не «to who»."
+        },
+        {
+          "en": "\"whose\" is possessive; don’t confuse it with \"who’s\" (= who is).",
+          "ru": "«whose» — притяжательное; не путай с «who’s» (= who is)."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u30.d02.reading",
+      "title": {
+        "en": "Going back",
+        "ru": "Возвращение"
+      },
+      "blocks": [
+        {
+          "id": "u30.d02.reading.b1",
+          "en": "The town I grew up in has changed almost beyond recognition. The harbour where we used to fish is now a row of cafés, and the old cinema, which the council nearly demolished, has been renovated into a library. The street I lived on still smells of the same bakery.",
+          "ru": "Город, в котором я вырос, изменился почти до неузнаваемости. Гавань, где мы раньше рыбачили, теперь ряд кафе, а старый кинотеатр, который совет чуть не снёс, отреставрировали под библиотеку. Улица, на которой я жил, всё так же пахнет той самой пекарней.",
+          "audio": {
+            "src": "media/audio/u30.d02.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u30.d02.reading.b2",
+          "en": "I met a resident whose family has lived there for a century. The people to whom the town matters most are fighting to protect its heritage. It’s a place for which I feel a loyalty I can’t quite explain — the place that made me.",
+          "ru": "Я встретил жителя, чья семья живёт там уже сто лет. Люди, для которых город важнее всего, борются за сохранение его наследия. Это место, к которому я чувствую преданность, необъяснимую до конца, — место, которое меня создало.",
+          "audio": {
+            "src": "media/audio/u30.d02.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "demolish",
+          "ru": "сносить",
+          "ipa": "/dɪˈmɒlɪʃ/"
+        },
+        {
+          "word": "loyalty",
+          "ru": "преданность",
+          "ipa": "/ˈlɔɪəlti/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u30.d02.listening",
+      "title": {
+        "en": "Directions to the flat",
+        "ru": "Как добраться до квартиры"
+      },
+      "audio": {
+        "src": "media/audio/u30.d02.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Which building is yours?",
+          "ru": "Какое здание твоё?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "The one whose balcony has all the plants. Third floor.",
+          "ru": "То, у которого на балконе все эти растения. Третий этаж."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "Is that the café you told me about downstairs?",
+          "ru": "Это то кафе внизу, о котором ты рассказывал?"
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "Yes, the place I get my coffee from every morning.",
+          "ru": "Да, место, откуда я беру кофе каждое утро."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u30.d02.ex.l.01",
+          "instruction": {
+            "en": "Whose balcony?",
+            "ru": "Чей балкон?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The one ___ balcony has the plants.",
+          "options": [
+            "whose",
+            "who’s",
+            "which"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u30.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u30.d02.ex.g.01",
+          "instruction": {
+            "en": "Preposition at the end.",
+            "ru": "Предлог в конце."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "This is the house I grew up ___ .",
+          "answers": [
+            "in"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u30.d02.ex.c.01",
+          "instruction": {
+            "en": "Formal form.",
+            "ru": "Формальная форма."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The person to ___ I spoke was helpful.",
+          "options": [
+            "whom",
+            "who",
+            "that"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u30.d02.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "variants": [
+            "The man to who I wrote replied.",
+            "The man to whom I wrote replied."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u30.d02.ex.c.02",
+          "instruction": {
+            "en": "whose or who’s?",
+            "ru": "whose или who’s?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The writer ___ book won the prize is here.",
+          "options": [
+            "whose",
+            "who’s",
+            "which"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u30.d02.ex.g.02",
+          "instruction": {
+            "en": "End preposition.",
+            "ru": "Предлог в конце."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "That’s the colleague I told you ___ .",
+          "answers": [
+            "about"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u30.d02.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "variants": [
+            "The city in that I live is loud.",
+            "The city in which I live is loud."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "order-words",
+          "id": "u30.d02.ex.o.01",
+          "instruction": {
+            "en": "Make an informal sentence.",
+            "ru": "Составь неформальное предложение."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "tokens": [
+            "the",
+            "chair",
+            "I",
+            "sat",
+            "on",
+            "broke"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u30.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.town"
+          ],
+          "pairs": [
+            {
+              "left": "suburb",
+              "right": "пригород"
+            },
+            {
+              "left": "harbour",
+              "right": "гавань"
+            },
+            {
+              "left": "outskirts",
+              "right": "окраина"
+            },
+            {
+              "left": "heritage",
+              "right": "наследие"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u30.d02.ex.c.03",
+          "instruction": {
+            "en": "which after preposition.",
+            "ru": "which после предлога."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The fund for ___ we applied was closed.",
+          "options": [
+            "which",
+            "that",
+            "who"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u30.d02.ex.g.03",
+          "instruction": {
+            "en": "whose.",
+            "ru": "whose."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "A resident ___ family has lived here for years spoke.",
+          "answers": [
+            "whose"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u30.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate (informal).",
+            "ru": "Переведи (неформально)."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Город, в котором я вырос, маленький.",
+          "answers": [
+            "The town I grew up in is small.",
+            "The town that I grew up in is small."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the town in which i grew up in is small",
+                "the town where i grew up in is small",
+                "the town i grew up is small"
+              ],
+              "explanation": {
+                "en": "end-preposition: The town I grew up in… (don’t double the preposition).",
+                "ru": "предлог в конце: The town I grew up in… (не дублируй предлог)."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u30.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Писатель, чья книга выиграла премию, здесь.",
+          "answers": [
+            "The writer whose book won the prize is here."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the writer who’s book won the prize is here",
+                "the writer which book won the prize is here",
+                "the writer whose book win the prize is here"
+              ],
+              "explanation": {
+                "en": "possession → whose (not who’s): The writer whose book won…",
+                "ru": "принадлежность → whose (не who’s): The writer whose book won…"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

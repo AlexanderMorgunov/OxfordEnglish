@@ -1,0 +1,600 @@
+{
+  "id": "u30.d03",
+  "title": {
+    "en": "Most of which were useful",
+    "ru": "Большинство из которых пригодились"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.non-defining-clauses",
+    "vocab.work",
+    "functions.describing"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u30.d03.vocab",
+      "title": {
+        "en": "Amount & reflection",
+        "ru": "Количество и оценка"
+      },
+      "words": [
+        {
+          "word": "majority",
+          "ru": "большинство",
+          "ipa": "/məˈdʒɒrəti/",
+          "example": "The majority agreed.",
+          "exampleRu": "Большинство согласилось.",
+          "audio": {
+            "src": "media/audio/u30.d03.vocab.majority.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "handful",
+          "ru": "горстка",
+          "ipa": "/ˈhændfʊl/",
+          "example": "Only a handful came.",
+          "exampleRu": "Пришла лишь горстка.",
+          "audio": {
+            "src": "media/audio/u30.d03.vocab.handful.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "remainder",
+          "ru": "остаток",
+          "ipa": "/rɪˈmeɪndər/",
+          "example": "The remainder was saved.",
+          "exampleRu": "Остаток отложили.",
+          "audio": {
+            "src": "media/audio/u30.d03.vocab.remainder.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "numerous",
+          "ru": "многочисленный",
+          "ipa": "/ˈnjuːmərəs/",
+          "example": "There were numerous errors.",
+          "exampleRu": "Было множество ошибок.",
+          "audio": {
+            "src": "media/audio/u30.d03.vocab.numerous.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "portion",
+          "ru": "часть, доля",
+          "ipa": "/ˈpɔːʃn/",
+          "example": "A portion was refunded.",
+          "exampleRu": "Часть вернули.",
+          "audio": {
+            "src": "media/audio/u30.d03.vocab.portion.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "outcome",
+          "ru": "итог, результат",
+          "ipa": "/ˈaʊtkʌm/",
+          "example": "The outcome surprised us.",
+          "exampleRu": "Итог нас удивил.",
+          "audio": {
+            "src": "media/audio/u30.d03.vocab.outcome.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "aspect",
+          "ru": "аспект",
+          "ipa": "/ˈæspekt/",
+          "example": "Every aspect matters.",
+          "exampleRu": "Важен каждый аспект.",
+          "audio": {
+            "src": "media/audio/u30.d03.vocab.aspect.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "proportion",
+          "ru": "доля",
+          "ipa": "/prəˈpɔːʃn/",
+          "example": "A large proportion agreed.",
+          "exampleRu": "Значительная доля согласилась.",
+          "audio": {
+            "src": "media/audio/u30.d03.vocab.proportion.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "drawback",
+          "ru": "недостаток",
+          "ipa": "/ˈdrɔːbæk/",
+          "example": "The plan has one drawback.",
+          "exampleRu": "У плана один недостаток.",
+          "audio": {
+            "src": "media/audio/u30.d03.vocab.drawback.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "significant",
+          "ru": "значительный",
+          "ipa": "/sɪɡˈnɪfɪkənt/",
+          "example": "A significant number left.",
+          "exampleRu": "Ушло значительное число.",
+          "audio": {
+            "src": "media/audio/u30.d03.vocab.significant.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u30.d03.grammar",
+      "title": {
+        "en": "Quantifiers + relatives; sentential \"which\"",
+        "ru": "Количественные + относительные; «which» ко всей мысли"
+      },
+      "rule": {
+        "en": "In a non-defining clause you can put a quantifier before \"of whom/of which\": \"…, most of which…\", \"…, several of whom…\". You can also use \"which\" to refer to the WHOLE previous clause: \"He was late, which annoyed everyone.\"",
+        "ru": "В неопределяющем придаточном перед «of whom/of which» можно ставить количественное слово: «…, most of which…», «…, several of whom…». А «which» может относиться ко ВСЕЙ предыдущей мысли: «He was late, which annoyed everyone.»"
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "of which",
+            "ru": "of which"
+          },
+          "formula": "…, quantifier + of which + verb",
+          "examples": [
+            {
+              "en": "I read ten books, most of which were dull.",
+              "ru": "Я прочитал десять книг, большинство из которых были скучными."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "of whom",
+            "ru": "of whom"
+          },
+          "formula": "…, quantifier + of whom + verb",
+          "examples": [
+            {
+              "en": "I have three sisters, all of whom are doctors.",
+              "ru": "У меня три сестры, все из которых — врачи."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "sentential which",
+            "ru": "«which» ко всей мысли"
+          },
+          "formula": "clause, which + comment",
+          "examples": [
+            {
+              "en": "She passed, which surprised no one.",
+              "ru": "Она сдала, что никого не удивило."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use \"of whom\" for people, \"of which\" for things: \"some of whom\", \"some of which\".",
+          "ru": "«of whom» — люди, «of which» — вещи: «some of whom», «some of which»."
+        },
+        {
+          "en": "For \"which about a whole idea\", use \"which\", not \"what\": \"…, which was odd\", not \"what was odd\".",
+          "ru": "Для «which ко всей мысли» — «which», не «what»: «…, which was odd», не «what was odd»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u30.d03.reading",
+      "title": {
+        "en": "The survey",
+        "ru": "Опрос"
+      },
+      "blocks": [
+        {
+          "id": "u30.d03.reading.b1",
+          "en": "We interviewed two hundred users, most of whom were happy, though a significant number complained about the price. We tested five features, three of which people loved and two of which they ignored completely — which told us exactly where to focus.",
+          "ru": "Мы опросили двести пользователей, большинство из которых были довольны, хотя значительное число жаловалось на цену. Мы протестировали пять функций, три из которых людям понравились, а две они полностью проигнорировали, — что и показало нам, на чём сосредоточиться.",
+          "audio": {
+            "src": "media/audio/u30.d03.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u30.d03.reading.b2",
+          "en": "The report listed numerous drawbacks, none of which were fatal. The team shipped the fix a week early, which impressed the client. The whole project, the outcome of which nobody had predicted, ended up as our best case study.",
+          "ru": "В отчёте перечислялись многочисленные недостатки, ни один из которых не был критичным. Команда выпустила исправление на неделю раньше, что впечатлило клиента. Весь проект, итог которого никто не предсказывал, в итоге стал нашим лучшим кейсом.",
+          "audio": {
+            "src": "media/audio/u30.d03.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "survey",
+          "ru": "опрос",
+          "ipa": "/ˈsɜːveɪ/"
+        },
+        {
+          "word": "fatal",
+          "ru": "критический",
+          "ipa": "/ˈfeɪtl/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u30.d03.listening",
+      "title": {
+        "en": "How did it go?",
+        "ru": "Как всё прошло?"
+      },
+      "audio": {
+        "src": "media/audio/u30.d03.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "How many candidates did you see?",
+          "ru": "Сколько кандидатов вы посмотрели?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "Eight, two of whom were excellent and one of whom walked out.",
+          "ru": "Восемь, двое из которых были отличными, а один ушёл."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "And the tests?",
+          "ru": "А тесты?"
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "They all passed, which honestly surprised me.",
+          "ru": "Все прошли, что, честно, меня удивило."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u30.d03.ex.l.01",
+          "instruction": {
+            "en": "Refer to people.",
+            "ru": "Ссылка на людей."
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "Eight, two ___ were excellent.",
+          "options": [
+            "of whom",
+            "of which",
+            "of that"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u30.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u30.d03.ex.c.01",
+          "instruction": {
+            "en": "Things → of which.",
+            "ru": "Вещи → of which."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "I bought ten apples, three ___ were rotten.",
+          "options": [
+            "of which",
+            "of whom",
+            "of them which"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u30.d03.ex.c.02",
+          "instruction": {
+            "en": "People → of whom.",
+            "ru": "Люди → of whom."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "She has many fans, most ___ are teenagers.",
+          "options": [
+            "of whom",
+            "of which",
+            "of who"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u30.d03.ex.c.03",
+          "instruction": {
+            "en": "Whole idea → which.",
+            "ru": "Вся мысль → which."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "He forgot my birthday, ___ upset me.",
+          "options": [
+            "which",
+            "what",
+            "that"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u30.d03.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "variants": [
+            "She passed, what surprised no one.",
+            "She passed, which surprised no one."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "spot-error",
+          "id": "u30.d03.ex.s.02",
+          "instruction": {
+            "en": "People or things?",
+            "ru": "Люди или вещи?"
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "variants": [
+            "I have two brothers, both of which are pilots.",
+            "I have two brothers, both of whom are pilots."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u30.d03.ex.g.01",
+          "instruction": {
+            "en": "of which.",
+            "ru": "of which."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "We tried five cafés, none ___ which were open.",
+          "answers": [
+            "of"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u30.d03.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "tokens": [
+            "He",
+            "was",
+            "late",
+            "which",
+            "annoyed",
+            "everyone"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u30.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "majority",
+              "right": "большинство"
+            },
+            {
+              "left": "handful",
+              "right": "горстка"
+            },
+            {
+              "left": "drawback",
+              "right": "недостаток"
+            },
+            {
+              "left": "outcome",
+              "right": "итог"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u30.d03.ex.c.04",
+          "instruction": {
+            "en": "all of whom.",
+            "ru": "all of whom."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "I have three aunts, all ___ live abroad.",
+          "options": [
+            "of whom",
+            "of which",
+            "whom"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u30.d03.ex.g.02",
+          "instruction": {
+            "en": "Sentential which.",
+            "ru": "«which» ко всей мысли."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "The train was cancelled, ___ ruined our plans.",
+          "answers": [
+            "which"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u30.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.non-defining-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У меня три сестры, все из которых — врачи.",
+          "answers": [
+            "I have three sisters, all of whom are doctors."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i have three sisters all of which are doctors",
+                "i have three sisters all of them are doctors",
+                "i have three sisters, all of who are doctors"
+              ],
+              "explanation": {
+                "en": "people → of whom: …, all of whom are doctors.",
+                "ru": "люди → of whom: …, all of whom are doctors."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u30.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.non-defining-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он опоздал, что всех разозлило.",
+          "answers": [
+            "He was late, which annoyed everyone."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he was late what annoyed everyone",
+                "he was late that annoyed everyone",
+                "he was late, which annoy everyone"
+              ],
+              "explanation": {
+                "en": "comment on a whole clause → which: …, which annoyed everyone.",
+                "ru": "оценка всей мысли → which: …, which annoyed everyone."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
