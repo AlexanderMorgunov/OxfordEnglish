@@ -1,0 +1,598 @@
+{
+  "id": "u29.d05",
+  "title": {
+    "en": "So they say — review",
+    "ru": "Так говорят — обзор"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.reported-speech",
+    "grammar.reported-questions",
+    "grammar.reporting-verbs"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u29.d05.vocab",
+      "title": {
+        "en": "Reporting — key verbs",
+        "ru": "Речь — ключевые глаголы"
+      },
+      "words": [
+        {
+          "word": "claim",
+          "ru": "утверждать",
+          "ipa": "/kleɪm/",
+          "example": "He claimed he was innocent.",
+          "exampleRu": "Он утверждал, что невиновен.",
+          "audio": {
+            "src": "media/audio/u29.d05.vocab.claim.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "point out",
+          "ru": "указывать",
+          "ipa": "/ˌpɔɪnt ˈaʊt/",
+          "example": "She pointed out the mistake.",
+          "exampleRu": "Она указала на ошибку.",
+          "audio": {
+            "src": "media/audio/u29.d05.vocab.pointout.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "warn",
+          "ru": "предупреждать",
+          "ipa": "/wɔːn/",
+          "example": "They warned us about the road.",
+          "exampleRu": "Они предупредили нас о дороге.",
+          "audio": {
+            "src": "media/audio/u29.d05.vocab.warn.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "remind",
+          "ru": "напоминать",
+          "ipa": "/rɪˈmaɪnd/",
+          "example": "He reminded me to sign.",
+          "exampleRu": "Он напомнил мне подписать.",
+          "audio": {
+            "src": "media/audio/u29.d05.vocab.remind.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "admit",
+          "ru": "признавать",
+          "ipa": "/ədˈmɪt/",
+          "example": "She admitted her mistake.",
+          "exampleRu": "Она признала ошибку.",
+          "audio": {
+            "src": "media/audio/u29.d05.vocab.admit.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "deny",
+          "ru": "отрицать",
+          "ipa": "/dɪˈnaɪ/",
+          "example": "He denied everything.",
+          "exampleRu": "Он всё отрицал.",
+          "audio": {
+            "src": "media/audio/u29.d05.vocab.deny.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "suggest",
+          "ru": "предлагать",
+          "ipa": "/səˈdʒest/",
+          "example": "She suggested a break.",
+          "exampleRu": "Она предложила перерыв.",
+          "audio": {
+            "src": "media/audio/u29.d05.vocab.suggest.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wonder",
+          "ru": "интересоваться",
+          "ipa": "/ˈwʌndər/",
+          "example": "I wonder what he meant.",
+          "exampleRu": "Интересно, что он имел в виду.",
+          "audio": {
+            "src": "media/audio/u29.d05.vocab.wonder.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reply",
+          "ru": "отвечать",
+          "ipa": "/rɪˈplaɪ/",
+          "example": "He replied at once.",
+          "exampleRu": "Он ответил сразу.",
+          "audio": {
+            "src": "media/audio/u29.d05.vocab.reply.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "explain",
+          "ru": "объяснять",
+          "ipa": "/ɪkˈspleɪn/",
+          "example": "She explained the rule.",
+          "exampleRu": "Она объяснила правило.",
+          "audio": {
+            "src": "media/audio/u29.d05.vocab.explain.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u29.d05.grammar",
+      "title": {
+        "en": "Reported speech — all together",
+        "ru": "Косвенная речь — всё вместе"
+      },
+      "rule": {
+        "en": "Choose the tool by what was said: a statement → backshift (say/tell + that); a question → statement order + if/whether; an order/request → verb + object + (not) to; a reporting verb → its own pattern (+ -ing / + to / + prep + -ing).",
+        "ru": "Инструмент выбирают по типу высказывания: утверждение → сдвиг (say/tell + that); вопрос → прямой порядок + if/whether; приказ/просьба → verb + объект + (not) to; глагол речи → своя модель (+ -ing / + to / + предлог + -ing)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "statement",
+            "ru": "утверждение"
+          },
+          "formula": "said (that) + backshift",
+          "examples": [
+            {
+              "en": "He said he was busy.",
+              "ru": "Он сказал, что занят."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "question",
+            "ru": "вопрос"
+          },
+          "formula": "asked + (wh/if) + statement order",
+          "examples": [
+            {
+              "en": "She asked if I was ready.",
+              "ru": "Она спросила, готов ли я."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "order / verb pattern",
+            "ru": "приказ / модель"
+          },
+          "formula": "told sb (not) to / denied + -ing",
+          "examples": [
+            {
+              "en": "He told me not to worry.",
+              "ru": "Он сказал мне не волноваться."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Don’t mix: questions never keep \"do/did\"; orders never use \"that\".",
+          "ru": "Не смешивай: вопросы без «do/did»; приказы без «that»."
+        },
+        {
+          "en": "Match the verb to its pattern: \"suggested going\", \"refused to go\", \"accused of cheating\".",
+          "ru": "Подбирай модель под глагол: «suggested going», «refused to go», «accused of cheating»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u29.d05.reading",
+      "title": {
+        "en": "The whole story",
+        "ru": "Вся история"
+      },
+      "blocks": [
+        {
+          "id": "u29.d05.reading.b1",
+          "en": "My sister called, furious. She said the airline had cancelled her flight and claimed no one had warned her. When she asked why it had happened, the agent explained that the crew was delayed and apologized for the trouble.",
+          "ru": "Позвонила сестра, в ярости. Она сказала, что авиакомпания отменила её рейс, и утверждала, что её никто не предупредил. Когда она спросила, почему так вышло, агент объяснил, что экипаж задержался, и извинился за неудобства.",
+          "audio": {
+            "src": "media/audio/u29.d05.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u29.d05.reading.b2",
+          "en": "He offered to rebook her for free and reminded her to keep the receipts. She admitted she had overreacted a little, but insisted on a written confirmation. In the end she told me it had worked out — and asked me not to repeat any of it to Mum.",
+          "ru": "Он предложил бесплатно перебронировать и напомнил ей сохранить чеки. Она признала, что немного перегнула, но настояла на письменном подтверждении. В итоге она сказала мне, что всё уладилось, — и попросила ничего из этого не пересказывать маме.",
+          "audio": {
+            "src": "media/audio/u29.d05.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "rebook",
+          "ru": "перебронировать",
+          "ipa": "/ˌriːˈbʊk/"
+        },
+        {
+          "word": "overreact",
+          "ru": "перегибать",
+          "ipa": "/ˌəʊvəriˈækt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u29.d05.listening",
+      "title": {
+        "en": "Passing it on",
+        "ru": "Пересказ"
+      },
+      "audio": {
+        "src": "media/audio/u29.d05.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "What did the teacher say about the exam?",
+          "ru": "Что учитель сказал про экзамен?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "She said it would be shorter and reminded us to bring a pen.",
+          "ru": "Она сказала, что он будет короче, и напомнила взять ручку."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "Did anyone ask about the format?",
+          "ru": "Кто-нибудь спросил про формат?"
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "Yes, Sam asked whether we could use notes, and she refused to allow it.",
+          "ru": "Да, Сэм спросил, можно ли пользоваться конспектами, и она отказалась это разрешить."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u29.d05.ex.l.01",
+          "instruction": {
+            "en": "What did Sam ask?",
+            "ru": "Что спросил Сэм?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.reported-questions"
+          ],
+          "prompt": "Sam asked ___ we could use notes.",
+          "options": [
+            "whether",
+            "that",
+            "did"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u29.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u29.d05.ex.g.01",
+          "instruction": {
+            "en": "Statement backshift.",
+            "ru": "Сдвиг в утверждении."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "\"I am ready.\" → He said he ___ ready.",
+          "answers": [
+            "was"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u29.d05.ex.c.01",
+          "instruction": {
+            "en": "Reported question.",
+            "ru": "Косвенный вопрос."
+          },
+          "tags": [
+            "grammar.reported-questions"
+          ],
+          "prompt": "\"Are you sure?\" → She asked ___ I was sure.",
+          "options": [
+            "if",
+            "that",
+            "do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u29.d05.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.reported-questions"
+          ],
+          "variants": [
+            "He asked what did I want.",
+            "He asked what I wanted."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u29.d05.ex.c.02",
+          "instruction": {
+            "en": "Reported command.",
+            "ru": "Косвенный приказ."
+          },
+          "tags": [
+            "grammar.reporting-verbs"
+          ],
+          "prompt": "She told me ___ worry.",
+          "options": [
+            "not to",
+            "to not",
+            "don't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u29.d05.ex.g.02",
+          "instruction": {
+            "en": "Verb pattern.",
+            "ru": "Модель глагола."
+          },
+          "tags": [
+            "grammar.reporting-verbs"
+          ],
+          "prompt": "He admitted ___ the vase. (break)",
+          "answers": [
+            "breaking"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u29.d05.ex.c.03",
+          "instruction": {
+            "en": "say vs tell.",
+            "ru": "say vs tell."
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "prompt": "He ___ that he was tired.",
+          "options": [
+            "said",
+            "told",
+            "told me"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u29.d05.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.reported-questions"
+          ],
+          "tokens": [
+            "She",
+            "asked",
+            "if",
+            "I",
+            "had",
+            "finished"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u29.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the verb and the translation.",
+            "ru": "Сопоставь глагол и перевод."
+          },
+          "tags": [
+            "vocab.news"
+          ],
+          "pairs": [
+            {
+              "left": "claim",
+              "right": "утверждать"
+            },
+            {
+              "left": "admit",
+              "right": "признавать"
+            },
+            {
+              "left": "deny",
+              "right": "отрицать"
+            },
+            {
+              "left": "remind",
+              "right": "напоминать"
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u29.d05.ex.g.03",
+          "instruction": {
+            "en": "refuse + to.",
+            "ru": "refuse + to."
+          },
+          "tags": [
+            "grammar.reporting-verbs"
+          ],
+          "prompt": "She refused ___ sign it. (to + sign)",
+          "answers": [
+            "to sign"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u29.d05.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.reported-speech"
+          ],
+          "variants": [
+            "He said me he would call.",
+            "He told me he would call."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u29.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.reported-questions",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она спросила, готов ли я.",
+          "answers": [
+            "She asked if I was ready.",
+            "She asked whether I was ready."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she asked am i ready",
+                "she asked if i am ready",
+                "she asked was i ready"
+              ],
+              "explanation": {
+                "en": "if/whether + statement order + backshift.",
+                "ru": "if/whether + прямой порядок + сдвиг."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u29.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.reporting-verbs",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он велел мне не волноваться.",
+          "answers": [
+            "He told me not to worry."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he told me to not worry",
+                "he told me not worry",
+                "he said me not to worry"
+              ],
+              "explanation": {
+                "en": "tell + object + not to + V1: He told me not to worry.",
+                "ru": "tell + объект + not to + V1: He told me not to worry."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

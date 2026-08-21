@@ -1,0 +1,599 @@
+{
+  "id": "u29.d04",
+  "title": {
+    "en": "She admitted lying",
+    "ru": "Она призналась, что солгала"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.reporting-verbs",
+    "vocab.work",
+    "functions.storytelling"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u29.d04.vocab",
+      "title": {
+        "en": "Ways to report",
+        "ru": "Как передать сказанное"
+      },
+      "words": [
+        {
+          "word": "suggest",
+          "ru": "предлагать",
+          "ipa": "/səˈdʒest/",
+          "example": "She suggested leaving early.",
+          "exampleRu": "Она предложила уйти пораньше.",
+          "audio": {
+            "src": "media/audio/u29.d04.vocab.suggest.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "recommend",
+          "ru": "рекомендовать",
+          "ipa": "/ˌrekəˈmend/",
+          "example": "He recommended waiting.",
+          "exampleRu": "Он рекомендовал подождать.",
+          "audio": {
+            "src": "media/audio/u29.d04.vocab.recommend.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "refuse",
+          "ru": "отказываться",
+          "ipa": "/rɪˈfjuːz/",
+          "example": "They refused to sign.",
+          "exampleRu": "Они отказались подписывать.",
+          "audio": {
+            "src": "media/audio/u29.d04.vocab.refuse.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "offer",
+          "ru": "предлагать",
+          "ipa": "/ˈɒfər/",
+          "example": "She offered to drive.",
+          "exampleRu": "Она предложила подвезти.",
+          "audio": {
+            "src": "media/audio/u29.d04.vocab.offer.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "threaten",
+          "ru": "угрожать",
+          "ipa": "/ˈθretn/",
+          "example": "He threatened to quit.",
+          "exampleRu": "Он пригрозил уволиться.",
+          "audio": {
+            "src": "media/audio/u29.d04.vocab.threaten.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "agree",
+          "ru": "соглашаться",
+          "ipa": "/əˈɡriː/",
+          "example": "We agreed to meet later.",
+          "exampleRu": "Мы согласились встретиться позже.",
+          "audio": {
+            "src": "media/audio/u29.d04.vocab.agree.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "apologize",
+          "ru": "извиняться",
+          "ipa": "/əˈpɒlədʒaɪz/",
+          "example": "He apologized for being late.",
+          "exampleRu": "Он извинился за опоздание.",
+          "audio": {
+            "src": "media/audio/u29.d04.vocab.apologize.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "accuse",
+          "ru": "обвинять",
+          "ipa": "/əˈkjuːz/",
+          "example": "She accused him of lying.",
+          "exampleRu": "Она обвинила его во лжи.",
+          "audio": {
+            "src": "media/audio/u29.d04.vocab.accuse.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "congratulate",
+          "ru": "поздравлять",
+          "ipa": "/kənˈɡrætʃuleɪt/",
+          "example": "They congratulated her on winning.",
+          "exampleRu": "Они поздравили её с победой.",
+          "audio": {
+            "src": "media/audio/u29.d04.vocab.congratulate.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "insist",
+          "ru": "настаивать",
+          "ipa": "/ɪnˈsɪst/",
+          "example": "He insisted on paying.",
+          "exampleRu": "Он настоял на том, чтобы заплатить.",
+          "audio": {
+            "src": "media/audio/u29.d04.vocab.insist.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u29.d04.grammar",
+      "title": {
+        "en": "Reporting verbs & their patterns",
+        "ru": "Глаголы речи и их модели"
+      },
+      "rule": {
+        "en": "Many reporting verbs have a fixed pattern: verb + -ing (admit/deny/suggest), verb + to-infinitive (promise/agree/refuse/offer/threaten), or verb + preposition + -ing (apologize for / accuse sb of / insist on).",
+        "ru": "У многих глаголов речи фиксированная модель: verb + -ing (admit/deny/suggest), verb + to-инфинитив (promise/agree/refuse/offer/threaten) или verb + предлог + -ing (apologize for / accuse sb of / insist on)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "verb + -ing",
+            "ru": "verb + -ing"
+          },
+          "formula": "admit / deny / suggest + V-ing",
+          "examples": [
+            {
+              "en": "He denied taking the money.",
+              "ru": "Он отрицал, что взял деньги."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "verb + to",
+            "ru": "verb + to"
+          },
+          "formula": "refuse / agree / offer + to + V1",
+          "examples": [
+            {
+              "en": "She refused to answer.",
+              "ru": "Она отказалась отвечать."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "verb + prep + -ing",
+            "ru": "verb + предлог + -ing"
+          },
+          "formula": "apologize for / accuse of + V-ing",
+          "examples": [
+            {
+              "en": "He apologized for being late.",
+              "ru": "Он извинился за опоздание."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"suggest\" takes -ing or \"that\", not \"to\": \"suggested going\", not \"suggested to go\".",
+          "ru": "«suggest» — с -ing или «that», не «to»: «suggested going», не «suggested to go»."
+        },
+        {
+          "en": "After a preposition use -ing: \"accused him of cheating\", not \"to cheat\".",
+          "ru": "После предлога — -ing: «accused him of cheating», не «to cheat»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u29.d04.reading",
+      "title": {
+        "en": "The apology",
+        "ru": "Извинение"
+      },
+      "blocks": [
+        {
+          "id": "u29.d04.reading.b1",
+          "en": "The meeting got tense fast. Dan accused the vendor of missing every deadline, and the vendor denied breaking the contract. He insisted on reviewing the emails before anyone said another word.",
+          "ru": "Совещание быстро накалилось. Дэн обвинил подрядчика в срыве всех сроков, а подрядчик отрицал нарушение контракта. Он настоял на том, чтобы просмотреть письма, прежде чем кто-то скажет ещё хоть слово.",
+          "audio": {
+            "src": "media/audio/u29.d04.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u29.d04.reading.b2",
+          "en": "In the end the vendor apologized for the delays and offered to lower the price. Dan agreed to give them one more month but refused to pay in advance. They suggested meeting again in two weeks, and everyone congratulated themselves on avoiding a lawsuit.",
+          "ru": "В итоге подрядчик извинился за задержки и предложил снизить цену. Дэн согласился дать им ещё месяц, но отказался платить вперёд. Они предложили встретиться снова через две недели, и все поздравили себя с тем, что избежали суда.",
+          "audio": {
+            "src": "media/audio/u29.d04.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "deadline",
+          "ru": "срок",
+          "ipa": "/ˈdedlaɪn/"
+        },
+        {
+          "word": "lawsuit",
+          "ru": "судебный иск",
+          "ipa": "/ˈlɔːsuːt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u29.d04.listening",
+      "title": {
+        "en": "He said what?",
+        "ru": "Он что сказал?"
+      },
+      "audio": {
+        "src": "media/audio/u29.d04.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "So how did it go with your landlord?",
+          "ru": "Ну и как прошло с арендодателем?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "He denied raising the rent, but then admitted sending the letter.",
+          "ru": "Он отрицал повышение аренды, но потом признался, что отправил письмо."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "Did he apologize?",
+          "ru": "Он извинился?"
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "He apologized for the confusion and offered to fix the heating.",
+          "ru": "Он извинился за путаницу и предложил починить отопление."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u29.d04.ex.l.01",
+          "instruction": {
+            "en": "What did the landlord do?",
+            "ru": "Что сделал арендодатель?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.reporting-verbs"
+          ],
+          "prompt": "He admitted ___ the letter.",
+          "options": [
+            "sending",
+            "to send",
+            "send"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u29.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u29.d04.ex.g.01",
+          "instruction": {
+            "en": "deny + -ing.",
+            "ru": "deny + -ing."
+          },
+          "tags": [
+            "grammar.reporting-verbs"
+          ],
+          "prompt": "He denied ___ the money. (take)",
+          "answers": [
+            "taking"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u29.d04.ex.g.02",
+          "instruction": {
+            "en": "refuse + to.",
+            "ru": "refuse + to."
+          },
+          "tags": [
+            "grammar.reporting-verbs"
+          ],
+          "prompt": "She refused ___ answer. (to + answer)",
+          "answers": [
+            "to answer"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u29.d04.ex.c.01",
+          "instruction": {
+            "en": "suggest pattern.",
+            "ru": "модель suggest."
+          },
+          "tags": [
+            "grammar.reporting-verbs"
+          ],
+          "prompt": "She suggested ___ early.",
+          "options": [
+            "leaving",
+            "to leave",
+            "leave"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u29.d04.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.reporting-verbs"
+          ],
+          "variants": [
+            "He suggested to go home.",
+            "He suggested going home."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u29.d04.ex.c.02",
+          "instruction": {
+            "en": "accuse of + -ing.",
+            "ru": "accuse of + -ing."
+          },
+          "tags": [
+            "grammar.reporting-verbs"
+          ],
+          "prompt": "They accused him ___ cheating.",
+          "options": [
+            "of",
+            "for",
+            "to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u29.d04.ex.g.03",
+          "instruction": {
+            "en": "apologize for + -ing.",
+            "ru": "apologize for + -ing."
+          },
+          "tags": [
+            "grammar.reporting-verbs"
+          ],
+          "prompt": "She apologized for ___ late. (be)",
+          "answers": [
+            "being"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u29.d04.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.reporting-verbs"
+          ],
+          "tokens": [
+            "He",
+            "offered",
+            "to",
+            "pay",
+            "for",
+            "lunch"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u29.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the verb and its pattern.",
+            "ru": "Сопоставь глагол и модель."
+          },
+          "tags": [
+            "grammar.reporting-verbs"
+          ],
+          "pairs": [
+            {
+              "left": "deny",
+              "right": "+ -ing"
+            },
+            {
+              "left": "refuse",
+              "right": "+ to"
+            },
+            {
+              "left": "apologize",
+              "right": "for + -ing"
+            },
+            {
+              "left": "accuse",
+              "right": "of + -ing"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u29.d04.ex.c.03",
+          "instruction": {
+            "en": "threaten + to.",
+            "ru": "threaten + to."
+          },
+          "tags": [
+            "grammar.reporting-verbs"
+          ],
+          "prompt": "He threatened ___ quit.",
+          "options": [
+            "to",
+            "of",
+            "—"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u29.d04.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.reporting-verbs"
+          ],
+          "variants": [
+            "She insisted on to pay.",
+            "She insisted on paying."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u29.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.reporting-verbs",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он отрицал, что взял деньги.",
+          "answers": [
+            "He denied taking the money.",
+            "He denied taking the money."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he denied to take the money",
+                "he denied that he take the money",
+                "he denied took the money"
+              ],
+              "explanation": {
+                "en": "deny + -ing: He denied taking the money.",
+                "ru": "deny + -ing: He denied taking the money."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u29.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.reporting-verbs",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она извинилась за опоздание.",
+          "answers": [
+            "She apologized for being late.",
+            "She apologised for being late."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she apologized for be late",
+                "she apologized to be late",
+                "she apologized being late"
+              ],
+              "explanation": {
+                "en": "apologize for + -ing: She apologized for being late.",
+                "ru": "apologize for + -ing: She apologized for being late."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
