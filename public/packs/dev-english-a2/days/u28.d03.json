@@ -1,0 +1,599 @@
+{
+  "id": "u28.d03",
+  "title": {
+    "en": "It is said that…",
+    "ru": "Говорят, что…"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.passive-report-advanced",
+    "vocab.news",
+    "functions.news"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u28.d03.vocab",
+      "title": {
+        "en": "Reports & rumours",
+        "ru": "Сообщения и слухи"
+      },
+      "words": [
+        {
+          "word": "claim",
+          "ru": "утверждать",
+          "ipa": "/kleɪm/",
+          "example": "They claim it is safe.",
+          "exampleRu": "Они утверждают, что это безопасно.",
+          "audio": {
+            "src": "media/audio/u28.d03.vocab.claim.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "report",
+          "ru": "сообщать",
+          "ipa": "/rɪˈpɔːt/",
+          "example": "It is reported daily.",
+          "exampleRu": "Об этом сообщают ежедневно.",
+          "audio": {
+            "src": "media/audio/u28.d03.vocab.report.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "believe",
+          "ru": "считать",
+          "ipa": "/bɪˈliːv/",
+          "example": "He is believed to be abroad.",
+          "exampleRu": "Считается, что он за границей.",
+          "audio": {
+            "src": "media/audio/u28.d03.vocab.believe.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "consider",
+          "ru": "считать",
+          "ipa": "/kənˈsɪdər/",
+          "example": "She is considered an expert.",
+          "exampleRu": "Её считают экспертом.",
+          "audio": {
+            "src": "media/audio/u28.d03.vocab.consider.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "expect",
+          "ru": "ожидать",
+          "ipa": "/ɪkˈspekt/",
+          "example": "Prices are expected to rise.",
+          "exampleRu": "Ожидается рост цен.",
+          "audio": {
+            "src": "media/audio/u28.d03.vocab.expect.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "announce",
+          "ru": "объявлять",
+          "ipa": "/əˈnaʊns/",
+          "example": "A deal was announced.",
+          "exampleRu": "Объявили о сделке.",
+          "audio": {
+            "src": "media/audio/u28.d03.vocab.announce.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "estimate",
+          "ru": "оценивать",
+          "ipa": "/ˈestɪmeɪt/",
+          "example": "It is estimated at ten million.",
+          "exampleRu": "Оценивается в десять миллионов.",
+          "audio": {
+            "src": "media/audio/u28.d03.vocab.estimate.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reveal",
+          "ru": "раскрывать",
+          "ipa": "/rɪˈviːl/",
+          "example": "The results were revealed.",
+          "exampleRu": "Результаты раскрыли.",
+          "audio": {
+            "src": "media/audio/u28.d03.vocab.reveal.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "suppose",
+          "ru": "полагать",
+          "ipa": "/səˈpəʊz/",
+          "example": "You are supposed to knock.",
+          "exampleRu": "Полагается стучать.",
+          "audio": {
+            "src": "media/audio/u28.d03.vocab.suppose.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "rumour",
+          "ru": "слух",
+          "ipa": "/ˈruːmər/",
+          "example": "There’s a rumour going around.",
+          "exampleRu": "Ходит слух.",
+          "audio": {
+            "src": "media/audio/u28.d03.vocab.rumour.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u28.d03.grammar",
+      "title": {
+        "en": "It is said to… (reporting passive)",
+        "ru": "It is said to… (пассив с глаголами сообщения)"
+      },
+      "rule": {
+        "en": "To report a general belief impersonally, use \"It is said/believed/thought that + clause\", or personally \"S is said/believed to + infinitive\". For a past action use \"to have + V3\".",
+        "ru": "Чтобы безлично передать общее мнение: «It is said/believed/thought that + предложение», или лично «S is said/believed to + инфинитив». О прошлом действии — «to have + V3»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "impersonal",
+            "ru": "безлично"
+          },
+          "formula": "It is said that + clause",
+          "examples": [
+            {
+              "en": "It is said that he lives abroad.",
+              "ru": "Говорят, что он живёт за границей."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "personal (now)",
+            "ru": "лично (сейчас)"
+          },
+          "formula": "S is said to + V1",
+          "examples": [
+            {
+              "en": "He is said to live abroad.",
+              "ru": "Говорят, он живёт за границей."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "personal (past)",
+            "ru": "лично (прошлое)"
+          },
+          "formula": "S is said to have + V3",
+          "examples": [
+            {
+              "en": "He is said to have left.",
+              "ru": "Говорят, он уехал."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Personal form takes an infinitive: \"is said to be\", not \"is said to is\".",
+          "ru": "Личная форма — инфинитив: «is said to be», не «is said to is»."
+        },
+        {
+          "en": "For a past action use \"to have + V3\": \"is thought to have died\".",
+          "ru": "О прошлом — «to have + V3»: «is thought to have died»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u28.d03.reading",
+      "title": {
+        "en": "Behind the headline",
+        "ru": "За заголовком"
+      },
+      "blocks": [
+        {
+          "id": "u28.d03.reading.b1",
+          "en": "A new startup is said to be worth over a billion, though the founders won’t confirm it. It is believed that they turned down three offers last year. The company is reported to be hiring quickly, and prices are expected to rise once it goes public.",
+          "ru": "Новый стартап, как говорят, стоит больше миллиарда, хотя основатели не подтверждают. Считается, что в прошлом году они отклонили три предложения. Сообщается, что компания быстро нанимает людей, и ожидается рост цен, когда она выйдет на биржу.",
+          "audio": {
+            "src": "media/audio/u28.d03.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u28.d03.reading.b2",
+          "en": "The founder is thought to have started the idea in a garage. He is considered a genius by some and a lucky amateur by others. It is estimated that the app is used by millions, but the exact number has never been revealed.",
+          "ru": "Считается, что основатель придумал идею в гараже. Одни считают его гением, другие — везучим любителем. По оценкам, приложением пользуются миллионы, но точное число так и не раскрыли.",
+          "audio": {
+            "src": "media/audio/u28.d03.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "founder",
+          "ru": "основатель",
+          "ipa": "/ˈfaʊndər/"
+        },
+        {
+          "word": "worth",
+          "ru": "стоимость",
+          "ipa": "/wɜːθ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u28.d03.listening",
+      "title": {
+        "en": "The news bulletin",
+        "ru": "Новостная сводка"
+      },
+      "audio": {
+        "src": "media/audio/u28.d03.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 5,
+          "en": "The mayor is said to be planning a big announcement.",
+          "ru": "Говорят, мэр готовит большое заявление."
+        },
+        {
+          "start": 5,
+          "end": 9,
+          "en": "It is believed that taxes will be cut.",
+          "ru": "Считается, что налоги снизят."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "And the old bridge? It’s reported to be closing.",
+          "ru": "А старый мост? Сообщается, что его закроют."
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "Yes, it’s thought to have become unsafe.",
+          "ru": "Да, считается, что он стал небезопасным."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u28.d03.ex.l.01",
+          "instruction": {
+            "en": "What is reported about the bridge?",
+            "ru": "Что сообщают о мосте?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.passive-report-advanced"
+          ],
+          "prompt": "It is reported to ___ closing.",
+          "options": [
+            "be",
+            "is",
+            "been"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u28.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u28.d03.ex.g.01",
+          "instruction": {
+            "en": "Impersonal.",
+            "ru": "Безлично."
+          },
+          "tags": [
+            "grammar.passive-report-advanced"
+          ],
+          "prompt": "It is ___ that he is rich. (say)",
+          "answers": [
+            "said"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u28.d03.ex.c.01",
+          "instruction": {
+            "en": "Personal (now).",
+            "ru": "Лично (сейчас)."
+          },
+          "tags": [
+            "grammar.passive-report-advanced"
+          ],
+          "prompt": "She is believed ___ abroad.",
+          "options": [
+            "to live",
+            "to lives",
+            "living"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u28.d03.ex.c.02",
+          "instruction": {
+            "en": "Personal (past).",
+            "ru": "Лично (прошлое)."
+          },
+          "tags": [
+            "grammar.passive-report-advanced"
+          ],
+          "prompt": "He is thought ___ left the country.",
+          "options": [
+            "to have",
+            "to has",
+            "to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u28.d03.ex.g.02",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие."
+          },
+          "tags": [
+            "grammar.passive-report-advanced"
+          ],
+          "prompt": "Prices are expected to ___ risen. (have)",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u28.d03.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.passive-report-advanced"
+          ],
+          "variants": [
+            "He is said to is very rich.",
+            "He is said to be very rich."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u28.d03.ex.g.03",
+          "instruction": {
+            "en": "It is + V3 + that.",
+            "ru": "It is + V3 + that."
+          },
+          "tags": [
+            "grammar.passive-report-advanced"
+          ],
+          "prompt": "It is ___ that prices will fall. (expect)",
+          "answers": [
+            "expected"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u28.d03.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.passive-report-advanced"
+          ],
+          "tokens": [
+            "He",
+            "is",
+            "said",
+            "to",
+            "be",
+            "honest"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u28.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.news"
+          ],
+          "pairs": [
+            {
+              "left": "claim",
+              "right": "утверждать"
+            },
+            {
+              "left": "reveal",
+              "right": "раскрывать"
+            },
+            {
+              "left": "estimate",
+              "right": "оценивать"
+            },
+            {
+              "left": "rumour",
+              "right": "слух"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u28.d03.ex.c.03",
+          "instruction": {
+            "en": "Choose the report form.",
+            "ru": "Выбери форму сообщения."
+          },
+          "tags": [
+            "grammar.passive-report-advanced"
+          ],
+          "prompt": "The team ___ believed to have won.",
+          "options": [
+            "is",
+            "are said",
+            "have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u28.d03.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.passive-report-advanced"
+          ],
+          "variants": [
+            "It is said he lives abroad, so he is said live there.",
+            "It is said that he lives abroad; he is said to live there."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u28.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive-report-advanced",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Говорят, что он живёт за границей.",
+          "answers": [
+            "It is said that he lives abroad.",
+            "He is said to live abroad."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "they say he lives abroad",
+                "it is said he live abroad",
+                "he is said to lives abroad"
+              ],
+              "explanation": {
+                "en": "It is said that he lives abroad / He is said to live abroad.",
+                "ru": "It is said that he lives abroad / He is said to live abroad."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u28.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive-report-advanced",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ожидается, что цены вырастут.",
+          "answers": [
+            "Prices are expected to rise.",
+            "It is expected that prices will rise."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "prices expect to rise",
+                "prices are expect to rise",
+                "it expected that prices rise"
+              ],
+              "explanation": {
+                "en": "are expected to + V1: Prices are expected to rise.",
+                "ru": "are expected to + V1: Prices are expected to rise."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

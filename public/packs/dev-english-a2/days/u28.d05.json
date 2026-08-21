@@ -1,0 +1,602 @@
+{
+  "id": "u28.d05",
+  "title": {
+    "en": "Getting things done",
+    "ru": "Как всё устроено"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.passive",
+    "grammar.causative",
+    "grammar.review"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u28.d05.vocab",
+      "title": {
+        "en": "Process & service review",
+        "ru": "Обзор: процессы и услуги"
+      },
+      "words": [
+        {
+          "word": "handle",
+          "ru": "заниматься",
+          "ipa": "/ˈhændl/",
+          "example": "Support handles complaints.",
+          "exampleRu": "Поддержка занимается жалобами.",
+          "audio": {
+            "src": "media/audio/u28.d05.vocab.handle.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "arrange",
+          "ru": "организовать",
+          "ipa": "/əˈreɪndʒ/",
+          "example": "I arranged the repair.",
+          "exampleRu": "Я организовал ремонт.",
+          "audio": {
+            "src": "media/audio/u28.d05.vocab.arrange.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "process",
+          "ru": "обрабатывать",
+          "ipa": "/ˈprəʊses/",
+          "example": "Orders are processed daily.",
+          "exampleRu": "Заказы обрабатывают ежедневно.",
+          "audio": {
+            "src": "media/audio/u28.d05.vocab.process.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "approve",
+          "ru": "одобрять",
+          "ipa": "/əˈpruːv/",
+          "example": "The plan was approved.",
+          "exampleRu": "План одобрили.",
+          "audio": {
+            "src": "media/audio/u28.d05.vocab.approve.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "refund",
+          "ru": "возврат",
+          "ipa": "/ˈriːfʌnd/",
+          "example": "I got a refund.",
+          "exampleRu": "Мне вернули деньги.",
+          "audio": {
+            "src": "media/audio/u28.d05.vocab.refund.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "submit",
+          "ru": "подавать",
+          "ipa": "/səbˈmɪt/",
+          "example": "The form was submitted.",
+          "exampleRu": "Форму подали.",
+          "audio": {
+            "src": "media/audio/u28.d05.vocab.submit.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "charge",
+          "ru": "взимать",
+          "ipa": "/tʃɑːdʒ/",
+          "example": "You won’t be charged.",
+          "exampleRu": "С вас не возьмут плату.",
+          "audio": {
+            "src": "media/audio/u28.d05.vocab.charge.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "maintain",
+          "ru": "обслуживать",
+          "ipa": "/meɪnˈteɪn/",
+          "example": "The servers are maintained nightly.",
+          "exampleRu": "Серверы обслуживают по ночам.",
+          "audio": {
+            "src": "media/audio/u28.d05.vocab.maintain.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fix",
+          "ru": "чинить",
+          "ipa": "/fɪks/",
+          "example": "I had it fixed.",
+          "exampleRu": "Мне это починили.",
+          "audio": {
+            "src": "media/audio/u28.d05.vocab.fix.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ship",
+          "ru": "отправлять",
+          "ipa": "/ʃɪp/",
+          "example": "It gets shipped worldwide.",
+          "exampleRu": "Это отправляют по всему миру.",
+          "audio": {
+            "src": "media/audio/u28.d05.vocab.ship.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u28.d05.grammar",
+      "title": {
+        "en": "Passive & causative — review",
+        "ru": "Пассив и каузатив — обзор"
+      },
+      "rule": {
+        "en": "Three tools: the passive (be + V3) when the doer doesn’t matter; the causative (have/get + object + V3) when you arrange a service; the get-passive (get + V3) for informal events that happen to you.",
+        "ru": "Три инструмента: пассив (be + V3), когда исполнитель не важен; каузатив (have/get + объект + V3), когда заказываешь услугу; get-пассив (get + V3) — о неформальных событиях с тобой."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "passive",
+            "ru": "пассив"
+          },
+          "formula": "be + V3",
+          "examples": [
+            {
+              "en": "Orders are processed daily.",
+              "ru": "Заказы обрабатывают ежедневно."
+            }
+          ],
+          "ref": "passive"
+        },
+        {
+          "label": {
+            "en": "causative",
+            "ru": "каузатив"
+          },
+          "formula": "have/get + object + V3",
+          "examples": [
+            {
+              "en": "I had the car fixed.",
+              "ru": "Мне починили машину."
+            }
+          ],
+          "ref": "causative"
+        },
+        {
+          "label": {
+            "en": "get-passive",
+            "ru": "get-пассив"
+          },
+          "formula": "get + V3",
+          "examples": [
+            {
+              "en": "It got shipped yesterday.",
+              "ru": "Это отправили вчера."
+            }
+          ],
+          "ref": "passive"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Causative word order: have + OBJECT + V3 — \"I had my hair cut\".",
+          "ru": "Порядок каузатива: have + ОБЪЕКТ + V3 — «I had my hair cut»."
+        },
+        {
+          "en": "Tense lives on \"be\"/\"get\": \"was sent\", \"got delayed\" — never drop it.",
+          "ru": "Время — на «be»/«get»: «was sent», «got delayed» — не теряй его."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u28.d05.reading",
+      "title": {
+        "en": "How the shop runs",
+        "ru": "Как работает магазин"
+      },
+      "blocks": [
+        {
+          "id": "u28.d05.reading.b1",
+          "en": "Everything in our online shop is automated. Orders are received, payments are processed, and confirmations are sent within seconds. If something breaks, we have it fixed the same day. Nothing gets ignored — every message is answered.",
+          "ru": "В нашем интернет-магазине всё автоматизировано. Заказы принимаются, платежи обрабатываются, подтверждения отправляются за секунды. Если что-то ломается, мы это чиним в тот же день. Ничего не игнорируется — на каждое сообщение отвечают.",
+          "audio": {
+            "src": "media/audio/u28.d05.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u28.d05.reading.b2",
+          "en": "Last week a package got lost in transit, so we had a new one sent free of charge. The customer got a refund too. We also get the whole system checked every month, because trust is built slowly and lost quickly.",
+          "ru": "На прошлой неделе посылка потерялась в пути, поэтому мы бесплатно отправили новую. Клиенту ещё и вернули деньги. Мы также проверяем всю систему каждый месяц, ведь доверие строится медленно, а теряется быстро.",
+          "audio": {
+            "src": "media/audio/u28.d05.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "transit",
+          "ru": "транзит/доставка",
+          "ipa": "/ˈtrænsɪt/"
+        },
+        {
+          "word": "trust",
+          "ru": "доверие",
+          "ipa": "/trʌst/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u28.d05.listening",
+      "title": {
+        "en": "The complaint",
+        "ru": "Жалоба"
+      },
+      "audio": {
+        "src": "media/audio/u28.d05.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "My order still hasn’t been delivered.",
+          "ru": "Мой заказ так и не доставили."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "I’m sorry. It seems it got lost in transit.",
+          "ru": "Извините. Похоже, он потерялся в пути."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "So what happens now? Do I get a refund?",
+          "ru": "И что теперь? Мне вернут деньги?"
+        },
+        {
+          "start": 12,
+          "end": 17,
+          "en": "We’ll have a new one sent today, or you can be refunded.",
+          "ru": "Мы отправим новый сегодня, или вам вернут деньги."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u28.d05.ex.l.01",
+          "instruction": {
+            "en": "What will the shop do?",
+            "ru": "Что сделает магазин?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.causative"
+          ],
+          "prompt": "We’ll have a new one ___ today.",
+          "options": [
+            "sent",
+            "send",
+            "sending"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u28.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u28.d05.ex.c.01",
+          "instruction": {
+            "en": "Passive.",
+            "ru": "Пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "Orders ___ processed every day.",
+          "options": [
+            "are",
+            "is",
+            "get processing"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u28.d05.ex.c.02",
+          "instruction": {
+            "en": "Causative.",
+            "ru": "Каузатив."
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "prompt": "I ___ my car serviced last week.",
+          "options": [
+            "had",
+            "have serviced",
+            "did"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u28.d05.ex.g.01",
+          "instruction": {
+            "en": "get-passive.",
+            "ru": "get-пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The parcel ___ lost in transit. (get)",
+          "answers": [
+            "got"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u28.d05.ex.g.02",
+          "instruction": {
+            "en": "Causative participle.",
+            "ru": "Причастие каузатива."
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "prompt": "We had a new one ___ . (send)",
+          "answers": [
+            "sent"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u28.d05.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "The form has submitted.",
+            "The form has been submitted."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "spot-error",
+          "id": "u28.d05.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "variants": [
+            "I had repaired my laptop at the shop.",
+            "I had my laptop repaired at the shop."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u28.d05.ex.c.03",
+          "instruction": {
+            "en": "Future passive.",
+            "ru": "Будущий пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "You won’t ___ charged for delivery.",
+          "options": [
+            "be",
+            "been",
+            "being"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u28.d05.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "tokens": [
+            "We",
+            "get",
+            "the",
+            "system",
+            "checked",
+            "monthly"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u28.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "approve",
+              "right": "одобрять"
+            },
+            {
+              "left": "refund",
+              "right": "возврат"
+            },
+            {
+              "left": "submit",
+              "right": "подавать"
+            },
+            {
+              "left": "maintain",
+              "right": "обслуживать"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u28.d05.ex.c.04",
+          "instruction": {
+            "en": "Past passive.",
+            "ru": "Прош. пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The plan ___ approved yesterday.",
+          "options": [
+            "was",
+            "is",
+            "has"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u28.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.causative",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мне починили машину вчера.",
+          "answers": [
+            "I had my car repaired yesterday.",
+            "I got my car fixed yesterday."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i repaired my car yesterday",
+                "i had repaired my car yesterday",
+                "my car was repair yesterday"
+              ],
+              "explanation": {
+                "en": "have + object + V3: I had my car repaired yesterday.",
+                "ru": "have + объект + V3: I had my car repaired yesterday."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u28.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Заказы обрабатывают ежедневно.",
+          "answers": [
+            "Orders are processed daily.",
+            "Orders are processed every day."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "orders process daily",
+                "orders are process daily",
+                "they process orders daily"
+              ],
+              "explanation": {
+                "en": "are + V3: Orders are processed daily.",
+                "ru": "are + V3: Orders are processed daily."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

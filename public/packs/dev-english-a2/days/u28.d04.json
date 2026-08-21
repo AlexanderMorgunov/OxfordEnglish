@@ -1,0 +1,597 @@
+{
+  "id": "u28.d04",
+  "title": {
+    "en": "I got promoted",
+    "ru": "Меня повысили"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.passive",
+    "vocab.work",
+    "functions.news"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u28.d04.vocab",
+      "title": {
+        "en": "Things that happen to you",
+        "ru": "Что происходит с тобой"
+      },
+      "words": [
+        {
+          "word": "promote",
+          "ru": "повышать",
+          "ipa": "/prəˈməʊt/",
+          "example": "I got promoted last week.",
+          "exampleRu": "На прошлой неделе меня повысили.",
+          "audio": {
+            "src": "media/audio/u28.d04.vocab.promote.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hire",
+          "ru": "нанимать",
+          "ipa": "/ˈhaɪər/",
+          "example": "She got hired on the spot.",
+          "exampleRu": "Её взяли сразу.",
+          "audio": {
+            "src": "media/audio/u28.d04.vocab.hire.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dismiss",
+          "ru": "увольнять",
+          "ipa": "/dɪsˈmɪs/",
+          "example": "He got dismissed for lying.",
+          "exampleRu": "Его уволили за ложь.",
+          "audio": {
+            "src": "media/audio/u28.d04.vocab.dismiss.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "invite",
+          "ru": "приглашать",
+          "ipa": "/ɪnˈvaɪt/",
+          "example": "We got invited to the launch.",
+          "exampleRu": "Нас пригласили на запуск.",
+          "audio": {
+            "src": "media/audio/u28.d04.vocab.invite.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "injure",
+          "ru": "травмировать",
+          "ipa": "/ˈɪndʒər/",
+          "example": "He got injured playing football.",
+          "exampleRu": "Он травмировался, играя в футбол.",
+          "audio": {
+            "src": "media/audio/u28.d04.vocab.injure.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "delay",
+          "ru": "задерживать",
+          "ipa": "/dɪˈleɪ/",
+          "example": "Our flight got delayed.",
+          "exampleRu": "Наш рейс задержали.",
+          "audio": {
+            "src": "media/audio/u28.d04.vocab.delay.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "steal",
+          "ru": "красть",
+          "ipa": "/stiːl/",
+          "example": "My bike got stolen.",
+          "exampleRu": "Мой велосипед украли.",
+          "audio": {
+            "src": "media/audio/u28.d04.vocab.steal.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pay",
+          "ru": "платить",
+          "ipa": "/peɪ/",
+          "example": "We got paid on Friday.",
+          "exampleRu": "Нам заплатили в пятницу.",
+          "audio": {
+            "src": "media/audio/u28.d04.vocab.pay.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "involve",
+          "ru": "вовлекать",
+          "ipa": "/ɪnˈvɒlv/",
+          "example": "I got involved by accident.",
+          "exampleRu": "Я ввязался случайно.",
+          "audio": {
+            "src": "media/audio/u28.d04.vocab.involve.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "choose",
+          "ru": "выбирать",
+          "ipa": "/tʃuːz/",
+          "example": "She got chosen for the team.",
+          "exampleRu": "Её выбрали в команду.",
+          "audio": {
+            "src": "media/audio/u28.d04.vocab.choose.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u28.d04.grammar",
+      "title": {
+        "en": "get + past participle",
+        "ru": "get + причастие"
+      },
+      "rule": {
+        "en": "In informal English, \"get + V3\" is a passive for things that HAPPEN to someone — often sudden, unplanned, good or bad. \"He got promoted.\" \"My phone got stolen.\" Compare the neutral \"be + V3\".",
+        "ru": "В неформальном английском «get + V3» — пассив о том, что ПРОИСХОДИТ с человеком — часто внезапно, хорошо или плохо. «He got promoted». «My phone got stolen». Сравни с нейтральным «be + V3»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "good news",
+            "ru": "хорошие новости"
+          },
+          "formula": "got + V3",
+          "examples": [
+            {
+              "en": "She got promoted.",
+              "ru": "Её повысили."
+            }
+          ],
+          "ref": "passive"
+        },
+        {
+          "label": {
+            "en": "bad / sudden",
+            "ru": "плохое / внезапное"
+          },
+          "formula": "got + V3",
+          "examples": [
+            {
+              "en": "My car got towed.",
+              "ru": "Мою машину эвакуировали."
+            }
+          ],
+          "ref": "passive"
+        },
+        {
+          "label": {
+            "en": "question / negative",
+            "ru": "вопрос / отрицание"
+          },
+          "formula": "Did you get …? / didn’t get …",
+          "examples": [
+            {
+              "en": "Did you get invited?",
+              "ru": "Тебя пригласили?"
+            }
+          ],
+          "ref": "passive"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "get-passive is for events, not permanent states: \"The door is closed\" (state), not \"gets closed\".",
+          "ru": "get-пассив — о событиях, не о постоянных состояниях: «The door is closed» (состояние), не «gets closed»."
+        },
+        {
+          "en": "It’s informal — in formal writing prefer \"be + V3\".",
+          "ru": "Это неформально — в формальном письме лучше «be + V3»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u28.d04.reading",
+      "title": {
+        "en": "A strange week",
+        "ru": "Странная неделя"
+      },
+      "blocks": [
+        {
+          "id": "u28.d04.reading.b1",
+          "en": "What a week. On Monday I got promoted, which was amazing. On Tuesday my bike got stolen from outside the office. Then our whole team got invited to a fancy dinner, but the flight there got delayed by four hours.",
+          "ru": "Ну и неделя. В понедельник меня повысили — это было потрясающе. Во вторник у офиса украли мой велосипед. Потом всю команду пригласили на шикарный ужин, но рейс туда задержали на четыре часа.",
+          "audio": {
+            "src": "media/audio/u28.d04.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u28.d04.reading.b2",
+          "en": "At the dinner I got introduced to the CEO, and somehow I got chosen to lead a new project. I didn’t get paid extra yet, but I’m not complaining. Some weeks nothing happens; this one, everything got turned upside down.",
+          "ru": "На ужине меня представили гендиректору, и я как-то оказался выбран руководить новым проектом. Доплату пока не дали, но я не жалуюсь. Иногда неделями ничего не происходит; на этой всё перевернулось вверх дном.",
+          "audio": {
+            "src": "media/audio/u28.d04.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "introduce",
+          "ru": "представлять",
+          "ipa": "/ˌɪntrəˈdjuːs/"
+        },
+        {
+          "word": "complain",
+          "ru": "жаловаться",
+          "ipa": "/kəmˈpleɪn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u28.d04.listening",
+      "title": {
+        "en": "Any news?",
+        "ru": "Какие новости?"
+      },
+      "audio": {
+        "src": "media/audio/u28.d04.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "You look happy — what happened?",
+          "ru": "Ты сияешь — что случилось?"
+        },
+        {
+          "start": 4,
+          "end": 7,
+          "en": "I got promoted this morning!",
+          "ru": "Меня повысили сегодня утром!"
+        },
+        {
+          "start": 7,
+          "end": 11,
+          "en": "Congratulations! Did you get a pay rise too?",
+          "ru": "Поздравляю! Тебе и зарплату подняли?"
+        },
+        {
+          "start": 11,
+          "end": 15,
+          "en": "Not yet, but I got moved to a bigger team.",
+          "ru": "Пока нет, но меня перевели в команду побольше."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u28.d04.ex.l.01",
+          "instruction": {
+            "en": "What happened this morning?",
+            "ru": "Что случилось утром?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.passive"
+          ],
+          "prompt": "She ___ promoted.",
+          "options": [
+            "got",
+            "gets",
+            "is get"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u28.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u28.d04.ex.g.01",
+          "instruction": {
+            "en": "get-passive (past).",
+            "ru": "get-пассив (прош.)."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "He ___ promoted last month. (get)",
+          "answers": [
+            "got"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u28.d04.ex.g.02",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "My phone got ___ on the train. (steal)",
+          "answers": [
+            "stolen"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u28.d04.ex.c.01",
+          "instruction": {
+            "en": "Good news.",
+            "ru": "Хорошие новости."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "She ___ hired after one interview.",
+          "options": [
+            "got",
+            "is get",
+            "has get"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u28.d04.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "Our flight got delay.",
+            "Our flight got delayed."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u28.d04.ex.c.02",
+          "instruction": {
+            "en": "Question form.",
+            "ru": "Вопрос."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "___ you get invited to the party?",
+          "options": [
+            "Did",
+            "Do",
+            "Are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u28.d04.ex.g.03",
+          "instruction": {
+            "en": "get + V3.",
+            "ru": "get + V3."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "We got ___ to the meeting. (invite)",
+          "answers": [
+            "invited"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u28.d04.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "tokens": [
+            "My",
+            "car",
+            "got",
+            "towed",
+            "yesterday"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u28.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "promote",
+              "right": "повышать"
+            },
+            {
+              "left": "dismiss",
+              "right": "увольнять"
+            },
+            {
+              "left": "delay",
+              "right": "задерживать"
+            },
+            {
+              "left": "injure",
+              "right": "травмировать"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u28.d04.ex.c.03",
+          "instruction": {
+            "en": "Formal vs informal.",
+            "ru": "Формально vs неформально."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "Casual chat: \"I ___ paid on Friday.\"",
+          "options": [
+            "got",
+            "was being",
+            "have got being"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u28.d04.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "He got choose for the team.",
+            "He got chosen for the team."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u28.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Меня повысили на прошлой неделе.",
+          "answers": [
+            "I got promoted last week.",
+            "I was promoted last week."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i got promote last week",
+                "they promoted me last week",
+                "i get promoted last week"
+              ],
+              "explanation": {
+                "en": "got + V3: I got promoted last week.",
+                "ru": "got + V3: I got promoted last week."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u28.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мой велосипед украли.",
+          "answers": [
+            "My bike got stolen.",
+            "My bike was stolen."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "my bike got steal",
+                "someone stole my bike",
+                "my bike get stolen"
+              ],
+              "explanation": {
+                "en": "got + V3: My bike got stolen.",
+                "ru": "got + V3: My bike got stolen."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
