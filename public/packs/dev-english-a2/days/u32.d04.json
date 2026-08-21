@@ -1,0 +1,602 @@
+{
+  "id": "u32.d04",
+  "title": {
+    "en": "I do mean it",
+    "ru": "Я правда это имею в виду"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.emphasis",
+    "grammar.concession",
+    "vocab.feelings"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u32.d04.vocab",
+      "title": {
+        "en": "Saying it strongly",
+        "ru": "Сказать с нажимом"
+      },
+      "words": [
+        {
+          "word": "insist",
+          "ru": "настаивать",
+          "ipa": "/ɪnˈsɪst/",
+          "example": "I do insist you stay.",
+          "exampleRu": "Я правда настаиваю, чтобы ты остался.",
+          "audio": {
+            "src": "media/audio/u32.d04.vocab.insist.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "admire",
+          "ru": "восхищаться",
+          "ipa": "/ədˈmaɪər/",
+          "example": "I really do admire her.",
+          "exampleRu": "Я правда восхищаюсь ею.",
+          "audio": {
+            "src": "media/audio/u32.d04.vocab.admire.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "stubborn",
+          "ru": "упрямый",
+          "ipa": "/ˈstʌbən/",
+          "example": "He can be stubborn.",
+          "exampleRu": "Он бывает упрямым.",
+          "audio": {
+            "src": "media/audio/u32.d04.vocab.stubborn.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "convince",
+          "ru": "убеждать",
+          "ipa": "/kənˈvɪns/",
+          "example": "She convinced me at last.",
+          "exampleRu": "Она в итоге меня убедила.",
+          "audio": {
+            "src": "media/audio/u32.d04.vocab.convince.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sincere",
+          "ru": "искренний",
+          "ipa": "/sɪnˈsɪər/",
+          "example": "A sincere apology helps.",
+          "exampleRu": "Искреннее извинение помогает.",
+          "audio": {
+            "src": "media/audio/u32.d04.vocab.sincere.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "overwhelm",
+          "ru": "ошеломлять",
+          "ipa": "/ˌəʊvəˈwelm/",
+          "example": "The support overwhelmed me.",
+          "exampleRu": "Поддержка меня ошеломила.",
+          "audio": {
+            "src": "media/audio/u32.d04.vocab.overwhelm.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reluctant",
+          "ru": "неохотный",
+          "ipa": "/rɪˈlʌktənt/",
+          "example": "He was reluctant to agree.",
+          "exampleRu": "Он неохотно соглашался.",
+          "audio": {
+            "src": "media/audio/u32.d04.vocab.reluctant.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "grateful",
+          "ru": "благодарный",
+          "ipa": "/ˈɡreɪtfl/",
+          "example": "I am deeply grateful.",
+          "exampleRu": "Я глубоко благодарен.",
+          "audio": {
+            "src": "media/audio/u32.d04.vocab.grateful.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tempting",
+          "ru": "заманчивый",
+          "ipa": "/ˈtemptɪŋ/",
+          "example": "The offer was tempting.",
+          "exampleRu": "Предложение было заманчивым.",
+          "audio": {
+            "src": "media/audio/u32.d04.vocab.tempting.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "determined",
+          "ru": "решительный",
+          "ipa": "/dɪˈtɜːmɪnd/",
+          "example": "She was determined to win.",
+          "exampleRu": "Она была решительно настроена победить.",
+          "audio": {
+            "src": "media/audio/u32.d04.vocab.determined.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u32.d04.grammar",
+      "title": {
+        "en": "Emphatic \"do\", so/such … that, concession",
+        "ru": "Эмфатическое «do», so/such … that, уступка"
+      },
+      "rule": {
+        "en": "Stress a verb with do/does/did: \"I do like it\". Show extreme degree with \"so + adjective + that\" or \"such (a) + noun + that\" (formally inverted: \"So cold was it that…\"). Concede with \"Much as / Try as + subject + verb\": \"Much as I’d love to, I can’t.\"",
+        "ru": "Усиль глагол через do/does/did: «I do like it». Крайнюю степень покажи через «so + прилагательное + that» или «such (a) + существительное + that» (формально с инверсией: «So cold was it that…»). Уступку вырази через «Much as / Try as + подлежащее + глагол»: «Much as I’d love to, I can’t.»"
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "emphatic do",
+            "ru": "эмфатическое do"
+          },
+          "formula": "S + do/does/did + base verb",
+          "examples": [
+            {
+              "en": "I do appreciate your help.",
+              "ru": "Я правда ценю твою помощь."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "so / such … that",
+            "ru": "so / such … that"
+          },
+          "formula": "so + adj / such (a) + noun + that",
+          "examples": [
+            {
+              "en": "It was such a shock that I froze.",
+              "ru": "Это был такой шок, что я застыл."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "concession",
+            "ru": "уступка"
+          },
+          "formula": "Much as / Try as + S + V, …",
+          "examples": [
+            {
+              "en": "Much as I like it, I won’t buy it.",
+              "ru": "Как бы это мне ни нравилось, я не куплю."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After \"do/does/did\" use the BASE verb: \"She does care\", not \"does cares\".",
+          "ru": "После «do/does/did» — база глагола: «She does care», не «does cares»."
+        },
+        {
+          "en": "\"so\" + adjective, but \"such\" + (a) + noun: \"so cold\" vs \"such a cold day\".",
+          "ru": "«so» + прилагательное, «such» + (a) + существительное: «so cold» vs «such a cold day»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u32.d04.reading",
+      "title": {
+        "en": "The reluctant thank-you",
+        "ru": "Неохотная благодарность"
+      },
+      "blocks": [
+        {
+          "id": "u32.d04.reading.b1",
+          "en": "I know I complain about my brother, but I do love him. Last year I was in such trouble that I nearly gave up, and, much as it pains me to admit it, it was he who saved me. He didn’t lecture; he just showed up.",
+          "ru": "Знаю, я жалуюсь на брата, но я правда его люблю. В прошлом году я был в такой беде, что чуть не сдался, и, как ни тяжело это признавать, именно он меня спас. Он не читал нотаций — просто приехал.",
+          "audio": {
+            "src": "media/audio/u32.d04.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u32.d04.reading.b2",
+          "en": "So quietly did he help that I barely noticed at first. Try as I might, I can never repay him — but I do try. If you have a person like that, tell them. It really does matter, and such moments are rarer than we think.",
+          "ru": "Он помогал так тихо, что я сперва едва заметил. Как я ни стараюсь, мне никогда не отплатить ему — но я правда пытаюсь. Если у тебя есть такой человек, скажи ему. Это и вправду важно, а такие моменты реже, чем мы думаем.",
+          "audio": {
+            "src": "media/audio/u32.d04.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "lecture",
+          "ru": "читать нотации",
+          "ipa": "/ˈlektʃər/"
+        },
+        {
+          "word": "repay",
+          "ru": "отплатить",
+          "ipa": "/rɪˈpeɪ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u32.d04.listening",
+      "title": {
+        "en": "You do care",
+        "ru": "Тебе не всё равно"
+      },
+      "audio": {
+        "src": "media/audio/u32.d04.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "You never listen to me.",
+          "ru": "Ты меня никогда не слушаешь."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "That’s not fair — I do listen.",
+          "ru": "Это несправедливо — я слушаю."
+        },
+        {
+          "start": 8,
+          "end": 13,
+          "en": "Then why did you forget my birthday?",
+          "ru": "Тогда почему ты забыл мой день рождения?"
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "I was so busy that it slipped my mind. But I do care.",
+          "ru": "Я был так занят, что вылетело из головы. Но мне не всё равно."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u32.d04.ex.l.01",
+          "instruction": {
+            "en": "Emphatic verb.",
+            "ru": "Эмфатический глагол."
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.emphasis"
+          ],
+          "prompt": "I ___ care about you.",
+          "options": [
+            "do",
+            "am",
+            "does"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u32.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u32.d04.ex.g.01",
+          "instruction": {
+            "en": "Emphatic present.",
+            "ru": "Эмфатическое настоящее."
+          },
+          "tags": [
+            "grammar.emphasis"
+          ],
+          "prompt": "I ___ like this song! (emphatic)",
+          "answers": [
+            "do"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u32.d04.ex.c.01",
+          "instruction": {
+            "en": "Base verb after does.",
+            "ru": "База после does."
+          },
+          "tags": [
+            "grammar.emphasis"
+          ],
+          "prompt": "She does ___ about you.",
+          "options": [
+            "care",
+            "cares",
+            "cared"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u32.d04.ex.c.02",
+          "instruction": {
+            "en": "so or such?",
+            "ru": "so или such?"
+          },
+          "tags": [
+            "grammar.emphasis"
+          ],
+          "prompt": "It was ___ cold that we left.",
+          "options": [
+            "so",
+            "such",
+            "such a"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u32.d04.ex.c.03",
+          "instruction": {
+            "en": "so or such?",
+            "ru": "so или such?"
+          },
+          "tags": [
+            "grammar.emphasis"
+          ],
+          "prompt": "It was ___ a shock that I froze.",
+          "options": [
+            "such",
+            "so",
+            "so a"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u32.d04.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.emphasis"
+          ],
+          "variants": [
+            "He did apologised at last.",
+            "He did apologise at last."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u32.d04.ex.c.04",
+          "instruction": {
+            "en": "Concession.",
+            "ru": "Уступка."
+          },
+          "tags": [
+            "grammar.concession"
+          ],
+          "prompt": "___ as I like it, I can’t afford it.",
+          "options": [
+            "Much",
+            "So",
+            "Such"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u32.d04.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.concession"
+          ],
+          "tokens": [
+            "Try",
+            "as",
+            "she",
+            "might",
+            "she",
+            "couldn’t",
+            "sleep"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u32.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.feelings"
+          ],
+          "pairs": [
+            {
+              "left": "sincere",
+              "right": "искренний"
+            },
+            {
+              "left": "reluctant",
+              "right": "неохотный"
+            },
+            {
+              "left": "grateful",
+              "right": "благодарный"
+            },
+            {
+              "left": "determined",
+              "right": "решительный"
+            }
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u32.d04.ex.s.02",
+          "instruction": {
+            "en": "so or such?",
+            "ru": "so или such?"
+          },
+          "tags": [
+            "grammar.emphasis"
+          ],
+          "variants": [
+            "It was so a nice day that we walked.",
+            "It was such a nice day that we walked."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u32.d04.ex.g.02",
+          "instruction": {
+            "en": "Emphatic past.",
+            "ru": "Эмфатическое прошлое."
+          },
+          "tags": [
+            "grammar.emphasis"
+          ],
+          "prompt": "It ___ happen, I promise! (emphatic past)",
+          "answers": [
+            "did"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u32.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.emphasis",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я правда ценю твою помощь.",
+          "answers": [
+            "I do appreciate your help."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i appreciate really your help",
+                "i do appreciated your help",
+                "i am appreciate your help"
+              ],
+              "explanation": {
+                "en": "emphatic do + base: I do appreciate your help.",
+                "ru": "эмфатическое do + база: I do appreciate your help."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u32.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.emphasis",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это был такой шок, что я застыл.",
+          "answers": [
+            "It was such a shock that I froze."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "it was so a shock that i froze",
+                "it was so shock that i froze",
+                "it was such shock that i froze"
+              ],
+              "explanation": {
+                "en": "such + a + noun + that: It was such a shock that…",
+                "ru": "such + a + существительное + that: It was such a shock that…"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

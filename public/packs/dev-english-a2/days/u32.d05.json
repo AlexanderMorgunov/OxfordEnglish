@@ -1,0 +1,603 @@
+{
+  "id": "u32.d05",
+  "title": {
+    "en": "Make it count — review",
+    "ru": "Расставить акценты — обзор"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.emphasis",
+    "grammar.cleft",
+    "grammar.inversion"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u32.d05.vocab",
+      "title": {
+        "en": "Emphasis — key words",
+        "ru": "Эмфаза — ключевые слова"
+      },
+      "words": [
+        {
+          "word": "precisely",
+          "ru": "именно, точно",
+          "ipa": "/prɪˈsaɪsli/",
+          "example": "That’s precisely my point.",
+          "exampleRu": "Именно это я и имею в виду.",
+          "audio": {
+            "src": "media/audio/u32.d05.vocab.precisely.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "undoubtedly",
+          "ru": "несомненно",
+          "ipa": "/ʌnˈdaʊtɪdli/",
+          "example": "She is undoubtedly right.",
+          "exampleRu": "Она несомненно права.",
+          "audio": {
+            "src": "media/audio/u32.d05.vocab.undoubtedly.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "frankly",
+          "ru": "честно говоря",
+          "ipa": "/ˈfræŋkli/",
+          "example": "Frankly, I don’t care.",
+          "exampleRu": "Честно говоря, мне всё равно.",
+          "audio": {
+            "src": "media/audio/u32.d05.vocab.frankly.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "striking",
+          "ru": "поразительный",
+          "ipa": "/ˈstraɪkɪŋ/",
+          "example": "A striking difference.",
+          "exampleRu": "Поразительное различие.",
+          "audio": {
+            "src": "media/audio/u32.d05.vocab.striking.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "emphasis",
+          "ru": "акцент",
+          "ipa": "/ˈemfəsɪs/",
+          "example": "Put emphasis on quality.",
+          "exampleRu": "Делай акцент на качестве.",
+          "audio": {
+            "src": "media/audio/u32.d05.vocab.emphasis.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "highlight",
+          "ru": "подчёркивать",
+          "ipa": "/ˈhaɪlaɪt/",
+          "example": "The report highlights risks.",
+          "exampleRu": "Отчёт подчёркивает риски.",
+          "audio": {
+            "src": "media/audio/u32.d05.vocab.highlight.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "remarkable",
+          "ru": "замечательный",
+          "ipa": "/rɪˈmɑːkəbl/",
+          "example": "A remarkable result.",
+          "exampleRu": "Замечательный результат.",
+          "audio": {
+            "src": "media/audio/u32.d05.vocab.remarkable.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "utterly",
+          "ru": "совершенно",
+          "ipa": "/ˈʌtəli/",
+          "example": "I was utterly amazed.",
+          "exampleRu": "Я был совершенно поражён.",
+          "audio": {
+            "src": "media/audio/u32.d05.vocab.utterly.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "profound",
+          "ru": "глубокий",
+          "ipa": "/prəˈfaʊnd/",
+          "example": "A profound effect.",
+          "exampleRu": "Глубокое воздействие.",
+          "audio": {
+            "src": "media/audio/u32.d05.vocab.profound.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "notably",
+          "ru": "в частности, заметно",
+          "ipa": "/ˈnəʊtəbli/",
+          "example": "Prices rose, notably fuel.",
+          "exampleRu": "Цены выросли, в частности на топливо.",
+          "audio": {
+            "src": "media/audio/u32.d05.vocab.notably.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u32.d05.grammar",
+      "title": {
+        "en": "Emphasis & inversion — all together",
+        "ru": "Эмфаза и инверсия — всё вместе"
+      },
+      "rule": {
+        "en": "Pick your emphasis: it-cleft to spotlight a noun/time/place (\"It was you who…\"); what-cleft to front an idea (\"What I need is…\"); negative inversion for drama (\"Never have I…\"); emphatic do, so/such … that, or Much as … for degree and concession.",
+        "ru": "Выбери способ акцента: it-клефт — выделить существительное/время/место («It was you who…»); what-клефт — вынести мысль («What I need is…»); отрицательная инверсия — для драматизма («Never have I…»); эмфатическое do, so/such … that или Much as … — для степени и уступки."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "clefts",
+            "ru": "клефты"
+          },
+          "formula": "It was X who … / What … is X",
+          "examples": [
+            {
+              "en": "It was then that I understood.",
+              "ru": "Именно тогда я понял."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "inversion",
+            "ru": "инверсия"
+          },
+          "formula": "Never / Not only / No sooner + aux + S",
+          "examples": [
+            {
+              "en": "Not only was he late, but he forgot.",
+              "ru": "Он не только опоздал, но и забыл."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "degree / concession",
+            "ru": "степень / уступка"
+          },
+          "formula": "do + V / so…that / Much as …",
+          "examples": [
+            {
+              "en": "I do agree, much as it surprises me.",
+              "ru": "Я и правда согласен, как ни удивительно."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Match the pattern to the meaning; keep verb agreement (\"What I need is\", \"It was they who\").",
+          "ru": "Подбирай приём под смысл; следи за согласованием («What I need is», «It was they who»)."
+        },
+        {
+          "en": "After a fronted negative, invert; after \"do/does/did\", use the base verb.",
+          "ru": "После вынесенного отрицания — инверсия; после «do/does/did» — база глагола."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u32.d05.reading",
+      "title": {
+        "en": "The speech",
+        "ru": "Речь"
+      },
+      "blocks": [
+        {
+          "id": "u32.d05.reading.b1",
+          "en": "It was not the prize that moved her, she said — it was the people who had believed in her. What she wanted us to remember was simple: never had she succeeded alone. Not once did she use the word \"I\" without adding \"we\".",
+          "ru": "Не приз её тронул, сказала она, — а люди, которые в неё верили. Что она хотела, чтобы мы запомнили, было простым: никогда она не добивалась успеха в одиночку. Ни разу она не сказала «я», не добавив «мы».",
+          "audio": {
+            "src": "media/audio/u32.d05.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u32.d05.reading.b2",
+          "en": "So genuine was her speech that the room fell silent. Much as we’d expected polished lines, what we got was honesty. It really did stay with me — and rarely does a two-minute speech do that.",
+          "ru": "Её речь была настолько искренней, что зал притих. Как мы ни ждали отточенных фраз, получили мы честность. Это и правда осталось со мной — а редко когда двухминутная речь на такое способна.",
+          "audio": {
+            "src": "media/audio/u32.d05.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "polished",
+          "ru": "отточенный",
+          "ipa": "/ˈpɒlɪʃt/"
+        },
+        {
+          "word": "genuine",
+          "ru": "искренний",
+          "ipa": "/ˈdʒenjuɪn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u32.d05.listening",
+      "title": {
+        "en": "The awards night",
+        "ru": "Вечер награждения"
+      },
+      "audio": {
+        "src": "media/audio/u32.d05.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Did you enjoy the ceremony?",
+          "ru": "Тебе понравилась церемония?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "What I loved was the speeches. So honest!",
+          "ru": "Что мне понравилось — так это речи. Такие честные!"
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "And the winner?",
+          "ru": "А победитель?"
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "It was the youngest team that won. Never have I clapped so hard.",
+          "ru": "Победила самая молодая команда. Никогда я так не хлопал."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u32.d05.ex.l.01",
+          "instruction": {
+            "en": "It-cleft.",
+            "ru": "It-клефт."
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.cleft"
+          ],
+          "prompt": "It was the youngest team ___ won.",
+          "options": [
+            "that",
+            "who",
+            "what"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u32.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u32.d05.ex.g.01",
+          "instruction": {
+            "en": "It-cleft.",
+            "ru": "It-клефт."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "It was you ___ started this. (who)",
+          "answers": [
+            "who",
+            "that"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u32.d05.ex.g.02",
+          "instruction": {
+            "en": "What-cleft, singular.",
+            "ru": "What-клефт, ед."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "What I want ___ a fair chance. (be)",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u32.d05.ex.c.01",
+          "instruction": {
+            "en": "Negative inversion.",
+            "ru": "Отрицательная инверсия."
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "Never ___ I heard such a story.",
+          "options": [
+            "have",
+            "has",
+            "did have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u32.d05.ex.c.02",
+          "instruction": {
+            "en": "Not only … .",
+            "ru": "Not only … ."
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "Not only ___ she sing, but she also danced.",
+          "options": [
+            "did",
+            "she did",
+            "was"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u32.d05.ex.c.03",
+          "instruction": {
+            "en": "Emphatic do.",
+            "ru": "Эмфатическое do."
+          },
+          "tags": [
+            "grammar.emphasis"
+          ],
+          "prompt": "I ___ understand, believe me.",
+          "options": [
+            "do",
+            "am",
+            "does"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u32.d05.ex.c.04",
+          "instruction": {
+            "en": "so or such?",
+            "ru": "so или such?"
+          },
+          "tags": [
+            "grammar.emphasis"
+          ],
+          "prompt": "It was ___ a moving speech that we cried.",
+          "options": [
+            "such",
+            "so",
+            "so a"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u32.d05.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "variants": [
+            "No sooner I had arrived than it began.",
+            "No sooner had I arrived than it began."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u32.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.feelings"
+          ],
+          "pairs": [
+            {
+              "left": "precisely",
+              "right": "именно"
+            },
+            {
+              "left": "frankly",
+              "right": "честно говоря"
+            },
+            {
+              "left": "utterly",
+              "right": "совершенно"
+            },
+            {
+              "left": "profound",
+              "right": "глубокий"
+            }
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u32.d05.ex.o.01",
+          "instruction": {
+            "en": "Make a what-cleft.",
+            "ru": "Составь клефт."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "tokens": [
+            "What",
+            "matters",
+            "is",
+            "how",
+            "you",
+            "try"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u32.d05.ex.s.02",
+          "instruction": {
+            "en": "Concession.",
+            "ru": "Уступка."
+          },
+          "tags": [
+            "grammar.concession"
+          ],
+          "variants": [
+            "Much I like it as, I won’t buy it.",
+            "Much as I like it, I won’t buy it."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u32.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.cleft",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Именно тогда я всё понял.",
+          "answers": [
+            "It was then that I understood everything.",
+            "It was then that I understood."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "then i understood everything",
+                "it was then when i understood everything",
+                "it was then that i understand everything"
+              ],
+              "explanation": {
+                "en": "time cleft: It was then that I understood…",
+                "ru": "клефт времени: It was then that I understood…"
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u32.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.inversion",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он не только опоздал, но и забыл документы.",
+          "answers": [
+            "Not only was he late, but he also forgot the documents.",
+            "Not only did he arrive late, but he also forgot the documents."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "not only he was late but he forgot the documents",
+                "not only he late but also forgot documents",
+                "he not only was late but forgot the documents"
+              ],
+              "explanation": {
+                "en": "Not only + aux + subject: Not only was he late, but…",
+                "ru": "Not only + вспом. + подлежащее: Not only was he late, but…"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
