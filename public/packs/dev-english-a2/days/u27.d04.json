@@ -1,0 +1,599 @@
+{
+  "id": "u27.d04",
+  "title": {
+    "en": "I would have, but…",
+    "ru": "Я бы, но…"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.past-modals",
+    "vocab.feelings",
+    "functions.hypothetical"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u27.d04.vocab",
+      "title": {
+        "en": "Reactions & excuses",
+        "ru": "Реакции и оправдания"
+      },
+      "words": [
+        {
+          "word": "offer",
+          "ru": "предлагать",
+          "ipa": "/ˈɒfər/",
+          "example": "I would have offered to help.",
+          "exampleRu": "Я бы предложил помочь.",
+          "audio": {
+            "src": "media/audio/u27.d04.vocab.offer.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "refuse",
+          "ru": "отказываться",
+          "ipa": "/rɪˈfjuːz/",
+          "example": "She refused politely.",
+          "exampleRu": "Она вежливо отказалась.",
+          "audio": {
+            "src": "media/audio/u27.d04.vocab.refuse.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hesitate",
+          "ru": "колебаться",
+          "ipa": "/ˈhezɪteɪt/",
+          "example": "Don't hesitate to ask.",
+          "exampleRu": "Не стесняйся спрашивать.",
+          "audio": {
+            "src": "media/audio/u27.d04.vocab.hesitate.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "manage",
+          "ru": "справляться",
+          "ipa": "/ˈmænɪdʒ/",
+          "example": "We managed on our own.",
+          "exampleRu": "Мы справились сами.",
+          "audio": {
+            "src": "media/audio/u27.d04.vocab.manage.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "afford",
+          "ru": "позволить себе",
+          "ipa": "/əˈfɔːd/",
+          "example": "I couldn't afford it.",
+          "exampleRu": "Я не мог себе это позволить.",
+          "audio": {
+            "src": "media/audio/u27.d04.vocab.afford.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "otherwise",
+          "ru": "иначе",
+          "ipa": "/ˈʌðəwaɪz/",
+          "example": "Call me; otherwise I’ll assume you’re busy.",
+          "exampleRu": "Позвони; иначе я решу, что ты занят.",
+          "audio": {
+            "src": "media/audio/u27.d04.vocab.otherwise.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "instead",
+          "ru": "вместо",
+          "ipa": "/ɪnˈsted/",
+          "example": "I stayed home instead.",
+          "exampleRu": "Вместо этого я остался дома.",
+          "audio": {
+            "src": "media/audio/u27.d04.vocab.instead.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "unfortunately",
+          "ru": "к сожалению",
+          "ipa": "/ʌnˈfɔːtʃənətli/",
+          "example": "Unfortunately, I was late.",
+          "exampleRu": "К сожалению, я опоздал.",
+          "audio": {
+            "src": "media/audio/u27.d04.vocab.unfortunately.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "response",
+          "ru": "ответ",
+          "ipa": "/rɪˈspɒns/",
+          "example": "There was no response.",
+          "exampleRu": "Ответа не было.",
+          "audio": {
+            "src": "media/audio/u27.d04.vocab.response.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "occasion",
+          "ru": "случай",
+          "ipa": "/əˈkeɪʒn/",
+          "example": "On that occasion, I said no.",
+          "exampleRu": "В тот раз я отказался.",
+          "audio": {
+            "src": "media/audio/u27.d04.vocab.occasion.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u27.d04.grammar",
+      "title": {
+        "en": "would have / could have",
+        "ru": "would have / could have"
+      },
+      "rule": {
+        "en": "Talk about an imagined past. \"would have + V3\" = the reaction you’d have had (often blocked by \"but…\"). \"could have + V3\" = a past ability/possibility you didn’t use. \"couldn’t have + V3\" = it was impossible.",
+        "ru": "О воображаемом прошлом. «would have + V3» = реакция, которая была бы (часто с «but…»). «could have + V3» = возможность/способность в прошлом, которой не воспользовались. «couldn’t have + V3» = было невозможно."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "imagined reaction",
+            "ru": "воображаемая реакция"
+          },
+          "formula": "would have + V3",
+          "examples": [
+            {
+              "en": "I would have called, but my phone died.",
+              "ru": "Я бы позвонил, но телефон разрядился."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "unused possibility",
+            "ru": "неиспользованная возможность"
+          },
+          "formula": "could have + V3",
+          "examples": [
+            {
+              "en": "You could have asked me.",
+              "ru": "Ты мог бы меня спросить."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "impossible",
+            "ru": "невозможно"
+          },
+          "formula": "couldn't have + V3",
+          "examples": [
+            {
+              "en": "I couldn't have known.",
+              "ru": "Я не мог знать."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Write \"would have\", not \"would of\".",
+          "ru": "Пиши «would have», не «would of»."
+        },
+        {
+          "en": "Use the participle: \"would have gone\", not \"would have went\".",
+          "ru": "Причастие: «would have gone», не «would have went»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u27.d04.reading",
+      "title": {
+        "en": "The party I missed",
+        "ru": "Вечеринка, которую я пропустил"
+      },
+      "blocks": [
+        {
+          "id": "u27.d04.reading.b1",
+          "en": "I would have come to the party, but I only heard about it that morning. I could have rearranged my day, honestly — I just didn’t feel like it. My friends said I would have loved it, and they’re probably right.",
+          "ru": "Я бы пришёл на вечеринку, но узнал о ней только тем утром. Я, честно говоря, мог бы перекроить день — просто не хотелось. Друзья сказали, что мне бы очень понравилось, и они, наверное, правы.",
+          "audio": {
+            "src": "media/audio/u27.d04.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u27.d04.reading.b2",
+          "en": "Looking back, I could have made more effort. I couldn’t have predicted how much I’d regret it — you never can. Next time someone invites me, I won’t hesitate; I’d rather go and be tired than stay home and wonder.",
+          "ru": "Оглядываясь назад, я мог бы постараться сильнее. Я не мог предугадать, как сильно буду жалеть, — этого никогда не знаешь. В следующий раз, когда позовут, не буду колебаться; лучше пойти и устать, чем сидеть дома и гадать.",
+          "audio": {
+            "src": "media/audio/u27.d04.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "rearrange",
+          "ru": "перекроить",
+          "ipa": "/ˌriːəˈreɪndʒ/"
+        },
+        {
+          "word": "predict",
+          "ru": "предсказывать",
+          "ipa": "/prɪˈdɪkt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u27.d04.listening",
+      "title": {
+        "en": "Why didn’t you come?",
+        "ru": "Почему ты не пришёл?"
+      },
+      "audio": {
+        "src": "media/audio/u27.d04.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "We waited for you last night.",
+          "ru": "Мы ждали тебя вчера вечером."
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "Sorry — I would have come, but I got stuck at work.",
+          "ru": "Прости — я бы пришёл, но застрял на работе."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "You could have sent a message at least.",
+          "ru": "Ты мог бы хотя бы написать."
+        },
+        {
+          "start": 13,
+          "end": 17,
+          "en": "You’re right. I couldn’t have finished any faster, though.",
+          "ru": "Ты прав. Хотя быстрее я закончить не мог."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u27.d04.ex.l.01",
+          "instruction": {
+            "en": "What does she criticise?",
+            "ru": "Что она критикует?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.past-modals"
+          ],
+          "prompt": "You ___ have sent a message.",
+          "options": [
+            "could",
+            "couldn't",
+            "must"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u27.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u27.d04.ex.g.01",
+          "instruction": {
+            "en": "Imagined reaction.",
+            "ru": "Воображаемая реакция."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "I ___ have helped, but nobody asked. (would)",
+          "answers": [
+            "would"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u27.d04.ex.g.02",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "You could have ___ me. (call)",
+          "answers": [
+            "called"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u27.d04.ex.c.01",
+          "instruction": {
+            "en": "Unused possibility.",
+            "ru": "Неиспользованная возможность."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "You ___ have taken the earlier train.",
+          "options": [
+            "could",
+            "must",
+            "would had"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u27.d04.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "variants": [
+            "I would of come.",
+            "I would have come."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u27.d04.ex.c.02",
+          "instruction": {
+            "en": "Impossible.",
+            "ru": "Невозможно."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "I ___ have known — nobody told me.",
+          "options": [
+            "couldn't",
+            "would",
+            "must"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u27.d04.ex.g.03",
+          "instruction": {
+            "en": "would have + V3.",
+            "ru": "would have + V3."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "She would have ___ , but she was tired. (come)",
+          "answers": [
+            "come"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u27.d04.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "tokens": [
+            "I",
+            "would",
+            "have",
+            "told",
+            "you",
+            "earlier"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u27.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.feelings"
+          ],
+          "pairs": [
+            {
+              "left": "refuse",
+              "right": "отказываться"
+            },
+            {
+              "left": "hesitate",
+              "right": "колебаться"
+            },
+            {
+              "left": "afford",
+              "right": "позволить себе"
+            },
+            {
+              "left": "instead",
+              "right": "вместо"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u27.d04.ex.c.03",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "We ___ have won if we’d practised more.",
+          "options": [
+            "could",
+            "can",
+            "could of"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u27.d04.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "variants": [
+            "You could have went with us.",
+            "You could have gone with us."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u27.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-modals",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я бы позвонил, но телефон разрядился.",
+          "answers": [
+            "I would have called, but my phone died.",
+            "I would've called, but my phone died."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i would call but my phone died",
+                "i would of called but my phone died",
+                "i would have call but my phone died"
+              ],
+              "explanation": {
+                "en": "would have + V3: I would have called, but my phone died.",
+                "ru": "would have + V3: I would have called, but my phone died."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u27.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-modals",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты мог бы меня спросить.",
+          "answers": [
+            "You could have asked me.",
+            "You could've asked me."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you could ask me",
+                "you could of asked me",
+                "you can have asked me"
+              ],
+              "explanation": {
+                "en": "could have + V3: You could have asked me.",
+                "ru": "could have + V3: You could have asked me."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

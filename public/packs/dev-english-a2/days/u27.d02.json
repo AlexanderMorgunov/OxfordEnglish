@@ -1,0 +1,599 @@
+{
+  "id": "u27.d02",
+  "title": {
+    "en": "It must have been…",
+    "ru": "Это, должно быть, было…"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.past-modals",
+    "vocab.mystery",
+    "functions.speculating"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u27.d02.vocab",
+      "title": {
+        "en": "Clues & guesses",
+        "ru": "Улики и догадки"
+      },
+      "words": [
+        {
+          "word": "evidence",
+          "ru": "доказательство",
+          "ipa": "/ˈevɪdəns/",
+          "example": "There was no evidence.",
+          "exampleRu": "Доказательств не было.",
+          "audio": {
+            "src": "media/audio/u27.d02.vocab.evidence.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "clue",
+          "ru": "подсказка",
+          "ipa": "/kluː/",
+          "example": "The clue was on the desk.",
+          "exampleRu": "Подсказка была на столе.",
+          "audio": {
+            "src": "media/audio/u27.d02.vocab.clue.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "likely",
+          "ru": "вероятный",
+          "ipa": "/ˈlaɪkli/",
+          "example": "It's likely he forgot.",
+          "exampleRu": "Скорее всего, он забыл.",
+          "audio": {
+            "src": "media/audio/u27.d02.vocab.likely.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "unlikely",
+          "ru": "маловероятный",
+          "ipa": "/ʌnˈlaɪkli/",
+          "example": "That's unlikely.",
+          "exampleRu": "Это маловероятно.",
+          "audio": {
+            "src": "media/audio/u27.d02.vocab.unlikely.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "assume",
+          "ru": "предполагать",
+          "ipa": "/əˈsjuːm/",
+          "example": "I assume he left.",
+          "exampleRu": "Полагаю, он ушёл.",
+          "audio": {
+            "src": "media/audio/u27.d02.vocab.assume.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "suspect",
+          "ru": "подозревать",
+          "ipa": "/səˈspekt/",
+          "example": "I suspect she knew.",
+          "exampleRu": "Подозреваю, что она знала.",
+          "audio": {
+            "src": "media/audio/u27.d02.vocab.suspect.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "prove",
+          "ru": "доказывать",
+          "ipa": "/pruːv/",
+          "example": "You can't prove it.",
+          "exampleRu": "Ты не можешь это доказать.",
+          "audio": {
+            "src": "media/audio/u27.d02.vocab.prove.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "doubt",
+          "ru": "сомнение",
+          "ipa": "/daʊt/",
+          "example": "I have my doubts.",
+          "exampleRu": "У меня есть сомнения.",
+          "audio": {
+            "src": "media/audio/u27.d02.vocab.doubt.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "obvious",
+          "ru": "очевидный",
+          "ipa": "/ˈɒbviəs/",
+          "example": "The answer was obvious.",
+          "exampleRu": "Ответ был очевиден.",
+          "audio": {
+            "src": "media/audio/u27.d02.vocab.obvious.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reason",
+          "ru": "причина",
+          "ipa": "/ˈriːzn/",
+          "example": "There must be a reason.",
+          "exampleRu": "Должна быть причина.",
+          "audio": {
+            "src": "media/audio/u27.d02.vocab.reason.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u27.d02.grammar",
+      "title": {
+        "en": "must / might / can’t have",
+        "ru": "must / might / can’t have"
+      },
+      "rule": {
+        "en": "Use modal + have + V3 to make a deduction about the past from evidence. \"must have\" = I’m sure it happened. \"can’t have\" = I’m sure it didn’t. \"might / could / may have\" = it’s possible.",
+        "ru": "Модальный + have + V3 — дедукция о прошлом по фактам. «must have» = уверен, что было. «can’t have» = уверен, что не было. «might / could / may have» = возможно."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "certain it happened",
+            "ru": "уверен, что было"
+          },
+          "formula": "must have + V3",
+          "examples": [
+            {
+              "en": "She must have overslept.",
+              "ru": "Она, должно быть, проспала."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "certain it didn’t",
+            "ru": "уверен, что не было"
+          },
+          "formula": "can't have + V3",
+          "examples": [
+            {
+              "en": "He can't have finished already.",
+              "ru": "Он не мог уже закончить."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "possible",
+            "ru": "возможно"
+          },
+          "formula": "might / could have + V3",
+          "examples": [
+            {
+              "en": "They might have missed the bus.",
+              "ru": "Они, возможно, опоздали на автобус."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "For a negative deduction use \"can’t have\", not \"mustn’t have\".",
+          "ru": "Для отрицательной дедукции — «can’t have», а не «mustn’t have»."
+        },
+        {
+          "en": "Always \"have + V3\": \"must have gone\", not \"must have went\".",
+          "ru": "Всегда «have + V3»: «must have gone», а не «must have went»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u27.d02.reading",
+      "title": {
+        "en": "The empty office",
+        "ru": "Пустой офис"
+      },
+      "blocks": [
+        {
+          "id": "u27.d02.reading.b1",
+          "en": "When I arrived, the lights were off and Sam's coat was gone. He must have left early. His screen was still on, though, so he can't have shut everything down. There was a coffee, still warm — he can't have been gone long.",
+          "ru": "Когда я пришёл, свет был выключен, а пальто Сэма не было. Он, должно быть, ушёл рано. Но его экран всё ещё работал, так что он не мог всё выключить. Кофе был ещё тёплым — он не мог уйти давно.",
+          "audio": {
+            "src": "media/audio/u27.d02.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u27.d02.reading.b2",
+          "en": "A note on the desk said \"back soon\", but that was hours ago. He might have gone home, or he could have had an emergency. Either way, something must have happened — Sam never leaves without telling anyone.",
+          "ru": "На столе была записка «скоро вернусь», но это было часы назад. Он, возможно, ушёл домой, или у него могло случиться что-то срочное. В любом случае, что-то, должно быть, произошло — Сэм никогда не уходит, не предупредив.",
+          "audio": {
+            "src": "media/audio/u27.d02.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "emergency",
+          "ru": "чрезвычайная ситуация",
+          "ipa": "/ɪˈmɜːdʒənsi/"
+        },
+        {
+          "word": "note",
+          "ru": "записка",
+          "ipa": "/nəʊt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u27.d02.listening",
+      "title": {
+        "en": "Where is she?",
+        "ru": "Где она?"
+      },
+      "audio": {
+        "src": "media/audio/u27.d02.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Anna's not answering her phone.",
+          "ru": "Анна не отвечает на телефон."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "She must have gone into a meeting.",
+          "ru": "Она, должно быть, ушла на встречу."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "She can't have — her calendar is empty.",
+          "ru": "Не могла — у неё пустой календарь."
+        },
+        {
+          "start": 12,
+          "end": 17,
+          "en": "Then she might have just forgotten to charge it.",
+          "ru": "Тогда она, возможно, просто забыла зарядить его."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u27.d02.ex.l.01",
+          "instruction": {
+            "en": "Why is the phone off, probably?",
+            "ru": "Почему телефон выключен, вероятно?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.past-modals"
+          ],
+          "prompt": "She ___ have forgotten to charge it.",
+          "options": [
+            "might",
+            "can't",
+            "must not"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u27.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u27.d02.ex.g.01",
+          "instruction": {
+            "en": "Certain it happened.",
+            "ru": "Уверен, что было."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "The ground is wet — it ___ have rained. (must)",
+          "answers": [
+            "must"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u27.d02.ex.g.02",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "He must have ___ the train. (catch)",
+          "answers": [
+            "caught"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u27.d02.ex.c.01",
+          "instruction": {
+            "en": "Negative deduction.",
+            "ru": "Отрицательная дедукция."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "She ___ have seen us — she was looking away.",
+          "options": [
+            "can't",
+            "mustn't",
+            "won't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u27.d02.ex.c.02",
+          "instruction": {
+            "en": "Possibility.",
+            "ru": "Возможность."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "They’re late. They ___ have missed the bus.",
+          "options": [
+            "might",
+            "can't",
+            "must not"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u27.d02.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "variants": [
+            "He mustn’t have heard me.",
+            "He can't have heard me."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u27.d02.ex.g.03",
+          "instruction": {
+            "en": "must have + V3.",
+            "ru": "must have + V3."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "The door’s open — someone ___ have come in. (must)",
+          "answers": [
+            "must"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u27.d02.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "tokens": [
+            "She",
+            "must",
+            "have",
+            "forgotten",
+            "the",
+            "key"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u27.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.mystery"
+          ],
+          "pairs": [
+            {
+              "left": "evidence",
+              "right": "доказательство"
+            },
+            {
+              "left": "clue",
+              "right": "подсказка"
+            },
+            {
+              "left": "suspect",
+              "right": "подозревать"
+            },
+            {
+              "left": "doubt",
+              "right": "сомнение"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u27.d02.ex.c.03",
+          "instruction": {
+            "en": "Choose the deduction.",
+            "ru": "Выбери дедукцию."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "His car is here, so he ___ have gone far.",
+          "options": [
+            "can't",
+            "must",
+            "might not"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u27.d02.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "variants": [
+            "They must have went home.",
+            "They must have gone home."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u27.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-modals",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она, должно быть, проспала.",
+          "answers": [
+            "She must have overslept.",
+            "She must've overslept."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she must overslept",
+                "she must have oversleep",
+                "she must had overslept"
+              ],
+              "explanation": {
+                "en": "must have + V3: She must have overslept.",
+                "ru": "must have + V3: She must have overslept."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u27.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-modals",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он не мог этого знать.",
+          "answers": [
+            "He can't have known that.",
+            "He could not have known that."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he mustn't have known that",
+                "he can't knew that",
+                "he couldn't know that"
+              ],
+              "explanation": {
+                "en": "can't have + V3 for a sure negative past: He can't have known that.",
+                "ru": "can't have + V3 для уверенного отрицания: He can't have known that."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

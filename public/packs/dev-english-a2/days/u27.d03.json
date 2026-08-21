@@ -1,0 +1,600 @@
+{
+  "id": "u27.d03",
+  "title": {
+    "en": "You needn’t have",
+    "ru": "Не нужно было"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.past-modals",
+    "vocab.work",
+    "functions.regret"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u27.d03.vocab",
+      "title": {
+        "en": "Effort & necessity",
+        "ru": "Усилия и необходимость"
+      },
+      "words": [
+        {
+          "word": "bother",
+          "ru": "утруждаться",
+          "ipa": "/ˈbɒðər/",
+          "example": "Don't bother.",
+          "exampleRu": "Не утруждайся.",
+          "audio": {
+            "src": "media/audio/u27.d03.vocab.bother.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "effort",
+          "ru": "усилие",
+          "ipa": "/ˈefət/",
+          "example": "It took a lot of effort.",
+          "exampleRu": "Это потребовало много усилий.",
+          "audio": {
+            "src": "media/audio/u27.d03.vocab.effort.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "spare",
+          "ru": "запасной",
+          "ipa": "/speər/",
+          "example": "I brought a spare.",
+          "exampleRu": "Я принёс запасной.",
+          "audio": {
+            "src": "media/audio/u27.d03.vocab.spare.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "unnecessary",
+          "ru": "ненужный",
+          "ipa": "/ʌnˈnesəsri/",
+          "example": "That was unnecessary.",
+          "exampleRu": "Это было лишним.",
+          "audio": {
+            "src": "media/audio/u27.d03.vocab.unnecessary.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "worth",
+          "ru": "стоящий",
+          "ipa": "/wɜːθ/",
+          "example": "It wasn't worth it.",
+          "exampleRu": "Это того не стоило.",
+          "audio": {
+            "src": "media/audio/u27.d03.vocab.worth.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "waste",
+          "ru": "тратить впустую",
+          "ipa": "/weɪst/",
+          "example": "What a waste of time.",
+          "exampleRu": "Какая трата времени.",
+          "audio": {
+            "src": "media/audio/u27.d03.vocab.waste.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "rush",
+          "ru": "спешить",
+          "ipa": "/rʌʃ/",
+          "example": "There was no need to rush.",
+          "exampleRu": "Не было нужды спешить.",
+          "audio": {
+            "src": "media/audio/u27.d03.vocab.rush.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ahead",
+          "ru": "заранее",
+          "ipa": "/əˈhed/",
+          "example": "I finished ahead of time.",
+          "exampleRu": "Я закончил раньше времени.",
+          "audio": {
+            "src": "media/audio/u27.d03.vocab.ahead.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "extra",
+          "ru": "дополнительный",
+          "ipa": "/ˈekstrə/",
+          "example": "I did extra work.",
+          "exampleRu": "Я сделал лишнюю работу.",
+          "audio": {
+            "src": "media/audio/u27.d03.vocab.extra.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "relax",
+          "ru": "расслабляться",
+          "ipa": "/rɪˈlæks/",
+          "example": "You can relax now.",
+          "exampleRu": "Теперь можешь расслабиться.",
+          "audio": {
+            "src": "media/audio/u27.d03.vocab.relax.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u27.d03.grammar",
+      "title": {
+        "en": "needn’t have vs didn’t need to",
+        "ru": "needn’t have vs didn’t need to"
+      },
+      "rule": {
+        "en": "\"needn’t have + V3\" = you DID something, but it wasn’t necessary (wasted effort). \"didn’t need to + V1\" = it wasn’t necessary — and usually you didn’t do it.",
+        "ru": "«needn’t have + V3» = ты СДЕЛАЛ, но это было не нужно (зря). «didn’t need to + V1» = это было не нужно — и обычно ты этого не делал."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "did it — but pointless",
+            "ru": "сделал — но зря"
+          },
+          "formula": "needn’t have + V3",
+          "examples": [
+            {
+              "en": "You needn’t have cooked — we ate already.",
+              "ru": "Не нужно было готовить — мы уже поели."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "wasn’t necessary",
+            "ru": "не было нужно"
+          },
+          "formula": "didn’t need to + V1",
+          "examples": [
+            {
+              "en": "I didn’t need to pay — it was free.",
+              "ru": "Мне не нужно было платить — было бесплатно."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "wasted effort",
+            "ru": "зря постарался"
+          },
+          "formula": "needn’t have bothered",
+          "examples": [
+            {
+              "en": "You needn’t have bothered.",
+              "ru": "Не стоило утруждаться."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"needn’t have\" implies you DID it; \"didn’t need to\" usually implies you didn’t.",
+          "ru": "«needn’t have» — ты СДЕЛАЛ; «didn’t need to» — обычно не делал."
+        },
+        {
+          "en": "It’s \"needn’t have + V3\": \"needn’t have worried\", not \"needn’t worried\".",
+          "ru": "Форма «needn’t have + V3»: «needn’t have worried», не «needn’t worried»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u27.d03.reading",
+      "title": {
+        "en": "Over-prepared",
+        "ru": "Перестарался"
+      },
+      "blocks": [
+        {
+          "id": "u27.d03.reading.b1",
+          "en": "I spent all weekend rehearsing the demo. As it turned out, I needn’t have worried — the client only wanted a quick chat. I needn’t have made forty slides; they looked at two. I didn’t need to come in early either, but I did anyway.",
+          "ru": "Все выходные я репетировал демо. Как оказалось, зря волновался — клиент хотел лишь короткий разговор. Не нужно было делать сорок слайдов; они посмотрели два. Мне и приходить рано было не нужно, но я всё равно пришёл.",
+          "audio": {
+            "src": "media/audio/u27.d03.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u27.d03.reading.b2",
+          "en": "My colleague laughed: \"You needn’t have brought your laptop, a spare battery, and a backup — the room has everything.\" She was right. Next time I won’t rush or waste effort; I’ll relax and prepare just enough.",
+          "ru": "Коллега засмеялась: «Не нужно было тащить ноутбук, запасную батарею и бэкап — в комнате всё есть». Она была права. В следующий раз не буду спешить и тратить силы впустую; расслаблюсь и подготовлюсь ровно настолько, насколько нужно.",
+          "audio": {
+            "src": "media/audio/u27.d03.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "rehearse",
+          "ru": "репетировать",
+          "ipa": "/rɪˈhɜːs/"
+        },
+        {
+          "word": "backup",
+          "ru": "резервная копия",
+          "ipa": "/ˈbækʌp/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u27.d03.listening",
+      "title": {
+        "en": "The extra copies",
+        "ru": "Лишние копии"
+      },
+      "audio": {
+        "src": "media/audio/u27.d03.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "I printed fifty copies of the report.",
+          "ru": "Я распечатал пятьдесят копий отчёта."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "You needn’t have — it’s all online now.",
+          "ru": "Не нужно было — теперь всё онлайн."
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "Oh. So I didn’t need to stay late at all.",
+          "ru": "О. Значит, мне и не нужно было задерживаться."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "No. But thanks for the effort anyway.",
+          "ru": "Нет. Но всё равно спасибо за старание."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u27.d03.ex.l.01",
+          "instruction": {
+            "en": "What’s true about the copies?",
+            "ru": "Что верно про копии?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.past-modals"
+          ],
+          "prompt": "He ___ have printed them — it’s all online.",
+          "options": [
+            "needn't",
+            "didn't need",
+            "mustn't"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u27.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u27.d03.ex.g.01",
+          "instruction": {
+            "en": "You did it, but it was pointless.",
+            "ru": "Сделал, но зря."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "You ___ have cooked — we ate already. (needn’t)",
+          "answers": [
+            "needn't",
+            "need not"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u27.d03.ex.g.02",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "You needn’t have ___ so hard. (worry)",
+          "answers": [
+            "worried"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u27.d03.ex.c.01",
+          "instruction": {
+            "en": "It wasn’t necessary (and I didn’t).",
+            "ru": "Не было нужно (и не делал)."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "It was free, so I ___ to pay.",
+          "options": [
+            "didn't need",
+            "needn't have",
+            "mustn’t have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u27.d03.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "variants": [
+            "You needn’t worried.",
+            "You needn’t have worried."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u27.d03.ex.c.02",
+          "instruction": {
+            "en": "You DID it but it was pointless.",
+            "ru": "Сделал, но зря."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "You ___ have bought milk — we have plenty.",
+          "options": [
+            "needn't",
+            "didn't need",
+            "can't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u27.d03.ex.g.03",
+          "instruction": {
+            "en": "didn’t need to + V1.",
+            "ru": "didn’t need to + V1."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "The taxi was paid, so we didn’t need to ___ . (pay)",
+          "answers": [
+            "pay"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u27.d03.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "tokens": [
+            "You",
+            "needn’t",
+            "have",
+            "brought",
+            "a",
+            "gift"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u27.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "effort",
+              "right": "усилие"
+            },
+            {
+              "left": "waste",
+              "right": "тратить впустую"
+            },
+            {
+              "left": "unnecessary",
+              "right": "ненужный"
+            },
+            {
+              "left": "spare",
+              "right": "запасной"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u27.d03.ex.c.03",
+          "instruction": {
+            "en": "Wasted effort.",
+            "ru": "Зря постарался."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "You ___ have rushed — the meeting was cancelled.",
+          "options": [
+            "needn't",
+            "didn't need",
+            "won't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u27.d03.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "variants": [
+            "I didn’t need to came in.",
+            "I didn’t need to come in."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u27.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-modals",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Не нужно было волноваться.",
+          "answers": [
+            "You needn't have worried.",
+            "You need not have worried."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you needn’t worried",
+                "you didn’t need to worried",
+                "you don't need to worry"
+              ],
+              "explanation": {
+                "en": "needn’t have + V3: You needn’t have worried.",
+                "ru": "needn’t have + V3: You needn’t have worried."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u27.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-modals",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мне не нужно было платить.",
+          "answers": [
+            "I didn't need to pay.",
+            "I did not need to pay."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i needn’t have pay",
+                "i didn't needed to pay",
+                "i mustn't have paid"
+              ],
+              "explanation": {
+                "en": "didn’t need to + V1: I didn’t need to pay.",
+                "ru": "didn’t need to + V1: I didn’t need to pay."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

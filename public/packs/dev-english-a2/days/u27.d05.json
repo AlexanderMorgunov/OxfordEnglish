@@ -1,0 +1,602 @@
+{
+  "id": "u27.d05",
+  "title": {
+    "en": "Looking back",
+    "ru": "Оглядываясь назад"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.past-modals",
+    "grammar.review",
+    "vocab.life"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u27.d05.vocab",
+      "title": {
+        "en": "Reflection",
+        "ru": "Размышление"
+      },
+      "words": [
+        {
+          "word": "overall",
+          "ru": "в целом",
+          "ipa": "/ˌəʊvərˈɔːl/",
+          "example": "Overall, it went well.",
+          "exampleRu": "В целом всё прошло хорошо.",
+          "audio": {
+            "src": "media/audio/u27.d05.vocab.overall.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lesson",
+          "ru": "урок",
+          "ipa": "/ˈlesn/",
+          "example": "It was a hard lesson.",
+          "exampleRu": "Это был трудный урок.",
+          "audio": {
+            "src": "media/audio/u27.d05.vocab.lesson.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "honestly",
+          "ru": "честно",
+          "ipa": "/ˈɒnɪstli/",
+          "example": "Honestly, I was scared.",
+          "exampleRu": "Честно, мне было страшно.",
+          "audio": {
+            "src": "media/audio/u27.d05.vocab.honestly.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "accept",
+          "ru": "принимать",
+          "ipa": "/əkˈsept/",
+          "example": "I accept what happened.",
+          "exampleRu": "Я принимаю то, что случилось.",
+          "audio": {
+            "src": "media/audio/u27.d05.vocab.accept.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "perspective",
+          "ru": "взгляд",
+          "ipa": "/pəˈspektɪv/",
+          "example": "Time gives you perspective.",
+          "exampleRu": "Время даёт иной взгляд.",
+          "audio": {
+            "src": "media/audio/u27.d05.vocab.perspective.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "growth",
+          "ru": "рост",
+          "ipa": "/ɡrəʊθ/",
+          "example": "Mistakes lead to growth.",
+          "exampleRu": "Ошибки ведут к росту.",
+          "audio": {
+            "src": "media/audio/u27.d05.vocab.growth.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mature",
+          "ru": "взрослеть",
+          "ipa": "/məˈtʃʊər/",
+          "example": "People mature with age.",
+          "exampleRu": "С возрастом люди взрослеют.",
+          "audio": {
+            "src": "media/audio/u27.d05.vocab.mature.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reflect",
+          "ru": "размышлять",
+          "ipa": "/rɪˈflekt/",
+          "example": "I like to reflect on my week.",
+          "exampleRu": "Люблю обдумывать свою неделю.",
+          "audio": {
+            "src": "media/audio/u27.d05.vocab.reflect.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "forward",
+          "ru": "вперёд",
+          "ipa": "/ˈfɔːwəd/",
+          "example": "I’m looking forward.",
+          "exampleRu": "Я смотрю вперёд.",
+          "audio": {
+            "src": "media/audio/u27.d05.vocab.forward.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "worth",
+          "ru": "стоящий",
+          "ipa": "/wɜːθ/",
+          "example": "It was all worth it.",
+          "exampleRu": "Оно того стоило.",
+          "audio": {
+            "src": "media/audio/u27.d05.vocab.worth.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u27.d05.grammar",
+      "title": {
+        "en": "Past modals — review",
+        "ru": "Прошлые модальные — обзор"
+      },
+      "rule": {
+        "en": "All past modals are modal + have + V3. Regret: should(n’t) have. Deduction: must / can’t / might have. Unnecessary: needn’t have. Imagined: would / could have.",
+        "ru": "Все прошлые модальные — модальный + have + V3. Сожаление: should(n’t) have. Дедукция: must / can’t / might have. Зря: needn’t have. Воображение: would / could have."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "regret / criticism",
+            "ru": "сожаление / критика"
+          },
+          "formula": "should(n’t) have + V3",
+          "examples": [
+            {
+              "en": "I should have saved it.",
+              "ru": "Мне стоило это сохранить."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "deduction",
+            "ru": "дедукция"
+          },
+          "formula": "must / can’t / might have + V3",
+          "examples": [
+            {
+              "en": "He must have forgotten.",
+              "ru": "Он, должно быть, забыл."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "imagined / unnecessary",
+            "ru": "воображение / зря"
+          },
+          "formula": "would / could / needn’t have + V3",
+          "examples": [
+            {
+              "en": "You needn’t have worried.",
+              "ru": "Не нужно было волноваться."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Never \"should of / would of / could of\" — always \"have\".",
+          "ru": "Никогда «should of / would of / could of» — всегда «have»."
+        },
+        {
+          "en": "\"can’t have\" (sure not), not \"mustn’t have\", for a past deduction.",
+          "ru": "Для дедукции о прошлом «can’t have» (уверен, что нет), не «mustn’t have»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u27.d05.reading",
+      "title": {
+        "en": "A year later",
+        "ru": "Год спустя"
+      },
+      "blocks": [
+        {
+          "id": "u27.d05.reading.b1",
+          "en": "A year after I quit, I can finally reflect honestly. I should have negotiated instead of leaving so fast — that was foolish. But I couldn’t have stayed either; I was miserable. Overall, I think I made the right call.",
+          "ru": "Через год после ухода я наконец могу честно поразмышлять. Мне стоило договориться, а не уходить так быстро — это было глупо. Но и остаться я не мог; я был несчастен. В целом, думаю, я поступил правильно.",
+          "audio": {
+            "src": "media/audio/u27.d05.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u27.d05.reading.b2",
+          "en": "My old boss must have been surprised — I never explained. I needn’t have worried about references, though; they were kind. With perspective, I see the growth. I wouldn’t have changed careers if I’d stayed comfortable.",
+          "ru": "Мой бывший начальник, должно быть, удивился — я так и не объяснил. Хотя зря я переживал о рекомендациях; они были добры. С расстояния я вижу рост. Я бы не сменил профессию, если бы остался в зоне комфорта.",
+          "audio": {
+            "src": "media/audio/u27.d05.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "negotiate",
+          "ru": "договариваться",
+          "ipa": "/nɪˈɡəʊʃieɪt/"
+        },
+        {
+          "word": "miserable",
+          "ru": "несчастный",
+          "ipa": "/ˈmɪzrəbl/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u27.d05.listening",
+      "title": {
+        "en": "No regrets?",
+        "ru": "Без сожалений?"
+      },
+      "audio": {
+        "src": "media/audio/u27.d05.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Do you regret taking the job?",
+          "ru": "Жалеешь, что взял ту работу?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "Honestly? I should have asked more questions first.",
+          "ru": "Честно? Мне стоило сначала задать больше вопросов."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "Still, you couldn’t have known it would change.",
+          "ru": "И всё же ты не мог знать, что всё изменится."
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "True. And I needn’t have panicked — it worked out.",
+          "ru": "Верно. И зря я паниковал — всё устроилось."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u27.d05.ex.l.01",
+          "instruction": {
+            "en": "What does he regret?",
+            "ru": "О чём он жалеет?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.past-modals"
+          ],
+          "prompt": "I ___ have asked more questions.",
+          "options": [
+            "should",
+            "couldn't",
+            "needn’t"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u27.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u27.d05.ex.c.01",
+          "instruction": {
+            "en": "Regret.",
+            "ru": "Сожаление."
+          },
+          "tags": [
+            "grammar.should-have"
+          ],
+          "prompt": "I ___ have backed up the files.",
+          "options": [
+            "should",
+            "must",
+            "needn’t"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u27.d05.ex.c.02",
+          "instruction": {
+            "en": "Deduction (sure).",
+            "ru": "Дедукция (уверен)."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "The lights are off — everyone ___ have left.",
+          "options": [
+            "must",
+            "should",
+            "needn’t"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u27.d05.ex.c.03",
+          "instruction": {
+            "en": "Sure it didn’t happen.",
+            "ru": "Уверен, что не было."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "He ___ have seen the email — it just arrived.",
+          "options": [
+            "can't",
+            "shouldn't",
+            "needn't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u27.d05.ex.c.04",
+          "instruction": {
+            "en": "Wasted effort.",
+            "ru": "Зря постарался."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "You ___ have cooked — we ordered pizza.",
+          "options": [
+            "needn't",
+            "shouldn't",
+            "can't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u27.d05.ex.g.01",
+          "instruction": {
+            "en": "Imagined reaction.",
+            "ru": "Воображаемая реакция."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "I ___ have helped, but I was away. (would)",
+          "answers": [
+            "would"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u27.d05.ex.g.02",
+          "instruction": {
+            "en": "Participle.",
+            "ru": "Причастие."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "prompt": "She must have ___ the train. (miss)",
+          "answers": [
+            "missed"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u27.d05.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "variants": [
+            "You could of warned me.",
+            "You could have warned me."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "spot-error",
+          "id": "u27.d05.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "variants": [
+            "He must have knew.",
+            "He must have known."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "order-words",
+          "id": "u27.d05.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.past-modals"
+          ],
+          "tokens": [
+            "You",
+            "needn’t",
+            "have",
+            "waited",
+            "for",
+            "me"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u27.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.life"
+          ],
+          "pairs": [
+            {
+              "left": "overall",
+              "right": "в целом"
+            },
+            {
+              "left": "growth",
+              "right": "рост"
+            },
+            {
+              "left": "reflect",
+              "right": "размышлять"
+            },
+            {
+              "left": "accept",
+              "right": "принимать"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u27.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-modals",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он, должно быть, забыл.",
+          "answers": [
+            "He must have forgotten.",
+            "He must've forgotten."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he must forgot",
+                "he must have forget",
+                "he must had forgotten"
+              ],
+              "explanation": {
+                "en": "must have + V3: He must have forgotten.",
+                "ru": "must have + V3: He must have forgotten."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u27.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-modals",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мне не стоило торопиться.",
+          "answers": [
+            "I shouldn't have hurried.",
+            "I should not have rushed."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i shouldn't hurried",
+                "i should of hurried",
+                "i didn't need to hurry"
+              ],
+              "explanation": {
+                "en": "shouldn’t have + V3: I shouldn’t have hurried.",
+                "ru": "shouldn’t have + V3: I shouldn’t have hurried."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
