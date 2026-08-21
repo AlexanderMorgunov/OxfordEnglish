@@ -1,0 +1,605 @@
+{
+  "id": "u31.d04",
+  "title": {
+    "en": "Had I known",
+    "ru": "Если бы я знал"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.inversion",
+    "grammar.conditionals-review",
+    "vocab.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u31.d04.vocab",
+      "title": {
+        "en": "Formal register",
+        "ru": "Формальный стиль"
+      },
+      "words": [
+        {
+          "word": "notify",
+          "ru": "уведомлять",
+          "ipa": "/ˈnəʊtɪfaɪ/",
+          "example": "Please notify us in advance.",
+          "exampleRu": "Пожалуйста, уведомите заранее.",
+          "audio": {
+            "src": "media/audio/u31.d04.vocab.notify.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "arise",
+          "ru": "возникать",
+          "ipa": "/əˈraɪz/",
+          "example": "Should problems arise, call us.",
+          "exampleRu": "Если возникнут проблемы, звоните.",
+          "audio": {
+            "src": "media/audio/u31.d04.vocab.arise.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hesitate",
+          "ru": "колебаться",
+          "ipa": "/ˈhezɪteɪt/",
+          "example": "Don’t hesitate to ask.",
+          "exampleRu": "Не стесняйтесь спрашивать.",
+          "audio": {
+            "src": "media/audio/u31.d04.vocab.hesitate.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "require",
+          "ru": "требовать",
+          "ipa": "/rɪˈkwaɪər/",
+          "example": "This requires approval.",
+          "exampleRu": "Это требует одобрения.",
+          "audio": {
+            "src": "media/audio/u31.d04.vocab.require.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "assistance",
+          "ru": "помощь",
+          "ipa": "/əˈsɪstəns/",
+          "example": "We offer full assistance.",
+          "exampleRu": "Мы предлагаем полную помощь.",
+          "audio": {
+            "src": "media/audio/u31.d04.vocab.assistance.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "proceed",
+          "ru": "продолжать, приступать",
+          "ipa": "/prəˈsiːd/",
+          "example": "You may proceed now.",
+          "exampleRu": "Теперь можете приступать.",
+          "audio": {
+            "src": "media/audio/u31.d04.vocab.proceed.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "circumstances",
+          "ru": "обстоятельства",
+          "ipa": "/ˈsɜːkəmstənsɪz/",
+          "example": "Under no circumstances stop.",
+          "exampleRu": "Ни при каких обстоятельствах не останавливайтесь.",
+          "audio": {
+            "src": "media/audio/u31.d04.vocab.circumstances.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "inconvenience",
+          "ru": "неудобство",
+          "ipa": "/ˌɪnkənˈviːniəns/",
+          "example": "Sorry for the inconvenience.",
+          "exampleRu": "Извините за неудобство.",
+          "audio": {
+            "src": "media/audio/u31.d04.vocab.inconvenience.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "prior",
+          "ru": "предварительный",
+          "ipa": "/ˈpraɪər/",
+          "example": "Give prior notice.",
+          "exampleRu": "Уведомите заранее.",
+          "audio": {
+            "src": "media/audio/u31.d04.vocab.prior.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reconsider",
+          "ru": "пересматривать",
+          "ipa": "/ˌriːkənˈsɪdər/",
+          "example": "Please reconsider your decision.",
+          "exampleRu": "Пожалуйста, пересмотрите решение.",
+          "audio": {
+            "src": "media/audio/u31.d04.vocab.reconsider.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u31.d04.grammar",
+      "title": {
+        "en": "Inversion in conditionals (formal)",
+        "ru": "Инверсия в условных (формально)"
+      },
+      "rule": {
+        "en": "In formal English you can drop \"if\" and invert. Third conditional: \"If I had known\" → \"Had I known\". Second: \"If I were you\" → \"Were I you\"; \"If it were to fail\" → \"Were it to fail\". First (tentative): \"If you should need\" → \"Should you need\".",
+        "ru": "В формальном английском «if» можно убрать и сделать инверсию. Третье условие: «If I had known» → «Had I known». Второе: «If I were you» → «Were I you»; «If it were to fail» → «Were it to fail». Первое (осторожное): «If you should need» → «Should you need»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Had + S + V3",
+            "ru": "Had + S + V3"
+          },
+          "formula": "Had I known, I would have …",
+          "examples": [
+            {
+              "en": "Had I known, I would have called.",
+              "ru": "Знай я об этом, я бы позвонил."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "Were + S (+ to)",
+            "ru": "Were + S (+ to)"
+          },
+          "formula": "Were I you, I would …",
+          "examples": [
+            {
+              "en": "Were I you, I’d accept the offer.",
+              "ru": "На твоём месте я бы принял предложение."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "Should + S",
+            "ru": "Should + S"
+          },
+          "formula": "Should you need …, …",
+          "examples": [
+            {
+              "en": "Should you need help, just ask.",
+              "ru": "Если понадобится помощь, просто спросите."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Drop \"if\" when you invert: \"Had I known\", never \"If had I known\".",
+          "ru": "При инверсии убирай «if»: «Had I known», не «If had I known»."
+        },
+        {
+          "en": "Inversion is formal/written; in speech keep the ordinary \"if\" form.",
+          "ru": "Инверсия — формальная/письменная; в речи оставляй обычное «if»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u31.d04.reading",
+      "title": {
+        "en": "The official letter",
+        "ru": "Официальное письмо"
+      },
+      "blocks": [
+        {
+          "id": "u31.d04.reading.b1",
+          "en": "Dear Customer, we are writing regarding the recent disruption to your service. Had we anticipated the fault, we would have warned you sooner, and we apologise for the inconvenience. Should you require compensation, please complete the enclosed form.",
+          "ru": "Уважаемый клиент, мы пишем в связи с недавним сбоем в обслуживании. Если бы мы предвидели неполадку, мы предупредили бы вас раньше, и приносим извинения за неудобства. Если вам потребуется компенсация, пожалуйста, заполните вложенную форму.",
+          "audio": {
+            "src": "media/audio/u31.d04.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u31.d04.reading.b2",
+          "en": "Were the problem to recur, our team would respond within the hour. Should you have any further questions, do not hesitate to contact us. Had it not been for our engineers’ quick work, the outage would have lasted much longer. We value your patience.",
+          "ru": "Если проблема возникнет вновь, наша команда отреагирует в течение часа. Если у вас появятся дополнительные вопросы, не стесняйтесь связаться с нами. Если бы не быстрая работа наших инженеров, простой длился бы гораздо дольше. Мы ценим ваше терпение.",
+          "audio": {
+            "src": "media/audio/u31.d04.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "disruption",
+          "ru": "сбой",
+          "ipa": "/dɪsˈrʌpʃn/"
+        },
+        {
+          "word": "outage",
+          "ru": "простой, отключение",
+          "ipa": "/ˈaʊtɪdʒ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u31.d04.listening",
+      "title": {
+        "en": "The consultant",
+        "ru": "Консультант"
+      },
+      "audio": {
+        "src": "media/audio/u31.d04.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 5,
+          "en": "Were I in your position, I would delay the launch.",
+          "ru": "На вашем месте я бы отложил запуск."
+        },
+        {
+          "start": 5,
+          "end": 9,
+          "en": "And had we launched last week?",
+          "ru": "А если бы мы запустились на прошлой неделе?"
+        },
+        {
+          "start": 9,
+          "end": 14,
+          "en": "Had you launched then, you would have lost the biggest client.",
+          "ru": "Запустись вы тогда, вы бы потеряли крупнейшего клиента."
+        },
+        {
+          "start": 14,
+          "end": 18,
+          "en": "Understood. Should anything change, I’ll call you.",
+          "ru": "Понял. Если что-то изменится, я вам позвоню."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u31.d04.ex.l.01",
+          "instruction": {
+            "en": "Inverted third conditional.",
+            "ru": "Инверсия третьего условия."
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.inversion"
+          ],
+          "prompt": "___ you launched then, you would have lost the client.",
+          "options": [
+            "Had",
+            "If had",
+            "Would"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u31.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u31.d04.ex.c.01",
+          "instruction": {
+            "en": "Invert the third conditional.",
+            "ru": "Инвертируй третье условие."
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "___ I known, I would have helped.",
+          "options": [
+            "Had",
+            "If had",
+            "Have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u31.d04.ex.c.02",
+          "instruction": {
+            "en": "Invert \"If I were you\".",
+            "ru": "Инвертируй «If I were you»."
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "___ I you, I’d wait.",
+          "options": [
+            "Were",
+            "Was",
+            "Had"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u31.d04.ex.c.03",
+          "instruction": {
+            "en": "Tentative first conditional.",
+            "ru": "Осторожное первое условие."
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "___ you need anything, call me.",
+          "options": [
+            "Should",
+            "Would",
+            "Had"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u31.d04.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "variants": [
+            "If had I known, I would have called.",
+            "Had I known, I would have called."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u31.d04.ex.g.01",
+          "instruction": {
+            "en": "Rewrite: If it were to fail →",
+            "ru": "Перепиши: If it were to fail →"
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "___ it to fail, we’d lose money. (Were)",
+          "answers": [
+            "Were"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u31.d04.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "variants": [
+            "Should you have questions, ask.",
+            "Should you to have questions, ask."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u31.d04.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "tokens": [
+            "Had",
+            "we",
+            "left",
+            "earlier",
+            "we",
+            "would",
+            "have",
+            "won"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u31.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "notify",
+              "right": "уведомлять"
+            },
+            {
+              "left": "arise",
+              "right": "возникать"
+            },
+            {
+              "left": "require",
+              "right": "требовать"
+            },
+            {
+              "left": "prior",
+              "right": "предварительный"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u31.d04.ex.c.04",
+          "instruction": {
+            "en": "Formal or casual?",
+            "ru": "Формально или разговорно?"
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "Which sounds most formal?",
+          "options": [
+            "Should you require assistance…",
+            "If you need help…",
+            "Want a hand?"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u31.d04.ex.g.02",
+          "instruction": {
+            "en": "Invert: If I had…",
+            "ru": "Инвертируй: If I had…"
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "___ I had more time, I would have finished. (Had)",
+          "answers": [
+            "Had"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u31.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate (formal, inverted).",
+            "ru": "Переведи (формально, инверсия)."
+          },
+          "tags": [
+            "grammar.inversion",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Знай я об этом, я бы позвонил.",
+          "answers": [
+            "Had I known, I would have called."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "if had i known i would have called",
+                "had i known i would called",
+                "had i know i would have called"
+              ],
+              "explanation": {
+                "en": "drop \"if\", invert: Had I known, I would have called.",
+                "ru": "убери «if», сделай инверсию: Had I known, I would have called."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u31.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate (formal, inverted).",
+            "ru": "Переведи (формально, инверсия)."
+          },
+          "tags": [
+            "grammar.inversion",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Если вам потребуется помощь, просто спросите.",
+          "answers": [
+            "Should you need help, just ask.",
+            "Should you require assistance, just ask."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "if you should need help just ask",
+                "should you to need help just ask",
+                "would you need help just ask"
+              ],
+              "explanation": {
+                "en": "tentative → Should + subject + base: Should you need help…",
+                "ru": "осторожное → Should + подлежащее + база: Should you need help…"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,605 @@
+{
+  "id": "u31.d05",
+  "title": {
+    "en": "If only — review",
+    "ru": "Если бы только — обзор"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.conditionals-review",
+    "grammar.mixed-conditional",
+    "grammar.wish-past"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u31.d05.vocab",
+      "title": {
+        "en": "Conditions — key words",
+        "ru": "Условия — ключевые слова"
+      },
+      "words": [
+        {
+          "word": "suppose",
+          "ru": "предположим",
+          "ipa": "/səˈpəʊz/",
+          "example": "Suppose it rains — then what?",
+          "exampleRu": "Предположим, пойдёт дождь — что тогда?",
+          "audio": {
+            "src": "media/audio/u31.d05.vocab.suppose.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "imagine",
+          "ru": "представь",
+          "ipa": "/ɪˈmædʒɪn/",
+          "example": "Imagine you won a prize.",
+          "exampleRu": "Представь, что ты выиграл приз.",
+          "audio": {
+            "src": "media/audio/u31.d05.vocab.imagine.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "deserve",
+          "ru": "заслуживать",
+          "ipa": "/dɪˈzɜːv/",
+          "example": "You deserve a break.",
+          "exampleRu": "Ты заслуживаешь передышки.",
+          "audio": {
+            "src": "media/audio/u31.d05.vocab.deserve.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "avoid",
+          "ru": "избегать",
+          "ipa": "/əˈvɔɪd/",
+          "example": "We could avoid the delay.",
+          "exampleRu": "Мы могли бы избежать задержки.",
+          "audio": {
+            "src": "media/audio/u31.d05.vocab.avoid.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "manage",
+          "ru": "справляться",
+          "ipa": "/ˈmænɪdʒ/",
+          "example": "She managed on her own.",
+          "exampleRu": "Она справилась сама.",
+          "audio": {
+            "src": "media/audio/u31.d05.vocab.manage.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "afford",
+          "ru": "позволить себе",
+          "ipa": "/əˈfɔːd/",
+          "example": "We can’t afford it.",
+          "exampleRu": "Мы не можем себе это позволить.",
+          "audio": {
+            "src": "media/audio/u31.d05.vocab.afford.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bother",
+          "ru": "беспокоить, утруждаться",
+          "ipa": "/ˈbɒðər/",
+          "example": "Don’t bother waiting.",
+          "exampleRu": "Не утруждайся ждать.",
+          "audio": {
+            "src": "media/audio/u31.d05.vocab.bother.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "reckon",
+          "ru": "полагать",
+          "ipa": "/ˈrekən/",
+          "example": "I reckon it’ll be fine.",
+          "exampleRu": "Я полагаю, всё будет хорошо.",
+          "audio": {
+            "src": "media/audio/u31.d05.vocab.reckon.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "worthwhile",
+          "ru": "стоящий",
+          "ipa": "/ˌwɜːθˈwaɪl/",
+          "example": "The trip was worthwhile.",
+          "exampleRu": "Поездка была стоящей.",
+          "audio": {
+            "src": "media/audio/u31.d05.vocab.worthwhile.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "inevitable",
+          "ru": "неизбежный",
+          "ipa": "/ɪnˈevɪtəbl/",
+          "example": "The change was inevitable.",
+          "exampleRu": "Перемена была неизбежна.",
+          "audio": {
+            "src": "media/audio/u31.d05.vocab.inevitable.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u31.d05.grammar",
+      "title": {
+        "en": "Conditionals & wishes — all together",
+        "ru": "Условные и желания — всё вместе"
+      },
+      "rule": {
+        "en": "Match form to meaning: mixed conditional when the two times differ; unless/provided/as long as/in case for the type of condition; wish + past / past perfect / would for regrets and desires; inversion (Had/Were/Should) for a formal tone.",
+        "ru": "Подбирай форму под смысл: смешанное условие при разных временах; unless/provided/as long as/in case — по типу условия; wish + past / past perfect / would — для сожалений и желаний; инверсия (Had/Were/Should) — для формального тона."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "mixed",
+            "ru": "смешанное"
+          },
+          "formula": "If + had V3, would + base (now)",
+          "examples": [
+            {
+              "en": "If I’d saved, I’d be free now.",
+              "ru": "Если бы я копил, сейчас был бы свободен."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "linker",
+            "ru": "союз"
+          },
+          "formula": "unless / provided / as long as / in case",
+          "examples": [
+            {
+              "en": "You can stay unless you’re noisy.",
+              "ru": "Можешь остаться, если не будешь шуметь."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "wish / inversion",
+            "ru": "wish / инверсия"
+          },
+          "formula": "wish + past(perfect) / Had I …",
+          "examples": [
+            {
+              "en": "I wish I had known — had I known, I’d have come.",
+              "ru": "Жаль, что я не знал — знай я, я бы пришёл."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"unless\" isn’t made negative; \"in case\" isn’t \"if\"; \"wish\" about yourself uses \"could\", not \"would\".",
+          "ru": "«unless» не делают отрицательным; «in case» — не «if»; «wish» о себе — «could», не «would»."
+        },
+        {
+          "en": "When you invert, drop \"if\" and use \"were\" for all persons.",
+          "ru": "При инверсии убирай «if» и используй «were» для всех лиц."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u31.d05.reading",
+      "title": {
+        "en": "The tempting offer",
+        "ru": "Заманчивое предложение"
+      },
+      "blocks": [
+        {
+          "id": "u31.d05.reading.b1",
+          "en": "Suppose someone offered you a job abroad tomorrow — would you take it? My cousin did, and now she says she wishes she had thought it through. If she hadn’t rushed, she wouldn’t be so homesick now. Still, she won’t come back unless the company relocates her.",
+          "ru": "Предположим, кому-то завтра предложат работу за границей — ты бы согласился? Моя двоюродная сестра согласилась, и теперь говорит, что жалеет, что не всё обдумала. Не поспеши она, сейчас так не тосковала бы по дому. И всё же она не вернётся, если компания её не переведёт.",
+          "audio": {
+            "src": "media/audio/u31.d05.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u31.d05.reading.b2",
+          "en": "\"As long as I’m learning, it’s worthwhile,\" she insists, though I wish she would call more often. Had I been in her shoes, I’m not sure I’d have been so brave. Should she ever need a place to stay, my door is open — and she knows it.",
+          "ru": "«Пока я учусь, это того стоит», — настаивает она, хотя мне хочется, чтобы она звонила чаще. Окажись я на её месте, не уверен, что был бы так же смел. Если ей когда-нибудь понадобится, где остановиться, моя дверь открыта — и она это знает.",
+          "audio": {
+            "src": "media/audio/u31.d05.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "relocate",
+          "ru": "переводить (на др. место)",
+          "ipa": "/ˌriːləʊˈkeɪt/"
+        },
+        {
+          "word": "brave",
+          "ru": "смелый",
+          "ipa": "/breɪv/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u31.d05.listening",
+      "title": {
+        "en": "Second thoughts",
+        "ru": "Сомнения"
+      },
+      "audio": {
+        "src": "media/audio/u31.d05.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 5,
+          "en": "Suppose the deal falls through — what then?",
+          "ru": "Предположим, сделка сорвётся — что тогда?"
+        },
+        {
+          "start": 5,
+          "end": 10,
+          "en": "As long as we keep the deposit, we’ll be fine.",
+          "ru": "Пока залог у нас, всё будет в порядке."
+        },
+        {
+          "start": 10,
+          "end": 15,
+          "en": "I wish we had signed a clearer contract.",
+          "ru": "Жаль, что мы не подписали более чёткий договор."
+        },
+        {
+          "start": 15,
+          "end": 20,
+          "en": "Had we used a lawyer, this wouldn’t be a problem now.",
+          "ru": "Если бы мы наняли юриста, сейчас это не было бы проблемой."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u31.d05.ex.l.01",
+          "instruction": {
+            "en": "Mixed conditional.",
+            "ru": "Смешанное условие."
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.mixed-conditional"
+          ],
+          "prompt": "Had we used a lawyer, this ___ a problem now.",
+          "options": [
+            "wouldn’t be",
+            "wouldn’t have been",
+            "won’t be"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u31.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u31.d05.ex.g.01",
+          "instruction": {
+            "en": "Mixed conditional.",
+            "ru": "Смешанное условие."
+          },
+          "tags": [
+            "grammar.mixed-conditional"
+          ],
+          "prompt": "If I ___ saved, I would be free now. (have — past perfect)",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u31.d05.ex.c.01",
+          "instruction": {
+            "en": "Choose the linker.",
+            "ru": "Выбери союз."
+          },
+          "tags": [
+            "grammar.unless-provided"
+          ],
+          "prompt": "You’ll miss it ___ you leave now.",
+          "options": [
+            "unless",
+            "as long as",
+            "provided"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u31.d05.ex.g.02",
+          "instruction": {
+            "en": "Past regret.",
+            "ru": "Сожаление о прошлом."
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "prompt": "I wish I ___ thought it through. (think — past perfect)",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u31.d05.ex.c.02",
+          "instruction": {
+            "en": "Inversion.",
+            "ru": "Инверсия."
+          },
+          "tags": [
+            "grammar.conditionals-review"
+          ],
+          "prompt": "___ I been there, I’d have helped.",
+          "options": [
+            "Had",
+            "If had",
+            "Have"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u31.d05.ex.c.03",
+          "instruction": {
+            "en": "wish about others.",
+            "ru": "wish о других."
+          },
+          "tags": [
+            "grammar.wish-would"
+          ],
+          "prompt": "I wish she ___ call more often.",
+          "options": [
+            "would",
+            "will",
+            "had"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u31.d05.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.unless-provided"
+          ],
+          "variants": [
+            "Take cash in case the card won’t work.",
+            "Take cash in case the card doesn’t work."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "order-words",
+          "id": "u31.d05.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.mixed-conditional"
+          ],
+          "tokens": [
+            "If",
+            "she",
+            "were",
+            "taller",
+            "she",
+            "would",
+            "have",
+            "won"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u31.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.life"
+          ],
+          "pairs": [
+            {
+              "left": "afford",
+              "right": "позволить себе"
+            },
+            {
+              "left": "deserve",
+              "right": "заслуживать"
+            },
+            {
+              "left": "worthwhile",
+              "right": "стоящий"
+            },
+            {
+              "left": "inevitable",
+              "right": "неизбежный"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u31.d05.ex.c.04",
+          "instruction": {
+            "en": "as long as + present.",
+            "ru": "as long as + настоящее."
+          },
+          "tags": [
+            "grammar.unless-provided"
+          ],
+          "prompt": "You can borrow it as long as you ___ it back.",
+          "options": [
+            "bring",
+            "will bring",
+            "brought"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u31.d05.ex.s.02",
+          "instruction": {
+            "en": "wish about yourself.",
+            "ru": "wish о себе."
+          },
+          "tags": [
+            "grammar.wish-would"
+          ],
+          "variants": [
+            "I wish I would speak better.",
+            "I wish I could speak better."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u31.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.mixed-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Если бы мы наняли юриста, сейчас это не было бы проблемой.",
+          "answers": [
+            "If we had used a lawyer, this wouldn’t be a problem now.",
+            "Had we used a lawyer, this wouldn’t be a problem now."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "if we used a lawyer this wouldn’t be a problem now",
+                "if we had used a lawyer this wouldn’t have been a problem now",
+                "if we had used a lawyer this won’t be a problem now"
+              ],
+              "explanation": {
+                "en": "past condition → present result: If we had used…, this wouldn’t be… now.",
+                "ru": "прошлое условие → настоящий результат: If we had used…, this wouldn’t be… now."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u31.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.wish-past",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Жаль, что мы не подписали более чёткий договор.",
+          "answers": [
+            "I wish we had signed a clearer contract."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i wish we signed a clearer contract",
+                "i wish we have signed a clearer contract",
+                "i wish we would sign a clearer contract"
+              ],
+              "explanation": {
+                "en": "past regret → wish + past perfect: I wish we had signed…",
+                "ru": "сожаление о прошлом → wish + past perfect: I wish we had signed…"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
