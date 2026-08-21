@@ -27,3 +27,5 @@ tools/content-forge/.cache/
 tools/content-forge/data/*.sqlite
 tools/content-forge/data/wordlists.json
 tools/content-forge/vendor/
+# Throwaway per-unit content builders — kept locally, regenerated content is what ships.
+tools/content-forge/scripts/_build_*.mjs

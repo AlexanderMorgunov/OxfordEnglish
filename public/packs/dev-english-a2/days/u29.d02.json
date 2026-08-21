@@ -1,0 +1,599 @@
+{
+  "id": "u29.d02",
+  "title": {
+    "en": "She asked where I lived",
+    "ru": "Она спросила, где я живу"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.reported-questions",
+    "vocab.work",
+    "functions.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u29.d02.vocab",
+      "title": {
+        "en": "Asking & wondering",
+        "ru": "Вопросы и раздумья"
+      },
+      "words": [
+        {
+          "word": "wonder",
+          "ru": "интересоваться",
+          "ipa": "/ˈwʌndər/",
+          "example": "I wonder where she went.",
+          "exampleRu": "Интересно, куда она ушла.",
+          "audio": {
+            "src": "media/audio/u29.d02.vocab.wonder.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "inquire",
+          "ru": "осведомляться",
+          "ipa": "/ɪnˈkwaɪər/",
+          "example": "He inquired about prices.",
+          "exampleRu": "Он осведомился о ценах.",
+          "audio": {
+            "src": "media/audio/u29.d02.vocab.inquire.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "whether",
+          "ru": "ли",
+          "ipa": "/ˈweðər/",
+          "example": "I asked whether it was open.",
+          "exampleRu": "Я спросил, открыто ли.",
+          "audio": {
+            "src": "media/audio/u29.d02.vocab.whether.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "curious",
+          "ru": "любопытный",
+          "ipa": "/ˈkjʊəriəs/",
+          "example": "She was curious about it.",
+          "exampleRu": "Ей было любопытно.",
+          "audio": {
+            "src": "media/audio/u29.d02.vocab.curious.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "request",
+          "ru": "просьба",
+          "ipa": "/rɪˈkwest/",
+          "example": "They made a request.",
+          "exampleRu": "Они подали просьбу.",
+          "audio": {
+            "src": "media/audio/u29.d02.vocab.request.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "concern",
+          "ru": "беспокойство",
+          "ipa": "/kənˈsɜːn/",
+          "example": "He raised a concern.",
+          "exampleRu": "Он высказал беспокойство.",
+          "audio": {
+            "src": "media/audio/u29.d02.vocab.concern.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "clarify",
+          "ru": "уточнять",
+          "ipa": "/ˈklærɪfaɪ/",
+          "example": "Can you clarify that?",
+          "exampleRu": "Можешь уточнить?",
+          "audio": {
+            "src": "media/audio/u29.d02.vocab.clarify.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "interview",
+          "ru": "собеседование",
+          "ipa": "/ˈɪntəvjuː/",
+          "example": "The interview went well.",
+          "exampleRu": "Собеседование прошло хорошо.",
+          "audio": {
+            "src": "media/audio/u29.d02.vocab.interview.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "candidate",
+          "ru": "кандидат",
+          "ipa": "/ˈkændɪdət/",
+          "example": "The candidate seemed calm.",
+          "exampleRu": "Кандидат казался спокойным.",
+          "audio": {
+            "src": "media/audio/u29.d02.vocab.candidate.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "position",
+          "ru": "должность",
+          "ipa": "/pəˈzɪʃn/",
+          "example": "She applied for the position.",
+          "exampleRu": "Она подала на должность.",
+          "audio": {
+            "src": "media/audio/u29.d02.vocab.position.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u29.d02.grammar",
+      "title": {
+        "en": "Reported questions",
+        "ru": "Косвенные вопросы"
+      },
+      "rule": {
+        "en": "A reported question uses STATEMENT word order (no inversion) and no do/does/did. Wh-questions keep the wh-word; yes/no questions use \"if\" or \"whether\". Backshift the tense as usual.",
+        "ru": "Косвенный вопрос — ПРЯМОЙ порядок слов (без инверсии) и без do/does/did. Wh-вопросы сохраняют wh-слово; да/нет — «if» или «whether». Сдвиг времени как обычно."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "wh-question",
+            "ru": "wh-вопрос"
+          },
+          "formula": "asked + wh + subject + verb",
+          "examples": [
+            {
+              "en": "She asked where I lived.",
+              "ru": "Она спросила, где я живу."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "yes/no question",
+            "ru": "да/нет вопрос"
+          },
+          "formula": "asked if/whether + subject + verb",
+          "examples": [
+            {
+              "en": "He asked if I was ready.",
+              "ru": "Он спросил, готов ли я."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "no do/did",
+            "ru": "без do/did"
+          },
+          "formula": "\"Where do you work?\" → asked where I worked",
+          "examples": [
+            {
+              "en": "She asked where I worked.",
+              "ru": "Она спросила, где я работаю."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use statement order: \"asked where I lived\", not \"asked where did I live\".",
+          "ru": "Прямой порядок: «asked where I lived», не «asked where did I live»."
+        },
+        {
+          "en": "For yes/no, use \"if/whether\": \"asked if I was ready\".",
+          "ru": "Для да/нет — «if/whether»: «asked if I was ready»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u29.d02.reading",
+      "title": {
+        "en": "After the interview",
+        "ru": "После собеседования"
+      },
+      "blocks": [
+        {
+          "id": "u29.d02.reading.b1",
+          "en": "My friend asked how the interview had gone, so I told her everything. First they asked where I had worked before and why I wanted the position. Then the manager wondered whether I could start in June and asked if I had any questions.",
+          "ru": "Подруга спросила, как прошло собеседование, и я всё ей рассказал. Сначала они спросили, где я работал раньше и почему хочу эту должность. Потом менеджер поинтересовался, могу ли я начать в июне, и спросил, есть ли у меня вопросы.",
+          "audio": {
+            "src": "media/audio/u29.d02.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u29.d02.reading.b2",
+          "en": "I asked her whether she had heard anything, but she said she hadn’t. She was curious about the salary, so she asked how much they had offered. Honestly, I couldn’t remember if they had even mentioned it.",
+          "ru": "Я спросил её, слышала ли она что-нибудь, но она сказала, что нет. Ей было любопытно про зарплату, и она спросила, сколько предложили. Честно, я не мог вспомнить, упоминали ли они вообще об этом.",
+          "audio": {
+            "src": "media/audio/u29.d02.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "salary",
+          "ru": "зарплата",
+          "ipa": "/ˈsæləri/"
+        },
+        {
+          "word": "offer",
+          "ru": "предлагать",
+          "ipa": "/ˈɒfər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u29.d02.listening",
+      "title": {
+        "en": "What did they ask?",
+        "ru": "Что спросили?"
+      },
+      "audio": {
+        "src": "media/audio/u29.d02.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "How was the interview? What did they ask?",
+          "ru": "Как собеседование? Что спрашивали?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "They asked where I had worked and why I’d left.",
+          "ru": "Спросили, где я работал и почему ушёл."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "Did they ask about money?",
+          "ru": "Про деньги спрашивали?"
+        },
+        {
+          "start": 13,
+          "end": 17,
+          "en": "They asked whether my expectations were realistic.",
+          "ru": "Спросили, реалистичны ли мои ожидания."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u29.d02.ex.l.01",
+          "instruction": {
+            "en": "What did they ask about money?",
+            "ru": "Что спросили про деньги?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.reported-questions"
+          ],
+          "prompt": "They asked ___ my expectations were realistic.",
+          "options": [
+            "whether",
+            "that",
+            "did"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u29.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u29.d02.ex.c.01",
+          "instruction": {
+            "en": "yes/no → if.",
+            "ru": "да/нет → if."
+          },
+          "tags": [
+            "grammar.reported-questions"
+          ],
+          "prompt": "\"Are you ready?\" → He asked ___ I was ready.",
+          "options": [
+            "if",
+            "that",
+            "what"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u29.d02.ex.g.01",
+          "instruction": {
+            "en": "Statement order.",
+            "ru": "Прямой порядок."
+          },
+          "tags": [
+            "grammar.reported-questions"
+          ],
+          "prompt": "\"Where do you live?\" → She asked where I ___ . (live)",
+          "answers": [
+            "lived"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u29.d02.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.reported-questions"
+          ],
+          "variants": [
+            "He asked where did I work.",
+            "He asked where I worked."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u29.d02.ex.c.02",
+          "instruction": {
+            "en": "wh-word kept.",
+            "ru": "wh-слово сохранено."
+          },
+          "tags": [
+            "grammar.reported-questions"
+          ],
+          "prompt": "\"Why are you late?\" → She asked ___ I was late.",
+          "options": [
+            "why",
+            "if",
+            "that"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u29.d02.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.reported-questions"
+          ],
+          "variants": [
+            "She asked me was I busy.",
+            "She asked me if I was busy."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u29.d02.ex.g.02",
+          "instruction": {
+            "en": "no do/did.",
+            "ru": "без do/did."
+          },
+          "tags": [
+            "grammar.reported-questions"
+          ],
+          "prompt": "\"What do you want?\" → He asked what I ___ . (want)",
+          "answers": [
+            "wanted"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u29.d02.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.reported-questions"
+          ],
+          "tokens": [
+            "She",
+            "asked",
+            "where",
+            "I",
+            "was",
+            "going"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u29.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "wonder",
+              "right": "интересоваться"
+            },
+            {
+              "left": "clarify",
+              "right": "уточнять"
+            },
+            {
+              "left": "candidate",
+              "right": "кандидат"
+            },
+            {
+              "left": "position",
+              "right": "должность"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u29.d02.ex.c.03",
+          "instruction": {
+            "en": "whether for choice.",
+            "ru": "whether для выбора."
+          },
+          "tags": [
+            "grammar.reported-questions"
+          ],
+          "prompt": "I asked ___ to go or stay.",
+          "options": [
+            "whether",
+            "if that",
+            "that"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u29.d02.ex.g.03",
+          "instruction": {
+            "en": "Backshift.",
+            "ru": "Сдвиг."
+          },
+          "tags": [
+            "grammar.reported-questions"
+          ],
+          "prompt": "\"Can you swim?\" → He asked if I ___ swim. (can)",
+          "answers": [
+            "could"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u29.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.reported-questions",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она спросила, где я живу.",
+          "answers": [
+            "She asked where I lived.",
+            "She asked me where I lived."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she asked where do i live",
+                "she asked where did i live",
+                "she asked where i live"
+              ],
+              "explanation": {
+                "en": "statement order + backshift: She asked where I lived.",
+                "ru": "прямой порядок + сдвиг: She asked where I lived."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u29.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.reported-questions",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он спросил, готов ли я.",
+          "answers": [
+            "He asked if I was ready.",
+            "He asked whether I was ready."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he asked am i ready",
+                "he asked if am i ready",
+                "he asked that i was ready"
+              ],
+              "explanation": {
+                "en": "if/whether + statement order: He asked if I was ready.",
+                "ru": "if/whether + прямой порядок: He asked if I was ready."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
