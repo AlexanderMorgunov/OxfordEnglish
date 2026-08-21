@@ -1,0 +1,605 @@
+{
+  "id": "u31.d02",
+  "title": {
+    "en": "As long as you’re careful",
+    "ru": "Пока ты осторожен"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.unless-provided",
+    "vocab.money",
+    "functions.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u31.d02.vocab",
+      "title": {
+        "en": "Terms & conditions",
+        "ru": "Условия и оговорки"
+      },
+      "words": [
+        {
+          "word": "condition",
+          "ru": "условие",
+          "ipa": "/kənˈdɪʃn/",
+          "example": "There is one condition.",
+          "exampleRu": "Есть одно условие.",
+          "audio": {
+            "src": "media/audio/u31.d02.vocab.condition.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "agreement",
+          "ru": "соглашение",
+          "ipa": "/əˈɡriːmənt/",
+          "example": "We signed the agreement.",
+          "exampleRu": "Мы подписали соглашение.",
+          "audio": {
+            "src": "media/audio/u31.d02.vocab.agreement.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "deposit",
+          "ru": "залог, депозит",
+          "ipa": "/dɪˈpɒzɪt/",
+          "example": "Pay a small deposit.",
+          "exampleRu": "Внесите небольшой залог.",
+          "audio": {
+            "src": "media/audio/u31.d02.vocab.deposit.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "refund",
+          "ru": "возврат средств",
+          "ipa": "/ˈriːfʌnd/",
+          "example": "You get a full refund.",
+          "exampleRu": "Вы получите полный возврат.",
+          "audio": {
+            "src": "media/audio/u31.d02.vocab.refund.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "guarantee",
+          "ru": "гарантия",
+          "ipa": "/ˌɡærənˈtiː/",
+          "example": "It has a two-year guarantee.",
+          "exampleRu": "На него двухлетняя гарантия.",
+          "audio": {
+            "src": "media/audio/u31.d02.vocab.guarantee.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cancel",
+          "ru": "отменять",
+          "ipa": "/ˈkænsl/",
+          "example": "You can cancel any time.",
+          "exampleRu": "Отменить можно в любой момент.",
+          "audio": {
+            "src": "media/audio/u31.d02.vocab.cancel.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "valid",
+          "ru": "действительный",
+          "ipa": "/ˈvælɪd/",
+          "example": "The ticket is still valid.",
+          "exampleRu": "Билет ещё действителен.",
+          "audio": {
+            "src": "media/audio/u31.d02.vocab.valid.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "terms",
+          "ru": "условия (договора)",
+          "ipa": "/tɜːmz/",
+          "example": "Read the terms first.",
+          "exampleRu": "Сначала прочтите условия.",
+          "audio": {
+            "src": "media/audio/u31.d02.vocab.terms.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "permission",
+          "ru": "разрешение",
+          "ipa": "/pəˈmɪʃn/",
+          "example": "Ask for permission.",
+          "exampleRu": "Спросите разрешения.",
+          "audio": {
+            "src": "media/audio/u31.d02.vocab.permission.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "strict",
+          "ru": "строгий",
+          "ipa": "/strɪkt/",
+          "example": "The rules are strict.",
+          "exampleRu": "Правила строгие.",
+          "audio": {
+            "src": "media/audio/u31.d02.vocab.strict.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u31.d02.grammar",
+      "title": {
+        "en": "Conditional linkers",
+        "ru": "Союзы условия"
+      },
+      "rule": {
+        "en": "\"unless\" = if not. \"provided/providing (that)\" and \"as long as / so long as\" = only if this condition is met. \"in case\" = as a precaution (do X now because Y might happen) — not the same as \"if\".",
+        "ru": "«unless» = если не. «provided/providing (that)» и «as long as / so long as» = только при этом условии. «in case» = на всякий случай (делаем X заранее, потому что Y может случиться) — это не «if»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "unless",
+            "ru": "unless"
+          },
+          "formula": "unless + positive = if … not",
+          "examples": [
+            {
+              "en": "You’ll fail unless you study.",
+              "ru": "Ты провалишься, если не будешь учиться."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "provided / as long as",
+            "ru": "provided / as long as"
+          },
+          "formula": "provided (that) / as long as + clause",
+          "examples": [
+            {
+              "en": "You can go as long as you’re back by ten.",
+              "ru": "Можешь идти, пока вернёшься к десяти."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "in case",
+            "ru": "in case"
+          },
+          "formula": "do X + in case + present",
+          "examples": [
+            {
+              "en": "Take a coat in case it gets cold.",
+              "ru": "Возьми пальто на случай, если похолодает."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "\"unless\" is already negative — don’t add \"not\": \"unless you study\", not \"unless you don’t study\".",
+          "ru": "«unless» уже отрицателен — не добавляй «not»: «unless you study», не «unless you don’t study»."
+        },
+        {
+          "en": "After these linkers use the present for the future: \"as long as you arrive\", not \"will arrive\".",
+          "ru": "После этих союзов — настоящее для будущего: «as long as you arrive», не «will arrive»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u31.d02.reading",
+      "title": {
+        "en": "The rental agreement",
+        "ru": "Договор аренды"
+      },
+      "blocks": [
+        {
+          "id": "u31.d02.reading.b1",
+          "en": "The landlord was clear about the rules. We could keep the deposit provided that we left the flat clean, and we’d get a full refund unless something was damaged. As long as we paid on time, he said, he wouldn’t bother us.",
+          "ru": "Арендодатель чётко изложил правила. Мы могли вернуть залог при условии, что оставим квартиру чистой, и получили бы полный возврат, если ничего не будет повреждено. Пока мы платим вовремя, сказал он, он не будет нас беспокоить.",
+          "audio": {
+            "src": "media/audio/u31.d02.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u31.d02.reading.b2",
+          "en": "He gave us two keys in case one got lost, and asked us to call him in case of an emergency. The terms were strict but fair. \"You can do almost anything,\" he smiled, \"so long as you don’t knock down a wall.\"",
+          "ru": "Он дал нам два ключа на случай, если один потеряется, и попросил звонить ему в случае чрезвычайной ситуации. Условия были строгими, но честными. «Можете делать почти всё, — улыбнулся он, — лишь бы не сносили стену».",
+          "audio": {
+            "src": "media/audio/u31.d02.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "landlord",
+          "ru": "арендодатель",
+          "ipa": "/ˈlændlɔːd/"
+        },
+        {
+          "word": "emergency",
+          "ru": "чрезвычайная ситуация",
+          "ipa": "/ɪˈmɜːdʒənsi/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u31.d02.listening",
+      "title": {
+        "en": "The gym membership",
+        "ru": "Абонемент в зал"
+      },
+      "audio": {
+        "src": "media/audio/u31.d02.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 5,
+          "en": "Can I cancel the membership if I move?",
+          "ru": "Можно отменить абонемент, если я перееду?"
+        },
+        {
+          "start": 5,
+          "end": 10,
+          "en": "Yes, as long as you give us a month’s notice.",
+          "ru": "Да, пока предупреждаете за месяц."
+        },
+        {
+          "start": 10,
+          "end": 14,
+          "en": "And do I get a refund?",
+          "ru": "И я получу возврат?"
+        },
+        {
+          "start": 14,
+          "end": 19,
+          "en": "You won’t get one unless you cancel before the renewal date.",
+          "ru": "Не получите, если не отмените до даты продления."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u31.d02.ex.l.01",
+          "instruction": {
+            "en": "unless = if not.",
+            "ru": "unless = если не."
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.unless-provided"
+          ],
+          "prompt": "No refund ___ you cancel before renewal.",
+          "options": [
+            "unless",
+            "as long as",
+            "in case"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u31.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u31.d02.ex.c.01",
+          "instruction": {
+            "en": "unless = if not.",
+            "ru": "unless = если не."
+          },
+          "tags": [
+            "grammar.unless-provided"
+          ],
+          "prompt": "You’ll be late ___ you hurry.",
+          "options": [
+            "unless",
+            "provided",
+            "in case"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u31.d02.ex.c.02",
+          "instruction": {
+            "en": "precaution.",
+            "ru": "предосторожность."
+          },
+          "tags": [
+            "grammar.unless-provided"
+          ],
+          "prompt": "Take an umbrella ___ it rains.",
+          "options": [
+            "in case",
+            "unless",
+            "as long as"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u31.d02.ex.c.03",
+          "instruction": {
+            "en": "only-if condition.",
+            "ru": "условие «только если»."
+          },
+          "tags": [
+            "grammar.unless-provided"
+          ],
+          "prompt": "You can borrow it ___ you return it tomorrow.",
+          "options": [
+            "as long as",
+            "unless",
+            "in case"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u31.d02.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.unless-provided"
+          ],
+          "variants": [
+            "Unless you don’t study, you’ll fail.",
+            "Unless you study, you’ll fail."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u31.d02.ex.g.01",
+          "instruction": {
+            "en": "Present, not will.",
+            "ru": "Настоящее, не will."
+          },
+          "tags": [
+            "grammar.unless-provided"
+          ],
+          "prompt": "You can stay as long as you ___ quiet. (be)",
+          "answers": [
+            "are"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u31.d02.ex.c.04",
+          "instruction": {
+            "en": "provided (that).",
+            "ru": "provided (that)."
+          },
+          "tags": [
+            "grammar.unless-provided"
+          ],
+          "prompt": "We’ll refund you ___ you keep the receipt.",
+          "options": [
+            "provided",
+            "unless",
+            "in case"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u31.d02.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.unless-provided"
+          ],
+          "tokens": [
+            "Take",
+            "a",
+            "map",
+            "in",
+            "case",
+            "you",
+            "get",
+            "lost"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u31.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.money"
+          ],
+          "pairs": [
+            {
+              "left": "deposit",
+              "right": "залог"
+            },
+            {
+              "left": "refund",
+              "right": "возврат средств"
+            },
+            {
+              "left": "guarantee",
+              "right": "гарантия"
+            },
+            {
+              "left": "valid",
+              "right": "действительный"
+            }
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u31.d02.ex.s.02",
+          "instruction": {
+            "en": "if or in case?",
+            "ru": "if или in case?"
+          },
+          "tags": [
+            "grammar.unless-provided"
+          ],
+          "variants": [
+            "I’ll call you in case I will be late.",
+            "I’ll call you in case I’m late."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u31.d02.ex.g.02",
+          "instruction": {
+            "en": "unless.",
+            "ru": "unless."
+          },
+          "tags": [
+            "grammar.unless-provided"
+          ],
+          "prompt": "I won’t sign ___ I read the terms first.",
+          "answers": [
+            "unless"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u31.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.unless-provided",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты провалишься, если не будешь учиться.",
+          "answers": [
+            "You’ll fail unless you study.",
+            "You will fail unless you study."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you’ll fail unless you don’t study",
+                "you’ll fail unless you will study",
+                "you’ll fail if you study"
+              ],
+              "explanation": {
+                "en": "unless = if not (already negative): unless you study.",
+                "ru": "unless = если не (уже отрицание): unless you study."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u31.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.unless-provided",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Возьми пальто на случай, если похолодает.",
+          "answers": [
+            "Take a coat in case it gets cold."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "take a coat if it gets cold",
+                "take a coat in case it will get cold",
+                "take a coat unless it gets cold"
+              ],
+              "explanation": {
+                "en": "precaution → in case + present: in case it gets cold.",
+                "ru": "предосторожность → in case + настоящее: in case it gets cold."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

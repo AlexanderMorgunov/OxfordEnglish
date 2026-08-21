@@ -1,0 +1,606 @@
+{
+  "id": "u31.d01",
+  "title": {
+    "en": "If I had studied medicine",
+    "ru": "Если бы я выучился на врача"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.mixed-conditional",
+    "functions.hypothetical",
+    "vocab.life"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u31.d01.vocab",
+      "title": {
+        "en": "Paths & choices",
+        "ru": "Пути и выбор"
+      },
+      "words": [
+        {
+          "word": "career",
+          "ru": "карьера",
+          "ipa": "/kəˈrɪər/",
+          "example": "She changed career at forty.",
+          "exampleRu": "Она сменила карьеру в сорок.",
+          "audio": {
+            "src": "media/audio/u31.d01.vocab.career.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "degree",
+          "ru": "диплом, степень",
+          "ipa": "/dɪˈɡriː/",
+          "example": "He has a law degree.",
+          "exampleRu": "У него юридический диплом.",
+          "audio": {
+            "src": "media/audio/u31.d01.vocab.degree.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "abroad",
+          "ru": "за границей",
+          "ipa": "/əˈbrɔːd/",
+          "example": "They moved abroad.",
+          "exampleRu": "Они переехали за границу.",
+          "audio": {
+            "src": "media/audio/u31.d01.vocab.abroad.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "settle",
+          "ru": "осесть",
+          "ipa": "/ˈsetl/",
+          "example": "We settled in the north.",
+          "exampleRu": "Мы осели на севере.",
+          "audio": {
+            "src": "media/audio/u31.d01.vocab.settle.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "opportunity",
+          "ru": "возможность",
+          "ipa": "/ˌɒpəˈtjuːnəti/",
+          "example": "It was a rare opportunity.",
+          "exampleRu": "Это была редкая возможность.",
+          "audio": {
+            "src": "media/audio/u31.d01.vocab.opportunity.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "decision",
+          "ru": "решение",
+          "ipa": "/dɪˈsɪʒn/",
+          "example": "It was a hard decision.",
+          "exampleRu": "Это было трудное решение.",
+          "audio": {
+            "src": "media/audio/u31.d01.vocab.decision.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "otherwise",
+          "ru": "иначе",
+          "ipa": "/ˈʌðəwaɪz/",
+          "example": "Hurry, otherwise we’re late.",
+          "exampleRu": "Поторопись, иначе опоздаем.",
+          "audio": {
+            "src": "media/audio/u31.d01.vocab.otherwise.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pursue",
+          "ru": "продолжать, гнаться",
+          "ipa": "/pəˈsjuː/",
+          "example": "She pursued a dream.",
+          "exampleRu": "Она гналась за мечтой.",
+          "audio": {
+            "src": "media/audio/u31.d01.vocab.pursue.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "regret",
+          "ru": "сожалеть",
+          "ipa": "/rɪˈɡret/",
+          "example": "I regret nothing.",
+          "exampleRu": "Я ни о чём не жалею.",
+          "audio": {
+            "src": "media/audio/u31.d01.vocab.regret.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "turn down",
+          "ru": "отклонять",
+          "ipa": "/ˌtɜːn ˈdaʊn/",
+          "example": "He turned down the offer.",
+          "exampleRu": "Он отклонил предложение.",
+          "audio": {
+            "src": "media/audio/u31.d01.vocab.turndown.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u31.d01.grammar",
+      "title": {
+        "en": "Mixed conditionals",
+        "ru": "Смешанные условные"
+      },
+      "rule": {
+        "en": "Mix the halves when the times differ. Past condition → present result: If + past perfect, would + base (\"If I had saved, I would be rich now\"). Present condition → past result: If + past simple, would have + V3 (\"If I were braver, I would have asked\").",
+        "ru": "Смешивай части, когда времена разные. Прошлое условие → настоящий результат: If + past perfect, would + база («If I had saved, I would be rich now»). Настоящее условие → прошлый результат: If + past simple, would have + V3 («If I were braver, I would have asked»)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "past → present",
+            "ru": "прошлое → настоящее"
+          },
+          "formula": "If + had + V3, would + base",
+          "examples": [
+            {
+              "en": "If I had studied medicine, I’d be a doctor now.",
+              "ru": "Если бы я выучился на врача, сейчас был бы врачом."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "present → past",
+            "ru": "настоящее → прошлое"
+          },
+          "formula": "If + past simple, would have + V3",
+          "examples": [
+            {
+              "en": "If I weren’t so shy, I would have spoken up.",
+              "ru": "Не будь я таким робким, я бы высказался."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "result now",
+            "ru": "результат сейчас"
+          },
+          "formula": "would / wouldn’t + base + now",
+          "examples": [
+            {
+              "en": "If we had left earlier, we wouldn’t be stuck now.",
+              "ru": "Если бы мы выехали раньше, сейчас не стояли бы в пробке."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Match the result to its time: present result → \"would + base\"; past result → \"would have + V3\".",
+          "ru": "Согласуй результат со временем: настоящий → «would + база»; прошлый → «would have + V3»."
+        },
+        {
+          "en": "Use \"were\" for all persons in the if-clause: \"If I were…\", not \"If I was…\".",
+          "ru": "В if-части — «were» для всех лиц: «If I were…», не «If I was…»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u31.d01.reading",
+      "title": {
+        "en": "The road not taken",
+        "ru": "Непройденный путь"
+      },
+      "blocks": [
+        {
+          "id": "u31.d01.reading.b1",
+          "en": "Sometimes I wonder about the offer I turned down. If I had accepted that job in Tokyo, I’d probably be fluent in Japanese by now. If I were the kind of person who takes risks, I would have said yes without a second thought.",
+          "ru": "Иногда я думаю о предложении, которое отклонил. Если бы я согласился на ту работу в Токио, я бы уже свободно говорил по-японски. Будь я из тех, кто рискует, я бы сказал «да» без раздумий.",
+          "audio": {
+            "src": "media/audio/u31.d01.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u31.d01.reading.b2",
+          "en": "But I’m not sure I regret it. If I had moved abroad, I wouldn’t have met Anna, and we wouldn’t have the life we have now. If our decisions were always logical, they wouldn’t be human. So here I am — not a Tokyo executive, just happy.",
+          "ru": "Но не уверен, что жалею. Если бы я уехал за границу, я бы не встретил Анну, и у нас не было бы той жизни, что есть сейчас. Если бы наши решения всегда были логичными, они не были бы человеческими. Так что вот он я — не токийский управленец, просто счастливый.",
+          "audio": {
+            "src": "media/audio/u31.d01.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "fluent",
+          "ru": "свободно (говорящий)",
+          "ipa": "/ˈfluːənt/"
+        },
+        {
+          "word": "executive",
+          "ru": "управленец",
+          "ipa": "/ɪɡˈzekjətɪv/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u31.d01.listening",
+      "title": {
+        "en": "Second-guessing",
+        "ru": "Задним числом"
+      },
+      "audio": {
+        "src": "media/audio/u31.d01.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 5,
+          "en": "You still think about selling the flat, don’t you?",
+          "ru": "Ты всё ещё думаешь о продаже квартиры, да?"
+        },
+        {
+          "start": 5,
+          "end": 10,
+          "en": "If I had sold it in 2015, I’d have a lot more money now.",
+          "ru": "Если бы я продал её в 2015-м, сейчас у меня было бы гораздо больше денег."
+        },
+        {
+          "start": 10,
+          "end": 14,
+          "en": "Maybe. But you love that place.",
+          "ru": "Может быть. Но ты обожаешь то место."
+        },
+        {
+          "start": 14,
+          "end": 19,
+          "en": "True. If I cared only about money, I would have sold it long ago.",
+          "ru": "Верно. Если бы меня заботили только деньги, я бы давно её продал."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u31.d01.ex.l.01",
+          "instruction": {
+            "en": "Past → present result.",
+            "ru": "Прошлое → настоящий результат."
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.mixed-conditional"
+          ],
+          "prompt": "If I had sold it, I ___ more money now.",
+          "options": [
+            "would have",
+            "would have had",
+            "will have"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u31.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u31.d01.ex.g.01",
+          "instruction": {
+            "en": "Past → present.",
+            "ru": "Прошлое → настоящее."
+          },
+          "tags": [
+            "grammar.mixed-conditional"
+          ],
+          "prompt": "If I had studied medicine, I ___ a doctor now. (would be)",
+          "answers": [
+            "would be",
+            "'d be"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u31.d01.ex.g.02",
+          "instruction": {
+            "en": "Present → past.",
+            "ru": "Настоящее → прошлое."
+          },
+          "tags": [
+            "grammar.mixed-conditional"
+          ],
+          "prompt": "If I weren’t so shy, I ___ asked her. (would have)",
+          "answers": [
+            "would have",
+            "'d have"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u31.d01.ex.c.01",
+          "instruction": {
+            "en": "Choose the result.",
+            "ru": "Выбери результат."
+          },
+          "tags": [
+            "grammar.mixed-conditional"
+          ],
+          "prompt": "If we had left earlier, we ___ stuck now.",
+          "options": [
+            "wouldn’t be",
+            "wouldn’t have been",
+            "won’t be"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u31.d01.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.mixed-conditional"
+          ],
+          "variants": [
+            "If I had saved, I would have money now.",
+            "If I saved, I would have money now."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u31.d01.ex.c.02",
+          "instruction": {
+            "en": "were for all persons.",
+            "ru": "were для всех лиц."
+          },
+          "tags": [
+            "grammar.mixed-conditional"
+          ],
+          "prompt": "If he ___ more careful, he wouldn’t have crashed.",
+          "options": [
+            "were",
+            "was",
+            "is"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u31.d01.ex.g.03",
+          "instruction": {
+            "en": "Present → past.",
+            "ru": "Настоящее → прошлое."
+          },
+          "tags": [
+            "grammar.mixed-conditional"
+          ],
+          "prompt": "If she spoke French, she ___ got the job. (would have)",
+          "answers": [
+            "would have",
+            "'d have"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u31.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.mixed-conditional"
+          ],
+          "tokens": [
+            "If",
+            "I",
+            "had",
+            "slept",
+            "I",
+            "wouldn’t",
+            "be",
+            "tired"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u31.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.life"
+          ],
+          "pairs": [
+            {
+              "left": "career",
+              "right": "карьера"
+            },
+            {
+              "left": "abroad",
+              "right": "за границей"
+            },
+            {
+              "left": "decision",
+              "right": "решение"
+            },
+            {
+              "left": "regret",
+              "right": "сожалеть"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u31.d01.ex.c.03",
+          "instruction": {
+            "en": "Which time is the result?",
+            "ru": "Какое время у результата?"
+          },
+          "tags": [
+            "grammar.mixed-conditional"
+          ],
+          "prompt": "If I had taken that flight, I ___ here today. (present result)",
+          "options": [
+            "wouldn’t be",
+            "wouldn’t have been",
+            "am not"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u31.d01.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.mixed-conditional"
+          ],
+          "variants": [
+            "If I were taller, I would have played basketball.",
+            "If I were taller, I would played basketball."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u31.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.mixed-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Если бы я выучился на врача, сейчас был бы врачом.",
+          "answers": [
+            "If I had studied medicine, I would be a doctor now.",
+            "If I had studied medicine, I’d be a doctor now."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "if i studied medicine i would be a doctor now",
+                "if i had studied medicine i would have been a doctor now",
+                "if i had studied medicine i will be a doctor now"
+              ],
+              "explanation": {
+                "en": "past condition → present result: If I had studied…, I would be… now.",
+                "ru": "прошлое условие → настоящий результат: If I had studied…, I would be… now."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u31.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.mixed-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Не будь я таким робким, я бы её пригласил.",
+          "answers": [
+            "If I weren’t so shy, I would have asked her out.",
+            "If I were not so shy, I would have asked her out."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "if i wasn’t so shy i would ask her out",
+                "if i weren’t so shy i would ask her out",
+                "if i weren’t so shy i will have asked her out"
+              ],
+              "explanation": {
+                "en": "present condition → past result: If I weren’t…, I would have asked.",
+                "ru": "настоящее условие → прошлый результат: If I weren’t…, I would have asked."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

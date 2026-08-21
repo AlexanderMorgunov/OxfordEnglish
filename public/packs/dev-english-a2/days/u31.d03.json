@@ -1,0 +1,597 @@
+{
+  "id": "u31.d03",
+  "title": {
+    "en": "I wish I could",
+    "ru": "Жаль, что не могу"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.wish-past",
+    "grammar.wish-would",
+    "vocab.feelings"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u31.d03.vocab",
+      "title": {
+        "en": "Regrets & longing",
+        "ru": "Сожаления и тоска"
+      },
+      "words": [
+        {
+          "word": "envy",
+          "ru": "завидовать",
+          "ipa": "/ˈenvi/",
+          "example": "I envy your calm.",
+          "exampleRu": "Я завидую твоему спокойствию.",
+          "audio": {
+            "src": "media/audio/u31.d03.vocab.envy.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "homesick",
+          "ru": "тоскующий по дому",
+          "ipa": "/ˈhəʊmsɪk/",
+          "example": "She felt homesick.",
+          "exampleRu": "Она тосковала по дому.",
+          "audio": {
+            "src": "media/audio/u31.d03.vocab.homesick.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lonely",
+          "ru": "одинокий",
+          "ipa": "/ˈləʊnli/",
+          "example": "He gets lonely at night.",
+          "exampleRu": "Ему одиноко по ночам.",
+          "audio": {
+            "src": "media/audio/u31.d03.vocab.lonely.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "patient",
+          "ru": "терпеливый",
+          "ipa": "/ˈpeɪʃnt/",
+          "example": "Be patient with them.",
+          "exampleRu": "Будь терпелив с ними.",
+          "audio": {
+            "src": "media/audio/u31.d03.vocab.patient.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "confident",
+          "ru": "уверенный",
+          "ipa": "/ˈkɒnfɪdənt/",
+          "example": "I wish I were confident.",
+          "exampleRu": "Жаль, что я не уверен в себе.",
+          "audio": {
+            "src": "media/audio/u31.d03.vocab.confident.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fluent",
+          "ru": "свободно говорящий",
+          "ipa": "/ˈfluːənt/",
+          "example": "She’s fluent in three languages.",
+          "exampleRu": "Она свободно говорит на трёх языках.",
+          "audio": {
+            "src": "media/audio/u31.d03.vocab.fluent.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "grumble",
+          "ru": "ворчать",
+          "ipa": "/ˈɡrʌmbl/",
+          "example": "Stop grumbling about it.",
+          "exampleRu": "Хватит на это ворчать.",
+          "audio": {
+            "src": "media/audio/u31.d03.vocab.grumble.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "appreciate",
+          "ru": "ценить",
+          "ipa": "/əˈpriːʃieɪt/",
+          "example": "I appreciate your help.",
+          "exampleRu": "Я ценю твою помощь.",
+          "audio": {
+            "src": "media/audio/u31.d03.vocab.appreciate.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "nostalgic",
+          "ru": "ностальгирующий",
+          "ipa": "/nɒˈstældʒɪk/",
+          "example": "Old songs make me nostalgic.",
+          "exampleRu": "От старых песен я ностальгирую.",
+          "audio": {
+            "src": "media/audio/u31.d03.vocab.nostalgic.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "content",
+          "ru": "довольный",
+          "ipa": "/kənˈtent/",
+          "example": "She looked content.",
+          "exampleRu": "Она выглядела довольной.",
+          "audio": {
+            "src": "media/audio/u31.d03.vocab.content.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u31.d03.grammar",
+      "title": {
+        "en": "wish / if only",
+        "ru": "wish / if only"
+      },
+      "rule": {
+        "en": "wish + past simple = wanting a different PRESENT (\"I wish I had a car\"). wish + past perfect = regret about the PAST (\"I wish I had gone\"). wish + would = wanting someone/something else to change or stop (\"I wish you would listen\"). \"if only\" is a stronger \"wish\".",
+        "ru": "wish + past simple = хочу другое НАСТОЯЩЕЕ («I wish I had a car»). wish + past perfect = сожаление о ПРОШЛОМ («I wish I had gone»). wish + would = хочу, чтобы кто-то/что-то изменилось или прекратилось («I wish you would listen»). «if only» — усиленное «wish»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "present wish",
+            "ru": "о настоящем"
+          },
+          "formula": "wish + past simple",
+          "examples": [
+            {
+              "en": "I wish I spoke French.",
+              "ru": "Жаль, что я не говорю по-французски."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "past regret",
+            "ru": "о прошлом"
+          },
+          "formula": "wish + past perfect",
+          "examples": [
+            {
+              "en": "I wish I had saved more.",
+              "ru": "Жаль, что я не откладывал больше."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "wish + would",
+            "ru": "wish + would"
+          },
+          "formula": "wish + subject + would + base",
+          "examples": [
+            {
+              "en": "I wish it would stop raining.",
+              "ru": "Хоть бы дождь перестал."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use \"were\" after wish for all persons: \"I wish I were taller\".",
+          "ru": "После wish — «were» для всех лиц: «I wish I were taller»."
+        },
+        {
+          "en": "Don’t use \"wish + would\" about yourself; use \"could\": \"I wish I could go\", not \"I wish I would go\".",
+          "ru": "Не говори «wish + would» о себе; используй «could»: «I wish I could go», не «I wish I would go»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u31.d03.reading",
+      "title": {
+        "en": "Homesick",
+        "ru": "Тоска по дому"
+      },
+      "blocks": [
+        {
+          "id": "u31.d03.reading.b1",
+          "en": "It’s my first winter abroad and, some evenings, I wish I were home. I wish I spoke the language better; I wish I had studied it harder before I came. I envy the people who chat so easily in the café.",
+          "ru": "Это моя первая зима за границей, и порой вечерами я жалею, что не дома. Жаль, что я плохо говорю на языке; жаль, что не учил его усерднее до приезда. Я завидую людям, которые так легко болтают в кафе.",
+          "audio": {
+            "src": "media/audio/u31.d03.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u31.d03.reading.b2",
+          "en": "Still, if only I could see the good in it. My flatmate keeps saying he wishes he had my courage. I wish he would stop grumbling about the weather, though. Maybe I don’t need a different life — I just wish I appreciated this one a little more.",
+          "ru": "И всё же — хоть бы я увидел в этом хорошее. Мой сосед по квартире всё повторяет, что хотел бы иметь мою смелость. Хотя жаль, что он не перестанет ворчать на погоду. Может, мне и не нужна другая жизнь — просто жаль, что я не ценю эту чуть больше.",
+          "audio": {
+            "src": "media/audio/u31.d03.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "courage",
+          "ru": "смелость",
+          "ipa": "/ˈkʌrɪdʒ/"
+        },
+        {
+          "word": "flatmate",
+          "ru": "сосед по квартире",
+          "ipa": "/ˈflætmeɪt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u31.d03.listening",
+      "title": {
+        "en": "If only",
+        "ru": "Если бы только"
+      },
+      "audio": {
+        "src": "media/audio/u31.d03.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "You look tired. Everything okay?",
+          "ru": "Ты усталый. Всё нормально?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "I wish I hadn’t taken this extra shift. I’m exhausted.",
+          "ru": "Жаль, что я взял эту лишнюю смену. Я вымотан."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "Then say no next time.",
+          "ru": "Тогда в следующий раз откажись."
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "I know. I just wish they would hire more people.",
+          "ru": "Знаю. Просто хочется, чтобы они наняли больше людей."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u31.d03.ex.l.01",
+          "instruction": {
+            "en": "Past regret.",
+            "ru": "Сожаление о прошлом."
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.wish-past"
+          ],
+          "prompt": "I wish I ___ taken this shift.",
+          "options": [
+            "hadn’t",
+            "didn’t",
+            "wouldn’t"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u31.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u31.d03.ex.g.01",
+          "instruction": {
+            "en": "Present wish.",
+            "ru": "О настоящем."
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "prompt": "I wish I ___ a bigger flat. (have)",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u31.d03.ex.g.02",
+          "instruction": {
+            "en": "Past regret.",
+            "ru": "О прошлом."
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "prompt": "I wish I ___ harder for the exam. (study — past perfect)",
+          "answers": [
+            "had studied"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u31.d03.ex.c.01",
+          "instruction": {
+            "en": "were for all persons.",
+            "ru": "were для всех лиц."
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "prompt": "I wish I ___ taller.",
+          "options": [
+            "were",
+            "was",
+            "am"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u31.d03.ex.c.02",
+          "instruction": {
+            "en": "about others → would.",
+            "ru": "о других → would."
+          },
+          "tags": [
+            "grammar.wish-would"
+          ],
+          "prompt": "I wish you ___ stop interrupting.",
+          "options": [
+            "would",
+            "will",
+            "had"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u31.d03.ex.s.01",
+          "instruction": {
+            "en": "About yourself.",
+            "ru": "О себе самом."
+          },
+          "tags": [
+            "grammar.wish-would"
+          ],
+          "variants": [
+            "I wish I would travel more.",
+            "I wish I could travel more."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u31.d03.ex.c.03",
+          "instruction": {
+            "en": "if only + past perfect.",
+            "ru": "if only + past perfect."
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "prompt": "If only I ___ listened to you!",
+          "options": [
+            "had",
+            "have",
+            "would"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u31.d03.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.wish-would"
+          ],
+          "tokens": [
+            "I",
+            "wish",
+            "it",
+            "would",
+            "stop",
+            "raining"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u31.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.feelings"
+          ],
+          "pairs": [
+            {
+              "left": "envy",
+              "right": "завидовать"
+            },
+            {
+              "left": "homesick",
+              "right": "тоскующий по дому"
+            },
+            {
+              "left": "lonely",
+              "right": "одинокий"
+            },
+            {
+              "left": "content",
+              "right": "довольный"
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u31.d03.ex.g.03",
+          "instruction": {
+            "en": "wish + would (annoyance).",
+            "ru": "wish + would (раздражение)."
+          },
+          "tags": [
+            "grammar.wish-would"
+          ],
+          "prompt": "I wish he ___ stop grumbling. (would)",
+          "answers": [
+            "would"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u31.d03.ex.s.02",
+          "instruction": {
+            "en": "Present or past?",
+            "ru": "Настоящее или прошлое?"
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "variants": [
+            "I wish I have gone to the party.",
+            "I wish I had gone to the party."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u31.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.wish-past",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Жаль, что я не говорю по-французски.",
+          "answers": [
+            "I wish I spoke French."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i wish i speak french",
+                "i wish i don’t speak french",
+                "i wish i would speak french"
+              ],
+              "explanation": {
+                "en": "present wish → past simple: I wish I spoke French.",
+                "ru": "о настоящем → past simple: I wish I spoke French."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u31.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.wish-would",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Хоть бы дождь перестал.",
+          "answers": [
+            "I wish it would stop raining."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i wish it stopped raining",
+                "i wish it will stop raining",
+                "i wish it stops raining"
+              ],
+              "explanation": {
+                "en": "desire for a change → wish + would: I wish it would stop raining.",
+                "ru": "желание перемены → wish + would: I wish it would stop raining."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
