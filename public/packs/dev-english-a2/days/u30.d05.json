@@ -1,0 +1,606 @@
+{
+  "id": "u30.d05",
+  "title": {
+    "en": "Which reminds me — review",
+    "ru": "Кстати говоря — обзор"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.relative-clauses",
+    "grammar.non-defining-clauses",
+    "grammar.reduced-relatives"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u30.d05.vocab",
+      "title": {
+        "en": "Describing — key words",
+        "ru": "Описание — ключевые слова"
+      },
+      "words": [
+        {
+          "word": "whose",
+          "ru": "чей",
+          "ipa": "/huːz/",
+          "example": "The man whose bag it is left.",
+          "exampleRu": "Мужчина, чья это сумка, ушёл.",
+          "audio": {
+            "src": "media/audio/u30.d05.vocab.whose.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "nearby",
+          "ru": "поблизости",
+          "ipa": "/ˌnɪəˈbaɪ/",
+          "example": "A shop nearby was open.",
+          "exampleRu": "Магазин поблизости был открыт.",
+          "audio": {
+            "src": "media/audio/u30.d05.vocab.nearby.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "former",
+          "ru": "бывший",
+          "ipa": "/ˈfɔːmər/",
+          "example": "My former boss called.",
+          "exampleRu": "Мой бывший начальник звонил.",
+          "audio": {
+            "src": "media/audio/u30.d05.vocab.former.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "entire",
+          "ru": "весь, целый",
+          "ipa": "/ɪnˈtaɪər/",
+          "example": "The entire team agreed.",
+          "exampleRu": "Вся команда согласилась.",
+          "audio": {
+            "src": "media/audio/u30.d05.vocab.entire.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "constant",
+          "ru": "постоянный",
+          "ipa": "/ˈkɒnstənt/",
+          "example": "Constant noise is tiring.",
+          "exampleRu": "Постоянный шум утомляет.",
+          "audio": {
+            "src": "media/audio/u30.d05.vocab.constant.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "distant",
+          "ru": "дальний",
+          "ipa": "/ˈdɪstənt/",
+          "example": "A distant cousin visited.",
+          "exampleRu": "Дальний родственник заезжал.",
+          "audio": {
+            "src": "media/audio/u30.d05.vocab.distant.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "unusual",
+          "ru": "необычный",
+          "ipa": "/ʌnˈjuːʒuəl/",
+          "example": "That’s an unusual name.",
+          "exampleRu": "Это необычное имя.",
+          "audio": {
+            "src": "media/audio/u30.d05.vocab.unusual.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "recent",
+          "ru": "недавний",
+          "ipa": "/ˈriːsnt/",
+          "example": "A recent study confirmed it.",
+          "exampleRu": "Недавнее исследование подтвердило это.",
+          "audio": {
+            "src": "media/audio/u30.d05.vocab.recent.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "various",
+          "ru": "различные",
+          "ipa": "/ˈveəriəs/",
+          "example": "Various people applied.",
+          "exampleRu": "Подали различные люди.",
+          "audio": {
+            "src": "media/audio/u30.d05.vocab.various.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "grateful",
+          "ru": "благодарный",
+          "ipa": "/ˈɡreɪtfl/",
+          "example": "I’m grateful for your help.",
+          "exampleRu": "Я благодарен за помощь.",
+          "audio": {
+            "src": "media/audio/u30.d05.vocab.grateful.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u30.d05.grammar",
+      "title": {
+        "en": "Relative clauses — all together",
+        "ru": "Относительные придаточные — всё вместе"
+      },
+      "rule": {
+        "en": "Pick the tool: defining (no commas, that/which/who, droppable object) vs non-defining (commas, who/which/whose, never \"that\"). Add a preposition (end or formal to whom/in which), a quantifier (most of which/whom), or reduce it to a participle when the pronoun is the subject.",
+        "ru": "Выбери инструмент: определяющее (без запятых, that/which/who, дополнение опускается) или неопределяющее (запятые, who/which/whose, никогда «that»). Добавь предлог (в конце или формально to whom/in which), количественное (most of which/whom) или сократи до причастия, если местоимение — подлежащее."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "defining / non-defining",
+            "ru": "опред. / неопред."
+          },
+          "formula": "noun (,) who/which/that (,)",
+          "examples": [
+            {
+              "en": "My car, which is old, still runs.",
+              "ru": "Моя машина, которая старая, ещё ездит."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "prep / quantifier",
+            "ru": "предлог / количеств."
+          },
+          "formula": "to whom … / most of which …",
+          "examples": [
+            {
+              "en": "I had ten, most of which broke.",
+              "ru": "У меня было десять, большинство из которых сломались."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "reduced",
+            "ru": "сокращённое"
+          },
+          "formula": "noun + -ing / past participle",
+          "examples": [
+            {
+              "en": "The people waiting outside left.",
+              "ru": "Люди, ждавшие снаружи, ушли."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Non-defining never uses \"that\"; reduced clauses only work with a subject pronoun.",
+          "ru": "Неопределяющее без «that»; сокращать можно только при местоимении-подлежащем."
+        },
+        {
+          "en": "People → who/whom; things → which; possession → whose.",
+          "ru": "Люди → who/whom; вещи → which; принадлежность → whose."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u30.d05.reading",
+      "title": {
+        "en": "The reunion",
+        "ru": "Встреча выпускников"
+      },
+      "blocks": [
+        {
+          "id": "u30.d05.reading.b1",
+          "en": "At the reunion I met people I hadn’t seen in twenty years, some of whom I barely recognised. My old teacher, whose name I’d forgotten, remembered mine instantly — which was both touching and embarrassing. The building we studied in had been turned into flats.",
+          "ru": "На встрече я увидел людей, которых не видел двадцать лет, некоторых из которых едва узнал. Мой старый учитель, чьё имя я забыл, тут же вспомнил моё — что было и трогательно, и неловко. Здание, в котором мы учились, превратили в квартиры.",
+          "audio": {
+            "src": "media/audio/u30.d05.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u30.d05.reading.b2",
+          "en": "A former classmate, now a doctor living abroad, told stories that made the whole table laugh. The friends standing by the window were the ones I’d been closest to. Leaving that night, grateful and a little nostalgic, I promised to keep in touch — a promise I actually intend to keep.",
+          "ru": "Бывший одноклассник, теперь врач, живущий за границей, рассказывал истории, от которых смеялся весь стол. Друзья, стоявшие у окна, были теми, с кем я был ближе всего. Уходя тем вечером, благодарный и слегка ностальгирующий, я пообещал не терять связь — обещание, которое я и правда намерен сдержать.",
+          "audio": {
+            "src": "media/audio/u30.d05.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "reunion",
+          "ru": "встреча выпускников",
+          "ipa": "/riːˈjuːniən/"
+        },
+        {
+          "word": "nostalgic",
+          "ru": "ностальгирующий",
+          "ipa": "/nɒˈstældʒɪk/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u30.d05.listening",
+      "title": {
+        "en": "Which one?",
+        "ru": "Который?"
+      },
+      "audio": {
+        "src": "media/audio/u30.d05.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Which of your cousins is the artist?",
+          "ru": "Кто из твоих двоюродных — художник?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "The one whose paintings you saw, standing near the door.",
+          "ru": "Тот, чьи картины ты видел, — стоит у двери."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "And the man he’s talking to?",
+          "ru": "А мужчина, с которым он говорит?"
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "That’s his agent, who sold everything last year, which shocked us all.",
+          "ru": "Это его агент, который продал всё в прошлом году, — что нас всех поразило."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u30.d05.ex.l.01",
+          "instruction": {
+            "en": "Sentential which.",
+            "ru": "«which» ко всей мысли."
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "He sold everything, ___ shocked us all.",
+          "options": [
+            "which",
+            "what",
+            "that"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u30.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u30.d05.ex.c.01",
+          "instruction": {
+            "en": "Defining.",
+            "ru": "Определяющее."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The woman ___ won the race is my coach.",
+          "options": [
+            "who",
+            "which",
+            "whose"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u30.d05.ex.c.02",
+          "instruction": {
+            "en": "Non-defining: not \"that\".",
+            "ru": "Неопределяющее: не «that»."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "My car, ___ is ten years old, still runs.",
+          "options": [
+            "which",
+            "that",
+            "who"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u30.d05.ex.c.03",
+          "instruction": {
+            "en": "Reduce it.",
+            "ru": "Сократи."
+          },
+          "tags": [
+            "grammar.reduced-relatives"
+          ],
+          "prompt": "The people ___ outside left. (who were waiting)",
+          "options": [
+            "waiting",
+            "waited",
+            "wait"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u30.d05.ex.c.04",
+          "instruction": {
+            "en": "of whom / of which?",
+            "ru": "of whom / of which?"
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "I invited ten guests, none ___ came.",
+          "options": [
+            "of whom",
+            "of which",
+            "of who"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u30.d05.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "variants": [
+            "My uncle, that is a pilot, retired.",
+            "My uncle, who is a pilot, retired."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u30.d05.ex.g.01",
+          "instruction": {
+            "en": "whose.",
+            "ru": "whose."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "prompt": "The student ___ essay won is here.",
+          "answers": [
+            "whose"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u30.d05.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.relative-clauses"
+          ],
+          "tokens": [
+            "The",
+            "house",
+            "we",
+            "lived",
+            "in",
+            "was",
+            "sold"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u30.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.personality"
+          ],
+          "pairs": [
+            {
+              "left": "former",
+              "right": "бывший"
+            },
+            {
+              "left": "distant",
+              "right": "дальний"
+            },
+            {
+              "left": "grateful",
+              "right": "благодарный"
+            },
+            {
+              "left": "various",
+              "right": "различные"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u30.d05.ex.c.05",
+          "instruction": {
+            "en": "Passive participle.",
+            "ru": "Пассивное причастие."
+          },
+          "tags": [
+            "grammar.reduced-relatives"
+          ],
+          "prompt": "The email ___ this morning was urgent. (which was sent)",
+          "options": [
+            "sent",
+            "sending",
+            "send"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u30.d05.ex.s.02",
+          "instruction": {
+            "en": "which or what?",
+            "ru": "which или what?"
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "variants": [
+            "He apologised, what surprised me.",
+            "He apologised, which surprised me."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u30.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.non-defining-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мой учитель, чьё имя я забыл, вспомнил моё.",
+          "answers": [
+            "My teacher, whose name I’d forgotten, remembered mine.",
+            "My teacher, whose name I had forgotten, remembered mine."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "my teacher, who name i forgot, remembered mine",
+                "my teacher whose name i forgot remembered mine",
+                "my teacher, that name i forgot, remembered mine"
+              ],
+              "explanation": {
+                "en": "non-defining possession → whose + commas: My teacher, whose name…",
+                "ru": "неопред. принадлежность → whose + запятые: My teacher, whose name…"
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u30.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate (reduced).",
+            "ru": "Переведи (сокращённо)."
+          },
+          "tags": [
+            "grammar.reduced-relatives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Друзья, стоявшие у окна, ушли.",
+          "answers": [
+            "The friends standing by the window left."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the friends stood by the window left",
+                "the friends who standing by the window left",
+                "the friends stand by the window left"
+              ],
+              "explanation": {
+                "en": "active reduced → -ing: The friends standing by the window… (= who were standing).",
+                "ru": "активное сокращённое → -ing: The friends standing by the window… (= who were standing)."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

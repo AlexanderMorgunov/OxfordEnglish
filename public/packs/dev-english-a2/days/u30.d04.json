@@ -1,0 +1,598 @@
+{
+  "id": "u30.d04",
+  "title": {
+    "en": "The man standing there",
+    "ru": "Мужчина, стоящий там"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.reduced-relatives",
+    "grammar.participle-clauses",
+    "vocab.news"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u30.d04.vocab",
+      "title": {
+        "en": "Reports & incidents",
+        "ru": "Сводки и происшествия"
+      },
+      "words": [
+        {
+          "word": "witness",
+          "ru": "свидетель",
+          "ipa": "/ˈwɪtnəs/",
+          "example": "A witness described the car.",
+          "exampleRu": "Свидетель описал машину.",
+          "audio": {
+            "src": "media/audio/u30.d04.vocab.witness.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "incident",
+          "ru": "происшествие",
+          "ipa": "/ˈɪnsɪdənt/",
+          "example": "The incident was minor.",
+          "exampleRu": "Происшествие было незначительным.",
+          "audio": {
+            "src": "media/audio/u30.d04.vocab.incident.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "injured",
+          "ru": "пострадавший",
+          "ipa": "/ˈɪndʒəd/",
+          "example": "No one was injured.",
+          "exampleRu": "Никто не пострадал.",
+          "audio": {
+            "src": "media/audio/u30.d04.vocab.injured.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "damaged",
+          "ru": "повреждённый",
+          "ipa": "/ˈdæmɪdʒd/",
+          "example": "The damaged roof leaks.",
+          "exampleRu": "Повреждённая крыша протекает.",
+          "audio": {
+            "src": "media/audio/u30.d04.vocab.damaged.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "affected",
+          "ru": "затронутый",
+          "ipa": "/əˈfektɪd/",
+          "example": "Affected users were emailed.",
+          "exampleRu": "Затронутым пользователям написали.",
+          "audio": {
+            "src": "media/audio/u30.d04.vocab.affected.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "involved",
+          "ru": "причастный",
+          "ipa": "/ɪnˈvɒlvd/",
+          "example": "The cars involved were towed.",
+          "exampleRu": "Причастные машины эвакуировали.",
+          "audio": {
+            "src": "media/audio/u30.d04.vocab.involved.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "remaining",
+          "ru": "оставшийся",
+          "ipa": "/rɪˈmeɪnɪŋ/",
+          "example": "The remaining seats sold out.",
+          "exampleRu": "Оставшиеся места распродали.",
+          "audio": {
+            "src": "media/audio/u30.d04.vocab.remaining.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "announce",
+          "ru": "объявлять",
+          "ipa": "/əˈnaʊns/",
+          "example": "They announced the results.",
+          "exampleRu": "Они объявили результаты.",
+          "audio": {
+            "src": "media/audio/u30.d04.vocab.announce.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "passenger",
+          "ru": "пассажир",
+          "ipa": "/ˈpæsɪndʒər/",
+          "example": "Passengers waited calmly.",
+          "exampleRu": "Пассажиры спокойно ждали.",
+          "audio": {
+            "src": "media/audio/u30.d04.vocab.passenger.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "delay",
+          "ru": "задержка",
+          "ipa": "/dɪˈleɪ/",
+          "example": "The delay lasted an hour.",
+          "exampleRu": "Задержка длилась час.",
+          "audio": {
+            "src": "media/audio/u30.d04.vocab.delay.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u30.d04.grammar",
+      "title": {
+        "en": "Reduced relative (participle) clauses",
+        "ru": "Сокращённые (причастные) придаточные"
+      },
+      "rule": {
+        "en": "When the relative pronoun is the SUBJECT you can drop it and the verb \"be\". Active → -ing participle: \"the man who is standing\" → \"the man standing\". Passive → past participle: \"the car that was stolen\" → \"the car stolen\".",
+        "ru": "Когда относительное местоимение — ПОДЛЕЖАЩЕЕ, его и глагол «be» можно убрать. Активное → причастие на -ing: «the man who is standing» → «the man standing». Пассивное → причастие прош. времени: «the car that was stolen» → «the car stolen»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "active → -ing",
+            "ru": "актив → -ing"
+          },
+          "formula": "who/that + is + V-ing → V-ing",
+          "examples": [
+            {
+              "en": "The people living here are kind.",
+              "ru": "Люди, живущие здесь, добрые."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "passive → -ed",
+            "ru": "пассив → -ed"
+          },
+          "formula": "which/that + was + V3 → V3",
+          "examples": [
+            {
+              "en": "The letter written yesterday arrived.",
+              "ru": "Письмо, написанное вчера, пришло."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "shorten a report",
+            "ru": "сжать сводку"
+          },
+          "formula": "noun + participle + rest",
+          "examples": [
+            {
+              "en": "Passengers travelling to Rome should wait.",
+              "ru": "Пассажирам, едущим в Рим, следует подождать."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Active meaning → -ing; passive meaning → past participle: \"the man calling\" (he calls) vs \"the man called\" (they call him).",
+          "ru": "Активный смысл → -ing; пассивный → причастие прош.: «the man calling» (он звонит) vs «the man called» (его зовут)."
+        },
+        {
+          "en": "You can only reduce when the pronoun is the subject: \"the book I read\" can’t become \"the book reading\".",
+          "ru": "Сокращать можно только когда местоимение — подлежащее: «the book I read» нельзя в «the book reading»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u30.d04.reading",
+      "title": {
+        "en": "The evening news",
+        "ru": "Вечерние новости"
+      },
+      "blocks": [
+        {
+          "id": "u30.d04.reading.b1",
+          "en": "Police are looking for a driver seen leaving the scene of an accident. The two cars involved were badly damaged, but the passengers travelling in them escaped unhurt. A witness standing nearby said the driver had run a red light.",
+          "ru": "Полиция разыскивает водителя, замеченного покидающим место аварии. Две причастные машины были сильно повреждены, но ехавшие в них пассажиры не пострадали. Стоявший рядом свидетель сказал, что водитель проехал на красный.",
+          "audio": {
+            "src": "media/audio/u30.d04.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u30.d04.reading.b2",
+          "en": "In other news, families affected by the flooding have been moved to a shelter set up in the local school. Residents living near the river were warned to leave. Anyone needing help can call the number shown on screen.",
+          "ru": "Другие новости: семьи, пострадавшие от наводнения, переселены в приют, устроенный в местной школе. Жителей, живущих у реки, предупредили об эвакуации. Все, кому нужна помощь, могут позвонить по номеру, показанному на экране.",
+          "audio": {
+            "src": "media/audio/u30.d04.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "scene",
+          "ru": "место (происшествия)",
+          "ipa": "/siːn/"
+        },
+        {
+          "word": "shelter",
+          "ru": "приют",
+          "ipa": "/ˈʃeltər/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u30.d04.listening",
+      "title": {
+        "en": "At the station",
+        "ru": "На вокзале"
+      },
+      "audio": {
+        "src": "media/audio/u30.d04.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 5,
+          "en": "Passengers waiting for the Leeds train, please note it is delayed.",
+          "ru": "Пассажиры, ожидающие поезд на Лидс, обратите внимание: он задерживается."
+        },
+        {
+          "start": 5,
+          "end": 9,
+          "en": "Is that the train shown on platform four?",
+          "ru": "Это поезд, указанный на платформе четыре?"
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "No, that one’s cancelled. Ours is the one arriving now.",
+          "ru": "Нет, тот отменён. Наш — тот, что прибывает сейчас."
+        },
+        {
+          "start": 13,
+          "end": 17,
+          "en": "Good. I saw a seat left free near the window.",
+          "ru": "Хорошо. Я видел свободное место у окна."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u30.d04.ex.l.01",
+          "instruction": {
+            "en": "Active participle?",
+            "ru": "Активное причастие?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.reduced-relatives"
+          ],
+          "prompt": "Passengers ___ for the train, please note.",
+          "options": [
+            "waiting",
+            "waited",
+            "wait"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u30.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u30.d04.ex.c.01",
+          "instruction": {
+            "en": "Active → -ing.",
+            "ru": "Актив → -ing."
+          },
+          "tags": [
+            "grammar.reduced-relatives"
+          ],
+          "prompt": "The people ___ next door are new. (who live)",
+          "options": [
+            "living",
+            "lived",
+            "live"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u30.d04.ex.c.02",
+          "instruction": {
+            "en": "Passive → past participle.",
+            "ru": "Пассив → причастие прош."
+          },
+          "tags": [
+            "grammar.reduced-relatives"
+          ],
+          "prompt": "The car ___ last night was found. (which was stolen)",
+          "options": [
+            "stolen",
+            "stealing",
+            "stole"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u30.d04.ex.s.01",
+          "instruction": {
+            "en": "Active or passive?",
+            "ru": "Актив или пассив?"
+          },
+          "tags": [
+            "grammar.reduced-relatives"
+          ],
+          "variants": [
+            "The man calling the police was a witness.",
+            "The man called the police was a witness."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u30.d04.ex.g.01",
+          "instruction": {
+            "en": "Reduce: who is → -ing.",
+            "ru": "Сократи: who is → -ing."
+          },
+          "tags": [
+            "grammar.reduced-relatives"
+          ],
+          "prompt": "The woman ___ over there is my aunt. (stand)",
+          "answers": [
+            "standing"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u30.d04.ex.g.02",
+          "instruction": {
+            "en": "Reduce: which was → V3.",
+            "ru": "Сократи: which was → V3."
+          },
+          "tags": [
+            "grammar.reduced-relatives"
+          ],
+          "prompt": "The bridge ___ in 1900 still stands. (build)",
+          "answers": [
+            "built"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u30.d04.ex.s.02",
+          "instruction": {
+            "en": "Can it be reduced?",
+            "ru": "Можно ли сократить?"
+          },
+          "tags": [
+            "grammar.reduced-relatives"
+          ],
+          "variants": [
+            "The book reading by everyone is great.",
+            "The book everyone is reading is great."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "order-words",
+          "id": "u30.d04.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.reduced-relatives"
+          ],
+          "tokens": [
+            "The",
+            "letter",
+            "written",
+            "yesterday",
+            "has",
+            "arrived"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u30.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.news"
+          ],
+          "pairs": [
+            {
+              "left": "witness",
+              "right": "свидетель"
+            },
+            {
+              "left": "injured",
+              "right": "пострадавший"
+            },
+            {
+              "left": "damaged",
+              "right": "повреждённый"
+            },
+            {
+              "left": "remaining",
+              "right": "оставшийся"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u30.d04.ex.c.03",
+          "instruction": {
+            "en": "Passive meaning.",
+            "ru": "Пассивный смысл."
+          },
+          "tags": [
+            "grammar.reduced-relatives"
+          ],
+          "prompt": "All users ___ by the bug were refunded. (who were affected)",
+          "options": [
+            "affected",
+            "affecting",
+            "affect"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u30.d04.ex.g.03",
+          "instruction": {
+            "en": "Active → -ing.",
+            "ru": "Актив → -ing."
+          },
+          "tags": [
+            "grammar.reduced-relatives"
+          ],
+          "prompt": "Anyone ___ help should call us. (need)",
+          "answers": [
+            "needing"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u30.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate (reduced).",
+            "ru": "Переведи (сокращённо)."
+          },
+          "tags": [
+            "grammar.reduced-relatives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Люди, живущие здесь, добрые.",
+          "answers": [
+            "The people living here are kind."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the people lived here are kind",
+                "the people live here are kind",
+                "the people who living here are kind"
+              ],
+              "explanation": {
+                "en": "active → -ing: The people living here… (= who live here).",
+                "ru": "актив → -ing: The people living here… (= who live here)."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u30.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate (reduced).",
+            "ru": "Переведи (сокращённо)."
+          },
+          "tags": [
+            "grammar.reduced-relatives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Письмо, написанное вчера, пришло.",
+          "answers": [
+            "The letter written yesterday arrived.",
+            "The letter written yesterday has arrived."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the letter writing yesterday arrived",
+                "the letter wrote yesterday arrived",
+                "the letter written yesterday arrive"
+              ],
+              "explanation": {
+                "en": "passive → past participle: The letter written yesterday… (= which was written).",
+                "ru": "пассив → причастие прош.: The letter written yesterday… (= which was written)."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
