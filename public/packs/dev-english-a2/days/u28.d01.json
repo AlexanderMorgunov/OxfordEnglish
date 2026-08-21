@@ -1,0 +1,597 @@
+{
+  "id": "u28.d01",
+  "title": {
+    "en": "I had it fixed",
+    "ru": "Мне это починили"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.causative",
+    "vocab.house",
+    "functions.arrangements"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u28.d01.vocab",
+      "title": {
+        "en": "Services & repairs",
+        "ru": "Услуги и ремонт"
+      },
+      "words": [
+        {
+          "word": "repair",
+          "ru": "чинить",
+          "ipa": "/rɪˈpeər/",
+          "example": "They repaired the roof.",
+          "exampleRu": "Они починили крышу.",
+          "audio": {
+            "src": "media/audio/u28.d01.vocab.repair.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "deliver",
+          "ru": "доставлять",
+          "ipa": "/dɪˈlɪvər/",
+          "example": "They deliver on Fridays.",
+          "exampleRu": "Они доставляют по пятницам.",
+          "audio": {
+            "src": "media/audio/u28.d01.vocab.deliver.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "install",
+          "ru": "устанавливать",
+          "ipa": "/ɪnˈstɔːl/",
+          "example": "We had solar panels installed.",
+          "exampleRu": "Нам установили солнечные панели.",
+          "audio": {
+            "src": "media/audio/u28.d01.vocab.install.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "decorate",
+          "ru": "делать ремонт/украшать",
+          "ipa": "/ˈdekəreɪt/",
+          "example": "We’re getting the flat decorated.",
+          "exampleRu": "Нам делают ремонт в квартире.",
+          "audio": {
+            "src": "media/audio/u28.d01.vocab.decorate.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "replace",
+          "ru": "заменять",
+          "ipa": "/rɪˈpleɪs/",
+          "example": "I had the screen replaced.",
+          "exampleRu": "Мне заменили экран.",
+          "audio": {
+            "src": "media/audio/u28.d01.vocab.replace.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "service",
+          "ru": "обслуживать",
+          "ipa": "/ˈsɜːvɪs/",
+          "example": "I get my car serviced yearly.",
+          "exampleRu": "Я обслуживаю машину ежегодно.",
+          "audio": {
+            "src": "media/audio/u28.d01.vocab.service.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mechanic",
+          "ru": "механик",
+          "ipa": "/mɪˈkænɪk/",
+          "example": "The mechanic called back.",
+          "exampleRu": "Механик перезвонил.",
+          "audio": {
+            "src": "media/audio/u28.d01.vocab.mechanic.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "plumber",
+          "ru": "сантехник",
+          "ipa": "/ˈplʌmər/",
+          "example": "We called a plumber.",
+          "exampleRu": "Мы вызвали сантехника.",
+          "audio": {
+            "src": "media/audio/u28.d01.vocab.plumber.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "quote",
+          "ru": "смета",
+          "ipa": "/kwəʊt/",
+          "example": "Can I get a quote?",
+          "exampleRu": "Можно смету?",
+          "audio": {
+            "src": "media/audio/u28.d01.vocab.quote.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "professional",
+          "ru": "специалист",
+          "ipa": "/prəˈfeʃənl/",
+          "example": "Better hire a professional.",
+          "exampleRu": "Лучше нанять специалиста.",
+          "audio": {
+            "src": "media/audio/u28.d01.vocab.professional.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u28.d01.grammar",
+      "title": {
+        "en": "have / get something done",
+        "ru": "have / get something done"
+      },
+      "rule": {
+        "en": "Use \"have/get + object + past participle\" when someone ELSE does the job for you. \"I had my car repaired\" = a mechanic repaired it. \"get\" is a bit more informal.",
+        "ru": "«have/get + объект + причастие», когда работу делает КТО-ТО ДРУГОЙ. «I had my car repaired» = машину починил механик. «get» — чуть неформальнее."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "arrange a service",
+            "ru": "заказать услугу"
+          },
+          "formula": "have + object + V3",
+          "examples": [
+            {
+              "en": "I had my hair cut.",
+              "ru": "Мне подстригли волосы."
+            }
+          ],
+          "ref": "causative"
+        },
+        {
+          "label": {
+            "en": "informal",
+            "ru": "неформально"
+          },
+          "formula": "get + object + V3",
+          "examples": [
+            {
+              "en": "I got my phone fixed.",
+              "ru": "Мне починили телефон."
+            }
+          ],
+          "ref": "causative"
+        },
+        {
+          "label": {
+            "en": "question",
+            "ru": "вопрос"
+          },
+          "formula": "Where did you have/get … done?",
+          "examples": [
+            {
+              "en": "Where did you get your hair cut?",
+              "ru": "Где ты подстригся?"
+            }
+          ],
+          "ref": "causative"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Word order: have + OBJECT + past participle. \"I had my car repaired\", not \"I had repaired my car\".",
+          "ru": "Порядок: have + ОБЪЕКТ + причастие. «I had my car repaired», не «I had repaired my car»."
+        },
+        {
+          "en": "\"I cut my hair\" = you did it yourself; \"I had my hair cut\" = someone did it for you.",
+          "ru": "«I cut my hair» = сам; «I had my hair cut» = тебе сделали."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u28.d01.reading",
+      "title": {
+        "en": "Moving in",
+        "ru": "Переезд"
+      },
+      "blocks": [
+        {
+          "id": "u28.d01.reading.b1",
+          "en": "We just bought an old flat, so there’s a lot to arrange. This week we’re having the walls painted and getting new windows installed. We had the heating checked yesterday, and tomorrow we’re getting the locks changed.",
+          "ru": "Мы только купили старую квартиру, так что дел много. На этой неделе нам красят стены и устанавливают новые окна. Вчера нам проверили отопление, а завтра поменяют замки.",
+          "audio": {
+            "src": "media/audio/u28.d01.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u28.d01.reading.b2",
+          "en": "I could do some of it myself, but I’d rather have professionals do it. We got a quote for the kitchen, and we’re having it fitted next month. It’s expensive, but at least it gets done properly.",
+          "ru": "Часть я мог бы сделать сам, но лучше пусть делают специалисты. Мы взяли смету на кухню и в следующем месяце её установят. Дорого, зато сделано как надо.",
+          "audio": {
+            "src": "media/audio/u28.d01.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "fit",
+          "ru": "устанавливать",
+          "ipa": "/fɪt/"
+        },
+        {
+          "word": "properly",
+          "ru": "как следует",
+          "ipa": "/ˈprɒpəli/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u28.d01.listening",
+      "title": {
+        "en": "At the garage",
+        "ru": "В автосервисе"
+      },
+      "audio": {
+        "src": "media/audio/u28.d01.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "I’d like to get my brakes checked.",
+          "ru": "Хочу проверить тормоза."
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "en": "Sure. When did you last have them serviced?",
+          "ru": "Конечно. Когда их последний раз обслуживали?"
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "en": "About a year ago. I also need the oil changed.",
+          "ru": "Около года назад. Ещё нужно поменять масло."
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "en": "No problem — we’ll have everything done by five.",
+          "ru": "Без проблем — всё сделаем к пяти."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u28.d01.ex.l.01",
+          "instruction": {
+            "en": "What does the customer want?",
+            "ru": "Чего хочет клиент?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.causative"
+          ],
+          "prompt": "He wants to get his brakes ___ .",
+          "options": [
+            "checked",
+            "check",
+            "checking"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u28.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u28.d01.ex.g.01",
+          "instruction": {
+            "en": "have + object + V3.",
+            "ru": "have + объект + V3."
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "prompt": "I had my car ___ . (repair)",
+          "answers": [
+            "repaired"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u28.d01.ex.g.02",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие."
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "prompt": "She got her photo ___ . (take)",
+          "answers": [
+            "taken"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u28.d01.ex.c.01",
+          "instruction": {
+            "en": "Someone else does it.",
+            "ru": "Делает кто-то другой."
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "prompt": "We’re ___ the house painted next week.",
+          "options": [
+            "having",
+            "making",
+            "doing"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u28.d01.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "variants": [
+            "I had repaired my phone at the shop.",
+            "I had my phone repaired at the shop."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u28.d01.ex.c.02",
+          "instruction": {
+            "en": "Choose the form.",
+            "ru": "Выбери форму."
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "prompt": "Where did you ___ your hair cut?",
+          "options": [
+            "get",
+            "got",
+            "getting"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u28.d01.ex.g.03",
+          "instruction": {
+            "en": "get + object + V3.",
+            "ru": "get + объект + V3."
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "prompt": "I need to get the screen ___ . (replace)",
+          "answers": [
+            "replaced"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u28.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "tokens": [
+            "We",
+            "had",
+            "the",
+            "windows",
+            "cleaned"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u28.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.house"
+          ],
+          "pairs": [
+            {
+              "left": "install",
+              "right": "устанавливать"
+            },
+            {
+              "left": "replace",
+              "right": "заменять"
+            },
+            {
+              "left": "plumber",
+              "right": "сантехник"
+            },
+            {
+              "left": "quote",
+              "right": "смета"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u28.d01.ex.c.03",
+          "instruction": {
+            "en": "You did it yourself vs someone did it.",
+            "ru": "Сам или тебе сделали."
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "prompt": "The barber cut it, so: \"I ___ my hair cut.\"",
+          "options": [
+            "had",
+            "have cut",
+            "did"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u28.d01.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "variants": [
+            "I got fixed my laptop.",
+            "I got my laptop fixed."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u28.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.causative",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мне подстригли волосы.",
+          "answers": [
+            "I had my hair cut.",
+            "I got my hair cut."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i cut my hair",
+                "i had cut my hair",
+                "i had my hair cutted"
+              ],
+              "explanation": {
+                "en": "have + object + V3: I had my hair cut.",
+                "ru": "have + объект + V3: I had my hair cut."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u28.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.causative",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Нам устанавливают новые окна.",
+          "answers": [
+            "We’re having new windows installed.",
+            "We are getting new windows installed."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "we install new windows",
+                "we are having installed new windows",
+                "we have new windows install"
+              ],
+              "explanation": {
+                "en": "have + object + V3: We’re having new windows installed.",
+                "ru": "have + объект + V3: We’re having new windows installed."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

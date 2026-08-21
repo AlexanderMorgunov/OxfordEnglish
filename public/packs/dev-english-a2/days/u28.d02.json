@@ -1,0 +1,599 @@
+{
+  "id": "u28.d02",
+  "title": {
+    "en": "It was made here",
+    "ru": "Это сделали здесь"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.passive",
+    "vocab.technology",
+    "reading.detail"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u28.d02.vocab",
+      "title": {
+        "en": "How things are made",
+        "ru": "Как делают вещи"
+      },
+      "words": [
+        {
+          "word": "produce",
+          "ru": "производить",
+          "ipa": "/prəˈdjuːs/",
+          "example": "The cars are produced locally.",
+          "exampleRu": "Машины производят на месте.",
+          "audio": {
+            "src": "media/audio/u28.d02.vocab.produce.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "design",
+          "ru": "проектировать",
+          "ipa": "/dɪˈzaɪn/",
+          "example": "It was designed in Japan.",
+          "exampleRu": "Это спроектировали в Японии.",
+          "audio": {
+            "src": "media/audio/u28.d02.vocab.design.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "manufacture",
+          "ru": "изготавливать",
+          "ipa": "/ˌmænjuˈfæktʃər/",
+          "example": "They’re manufactured abroad.",
+          "exampleRu": "Их изготавливают за рубежом.",
+          "audio": {
+            "src": "media/audio/u28.d02.vocab.manufacture.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "discover",
+          "ru": "открывать",
+          "ipa": "/dɪˈskʌvər/",
+          "example": "It was discovered by accident.",
+          "exampleRu": "Это открыли случайно.",
+          "audio": {
+            "src": "media/audio/u28.d02.vocab.discover.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "invent",
+          "ru": "изобретать",
+          "ipa": "/ɪnˈvent/",
+          "example": "The wheel was invented long ago.",
+          "exampleRu": "Колесо изобрели давно.",
+          "audio": {
+            "src": "media/audio/u28.d02.vocab.invent.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "complete",
+          "ru": "завершать",
+          "ipa": "/kəmˈpliːt/",
+          "example": "The bridge was completed in 1990.",
+          "exampleRu": "Мост завершили в 1990.",
+          "audio": {
+            "src": "media/audio/u28.d02.vocab.complete.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "export",
+          "ru": "экспортировать",
+          "ipa": "/ɪkˈspɔːt/",
+          "example": "Half of it is exported.",
+          "exampleRu": "Половину экспортируют.",
+          "audio": {
+            "src": "media/audio/u28.d02.vocab.export.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "source",
+          "ru": "добывать/источник",
+          "ipa": "/sɔːs/",
+          "example": "The parts are sourced abroad.",
+          "exampleRu": "Детали закупают за рубежом.",
+          "audio": {
+            "src": "media/audio/u28.d02.vocab.source.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "assemble",
+          "ru": "собирать",
+          "ipa": "/əˈsembl/",
+          "example": "Phones are assembled by robots.",
+          "exampleRu": "Телефоны собирают роботы.",
+          "audio": {
+            "src": "media/audio/u28.d02.vocab.assemble.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "test",
+          "ru": "тестировать",
+          "ipa": "/test/",
+          "example": "Each unit is tested twice.",
+          "exampleRu": "Каждое изделие тестируют дважды.",
+          "audio": {
+            "src": "media/audio/u28.d02.vocab.test.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u28.d02.grammar",
+      "title": {
+        "en": "The passive (all tenses)",
+        "ru": "Пассив (все времена)"
+      },
+      "rule": {
+        "en": "The passive = be + past participle. Use it when the action matters more than who did it. The tense lives in \"be\": is made / was made / has been made / will be made / can be made. Add \"by …\" only if the agent matters.",
+        "ru": "Пассив = be + причастие. Используем, когда действие важнее исполнителя. Время — в «be»: is made / was made / has been made / will be made / can be made. «by …» — только если важен исполнитель."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "present / past",
+            "ru": "наст. / прош."
+          },
+          "formula": "is / was + V3",
+          "examples": [
+            {
+              "en": "It is made in Italy. It was built in 1990.",
+              "ru": "Это делают в Италии. Это построили в 1990."
+            }
+          ],
+          "ref": "passive"
+        },
+        {
+          "label": {
+            "en": "perfect / future",
+            "ru": "перфект / будущее"
+          },
+          "formula": "has been / will be + V3",
+          "examples": [
+            {
+              "en": "It has been sold. It will be delivered.",
+              "ru": "Это продано. Это доставят."
+            }
+          ],
+          "ref": "passive"
+        },
+        {
+          "label": {
+            "en": "modal",
+            "ru": "модальный"
+          },
+          "formula": "can / should be + V3",
+          "examples": [
+            {
+              "en": "It can be recycled.",
+              "ru": "Это можно переработать."
+            }
+          ],
+          "ref": "passive"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Put the tense on \"be\": \"was built\" (not \"was build\"), \"has been made\" (not \"has made\").",
+          "ru": "Время — на «be»: «was built» (не «was build»), «has been made» (не «has made»)."
+        },
+        {
+          "en": "Only transitive verbs go passive: \"It was arrived\" is wrong.",
+          "ru": "Пассив — только у переходных глаголов: «It was arrived» — ошибка."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u28.d02.reading",
+      "title": {
+        "en": "From bean to cup",
+        "ru": "От зерна до чашки"
+      },
+      "blocks": [
+        {
+          "id": "u28.d02.reading.b1",
+          "en": "Coffee is grown in warm regions and then shipped around the world. The beans are picked by hand, dried in the sun, and sorted by size. After that, they are roasted, packed, and sent to shops. Nothing is wasted along the way.",
+          "ru": "Кофе выращивают в тёплых регионах, а затем развозят по миру. Зёрна собирают вручную, сушат на солнце и сортируют по размеру. После этого их обжаривают, упаковывают и отправляют в магазины. По пути ничего не пропадает.",
+          "audio": {
+            "src": "media/audio/u28.d02.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u28.d02.reading.b2",
+          "en": "This particular blend was created ten years ago and has been sold in forty countries since. Next year a new decaf version will be launched. Every batch is tested before it can be shipped, so quality is guaranteed.",
+          "ru": "Эту смесь создали десять лет назад, и с тех пор её продают в сорока странах. В следующем году запустят новую версию без кофеина. Каждую партию тестируют, прежде чем её можно отправить, так что качество гарантировано.",
+          "audio": {
+            "src": "media/audio/u28.d02.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "roast",
+          "ru": "обжаривать",
+          "ipa": "/rəʊst/"
+        },
+        {
+          "word": "batch",
+          "ru": "партия",
+          "ipa": "/bætʃ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u28.d02.listening",
+      "title": {
+        "en": "The factory tour",
+        "ru": "Экскурсия по фабрике"
+      },
+      "audio": {
+        "src": "media/audio/u28.d02.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "So, how are these bikes made?",
+          "ru": "Итак, как делают эти велосипеды?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "The frames are welded here and painted next door.",
+          "ru": "Рамы сваривают здесь, а красят по соседству."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "And the wheels? Are they made on site?",
+          "ru": "А колёса? Их делают на месте?"
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "No, they’re imported, but everything is assembled here.",
+          "ru": "Нет, их импортируют, но всё собирают здесь."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u28.d02.ex.l.01",
+          "instruction": {
+            "en": "What happens on site?",
+            "ru": "Что делают на месте?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.passive"
+          ],
+          "prompt": "Everything ___ assembled here.",
+          "options": [
+            "is",
+            "are",
+            "be"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u28.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u28.d02.ex.g.01",
+          "instruction": {
+            "en": "Past passive.",
+            "ru": "Пассив прош."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The bridge ___ built in 1990. (be)",
+          "answers": [
+            "was"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u28.d02.ex.g.02",
+          "instruction": {
+            "en": "Past participle.",
+            "ru": "Причастие."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "These shoes are ___ in Italy. (make)",
+          "answers": [
+            "made"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u28.d02.ex.c.01",
+          "instruction": {
+            "en": "Present perfect passive.",
+            "ru": "Present perfect пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The report ___ been finished.",
+          "options": [
+            "has",
+            "have",
+            "is"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u28.d02.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "The house was build last year.",
+            "The house was built last year."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u28.d02.ex.c.02",
+          "instruction": {
+            "en": "Future passive.",
+            "ru": "Будущий пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The parcel ___ be delivered tomorrow.",
+          "options": [
+            "will",
+            "is",
+            "was"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u28.d02.ex.g.03",
+          "instruction": {
+            "en": "Modal passive.",
+            "ru": "Модальный пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "Plastic can ___ recycled. (be)",
+          "answers": [
+            "be"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u28.d02.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Составь предложение."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "tokens": [
+            "The",
+            "car",
+            "was",
+            "designed",
+            "in",
+            "Germany"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u28.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.technology"
+          ],
+          "pairs": [
+            {
+              "left": "produce",
+              "right": "производить"
+            },
+            {
+              "left": "invent",
+              "right": "изобретать"
+            },
+            {
+              "left": "assemble",
+              "right": "собирать"
+            },
+            {
+              "left": "export",
+              "right": "экспортировать"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u28.d02.ex.c.03",
+          "instruction": {
+            "en": "Agent with \"by\".",
+            "ru": "Исполнитель с «by»."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The bulb was invented ___ Edison.",
+          "options": [
+            "by",
+            "from",
+            "with"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u28.d02.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "The letter has sent already.",
+            "The letter has been sent already."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "translate",
+          "id": "u28.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Этот мост построили в 1990 году.",
+          "answers": [
+            "This bridge was built in 1990.",
+            "The bridge was built in 1990."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "this bridge was build in 1990",
+                "this bridge built in 1990",
+                "they built this bridge in 1990"
+              ],
+              "explanation": {
+                "en": "was + V3: The bridge was built in 1990.",
+                "ru": "was + V3: The bridge was built in 1990."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u28.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Эти телефоны делают в Китае.",
+          "answers": [
+            "These phones are made in China.",
+            "The phones are made in China."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "these phones make in china",
+                "these phones are maked in china",
+                "they make these phones in china"
+              ],
+              "explanation": {
+                "en": "are + V3: These phones are made in China.",
+                "ru": "are + V3: These phones are made in China."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
