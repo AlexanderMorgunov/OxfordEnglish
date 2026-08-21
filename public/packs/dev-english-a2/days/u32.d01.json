@@ -1,0 +1,601 @@
+{
+  "id": "u32.d01",
+  "title": {
+    "en": "It was you who did it",
+    "ru": "Это ты это сделал"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.cleft",
+    "grammar.emphasis",
+    "vocab.life"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u32.d01.vocab",
+      "title": {
+        "en": "Turning points",
+        "ru": "Поворотные моменты"
+      },
+      "words": [
+        {
+          "word": "moment",
+          "ru": "момент",
+          "ipa": "/ˈməʊmənt/",
+          "example": "That was the moment I knew.",
+          "exampleRu": "Это был момент, когда я понял.",
+          "audio": {
+            "src": "media/audio/u32.d01.vocab.moment.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "realise",
+          "ru": "осознавать",
+          "ipa": "/ˈriːəlaɪz/",
+          "example": "I realised my mistake.",
+          "exampleRu": "Я осознал свою ошибку.",
+          "audio": {
+            "src": "media/audio/u32.d01.vocab.realise.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "exactly",
+          "ru": "именно",
+          "ipa": "/ɪɡˈzæktli/",
+          "example": "That’s exactly the point.",
+          "exampleRu": "Именно в этом и суть.",
+          "audio": {
+            "src": "media/audio/u32.d01.vocab.exactly.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "matter",
+          "ru": "иметь значение",
+          "ipa": "/ˈmætər/",
+          "example": "Only results matter.",
+          "exampleRu": "Важны только результаты.",
+          "audio": {
+            "src": "media/audio/u32.d01.vocab.matter.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "detail",
+          "ru": "деталь",
+          "ipa": "/ˈdiːteɪl/",
+          "example": "It’s the details that count.",
+          "exampleRu": "Именно детали важны.",
+          "audio": {
+            "src": "media/audio/u32.d01.vocab.detail.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "blame",
+          "ru": "винить",
+          "ipa": "/bleɪm/",
+          "example": "Don’t blame yourself.",
+          "exampleRu": "Не вини себя.",
+          "audio": {
+            "src": "media/audio/u32.d01.vocab.blame.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "deserve",
+          "ru": "заслуживать",
+          "ipa": "/dɪˈzɜːv/",
+          "example": "You deserve the credit.",
+          "exampleRu": "Ты заслуживаешь признания.",
+          "audio": {
+            "src": "media/audio/u32.d01.vocab.deserve.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "crucial",
+          "ru": "решающий",
+          "ipa": "/ˈkruːʃl/",
+          "example": "Timing was crucial.",
+          "exampleRu": "Время было решающим.",
+          "audio": {
+            "src": "media/audio/u32.d01.vocab.crucial.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "genuinely",
+          "ru": "искренне",
+          "ipa": "/ˈdʒenjuɪnli/",
+          "example": "I’m genuinely grateful.",
+          "exampleRu": "Я искренне благодарен.",
+          "audio": {
+            "src": "media/audio/u32.d01.vocab.genuinely.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "spark",
+          "ru": "искра, толчок",
+          "ipa": "/spɑːk/",
+          "example": "That trip was the spark.",
+          "exampleRu": "Та поездка стала толчком.",
+          "audio": {
+            "src": "media/audio/u32.d01.vocab.spark.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u32.d01.grammar",
+      "title": {
+        "en": "Cleft sentences with \"it\"",
+        "ru": "Клефт-конструкции с «it»"
+      },
+      "rule": {
+        "en": "To spotlight one part of a sentence, use \"It + be + that part + who/that…\". Compare: \"Anna called\" → \"It was Anna who called\". You can highlight the subject, object, time, or place this way.",
+        "ru": "Чтобы выделить одну часть предложения, используй «It + be + эта часть + who/that…». Сравни: «Anna called» → «It was Anna who called». Так можно выделить подлежащее, дополнение, время или место."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "highlight subject",
+            "ru": "выделить подлежащее"
+          },
+          "formula": "It + be + X + who/that + …",
+          "examples": [
+            {
+              "en": "It was Anna who called.",
+              "ru": "Это Анна звонила."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "highlight object",
+            "ru": "выделить дополнение"
+          },
+          "formula": "It + be + X + (that) + subject + verb",
+          "examples": [
+            {
+              "en": "It’s the noise that I hate.",
+              "ru": "Именно шум я и ненавижу."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "highlight time/place",
+            "ru": "выделить время/место"
+          },
+          "formula": "It + be + when/where phrase + that + …",
+          "examples": [
+            {
+              "en": "It was in Paris that we met.",
+              "ru": "Именно в Париже мы познакомились."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use \"who\" (or \"that\") for people, \"that\" for things: \"It was Sam who won\", \"It was the price that shocked me\".",
+          "ru": "«who» (или «that») для людей, «that» для вещей: «It was Sam who won», «It was the price that shocked me»."
+        },
+        {
+          "en": "The verb \"be\" agrees with \"it\" (singular): \"It was they who left\", not \"It were they\".",
+          "ru": "Глагол «be» согласуется с «it» (ед. ч.): «It was they who left», не «It were they»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u32.d01.reading",
+      "title": {
+        "en": "Who gets the credit",
+        "ru": "Кому достаётся заслуга"
+      },
+      "blocks": [
+        {
+          "id": "u32.d01.reading.b1",
+          "en": "Everyone praised me for the launch, but it wasn’t me who made it happen. It was Lena who stayed up three nights fixing the code, and it was the intern, of all people, who spotted the crucial bug. I only signed the emails.",
+          "ru": "Все хвалили меня за запуск, но это не я всё вытянул. Это Лена три ночи не спала, чиня код, и именно стажёр — вот уж кто — заметил решающий баг. Я только письма подписывал.",
+          "audio": {
+            "src": "media/audio/u32.d01.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u32.d01.reading.b2",
+          "en": "It was that project that taught me a lesson I still remember: give the credit away. It’s the quiet people who often do the real work, and it’s rarely the loudest voice in the room that deserves the applause.",
+          "ru": "Именно тот проект преподал мне урок, который я до сих пор помню: отдавай заслуги другим. Настоящую работу часто делают именно тихие, и аплодисментов редко заслуживает самый громкий голос в комнате.",
+          "audio": {
+            "src": "media/audio/u32.d01.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "praise",
+          "ru": "хвалить",
+          "ipa": "/preɪz/"
+        },
+        {
+          "word": "applause",
+          "ru": "аплодисменты",
+          "ipa": "/əˈplɔːz/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u32.d01.listening",
+      "title": {
+        "en": "Setting the record straight",
+        "ru": "Расставить всё по местам"
+      },
+      "audio": {
+        "src": "media/audio/u32.d01.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "So you designed the whole thing?",
+          "ru": "Так ты всё это спроектировал?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "No — it was Marco who designed it. I just tested it.",
+          "ru": "Нет — это Марко спроектировал. Я только тестировал."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "And the idea?",
+          "ru": "А идея?"
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "It was during lunch that the idea actually came up.",
+          "ru": "Именно за обедом идея и родилась."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u32.d01.ex.l.01",
+          "instruction": {
+            "en": "Highlight the person.",
+            "ru": "Выдели человека."
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.cleft"
+          ],
+          "prompt": "It was Marco ___ designed it.",
+          "options": [
+            "who",
+            "which",
+            "what"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u32.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u32.d01.ex.g.01",
+          "instruction": {
+            "en": "Highlight the subject.",
+            "ru": "Выдели подлежащее."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "It was Anna ___ called the police. (who)",
+          "answers": [
+            "who",
+            "that"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u32.d01.ex.c.01",
+          "instruction": {
+            "en": "Things → that.",
+            "ru": "Вещи → that."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "It’s the price ___ shocked me.",
+          "options": [
+            "that",
+            "who",
+            "what"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u32.d01.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "variants": [
+            "It were they who left first.",
+            "It was they who left first."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u32.d01.ex.g.02",
+          "instruction": {
+            "en": "Highlight the place.",
+            "ru": "Выдели место."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "It was in Paris ___ we met. (that)",
+          "answers": [
+            "that"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u32.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a cleft sentence.",
+            "ru": "Составь клефт."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "tokens": [
+            "It",
+            "was",
+            "Sam",
+            "who",
+            "won",
+            "the",
+            "prize"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u32.d01.ex.c.02",
+          "instruction": {
+            "en": "Highlight the time.",
+            "ru": "Выдели время."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "It was ___ that everything changed.",
+          "options": [
+            "then",
+            "who",
+            "what"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u32.d01.ex.s.02",
+          "instruction": {
+            "en": "People or things?",
+            "ru": "Люди или вещи?"
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "variants": [
+            "It was the intern which spotted the bug.",
+            "It was the intern who spotted the bug."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u32.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.life"
+          ],
+          "pairs": [
+            {
+              "left": "crucial",
+              "right": "решающий"
+            },
+            {
+              "left": "blame",
+              "right": "винить"
+            },
+            {
+              "left": "deserve",
+              "right": "заслуживать"
+            },
+            {
+              "left": "spark",
+              "right": "толчок"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u32.d01.ex.c.03",
+          "instruction": {
+            "en": "Highlight the object.",
+            "ru": "Выдели дополнение."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "___ was your honesty that impressed me.",
+          "options": [
+            "It",
+            "That",
+            "There"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u32.d01.ex.g.03",
+          "instruction": {
+            "en": "Complete the cleft.",
+            "ru": "Заверши клефт."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "It ___ the noise that kept me awake. (be, past)",
+          "answers": [
+            "was"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u32.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.cleft",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это Анна звонила в полицию.",
+          "answers": [
+            "It was Anna who called the police.",
+            "It was Anna that called the police."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "anna was who called the police",
+                "it was anna which called the police",
+                "this was anna who called the police"
+              ],
+              "explanation": {
+                "en": "cleft: It + was + Anna + who called…",
+                "ru": "клефт: It + was + Anna + who called…"
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u32.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.cleft",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Именно в Париже мы познакомились.",
+          "answers": [
+            "It was in Paris that we met."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "it was in paris where we met",
+                "in paris was that we met",
+                "it was paris that we met in"
+              ],
+              "explanation": {
+                "en": "cleft with place: It was in Paris that we met.",
+                "ru": "клефт с местом: It was in Paris that we met."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,601 @@
+{
+  "id": "u32.d03",
+  "title": {
+    "en": "Never have I seen",
+    "ru": "Никогда я не видел"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.inversion",
+    "grammar.emphasis",
+    "vocab.news"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u32.d03.vocab",
+      "title": {
+        "en": "Dramatic moments",
+        "ru": "Драматичные моменты"
+      },
+      "words": [
+        {
+          "word": "barely",
+          "ru": "едва",
+          "ipa": "/ˈbeəli/",
+          "example": "I could barely breathe.",
+          "exampleRu": "Я едва мог дышать.",
+          "audio": {
+            "src": "media/audio/u32.d03.vocab.barely.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sudden",
+          "ru": "внезапный",
+          "ipa": "/ˈsʌdn/",
+          "example": "It was a sudden change.",
+          "exampleRu": "Это была внезапная перемена.",
+          "audio": {
+            "src": "media/audio/u32.d03.vocab.sudden.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "scarcely",
+          "ru": "едва ли",
+          "ipa": "/ˈskeəsli/",
+          "example": "Scarcely a word was said.",
+          "exampleRu": "Едва ли было сказано слово.",
+          "audio": {
+            "src": "media/audio/u32.d03.vocab.scarcely.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "remarkable",
+          "ru": "замечательный",
+          "ipa": "/rɪˈmɑːkəbl/",
+          "example": "A remarkable recovery.",
+          "exampleRu": "Замечательное выздоровление.",
+          "audio": {
+            "src": "media/audio/u32.d03.vocab.remarkable.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "collapse",
+          "ru": "рухнуть",
+          "ipa": "/kəˈlæps/",
+          "example": "The roof began to collapse.",
+          "exampleRu": "Крыша начала рушиться.",
+          "audio": {
+            "src": "media/audio/u32.d03.vocab.collapse.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "witness",
+          "ru": "свидетель",
+          "ipa": "/ˈwɪtnəs/",
+          "example": "A witness came forward.",
+          "exampleRu": "Свидетель дал показания.",
+          "audio": {
+            "src": "media/audio/u32.d03.vocab.witness.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "unfold",
+          "ru": "разворачиваться",
+          "ipa": "/ʌnˈfəʊld/",
+          "example": "The story slowly unfolded.",
+          "exampleRu": "История медленно разворачивалась.",
+          "audio": {
+            "src": "media/audio/u32.d03.vocab.unfold.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "instantly",
+          "ru": "мгновенно",
+          "ipa": "/ˈɪnstəntli/",
+          "example": "She reacted instantly.",
+          "exampleRu": "Она отреагировала мгновенно.",
+          "audio": {
+            "src": "media/audio/u32.d03.vocab.instantly.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dramatic",
+          "ru": "драматичный",
+          "ipa": "/drəˈmætɪk/",
+          "example": "A dramatic finish.",
+          "exampleRu": "Драматичный финал.",
+          "audio": {
+            "src": "media/audio/u32.d03.vocab.dramatic.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "relief",
+          "ru": "облегчение",
+          "ipa": "/rɪˈliːf/",
+          "example": "What a relief it was.",
+          "exampleRu": "Какое это было облегчение.",
+          "audio": {
+            "src": "media/audio/u32.d03.vocab.relief.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u32.d03.grammar",
+      "title": {
+        "en": "Negative inversion",
+        "ru": "Инверсия после отрицаний"
+      },
+      "rule": {
+        "en": "When a negative or limiting adverbial comes first, invert like a question (auxiliary before subject): \"Never have I seen…\", \"Rarely do we…\", \"Not only did he…\". Add \"do/does/did\" if there is no other auxiliary.",
+        "ru": "Когда отрицательное или ограничивающее наречие стоит первым, делай инверсию как в вопросе (вспом. глагол перед подлежащим): «Never have I seen…», «Rarely do we…», «Not only did he…». Если другого вспом. глагола нет — добавь «do/does/did»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Never / Rarely / Seldom",
+            "ru": "Never / Rarely / Seldom"
+          },
+          "formula": "Adverb + aux + subject + verb",
+          "examples": [
+            {
+              "en": "Never have I seen such a mess.",
+              "ru": "Никогда я не видел такого беспорядка."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "Not only … (but also)",
+            "ru": "Not only … (but also)"
+          },
+          "formula": "Not only + aux + S + V, but …",
+          "examples": [
+            {
+              "en": "Not only did he apologise, but he also paid.",
+              "ru": "Он не только извинился, но и заплатил."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "No sooner … than",
+            "ru": "No sooner … than"
+          },
+          "formula": "No sooner + had + S + V3 + than …",
+          "examples": [
+            {
+              "en": "No sooner had I sat down than the phone rang.",
+              "ru": "Не успел я сесть, как зазвонил телефон."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After the fronted adverbial use question order: \"Rarely do we see…\", not \"Rarely we see…\".",
+          "ru": "После вынесенного наречия — порядок вопроса: «Rarely do we see…», не «Rarely we see…»."
+        },
+        {
+          "en": "Pair them correctly: \"No sooner … than\", \"Hardly/Scarcely … when\".",
+          "ru": "Правильные пары: «No sooner … than», «Hardly/Scarcely … when»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u32.d03.reading",
+      "title": {
+        "en": "The night of the storm",
+        "ru": "Ночь бури"
+      },
+      "blocks": [
+        {
+          "id": "u32.d03.reading.b1",
+          "en": "Never had the village seen a storm like it. No sooner had the wind risen than the lights went out across the valley. Scarcely had we lit the candles when a tree came down across the road, and only then did we realise how alone we were.",
+          "ru": "Никогда деревня не видела такой бури. Не успел подняться ветер, как по всей долине погас свет. Едва мы зажгли свечи, как поперёк дороги рухнуло дерево, и лишь тогда мы поняли, как мы одиноки.",
+          "audio": {
+            "src": "media/audio/u32.d03.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u32.d03.reading.b2",
+          "en": "Not only did the phones stop working, but the road was blocked for two days. Rarely have I felt such relief as when the sun finally rose. Little did we know then that the worst was already behind us.",
+          "ru": "Не только телефоны перестали работать — дорогу перекрыло на два дня. Редко я чувствовал такое облегчение, как когда наконец взошло солнце. Мало мы тогда знали, что худшее уже позади.",
+          "audio": {
+            "src": "media/audio/u32.d03.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "valley",
+          "ru": "долина",
+          "ipa": "/ˈvæli/"
+        },
+        {
+          "word": "candle",
+          "ru": "свеча",
+          "ipa": "/ˈkændl/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u32.d03.listening",
+      "title": {
+        "en": "What a day",
+        "ru": "Ну и денёк"
+      },
+      "audio": {
+        "src": "media/audio/u32.d03.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "How was the interview?",
+          "ru": "Как прошло собеседование?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "Unbelievable. Never have I been so nervous in my life.",
+          "ru": "Невероятно. Никогда в жизни я так не нервничал."
+        },
+        {
+          "start": 9,
+          "end": 14,
+          "en": "But it went well?",
+          "ru": "Но всё прошло хорошо?"
+        },
+        {
+          "start": 14,
+          "end": 19,
+          "en": "No sooner had I answered than they offered me the job.",
+          "ru": "Не успел я ответить, как мне предложили работу."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u32.d03.ex.l.01",
+          "instruction": {
+            "en": "Invert after \"Never\".",
+            "ru": "Инверсия после «Never»."
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.inversion"
+          ],
+          "prompt": "Never ___ I been so nervous.",
+          "options": [
+            "have",
+            "has",
+            "did"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u32.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u32.d03.ex.c.01",
+          "instruction": {
+            "en": "Question order.",
+            "ru": "Порядок вопроса."
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "Never ___ I seen such a mess.",
+          "options": [
+            "have",
+            "I have",
+            "has"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u32.d03.ex.g.01",
+          "instruction": {
+            "en": "Add do/does/did.",
+            "ru": "Добавь do/does/did."
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "Rarely ___ we get snow here. (present)",
+          "answers": [
+            "do"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u32.d03.ex.c.02",
+          "instruction": {
+            "en": "Not only … .",
+            "ru": "Not only … ."
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "Not only ___ he apologise, but he paid too.",
+          "options": [
+            "did",
+            "he did",
+            "was"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u32.d03.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "variants": [
+            "Rarely we see such talent.",
+            "Rarely do we see such talent."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u32.d03.ex.c.03",
+          "instruction": {
+            "en": "No sooner … than.",
+            "ru": "No sooner … than."
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "No sooner had I left ___ it started raining.",
+          "options": [
+            "than",
+            "when",
+            "that"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u32.d03.ex.c.04",
+          "instruction": {
+            "en": "Hardly … when.",
+            "ru": "Hardly … when."
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "Hardly had we arrived ___ the show began.",
+          "options": [
+            "when",
+            "than",
+            "then"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u32.d03.ex.o.01",
+          "instruction": {
+            "en": "Make an inverted sentence.",
+            "ru": "Составь предложение с инверсией."
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "tokens": [
+            "Never",
+            "have",
+            "I",
+            "felt",
+            "so",
+            "happy"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u32.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.news"
+          ],
+          "pairs": [
+            {
+              "left": "barely",
+              "right": "едва"
+            },
+            {
+              "left": "collapse",
+              "right": "рухнуть"
+            },
+            {
+              "left": "unfold",
+              "right": "разворачиваться"
+            },
+            {
+              "left": "relief",
+              "right": "облегчение"
+            }
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u32.d03.ex.s.02",
+          "instruction": {
+            "en": "Correct pairing?",
+            "ru": "Верная пара?"
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "variants": [
+            "No sooner had I sat down when the phone rang.",
+            "No sooner had I sat down than the phone rang."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u32.d03.ex.g.02",
+          "instruction": {
+            "en": "Little did …",
+            "ru": "Little did …"
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "Little ___ she know what was coming. (past)",
+          "answers": [
+            "did"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u32.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.inversion",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Никогда я не видел такого беспорядка.",
+          "answers": [
+            "Never have I seen such a mess."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "never i have seen such a mess",
+                "never i saw such a mess",
+                "never have i saw such a mess"
+              ],
+              "explanation": {
+                "en": "Never + have + I + seen (question order): Never have I seen…",
+                "ru": "Never + have + I + seen (порядок вопроса): Never have I seen…"
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u32.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.inversion",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он не только извинился, но и заплатил.",
+          "answers": [
+            "Not only did he apologise, but he also paid.",
+            "Not only did he apologize, but he also paid."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "not only he apologised but he also paid",
+                "not only did he apologised but he paid",
+                "he not only apologised but also paid"
+              ],
+              "explanation": {
+                "en": "Not only + did + he + base: Not only did he apologise, but…",
+                "ru": "Not only + did + he + база: Not only did he apologise, but…"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

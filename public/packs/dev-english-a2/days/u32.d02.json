@@ -1,0 +1,599 @@
+{
+  "id": "u32.d02",
+  "title": {
+    "en": "What I need is a break",
+    "ru": "Что мне нужно — так это отдых"
+  },
+  "estimatedMinutes": 120,
+  "level": "B2",
+  "tags": [
+    "grammar.cleft",
+    "grammar.emphasis",
+    "vocab.feelings"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u32.d02.vocab",
+      "title": {
+        "en": "Wants & needs",
+        "ru": "Желания и нужды"
+      },
+      "words": [
+        {
+          "word": "struggle",
+          "ru": "бороться, с трудом",
+          "ipa": "/ˈstrʌɡl/",
+          "example": "I struggle to focus.",
+          "exampleRu": "Мне трудно сосредоточиться.",
+          "audio": {
+            "src": "media/audio/u32.d02.vocab.struggle.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "annoy",
+          "ru": "раздражать",
+          "ipa": "/əˈnɔɪ/",
+          "example": "It really annoys me.",
+          "exampleRu": "Это правда меня раздражает.",
+          "audio": {
+            "src": "media/audio/u32.d02.vocab.annoy.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "appreciate",
+          "ru": "ценить",
+          "ipa": "/əˈpriːʃieɪt/",
+          "example": "I appreciate honesty.",
+          "exampleRu": "Я ценю честность.",
+          "audio": {
+            "src": "media/audio/u32.d02.vocab.appreciate.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bother",
+          "ru": "беспокоить",
+          "ipa": "/ˈbɒðər/",
+          "example": "What bothers me is the delay.",
+          "exampleRu": "Что беспокоит — так это задержка.",
+          "audio": {
+            "src": "media/audio/u32.d02.vocab.bother.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "motivate",
+          "ru": "мотивировать",
+          "ipa": "/ˈməʊtɪveɪt/",
+          "example": "Praise motivates people.",
+          "exampleRu": "Похвала мотивирует людей.",
+          "audio": {
+            "src": "media/audio/u32.d02.vocab.motivate.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "distraction",
+          "ru": "отвлечение",
+          "ipa": "/dɪˈstrækʃn/",
+          "example": "Phones are a distraction.",
+          "exampleRu": "Телефоны отвлекают.",
+          "audio": {
+            "src": "media/audio/u32.d02.vocab.distraction.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "clarity",
+          "ru": "ясность",
+          "ipa": "/ˈklærəti/",
+          "example": "What I want is clarity.",
+          "exampleRu": "Чего я хочу — так это ясности.",
+          "audio": {
+            "src": "media/audio/u32.d02.vocab.clarity.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "balance",
+          "ru": "баланс",
+          "ipa": "/ˈbæləns/",
+          "example": "I need more balance.",
+          "exampleRu": "Мне нужно больше баланса.",
+          "audio": {
+            "src": "media/audio/u32.d02.vocab.balance.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "priority",
+          "ru": "приоритет",
+          "ipa": "/praɪˈɒrəti/",
+          "example": "Health is a priority.",
+          "exampleRu": "Здоровье — приоритет.",
+          "audio": {
+            "src": "media/audio/u32.d02.vocab.priority.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "deserve",
+          "ru": "заслуживать",
+          "ipa": "/dɪˈzɜːv/",
+          "example": "You deserve a rest.",
+          "exampleRu": "Ты заслуживаешь отдыха.",
+          "audio": {
+            "src": "media/audio/u32.d02.vocab.deserve.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u32.d02.grammar",
+      "title": {
+        "en": "Cleft sentences with \"what\"",
+        "ru": "Клефт-конструкции с «what»"
+      },
+      "rule": {
+        "en": "A \"what\"-cleft fronts the important idea: \"What + subject + verb + be + X\". \"I need a holiday\" → \"What I need is a holiday\". Use \"What … do/does/did was\" to stress an action, and \"All (that) I want is …\" to say \"the only thing\".",
+        "ru": "Клефт с «what» выносит главную мысль вперёд: «What + подлежащее + глагол + be + X». «I need a holiday» → «What I need is a holiday». Для акцента на действии — «What … do/does/did was», а «All (that) I want is …» = «единственное»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "what-cleft",
+            "ru": "клефт с what"
+          },
+          "formula": "What + S + V + is/was + X",
+          "examples": [
+            {
+              "en": "What I need is a break.",
+              "ru": "Что мне нужно — так это отдых."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "stress an action",
+            "ru": "акцент на действии"
+          },
+          "formula": "What + S + did + was + (to) V",
+          "examples": [
+            {
+              "en": "What she did was resign.",
+              "ru": "Что она сделала — так это уволилась."
+            }
+          ],
+          "ref": "past-modals"
+        },
+        {
+          "label": {
+            "en": "the only thing",
+            "ru": "единственное"
+          },
+          "formula": "All (that) + S + V + is + X",
+          "examples": [
+            {
+              "en": "All I want is some peace.",
+              "ru": "Всё, чего я хочу, — немного покоя."
+            }
+          ],
+          "ref": "past-modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use singular \"is/was\" after a \"what\"-clause: \"What I need is…\", not \"are\".",
+          "ru": "После «what»-части — ед. «is/was»: «What I need is…», не «are»."
+        },
+        {
+          "en": "For actions use \"What … did was + base\": \"What he did was leave\", not \"was left\".",
+          "ru": "Для действий — «What … did was + база»: «What he did was leave», не «was left»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u32.d02.reading",
+      "title": {
+        "en": "Burnout",
+        "ru": "Выгорание"
+      },
+      "blocks": [
+        {
+          "id": "u32.d02.reading.b1",
+          "en": "What nobody tells you about burnout is how quietly it arrives. What I noticed first was that small tasks felt impossible. What really bothered me wasn’t the workload — it was losing interest in things I used to love.",
+          "ru": "Чего никто не говорит о выгорании — так это того, как тихо оно приходит. Что я заметил первым — так это то, что мелкие задачи стали невыполнимыми. Что действительно беспокоило — не объём работы, а потеря интереса к тому, что я раньше любил.",
+          "audio": {
+            "src": "media/audio/u32.d02.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u32.d02.reading.b2",
+          "en": "So what I did was simple: I stopped. What helped most was talking to someone honest. All I really needed was permission to rest. What I’ve learned is that slowing down isn’t quitting — it’s how you keep going.",
+          "ru": "Так что я поступил просто: я остановился. Что помогло больше всего — так это разговор с честным человеком. Всё, что мне было нужно, — разрешение отдохнуть. Что я понял — так это то, что сбавить темп не значит сдаться; так ты и продолжаешь идти.",
+          "audio": {
+            "src": "media/audio/u32.d02.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "burnout",
+          "ru": "выгорание",
+          "ipa": "/ˈbɜːnaʊt/"
+        },
+        {
+          "word": "workload",
+          "ru": "объём работы",
+          "ipa": "/ˈwɜːkləʊd/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u32.d02.listening",
+      "title": {
+        "en": "What matters",
+        "ru": "Что важно"
+      },
+      "audio": {
+        "src": "media/audio/u32.d02.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "You seem stressed. What’s wrong?",
+          "ru": "Ты напряжён. Что не так?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "What’s bothering me is the deadline. It’s impossible.",
+          "ru": "Что меня беспокоит — так это дедлайн. Он нереален."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "So what do you need?",
+          "ru": "Так что тебе нужно?"
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "What I need is one more week. That’s all I’m asking for.",
+          "ru": "Что мне нужно — так это ещё неделя. Это всё, о чём я прошу."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u32.d02.ex.l.01",
+          "instruction": {
+            "en": "Complete the what-cleft.",
+            "ru": "Заверши клефт."
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.cleft"
+          ],
+          "prompt": "What I need ___ one more week.",
+          "options": [
+            "is",
+            "are",
+            "was"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u32.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u32.d02.ex.g.01",
+          "instruction": {
+            "en": "Singular is.",
+            "ru": "Ед. is."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "What I need ___ a holiday. (be, present)",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u32.d02.ex.c.01",
+          "instruction": {
+            "en": "Stress the action.",
+            "ru": "Акцент на действии."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "What she did ___ resign.",
+          "options": [
+            "was",
+            "were",
+            "is to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u32.d02.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "variants": [
+            "What I need are some answers.",
+            "What I need is some answers."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "order-words",
+          "id": "u32.d02.ex.o.01",
+          "instruction": {
+            "en": "Make a what-cleft.",
+            "ru": "Составь клефт."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "tokens": [
+            "What",
+            "I",
+            "want",
+            "is",
+            "more",
+            "time"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u32.d02.ex.c.02",
+          "instruction": {
+            "en": "the only thing.",
+            "ru": "единственное."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "___ I want is some peace.",
+          "options": [
+            "All",
+            "What all",
+            "That"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u32.d02.ex.g.02",
+          "instruction": {
+            "en": "Action cleft.",
+            "ru": "Клефт действия."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "What he did was ___ the whole team. (blame — base)",
+          "answers": [
+            "blame"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u32.d02.ex.s.02",
+          "instruction": {
+            "en": "Action form.",
+            "ru": "Форма действия."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "variants": [
+            "What they did was left early.",
+            "What they did was leave early."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "match",
+          "id": "u32.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.feelings"
+          ],
+          "pairs": [
+            {
+              "left": "annoy",
+              "right": "раздражать"
+            },
+            {
+              "left": "bother",
+              "right": "беспокоить"
+            },
+            {
+              "left": "clarity",
+              "right": "ясность"
+            },
+            {
+              "left": "priority",
+              "right": "приоритет"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u32.d02.ex.c.03",
+          "instruction": {
+            "en": "Front the idea.",
+            "ru": "Вынеси мысль вперёд."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "___ bothers me is the noise.",
+          "options": [
+            "What",
+            "That",
+            "It"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u32.d02.ex.g.03",
+          "instruction": {
+            "en": "Complete.",
+            "ru": "Заверши."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "What helped most ___ talking to a friend. (be, past)",
+          "answers": [
+            "was"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u32.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.cleft",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Что мне нужно — так это отдых.",
+          "answers": [
+            "What I need is a break.",
+            "What I need is a rest."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "what i need are a break",
+                "that i need is a break",
+                "what i need it is a break"
+              ],
+              "explanation": {
+                "en": "what-cleft, singular is: What I need is a break.",
+                "ru": "клефт с what, ед. is: What I need is a break."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u32.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.cleft",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Что она сделала — так это уволилась.",
+          "answers": [
+            "What she did was resign.",
+            "What she did was to resign."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "what she did was resigned",
+                "what she did is resign",
+                "what she did was to resigned"
+              ],
+              "explanation": {
+                "en": "action cleft → What she did was + base: … was resign.",
+                "ru": "клефт действия → What she did was + база: … was resign."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
