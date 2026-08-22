@@ -27,7 +27,16 @@ export function normalizeText(raw: string): string {
 /** Extract paragraph-separated reading text from an (X)HTML document string. */
 export function htmlToText(html: string): string {
   const doc = new DOMParser().parseFromString(html, 'text/html');
-  return normalizeText(walk(doc.body));
+  if (doc.body && (doc.body.textContent ?? '').trim()) return normalizeText(walk(doc.body));
+  // Some EPUB chapters are XHTML with an `<?xml?>` prolog + xmlns; the HTML parser then
+  // leaves `<body>` empty and strands the content. Re-parse strictly as XHTML when it is
+  // well-formed so those chapters aren't lost.
+  const xdoc = new DOMParser().parseFromString(html, 'application/xhtml+xml');
+  if (!xdoc.getElementsByTagName('parsererror').length) {
+    const xbody = xdoc.getElementsByTagName('body')[0];
+    if (xbody && (xbody.textContent ?? '').trim()) return normalizeText(walk(xbody));
+  }
+  return normalizeText(walk(doc.body ?? doc.documentElement));
 }
 
 /** Split reading text into sentences, keeping abbreviations mostly intact. */

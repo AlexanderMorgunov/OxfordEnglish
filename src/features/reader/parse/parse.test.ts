@@ -20,6 +20,19 @@ test('htmlToText separates block elements into paragraphs', () => {
   expect(text.split(/\n{2,}/)).toEqual(['Title', 'One two.', 'Three four.']);
 });
 
+test('htmlToText recovers XHTML chapters the HTML parser leaves body-empty', () => {
+  // royallib-style EPUB chapter: an <?xml?> prolog + xhtml xmlns strands the content
+  // outside <body> when parsed as text/html. htmlToText must fall back to strict XHTML.
+  const xhtml = `<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title/><link rel="stylesheet" href="style.css" type="text/css"/></head>
+<body class="z"><span id="id1"><div class="t"><p>INTRODUCTORY NOTE</p></div><p>The chronicle of Captain Blood was derived from many sources.</p></span></body>
+</html>`;
+  const text = htmlToText(xhtml);
+  expect(text).toContain('INTRODUCTORY NOTE');
+  expect(text).toContain('Captain Blood was derived');
+});
+
 test('toSentences splits on terminal punctuation', () => {
   expect(toSentences('Hello world. This is a test! Really?')).toEqual([
     'Hello world.',
