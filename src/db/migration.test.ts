@@ -34,6 +34,7 @@ test('v2 upgrade preserves v1 data and adds the books table', async () => {
   v2.version(3).stores({ catalogCache: 'id, cachedAt' });
   v2.version(4).stores({ analyticsQueue: '++id, ts' });
   v2.version(5).stores({ feedbackOutbox: '++id, createdAt' });
+  v2.version(6).stores({ bookmarks: 'id, bookKey, createdAt, [bookKey+page+paragraph]' });
   await v2.open();
 
   expect(await v2.table('wordStatus').count()).toBe(1);
@@ -57,6 +58,11 @@ test('v2 upgrade preserves v1 data and adds the books table', async () => {
   await v2.table('feedbackOutbox').add({ body: { message: 'hi' }, createdAt: 1 });
   expect(await v2.table('feedbackOutbox').count()).toBe(1);
   expect(await v2.table('books').count()).toBe(1);
+
+  // v6 adds bookmarks; the compound [bookKey+page+paragraph] index supports dedupe lookups
+  await v2.table('bookmarks').add({ id: 'bm1', bookKey: 'reader.x', page: 0, paragraph: 2, pageId: 'c1', snippet: 's', createdAt: 1 });
+  expect(await v2.table('bookmarks').where('[bookKey+page+paragraph]').equals(['reader.x', 0, 2]).count()).toBe(1);
+  expect(await v2.table('wordStatus').count()).toBe(1);
   v2.close();
   await Dexie.delete(name);
 });

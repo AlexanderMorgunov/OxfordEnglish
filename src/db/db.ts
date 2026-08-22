@@ -62,6 +62,22 @@ export interface BookRecord {
   lastChapter: number;
 }
 
+/** A reader bookmark. Anchored to content (page + paragraph index + a text snippet), not pixels,
+ *  so it survives font-size changes and reflow. `scrollY` is a cosmetic fallback only. */
+export interface Bookmark {
+  id: string;
+  /** = the reader's idPrefix: `reader.<uuid>` (imported) or `reader.catalog.<slug>` (catalog). */
+  bookKey: string;
+  page: number;
+  paragraph: number;
+  /** `chapters[page].id` — resolves the page even if pagination shifts later indices. */
+  pageId: string;
+  scrollY?: number;
+  snippet: string;
+  chapterTitle?: string;
+  createdAt: number;
+}
+
 /** A remote catalog book fetched once and kept for offline rereading. `book` is a ParsedBook. */
 export interface CatalogCacheEntry {
   id: string;
@@ -91,6 +107,7 @@ const db = new Dexie('oxford-english') as Dexie & {
   checkpoints: EntityTable<CheckpointResult, 'id'>;
   translations: EntityTable<WordTranslation, 'word'>;
   books: EntityTable<BookRecord, 'id'>;
+  bookmarks: EntityTable<Bookmark, 'id'>;
   catalogCache: EntityTable<CatalogCacheEntry, 'id'>;
   analyticsQueue: EntityTable<AnalyticsEvent, 'id'>;
   feedbackOutbox: EntityTable<FeedbackOutboxItem, 'id'>;
@@ -118,6 +135,10 @@ db.version(4).stores({
 
 db.version(5).stores({
   feedbackOutbox: '++id, createdAt',
+});
+
+db.version(6).stores({
+  bookmarks: 'id, bookKey, createdAt, [bookKey+page+paragraph]',
 });
 
 export { db };
