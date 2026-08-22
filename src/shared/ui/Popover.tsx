@@ -2,6 +2,7 @@ import {
   cloneElement,
   useEffect,
   useId,
+  useLayoutEffect,
   useRef,
   useState,
   type ReactElement,
@@ -30,7 +31,28 @@ export function Popover({
 }: PopoverProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLSpanElement>(null);
+  const panelRef = useRef<HTMLSpanElement>(null);
   const panelId = useId();
+
+  // Keep the panel inside the viewport: a word near the right edge would otherwise open its
+  // fixed-width panel off-screen. Measure the natural position and shift it horizontally.
+  useLayoutEffect(() => {
+    if (!open) return;
+    const clamp = () => {
+      const el = panelRef.current;
+      if (!el) return;
+      el.style.transform = 'none';
+      const rect = el.getBoundingClientRect();
+      const margin = 8;
+      let dx = 0;
+      if (rect.right > window.innerWidth - margin) dx = window.innerWidth - margin - rect.right;
+      if (rect.left + dx < margin) dx = margin - rect.left;
+      el.style.transform = dx ? `translateX(${dx}px)` : 'none';
+    };
+    clamp();
+    window.addEventListener('resize', clamp);
+    return () => window.removeEventListener('resize', clamp);
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -63,6 +85,7 @@ export function Popover({
       {triggerEl}
       {open && (
         <span
+          ref={panelRef}
           id={panelId}
           role="dialog"
           className={cn(
