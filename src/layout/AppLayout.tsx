@@ -5,6 +5,7 @@ import { InstallPrompt } from '@/features/pwa/InstallPrompt';
 import { UpdatePrompt } from '@/features/pwa/UpdatePrompt';
 import { UpdateDialog } from '@/features/pwa/UpdateDialog';
 import { markEngaged } from '@/features/pwa/update';
+import { metricaHit } from '@/features/analytics/metrica';
 import { ErrorBoundary } from '@/shared/ui';
 
 const NAV = [
@@ -27,6 +28,7 @@ export function AppLayout() {
   // not the launch modal (see features/pwa/update.ts).
   const firstPath = useRef(location.pathname);
   useEffect(() => {
+    metricaHit(location.pathname);
     if (location.pathname !== firstPath.current) markEngaged();
   }, [location.pathname]);
   return (

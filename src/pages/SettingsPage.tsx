@@ -16,6 +16,7 @@ import {
   isAnalyticsEnabled,
   setAnalyticsEnabled,
 } from '@/features/analytics/analytics';
+import { metricaConfigured, initMetrica } from '@/features/analytics/metrica';
 import { useLearner } from '@/features/learner/store';
 import { useUiLang } from '@/features/i18n/uiLang';
 import type { Level } from '@/content/schema';
@@ -72,6 +73,9 @@ export function SettingsPage() {
     const next = !analytics;
     setAnalyticsEnabled(next);
     setAnalytics(next);
+    // Enabling loads Metrica now; disabling reloads so the already-loaded tag/cookies fully unload.
+    if (next) initMetrica();
+    else window.location.reload();
   };
 
   const updateReady = useSyncExternalStore(subscribeAppUpdate, isUpdateReady, () => false);
@@ -366,13 +370,13 @@ export function SettingsPage() {
         <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
           анонимная статистика · anonymous usage
         </p>
-        {analyticsConfigured() ? (
+        {analyticsConfigured() || metricaConfigured() ? (
           <>
             <p className="mb-4 text-sm text-muted text-pretty">
-              Полностью анонимные, обезличенные события использования (например:
-              открытие приложения, завершённый день, открытие книги, установка
-              приложения) — чтобы понимать, помогает ли приложение учиться. Без
-              личных данных, без содержимого. Можно выключить в любой момент.
+              Собираем обезличенную статистику посещений через Яндекс Метрику (какие
+              экраны открывают, устройства, регионы) — чтобы понимать, помогает ли
+              приложение учиться. Метрика ставит cookies и использует IP-адрес.
+              Содержимое ваших занятий не передаётся. Можно выключить в любой момент.
             </p>
             <Option state={analytics ? 'chosen' : 'default'} onClick={toggleAnalytics}>
               {analytics ? 'Включена' : 'Выключена'}

@@ -11,6 +11,8 @@ interface ImportMetaEnv {
   readonly VITE_WEB3FORMS_ACCESS_KEY?: string;
   readonly VITE_FEEDBACK_ENDPOINT?: string;
   readonly VITE_FEEDBACK_EMAIL?: string;
+  /** Yandex Metrica counter id (public; enables analytics when set). */
+  readonly VITE_YANDEX_METRICA_ID?: string;
 }
 interface ImportMeta {
   readonly env: ImportMetaEnv;
