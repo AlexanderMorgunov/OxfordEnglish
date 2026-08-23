@@ -190,7 +190,7 @@ const Paragraph = memo(function Paragraph({
           className="mr-1.5 align-middle text-teal transition-opacity hover:opacity-80"
           onClick={() => onRead(index)}
         >
-          {speaking ? '⏹' : '🔆'}
+          {speaking ? '❚❚' : '▶'}
         </button>
       )}
       {sentences.map((sentence, si) => {
