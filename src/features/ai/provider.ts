@@ -1,3 +1,5 @@
+import { recordKeyLimits } from './limits';
+
 export type AiProviderId =
   | 'groq'
   | 'openrouter'
@@ -99,6 +101,8 @@ export async function complete(
       }),
       signal: opts.signal,
     });
+
+    recordKeyLimits(res.headers, config.provider);
 
     if (res.status === 429 || res.status >= 500) {
       await sleep(2 ** attempt * 1200);

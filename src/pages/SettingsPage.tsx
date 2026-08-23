@@ -7,6 +7,7 @@ import {
   checkForAppUpdate,
   applyAppUpdate,
 } from '@/features/pwa/update';
+import { getKeyLimits, subscribeKeyLimits } from '@/features/ai/limits';
 import { PROVIDERS, type AiProviderId } from '@/features/ai/provider';
 import { isConfigured, useAiStore } from '@/features/ai/store';
 import { exportData, importData } from '@/features/progress/backup';
@@ -74,6 +75,7 @@ export function SettingsPage() {
   };
 
   const updateReady = useSyncExternalStore(subscribeAppUpdate, isUpdateReady, () => false);
+  const keyLimits = useSyncExternalStore(subscribeKeyLimits, getKeyLimits, () => null);
   const [checking, setChecking] = useState(false);
   const [updateMsg, setUpdateMsg] = useState('');
   const doCheckUpdate = async () => {
@@ -260,6 +262,35 @@ export function SettingsPage() {
         )}
         {saved && <span className="font-mono text-2xs text-teal">{ru ? '✓ сохранено' : '✓ saved'}</span>}
       </div>
+
+      {keyLimits && (
+        <div className="mt-4 rounded-sm border border-line bg-surface-2/50 p-3">
+          <p className="mb-1.5 font-mono text-2xs uppercase tracking-[0.08em] text-muted">
+            {ru ? 'лимиты ключа · по последнему запросу' : 'key limits · from the last request'}
+          </p>
+          <ul className="space-y-0.5 font-mono text-2xs text-content">
+            {keyLimits.remainingRequests !== undefined && (
+              <li>
+                {ru ? 'запросов' : 'requests'}: {keyLimits.remainingRequests}
+                {keyLimits.limitRequests !== undefined ? ` / ${keyLimits.limitRequests}` : ''}
+                {keyLimits.resetRequests ? ` · ${ru ? 'сброс' : 'reset'} ${keyLimits.resetRequests}` : ''}
+              </li>
+            )}
+            {keyLimits.remainingTokens !== undefined && (
+              <li>
+                {ru ? 'токенов' : 'tokens'}: {keyLimits.remainingTokens}
+                {keyLimits.limitTokens !== undefined ? ` / ${keyLimits.limitTokens}` : ''}
+                {keyLimits.resetTokens ? ` · ${ru ? 'сброс' : 'reset'} ${keyLimits.resetTokens}` : ''}
+              </li>
+            )}
+          </ul>
+          <p className="mt-1.5 text-2xs text-faint text-pretty">
+            {ru
+              ? 'Лимиты общие для всего ключа (перевод, объяснения и т. п.) и обновляются после каждого AI-запроса.'
+              : 'Limits are shared across the whole key (translation, explanations, etc.) and refresh after each AI request.'}
+          </p>
+        </div>
+      )}
 
       <div className="mt-10 border-t border-line pt-8">
         <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
