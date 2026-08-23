@@ -1,8 +1,10 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect, useRef } from 'react';
 import { NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import { useLearner } from '@/features/learner/store';
 import { InstallPrompt } from '@/features/pwa/InstallPrompt';
 import { UpdatePrompt } from '@/features/pwa/UpdatePrompt';
+import { UpdateDialog } from '@/features/pwa/UpdateDialog';
+import { markEngaged } from '@/features/pwa/update';
 import { ErrorBoundary } from '@/shared/ui';
 
 const NAV = [
@@ -21,6 +23,12 @@ const NAV = [
 export function AppLayout() {
   const level = useLearner((s) => s.level);
   const location = useLocation();
+  // Once the user navigates away from the entry route, an update found later goes to the banner,
+  // not the launch modal (see features/pwa/update.ts).
+  const firstPath = useRef(location.pathname);
+  useEffect(() => {
+    if (location.pathname !== firstPath.current) markEngaged();
+  }, [location.pathname]);
   return (
     <div className="min-h-screen">
       <header className="border-b border-line bg-surface/60 backdrop-blur">
@@ -58,10 +66,15 @@ export function AppLayout() {
         </div>
       </header>
 
+      <UpdateDialog />
       <UpdatePrompt />
       <InstallPrompt />
 
-      <main className="mx-auto max-w-3xl px-5 py-8 pb-20">
+      <main
+        className="mx-auto max-w-3xl px-5 py-8 pb-20"
+        onPointerDownCapture={markEngaged}
+        onKeyDownCapture={markEngaged}
+      >
         <ErrorBoundary resetKey={location.pathname}>
           <Suspense fallback={<p className="font-mono text-sm text-muted">loading…</p>}>
             <Outlet />

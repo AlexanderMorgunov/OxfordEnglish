@@ -79,14 +79,26 @@ export function SettingsPage() {
   const doCheckUpdate = async () => {
     setChecking(true);
     setUpdateMsg('');
-    await checkForAppUpdate();
-    // Give onNeedRefresh a moment to flip the flag before reporting "up to date".
-    setTimeout(() => {
+    const result = await checkForAppUpdate();
+    if (result === 'unavailable') {
       setChecking(false);
-      if (!isUpdateReady()) {
-        setUpdateMsg(ru ? '✓ установлена последняя версия' : '✓ you have the latest version');
-      }
-    }, 1200);
+      setUpdateMsg(
+        ru ? '⚠ проверка недоступна (офлайн или SW не готов)' : '⚠ check unavailable (offline or SW not ready)'
+      );
+      return;
+    }
+    // The check completed; a newly-found SW flips isUpdateReady shortly after via onNeedRefresh.
+    await new Promise((r) => setTimeout(r, 700));
+    setChecking(false);
+    setUpdateMsg(
+      isUpdateReady()
+        ? ru
+          ? 'найдено обновление ↓'
+          : 'update found ↓'
+        : ru
+          ? '✓ установлена последняя версия'
+          : '✓ you have the latest version'
+    );
   };
 
   const [dataMsg, setDataMsg] = useState('');
