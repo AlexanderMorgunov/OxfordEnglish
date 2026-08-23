@@ -23,6 +23,9 @@ import { toSentences } from './parse/text';
 /** Reference line for auditioning a read-aloud voice — natural prose so prosody is audible. */
 const VOICE_SAMPLE = 'The morning light spilled across the quiet room as she opened the book.';
 
+/** Read-aloud playback-speed presets. */
+const RATE_STEPS = [0.75, 1, 1.25, 1.5] as const;
+
 export type Gloss = { ru?: string; ipa?: string };
 
 /** Chapter-level, stable-per-render coloring inputs. Kept in context so a single word's status
@@ -266,6 +269,10 @@ export function ReadingText({
   const setLineStep = useReaderSettings((s) => s.setLineStep);
   const voiceURI = useReaderSettings((s) => s.voiceURI);
   const setVoiceURI = useReaderSettings((s) => s.setVoiceURI);
+  const rate = useReaderSettings((s) => s.rate);
+  const setRate = useReaderSettings((s) => s.setRate);
+  const highlightSpoken = useReaderSettings((s) => s.highlightSpoken);
+  const toggleHighlightSpoken = useReaderSettings((s) => s.toggleHighlightSpoken);
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>(() => listEnglishVoices());
   useEffect(() => {
     const sync = () => setVoices(listEnglishVoices());
@@ -282,6 +289,12 @@ export function ReadingText({
   const [speakingIdx, setSpeakingIdx] = useState(-1);
   const [activeWord, setActiveWord] = useState(-1);
   const playingRef = useRef(false);
+  // Read live in speakFrom's continuation chain (whose onEnd closure is frozen at play time),
+  // so mid-read changes to speed/highlight take effect from the next paragraph.
+  const rateRef = useRef(rate);
+  rateRef.current = rate;
+  const highlightSpokenRef = useRef(highlightSpoken);
+  highlightSpokenRef.current = highlightSpoken;
   const reduceMotion = useMemo(
     () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false,
     []
@@ -304,6 +317,10 @@ export function ReadingText({
     },
     []
   );
+  // Clear a lingering highlight the moment the toggle is switched off during read-aloud.
+  useEffect(() => {
+    if (!highlightSpoken) setActiveWord(-1);
+  }, [highlightSpoken]);
 
   // A multi-word selection becomes a savable phrase ("took a train"); single-word taps stay
   // on the WordToken popover. English is phrasal-verb/idiom-heavy — word-by-word misleads.
@@ -353,7 +370,11 @@ export function ReadingText({
     setActiveWord(-1);
     scrollToPara(i);
     speakPassage(paragraphs[i]!, {
-      onWord: setActiveWord,
+      rate: rateRef.current,
+      // Checked per boundary event so toggling the highlight off mid-paragraph stops immediately.
+      onWord: (idx) => {
+        if (highlightSpokenRef.current) setActiveWord(idx);
+      },
       onEnd: () => {
         if (playingRef.current) speakFrom(i + 1);
       },
@@ -382,7 +403,11 @@ export function ReadingText({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+      <details>
+        <summary className="inline-flex cursor-pointer list-none items-center gap-1 font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline [&::-webkit-details-marker]:hidden">
+          ⚙ {ru ? 'настройки чтения' : 'reader settings'}
+        </summary>
+        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5">
         <div className="flex items-center gap-1.5" role="group" aria-label={ru ? 'Размер текста' : 'Text size'}>
           <button
             type="button"
@@ -465,7 +490,40 @@ export function ReadingText({
             </button>
           </div>
         )}
-      </div>
+        {canSpeak() && (
+          <div className="flex items-center gap-1.5" role="group" aria-label={ru ? 'Скорость озвучки' : 'Read-aloud speed'}>
+            <span className="font-mono text-2xs text-muted">{ru ? 'скорость' : 'speed'}</span>
+            {RATE_STEPS.map((r) => (
+              <button
+                key={r}
+                type="button"
+                aria-pressed={rate === r}
+                onClick={() => setRate(r)}
+                className={cn('font-mono text-2xs hover:underline', rate === r ? 'text-teal' : 'text-muted')}
+              >
+                {r}×
+              </button>
+            ))}
+          </div>
+        )}
+        {canSpeak() && (
+          <button
+            type="button"
+            onClick={toggleHighlightSpoken}
+            aria-pressed={highlightSpoken}
+            className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
+          >
+            {highlightSpoken
+              ? ru
+                ? 'подсветка слова: вкл'
+                : 'spoken word: on'
+              : ru
+                ? 'подсветка слова: выкл'
+                : 'spoken word: off'}
+          </button>
+        )}
+        </div>
+      </details>
       {phrase && (
         <div className="sticky top-2 z-10 flex flex-wrap items-center gap-2 rounded-sm border border-teal-dim bg-surface-2 px-3 py-2 text-sm shadow-md">
           <span className="font-mono text-teal">{phrase}</span>
