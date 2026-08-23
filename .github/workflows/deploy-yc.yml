@@ -1,0 +1,39 @@
+name: deploy-yc
+
+# Deploys dist/ to Yandex Object Storage (CDN-fronted). Runs on main once enabled, or manually.
+# Guarded on the repo variable YC_DEPLOY_ENABLED so it stays a no-op until the bucket + secrets exist
+# (Settings → Secrets and variables → Actions → Variables: YC_DEPLOY_ENABLED = true).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-yc
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: ${{ github.event_name == 'workflow_dispatch' || vars.YC_DEPLOY_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Ship only green: lint + tests + typechecked build (same gate as ci.yml).
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+        env:
+          VITE_YANDEX_METRICA_ID: ${{ secrets.VITE_YANDEX_METRICA_ID }}
+      - name: Deploy to Yandex Object Storage
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.YC_S3_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_S3_SECRET }}
+          AWS_DEFAULT_REGION: ru-central1
+          AWS_ENDPOINT_URL: https://storage.yandexcloud.net
+          YC_BUCKET: ${{ secrets.YC_BUCKET }}
+        run: bash scripts/deploy-yc.sh
