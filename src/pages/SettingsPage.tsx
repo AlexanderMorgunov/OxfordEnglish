@@ -1,6 +1,12 @@
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, Eyebrow, Input, Option } from '@/shared/ui';
+import {
+  subscribeAppUpdate,
+  isUpdateReady,
+  checkForAppUpdate,
+  applyAppUpdate,
+} from '@/features/pwa/update';
 import { PROVIDERS, type AiProviderId } from '@/features/ai/provider';
 import { isConfigured, useAiStore } from '@/features/ai/store';
 import { exportData, importData } from '@/features/progress/backup';
@@ -65,6 +71,22 @@ export function SettingsPage() {
     const next = !analytics;
     setAnalyticsEnabled(next);
     setAnalytics(next);
+  };
+
+  const updateReady = useSyncExternalStore(subscribeAppUpdate, isUpdateReady, () => false);
+  const [checking, setChecking] = useState(false);
+  const [updateMsg, setUpdateMsg] = useState('');
+  const doCheckUpdate = async () => {
+    setChecking(true);
+    setUpdateMsg('');
+    await checkForAppUpdate();
+    // Give onNeedRefresh a moment to flip the flag before reporting "up to date".
+    setTimeout(() => {
+      setChecking(false);
+      if (!isUpdateReady()) {
+        setUpdateMsg(ru ? '✓ установлена последняя версия' : '✓ you have the latest version');
+      }
+    }, 1200);
   };
 
   const [dataMsg, setDataMsg] = useState('');
@@ -316,6 +338,35 @@ export function SettingsPage() {
             подключён. Приложение работает полностью локально.
           </p>
         )}
+      </div>
+
+      <div className="mt-10 border-t border-line pt-8">
+        <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
+          {ru ? 'обновления приложения' : 'app updates'}
+        </p>
+        <p className="mb-4 text-sm text-muted text-pretty">
+          {ru
+            ? 'Приложение обновляется само при выходе новой версии. Если оно «застряло» на старой (частая ситуация с установленным PWA), проверьте и примените обновление вручную.'
+            : 'The app updates itself when a new version ships. If it seems stuck on an old one (common with an installed PWA), check and apply an update manually.'}
+        </p>
+        <div className="flex flex-wrap items-center gap-3">
+          <Button variant="ghost" onClick={() => void doCheckUpdate()} disabled={checking}>
+            {checking
+              ? ru
+                ? 'Проверяю…'
+                : 'Checking…'
+              : ru
+                ? 'Проверить обновления'
+                : 'Check for updates'}
+          </Button>
+          {updateReady && (
+            <Button onClick={() => void applyAppUpdate()}>
+              {ru ? 'Обновить сейчас' : 'Update now'}
+            </Button>
+          )}
+          {updateMsg && <span className="font-mono text-2xs text-teal">{updateMsg}</span>}
+        </div>
+        <p className="mt-3 font-mono text-2xs text-faint">version: {__APP_VERSION__}</p>
       </div>
     </section>
   );

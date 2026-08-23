@@ -18,7 +18,10 @@ export default defineConfig({
     react(),
     tailwindcss(),
     VitePWA({
-      registerType: 'autoUpdate',
+      // 'prompt', not 'autoUpdate': a new deploy surfaces a visible "Обновить" banner and applies
+      // only on the user's action (see src/features/pwa/update.ts) — no silent reload mid-reading,
+      // and an open PWA is polled so it actually notices new versions.
+      registerType: 'prompt',
       includeAssets: ['icons/app-256.png', 'icons/app-512.png', 'icons/app-512-maskable.png'],
       manifest: {
         name: 'English for Developers',

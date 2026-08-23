@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import { useLearner } from '@/features/learner/store';
 import { InstallPrompt } from '@/features/pwa/InstallPrompt';
+import { UpdatePrompt } from '@/features/pwa/UpdatePrompt';
 import { ErrorBoundary } from '@/shared/ui';
 
 const NAV = [
@@ -57,6 +58,7 @@ export function AppLayout() {
         </div>
       </header>
 
+      <UpdatePrompt />
       <InstallPrompt />
 
       <main className="mx-auto max-w-3xl px-5 py-8 pb-20">
