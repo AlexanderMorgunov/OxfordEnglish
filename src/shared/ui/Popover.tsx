@@ -51,11 +51,11 @@ export function Popover({
       el.style.transform = dx ? `translateX(${dx}px)` : 'none';
     };
     clamp();
-    const ro = new ResizeObserver(clamp);
-    ro.observe(el);
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(clamp) : null;
+    ro?.observe(el);
     window.addEventListener('resize', clamp);
     return () => {
-      ro.disconnect();
+      ro?.disconnect();
       window.removeEventListener('resize', clamp);
     };
   }, [open]);
