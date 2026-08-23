@@ -35,12 +35,13 @@ export function Popover({
   const panelId = useId();
 
   // Keep the panel inside the viewport: a word near the right edge would otherwise open its
-  // fixed-width panel off-screen. Measure the natural position and shift it horizontally.
+  // fixed-width panel off-screen. Measure the natural position and shift it horizontally. The
+  // panel grows after open (its translation loads async), so re-clamp on every resize, not once.
   useLayoutEffect(() => {
     if (!open) return;
+    const el = panelRef.current;
+    if (!el) return;
     const clamp = () => {
-      const el = panelRef.current;
-      if (!el) return;
       el.style.transform = 'none';
       const rect = el.getBoundingClientRect();
       const margin = 8;
@@ -50,8 +51,13 @@ export function Popover({
       el.style.transform = dx ? `translateX(${dx}px)` : 'none';
     };
     clamp();
+    const ro = new ResizeObserver(clamp);
+    ro.observe(el);
     window.addEventListener('resize', clamp);
-    return () => window.removeEventListener('resize', clamp);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', clamp);
+    };
   }, [open]);
 
   useEffect(() => {
