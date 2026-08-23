@@ -21,6 +21,9 @@ type Preset = {
   model: string;
   browserSafe: boolean;
   noCard: boolean;
+  /** From Russia, signing up / getting a key typically needs a VPN. Region access drifts —
+   *  keep the label soft. Only the clear cases are flagged. */
+  needsVpn?: boolean;
   keyUrl?: string;
 };
 
@@ -57,6 +60,7 @@ export const PROVIDERS: Record<AiProviderId, Preset> = {
     model: 'gemini-2.5-flash',
     browserSafe: true,
     noCard: false,
+    needsVpn: true,
   },
   openai: {
     label: 'OpenAI',
@@ -64,6 +68,7 @@ export const PROVIDERS: Record<AiProviderId, Preset> = {
     model: 'gpt-4o-mini',
     browserSafe: false,
     noCard: false,
+    needsVpn: true,
   },
   custom: {
     label: 'Custom (OpenAI-compatible)',

@@ -195,6 +195,9 @@ export function SettingsPage() {
               {PROVIDERS[id].noCard && id !== 'custom' && (
                 <span className="ml-2 text-2xs text-teal">{ru ? 'без карты' : 'no card'}</span>
               )}
+              {PROVIDERS[id].needsVpn && id !== 'custom' && (
+                <span className="ml-2 text-2xs text-amber">{ru ? 'нужен VPN' : 'VPN'}</span>
+              )}
             </Option>
           ))}
         </div>
