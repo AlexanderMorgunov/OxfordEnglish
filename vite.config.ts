@@ -38,8 +38,32 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,woff2,png,svg,json,mp3}'],
-        maximumFileSizeToCacheInBytes: 5_000_000,
+        // Precache ONLY the app shell — NOT the content packs. Precaching the whole library
+        // (~50MB / 2000+ audio+JSON files) made the service worker download everything on first
+        // visit, choking the initial load. Pack media is runtime-cached on demand below (and stays
+        // available offline once opened).
+        globPatterns: ['**/*.{js,css,html,woff2,svg,png}'],
+        globIgnores: ['**/packs/**'],
+        navigateFallback: 'index.html',
+        navigateFallbackDenylist: [/^\/packs\//],
+        cleanupOutdatedCaches: true,
+        maximumFileSizeToCacheInBytes: 3_000_000,
+        runtimeCaching: [
+          {
+            urlPattern: /\/packs\//,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'content-packs',
+              expiration: {
+                maxEntries: 1000,
+                maxAgeSeconds: 60 * 60 * 24 * 90,
+                purgeOnQuotaError: true,
+              },
+              cacheableResponse: { statuses: [0, 200] },
+              rangeRequests: true,
+            },
+          },
+        ],
       },
     }),
   ],
