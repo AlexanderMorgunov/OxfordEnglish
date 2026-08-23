@@ -31,6 +31,20 @@ export function playClip(url: string, rate = 1): void {
 }
 
 let cachedVoice: SpeechSynthesisVoice | null | undefined;
+/** A user-chosen voice (by voiceURI) overrides the auto-pick; null = auto. */
+let preferredVoiceURI: string | null = null;
+
+/** English (`en-*`) voices the browser exposes, for the reader's voice picker. */
+export function listEnglishVoices(): SpeechSynthesisVoice[] {
+  if (!canSpeak()) return [];
+  return window.speechSynthesis.getVoices().filter((v) => /^en([-_]|$)/i.test(v.lang));
+}
+
+/** Set (or clear, with null) the preferred read-aloud voice; re-resolves on next utterance. */
+export function setPreferredVoiceURI(uri: string | null): void {
+  preferredVoiceURI = uri;
+  cachedVoice = undefined;
+}
 
 /**
  * Pick the best available English voice. The browser default is often the plainest one;
@@ -38,8 +52,7 @@ let cachedVoice: SpeechSynthesisVoice | null | undefined;
  * voice among equals so read-aloud still works offline.
  */
 function pickVoice(): SpeechSynthesisVoice | null {
-  const voices = window.speechSynthesis.getVoices();
-  const en = voices.filter((v) => /^en([-_]|$)/i.test(v.lang));
+  const en = listEnglishVoices();
   if (!en.length) return null;
   const score = (v: SpeechSynthesisVoice) =>
     (/natural|neural|enhanced|premium/i.test(v.name) ? 8 : 0) +
@@ -49,9 +62,31 @@ function pickVoice(): SpeechSynthesisVoice | null {
   return [...en].sort((a, b) => score(b) - score(a))[0] ?? null;
 }
 
+function resolveVoice(): SpeechSynthesisVoice | null {
+  if (!canSpeak()) return null;
+  if (preferredVoiceURI) {
+    const chosen = window.speechSynthesis.getVoices().find((v) => v.voiceURI === preferredVoiceURI);
+    if (chosen) return chosen;
+  }
+  return pickVoice();
+}
+
 function bestVoice(): SpeechSynthesisVoice | null {
-  if (cachedVoice === undefined) cachedVoice = canSpeak() ? pickVoice() : null;
+  if (cachedVoice === undefined) cachedVoice = resolveVoice();
   return cachedVoice ?? null;
+}
+
+/** Speak a reference line so the user can hear a specific voice before committing to it. */
+export function previewVoice(voiceURI: string | null, text: string): void {
+  if (!canSpeak()) return;
+  cancelSpeech();
+  const u = new SpeechSynthesisUtterance(text);
+  const v = voiceURI
+    ? window.speechSynthesis.getVoices().find((x) => x.voiceURI === voiceURI) ?? null
+    : pickVoice();
+  if (v) u.voice = v;
+  u.lang = v?.lang ?? 'en-US';
+  window.speechSynthesis.speak(u);
 }
 
 function applyVoice(u: SpeechSynthesisUtterance): void {
@@ -131,9 +166,9 @@ if (typeof document !== 'undefined') {
   });
 }
 
-// Voices load asynchronously in most browsers; re-pick once they arrive.
+// Voices load asynchronously in most browsers; re-resolve once they arrive.
 if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
   window.speechSynthesis.addEventListener?.('voiceschanged', () => {
-    cachedVoice = pickVoice();
+    cachedVoice = resolveVoice();
   });
 }

@@ -2,7 +2,14 @@ import { createContext, memo, use, useCallback, useEffect, useMemo, useRef, useS
 import { Button, Popover } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import { useVocabStore } from '@/features/vocab/vocabStore';
-import { canSpeak, speakWord, speakPassage, cancelSpeech } from '@/shared/lib/audio';
+import {
+  canSpeak,
+  speakWord,
+  speakPassage,
+  cancelSpeech,
+  listEnglishVoices,
+  previewVoice,
+} from '@/shared/lib/audio';
 import { translateWord, translateText } from '@/features/vocab/translate';
 import { addWordCard, addPhraseCard } from '@/features/srs/service';
 import { AiAction } from '@/features/ai/AiAction';
@@ -12,6 +19,9 @@ import { useLearner } from '@/features/learner/store';
 import { classifyWord, loadFreq, rankThresholdFor, type FreqIndex, type WordMark } from './difficulty';
 import { useReaderSettings, FONT_CLASSES, LEADING_CLASSES } from './settings';
 import { toSentences } from './parse/text';
+
+/** Reference line for auditioning a read-aloud voice — natural prose so prosody is audible. */
+const VOICE_SAMPLE = 'The morning light spilled across the quiet room as she opened the book.';
 
 export type Gloss = { ru?: string; ipa?: string };
 
@@ -254,6 +264,19 @@ export function ReadingText({
   const lineStep = useReaderSettings((s) => s.lineStep);
   const setFontStep = useReaderSettings((s) => s.setFontStep);
   const setLineStep = useReaderSettings((s) => s.setLineStep);
+  const voiceURI = useReaderSettings((s) => s.voiceURI);
+  const setVoiceURI = useReaderSettings((s) => s.setVoiceURI);
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>(() => listEnglishVoices());
+  useEffect(() => {
+    const sync = () => setVoices(listEnglishVoices());
+    sync();
+    window.speechSynthesis?.addEventListener?.('voiceschanged', sync);
+    return () => window.speechSynthesis?.removeEventListener?.('voiceschanged', sync);
+  }, []);
+  const chooseVoice = (uri: string | null) => {
+    setVoiceURI(uri);
+    previewVoice(uri, VOICE_SAMPLE);
+  };
   const typoClass = `${FONT_CLASSES[fontStep] ?? FONT_CLASSES[1]} ${LEADING_CLASSES[lineStep] ?? LEADING_CLASSES[0]}`;
   const [freq, setFreq] = useState<FreqIndex | null>(null);
   const [speakingIdx, setSpeakingIdx] = useState(-1);
@@ -413,6 +436,34 @@ export function ReadingText({
               {ru ? 'новое' : 'new'}
             </span>
           </span>
+        )}
+        {canSpeak() && voices.length > 0 && (
+          <div className="flex items-center gap-1.5" role="group" aria-label={ru ? 'Голос озвучки' : 'Read-aloud voice'}>
+            <label htmlFor="reader-voice" className="sr-only">
+              {ru ? 'Голос озвучки' : 'Read-aloud voice'}
+            </label>
+            <select
+              id="reader-voice"
+              value={voiceURI ?? ''}
+              onChange={(e) => chooseVoice(e.target.value || null)}
+              className="max-w-[11rem] truncate rounded-sm border border-line bg-surface px-1.5 py-0.5 font-mono text-2xs text-muted"
+            >
+              <option value="">{ru ? '🔊 голос: авто' : '🔊 voice: auto'}</option>
+              {voices.map((v) => (
+                <option key={v.voiceURI} value={v.voiceURI}>
+                  {v.name}
+                </option>
+              ))}
+            </select>
+            <button
+              type="button"
+              aria-label={ru ? 'Прослушать голос' : 'Preview voice'}
+              onClick={() => previewVoice(voiceURI, VOICE_SAMPLE)}
+              className="font-mono text-2xs text-teal hover:underline"
+            >
+              ▶
+            </button>
+          </div>
         )}
       </div>
       {phrase && (
