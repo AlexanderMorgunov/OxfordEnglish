@@ -8,6 +8,7 @@ import {
   type ReactElement,
   type ReactNode,
 } from 'react';
+import { createPortal } from 'react-dom';
 import { cn } from '@/shared/lib/cn';
 
 type PopoverProps = {
@@ -18,52 +19,64 @@ type PopoverProps = {
     'aria-controls'?: string;
   }>;
   children: ReactNode;
-  align?: 'start' | 'end';
+  /** Accessible name for the popover dialog (e.g. the word being looked up). */
+  label?: string;
   className?: string;
 };
 
-/** Anchored popover for word/example look-ups (DESIGN_DOC §5.2). */
-export function Popover({
-  trigger,
-  children,
-  align = 'start',
-  className,
-}: PopoverProps) {
+const MARGIN = 8;
+
+/** Anchored popover for word/example look-ups (DESIGN_DOC §5.2). The panel is portaled to
+ *  document.body and positioned `fixed`, clamped to the viewport — so a word near the right edge
+ *  can never open it off-screen or widen the document (which produced a horizontal scrollbar). */
+export function Popover({ trigger, children, label, className }: PopoverProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLSpanElement>(null);
-  const panelRef = useRef<HTMLSpanElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const panelId = useId();
 
-  // Keep the panel inside the viewport: a word near the right edge would otherwise open its
-  // fixed-width panel off-screen. Measure the natural position and shift it horizontally. The
-  // panel grows after open (its translation loads async), so re-clamp on every resize, not once.
+  const reposition = () => {
+    const anchor = rootRef.current;
+    const panel = panelRef.current;
+    if (!anchor || !panel) return;
+    const a = anchor.getBoundingClientRect();
+    const vw = window.visualViewport?.width ?? window.innerWidth;
+    const vh = window.visualViewport?.height ?? window.innerHeight;
+    const pw = panel.offsetWidth;
+    const ph = panel.offsetHeight;
+    let left = Math.min(a.left, vw - pw - MARGIN);
+    left = Math.max(MARGIN, left);
+    let top = a.bottom + 6;
+    if (top + ph > vh - MARGIN) {
+      const above = a.top - 6 - ph;
+      top = above >= MARGIN ? above : Math.max(MARGIN, vh - ph - MARGIN);
+    }
+    panel.style.left = `${Math.round(left)}px`;
+    panel.style.top = `${Math.round(top)}px`;
+  };
+
+  // Position on open and keep it clamped as the panel resizes (its translation loads async) or the
+  // page scrolls/resizes. Layout effect runs before paint, so there's no visible jump.
   useLayoutEffect(() => {
     if (!open) return;
-    const el = panelRef.current;
-    if (!el) return;
-    const clamp = () => {
-      el.style.transform = 'none';
-      const rect = el.getBoundingClientRect();
-      const margin = 8;
-      let dx = 0;
-      if (rect.right > window.innerWidth - margin) dx = window.innerWidth - margin - rect.right;
-      if (rect.left + dx < margin) dx = margin - rect.left;
-      el.style.transform = dx ? `translateX(${dx}px)` : 'none';
-    };
-    clamp();
-    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(clamp) : null;
-    ro?.observe(el);
-    window.addEventListener('resize', clamp);
+    reposition();
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(reposition) : null;
+    if (panelRef.current) ro?.observe(panelRef.current);
+    window.addEventListener('scroll', reposition, { passive: true, capture: true });
+    window.addEventListener('resize', reposition);
     return () => {
       ro?.disconnect();
-      window.removeEventListener('resize', clamp);
+      window.removeEventListener('scroll', reposition, true);
+      window.removeEventListener('resize', reposition);
     };
   }, [open]);
 
   useEffect(() => {
     if (!open) return;
     const onPointerDown = (e: PointerEvent) => {
-      if (!rootRef.current?.contains(e.target as Node)) setOpen(false);
+      const t = e.target as Node;
+      // The panel is portaled out of the trigger's subtree, so check both.
+      if (!rootRef.current?.contains(t) && !panelRef.current?.contains(t)) setOpen(false);
     };
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setOpen(false);
@@ -89,22 +102,24 @@ export function Popover({
   return (
     <span ref={rootRef} className="relative inline-block">
       {triggerEl}
-      {open && (
-        <span
-          ref={panelRef}
-          id={panelId}
-          role="dialog"
-          className={cn(
-            'absolute top-[calc(100%+6px)] z-10 block w-max max-w-[16rem]',
-            'rounded-md border border-line bg-surface-2 p-3 text-left',
-            'shadow-[0_1px_2px_rgba(0,0,0,0.35),0_10px_28px_rgba(0,0,0,0.45)]',
-            align === 'end' ? 'right-0' : 'left-0',
-            className
-          )}
-        >
-          {children}
-        </span>
-      )}
+      {open &&
+        createPortal(
+          <div
+            ref={panelRef}
+            id={panelId}
+            role="dialog"
+            aria-label={label ?? 'Lookup'}
+            className={cn(
+              'fixed left-0 top-0 z-50 block w-max max-w-[16rem]',
+              'rounded-md border border-line bg-surface-2 p-3 text-left',
+              'shadow-[0_1px_2px_rgba(0,0,0,0.35),0_10px_28px_rgba(0,0,0,0.45)]',
+              className
+            )}
+          >
+            {children}
+          </div>,
+          document.body
+        )}
     </span>
   );
 }

@@ -74,6 +74,7 @@ export const WordToken = memo(function WordToken({
 
   return (
     <Popover
+      label={word}
       trigger={
         <button
           type="button"
