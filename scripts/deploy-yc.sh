@@ -52,6 +52,8 @@ put "registerSW.js"       "text/javascript; charset=utf-8"
 put "manifest.webmanifest" "application/manifest+json"
 [ -f "$DIST/robots.txt" ] && "${S3[@]}" cp "$DIST/robots.txt" "s3://$YC_BUCKET/robots.txt" \
   --content-type "text/plain; charset=utf-8" --cache-control "public,max-age=3600" --no-progress || true
+[ -f "$DIST/sitemap.xml" ] && "${S3[@]}" cp "$DIST/sitemap.xml" "s3://$YC_BUCKET/sitemap.xml" \
+  --content-type "application/xml; charset=utf-8" --cache-control "public,max-age=3600" --no-progress || true
 
 echo "Done. NOTE: CDN must honor origin Cache-Control (or force-revalidate sw.js/index.html/manifest),"
 echo "otherwise the edge serves a stale sw.js and PWA updates stall. No --delete (orphans pruned separately)."
