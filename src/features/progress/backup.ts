@@ -34,7 +34,7 @@ export async function exportData(): Promise<string> {
 }
 
 /** FSRS cards carry Date fields that JSON flattens to strings — revive them. */
-function reviveCard(row: SrsCard): SrsCard {
+export function reviveCard(row: SrsCard): SrsCard {
   const card = row.card as SrsCard['card'] & { last_review?: string | Date };
   return {
     ...row,
@@ -59,7 +59,7 @@ type Backup = {
 
 /** Drop the autoincrement primary key so imported rows append instead of overwriting the target
  *  device's rows by a colliding id. */
-function stripId(rows: unknown[]): unknown[] {
+export function stripId(rows: unknown[]): unknown[] {
   return rows.map((r) => {
     const { id: _id, ...rest } = r as { id?: number };
     return rest;

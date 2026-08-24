@@ -6,6 +6,7 @@ import { UpdatePrompt } from '@/features/pwa/UpdatePrompt';
 import { UpdateDialog } from '@/features/pwa/UpdateDialog';
 import { markEngaged } from '@/features/pwa/update';
 import { metricaHit } from '@/features/analytics/metrica';
+import { MigrationNotice } from '@/features/migration/MigrationNotice';
 import { ErrorBoundary } from '@/shared/ui';
 
 const NAV = [
@@ -69,6 +70,7 @@ export function AppLayout() {
       </header>
 
       <UpdateDialog />
+      <MigrationNotice />
       <UpdatePrompt />
       <InstallPrompt />
 

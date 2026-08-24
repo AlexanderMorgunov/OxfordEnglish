@@ -17,18 +17,25 @@ import { initMetrica } from '@/features/analytics/metrica';
 import { initPwaInstall } from '@/features/pwa/install';
 import { initAppUpdate } from '@/features/pwa/update';
 import { initFeedback } from '@/features/feedback/service';
+import { isMirrorHost, migrateThenRedirect } from '@/features/migration/sender';
 
-const rootEl = document.getElementById('root');
-if (!rootEl) throw new Error('Root element #root not found');
+// On the .online mirror, carry this origin's data to the canonical .ru and redirect — WITHOUT booting
+// the app, so we never register a service worker or log analytics for a domain we're abandoning.
+if (isMirrorHost()) {
+  void migrateThenRedirect();
+} else {
+  const rootEl = document.getElementById('root');
+  if (!rootEl) throw new Error('Root element #root not found');
 
-initAnalytics();
-initMetrica();
-initPwaInstall();
-initAppUpdate();
-initFeedback();
+  initAnalytics();
+  initMetrica();
+  initPwaInstall();
+  initAppUpdate();
+  initFeedback();
 
-createRoot(rootEl).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
-);
+  createRoot(rootEl).render(
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>
+  );
+}
