@@ -24,9 +24,9 @@ export default defineConfig({
       registerType: 'prompt',
       includeAssets: ['icons/app-256.png', 'icons/app-512.png', 'icons/app-512-maskable.png'],
       manifest: {
-        name: 'English for Developers',
-        short_name: 'en/dev',
-        description: 'Offline-first English course for developers, A1 → B1, with a book reader.',
+        name: 'DayEnglish',
+        short_name: 'DayEnglish',
+        description: 'Offline-first English course, A1 → B1, with a book reader.',
         theme_color: '#12141c',
         background_color: '#12141c',
         display: 'standalone',
