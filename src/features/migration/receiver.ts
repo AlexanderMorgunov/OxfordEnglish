@@ -1,10 +1,16 @@
-import { applySnapshot, type Snapshot } from '@/features/migration/snapshot';
-import { decodeSnapshot } from '@/features/migration/codec';
+import { applySnapshot, type Snapshot } from './snapshot';
+import { decodeSnapshot } from './codec';
 
-// First-party receiver for the .online → .ru migration. Runs on its own page (no app, no SW), so it
-// writes the real .ru storage — an embedded iframe would hit a partitioned bucket .ru never reads.
+// First-party receiver for the .online → .ru migration. Served as the SPA index.html at `/migrate`
+// (via the SW navigate-fallback or the bucket error doc) and handled here in main.tsx BEFORE the app
+// boots — so it writes the real .ru storage and skips SW registration / analytics for a mere hop.
+export const RECEIVER_PATH = '/migrate';
 const FROM_FLAG = 'migration.fromOnline';
 const NOTICE_FLAG = 'migration.notice';
+
+export function isReceiverPath(): boolean {
+  return location.pathname === RECEIVER_PATH;
+}
 
 function safeDest(dest: string | undefined): string {
   return dest && dest.startsWith('/') && !dest.startsWith('//') ? dest : '/';
@@ -26,30 +32,23 @@ function manualNotice(): void {
   );
 }
 
-async function run(): Promise<void> {
+export async function receiveMigration(): Promise<void> {
+  overlay(`<p style="font-size:1.1rem">Переносим ваш прогресс…</p>`);
   const fragment = location.hash.slice(1);
-  // Strip the payload from the URL bar and history before doing anything else.
+  // Strip the payload from the URL bar and history before anything else.
   history.replaceState(null, '', location.pathname);
-  if (!fragment) {
-    location.replace('/');
-    return;
-  }
+  if (!fragment) return void location.replace('/');
 
   let snapshot: Snapshot;
   try {
     snapshot = await decodeSnapshot(fragment);
   } catch {
     // Truncated or corrupt — never import partial data.
-    manualNotice();
-    return;
+    return manualNotice();
   }
 
   const dest = safeDest(snapshot.dest);
-  // Already migrated on a prior visit → just continue (repeat .online visits re-hop harmlessly).
-  if (localStorage.getItem(FROM_FLAG)) {
-    location.replace(dest);
-    return;
-  }
+  if (localStorage.getItem(FROM_FLAG)) return void location.replace(dest);
 
   try {
     const result = await applySnapshot(snapshot);
@@ -62,9 +61,7 @@ async function run(): Promise<void> {
       if (notice.books || notice.aiKey) localStorage.setItem(NOTICE_FLAG, JSON.stringify(notice));
     }
   } catch {
-    // Unexpected import failure — proceed anyway; the source data is still recoverable via file import.
+    // Unexpected import failure — proceed anyway; the source data stays recoverable via file import.
   }
   location.replace(dest);
 }
-
-void run();

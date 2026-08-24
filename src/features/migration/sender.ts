@@ -1,6 +1,6 @@
-import { exportData } from '@/features/progress/backup';
 import { buildSnapshot, hasProgress, type Snapshot } from './snapshot';
 import { encodeSnapshot } from './codec';
+import { RECEIVER_PATH } from './receiver';
 
 const CANONICAL = 'https://dayenglish.ru';
 // Conservative on purpose: a light/moderate profile (the real `.online` population) is a few KB, so it
@@ -43,19 +43,27 @@ function overlay(inner: string): void {
 }
 
 function manualFallback(dest: string): void {
+  // Static markup only — the visitor-controlled `dest` is set below as an href *property*, never
+  // interpolated into innerHTML.
   overlay(
     `<p style="font-size:1.1rem;margin-bottom:1rem">У вас много данных — перенесём вручную.</p>` +
       `<p style="color:#a8adba;margin-bottom:1.5rem">Скачайте файл прогресса, затем откройте ` +
       `dayenglish.ru → Настройки → Импорт и загрузите его.</p>` +
-      `<button id="mig-dl" style="background:#5b8cff;color:#0b0d13;border:0;border-radius:8px;` +
-      `padding:10px 18px;font-size:1rem;cursor:pointer;margin-right:8px">Скачать файл прогресса</button>` +
-      `<a href="${CANONICAL}${dest}" style="color:#5b8cff;display:inline-block;margin-top:12px">Перейти на dayenglish.ru →</a>`
+      `<div id="mig-actions"></div>`
   );
-  const btn = document.getElementById('mig-dl');
-  btn?.addEventListener('click', () => {
+  const actions = document.getElementById('mig-actions');
+  if (!actions) return;
+
+  const download = document.createElement('button');
+  download.textContent = 'Скачать файл прогресса';
+  download.style.cssText =
+    'background:#5b8cff;color:#0b0d13;border:0;border-radius:8px;padding:10px 18px;font-size:1rem;cursor:pointer';
+  download.addEventListener('click', () => {
     void (async () => {
-      const json = await exportData();
-      const url = URL.createObjectURL(new Blob([json], { type: 'application/json' }));
+      // A file isn't size-bound, so carry the FULL snapshot (with history) — the same envelope the
+      // .ru import understands, not the lossy legacy backup.
+      const full = await buildSnapshot();
+      const url = URL.createObjectURL(new Blob([JSON.stringify(full)], { type: 'application/json' }));
       const a = document.createElement('a');
       a.href = url;
       a.download = 'dayenglish-progress.json';
@@ -63,6 +71,13 @@ function manualFallback(dest: string): void {
       URL.revokeObjectURL(url);
     })();
   });
+
+  const go = document.createElement('a');
+  go.textContent = 'Перейти на dayenglish.ru →';
+  go.href = CANONICAL + dest;
+  go.style.cssText = 'color:#5b8cff;display:block;margin-top:12px';
+
+  actions.append(download, go);
 }
 
 async function anyLocalToMigrate(snapshot: Snapshot): Promise<boolean> {
@@ -97,7 +112,7 @@ export async function migrateThenRedirect(): Promise<void> {
     if (encoded.length > FRAGMENT_BUDGET) return manualFallback(dest);
 
     await unregisterSelf();
-    location.replace(`${CANONICAL}/migrate.html#${encoded}`);
+    location.replace(`${CANONICAL}${RECEIVER_PATH}#${encoded}`);
   } catch {
     redirect(dest);
   }

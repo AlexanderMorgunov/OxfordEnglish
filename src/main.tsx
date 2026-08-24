@@ -18,11 +18,16 @@ import { initPwaInstall } from '@/features/pwa/install';
 import { initAppUpdate } from '@/features/pwa/update';
 import { initFeedback } from '@/features/feedback/service';
 import { isMirrorHost, migrateThenRedirect } from '@/features/migration/sender';
+import { isReceiverPath, receiveMigration } from '@/features/migration/receiver';
 
-// On the .online mirror, carry this origin's data to the canonical .ru and redirect — WITHOUT booting
-// the app, so we never register a service worker or log analytics for a domain we're abandoning.
+// Migration hooks run BEFORE the app boots, so neither the .online sender nor the .ru receiver
+// registers a service worker or logs analytics for what is only a data-handoff hop.
 if (isMirrorHost()) {
+  // .online mirror: carry this origin's data to canonical .ru, then redirect.
   void migrateThenRedirect();
+} else if (isReceiverPath()) {
+  // .ru receiver (served as index.html at /migrate): import the handed-off snapshot, then redirect.
+  void receiveMigration();
 } else {
   const rootEl = document.getElementById('root');
   if (!rootEl) throw new Error('Root element #root not found');

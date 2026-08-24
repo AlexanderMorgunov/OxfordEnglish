@@ -11,6 +11,7 @@ import { getKeyLimits, subscribeKeyLimits } from '@/features/ai/limits';
 import { PROVIDERS, type AiProviderId } from '@/features/ai/provider';
 import { isConfigured, useAiStore } from '@/features/ai/store';
 import { exportData, importData } from '@/features/progress/backup';
+import { applySnapshot, type Snapshot } from '@/features/migration/snapshot';
 import {
   analyticsConfigured,
   isAnalyticsEnabled,
@@ -119,7 +120,12 @@ export function SettingsPage() {
   };
   const doImport = async (file: File) => {
     try {
-      await importData(await file.text());
+      const text = await file.text();
+      // A migration snapshot (from the .online → .ru file fallback) carries the full envelope incl.
+      // settings; the legacy backup is a flat table dump. Route each to its importer.
+      const parsed = JSON.parse(text) as { snapshotVersion?: number };
+      if (typeof parsed.snapshotVersion === 'number') await applySnapshot(parsed as Snapshot);
+      else await importData(text);
       setDataMsg(lang === 'ru' ? '✓ импортировано — перезагрузите страницу' : '✓ imported — reload to see it');
     } catch {
       setDataMsg(

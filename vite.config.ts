@@ -22,10 +22,6 @@ export default defineConfig({
       // only on the user's action (see src/features/pwa/update.ts) — no silent reload mid-reading,
       // and an open PWA is polled so it actually notices new versions.
       registerType: 'prompt',
-      // Registration is manual via virtual:pwa-register in initAppUpdate(); disabling auto-injection
-      // keeps it from being injected into the second HTML entry (migrate.html), which must NOT
-      // register a service worker — it's the standalone .online→.ru migration receiver.
-      injectRegister: null,
       includeAssets: ['icons/app-256.png', 'icons/app-512.png', 'icons/app-512-maskable.png'],
       manifest: {
         name: 'DayEnglish',
@@ -49,7 +45,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,woff2,svg,png}'],
         globIgnores: ['**/packs/**'],
         navigateFallback: 'index.html',
-        navigateFallbackDenylist: [/^\/packs\//, /^\/migrate\.html$/],
+        navigateFallbackDenylist: [/^\/packs\//],
         cleanupOutdatedCaches: true,
         maximumFileSizeToCacheInBytes: 3_000_000,
         runtimeCaching: [
@@ -71,16 +67,6 @@ export default defineConfig({
       },
     }),
   ],
-  build: {
-    rollupOptions: {
-      // Two HTML entries: the app, and the standalone .online→.ru migration receiver. index.html MUST
-      // be listed explicitly — once `input` is set, Rollup no longer picks it up on its own.
-      input: {
-        main: fileURLToPath(new URL('./index.html', import.meta.url)),
-        migrate: fileURLToPath(new URL('./migrate.html', import.meta.url)),
-      },
-    },
-  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
