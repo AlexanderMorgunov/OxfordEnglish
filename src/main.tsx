@@ -22,7 +22,9 @@ import { isReceiverPath, receiveMigration } from '@/features/migration/receiver'
 
 // Migration hooks run BEFORE the app boots, so neither the .online sender nor the .ru receiver
 // registers a service worker or logs analytics for what is only a data-handoff hop.
-if (isMirrorHost()) {
+// `?stay` is an escape hatch: open the .online mirror WITHOUT migrating/redirecting (support/debug).
+const stayOnMirror = new URLSearchParams(location.search).has('stay');
+if (isMirrorHost() && !stayOnMirror) {
   // .online mirror: carry this origin's data to canonical .ru, then redirect.
   void migrateThenRedirect();
 } else if (isReceiverPath()) {
