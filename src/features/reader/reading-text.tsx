@@ -357,9 +357,12 @@ export function ReadingText({
 
   // Continuous read-aloud: after each paragraph ends, advance to the next and scroll it into
   // view. Reading-while-listening works only when playback flows across paragraphs, not stops.
+  // 'nearest', not 'center': a large paragraph (common in PDFs) must not jump the reader to its
+  // middle. Only scrolls when the paragraph start isn't already in view — e.g. auto-advancing to the
+  // next one — so clicking play on a visible paragraph doesn't move the page.
   const scrollToPara = (i: number) => {
     const el = textRef.current?.querySelector(`[data-para="${i}"]`);
-    el?.scrollIntoView({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+    el?.scrollIntoView({ block: 'nearest', behavior: reduceMotion ? 'auto' : 'smooth' });
   };
 
   const speakFrom = (i: number) => {

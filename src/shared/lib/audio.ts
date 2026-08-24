@@ -118,11 +118,47 @@ export function wordSpans(text: string): WordSpan[] {
 }
 
 /**
- * Read a passage aloud as ONE natural utterance, calling `onWord(index)` as each word is
- * spoken (via `boundary` events) so the caller can highlight it. Where `boundary` does not
- * fire — Safari on iOS reports the event but never emits it — the audio still plays
- * naturally; only the live highlight is absent. We never chop the text into per-word
- * utterances: natural speech matters more for listening-while-reading than the highlight.
+ * Split a passage into small, utterance-sized chunks. Chrome silently drops utterances that are too
+ * long (and cuts any off after ~15s), so one big paragraph — common in PDFs, where paragraphs get
+ * merged — simply never plays. We prefer sentence boundaries and hard-split any sentence still over
+ * `maxLen` at a space. Each chunk carries its `offset` in the original text so a chunk-local boundary
+ * event maps back to the correct global word for highlighting.
+ */
+export function chunkPassage(text: string, maxLen = 160): { text: string; offset: number }[] {
+  const out: { text: string; offset: number }[] = [];
+  const sentenceRe = /[^.!?…]*[.!?…]+["')\]»]*\s*|[^.!?…]+$/g;
+  let m: RegExpExecArray | null;
+  while ((m = sentenceRe.exec(text)) !== null) {
+    const sentence = m[0];
+    if (!sentence.trim()) continue;
+    const base = m.index;
+    if (sentence.length <= maxLen) {
+      out.push({ text: sentence, offset: base });
+      continue;
+    }
+    // A single sentence longer than maxLen: break it at spaces near the limit.
+    let i = 0;
+    while (i < sentence.length) {
+      let end = Math.min(i + maxLen, sentence.length);
+      if (end < sentence.length) {
+        const sp = sentence.lastIndexOf(' ', end);
+        if (sp > i) end = sp + 1;
+      }
+      const piece = sentence.slice(i, end);
+      if (piece.trim()) out.push({ text: piece, offset: base + i });
+      i = end;
+    }
+  }
+  if (out.length === 0 && text.trim()) out.push({ text, offset: 0 });
+  return out;
+}
+
+/**
+ * Read a passage aloud as natural speech, calling `onWord(index)` as each word is spoken (via
+ * `boundary` events) so the caller can highlight it. The text is split into sentence-sized chunks
+ * spoken back-to-back — this is what makes long paragraphs play at all — but never per word: natural
+ * prose matters more for listening-while-reading than a perfect highlight (which Safari/iOS omits
+ * anyway, as it reports `boundary` but never emits it). `onEnd` fires after the last chunk.
  */
 export function speakPassage(
   text: string,
@@ -138,24 +174,36 @@ export function speakPassage(
   const myToken = speechToken;
   const alive = () => myToken === speechToken;
   const spans = wordSpans(text);
+  const chunks = chunkPassage(text);
 
-  const u = new SpeechSynthesisUtterance(text);
-  applyVoice(u);
-  u.rate = opts.rate ?? 1;
-  u.onboundary = (e: SpeechSynthesisEvent) => {
-    if (!alive() || (e.name && e.name !== 'word')) return;
-    const at = e.charIndex;
-    let idx = spans.findIndex((s) => at >= s.start && at < s.end);
-    if (idx < 0) idx = spans.findIndex((s) => s.start >= at);
-    if (idx >= 0) opts.onWord?.(idx);
+  let ci = 0;
+  const speakNext = () => {
+    if (!alive()) return;
+    if (ci >= chunks.length) {
+      done();
+      return;
+    }
+    const chunk = chunks[ci++]!;
+    const u = new SpeechSynthesisUtterance(chunk.text);
+    applyVoice(u);
+    u.rate = opts.rate ?? 1;
+    u.onboundary = (e: SpeechSynthesisEvent) => {
+      if (!alive() || (e.name && e.name !== 'word')) return;
+      const at = chunk.offset + e.charIndex;
+      let idx = spans.findIndex((s) => at >= s.start && at < s.end);
+      if (idx < 0) idx = spans.findIndex((s) => s.start >= at);
+      if (idx >= 0) opts.onWord?.(idx);
+    };
+    // Advance on end; on error, skip the failed chunk rather than stall the whole read.
+    u.onend = () => {
+      if (alive()) speakNext();
+    };
+    u.onerror = () => {
+      if (alive()) speakNext();
+    };
+    window.speechSynthesis.speak(u);
   };
-  u.onend = () => {
-    if (alive()) done();
-  };
-  u.onerror = () => {
-    if (alive()) done();
-  };
-  window.speechSynthesis.speak(u);
+  speakNext();
 }
 
 if (typeof document !== 'undefined') {
