@@ -6,4 +6,4 @@
  * Payments must live on the PWA, never inside the Telegram Mini App (Telegram ToS),
  * so this is always an external link that opens in the browser.
  */
-export const SUPPORT_URL = '';
+export const SUPPORT_URL = 'https://pay.cloudtips.ru/p/4592441c';
