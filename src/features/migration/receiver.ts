@@ -55,7 +55,9 @@ export async function receiveMigration(): Promise<void> {
 
   try {
     const result = await applySnapshot(snapshot);
-    localStorage.setItem(FROM_FLAG, String(Date.now()));
+    // Only remember the handoff when something real happened. An 'empty' snapshot must NOT set the flag,
+    // or a later genuine migration (e.g. from another origin) would be blocked.
+    if (result !== 'empty') localStorage.setItem(FROM_FLAG, String(Date.now()));
     if (result === 'imported') {
       const notice = {
         books: snapshot.booksCount > 0,

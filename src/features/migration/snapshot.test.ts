@@ -1,8 +1,13 @@
 import 'fake-indexeddb/auto';
 import { beforeEach, expect, test } from 'vitest';
 import { db, type SrsCard } from '@/db/db';
-import { buildSnapshot, applySnapshot, hasProgress } from './snapshot';
+import { buildSnapshot, applySnapshot, hasProgress, snapshotHasData, type Snapshot } from './snapshot';
 import { encodeSnapshot, decodeSnapshot } from './codec';
+
+const emptySnapshot = (): Snapshot => ({
+  snapshotVersion: 1, dexieVersion: 6, appVersion: 't', createdAt: 0,
+  dexie: {}, local: {}, booksCount: 0,
+});
 
 const emptyCard = (): SrsCard['card'] =>
   ({
@@ -95,6 +100,26 @@ test('applySnapshot skips when the target already has progress (no clobber)', as
   expect(await applySnapshot(snap)).toBe('skipped-nonempty');
   expect(await db.srsCards.count()).toBe(1);
   expect((await db.srsCards.get('mine'))?.front).toBe('own'); // untouched
+});
+
+test('day progress (attempts only, no SRS) counts as data and migrates', async () => {
+  await db.attempts.add({ exerciseId: 'u1.d1.ex1', tags: ['grammar'], correct: true, userAnswer: 'a', attemptNumber: 1, timestamp: 1, usedHint: false, usedAI: false });
+  const snap = await buildSnapshot();
+  expect(snapshotHasData(snap)).toBe(true); // attempts alone must qualify — day completion lives here
+  await clearAll();
+  expect(await hasProgress()).toBe(false);
+  expect(await applySnapshot(snap)).toBe('imported');
+  expect(await db.attempts.count()).toBe(1);
+});
+
+test('hasProgress is true when only attempts exist (guards day-only profiles from clobber)', async () => {
+  await db.attempts.add({ exerciseId: 'x', tags: [], correct: true, userAnswer: 'a', attemptNumber: 1, timestamp: 1, usedHint: false, usedAI: false });
+  expect(await hasProgress()).toBe(true);
+});
+
+test('an empty snapshot returns "empty" (so the caller will not mark migration done)', async () => {
+  expect(snapshotHasData(emptySnapshot())).toBe(false);
+  expect(await applySnapshot(emptySnapshot())).toBe('empty');
 });
 
 test('applySnapshot never overwrites an existing localStorage key', async () => {

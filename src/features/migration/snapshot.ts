@@ -101,17 +101,36 @@ export async function buildSnapshot(opts: { includeHistory?: boolean } = {}): Pr
   };
 }
 
-export type ApplyResult = 'imported' | 'skipped-nonempty';
+export type ApplyResult = 'imported' | 'skipped-nonempty' | 'empty';
 
-/** True when this origin already holds real progress — the guard against clobbering a live user. */
+/** True when this origin already holds real progress — the guard against clobbering a live user.
+ *  Day completion is derived from `attempts` (see features/progress/completion.ts), so those count
+ *  as progress just as much as SRS cards do. */
 export async function hasProgress(): Promise<boolean> {
-  const [srs, words] = await Promise.all([db.srsCards.count(), db.wordStatus.count()]);
-  return srs > 0 || words > 0;
+  const [srs, words, attempts, checkpoints] = await Promise.all([
+    db.srsCards.count(),
+    db.wordStatus.count(),
+    db.attempts.count(),
+    db.checkpoints.count(),
+  ]);
+  return srs > 0 || words > 0 || attempts > 0 || checkpoints > 0;
+}
+
+/** True when a snapshot actually carries something worth importing (any table row or localStorage key). */
+export function snapshotHasData(s: Snapshot): boolean {
+  const d = s.dexie;
+  const tables = [
+    d.srsCards, d.wordStatus, d.attempts, d.checkpoints, d.translations, d.bookmarks, d.feedbackOutbox,
+  ];
+  return tables.some((rows) => (rows?.length ?? 0) > 0) || Object.keys(s.local).length > 0;
 }
 
 /** Import a snapshot into THIS origin's storage. Runs only into a fresh profile and never overwrites
- *  an existing localStorage key, so a partially set-up target user is left intact. */
+ *  an existing localStorage key, so a partially set-up target user is left intact. Returns 'empty' when
+ *  there was nothing to import — the caller must NOT then mark migration done, or a later real handoff
+ *  (e.g. from a different origin) would be blocked. */
 export async function applySnapshot(s: Snapshot): Promise<ApplyResult> {
+  if (!snapshotHasData(s)) return 'empty';
   if (await hasProgress()) return 'skipped-nonempty';
   const d = s.dexie;
   await db.transaction(

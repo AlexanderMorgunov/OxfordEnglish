@@ -1,4 +1,4 @@
-import { buildSnapshot, hasProgress, type Snapshot } from './snapshot';
+import { buildSnapshot, snapshotHasData } from './snapshot';
 import { encodeSnapshot } from './codec';
 import { RECEIVER_PATH } from './receiver';
 
@@ -80,14 +80,6 @@ function manualFallback(dest: string): void {
   actions.append(download, go);
 }
 
-async function anyLocalToMigrate(snapshot: Snapshot): Promise<boolean> {
-  return (
-    (await hasProgress()) ||
-    Object.keys(snapshot.local).length > 0 ||
-    (snapshot.dexie.bookmarks?.length ?? 0) > 0
-  );
-}
-
 /**
  * Cross-**site** migration `.online` → `.ru`. Reads this origin's snapshot and carries it in the URL
  * fragment to a first-party `.ru` receiver (an iframe would write a partitioned bucket `.ru` never
@@ -100,7 +92,7 @@ export async function migrateThenRedirect(): Promise<void> {
     overlay(`<p style="font-size:1.1rem">Переносим ваш прогресс на dayenglish.ru…</p>`);
     let snapshot = await buildSnapshot();
     // Nothing worth carrying → skip the migrate hop entirely.
-    if (!(await anyLocalToMigrate(snapshot))) return redirect(dest);
+    if (!snapshotHasData(snapshot)) return redirect(dest);
 
     snapshot.dest = dest;
     let encoded = await encodeSnapshot(snapshot);
