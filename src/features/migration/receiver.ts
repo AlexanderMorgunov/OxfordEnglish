@@ -1,10 +1,13 @@
 import { applySnapshot, type Snapshot } from './snapshot';
 import { decodeSnapshot } from './codec';
 
-// First-party receiver for the .online → .ru migration. Served as the SPA index.html at `/migrate`
-// (via the SW navigate-fallback or the bucket error doc) and handled here in main.tsx BEFORE the app
-// boots — so it writes the real .ru storage and skips SW registration / analytics for a mere hop.
-export const RECEIVER_PATH = '/migrate';
+// First-party receiver for the .online → .ru migration, handled in main.tsx before the app boots.
+// The path lives UNDER /packs/ on purpose: every deployed service worker keeps /packs/ in its
+// navigateFallbackDenylist and serves it network-first, so even a client on a STALE sw (which would
+// otherwise answer /migrate with its cached old app-shell → 404, no receiver) fetches the current
+// index.html here and runs this new code. Verified against a stale prod sw. The bucket's error doc
+// serves index.html for this non-existent key, which boots the app and lands in this receiver.
+export const RECEIVER_PATH = '/packs/migrate';
 const FROM_FLAG = 'migration.fromOnline';
 const NOTICE_FLAG = 'migration.notice';
 
