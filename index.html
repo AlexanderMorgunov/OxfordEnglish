@@ -2,15 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <script>
-      // Canonical host is dayenglish.ru — send the .online mirror there before the app boots.
-      (function () {
-        var h = location.hostname;
-        if (h === 'dayenglish.online' || h === 'www.dayenglish.online') {
-          location.replace('https://dayenglish.ru' + location.pathname + location.search + location.hash);
-        }
-      })();
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="DayEnglish — офлайн-курс английского A1 → B1 с читалкой книг." />
     <meta name="theme-color" content="#12141c" />
