@@ -29,6 +29,9 @@ jobs:
       - run: npm run build
         env:
           VITE_YANDEX_METRICA_ID: ${{ secrets.VITE_YANDEX_METRICA_ID }}
+          VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.VITE_WEB3FORMS_ACCESS_KEY }}
+          VITE_FEEDBACK_ENDPOINT: ${{ secrets.VITE_FEEDBACK_ENDPOINT }}
+          VITE_FEEDBACK_EMAIL: ${{ secrets.VITE_FEEDBACK_EMAIL }}
       - name: Deploy to Yandex Object Storage
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.YC_S3_KEY_ID }}
