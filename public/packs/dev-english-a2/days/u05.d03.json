@@ -363,8 +363,8 @@
           "type": "choice",
           "id": "u05.d03.ex.c.01",
           "instruction": {
-            "en": "when or while?",
-            "ru": "when или while?"
+            "en": "Fill in the missing word.",
+            "ru": "Вставь пропущенное слово."
           },
           "tags": [
             "grammar.connectors"
@@ -372,7 +372,7 @@
           "prompt": "___ she was reading, the lights went off.",
           "options": [
             "While",
-            "When",
+            "During",
             "So"
           ],
           "correctIndex": 0
@@ -481,8 +481,8 @@
           "type": "choice",
           "id": "u05.d03.ex.b.03",
           "instruction": {
-            "en": "when or while?",
-            "ru": "when или while?"
+            "en": "Fill in the missing word.",
+            "ru": "Вставь пропущенное слово."
           },
           "tags": [
             "grammar.past-vs-continuous"
@@ -490,7 +490,7 @@
           "prompt": "___ she was reading, the lights went off.",
           "options": [
             "While",
-            "When",
+            "During",
             "So"
           ],
           "correctIndex": 0

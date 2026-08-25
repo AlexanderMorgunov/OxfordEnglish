@@ -350,8 +350,8 @@
           "type": "choice",
           "id": "u06.d05.ex.c.02",
           "instruction": {
-            "en": "looks or looks like?",
-            "ru": "looks или looks like?"
+            "en": "Fill in the missing word.",
+            "ru": "Вставь пропущенное слово."
           },
           "tags": [
             "functions.describing"
@@ -469,8 +469,8 @@
           "type": "choice",
           "id": "u06.d05.ex.b.02",
           "instruction": {
-            "en": "looks or looks like?",
-            "ru": "looks или looks like?"
+            "en": "Fill in the missing word.",
+            "ru": "Вставь пропущенное слово."
           },
           "tags": [
             "functions.describing"

@@ -405,7 +405,7 @@
             "grammar.reported-speech"
           ],
           "variants": [
-            "She said she would call tomorrow.",
+            "She said she will call the next day.",
             "She said she would call the next day."
           ],
           "correctIndex": 1
@@ -531,7 +531,7 @@
           ],
           "variants": [
             "He said he had arrived the day before.",
-            "He said he arrived yesterday."
+            "He said he has arrived the day before."
           ],
           "correctIndex": 0
         },

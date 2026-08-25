@@ -338,8 +338,8 @@
           "type": "choice",
           "id": "u07.d02.ex.choice.01",
           "instruction": {
-            "en": "some or any?",
-            "ru": "some или any?"
+            "en": "Fill in the missing word.",
+            "ru": "Вставь пропущенное слово."
           },
           "tags": [
             "grammar.some-any"

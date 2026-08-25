@@ -364,8 +364,8 @@
           "type": "choice",
           "id": "u08.d03.ex.c.02",
           "instruction": {
-            "en": "Choose the preposition.",
-            "ru": "Выбери предлог."
+            "en": "Fill in the missing word.",
+            "ru": "Вставь пропущенное слово."
           },
           "tags": [
             "grammar.prepositions-movement"

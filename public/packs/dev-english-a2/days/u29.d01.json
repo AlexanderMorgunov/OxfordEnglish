@@ -378,8 +378,8 @@
           "type": "choice",
           "id": "u29.d01.ex.c.01",
           "instruction": {
-            "en": "say or tell?",
-            "ru": "say или tell?"
+            "en": "Fill in the missing word.",
+            "ru": "Вставь пропущенное слово."
           },
           "tags": [
             "grammar.reported-speech"
