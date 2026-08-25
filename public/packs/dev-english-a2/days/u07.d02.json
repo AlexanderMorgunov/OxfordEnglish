@@ -348,7 +348,7 @@
           "options": [
             "any",
             "some",
-            "much",
+            "many",
             "a"
           ],
           "correctIndex": 0

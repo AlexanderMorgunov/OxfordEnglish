@@ -8,6 +8,8 @@
   "level": "B1",
   "tags": [
     "grammar.future-continuous",
+    "grammar.present-continuous",
+    "grammar.will",
     "grammar.be-about-to",
     "vocab.plans"
   ],
@@ -324,7 +326,7 @@
           },
           "tags": [
             "listening.detail",
-            "grammar.future-continuous"
+            "grammar.present-continuous"
           ],
           "prompt": "She's ___ friends in the morning.",
           "options": [
@@ -352,7 +354,7 @@
             "ru": "Договорённость."
           },
           "tags": [
-            "grammar.future-continuous"
+            "grammar.present-continuous"
           ],
           "prompt": "I ___ the dentist at three tomorrow.",
           "options": [
@@ -370,7 +372,7 @@
             "ru": "Решение сейчас."
           },
           "tags": [
-            "grammar.future-continuous"
+            "grammar.will"
           ],
           "prompt": "The phone's ringing. I ___ answer it.",
           "options": [
@@ -406,7 +408,7 @@
             "ru": "Какое предложение верное?"
           },
           "tags": [
-            "grammar.future-continuous"
+            "grammar.present-continuous"
           ],
           "variants": [
             "I will meet Sam at six tomorrow (arrangement).",
@@ -440,7 +442,7 @@
             "ru": "Прогноз."
           },
           "tags": [
-            "grammar.future-continuous"
+            "grammar.will"
           ],
           "prompt": "I think it ___ probably rain later. (will)",
           "answers": [
@@ -529,7 +531,7 @@
             "ru": "Какое предложение верное?"
           },
           "tags": [
-            "grammar.future-continuous"
+            "grammar.present-simple-timetables"
           ],
           "variants": [
             "The train will leave at six (timetable).",
@@ -545,7 +547,7 @@
             "ru": "Переведи на английский."
           },
           "tags": [
-            "grammar.future-continuous",
+            "grammar.present-continuous",
             "writing.translation"
           ],
           "direction": "ru-en",

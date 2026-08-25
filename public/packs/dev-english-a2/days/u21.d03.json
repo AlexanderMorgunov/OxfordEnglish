@@ -7,7 +7,7 @@
   "estimatedMinutes": 120,
   "level": "B1",
   "tags": [
-    "grammar.future-continuous",
+    "grammar.present-simple-timetables",
     "vocab.plans"
   ],
   "sections": [
@@ -323,7 +323,7 @@
           },
           "tags": [
             "listening.detail",
-            "grammar.future-continuous"
+            "grammar.present-simple-timetables"
           ],
           "prompt": "It ___ at 6:15.",
           "options": [
@@ -351,7 +351,7 @@
             "ru": "Расписание."
           },
           "tags": [
-            "grammar.future-continuous"
+            "grammar.present-simple-timetables"
           ],
           "prompt": "The film ___ at eight tonight. (start)",
           "answers": [
@@ -366,7 +366,7 @@
             "ru": "Выбери время."
           },
           "tags": [
-            "grammar.future-continuous"
+            "grammar.present-simple-timetables"
           ],
           "prompt": "The shop ___ at nine tomorrow.",
           "options": [
@@ -384,7 +384,7 @@
             "ru": "3-е лицо -s."
           },
           "tags": [
-            "grammar.future-continuous"
+            "grammar.present-simple-timetables"
           ],
           "prompt": "The bus ___ at 7:45. (depart)",
           "answers": [
@@ -399,7 +399,7 @@
             "ru": "Какое предложение верное?"
           },
           "tags": [
-            "grammar.future-continuous"
+            "grammar.present-simple-timetables"
           ],
           "variants": [
             "The train will leave at six every day.",
@@ -415,7 +415,7 @@
             "ru": "Вопрос."
           },
           "tags": [
-            "grammar.future-continuous"
+            "grammar.present-simple-timetables"
           ],
           "prompt": "What time ___ the museum close?",
           "options": [
@@ -433,7 +433,7 @@
             "ru": "События."
           },
           "tags": [
-            "grammar.future-continuous"
+            "grammar.present-simple-timetables"
           ],
           "prompt": "The concert ___ at nine. (begin)",
           "answers": [
@@ -448,7 +448,7 @@
             "ru": "Спроси про расписание."
           },
           "tags": [
-            "grammar.future-continuous"
+            "grammar.present-simple-timetables"
           ],
           "tokens": [
             "What",
@@ -504,7 +504,7 @@
             "ru": "Фиксированное расписание."
           },
           "tags": [
-            "grammar.future-continuous"
+            "grammar.present-simple-timetables"
           ],
           "prompt": "Our flight ___ at noon, so let's be early.",
           "options": [
@@ -522,7 +522,7 @@
             "ru": "Какое предложение верное?"
           },
           "tags": [
-            "grammar.future-continuous"
+            "grammar.present-simple-timetables"
           ],
           "variants": [
             "The class begin at two.",
@@ -538,7 +538,7 @@
             "ru": "Переведи на английский."
           },
           "tags": [
-            "grammar.future-continuous",
+            "grammar.present-simple-timetables",
             "writing.translation"
           ],
           "direction": "ru-en",
@@ -568,7 +568,7 @@
             "ru": "Переведи на английский."
           },
           "tags": [
-            "grammar.future-continuous",
+            "grammar.present-simple-timetables",
             "writing.translation"
           ],
           "direction": "ru-en",

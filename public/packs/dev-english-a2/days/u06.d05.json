@@ -360,7 +360,7 @@
           "options": [
             "looks like",
             "looks",
-            "is like"
+            "look like"
           ],
           "correctIndex": 0
         },
@@ -479,7 +479,7 @@
           "options": [
             "looks like",
             "looks",
-            "is like"
+            "look like"
           ],
           "correctIndex": 0,
           "commonErrors": [

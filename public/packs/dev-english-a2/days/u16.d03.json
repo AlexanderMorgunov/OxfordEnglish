@@ -383,7 +383,7 @@
           "tags": [
             "grammar.narrative-tenses"
           ],
-          "prompt": "Someone ___ the window open.",
+          "prompt": "The room was freezing — someone ___ the window open.",
           "options": [
             "had left",
             "left",

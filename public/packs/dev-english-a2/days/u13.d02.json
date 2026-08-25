@@ -495,7 +495,7 @@
           "prompt": "If it is cold, I ___ a coat.",
           "options": [
             "will wear",
-            "wear will",
+            "wear",
             "am wearing"
           ],
           "correctIndex": 0

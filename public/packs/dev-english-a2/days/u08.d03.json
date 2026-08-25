@@ -373,7 +373,7 @@
           "prompt": "Go ___ the park to the station.",
           "options": [
             "through",
-            "past",
+            "into",
             "up"
           ],
           "correctIndex": 0

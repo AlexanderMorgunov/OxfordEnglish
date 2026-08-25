@@ -462,9 +462,8 @@
           "tags": [
             "grammar.as-as"
           ],
-          "prompt": "This bag is ___ heavy ___ mine.",
+          "prompt": "This bag is as heavy ___ mine.",
           "answers": [
-            "as",
             "as"
           ]
         },
