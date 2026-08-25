@@ -580,7 +580,9 @@
           "prompt": "Мне не стоило торопиться.",
           "answers": [
             "I shouldn't have hurried.",
-            "I should not have rushed."
+            "I should not have rushed.",
+            "I shouldn't have rushed.",
+            "I should not have hurried."
           ],
           "commonErrors": [
             {

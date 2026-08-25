@@ -546,7 +546,8 @@
           "prompt": "Город, в котором я вырос, маленький.",
           "answers": [
             "The town I grew up in is small.",
-            "The town that I grew up in is small."
+            "The town that I grew up in is small.",
+            "The town where I grew up is small."
           ],
           "commonErrors": [
             {

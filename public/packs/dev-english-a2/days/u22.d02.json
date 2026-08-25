@@ -552,7 +552,9 @@
           "prompt": "Это город, где я вырос.",
           "answers": [
             "This is the town where I grew up.",
-            "This is the city where I grew up."
+            "This is the city where I grew up.",
+            "That's the town where I grew up.",
+            "That's the city where I grew up."
           ],
           "commonErrors": [
             {

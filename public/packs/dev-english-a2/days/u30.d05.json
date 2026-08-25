@@ -554,7 +554,8 @@
           "prompt": "Мой учитель, чьё имя я забыл, вспомнил моё.",
           "answers": [
             "My teacher, whose name I’d forgotten, remembered mine.",
-            "My teacher, whose name I had forgotten, remembered mine."
+            "My teacher, whose name I had forgotten, remembered mine.",
+            "My teacher, whose name I forgot, remembered mine."
           ],
           "commonErrors": [
             {

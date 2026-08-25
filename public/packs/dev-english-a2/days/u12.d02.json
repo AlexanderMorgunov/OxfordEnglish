@@ -450,7 +450,9 @@
           "prompt": "Я только что отправил письмо.",
           "answers": [
             "I have just sent the email.",
-            "I've just sent the email."
+            "I've just sent the email.",
+            "I have just sent the letter.",
+            "I've just sent the letter."
           ]
         },
         {
@@ -554,7 +556,8 @@
           "answers": [
             "I have just sent the email.",
             "I've just sent the email.",
-            "I have just sent the letter."
+            "I have just sent the letter.",
+            "I've just sent the letter."
           ],
           "commonErrors": [
             {

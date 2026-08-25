@@ -501,7 +501,8 @@
           "direction": "ru-en",
           "prompt": "Меня зовут Анна.",
           "answers": [
-            "My name is Anna."
+            "My name is Anna.",
+            "My name's Anna."
           ]
         },
         {

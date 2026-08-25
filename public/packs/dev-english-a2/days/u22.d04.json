@@ -579,7 +579,8 @@
           "prompt": "Человек, с которым я говорил, был очень добр.",
           "answers": [
             "The person I spoke to was very kind.",
-            "The person who I spoke to was very kind."
+            "The person who I spoke to was very kind.",
+            "The person that I spoke to was very kind."
           ],
           "commonErrors": [
             {

@@ -553,7 +553,7 @@
           "prompt": "Человек, который звонил, — мой начальник.",
           "answers": [
             "The man who called is my boss.",
-            "The man who called is my boss."
+            "The man that called is my boss."
           ],
           "commonErrors": [
             {

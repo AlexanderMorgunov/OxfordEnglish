@@ -577,7 +577,8 @@
           "direction": "ru-en",
           "prompt": "У меня несколько яблок.",
           "answers": [
-            "I have a few apples."
+            "I have a few apples.",
+            "I have several apples."
           ],
           "commonErrors": [
             {

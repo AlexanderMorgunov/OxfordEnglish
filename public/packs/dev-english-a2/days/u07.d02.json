@@ -399,7 +399,9 @@
           "prompt": "У нас есть немного хлеба.",
           "answers": [
             "We have some bread.",
-            "We have got some bread."
+            "We have got some bread.",
+            "We have a little bread.",
+            "We've got a little bread."
           ]
         },
         {

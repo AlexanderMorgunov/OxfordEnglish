@@ -465,7 +465,7 @@
             "ru": "Услышь безударное слово."
           },
           "tags": [
-            "grammar.past-simple"
+            "pronunciation"
           ],
           "prompt": "\"I went ___ the shop.\" — which word is weak (unstressed)?",
           "options": [
@@ -483,7 +483,6 @@
             "ru": "Переведи на английский."
           },
           "tags": [
-            "grammar.past-simple",
             "writing.translation"
           ],
           "direction": "ru-en",

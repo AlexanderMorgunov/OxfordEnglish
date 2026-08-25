@@ -414,7 +414,8 @@
           "prompt": "There is a shop.",
           "answers": [
             "There are two shops.",
-            "There are shops."
+            "There are shops.",
+            "There are some shops."
           ]
         },
         {

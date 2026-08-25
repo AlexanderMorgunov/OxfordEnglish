@@ -575,7 +575,9 @@
           "prompt": "Нам устанавливают новые окна.",
           "answers": [
             "We’re having new windows installed.",
-            "We are getting new windows installed."
+            "We are getting new windows installed.",
+            "We are having new windows installed.",
+            "We’re getting new windows installed."
           ],
           "commonErrors": [
             {

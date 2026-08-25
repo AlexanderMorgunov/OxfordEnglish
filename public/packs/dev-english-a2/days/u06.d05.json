@@ -443,7 +443,8 @@
           "direction": "ru-en",
           "prompt": "Это маленькая тихая квартира.",
           "answers": [
-            "It is a small quiet flat."
+            "It is a small quiet flat.",
+            "It's a small quiet flat."
           ]
         },
         {
@@ -573,7 +574,8 @@
           "direction": "ru-en",
           "prompt": "Это маленькая тихая квартира.",
           "answers": [
-            "It is a small quiet flat."
+            "It is a small quiet flat.",
+            "It's a small quiet flat."
           ]
         }
       ]

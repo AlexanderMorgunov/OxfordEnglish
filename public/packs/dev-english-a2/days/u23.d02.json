@@ -583,7 +583,9 @@
           "prompt": "По вечерам бабушка рассказывала нам истории.",
           "answers": [
             "In the evenings, my grandmother would tell us stories.",
-            "In the evenings, grandma would tell us stories."
+            "In the evenings, grandma would tell us stories.",
+            "In the evenings, my grandmother used to tell us stories.",
+            "In the evenings, grandma used to tell us stories."
           ],
           "commonErrors": [
             {

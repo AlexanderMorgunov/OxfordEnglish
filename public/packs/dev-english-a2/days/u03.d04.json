@@ -443,7 +443,8 @@
           "direction": "ru-en",
           "prompt": "Я хочу научиться плавать.",
           "answers": [
-            "I want to learn to swim."
+            "I want to learn to swim.",
+            "I want to learn how to swim."
           ]
         },
         {
@@ -553,7 +554,8 @@
           "direction": "ru-en",
           "prompt": "Я хочу научиться плавать.",
           "answers": [
-            "I want to learn to swim."
+            "I want to learn to swim.",
+            "I want to learn how to swim."
           ]
         }
       ]

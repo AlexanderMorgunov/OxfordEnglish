@@ -447,7 +447,8 @@
           "direction": "ru-en",
           "prompt": "В комнате есть стол.",
           "answers": [
-            "There is a table in the room."
+            "There is a table in the room.",
+            "There's a table in the room."
           ]
         },
         {
@@ -564,7 +565,8 @@
           "direction": "ru-en",
           "prompt": "В комнате есть стол.",
           "answers": [
-            "There is a table in the room."
+            "There is a table in the room.",
+            "There's a table in the room."
           ]
         }
       ]

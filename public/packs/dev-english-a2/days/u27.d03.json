@@ -547,7 +547,9 @@
           "prompt": "Не нужно было волноваться.",
           "answers": [
             "You needn't have worried.",
-            "You need not have worried."
+            "You need not have worried.",
+            "I needn't have worried.",
+            "I need not have worried."
           ],
           "commonErrors": [
             {

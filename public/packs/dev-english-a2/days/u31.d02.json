@@ -553,7 +553,9 @@
           "prompt": "Ты провалишься, если не будешь учиться.",
           "answers": [
             "You’ll fail unless you study.",
-            "You will fail unless you study."
+            "You will fail unless you study.",
+            "You'll fail if you don't study.",
+            "You will fail if you don't study."
           ],
           "commonErrors": [
             {

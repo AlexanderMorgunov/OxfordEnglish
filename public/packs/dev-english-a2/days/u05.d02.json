@@ -448,7 +448,8 @@
           "prompt": "Что ты делал в семь вечера?",
           "answers": [
             "What were you doing at seven?",
-            "What were you doing at 7pm?"
+            "What were you doing at 7pm?",
+            "What were you doing at 7?"
           ]
         },
         {
@@ -564,7 +565,8 @@
           "prompt": "Что ты делал в семь вечера?",
           "answers": [
             "What were you doing at seven?",
-            "What were you doing at 7pm?"
+            "What were you doing at 7pm?",
+            "What were you doing at 7?"
           ]
         }
       ]

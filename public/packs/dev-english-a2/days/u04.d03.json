@@ -295,7 +295,8 @@
           "direction": "ru-en",
           "prompt": "Вчера я починил баг.",
           "answers": [
-            "Yesterday I fixed the bug."
+            "Yesterday I fixed the bug.",
+            "I fixed the bug yesterday."
           ]
         },
         {

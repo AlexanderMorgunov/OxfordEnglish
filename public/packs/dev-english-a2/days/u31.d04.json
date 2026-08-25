@@ -552,7 +552,8 @@
           "direction": "ru-en",
           "prompt": "Знай я об этом, я бы позвонил.",
           "answers": [
-            "Had I known, I would have called."
+            "Had I known, I would have called.",
+            "Had I known, I'd have called."
           ],
           "commonErrors": [
             {

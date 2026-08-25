@@ -549,7 +549,9 @@
           "prompt": "Я устал, потому что весь день бегал.",
           "answers": [
             "I'm tired because I've been running all day.",
-            "I am tired because I have been running all day."
+            "I am tired because I have been running all day.",
+            "I'm tired because I have been running all day.",
+            "I am tired because I've been running all day."
           ],
           "commonErrors": [
             {

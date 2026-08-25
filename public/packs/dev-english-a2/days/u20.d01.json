@@ -545,7 +545,8 @@
           "prompt": "Я люблю готовить для друзей.",
           "answers": [
             "I enjoy cooking for friends.",
-            "I like cooking for friends."
+            "I like cooking for friends.",
+            "I love cooking for friends."
           ],
           "commonErrors": [
             {

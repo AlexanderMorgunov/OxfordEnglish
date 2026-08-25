@@ -553,7 +553,8 @@
           "prompt": "Если бы мы наняли юриста, сейчас это не было бы проблемой.",
           "answers": [
             "If we had used a lawyer, this wouldn’t be a problem now.",
-            "Had we used a lawyer, this wouldn’t be a problem now."
+            "Had we used a lawyer, this wouldn’t be a problem now.",
+            "If we'd used a lawyer, this wouldn't be a problem now."
           ],
           "commonErrors": [
             {
@@ -583,7 +584,8 @@
           "direction": "ru-en",
           "prompt": "Жаль, что мы не подписали более чёткий договор.",
           "answers": [
-            "I wish we had signed a clearer contract."
+            "I wish we had signed a clearer contract.",
+            "I wish we'd signed a clearer contract."
           ],
           "commonErrors": [
             {

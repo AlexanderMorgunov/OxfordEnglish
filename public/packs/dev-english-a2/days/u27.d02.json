@@ -577,7 +577,8 @@
           "prompt": "Он не мог этого знать.",
           "answers": [
             "He can't have known that.",
-            "He could not have known that."
+            "He could not have known that.",
+            "He couldn't have known that."
           ],
           "commonErrors": [
             {

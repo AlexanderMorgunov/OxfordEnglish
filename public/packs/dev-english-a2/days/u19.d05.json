@@ -547,14 +547,14 @@
           "prompt": "Похоже, будет дождь.",
           "answers": [
             "It looks like it's going to rain.",
-            "It looks like rain."
+            "It looks like rain.",
+            "It looks like it will rain."
           ],
           "commonErrors": [
             {
               "match": [
                 "it looks like will rain",
-                "it look like rain",
-                "it looks like it will rain"
+                "it look like rain"
               ],
               "explanation": {
                 "en": "It looks like + clause: It looks like it is going to rain.",

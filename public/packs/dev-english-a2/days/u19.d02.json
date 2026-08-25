@@ -510,7 +510,7 @@
             "ru": "Выбери самую уверенную догадку."
           },
           "tags": [
-            "grammar.modals-deduction"
+            "grammar.modals-deduction-past"
           ],
           "prompt": "The streets are white. It ___ have snowed.",
           "options": [

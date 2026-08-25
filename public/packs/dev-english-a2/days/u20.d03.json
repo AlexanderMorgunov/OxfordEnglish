@@ -545,7 +545,9 @@
           "prompt": "Он боится летать.",
           "answers": [
             "He's afraid of flying.",
-            "He is afraid of flying."
+            "He is afraid of flying.",
+            "He's afraid to fly.",
+            "He is afraid to fly."
           ],
           "commonErrors": [
             {

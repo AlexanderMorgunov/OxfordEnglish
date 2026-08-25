@@ -376,7 +376,8 @@
           "prompt": "Меня зовут Прия, я из Индии.",
           "answers": [
             "My name is Priya, I am from India.",
-            "My name is Priya and I am from India."
+            "My name is Priya and I am from India.",
+            "My name is Priya, I'm from India."
           ]
         },
         {
@@ -388,7 +389,7 @@
           },
           "tags": [
             "writing.translation",
-            "grammar.have-got"
+            "functions.small-talk"
           ],
           "direction": "ru-en",
           "prompt": "Рад со всеми познакомиться.",

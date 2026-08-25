@@ -362,7 +362,7 @@
             "ru": "is или are?"
           },
           "tags": [
-            "grammar.word-order"
+            "grammar.there-is"
           ],
           "prompt": "There ___ two shops on this street.",
           "options": [

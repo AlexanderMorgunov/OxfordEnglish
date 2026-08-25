@@ -545,7 +545,8 @@
           "answers": [
             "He is reading the docs.",
             "He's reading the docs.",
-            "He is reading the documentation."
+            "He is reading the documentation.",
+            "He's reading the documentation."
           ],
           "commonErrors": [
             {

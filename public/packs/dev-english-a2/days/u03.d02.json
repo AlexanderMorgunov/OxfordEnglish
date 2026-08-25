@@ -433,7 +433,9 @@
           "prompt": "Сейчас он готовит обед.",
           "answers": [
             "He is cooking lunch now.",
-            "He is cooking lunch."
+            "He is cooking lunch.",
+            "He's cooking lunch now.",
+            "He's cooking lunch."
           ]
         },
         {

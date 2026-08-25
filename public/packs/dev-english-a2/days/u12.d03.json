@@ -550,7 +550,9 @@
           "prompt": "Она работает здесь с понедельника.",
           "answers": [
             "She has worked here since Monday.",
-            "She has been working here since Monday."
+            "She has been working here since Monday.",
+            "She's worked here since Monday.",
+            "She's been working here since Monday."
           ],
           "commonErrors": [
             {

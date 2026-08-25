@@ -449,7 +449,8 @@
           "direction": "ru-en",
           "prompt": "Он устал, потому что работал всю ночь.",
           "answers": [
-            "He was tired because he had worked all night."
+            "He was tired because he had worked all night.",
+            "He was tired because he had been working all night."
           ]
         },
         {
@@ -551,7 +552,8 @@
           "direction": "ru-en",
           "prompt": "Он устал, потому что работал всю ночь.",
           "answers": [
-            "He was tired because he had worked all night."
+            "He was tired because he had worked all night.",
+            "He was tired because he had been working all night."
           ],
           "commonErrors": [
             {
