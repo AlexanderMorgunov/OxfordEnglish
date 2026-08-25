@@ -175,6 +175,9 @@ export function speakPassage(
   const alive = () => myToken === speechToken;
   const spans = wordSpans(text);
   const chunks = chunkPassage(text);
+  const rate = opts.rate ?? 1;
+  // Rough English TTS pace for the estimate fallback below (~15 chars/s at rate 1).
+  const charsPerSec = 15 * rate;
 
   let ci = 0;
   const speakNext = () => {
@@ -186,19 +189,45 @@ export function speakPassage(
     const chunk = chunks[ci++]!;
     const u = new SpeechSynthesisUtterance(chunk.text);
     applyVoice(u);
-    u.rate = opts.rate ?? 1;
+    u.rate = rate;
+
+    let boundarySeen = false;
+    let chunkAlive = true; // false once this chunk ends, so its stale estimate timers can't fire
+
     u.onboundary = (e: SpeechSynthesisEvent) => {
       if (!alive() || (e.name && e.name !== 'word')) return;
+      boundarySeen = true; // precise events available — the estimate fallback stands down
       const at = chunk.offset + e.charIndex;
       let idx = spans.findIndex((s) => at >= s.start && at < s.end);
       if (idx < 0) idx = spans.findIndex((s) => s.start >= at);
       if (idx >= 0) opts.onWord?.(idx);
     };
+
+    // Many engines (local Windows voices, iOS Safari) speak but never emit `boundary`, so the
+    // highlight would never move. When none has arrived shortly after speech starts, drive it by an
+    // estimated pace instead — approximate, but it follows along.
+    u.onstart = () => {
+      if (!alive() || !opts.onWord) return;
+      setTimeout(() => {
+        if (!alive() || !chunkAlive || boundarySeen) return;
+        for (let k = 0; k < spans.length; k++) {
+          const s = spans[k]!;
+          if (s.start < chunk.offset || s.start >= chunk.offset + chunk.text.length) continue;
+          const delayMs = ((s.start - chunk.offset) / charsPerSec) * 1000;
+          setTimeout(() => {
+            if (alive() && chunkAlive && !boundarySeen) opts.onWord?.(k);
+          }, delayMs);
+        }
+      }, 220);
+    };
+
     // Advance on end; on error, skip the failed chunk rather than stall the whole read.
     u.onend = () => {
+      chunkAlive = false;
       if (alive()) speakNext();
     };
     u.onerror = () => {
+      chunkAlive = false;
       if (alive()) speakNext();
     };
     window.speechSynthesis.speak(u);
