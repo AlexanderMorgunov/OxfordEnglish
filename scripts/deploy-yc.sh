@@ -55,5 +55,17 @@ put "manifest.webmanifest" "application/manifest+json"
 [ -f "$DIST/sitemap.xml" ] && "${S3[@]}" cp "$DIST/sitemap.xml" "s3://$YC_BUCKET/sitemap.xml" \
   --content-type "application/xml; charset=utf-8" --cache-control "public,max-age=3600" --no-progress || true
 
+# Static hosting maps a missing key to the error doc but keeps the 404 status (soft-404), which
+# de-indexes shared deep links. Copy the shell to each public top-level route key so it answers 200.
+# Keep this list in sync with src/router.tsx / public/sitemap.xml. Dynamic routes (/grammar/:id) still
+# soft-404 — they're intentionally out of the sitemap.
+if [ -f "$DIST/index.html" ]; then
+  echo "3b/3 SPA route aliases (200, not soft-404)…"
+  for route in grammar library support credits feedback; do
+    "${S3[@]}" cp "$DIST/index.html" "s3://$YC_BUCKET/$route" \
+      --content-type "text/html; charset=utf-8" --cache-control "$NOCACHE" --no-progress
+  done
+fi
+
 echo "Done. NOTE: CDN must honor origin Cache-Control (or force-revalidate sw.js/index.html/manifest),"
 echo "otherwise the edge serves a stale sw.js and PWA updates stall. No --delete (orphans pruned separately)."
