@@ -81,19 +81,23 @@ function checkExercise(ex: Record<string, unknown>, fail: (m: string) => void, w
     if (!isPerm) fail(`exercise ${id}: correctOrder is not a permutation of tokens[0..${n - 1}]`);
   }
 
-  // A4 explicit-set mismatch (report-only): instruction names a set, options add out-of-set items.
-  if (type === 'choice' && Array.isArray(ex.options) && ex.instruction && typeof ex.instruction === 'object') {
+  // A4 explicit-set mismatch (report-only): instruction enumerates an answer set but the KEY sits
+  // outside it, so a learner who follows the instruction can never reach the right option. Extra
+  // out-of-set *distractors* are standard design (Is/Are under "Do or Does?"), so they don't fire —
+  // only an out-of-set key does.
+  if (type === 'choice' && Array.isArray(ex.options) && typeof ex.correctIndex === 'number' &&
+      ex.instruction && typeof ex.instruction === 'object') {
     const instr = ex.instruction as { en?: unknown; ru?: unknown };
     const texts = [instr.en, instr.ru].filter((t): t is string => typeof t === 'string');
     const parsed = texts.map(parseInstructionSet).filter((s): s is Set<string> => s !== null);
     if (parsed.length) {
       const set = new Set(parsed.flatMap((s) => [...s]));
       const folded = ex.options.map((o) => foldToken(String(o)));
-      // Only trust it as an enumeration of the options if at least two options are inside the set.
+      // Trust it as an enumeration of the options only if at least two options fall inside the set.
       if (folded.filter((o) => set.has(o)).length >= 2) {
-        const out = ex.options.filter((o) => !set.has(foldToken(String(o))));
-        if (out.length) {
-          warn(`exercise ${id}: instruction set {${[...set].join(', ')}} but options add out-of-set: ${out.map((o) => `"${String(o)}"`).join(', ')}`);
+        const key = folded[ex.correctIndex];
+        if (key !== undefined && !set.has(key)) {
+          warn(`exercise ${id}: instruction enumerates {${[...set].join(', ')}} but the correct option "${String(ex.options[ex.correctIndex])}" is outside that set`);
         }
       }
     }

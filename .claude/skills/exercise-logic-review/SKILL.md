@@ -48,7 +48,9 @@ Cite the rule id, quote the exact offending text, and give one concrete fix per 
   tense clash with a time marker ("Tomorrow … celebrated"), ungrammatical construction
   ("have celebrate"), wrong part of speech, or semantic absurdity. It tests nothing.
 - **L3 multiple correct / ambiguous** *(error)* — more than one option is defensibly correct in the
-  prompt as written.
+  prompt as written. This **includes an out-of-set option that is also correct** (e.g. instruction
+  "whose or who's?" but "Which keys are these?" is grammatical too): Layer A only flags an out-of-set
+  *key*, so an out-of-set *distractor that also solves the prompt* falls to you — claim it here.
 - **L4 wrong answer key** *(error)* — the marked answer is wrong or not the best. (Comes free from
   solve-first; always check it.)
 - **L5 prompt/stem defect** *(error/warn)* — the `prompt` is ungrammatical, ambiguous, missing the
