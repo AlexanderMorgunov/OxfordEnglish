@@ -381,8 +381,8 @@
           "type": "choice",
           "id": "u22.d04.ex.c.02",
           "instruction": {
-            "en": "Subject — keep it.",
-            "ru": "Подлежащее — оставь."
+            "en": "Here the pronoun is the subject — it can't be omitted. Which one?",
+            "ru": "Здесь местоимение — подлежащее, его нельзя опустить. Что выбрать?"
           },
           "tags": [
             "grammar.relative-clauses"
@@ -504,8 +504,8 @@
           "type": "choice",
           "id": "u22.d04.ex.c.04",
           "instruction": {
-            "en": "Keep or omit?",
-            "ru": "Оставить или опустить?"
+            "en": "Choose the correct form (pronoun + verb).",
+            "ru": "Выбери верную форму (местоимение + глагол)."
           },
           "tags": [
             "grammar.relative-clauses"
