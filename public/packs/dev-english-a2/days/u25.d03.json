@@ -438,9 +438,9 @@
           "tags": [
             "grammar.all-every-each"
           ],
-          "prompt": "We walked ___ day. (entire day, 2 words: all + ?)",
+          "prompt": "We walked ___ day. (entire day)",
           "answers": [
-            "day"
+            "all"
           ]
         },
         {

@@ -522,13 +522,13 @@
           "type": "gap-fill",
           "id": "u22.d04.ex.g.02",
           "instruction": {
-            "en": "Omit the object pronoun.",
-            "ru": "Опусти местоимение-дополнение."
+            "en": "Add the recipient.",
+            "ru": "Добавь получателя."
           },
           "tags": [
             "grammar.relative-clauses"
           ],
-          "prompt": "The advice she gave ___ was useful. (leave blank — nothing needed)",
+          "prompt": "The advice she gave ___ was useful. (to whom?)",
           "answers": [
             "me"
           ]

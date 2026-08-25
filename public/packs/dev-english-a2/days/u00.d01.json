@@ -414,9 +414,7 @@
           "prompt": "He is ___ teacher.",
           "options": [
             "a",
-            "an",
-            "the",
-            "some"
+            "an"
           ],
           "correctIndex": 0
         },

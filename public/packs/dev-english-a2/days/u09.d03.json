@@ -353,10 +353,9 @@
           "tags": [
             "grammar.as-as"
           ],
-          "prompt": "She is ___ kind ___ her mother.",
+          "prompt": "She is as kind ___ her mother.",
           "answers": [
-            "as ... as",
-            "as as"
+            "as"
           ]
         },
         {
