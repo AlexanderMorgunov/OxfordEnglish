@@ -318,7 +318,7 @@
           "id": "u06.d03.ex.l.01",
           "type": "choice",
           "instruction": {
-            "en": "What are on the shelf?",
+            "en": "What is on the shelf?",
             "ru": "Что на полке?"
           },
           "tags": [

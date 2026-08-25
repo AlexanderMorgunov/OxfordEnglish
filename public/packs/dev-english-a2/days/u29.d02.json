@@ -511,7 +511,7 @@
           "prompt": "I asked ___ to go or stay.",
           "options": [
             "whether",
-            "if that",
+            "if",
             "that"
           ],
           "correctIndex": 0

@@ -526,8 +526,8 @@
           "type": "gap-fill",
           "id": "u16.d05.ex.b.04",
           "instruction": {
-            "en": "Order words.",
-            "ru": "Слова-порядок."
+            "en": "Fill in the missing word.",
+            "ru": "Вставь пропущенное слово."
           },
           "tags": [
             "functions.storytelling"
