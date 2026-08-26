@@ -4,6 +4,8 @@ import { packMediaUrl } from '@/content/loader';
 import { Button, Console, Input, SegmentedToggle } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import { ExerciseView } from '@/features/practice/exercises/ExerciseView';
+import { useUiLang } from '@/features/i18n/uiLang';
+import { exLabels } from '@/features/i18n/ui-strings';
 import { activeCueIndex, diffWords, dictationCorrect } from './cues';
 
 type ListeningSection = Extract<Section, { type: 'listening' }>;
@@ -19,6 +21,8 @@ function DictationRow({
   cue: Cue;
   onPlay: () => void;
 }) {
+  const lang = useUiLang((s) => s.lang);
+  const ru = lang === 'ru';
   const [value, setValue] = useState('');
   const [checked, setChecked] = useState(false);
   const parts = checked ? diffWords(cue.en, value) : [];
@@ -28,19 +32,21 @@ function DictationRow({
     <div className="card-exercise">
       <div className="mb-3 flex items-center gap-2.5">
         <Button size="sm" variant="ghost" onClick={onPlay}>
-          ▶ play phrase
+          {ru ? '▶ фраза' : '▶ play phrase'}
         </Button>
-        <span className="font-mono text-2xs text-muted">type what you hear</span>
+        <span className="font-mono text-2xs text-muted">
+          {ru ? 'наберите, что слышите' : 'type what you hear'}
+        </span>
       </div>
       <div className="flex flex-wrap items-center gap-2.5">
         <Input
           className="min-w-64 flex-1"
-          placeholder="type the phrase…"
+          placeholder={ru ? 'наберите фразу…' : 'type the phrase…'}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && value.trim() && setChecked(true)}
         />
-        <Button onClick={() => value.trim() && setChecked(true)}>Run check</Button>
+        <Button onClick={() => value.trim() && setChecked(true)}>{exLabels(lang).runCheck}</Button>
       </div>
       {checked && (
         <Console status={correct ? 'pass' : 'fail'}>
@@ -57,6 +63,7 @@ function DictationRow({
 }
 
 export function ListeningSectionView({ section }: { section: ListeningSection }) {
+  const ru = useUiLang((s) => s.lang) === 'ru';
   const audioRef = useRef<HTMLAudioElement>(null);
   const [time, setTime] = useState(0);
   const [playing, setPlaying] = useState(false);
@@ -114,10 +121,10 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
             else void el.play();
           }}
         >
-          {playing ? '❚❚ pause' : '▶ play'}
+          {playing ? (ru ? '❚❚ пауза' : '❚❚ pause') : ru ? '▶ слушать' : '▶ play'}
         </Button>
         <SegmentedToggle
-          ariaLabel="Playback speed"
+          ariaLabel={ru ? 'Скорость воспроизведения' : 'Playback speed'}
           value={rate}
           onChange={setRateKey}
           segments={[
@@ -146,14 +153,16 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
             variant="ghost"
             onClick={() => (loop.current = { a: 0, b: null })}
           >
-            clear loop
+            {ru ? 'сбросить петлю' : 'clear loop'}
           </Button>
         </div>
       </div>
 
       {!hasPlayed ? (
         <p className="font-mono text-2xs text-muted">
-          listen first — the transcript unlocks after you play once.
+          {ru
+            ? 'сначала послушайте — расшифровка откроется после первого воспроизведения.'
+            : 'listen first — the transcript unlocks after you play once.'}
         </p>
       ) : (
         <div className="flex gap-2">
@@ -162,7 +171,13 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
             variant="ghost"
             onClick={() => setShowTranscript((v) => !v)}
           >
-            {showTranscript ? 'hide transcript' : 'show transcript'}
+            {showTranscript
+              ? ru
+                ? 'скрыть расшифровку'
+                : 'hide transcript'
+              : ru
+                ? 'показать расшифровку'
+                : 'show transcript'}
           </Button>
           {cues.length > 0 && (
             <Button
@@ -170,7 +185,7 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
               variant={dictation ? 'primary' : 'ghost'}
               onClick={() => setDictation((v) => !v)}
             >
-              dictation
+              {ru ? 'диктант' : 'dictation'}
             </Button>
           )}
         </div>

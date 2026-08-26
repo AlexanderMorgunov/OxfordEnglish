@@ -7,8 +7,9 @@ import { useUiLang } from '@/features/i18n/uiLang';
 type Props = { section: Extract<Section, { type: 'grammar' }> };
 
 export function GrammarSectionView({ section }: Props) {
-  const [lang, setLang] = useState<'en' | 'ru'>('en');
   const uiLang = useUiLang((s) => s.lang);
+  // Default the rule language to the user's UI language (they can still flip per section).
+  const [lang, setLang] = useState<'en' | 'ru'>(uiLang);
   const hasRu = Boolean(section.rule.ru);
   const showRu = lang === 'ru' && hasRu;
   const dayId = section.id.replace(/\.grammar$/, '');
@@ -19,11 +20,11 @@ export function GrammarSectionView({ section }: Props) {
       <div className="rounded-lg border border-line bg-surface p-5">
         <div className="mb-3 flex items-center justify-between gap-3">
           <span className="font-mono text-2xs uppercase tracking-[0.08em] text-muted">
-            rule
+            {uiLang === 'ru' ? 'правило' : 'rule'}
           </span>
           {hasRu && (
             <SegmentedToggle
-              ariaLabel="Rule language"
+              ariaLabel={uiLang === 'ru' ? 'Язык правила' : 'Rule language'}
               value={lang}
               onChange={setLang}
               segments={[
@@ -70,7 +71,7 @@ export function GrammarSectionView({ section }: Props) {
       {section.pitfalls && section.pitfalls.length > 0 && (
         <div className="rounded-lg border border-amber-dim bg-amber-dim/20 p-5">
           <p className="mb-2.5 font-mono text-2xs uppercase tracking-[0.08em] text-amber">
-            common pitfalls
+            {uiLang === 'ru' ? 'частые ошибки' : 'common pitfalls'}
           </p>
           <ul className="flex flex-col gap-2">
             {section.pitfalls.map((pitfall, i) => (

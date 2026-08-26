@@ -4,7 +4,7 @@ import { useContentStore } from '@/content/store';
 import { useSolvedExercises } from '@/features/progress/useCompletion';
 import { dayProgress, unitProgress } from '@/features/progress/completion';
 import { useLearner } from '@/features/learner/store';
-import { useUiLang } from '@/features/i18n/uiLang';
+import { useUiLang, tr } from '@/features/i18n/uiLang';
 import { onboardingSeen, startTour } from '@/features/onboarding/tour';
 import { Card, LevelDivider, PixelImage } from '@/shared/ui';
 import type { LoadedUnit } from '@/content/loader';
@@ -36,7 +36,7 @@ export function DashboardPage() {
     <section aria-label={ru ? 'Главная' : 'Dashboard'}>
       <div className="mb-8 flex items-start justify-between gap-4">
         <div>
-          <p className="eyebrow mb-3.5">today</p>
+          <p className="eyebrow mb-3.5">{ru ? 'сегодня' : 'today'}</p>
           <h1 className="mb-2 text-3xl font-bold tracking-tight text-balance">
             English for <span className="text-amber">developers</span>
           </h1>
@@ -48,7 +48,7 @@ export function DashboardPage() {
         </div>
         <PixelImage
           src="/assets/pixel/mascot.png"
-          alt="A friendly terminal-headed robot mascot"
+          alt={ru ? 'Дружелюбный робот-маскот с головой-терминалом' : 'A friendly terminal-headed robot mascot'}
           width={96}
           height={96}
           className="hidden h-24 w-24 shrink-0 sm:block"
@@ -103,7 +103,7 @@ export function DashboardPage() {
                 </p>
                 <p className="text-sm text-pretty">
                   {ru ? 'Рекомендуем начать с: ' : 'Recommended start: '}
-                  <b className="text-content">{recommended.title.en}</b>{' '}
+                  <b className="text-content">{tr(recommended.title, lang)}</b>{' '}
                   <span className="font-mono text-2xs text-muted">· {recommendedDay.id}</span>
                 </p>
               </div>
@@ -132,7 +132,7 @@ export function DashboardPage() {
               {showDivider && <LevelDivider level={lvl} ru={lang === 'ru'} />}
               <div>
                 <p className="mb-3 flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.14em] text-muted">
-                  <span>{unit.title.en}</span>
+                  <span>{tr(unit.title, lang)}</span>
                   {placementDone && unit.id === recommendedUnitId && (
                     <span className="rounded-sm bg-teal/15 px-1.5 py-0.5 text-2xs text-teal normal-case tracking-normal">
                       {ru ? '▶ начать тут' : '▶ start here'}
@@ -182,7 +182,7 @@ export function DashboardPage() {
                           </span>
                           <span className="font-mono text-xs text-teal">{day.id}</span>
                           <span className={done ? 'text-base text-muted' : 'text-base'}>
-                            {day.title.en}
+                            {tr(day.title, lang)}
                           </span>
                           {(done || inProgress) && (
                             <span className="sr-only">

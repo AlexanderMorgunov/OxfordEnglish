@@ -11,13 +11,14 @@ import { loadAttempts } from '@/features/progress/queries';
 import { resultsFromAttempts, dayExercises } from '@/features/progress/completion';
 import { useSessionResults } from '@/features/progress/sessionResults';
 import { Eyebrow, PageStub, PixelImage } from '@/shared/ui';
+import { useUiLang, tr } from '@/features/i18n/uiLang';
 import type { LoadedPack } from '@/content/loader';
 
 function nextDayOf(pack: LoadedPack, dayId: string): NextDay | null {
   const ordered = pack.units.flatMap((u) => u.days.map((d) => ({ unitId: u.id, day: d })));
   const idx = ordered.findIndex((o) => o.day.id === dayId);
   const nxt = idx >= 0 ? ordered[idx + 1] : undefined;
-  return nxt ? { unitId: nxt.unitId, dayId: nxt.day.id, title: nxt.day.title.en } : null;
+  return nxt ? { unitId: nxt.unitId, dayId: nxt.day.id, title: nxt.day.title } : null;
 }
 
 /** unitId when `dayId` is the LAST day of its unit — the point to offer a checkpoint. */
@@ -41,16 +42,18 @@ function levelExitOf(pack: LoadedPack, dayId: string): string | null {
   return last && last.id === dayId ? day.level : null;
 }
 
-const SECTION_LABEL: Record<string, string> = {
-  grammar: 'grammar',
-  vocabulary: 'vocabulary',
-  reading: 'reading',
-  listening: 'listening',
-  practice: 'practice',
+const SECTION_LABEL: Record<string, { en: string; ru: string }> = {
+  grammar: { en: 'grammar', ru: 'грамматика' },
+  vocabulary: { en: 'vocabulary', ru: 'лексика' },
+  reading: { en: 'reading', ru: 'чтение' },
+  listening: { en: 'listening', ru: 'аудирование' },
+  practice: { en: 'practice', ru: 'практика' },
 };
 
 export function DayPage() {
   const { dayId } = useParams();
+  const lang = useUiLang((s) => s.lang);
+  const ru = lang === 'ru';
   const { status, pack, load } = useContentStore();
   const hydrate = useSessionResults((s) => s.hydrate);
   const resetResults = useSessionResults((s) => s.reset);
@@ -65,15 +68,16 @@ export function DayPage() {
   }, [hydrate]);
 
   if (status === 'idle' || status === 'loading') {
-    return <p className="font-mono text-sm text-muted">loading day…</p>;
+    return <p className="font-mono text-sm text-muted">{ru ? 'загрузка дня…' : 'loading day…'}</p>;
   }
 
   const day = dayId ? pack?.days.get(dayId) : undefined;
   if (!day) {
     return (
-      <PageStub eyebrow="404" title="Day not found">
-        No day with id <code className="font-mono text-amber">{dayId}</code> in the
-        loaded pack.
+      <PageStub eyebrow="404" title={ru ? 'День не найден' : 'Day not found'}>
+        {ru ? 'Нет дня с id ' : 'No day with id '}
+        <code className="font-mono text-amber">{dayId}</code>
+        {ru ? ' в загруженном паке.' : ' in the loaded pack.'}
       </PageStub>
     );
   }
@@ -86,14 +90,14 @@ export function DayPage() {
 
   return (
     <article>
-      <Eyebrow className="mb-3.5">learning day · {day.id}</Eyebrow>
+      <Eyebrow className="mb-3.5">{ru ? 'учебный день' : 'learning day'} · {day.id}</Eyebrow>
       <h1 className="mb-10 text-2xl font-bold tracking-tight text-balance">
-        {day.title.en}
+        {tr(day.title, lang)}
       </h1>
 
       <div className="flex flex-col gap-12">
         {day.sections.map((section) => (
-          <section key={`${section.id}.${runKey}`} aria-label={section.title.en}>
+          <section key={`${section.id}.${runKey}`} aria-label={tr(section.title, lang)}>
             <div className="mb-4 flex items-center gap-2.5 border-b border-line pb-2">
               <PixelImage
                 src={`/assets/pixel/sections/${section.type}.png`}
@@ -101,10 +105,10 @@ export function DayPage() {
                 className="h-6 w-6 shrink-0"
               />
               <span className="font-mono text-sm text-amber">
-                {SECTION_LABEL[section.type] ?? section.type}
+                {SECTION_LABEL[section.type]?.[ru ? 'ru' : 'en'] ?? section.type}
               </span>
               <h2 className="text-xl font-semibold tracking-tight">
-                {section.title.en}
+                {tr(section.title, lang)}
               </h2>
             </div>
             {section.type === 'grammar' ? (

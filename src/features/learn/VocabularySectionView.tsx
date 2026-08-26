@@ -6,10 +6,15 @@ import { canSpeak, playClip, speakWord } from '@/shared/lib/audio';
 import { addWordCard } from '@/features/srs/service';
 import { PuzzleSection } from '@/features/puzzle/PuzzleSection';
 import { puzzleWords } from '@/features/puzzle/generate';
+import { useUiLang } from '@/features/i18n/uiLang';
+import { exLabels } from '@/features/i18n/ui-strings';
 
 type VocabularySection = Extract<Section, { type: 'vocabulary' }>;
 
 function WordCard({ entry, testMode }: { entry: VocabEntry; testMode: boolean }) {
+  const lang = useUiLang((s) => s.lang);
+  const ru = lang === 'ru';
+  const L = exLabels(lang);
   const [revealed, setRevealed] = useState(false);
   const [added, setAdded] = useState(false);
   const play = () =>
@@ -24,7 +29,7 @@ function WordCard({ entry, testMode }: { entry: VocabEntry; testMode: boolean })
           {canSpeak() && (
             <button
               type="button"
-              aria-label={`Pronounce ${entry.word}`}
+              aria-label={ru ? `Произнести ${entry.word}` : `Pronounce ${entry.word}`}
               className="text-teal transition-opacity hover:opacity-80"
               onClick={play}
             >
@@ -42,7 +47,7 @@ function WordCard({ entry, testMode }: { entry: VocabEntry; testMode: boolean })
             setAdded(true);
           }}
         >
-          {added ? '✓ in review' : '+ review'}
+          {added ? L.inReview : L.addReview}
         </button>
       </div>
 
@@ -62,7 +67,7 @@ function WordCard({ entry, testMode }: { entry: VocabEntry; testMode: boolean })
           className="mt-2 font-mono text-2xs uppercase tracking-[0.08em] text-muted hover:text-content"
           onClick={() => setRevealed(true)}
         >
-          reveal
+          {L.reveal}
         </button>
       )}
     </div>
@@ -70,6 +75,7 @@ function WordCard({ entry, testMode }: { entry: VocabEntry; testMode: boolean })
 }
 
 export function VocabularySectionView({ section }: { section: VocabularySection }) {
+  const ru = useUiLang((s) => s.lang) === 'ru';
   const [mode, setMode] = useState<'study' | 'test'>('study');
   const [showPuzzle, setShowPuzzle] = useState(false);
   const entries = useMemo(
@@ -82,16 +88,16 @@ export function VocabularySectionView({ section }: { section: VocabularySection 
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <span className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          {section.words.length} words
+          {section.words.length} {ru ? 'слов' : 'words'}
         </span>
         <div className="flex items-center gap-2.5">
           <SegmentedToggle
-            ariaLabel="Vocabulary mode"
+            ariaLabel={ru ? 'Режим лексики' : 'Vocabulary mode'}
             value={mode}
             onChange={setMode}
             segments={[
-              { value: 'study', label: 'study' },
-              { value: 'test', label: 'test' },
+              { value: 'study', label: ru ? 'учить' : 'study' },
+              { value: 'test', label: ru ? 'тест' : 'test' },
             ]}
           />
           <Button
@@ -101,7 +107,7 @@ export function VocabularySectionView({ section }: { section: VocabularySection 
               section.words.forEach((w) => void addWordCard(w.word, w.ru, w.example))
             }
           >
-            add all to review
+            {ru ? 'добавить все в повторение' : 'add all to review'}
           </Button>
         </div>
       </div>
@@ -121,7 +127,9 @@ export function VocabularySectionView({ section }: { section: VocabularySection 
             className="self-start font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
             onClick={() => setShowPuzzle(true)}
           >
-            ▸ повторить сеткой (кроссворд / филворд)
+            {ru
+              ? '▸ повторить сеткой (кроссворд / филворд)'
+              : '▸ practice with a grid (crossword / word-search)'}
           </button>
         ))}
     </div>

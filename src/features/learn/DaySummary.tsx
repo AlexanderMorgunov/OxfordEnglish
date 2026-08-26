@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import type { Day } from '@/content/schema';
+import type { Day, LocalizedText } from '@/content/schema';
 import { useSessionResults } from '@/features/progress/sessionResults';
 import { dayExercises } from '@/features/progress/completion';
 import { track } from '@/features/analytics/analytics';
-import { useUiLang } from '@/features/i18n/uiLang';
+import { useUiLang, tr } from '@/features/i18n/uiLang';
 import { Card, ProgressBar } from '@/shared/ui';
 
-export type NextDay = { unitId: string; dayId: string; title: string };
+export type NextDay = { unitId: string; dayId: string; title: LocalizedText };
 
 /** Days already counted this session — revisiting a finished day (e.g. back from /review)
  *  must not re-fire day_complete and inflate completion metrics. */
@@ -140,7 +140,7 @@ export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }:
         )}
         {next && (
           <span className="font-mono text-2xs text-muted">
-            {next.dayId} · {next.title}
+            {next.dayId} · {tr(next.title, ru ? 'ru' : 'en')}
           </span>
         )}
       </div>

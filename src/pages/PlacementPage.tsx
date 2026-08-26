@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Exercise } from '@/content/schema';
 import { useContentStore } from '@/content/store';
-import { useUiLang } from '@/features/i18n/uiLang';
+import { useUiLang, tr } from '@/features/i18n/uiLang';
 import { useLearner } from '@/features/learner/store';
 import { useSessionResults } from '@/features/progress/sessionResults';
 import {
@@ -99,7 +99,7 @@ export function PlacementPage() {
               {ru ? 'рекомендуем начать' : 'recommended start'}
             </p>
             <p className="mb-4 text-lg">
-              {unit.title.en}{' '}
+              {tr(unit.title, ru ? 'ru' : 'en')}{' '}
               <span className="font-mono text-sm text-muted">· {firstDay.id}</span>
             </p>
             <Link

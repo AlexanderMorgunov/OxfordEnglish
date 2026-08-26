@@ -7,10 +7,15 @@ import { canSpeak, playClip, speakWord } from '@/shared/lib/audio';
 import { translateText } from '@/features/vocab/translate';
 import { addWordCard, addPhraseCard } from '@/features/srs/service';
 import { WordToken, type Gloss } from '@/features/reader/reading-text';
+import { useUiLang } from '@/features/i18n/uiLang';
+import { exLabels } from '@/features/i18n/ui-strings';
 
 type ReadingSection = Extract<Section, { type: 'reading' }>;
 
-function GlossaryRow({ word, ipa, ru }: { word: string; ipa?: string; ru?: string }) {
+function GlossaryRow({ word, ipa, ru: glossRu }: { word: string; ipa?: string; ru?: string }) {
+  const lang = useUiLang((s) => s.lang);
+  const ru = lang === 'ru';
+  const L = exLabels(lang);
   const [saved, setSaved] = useState(false);
   return (
     <div className="flex flex-wrap items-baseline gap-2">
@@ -18,7 +23,7 @@ function GlossaryRow({ word, ipa, ru }: { word: string; ipa?: string; ru?: strin
       {canSpeak() && (
         <button
           type="button"
-          aria-label={`Pronounce ${word}`}
+          aria-label={ru ? `Произнести ${word}` : `Pronounce ${word}`}
           className="text-teal transition-opacity hover:opacity-80"
           onClick={() => speakWord(word)}
         >
@@ -26,17 +31,17 @@ function GlossaryRow({ word, ipa, ru }: { word: string; ipa?: string; ru?: strin
         </button>
       )}
       {ipa && <span className="font-mono text-xs text-muted">{ipa}</span>}
-      {ru && <dd className="text-sm text-muted">— {ru}</dd>}
+      {glossRu && <dd className="text-sm text-muted">— {glossRu}</dd>}
       <button
         type="button"
         disabled={saved}
         className="ml-auto font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline disabled:text-faint disabled:no-underline"
         onClick={() => {
-          void addWordCard(word, ru ?? word, undefined);
+          void addWordCard(word, glossRu ?? word, undefined);
           setSaved(true);
         }}
       >
-        {saved ? '✓ в повторении' : '+ review'}
+        {saved ? L.inReview : L.addReview}
       </button>
     </div>
   );
@@ -44,7 +49,7 @@ function GlossaryRow({ word, ipa, ru }: { word: string; ipa?: string; ru?: strin
 
 function ReadingBlock({
   en,
-  ru,
+  ru: blockRu,
   audioUrl,
   rate,
   glossary,
@@ -55,6 +60,7 @@ function ReadingBlock({
   rate: number;
   glossary: Map<string, Gloss>;
 }) {
+  const ru = useUiLang((s) => s.lang) === 'ru';
   const [showRu, setShowRu] = useState(false);
   const tokens = useMemo(() => en.split(/(\b[a-zA-Z']+\b)/), [en]);
 
@@ -64,7 +70,7 @@ function ReadingBlock({
         {audioUrl && (
           <button
             type="button"
-            aria-label="Play paragraph"
+            aria-label={ru ? 'Прослушать абзац' : 'Play paragraph'}
             className="mr-1.5 align-middle text-teal transition-opacity hover:opacity-80"
             onClick={() => playClip(audioUrl, rate)}
           >
@@ -83,17 +89,17 @@ function ReadingBlock({
           );
         })}
       </p>
-      {ru && (
+      {blockRu && (
         <div className="mt-2">
           {showRu ? (
-            <p className="text-base text-muted text-pretty">{ru}</p>
+            <p className="text-base text-muted text-pretty">{blockRu}</p>
           ) : (
             <button
               type="button"
               className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
               onClick={() => setShowRu(true)}
             >
-              show translation
+              {ru ? 'показать перевод' : 'show translation'}
             </button>
           )}
         </div>
@@ -107,6 +113,7 @@ type ReadingRateKey = keyof typeof READING_RATES;
 
 export function ReadingSectionView({ section }: { section: ReadingSection }) {
   const load = useVocabStore((s) => s.load);
+  const ru = useUiLang((s) => s.lang) === 'ru';
   const [rateKey, setRateKey] = useState<ReadingRateKey>('0.75');
   const textRef = useRef<HTMLDivElement>(null);
   const [phrase, setPhrase] = useState<string | null>(null);
@@ -156,10 +163,10 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
       {hasAudio && canSpeak() && (
         <div className="flex items-center gap-2.5">
           <span className="font-mono text-2xs uppercase tracking-[0.08em] text-muted">
-            audio speed
+            {ru ? 'скорость аудио' : 'audio speed'}
           </span>
           <SegmentedToggle
-            ariaLabel="Reading audio speed"
+            ariaLabel={ru ? 'Скорость чтения вслух' : 'Reading audio speed'}
             value={rateKey}
             onChange={setRateKey}
             segments={[
@@ -173,7 +180,7 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
 
       {phrase && (
         <div className="sticky top-2 z-10 flex flex-wrap items-center gap-2 rounded-sm border border-teal-dim bg-surface-2 px-3 py-2 text-sm shadow-md">
-          <span className="text-muted">Фраза:</span>
+          <span className="text-muted">{ru ? 'Фраза:' : 'Phrase:'}</span>
           <span className="font-mono text-teal">{phrase}</span>
           <button
             type="button"
@@ -181,7 +188,7 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
             className="ml-auto font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline disabled:text-faint disabled:no-underline"
             onClick={savePhrase}
           >
-            {phraseSaved ? '✓ сохранено' : '+ в словарь'}
+            {phraseSaved ? (ru ? '✓ сохранено' : '✓ saved') : ru ? '+ в словарь' : '+ save'}
           </button>
         </div>
       )}
@@ -205,13 +212,15 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
       </div>
 
       {section.attribution && (
-        <p className="font-mono text-2xs text-faint">source: {section.attribution}</p>
+        <p className="font-mono text-2xs text-faint">
+          {ru ? 'источник' : 'source'}: {section.attribution}
+        </p>
       )}
 
       {section.glossary.length > 0 && (
         <div className="rounded-lg border border-line bg-surface p-5">
           <p className="mb-3 font-mono text-2xs uppercase tracking-[0.08em] text-muted">
-            glossary
+            {ru ? 'глоссарий' : 'glossary'}
           </p>
           <dl className="flex flex-col gap-2">
             {section.glossary.map((g) => (

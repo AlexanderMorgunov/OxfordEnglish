@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useRef } from 'react';
 import { NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import { useLearner } from '@/features/learner/store';
+import { useUiLang } from '@/features/i18n/uiLang';
 import { InstallPrompt } from '@/features/pwa/InstallPrompt';
 import { UpdatePrompt } from '@/features/pwa/UpdatePrompt';
 import { UpdateDialog } from '@/features/pwa/UpdateDialog';
@@ -10,20 +11,21 @@ import { MigrationNotice } from '@/features/migration/MigrationNotice';
 import { ErrorBoundary } from '@/shared/ui';
 
 const NAV = [
-  { to: '/', label: 'today', end: true, devOnly: false, tour: undefined },
-  { to: '/grammar', label: 'grammar', end: false, devOnly: false, tour: undefined },
-  { to: '/review', label: 'review', end: false, devOnly: false, tour: 'nav-review' },
-  { to: '/progress', label: 'progress', end: false, devOnly: false, tour: undefined },
-  { to: '/vocabulary', label: 'vocab', end: false, devOnly: false, tour: undefined },
-  { to: '/library', label: 'library', end: false, devOnly: false, tour: 'nav-library' },
-  { to: '/settings', label: 'settings', end: false, devOnly: false, tour: 'nav-settings' },
-  { to: '/feedback', label: 'feedback', end: false, devOnly: false, tour: undefined },
-  { to: '/support', label: 'support', end: false, devOnly: false, tour: undefined },
-  { to: '/kitchen-sink', label: 'kit', end: false, devOnly: true, tour: undefined },
+  { to: '/', label: { en: 'today', ru: 'сегодня' }, end: true, devOnly: false, tour: undefined },
+  { to: '/grammar', label: { en: 'grammar', ru: 'грамматика' }, end: false, devOnly: false, tour: undefined },
+  { to: '/review', label: { en: 'review', ru: 'повторение' }, end: false, devOnly: false, tour: 'nav-review' },
+  { to: '/progress', label: { en: 'progress', ru: 'прогресс' }, end: false, devOnly: false, tour: undefined },
+  { to: '/vocabulary', label: { en: 'vocab', ru: 'словарь' }, end: false, devOnly: false, tour: undefined },
+  { to: '/library', label: { en: 'library', ru: 'библиотека' }, end: false, devOnly: false, tour: 'nav-library' },
+  { to: '/settings', label: { en: 'settings', ru: 'настройки' }, end: false, devOnly: false, tour: 'nav-settings' },
+  { to: '/feedback', label: { en: 'feedback', ru: 'отзыв' }, end: false, devOnly: false, tour: undefined },
+  { to: '/support', label: { en: 'support', ru: 'поддержка' }, end: false, devOnly: false, tour: undefined },
+  { to: '/kitchen-sink', label: { en: 'kit', ru: 'kit' }, end: false, devOnly: true, tour: undefined },
 ] as const;
 
 export function AppLayout() {
   const level = useLearner((s) => s.level);
+  const ru = useUiLang((s) => s.lang) === 'ru';
   const location = useLocation();
   // Once the user navigates away from the entry route, an update found later goes to the banner,
   // not the launch modal (see features/pwa/update.ts).
@@ -40,7 +42,15 @@ export function AppLayout() {
             <span className="eyebrow">en/dev</span>
             <span
               className="rounded-sm bg-surface-2 px-1.5 py-0.5 font-mono text-2xs text-teal"
-              title={level ? 'your level (from placement)' : 'course range'}
+              title={
+                level
+                  ? ru
+                    ? 'ваш уровень (по тесту)'
+                    : 'your level (from placement)'
+                  : ru
+                    ? 'диапазон курса'
+                    : 'course range'
+              }
             >
               {level ?? 'A1–A2'}
             </span>
@@ -62,7 +72,7 @@ export function AppLayout() {
                   ].join(' ')
                 }
               >
-                {item.label}
+                {ru ? item.label.ru : item.label.en}
               </NavLink>
             ))}
           </nav>
@@ -80,7 +90,7 @@ export function AppLayout() {
         onKeyDownCapture={markEngaged}
       >
         <ErrorBoundary resetKey={location.pathname}>
-          <Suspense fallback={<p className="font-mono text-sm text-muted">loading…</p>}>
+          <Suspense fallback={<p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading…'}</p>}>
             <Outlet />
           </Suspense>
         </ErrorBoundary>
