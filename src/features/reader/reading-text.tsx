@@ -40,11 +40,15 @@ export const WordToken = memo(function WordToken({
   word,
   gloss,
   sentence,
+  enableContextFetch,
   highlighted,
 }: {
   word: string;
   gloss?: Gloss;
   sentence: string;
+  /** Book reader only: `sentence` is a real sentence, so offer a lazy "in context" translation.
+   *  Learn sections pass a whole block here and already have a curated translation, so they omit it. */
+  enableContextFetch?: boolean;
   highlighted?: boolean;
 }) {
   const status = useVocabStore((s) => s.statuses.get(word.toLowerCase()));
@@ -55,6 +59,9 @@ export const WordToken = memo(function WordToken({
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
   const [done, setDone] = useState(false);
+  const [ctx, setCtx] = useState<string | null>(null);
+  const [ctxLoading, setCtxLoading] = useState(false);
+  const [ctxOpen, setCtxOpen] = useState(false);
 
   const openLookup = () => {
     if (gloss?.ru || done) return;
@@ -66,6 +73,18 @@ export const WordToken = memo(function WordToken({
       setLoading(false);
     });
   };
+
+  // Item 5: the word's meaning in context without the LLM — reuse the sentence translation
+  // (cached in db.translations, shared with the sentence toggle). Curated learn sections pass it in.
+  const revealContext = () => {
+    setCtxOpen(true);
+    if (ctx !== null || ctxLoading) return;
+    setCtxLoading(true);
+    void translateText(sentence).then((ru) => {
+      setCtx(ru);
+      setCtxLoading(false);
+    });
+  };
   const translation = gloss?.ru ?? fetched ?? undefined;
   const classified: WordMark | undefined =
     coloring && freq ? classifyWord(word, { status, freq, rankThreshold }) : undefined;
@@ -75,6 +94,7 @@ export const WordToken = memo(function WordToken({
   return (
     <Popover
       label={word}
+      showClose
       trigger={
         <button
           type="button"
@@ -113,6 +133,27 @@ export const WordToken = memo(function WordToken({
             ? 'перевод недоступен — нет сети или дневной лимит словаря'
             : 'unavailable — offline or the free dictionary’s daily limit'}
         </p>
+      )}
+      {enableContextFetch && sentence.includes(' ') && (
+        <div className="mt-1.5">
+          {!ctxOpen ? (
+            <button
+              type="button"
+              onClick={revealContext}
+              className="font-mono text-2xs text-teal hover:underline"
+            >
+              {lang === 'ru' ? 'в контексте ▾' : 'in context ▾'}
+            </button>
+          ) : (
+            <div className="max-h-28 overflow-y-auto border-l-2 border-line pl-2 text-xs leading-relaxed text-muted">
+              {ctxLoading
+                ? lang === 'ru'
+                  ? 'перевод…'
+                  : 'translating…'
+                : (ctx ?? (lang === 'ru' ? 'перевод недоступен' : 'unavailable'))}
+            </div>
+          )}
+        </div>
       )}
       <div className="mt-2">
         <AiAction
@@ -221,6 +262,7 @@ const Paragraph = memo(function Paragraph({
                   word={tok}
                   gloss={glossary?.get(tok.toLowerCase())}
                   sentence={sentence}
+                  enableContextFetch
                   highlighted={speaking && idx === activeWord}
                 />
               );

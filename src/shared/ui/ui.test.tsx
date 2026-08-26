@@ -61,3 +61,17 @@ test('Popover opens on trigger and closes on Escape', async () => {
   await userEvent.keyboard('{Escape}');
   expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 });
+
+test('Popover close button dismisses the panel and restores focus to the trigger', async () => {
+  render(
+    <Popover showClose trigger={<button type="button">word</button>}>
+      <span>definition</span>
+    </Popover>
+  );
+  const trigger = screen.getByRole('button', { name: 'word' });
+  await userEvent.click(trigger);
+  expect(screen.getByRole('dialog')).toBeInTheDocument();
+  await userEvent.click(screen.getByRole('button', { name: /close/i }));
+  expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  expect(trigger).toHaveFocus();
+});
