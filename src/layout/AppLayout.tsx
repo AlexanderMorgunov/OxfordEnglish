@@ -18,7 +18,7 @@ const NAV = [
   { to: '/vocabulary', label: { en: 'vocab', ru: 'словарь' }, end: false, devOnly: false, tour: undefined },
   { to: '/library', label: { en: 'library', ru: 'библиотека' }, end: false, devOnly: false, tour: 'nav-library' },
   { to: '/settings', label: { en: 'settings', ru: 'настройки' }, end: false, devOnly: false, tour: 'nav-settings' },
-  { to: '/feedback', label: { en: 'feedback', ru: 'отзыв' }, end: false, devOnly: false, tour: undefined },
+  { to: '/feedback', label: { en: 'feedback', ru: 'обратная связь' }, end: false, devOnly: false, tour: undefined },
   { to: '/support', label: { en: 'support', ru: 'поддержка' }, end: false, devOnly: false, tour: undefined },
   { to: '/kitchen-sink', label: { en: 'kit', ru: 'kit' }, end: false, devOnly: true, tour: undefined },
 ] as const;
