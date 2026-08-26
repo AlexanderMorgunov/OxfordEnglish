@@ -1,8 +1,6 @@
 import { recordKeyLimits } from './limits';
 
 export type AiProviderId =
-  | 'zai'
-  | 'deepseek'
   | 'groq'
   | 'openrouter'
   | 'cerebras'
@@ -27,33 +25,9 @@ type Preset = {
    *  keep the label soft. Only the clear cases are flagged. */
   needsVpn?: boolean;
   keyUrl?: string;
-  /** Provider-specific fields merged into the request body (e.g. GLM's thinking toggle). */
-  extraBody?: Record<string, unknown>;
 };
 
 export const PROVIDERS: Record<AiProviderId, Preset> = {
-  // Chinese providers: browser-CORS-friendly AND reachable from RU without a VPN (unlike Groq/
-  // OpenRouter/Cerebras/Gemini/OpenAI, which geo-block RU). Z.AI's glm-4.5-flash is genuinely free,
-  // no card. DeepSeek is cheap but its free grant isn't guaranteed — leave `noCard` off.
-  zai: {
-    label: 'Z.AI (GLM)',
-    baseUrl: 'https://api.z.ai/api/paas/v4',
-    model: 'glm-4.5-flash',
-    browserSafe: true,
-    noCard: true,
-    keyUrl: 'https://z.ai/manage-apikey/apikey-list',
-    // GLM-4.5 is a reasoning model — without this it spends the token budget "thinking" and returns an
-    // empty `content`, which our layer rejects as "Empty AI response". Disable it for direct answers.
-    extraBody: { thinking: { type: 'disabled' } },
-  },
-  deepseek: {
-    label: 'DeepSeek',
-    baseUrl: 'https://api.deepseek.com',
-    model: 'deepseek-v4-flash',
-    browserSafe: true,
-    noCard: false,
-    keyUrl: 'https://platform.deepseek.com/api_keys',
-  },
   groq: {
     label: 'Groq',
     baseUrl: 'https://api.groq.com/openai/v1',
@@ -133,7 +107,6 @@ export async function complete(
         model: config.model,
         messages,
         temperature: opts.temperature ?? 0.4,
-        ...PROVIDERS[config.provider].extraBody,
       }),
       signal: opts.signal,
     });

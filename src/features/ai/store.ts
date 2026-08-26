@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { AiConfig, AiProviderId } from './provider';
+import { PROVIDERS, type AiConfig, type AiProviderId } from './provider';
 
 const KEY = 'oxford-ai-config';
 const KEYS = 'oxford-ai-keys';
@@ -11,7 +11,10 @@ type KeyMap = Partial<Record<AiProviderId, StoredKey>>;
 function loadConfig(): AiConfig | null {
   try {
     const raw = localStorage.getItem(KEY);
-    return raw ? (JSON.parse(raw) as AiConfig) : null;
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as AiConfig;
+    // Drop a config that points at a provider we no longer ship, so nothing reads PROVIDERS[undefined].
+    return parsed.provider in PROVIDERS ? parsed : null;
   } catch {
     return null;
   }
