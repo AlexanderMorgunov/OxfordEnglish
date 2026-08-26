@@ -9,7 +9,7 @@ import {
 } from '@/features/pwa/update';
 import { getKeyLimits, subscribeKeyLimits } from '@/features/ai/limits';
 import { PROVIDERS, type AiProviderId } from '@/features/ai/provider';
-import { isConfigured, useAiStore } from '@/features/ai/store';
+import { useAiStore } from '@/features/ai/store';
 import { exportData, importData } from '@/features/progress/backup';
 import { applySnapshot, type Snapshot } from '@/features/migration/snapshot';
 import {
@@ -35,7 +35,7 @@ const LEVEL_START: Record<Level, string> = {
 const LEVELS: Level[] = ['A1', 'A2', 'B1'];
 
 export function SettingsPage() {
-  const { config, setConfig } = useAiStore();
+  const { config, setConfig, forgetKey } = useAiStore();
   const [provider, setProvider] = useState<AiProviderId>(config?.provider ?? 'zai');
   const [apiKey, setApiKey] = useState(config?.apiKey ?? '');
   const [model, setModel] = useState(config?.model ?? PROVIDERS.zai.model);
@@ -54,9 +54,11 @@ export function SettingsPage() {
   }, [hash]);
 
   const pick = (p: AiProviderId) => {
+    const stored = useAiStore.getState().keys[p];
     setProvider(p);
-    setModel(PROVIDERS[p].model);
-    setBaseUrl('');
+    setApiKey(stored?.apiKey ?? '');
+    setModel(stored?.model ?? PROVIDERS[p].model);
+    setBaseUrl(stored?.baseUrl ?? '');
     setSaved(false);
   };
 
@@ -71,7 +73,7 @@ export function SettingsPage() {
   };
 
   const clear = () => {
-    setConfig(null);
+    forgetKey(provider);
     setApiKey('');
     setSaved(false);
   };
@@ -284,7 +286,7 @@ export function SettingsPage() {
         <Button onClick={save} disabled={!apiKey.trim() || !model.trim()}>
           {ru ? 'Сохранить ключ' : 'Save key'}
         </Button>
-        {isConfigured(config) && (
+        {apiKey.trim() !== '' && (
           <Button variant="ghost" onClick={clear}>
             {ru ? 'Удалить ключ' : 'Remove key'}
           </Button>
