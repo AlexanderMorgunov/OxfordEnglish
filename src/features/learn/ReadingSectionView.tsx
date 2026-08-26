@@ -4,7 +4,7 @@ import { packMediaUrl } from '@/content/loader';
 import { PixelImage, SegmentedToggle } from '@/shared/ui';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import { canSpeak, playClip, speakWord } from '@/shared/lib/audio';
-import { translateWord } from '@/features/vocab/translate';
+import { translateText } from '@/features/vocab/translate';
 import { addWordCard, addPhraseCard } from '@/features/srs/service';
 import { WordToken, type Gloss } from '@/features/reader/reading-text';
 
@@ -134,7 +134,7 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
   const savePhrase = () => {
     if (!phrase) return;
     setPhraseSaved(true);
-    void translateWord(phrase).then((ru) => addPhraseCard(phrase, ru ?? phrase, undefined));
+    void translateText(phrase).then((ru) => addPhraseCard(phrase, ru ?? phrase, undefined));
   };
 
   const glossary = useMemo(

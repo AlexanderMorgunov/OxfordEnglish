@@ -1,5 +1,5 @@
 import { createContext, memo, use, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Button, Popover } from '@/shared/ui';
+import { Button, Popover, usePopoverClose } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import {
@@ -19,6 +19,7 @@ import { useLearner } from '@/features/learner/store';
 import { classifyWord, loadFreq, rankThresholdFor, type FreqIndex, type WordMark } from './difficulty';
 import { useReaderSettings, FONT_CLASSES, LEADING_CLASSES } from './settings';
 import { toSentences } from './parse/text';
+import { usePhraseSelect, parsePos, samePos, inPhraseRange, type WordPos } from './phrase-select';
 
 /** Reference line for auditioning a read-aloud voice — natural prose so prosody is audible. */
 const VOICE_SAMPLE = 'The morning light spilled across the quiet room as she opened the book.';
@@ -33,6 +34,27 @@ export type Gloss = { ru?: string; ipa?: string };
 type ReaderCtx = { freq: FreqIndex | null; rankThreshold: number; coloring: boolean };
 const ReaderContext = createContext<ReaderCtx>({ freq: null, rankThreshold: Infinity, coloring: false });
 
+/** Rendered inside the word popover (book reader only): starts a phrase selection anchored at this
+ *  word and dismisses the popover, so the next tapped word sets the phrase end. It's a child of the
+ *  panel so usePopoverClose() reads Popover's provider (a hook in WordToken's body would not). */
+function SelectPhraseButton({ tokenId }: { tokenId: string }) {
+  const ru = useUiLang((s) => s.lang) === 'ru';
+  const begin = usePhraseSelect((s) => s.begin);
+  const close = usePopoverClose();
+  return (
+    <button
+      type="button"
+      onClick={() => {
+        begin(parsePos(tokenId));
+        close();
+      }}
+      className="font-mono text-2xs text-violet hover:underline"
+    >
+      {ru ? 'выделить фразу →' : 'select phrase →'}
+    </button>
+  );
+}
+
 /** A tappable word: status underline, pronounce, translate (glossary → AI), save to review.
  *  Memoized + self-classifying: it subscribes only to its own status, so marking one word never
  *  re-renders its neighbours. */
@@ -41,6 +63,7 @@ export const WordToken = memo(function WordToken({
   gloss,
   sentence,
   enableContextFetch,
+  tokenId,
   highlighted,
 }: {
   word: string;
@@ -49,9 +72,13 @@ export const WordToken = memo(function WordToken({
   /** Book reader only: `sentence` is a real sentence, so offer a lazy "in context" translation.
    *  Learn sections pass a whole block here and already have a curated translation, so they omit it. */
   enableContextFetch?: boolean;
+  /** `${paraIndex}:${sentenceIndex}:${tokenIndex}` — enables phrase selection (book reader only). */
+  tokenId?: string;
   highlighted?: boolean;
 }) {
   const status = useVocabStore((s) => s.statuses.get(word.toLowerCase()));
+  const pos = tokenId ? parsePos(tokenId) : null;
+  const selected = usePhraseSelect((s) => (pos ? inPhraseRange(pos, s.anchor, s.end) : false));
   const setStatus = useVocabStore((s) => s.setStatus);
   const lang = useUiLang((s) => s.lang);
   const { freq, rankThreshold, coloring } = use(ReaderContext);
@@ -98,13 +125,16 @@ export const WordToken = memo(function WordToken({
       trigger={
         <button
           type="button"
+          data-widx={tokenId}
           onClick={openLookup}
           className={cn(
             'cursor-pointer rounded-[2px]',
             visible ? 'underline decoration-2 underline-offset-4' : 'hover:bg-surface-2',
             visible === 'learning' && '[text-decoration-color:var(--color-word-learning)]',
             visible === 'new' && '[text-decoration-color:var(--color-word-unknown)]',
-            highlighted && 'bg-teal-dim text-ink'
+            // cn is plain clsx (no merge) — keep the two backgrounds mutually exclusive.
+            highlighted && 'bg-teal-dim text-ink',
+            !highlighted && selected && 'bg-violet-dim text-content'
           )}
         >
           {word}
@@ -161,6 +191,11 @@ export const WordToken = memo(function WordToken({
           run={(config) => wordInContext(config, word, sentence)}
         />
       </div>
+      {tokenId && (
+        <div className="mt-2">
+          <SelectPhraseButton tokenId={tokenId} />
+        </div>
+      )}
       <div className="mt-2.5 flex flex-wrap gap-1.5">
         <Button
           size="sm"
@@ -263,6 +298,7 @@ const Paragraph = memo(function Paragraph({
                   gloss={glossary?.get(tok.toLowerCase())}
                   sentence={sentence}
                   enableContextFetch
+                  tokenId={`${index}:${si}:${i}`}
                   highlighted={speaking && idx === activeWord}
                 />
               );
@@ -346,12 +382,17 @@ export function ReadingText({
   const textRef = useRef<HTMLDivElement>(null);
   const [phrase, setPhrase] = useState<string | null>(null);
   const [phraseRu, setPhraseRu] = useState<string | null>(null);
+  const [phraseSentence, setPhraseSentence] = useState<string | null>(null);
   const [phraseLoading, setPhraseLoading] = useState(false);
   const [phraseSaved, setPhraseSaved] = useState(false);
+  const pickAnchor = usePhraseSelect((s) => s.anchor);
+  const clearPick = usePhraseSelect((s) => s.clear);
 
   useEffect(() => {
     void loadVocab();
     void loadFreq().then(setFreq);
+    usePhraseSelect.getState().clear();
+    return () => usePhraseSelect.getState().clear();
   }, [loadVocab]);
   useEffect(
     () => () => {
@@ -365,30 +406,65 @@ export function ReadingText({
     if (!highlightSpoken) setActiveWord(-1);
   }, [highlightSpoken]);
 
-  // A multi-word selection becomes a savable phrase ("took a train"); single-word taps stay
-  // on the WordToken popover. English is phrasal-verb/idiom-heavy — word-by-word misleads.
+  const setPhraseText = (text: string, sentence?: string) => {
+    setPhrase(text);
+    setPhraseSentence(sentence ?? null);
+    setPhraseRu(null);
+    setPhraseSaved(false);
+    setPhraseLoading(true);
+    void translateText(text).then((tr) => {
+      setPhraseRu(tr);
+      setPhraseLoading(false);
+    });
+  };
+
+  // A multi-word selection becomes a savable phrase ("took a train"); single-word taps stay on the
+  // WordToken popover. On touch, native selection is disabled (select-none, coarse pointers) and the
+  // phrase is built by tapping — see onPickTap. On a mouse, drag-select still works.
   const onSelect = () => {
     const sel = window.getSelection();
     const text = sel?.toString().trim().replace(/\s+/g, ' ') ?? '';
     const inside = sel?.anchorNode ? (textRef.current?.contains(sel.anchorNode) ?? false) : false;
-    if (inside && text.includes(' ') && text.length <= 80) {
-      setPhrase(text);
-      setPhraseRu(null);
-      setPhraseSaved(false);
-      setPhraseLoading(true);
-      void translateText(text).then((tr) => {
-        setPhraseRu(tr);
-        setPhraseLoading(false);
-      });
-    } else {
-      setPhrase(null);
-    }
+    if (inside && text.includes(' ') && text.length <= 80) setPhraseText(text);
+    else if (!pickAnchor) setPhrase(null);
+  };
+
+  const phraseFromRange = (a: WordPos, b: WordPos, sentence: string): string => {
+    const parts = sentence.split(/(\b[a-zA-Z']+\b)/);
+    return parts
+      .slice(Math.min(a.t, b.t), Math.max(a.t, b.t) + 1)
+      .join('')
+      .replace(/\s+/g, ' ')
+      .trim();
+  };
+
+  // Tap-to-select on touch: "select phrase" set the anchor; each tap in the same sentence sets the
+  // end. Runs on capture so it pre-empts the word's own popover open (Popover appends its toggle to
+  // the trigger's onClick, so stopping it here is the only way to suppress both).
+  const onPickTap = (e: React.MouseEvent) => {
+    const st = usePhraseSelect.getState();
+    if (!st.anchor) return;
+    const el = (e.target as HTMLElement).closest('[data-widx]') as HTMLElement | null;
+    if (!el?.dataset.widx) return;
+    e.stopPropagation();
+    const pos = parsePos(el.dataset.widx);
+    if (samePos(pos, st.anchor)) return cancelPick();
+    if (pos.p !== st.anchor.p || pos.s !== st.anchor.s) return; // stay within one sentence
+    st.extend(pos);
+    const sentence = toSentences(paragraphs[st.anchor.p] ?? '')[st.anchor.s] ?? '';
+    setPhraseText(phraseFromRange(st.anchor, pos, sentence), sentence);
+  };
+
+  const cancelPick = () => {
+    clearPick();
+    setPhrase(null);
   };
 
   const savePhrase = () => {
     if (!phrase) return;
     setPhraseSaved(true);
-    void addPhraseCard(phrase, phraseRu ?? phrase, undefined);
+    clearPick();
+    void addPhraseCard(phrase, phraseRu ?? phrase, phraseSentence ?? undefined);
   };
 
   const rankThreshold = rankThresholdFor(level);
@@ -570,6 +646,20 @@ export function ReadingText({
         )}
         </div>
       </details>
+      {pickAnchor && (
+        <div className="sticky top-2 z-10 mb-2 flex items-center gap-3 rounded-sm border border-violet-dim bg-violet-dim/15 px-3 py-2 text-sm">
+          <span className="text-content">
+            {ru ? 'Тапните последнее слово фразы' : 'Tap the last word of the phrase'}
+          </span>
+          <button
+            type="button"
+            onClick={cancelPick}
+            className="ml-auto font-mono text-2xs uppercase tracking-[0.08em] text-violet hover:underline"
+          >
+            {ru ? 'отмена' : 'cancel'}
+          </button>
+        </div>
+      )}
       {phrase && (
         <div className="sticky top-2 z-10 flex flex-wrap items-center gap-2 rounded-sm border border-teal-dim bg-surface-2 px-3 py-2 text-sm shadow-md">
           <span className="font-mono text-teal">{phrase}</span>
@@ -606,7 +696,7 @@ export function ReadingText({
             type="button"
             aria-label={ru ? 'Закрыть' : 'Dismiss'}
             className="font-mono text-2xs text-muted hover:text-content"
-            onClick={() => setPhrase(null)}
+            onClick={cancelPick}
           >
             ×
           </button>
@@ -615,9 +705,10 @@ export function ReadingText({
       <ReaderContext.Provider value={readerCtx}>
         <div
           ref={textRef}
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-4 [@media(pointer:coarse)]:select-none [@media(pointer:coarse)]:[-webkit-touch-callout:none]"
           onMouseUp={onSelect}
           onTouchEnd={onSelect}
+          onClickCapture={onPickTap}
         >
           {paragraphs.map((p, i) => (
             <Paragraph
