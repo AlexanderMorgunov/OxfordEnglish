@@ -346,6 +346,15 @@ export function VocabularyPage() {
                   )}
                 </div>
 
+                {e.contextGloss && (
+                  <p className="mt-1.5 text-sm text-content">
+                    <span className="mr-1.5 font-mono text-2xs uppercase tracking-[0.08em] text-violet">
+                      {ru ? 'в контексте' : 'in context'}
+                    </span>
+                    {e.contextGloss}
+                  </p>
+                )}
+
                 {e.context && (
                   <p className="mt-1.5 border-l-2 border-line pl-2 text-sm text-muted text-pretty">{e.context}</p>
                 )}

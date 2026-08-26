@@ -34,6 +34,9 @@ export interface SrsCard {
   front: string;
   back: string;
   contextSentence?: string;
+  /** The word's meaning in its source sentence (from the AI in-context lookup), when saved from the
+   *  reader — distinct from `back` (the general dictionary translation). Non-indexed: no version bump. */
+  contextGloss?: string;
   sourceDayId?: string;
   tags: string[];
   fromError?: boolean;

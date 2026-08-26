@@ -16,6 +16,8 @@ export type LexiconEntry = {
   due?: number;
   context?: string;
   translation?: string;
+  /** In-context meaning (AI), for reader-saved words — shown alongside the dictionary translation. */
+  contextGloss?: string;
   /** Sort signal for "recent": firstSeenAt if known, else a new card's due (== its add time). */
   sortAt: number;
 };
@@ -52,6 +54,7 @@ export function buildLexicon(input: {
       due: dueMs,
       context: c.contextSentence || undefined,
       translation: translation || undefined,
+      contextGloss: c.contextGloss || undefined,
       sortAt: dueMs, // a never-reviewed card's due == its add time; degrades after first grade
     });
   }

@@ -12,8 +12,9 @@ import {
 } from '@/shared/lib/audio';
 import { translateWord, translateText } from '@/features/vocab/translate';
 import { addWordCard, addPhraseCard } from '@/features/srs/service';
-import { AiAction } from '@/features/ai/AiAction';
+import { isConfigured, useAiStore } from '@/features/ai/store';
 import { wordInContext } from '@/features/ai/functions';
+import type { AiConfig } from '@/features/ai/provider';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { useLearner } from '@/features/learner/store';
 import { classifyWord, loadFreq, rankThresholdFor, type FreqIndex, type WordMark } from './difficulty';
@@ -33,6 +34,62 @@ export type Gloss = { ru?: string; ipa?: string };
  *  change re-renders only that token, not the whole chapter (thousands of WordTokens). */
 type ReaderCtx = { freq: FreqIndex | null; rankThreshold: number; coloring: boolean };
 const ReaderContext = createContext<ReaderCtx>({ freq: null, rankThreshold: Infinity, coloring: false });
+
+/** The tapped word's meaning IN this sentence (LLM, cached by word+sentence). Rendered inside the
+ *  panel so it mounts on open and unmounts on close; the debounce is cancelled on unmount so a quick
+ *  tap-and-dismiss (e.g. to hit 🔊/known) never spends a request. First line ("Ещё: …" is a second
+ *  line) is reported up for the save-to-vocab path. */
+function ContextGloss({
+  word,
+  sentence,
+  config,
+  onResolved,
+}: {
+  word: string;
+  sentence: string;
+  config: AiConfig;
+  onResolved: (firstLine: string) => void;
+}) {
+  const ru = useUiLang((s) => s.lang) === 'ru';
+  const [text, setText] = useState<string | null>(null);
+  const [state, setState] = useState<'loading' | 'done' | 'error'>('loading');
+
+  useEffect(() => {
+    let alive = true;
+    const timer = setTimeout(() => {
+      void wordInContext(config, word, sentence)
+        .then((res) => {
+          if (!alive) return;
+          setText(res);
+          setState('done');
+          const first = res.split('\n')[0]?.replace(/^Ещё:\s*/i, '').trim();
+          if (first) onResolved(first);
+        })
+        .catch(() => {
+          if (alive) setState('error');
+        });
+    }, 400);
+    return () => {
+      alive = false;
+      clearTimeout(timer);
+    };
+  }, [word, sentence, config, onResolved]);
+
+  return (
+    <div className="mt-2">
+      <p className="font-mono text-2xs uppercase tracking-[0.08em] text-violet">
+        {ru ? 'в контексте' : 'in context'}
+      </p>
+      {state === 'loading' && <p className="font-mono text-2xs text-faint">…</p>}
+      {state === 'error' && (
+        <p className="font-mono text-2xs text-faint">{ru ? 'недоступно' : 'unavailable'}</p>
+      )}
+      {state === 'done' && text && (
+        <p className="whitespace-pre-line text-sm leading-relaxed text-content">{text}</p>
+      )}
+    </div>
+  );
+}
 
 /** Rendered inside the word popover (book reader only): starts a phrase selection anchored at this
  *  word and dismisses the popover, so the next tapped word sets the phrase end. It's a child of the
@@ -86,9 +143,10 @@ export const WordToken = memo(function WordToken({
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
   const [done, setDone] = useState(false);
-  const [ctx, setCtx] = useState<string | null>(null);
-  const [ctxLoading, setCtxLoading] = useState(false);
-  const [ctxOpen, setCtxOpen] = useState(false);
+  const config = useAiStore((s) => s.config);
+  const aiReady = isConfigured(config);
+  // The in-context meaning shown (AI); its first line is what we save to the word's vocab card.
+  const [wicGloss, setWicGloss] = useState<string | null>(null);
 
   const openLookup = () => {
     if (gloss?.ru || done) return;
@@ -98,18 +156,6 @@ export const WordToken = memo(function WordToken({
       setFetched(ru);
       setFailed(ru === null);
       setLoading(false);
-    });
-  };
-
-  // Item 5: the word's meaning in context without the LLM — reuse the sentence translation
-  // (cached in db.translations, shared with the sentence toggle). Curated learn sections pass it in.
-  const revealContext = () => {
-    setCtxOpen(true);
-    if (ctx !== null || ctxLoading) return;
-    setCtxLoading(true);
-    void translateText(sentence).then((ru) => {
-      setCtx(ru);
-      setCtxLoading(false);
     });
   };
   const translation = gloss?.ru ?? fetched ?? undefined;
@@ -164,33 +210,9 @@ export const WordToken = memo(function WordToken({
             : 'unavailable — offline or the free dictionary’s daily limit'}
         </p>
       )}
-      {enableContextFetch && sentence.includes(' ') && (
-        <div className="mt-1.5">
-          {!ctxOpen ? (
-            <button
-              type="button"
-              onClick={revealContext}
-              className="font-mono text-2xs text-teal hover:underline"
-            >
-              {lang === 'ru' ? 'в контексте ▾' : 'in context ▾'}
-            </button>
-          ) : (
-            <div className="max-h-28 overflow-y-auto border-l-2 border-line pl-2 text-xs leading-relaxed text-muted">
-              {ctxLoading
-                ? lang === 'ru'
-                  ? 'перевод…'
-                  : 'translating…'
-                : (ctx ?? (lang === 'ru' ? 'перевод недоступен' : 'unavailable'))}
-            </div>
-          )}
-        </div>
+      {aiReady && enableContextFetch && sentence.includes(' ') && (
+        <ContextGloss word={word} sentence={sentence} config={config} onResolved={setWicGloss} />
       )}
-      <div className="mt-2">
-        <AiAction
-          label={lang === 'ru' ? 'значение в контексте (AI)' : 'meaning in context (AI)'}
-          run={(config) => wordInContext(config, word, sentence)}
-        />
-      </div>
       {tokenId && (
         <div className="mt-2">
           <SelectPhraseButton tokenId={tokenId} />
@@ -202,7 +224,7 @@ export const WordToken = memo(function WordToken({
           variant="ghost"
           onClick={() => {
             void setStatus(word, 'learning');
-            void addWordCard(word, translation ?? word, sentence);
+            void addWordCard(word, translation ?? word, sentence, wicGloss ?? undefined);
           }}
         >
           learning

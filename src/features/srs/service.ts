@@ -28,6 +28,7 @@ export function addWordCard(
   word: string,
   back: string,
   context?: string,
+  contextGloss?: string,
   sourceDayId?: string
 ): Promise<void> {
   return upsert({
@@ -36,6 +37,7 @@ export function addWordCard(
     front: word,
     back: back || word,
     contextSentence: context,
+    contextGloss,
     sourceDayId,
     tags: [],
   });

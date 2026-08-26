@@ -91,6 +91,14 @@ export function ReviewPage() {
                     ? card.back
                     : (extra ?? '—')}
                 </p>
+                {card.contextGloss && (
+                  <p className="mt-1.5 text-sm text-content">
+                    <span className="mr-1.5 font-mono text-2xs uppercase tracking-[0.08em] text-violet">
+                      {ru ? 'в контексте' : 'in context'}
+                    </span>
+                    {card.contextGloss}
+                  </p>
+                )}
                 {card.contextSentence && (
                   <p className="mt-2 text-sm text-muted">{card.contextSentence}</p>
                 )}
