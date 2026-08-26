@@ -1,6 +1,7 @@
 import { recordKeyLimits } from './limits';
 
 export type AiProviderId =
+  | 'vsegpt'
   | 'groq'
   | 'openrouter'
   | 'cerebras'
@@ -28,6 +29,17 @@ type Preset = {
 };
 
 export const PROVIDERS: Record<AiProviderId, Preset> = {
+  // RU OpenAI-compatible proxy: reachable from Russia WITHOUT a VPN and — unlike z.ai/DeepSeek —
+  // verified to send CORS (ACAO:*) on the *actual* POST, so it works from the browser. Paid (ruble
+  // card) with a small no-card starter credit; proxies 120+ models — pick any in the model field.
+  vsegpt: {
+    label: 'VseGPT',
+    baseUrl: 'https://api.vsegpt.ru/v1',
+    model: 'openai/gpt-4o-mini',
+    browserSafe: true,
+    noCard: false,
+    keyUrl: 'https://vsegpt.ru/',
+  },
   groq: {
     label: 'Groq',
     baseUrl: 'https://api.groq.com/openai/v1',
