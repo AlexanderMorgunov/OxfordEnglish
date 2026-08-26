@@ -9,6 +9,8 @@ import {
   cancelSpeech,
   listEnglishVoices,
   previewVoice,
+  WORD_SPLIT_RE,
+  WORD_TEST_RE,
 } from '@/shared/lib/audio';
 import { translateWord, translateText } from '@/features/vocab/translate';
 import { addWordCard, addPhraseCard } from '@/features/srs/service';
@@ -117,6 +119,7 @@ function SelectPhraseButton({ tokenId }: { tokenId: string }) {
  *  re-renders its neighbours. */
 export const WordToken = memo(function WordToken({
   word,
+  lookupWord,
   gloss,
   sentence,
   enableContextFetch,
@@ -124,6 +127,9 @@ export const WordToken = memo(function WordToken({
   highlighted,
 }: {
   word: string;
+  /** The vocabulary identity (status/glossary/save/pronounce), with edge apostrophes stripped so
+   *  "'Tis" tracks as "Tis". Defaults to `word`; `word` is what we display and highlight. */
+  lookupWord?: string;
   gloss?: Gloss;
   sentence: string;
   /** Book reader only: `sentence` is a real sentence, so offer a lazy "in context" translation.
@@ -133,7 +139,8 @@ export const WordToken = memo(function WordToken({
   tokenId?: string;
   highlighted?: boolean;
 }) {
-  const status = useVocabStore((s) => s.statuses.get(word.toLowerCase()));
+  const lookup = lookupWord ?? word;
+  const status = useVocabStore((s) => s.statuses.get(lookup.toLowerCase()));
   const pos = tokenId ? parsePos(tokenId) : null;
   const selected = usePhraseSelect((s) => (pos ? inPhraseRange(pos, s.anchor, s.end) : false));
   const setStatus = useVocabStore((s) => s.setStatus);
@@ -152,7 +159,7 @@ export const WordToken = memo(function WordToken({
     if (gloss?.ru || done) return;
     setDone(true);
     setLoading(true);
-    void translateWord(word).then((ru) => {
+    void translateWord(lookup).then((ru) => {
       setFetched(ru);
       setFailed(ru === null);
       setLoading(false);
@@ -160,7 +167,7 @@ export const WordToken = memo(function WordToken({
   };
   const translation = gloss?.ru ?? fetched ?? undefined;
   const classified: WordMark | undefined =
-    coloring && freq ? classifyWord(word, { status, freq, rankThreshold }) : undefined;
+    coloring && freq ? classifyWord(lookup, { status, freq, rankThreshold }) : undefined;
   const raw = classified ?? (status === 'learning' ? 'learning' : status === 'unknown' ? 'new' : undefined);
   const visible = raw === 'learning' || raw === 'new' ? raw : undefined;
 
@@ -194,7 +201,7 @@ export const WordToken = memo(function WordToken({
             type="button"
             aria-label={`Pronounce ${word}`}
             className="text-teal transition-opacity hover:opacity-80"
-            onClick={() => speakWord(word)}
+            onClick={() => speakWord(lookup)}
           >
             🔊
           </button>
@@ -223,19 +230,19 @@ export const WordToken = memo(function WordToken({
           size="sm"
           variant="ghost"
           onClick={() => {
-            void setStatus(word, 'learning');
-            void addWordCard(word, translation ?? word, sentence, wicGloss ?? undefined);
+            void setStatus(lookup, 'learning');
+            void addWordCard(lookup, translation ?? lookup, sentence, wicGloss ?? undefined);
           }}
         >
           learning
         </Button>
-        <Button size="sm" variant="ghost" onClick={() => void setStatus(word, 'known')}>
+        <Button size="sm" variant="ghost" onClick={() => void setStatus(lookup, 'known')}>
           known
         </Button>
         <Button
           size="sm"
           variant="ghost"
-          onClick={() => void setStatus(word, 'ignored')}
+          onClick={() => void setStatus(lookup, 'ignored')}
           title={lang === 'ru' ? 'не считать словом (имя, и т. п.)' : 'not a vocabulary word (a name, etc.)'}
         >
           {lang === 'ru' ? 'игнор' : 'ignore'}
@@ -251,6 +258,7 @@ const Paragraph = memo(function Paragraph({
   glossary,
   lang,
   speaking,
+  active,
   activeWord,
   onRead,
   typoClass,
@@ -259,7 +267,10 @@ const Paragraph = memo(function Paragraph({
   text: string;
   glossary?: Map<string, Gloss>;
   lang: 'en' | 'ru';
+  /** This paragraph is the current read-aloud one (playing or paused). */
   speaking: boolean;
+  /** An utterance is currently in flight for this paragraph — drives the ▶/❚❚ glyph. */
+  active: boolean;
   activeWord: number;
   onRead: (index: number) => void;
   typoClass: string;
@@ -290,34 +301,46 @@ const Paragraph = memo(function Paragraph({
         <button
           type="button"
           aria-label={
-            speaking
+            active
               ? lang === 'ru'
-                ? 'Остановить'
-                : 'Stop'
+                ? 'Пауза'
+                : 'Pause'
               : lang === 'ru'
                 ? 'Читать вслух с этого места'
                 : 'Read aloud from here'
           }
-          aria-pressed={speaking}
+          aria-pressed={active}
           className="mr-1.5 align-middle text-teal transition-opacity hover:opacity-80"
           onClick={() => onRead(index)}
         >
-          {speaking ? '❚❚' : '▶'}
+          {active ? '❚❚' : '▶'}
         </button>
       )}
       {sentences.map((sentence, si) => {
         const open = openIdx === si;
         return (
           <span key={si}>
-            {sentence.split(/(\b[a-zA-Z']+\b)/).map((tok, i) => {
-              if (!/^[a-zA-Z']+$/.test(tok)) return <span key={i}>{tok}</span>;
+            {sentence.split(WORD_SPLIT_RE).map((tok, i) => {
+              if (!WORD_TEST_RE.test(tok)) return <span key={i}>{tok}</span>;
               wordIndex += 1;
               const idx = wordIndex;
+              // Must split on the SAME pattern as audio's wordSpans, or the spoken-word index and
+              // this rendered index name different tokens and the highlight drifts. Edge apostrophes
+              // (opening/closing quotes) are stripped for the vocab identity but kept for display.
+              const key = tok.replace(/^'+|'+$/g, '');
+              if (!key) {
+                return (
+                  <span key={i} className={cn(speaking && idx === activeWord && 'bg-teal-dim text-ink')}>
+                    {tok}
+                  </span>
+                );
+              }
               return (
                 <WordToken
                   key={i}
                   word={tok}
-                  gloss={glossary?.get(tok.toLowerCase())}
+                  lookupWord={key}
+                  gloss={glossary?.get(key.toLowerCase())}
                   sentence={sentence}
                   enableContextFetch
                   tokenId={`${index}:${si}:${i}`}
@@ -374,6 +397,8 @@ export function ReadingText({
   const setRate = useReaderSettings((s) => s.setRate);
   const highlightSpoken = useReaderSettings((s) => s.highlightSpoken);
   const toggleHighlightSpoken = useReaderSettings((s) => s.toggleHighlightSpoken);
+  const readMode = useReaderSettings((s) => s.readMode);
+  const setReadMode = useReaderSettings((s) => s.setReadMode);
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>(() => listEnglishVoices());
   useEffect(() => {
     const sync = () => setVoices(listEnglishVoices());
@@ -389,13 +414,22 @@ export function ReadingText({
   const [freq, setFreq] = useState<FreqIndex | null>(null);
   const [speakingIdx, setSpeakingIdx] = useState(-1);
   const [activeWord, setActiveWord] = useState(-1);
+  // `speakingActive` = an utterance is in flight (drives the ❚❚ glyph); `playingRef` = a read
+  // session is engaged, whether actively speaking or paused mid-paragraph. `resumeChunkRef` is the
+  // chunk (sentence) to resume from inside `speakingIdx` — so a pause continues where it stopped
+  // instead of restarting the paragraph, and sentence-mode advances one sentence per play.
+  const [speakingActive, setSpeakingActive] = useState(false);
   const playingRef = useRef(false);
+  const activeRef = useRef(false);
+  const resumeChunkRef = useRef(0);
   // Read live in speakFrom's continuation chain (whose onEnd closure is frozen at play time),
-  // so mid-read changes to speed/highlight take effect from the next paragraph.
+  // so mid-read changes to speed/highlight/mode take effect from the next paragraph or sentence.
   const rateRef = useRef(rate);
   rateRef.current = rate;
   const highlightSpokenRef = useRef(highlightSpoken);
   highlightSpokenRef.current = highlightSpoken;
+  const readModeRef = useRef(readMode);
+  readModeRef.current = readMode;
   const reduceMotion = useMemo(
     () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false,
     []
@@ -452,7 +486,8 @@ export function ReadingText({
   };
 
   const phraseFromRange = (a: WordPos, b: WordPos, sentence: string): string => {
-    const parts = sentence.split(/(\b[a-zA-Z']+\b)/);
+    // Same split as the render (WORD_SPLIT_RE) so a token's `.t` index means the same array slot.
+    const parts = sentence.split(WORD_SPLIT_RE);
     return parts
       .slice(Math.min(a.t, b.t), Math.max(a.t, b.t) + 1)
       .join('')
@@ -505,45 +540,102 @@ export function ReadingText({
     el?.scrollIntoView({ block: 'nearest', behavior: reduceMotion ? 'auto' : 'smooth' });
   };
 
-  const speakFrom = (i: number) => {
+  const speakFrom = (i: number, startChunk: number) => {
     if (i < 0 || i >= paragraphs.length) {
       stopReading();
       return;
     }
     setSpeakingIdx(i);
     setActiveWord(-1);
+    activeRef.current = true;
+    setSpeakingActive(true);
     scrollToPara(i);
-    speakPassage(paragraphs[i]!, {
+    // Speak the exact string the paragraph renders (sentences joined) so audio's word spans line up
+    // 1:1 with the rendered word tokens — otherwise the spoken-word highlight drifts.
+    const spoken = toSentences(paragraphs[i]!).join(' ');
+    speakPassage(spoken, {
       rate: rateRef.current,
+      startChunk,
+      single: readModeRef.current === 'sentence',
       // Checked per boundary event so toggling the highlight off mid-paragraph stops immediately.
       onWord: (idx) => {
         if (highlightSpokenRef.current) setActiveWord(idx);
       },
-      onEnd: () => {
-        if (playingRef.current) speakFrom(i + 1);
+      onChunk: (c) => {
+        resumeChunkRef.current = c;
+      },
+      onEnd: (nextChunk, total) => {
+        if (!playingRef.current) return;
+        if (readModeRef.current === 'sentence') {
+          // One sentence spoken — pause and wait for the next play (repeat-after-the-narrator).
+          activeRef.current = false;
+          setSpeakingActive(false);
+          if (nextChunk >= total) {
+            const next = i + 1;
+            if (next >= paragraphs.length) {
+              stopReading();
+              return;
+            }
+            resumeChunkRef.current = 0;
+            setSpeakingIdx(next);
+            setActiveWord(-1);
+            scrollToPara(next);
+          } else {
+            resumeChunkRef.current = nextChunk;
+          }
+        } else {
+          resumeChunkRef.current = 0;
+          speakFrom(i + 1, 0);
+        }
       },
     });
   };
 
   const stopReading = () => {
     playingRef.current = false;
+    activeRef.current = false;
+    resumeChunkRef.current = 0;
     cancelSpeech();
+    setSpeakingActive(false);
     setSpeakingIdx(-1);
     setActiveWord(-1);
   };
 
   const read = (idx: number) => {
-    if (playingRef.current && speakingIdx === idx) {
-      stopReading();
+    // Actively speaking this paragraph → pause, remembering the current sentence.
+    if (activeRef.current && speakingIdx === idx) {
+      activeRef.current = false;
+      setSpeakingActive(false);
+      cancelSpeech();
       return;
     }
+    // Paused on this paragraph → resume from where it stopped.
+    if (playingRef.current && speakingIdx === idx) {
+      playingRef.current = true;
+      speakFrom(idx, resumeChunkRef.current);
+      return;
+    }
+    // Fresh start (a different paragraph, or nothing playing).
+    resumeChunkRef.current = 0;
     playingRef.current = true;
-    speakFrom(idx);
+    speakFrom(idx, 0);
   };
   // Stable identity so a memoized Paragraph isn't re-rendered by a fresh onRead closure each render.
   const readRef = useRef(read);
   readRef.current = read;
   const onRead = useCallback((i: number) => readRef.current(i), []);
+
+  // Leaving the tab/app stops read-aloud and drops the resume position — the browser cancels speech
+  // on hide anyway, and without this the React state would stay stuck on "speaking".
+  const stopRef = useRef(stopReading);
+  stopRef.current = stopReading;
+  useEffect(() => {
+    const onHide = () => {
+      if (document.hidden) stopRef.current();
+    };
+    document.addEventListener('visibilitychange', onHide);
+    return () => document.removeEventListener('visibilitychange', onHide);
+  }, []);
 
   return (
     <div className="flex flex-col gap-4">
@@ -651,6 +743,28 @@ export function ReadingText({
           </div>
         )}
         {canSpeak() && (
+          <div className="flex items-center gap-1.5" role="group" aria-label={ru ? 'Режим озвучки' : 'Read-aloud mode'}>
+            <span className="font-mono text-2xs text-muted">{ru ? 'режим' : 'mode'}</span>
+            <button
+              type="button"
+              aria-pressed={readMode === 'paragraph'}
+              onClick={() => setReadMode('paragraph')}
+              className={cn('font-mono text-2xs hover:underline', readMode === 'paragraph' ? 'text-teal' : 'text-muted')}
+            >
+              {ru ? 'абзац' : 'paragraph'}
+            </button>
+            <button
+              type="button"
+              aria-pressed={readMode === 'sentence'}
+              onClick={() => setReadMode('sentence')}
+              className={cn('font-mono text-2xs hover:underline', readMode === 'sentence' ? 'text-teal' : 'text-muted')}
+              title={ru ? 'по предложению — пауза после каждого, чтобы повторить' : 'sentence-at-a-time — pauses after each so you can repeat'}
+            >
+              {ru ? 'предложение' : 'sentence'}
+            </button>
+          </div>
+        )}
+        {canSpeak() && (
           <button
             type="button"
             onClick={toggleHighlightSpoken}
@@ -740,6 +854,7 @@ export function ReadingText({
               glossary={glossary}
               lang={lang}
               speaking={speakingIdx === i}
+              active={speakingActive && speakingIdx === i}
               activeWord={speakingIdx === i ? activeWord : -1}
               onRead={onRead}
               typoClass={typoClass}

@@ -1,5 +1,6 @@
 import { test, expect } from 'vitest';
-import { wordSpans, chunkPassage } from './audio';
+import { wordSpans, chunkPassage, WORD_SPLIT_RE, WORD_TEST_RE } from './audio';
+import { toSentences } from '@/features/reader/parse/text';
 
 test('chunkPassage splits on sentences, each chunk sliceable back at its offset', () => {
   const text = 'Peter Blood smoked a pipe. He tended the geraniums. All Bridgewater was in arms.';
@@ -46,4 +47,31 @@ test('wordSpans skips punctuation and whitespace', () => {
 
 test('wordSpans is empty for text with no letters', () => {
   expect(wordSpans('123 — 456!')).toEqual([]);
+});
+
+/** The reader renders word tokens by splitting each `toSentences` sentence with WORD_SPLIT_RE, while
+ *  read-aloud maps boundary events onto `wordSpans` of the spoken string (`toSentences(...).join`).
+ *  If the two token counts ever diverge, the spoken-word highlight drifts off the real word — so this
+ *  pins that they stay 1:1, including the dialogue-apostrophe cases that used to break it. */
+function renderWordCount(paragraph: string): number {
+  let n = 0;
+  for (const sentence of toSentences(paragraph)) {
+    for (const tok of sentence.split(WORD_SPLIT_RE)) if (WORD_TEST_RE.test(tok)) n += 1;
+  }
+  return n;
+}
+
+test('rendered word tokens align 1:1 with spoken word spans', () => {
+  const paragraphs = [
+    "'Tis a fine morning, Captain.",
+    "'Go,' she said. 'Now.'",
+    "'Go.' She left.",
+    "I don't know — well-known facts about 1720 and 'quoted' words.",
+    'A plain sentence. Then another one! And a third?',
+    'ALL CAPS SHOUTING here.',
+  ];
+  for (const p of paragraphs) {
+    const spoken = toSentences(p).join(' ');
+    expect(renderWordCount(p)).toBe(wordSpans(spoken).length);
+  }
 });

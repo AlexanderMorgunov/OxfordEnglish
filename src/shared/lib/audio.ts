@@ -106,6 +106,13 @@ export function speakWord(word: string): void {
 
 export type WordSpan = { start: number; end: number };
 
+/** The word-token pattern, shared by read-aloud highlighting (`wordSpans`) and the reader's render +
+ *  phrase tokenizer, so the spoken-word index and the rendered-word index always name the SAME token.
+ *  A "word" is a maximal run of letters/apostrophes ("don't", "'Tis") — the two consumers must split
+ *  on the identical class or the highlight drifts off the spoken word. */
+export const WORD_SPLIT_RE = /([A-Za-z']+)/;
+export const WORD_TEST_RE = /^[A-Za-z']+$/;
+
 /** Char offsets [start, end) of each spoken word — used to map speech position to a token. */
 export function wordSpans(text: string): WordSpan[] {
   const spans: WordSpan[] = [];
@@ -158,15 +165,29 @@ export function chunkPassage(text: string, maxLen = 160): { text: string; offset
  * `boundary` events) so the caller can highlight it. The text is split into sentence-sized chunks
  * spoken back-to-back — this is what makes long paragraphs play at all — but never per word: natural
  * prose matters more for listening-while-reading than a perfect highlight (which Safari/iOS omits
- * anyway, as it reports `boundary` but never emits it). `onEnd` fires after the last chunk.
+ * anyway, as it reports `boundary` but never emits it).
+ *
+ * `startChunk` resumes from a chunk (sentence) rather than the top — the word offsets stay global
+ * (mapped against the whole-passage `spans`) so the highlight is correct regardless of where we
+ * start. `single: true` speaks exactly one chunk then stops, for the reader's sentence-at-a-time
+ * mode. `onChunk(i)` reports each chunk as it begins (so a pause can be resumed from it); `onEnd`
+ * fires when speech stops naturally, carrying the next chunk index and the chunk count.
  */
 export function speakPassage(
   text: string,
-  opts: { rate?: number; onWord?: (index: number) => void; onEnd?: () => void } = {}
+  opts: {
+    rate?: number;
+    startChunk?: number;
+    single?: boolean;
+    onWord?: (index: number) => void;
+    onChunk?: (index: number) => void;
+    onEnd?: (nextChunk: number, totalChunks: number) => void;
+  } = {}
 ): void {
-  const done = () => opts.onEnd?.();
+  const chunks = chunkPassage(text);
+  const done = (next: number) => opts.onEnd?.(next, chunks.length);
   if (!canSpeak()) {
-    done();
+    done(chunks.length);
     return;
   }
   stopClip();
@@ -174,19 +195,21 @@ export function speakPassage(
   const myToken = speechToken;
   const alive = () => myToken === speechToken;
   const spans = wordSpans(text);
-  const chunks = chunkPassage(text);
   const rate = opts.rate ?? 1;
   // Rough English TTS pace for the estimate fallback below (~15 chars/s at rate 1).
   const charsPerSec = 15 * rate;
 
-  let ci = 0;
+  let ci = Math.min(Math.max(0, Math.floor(opts.startChunk ?? 0)), chunks.length);
   const speakNext = () => {
     if (!alive()) return;
     if (ci >= chunks.length) {
-      done();
+      done(chunks.length);
       return;
     }
-    const chunk = chunks[ci++]!;
+    const chunk = chunks[ci]!;
+    const myChunk = ci;
+    ci += 1;
+    opts.onChunk?.(myChunk);
     const u = new SpeechSynthesisUtterance(chunk.text);
     applyVoice(u);
     u.rate = rate;
@@ -222,14 +245,17 @@ export function speakPassage(
     };
 
     // Advance on end; on error, skip the failed chunk rather than stall the whole read.
-    u.onend = () => {
+    const advance = () => {
       chunkAlive = false;
-      if (alive()) speakNext();
+      if (!alive()) return;
+      if (opts.single) {
+        done(ci);
+        return;
+      }
+      speakNext();
     };
-    u.onerror = () => {
-      chunkAlive = false;
-      if (alive()) speakNext();
-    };
+    u.onend = advance;
+    u.onerror = advance;
     window.speechSynthesis.speak(u);
   };
   speakNext();
