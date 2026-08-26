@@ -8,7 +8,7 @@ import { UpdateDialog } from '@/features/pwa/UpdateDialog';
 import { markEngaged } from '@/features/pwa/update';
 import { metricaHit } from '@/features/analytics/metrica';
 import { MigrationNotice } from '@/features/migration/MigrationNotice';
-import { ErrorBoundary } from '@/shared/ui';
+import { ErrorBoundary, PixelImage } from '@/shared/ui';
 
 const NAV = [
   { to: '/', label: { en: 'today', ru: 'сегодня' }, end: true, devOnly: false, tour: undefined },
@@ -72,7 +72,14 @@ export function AppLayout() {
                   ].join(' ')
                 }
               >
-                {ru ? item.label.ru : item.label.en}
+                <span className="flex items-center gap-1.5">
+                  <PixelImage
+                    src={`/assets/pixel/nav/${item.label.en}.png`}
+                    alt=""
+                    className="h-4 w-4 shrink-0"
+                  />
+                  {ru ? item.label.ru : item.label.en}
+                </span>
               </NavLink>
             ))}
           </nav>
