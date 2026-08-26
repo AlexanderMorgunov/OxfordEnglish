@@ -36,9 +36,9 @@ const LEVELS: Level[] = ['A1', 'A2', 'B1'];
 
 export function SettingsPage() {
   const { config, setConfig } = useAiStore();
-  const [provider, setProvider] = useState<AiProviderId>(config?.provider ?? 'groq');
+  const [provider, setProvider] = useState<AiProviderId>(config?.provider ?? 'zai');
   const [apiKey, setApiKey] = useState(config?.apiKey ?? '');
-  const [model, setModel] = useState(config?.model ?? PROVIDERS.groq.model);
+  const [model, setModel] = useState(config?.model ?? PROVIDERS.zai.model);
   const [baseUrl, setBaseUrl] = useState(config?.baseUrl ?? '');
   const [saved, setSaved] = useState(false);
 
@@ -187,16 +187,20 @@ export function SettingsPage() {
           {ru ? (
             <>
               На бесплатных тарифах ваши запросы почти всегда могут использоваться для обучения
-              моделей провайдера. Для учебных предложений это обычно ок — но знайте.{' '}
-              <b className="text-content">Без карты:</b> Groq, OpenRouter, Cerebras. Gemini теперь
-              просит карту, а OpenAI блокирует прямые запросы из браузера (CORS).
+              моделей провайдера — для учебных фраз это обычно ок, но знайте.{' '}
+              <b className="text-content">Из России без VPN:</b> Z.AI (GLM) и DeepSeek (китайские);
+              остальные (Groq, OpenRouter, Cerebras, Gemini, OpenAI) — через VPN.{' '}
+              <b className="text-content">Без карты:</b> Z.AI (модель glm-4.5-flash бесплатна). OpenAI
+              блокирует прямые запросы из браузера (CORS).
             </>
           ) : (
             <>
-              Free tiers almost always mean your requests may be used to train the provider's
-              models. For learning sentences that's usually fine — but you should know.{' '}
-              <b className="text-content">No card needed:</b> Groq, OpenRouter, Cerebras. Gemini now
-              asks for a card, and OpenAI blocks direct browser calls (CORS).
+              Free tiers almost always mean your requests may be used to train the provider's models —
+              usually fine for learning sentences, but know it.{' '}
+              <b className="text-content">From Russia without a VPN:</b> Z.AI (GLM) and DeepSeek
+              (Chinese); the rest (Groq, OpenRouter, Cerebras, Gemini, OpenAI) need a VPN.{' '}
+              <b className="text-content">No card:</b> Z.AI (its glm-4.5-flash model is free). OpenAI
+              blocks direct browser calls (CORS).
             </>
           )}
         </p>

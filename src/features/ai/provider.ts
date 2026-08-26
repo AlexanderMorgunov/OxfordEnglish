@@ -1,6 +1,8 @@
 import { recordKeyLimits } from './limits';
 
 export type AiProviderId =
+  | 'zai'
+  | 'deepseek'
   | 'groq'
   | 'openrouter'
   | 'cerebras'
@@ -28,6 +30,25 @@ type Preset = {
 };
 
 export const PROVIDERS: Record<AiProviderId, Preset> = {
+  // Chinese providers: browser-CORS-friendly AND reachable from RU without a VPN (unlike Groq/
+  // OpenRouter/Cerebras/Gemini/OpenAI, which geo-block RU). Z.AI's glm-4.5-flash is genuinely free,
+  // no card. DeepSeek is cheap but its free grant isn't guaranteed — leave `noCard` off.
+  zai: {
+    label: 'Z.AI (GLM)',
+    baseUrl: 'https://api.z.ai/api/paas/v4',
+    model: 'glm-4.5-flash',
+    browserSafe: true,
+    noCard: true,
+    keyUrl: 'https://z.ai/manage-apikey/apikey-list',
+  },
+  deepseek: {
+    label: 'DeepSeek',
+    baseUrl: 'https://api.deepseek.com',
+    model: 'deepseek-v4-flash',
+    browserSafe: true,
+    noCard: false,
+    keyUrl: 'https://platform.deepseek.com/api_keys',
+  },
   groq: {
     label: 'Groq',
     baseUrl: 'https://api.groq.com/openai/v1',
@@ -45,6 +66,7 @@ export const PROVIDERS: Record<AiProviderId, Preset> = {
     model: 'openai/gpt-oss-20b:free',
     browserSafe: true,
     noCard: true,
+    needsVpn: true,
     keyUrl: 'https://openrouter.ai/keys',
   },
   cerebras: {
@@ -54,6 +76,7 @@ export const PROVIDERS: Record<AiProviderId, Preset> = {
     model: 'gpt-oss-120b',
     browserSafe: true,
     noCard: true,
+    needsVpn: true,
     keyUrl: 'https://cloud.cerebras.ai',
   },
   gemini: {
