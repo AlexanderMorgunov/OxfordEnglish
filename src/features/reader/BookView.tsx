@@ -107,12 +107,14 @@ export function BookView({
   const paragraphs = useMemo(() => splitParas(ch.text), [ch]);
   const multi = chapters.length > 1;
 
-  // Which paragraphs on the current page are bookmarked — drives the per-paragraph marker.
+  // Which paragraphs on the current page are bookmarked — drives the per-paragraph marker. Matched
+  // on the stable pageId (like the jump path), so a bookmark still shows if pagination shifted the
+  // raw page index.
   const bookmarkedParas = useMemo(() => {
     const s = new Set<number>();
-    for (const bm of bookmarks) if (bm.page === chapter) s.add(bm.paragraph);
+    for (const bm of bookmarks) if (bm.pageId === ch.id) s.add(bm.paragraph);
     return s;
-  }, [bookmarks, chapter]);
+  }, [bookmarks, ch.id]);
 
   const toggleParaBookmark = async (p: number) => {
     await toggleBookmark({

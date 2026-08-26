@@ -674,6 +674,11 @@ export function ReadingText({
     document.addEventListener('visibilitychange', onHide);
     return () => document.removeEventListener('visibilitychange', onHide);
   }, []);
+  // A chapter change swaps `paragraphs` without remounting this component, so reset playback —
+  // otherwise a resume/highlight position from the old chapter is applied to the new one.
+  useEffect(() => {
+    stopRef.current();
+  }, [paragraphs]);
 
   return (
     <div className="flex flex-col gap-4">
