@@ -1,6 +1,8 @@
 import { useState, type ReactNode } from 'react';
 import type { Exercise } from '@/content/schema';
 import { AiAction } from '@/features/ai/AiAction';
+import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
+import { isConfigured, useAiStore } from '@/features/ai/store';
 import { explainError, hint as aiHint } from '@/features/ai/functions';
 import { useUiLang, tr } from '@/features/i18n/uiLang';
 import { matchCommonError } from '../normalize';
@@ -29,6 +31,7 @@ export function ExerciseShell({
 }: ExerciseShellProps) {
   const { status, attempts, canReveal, aiHintsLeft, noteAiHint, revealHint } = attempt;
   const lang = useUiLang((s) => s.lang);
+  const aiConfigured = isConfigured(useAiStore((s) => s.config));
   const [showHint, setShowHint] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
 
@@ -92,38 +95,44 @@ export function ExerciseShell({
         </div>
       )}
 
-      {ai && status !== 'correct' && (
-        <div className="mt-3 flex flex-col gap-2">
-          {aiHintsLeft > 0 && (
-            <AiAction
-              label={status === 'idle' ? 'hint (AI)' : `hint (AI) · ${aiHintsLeft}`}
-              onRun={noteAiHint}
-              run={(config) =>
-                aiHint(config, {
-                  prompt: ai.prompt,
-                  topic,
-                  userAnswer: status === 'incorrect' ? ai.userAnswer : undefined,
-                  attempt: attempts.length,
-                })
-              }
-            />
-          )}
-          {status === 'incorrect' && (
-            <AiAction
-              label="why is it wrong? (AI)"
-              run={(config) =>
-                explainError(config, {
-                  prompt: ai.prompt,
-                  userAnswer: ai.userAnswer,
-                  correct: ai.correct,
-                  topic,
-                  attempts,
-                })
-              }
-            />
-          )}
-        </div>
-      )}
+      {ai &&
+        status !== 'correct' &&
+        (aiConfigured ? (
+          <div className="mt-3 flex flex-col gap-2">
+            {aiHintsLeft > 0 && (
+              <AiAction
+                label={status === 'idle' ? 'hint (AI)' : `hint (AI) · ${aiHintsLeft}`}
+                onRun={noteAiHint}
+                run={(config) =>
+                  aiHint(config, {
+                    prompt: ai.prompt,
+                    topic,
+                    userAnswer: status === 'incorrect' ? ai.userAnswer : undefined,
+                    attempt: attempts.length,
+                  })
+                }
+              />
+            )}
+            {status === 'incorrect' && (
+              <AiAction
+                label="why is it wrong? (AI)"
+                run={(config) =>
+                  explainError(config, {
+                    prompt: ai.prompt,
+                    userAnswer: ai.userAnswer,
+                    correct: ai.correct,
+                    topic,
+                    attempts,
+                  })
+                }
+              />
+            )}
+          </div>
+        ) : (
+          <div className="mt-3">
+            <AiUpsellLink />
+          </div>
+        ))}
     </div>
   );
 }

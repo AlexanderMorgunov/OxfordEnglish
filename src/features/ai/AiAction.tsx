@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@/shared/ui';
+import { AiUpsellLink } from './AiUpsellLink';
 import { isConfigured, useAiStore } from './store';
 import type { AiConfig } from './provider';
 
@@ -16,11 +17,7 @@ export function AiAction({ label, run, onRun }: Props) {
   const [error, setError] = useState<string | null>(null);
 
   if (!isConfigured(config)) {
-    return (
-      <span className="font-mono text-2xs text-faint">
-        AI off — add a key in settings
-      </span>
-    );
+    return <AiUpsellLink />;
   }
 
   const go = async () => {

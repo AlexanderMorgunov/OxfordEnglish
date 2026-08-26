@@ -1,5 +1,5 @@
-import { useState, useSyncExternalStore } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState, useSyncExternalStore } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Button, Card, Eyebrow, Input, Option } from '@/shared/ui';
 import {
   subscribeAppUpdate,
@@ -41,6 +41,17 @@ export function SettingsPage() {
   const [model, setModel] = useState(config?.model ?? PROVIDERS.groq.model);
   const [baseUrl, setBaseUrl] = useState(config?.baseUrl ?? '');
   const [saved, setSaved] = useState(false);
+
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash !== '#ai-section') return;
+    const el = document.getElementById('ai-section');
+    if (!el) return;
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    requestAnimationFrame(() =>
+      el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
+    );
+  }, [hash]);
 
   const pick = (p: AiProviderId) => {
     setProvider(p);
@@ -159,6 +170,7 @@ export function SettingsPage() {
         </div>
       </div>
 
+      <div id="ai-section" className="scroll-mt-6" aria-hidden="true" />
       <Eyebrow className="mb-3.5">config · ai (byok)</Eyebrow>
       <h1 className="mb-2 text-2xl font-bold tracking-tight">{ru ? 'AI-помощник' : 'AI assistant'}</h1>
       <p className="mb-8 text-muted text-pretty">

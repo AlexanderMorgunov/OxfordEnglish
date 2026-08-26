@@ -1,8 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
+import type { ReactElement } from 'react';
 import type { Exercise } from '@/content/schema';
 import { GapFillExercise } from './GapFillExercise';
 import { ChoiceExercise } from './ChoiceExercise';
+
+// Exercises render an AiUpsellLink (<Link>) when no AI key is set, so they need a router context.
+const renderR = (ui: ReactElement) => render(<MemoryRouter>{ui}</MemoryRouter>);
 
 const gap: Extract<Exercise, { type: 'gap-fill' }> = {
   type: 'gap-fill',
@@ -26,7 +31,7 @@ const choice: Extract<Exercise, { type: 'choice' }> = {
 
 test('gap-fill allows retry after a wrong answer, then passes', async () => {
   const onSolved = vi.fn();
-  render(<GapFillExercise exercise={gap} onSolved={onSolved} />);
+  renderR(<GapFillExercise exercise={gap} onSolved={onSolved} />);
   const input = screen.getByPlaceholderText(/your answer/i);
 
   await userEvent.type(input, 'deploy');
@@ -44,7 +49,7 @@ test('gap-fill allows retry after a wrong answer, then passes', async () => {
 
 test('choice can be answered with the number key', async () => {
   const onSolved = vi.fn();
-  render(<ChoiceExercise exercise={choice} onSolved={onSolved} />);
+  renderR(<ChoiceExercise exercise={choice} onSolved={onSolved} />);
   await userEvent.click(screen.getByRole('button', { name: /1\. Did/ }));
   expect(screen.getByText(/correct answer: Did/)).toBeInTheDocument();
   expect(onSolved).toHaveBeenCalledOnce();

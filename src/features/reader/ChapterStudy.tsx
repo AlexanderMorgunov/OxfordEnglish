@@ -6,6 +6,7 @@ import { useVocabStore } from '@/features/vocab/vocabStore';
 import { useLearner } from '@/features/learner/store';
 import { ExerciseView } from '@/features/practice/exercises/ExerciseView';
 import { useAiStore, isConfigured } from '@/features/ai/store';
+import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
 import { generateReaderExercises } from '@/features/ai/functions';
 import { estimateCoverage, loadFreq, rankThresholdFor, type FreqIndex } from './difficulty';
 import { generateExercises } from './exercises';
@@ -121,6 +122,7 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
                   : 'AI exercises'}
             </Button>
           )}
+          {!aiReady && <AiUpsellLink className="self-center" />}
           {aiState === 'error' && (
             <span className="font-mono text-2xs text-coral">
               {ru ? 'AI не справился — попробуй детерминированные' : 'AI failed — try the deterministic set'}

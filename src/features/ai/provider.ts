@@ -35,6 +35,8 @@ export const PROVIDERS: Record<AiProviderId, Preset> = {
     model: 'openai/gpt-oss-20b',
     browserSafe: true,
     noCard: true,
+    // Groq geo-blocks Russia — a VPN is needed both to create a key and to call the API.
+    needsVpn: true,
     keyUrl: 'https://console.groq.com/keys',
   },
   openrouter: {
