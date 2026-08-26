@@ -261,6 +261,8 @@ const Paragraph = memo(function Paragraph({
   active,
   activeWord,
   onRead,
+  bookmarked,
+  onToggleBookmark,
   typoClass,
 }: {
   index: number;
@@ -273,6 +275,9 @@ const Paragraph = memo(function Paragraph({
   active: boolean;
   activeWord: number;
   onRead: (index: number) => void;
+  /** Book reader only: this paragraph is bookmarked, and a per-paragraph bookmark toggle. */
+  bookmarked?: boolean;
+  onToggleBookmark?: (index: number) => void;
   typoClass: string;
 }) {
   const sentences = useMemo(() => toSentences(text), [text]);
@@ -314,6 +319,29 @@ const Paragraph = memo(function Paragraph({
           onClick={() => onRead(index)}
         >
           {active ? '❚❚' : '▶'}
+        </button>
+      )}
+      {onToggleBookmark && (
+        <button
+          type="button"
+          aria-label={
+            bookmarked
+              ? lang === 'ru'
+                ? 'Убрать закладку с абзаца'
+                : 'Remove bookmark'
+              : lang === 'ru'
+                ? 'Заложить этот абзац'
+                : 'Bookmark this paragraph'
+          }
+          aria-pressed={bookmarked}
+          onClick={() => onToggleBookmark(index)}
+          className={cn(
+            'mr-1.5 rounded-sm px-0.5 align-middle text-sm transition-opacity hover:opacity-100',
+            // 🔖 is an emoji (ignores text color), so signal on/off with opacity + an amber tint.
+            bookmarked ? 'bg-amber-dim/25 opacity-100' : 'opacity-40'
+          )}
+        >
+          🔖
         </button>
       )}
       {sentences.map((sentence, si) => {
@@ -377,9 +405,14 @@ const Paragraph = memo(function Paragraph({
 export function ReadingText({
   paragraphs,
   glossary,
+  bookmarkedParas,
+  onToggleBookmark,
 }: {
   paragraphs: string[];
   glossary?: Map<string, Gloss>;
+  /** Book reader only: paragraph indices bookmarked on this page, and a per-paragraph toggle. */
+  bookmarkedParas?: Set<number>;
+  onToggleBookmark?: (paraIndex: number) => void;
 }) {
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
@@ -625,6 +658,11 @@ export function ReadingText({
   readRef.current = read;
   const onRead = useCallback((i: number) => readRef.current(i), []);
 
+  // Stable identity so a memoized Paragraph isn't re-rendered by a fresh callback each render.
+  const toggleBookmarkRef = useRef(onToggleBookmark);
+  toggleBookmarkRef.current = onToggleBookmark;
+  const onToggleBm = useCallback((i: number) => toggleBookmarkRef.current?.(i), []);
+
   // Leaving the tab/app stops read-aloud and drops the resume position — the browser cancels speech
   // on hide anyway, and without this the React state would stay stuck on "speaking".
   const stopRef = useRef(stopReading);
@@ -857,6 +895,8 @@ export function ReadingText({
               active={speakingActive && speakingIdx === i}
               activeWord={speakingIdx === i ? activeWord : -1}
               onRead={onRead}
+              bookmarked={bookmarkedParas?.has(i) ?? false}
+              onToggleBookmark={onToggleBookmark ? onToggleBm : undefined}
               typoClass={typoClass}
             />
           ))}

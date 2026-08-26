@@ -107,6 +107,26 @@ export function BookView({
   const paragraphs = useMemo(() => splitParas(ch.text), [ch]);
   const multi = chapters.length > 1;
 
+  // Which paragraphs on the current page are bookmarked — drives the per-paragraph marker.
+  const bookmarkedParas = useMemo(() => {
+    const s = new Set<number>();
+    for (const bm of bookmarks) if (bm.page === chapter) s.add(bm.paragraph);
+    return s;
+  }, [bookmarks, chapter]);
+
+  const toggleParaBookmark = async (p: number) => {
+    await toggleBookmark({
+      bookKey: idPrefix,
+      page: chapter,
+      paragraph: p,
+      pageId: ch.id,
+      snippet: snippetOf(paragraphs[p] ?? ''),
+      chapterTitle: ch.title,
+      scrollY: Math.round(window.scrollY),
+    });
+    reloadBookmarks();
+  };
+
   const toggleHere = async () => {
     const rects = Array.from(document.querySelectorAll<HTMLElement>('[data-para]')).map((el) => ({
       index: Number(el.dataset.para),
@@ -217,7 +237,11 @@ export function BookView({
         </ul>
       )}
 
-      <ReadingText paragraphs={paragraphs} />
+      <ReadingText
+        paragraphs={paragraphs}
+        bookmarkedParas={bookmarkedParas}
+        onToggleBookmark={(p) => void toggleParaBookmark(p)}
+      />
       <ChapterStudy text={ch.text} idPrefix={`${idPrefix}.${chapter}`} />
       {nav && <div className="mt-8 border-t border-line pt-5">{nav}</div>}
     </>
