@@ -27,6 +27,8 @@ type Preset = {
    *  keep the label soft. Only the clear cases are flagged. */
   needsVpn?: boolean;
   keyUrl?: string;
+  /** Provider-specific fields merged into the request body (e.g. GLM's thinking toggle). */
+  extraBody?: Record<string, unknown>;
 };
 
 export const PROVIDERS: Record<AiProviderId, Preset> = {
@@ -40,6 +42,9 @@ export const PROVIDERS: Record<AiProviderId, Preset> = {
     browserSafe: true,
     noCard: true,
     keyUrl: 'https://z.ai/manage-apikey/apikey-list',
+    // GLM-4.5 is a reasoning model — without this it spends the token budget "thinking" and returns an
+    // empty `content`, which our layer rejects as "Empty AI response". Disable it for direct answers.
+    extraBody: { thinking: { type: 'disabled' } },
   },
   deepseek: {
     label: 'DeepSeek',
@@ -128,6 +133,7 @@ export async function complete(
         model: config.model,
         messages,
         temperature: opts.temperature ?? 0.4,
+        ...PROVIDERS[config.provider].extraBody,
       }),
       signal: opts.signal,
     });
