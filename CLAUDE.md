@@ -11,8 +11,33 @@ gotchas that the doc and the code don't already make obvious.
 ## Stack
 
 Vite · React 19 · TypeScript (strict) · Tailwind v4 · React Router · Zustand ·
-Dexie (IndexedDB) · Zod · ts-fsrs · Vitest + Testing Library. No backend in v1.
-See `DESIGN_DOC.md` §9.
+Dexie (IndexedDB) · Zod · ts-fsrs · pdf.js + fflate (reader) · Vitest + Testing Library.
+No backend in v1. See `DESIGN_DOC.md` §9.
+
+## Project map (current state)
+
+DESIGN_DOC is the *plan*; this is *what exists now* and where it lives, for fast orientation.
+`README.md` has the full deploy/domains/payments/SEO runbook.
+
+**Feature areas** (`src/features/…`): `practice` (9 exercise types + `ExerciseShell`), `learn`
+(vocabulary/reading/grammar section views, `DaySummary`), `listen` (player, A-B loop, dictation),
+`reader` (EPUB/PDF import, word/phrase lookup, read-aloud, bookmarks; books in OPFS, never uploaded),
+`srs`+`vocab` (FSRS queue, personal lexicon, translation cache), `ai` (BYOK OpenAI-compatible layer —
+hints, `wordInContext`, exercise gen), `i18n` (`useUiLang`+`tr`+shared `exLabels`; **RU is the default
+UI language**), `migration` (`.online`→`.ru` progress carry-over), plus `analytics`/`feedback`/`support`/
+`pwa`/`onboarding`. Pages in `src/pages/`, routes in `router.tsx`, content schema+loader in `src/content/`.
+
+**State/data:** Zustand stores use **hand-rolled localStorage persist**, NOT the `persist` middleware
+(e.g. `ai/store.ts`, `i18n/uiLang.ts`, `ai/limits.ts`). IndexedDB via Dexie, db `oxford-english` (v6),
+`src/db/db.ts` — a non-indexed optional field needs no version bump. Skill tags: `src/content/skill-tags.ts`
+(add there before use).
+
+**Ops (not in DESIGN_DOC):** hosting is Yandex Object Storage (static website) + Yandex CDN + Certificate
+Manager (LE, DNS-01); DNS on **Cloudflare, grey-cloud only** (proxy off — RU throttling). Deploy =
+`.github/workflows/deploy-yc.yml` → `scripts/deploy-yc.sh` (gated on repo var `YC_DEPLOY_ENABLED`).
+Canonical host `dayenglish.ru`; `www`/`.online` serve the same app; `.online`→`.ru` handled by the in-app
+migration hook in `main.tsx`, **not a 301** (a 301 would bypass progress migration). Client config is
+build-time `VITE_*` (see `.env.example`).
 
 ## Commands
 
@@ -60,6 +85,22 @@ npm run validate:packs  # content-pack validator (wired in M2)
   Google Fonts CDN — required for offline-first.
 - **Contrast (verified):** `--color-muted` on `--color-surface` ≈ 5.3:1 (passes body
   text). `--color-faint` ≈ 2.8:1 — disabled/placeholder only, never body text.
+- **SW precaches the app shell only.** Never precache mp3/packs — content is
+  runtime-cached (a ~50 MB precache once broke prod loading). vite-plugin-pwa,
+  `registerType: 'prompt'`.
+- **Run `npm test` before pushing.** CI (`ci.yml`) and the deploy both gate on
+  vitest, not just build+lint. Tests run with UI language pinned to `en`
+  (`src/test/setup.ts`), so assert against English labels.
+- **Cross-site storage is partitioned.** The `.online`→`.ru` migration must use a
+  **top-level navigation**, not an iframe (an iframe gets partitioned IndexedDB). The
+  receiver lives under `/packs/migrate` so every SW version serves it network-first
+  (a stale SW would 404 a top-level `/migrate`).
+- **Read-aloud:** Chrome silently drops long utterances (>~15 s) → chunk by sentence
+  (`shared/lib/audio.ts`); many voices never emit `boundary` events → a time-estimate
+  fallback drives the spoken-word highlight.
+- **Reader translation** is client-side MyMemory (free, no key), limited per user IP
+  and cached in Dexie; contextual single-word meaning is the BYOK AI path
+  (`wordInContext`) — there is no reliable free non-LLM alignment for RU.
 
 ## Skills
 
