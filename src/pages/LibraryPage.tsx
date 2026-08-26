@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { BookRecord } from '@/db/db';
-import { Button, Card, Eyebrow } from '@/shared/ui';
+import { Button, Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { importBook, listBooks, removeBook } from '@/features/reader/service';
 import { opfsAvailable, requestPersistence } from '@/features/reader/storage';
@@ -60,7 +60,10 @@ export function LibraryPage() {
       <RecommendedShelf />
 
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-        <h1 className="text-2xl font-bold tracking-tight">{ru ? 'Мои книги' : 'My books'}</h1>
+        <div className="flex items-center gap-3">
+          <PixelImage src="/assets/pixel/nav/library.png" alt="" className="h-7 w-7 shrink-0" />
+          <h1 className="text-2xl font-bold tracking-tight">{ru ? 'Мои книги' : 'My books'}</h1>
+        </div>
         {supported && (
           <>
             <input
@@ -111,11 +114,14 @@ export function LibraryPage() {
       )}
 
       {books.length === 0 ? (
-        <p className="text-sm text-muted">
-          {ru
-            ? 'Пока пусто. Добавь книгу в EPUB, FB2, DOCX или PDF — и читай со словарём и озвучкой. PDF читается «как получится»: лучше всего EPUB/FB2.'
-            : 'Nothing here yet. Add an EPUB, FB2, DOCX or PDF book and read it with lookup and audio. PDF is best-effort — EPUB/FB2 read best.'}
-        </p>
+        <div className="text-center">
+          <PixelImage src="/assets/pixel/mascot.png" alt="" className="mx-auto mb-4 h-24 w-24 opacity-90" />
+          <p className="text-sm text-muted">
+            {ru
+              ? 'Пока пусто. Добавь книгу в EPUB, FB2, DOCX или PDF — и читай со словарём и озвучкой. PDF читается «как получится»: лучше всего EPUB/FB2.'
+              : 'Nothing here yet. Add an EPUB, FB2, DOCX or PDF book and read it with lookup and audio. PDF is best-effort — EPUB/FB2 read best.'}
+          </p>
+        </div>
       ) : (
         <div className="flex flex-col gap-2">
           {books.map((b) => (

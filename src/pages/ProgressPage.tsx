@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import type { CheckpointResult, ExerciseAttempt } from '@/db/db';
 import { useContentStore } from '@/content/store';
 import { useUiLang } from '@/features/i18n/uiLang';
-import { Card, Eyebrow } from '@/shared/ui';
+import { Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import {
   activeDays,
@@ -103,7 +103,10 @@ export function ProgressPage() {
   return (
     <section aria-label={ru ? 'Прогресс' : 'Progress'}>
       <Eyebrow className="mb-3.5">metrics</Eyebrow>
-      <h1 className="mb-8 text-2xl font-bold tracking-tight">{ru ? 'Прогресс' : 'Progress'}</h1>
+      <div className="mb-8 flex items-center gap-3">
+        <PixelImage src="/assets/pixel/nav/progress.png" alt="" className="h-7 w-7 shrink-0" />
+        <h1 className="text-2xl font-bold tracking-tight">{ru ? 'Прогресс' : 'Progress'}</h1>
+      </div>
 
       <div className="mb-8 flex flex-wrap gap-3">
         <Stat label={ru ? 'серия' : 'streak'} value={`${streak}${ru ? 'дн' : 'd'}`} />
@@ -123,11 +126,14 @@ export function ProgressPage() {
           {ru ? 'карта навыков · слабое первым' : 'skill map · weakest first'}
         </p>
         {map.length === 0 ? (
-          <p className="text-sm text-muted">
-            {ru
-              ? 'Пока нет попыток — пройдите практику дня, и слабые места появятся здесь.'
-              : "No attempts yet — do a day's practice and your weak spots show up here."}
-          </p>
+          <div className="text-center">
+            <PixelImage src="/assets/pixel/mascot.png" alt="" className="mx-auto mb-4 h-24 w-24 opacity-90" />
+            <p className="text-sm text-muted">
+              {ru
+                ? 'Пока нет попыток — пройдите практику дня, и слабые места появятся здесь.'
+                : "No attempts yet — do a day's practice and your weak spots show up here."}
+            </p>
+          </div>
         ) : (
           <div className="flex flex-col gap-3.5">
             {map.map((stat) => (

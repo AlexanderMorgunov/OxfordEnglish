@@ -5,7 +5,7 @@ import { useSessionResults } from '@/features/progress/sessionResults';
 import { dayExercises } from '@/features/progress/completion';
 import { track } from '@/features/analytics/analytics';
 import { useUiLang, tr } from '@/features/i18n/uiLang';
-import { Card, ProgressBar } from '@/shared/ui';
+import { Card, PixelImage, ProgressBar } from '@/shared/ui';
 
 export type NextDay = { unitId: string; dayId: string; title: LocalizedText };
 
@@ -48,9 +48,12 @@ export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }:
 
   return (
     <Card className={done ? 'border-teal-dim' : ''}>
-      <p className="eyebrow mb-3.5">
-        {done ? (ru ? 'день завершён' : 'day complete') : ru ? 'итоги дня' : 'day summary'}
-      </p>
+      <div className="mb-3.5 flex items-center gap-2.5">
+        {done && <PixelImage src="/assets/pixel/ui/complete.png" alt="" className="h-8 w-8 shrink-0" />}
+        <p className="eyebrow">
+          {done ? (ru ? 'день завершён' : 'day complete') : ru ? 'итоги дня' : 'day summary'}
+        </p>
+      </div>
 
       <ProgressBar
         value={attempted.length}

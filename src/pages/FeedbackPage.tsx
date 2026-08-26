@@ -1,4 +1,4 @@
-import { Eyebrow } from '@/shared/ui';
+import { Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { FeedbackForm } from '@/features/feedback/FeedbackForm';
 import { FEEDBACK_EMAIL } from '@/features/feedback/config';
@@ -9,9 +9,12 @@ export function FeedbackPage() {
   return (
     <section aria-label={ru ? 'Обратная связь' : 'Feedback'} className="max-w-prose">
       <Eyebrow className="mb-3.5">{ru ? 'обратная связь' : 'feedback'}</Eyebrow>
-      <h1 className="mb-3 text-2xl font-bold tracking-tight text-balance">
-        {ru ? 'Нашли проблему или есть идея?' : 'Found a problem or have an idea?'}
-      </h1>
+      <div className="mb-3 flex items-center gap-3">
+        <PixelImage src="/assets/pixel/nav/feedback.png" alt="" className="h-7 w-7 shrink-0" />
+        <h1 className="text-2xl font-bold tracking-tight text-balance">
+          {ru ? 'Нашли проблему или есть идея?' : 'Found a problem or have an idea?'}
+        </h1>
+      </div>
       <p className="mb-8 text-base leading-relaxed text-pretty text-muted">
         {ru
           ? 'Расскажите про ошибку в уроке, что-то сломалось или что хочется добавить. Не нужен аккаунт, ничего личного не собираем.'

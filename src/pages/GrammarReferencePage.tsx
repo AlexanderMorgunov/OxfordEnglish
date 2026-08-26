@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { useContentStore } from '@/content/store';
 import { useUiLang, tr } from '@/features/i18n/uiLang';
-import { Card, Eyebrow, LevelDivider, PageStub } from '@/shared/ui';
+import { Card, Eyebrow, LevelDivider, PageStub, PixelImage } from '@/shared/ui';
 import { LEVEL_ORDER } from '@/shared/levels';
 import type { Level } from '@/content/schema';
 
@@ -24,9 +24,12 @@ export function GrammarIndexPage() {
   return (
     <section aria-label="Grammar reference" className="max-w-prose">
       <Eyebrow className="mb-3.5">reference</Eyebrow>
-      <h1 className="mb-2 text-2xl font-bold tracking-tight">
-        {lang === 'ru' ? 'Справочник по грамматике' : 'Grammar reference'}
-      </h1>
+      <div className="mb-2 flex items-center gap-3">
+        <PixelImage src="/assets/pixel/nav/grammar.png" alt="" className="h-7 w-7 shrink-0" />
+        <h1 className="text-2xl font-bold tracking-tight">
+          {lang === 'ru' ? 'Справочник по грамматике' : 'Grammar reference'}
+        </h1>
+      </div>
       <p className="mb-8 text-muted text-pretty">
         {lang === 'ru'
           ? 'Подробные объяснения с примерами — можно вернуться и повторить в любой момент.'

@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import type { Exercise } from '@/content/schema';
 import { useContentStore } from '@/content/store';
 import { useUiLang } from '@/features/i18n/uiLang';
-import { Button, Card, Eyebrow, PageStub } from '@/shared/ui';
+import { Button, Card, Eyebrow, PageStub, PixelImage } from '@/shared/ui';
 import { ExerciseView } from '@/features/practice/exercises/ExerciseView';
 import { buildCheckpoint, buildLevelExit, reviewPlan } from '@/features/checkpoint/build';
 import { skillMap, type TagStat } from '@/features/progress/metrics';
@@ -92,9 +92,12 @@ export function CheckpointPage() {
         <Eyebrow className="mb-3.5">
           {exitLevel ? exitLabel(exitLevel) : unitId} · result
         </Eyebrow>
-        <h1 className="mb-2 text-3xl font-bold tracking-tight tabular-nums">
-          {pct(ratio)}
-        </h1>
+        <div className="mb-2 flex items-center gap-3">
+          <PixelImage src="/assets/pixel/ui/checkpoint.png" alt="" className="h-7 w-7 shrink-0" />
+          <h1 className="text-3xl font-bold tracking-tight tabular-nums">
+            {pct(ratio)}
+          </h1>
+        </div>
         <p className="mb-8 text-muted">
           {result.score} / {result.total} {ru ? 'с первой попытки' : 'on first try'}
         </p>
@@ -176,9 +179,12 @@ export function CheckpointPage() {
       <Eyebrow className="mb-3.5">
         {exitLevel ? exitLabel(exitLevel) : `${unitId} · checkpoint`}
       </Eyebrow>
-      <h1 className="mb-2 text-2xl font-bold tracking-tight">
-        {exitLevel ? exitLabel(exitLevel) : ru ? 'Контрольная по юниту' : 'Unit checkpoint'}
-      </h1>
+      <div className="mb-2 flex items-center gap-3">
+        <PixelImage src="/assets/pixel/ui/checkpoint.png" alt="" className="h-7 w-7 shrink-0" />
+        <h1 className="text-2xl font-bold tracking-tight">
+          {exitLevel ? exitLabel(exitLevel) : ru ? 'Контрольная по юниту' : 'Unit checkpoint'}
+        </h1>
+      </div>
       <p className="mb-8 text-muted">
         {exitLevel
           ? ru

@@ -1,6 +1,6 @@
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Button, Card, Eyebrow, Input, Option } from '@/shared/ui';
+import { Button, Card, Eyebrow, Input, Option, PixelImage } from '@/shared/ui';
 import {
   subscribeAppUpdate,
   isUpdateReady,
@@ -174,7 +174,10 @@ export function SettingsPage() {
 
       <div id="ai-section" className="scroll-mt-6" aria-hidden="true" />
       <Eyebrow className="mb-3.5">config · ai (byok)</Eyebrow>
-      <h1 className="mb-2 text-2xl font-bold tracking-tight">{ru ? 'AI-помощник' : 'AI assistant'}</h1>
+      <div className="mb-2 flex items-center gap-3">
+        <PixelImage src="/assets/pixel/ui/ai.png" alt="" className="h-7 w-7 shrink-0" />
+        <h1 className="text-2xl font-bold tracking-tight">{ru ? 'AI-помощник' : 'AI assistant'}</h1>
+      </div>
       <p className="mb-8 text-muted text-pretty">
         {ru
           ? 'Опционально. Приложение полностью работает и без него. Ключ хранится только в этом браузере, запросы идут напрямую к провайдеру — без нашего сервера.'

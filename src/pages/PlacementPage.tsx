@@ -12,7 +12,7 @@ import {
   type BandScore,
 } from '@/features/placement/build';
 import { ExerciseView } from '@/features/practice/exercises/ExerciseView';
-import { Button, Card, Eyebrow, PageStub } from '@/shared/ui';
+import { Button, Card, Eyebrow, PageStub, PixelImage } from '@/shared/ui';
 
 type PlItem = { band: Band; id: string; exercise: Exercise };
 
@@ -74,10 +74,13 @@ export function PlacementPage() {
     return (
       <section aria-label={ru ? 'Результат теста' : 'Placement result'} className="max-w-prose">
         <Eyebrow className="mb-3.5">placement · result</Eyebrow>
-        <h1 className="mb-2 text-3xl font-bold tracking-tight">
-          {ru ? 'Ваш уровень: ' : 'Your level: '}
-          <span className="text-amber">{outcome.level}</span>
-        </h1>
+        <div className="mb-2 flex items-center gap-3">
+          <PixelImage src="/assets/pixel/ui/placement.png" alt="" className="h-7 w-7 shrink-0" />
+          <h1 className="text-3xl font-bold tracking-tight">
+            {ru ? 'Ваш уровень: ' : 'Your level: '}
+            <span className="text-amber">{outcome.level}</span>
+          </h1>
+        </div>
         <p className="mb-8 text-lg text-muted text-pretty">
           {ru ? outcome.message.ru : outcome.message.en}
         </p>
@@ -124,9 +127,12 @@ export function PlacementPage() {
   return (
     <section aria-label={ru ? 'Тест на уровень' : 'Placement test'} className="max-w-prose">
       <Eyebrow className="mb-3.5">placement · {answered}/{items.length}</Eyebrow>
-      <h1 className="mb-2 text-2xl font-bold tracking-tight">
-        {ru ? 'С чего вам начать?' : 'Where should you start?'}
-      </h1>
+      <div className="mb-2 flex items-center gap-3">
+        <PixelImage src="/assets/pixel/ui/placement.png" alt="" className="h-7 w-7 shrink-0" />
+        <h1 className="text-2xl font-bold tracking-tight">
+          {ru ? 'С чего вам начать?' : 'Where should you start?'}
+        </h1>
+      </div>
       <p className="mb-8 text-muted text-pretty">
         {ru
           ? `${items.length} коротких вопросов, от простого к сложному. Отвечайте, что можете, остальное пропускайте — мы предложим точку старта. Это не влияет на ваш прогресс.`

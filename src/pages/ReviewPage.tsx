@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { Grade } from 'ts-fsrs';
 import type { SrsCard } from '@/db/db';
-import { Button, Card, Eyebrow } from '@/shared/ui';
+import { Button, Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { canSpeak, speakWord } from '@/shared/lib/audio';
 import { translateWord } from '@/features/vocab/translate';
@@ -45,14 +45,18 @@ export function ReviewPage() {
   return (
     <section aria-label={ru ? 'Повторение' : 'Review'}>
       <Eyebrow className="mb-3.5">srs · review</Eyebrow>
-      <h1 className="mb-8 text-2xl font-bold tracking-tight">
-        {ru ? 'Очередь повторения' : 'Review queue'}
-      </h1>
+      <div className="mb-8 flex items-center gap-3">
+        <PixelImage src="/assets/pixel/nav/review.png" alt="" className="h-7 w-7 shrink-0" />
+        <h1 className="text-2xl font-bold tracking-tight">
+          {ru ? 'Очередь повторения' : 'Review queue'}
+        </h1>
+      </div>
 
       {queue === null && <p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading…'}</p>}
 
       {queue !== null && !card && (
         <Card>
+          <PixelImage src="/assets/pixel/ui/complete.png" alt="" className="mb-3 h-8 w-8" />
           <p className="font-mono text-sm text-teal">
             {ru ? '✓ всё повторено — ничего не ждёт' : "✓ nothing due — you're clear"}
           </p>

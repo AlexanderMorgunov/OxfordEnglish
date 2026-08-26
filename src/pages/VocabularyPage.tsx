@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { db } from '@/db/db';
-import { Button, Eyebrow, Input } from '@/shared/ui';
+import { Button, Eyebrow, Input, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { canSpeak, speakWord } from '@/shared/lib/audio';
 import { translateWord } from '@/features/vocab/translate';
@@ -136,7 +136,10 @@ export function VocabularyPage() {
   return (
     <section aria-label={ru ? 'Словарь' : 'Vocabulary'}>
       <Eyebrow className="mb-3.5">lexicon</Eyebrow>
-      <h1 className="mb-6 text-2xl font-bold tracking-tight">{ru ? 'Мой словарь' : 'My vocabulary'}</h1>
+      <div className="mb-6 flex items-center gap-3">
+        <PixelImage src="/assets/pixel/nav/vocab.png" alt="" className="h-7 w-7 shrink-0" />
+        <h1 className="text-2xl font-bold tracking-tight">{ru ? 'Мой словарь' : 'My vocabulary'}</h1>
+      </div>
 
       <div className="mb-6 flex flex-wrap items-stretch gap-2.5">
         <Stat n={stats.marked} label={ru ? 'отмечено слов' : 'marked words'} />
@@ -193,7 +196,8 @@ export function VocabularyPage() {
       </div>
 
       {entries !== null && entries.length === 0 && !adding ? (
-        <div className="rounded-lg border border-line bg-surface p-5">
+        <div className="rounded-lg border border-line bg-surface p-5 text-center">
+          <PixelImage src="/assets/pixel/mascot.png" alt="" className="mx-auto mb-4 h-24 w-24 opacity-90" />
           <p className="text-sm text-pretty text-muted">
             {ru
               ? 'Пока пусто. Тапайте слова во время чтения или в уроках — они собираются здесь, вместе с переводом и расписанием повторений.'

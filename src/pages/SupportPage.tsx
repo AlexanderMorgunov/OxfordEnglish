@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Card, Eyebrow } from '@/shared/ui';
+import { Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { SUPPORT_URL } from '@/features/support/config';
 import {
@@ -20,9 +20,12 @@ export function SupportPage() {
   return (
     <section aria-label={ru ? 'Поддержать проект' : 'Support the project'}>
       <Eyebrow className="mb-3.5">{ru ? 'поддержать' : 'support'}</Eyebrow>
-      <h1 className="mb-4 text-2xl font-bold tracking-tight text-balance">
-        {ru ? 'Поддержать проект' : 'Support the project'}
-      </h1>
+      <div className="mb-4 flex items-center gap-3">
+        <PixelImage src="/assets/pixel/nav/support.png" alt="" className="h-7 w-7 shrink-0" />
+        <h1 className="text-2xl font-bold tracking-tight text-balance">
+          {ru ? 'Поддержать проект' : 'Support the project'}
+        </h1>
+      </div>
 
       <p className="mb-4 text-base leading-relaxed text-pretty text-muted">
         {ru
