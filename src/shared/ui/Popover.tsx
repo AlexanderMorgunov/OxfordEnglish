@@ -124,7 +124,7 @@ export function Popover({ trigger, children, label, showClose, className }: Popo
               'fixed left-0 top-0 z-50 block w-max max-w-[16rem]',
               'rounded-md border border-line bg-surface-2 p-3 text-left',
               'shadow-[0_1px_2px_rgba(0,0,0,0.35),0_10px_28px_rgba(0,0,0,0.45)]',
-              showClose && 'pr-6',
+              showClose && 'pr-9',
               className
             )}
           >
@@ -133,7 +133,7 @@ export function Popover({ trigger, children, label, showClose, className }: Popo
                 type="button"
                 aria-label="Close"
                 onClick={() => close()}
-                className="absolute right-1.5 top-1 font-mono text-sm leading-none text-muted hover:text-content"
+                className="absolute right-0 top-0 flex h-9 w-9 items-center justify-center font-mono text-xl leading-none text-muted hover:text-content"
               >
                 ×
               </button>
