@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Exercise } from '@/content/schema';
 import { Console, Option } from '@/shared/ui';
+import { useUiLang } from '@/features/i18n/uiLang';
 import { useExerciseAttempt, type ExerciseStatus } from './shared';
 import { ExerciseShell } from './ExerciseShell';
 
@@ -21,6 +22,8 @@ function optionState(
 }
 
 export function ChoiceExercise({ exercise, onSolved }: Props) {
+  const lang = useUiLang((s) => s.lang);
+  const ru = lang === 'ru';
   const [chosen, setChosen] = useState<number | null>(null);
   const attempt = useExerciseAttempt(exercise, onSolved);
   const { status, submit } = attempt;
@@ -48,8 +51,12 @@ export function ChoiceExercise({ exercise, onSolved }: Props) {
         status !== 'idle' && (
           <Console status={status === 'correct' ? 'pass' : 'fail'}>
             {status === 'correct'
-              ? `✓ passed — correct answer: ${exercise.options[exercise.correctIndex]}`
-              : '✕ not quite — keep going'}
+              ? ru
+                ? `✓ верно — правильный ответ: ${exercise.options[exercise.correctIndex]}`
+                : `✓ passed — correct answer: ${exercise.options[exercise.correctIndex]}`
+              : ru
+                ? '✕ не то — продолжайте'
+                : '✕ not quite — keep going'}
           </Console>
         )
       }

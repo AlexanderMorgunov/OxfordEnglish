@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import type { Section } from '@/content/schema';
 import { ProgressBar } from '@/shared/ui';
+import { useUiLang } from '@/features/i18n/uiLang';
 import { ExerciseView } from './exercises/ExerciseView';
 
 type Props = { section: Extract<Section, { type: 'practice' }> };
 
 export function PracticeSectionView({ section }: Props) {
+  const ru = useUiLang((s) => s.lang) === 'ru';
   const [solved, setSolved] = useState<Set<string>>(new Set());
   const markSolved = (id: string) =>
     setSolved((prev) => (prev.has(id) ? prev : new Set(prev).add(id)));
@@ -15,7 +17,7 @@ export function PracticeSectionView({ section }: Props) {
       <ProgressBar
         value={solved.size}
         max={section.exercises.length}
-        label="solved"
+        label={ru ? 'решено' : 'solved'}
       />
       {section.exercises.map((exercise) => (
         <ExerciseView

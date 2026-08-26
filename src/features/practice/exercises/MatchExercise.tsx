@@ -2,6 +2,8 @@ import { useState } from 'react';
 import type { Exercise } from '@/content/schema';
 import { Button, Console, Option } from '@/shared/ui';
 import { shuffle } from '../shuffle';
+import { useUiLang } from '@/features/i18n/uiLang';
+import { exLabels } from '@/features/i18n/ui-strings';
 import { useExerciseAttempt } from './shared';
 import { ExerciseShell } from './ExerciseShell';
 
@@ -11,6 +13,8 @@ type Props = {
 };
 
 export function MatchExercise({ exercise, onSolved }: Props) {
+  const lang = useUiLang((s) => s.lang);
+  const ru = lang === 'ru';
   const [rightOrder] = useState(() => shuffle(exercise.pairs.map((_, i) => i)));
   const [selectedLeft, setSelectedLeft] = useState<number | null>(null);
   const [assign, setAssign] = useState<Record<number, number>>({});
@@ -50,8 +54,12 @@ export function MatchExercise({ exercise, onSolved }: Props) {
         status !== 'idle' && (
           <Console status={status === 'correct' ? 'pass' : 'fail'}>
             {status === 'correct'
-              ? '✓ passed — all pairs matched'
-              : '✕ some pairs are off — reset and try again'}
+              ? ru
+                ? '✓ верно — все пары совпали'
+                : '✓ passed — all pairs matched'
+              : ru
+                ? '✕ некоторые пары неверны — сброс и ещё раз'
+                : '✕ some pairs are off — reset and try again'}
           </Console>
         )
       }
@@ -89,7 +97,7 @@ export function MatchExercise({ exercise, onSolved }: Props) {
       </div>
       {Object.keys(assign).length > 0 && status !== 'correct' && (
         <Button variant="ghost" size="sm" className="mt-3" onClick={reset}>
-          Reset
+          {exLabels(lang).reset}
         </Button>
       )}
     </ExerciseShell>

@@ -5,6 +5,7 @@ import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
 import { isConfigured, useAiStore } from '@/features/ai/store';
 import { explainError, hint as aiHint } from '@/features/ai/functions';
 import { useUiLang, tr } from '@/features/i18n/uiLang';
+import { exLabels } from '@/features/i18n/ui-strings';
 import { matchCommonError } from '../normalize';
 import type { ExerciseAttempt } from './shared';
 
@@ -31,6 +32,8 @@ export function ExerciseShell({
 }: ExerciseShellProps) {
   const { status, attempts, canReveal, aiHintsLeft, noteAiHint, revealHint } = attempt;
   const lang = useUiLang((s) => s.lang);
+  const ru = lang === 'ru';
+  const L = exLabels(lang);
   const aiConfigured = isConfigured(useAiStore((s) => s.config));
   const [showHint, setShowHint] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -44,7 +47,7 @@ export function ExerciseShell({
   const topic = exercise.tags[0] ?? 'grammar';
 
   return (
-    <div className="card-exercise" role="group" aria-label={exercise.instruction.en}>
+    <div className="card-exercise" role="group" aria-label={tr(exercise.instruction, lang)}>
       <div className="mb-3.5 flex items-start justify-between gap-3">
         <p className="text-base leading-relaxed">{tr(exercise.instruction, lang)}</p>
         {exercise.hint && !showHint && (
@@ -56,7 +59,7 @@ export function ExerciseShell({
               revealHint();
             }}
           >
-            hint
+            {L.hint}
           </button>
         )}
       </div>
@@ -101,7 +104,10 @@ export function ExerciseShell({
           <div className="mt-3 flex flex-col gap-2">
             {aiHintsLeft > 0 && (
               <AiAction
-                label={status === 'idle' ? 'hint (AI)' : `hint (AI) · ${aiHintsLeft}`}
+                label={
+                  (ru ? 'подсказка (AI)' : 'hint (AI)') +
+                  (status === 'idle' ? '' : ` · ${aiHintsLeft}`)
+                }
                 onRun={noteAiHint}
                 run={(config) =>
                   aiHint(config, {
@@ -115,7 +121,7 @@ export function ExerciseShell({
             )}
             {status === 'incorrect' && (
               <AiAction
-                label="why is it wrong? (AI)"
+                label={ru ? 'почему неверно? (AI)' : 'why is it wrong? (AI)'}
                 run={(config) =>
                   explainError(config, {
                     prompt: ai.prompt,

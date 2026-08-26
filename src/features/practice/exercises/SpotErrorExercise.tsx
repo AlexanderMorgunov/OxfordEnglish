@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Exercise } from '@/content/schema';
 import { Console, Option } from '@/shared/ui';
+import { useUiLang } from '@/features/i18n/uiLang';
 import { useExerciseAttempt, type ExerciseStatus } from './shared';
 import { ExerciseShell } from './ExerciseShell';
 
@@ -21,6 +22,7 @@ function optionState(
 }
 
 export function SpotErrorExercise({ exercise, onSolved }: Props) {
+  const ru = useUiLang((s) => s.lang) === 'ru';
   const [chosen, setChosen] = useState<number | null>(null);
   const attempt = useExerciseAttempt(exercise, onSolved);
   const { status, submit } = attempt;
@@ -47,8 +49,12 @@ export function SpotErrorExercise({ exercise, onSolved }: Props) {
         status !== 'idle' && (
           <Console status={status === 'correct' ? 'pass' : 'fail'}>
             {status === 'correct'
-              ? '✓ passed — clean syntax'
-              : '✕ syntax error — check the verb form, then pick the other line'}
+              ? ru
+                ? '✓ верно — синтаксис чистый'
+                : '✓ passed — clean syntax'
+              : ru
+                ? '✕ ошибка — проверьте форму глагола и выберите другую строку'
+                : '✕ syntax error — check the verb form, then pick the other line'}
           </Console>
         )
       }

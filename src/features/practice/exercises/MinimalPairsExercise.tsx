@@ -3,6 +3,7 @@ import type { Exercise } from '@/content/schema';
 import { packMediaUrl } from '@/content/loader';
 import { playClip } from '@/shared/lib/audio';
 import { Button, Console, Option } from '@/shared/ui';
+import { useUiLang } from '@/features/i18n/uiLang';
 import { useExerciseAttempt, type ExerciseStatus } from './shared';
 import { ExerciseShell } from './ExerciseShell';
 
@@ -23,6 +24,7 @@ function optionState(
 }
 
 export function MinimalPairsExercise({ exercise, onSolved }: Props) {
+  const ru = useUiLang((s) => s.lang) === 'ru';
   const [chosen, setChosen] = useState<number | null>(null);
   const attempt = useExerciseAttempt(exercise, onSolved);
   const { status, submit } = attempt;
@@ -41,8 +43,10 @@ export function MinimalPairsExercise({ exercise, onSolved }: Props) {
         status !== 'idle' && (
           <Console status={status === 'correct' ? 'pass' : 'fail'}>
             {status === 'correct'
-              ? `✓ passed — "${exercise.options[exercise.correctIndex]}"`
-              : '✕ listen again'}
+              ? `✓ верно — "${exercise.options[exercise.correctIndex]}"`
+              : ru
+                ? '✕ послушайте ещё раз'
+                : '✕ listen again'}
           </Console>
         )
       }
@@ -52,7 +56,7 @@ export function MinimalPairsExercise({ exercise, onSolved }: Props) {
         className="mb-3.5"
         onClick={() => playClip(packMediaUrl(exercise.audio.src))}
       >
-        ▶ listen
+        {ru ? '▶ слушать' : '▶ listen'}
       </Button>
       <div className="flex flex-wrap gap-2">
         {exercise.options.map((opt, i) => (
