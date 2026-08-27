@@ -25,3 +25,9 @@ test('dictationCorrect ignores case and trailing punctuation but not wrong words
   expect(dictationCorrect("Let's try something.", "let's try something else")).toBe(false);
   expect(dictationCorrect("Let's try something.", "let's try")).toBe(false);
 });
+
+test('dictationCorrect ignores commas and inner punctuation', () => {
+  expect(dictationCorrect('Den, why is it so cold?', 'den why is it so cold')).toBe(true);
+  expect(dictationCorrect('Put on a sweater.', 'put on a sweater')).toBe(true);
+  expect(dictationCorrect("It's a fine, warm day!", 'its a fine warm day')).toBe(true);
+});

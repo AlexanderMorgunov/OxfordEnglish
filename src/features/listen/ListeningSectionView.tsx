@@ -25,18 +25,27 @@ function DictationRow({
   const ru = lang === 'ru';
   const [value, setValue] = useState('');
   const [checked, setChecked] = useState(false);
+  const [revealed, setRevealed] = useState(false);
   const parts = checked ? diffWords(cue.en, value) : [];
   const correct = checked && dictationCorrect(cue.en, value);
 
   return (
     <div className="card-exercise">
-      <div className="mb-3 flex items-center gap-2.5">
+      <div className="mb-3 flex flex-wrap items-center gap-2.5">
         <Button size="sm" variant="ghost" onClick={onPlay}>
           {ru ? '▶ фраза' : '▶ play phrase'}
         </Button>
         <span className="font-mono text-2xs text-muted">
           {ru ? 'наберите, что слышите' : 'type what you hear'}
         </span>
+        <Button
+          size="sm"
+          variant="ghost"
+          className="ml-auto"
+          onClick={() => setRevealed(true)}
+        >
+          {ru ? 'показать ответ' : 'show answer'}
+        </Button>
       </div>
       <div className="flex flex-wrap items-center gap-2.5">
         <Input
@@ -48,6 +57,14 @@ function DictationRow({
         />
         <Button onClick={() => value.trim() && setChecked(true)}>{exLabels(lang).runCheck}</Button>
       </div>
+      {revealed && (
+        <p className="mt-3 text-base text-content">
+          <span className="mr-1.5 font-mono text-2xs uppercase tracking-[0.08em] text-muted">
+            {ru ? 'ответ' : 'answer'}
+          </span>
+          {cue.en}
+        </p>
+      )}
       {checked && (
         <Console status={correct ? 'pass' : 'fail'}>
           {correct ? '✓ ' : '✕ '}
@@ -71,7 +88,7 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
   const [rate, setRate] = useState<RateKey>('1');
   const [showTranscript, setShowTranscript] = useState(false);
   const [dictation, setDictation] = useState(false);
-  const loop = useRef<{ a: number; b: number | null }>({ a: 0, b: null });
+  const loop = useRef<{ a: number; b: number | null; once: boolean }>({ a: 0, b: null, once: false });
   const cues = section.transcript ?? [];
   const active = activeCueIndex(time, cues);
 
@@ -80,11 +97,11 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
     const el = audio();
     if (el) el.currentTime = t;
   };
-  const playFrom = (start: number, end?: number) => {
+  const playFrom = (start: number, end?: number, once = false) => {
     const el = audio();
     if (!el) return;
     el.currentTime = start;
-    loop.current = { a: start, b: end ?? null };
+    loop.current = { a: start, b: end ?? null, once };
     void el.play();
   };
   const setRateKey = (k: RateKey) => {
@@ -107,8 +124,15 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
         onTimeUpdate={(e) => {
           const t = e.currentTarget.currentTime;
           setTime(t);
-          const { a, b } = loop.current;
-          if (b !== null && t >= b) e.currentTarget.currentTime = a;
+          const { a, b, once } = loop.current;
+          if (b !== null && t >= b) {
+            if (once) {
+              e.currentTarget.pause();
+              loop.current = { a: 0, b: null, once: false };
+            } else {
+              e.currentTarget.currentTime = a;
+            }
+          }
         }}
       />
 
@@ -137,21 +161,21 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
           <Button
             size="sm"
             variant="ghost"
-            onClick={() => (loop.current = { a: time, b: loop.current.b })}
+            onClick={() => (loop.current = { a: time, b: loop.current.b, once: false })}
           >
             A: {time.toFixed(1)}
           </Button>
           <Button
             size="sm"
             variant="ghost"
-            onClick={() => (loop.current = { a: loop.current.a, b: time })}
+            onClick={() => (loop.current = { a: loop.current.a, b: time, once: false })}
           >
             B
           </Button>
           <Button
             size="sm"
             variant="ghost"
-            onClick={() => (loop.current = { a: 0, b: null })}
+            onClick={() => (loop.current = { a: 0, b: null, once: false })}
           >
             {ru ? 'сбросить петлю' : 'clear loop'}
           </Button>
@@ -214,7 +238,7 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
       {dictation && cues.length > 0 && (
         <div className="flex flex-col gap-3.5">
           {cues.map((cue, i) => (
-            <DictationRow key={i} cue={cue} onPlay={() => playFrom(cue.start, cue.end)} />
+            <DictationRow key={i} cue={cue} onPlay={() => playFrom(cue.start, cue.end, true)} />
           ))}
         </div>
       )}
