@@ -249,34 +249,34 @@
         "en": "The Thermostat War",
         "ru": "Война за термостат"
       },
-      "image": {
-        "src": "media/images/u02.d90.reading.png",
-        "license": {
-          "type": "original",
-          "attribution": "Project authors (LLM-assisted)"
-        },
-        "alt": {
-          "en": "Two developers arguing next to an office thermostat",
-          "ru": "Двое разработчиков спорят у офисного термостата"
-        }
-      },
       "blocks": [
         {
           "id": "u02.d90.reading.b1",
-          "en": "It is ten o'clock in the morning. Alex is working at his desk. He feels very hot. He looks at the thermostat on the wall. \"Twenty-two degrees? That is too cold for me,\" he thinks. He stands up and changes the temperature to twenty-five.",
-          "ru": "Десять часов утра. Алекс работает за своим столом. Ему очень жарко. Он смотрит на термостат на стене. «Двадцать два градуса? Это слишком холодно для меня», — думает он. Он встаёт и меняет температуру на двадцать пять.",
+          "en": "It is ten o'clock in the morning. Alex is working at his desk. He feels cold. He looks at the thermostat on the wall. \"Twenty-two degrees? That is too cold for me,\" he thinks. He stands up and changes the temperature to twenty-five.",
+          "ru": "Десять часов утра. Алекс работает за своим столом. Ему холодно. Он смотрит на термостат на стене. «Двадцать два градуса? Это слишком холодно для меня», — думает он. Он встаёт и меняет температуру на двадцать пять.",
           "audio": {
             "src": "media/audio/u02.d90.reading.b1.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u02.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Alex feels cold, Den feels hot, by the office thermostat",
+              "ru": "Алексу холодно, Дену жарко — у офисного термостата"
+            }
           }
         },
         {
           "id": "u02.d90.reading.b2",
-          "en": "Now Den comes back with his coffee. He looks at the thermostat and he is not happy. \"Twenty-five? It is like a sauna in here!\" He changes it back to twenty-two. Alex sees Den. He smiles and waits. Then he changes it again.",
-          "ru": "Тут возвращается Ден со своим кофе. Он смотрит на термостат и недоволен. «Двадцать пять? Здесь как в сауне!» Он меняет обратно на двадцать два. Алекс видит Дена. Он улыбается и ждёт. Потом снова меняет.",
+          "en": "Now Den comes back with his coffee. The room is warm now, and he is not happy. \"Twenty-five? It is like a sauna in here!\" He changes it back to twenty-two. Alex sees Den. He smiles and waits. Then he changes it again.",
+          "ru": "Тут возвращается Ден со своим кофе. Теперь в комнате тепло, и он недоволен. «Двадцать пять? Здесь как в сауне!» Он меняет обратно на двадцать два. Алекс видит Дена. Он улыбается и ждёт. Потом снова меняет.",
           "audio": {
             "src": "media/audio/u02.d90.reading.b2.mp3",
             "license": {
@@ -287,13 +287,24 @@
         },
         {
           "id": "u02.d90.reading.b3",
-          "en": "They do this five times. Every hour, one of them changes the temperature. Finally Kate comes in. \"Why are you two fighting?\" she asks. \"The thermostat is broken. It always shows twenty degrees. We need to fix it.\" Alex and Den look at each other. Now they feel a little silly.",
-          "ru": "Они делают так пять раз. Каждый час кто-то из них меняет температуру. Наконец входит Кейт. «Почему вы двое ссоритесь?» — спрашивает она. «Термостат сломан. Он всегда показывает двадцать градусов. Нам нужно его починить». Алекс и Ден смотрят друг на друга. Теперь им немного неловко.",
+          "en": "They do this five times. Every hour, one of them changes the number, but nobody feels better. Finally Kate comes in. \"Why are you two fighting?\" she asks. \"The thermostat is broken. You can change the number, but the room is always twenty degrees. It does nothing! We need to fix it.\" Alex and Den look at each other. Now they feel a little silly.",
+          "ru": "Они делают так пять раз. Каждый час кто-то из них меняет цифру, но лучше никому не становится. Наконец входит Кейт. «Почему вы двое ссоритесь?» — спрашивает она. «Термостат сломан. Можно менять цифру, но в комнате всегда двадцать градусов. Он ничего не делает! Нам нужно его починить». Алекс и Ден смотрят друг на друга. Теперь им немного неловко.",
           "audio": {
             "src": "media/audio/u02.d90.reading.b3.mp3",
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u02.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate explains the thermostat is broken while the two developers look sheepish",
+              "ru": "Кейт объясняет, что термостат сломан, а двое разработчиков смущены"
             }
           }
         }
