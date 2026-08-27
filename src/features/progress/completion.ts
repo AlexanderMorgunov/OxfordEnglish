@@ -34,6 +34,7 @@ export function resultsFromAttempts(
         firstCorrect: sorted[0]?.correct ?? false,
         attempts: list.length,
         tags: sorted[0]?.tags ?? [],
+        solved: list.some((a) => a.correct),
       },
     };
   });

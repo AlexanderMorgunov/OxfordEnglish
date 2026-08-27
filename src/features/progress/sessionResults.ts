@@ -4,6 +4,9 @@ export type ExerciseResult = {
   firstCorrect: boolean;
   attempts: number;
   tags: string[];
+  /** Eventually answered correctly — lets an exercise restore its solved state after a remount
+   *  (e.g. returning from Settings), so the day's progress isn't visually lost. */
+  solved: boolean;
 };
 
 type SessionResultsState = {
@@ -25,11 +28,17 @@ export const useSessionResults = create<SessionResultsState>((set) => ({
       const prev = state.results[id];
       if (prev) {
         return {
-          results: { ...state.results, [id]: { ...prev, attempts: prev.attempts + 1 } },
+          results: {
+            ...state.results,
+            [id]: { ...prev, attempts: prev.attempts + 1, solved: prev.solved || correct },
+          },
         };
       }
       return {
-        results: { ...state.results, [id]: { firstCorrect: correct, attempts: 1, tags } },
+        results: {
+          ...state.results,
+          [id]: { firstCorrect: correct, attempts: 1, tags, solved: correct },
+        },
       };
     }),
   hydrate: (entries) =>
