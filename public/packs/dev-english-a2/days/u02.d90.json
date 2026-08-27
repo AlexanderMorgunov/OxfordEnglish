@@ -1,0 +1,610 @@
+{
+  "id": "u02.d90",
+  "title": {
+    "en": "The Thermostat War",
+    "ru": "Война за термостат"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.present-vs-continuous",
+    "vocab.work",
+    "functions.small-talk"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u02.d90.vocab",
+      "title": {
+        "en": "At the office",
+        "ru": "В офисе"
+      },
+      "words": [
+        {
+          "word": "office",
+          "ru": "офис",
+          "ipa": "/ˈɒfɪs/",
+          "example": "We work in a small office.",
+          "exampleRu": "Мы работаем в небольшом офисе.",
+          "audio": {
+            "src": "media/audio/u02.d90.vocab.office.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "desk",
+          "ru": "рабочий стол",
+          "ipa": "/desk/",
+          "example": "Alex sits at his desk.",
+          "exampleRu": "Алекс сидит за своим столом.",
+          "audio": {
+            "src": "media/audio/u02.d90.vocab.desk.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "colleague",
+          "ru": "коллега",
+          "ipa": "/ˈkɒliːɡ/",
+          "example": "My colleagues are nice.",
+          "exampleRu": "Мои коллеги приятные.",
+          "audio": {
+            "src": "media/audio/u02.d90.vocab.colleague.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "temperature",
+          "ru": "температура",
+          "ipa": "/ˈtemprətʃər/",
+          "example": "What is the temperature?",
+          "exampleRu": "Какая температура?",
+          "audio": {
+            "src": "media/audio/u02.d90.vocab.temperature.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hot",
+          "ru": "жарко; горячий",
+          "ipa": "/hɒt/",
+          "example": "It is very hot today.",
+          "exampleRu": "Сегодня очень жарко.",
+          "audio": {
+            "src": "media/audio/u02.d90.vocab.hot.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cold",
+          "ru": "холодно; холодный",
+          "ipa": "/kəʊld/",
+          "example": "Den feels cold.",
+          "exampleRu": "Дену холодно.",
+          "audio": {
+            "src": "media/audio/u02.d90.vocab.cold.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "warm",
+          "ru": "тёплый",
+          "ipa": "/wɔːm/",
+          "example": "I want a warm room.",
+          "exampleRu": "Я хочу тёплую комнату.",
+          "audio": {
+            "src": "media/audio/u02.d90.vocab.warm.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to change",
+          "ru": "менять",
+          "ipa": "/tʃeɪndʒ/",
+          "example": "He changes the temperature.",
+          "exampleRu": "Он меняет температуру.",
+          "audio": {
+            "src": "media/audio/u02.d90.vocab.tochange.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "coffee",
+          "ru": "кофе",
+          "ipa": "/ˈkɒfi/",
+          "example": "Den drinks coffee every morning.",
+          "exampleRu": "Ден пьёт кофе каждое утро.",
+          "audio": {
+            "src": "media/audio/u02.d90.vocab.coffee.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "meeting",
+          "ru": "совещание, встреча",
+          "ipa": "/ˈmiːtɪŋ/",
+          "example": "We have a meeting at ten.",
+          "exampleRu": "У нас совещание в десять.",
+          "audio": {
+            "src": "media/audio/u02.d90.vocab.meeting.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "broken",
+          "ru": "сломанный",
+          "ipa": "/ˈbrəʊkən/",
+          "example": "The thermostat is broken.",
+          "exampleRu": "Термостат сломан.",
+          "audio": {
+            "src": "media/audio/u02.d90.vocab.broken.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to fix",
+          "ru": "чинить",
+          "ipa": "/fɪks/",
+          "example": "We need to fix it.",
+          "exampleRu": "Нам нужно это починить.",
+          "audio": {
+            "src": "media/audio/u02.d90.vocab.tofix.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u02.d90.grammar",
+      "title": {
+        "en": "Present simple vs present continuous",
+        "ru": "Present simple и present continuous"
+      },
+      "ref": "present-vs-continuous",
+      "rule": {
+        "en": "Use the present simple for habits and routines (every day, usually, always): \"Den drinks coffee every morning\". Use the present continuous for what is happening right now: \"Alex is changing the temperature\".",
+        "ru": "Present simple — для привычек и распорядка (every day, usually, always): «Den drinks coffee every morning». Present continuous — для того, что происходит прямо сейчас: «Alex is changing the temperature»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "habit (simple)",
+            "ru": "привычка (simple)"
+          },
+          "formula": "subject + verb(-s)",
+          "examples": [
+            {
+              "en": "He changes the temperature every hour.",
+              "ru": "Он меняет температуру каждый час."
+            }
+          ],
+          "ref": "present-vs-continuous"
+        },
+        {
+          "label": {
+            "en": "right now (continuous)",
+            "ru": "прямо сейчас (continuous)"
+          },
+          "formula": "subject + am/is/are + verb-ing",
+          "examples": [
+            {
+              "en": "Look! They are fighting again.",
+              "ru": "Смотри! Они опять спорят."
+            }
+          ],
+          "ref": "present-vs-continuous"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Now / Look! / Listen! → continuous: \"Alex is working now\", not \"Alex works now\".",
+          "ru": "Now / Look! / Listen! → continuous: «Alex is working now», а не «Alex works now»."
+        },
+        {
+          "en": "Every day / usually / always → simple: \"Den drinks coffee\", not \"Den is drinking coffee every day\".",
+          "ru": "Every day / usually / always → simple: «Den drinks coffee», а не «Den is drinking coffee every day»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u02.d90.reading",
+      "title": {
+        "en": "The Thermostat War",
+        "ru": "Война за термостат"
+      },
+      "image": {
+        "src": "media/images/u02.d90.reading.png",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        },
+        "alt": {
+          "en": "Two developers arguing next to an office thermostat",
+          "ru": "Двое разработчиков спорят у офисного термостата"
+        }
+      },
+      "blocks": [
+        {
+          "id": "u02.d90.reading.b1",
+          "en": "It is ten o'clock in the morning. Alex is working at his desk. He feels very hot. He looks at the thermostat on the wall. \"Twenty-two degrees? That is too cold for me,\" he thinks. He stands up and changes the temperature to twenty-five.",
+          "ru": "Десять часов утра. Алекс работает за своим столом. Ему очень жарко. Он смотрит на термостат на стене. «Двадцать два градуса? Это слишком холодно для меня», — думает он. Он встаёт и меняет температуру на двадцать пять.",
+          "audio": {
+            "src": "media/audio/u02.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u02.d90.reading.b2",
+          "en": "Now Den comes back with his coffee. He looks at the thermostat and he is not happy. \"Twenty-five? It is like a sauna in here!\" He changes it back to twenty-two. Alex sees Den. He smiles and waits. Then he changes it again.",
+          "ru": "Тут возвращается Ден со своим кофе. Он смотрит на термостат и недоволен. «Двадцать пять? Здесь как в сауне!» Он меняет обратно на двадцать два. Алекс видит Дена. Он улыбается и ждёт. Потом снова меняет.",
+          "audio": {
+            "src": "media/audio/u02.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u02.d90.reading.b3",
+          "en": "They do this five times. Every hour, one of them changes the temperature. Finally Kate comes in. \"Why are you two fighting?\" she asks. \"The thermostat is broken. It always shows twenty degrees. We need to fix it.\" Alex and Den look at each other. Now they feel a little silly.",
+          "ru": "Они делают так пять раз. Каждый час кто-то из них меняет температуру. Наконец входит Кейт. «Почему вы двое ссоритесь?» — спрашивает она. «Термостат сломан. Он всегда показывает двадцать градусов. Нам нужно его починить». Алекс и Ден смотрят друг на друга. Теперь им немного неловко.",
+          "audio": {
+            "src": "media/audio/u02.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "thermostat",
+          "ru": "термостат",
+          "ipa": "/ˈθɜːməstæt/"
+        },
+        {
+          "word": "degree",
+          "ru": "градус",
+          "ipa": "/dɪˈɡriː/"
+        },
+        {
+          "word": "sauna",
+          "ru": "сауна",
+          "ipa": "/ˈsɔːnə/"
+        },
+        {
+          "word": "wall",
+          "ru": "стена",
+          "ipa": "/wɔːl/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u02.d90.listening",
+      "title": {
+        "en": "Too cold, too hot",
+        "ru": "Слишком холодно, слишком жарко"
+      },
+      "audio": {
+        "src": "media/audio/u02.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 4,
+          "en": "Den, why is it so cold in here?",
+          "ru": "Ден, почему тут так холодно?"
+        },
+        {
+          "start": 4,
+          "end": 9,
+          "en": "Cold? It is perfect. Put on a sweater, Alex.",
+          "ru": "Холодно? Идеально. Надень свитер, Алекс."
+        },
+        {
+          "start": 9,
+          "end": 13,
+          "en": "I can't type with cold hands!",
+          "ru": "Я не могу печатать замёрзшими руками!"
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "en": "Then drink hot coffee. But don't touch the thermostat.",
+          "ru": "Тогда пей горячий кофе. Но не трогай термостат."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u02.d90.ex.l.01",
+          "instruction": {
+            "en": "What does Den tell Alex to put on?",
+            "ru": "Что Ден советует Алексу надеть?"
+          },
+          "tags": [
+            "listening.detail",
+            "vocab.work"
+          ],
+          "prompt": "Put on a ___.",
+          "options": [
+            "sweater",
+            "coat",
+            "hat"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u02.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u02.d90.ex.g.01",
+          "instruction": {
+            "en": "Right now → continuous.",
+            "ru": "Прямо сейчас → continuous."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "Look! Alex ___ at his desk right now.",
+          "cue": "(work)",
+          "answers": [
+            "is working"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u02.d90.ex.c.01",
+          "instruction": {
+            "en": "Habit → simple.",
+            "ru": "Привычка → simple."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "Every morning Den ___ coffee.",
+          "options": [
+            "drinks",
+            "is drinking",
+            "drink"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u02.d90.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "variants": [
+            "Look! Kate is come in.",
+            "Look! Kate is coming in."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d90.ex.g.02",
+          "instruction": {
+            "en": "Listen! → continuous.",
+            "ru": "Listen! → continuous."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "Listen! They ___ about the temperature again.",
+          "cue": "(fight)",
+          "answers": [
+            "are fighting"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u02.d90.ex.c.02",
+          "instruction": {
+            "en": "Always → simple.",
+            "ru": "Always → simple."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "The thermostat ___ twenty degrees every day.",
+          "options": [
+            "shows",
+            "is showing",
+            "show"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u02.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence (right now).",
+            "ru": "Собери предложение (прямо сейчас)."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "tokens": [
+            "Alex",
+            "is",
+            "changing",
+            "the",
+            "temperature"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u02.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "office",
+              "right": "офис"
+            },
+            {
+              "left": "hot",
+              "right": "жарко"
+            },
+            {
+              "left": "meeting",
+              "right": "совещание"
+            },
+            {
+              "left": "broken",
+              "right": "сломанный"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u02.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-vs-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Сейчас он меняет температуру.",
+          "answers": [
+            "He is changing the temperature.",
+            "He's changing the temperature."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he change the temperature",
+                "he changes the temperature now"
+              ],
+              "explanation": {
+                "en": "right now → present continuous: He is changing…",
+                "ru": "прямо сейчас → present continuous: He is changing…"
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u02.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-vs-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ден пьёт кофе каждый день.",
+          "answers": [
+            "Den drinks coffee every day."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "den is drinking coffee every day",
+                "den drink coffee every day"
+              ],
+              "explanation": {
+                "en": "habit → present simple: Den drinks coffee every day.",
+                "ru": "привычка → present simple: Den drinks coffee every day."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d90.ex.g.03",
+          "instruction": {
+            "en": "Habit → simple (spelling of -s).",
+            "ru": "Привычка → simple (правописание -s)."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "Kate usually ___ to work by bus.",
+          "cue": "(go)",
+          "answers": [
+            "goes"
+          ]
+        }
+      ]
+    }
+  ]
+}
