@@ -1,0 +1,645 @@
+{
+  "id": "u04.d90",
+  "title": {
+    "en": "The Yoghurt Thief",
+    "ru": "Йогуртовый вор"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.past-simple",
+    "vocab.food",
+    "functions.small-talk"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u04.d90.vocab",
+      "title": {
+        "en": "Office kitchen",
+        "ru": "Офисная кухня"
+      },
+      "words": [
+        {
+          "word": "fridge",
+          "ru": "холодильник",
+          "ipa": "/frɪdʒ/",
+          "example": "The milk is in the fridge.",
+          "exampleRu": "Молоко в холодильнике.",
+          "audio": {
+            "src": "media/audio/u04.d90.vocab.fridge.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "yoghurt",
+          "ru": "йогурт",
+          "ipa": "/ˈjɒɡət/",
+          "example": "Pol likes Greek yoghurt.",
+          "exampleRu": "Пол любит греческий йогурт.",
+          "audio": {
+            "src": "media/audio/u04.d90.vocab.yoghurt.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "kitchen",
+          "ru": "кухня",
+          "ipa": "/ˈkɪtʃɪn/",
+          "example": "We eat in the office kitchen.",
+          "exampleRu": "Мы едим на офисной кухне.",
+          "audio": {
+            "src": "media/audio/u04.d90.vocab.kitchen.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hungry",
+          "ru": "голодный",
+          "ipa": "/ˈhʌŋɡri/",
+          "example": "I was very hungry.",
+          "exampleRu": "Я был очень голоден.",
+          "audio": {
+            "src": "media/audio/u04.d90.vocab.hungry.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to take",
+          "ru": "брать (took)",
+          "ipa": "/teɪk/",
+          "example": "Who took my cup?",
+          "exampleRu": "Кто взял мою кружку?",
+          "audio": {
+            "src": "media/audio/u04.d90.vocab.totake.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to eat",
+          "ru": "есть (ate)",
+          "ipa": "/iːt/",
+          "example": "He ate my lunch.",
+          "exampleRu": "Он съел мой обед.",
+          "audio": {
+            "src": "media/audio/u04.d90.vocab.toeat.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "empty",
+          "ru": "пустой",
+          "ipa": "/ˈempti/",
+          "example": "The fridge is empty.",
+          "exampleRu": "Холодильник пустой.",
+          "audio": {
+            "src": "media/audio/u04.d90.vocab.empty.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lunch",
+          "ru": "обед",
+          "ipa": "/lʌntʃ/",
+          "example": "That was my lunch!",
+          "exampleRu": "Это был мой обед!",
+          "audio": {
+            "src": "media/audio/u04.d90.vocab.lunch.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "expensive",
+          "ru": "дорогой",
+          "ipa": "/ɪkˈspensɪv/",
+          "example": "It was expensive.",
+          "exampleRu": "Это было дорого.",
+          "audio": {
+            "src": "media/audio/u04.d90.vocab.expensive.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sorry",
+          "ru": "извини; сожалею",
+          "ipa": "/ˈsɒri/",
+          "example": "Sorry, I was hungry.",
+          "exampleRu": "Извини, я был голоден.",
+          "audio": {
+            "src": "media/audio/u04.d90.vocab.sorry.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to write",
+          "ru": "писать (wrote)",
+          "ipa": "/raɪt/",
+          "example": "She wrote her name on it.",
+          "exampleRu": "Она написала на нём своё имя.",
+          "audio": {
+            "src": "media/audio/u04.d90.vocab.towrite.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to find",
+          "ru": "находить (found)",
+          "ipa": "/faɪnd/",
+          "example": "I found it later.",
+          "exampleRu": "Я нашёл это позже.",
+          "audio": {
+            "src": "media/audio/u04.d90.vocab.tofind.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u04.d90.grammar",
+      "title": {
+        "en": "Past simple",
+        "ru": "Past simple"
+      },
+      "ref": "past-simple",
+      "rule": {
+        "en": "Use the past simple for finished actions in the past. Regular verbs add -ed (open → opened). Many common verbs are irregular and must be learned: take → took, eat → ate, write → wrote, bring → brought.",
+        "ru": "Past simple — для законченных действий в прошлом. Правильные глаголы получают -ed (open → opened). Многие частые глаголы неправильные, их учат: take → took, eat → ate, write → wrote, bring → brought."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "regular (+ed)",
+            "ru": "правильные (+ed)"
+          },
+          "formula": "subject + verb-ed",
+          "examples": [
+            {
+              "en": "Pol opened the fridge.",
+              "ru": "Пол открыл холодильник."
+            }
+          ],
+          "ref": "past-simple"
+        },
+        {
+          "label": {
+            "en": "irregular",
+            "ru": "неправильные"
+          },
+          "formula": "subject + past form",
+          "examples": [
+            {
+              "en": "David ate the yoghurt.",
+              "ru": "Дэвид съел йогурт."
+            }
+          ],
+          "ref": "past-simple"
+        },
+        {
+          "label": {
+            "en": "negative / question",
+            "ru": "отрицание / вопрос"
+          },
+          "formula": "did (not) + base verb",
+          "examples": [
+            {
+              "en": "Did you take it? — No, I did not.",
+              "ru": "Ты взял это? — Нет."
+            }
+          ],
+          "ref": "past-simple"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After \"did\", use the base verb: \"Did you take it?\", not \"Did you took it?\".",
+          "ru": "После «did» — начальная форма: «Did you take it?», а не «Did you took it?»."
+        },
+        {
+          "en": "Irregular verbs have no -ed: \"ate\", \"drank\", \"wrote\" — not \"eated\", \"drinked\".",
+          "ru": "У неправильных нет -ed: «ate», «drank», «wrote» — не «eated», «drinked»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u04.d90.reading",
+      "title": {
+        "en": "The Yoghurt Thief",
+        "ru": "Йогуртовый вор"
+      },
+      "blocks": [
+        {
+          "id": "u04.d90.reading.b1",
+          "en": "Yesterday Pol brought his favourite yoghurt to work. He put it in the office fridge and wrote his name on it: POL. At two o'clock he opened the fridge. The yoghurt was not there. Somebody ate it!",
+          "ru": "Вчера Пол принёс на работу свой любимый йогурт. Он положил его в офисный холодильник и написал на нём своё имя: POL. В два часа он открыл холодильник. Йогурта там не было. Кто-то его съел!",
+          "audio": {
+            "src": "media/audio/u04.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u04.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Pol finds his yoghurt missing from the office fridge",
+              "ru": "Пол обнаруживает, что его йогурт пропал из офисного холодильника"
+            }
+          }
+        },
+        {
+          "id": "u04.d90.reading.b2",
+          "en": "Pol asked everybody. \"Did you take my yoghurt?\" Den said, \"No, I didn't. I don't like yoghurt.\" Alex said, \"I only drank coffee this morning.\" Nobody knew anything about it.",
+          "ru": "Пол спросил всех. «Вы брали мой йогурт?» Ден сказал: «Нет, не брал. Я не люблю йогурт». Алекс сказал: «Я утром пил только кофе». Никто ничего не знал.",
+          "audio": {
+            "src": "media/audio/u04.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u04.d90.reading.b3",
+          "en": "Then David called from the USA. \"Hello, team! By the way, your fridge is very empty. I ate a yoghurt during our video call this morning. I was hungry. Sorry, Pol!\" Everybody was quiet. Then Pol laughed. \"David, that was my lunch! Buy me a new one.\"",
+          "ru": "Тут позвонил Дэвид из США. «Привет, команда! Кстати, ваш холодильник совсем пустой. Я утром на созвоне съел йогурт. Я был голоден. Извини, Пол!» Все замолчали. Потом Пол засмеялся. «Дэвид, это был мой обед! Купи мне новый».",
+          "audio": {
+            "src": "media/audio/u04.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u04.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "David admits on a video call that he ate the yoghurt",
+              "ru": "Дэвид на видеозвонке признаётся, что съел йогурт"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "thief",
+          "ru": "вор",
+          "ipa": "/θiːf/"
+        },
+        {
+          "word": "favourite",
+          "ru": "любимый",
+          "ipa": "/ˈfeɪvərɪt/"
+        },
+        {
+          "word": "video call",
+          "ru": "видеозвонок",
+          "ipa": "/ˈvɪdiəʊ kɔːl/"
+        },
+        {
+          "word": "quiet",
+          "ru": "тихий",
+          "ipa": "/ˈkwaɪət/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u04.d90.listening",
+      "title": {
+        "en": "Who took it?",
+        "ru": "Кто взял?"
+      },
+      "audio": {
+        "src": "media/audio/u04.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.56,
+          "en": "Did you take my yoghurt?",
+          "ru": "Ты брал мой йогурт?"
+        },
+        {
+          "start": 1.56,
+          "end": 2.94,
+          "en": "No, I didn't.",
+          "ru": "Нет, не брал."
+        },
+        {
+          "start": 2.94,
+          "end": 4.65,
+          "en": "I only drank coffee.",
+          "ru": "Я пил только кофе."
+        },
+        {
+          "start": 4.65,
+          "end": 5.8,
+          "en": "Sorry, I ate it.",
+          "ru": "Извини, я его съел."
+        },
+        {
+          "start": 5.8,
+          "end": 7.1,
+          "en": "That was my lunch!",
+          "ru": "Это был мой обед!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u04.d90.ex.l.01",
+          "instruction": {
+            "en": "What did Alex drink?",
+            "ru": "Что пил Алекс?"
+          },
+          "tags": [
+            "listening.detail",
+            "vocab.food"
+          ],
+          "prompt": "I only drank ___.",
+          "options": [
+            "coffee",
+            "tea",
+            "water"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u04.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u04.d90.ex.g.01",
+          "instruction": {
+            "en": "Past simple (irregular).",
+            "ru": "Past simple (неправильный)."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "Yesterday Pol ___ his yoghurt to work.",
+          "cue": "(bring)",
+          "answers": [
+            "brought"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u04.d90.ex.c.01",
+          "instruction": {
+            "en": "Negative with did.",
+            "ru": "Отрицание с did."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "Den ___ take the yoghurt.",
+          "options": [
+            "didn't",
+            "doesn't",
+            "not"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d90.ex.g.02",
+          "instruction": {
+            "en": "Past simple (irregular).",
+            "ru": "Past simple (неправильный)."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "Somebody ___ it.",
+          "cue": "(eat)",
+          "answers": [
+            "ate"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u04.d90.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "variants": [
+            "Alex drinked coffee.",
+            "Alex drank coffee."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u04.d90.ex.c.02",
+          "instruction": {
+            "en": "Past simple (irregular).",
+            "ru": "Past simple (неправильный)."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "Pol ___ his name on it.",
+          "options": [
+            "wrote",
+            "writed",
+            "writes"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u04.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "tokens": [
+            "I",
+            "put",
+            "it",
+            "in",
+            "the",
+            "fridge"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u04.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.food"
+          ],
+          "pairs": [
+            {
+              "left": "fridge",
+              "right": "холодильник"
+            },
+            {
+              "left": "hungry",
+              "right": "голодный"
+            },
+            {
+              "left": "empty",
+              "right": "пустой"
+            },
+            {
+              "left": "lunch",
+              "right": "обед"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u04.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-simple",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Вчера он принёс йогурт.",
+          "answers": [
+            "Yesterday he brought a yoghurt.",
+            "He brought a yoghurt yesterday.",
+            "Yesterday he brought yoghurt."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he bringed",
+                "yesterday he bring"
+              ],
+              "explanation": {
+                "en": "irregular past: bring → brought.",
+                "ru": "неправильный: bring → brought."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u04.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.past-simple",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я пил только кофе.",
+          "answers": [
+            "I only drank coffee.",
+            "I drank only coffee."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i only drinked coffee",
+                "i drinked coffee"
+              ],
+              "explanation": {
+                "en": "irregular past: drink → drank.",
+                "ru": "неправильный: drink → drank."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u04.d90.ex.g.03",
+          "instruction": {
+            "en": "Question with did (base verb).",
+            "ru": "Вопрос с did (нач. форма)."
+          },
+          "tags": [
+            "grammar.past-simple"
+          ],
+          "prompt": "Did you ___ my yoghurt?",
+          "cue": "(take)",
+          "answers": [
+            "take"
+          ]
+        }
+      ]
+    }
+  ]
+}

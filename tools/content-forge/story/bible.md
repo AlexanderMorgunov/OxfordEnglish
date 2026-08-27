@@ -62,7 +62,9 @@ appearance. IDs (reuse via `style_character_id` in pro mode):
   dark jeans, coffee mug.
 - Kate — `fe677aad-8a5a-4aac-8304-9200ad125033` — shoulder-length blonde hair,
   navy blazer (amber cardigan acceptable — amber is a brand token).
-- TODO: Pol, Valery, David, Peter.
+- Pol — `8f6eaf7d-482d-46c4-8a6d-c92426229700` — short curly dark hair, round
+  glasses, olive-green hoodie, green smoothie cup.
+- TODO: Valery, David, Peter.
 
 **Scene workflow (consistency across an episode's scenes):**
 1. Generate ONE canonical *base scene* per recurring cast grouping (e.g. the
