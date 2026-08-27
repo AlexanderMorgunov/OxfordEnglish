@@ -51,12 +51,16 @@ function ReadingBlock({
   en,
   ru: blockRu,
   audioUrl,
+  imageUrl,
+  imageAlt,
   rate,
   glossary,
 }: {
   en: string;
   ru?: string;
   audioUrl?: string;
+  imageUrl?: string;
+  imageAlt?: string;
   rate: number;
   glossary: Map<string, Gloss>;
 }) {
@@ -66,6 +70,13 @@ function ReadingBlock({
 
   return (
     <div className="border-b border-line pb-4 last:border-b-0">
+      {imageUrl && (
+        <PixelImage
+          src={imageUrl}
+          alt={imageAlt ?? ''}
+          className="mb-3 w-full rounded-md border border-line"
+        />
+      )}
       <p className="text-lg leading-relaxed">
         {audioUrl && (
           <button
@@ -205,6 +216,8 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
             en={block.en}
             ru={block.ru}
             audioUrl={block.audio ? packMediaUrl(block.audio.src) : undefined}
+            imageUrl={block.image ? packMediaUrl(block.image.src) : undefined}
+            imageAlt={block.image?.alt?.en ?? ''}
             rate={rate}
             glossary={glossary}
           />

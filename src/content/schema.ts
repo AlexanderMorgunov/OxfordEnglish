@@ -140,6 +140,8 @@ export const ReadingBlock = z.object({
   en: z.string().min(1),
   ru: z.string().optional(),
   audio: MediaRef.optional(),
+  // Optional per-block illustration (story episodes use several scenes per reading).
+  image: MediaRef.optional(),
 });
 
 export const TranscriptCue = z.object({
