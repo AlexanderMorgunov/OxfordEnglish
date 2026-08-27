@@ -349,27 +349,33 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
-          "en": "Den, why is it so cold in here?",
-          "ru": "Ден, почему тут так холодно?"
+          "end": 2.16,
+          "en": "Den, why is it so cold?",
+          "ru": "Ден, почему так холодно?"
         },
         {
-          "start": 4,
-          "end": 9,
-          "en": "Cold? It is perfect. Put on a sweater, Alex.",
-          "ru": "Холодно? Идеально. Надень свитер, Алекс."
+          "start": 2.16,
+          "end": 3.99,
+          "en": "Cold? It is perfect.",
+          "ru": "Холодно? Идеально."
         },
         {
-          "start": 9,
-          "end": 13,
-          "en": "I can't type with cold hands!",
-          "ru": "Я не могу печатать замёрзшими руками!"
+          "start": 3.99,
+          "end": 5.2,
+          "en": "Put on a sweater.",
+          "ru": "Надень свитер."
         },
         {
-          "start": 13,
-          "end": 18,
-          "en": "Then drink hot coffee. But don't touch the thermostat.",
-          "ru": "Тогда пей горячий кофе. Но не трогай термостат."
+          "start": 5.2,
+          "end": 6.55,
+          "en": "My hands are cold.",
+          "ru": "У меня замёрзли руки."
+        },
+        {
+          "start": 6.55,
+          "end": 8.37,
+          "en": "Then drink hot coffee.",
+          "ru": "Тогда пей горячий кофе."
         }
       ],
       "exercises": [
