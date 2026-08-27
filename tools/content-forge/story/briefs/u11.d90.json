@@ -1,0 +1,12 @@
+{
+  "id": "u11.d90",
+  "unitId": "u11",
+  "insertAt": 2,
+  "tags": ["grammar.must", "grammar.should", "vocab.phone", "functions.phone"],
+  "level": "A2",
+  "episode": "The 8 AM Call",
+  "grammarName": { "en": "Modal verbs: must, should, can't", "ru": "Модальные глаголы: must, should, can't" },
+  "grammarRef": "modals",
+  "characters": ["Kate", "David", "Mark", "Den", "Alex"],
+  "scenario": "David, the US client, calls the team on a video call at 8 AM. Kate joins from her car, still sleepy, and thinks her microphone is off. She shouts to her husband Mark at home: 'You must wash the dishes! You should buy milk!' Then David says calmly: 'Kate, we can all hear you. You should put yourself on mute.' Everyone laughs. Kate is very embarrassed but takes it well. Keep it warm and light."
+}

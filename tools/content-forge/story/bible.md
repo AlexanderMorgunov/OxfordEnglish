@@ -49,6 +49,29 @@ Vocabulary is controlled to the episode's CEFR tier (A1–B1).
 | 9 | The Wi-Fi Outage | present perfect continuous | u17 | u17.d90 |
 | 10 | Karaoke Party | reported speech | u29 | u29.d90 |
 
+## Production pipeline (DeepSeek → review → build)
+
+Text scales via DeepSeek; audio via Piper; art stays a separate manual pass.
+
+1. **Brief.** Author a small brief in `briefs/<id>.json` (id, unitId, insertAt, tags — use only
+   registered `src/content/skill-tags.ts` tags —, level, episode, grammarName, grammarRef, characters,
+   scenario paragraph). Example: `briefs/u11.d90.json`.
+2. **Generate.** `node tools/content-forge/story/gen-episode.mjs briefs/<id>.json` → writes
+   `specs/<id>.json` (leveled TEXT only). Needs `DEEPSEEK_API_KEY` in `.env`; model via
+   `DEEPSEEK_MODEL` (default `deepseek-chat`). ~$0.02-0.05/episode.
+3. **Review + level-gate.** Read the spec; run `mcp__content-forge__level_check` on the reading
+   (ignore the over-flag on names / past-forms — see episodes 1-2). Fix anything off-level or
+   out-of-character by editing the spec.
+4. **Build.** `FFMPEG=<abs> node tools/content-forge/story/build-episode.mjs specs/<id>.json` →
+   synthesizes audio, measures dictation cue timings, attaches any illustrations that exist, writes
+   `days/<id>.json`, and registers the day mid-unit. `--dry` prints the Day without writing.
+5. **Illustrate (optional, later).** Generate `media/images/<id>.reading.b1.png` / `.b3.png` via the
+   locked-character img2img workflow above and rebuild (or just add the PNGs — the harness picks them
+   up next build).
+6. **Validate + verify.** `npm run validate:packs`, then view the day in the app.
+
+`specs/u04.d90.json` is the gold-standard example fed to DeepSeek as a few-shot.
+
 ## Character canon (locked) & art workflow
 
 Freeform generation re-invents faces/clothes each time, so we lock the look.
