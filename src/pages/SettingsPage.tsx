@@ -42,7 +42,9 @@ export function SettingsPage() {
   const [baseUrl, setBaseUrl] = useState(config?.baseUrl ?? '');
   const [saved, setSaved] = useState(false);
 
-  const { hash } = useLocation();
+  const { hash, search } = useLocation();
+  // Where the user came from (e.g. a lesson that sent them here to add an AI key) — offer a way back.
+  const from = new URLSearchParams(search).get('from');
   useEffect(() => {
     if (hash !== '#ai-section') return;
     const el = document.getElementById('ai-section');
@@ -151,6 +153,20 @@ export function SettingsPage() {
 
   return (
     <section aria-label="Settings" className="max-w-prose">
+      {from && (
+        <Link
+          to={from}
+          className="mb-6 inline-flex items-center font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
+        >
+          {from.includes('/course/')
+            ? lang === 'ru'
+              ? '← вернуться к уроку'
+              : '← back to the lesson'
+            : lang === 'ru'
+              ? '← назад'
+              : '← back'}
+        </Link>
+      )}
       <div className="mb-10 border-b border-line pb-8">
         <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
           язык интерфейса · interface language
