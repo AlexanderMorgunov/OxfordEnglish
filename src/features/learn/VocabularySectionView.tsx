@@ -77,7 +77,6 @@ function WordCard({ entry, testMode }: { entry: VocabEntry; testMode: boolean })
 export function VocabularySectionView({ section }: { section: VocabularySection }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [mode, setMode] = useState<'study' | 'test'>('study');
-  const [showPuzzle, setShowPuzzle] = useState(false);
   const entries = useMemo(
     () => section.words.map((w) => ({ word: w.word, clue: w.ru })),
     [section.words]
@@ -118,20 +117,7 @@ export function VocabularySectionView({ section }: { section: VocabularySection 
         ))}
       </div>
 
-      {canPuzzle &&
-        (showPuzzle ? (
-          <PuzzleSection entries={entries} />
-        ) : (
-          <button
-            type="button"
-            className="self-start font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
-            onClick={() => setShowPuzzle(true)}
-          >
-            {ru
-              ? '▸ повторить сеткой (кроссворд / филворд)'
-              : '▸ practice with a grid (crossword / word-search)'}
-          </button>
-        ))}
+      {canPuzzle && <PuzzleSection entries={entries} />}
     </div>
   );
 }
