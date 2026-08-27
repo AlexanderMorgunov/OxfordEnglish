@@ -1,8 +1,16 @@
 import { useMemo, useState } from 'react';
 import { Button, Input } from '@/shared/ui';
+import { cn } from '@/shared/lib/cn';
 import type { Crossword, Placed } from './generate';
 
 const key = (r: number, c: number) => `${r},${c}`;
+
+function dropFrom(set: Set<number>, n: number): Set<number> {
+  if (!set.has(n)) return set;
+  const next = new Set(set);
+  next.delete(n);
+  return next;
+}
 
 function cellsOf(p: Placed): string[] {
   const dr = p.dir === 'down' ? 1 : 0;
@@ -13,6 +21,7 @@ function cellsOf(p: Placed): string[] {
 export function CrosswordView({ crossword }: { crossword: Crossword }) {
   const [solved, setSolved] = useState<Set<number>>(new Set());
   const [inputs, setInputs] = useState<Record<number, string>>({});
+  const [wrong, setWrong] = useState<Set<number>>(new Set());
 
   const revealed = useMemo(() => {
     const s = new Set<string>();
@@ -30,7 +39,17 @@ export function CrosswordView({ crossword }: { crossword: Crossword }) {
 
   const check = (p: Placed) => {
     const val = (inputs[p.number] ?? '').trim().toUpperCase().replace(/[^A-Z]/g, '');
-    if (val === p.word) setSolved((prev) => new Set(prev).add(p.number));
+    if (val === p.word) {
+      setSolved((prev) => new Set(prev).add(p.number));
+      setWrong((prev) => dropFrom(prev, p.number));
+    } else {
+      setWrong((prev) => new Set(prev).add(p.number));
+    }
+  };
+
+  const editClue = (num: number, value: string) => {
+    setInputs((s) => ({ ...s, [num]: value }));
+    setWrong((prev) => dropFrom(prev, num)); // typing clears the wrong-answer flag
   };
 
   const across = crossword.placed.filter((p) => p.dir === 'across');
@@ -50,14 +69,20 @@ export function CrosswordView({ crossword }: { crossword: Crossword }) {
             ) : (
               <span className="flex items-center gap-1.5">
                 <Input
-                  className="w-32"
+                  className={cn('w-32', wrong.has(p.number) && 'border-coral text-coral')}
+                  aria-invalid={wrong.has(p.number)}
                   value={inputs[p.number] ?? ''}
-                  onChange={(e) => setInputs((s) => ({ ...s, [p.number]: e.target.value }))}
+                  onChange={(e) => editClue(p.number, e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && check(p)}
                 />
                 <Button size="sm" variant="ghost" onClick={() => check(p)}>
                   ✓
                 </Button>
+                {wrong.has(p.number) && (
+                  <span className="font-mono text-2xs text-coral" role="status">
+                    ✕ {p.word.length}
+                  </span>
+                )}
               </span>
             )}
           </div>

@@ -6,6 +6,8 @@ import { GrammarSectionView } from '@/features/learn/GrammarSectionView';
 import { ReadingSectionView } from '@/features/learn/ReadingSectionView';
 import { VocabularySectionView } from '@/features/learn/VocabularySectionView';
 import { ListeningSectionView } from '@/features/listen/ListeningSectionView';
+import { PuzzleSection } from '@/features/puzzle/PuzzleSection';
+import { puzzleWords } from '@/features/puzzle/generate';
 import { DaySummary, type NextDay } from '@/features/learn/DaySummary';
 import { loadAttempts } from '@/features/progress/queries';
 import { resultsFromAttempts, dayExercises } from '@/features/progress/completion';
@@ -88,6 +90,13 @@ export function DayPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Grid review (crossword / word-search) is built from the day's vocabulary and shown under the
+  // practice block.
+  const puzzleEntries = day.sections
+    .flatMap((s) => (s.type === 'vocabulary' ? s.words : []))
+    .map((w) => ({ word: w.word, clue: w.ru }));
+  const canPuzzle = puzzleWords(puzzleEntries).length >= 3;
+
   return (
     <article>
       <Eyebrow className="mb-3.5">{ru ? 'учебный день' : 'learning day'} · {day.id}</Eyebrow>
@@ -120,7 +129,10 @@ export function DayPage() {
             ) : section.type === 'listening' ? (
               <ListeningSectionView section={section} />
             ) : (
-              <PracticeSectionView section={section} />
+              <div className="flex flex-col gap-8">
+                <PracticeSectionView section={section} />
+                {canPuzzle && <PuzzleSection entries={puzzleEntries} />}
+              </div>
             )}
           </section>
         ))}

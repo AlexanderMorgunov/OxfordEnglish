@@ -1,11 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import type { Section, VocabEntry } from '@/content/schema';
 import { packMediaUrl } from '@/content/loader';
 import { Button, SegmentedToggle } from '@/shared/ui';
 import { canSpeak, playClip, speakWord } from '@/shared/lib/audio';
 import { addWordCard } from '@/features/srs/service';
-import { PuzzleSection } from '@/features/puzzle/PuzzleSection';
-import { puzzleWords } from '@/features/puzzle/generate';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { exLabels } from '@/features/i18n/ui-strings';
 
@@ -77,11 +75,6 @@ function WordCard({ entry, testMode }: { entry: VocabEntry; testMode: boolean })
 export function VocabularySectionView({ section }: { section: VocabularySection }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [mode, setMode] = useState<'study' | 'test'>('study');
-  const entries = useMemo(
-    () => section.words.map((w) => ({ word: w.word, clue: w.ru })),
-    [section.words]
-  );
-  const canPuzzle = puzzleWords(entries).length >= 3;
 
   return (
     <div className="flex flex-col gap-4">
@@ -117,7 +110,6 @@ export function VocabularySectionView({ section }: { section: VocabularySection 
         ))}
       </div>
 
-      {canPuzzle && <PuzzleSection entries={entries} />}
     </div>
   );
 }

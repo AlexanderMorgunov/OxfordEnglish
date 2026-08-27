@@ -32,11 +32,13 @@ export function PuzzleSection({ entries }: { entries: PuzzleEntry[] }) {
           ]}
         />
       </div>
-      {mode === 'crossword' ? (
+      {/* Both stay mounted (inactive one hidden) so switching modes never resets progress. */}
+      <div className={mode === 'crossword' ? '' : 'hidden'}>
         <CrosswordView crossword={crossword} />
-      ) : (
+      </div>
+      <div className={mode === 'filword' ? '' : 'hidden'}>
         <FilwordView filword={filword} />
-      )}
+      </div>
     </div>
   );
 }
