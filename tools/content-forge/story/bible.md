@@ -49,6 +49,33 @@ Vocabulary is controlled to the episode's CEFR tier (A1–B1).
 | 9 | The Wi-Fi Outage | present perfect continuous | u17 | u17.d90 |
 | 10 | Karaoke Party | reported speech | u29 | u29.d90 |
 
+## Character canon (locked) & art workflow
+
+Freeform generation re-invents faces/clothes each time, so we lock the look.
+
+**Canonical sprites** (PixelLab `create_character`, side view, 4-dir) live in
+`tools/content-forge/story/characters/*.png` and define each character's exact
+appearance. IDs (reuse via `style_character_id` in pro mode):
+- Alex — `08875f8e-ce2d-4a08-ac25-2e208a0fce09` — brown hair, teal-green hoodie,
+  white tee, blue jeans.
+- Den — `c79f3e70-c166-4a04-a3c1-65dda8a63d0a` — dark hair, coral-red hoodie,
+  dark jeans, coffee mug.
+- Kate — `fe677aad-8a5a-4aac-8304-9200ad125033` — shoulder-length blonde hair,
+  navy blazer (amber cardigan acceptable — amber is a brand token).
+- TODO: Pol, Valery, David, Peter.
+
+**Scene workflow (consistency across an episode's scenes):**
+1. Generate ONE canonical *base scene* per recurring cast grouping (e.g. the
+   Alex+Den two-shot) with `create_image_pixflux`.
+2. Derive every other scene for that grouping via **img2img** — pass the base as
+   `init_image_url`. `init_image_strength` ≈ 120 when the cast is unchanged
+   (keeps faces/clothes/props identical); ≈ 55 when a character must be added or
+   the action changes a lot (still carries identity, allows the new element).
+   Verified: u02.d90 b3 (Kate reveal) was derived from b1 and the two devs +
+   the thermostat stayed consistent.
+3. Keep the brand palette (teal/amber/coral/ink/cream) and selective outline in
+   every prompt. Recurring props (the wall thermostat) come from the base image.
+
 ## Integration recipe (safe interleaving — see DayPage/build.ts)
 
 - Story day id = `uNN.d90`, **no `level` field** (keeps it out of the level-exit
