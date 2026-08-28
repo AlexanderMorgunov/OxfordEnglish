@@ -1,0 +1,611 @@
+{
+  "id": "u11.d90",
+  "title": {
+    "en": "The 8 AM Call",
+    "ru": "Звонок в 8 утра"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.must",
+    "grammar.should",
+    "vocab.phone",
+    "functions.phone"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u11.d90.vocab",
+      "title": {
+        "en": "Phone and home",
+        "ru": "Телефон и дом"
+      },
+      "words": [
+        {
+          "word": "call",
+          "ru": "звонок; звонить",
+          "ipa": "/kɔːl/",
+          "example": "David calls the team at 8 AM.",
+          "exampleRu": "Дэвид звонит команде в 8 утра.",
+          "audio": {
+            "src": "media/audio/u11.d90.vocab.call.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "phone",
+          "ru": "телефон",
+          "ipa": "/fəʊn/",
+          "example": "Kate has her phone in the car.",
+          "exampleRu": "У Кейт телефон в машине.",
+          "audio": {
+            "src": "media/audio/u11.d90.vocab.phone.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "client",
+          "ru": "клиент",
+          "ipa": "/ˈklaɪənt/",
+          "example": "David is a client from the USA.",
+          "exampleRu": "Дэвид — клиент из США.",
+          "audio": {
+            "src": "media/audio/u11.d90.vocab.client.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "early",
+          "ru": "рано",
+          "ipa": "/ˈɜːli/",
+          "example": "8 AM is very early for Kate.",
+          "exampleRu": "8 утра — очень рано для Кейт.",
+          "audio": {
+            "src": "media/audio/u11.d90.vocab.early.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sleepy",
+          "ru": "сонный",
+          "ipa": "/ˈsliːpi/",
+          "example": "Kate is sleepy in the car.",
+          "exampleRu": "Кейт сонная в машине.",
+          "audio": {
+            "src": "media/audio/u11.d90.vocab.sleepy.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mute",
+          "ru": "выключить звук; без звука",
+          "ipa": "/mjuːt/",
+          "example": "Please mute your microphone.",
+          "exampleRu": "Пожалуйста, выключи микрофон.",
+          "audio": {
+            "src": "media/audio/u11.d90.vocab.mute.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "microphone",
+          "ru": "микрофон",
+          "ipa": "/ˈmaɪkrəfəʊn/",
+          "example": "Her microphone is on.",
+          "exampleRu": "Её микрофон включён.",
+          "audio": {
+            "src": "media/audio/u11.d90.vocab.microphone.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wash",
+          "ru": "мыть",
+          "ipa": "/wɒʃ/",
+          "example": "Mark must wash the dishes.",
+          "exampleRu": "Марк должен помыть посуду.",
+          "audio": {
+            "src": "media/audio/u11.d90.vocab.wash.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dishes",
+          "ru": "посуда",
+          "ipa": "/ˈdɪʃɪz/",
+          "example": "The dishes are dirty.",
+          "exampleRu": "Посуда грязная.",
+          "audio": {
+            "src": "media/audio/u11.d90.vocab.dishes.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "milk",
+          "ru": "молоко",
+          "ipa": "/mɪlk/",
+          "example": "You should buy milk.",
+          "exampleRu": "Тебе следует купить молоко.",
+          "audio": {
+            "src": "media/audio/u11.d90.vocab.milk.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hear",
+          "ru": "слышать",
+          "ipa": "/hɪə/",
+          "example": "We can all hear you.",
+          "exampleRu": "Мы все тебя слышим.",
+          "audio": {
+            "src": "media/audio/u11.d90.vocab.hear.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "embarrassed",
+          "ru": "смущённый",
+          "ipa": "/ɪmˈbærəst/",
+          "example": "Kate is embarrassed but laughs.",
+          "exampleRu": "Кейт смущена, но смеётся.",
+          "audio": {
+            "src": "media/audio/u11.d90.vocab.embarrassed.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u11.d90.grammar",
+      "title": {
+        "en": "Modal verbs: must, should, can't",
+        "ru": "Модальные глаголы: must, should, can't"
+      },
+      "ref": "modals",
+      "rule": {
+        "en": "Use must for strong obligation — something is necessary. Use should for advice — something is a good idea. Use can't to say something is not possible or not allowed. After these modals, always use the base verb (no -s, no -ed, no to).",
+        "ru": "Must — для строгой обязанности, что-то необходимо. Should — для совета, что-то хорошая идея. Can't — что-то невозможно или запрещено. После этих модальных глаголов всегда идёт начальная форма глагола (без -s, -ed, to)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "must + base verb",
+            "ru": "must + начальная форма"
+          },
+          "formula": "subject + must + base verb",
+          "examples": [
+            {
+              "en": "You must wash the dishes.",
+              "ru": "Ты должен помыть посуду."
+            }
+          ],
+          "ref": "modals"
+        },
+        {
+          "label": {
+            "en": "should + base verb",
+            "ru": "should + начальная форма"
+          },
+          "formula": "subject + should + base verb",
+          "examples": [
+            {
+              "en": "You should buy milk.",
+              "ru": "Тебе следует купить молоко."
+            },
+            {
+              "en": "You should mute yourself.",
+              "ru": "Тебе следует выключить микрофон."
+            }
+          ],
+          "ref": "modals"
+        },
+        {
+          "label": {
+            "en": "can't + base verb",
+            "ru": "can't + начальная форма"
+          },
+          "formula": "subject + can't + base verb",
+          "examples": [
+            {
+              "en": "You can't hear me, right?",
+              "ru": "Вы меня не слышите, да?"
+            }
+          ],
+          "ref": "modals"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After modals, use the base verb: \"You must wash\", not \"You must to wash\" or \"You must washes\".",
+          "ru": "После модальных глаголов используй начальную форму: «You must wash», а не «You must to wash» или «You must washes»."
+        },
+        {
+          "en": "Must is stronger than should. \"You must wash the dishes\" means it is necessary. \"You should buy milk\" means it is a good idea, but not necessary.",
+          "ru": "Must сильнее, чем should. «You must wash the dishes» означает, что это необходимо. «You should buy milk» — это хорошая идея, но не обязательно."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u11.d90.reading",
+      "title": {
+        "en": "The 8 AM Call",
+        "ru": "Звонок в 8 утра"
+      },
+      "blocks": [
+        {
+          "id": "u11.d90.reading.b1",
+          "en": "It is 8 AM. David calls the team from the USA. He is on a video call. Kate is in her car. She is very sleepy.",
+          "ru": "Сейчас 8 утра. Дэвид звонит команде из США. Он на видеозвонке. Кейт в машине. Она очень сонная.",
+          "audio": {
+            "src": "media/audio/u11.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u11.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate joins a video call from her car, still sleepy",
+              "ru": "Кейт присоединяется к видеозвонку из машины, ещё сонная"
+            }
+          }
+        },
+        {
+          "id": "u11.d90.reading.b2",
+          "en": "Kate joins the call. She thinks her microphone is off. She shouts to Mark at home: \"You must wash the dishes! You should buy milk!\"",
+          "ru": "Кейт подключается к звонку. Она думает, что её микрофон выключен. Она кричит Марку дома: «Ты должен помыть посуду! Тебе следует купить молоко!»",
+          "audio": {
+            "src": "media/audio/u11.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u11.d90.reading.b3",
+          "en": "David is calm. He says: \"Kate, we can all hear you. You should put yourself on mute.\" Everybody laughs. Kate is embarrassed, but she laughs too.",
+          "ru": "Дэвид спокоен. Он говорит: «Кейт, мы все тебя слышим. Тебе следует выключить микрофон». Все смеются. Кейт смущена, но тоже смеётся.",
+          "audio": {
+            "src": "media/audio/u11.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u11.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "David tells Kate to mute herself, everyone laughs",
+              "ru": "Дэвид просит Кейт выключить микрофон, все смеются"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "video call",
+          "ru": "видеозвонок",
+          "ipa": "/ˈvɪdiəʊ kɔːl/"
+        },
+        {
+          "word": "off",
+          "ru": "выключенный",
+          "ipa": "/ɒf/"
+        },
+        {
+          "word": "shout",
+          "ru": "кричать",
+          "ipa": "/ʃaʊt/"
+        },
+        {
+          "word": "calmly",
+          "ru": "спокойно",
+          "ipa": "/ˈkɑːmli/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u11.d90.listening",
+      "title": {
+        "en": "Who can hear?",
+        "ru": "Кто кого слышит?"
+      },
+      "audio": {
+        "src": "media/audio/u11.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.63,
+          "en": "You must wash the dishes!",
+          "ru": "Ты должен помыть посуду!"
+        },
+        {
+          "start": 1.63,
+          "end": 2.85,
+          "en": "You should buy milk!",
+          "ru": "Тебе следует купить молоко!"
+        },
+        {
+          "start": 2.85,
+          "end": 4.68,
+          "en": "Kate, we can all hear you.",
+          "ru": "Кейт, мы все тебя слышим."
+        },
+        {
+          "start": 4.68,
+          "end": 6.69,
+          "en": "You can't hear me, right?",
+          "ru": "Вы меня не слышите, да?"
+        },
+        {
+          "start": 6.69,
+          "end": 8.26,
+          "en": "You should mute yourself.",
+          "ru": "Тебе следует выключить микрофон."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u11.d90.ex.l.01",
+          "instruction": {
+            "en": "What did Kate tell Mark to do?",
+            "ru": "Что Кейт сказала Марку сделать?"
+          },
+          "tags": [
+            "listening.detail",
+            "vocab.phone"
+          ],
+          "prompt": "Kate told Mark to ___.",
+          "options": [
+            "wash dishes",
+            "buy milk",
+            "do both"
+          ],
+          "correctIndex": 2
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u11.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u11.d90.ex.g.01",
+          "instruction": {
+            "en": "Modal verb must (obligation).",
+            "ru": "Модальный глагол must (обязанность)."
+          },
+          "tags": [
+            "grammar.must"
+          ],
+          "prompt": "You ___ wash the dishes.",
+          "cue": "(must)",
+          "answers": [
+            "must"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u11.d90.ex.c.01",
+          "instruction": {
+            "en": "Modal verb should (advice).",
+            "ru": "Модальный глагол should (совет)."
+          },
+          "tags": [
+            "grammar.should"
+          ],
+          "prompt": "You ___ buy milk.",
+          "options": [
+            "should",
+            "must",
+            "can't"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u11.d90.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.must"
+          ],
+          "variants": [
+            "You must to wash the dishes.",
+            "You must wash the dishes."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "order-words",
+          "id": "u11.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.should",
+            "functions.phone"
+          ],
+          "tokens": [
+            "You",
+            "should",
+            "mute",
+            "yourself"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u11.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.phone"
+          ],
+          "pairs": [
+            {
+              "left": "call",
+              "right": "звонок"
+            },
+            {
+              "left": "microphone",
+              "right": "микрофон"
+            },
+            {
+              "left": "mute",
+              "right": "выключить звук"
+            },
+            {
+              "left": "dishes",
+              "right": "посуда"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u11.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.must",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты должен помыть посуду.",
+          "answers": [
+            "You must wash the dishes."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you must to wash",
+                "you must washes"
+              ],
+              "explanation": {
+                "en": "Use the base verb after must.",
+                "ru": "После must используй начальную форму глагола."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u11.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.should",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Тебе следует купить молоко.",
+          "answers": [
+            "You should buy milk."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you should to buy",
+                "you should buys"
+              ],
+              "explanation": {
+                "en": "Use the base verb after should.",
+                "ru": "После should используй начальную форму глагола."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u11.d90.ex.g.02",
+          "instruction": {
+            "en": "Question with modal can't.",
+            "ru": "Вопрос с модальным глаголом can't."
+          },
+          "tags": [
+            "grammar.modals-ability"
+          ],
+          "prompt": "You ___ hear me, right?",
+          "cue": "(can't)",
+          "answers": [
+            "can't",
+            "cannot"
+          ]
+        }
+      ]
+    }
+  ]
+}

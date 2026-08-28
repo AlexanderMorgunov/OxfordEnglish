@@ -77,7 +77,7 @@ Plot: ${brief.scenario}
 Return the JSON spec. Use these exact meta fields at the top:
 "id": ${JSON.stringify(brief.id)}, "unitId": ${JSON.stringify(brief.unitId)}, "insertAt": ${brief.insertAt ?? 2}, "tags": ${JSON.stringify(brief.tags)}.`;
 
-const model = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
+const model = process.env.DEEPSEEK_MODEL || 'deepseek-v4-flash';
 const res = await fetch('https://api.deepseek.com/chat/completions', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${envKey('DEEPSEEK_API_KEY')}` },
