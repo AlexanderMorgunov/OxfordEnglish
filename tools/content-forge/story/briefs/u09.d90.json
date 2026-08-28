@@ -1,0 +1,10 @@
+{
+  "id": "u09.d90", "unitId": "u09", "insertAt": 2,
+  "tags": ["grammar.comparatives", "vocab.clothes", "functions.small-talk"],
+  "level": "A2",
+  "episode": "Casual Friday",
+  "grammarName": { "en": "Comparatives (bigger, more comfortable)", "ru": "Сравнительная степень (bigger, more comfortable)" },
+  "grammarRef": "comparatives",
+  "characters": ["Alex", "Den", "Valery", "Kate"],
+  "scenario": "It is Casual Friday. Alex comes to the office in shorts and flip-flops. Den wears jeans. Alex says shorts are more comfortable than jeans, and today is hotter than yesterday. Then Valery arrives in a very loud Hawaiian shirt — even brighter than Alex's shorts. Kate looks at everyone and says their clothes are worse than she expected, but it is Friday, so it is fine. Nobody really cares. Keep it warm and light, and use comparative forms a lot."
+}

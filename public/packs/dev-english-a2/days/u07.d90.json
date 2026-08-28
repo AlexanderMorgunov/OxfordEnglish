@@ -1,0 +1,667 @@
+{
+  "id": "u07.d90",
+  "title": {
+    "en": "The New Coffee Machine",
+    "ru": "Новая кофемашина"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.quantifiers",
+    "grammar.countable-uncountable",
+    "vocab.food",
+    "functions.small-talk"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u07.d90.vocab",
+      "title": {
+        "en": "Coffee time",
+        "ru": "Время кофе"
+      },
+      "words": [
+        {
+          "word": "machine",
+          "ru": "машина; аппарат",
+          "ipa": "/məˈʃiːn/",
+          "example": "The new coffee machine works well.",
+          "exampleRu": "Новая кофемашина работает хорошо.",
+          "audio": {
+            "src": "media/audio/u07.d90.vocab.machine.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "powder",
+          "ru": "порошок",
+          "ipa": "/ˈpaʊdə(r)/",
+          "example": "There is not much coffee powder left.",
+          "exampleRu": "Осталось немного кофейного порошка.",
+          "audio": {
+            "src": "media/audio/u07.d90.vocab.powder.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sugar",
+          "ru": "сахар",
+          "ipa": "/ˈʃʊɡə(r)/",
+          "example": "Den puts a lot of sugar in his cup.",
+          "exampleRu": "Ден кладёт много сахара в свою чашку.",
+          "audio": {
+            "src": "media/audio/u07.d90.vocab.sugar.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cup",
+          "ru": "чашка",
+          "ipa": "/kʌp/",
+          "example": "Valery says there are not enough cups.",
+          "exampleRu": "Валери говорит, что чашек не хватает.",
+          "audio": {
+            "src": "media/audio/u07.d90.vocab.cup.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "milk",
+          "ru": "молоко",
+          "ipa": "/mɪlk/",
+          "example": "Alex spills a little milk on the floor.",
+          "exampleRu": "Алекс проливает немного молока на пол.",
+          "audio": {
+            "src": "media/audio/u07.d90.vocab.milk.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "manual",
+          "ru": "инструкция",
+          "ipa": "/ˈmænjuəl/",
+          "example": "Pol reads the manual.",
+          "exampleRu": "Пол читает инструкцию.",
+          "audio": {
+            "src": "media/audio/u07.d90.vocab.manual.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "health",
+          "ru": "здоровье",
+          "ipa": "/helθ/",
+          "example": "Too much sugar is bad for your health.",
+          "exampleRu": "Слишком много сахара вредно для здоровья.",
+          "audio": {
+            "src": "media/audio/u07.d90.vocab.health.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "enough",
+          "ru": "достаточно",
+          "ipa": "/ɪˈnʌf/",
+          "example": "There are enough cups now.",
+          "exampleRu": "Теперь чашек достаточно.",
+          "audio": {
+            "src": "media/audio/u07.d90.vocab.enough.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "much",
+          "ru": "много (с неисчисляемыми)",
+          "ipa": "/mʌtʃ/",
+          "example": "How much coffee is there?",
+          "exampleRu": "Сколько там кофе?",
+          "audio": {
+            "src": "media/audio/u07.d90.vocab.much.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "many",
+          "ru": "много (с исчисляемыми)",
+          "ipa": "/ˈmeni/",
+          "example": "How many cups do we have?",
+          "exampleRu": "Сколько у нас чашек?",
+          "audio": {
+            "src": "media/audio/u07.d90.vocab.many.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "little",
+          "ru": "немного",
+          "ipa": "/ˈlɪtl/",
+          "example": "Alex spills a little milk.",
+          "exampleRu": "Алекс проливает немного молока.",
+          "audio": {
+            "src": "media/audio/u07.d90.vocab.little.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to spill",
+          "ru": "проливать",
+          "ipa": "/spɪl/",
+          "example": "Don't spill your coffee!",
+          "exampleRu": "Не пролей свой кофе!",
+          "audio": {
+            "src": "media/audio/u07.d90.vocab.tospill.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u07.d90.grammar",
+      "title": {
+        "en": "Quantifiers (much, many, a little, a lot of)",
+        "ru": "Слова количества (much, many, a little, a lot of)"
+      },
+      "ref": "quantifiers",
+      "rule": {
+        "en": "Use much with uncountable nouns in questions and negatives. Use many with plural countable nouns. Use a little with uncountable nouns for a small amount. Use a lot of with both countable and uncountable nouns in affirmative sentences. Enough means as much as needed.",
+        "ru": "Much используется с неисчисляемыми существительными в вопросах и отрицаниях. Many — с исчисляемыми во множественном числе. A little — с неисчисляемыми для небольшого количества. A lot of — с исчисляемыми и неисчисляемыми в утвердительных предложениях. Enough означает «достаточно»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "much + uncountable (questions / negatives)",
+            "ru": "much + неисчисляемое (вопросы / отрицания)"
+          },
+          "formula": "How much + uncountable noun? / not much + uncountable noun",
+          "examples": [
+            {
+              "en": "There isn't much coffee powder left.",
+              "ru": "Осталось немного кофейного порошка."
+            }
+          ],
+          "ref": "quantifiers"
+        },
+        {
+          "label": {
+            "en": "many + plural countable",
+            "ru": "many + исчисляемое во множественном числе"
+          },
+          "formula": "How many + plural noun? / not many + plural noun",
+          "examples": [
+            {
+              "en": "How many cups do we have?",
+              "ru": "Сколько у нас чашек?"
+            }
+          ],
+          "ref": "quantifiers"
+        },
+        {
+          "label": {
+            "en": "a little + uncountable",
+            "ru": "a little + неисчисляемое"
+          },
+          "formula": "a little + uncountable noun",
+          "examples": [
+            {
+              "en": "Alex spills a little milk.",
+              "ru": "Алекс проливает немного молока."
+            }
+          ],
+          "ref": "quantifiers"
+        },
+        {
+          "label": {
+            "en": "a lot of + countable / uncountable",
+            "ru": "a lot of + исчисляемое / неисчисляемое"
+          },
+          "formula": "a lot of + noun (plural countable / uncountable)",
+          "examples": [
+            {
+              "en": "Den puts a lot of sugar in his cup.",
+              "ru": "Ден кладёт много сахара в свою чашку."
+            },
+            {
+              "en": "Kate orders a lot of coffee.",
+              "ru": "Кейт заказывает много кофе."
+            }
+          ],
+          "ref": "quantifiers"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Don't use much in affirmative sentences: \"I have much coffee\" → use \"I have a lot of coffee\".",
+          "ru": "Не используй much в утвердительных предложениях: «I have much coffee» → правильно «I have a lot of coffee»."
+        },
+        {
+          "en": "Much is only for uncountable nouns; many is only for countable nouns. \"Many milk\" and \"much cups\" are wrong.",
+          "ru": "Much — только с неисчисляемыми; many — только с исчисляемыми. «Many milk» и «much cups» — ошибка."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u07.d90.reading",
+      "title": {
+        "en": "The New Coffee Machine",
+        "ru": "Новая кофемашина"
+      },
+      "blocks": [
+        {
+          "id": "u07.d90.reading.b1",
+          "en": "The office gets a new coffee machine. Everyone is very happy. But there is a small problem. There is not much coffee powder left.",
+          "ru": "В офис привезли новую кофемашину. Все очень рады. Но есть маленькая проблема. Осталось немного кофейного порошка.",
+          "audio": {
+            "src": "media/audio/u07.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u07.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "The new coffee machine in the office kitchen",
+              "ru": "Новая кофемашина в офисной кухне"
+            }
+          }
+        },
+        {
+          "id": "u07.d90.reading.b2",
+          "en": "Den puts a lot of sugar in his cup. Alex spills a little milk on the floor. Valery says, \"There are not enough cups for everyone.\" Pol reads the manual and says, \"Don't use much sugar. It is bad for your health.\"",
+          "ru": "Ден кладёт много сахара в свою чашку. Алекс проливает немного молока на пол. Валери говорит: «Не хватает чашек на всех». Пол читает инструкцию и говорит: «Не клади много сахара. Это вредно для здоровья».",
+          "audio": {
+            "src": "media/audio/u07.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u07.d90.reading.b3",
+          "en": "Kate sees the problem. She orders a lot of coffee and new cups online. Now there are enough cups for everyone. Everyone is happy with the new coffee machine.",
+          "ru": "Кейт видит проблему. Она заказывает много кофе и новые чашки онлайн. Теперь чашек хватает на всех. Все довольны новой кофемашиной.",
+          "audio": {
+            "src": "media/audio/u07.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u07.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate orders coffee and cups online",
+              "ru": "Кейт заказывает кофе и чашки онлайн"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "coffee machine",
+          "ru": "кофемашина",
+          "ipa": "/ˈkɒfi məˈʃiːn/"
+        },
+        {
+          "word": "floor",
+          "ru": "пол",
+          "ipa": "/flɔː(r)/"
+        },
+        {
+          "word": "online",
+          "ru": "онлайн; в интернете",
+          "ipa": "/ˌɒnˈlaɪn/"
+        },
+        {
+          "word": "annoyed",
+          "ru": "раздражённый",
+          "ipa": "/əˈnɔɪd/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u07.d90.listening",
+      "title": {
+        "en": "Coffee problems",
+        "ru": "Проблемы с кофе"
+      },
+      "audio": {
+        "src": "media/audio/u07.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.96,
+          "en": "The new coffee machine is here!",
+          "ru": "Новая кофемашина здесь!"
+        },
+        {
+          "start": 1.96,
+          "end": 3.47,
+          "en": "I want a lot of sugar.",
+          "ru": "Я хочу много сахара."
+        },
+        {
+          "start": 3.47,
+          "end": 4.7,
+          "en": "I spilled a little milk.",
+          "ru": "Я пролил немного молока."
+        },
+        {
+          "start": 4.7,
+          "end": 6.08,
+          "en": "There aren't enough cups.",
+          "ru": "Не хватает чашек."
+        },
+        {
+          "start": 6.08,
+          "end": 8.21,
+          "en": "Don't use much sugar, Den.",
+          "ru": "Не клади много сахара, Ден."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u07.d90.ex.l.01",
+          "instruction": {
+            "en": "What did Alex spill?",
+            "ru": "Что пролил Алекс?"
+          },
+          "tags": [
+            "listening.detail",
+            "vocab.food"
+          ],
+          "prompt": "Alex spilled a little ___.",
+          "options": [
+            "milk",
+            "coffee",
+            "water"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u07.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u07.d90.ex.g.01",
+          "instruction": {
+            "en": "Choose much or many for uncountable.",
+            "ru": "Выбери much или many для неисчисляемого."
+          },
+          "tags": [
+            "grammar.quantifiers",
+            "grammar.countable-uncountable"
+          ],
+          "prompt": "There isn't ___ coffee powder left.",
+          "cue": "(much / many)",
+          "answers": [
+            "much"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u07.d90.ex.c.01",
+          "instruction": {
+            "en": "Countable nouns use many.",
+            "ru": "С исчисляемыми используем many."
+          },
+          "tags": [
+            "grammar.quantifiers",
+            "grammar.countable-uncountable"
+          ],
+          "prompt": "How ___ cups do we have?",
+          "options": [
+            "much",
+            "many",
+            "a little"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u07.d90.ex.g.02",
+          "instruction": {
+            "en": "Complete with a food word.",
+            "ru": "Дополни словом о еде."
+          },
+          "tags": [
+            "vocab.food"
+          ],
+          "prompt": "Den puts a lot of ___ in his cup.",
+          "cue": "(sugar / milk / coffee)",
+          "answers": [
+            "sugar"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u07.d90.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.quantifiers",
+            "grammar.countable-uncountable"
+          ],
+          "variants": [
+            "I don't have many coffee.",
+            "I don't have much coffee."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u07.d90.ex.c.02",
+          "instruction": {
+            "en": "A little means a small amount (uncountable).",
+            "ru": "A little означает небольшое количество (неисчисляемое)."
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "prompt": "Alex spilled ___ milk.",
+          "options": [
+            "a little",
+            "many",
+            "much"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u07.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.quantifiers",
+            "grammar.countable-uncountable"
+          ],
+          "tokens": [
+            "There",
+            "are",
+            "not",
+            "enough",
+            "cups"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u07.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.food"
+          ],
+          "pairs": [
+            {
+              "left": "coffee powder",
+              "right": "кофейный порошок"
+            },
+            {
+              "left": "sugar",
+              "right": "сахар"
+            },
+            {
+              "left": "milk",
+              "right": "молоко"
+            },
+            {
+              "left": "cup",
+              "right": "чашка"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u07.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.quantifiers",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У нас недостаточно чашек.",
+          "answers": [
+            "We don't have enough cups.",
+            "We haven't got enough cups.",
+            "There aren't enough cups."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "we have not enough cups",
+                "we don't have enough cup"
+              ],
+              "explanation": {
+                "en": "Use 'don't have / haven't got' and plural 'cups'.",
+                "ru": "Используй 'don't have / haven't got' и множественное число 'cups'."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u07.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.quantifiers",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "В чашке много сахара.",
+          "answers": [
+            "There is a lot of sugar in the cup.",
+            "The cup has a lot of sugar.",
+            "There's a lot of sugar in the cup."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "there is much sugar",
+                "much sugar in the cup"
+              ],
+              "explanation": {
+                "en": "In affirmative sentences, use 'a lot of', not 'much'.",
+                "ru": "В утвердительных предложениях используй 'a lot of', а не 'much'."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u07.d90.ex.g.03",
+          "instruction": {
+            "en": "Complete with a quantifier.",
+            "ru": "Дополни словом количества."
+          },
+          "tags": [
+            "grammar.quantifiers"
+          ],
+          "prompt": "Kate orders a lot ___ coffee.",
+          "cue": "(of / for / to)",
+          "answers": [
+            "of"
+          ]
+        }
+      ]
+    }
+  ]
+}

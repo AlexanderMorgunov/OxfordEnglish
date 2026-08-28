@@ -1,0 +1,10 @@
+{
+  "id": "u07.d90", "unitId": "u07", "insertAt": 2,
+  "tags": ["grammar.quantifiers", "grammar.countable-uncountable", "vocab.food", "functions.small-talk"],
+  "level": "A2",
+  "episode": "The New Coffee Machine",
+  "grammarName": { "en": "Quantifiers (much, many, a little, a lot of)", "ru": "Слова количества (much, many, a little, a lot of)" },
+  "grammarRef": "quantifiers",
+  "characters": ["Den", "Alex", "Pol", "Valery", "Kate"],
+  "scenario": "The office gets a new automatic coffee machine. Everyone is excited, but there are small problems. There isn't much coffee powder left. Den puts too much sugar in his cup. Alex spills a little milk on the floor. Valery says there aren't enough cups for everyone. Pol reads the manual and says you shouldn't use a lot of sugar because it is bad for your health — everyone is a little annoyed by his healthy advice. In the end Kate orders a lot of coffee and new cups online, and everyone is happy. Light and warm. Use much / many / a little / a lot of / enough a lot."
+}

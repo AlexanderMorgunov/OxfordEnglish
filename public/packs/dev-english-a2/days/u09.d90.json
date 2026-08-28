@@ -1,0 +1,632 @@
+{
+  "id": "u09.d90",
+  "title": {
+    "en": "Casual Friday",
+    "ru": "Повседневная пятница"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.comparatives",
+    "vocab.clothes",
+    "functions.small-talk"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u09.d90.vocab",
+      "title": {
+        "en": "Office clothes",
+        "ru": "Офисная одежда"
+      },
+      "words": [
+        {
+          "word": "clothes",
+          "ru": "одежда",
+          "ipa": "/kləʊðz/",
+          "example": "I like casual clothes.",
+          "exampleRu": "Мне нравится повседневная одежда.",
+          "audio": {
+            "src": "media/audio/u09.d90.vocab.clothes.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "shorts",
+          "ru": "шорты",
+          "ipa": "/ʃɔːts/",
+          "example": "Shorts are comfortable.",
+          "exampleRu": "Шорты удобные.",
+          "audio": {
+            "src": "media/audio/u09.d90.vocab.shorts.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "jeans",
+          "ru": "джинсы",
+          "ipa": "/dʒiːnz/",
+          "example": "Den wears jeans.",
+          "exampleRu": "Ден носит джинсы.",
+          "audio": {
+            "src": "media/audio/u09.d90.vocab.jeans.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "shirt",
+          "ru": "рубашка",
+          "ipa": "/ʃɜːt/",
+          "example": "His shirt is bright.",
+          "exampleRu": "Его рубашка яркая.",
+          "audio": {
+            "src": "media/audio/u09.d90.vocab.shirt.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "flip-flops",
+          "ru": "шлёпанцы",
+          "ipa": "/ˈflɪp flɒps/",
+          "example": "Alex wears flip-flops.",
+          "exampleRu": "Алекс носит шлёпанцы.",
+          "audio": {
+            "src": "media/audio/u09.d90.vocab.flipflops.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "comfortable",
+          "ru": "удобный",
+          "ipa": "/ˈkʌmftəbəl/",
+          "example": "Shorts are comfortable.",
+          "exampleRu": "Шорты удобные.",
+          "audio": {
+            "src": "media/audio/u09.d90.vocab.comfortable.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "casual",
+          "ru": "повседневный",
+          "ipa": "/ˈkæʒuəl/",
+          "example": "It is casual Friday.",
+          "exampleRu": "Сегодня повседневная пятница.",
+          "audio": {
+            "src": "media/audio/u09.d90.vocab.casual.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bright",
+          "ru": "яркий",
+          "ipa": "/braɪt/",
+          "example": "The shirt is bright.",
+          "exampleRu": "Рубашка яркая.",
+          "audio": {
+            "src": "media/audio/u09.d90.vocab.bright.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "loud",
+          "ru": "громкий; кричащий (о цвете)",
+          "ipa": "/laʊd/",
+          "example": "His shirt is loud.",
+          "exampleRu": "Его рубашка кричащая.",
+          "audio": {
+            "src": "media/audio/u09.d90.vocab.loud.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hot",
+          "ru": "жаркий",
+          "ipa": "/hɒt/",
+          "example": "Today is hot.",
+          "exampleRu": "Сегодня жарко.",
+          "audio": {
+            "src": "media/audio/u09.d90.vocab.hot.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to wear",
+          "ru": "носить (одежду)",
+          "ipa": "/weə/",
+          "example": "He wears shorts.",
+          "exampleRu": "Он носит шорты.",
+          "audio": {
+            "src": "media/audio/u09.d90.vocab.towear.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to look",
+          "ru": "выглядеть",
+          "ipa": "/lʊk/",
+          "example": "You look casual.",
+          "exampleRu": "Ты выглядишь повседневно.",
+          "audio": {
+            "src": "media/audio/u09.d90.vocab.tolook.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u09.d90.grammar",
+      "title": {
+        "en": "Comparatives (bigger, more comfortable)",
+        "ru": "Сравнительная степень (bigger, more comfortable)"
+      },
+      "ref": "comparatives",
+      "rule": {
+        "en": "Use comparative adjectives to compare two things. Add -er to short adjectives (hot → hotter, big → bigger). Use more with long adjectives (comfortable → more comfortable). Some adjectives are irregular: good → better, bad → worse.",
+        "ru": "Сравнительная степень нужна, чтобы сравнить два предмета. К коротким прилагательным добавляй -er (hot → hotter, big → bigger). С длинными используй more (comfortable → more comfortable). Некоторые неправильные: good → better, bad → worse."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "short adjectives (+er)",
+            "ru": "короткие прилагательные (+er)"
+          },
+          "formula": "adjective + -er + than",
+          "examples": [
+            {
+              "en": "Today is hotter than yesterday.",
+              "ru": "Сегодня жарче, чем вчера."
+            },
+            {
+              "en": "The shirt is brighter than the shorts.",
+              "ru": "Рубашка ярче, чем шорты."
+            }
+          ],
+          "ref": "comparatives"
+        },
+        {
+          "label": {
+            "en": "long adjectives (more + adjective)",
+            "ru": "длинные прилагательные (more + прилагательное)"
+          },
+          "formula": "more + adjective + than",
+          "examples": [
+            {
+              "en": "Shorts are more comfortable than jeans.",
+              "ru": "Шорты удобнее, чем джинсы."
+            }
+          ],
+          "ref": "comparatives"
+        },
+        {
+          "label": {
+            "en": "irregular comparatives",
+            "ru": "неправильные сравнительные формы"
+          },
+          "formula": "irregular form + than",
+          "examples": [
+            {
+              "en": "Your clothes are worse than I thought.",
+              "ru": "Ваша одежда хуже, чем я думала."
+            }
+          ],
+          "ref": "comparatives"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Don't use more + -er together: \"more hotter\" is wrong. Use \"hotter\".",
+          "ru": "Не используй more + -er вместе: «more hotter» неверно. Правильно «hotter»."
+        },
+        {
+          "en": "Use than when you compare two things: \"Shorts are more comfortable than jeans\".",
+          "ru": "Используй than при сравнении двух вещей: «Shorts are more comfortable than jeans»."
+        },
+        {
+          "en": "Watch the irregular forms: good → better, bad → worse.",
+          "ru": "Запомни неправильные формы: good → better, bad → worse."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u09.d90.reading",
+      "title": {
+        "en": "Casual Friday",
+        "ru": "Повседневная пятница"
+      },
+      "blocks": [
+        {
+          "id": "u09.d90.reading.b1",
+          "en": "It is Friday. Alex comes to the office in shorts and flip-flops. The weather is hot. He says, \"Today is hotter than yesterday. Shorts are more comfortable than jeans.\"",
+          "ru": "Пятница. Алекс приходит в офис в шортах и шлёпанцах. Погода жаркая. Он говорит: «Сегодня жарче, чем вчера. Шорты удобнее, чем джинсы».",
+          "audio": {
+            "src": "media/audio/u09.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u09.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Alex arrives in shorts and flip-flops on a hot Friday",
+              "ru": "Алекс приходит в шортах и шлёпанцах в жаркую пятницу"
+            }
+          }
+        },
+        {
+          "id": "u09.d90.reading.b2",
+          "en": "Den wears jeans and a T-shirt. He says, \"Jeans look better than shorts. You are not at the beach.\" Alex laughs. \"But my flip-flops are more fun than your shoes.\" Den shakes his head.",
+          "ru": "Ден носит джинсы и футболку. Он говорит: «Джинсы выглядят лучше, чем шорты. Ты не на пляже». Алекс смеётся. «Но мои шлёпанцы веселее, чем твои туфли». Ден качает головой.",
+          "audio": {
+            "src": "media/audio/u09.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u09.d90.reading.b3",
+          "en": "Valery arrives in a very loud Hawaiian shirt. It is brighter than Alex's shorts. Kate looks at everyone. \"Your clothes are worse than I thought,\" she says. \"But it is Friday, so it is fine.\" Nobody really cares. Alex and Valery smile.",
+          "ru": "Валери приходит в очень кричащей гавайской рубашке. Она ярче, чем шорты Алекса. Кейт смотрит на всех. «Ваша одежда хуже, чем я думала, — говорит она. — Но сегодня пятница, так что всё нормально». Всем, по правде, всё равно. Алекс и Валери улыбаются.",
+          "audio": {
+            "src": "media/audio/u09.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u09.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Valery wears a loud Hawaiian shirt and Kate looks surprised",
+              "ru": "Валери в кричащей гавайской рубашке, Кейт удивлена"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "beach",
+          "ru": "пляж",
+          "ipa": "/biːtʃ/"
+        },
+        {
+          "word": "fun",
+          "ru": "весёлый",
+          "ipa": "/fʌn/"
+        },
+        {
+          "word": "to care",
+          "ru": "переживать, волноваться",
+          "ipa": "/keə/"
+        },
+        {
+          "word": "T-shirt",
+          "ru": "футболка",
+          "ipa": "/ˈtiː ʃɜːt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u09.d90.listening",
+      "title": {
+        "en": "Too casual?",
+        "ru": "Слишком повседневно?"
+      },
+      "audio": {
+        "src": "media/audio/u09.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.72,
+          "en": "Your shirt is very loud.",
+          "ru": "Твоя рубашка очень яркая."
+        },
+        {
+          "start": 1.72,
+          "end": 3.4,
+          "en": "It is brighter than your shorts.",
+          "ru": "Она ярче, чем твои шорты."
+        },
+        {
+          "start": 3.4,
+          "end": 5.01,
+          "en": "But shorts are more comfortable.",
+          "ru": "Но шорты удобнее."
+        },
+        {
+          "start": 5.01,
+          "end": 7.08,
+          "en": "Jeans look better than shorts.",
+          "ru": "Джинсы выглядят лучше, чем шорты."
+        },
+        {
+          "start": 7.08,
+          "end": 9.24,
+          "en": "Your clothes are worse than I thought.",
+          "ru": "Ваша одежда хуже, чем я думала."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u09.d90.ex.l.01",
+          "instruction": {
+            "en": "What does Kate say about the clothes?",
+            "ru": "Что Кейт говорит об одежде?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.comparatives"
+          ],
+          "prompt": "Your clothes are ___ than I expected.",
+          "options": [
+            "worse",
+            "better",
+            "brighter"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u09.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u09.d90.ex.g.01",
+          "instruction": {
+            "en": "Comparative with short adjective.",
+            "ru": "Сравнительная степень короткого прилагательного."
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "prompt": "Today is ___ than yesterday.",
+          "cue": "(hot)",
+          "answers": [
+            "hotter"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u09.d90.ex.c.01",
+          "instruction": {
+            "en": "Comparative with long adjective.",
+            "ru": "Сравнительная степень длинного прилагательного."
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "prompt": "Shorts are ___ comfortable than jeans.",
+          "options": [
+            "more",
+            "er",
+            "most"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u09.d90.ex.g.02",
+          "instruction": {
+            "en": "Irregular comparative.",
+            "ru": "Неправильная сравнительная степень."
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "prompt": "Your clothes are ___ than I expected.",
+          "cue": "(bad)",
+          "answers": [
+            "worse"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u09.d90.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "variants": [
+            "Shorts are more comfortable than jeans.",
+            "Shorts are more comfortabler than jeans."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u09.d90.ex.c.02",
+          "instruction": {
+            "en": "Comparative with short adjective.",
+            "ru": "Сравнительная степень короткого прилагательного."
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "prompt": "The Hawaiian shirt is ___ than Alex's shorts.",
+          "options": [
+            "brighter",
+            "more bright",
+            "bright"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u09.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.comparatives"
+          ],
+          "tokens": [
+            "Jeans",
+            "look",
+            "better",
+            "than",
+            "shorts"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u09.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.clothes"
+          ],
+          "pairs": [
+            {
+              "left": "shorts",
+              "right": "шорты"
+            },
+            {
+              "left": "jeans",
+              "right": "джинсы"
+            },
+            {
+              "left": "shirt",
+              "right": "рубашка"
+            },
+            {
+              "left": "flip-flops",
+              "right": "шлёпанцы"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u09.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.comparatives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Сегодня жарче, чем вчера.",
+          "answers": [
+            "Today is hotter than yesterday."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "today is more hot than yesterday",
+                "more hotter"
+              ],
+              "explanation": {
+                "en": "short adjective: hot → hotter. Don't use more with a short adjective.",
+                "ru": "короткое прилагательное: hot → hotter. Не используй more с коротким прилагательным."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u09.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.comparatives",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Шорты удобнее, чем джинсы.",
+          "answers": [
+            "Shorts are more comfortable than jeans."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "shorts are comfortabler than jeans",
+                "shorts are more comfortabler"
+              ],
+              "explanation": {
+                "en": "long adjective: comfortable → more comfortable.",
+                "ru": "длинное прилагательное: comfortable → more comfortable."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

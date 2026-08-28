@@ -1,0 +1,656 @@
+{
+  "id": "u12.d90",
+  "title": {
+    "en": "The Dead Plant",
+    "ru": "Мёртвое растение"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.present-perfect",
+    "vocab.nature",
+    "functions.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u12.d90.vocab",
+      "title": {
+        "en": "Office plants",
+        "ru": "Офисные растения"
+      },
+      "words": [
+        {
+          "word": "plant",
+          "ru": "растение",
+          "ipa": "/plɑːnt/",
+          "example": "The plant is green.",
+          "exampleRu": "Растение зелёное.",
+          "audio": {
+            "src": "media/audio/u12.d90.vocab.plant.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "water",
+          "ru": "поливать",
+          "ipa": "/ˈwɔːtə/",
+          "example": "Please water the plant.",
+          "exampleRu": "Пожалуйста, полей растение.",
+          "audio": {
+            "src": "media/audio/u12.d90.vocab.water.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "leaf",
+          "ru": "лист",
+          "ipa": "/liːf/",
+          "example": "The leaf is brown.",
+          "exampleRu": "Лист коричневый.",
+          "audio": {
+            "src": "media/audio/u12.d90.vocab.leaf.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "brown",
+          "ru": "коричневый",
+          "ipa": "/braʊn/",
+          "example": "The plant is brown.",
+          "exampleRu": "Растение коричневое.",
+          "audio": {
+            "src": "media/audio/u12.d90.vocab.brown.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "alive",
+          "ru": "живой",
+          "ipa": "/əˈlaɪv/",
+          "example": "Is the plant alive?",
+          "exampleRu": "Растение живое?",
+          "audio": {
+            "src": "media/audio/u12.d90.vocab.alive.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "dead",
+          "ru": "мёртвый",
+          "ipa": "/ded/",
+          "example": "The plant is dead.",
+          "exampleRu": "Растение мёртвое.",
+          "audio": {
+            "src": "media/audio/u12.d90.vocab.dead.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "energy",
+          "ru": "энергия",
+          "ipa": "/ˈenədʒi/",
+          "example": "Good energy helps the team.",
+          "exampleRu": "Хорошая энергия помогает команде.",
+          "audio": {
+            "src": "media/audio/u12.d90.vocab.energy.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "smoothie",
+          "ru": "смузи",
+          "ipa": "/ˈsmuːði/",
+          "example": "Pol loves green smoothies.",
+          "exampleRu": "Пол любит зелёные смузи.",
+          "audio": {
+            "src": "media/audio/u12.d90.vocab.smoothie.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "week",
+          "ru": "неделя",
+          "ipa": "/wiːk/",
+          "example": "One week later the plant is brown.",
+          "exampleRu": "Через неделю растение коричневое.",
+          "audio": {
+            "src": "media/audio/u12.d90.vocab.week.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "busy",
+          "ru": "занятой",
+          "ipa": "/ˈbɪzi/",
+          "example": "Alex is very busy.",
+          "exampleRu": "Алекс очень занят.",
+          "audio": {
+            "src": "media/audio/u12.d90.vocab.busy.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "forget",
+          "ru": "забывать",
+          "ipa": "/fəˈɡet/",
+          "example": "I often forget about plants.",
+          "exampleRu": "Я часто забываю о растениях.",
+          "audio": {
+            "src": "media/audio/u12.d90.vocab.forget.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "soil",
+          "ru": "почва",
+          "ipa": "/sɔɪl/",
+          "example": "The soil is dry.",
+          "exampleRu": "Почва сухая.",
+          "audio": {
+            "src": "media/audio/u12.d90.vocab.soil.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u12.d90.grammar",
+      "title": {
+        "en": "Present perfect",
+        "ru": "Present perfect"
+      },
+      "ref": "present-perfect",
+      "rule": {
+        "en": "Present perfect = have/has + past participle (V3). We use it for actions that happened at some time before now, when the exact time is not important. Questions: Have/Has + subject + ever + V3? \"Have you ever watered a plant?\" Negatives: have/has + never/not + V3.",
+        "ru": "Present perfect = have/has + третья форма глагола (V3). Используем для действий, которые произошли когда-то до настоящего, когда точное время не важно. Вопросы: Have/Has + подлежащее + ever + V3? «Have you ever watered a plant?» Отрицания: have/has + never/not + V3."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "affirmative",
+            "ru": "утверждение"
+          },
+          "formula": "subject + have/has + V3",
+          "examples": [
+            {
+              "en": "Kate has bought a plant.",
+              "ru": "Кейт купила растение."
+            },
+            {
+              "en": "Pol has poured his smoothie into it.",
+              "ru": "Пол вылил в него свой смузи."
+            }
+          ],
+          "ref": "present-perfect"
+        },
+        {
+          "label": {
+            "en": "negative / never",
+            "ru": "отрицание / never"
+          },
+          "formula": "subject + have/has + never/not + V3",
+          "examples": [
+            {
+              "en": "Den has never liked office plants.",
+              "ru": "Ден никогда не любил офисные растения."
+            },
+            {
+              "en": "Alex has not watered it.",
+              "ru": "Алекс его не поливал."
+            }
+          ],
+          "ref": "present-perfect"
+        },
+        {
+          "label": {
+            "en": "question with ever",
+            "ru": "вопрос с ever"
+          },
+          "formula": "Have/Has + subject + ever + V3?",
+          "examples": [
+            {
+              "en": "Have you ever watered this plant?",
+              "ru": "Ты когда-нибудь поливал это растение?"
+            },
+            {
+              "en": "Has Alex forgotten about it?",
+              "ru": "Алекс забыл о нём?"
+            }
+          ],
+          "ref": "present-perfect"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use the past participle, not the past simple: \"Kate has bought\", not \"Kate has buyed\".",
+          "ru": "Используй третью форму, а не прошлую: «Kate has bought», а не «Kate has buyed»."
+        },
+        {
+          "en": "After have/has use V3: \"has forgotten\", not \"has forgot\".",
+          "ru": "После have/has — третья форма: «has forgotten», а не «has forgot»."
+        },
+        {
+          "en": "With ever, word order is fixed: \"Have you ever watered...\", not \"Have you watered ever...\".",
+          "ru": "С ever порядок слов фиксированный: «Have you ever watered...», а не «Have you watered ever...»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u12.d90.reading",
+      "title": {
+        "en": "The Dead Plant",
+        "ru": "Мёртвое растение"
+      },
+      "blocks": [
+        {
+          "id": "u12.d90.reading.b1",
+          "en": "Kate has bought a green plant for the office. She wanted good energy. One week later the plant is brown. Its leaves are dry. Kate asks: 'Who has watered it?'",
+          "ru": "Кейт купила в офис зелёное растение. Она хотела хорошей энергии. Через неделю растение коричневое. Его листья сухие. Кейт спрашивает: «Кто его поливал?»",
+          "audio": {
+            "src": "media/audio/u12.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u12.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate looks at the brown office plant",
+              "ru": "Кейт смотрит на коричневое офисное растение"
+            }
+          }
+        },
+        {
+          "id": "u12.d90.reading.b2",
+          "en": "Den says: 'I have never liked office plants. They die in this office. I have not touched it.' Alex has forgotten about the plant. He has four kids at home. He is very busy.",
+          "ru": "Ден говорит: «Я никогда не любил офисные растения. Они умирают в этом офисе. Я его не трогал». Алекс забыл о растении. У него дома четверо детей. Он очень занят.",
+          "audio": {
+            "src": "media/audio/u12.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u12.d90.reading.b3",
+          "en": "Pol smiles. 'I have poured my green smoothie into the pot. I thought it was good for the leaves.' Kate sighs. 'Pol, plants need water, not smoothies!' Now Pol is the office plant-keeper. He waters it every day.",
+          "ru": "Пол улыбается. «Я вылил свой зелёный смузи в землю. Я думал, это полезно для листьев». Кейт вздыхает. «Пол, растениям нужна вода, а не смузи!» Теперь Пол — офисный хранитель растения. Он поливает его каждый день.",
+          "audio": {
+            "src": "media/audio/u12.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u12.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Pol becomes the office plant-keeper",
+              "ru": "Пол становится офисным хранителем растения"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "dry",
+          "ru": "сухой",
+          "ipa": "/draɪ/"
+        },
+        {
+          "word": "touch",
+          "ru": "трогать",
+          "ipa": "/tʌtʃ/"
+        },
+        {
+          "word": "sigh",
+          "ru": "вздыхать",
+          "ipa": "/saɪ/"
+        },
+        {
+          "word": "plant-keeper",
+          "ru": "хранитель растения",
+          "ipa": "/ˈplɑːnt ˌkiːpə/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u12.d90.listening",
+      "title": {
+        "en": "What happened?",
+        "ru": "Что случилось?"
+      },
+      "audio": {
+        "src": "media/audio/u12.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.73,
+          "en": "Who has watered the plant?",
+          "ru": "Кто полил растение?"
+        },
+        {
+          "start": 1.73,
+          "end": 3.05,
+          "en": "Have you ever watered it?",
+          "ru": "Ты когда-нибудь поливал его?"
+        },
+        {
+          "start": 3.05,
+          "end": 4.64,
+          "en": "I have never liked plants.",
+          "ru": "Я никогда не любил растения."
+        },
+        {
+          "start": 4.64,
+          "end": 6.14,
+          "en": "I have forgotten about it.",
+          "ru": "Я забыл о нём."
+        },
+        {
+          "start": 6.14,
+          "end": 7.83,
+          "en": "I have poured my smoothie.",
+          "ru": "Я вылил свой смузи."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u12.d90.ex.l.01",
+          "instruction": {
+            "en": "What did Pol pour into the plant?",
+            "ru": "Что Пол вылил в растение?"
+          },
+          "tags": [
+            "listening.detail",
+            "vocab.nature"
+          ],
+          "prompt": "Pol has poured his ___ into the plant.",
+          "options": [
+            "smoothie",
+            "water",
+            "coffee"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u12.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u12.d90.ex.g.01",
+          "instruction": {
+            "en": "Present perfect (has).",
+            "ru": "Present perfect (has)."
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "prompt": "Kate ___ bought a green plant.",
+          "cue": "(have)",
+          "answers": [
+            "has"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u12.d90.ex.c.01",
+          "instruction": {
+            "en": "Past participle: like → liked.",
+            "ru": "Причастие: like → liked."
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "prompt": "Den has never ___ office plants.",
+          "options": [
+            "likes",
+            "liked",
+            "like"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d90.ex.g.02",
+          "instruction": {
+            "en": "Present perfect (has).",
+            "ru": "Present perfect (has)."
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "prompt": "Alex ___ forgotten about the plant.",
+          "cue": "(have)",
+          "answers": [
+            "has"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u12.d90.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "variants": [
+            "Kate has buyed a plant.",
+            "Kate has bought a plant."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d90.ex.g.03",
+          "instruction": {
+            "en": "Present perfect (has + V3).",
+            "ru": "Present perfect (has + V3)."
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "prompt": "Den ___ never touched the plant.",
+          "cue": "(have)",
+          "answers": [
+            "has"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u12.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "tokens": [
+            "Pol",
+            "has",
+            "poured",
+            "his",
+            "smoothie"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u12.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.nature"
+          ],
+          "pairs": [
+            {
+              "left": "plant",
+              "right": "растение"
+            },
+            {
+              "left": "leaf",
+              "right": "лист"
+            },
+            {
+              "left": "brown",
+              "right": "коричневый"
+            },
+            {
+              "left": "alive",
+              "right": "живой"
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u12.d90.ex.g.04",
+          "instruction": {
+            "en": "Question with ever (Have).",
+            "ru": "Вопрос с ever (Have)."
+          },
+          "tags": [
+            "grammar.present-perfect"
+          ],
+          "prompt": "___ you ever watered a plant?",
+          "cue": "(have)",
+          "answers": [
+            "Have"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u12.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-perfect",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я никогда не поливал это растение.",
+          "answers": [
+            "I have never watered this plant.",
+            "I never watered this plant."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i never water this plant",
+                "i have never water this plant"
+              ],
+              "explanation": {
+                "en": "use past participle: watered.",
+                "ru": "используй третью форму: watered."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u12.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-perfect",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты когда-нибудь поливал растение?",
+          "answers": [
+            "Have you ever watered a plant?",
+            "Have you ever watered the plant?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you have ever watered",
+                "have you ever water"
+              ],
+              "explanation": {
+                "en": "question word order: Have you ever + V3?",
+                "ru": "порядок слов в вопросе: Have you ever + V3?"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
