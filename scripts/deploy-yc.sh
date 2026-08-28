@@ -56,16 +56,16 @@ put "manifest.webmanifest" "application/manifest+json"
   --content-type "application/xml; charset=utf-8" --cache-control "public,max-age=3600" --no-progress || true
 
 # Static hosting maps a missing key to the error doc but keeps the 404 status (soft-404), which
-# de-indexes shared deep links. Copy the shell to each public top-level route key so it answers 200.
-# Keep this list in sync with src/router.tsx / public/sitemap.xml. Dynamic routes (/grammar/:id) still
-# soft-404 — they're intentionally out of the sitemap.
-if [ -f "$DIST/index.html" ]; then
-  echo "3b/3 SPA route aliases (200, not soft-404)…"
-  for route in grammar library support credits feedback; do
-    "${S3[@]}" cp "$DIST/index.html" "s3://$YC_BUCKET/$route" \
-      --content-type "text/html; charset=utf-8" --cache-control "$NOCACHE" --no-progress
-  done
-fi
+# de-indexes shared deep links. Upload the per-route HTML that scripts/build-seo.mjs generated (each
+# with its OWN canonical/title, and noindex on app-state pages) so every route answers 200 and is not
+# a duplicate of the homepage. Keep this list in sync with build-seo.mjs ROUTES / src/router.tsx.
+echo "3b/3 SPA route aliases (200, per-route canonical/title, not soft-404)…"
+for route in grammar library support credits feedback review progress vocabulary settings; do
+  src="$DIST/$route.html"
+  [ -f "$src" ] || src="$DIST/index.html" # fall back to the shell if build-seo didn't run
+  "${S3[@]}" cp "$src" "s3://$YC_BUCKET/$route" \
+    --content-type "text/html; charset=utf-8" --cache-control "$NOCACHE" --no-progress
+done
 
 echo "Done. NOTE: CDN must honor origin Cache-Control (or force-revalidate sw.js/index.html/manifest),"
 echo "otherwise the edge serves a stale sw.js and PWA updates stall. No --delete (orphans pruned separately)."
