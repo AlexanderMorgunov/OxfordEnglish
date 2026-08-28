@@ -50,12 +50,32 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 3_000_000,
         runtimeCaching: [
           {
+            // Pack JSON (course.json, days/*.json, manifest.json) CHANGES when content is added or
+            // edited, so it must revalidate — CacheFirst would pin the first course.json forever and
+            // new days would never appear. NetworkFirst serves fresh when online (new content shows
+            // up on the next load) and falls back to cache offline after a short timeout.
+            urlPattern: /\/packs\/.*\.json(\?.*)?$/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'content-json',
+              networkTimeoutSeconds: 4,
+              expiration: {
+                maxEntries: 500,
+                maxAgeSeconds: 60 * 60 * 24 * 90,
+                purgeOnQuotaError: true,
+              },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
+            // Pack media (audio, images) is immutable — new assets get new filenames — so CacheFirst
+            // keeps it offline-first without ever needing revalidation.
             urlPattern: /\/packs\//,
             handler: 'CacheFirst',
             options: {
               cacheName: 'content-packs',
               expiration: {
-                maxEntries: 1000,
+                maxEntries: 3000,
                 maxAgeSeconds: 60 * 60 * 24 * 90,
                 purgeOnQuotaError: true,
               },

@@ -87,7 +87,10 @@ npm run validate:packs  # content-pack validator (wired in M2)
   text). `--color-faint` ≈ 2.8:1 — disabled/placeholder only, never body text.
 - **SW precaches the app shell only.** Never precache mp3/packs — content is
   runtime-cached (a ~50 MB precache once broke prod loading). vite-plugin-pwa,
-  `registerType: 'prompt'`.
+  `registerType: 'prompt'`. Runtime caching is split (vite.config): pack **JSON**
+  (`course.json`, `days/*.json`) is `NetworkFirst` so new/edited days actually
+  appear — it was `CacheFirst` once and pinned a stale `course.json`, hiding all
+  new content; pack **media** (audio/images) stays `CacheFirst` (immutable names).
 - **Run `npm test` before pushing.** CI (`ci.yml`) and the deploy both gate on
   vitest, not just build+lint. Tests run with UI language pinned to `en`
   (`src/test/setup.ts`), so assert against English labels.
