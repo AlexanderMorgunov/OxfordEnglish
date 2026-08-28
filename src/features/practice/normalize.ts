@@ -1,4 +1,4 @@
-const SMART_QUOTES = /[‘’‛′]/g; // ' ' ‛ ′  → '
+const SMART_QUOTES = /[‘’‛′`´]/g; // ' ' ‛ ′ and the common typos ` ´  → '
 const SMART_DQUOTES = /[“”″]/g; //     " " ″  → "
 const TRAILING_PUNCT = /[.!?]+$/;
 

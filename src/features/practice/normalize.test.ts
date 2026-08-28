@@ -14,6 +14,12 @@ test('folds smart apostrophes and quotes', () => {
   expect(normalizeAnswer('“ci”')).toBe(normalizeAnswer('"ci"'));
 });
 
+test('folds a backtick or acute typed instead of an apostrophe', () => {
+  expect(normalizeAnswer('don`t')).toBe(normalizeAnswer("don't"));
+  expect(normalizeAnswer('don´t')).toBe(normalizeAnswer("don't"));
+  expect(checkAnswer('We don`t have enough cups', ["We don't have enough cups."])).toBe(true);
+});
+
 test('drops trailing sentence punctuation', () => {
   expect(normalizeAnswer('Yesterday I fixed the bug.')).toBe(
     'yesterday i fixed the bug'
