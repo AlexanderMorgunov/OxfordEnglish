@@ -91,6 +91,10 @@ npm run validate:packs  # content-pack validator (wired in M2)
   (`course.json`, `days/*.json`) is `NetworkFirst` so new/edited days actually
   appear — it was `CacheFirst` once and pinned a stale `course.json`, hiding all
   new content; pack **media** (audio/images) stays `CacheFirst` (immutable names).
+  **The same rule applies at the CDN edge:** pack JSON is deployed `no-cache` (deploy-yc.sh
+  `syncfull`) — a 7-day `max-age` on `course.json` once let Yandex CDN serve a stale index
+  that omitted new days on `.ru`/PWA while localhost was fine. New days not showing on prod
+  only? Purge the CDN cache (`/*`) and check `curl <course.json>` *without* a cache-buster.
 - **Run `npm test` before pushing.** CI (`ci.yml`) and the deploy both gate on
   vitest, not just build+lint. Tests run with UI language pinned to `en`
   (`src/test/setup.ts`), so assert against English labels.

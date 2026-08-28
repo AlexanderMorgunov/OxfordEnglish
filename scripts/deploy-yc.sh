@@ -19,6 +19,13 @@ sync() { # <glob> <content-type> <cache-control>
   "${S3[@]}" sync "$DIST" "s3://$YC_BUCKET" --size-only \
     --exclude "*" --include "$1" --content-type "$2" --cache-control "$3" --no-progress
 }
+# Mutable content (pack JSON): compare by size AND mtime (NOT --size-only — a same-length edit must
+# still upload), and never let the CDN pin it (a 7-day max-age once hid all new days behind a stale
+# course.json). no-cache = CDN revalidates via ETag (cheap 304s); the SW's NetworkFirst does the rest.
+syncfull() { # <glob> <content-type> <cache-control>
+  "${S3[@]}" sync "$DIST" "s3://$YC_BUCKET" \
+    --exclude "*" --include "$1" --content-type "$2" --cache-control "$3" --no-progress
+}
 put() { # <relative-path> <content-type>  — always overwrite (same name, changed content)
   [ -f "$DIST/$1" ] && "${S3[@]}" cp "$DIST/$1" "s3://$YC_BUCKET/$1" \
     --content-type "$2" --cache-control "$NOCACHE" --no-progress || true
@@ -38,7 +45,7 @@ sync "icons/*.png"    "image/png"                      "$IMMUTABLE"
 
 echo "2/3 content packs (on-demand cached)…"
 sync "packs/*.mp3"  "audio/mpeg"       "$PACK"
-sync "packs/*.json" "application/json" "$PACK"
+syncfull "packs/*.json" "application/json" "$NOCACHE"
 sync "packs/*.png"  "image/png"        "$PACK"
 sync "packs/*.jpg"  "image/jpeg"       "$PACK"
 sync "packs/*.svg"  "image/svg+xml"    "$PACK"
