@@ -1,0 +1,494 @@
+{
+  "id": "u17.d90",
+  "unitId": "u17",
+  "insertAt": 2,
+  "tags": [
+    "grammar.present-perfect-continuous",
+    "vocab.technology",
+    "functions.small-talk"
+  ],
+  "title": {
+    "en": "The Wi-Fi Outage",
+    "ru": "Отключение Wi-Fi"
+  },
+  "vocab": {
+    "title": {
+      "en": "Office and technology",
+      "ru": "Офис и технологии"
+    },
+    "words": [
+      {
+        "word": "connection",
+        "ru": "соединение",
+        "ipa": "/kəˈnekʃən/",
+        "example": "The connection is very slow.",
+        "exampleRu": "Соединение очень медленное."
+      },
+      {
+        "word": "network",
+        "ru": "сеть",
+        "ipa": "/ˈnetwɜːk/",
+        "example": "The office network is down.",
+        "exampleRu": "Офисная сеть не работает."
+      },
+      {
+        "word": "screen",
+        "ru": "экран",
+        "ipa": "/skriːn/",
+        "example": "He has been looking at the screen.",
+        "exampleRu": "Он смотрит на экран."
+      },
+      {
+        "word": "laptop",
+        "ru": "ноутбук",
+        "ipa": "/ˈlæptɒp/",
+        "example": "She opened her laptop.",
+        "exampleRu": "Она открыла свой ноутбук."
+      },
+      {
+        "word": "to refresh",
+        "ru": "обновлять",
+        "ipa": "/rɪˈfreʃ/",
+        "example": "Den has been refreshing the page.",
+        "exampleRu": "Ден обновляет страницу."
+      },
+      {
+        "word": "to stare",
+        "ru": "пялиться",
+        "ipa": "/steə/",
+        "example": "Alex has been staring at his phone.",
+        "exampleRu": "Алекс пялится в телефон."
+      },
+      {
+        "word": "to collect",
+        "ru": "собирать, коллекционировать",
+        "ipa": "/kəˈlekt/",
+        "example": "Valery has been collecting stamps.",
+        "exampleRu": "Валерий коллекционирует марки."
+      },
+      {
+        "word": "stamp",
+        "ru": "марка",
+        "ipa": "/stæmp/",
+        "example": "This stamp is very old.",
+        "exampleRu": "Эта марка очень старая."
+      },
+      {
+        "word": "lately",
+        "ru": "недавно, в последнее время",
+        "ipa": "/ˈleɪtli/",
+        "example": "He has been learning to cook lately.",
+        "exampleRu": "В последнее время он учится готовить."
+      },
+      {
+        "word": "silence",
+        "ru": "тишина",
+        "ipa": "/ˈsaɪləns/",
+        "example": "They sat in silence.",
+        "exampleRu": "Они сидели в тишине."
+      },
+      {
+        "word": "to connect",
+        "ru": "подключаться",
+        "ipa": "/kəˈnekt/",
+        "example": "I can't connect to the Wi-Fi.",
+        "exampleRu": "Я не могу подключиться к Wi-Fi."
+      },
+      {
+        "word": "signal",
+        "ru": "сигнал",
+        "ipa": "/ˈsɪɡnəl/",
+        "example": "The signal is weak.",
+        "exampleRu": "Сигнал слабый."
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "Present perfect continuous",
+      "ru": "Present perfect continuous"
+    },
+    "ref": "present-perfect-continuous",
+    "rule": {
+      "en": "Use the present perfect continuous for actions that started in the past and are still happening now. Form: have/has + been + verb-ing. Use 'for' with a time period and 'since' with a starting point.",
+      "ru": "Present perfect continuous используется для действий, которые начались в прошлом и всё ещё продолжаются. Форма: have/has + been + глагол с -ing. Используйте 'for' с периодом времени и 'since' с точкой начала."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "Affirmative",
+          "ru": "Утверждение"
+        },
+        "formula": "subject + have/has been + verb-ing",
+        "examples": [
+          {
+            "en": "We have been sitting for twenty minutes.",
+            "ru": "Мы сидим уже двадцать минут."
+          }
+        ],
+        "ref": "present-perfect-continuous"
+      },
+      {
+        "label": {
+          "en": "Negative",
+          "ru": "Отрицание"
+        },
+        "formula": "subject + haven't/hasn't been + verb-ing",
+        "examples": [
+          {
+            "en": "They haven't been talking.",
+            "ru": "Они не разговаривали."
+          }
+        ],
+        "ref": "present-perfect-continuous"
+      },
+      {
+        "label": {
+          "en": "Question",
+          "ru": "Вопрос"
+        },
+        "formula": "have/has + subject + been + verb-ing?",
+        "examples": [
+          {
+            "en": "How long have you been learning to cook?",
+            "ru": "Как долго ты учишься готовить?"
+          }
+        ],
+        "ref": "present-perfect-continuous"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Don't forget 'been': 'I have working' is wrong; you need 'I have been working'.",
+        "ru": "Не забывайте 'been': 'I have working' — неправильно; нужно 'I have been working'."
+      },
+      {
+        "en": "Use 'for' with a duration ('for twenty minutes') and 'since' with a starting point ('since 1995').",
+        "ru": "Используйте 'for' с длительностью ('for twenty minutes') и 'since' с точкой начала ('since 1995')."
+      },
+      {
+        "en": "Use 'has' with he/she/it, not 'have': 'He has been...', not 'He have been...'.",
+        "ru": "Используйте 'has' с he/she/it, а не 'have': 'He has been...', не 'He have been...'."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "The Wi-Fi Outage",
+      "ru": "Отключение Wi-Fi"
+    },
+    "blocks": [
+      {
+        "en": "The office Wi-Fi is down. Nobody can work. They have been sitting in silence for twenty minutes. Den has been refreshing the same page. Alex has been staring at his phone. Valery has been drinking tea. Pol has been watching everyone.",
+        "ru": "Офисный Wi-Fi не работает. Никто не может работать. Они молча сидят уже двадцать минут. Ден обновляет одну и ту же страницу. Алекс пялится в телефон. Валерий пьёт чай. Пол наблюдает за всеми.",
+        "image": "b1",
+        "alt": {
+          "en": "Four colleagues sit silently at their desks during a Wi-Fi outage",
+          "ru": "Четверо коллег молча сидят за столами во время отключения Wi-Fi"
+        }
+      },
+      {
+        "en": "\"We haven't talked to each other without screens for a long time,\" Pol says. Alex smiles. \"You're right.\" They start talking. Alex asks Valery about his hobby. \"I have been collecting stamps for thirty years,\" Valery says. \"And I have been learning to cook lately,\" Den adds. Everyone laughs.",
+        "ru": "«Мы уже давно не разговаривали друг с другом без экранов», — говорит Пол. Алекс улыбается. «Ты прав». Они начинают разговаривать. Алекс спрашивает Валерия о его хобби. «Я собираю марки уже тридцать лет», — говорит Валерий. «А я недавно учусь готовить», — добавляет Ден. Все смеются."
+      },
+      {
+        "en": "Suddenly the Wi-Fi comes back. Alex's phone starts to ring. Den sees his page. But nobody rushes to their laptops. \"Let's talk a little more,\" Valery says. They keep talking. They have been enjoying the conversation for twenty more minutes.",
+        "ru": "Внезапно Wi-Fi возвращается. Телефон Алекса начинает звонить. Ден видит свою страницу. Но никто не торопится к ноутбукам. «Давайте ещё немного поговорим», — говорит Валерий. Они продолжают разговаривать. Они наслаждаются разговором ещё двадцать минут.",
+        "image": "b3",
+        "alt": {
+          "en": "Colleagues laugh and talk together while laptops light up with restored Wi-Fi",
+          "ru": "Коллеги смеются и разговаривают, пока ноутбуки загораются от восстановленного Wi-Fi"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "Wi-Fi",
+        "ru": "вай-фай",
+        "ipa": "/ˈwaɪfaɪ/"
+      },
+      {
+        "word": "conversation",
+        "ru": "разговор",
+        "ipa": "/ˌkɒnvəˈseɪʃən/"
+      },
+      {
+        "word": "to rush",
+        "ru": "торопиться",
+        "ipa": "/rʌʃ/"
+      },
+      {
+        "word": "suddenly",
+        "ru": "внезапно",
+        "ipa": "/ˈsʌdənli/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "What have they been doing?",
+      "ru": "Что они делали?"
+    },
+    "dialogue": [
+      [
+        "What have you been doing?",
+        "Что ты делал?"
+      ],
+      [
+        "I've been refreshing this page.",
+        "Я обновлял эту страницу."
+      ],
+      [
+        "I've been staring at my phone.",
+        "Я пялился в телефон."
+      ],
+      [
+        "We haven't talked for ages.",
+        "Мы давно не разговаривали."
+      ],
+      [
+        "Let's talk now!",
+        "Давай поговорим!"
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u17.d90.ex.l.01",
+        "instruction": {
+          "en": "What has Den been doing?",
+          "ru": "Что делал Ден?"
+        },
+        "tags": [
+          "listening.detail",
+          "grammar.present-perfect-continuous"
+        ],
+        "prompt": "I've been ___ this page.",
+        "options": [
+          "refreshing",
+          "staring",
+          "drinking"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u17.d90.ex.g.01",
+        "instruction": {
+          "en": "Complete with 'have' or 'has'.",
+          "ru": "Дополни 'have' или 'has'."
+        },
+        "tags": [
+          "grammar.present-perfect-continuous"
+        ],
+        "prompt": "They ___ been sitting for twenty minutes.",
+        "answers": [
+          "have"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u17.d90.ex.c.01",
+        "instruction": {
+          "en": "Choose the correct form.",
+          "ru": "Выбери правильную форму."
+        },
+        "tags": [
+          "grammar.present-perfect-continuous"
+        ],
+        "prompt": "Alex ___ at his phone for twenty minutes.",
+        "options": [
+          "has been looking",
+          "have been looking",
+          "has been look"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "u17.d90.ex.g.02",
+        "instruction": {
+          "en": "Form the -ing verb.",
+          "ru": "Образуй глагол с -ing."
+        },
+        "tags": [
+          "grammar.present-perfect-continuous"
+        ],
+        "prompt": "Valery has been ___ stamps for thirty years.",
+        "cue": "(collect)",
+        "answers": [
+          "collecting"
+        ]
+      },
+      {
+        "type": "order-words",
+        "id": "u17.d90.ex.o.01",
+        "instruction": {
+          "en": "Make a sentence.",
+          "ru": "Собери предложение."
+        },
+        "tags": [
+          "grammar.present-perfect-continuous"
+        ],
+        "tokens": [
+          "Den",
+          "has been",
+          "learning",
+          "to cook",
+          "lately"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "type": "match",
+        "id": "u17.d90.ex.m.01",
+        "instruction": {
+          "en": "Match the word and the translation.",
+          "ru": "Сопоставь слово и перевод."
+        },
+        "tags": [
+          "vocab.technology"
+        ],
+        "pairs": [
+          {
+            "left": "connection",
+            "right": "соединение"
+          },
+          {
+            "left": "screen",
+            "right": "экран"
+          },
+          {
+            "left": "stamp",
+            "right": "марка"
+          },
+          {
+            "left": "lately",
+            "right": "недавно"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u17.d90.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.present-perfect-continuous",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Он недавно учится готовить.",
+        "answers": [
+          "He has been learning to cook lately.",
+          "Lately he has been learning to cook."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "He have been learning",
+              "He has been learn"
+            ],
+            "explanation": {
+              "en": "Use 'has' for he/she/it and add -ing.",
+              "ru": "Используй 'has' для he/she/it и добавляй -ing."
+            }
+          }
+        ]
+      },
+      {
+        "type": "spot-error",
+        "id": "u17.d90.ex.s.01",
+        "instruction": {
+          "en": "Find the correct sentence.",
+          "ru": "Найди правильное предложение."
+        },
+        "tags": [
+          "grammar.present-perfect-continuous"
+        ],
+        "variants": [
+          "I have been waiting for twenty minutes.",
+          "I have been waited for twenty minutes.",
+          "I has been waiting for twenty minutes."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "choice",
+        "id": "u17.d90.ex.c.02",
+        "instruction": {
+          "en": "Choose the correct time phrase.",
+          "ru": "Выбери правильное обстоятельство времени."
+        },
+        "tags": [
+          "grammar.present-perfect-continuous"
+        ],
+        "prompt": "How long has Valery been collecting stamps?",
+        "options": [
+          "for thirty years",
+          "since thirty years",
+          "for 30 years ago"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "translate",
+        "id": "u17.d90.ex.t.02",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.present-perfect-continuous",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Мы разговариваем уже двадцать минут.",
+        "answers": [
+          "We have been talking for twenty minutes.",
+          "We've been talking for twenty minutes."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "We have been talk",
+              "We have talking"
+            ],
+            "explanation": {
+              "en": "Use 'been + verb-ing'.",
+              "ru": "Используй 'been + глагол с -ing'."
+            }
+          }
+        ]
+      },
+      {
+        "type": "gap-fill",
+        "id": "u17.d90.ex.g.03",
+        "instruction": {
+          "en": "Use the present perfect continuous.",
+          "ru": "Используй present perfect continuous."
+        },
+        "tags": [
+          "grammar.present-perfect-continuous"
+        ],
+        "prompt": "I have been ___ to cook.",
+        "cue": "(learn)",
+        "answers": [
+          "learning"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "u10.d90", "unitId": "u10", "insertAt": 2,
+  "tags": ["grammar.going-to", "grammar.will", "vocab.celebrations", "functions.small-talk"],
+  "level": "A2",
+  "episode": "Kate's Birthday",
+  "grammarName": { "en": "Future: going to and will", "ru": "Будущее: going to и will" },
+  "grammarRef": "going-to",
+  "characters": ["Alex", "Den", "Pol", "Kate"],
+  "scenario": "It is Kate's birthday on Friday. The team decides to plan a surprise. Alex says: 'I am going to buy a big cake.' Den says: 'I am going to decorate the office with balloons.' Pol says: 'I will bring my speakers for the music.' They plan everything for 2 PM. But Kate comes back from lunch early, at 1:30, and sees the balloons and the cake. 'Oh no! She will see everything too early!' says Alex. But Kate is very happy: 'You are amazing! Thank you! Let's celebrate now!' Warm and light. Use 'going to' for plans and 'will' for offers and quick decisions."
+}

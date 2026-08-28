@@ -1,0 +1,650 @@
+{
+  "id": "u08.d90",
+  "title": {
+    "en": "The Parking Spot",
+    "ru": "Парковочное место"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.prepositions-place",
+    "vocab.transport",
+    "functions.small-talk"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u08.d90.vocab",
+      "title": {
+        "en": "Office parking",
+        "ru": "Офисная парковка"
+      },
+      "words": [
+        {
+          "word": "parking",
+          "ru": "парковка",
+          "ipa": "/ˈpɑːkɪŋ/",
+          "example": "The parking is next to the office.",
+          "exampleRu": "Парковка рядом с офисом.",
+          "audio": {
+            "src": "media/audio/u08.d90.vocab.parking.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "entrance",
+          "ru": "вход",
+          "ipa": "/ˈentrəns/",
+          "example": "The entrance is behind the building.",
+          "exampleRu": "Вход за зданием.",
+          "audio": {
+            "src": "media/audio/u08.d90.vocab.entrance.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "spot",
+          "ru": "место",
+          "ipa": "/spɒt/",
+          "example": "This is my parking spot.",
+          "exampleRu": "Это моё парковочное место.",
+          "audio": {
+            "src": "media/audio/u08.d90.vocab.spot.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "car",
+          "ru": "машина",
+          "ipa": "/kɑː/",
+          "example": "My car is in front of the door.",
+          "exampleRu": "Моя машина перед дверью.",
+          "audio": {
+            "src": "media/audio/u08.d90.vocab.car.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "schedule",
+          "ru": "расписание",
+          "ipa": "/ˈʃedjuːl/",
+          "example": "We need a parking schedule.",
+          "exampleRu": "Нам нужно расписание парковки.",
+          "audio": {
+            "src": "media/audio/u08.d90.vocab.schedule.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "rule",
+          "ru": "правило",
+          "ipa": "/ruːl/",
+          "example": "The rule is very simple.",
+          "exampleRu": "Правило очень простое.",
+          "audio": {
+            "src": "media/audio/u08.d90.vocab.rule.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "building",
+          "ru": "здание",
+          "ipa": "/ˈbɪldɪŋ/",
+          "example": "The office is a small building.",
+          "exampleRu": "Офис — небольшое здание.",
+          "audio": {
+            "src": "media/audio/u08.d90.vocab.building.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "door",
+          "ru": "дверь",
+          "ipa": "/dɔːr/",
+          "example": "The door is opposite the car park.",
+          "exampleRu": "Дверь напротив парковки.",
+          "audio": {
+            "src": "media/audio/u08.d90.vocab.door.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "behind",
+          "ru": "за",
+          "ipa": "/bɪˈhaɪnd/",
+          "example": "The car is behind the building.",
+          "exampleRu": "Машина за зданием.",
+          "audio": {
+            "src": "media/audio/u08.d90.vocab.behind.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "opposite",
+          "ru": "напротив",
+          "ipa": "/ˈɒpəzɪt/",
+          "example": "The shop is opposite the park.",
+          "exampleRu": "Магазин напротив парка.",
+          "audio": {
+            "src": "media/audio/u08.d90.vocab.opposite.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "angry",
+          "ru": "злой",
+          "ipa": "/ˈæŋɡri/",
+          "example": "Den is angry today.",
+          "exampleRu": "Ден сегодня злой.",
+          "audio": {
+            "src": "media/audio/u08.d90.vocab.angry.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "arrive",
+          "ru": "прибывать",
+          "ipa": "/əˈraɪv/",
+          "example": "Valery arrives first.",
+          "exampleRu": "Валерий приезжает первым.",
+          "audio": {
+            "src": "media/audio/u08.d90.vocab.arrive.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u08.d90.grammar",
+      "title": {
+        "en": "Prepositions of place",
+        "ru": "Предлоги места"
+      },
+      "ref": "prepositions-place",
+      "rule": {
+        "en": "Prepositions of place show where people and things are. Use 'next to' for a position beside something. Use 'opposite' for a position across from something. Use 'behind' for a position at the back. Use 'in front of' for a position at the front.",
+        "ru": "Предлоги места показывают, где находятся люди и предметы. Используйте «next to» для положения рядом с чем-то. Используйте «opposite» для положения напротив. Используйте «behind» для положения позади. Используйте «in front of» для положения перед."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "next to (beside)",
+            "ru": "next to (рядом с)"
+          },
+          "formula": "subject + be + next to + noun",
+          "examples": [
+            {
+              "en": "The best spot is next to the entrance.",
+              "ru": "Лучшее место рядом со входом."
+            }
+          ],
+          "ref": "prepositions-place"
+        },
+        {
+          "label": {
+            "en": "opposite (across from)",
+            "ru": "opposite (напротив)"
+          },
+          "formula": "subject + be + opposite + noun",
+          "examples": [
+            {
+              "en": "The office is opposite the car park.",
+              "ru": "Офис напротив парковки."
+            }
+          ],
+          "ref": "prepositions-place"
+        },
+        {
+          "label": {
+            "en": "behind / in front of",
+            "ru": "behind / in front of (за / перед)"
+          },
+          "formula": "subject + be + behind / in front of + noun",
+          "examples": [
+            {
+              "en": "My car is behind yours.",
+              "ru": "Моя машина за твоей."
+            },
+            {
+              "en": "Your car is in front of mine.",
+              "ru": "Твоя машина перед моей."
+            }
+          ],
+          "ref": "prepositions-place"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Say 'next to', not 'next of'.",
+          "ru": "Говорите «next to», а не «next of»."
+        },
+        {
+          "en": "'In front of' is different from 'opposite'. 'In front of' means directly before; 'opposite' means across.",
+          "ru": "«In front of» отличается от «opposite». «In front of» означает непосредственно перед; «opposite» — напротив."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u08.d90.reading",
+      "title": {
+        "en": "The Parking Spot",
+        "ru": "Парковочное место"
+      },
+      "blocks": [
+        {
+          "id": "u08.d90.reading.b1",
+          "en": "The office car park is small. The best spot is next to the entrance. Den parks there every day. Today Valery arrives first. He parks his car next to the entrance. Den arrives later. He parks his car behind Valery's car. Den is angry.",
+          "ru": "Офисная парковка маленькая. Лучшее место — рядом со входом. Ден паркуется там каждый день. Сегодня Валерий приезжает первым. Он паркует свою машину рядом со входом. Ден приезжает позже. Он паркует свою машину за машиной Валерия. Ден злится.",
+          "audio": {
+            "src": "media/audio/u08.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u08.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Den sees Valery's car next to the entrance",
+              "ru": "Ден видит машину Валерия рядом со входом"
+            }
+          }
+        },
+        {
+          "id": "u08.d90.reading.b2",
+          "en": "Den looks at Valery and says, 'That spot is mine! Your car is in front of my car!' Valery drinks his coffee and says, 'The rules do not say it is your spot. My car is next to the door.' Kate arrives. She parks behind the building. She walks in and says, 'Boys, stop fighting.'",
+          "ru": "Ден смотрит на Валерия и говорит: «Это моё место! Твоя машина перед моей!» Валерий пьёт кофе и говорит: «Правила не говорят, что это твоё место. Моя машина рядом с дверью». Приезжает Кейт. Она паркуется за зданием. Она заходит и говорит: «Мальчики, прекратите спорить».",
+          "audio": {
+            "src": "media/audio/u08.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u08.d90.reading.b3",
+          "en": "Kate says, 'I have a plan. A schedule. Den parks next to the entrance on Mondays. Valery parks there on Tuesdays. The office is opposite the car park, so it is not a problem.' Den smiles. Valery says, 'OK. I am retiring on Friday anyway.'",
+          "ru": "Кейт говорит: «У меня есть план. Расписание. Ден паркуется рядом со входом по понедельникам. Валерий паркуется там по вторникам. Офис напротив парковки, так что это не проблема». Ден улыбается. Валерий говорит: «Ладно. Я всё равно ухожу на пенсию в пятницу».",
+          "audio": {
+            "src": "media/audio/u08.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u08.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate shows the parking schedule",
+              "ru": "Кейт показывает расписание парковки"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "car park",
+          "ru": "парковка",
+          "ipa": "/ˈkɑː pɑːk/"
+        },
+        {
+          "word": "schedule",
+          "ru": "расписание",
+          "ipa": "/ˈʃedjuːl/"
+        },
+        {
+          "word": "rule",
+          "ru": "правило",
+          "ipa": "/ruːl/"
+        },
+        {
+          "word": "angry",
+          "ru": "злой",
+          "ipa": "/ˈæŋɡri/"
+        },
+        {
+          "word": "entrance",
+          "ru": "вход",
+          "ipa": "/ˈentrəns/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u08.d90.listening",
+      "title": {
+        "en": "Where is the car?",
+        "ru": "Где машина?"
+      },
+      "audio": {
+        "src": "media/audio/u08.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.36,
+          "en": "That is my spot!",
+          "ru": "Это моё место!"
+        },
+        {
+          "start": 1.36,
+          "end": 3.02,
+          "en": "I park next to the door.",
+          "ru": "Я паркуюсь рядом с дверью."
+        },
+        {
+          "start": 3.02,
+          "end": 4.47,
+          "en": "Your car is in front!",
+          "ru": "Твоя машина впереди!"
+        },
+        {
+          "start": 4.47,
+          "end": 6.2,
+          "en": "I park behind the building.",
+          "ru": "Я паркуюсь за зданием."
+        },
+        {
+          "start": 6.2,
+          "end": 7.65,
+          "en": "Let's make a schedule.",
+          "ru": "Давайте составим расписание."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u08.d90.ex.l.01",
+          "instruction": {
+            "en": "Where does Kate park?",
+            "ru": "Где паркуется Кейт?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.prepositions-place"
+          ],
+          "prompt": "Kate parks ___.",
+          "options": [
+            "behind the building",
+            "next to the door",
+            "in front of the entrance"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u08.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u08.d90.ex.g.01",
+          "instruction": {
+            "en": "Preposition of place: next to.",
+            "ru": "Предлог места: next to."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "prompt": "The best spot is ___ the entrance.",
+          "answers": [
+            "next to"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u08.d90.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct preposition.",
+            "ru": "Выбери правильный предлог."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "prompt": "The office is ___ the car park.",
+          "options": [
+            "opposite",
+            "under",
+            "on"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u08.d90.ex.g.02",
+          "instruction": {
+            "en": "Preposition of place.",
+            "ru": "Предлог места."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "prompt": "Valery parks ___ the entrance.",
+          "answers": [
+            "next to"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u08.d90.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "variants": [
+            "Your car is in front of my car.",
+            "Your car is in front from my car."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u08.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "tokens": [
+            "My",
+            "car",
+            "is",
+            "next",
+            "to",
+            "the",
+            "door"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u08.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the preposition with the translation.",
+            "ru": "Сопоставь предлог с переводом."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "pairs": [
+            {
+              "left": "next to",
+              "right": "рядом с"
+            },
+            {
+              "left": "opposite",
+              "right": "напротив"
+            },
+            {
+              "left": "behind",
+              "right": "за"
+            },
+            {
+              "left": "in front of",
+              "right": "перед"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u08.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.prepositions-place",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Машина за зданием.",
+          "answers": [
+            "The car is behind the building."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "car behind building",
+                "the car is behind of the building"
+              ],
+              "explanation": {
+                "en": "Use 'behind' without 'of'.",
+                "ru": "Используйте «behind» без «of»."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u08.d90.ex.g.03",
+          "instruction": {
+            "en": "Preposition of place: behind.",
+            "ru": "Предлог места: behind."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "prompt": "Kate parks ___ the building.",
+          "answers": [
+            "behind"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u08.d90.ex.c.02",
+          "instruction": {
+            "en": "Choose the correct preposition.",
+            "ru": "Выбери правильный предлог."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "prompt": "Your car is ___ my car.",
+          "options": [
+            "in front of",
+            "in front from",
+            "at front of"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u08.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.prepositions-place",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Офис напротив парковки.",
+          "answers": [
+            "The office is opposite the car park."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "office opposite parking",
+                "the office is opposite the parking"
+              ],
+              "explanation": {
+                "en": "Use 'the car park' for 'парковка'.",
+                "ru": "Используйте «the car park» для «парковка»."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,652 @@
+{
+  "id": "u10.d90",
+  "title": {
+    "en": "Kate's Birthday",
+    "ru": "День рождения Кейт"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.going-to",
+    "grammar.will",
+    "vocab.celebrations",
+    "functions.small-talk"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u10.d90.vocab",
+      "title": {
+        "en": "The party plan",
+        "ru": "План вечеринки"
+      },
+      "words": [
+        {
+          "word": "birthday",
+          "ru": "день рождения",
+          "ipa": "/ˈbɜːθdeɪ/",
+          "example": "It is Kate's birthday on Friday.",
+          "exampleRu": "В пятницу день рождения Кейт.",
+          "audio": {
+            "src": "media/audio/u10.d90.vocab.birthday.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "surprise",
+          "ru": "сюрприз",
+          "ipa": "/səˈpraɪz/",
+          "example": "We want to make a surprise.",
+          "exampleRu": "Мы хотим устроить сюрприз.",
+          "audio": {
+            "src": "media/audio/u10.d90.vocab.surprise.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cake",
+          "ru": "торт",
+          "ipa": "/keɪk/",
+          "example": "I am going to buy a big cake.",
+          "exampleRu": "Я собираюсь купить большой торт.",
+          "audio": {
+            "src": "media/audio/u10.d90.vocab.cake.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "balloon",
+          "ru": "воздушный шарик",
+          "ipa": "/bəˈluːn/",
+          "example": "Den is going to decorate the office with balloons.",
+          "exampleRu": "Ден собирается украсить офис воздушными шариками.",
+          "audio": {
+            "src": "media/audio/u10.d90.vocab.balloon.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to decorate",
+          "ru": "украшать",
+          "ipa": "/ˈdekəreɪt/",
+          "example": "They are going to decorate the room.",
+          "exampleRu": "Они собираются украсить комнату.",
+          "audio": {
+            "src": "media/audio/u10.d90.vocab.todecorate.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "present",
+          "ru": "подарок",
+          "ipa": "/ˈpreznt/",
+          "example": "I will buy a present for Kate.",
+          "exampleRu": "Я куплю подарок для Кейт.",
+          "audio": {
+            "src": "media/audio/u10.d90.vocab.present.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "party",
+          "ru": "вечеринка",
+          "ipa": "/ˈpɑːti/",
+          "example": "The party starts at 2 PM.",
+          "exampleRu": "Вечеринка начинается в 2 часа.",
+          "audio": {
+            "src": "media/audio/u10.d90.vocab.party.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "music",
+          "ru": "музыка",
+          "ipa": "/ˈmjuːzɪk/",
+          "example": "Pol will bring his speakers for the music.",
+          "exampleRu": "Пол принесёт свои колонки для музыки.",
+          "audio": {
+            "src": "media/audio/u10.d90.vocab.music.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "speaker",
+          "ru": "колонка",
+          "ipa": "/ˈspiːkə/",
+          "example": "My speakers are very loud.",
+          "exampleRu": "Мои колонки очень громкие.",
+          "audio": {
+            "src": "media/audio/u10.d90.vocab.speaker.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "early",
+          "ru": "рано",
+          "ipa": "/ˈɜːli/",
+          "example": "She came back early.",
+          "exampleRu": "Она вернулась рано.",
+          "audio": {
+            "src": "media/audio/u10.d90.vocab.early.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to plan",
+          "ru": "планировать",
+          "ipa": "/plæn/",
+          "example": "They plan everything for 2 PM.",
+          "exampleRu": "Они планируют всё на 2 часа.",
+          "audio": {
+            "src": "media/audio/u10.d90.vocab.toplan.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to celebrate",
+          "ru": "праздновать",
+          "ipa": "/ˈselɪbreɪt/",
+          "example": "Let's celebrate now!",
+          "exampleRu": "Давай праздновать сейчас!",
+          "audio": {
+            "src": "media/audio/u10.d90.vocab.tocelebrate.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u10.d90.grammar",
+      "title": {
+        "en": "Future: going to and will",
+        "ru": "Будущее: going to и will"
+      },
+      "ref": "going-to-will",
+      "rule": {
+        "en": "Use 'going to' for plans you made before you speak. Use 'will' for offers, promises, and quick decisions at the moment of speaking. Both forms take the base verb.",
+        "ru": "Используйте 'going to' для планов, которые вы построили до того, как говорите. Используйте 'will' для предложений, обещаний и быстрых решений в момент речи. Обе формы требуют начальную форму глагола."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Plans with going to",
+            "ru": "Планы с going to"
+          },
+          "formula": "am/is/are going to + verb",
+          "examples": [
+            {
+              "en": "Alex is going to buy a big cake.",
+              "ru": "Алекс собирается купить большой торт."
+            }
+          ],
+          "ref": "going-to-will"
+        },
+        {
+          "label": {
+            "en": "Offers and quick decisions with will",
+            "ru": "Предложения и быстрые решения с will"
+          },
+          "formula": "will + verb",
+          "examples": [
+            {
+              "en": "Pol will bring his speakers.",
+              "ru": "Пол принесёт свои колонки."
+            }
+          ],
+          "ref": "going-to-will"
+        },
+        {
+          "label": {
+            "en": "Questions",
+            "ru": "Вопросы"
+          },
+          "formula": "Are you going to + verb? / Will you + verb?",
+          "examples": [
+            {
+              "en": "What are you going to do?",
+              "ru": "Что ты собираешься делать?"
+            },
+            {
+              "en": "Will you help me?",
+              "ru": "Ты поможешь мне?"
+            }
+          ],
+          "ref": "going-to-will"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use 'will' for plans you made before speaking. Say 'I am going to buy a cake', not 'I will buy a cake' when it is already planned.",
+          "ru": "Не используйте 'will' для планов, которые вы сделали заранее. Говорите 'I am going to buy a cake', а не 'I will buy a cake', когда это уже запланировано."
+        },
+        {
+          "en": "After 'will' and 'going to', use the base verb: 'She will see', not 'She will sees'.",
+          "ru": "После 'will' и 'going to' используйте начальную форму глагола: 'She will see', а не 'She will sees'."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u10.d90.reading",
+      "title": {
+        "en": "Kate's Birthday",
+        "ru": "День рождения Кейт"
+      },
+      "blocks": [
+        {
+          "id": "u10.d90.reading.b1",
+          "en": "It is Kate's birthday on Friday. The team wants to make a surprise. In the morning, Alex, Den and Pol talk quietly. 'I am going to buy a big cake,' says Alex. 'I am going to decorate the office with balloons,' says Den. 'I will bring my speakers for the music,' says Pol.",
+          "ru": "В пятницу день рождения Кейт. Команда хочет устроить сюрприз. Утром Алекс, Ден и Пол тихо разговаривают. «Я собираюсь купить большой торт», — говорит Алекс. «Я собираюсь украсить офис воздушными шариками», — говорит Ден. «Я принесу колонки для музыки», — говорит Пол.",
+          "audio": {
+            "src": "media/audio/u10.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u10.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Alex, Den and Pol plan a surprise for Kate's birthday",
+              "ru": "Алекс, Ден и Пол планируют сюрприз на день рождения Кейт"
+            }
+          }
+        },
+        {
+          "id": "u10.d90.reading.b2",
+          "en": "They plan everything for two o'clock. Alex buys a beautiful cake with pink flowers. Den puts twenty balloons on the wall. Pol connects his speakers near the window. 'Kate will be very happy!' says Pol. 'Yes, she will love it!' says Alex.",
+          "ru": "Они планируют всё на два часа. Алекс покупает красивый торт с розовыми цветами. Ден вешает двадцать шариков на стену. Пол подключает колонки у окна. «Кейт будет очень счастлива!» — говорит Пол. «Да, ей понравится!» — говорит Алекс.",
+          "audio": {
+            "src": "media/audio/u10.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u10.d90.reading.b3",
+          "en": "But Kate comes back from lunch early. It is one thirty. She sees the balloons and the cake. 'Oh no! She will see everything too early!' says Alex. But Kate smiles. 'You are amazing! Thank you! Let's celebrate now!' She is very happy. They all laugh and start the party.",
+          "ru": "Но Кейт возвращается с обеда рано. Сейчас половина второго. Она видит шарики и торт. «О нет! Она увидит всё слишком рано!» — говорит Алекс. Но Кейт улыбается. «Вы удивительные! Спасибо! Давайте праздновать сейчас!» Она очень счастлива. Все смеются и начинают вечеринку.",
+          "audio": {
+            "src": "media/audio/u10.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u10.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate sees the surprise and is happy",
+              "ru": "Кейт видит сюрприз и рада"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "quietly",
+          "ru": "тихо",
+          "ipa": "/ˈkwaɪətli/"
+        },
+        {
+          "word": "wall",
+          "ru": "стена",
+          "ipa": "/wɔːl/"
+        },
+        {
+          "word": "connect",
+          "ru": "подключать",
+          "ipa": "/kəˈnekt/"
+        },
+        {
+          "word": "flower",
+          "ru": "цветок",
+          "ipa": "/ˈflaʊə/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u10.d90.listening",
+      "title": {
+        "en": "The surprise plan",
+        "ru": "План сюрприза"
+      },
+      "audio": {
+        "src": "media/audio/u10.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 2.01,
+          "en": "I am going to buy a big cake.",
+          "ru": "Я собираюсь купить большой торт."
+        },
+        {
+          "start": 2.01,
+          "end": 4.13,
+          "en": "I am going to decorate the office.",
+          "ru": "Я собираюсь украсить офис."
+        },
+        {
+          "start": 4.13,
+          "end": 5.86,
+          "en": "I will bring my speakers.",
+          "ru": "Я принесу свои колонки."
+        },
+        {
+          "start": 5.86,
+          "end": 8.27,
+          "en": "Oh no! She will see everything!",
+          "ru": "О нет! Она увидит всё!"
+        },
+        {
+          "start": 8.27,
+          "end": 10.8,
+          "en": "You are amazing! Let's celebrate!",
+          "ru": "Вы удивительные! Давайте праздновать!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u10.d90.ex.l.01",
+          "instruction": {
+            "en": "What is Den going to do?",
+            "ru": "Что собирается делать Ден?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.going-to"
+          ],
+          "prompt": "Den is going to ___.",
+          "options": [
+            "decorate the office",
+            "buy a cake",
+            "bring speakers"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u10.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u10.d90.ex.g.01",
+          "instruction": {
+            "en": "Complete with 'going to' (am/is/are).",
+            "ru": "Дополните 'going to' (am/is/are)."
+          },
+          "tags": [
+            "grammar.going-to"
+          ],
+          "prompt": "They ___ going to make a surprise.",
+          "cue": "(be)",
+          "answers": [
+            "are"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u10.d90.ex.c.01",
+          "instruction": {
+            "en": "Choose the right form for an offer.",
+            "ru": "Выберите правильную форму для предложения."
+          },
+          "tags": [
+            "grammar.will",
+            "functions.small-talk"
+          ],
+          "prompt": "Alex says: 'I need help.' Den answers: 'I ___ help you.'",
+          "options": [
+            "will",
+            "am going to",
+            "do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u10.d90.ex.s.01",
+          "instruction": {
+            "en": "Find the correct sentence.",
+            "ru": "Найдите правильное предложение."
+          },
+          "tags": [
+            "grammar.going-to"
+          ],
+          "variants": [
+            "She is going to sees everything.",
+            "She is going to see everything."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "order-words",
+          "id": "u10.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Соберите предложение."
+          },
+          "tags": [
+            "grammar.going-to"
+          ],
+          "tokens": [
+            "I",
+            "am",
+            "going",
+            "to",
+            "buy",
+            "a",
+            "cake"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u10.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставьте слово и перевод."
+          },
+          "tags": [
+            "vocab.celebrations"
+          ],
+          "pairs": [
+            {
+              "left": "cake",
+              "right": "торт"
+            },
+            {
+              "left": "balloon",
+              "right": "воздушный шарик"
+            },
+            {
+              "left": "surprise",
+              "right": "сюрприз"
+            },
+            {
+              "left": "speakers",
+              "right": "колонки"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u10.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English. (plan)",
+            "ru": "Переведите на английский. (план)"
+          },
+          "tags": [
+            "grammar.going-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я собираюсь украсить офис.",
+          "answers": [
+            "I am going to decorate the office.",
+            "I'm going to decorate the office."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "I am go to decorate the office",
+                "I will decorate the office"
+              ],
+              "explanation": {
+                "en": "For plans use 'am going to'.",
+                "ru": "Для планов используйте 'am going to'."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u10.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English. (offer)",
+            "ru": "Переведите на английский. (предложение)"
+          },
+          "tags": [
+            "grammar.will",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я принесу колонки.",
+          "answers": [
+            "I will bring the speakers.",
+            "I'll bring the speakers."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "I am going to bring speakers",
+                "I bring speakers"
+              ],
+              "explanation": {
+                "en": "For an offer at the moment, use 'will'.",
+                "ru": "Для предложения в данный момент используйте 'will'."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d90.ex.g.02",
+          "instruction": {
+            "en": "Complete with 'going to' (am/is/are).",
+            "ru": "Дополните 'going to' (am/is/are)."
+          },
+          "tags": [
+            "grammar.going-to"
+          ],
+          "prompt": "Kate ___ going to be very happy.",
+          "cue": "(be)",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u10.d90.ex.c.02",
+          "instruction": {
+            "en": "Choose the correct question.",
+            "ru": "Выберите правильный вопрос."
+          },
+          "tags": [
+            "grammar.going-to"
+          ],
+          "prompt": "___ you going to come to the party?",
+          "options": [
+            "Are",
+            "Will",
+            "Do"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u10.d90.ex.g.03",
+          "instruction": {
+            "en": "Complete with the base verb after 'will'.",
+            "ru": "Дополните начальной формой после 'will'."
+          },
+          "tags": [
+            "grammar.will"
+          ],
+          "prompt": "She will ___ everything too early.",
+          "cue": "(see)",
+          "answers": [
+            "see"
+          ]
+        }
+      ]
+    }
+  ]
+}
