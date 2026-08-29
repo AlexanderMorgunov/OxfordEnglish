@@ -1,0 +1,505 @@
+{
+  "id": "u29.d90",
+  "unitId": "u29",
+  "insertAt": 2,
+  "tags": [
+    "grammar.reported-speech",
+    "grammar.reporting-verbs",
+    "functions.storytelling",
+    "vocab.celebrations"
+  ],
+  "title": {
+    "en": "Karaoke Party",
+    "ru": "Вечер караоке"
+  },
+  "vocab": {
+    "title": {
+      "en": "Karaoke night",
+      "ru": "Вечер караоке"
+    },
+    "words": [
+      {
+        "word": "karaoke",
+        "ru": "караоке",
+        "ipa": "/ˌkærɪˈəʊki/",
+        "example": "We sang karaoke at the party.",
+        "exampleRu": "Мы пели караоке на вечеринке."
+      },
+      {
+        "word": "sing",
+        "ru": "петь",
+        "ipa": "/sɪŋ/",
+        "example": "Den can sing very well.",
+        "exampleRu": "Ден умеет очень хорошо петь."
+      },
+      {
+        "word": "voice",
+        "ru": "голос",
+        "ipa": "/vɔɪs/",
+        "example": "She has a beautiful voice.",
+        "exampleRu": "У неё красивый голос."
+      },
+      {
+        "word": "song",
+        "ru": "песня",
+        "ipa": "/sɒŋ/",
+        "example": "He sang three songs.",
+        "exampleRu": "Он спел три песни."
+      },
+      {
+        "word": "fun",
+        "ru": "веселье",
+        "ipa": "/fʌn/",
+        "example": "The party was full of fun.",
+        "exampleRu": "Вечеринка была полна веселья."
+      },
+      {
+        "word": "health",
+        "ru": "здоровье",
+        "ipa": "/helθ/",
+        "example": "Singing is good for your health.",
+        "exampleRu": "Пение полезно для здоровья."
+      },
+      {
+        "word": "retire",
+        "ru": "выходить на пенсию",
+        "ipa": "/rɪˈtaɪə/",
+        "example": "Valery said he would retire on Friday.",
+        "exampleRu": "Валерий сказал, что уйдёт на пенсию в пятницу."
+      },
+      {
+        "word": "star",
+        "ru": "звезда",
+        "ipa": "/stɑː/",
+        "example": "Den was the star of the night.",
+        "exampleRu": "Ден был звездой вечера."
+      },
+      {
+        "word": "family",
+        "ru": "семья",
+        "ipa": "/ˈfæməli/",
+        "example": "Kate said we were one big family.",
+        "exampleRu": "Кейт сказала, что мы одна большая семья."
+      },
+      {
+        "word": "join",
+        "ru": "присоединяться",
+        "ipa": "/dʒɔɪn/",
+        "example": "David joined the call from the USA.",
+        "exampleRu": "Дэвид присоединился к звонку из США."
+      },
+      {
+        "word": "beautiful",
+        "ru": "красивый",
+        "ipa": "/ˈbjuːtɪfəl/",
+        "example": "Alex said Den had a beautiful voice.",
+        "exampleRu": "Алекс сказал, что у Дена красивый голос."
+      },
+      {
+        "word": "proud",
+        "ru": "гордый",
+        "ipa": "/praʊd/",
+        "example": "Kate was proud of Den.",
+        "exampleRu": "Кейт гордилась Деном."
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "Reported speech",
+      "ru": "Косвенная речь"
+    },
+    "ref": "reported-speech",
+    "rule": {
+      "en": "Use reported speech to say what another person said. Usually you move the verb back: 'will' becomes 'would', 'can' becomes 'could', present becomes past. You often add 'that'.",
+      "ru": "Косвенная речь передаёт слова другого человека. Обычно глагол сдвигается в прошлое: «will» становится «would», «can» — «could», настоящее становится прошедшим. Часто добавляют «that»."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "say + that",
+          "ru": "say + that"
+        },
+        "formula": "subject + said (that) + subject + past verb",
+        "examples": [
+          {
+            "en": "She said that she was tired.",
+            "ru": "Она сказала, что устала."
+          }
+        ],
+        "ref": "reported-speech"
+      },
+      {
+        "label": {
+          "en": "tell + person",
+          "ru": "tell + человек"
+        },
+        "formula": "subject + told + person (that) + subject + past verb",
+        "examples": [
+          {
+            "en": "Kate told the team that the party would be fun.",
+            "ru": "Кейт сказала команде, что вечеринка будет весёлой."
+          }
+        ],
+        "ref": "reported-speech"
+      },
+      {
+        "label": {
+          "en": "modal backshift",
+          "ru": "сдвиг модальных глаголов"
+        },
+        "formula": "will -> would, can -> could, present -> past",
+        "examples": [
+          {
+            "en": "Den said he couldn't sing.",
+            "ru": "Ден сказал, что не умеет петь."
+          }
+        ],
+        "ref": "reported-speech"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Use 'said' without a person: 'She said we were a family.' NOT 'She said us...'",
+        "ru": "Используй «said» без человека: «She said we were a family». НЕ «She said us...»."
+      },
+      {
+        "en": "Move the verb back: 'will' -> 'would', 'can' -> 'could'. Say 'would', not 'will'.",
+        "ru": "Сдвигай глагол в прошлое: «will» -> «would», «can» -> «could». Говори «would», а не «will»."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "Karaoke Party",
+      "ru": "Вечер караоке"
+    },
+    "blocks": [
+      {
+        "en": "Kate told the team about karaoke night. She said the party would be fun. She called them one big family. Den said he couldn't sing and wouldn't come. Alex said Den had a beautiful voice. Valery said he was retiring on Friday. Pol said singing was good for your health. Peter said he didn't know the words. David said he loved karaoke.",
+        "ru": "Кейт рассказала команде о вечере караоке. Она сказала, что вечеринка будет весёлой. Она назвала их одной большой семьёй. Ден сказал, что не умеет петь и не придёт. Алекс сказал, что у Дена красивый голос. Валерий сказал, что уходит на пенсию в пятницу. Пол сказал, что пение полезно для здоровья. Питер сказал, что не знает слов. Дэвид сказал, что любит караоке.",
+        "image": "b1",
+        "alt": {
+          "en": "Kate announces the karaoke night to the team",
+          "ru": "Кейт объявляет команде о вечере караоке"
+        }
+      },
+      {
+        "en": "That night, the team arrived. Then Den came too. He said he changed his mind. Den sang three songs. Everybody was amazed. Alex said Den was the star of the night. Den said it was easy.",
+        "ru": "Той ночью команда пришла. Потом Ден тоже пришёл. Он сказал, что передумал. Ден спел три песни. Все были поражены. Алекс сказал, что Ден — звезда вечера. Ден сказал, что это легко."
+      },
+      {
+        "en": "The next morning, everybody talked about Den. Kate said she was proud. Peter said Den's voice was beautiful. Pol said singing really helped. Valery said he forgot he was retiring. David said he watched the video again. Den said he would never sing again. Everybody laughed.",
+        "ru": "На следующее утро все говорили о Дене. Кейт сказала, что гордится. Питер сказал, что голос Дена красивый. Пол сказал, что пение действительно помогло. Валерий сказал, что забыл, что уходит на пенсию. Дэвид сказал, что пересмотрел видео. Ден сказал, что больше никогда не будет петь. Все засмеялись.",
+        "image": "b3",
+        "alt": {
+          "en": "The team talks about Den the next morning",
+          "ru": "Команда говорит о Дене на следующее утро"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "karaoke",
+        "ru": "караоке",
+        "ipa": "/ˌkærɪˈəʊki/"
+      },
+      {
+        "word": "voice",
+        "ru": "голос",
+        "ipa": "/vɔɪs/"
+      },
+      {
+        "word": "proud",
+        "ru": "гордый",
+        "ipa": "/praʊd/"
+      },
+      {
+        "word": "amazed",
+        "ru": "поражённый",
+        "ipa": "/əˈmeɪzd/"
+      },
+      {
+        "word": "star",
+        "ru": "звезда",
+        "ipa": "/stɑː/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "Next morning",
+      "ru": "На следующее утро"
+    },
+    "dialogue": [
+      [
+        "Kate said it would be fun.",
+        "Кейт сказала, что будет весело."
+      ],
+      [
+        "Den said he couldn't sing.",
+        "Ден сказал, что не умеет петь."
+      ],
+      [
+        "Alex said Den had a great voice.",
+        "Алекс сказал, что у Дена отличный голос."
+      ],
+      [
+        "Valery said he was retiring.",
+        "Валерий сказал, что уходит на пенсию."
+      ],
+      [
+        "Den was the star.",
+        "Ден был звездой."
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u29.d90.ex.l.01",
+        "instruction": {
+          "en": "What did Alex say about Den?",
+          "ru": "Что Алекс сказал о Дене?"
+        },
+        "tags": [
+          "listening.detail",
+          "grammar.reported-speech"
+        ],
+        "prompt": "Alex said Den ___ a great voice.",
+        "options": [
+          "had",
+          "has",
+          "have"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u29.d90.ex.g.01",
+        "instruction": {
+          "en": "Reported speech: will -> would.",
+          "ru": "Косвенная речь: will -> would."
+        },
+        "tags": [
+          "grammar.reported-speech"
+        ],
+        "prompt": "Den said he ___ come to the party.",
+        "cue": "(will not)",
+        "answers": [
+          "wouldn't",
+          "would not"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u29.d90.ex.c.01",
+        "instruction": {
+          "en": "Choose the correct reported form.",
+          "ru": "Выбери правильную форму косвенной речи."
+        },
+        "tags": [
+          "grammar.reported-speech"
+        ],
+        "prompt": "Alex said Den ___ a beautiful voice.",
+        "options": [
+          "had",
+          "has",
+          "have"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "spot-error",
+        "id": "u29.d90.ex.s.01",
+        "instruction": {
+          "en": "Which sentence is correct?",
+          "ru": "Какое предложение верное?"
+        },
+        "tags": [
+          "grammar.reported-speech",
+          "grammar.reporting-verbs"
+        ],
+        "variants": [
+          "Valery said he is retiring on Friday.",
+          "Valery said he was retiring on Friday."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "type": "order-words",
+        "id": "u29.d90.ex.o.01",
+        "instruction": {
+          "en": "Make a reported sentence.",
+          "ru": "Собери предложение в косвенной речи."
+        },
+        "tags": [
+          "grammar.reported-speech"
+        ],
+        "tokens": [
+          "Kate",
+          "said",
+          "the",
+          "party",
+          "would",
+          "be",
+          "fun"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "type": "gap-fill",
+        "id": "u29.d90.ex.g.02",
+        "instruction": {
+          "en": "Reported speech: present -> past.",
+          "ru": "Косвенная речь: настоящее -> прошедшее."
+        },
+        "tags": [
+          "grammar.reported-speech"
+        ],
+        "prompt": "Valery said he ___ retiring on Friday.",
+        "cue": "(is)",
+        "answers": [
+          "was"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u29.d90.ex.c.02",
+        "instruction": {
+          "en": "Choose the correct reported form.",
+          "ru": "Выбери правильную форму косвенной речи."
+        },
+        "tags": [
+          "grammar.reported-speech"
+        ],
+        "prompt": "David said he ___ karaoke.",
+        "options": [
+          "loved",
+          "loves",
+          "love"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "match",
+        "id": "u29.d90.ex.m.01",
+        "instruction": {
+          "en": "Match the word and the translation.",
+          "ru": "Сопоставь слово и перевод."
+        },
+        "tags": [
+          "vocab.celebrations"
+        ],
+        "pairs": [
+          {
+            "left": "karaoke",
+            "right": "караоке"
+          },
+          {
+            "left": "voice",
+            "right": "голос"
+          },
+          {
+            "left": "song",
+            "right": "песня"
+          },
+          {
+            "left": "star",
+            "right": "звезда"
+          },
+          {
+            "left": "health",
+            "right": "здоровье"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u29.d90.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.reported-speech",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Он сказал, что не придёт.",
+        "answers": [
+          "He said he wouldn't come.",
+          "He said he would not come."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "he said he will not come",
+              "he said he won't come"
+            ],
+            "explanation": {
+              "en": "In reported speech, 'will' becomes 'would'.",
+              "ru": "В косвенной речи «will» становится «would»."
+            }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u29.d90.ex.t.02",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.reported-speech",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Она сказала, что они одна большая семья.",
+        "answers": [
+          "She said they were one big family."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "she said they are one big family"
+            ],
+            "explanation": {
+              "en": "Use past tense 'were' in reported speech.",
+              "ru": "Используй прошедшее время «were» в косвенной речи."
+            }
+          }
+        ]
+      },
+      {
+        "type": "gap-fill",
+        "id": "u29.d90.ex.g.03",
+        "instruction": {
+          "en": "Reported speech: negative.",
+          "ru": "Косвенная речь: отрицание."
+        },
+        "tags": [
+          "grammar.reported-speech"
+        ],
+        "prompt": "Peter said he ___ know the words.",
+        "cue": "(do not)",
+        "answers": [
+          "didn't",
+          "did not"
+        ]
+      }
+    ]
+  }
+}
