@@ -1,0 +1,460 @@
+{
+  "id": "u05.d90",
+  "unitId": "u05",
+  "insertAt": 2,
+  "tags": [
+    "grammar.past-vs-continuous",
+    "grammar.past-continuous",
+    "functions.storytelling",
+    "vocab.stories"
+  ],
+  "title": {
+    "en": "Stuck in the Lift",
+    "ru": "Застряли в лифте"
+  },
+  "vocab": {
+    "title": {
+      "en": "In the lift",
+      "ru": "В лифте"
+    },
+    "words": [
+      {
+        "word": "lift",
+        "ru": "лифт",
+        "ipa": "/lɪft/",
+        "example": "We went up in the lift.",
+        "exampleRu": "Мы поднялись на лифте."
+      },
+      {
+        "word": "stuck",
+        "ru": "застрявший",
+        "ipa": "/stʌk/",
+        "example": "The lift was stuck.",
+        "exampleRu": "Лифт застрял."
+      },
+      {
+        "word": "floor",
+        "ru": "этаж",
+        "ipa": "/flɔːr/",
+        "example": "Our office is on the third floor.",
+        "exampleRu": "Наш офис на третьем этаже."
+      },
+      {
+        "word": "suddenly",
+        "ru": "вдруг",
+        "ipa": "/ˈsʌdənli/",
+        "example": "Suddenly the lights went off.",
+        "exampleRu": "Вдруг свет погас."
+      },
+      {
+        "word": "lights",
+        "ru": "свет",
+        "ipa": "/laɪts/",
+        "example": "The lights were very bright.",
+        "exampleRu": "Свет был очень ярким."
+      },
+      {
+        "word": "to stop",
+        "ru": "останавливаться",
+        "ipa": "/stɒp/",
+        "example": "The lift stopped suddenly.",
+        "exampleRu": "Лифт внезапно остановился."
+      },
+      {
+        "word": "to wait",
+        "ru": "ждать",
+        "ipa": "/weɪt/",
+        "example": "We waited for forty minutes.",
+        "exampleRu": "Мы ждали сорок минут."
+      },
+      {
+        "word": "calm",
+        "ru": "спокойный",
+        "ipa": "/kɑːm/",
+        "example": "Pol stayed calm.",
+        "exampleRu": "Пол оставался спокойным."
+      },
+      {
+        "word": "alarm",
+        "ru": "сигнализация",
+        "ipa": "/əˈlɑːm/",
+        "example": "The alarm rang.",
+        "exampleRu": "Сигнализация зазвенела."
+      },
+      {
+        "word": "to ring",
+        "ru": "звонить",
+        "ipa": "/rɪŋ/",
+        "example": "The phone rang twice.",
+        "exampleRu": "Телефон зазвонил дважды."
+      },
+      {
+        "word": "door",
+        "ru": "дверь",
+        "ipa": "/dɔːr/",
+        "example": "The door opened at last.",
+        "exampleRu": "Наконец дверь открылась."
+      },
+      {
+        "word": "to open",
+        "ru": "открывать",
+        "ipa": "/ˈəʊpən/",
+        "example": "Please open the window.",
+        "exampleRu": "Пожалуйста, открой окно."
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "Past simple vs past continuous",
+      "ru": "Past simple и past continuous"
+    },
+    "ref": "narrative-tenses",
+    "rule": {
+      "en": "Use the past continuous (was/were + -ing) for actions that were in progress in the past. Use the past simple for short events that happened suddenly.",
+      "ru": "Используйте Past Continuous (was/were + -ing) для действий, которые продолжались в прошлом. Используйте Past Simple для коротких событий, которые произошли внезапно."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "Background action + interruption",
+          "ru": "Действие в процессе + прерывание"
+        },
+        "formula": "While I was doing..., something happened.",
+        "examples": [
+          {
+            "en": "While they were going up, the lift stopped.",
+            "ru": "Пока они поднимались, лифт остановился."
+          }
+        ],
+        "ref": "narrative-tenses"
+      },
+      {
+        "label": {
+          "en": "Two actions at the same time",
+          "ru": "Два одновременных действия"
+        },
+        "formula": "X was doing... while Y was doing...",
+        "examples": [
+          {
+            "en": "Pol was doing yoga while Alex was sleeping.",
+            "ru": "Пол занимался йогой, пока Алекс спал."
+          }
+        ],
+        "ref": "narrative-tenses"
+      },
+      {
+        "label": {
+          "en": "Action in progress + short event",
+          "ru": "Процесс + короткое событие"
+        },
+        "formula": "X was... when Y happened.",
+        "examples": [
+          {
+            "en": "Valery was looking at his watch when the alarm rang.",
+            "ru": "Валерий смотрел на часы, когда зазвенел сигнал."
+          }
+        ],
+        "ref": "narrative-tenses"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Do not use the past continuous for finished actions. Say 'I ate lunch', not 'I was eating lunch' if it is a finished fact.",
+        "ru": "Не используйте Past Continuous для законченных действий. Говорите 'I ate lunch', а не 'I was eating lunch', если действие завершено."
+      },
+      {
+        "en": "With 'when' we often use the past simple for the new short action and the past continuous for the background action.",
+        "ru": "С 'when' часто используем Past Simple для нового короткого действия, а Past Continuous для фонового."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "Stuck in the Lift",
+      "ru": "Застряли в лифте"
+    },
+    "blocks": [
+      {
+        "en": "Kate and the others were going up to the third floor. Den was eating his lunch. Suddenly the lift stopped. The lights went off. It was dark.",
+        "ru": "Кейт и остальные поднимались на третий этаж. Ден ел свой обед. Вдруг лифт остановился. Свет погас. Было темно.",
+        "image": "b1",
+        "alt": {
+          "en": "The team is in the lift and the lights go off",
+          "ru": "Команда в лифте, и свет гаснет"
+        }
+      },
+      {
+        "en": "Everyone was surprised. Pol was calm. He was doing yoga in the corner. Alex was falling asleep. Valery was looking at his watch. It was almost six.",
+        "ru": "Все были удивлены. Пол был спокоен. Он занимался йогой в углу. Алекс засыпал. Валерий смотрел на часы. Было почти шесть."
+      },
+      {
+        "en": "Suddenly the alarm rang. After forty minutes the doors opened. Everyone cheered. Pol smiled and said, 'That was a good break.'",
+        "ru": "Вдруг зазвенел сигнал. Через сорок минут двери открылись. Все закричали от радости. Пол улыбнулся и сказал: «Это был хороший перерыв».",
+        "image": "b3",
+        "alt": {
+          "en": "The doors open and the team cheers",
+          "ru": "Двери открываются, и команда радуется"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "corner",
+        "ru": "угол",
+        "ipa": "/ˈkɔːnər/"
+      },
+      {
+        "word": "watch",
+        "ru": "часы",
+        "ipa": "/wɒtʃ/"
+      },
+      {
+        "word": "break",
+        "ru": "перерыв",
+        "ipa": "/breɪk/"
+      },
+      {
+        "word": "dark",
+        "ru": "тёмный",
+        "ipa": "/dɑːk/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "In the lift",
+      "ru": "В лифте"
+    },
+    "dialogue": [
+      [
+        "The lift stopped suddenly.",
+        "Лифт внезапно остановился."
+      ],
+      [
+        "What were you doing?",
+        "Что ты делал?"
+      ],
+      [
+        "I was eating my lunch.",
+        "Я ел обед."
+      ],
+      [
+        "Pol was doing yoga.",
+        "Пол занимался йогой."
+      ],
+      [
+        "The doors opened at last.",
+        "Наконец двери открылись."
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u05.d90.ex.l.01",
+        "instruction": {
+          "en": "Where was Pol doing yoga?",
+          "ru": "Где Пол занимался йогой?"
+        },
+        "tags": [
+          "listening.detail",
+          "grammar.past-continuous"
+        ],
+        "prompt": "Pol was doing yoga in the ___.",
+        "options": [
+          "corner",
+          "kitchen",
+          "car"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u05.d90.ex.g.01",
+        "instruction": {
+          "en": "Complete with the past continuous or past simple.",
+          "ru": "Дополните, используя Past Continuous или Past Simple."
+        },
+        "tags": [
+          "grammar.past-vs-continuous"
+        ],
+        "prompt": "While they ___ up, the lift stopped.",
+        "cue": "(go)",
+        "answers": [
+          "were going"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u05.d90.ex.c.01",
+        "instruction": {
+          "en": "Choose the correct option.",
+          "ru": "Выберите правильный вариант."
+        },
+        "tags": [
+          "grammar.past-vs-continuous"
+        ],
+        "prompt": "Den ___ his lunch when the lift stopped.",
+        "options": [
+          "was eating",
+          "ate",
+          "eats"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "spot-error",
+        "id": "u05.d90.ex.s.01",
+        "instruction": {
+          "en": "Which sentence is correct?",
+          "ru": "Какое предложение верное?"
+        },
+        "tags": [
+          "grammar.past-vs-continuous"
+        ],
+        "variants": [
+          "While Pol did yoga, the lights went off.",
+          "While Pol was doing yoga, the lights went off."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "type": "gap-fill",
+        "id": "u05.d90.ex.g.02",
+        "instruction": {
+          "en": "Complete with the past continuous.",
+          "ru": "Дополните, используя Past Continuous."
+        },
+        "tags": [
+          "grammar.past-continuous"
+        ],
+        "prompt": "Alex ___ asleep when the alarm rang.",
+        "cue": "(fall)",
+        "answers": [
+          "was falling"
+        ]
+      },
+      {
+        "type": "order-words",
+        "id": "u05.d90.ex.o.01",
+        "instruction": {
+          "en": "Make a sentence.",
+          "ru": "Собери предложение."
+        },
+        "tags": [
+          "functions.storytelling",
+          "grammar.past-vs-continuous"
+        ],
+        "tokens": [
+          "suddenly",
+          "lift",
+          "stopped",
+          "The"
+        ],
+        "correctOrder": [
+          3,
+          1,
+          2,
+          0
+        ]
+      },
+      {
+        "type": "match",
+        "id": "u05.d90.ex.m.01",
+        "instruction": {
+          "en": "Match the word and the translation.",
+          "ru": "Сопоставь слово и перевод."
+        },
+        "tags": [
+          "vocab.stories"
+        ],
+        "pairs": [
+          {
+            "left": "lift",
+            "right": "лифт"
+          },
+          {
+            "left": "floor",
+            "right": "этаж"
+          },
+          {
+            "left": "suddenly",
+            "right": "вдруг"
+          },
+          {
+            "left": "calm",
+            "right": "спокойный"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u05.d90.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.past-vs-continuous",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Мы ждали, пока Пол занимался йогой.",
+        "answers": [
+          "We waited while Pol was doing yoga.",
+          "We were waiting while Pol was doing yoga."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "We wait while Pol was doing yoga."
+            ],
+            "explanation": {
+              "en": "Use past tense for the main action.",
+              "ru": "Используйте прошедшее время для основного действия."
+            }
+          }
+        ]
+      },
+      {
+        "type": "gap-fill",
+        "id": "u05.d90.ex.g.03",
+        "instruction": {
+          "en": "Complete with the past continuous.",
+          "ru": "Дополните, используя Past Continuous."
+        },
+        "tags": [
+          "grammar.past-continuous"
+        ],
+        "prompt": "Valery ___ at his watch when the alarm rang.",
+        "cue": "(look)",
+        "answers": [
+          "was looking"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u05.d90.ex.c.02",
+        "instruction": {
+          "en": "What happened after forty minutes?",
+          "ru": "Что случилось через сорок минут?"
+        },
+        "tags": [
+          "functions.storytelling",
+          "listening.detail"
+        ],
+        "prompt": "After forty minutes the ___ opened.",
+        "options": [
+          "doors",
+          "windows",
+          "boxes"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  }
+}

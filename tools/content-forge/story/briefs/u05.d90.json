@@ -1,0 +1,12 @@
+{
+  "id": "u05.d90",
+  "unitId": "u05",
+  "insertAt": 2,
+  "tags": ["grammar.past-vs-continuous", "grammar.past-continuous", "functions.storytelling", "vocab.stories"],
+  "level": "A2",
+  "episode": "Stuck in the Lift",
+  "grammarName": { "en": "Past simple vs past continuous", "ru": "Past simple и past continuous" },
+  "grammarRef": "narrative-tenses",
+  "characters": ["Kate", "Den", "Alex", "Pol", "Valery"],
+  "scenario": "The team tells the story of the day they got stuck in the office lift, so the episode mixes past continuous (background actions) with past simple (sudden events). While they were going up to the third floor, the lift suddenly stopped and the lights went off. Den was eating his lunch when it happened, and he wasn't happy. Pol stayed calm and was doing yoga in the corner while they waited. Alex was falling asleep when the alarm rang. Valery kept looking at his watch because it was almost six. After forty minutes the doors opened and everyone cheered. Warm, funny, no panic. Use clear contrast: 'While X was doing..., Y happened'; 'X was ...-ing when ...'. Short A2 sentences, past tenses throughout."
+}

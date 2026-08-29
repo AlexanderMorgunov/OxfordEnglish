@@ -1,0 +1,500 @@
+{
+  "id": "u03.d90",
+  "unitId": "u03",
+  "insertAt": 2,
+  "tags": [
+    "grammar.modals-ability",
+    "grammar.gerund-infinitive",
+    "functions.preferences",
+    "vocab.hobbies"
+  ],
+  "title": {
+    "en": "Hidden Talents",
+    "ru": "Скрытые таланты"
+  },
+  "vocab": {
+    "title": {
+      "en": "Talents and abilities",
+      "ru": "Таланты и способности"
+    },
+    "words": [
+      {
+        "word": "talent",
+        "ru": "талант",
+        "ipa": "/ˈtælənt/",
+        "example": "Everyone has a talent.",
+        "exampleRu": "У каждого есть талант."
+      },
+      {
+        "word": "sing",
+        "ru": "петь",
+        "ipa": "/sɪŋ/",
+        "example": "I can sing well.",
+        "exampleRu": "Я умею хорошо петь."
+      },
+      {
+        "word": "dance",
+        "ru": "танцевать",
+        "ipa": "/dɑːns/",
+        "example": "Can you dance?",
+        "exampleRu": "Ты умеешь танцевать?"
+      },
+      {
+        "word": "juggle",
+        "ru": "жонглировать",
+        "ipa": "/ˈdʒʌɡl/",
+        "example": "Peter can juggle three oranges.",
+        "exampleRu": "Питер умеет жонглировать тремя апельсинами."
+      },
+      {
+        "word": "yoga",
+        "ru": "йога",
+        "ipa": "/ˈjəʊɡə/",
+        "example": "Pol does yoga every day.",
+        "exampleRu": "Пол занимается йогой каждый день."
+      },
+      {
+        "word": "cook",
+        "ru": "готовить",
+        "ipa": "/kʊk/",
+        "example": "He can cook healthy food.",
+        "exampleRu": "Он умеет готовить здоровую еду."
+      },
+      {
+        "word": "fix",
+        "ru": "чинить, ремонтировать",
+        "ipa": "/fɪks/",
+        "example": "Den can fix any computer.",
+        "exampleRu": "Ден может починить любой компьютер."
+      },
+      {
+        "word": "sleep",
+        "ru": "спать",
+        "ipa": "/sliːp/",
+        "example": "Alex can sleep anywhere.",
+        "exampleRu": "Алекс может спать где угодно."
+      },
+      {
+        "word": "organise",
+        "ru": "организовывать",
+        "ipa": "/ˈɔːɡənaɪz/",
+        "example": "She likes organising parties.",
+        "exampleRu": "Она любит организовывать вечеринки."
+      },
+      {
+        "word": "party",
+        "ru": "вечеринка",
+        "ipa": "/ˈpɑːti/",
+        "example": "We have a party on Friday.",
+        "exampleRu": "У нас вечеринка в пятницу."
+      },
+      {
+        "word": "shy",
+        "ru": "застенчивый",
+        "ipa": "/ʃaɪ/",
+        "example": "He is shy, but he can sing.",
+        "exampleRu": "Он застенчивый, но умеет петь."
+      },
+      {
+        "word": "win",
+        "ru": "выигрывать",
+        "ipa": "/wɪn/",
+        "example": "They all win a prize.",
+        "exampleRu": "Все они выигрывают приз."
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "Ability: can / can't · like + -ing",
+      "ru": "Способности: can / can't · like + -ing"
+    },
+    "ref": "modals-ability",
+    "rule": {
+      "en": "Use 'can' to talk about abilities. 'Can' is the same for all people: I can, he can, she can. Use 'can't' (cannot) for things you cannot do. Use 'like', 'love' or 'enjoy' + verb + -ing to talk about activities you like.",
+      "ru": "Используй «can», чтобы говорить о способностях. «Can» одинаково для всех людей: I can, he can, she can. Используй «can't» (cannot) для того, что ты не умеешь. Используй «like», «love» или «enjoy» + глагол с -ing, чтобы говорить о занятиях, которые тебе нравятся."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "Ability: can",
+          "ru": "Способность: can"
+        },
+        "formula": "subject + can + verb",
+        "examples": [
+          {
+            "en": "I can cook.",
+            "ru": "Я умею готовить."
+          },
+          {
+            "en": "She can dance.",
+            "ru": "Она умеет танцевать."
+          }
+        ],
+        "ref": "modals-ability"
+      },
+      {
+        "label": {
+          "en": "No ability: can't",
+          "ru": "Отсутствие способности: can't"
+        },
+        "formula": "subject + can't + verb",
+        "examples": [
+          {
+            "en": "I can't sing.",
+            "ru": "Я не умею петь."
+          }
+        ],
+        "ref": "modals-ability"
+      },
+      {
+        "label": {
+          "en": "Like + -ing",
+          "ru": "Like + -ing"
+        },
+        "formula": "subject + like/love/enjoy + verb-ing",
+        "examples": [
+          {
+            "en": "He likes cooking.",
+            "ru": "Он любит готовить."
+          },
+          {
+            "en": "I enjoy resting.",
+            "ru": "Мне нравится отдыхать."
+          }
+        ],
+        "ref": "grammar.gerund-infinitive"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "He can sing, not 'He cans sing' or 'He can sings'.",
+        "ru": "He can sing, а не «He cans sing» или «He can sings»."
+      },
+      {
+        "en": "After 'can' use the base verb without 'to': I can cook, not 'I can to cook'.",
+        "ru": "После «can» — начальная форма без «to»: I can cook, а не «I can to cook»."
+      },
+      {
+        "en": "Use verb + -ing after 'like': I like dancing, not 'I like dance'.",
+        "ru": "После «like» — глагол с -ing: I like dancing, а не «I like dance»."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "Hidden Talents",
+      "ru": "Скрытые таланты"
+    },
+    "blocks": [
+      {
+        "en": "Kate has a new idea. She says, \"We are one big family! So we all have a talent! Let's show our talents on Friday.\" Everybody looks at each other. Peter looks shy.",
+        "ru": "У Кейт новая идея. Она говорит: «Мы одна большая семья! Поэтому у каждого из нас есть талант! Давайте покажем наши таланты в пятницу». Все смотрят друг на друга. Питер выглядит застенчивым.",
+        "image": "b1",
+        "alt": {
+          "en": "Kate announces the talent show",
+          "ru": "Кейт объявляет шоу талантов"
+        }
+      },
+      {
+        "en": "Pol says, \"I can do yoga. And I love cooking healthy food.\" Den says, \"I can't sing at all. But I can fix any computer. And I like organising things.\" Alex smiles. \"I can sleep anywhere. I enjoy resting at work. I have four kids at home!\"",
+        "ru": "Пол говорит: «Я умею делать йогу. И я люблю готовить здоровую еду». Ден говорит: «Я вообще не умею петь. Но я могу починить любой компьютер. И мне нравится всё организовывать». Алекс улыбается: «Я могу спать где угодно. Мне нравится отдыхать на работе. У меня дома четверо детей!»"
+      },
+      {
+        "en": "Valery says, \"I can't stay after six o'clock. And I don't like parties.\" Peter is shy. But then he takes three oranges and juggles! Everybody claps. Kate says, \"I can't decide! You all win.\"",
+        "ru": "Валерий говорит: «Я не могу оставаться после шести. И я не люблю вечеринки». Питер застенчивый. Но потом он берёт три апельсина и жонглирует! Все хлопают. Кейт говорит: «Я не могу решить! Побеждаете все».",
+        "image": "b3",
+        "alt": {
+          "en": "Peter juggles three oranges for the talent show",
+          "ru": "Питер жонглирует тремя апельсинами на шоу талантов"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "idea",
+        "ru": "идея",
+        "ipa": "/aɪˈdɪə/"
+      },
+      {
+        "word": "show",
+        "ru": "шоу, представление",
+        "ipa": "/ʃəʊ/"
+      },
+      {
+        "word": "clap",
+        "ru": "хлопать",
+        "ipa": "/klæp/"
+      },
+      {
+        "word": "everybody",
+        "ru": "все",
+        "ipa": "/ˈevribɒdi/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "What can you do?",
+      "ru": "Что ты умеешь делать?"
+    },
+    "dialogue": [
+      [
+        "Can you sing, Peter?",
+        "Ты умеешь петь, Питер?"
+      ],
+      [
+        "No, I can't.",
+        "Нет, не умею."
+      ],
+      [
+        "What can you do?",
+        "Что ты умеешь делать?"
+      ],
+      [
+        "I can juggle oranges.",
+        "Я умею жонглировать апельсинами."
+      ],
+      [
+        "That's amazing!",
+        "Это потрясающе!"
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u03.d90.ex.l.01",
+        "instruction": {
+          "en": "What can Peter do?",
+          "ru": "Что умеет Питер?"
+        },
+        "tags": [
+          "listening.detail",
+          "vocab.hobbies"
+        ],
+        "prompt": "I can ___.",
+        "options": [
+          "juggle oranges",
+          "sing",
+          "dance"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u03.d90.ex.g.01",
+        "instruction": {
+          "en": "Fill in: can or can't.",
+          "ru": "Заполни: can или can't."
+        },
+        "tags": [
+          "grammar.modals-ability"
+        ],
+        "prompt": "Pol ___ do yoga.",
+        "cue": "can / can't",
+        "answers": [
+          "can"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u03.d90.ex.c.01",
+        "instruction": {
+          "en": "Choose the correct form.",
+          "ru": "Выбери верную форму."
+        },
+        "tags": [
+          "grammar.modals-ability"
+        ],
+        "prompt": "She ___ sing.",
+        "options": [
+          "can",
+          "cans",
+          "to can"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "u03.d90.ex.g.02",
+        "instruction": {
+          "en": "Make the -ing form.",
+          "ru": "Образуй форму с -ing."
+        },
+        "tags": [
+          "grammar.gerund-infinitive"
+        ],
+        "prompt": "Peter loves ___ (juggle).",
+        "cue": "(juggle)",
+        "answers": [
+          "juggling"
+        ]
+      },
+      {
+        "type": "spot-error",
+        "id": "u03.d90.ex.s.01",
+        "instruction": {
+          "en": "Find the correct sentence.",
+          "ru": "Найди верное предложение."
+        },
+        "tags": [
+          "grammar.modals-ability"
+        ],
+        "variants": [
+          "I can't dance.",
+          "I don't can dance."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "choice",
+        "id": "u03.d90.ex.c.02",
+        "instruction": {
+          "en": "What can't Den do?",
+          "ru": "Чего не умеет Ден?"
+        },
+        "tags": [
+          "grammar.modals-ability"
+        ],
+        "prompt": "Den can't ___.",
+        "options": [
+          "sing",
+          "dance",
+          "juggle"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "order-words",
+        "id": "u03.d90.ex.o.01",
+        "instruction": {
+          "en": "Make a sentence.",
+          "ru": "Собери предложение."
+        },
+        "tags": [
+          "grammar.modals-ability"
+        ],
+        "tokens": [
+          "I",
+          "can",
+          "juggle",
+          "three",
+          "oranges"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "type": "match",
+        "id": "u03.d90.ex.m.01",
+        "instruction": {
+          "en": "Match the words.",
+          "ru": "Сопоставь слова."
+        },
+        "tags": [
+          "vocab.hobbies"
+        ],
+        "pairs": [
+          {
+            "left": "sing",
+            "right": "петь"
+          },
+          {
+            "left": "juggle",
+            "right": "жонглировать"
+          },
+          {
+            "left": "yoga",
+            "right": "йога"
+          },
+          {
+            "left": "shy",
+            "right": "застенчивый"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u03.d90.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.modals-ability",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Я умею готовить здоровую пищу.",
+        "answers": [
+          "I can cook healthy food."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "I can to cook healthy food."
+            ],
+            "explanation": {
+              "en": "After 'can' use the base verb.",
+              "ru": "После «can» — начальная форма."
+            }
+          }
+        ]
+      },
+      {
+        "type": "gap-fill",
+        "id": "u03.d90.ex.g.03",
+        "instruction": {
+          "en": "Question with can.",
+          "ru": "Вопрос с can."
+        },
+        "tags": [
+          "grammar.modals-ability"
+        ],
+        "prompt": "Can he ___ (dance)?",
+        "cue": "(dance)",
+        "answers": [
+          "dance"
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u03.d90.ex.t.02",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.gerund-infinitive",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Он любит организовывать вечеринки.",
+        "answers": [
+          "He likes organising parties.",
+          "He loves organising parties."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "He likes organise parties."
+            ],
+            "explanation": {
+              "en": "Use verb-ing after 'like'.",
+              "ru": "После «like» — глагол с -ing."
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

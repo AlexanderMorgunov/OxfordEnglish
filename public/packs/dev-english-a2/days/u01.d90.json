@@ -1,0 +1,625 @@
+{
+  "id": "u01.d90",
+  "title": {
+    "en": "The New Guy",
+    "ru": "Новый парень"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.possessives",
+    "grammar.have-got",
+    "vocab.appearance",
+    "vocab.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u01.d90.vocab",
+      "title": {
+        "en": "People and things at work",
+        "ru": "Люди и вещи на работе"
+      },
+      "words": [
+        {
+          "word": "new",
+          "ru": "новый",
+          "ipa": "/njuː/",
+          "example": "Peter is new here.",
+          "exampleRu": "Питер здесь новенький.",
+          "audio": {
+            "src": "media/audio/u01.d90.vocab.new.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "name",
+          "ru": "имя",
+          "ipa": "/neɪm/",
+          "example": "His name is Den.",
+          "exampleRu": "Его зовут Ден.",
+          "audio": {
+            "src": "media/audio/u01.d90.vocab.name.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "desk",
+          "ru": "рабочий стол",
+          "ipa": "/desk/",
+          "example": "Her desk is near the window.",
+          "exampleRu": "Её стол у окна.",
+          "audio": {
+            "src": "media/audio/u01.d90.vocab.desk.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mug",
+          "ru": "кружка",
+          "ipa": "/mʌɡ/",
+          "example": "That is his mug.",
+          "exampleRu": "Это его кружка.",
+          "audio": {
+            "src": "media/audio/u01.d90.vocab.mug.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "chair",
+          "ru": "стул",
+          "ipa": "/tʃeə/",
+          "example": "Is this your chair?",
+          "exampleRu": "Это твой стул?",
+          "audio": {
+            "src": "media/audio/u01.d90.vocab.chair.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "team",
+          "ru": "команда",
+          "ipa": "/tiːm/",
+          "example": "Welcome to our team!",
+          "exampleRu": "Добро пожаловать в нашу команду!",
+          "audio": {
+            "src": "media/audio/u01.d90.vocab.team.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "smoothie",
+          "ru": "смузи",
+          "ipa": "/ˈsmuːði/",
+          "example": "This smoothie is for you.",
+          "exampleRu": "Этот смузи для тебя.",
+          "audio": {
+            "src": "media/audio/u01.d90.vocab.smoothie.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "quiet",
+          "ru": "тихий, спокойный",
+          "ipa": "/ˈkwaɪət/",
+          "example": "The office is his quiet place.",
+          "exampleRu": "Офис — его спокойное место.",
+          "audio": {
+            "src": "media/audio/u01.d90.vocab.quiet.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "kid",
+          "ru": "ребёнок",
+          "ipa": "/kɪd/",
+          "example": "He has got four kids.",
+          "exampleRu": "У него четверо детей.",
+          "audio": {
+            "src": "media/audio/u01.d90.vocab.kid.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "boss",
+          "ru": "начальник",
+          "ipa": "/bɒs/",
+          "example": "Is Kate your boss?",
+          "exampleRu": "Кейт твой начальник?",
+          "audio": {
+            "src": "media/audio/u01.d90.vocab.boss.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "door",
+          "ru": "дверь",
+          "ipa": "/dɔː/",
+          "example": "My door is always open.",
+          "exampleRu": "Моя дверь всегда открыта.",
+          "audio": {
+            "src": "media/audio/u01.d90.vocab.door.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "place",
+          "ru": "место",
+          "ipa": "/pleɪs/",
+          "example": "This is your place.",
+          "exampleRu": "Это твоё место.",
+          "audio": {
+            "src": "media/audio/u01.d90.vocab.place.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u01.d90.grammar",
+      "title": {
+        "en": "Possessives and be questions",
+        "ru": "Притяжательные и вопросы с be"
+      },
+      "ref": "possessives",
+      "rule": {
+        "en": "Use my, your, his, her, our, their to say who owns something. Ask questions with Is this...? and Are you...? Use have got to talk about what people have.",
+        "ru": "Используй my, your, his, her, our, their, чтобы сказать, кому что принадлежит. Задавай вопросы с Is this...? и Are you...? Используй have got, чтобы говорить о том, что у людей есть."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Possessive adjectives",
+            "ru": "Притяжательные прилагательные"
+          },
+          "formula": "my / your / his / her / our / their + noun",
+          "examples": [
+            {
+              "en": "His desk is by the window.",
+              "ru": "Его стол у окна."
+            },
+            {
+              "en": "Their office is big.",
+              "ru": "Их офис большой."
+            }
+          ],
+          "ref": "possessives"
+        },
+        {
+          "label": {
+            "en": "Be questions",
+            "ru": "Вопросы с be"
+          },
+          "formula": "Is / Are + subject...?",
+          "examples": [
+            {
+              "en": "Is this your mug?",
+              "ru": "Это твоя кружка?"
+            },
+            {
+              "en": "Are you the new tester?",
+              "ru": "Ты новый тестировщик?"
+            }
+          ],
+          "ref": "possessives"
+        },
+        {
+          "label": {
+            "en": "Have got",
+            "ru": "Have got"
+          },
+          "formula": "subject + have/has got + noun",
+          "examples": [
+            {
+              "en": "Alex has got four kids.",
+              "ru": "У Алекса четверо детей."
+            },
+            {
+              "en": "I have got a new chair.",
+              "ru": "У меня новый стул."
+            }
+          ],
+          "ref": "have-got"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "His is a possessive adjective. He's means he is.",
+          "ru": "His — притяжательное прилагательное. He's значит he is."
+        },
+        {
+          "en": "Don't say \"he have got\". For he/she/it use has: He has got.",
+          "ru": "Не говори «he have got». Для he/she/it используй has: He has got."
+        },
+        {
+          "en": "Your and you're are different. Your = possessive, you're = you are.",
+          "ru": "Your и you're — разные. Your — притяжательное, you're — you are."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u01.d90.reading",
+      "title": {
+        "en": "The New Guy",
+        "ru": "Новый парень"
+      },
+      "blocks": [
+        {
+          "id": "u01.d90.reading.b1",
+          "en": "Today is Peter's first day. He is shy and new. Kate meets him at the door. \"Welcome, Peter! This is our office. Come with me.\" Kate shows him around. \"This is Den. His desk is by the window. That is his mug. Don't touch it!\"",
+          "ru": "Сегодня первый день Питера. Он робкий и новенький. Кейт встречает его у двери. «Добро пожаловать, Питер! Это наш офис. Пойдём со мной». Кейт показывает ему офис. «Это Ден. Его стол у окна. Это его кружка. Не трогай её!»",
+          "audio": {
+            "src": "media/audio/u01.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u01.d90.reading.b2",
+          "en": "Den smiles a little. \"Yes, that is my mug. And this is my chair. Please don't sit in it.\" Peter says, \"OK.\" Then Kate says, \"This is Alex. His desk is here.\" Alex says, \"Hello, Peter. I have got four kids. This office is my quiet place. Welcome!\" Peter laughs.",
+          "ru": "Ден слегка улыбается. «Да, это моя кружка. А это мой стул. Пожалуйста, не садись на него». Питер говорит: «Ладно». Затем Кейт говорит: «Это Алекс. Его стол здесь». Алекс говорит: «Привет, Питер. У меня четверо детей. Этот офис — моё спокойное место. Добро пожаловать!» Питер смеётся.",
+          "audio": {
+            "src": "media/audio/u01.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u01.d90.reading.b3",
+          "en": "Pol comes with a green smoothie. \"Hi, Peter! This smoothie is for you. My door is always open.\" Peter smiles. Then he looks at Alex and says, \"Is your name Den?\" Alex laughs. \"No, I am Alex. Den is there.\" Kate says, \"Are you OK, Peter?\" Peter says, \"Yes! This team is great.\"",
+          "ru": "Пол приходит с зелёным смузи. «Привет, Питер! Этот смузи для тебя. Моя дверь всегда открыта». Питер улыбается. Потом он смотрит на Алекса и говорит: «Тебя зовут Ден?» Алекс смеётся. «Нет, я Алекс. Ден вон там». Кейт говорит: «Ты в порядке, Питер?» Питер говорит: «Да! Эта команда отличная».",
+          "audio": {
+            "src": "media/audio/u01.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "shy",
+          "ru": "робкий, застенчивый",
+          "ipa": "/ʃaɪ/"
+        },
+        {
+          "word": "welcome",
+          "ru": "добро пожаловать",
+          "ipa": "/ˈwelkəm/"
+        },
+        {
+          "word": "to show around",
+          "ru": "показывать (офис)",
+          "ipa": "/tə ʃəʊ əˈraʊnd/"
+        },
+        {
+          "word": "to touch",
+          "ru": "трогать",
+          "ipa": "/tʌtʃ/"
+        },
+        {
+          "word": "always",
+          "ru": "всегда",
+          "ipa": "/ˈɔːlweɪz/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u01.d90.listening",
+      "title": {
+        "en": "First questions",
+        "ru": "Первые вопросы"
+      },
+      "audio": {
+        "src": "media/audio/u01.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.56,
+          "en": "Is this your desk?",
+          "ru": "Это твой стол?"
+        },
+        {
+          "start": 1.56,
+          "end": 3.23,
+          "en": "No, that is Den's desk.",
+          "ru": "Нет, это стол Дена."
+        },
+        {
+          "start": 3.23,
+          "end": 4.66,
+          "en": "Are you his new boss?",
+          "ru": "Ты его новая начальница?"
+        },
+        {
+          "start": 4.66,
+          "end": 6.27,
+          "en": "Yes, my name is Kate.",
+          "ru": "Да, меня зовут Кейт."
+        },
+        {
+          "start": 6.27,
+          "end": 7.51,
+          "en": "Is that your mug?",
+          "ru": "Это твоя кружка?"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u01.d90.ex.l.01",
+          "instruction": {
+            "en": "What did Pol give Peter?",
+            "ru": "Что Пол дал Питеру?"
+          },
+          "tags": [
+            "listening.detail",
+            "vocab.work"
+          ],
+          "prompt": "Pol gave Peter a ___.",
+          "options": [
+            "smoothie",
+            "coffee",
+            "mug"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u01.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u01.d90.ex.g.01",
+          "instruction": {
+            "en": "Choose the right possessive.",
+            "ru": "Выбери правильное притяжательное."
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "prompt": "This is Den. ___ desk is by the window.",
+          "answers": [
+            "His"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u01.d90.ex.c.01",
+          "instruction": {
+            "en": "Answer the question.",
+            "ru": "Ответь на вопрос."
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "prompt": "Are you the new tester?",
+          "options": [
+            "Yes, I am.",
+            "Yes, I is.",
+            "Yes, I are."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u01.d90.ex.g.02",
+          "instruction": {
+            "en": "Use have got.",
+            "ru": "Используй have got."
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "prompt": "Alex ___ got four kids.",
+          "answers": [
+            "has"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u01.d90.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "variants": [
+            "His is Alex.",
+            "He is Alex."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "choice",
+          "id": "u01.d90.ex.c.02",
+          "instruction": {
+            "en": "Choose the right possessive.",
+            "ru": "Выбери правильное притяжательное."
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "prompt": "That is Den's mug. It is ___ mug.",
+          "options": [
+            "his",
+            "your",
+            "my"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u01.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "tokens": [
+            "This",
+            "is",
+            "Den's",
+            "mug"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u01.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the pronoun and the possessive.",
+            "ru": "Сопоставь местоимение и притяжательное."
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "pairs": [
+            {
+              "left": "I",
+              "right": "my"
+            },
+            {
+              "left": "you",
+              "right": "your"
+            },
+            {
+              "left": "he",
+              "right": "his"
+            },
+            {
+              "left": "she",
+              "right": "her"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u01.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.have-got",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У него четверо детей.",
+          "answers": [
+            "He has got four kids.",
+            "He has four kids."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he have got four kids"
+              ],
+              "explanation": {
+                "en": "For he/she/it use has, not have.",
+                "ru": "Для he/she/it используй has, а не have."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u01.d90.ex.g.03",
+          "instruction": {
+            "en": "Make a be question.",
+            "ru": "Составь вопрос с be."
+          },
+          "tags": [
+            "grammar.possessives"
+          ],
+          "prompt": "___ you the new tester?",
+          "answers": [
+            "Are"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u01.d90.ex.c.03",
+          "instruction": {
+            "en": "How many kids has Alex got?",
+            "ru": "Сколько детей у Алекса?"
+          },
+          "tags": [
+            "grammar.have-got",
+            "vocab.work"
+          ],
+          "prompt": "Alex has got ___ kids.",
+          "options": [
+            "four",
+            "five",
+            "two"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    }
+  ]
+}
