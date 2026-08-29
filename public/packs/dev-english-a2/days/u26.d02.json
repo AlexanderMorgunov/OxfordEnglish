@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.67,
           "en": "That was close! The glass nearly fell.",
           "ru": "Чуть не случилось! Стакан почти упал."
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.67,
+          "end": 4.04,
           "en": "It could have broken.",
           "ru": "Он мог бы разбиться."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.04,
+          "end": 6.16,
           "en": "And someone might have got cut.",
           "ru": "И кто-то мог бы порезаться."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.16,
+          "end": 9,
           "en": "If you hadn't caught it, it would have been a mess.",
           "ru": "Если бы ты его не поймал, был бы беспорядок."
         }

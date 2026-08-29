@@ -283,25 +283,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.37,
           "en": "Hi! What are you doing right now?",
           "ru": "Привет! Что ты сейчас делаешь?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.37,
+          "end": 5.27,
           "en": "I am working on a bug. It is not easy.",
           "ru": "Я работаю над багом. Это непросто."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 5.27,
+          "end": 6.66,
           "en": "Is Anna helping you?",
           "ru": "Анна тебе помогает?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.66,
+          "end": 9.9,
           "en": "No, she is writing an email. I am waiting for her.",
           "ru": "Нет, она пишет письмо. Я её жду."
         }

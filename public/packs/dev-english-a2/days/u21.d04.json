@@ -293,25 +293,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.66,
           "en": "What are you doing on Saturday?",
           "ru": "Что делаешь в субботу?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.66,
+          "end": 3.54,
           "en": "I'm meeting friends in the morning.",
           "ru": "Утром встречаюсь с друзьями."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 3.54,
+          "end": 4.79,
           "en": "And in the evening?",
           "ru": "А вечером?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 4.79,
+          "end": 8.33,
           "en": "I'm not sure. I'll probably stay in and relax.",
           "ru": "Не уверен. Наверное, останусь дома и отдохну."
         }

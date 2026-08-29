@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 5,
+          "end": 2.54,
           "en": "The mayor is said to be planning a big announcement.",
           "ru": "Говорят, мэр готовит большое заявление."
         },
         {
-          "start": 5,
-          "end": 9,
+          "start": 2.54,
+          "end": 5.02,
           "en": "It is believed that taxes will be cut.",
           "ru": "Считается, что налоги снизят."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 5.02,
+          "end": 8.14,
           "en": "And the old bridge? It’s reported to be closing.",
           "ru": "А старый мост? Сообщается, что его закроют."
         },
         {
-          "start": 13,
-          "end": 18,
+          "start": 8.14,
+          "end": 10.71,
           "en": "Yes, it’s thought to have become unsafe.",
           "ru": "Да, считается, что он стал небезопасным."
         }

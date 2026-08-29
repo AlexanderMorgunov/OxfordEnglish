@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.06,
           "en": "What will you be doing at six tomorrow?",
           "ru": "Что ты будешь делать завтра в шесть?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.06,
+          "end": 4.05,
           "en": "I'll be travelling home from work.",
           "ru": "Я буду ехать домой с работы."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.05,
+          "end": 5.66,
           "en": "Let's meet at seven then.",
           "ru": "Тогда давай встретимся в семь."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 5.66,
+          "end": 9.36,
           "en": "Perfect. By then I'll be sitting in a café waiting for you.",
           "ru": "Отлично. К тому времени я буду сидеть в кафе и ждать тебя."
         }

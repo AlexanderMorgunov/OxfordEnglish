@@ -287,25 +287,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.43,
           "en": "You won't believe what happened to me yesterday!",
           "ru": "Ты не поверишь, что вчера со мной случилось!"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.43,
+          "end": 3.92,
           "en": "Go on, tell me.",
           "ru": "Давай, рассказывай."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 3.92,
+          "end": 7.7,
           "en": "At first I thought I had lost my phone. I searched everywhere.",
           "ru": "Сначала я думал, что потерял телефон. Искал везде."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 7.7,
+          "end": 11.57,
           "en": "And? Guess what — it had been in my pocket the whole time!",
           "ru": "И? Угадай — он всё это время был у меня в кармане!"
         }

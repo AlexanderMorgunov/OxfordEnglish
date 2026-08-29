@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.46,
           "en": "Are you good at cooking?",
           "ru": "Ты хорошо готовишь?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.46,
+          "end": 4.01,
           "en": "Not really, but I'm interested in learning.",
           "ru": "Не особо, но мне интересно научиться."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.01,
+          "end": 7.5,
           "en": "Cooking at home is much healthier than eating out.",
           "ru": "Готовить дома гораздо полезнее, чем есть в кафе."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 7.5,
+          "end": 9.64,
           "en": "True. It's worth trying, at least.",
           "ru": "Верно. Стоит хотя бы попробовать."
         }

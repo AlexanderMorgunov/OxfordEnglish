@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.7,
           "en": "Did you catch the film in the end?",
           "ru": "В итоге попал на фильм?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.7,
+          "end": 5.73,
           "en": "No. By the time I arrived, it had already started.",
           "ru": "Нет. К моему приходу он уже начался."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.73,
+          "end": 8.02,
           "en": "Oh no. Had you booked a ticket?",
           "ru": "О нет. Ты бронировал билет?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 8.02,
+          "end": 11.5,
           "en": "No, I hadn't, so I couldn't even go in late.",
           "ru": "Нет, не бронировал, так что даже опоздав не пустили."
         }

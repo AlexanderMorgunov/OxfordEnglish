@@ -288,25 +288,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.57,
           "en": "Hello, can I speak to Tom, please?",
           "ru": "Алло, можно Тома, пожалуйста?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.57,
+          "end": 5.79,
           "en": "He's not here right now. Can I take a message?",
           "ru": "Его сейчас нет. Передать что-нибудь?"
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 5.79,
+          "end": 8.26,
           "en": "Yes, please tell him to call me back.",
           "ru": "Да, попросите его перезвонить мне."
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 8.26,
+          "end": 10.46,
           "en": "Of course. I'll tell him.",
           "ru": "Конечно. Я передам."
         }

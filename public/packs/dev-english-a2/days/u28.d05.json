@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.09,
           "en": "My order still hasn’t been delivered.",
           "ru": "Мой заказ так и не доставили."
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.09,
+          "end": 5.18,
           "en": "I’m sorry. It seems it got lost in transit.",
           "ru": "Извините. Похоже, он потерялся в пути."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.18,
+          "end": 8.2,
           "en": "So what happens now? Do I get a refund?",
           "ru": "И что теперь? Мне вернут деньги?"
         },
         {
-          "start": 12,
-          "end": 17,
+          "start": 8.2,
+          "end": 11.63,
           "en": "We’ll have a new one sent today, or you can be refunded.",
           "ru": "Мы отправим новый сегодня, или вам вернут деньги."
         }

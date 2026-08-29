@@ -298,25 +298,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.64,
           "en": "Good afternoon. Are you ready to order?",
           "ru": "Добрый день. Готовы заказать?"
         },
         {
-          "start": 3,
-          "end": 7,
+          "start": 2.64,
+          "end": 6.04,
           "en": "Yes, I would like a sandwich and a coffee, please.",
           "ru": "Да, мне сэндвич и кофе, пожалуйста."
         },
         {
-          "start": 7,
-          "end": 10,
+          "start": 6.04,
+          "end": 8.52,
           "en": "Would you like a dessert? No, thank you.",
           "ru": "Хотите десерт? Нет, спасибо."
         },
         {
-          "start": 10,
-          "end": 14,
+          "start": 8.52,
+          "end": 11.52,
           "en": "Can I have the bill? Of course, here you are.",
           "ru": "Можно счёт? Конечно, вот, пожалуйста."
         }

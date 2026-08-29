@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.32,
           "en": "I printed fifty copies of the report.",
           "ru": "Я распечатал пятьдесят копий отчёта."
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.32,
+          "end": 4.82,
           "en": "You needn’t have — it’s all online now.",
           "ru": "Не нужно было — теперь всё онлайн."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.82,
+          "end": 7.89,
           "en": "Oh. So I didn’t need to stay late at all.",
           "ru": "О. Значит, мне и не нужно было задерживаться."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 7.89,
+          "end": 10.6,
           "en": "No. But thanks for the effort anyway.",
           "ru": "Нет. Но всё равно спасибо за старание."
         }

@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.02,
           "en": "This recipe has too much sugar.",
           "ru": "В этом рецепте слишком много сахара."
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.02,
+          "end": 3.96,
           "en": "And too many eggs, I think.",
           "ru": "И слишком много яиц, по-моему."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 3.96,
+          "end": 5.47,
           "en": "Do we have enough flour?",
           "ru": "У нас достаточно муки?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 5.47,
+          "end": 8.16,
           "en": "No, there isn't enough. We need more.",
           "ru": "Нет, недостаточно. Нужно ещё."
         }

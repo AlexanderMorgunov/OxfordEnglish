@@ -289,25 +289,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.14,
           "en": "How do I use this coffee machine?",
           "ru": "Как пользоваться этой кофемашиной?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.14,
+          "end": 5.41,
           "en": "It's easy. First, water is added at the back.",
           "ru": "Просто. Сначала сзади заливают воду."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.41,
+          "end": 6.28,
           "en": "And then?",
           "ru": "А потом?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.28,
+          "end": 9.27,
           "en": "Then you press the green button and the coffee is made.",
           "ru": "Потом нажимаешь зелёную кнопку, и кофе готовится."
         }

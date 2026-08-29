@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.71,
           "en": "Is there anyone in the office?",
           "ru": "В офисе кто-нибудь есть?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.71,
+          "end": 3.54,
           "en": "No, there's no one here.",
           "ru": "Нет, здесь никого нет."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 3.54,
+          "end": 5.28,
           "en": "Is there anything on my desk?",
           "ru": "На моём столе что-нибудь есть?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.28,
+          "end": 7.55,
           "en": "There's something — a letter for you.",
           "ru": "Кое-что есть — письмо для тебя."
         }

@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.31,
           "en": "Did you speak to Tom?",
           "ru": "Ты говорил с Томом?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.31,
+          "end": 3.6,
           "en": "Yes. He said he was ill.",
           "ru": "Да. Он сказал, что болеет."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 3.6,
+          "end": 5.3,
           "en": "Did he say anything else?",
           "ru": "Он ещё что-нибудь сказал?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.3,
+          "end": 7.44,
           "en": "He told me he would call you later.",
           "ru": "Он сказал, что позвонит тебе позже."
         }

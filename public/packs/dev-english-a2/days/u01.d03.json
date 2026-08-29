@@ -304,19 +304,19 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 3.1,
           "en": "Who is that man? He is our new engineer.",
           "ru": "Кто этот мужчина? Наш новый инженер."
         },
         {
-          "start": 3,
-          "end": 7,
+          "start": 3.1,
+          "end": 5.98,
           "en": "Do you know him? Yes, I met him yesterday.",
           "ru": "Ты его знаешь? Да, встретил вчера."
         },
         {
-          "start": 7,
-          "end": 10,
+          "start": 5.98,
+          "end": 7.63,
           "en": "Anna called me about it.",
           "ru": "Анна звонила мне об этом."
         }

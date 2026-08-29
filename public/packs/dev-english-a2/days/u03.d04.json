@@ -288,25 +288,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.07,
           "en": "What do you enjoy doing after work?",
           "ru": "Что тебе нравится делать после работы?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.07,
+          "end": 4.85,
           "en": "I love cooking. And I want to learn to draw.",
           "ru": "Обожаю готовить. И хочу научиться рисовать."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.85,
+          "end": 5.85,
           "en": "Why draw?",
           "ru": "Почему рисовать?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.85,
+          "end": 8.64,
           "en": "I draw to relax. It makes me happy.",
           "ru": "Я рисую, чтобы расслабиться. Это делает меня счастливым."
         }

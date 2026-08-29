@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.49,
           "en": "Is your brother like you?",
           "ru": "Твой брат похож на тебя?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.49,
+          "end": 4.39,
           "en": "No, he is different from me. He is quieter.",
           "ru": "Нет, он отличается от меня. Он тише."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.39,
+          "end": 5.74,
           "en": "Is he as tall as you?",
           "ru": "Он такой же высокий, как ты?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.74,
+          "end": 8.62,
           "en": "No, he is not as tall as me, but he is kinder.",
           "ru": "Нет, он не такой высокий, как я, но добрее."
         }

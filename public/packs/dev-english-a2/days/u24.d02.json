@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.83,
           "en": "My laptop is broken. Can it be fixed?",
           "ru": "Мой ноутбук сломан. Его можно починить?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.83,
+          "end": 5.45,
           "en": "Yes, it can be repaired by tomorrow.",
           "ru": "Да, его можно починить к завтрашнему дню."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.45,
+          "end": 8.18,
           "en": "Great. Should anything be backed up first?",
           "ru": "Отлично. Что-то нужно сначала сохранить?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 8.18,
+          "end": 11.67,
           "en": "Yes, your files should be saved before we start.",
           "ru": "Да, ваши файлы стоит сохранить до начала."
         }

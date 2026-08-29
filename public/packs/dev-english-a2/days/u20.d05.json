@@ -288,25 +288,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.7,
           "en": "Would you like tea or coffee?",
           "ru": "Чай или кофе?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.7,
+          "end": 5.14,
           "en": "I'd prefer tea, please. I prefer it to coffee.",
           "ru": "Я бы предпочёл чай, пожалуйста. Я предпочитаю его кофе."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.14,
+          "end": 8.65,
           "en": "Sure. And would you rather sit inside or outside?",
           "ru": "Конечно. А ты бы предпочёл сидеть внутри или снаружи?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 8.65,
+          "end": 11.63,
           "en": "I'd rather sit outside — it's a lovely day.",
           "ru": "Я бы лучше сел на улице — прекрасный день."
         }

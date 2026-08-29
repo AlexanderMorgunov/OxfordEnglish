@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.44,
           "en": "Is the report ready?",
           "ru": "Отчёт готов?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.44,
+          "end": 3.87,
           "en": "Yes, it has been finished and sent.",
           "ru": "Да, он закончен и отправлен."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 3.87,
+          "end": 6,
           "en": "Great. And the meeting room?",
           "ru": "Отлично. А переговорная?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6,
+          "end": 7.98,
           "en": "It has been booked for three o'clock.",
           "ru": "Забронирована на три часа."
         }

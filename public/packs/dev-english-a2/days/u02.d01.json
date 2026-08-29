@@ -304,19 +304,19 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.66,
           "en": "What time do you get up? I get up at seven.",
           "ru": "Во сколько ты встаёшь? В семь."
         },
         {
-          "start": 3,
-          "end": 7,
+          "start": 2.66,
+          "end": 5.79,
           "en": "And what time do you start work? At nine.",
           "ru": "А во сколько начинаешь работу? В девять."
         },
         {
-          "start": 7,
-          "end": 9,
+          "start": 5.79,
+          "end": 7.4,
           "en": "I finish at five.",
           "ru": "Заканчиваю в пять."
         }

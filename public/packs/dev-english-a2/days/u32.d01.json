@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.71,
           "en": "So you designed the whole thing?",
           "ru": "Так ты всё это спроектировал?"
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 1.71,
+          "end": 5.4,
           "en": "No — it was Marco who designed it. I just tested it.",
           "ru": "Нет — это Марко спроектировал. Я только тестировал."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 5.4,
+          "end": 6.56,
           "en": "And the idea?",
           "ru": "А идея?"
         },
         {
-          "start": 13,
-          "end": 18,
+          "start": 6.56,
+          "end": 9.53,
           "en": "It was during lunch that the idea actually came up.",
           "ru": "Именно за обедом идея и родилась."
         }

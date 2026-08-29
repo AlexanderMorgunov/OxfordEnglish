@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.76,
           "en": "Do we have to wear a uniform?",
           "ru": "Нам нужно носить форму?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.76,
+          "end": 4,
           "en": "Yes, you have to wear a blue shirt.",
           "ru": "Да, нужно носить синюю рубашку."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4,
+          "end": 5.92,
           "en": "Do we have to come on Saturday?",
           "ru": "В субботу нужно приходить?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.92,
+          "end": 9.03,
           "en": "No, you don't have to. Saturday is free.",
           "ru": "Нет, не обязательно. Суббота свободна."
         }

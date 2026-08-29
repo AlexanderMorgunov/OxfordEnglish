@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.99,
           "en": "Shall we go to the cinema tonight?",
           "ru": "Сходим сегодня в кино?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.99,
+          "end": 4.5,
           "en": "Good idea! Let's meet at seven.",
           "ru": "Хорошая идея! Давай в семь."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.5,
+          "end": 7.23,
           "en": "Perfect. I'll text you when I get there.",
           "ru": "Отлично. Я напишу, когда буду там."
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 7.23,
+          "end": 8.98,
           "en": "Great. See you then!",
           "ru": "Класс. Тогда до встречи!"
         }

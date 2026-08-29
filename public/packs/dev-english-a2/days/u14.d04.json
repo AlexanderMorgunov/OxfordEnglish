@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.17,
           "en": "What are you doing?",
           "ru": "Что ты делаешь?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.17,
+          "end": 4.51,
           "en": "I am doing my homework. I usually do it after dinner.",
           "ru": "Делаю домашку. Обычно я делаю её после ужина."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.51,
+          "end": 6.07,
           "en": "Have you finished the maths?",
           "ru": "Математику закончил?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.07,
+          "end": 8.43,
           "en": "Yes, I finished it an hour ago.",
           "ru": "Да, закончил час назад."
         }

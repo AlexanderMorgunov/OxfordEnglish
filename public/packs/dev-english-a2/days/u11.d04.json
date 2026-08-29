@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.23,
           "en": "Will you come to the party?",
           "ru": "Придёшь на вечеринку?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.23,
+          "end": 4.29,
           "en": "I might. I have an exam the next day.",
           "ru": "Возможно. У меня на следующий день экзамен."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.29,
+          "end": 5.73,
           "en": "Will it be difficult?",
           "ru": "Он будет сложным?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.73,
+          "end": 8.41,
           "en": "It may be. I'm not sure yet.",
           "ru": "Может быть. Пока не уверен."
         }

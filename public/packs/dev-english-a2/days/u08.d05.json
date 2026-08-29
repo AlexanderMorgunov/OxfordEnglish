@@ -287,25 +287,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 3.11,
           "en": "Excuse me, how do I get to the museum?",
           "ru": "Извините, как добраться до музея?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 3.11,
+          "end": 5.11,
           "en": "Take the bus from that bus stop.",
           "ru": "Садитесь на автобус вон на той остановке."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 5.11,
+          "end": 6.62,
           "en": "How much is the fare?",
           "ru": "Сколько стоит проезд?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.62,
+          "end": 8.81,
           "en": "A single is one pound fifty.",
           "ru": "Билет в одну сторону — один фунт пятьдесят."
         }

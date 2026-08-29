@@ -288,25 +288,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.57,
           "en": "I'm so sorry I'm late!",
           "ru": "Извини, что так опоздал!"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.57,
+          "end": 4.37,
           "en": "Don't worry, it's okay. What happened?",
           "ru": "Не волнуйся, всё нормально. Что случилось?"
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.37,
+          "end": 6.98,
           "en": "I missed the train. Thank you for waiting.",
           "ru": "Я опоздал на поезд. Спасибо, что подождала."
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.98,
+          "end": 9.12,
           "en": "You're welcome. Let's go in.",
           "ru": "Пожалуйста. Пойдём внутрь."
         }

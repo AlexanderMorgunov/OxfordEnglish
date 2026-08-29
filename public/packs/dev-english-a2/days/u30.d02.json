@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.45,
           "en": "Which building is yours?",
           "ru": "Какое здание твоё?"
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 1.45,
+          "end": 4.86,
           "en": "The one whose balcony has all the plants. Third floor.",
           "ru": "То, у которого на балконе все эти растения. Третий этаж."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 4.86,
+          "end": 7.59,
           "en": "Is that the café you told me about downstairs?",
           "ru": "Это то кафе внизу, о котором ты рассказывал?"
         },
         {
-          "start": 13,
-          "end": 18,
+          "start": 7.59,
+          "end": 10.52,
           "en": "Yes, the place I get my coffee from every morning.",
           "ru": "Да, место, откуда я беру кофе каждое утро."
         }

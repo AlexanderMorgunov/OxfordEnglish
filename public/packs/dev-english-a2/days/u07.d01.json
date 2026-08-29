@@ -297,31 +297,31 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.59,
           "en": "Good afternoon. Are you ready to order?",
           "ru": "Добрый день. Готовы заказать?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.59,
+          "end": 4.81,
           "en": "Yes, I'd like a tea, please.",
           "ru": "Да, мне чай, пожалуйста."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.81,
+          "end": 6.59,
           "en": "Would you like anything to eat?",
           "ru": "Будете что-нибудь есть?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.59,
+          "end": 8.99,
           "en": "A sandwich, please.",
           "ru": "Сэндвич, пожалуйста."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 8.99,
+          "end": 12.79,
           "en": "Anything else? No, thank you. Can I have the bill?",
           "ru": "Что-нибудь ещё? Нет, спасибо. Можно счёт?"
         }

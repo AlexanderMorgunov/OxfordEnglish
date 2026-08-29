@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.79,
           "en": "These bags are so heavy!",
           "ru": "Эти сумки такие тяжёлые!"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.79,
+          "end": 3.59,
           "en": "Don't worry, I'll carry one.",
           "ru": "Не волнуйся, я понесу одну."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 3.59,
+          "end": 5.88,
           "en": "Thank you! Do you think it will rain?",
           "ru": "Спасибо! Думаешь, пойдёт дождь?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.88,
+          "end": 8.65,
           "en": "Maybe. I think it will be cloudy.",
           "ru": "Может быть. Думаю, будет облачно."
         }

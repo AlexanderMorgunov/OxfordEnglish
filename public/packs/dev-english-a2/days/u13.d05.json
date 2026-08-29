@@ -292,25 +292,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 0.99,
           "en": "I love autumn.",
           "ru": "Я люблю осень."
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 0.99,
+          "end": 3.93,
           "en": "So do I. It's beautiful, isn't it?",
           "ru": "И я. Красиво, правда?"
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 3.93,
+          "end": 6.46,
           "en": "Yes. But I don't like the rain.",
           "ru": "Да. Но я не люблю дождь."
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.46,
+          "end": 9.18,
           "en": "Neither do I. We agree on that!",
           "ru": "И я нет. В этом мы согласны!"
         }

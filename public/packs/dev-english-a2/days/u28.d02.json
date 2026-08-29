@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.92,
           "en": "So, how are these bikes made?",
           "ru": "Итак, как делают эти велосипеды?"
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 1.92,
+          "end": 4.82,
           "en": "The frames are welded here and painted next door.",
           "ru": "Рамы сваривают здесь, а красят по соседству."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 4.82,
+          "end": 7.53,
           "en": "And the wheels? Are they made on site?",
           "ru": "А колёса? Их делают на месте?"
         },
         {
-          "start": 13,
-          "end": 18,
+          "start": 7.53,
+          "end": 10.97,
           "en": "No, they’re imported, but everything is assembled here.",
           "ru": "Нет, их импортируют, но всё собирают здесь."
         }

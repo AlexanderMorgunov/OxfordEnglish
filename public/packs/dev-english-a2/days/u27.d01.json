@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.33,
           "en": "The client is furious about the deadline.",
           "ru": "Клиент в ярости из-за срока."
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 2.33,
+          "end": 4.92,
           "en": "We should have told them earlier that we were behind.",
           "ru": "Нам стоило раньше сказать им, что мы отстаём."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 4.92,
+          "end": 8.13,
           "en": "You're right. And I shouldn't have promised Friday.",
           "ru": "Ты прав. И мне не стоило обещать пятницу."
         },
         {
-          "start": 13,
-          "end": 18,
+          "start": 8.13,
+          "end": 10.83,
           "en": "We could have avoided all this with a quick call.",
           "ru": "Мы могли бы всего этого избежать одним звонком."
         }

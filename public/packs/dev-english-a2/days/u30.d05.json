@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.88,
           "en": "Which of your cousins is the artist?",
           "ru": "Кто из твоих двоюродных — художник?"
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 1.88,
+          "end": 4.99,
           "en": "The one whose paintings you saw, standing near the door.",
           "ru": "Тот, чьи картины ты видел, — стоит у двери."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 4.99,
+          "end": 6.62,
           "en": "And the man he’s talking to?",
           "ru": "А мужчина, с которым он говорит?"
         },
         {
-          "start": 13,
-          "end": 18,
+          "start": 6.62,
+          "end": 10.56,
           "en": "That’s his agent, who sold everything last year, which shocked us all.",
           "ru": "Это его агент, который продал всё в прошлом году, — что нас всех поразило."
         }

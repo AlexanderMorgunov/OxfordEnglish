@@ -277,25 +277,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.17,
           "en": "What happens if you don't water a plant?",
           "ru": "Что будет, если не поливать растение?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.17,
+          "end": 4.5,
           "en": "If you don't water it, it dies.",
           "ru": "Если его не поливать, оно погибнет."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.5,
+          "end": 6.41,
           "en": "And if you give it too much water?",
           "ru": "А если дать слишком много воды?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.41,
+          "end": 9.1,
           "en": "If you give it too much, it also dies.",
           "ru": "Если дать слишком много, оно тоже погибнет."
         }

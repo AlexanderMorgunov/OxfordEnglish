@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.02,
           "en": "How long have you been learning English?",
           "ru": "Как долго ты учишь английский?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.02,
+          "end": 4.73,
           "en": "I've been learning it for about three years.",
           "ru": "Я учу его около трёх лет."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.73,
+          "end": 8.14,
           "en": "And have you been practising every day?",
           "ru": "И ты практикуешься каждый день?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 8.14,
+          "end": 11.3,
           "en": "Since January, yes. My speaking has really been improving.",
           "ru": "С января — да. Моя речь заметно улучшается."
         }

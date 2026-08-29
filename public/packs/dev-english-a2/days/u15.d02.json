@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.55,
           "en": "What would you do if you could work from anywhere?",
           "ru": "Что бы ты делал, если бы мог работать откуда угодно?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.55,
+          "end": 5.29,
           "en": "If I could choose, I would live by the sea.",
           "ru": "Если бы мог выбирать, я бы жил у моря."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.29,
+          "end": 6.9,
           "en": "Wouldn't you miss the city?",
           "ru": "А по городу бы не скучал?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.9,
+          "end": 10.06,
           "en": "Maybe, but I might travel back for work sometimes.",
           "ru": "Может быть, но иногда я бы возвращался по работе."
         }

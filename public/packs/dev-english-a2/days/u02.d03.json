@@ -302,13 +302,13 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 3.83,
           "en": "How often do you exercise? I usually run in the morning.",
           "ru": "Как часто ты занимаешься спортом? Обычно бегаю утром."
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 3.83,
+          "end": 7.71,
           "en": "Do you work on Saturday? No, at the weekend I never work.",
           "ru": "Ты работаешь в субботу? Нет, на выходных никогда."
         }

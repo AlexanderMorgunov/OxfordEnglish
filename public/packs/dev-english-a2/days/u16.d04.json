@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.52,
           "en": "Did you get to the party?",
           "ru": "Ты попал на вечеринку?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.52,
+          "end": 5.25,
           "en": "Yes, but by the time I got there, most people had left.",
           "ru": "Да, но к моему приходу большинство уже ушли."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.25,
+          "end": 7.33,
           "en": "Oh no. Did you stay long?",
           "ru": "О нет. Долго пробыл?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 7.33,
+          "end": 11.18,
           "en": "Until the music stopped. As soon as it ended, I went home.",
           "ru": "Пока музыка не смолкла. Как только она кончилась, я ушёл домой."
         }

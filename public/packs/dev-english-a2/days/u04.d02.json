@@ -277,13 +277,13 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.96,
           "en": "Did you finish the task? Yes, I did.",
           "ru": "Ты закончил задачу? Да."
         },
         {
-          "start": 3,
-          "end": 8,
+          "start": 2.96,
+          "end": 8.04,
           "en": "When did the server crash? It crashed at night. Nobody noticed until the morning.",
           "ru": "Когда упал сервер? Ночью. Никто не заметил до утра."
         }

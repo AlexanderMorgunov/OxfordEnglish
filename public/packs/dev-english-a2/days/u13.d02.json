@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.12,
           "en": "What will you do if it snows tomorrow?",
           "ru": "Что ты будешь делать, если завтра пойдёт снег?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.12,
+          "end": 4.33,
           "en": "If it snows, I'll stay at home.",
           "ru": "Если пойдёт снег, останусь дома."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.33,
+          "end": 5.67,
           "en": "And if it's sunny?",
           "ru": "А если будет солнечно?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.67,
+          "end": 7.89,
           "en": "If it's sunny, we'll go skiing.",
           "ru": "Если будет солнечно, поедем кататься на лыжах."
         }

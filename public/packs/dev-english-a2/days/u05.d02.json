@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.17,
           "en": "What were you doing at eight last night?",
           "ru": "Что ты делал вчера в восемь вечера?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.17,
+          "end": 5.07,
           "en": "I was waiting for the bus in the rain.",
           "ru": "Я ждал автобус под дождём."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 5.07,
+          "end": 6.04,
           "en": "Oh no! Were you cold?",
           "ru": "О нет! Ты замёрз?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.04,
+          "end": 9.26,
           "en": "Yes! And the bus was coming very slowly.",
           "ru": "Да! А автобус ехал очень медленно."
         }

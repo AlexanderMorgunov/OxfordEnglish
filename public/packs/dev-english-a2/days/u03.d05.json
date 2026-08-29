@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.57,
           "en": "Could you help me, please?",
           "ru": "Не мог бы ты помочь?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.57,
+          "end": 3.43,
           "en": "Sure. What do you need?",
           "ru": "Конечно. Что нужно?"
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 3.43,
+          "end": 6.05,
           "en": "Can you open the window? It's hot.",
           "ru": "Можешь открыть окно? Жарко."
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.05,
+          "end": 8.45,
           "en": "Of course. Would you like some water?",
           "ru": "Конечно. Хочешь воды?"
         }

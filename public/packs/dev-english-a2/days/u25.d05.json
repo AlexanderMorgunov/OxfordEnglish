@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.85,
           "en": "How many apples would you like?",
           "ru": "Сколько яблок вам?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.85,
+          "end": 4.72,
           "en": "A kilo, please. And a bottle of juice.",
           "ru": "Килограмм, пожалуйста. И бутылку сока."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.72,
+          "end": 6.06,
           "en": "Anything else?",
           "ru": "Что-нибудь ещё?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.06,
+          "end": 8.85,
           "en": "Yes, a dozen eggs and a loaf of bread.",
           "ru": "Да, дюжину яиц и буханку хлеба."
         }

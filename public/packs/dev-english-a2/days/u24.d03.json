@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.66,
           "en": "How is chocolate made?",
           "ru": "Как делают шоколад?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.66,
+          "end": 4.23,
           "en": "First, the beans are dried and roasted.",
           "ru": "Сначала зёрна сушат и обжаривают."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.23,
+          "end": 5.15,
           "en": "And then?",
           "ru": "А потом?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 5.15,
+          "end": 7.65,
           "en": "Then they're ground, and sugar is added.",
           "ru": "Затем их мелют и добавляют сахар."
         }

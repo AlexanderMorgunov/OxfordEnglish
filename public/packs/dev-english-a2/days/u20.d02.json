@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.89,
           "en": "What do you plan to do this summer?",
           "ru": "Что ты планируешь делать летом?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.89,
+          "end": 4.06,
           "en": "I hope to travel around Italy.",
           "ru": "Надеюсь поездить по Италии."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.06,
+          "end": 6.65,
           "en": "Nice! Did you decide to go alone?",
           "ru": "Здорово! Ты решила ехать одна?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.65,
+          "end": 8.99,
           "en": "No, a friend agreed to come with me.",
           "ru": "Нет, подруга согласилась поехать со мной."
         }

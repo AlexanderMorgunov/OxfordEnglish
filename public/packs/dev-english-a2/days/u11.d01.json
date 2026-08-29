@@ -276,25 +276,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.52,
           "en": "Excuse me, what are the rules here?",
           "ru": "Извините, какие тут правила?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.52,
+          "end": 5.66,
           "en": "You must take a shower before you swim.",
           "ru": "Перед плаванием нужно принять душ."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 5.66,
+          "end": 7.06,
           "en": "OK. Can I bring food?",
           "ru": "Хорошо. Можно принести еду?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 7.06,
+          "end": 9.41,
           "en": "No, you mustn't eat near the pool.",
           "ru": "Нет, у бассейна есть нельзя."
         }

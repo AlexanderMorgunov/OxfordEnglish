@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.9,
           "en": "Is it true the shop is closing?",
           "ru": "Правда, что магазин закрывается?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.9,
+          "end": 4.32,
           "en": "It is said that it will close next month.",
           "ru": "Говорят, он закроется в следующем месяце."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.32,
+          "end": 5.34,
           "en": "Who told you?",
           "ru": "Кто тебе сказал?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 5.34,
+          "end": 8.91,
           "en": "No one exactly. It's believed to be true, though.",
           "ru": "Никто конкретно. Но считается, что это правда."
         }

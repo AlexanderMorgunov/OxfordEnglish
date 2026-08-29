@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 5,
+          "end": 2.71,
           "en": "Were I in your position, I would delay the launch.",
           "ru": "На вашем месте я бы отложил запуск."
         },
         {
-          "start": 5,
-          "end": 9,
+          "start": 2.71,
+          "end": 4.62,
           "en": "And had we launched last week?",
           "ru": "А если бы мы запустились на прошлой неделе?"
         },
         {
-          "start": 9,
-          "end": 14,
+          "start": 4.62,
+          "end": 7.88,
           "en": "Had you launched then, you would have lost the biggest client.",
           "ru": "Запустись вы тогда, вы бы потеряли крупнейшего клиента."
         },
         {
-          "start": 14,
-          "end": 18,
+          "start": 7.88,
+          "end": 11.36,
           "en": "Understood. Should anything change, I’ll call you.",
           "ru": "Понял. Если что-то изменится, я вам позвоню."
         }

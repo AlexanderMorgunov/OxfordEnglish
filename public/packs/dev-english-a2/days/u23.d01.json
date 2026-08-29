@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.3,
           "en": "Did you use to live in the countryside?",
           "ru": "Ты раньше жил в деревне?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.3,
+          "end": 5.88,
           "en": "Yes, I did. We used to have a big garden.",
           "ru": "Да. У нас был большой сад."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.88,
+          "end": 7.52,
           "en": "Did you use to like it?",
           "ru": "Тебе нравилось?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 7.52,
+          "end": 10.03,
           "en": "I didn't use to, but now I miss it.",
           "ru": "Раньше нет, но теперь скучаю по нему."
         }

@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.31,
           "en": "You never listen to me.",
           "ru": "Ты меня никогда не слушаешь."
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.31,
+          "end": 3.53,
           "en": "That’s not fair — I do listen.",
           "ru": "Это несправедливо — я слушаю."
         },
         {
-          "start": 8,
-          "end": 13,
+          "start": 3.53,
+          "end": 5.77,
           "en": "Then why did you forget my birthday?",
           "ru": "Тогда почему ты забыл мой день рождения?"
         },
         {
-          "start": 13,
-          "end": 18,
+          "start": 5.77,
+          "end": 9.53,
           "en": "I was so busy that it slipped my mind. But I do care.",
           "ru": "Я был так занят, что вылетело из головы. Но мне не всё равно."
         }

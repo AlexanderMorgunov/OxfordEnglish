@@ -289,25 +289,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.89,
           "en": "Have you finished the A2 course?",
           "ru": "Ты закончил курс A2?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.89,
+          "end": 5.02,
           "en": "Yes, I have! It was hard but great.",
           "ru": "Да! Было трудно, но здорово."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 5.02,
+          "end": 6.52,
           "en": "What will you do next?",
           "ru": "Что дальше?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.52,
+          "end": 10.07,
           "en": "If I keep practising, I will start B1 soon.",
           "ru": "Если продолжу заниматься, скоро начну B1."
         }

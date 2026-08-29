@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.73,
           "en": "Where did you two first meet?",
           "ru": "Где вы двое впервые встретились?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.73,
+          "end": 3.79,
           "en": "At the café where I used to work.",
           "ru": "В кафе, где я раньше работала."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 3.79,
+          "end": 5.84,
           "en": "Do you remember the day when you met?",
           "ru": "Ты помнишь день, когда вы познакомились?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 5.84,
+          "end": 9.15,
           "en": "Of course. It was the day when it snowed in April.",
           "ru": "Конечно. Это был день, когда в апреле выпал снег."
         }

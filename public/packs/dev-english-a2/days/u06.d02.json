@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.25,
           "en": "Where are my keys?",
           "ru": "Где мои ключи?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.25,
+          "end": 2.52,
           "en": "Are they on the table?",
           "ru": "Они на столе?"
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 2.52,
+          "end": 5.54,
           "en": "No, they aren't. Oh, they are under the newspaper!",
           "ru": "Нет. О, они под газетой!"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.54,
+          "end": 7.47,
           "en": "And your phone is next to the lamp.",
           "ru": "А твой телефон рядом с лампой."
         }

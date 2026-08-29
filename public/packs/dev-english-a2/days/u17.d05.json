@@ -288,25 +288,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.92,
           "en": "So, how is the new job going?",
           "ru": "Ну, как новая работа?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.92,
+          "end": 4.82,
           "en": "Really well, thanks. I've been learning a lot.",
           "ru": "Очень хорошо, спасибо. Я много узнаю."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.82,
+          "end": 6.55,
           "en": "Are you still working from home?",
           "ru": "Ты всё ещё работаешь из дома?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.55,
+          "end": 9.87,
           "en": "Mostly. I've been going to the office once a week.",
           "ru": "В основном. В офис езжу раз в неделю."
         }

@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.08,
           "en": "Can you drive?",
           "ru": "Ты умеешь водить?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.08,
+          "end": 2.53,
           "en": "Yes, I can. But I can't swim.",
           "ru": "Да, умею. Но не умею плавать."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 2.53,
+          "end": 6.73,
           "en": "Really? I could swim when I was six.",
           "ru": "Правда? Я умел плавать в шесть лет."
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.73,
+          "end": 8.22,
           "en": "I want to learn this summer.",
           "ru": "Хочу научиться этим летом."
         }

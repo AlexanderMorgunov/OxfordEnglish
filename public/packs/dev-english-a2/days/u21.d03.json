@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.26,
           "en": "What time does the next train leave?",
           "ru": "Во сколько отходит следующий поезд?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.26,
+          "end": 5.53,
           "en": "It leaves at 6:15 from platform two.",
           "ru": "Он отходит в 6:15 с платформы два."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.53,
+          "end": 7.11,
           "en": "And when does it arrive?",
           "ru": "А когда прибывает?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 7.11,
+          "end": 10.24,
           "en": "It arrives at 8:30, if there's no delay.",
           "ru": "Прибывает в 8:30, если не будет задержки."
         }

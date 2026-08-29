@@ -245,13 +245,13 @@
       "transcript": [
         {
           "start": 0,
-          "end": 5,
+          "end": 4.57,
           "en": "What did you do yesterday? I opened a ticket and sent an email to the team.",
           "ru": "Что ты делал вчера? Открыл тикет и отправил письмо команде."
         },
         {
-          "start": 5,
-          "end": 10,
+          "start": 4.57,
+          "end": 9.28,
           "en": "Did anyone help you? Yes, Ben joined the call and explained the fix.",
           "ru": "Тебе кто-то помог? Да, Бен присоединился и объяснил фикс."
         }

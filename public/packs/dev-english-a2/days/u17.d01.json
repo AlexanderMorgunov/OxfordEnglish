@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.56,
           "en": "You look exhausted. What have you been doing?",
           "ru": "Ты выглядишь измотанным. Чем ты занимался?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.56,
+          "end": 4.85,
           "en": "I've been working on the report all day.",
           "ru": "Я весь день работал над отчётом."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.85,
+          "end": 6.16,
           "en": "Have you had a break?",
           "ru": "Ты делал перерыв?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.16,
+          "end": 9.61,
           "en": "No, I haven't. I've been sitting here since nine.",
           "ru": "Нет. Я сижу здесь с девяти."
         }

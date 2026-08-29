@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.1,
           "en": "So how did it go with your landlord?",
           "ru": "Ну и как прошло с арендодателем?"
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 2.1,
+          "end": 5.79,
           "en": "He denied raising the rent, but then admitted sending the letter.",
           "ru": "Он отрицал повышение аренды, но потом признался, что отправил письмо."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 5.79,
+          "end": 7.23,
           "en": "Did he apologize?",
           "ru": "Он извинился?"
         },
         {
-          "start": 13,
-          "end": 18,
+          "start": 7.23,
+          "end": 10.7,
           "en": "He apologized for the confusion and offered to fix the heating.",
           "ru": "Он извинился за путаницу и предложил починить отопление."
         }

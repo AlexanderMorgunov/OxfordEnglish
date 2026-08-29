@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.99,
           "en": "What do you like doing at the weekend?",
           "ru": "Что ты любишь делать по выходным?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.99,
+          "end": 4.17,
           "en": "I enjoy hiking and I love cooking.",
           "ru": "Я люблю ходить в походы и обожаю готовить."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.17,
+          "end": 7.72,
           "en": "Do you mind getting up early for a hike?",
           "ru": "Тебя не смущает вставать рано ради похода?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 7.72,
+          "end": 9.97,
           "en": "Not at all. I don't mind waking up at six.",
           "ru": "Совсем нет. Я не против встать в шесть."
         }

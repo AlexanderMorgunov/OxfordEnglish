@@ -289,25 +289,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.41,
           "en": "How do I get to the shop?",
           "ru": "Как мне пройти к магазину?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.41,
+          "end": 4.47,
           "en": "Walk along this street and go past the café.",
           "ru": "Иди по этой улице и пройди мимо кафе."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.47,
+          "end": 7.28,
           "en": "Along the street, past the café. Then?",
           "ru": "По улице, мимо кафе. А потом?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 7.28,
+          "end": 10.2,
           "en": "Go across the square. The shop is there.",
           "ru": "Пройди через площадь. Магазин там."
         }

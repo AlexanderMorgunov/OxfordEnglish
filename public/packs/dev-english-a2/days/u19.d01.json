@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.35,
           "en": "Whose bag is this?",
           "ru": "Чья это сумка?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.35,
+          "end": 4.38,
           "en": "It must be Tom's. He was here a minute ago.",
           "ru": "Наверное, Тома. Он был здесь минуту назад."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.38,
+          "end": 6.91,
           "en": "It can't be his — his bag is black.",
           "ru": "Не может быть его — у него чёрная сумка."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.91,
+          "end": 9.88,
           "en": "Then it might be Sara's. Let's ask her.",
           "ru": "Тогда, может, Сары. Спросим её."
         }

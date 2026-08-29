@@ -304,13 +304,13 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 4.51,
           "en": "Excuse me, whose phone is this? Oh, it's mine, thank you!",
           "ru": "Извините, чей это телефон? О, мой, спасибо!"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 4.51,
+          "end": 7.48,
           "en": "And whose coat is this? I think it's hers.",
           "ru": "А чьё это пальто? Думаю, её."
         }

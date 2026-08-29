@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.36,
           "en": "What did the doctor say?",
           "ru": "Что сказал врач?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.36,
+          "end": 3.31,
           "en": "She told me to rest for a week.",
           "ru": "Она велела мне отдыхать неделю."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 3.31,
+          "end": 4.41,
           "en": "Anything else?",
           "ru": "Что-то ещё?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 4.41,
+          "end": 7.23,
           "en": "Yes, she advised me not to drink coffee.",
           "ru": "Да, посоветовала не пить кофе."
         }

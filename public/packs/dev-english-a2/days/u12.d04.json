@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.35,
           "en": "Have you read this book?",
           "ru": "Ты читал эту книгу?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.35,
+          "end": 3.49,
           "en": "Yes, I read it last summer.",
           "ru": "Да, я читал её прошлым летом."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 3.49,
+          "end": 4.48,
           "en": "Did you like it?",
           "ru": "Тебе понравилось?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 4.48,
+          "end": 7.34,
           "en": "Yes, I have never read such a good story.",
           "ru": "Да, я никогда не читал такой хорошей истории."
         }

@@ -341,13 +341,13 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 4.07,
           "en": "What did you do yesterday? I deployed the new build and fixed a bug.",
           "ru": "Что ты делал вчера? Задеплоил новый билд и починил баг."
         },
         {
-          "start": 4,
-          "end": 7,
+          "start": 4.07,
+          "end": 6.83,
           "en": "Did the tests pass? Yes, they did.",
           "ru": "Тесты прошли? Да."
         }

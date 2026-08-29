@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.88,
           "en": "Has your neighbourhood changed much?",
           "ru": "Твой район сильно изменился?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.88,
+          "end": 5.62,
           "en": "A lot. There used to be a park where the mall is now.",
           "ru": "Очень. Там, где сейчас торговый центр, раньше был парк."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.62,
+          "end": 6.68,
           "en": "Do you miss it?",
           "ru": "Скучаешь по нему?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.68,
+          "end": 9.17,
           "en": "I did, but I'm used to the new one now.",
           "ru": "Скучал, но теперь привык к новому."
         }

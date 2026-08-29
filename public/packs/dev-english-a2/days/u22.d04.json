@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.88,
           "en": "Did you like the present I gave you?",
           "ru": "Тебе понравился подарок, который я подарил?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.88,
+          "end": 5.21,
           "en": "I loved it! It's the best gift I've ever received.",
           "ru": "Обожаю его! Это лучший подарок, что я когда-либо получал."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.21,
+          "end": 7.91,
           "en": "It came from the shop we visited last month.",
           "ru": "Он из магазина, который мы посетили в прошлом месяце."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 7.91,
+          "end": 10.93,
           "en": "The one I liked so much? Perfect choice!",
           "ru": "Тот, что мне так понравился? Идеальный выбор!"
         }

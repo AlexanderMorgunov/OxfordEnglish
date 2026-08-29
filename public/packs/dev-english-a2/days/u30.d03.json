@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.16,
           "en": "How many candidates did you see?",
           "ru": "Сколько кандидатов вы посмотрели?"
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 2.16,
+          "end": 5.82,
           "en": "Eight, two of whom were excellent and one of whom walked out.",
           "ru": "Восемь, двое из которых были отличными, а один ушёл."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 5.82,
+          "end": 7.02,
           "en": "And the tests?",
           "ru": "А тесты?"
         },
         {
-          "start": 13,
-          "end": 18,
+          "start": 7.02,
+          "end": 9.98,
           "en": "They all passed, which honestly surprised me.",
           "ru": "Все прошли, что, честно, меня удивило."
         }

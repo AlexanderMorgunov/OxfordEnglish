@@ -288,25 +288,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.62,
           "en": "How much are these shoes?",
           "ru": "Сколько стоит эта обувь?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.62,
+          "end": 4.63,
           "en": "They're thirty pounds. Would you like to try them on?",
           "ru": "Тридцать фунтов. Хотите примерить?"
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.63,
+          "end": 7.16,
           "en": "Yes... They fit well. I'll take them.",
           "ru": "Да... Хорошо сидят. Я беру."
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 7.16,
+          "end": 10.82,
           "en": "Great. Can you pay by card? Here's your receipt.",
           "ru": "Отлично. Оплатите картой? Вот ваш чек."
         }

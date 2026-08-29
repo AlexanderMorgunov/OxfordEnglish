@@ -304,19 +304,19 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.12,
           "en": "Have you got Sofia's phone number?",
           "ru": "У тебя есть номер Софии?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.12,
+          "end": 5.1,
           "en": "No, I haven't. But I have got her email.",
           "ru": "Нет. Но есть её почта."
         },
         {
-          "start": 6,
-          "end": 10,
+          "start": 5.1,
+          "end": 7.68,
           "en": "Great, can you send it to me? Sure.",
           "ru": "Отлично, можешь прислать? Конечно."
         }

@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.02,
           "en": "Is there a garden at your new house?",
           "ru": "У твоего нового дома есть сад?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.02,
+          "end": 4.54,
           "en": "Yes, there is a small one behind the house.",
           "ru": "Да, есть маленький за домом."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.54,
+          "end": 5.87,
           "en": "Are there many rooms?",
           "ru": "Комнат много?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.87,
+          "end": 8.39,
           "en": "There are three rooms and two bathrooms.",
           "ru": "Три комнаты и две ванные."
         }

@@ -241,13 +241,13 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 3.03,
           "en": "Why did you revert the change? The release broke a test.",
           "ru": "Почему откатили? Релиз сломал тест."
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 3.03,
+          "end": 5.43,
           "en": "So we did a rollback and checked the log.",
           "ru": "Поэтому сделали откат и проверили лог."
         }

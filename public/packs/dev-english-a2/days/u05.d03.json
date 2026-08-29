@@ -276,25 +276,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.21,
           "en": "You look tired. What happened?",
           "ru": "Ты выглядишь усталым. Что случилось?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.21,
+          "end": 5.06,
           "en": "While I was cooking dinner, I cut my finger.",
           "ru": "Пока я готовил ужин, я порезал палец."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 5.06,
+          "end": 5.99,
           "en": "Oh no! Is it bad?",
           "ru": "О нет! Сильно?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.99,
+          "end": 10.73,
           "en": "No, luckily it's small. It happened when the knife slipped.",
           "ru": "Нет, к счастью, небольшая. Это случилось, когда нож соскользнул."
         }

@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.4,
           "en": "You seem stressed. What’s wrong?",
           "ru": "Ты напряжён. Что не так?"
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 2.4,
+          "end": 5.65,
           "en": "What’s bothering me is the deadline. It’s impossible.",
           "ru": "Что меня беспокоит — так это дедлайн. Он нереален."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 5.65,
+          "end": 7.13,
           "en": "So what do you need?",
           "ru": "Так что тебе нужно?"
         },
         {
-          "start": 13,
-          "end": 18,
+          "start": 7.13,
+          "end": 10.77,
           "en": "What I need is one more week. That’s all I’m asking for.",
           "ru": "Что мне нужно — так это ещё неделя. Это всё, о чём я прошу."
         }

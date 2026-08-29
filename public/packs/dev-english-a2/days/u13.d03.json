@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.31,
           "en": "Who is the woman who is talking to Tom?",
           "ru": "Кто эта женщина, что говорит с Томом?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.31,
+          "end": 4.49,
           "en": "She is the neighbour who lives next door.",
           "ru": "Это соседка, которая живёт рядом."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.49,
+          "end": 7.1,
           "en": "And what is that machine which is on the table?",
           "ru": "А что за прибор, который на столе?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 7.1,
+          "end": 9.6,
           "en": "It's the coffee machine that she gave us.",
           "ru": "Это кофемашина, которую она нам подарила."
         }

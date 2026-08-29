@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.93,
           "en": "Why was the kitchen such a mess?",
           "ru": "Почему на кухне был такой бардак?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.93,
+          "end": 4.69,
           "en": "The children had made a cake before we got home.",
           "ru": "Дети испекли торт до нашего прихода."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.69,
+          "end": 6.77,
           "en": "Oh! So the cake was ready?",
           "ru": "О! Значит, торт был готов?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.77,
+          "end": 9.68,
           "en": "Yes, they had finished it, but they hadn't cleaned up!",
           "ru": "Да, они его доделали, но не убрали за собой!"
         }

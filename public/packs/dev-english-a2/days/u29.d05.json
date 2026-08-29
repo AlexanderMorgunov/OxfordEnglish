@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.15,
           "en": "What did the teacher say about the exam?",
           "ru": "Что учитель сказал про экзамен?"
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 2.15,
+          "end": 5.36,
           "en": "She said it would be shorter and reminded us to bring a pen.",
           "ru": "Она сказала, что он будет короче, и напомнила взять ручку."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 5.36,
+          "end": 7.27,
           "en": "Did anyone ask about the format?",
           "ru": "Кто-нибудь спросил про формат?"
         },
         {
-          "start": 13,
-          "end": 18,
+          "start": 7.27,
+          "end": 11.86,
           "en": "Yes, Sam asked whether we could use notes, and she refused to allow it.",
           "ru": "Да, Сэм спросил, можно ли пользоваться конспектами, и она отказалась это разрешить."
         }

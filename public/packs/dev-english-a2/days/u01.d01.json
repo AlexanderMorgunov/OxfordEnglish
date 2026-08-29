@@ -309,19 +309,19 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 3.26,
           "en": "Hi! Where are you from? I am from Italy.",
           "ru": "Привет! Откуда ты? Я из Италии."
         },
         {
-          "start": 3,
-          "end": 7,
+          "start": 3.26,
+          "end": 6.27,
           "en": "Is this your sister? No, she is my wife.",
           "ru": "Это твоя сестра? Нет, это моя жена."
         },
         {
-          "start": 7,
-          "end": 11,
+          "start": 6.27,
+          "end": 10.32,
           "en": "And where is she from? She is from Spain. Nice family!",
           "ru": "А она откуда? Из Испании. Хорошая семья!"
         }

@@ -287,25 +287,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.47,
           "en": "Good evening. Are you ready to order?",
           "ru": "Добрый вечер. Готовы заказать?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.47,
+          "end": 5.02,
           "en": "Yes. For a starter, I'll have the soup.",
           "ru": "Да. На закуску — суп."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 5.02,
+          "end": 6.54,
           "en": "And for the main course?",
           "ru": "А на основное?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.54,
+          "end": 9.64,
           "en": "I'll have the chicken, please. And the bill later.",
           "ru": "Курицу, пожалуйста. И счёт потом."
         }

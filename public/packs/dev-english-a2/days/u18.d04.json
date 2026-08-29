@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.36,
           "en": "Did you hear about Mark?",
           "ru": "Ты слышал про Марка?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.36,
+          "end": 2.67,
           "en": "No, what happened?",
           "ru": "Нет, что случилось?"
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 2.67,
+          "end": 6.19,
           "en": "Apparently he told everyone he was moving abroad the next year.",
           "ru": "Судя по всему, он всем сказал, что на следующий год переезжает за границу."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.19,
+          "end": 8.6,
           "en": "Really? He never mentioned it to me!",
           "ru": "Правда? Мне он ни разу об этом не говорил!"
         }

@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.31,
           "en": "Are you ready? We're about to leave.",
           "ru": "Готов? Мы сейчас выходим."
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.31,
+          "end": 5.4,
           "en": "Almost! I'm just about to put my shoes on.",
           "ru": "Почти! Я как раз надеваю обувь."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.4,
+          "end": 7.95,
           "en": "Hurry — the taxi is about to arrive.",
           "ru": "Скорее — такси вот-вот приедет."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 7.95,
+          "end": 10.91,
           "en": "Okay, okay, I'm coming right now!",
           "ru": "Хорошо, хорошо, я уже иду!"
         }

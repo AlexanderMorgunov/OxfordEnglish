@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.86,
           "en": "How was the interview? What did they ask?",
           "ru": "Как собеседование? Что спрашивали?"
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 2.86,
+          "end": 5.82,
           "en": "They asked where I had worked and why I’d left.",
           "ru": "Спросили, где я работал и почему ушёл."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 5.82,
+          "end": 7.4,
           "en": "Did they ask about money?",
           "ru": "Про деньги спрашивали?"
         },
         {
-          "start": 13,
-          "end": 17,
+          "start": 7.4,
+          "end": 10.51,
           "en": "They asked whether my expectations were realistic.",
           "ru": "Спросили, реалистичны ли мои ожидания."
         }

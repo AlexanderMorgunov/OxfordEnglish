@@ -257,19 +257,19 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.71,
           "en": "Hey, how are you? Good, thanks.",
           "ru": "Привет, как дела? Хорошо, спасибо."
         },
         {
-          "start": 3,
-          "end": 7,
+          "start": 2.71,
+          "end": 7.48,
           "en": "Are you free on Sunday? Yes, I am. Let's meet for coffee.",
           "ru": "Ты свободен в воскресенье? Да. Давай на кофе."
         },
         {
-          "start": 7,
-          "end": 10,
+          "start": 7.48,
+          "end": 9.19,
           "en": "Perfect, see you then!",
           "ru": "Отлично, до встречи!"
         }

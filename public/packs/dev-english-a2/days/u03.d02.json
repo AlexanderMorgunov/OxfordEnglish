@@ -277,25 +277,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.58,
           "en": "What do you usually do on Saturdays?",
           "ru": "Что ты обычно делаешь по субботам?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.58,
+          "end": 7.18,
           "en": "I usually play tennis. But today I am reading a book.",
           "ru": "Обычно я играю в теннис. Но сегодня читаю книгу."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 7.18,
+          "end": 8.29,
           "en": "Why? Is it raining?",
           "ru": "Почему? Идёт дождь?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 8.29,
+          "end": 10.99,
           "en": "Yes. So I am staying at home.",
           "ru": "Да. Поэтому я сижу дома."
         }

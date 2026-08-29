@@ -288,25 +288,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 3.98,
           "en": "Suppose you could learn any skill instantly. What would it be?",
           "ru": "Предположим, ты мог бы мгновенно освоить любой навык. Какой?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 3.98,
+          "end": 6.65,
           "en": "Honestly, I would learn to play the piano.",
           "ru": "Честно, я бы научился играть на пианино."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 6.65,
+          "end": 10.09,
           "en": "Not a language? Personally, I'd choose Japanese.",
           "ru": "Не язык? Лично я бы выбрал японский."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 10.09,
+          "end": 12.81,
           "en": "It depends on your goals, I suppose.",
           "ru": "Полагаю, всё зависит от целей."
         }

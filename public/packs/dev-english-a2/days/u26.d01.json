@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.31,
           "en": "We got completely lost yesterday.",
           "ru": "Вчера мы совсем заблудились."
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.31,
+          "end": 5.07,
           "en": "If you had used a map, it wouldn't have happened.",
           "ru": "Если бы вы взяли карту, этого бы не случилось."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.07,
+          "end": 7.3,
           "en": "I know. And we were late too.",
           "ru": "Знаю. И ещё опоздали."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 7.3,
+          "end": 10.33,
           "en": "If you'd left earlier, you would have been on time.",
           "ru": "Если бы вы вышли раньше, вы бы успели."
         }

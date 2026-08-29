@@ -288,25 +288,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 3.32,
           "en": "The others are really late. What do you think happened?",
           "ru": "Остальные сильно опаздывают. Как думаешь, что случилось?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 3.32,
+          "end": 6.18,
           "en": "I don't know. Maybe they got lost.",
           "ru": "Не знаю. Может, они заблудились."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 6.18,
+          "end": 8.26,
           "en": "Or they could be stuck in traffic.",
           "ru": "Или застряли в пробке."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 8.26,
+          "end": 11.85,
           "en": "I'd say they probably forgot the time. Let's call them.",
           "ru": "Я бы сказал, они, скорее всего, забыли о времени. Давай позвоним."
         }

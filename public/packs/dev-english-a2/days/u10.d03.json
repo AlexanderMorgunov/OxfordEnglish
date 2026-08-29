@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.95,
           "en": "Are you free on Friday evening?",
           "ru": "Ты свободен в пятницу вечером?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.95,
+          "end": 4.24,
           "en": "No, I'm meeting my sister at seven.",
           "ru": "Нет, я встречаюсь с сестрой в семь."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.24,
+          "end": 6.6,
           "en": "OK. What about Saturday?",
           "ru": "Хорошо. А в субботу?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.6,
+          "end": 9.27,
           "en": "Saturday is good. I'll call you then.",
           "ru": "Суббота подходит. Я тебе тогда позвоню."
         }

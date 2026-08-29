@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.15,
           "en": "You're all wet! Have you been swimming?",
           "ru": "Ты весь мокрый! Ты плавал?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.15,
+          "end": 4.1,
           "en": "No, I've been running in the rain.",
           "ru": "Нет, я бегал под дождём."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.1,
+          "end": 5.84,
           "en": "And why are your hands dirty?",
           "ru": "А почему руки грязные?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 5.84,
+          "end": 8.79,
           "en": "I fell over. I've been sitting in a puddle!",
           "ru": "Я упал. Я сидел в луже!"
         }

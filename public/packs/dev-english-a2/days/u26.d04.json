@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.22,
           "en": "Do you ever think about studying abroad?",
           "ru": "Ты когда-нибудь думаешь об учёбе за границей?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.22,
+          "end": 6.72,
           "en": "Sometimes. If I had gone, I'd speak English perfectly now.",
           "ru": "Иногда. Если бы я поехал, сейчас говорил бы по-английски идеально."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 6.72,
+          "end": 8.35,
           "en": "It's not too late, you know.",
           "ru": "Знаешь, ещё не поздно."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 8.35,
+          "end": 12.43,
           "en": "True. If I hadn't been so scared, I'd already be there.",
           "ru": "Верно. Если бы я так не боялся, я бы уже был там."
         }

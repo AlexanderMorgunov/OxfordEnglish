@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.15,
           "en": "How is the jacket?",
           "ru": "Как куртка?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.15,
+          "end": 3.65,
           "en": "It's too small. It doesn't fit.",
           "ru": "Слишком маленькая. Не подходит."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 3.65,
+          "end": 4.77,
           "en": "And the price?",
           "ru": "А цена?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 4.77,
+          "end": 7.55,
           "en": "It's cheap enough, but I need a bigger size.",
           "ru": "Достаточно дешёвая, но мне нужен размер побольше."
         }

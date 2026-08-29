@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.67,
           "en": "Why are your hands so dirty?",
           "ru": "Почему у тебя такие грязные руки?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.67,
+          "end": 3.38,
           "en": "I've been fixing my bike.",
           "ru": "Я чинил велосипед."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 3.38,
+          "end": 4.61,
           "en": "Have you finished?",
           "ru": "Ты закончил?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 4.61,
+          "end": 8.05,
           "en": "Almost. I've fixed the wheel, but not the brakes yet.",
           "ru": "Почти. Колесо починил, а тормоза ещё нет."
         }

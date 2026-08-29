@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.76,
           "en": "His umbrella is wet. It must have rained.",
           "ru": "Его зонт мокрый. Должно быть, шёл дождь."
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.76,
+          "end": 4.44,
           "en": "But the sky is clear now.",
           "ru": "Но небо сейчас чистое."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.44,
+          "end": 7.62,
           "en": "Then he must have gone out earlier, when it was raining.",
           "ru": "Значит, он выходил раньше, когда шёл дождь."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 7.62,
+          "end": 10.69,
           "en": "You're right. He can't have been home all morning.",
           "ru": "Ты прав. Он не мог быть дома всё утро."
         }

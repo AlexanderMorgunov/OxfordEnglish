@@ -301,25 +301,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.43,
           "en": "Excuse me, where is the station?",
           "ru": "Извините, где вокзал?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.43,
+          "end": 4.32,
           "en": "Go straight on and turn left.",
           "ru": "Идите прямо и поверните налево."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.32,
+          "end": 5.43,
           "en": "Is it near?",
           "ru": "Это рядом?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.43,
+          "end": 7.36,
           "en": "Yes, it is next to the bank.",
           "ru": "Да, это рядом с банком."
         }

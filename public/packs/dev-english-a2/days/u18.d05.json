@@ -288,25 +288,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.32,
           "en": "Guess what! You won't believe it.",
           "ru": "Угадай что! Ты не поверишь."
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.32,
+          "end": 3.84,
           "en": "What? Tell me!",
           "ru": "Что? Рассказывай!"
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 3.84,
+          "end": 6.57,
           "en": "Apparently, Sara is moving to Japan.",
           "ru": "Судя по всему, Сара переезжает в Японию."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.57,
+          "end": 8.8,
           "en": "No way! That's amazing!",
           "ru": "Не может быть! Это потрясающе!"
         }

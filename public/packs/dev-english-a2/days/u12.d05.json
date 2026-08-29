@@ -287,25 +287,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.06,
           "en": "Have you ever eaten Japanese food?",
           "ru": "Ты когда-нибудь ел японскую еду?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.06,
+          "end": 5.28,
           "en": "Yes, I have! I tried sushi in Tokyo.",
           "ru": "Да! Я пробовал суши в Токио."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 5.28,
+          "end": 6.44,
           "en": "What was it like?",
           "ru": "Как тебе?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.44,
+          "end": 9,
           "en": "It was amazing. I want to go back.",
           "ru": "Потрясающе. Хочу вернуться."
         }

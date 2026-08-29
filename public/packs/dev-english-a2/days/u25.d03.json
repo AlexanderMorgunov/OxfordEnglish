@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.25,
           "en": "Is everyone here?",
           "ru": "Все здесь?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.25,
+          "end": 3.94,
           "en": "Almost. Each person has signed in.",
           "ru": "Почти. Каждый отметился."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 3.94,
+          "end": 5.66,
           "en": "Did all the tickets arrive?",
           "ru": "Все билеты пришли?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 5.66,
+          "end": 7.53,
           "en": "Yes, every single one.",
           "ru": "Да, все до единого."
         }

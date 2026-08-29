@@ -288,25 +288,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.53,
           "en": "Do we have any sugar?",
           "ru": "У нас есть сахар?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.53,
+          "end": 3.94,
           "en": "Only a little. And a few eggs.",
           "ru": "Только немного. И несколько яиц."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 3.94,
+          "end": 7.12,
           "en": "We need more. Which eggs — the big ones?",
           "ru": "Нужно больше. Какие яйца — большие?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 7.12,
+          "end": 9.43,
           "en": "Yes, the big ones, please.",
           "ru": "Да, большие, пожалуйста."
         }

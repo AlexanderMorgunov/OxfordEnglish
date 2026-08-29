@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.6,
           "en": "How was your holiday?",
           "ru": "Как прошёл отпуск?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.6,
+          "end": 4.21,
           "en": "Great! We went to the sea by car.",
           "ru": "Отлично! Мы поехали к морю на машине."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.21,
+          "end": 5.53,
           "en": "Was the weather good?",
           "ru": "Погода была хорошая?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.53,
+          "end": 9.35,
           "en": "Yes, it was sunny every day. It didn't rain once.",
           "ru": "Да, каждый день было солнечно. Ни разу не было дождя."
         }

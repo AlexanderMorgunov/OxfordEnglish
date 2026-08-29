@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.14,
           "en": "Which shop is the best for shoes?",
           "ru": "В каком магазине лучше всего покупать обувь?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 2.14,
+          "end": 5.21,
           "en": "City Style. It has the cheapest prices.",
           "ru": "City Style. Там самые дешёвые цены."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 5.21,
+          "end": 6.74,
           "en": "Is it the biggest shop?",
           "ru": "Это самый большой магазин?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.74,
+          "end": 9.41,
           "en": "Yes, and the most popular one in town.",
           "ru": "Да, и самый популярный в городе."
         }

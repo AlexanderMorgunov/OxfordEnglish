@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2,
           "en": "I’d like to get my brakes checked.",
           "ru": "Хочу проверить тормоза."
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2,
+          "end": 4.86,
           "en": "Sure. When did you last have them serviced?",
           "ru": "Конечно. Когда их последний раз обслуживали?"
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.86,
+          "end": 8.34,
           "en": "About a year ago. I also need the oil changed.",
           "ru": "Около года назад. Ещё нужно поменять масло."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 8.34,
+          "end": 11.49,
           "en": "No problem — we’ll have everything done by five.",
           "ru": "Без проблем — всё сделаем к пяти."
         }

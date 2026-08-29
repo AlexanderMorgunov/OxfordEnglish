@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.06,
           "en": "What were you doing when the storm started?",
           "ru": "Что ты делал, когда началась гроза?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.06,
+          "end": 5.3,
           "en": "I was cooking dinner. The kitchen was warm and quiet.",
           "ru": "Готовил ужин. На кухне было тепло и тихо."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.3,
+          "end": 6.14,
           "en": "And then?",
           "ru": "А потом?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.14,
+          "end": 9.85,
           "en": "Suddenly the lights went out — a tree had fallen on the wires.",
           "ru": "Вдруг погас свет — дерево упало на провода."
         }

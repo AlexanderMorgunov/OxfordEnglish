@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.1,
           "en": "What is this?",
           "ru": "Что это?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.1,
+          "end": 2.8,
           "en": "This is a plant from my garden.",
           "ru": "Это растение из моего сада."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 2.8,
+          "end": 4.81,
           "en": "And what are those on the shelf?",
           "ru": "А что то на полке?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 4.81,
+          "end": 7.17,
           "en": "Those are old photos of my family.",
           "ru": "Это старые фото моей семьи."
         }

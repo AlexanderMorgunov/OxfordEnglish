@@ -325,19 +325,19 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 3.07,
           "en": "Hello, what is your name? My name is Anna.",
           "ru": "Привет, как тебя зовут? Меня зовут Анна."
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 3.07,
+          "end": 5.57,
           "en": "Where are you from? I am from Poland.",
           "ru": "Откуда ты? Я из Польши."
         },
         {
-          "start": 6,
-          "end": 10,
+          "start": 5.57,
+          "end": 9.5,
           "en": "Are you a student? Yes, I am. Nice to meet you!",
           "ru": "Ты студентка? Да. Приятно познакомиться!"
         }

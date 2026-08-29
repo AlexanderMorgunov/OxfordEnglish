@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 5,
+          "end": 2.81,
           "en": "You still think about selling the flat, don’t you?",
           "ru": "Ты всё ещё думаешь о продаже квартиры, да?"
         },
         {
-          "start": 5,
-          "end": 10,
+          "start": 2.81,
+          "end": 6.96,
           "en": "If I had sold it in 2015, I’d have a lot more money now.",
           "ru": "Если бы я продал её в 2015-м, сейчас у меня было бы гораздо больше денег."
         },
         {
-          "start": 10,
-          "end": 14,
+          "start": 6.96,
+          "end": 9.39,
           "en": "Maybe. But you love that place.",
           "ru": "Может быть. Но ты обожаешь то место."
         },
         {
-          "start": 14,
-          "end": 19,
+          "start": 9.39,
+          "end": 13.8,
           "en": "True. If I cared only about money, I would have sold it long ago.",
           "ru": "Верно. Если бы меня заботили только деньги, я бы давно её продал."
         }

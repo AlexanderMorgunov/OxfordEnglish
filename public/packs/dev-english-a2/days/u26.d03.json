@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.18,
           "en": "Do you have any regrets about school?",
           "ru": "Жалеешь о чём-нибудь со школы?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.18,
+          "end": 3.72,
           "en": "I wish I had worked harder.",
           "ru": "Жаль, что я не старался усерднее."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 3.72,
+          "end": 7.29,
           "en": "Same here. And I wish I hadn't been so shy.",
           "ru": "Я тоже. И жаль, что я был таким застенчивым."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 7.29,
+          "end": 9.44,
           "en": "Well, we can't change the past.",
           "ru": "Что ж, прошлое не изменить."
         }

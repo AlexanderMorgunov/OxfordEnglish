@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.39,
           "en": "You look tired. Everything okay?",
           "ru": "Ты усталый. Всё нормально?"
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 2.39,
+          "end": 6.18,
           "en": "I wish I hadn’t taken this extra shift. I’m exhausted.",
           "ru": "Жаль, что я взял эту лишнюю смену. Я вымотан."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 6.18,
+          "end": 7.8,
           "en": "Then say no next time.",
           "ru": "Тогда в следующий раз откажись."
         },
         {
-          "start": 13,
-          "end": 18,
+          "start": 7.8,
+          "end": 11.05,
           "en": "I know. I just wish they would hire more people.",
           "ru": "Знаю. Просто хочется, чтобы они наняли больше людей."
         }

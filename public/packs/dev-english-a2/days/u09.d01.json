@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.25,
           "en": "Which shirt do you like?",
           "ru": "Какая рубашка тебе нравится?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.25,
+          "end": 4.12,
           "en": "The white one is nicer, but it's more expensive.",
           "ru": "Белая симпатичнее, но она дороже."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.12,
+          "end": 5.64,
           "en": "The blue one is cheaper.",
           "ru": "Синяя дешевле."
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.64,
+          "end": 8.42,
           "en": "Yes, but the white one is better quality.",
           "ru": "Да, но белая лучше по качеству."
         }

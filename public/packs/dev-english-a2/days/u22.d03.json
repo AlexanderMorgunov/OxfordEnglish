@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.42,
           "en": "Who's that in the photo?",
           "ru": "Кто это на фото?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.42,
+          "end": 4.18,
           "en": "That's my sister, who lives in Australia.",
           "ru": "Это моя сестра, которая живёт в Австралии."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.18,
+          "end": 5.74,
           "en": "And the house behind her?",
           "ru": "А дом за ней?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 5.74,
+          "end": 8.32,
           "en": "That's her home, which she bought last year.",
           "ru": "Это её дом, который она купила в прошлом году."
         }

@@ -289,25 +289,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.68,
           "en": "What does your sister look like?",
           "ru": "Как выглядит твоя сестра?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.68,
+          "end": 4.06,
           "en": "She is tall, with short blonde hair.",
           "ru": "Она высокая, с короткими светлыми волосами."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.06,
+          "end": 5.1,
           "en": "Is she young?",
           "ru": "Она молодая?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 5.1,
+          "end": 8.17,
           "en": "Yes, and she is very funny. She is never boring!",
           "ru": "Да, и очень весёлая. С ней никогда не скучно!"
         }

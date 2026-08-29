@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 5,
+          "end": 2.57,
           "en": "Suppose the deal falls through — what then?",
           "ru": "Предположим, сделка сорвётся — что тогда?"
         },
         {
-          "start": 5,
-          "end": 10,
+          "start": 2.57,
+          "end": 5.85,
           "en": "As long as we keep the deposit, we’ll be fine.",
           "ru": "Пока залог у нас, всё будет в порядке."
         },
         {
-          "start": 10,
-          "end": 15,
+          "start": 5.85,
+          "end": 8.26,
           "en": "I wish we had signed a clearer contract.",
           "ru": "Жаль, что мы не подписали более чёткий договор."
         },
         {
-          "start": 15,
-          "end": 20,
+          "start": 8.26,
+          "end": 11.56,
           "en": "Had we used a lawyer, this wouldn’t be a problem now.",
           "ru": "Если бы мы наняли юриста, сейчас это не было бы проблемой."
         }

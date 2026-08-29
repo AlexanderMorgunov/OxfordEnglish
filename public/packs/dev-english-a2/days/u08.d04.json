@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.87,
           "en": "Are the shops open today?",
           "ru": "Магазины сегодня открыты?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.87,
+          "end": 5.19,
           "en": "Both supermarkets are open, but the market is closed.",
           "ru": "Оба супермаркета открыты, но рынок закрыт."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 5.19,
+          "end": 8,
           "en": "I need bread. Is the bakery open?",
           "ru": "Мне нужен хлеб. Пекарня открыта?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 8,
+          "end": 11.28,
           "en": "This one is closed. Try another one near the bank.",
           "ru": "Эта закрыта. Попробуй другую у банка."
         }

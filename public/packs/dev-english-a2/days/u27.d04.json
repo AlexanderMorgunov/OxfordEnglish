@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.6,
           "en": "We waited for you last night.",
           "ru": "Мы ждали тебя вчера вечером."
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 1.6,
+          "end": 4.65,
           "en": "Sorry — I would have come, but I got stuck at work.",
           "ru": "Прости — я бы пришёл, но застрял на работе."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 4.65,
+          "end": 6.79,
           "en": "You could have sent a message at least.",
           "ru": "Ты мог бы хотя бы написать."
         },
         {
-          "start": 13,
-          "end": 17,
+          "start": 6.79,
+          "end": 10.25,
           "en": "You’re right. I couldn’t have finished any faster, though.",
           "ru": "Ты прав. Хотя быстрее я закончить не мог."
         }

@@ -258,19 +258,19 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.75,
           "en": "Hello, I am Priya. Welcome! I am Tom.",
           "ru": "Здравствуйте, я Прия. Добро пожаловать! Я Том."
         },
         {
-          "start": 3,
-          "end": 7,
+          "start": 2.75,
+          "end": 8.28,
           "en": "Nice to meet you. Are you the new engineer? Yes, I am.",
           "ru": "Приятно познакомиться. Ты новый инженер? Да."
         },
         {
-          "start": 7,
-          "end": 10,
+          "start": 8.28,
+          "end": 10.01,
           "en": "Glad to meet you, Tom!",
           "ru": "Рада познакомиться, Том!"
         }

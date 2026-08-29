@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.95,
           "en": "Do we have everything for the cake?",
           "ru": "У нас есть всё для торта?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.95,
+          "end": 5.01,
           "en": "Almost. We have a little flour and a few eggs.",
           "ru": "Почти. Есть немного муки и пара яиц."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.01,
+          "end": 6.19,
           "en": "What about sugar?",
           "ru": "А сахар?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.19,
+          "end": 8.93,
           "en": "Hardly any. We need to buy some.",
           "ru": "Почти нет. Нужно купить."
         }

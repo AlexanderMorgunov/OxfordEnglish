@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.46,
           "en": "What did you do on holidays as a child?",
           "ru": "Что ты делал в праздники в детстве?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.46,
+          "end": 5.32,
           "en": "Every year we would visit my aunt in the mountains.",
           "ru": "Каждый год мы ездили к тёте в горы."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.32,
+          "end": 6.77,
           "en": "That sounds lovely.",
           "ru": "Звучит чудесно."
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.77,
+          "end": 10.15,
           "en": "It was. We would hike all day and cook outside.",
           "ru": "Так и было. Мы весь день ходили в походы и готовили на улице."
         }

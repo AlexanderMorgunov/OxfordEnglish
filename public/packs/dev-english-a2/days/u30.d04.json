@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 5,
+          "end": 3.67,
           "en": "Passengers waiting for the Leeds train, please note it is delayed.",
           "ru": "Пассажиры, ожидающие поезд на Лидс, обратите внимание: он задерживается."
         },
         {
-          "start": 5,
-          "end": 9,
+          "start": 3.67,
+          "end": 6.09,
           "en": "Is that the train shown on platform four?",
           "ru": "Это поезд, указанный на платформе четыре?"
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 6.09,
+          "end": 10.58,
           "en": "No, that one’s cancelled. Ours is the one arriving now.",
           "ru": "Нет, тот отменён. Наш — тот, что прибывает сейчас."
         },
         {
-          "start": 13,
-          "end": 17,
+          "start": 10.58,
+          "end": 13.22,
           "en": "Good. I saw a seat left free near the window.",
           "ru": "Хорошо. Я видел свободное место у окна."
         }

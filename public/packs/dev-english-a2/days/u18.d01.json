@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.69,
           "en": "Did you speak to Anna?",
           "ru": "Ты говорил с Анной?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.69,
+          "end": 4.66,
           "en": "Yes. She said she was leaving early today.",
           "ru": "Да. Она сказала, что сегодня уходит рано."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.66,
+          "end": 5.94,
           "en": "Did she say why?",
           "ru": "Она сказала почему?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 5.94,
+          "end": 8.37,
           "en": "She told me she had a doctor's appointment.",
           "ru": "Она сказала мне, что у неё приём у врача."
         }

@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.65,
           "en": "How's the new job? Long hours?",
           "ru": "Как новая работа? Длинный день?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.65,
+          "end": 4.83,
           "en": "Yes, but I'm getting used to it.",
           "ru": "Да, но я привыкаю."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.83,
+          "end": 6.76,
           "en": "Are you used to the early starts?",
           "ru": "Ты привык к ранним подъёмам?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.76,
+          "end": 10.23,
           "en": "Almost. I'm not used to waking up at five yet.",
           "ru": "Почти. К подъёму в пять пока не привык."
         }

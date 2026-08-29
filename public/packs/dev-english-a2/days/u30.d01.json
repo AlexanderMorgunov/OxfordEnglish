@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.18,
           "en": "Who was that man you were talking to?",
           "ru": "Кто тот мужчина, с которым ты говорил?"
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 2.18,
+          "end": 6.87,
           "en": "The one who waved? That’s Paul, a colleague from the Berlin office.",
           "ru": "Который махал? Это Пол, коллега из берлинского офиса."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 6.87,
+          "end": 8.85,
           "en": "And the woman standing next to him?",
           "ru": "А женщина рядом с ним?"
         },
         {
-          "start": 13,
-          "end": 18,
+          "start": 8.85,
+          "end": 12.53,
           "en": "That’s his wife, who actually designed our new logo.",
           "ru": "Это его жена, которая, кстати, придумала наш новый логотип."
         }

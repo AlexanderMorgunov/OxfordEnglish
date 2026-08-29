@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 5,
+          "end": 2.14,
           "en": "Can I cancel the membership if I move?",
           "ru": "Можно отменить абонемент, если я перееду?"
         },
         {
-          "start": 5,
-          "end": 10,
+          "start": 2.14,
+          "end": 5.14,
           "en": "Yes, as long as you give us a month’s notice.",
           "ru": "Да, пока предупреждаете за месяц."
         },
         {
-          "start": 10,
-          "end": 14,
+          "start": 5.14,
+          "end": 6.8,
           "en": "And do I get a refund?",
           "ru": "И я получу возврат?"
         },
         {
-          "start": 14,
-          "end": 19,
+          "start": 6.8,
+          "end": 9.93,
           "en": "You won’t get one unless you cancel before the renewal date.",
           "ru": "Не получите, если не отмените до даты продления."
         }

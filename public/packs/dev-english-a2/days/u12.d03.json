@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.66,
           "en": "How long have you lived here?",
           "ru": "Как долго ты здесь живёшь?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.66,
+          "end": 3.9,
           "en": "I have lived here for eight years.",
           "ru": "Я живу здесь восемь лет."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 3.9,
+          "end": 6.99,
           "en": "And how long have you known Tom?",
           "ru": "А как давно ты знаешь Тома?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.99,
+          "end": 9.06,
           "en": "Since university. We met in 2016.",
           "ru": "С университета. Мы познакомились в 2016."
         }

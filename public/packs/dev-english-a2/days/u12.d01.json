@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.5,
           "en": "Have you ever been to London?",
           "ru": "Ты когда-нибудь был в Лондоне?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.5,
+          "end": 4.34,
           "en": "Yes, I have. I went there last year.",
           "ru": "Да, был. Я ездил туда в прошлом году."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 4.34,
+          "end": 6.32,
           "en": "Have you ever tried Indian food?",
           "ru": "Ты когда-нибудь пробовал индийскую еду?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.32,
+          "end": 8.27,
           "en": "No, I have never tried it.",
           "ru": "Нет, никогда не пробовал."
         }

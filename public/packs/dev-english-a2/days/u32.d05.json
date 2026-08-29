@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.64,
           "en": "Did you enjoy the ceremony?",
           "ru": "Тебе понравилась церемония?"
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 1.64,
+          "end": 4.57,
           "en": "What I loved was the speeches. So honest!",
           "ru": "Что мне понравилось — так это речи. Такие честные!"
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 4.57,
+          "end": 5.59,
           "en": "And the winner?",
           "ru": "А победитель?"
         },
         {
-          "start": 13,
-          "end": 18,
+          "start": 5.59,
+          "end": 9.81,
           "en": "It was the youngest team that won. Never have I clapped so hard.",
           "ru": "Победила самая молодая команда. Никогда я так не хлопал."
         }

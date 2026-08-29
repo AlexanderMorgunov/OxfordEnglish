@@ -304,19 +304,19 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 2.59,
           "en": "Do you work here? Yes, I do.",
           "ru": "Ты здесь работаешь? Да."
         },
         {
-          "start": 3,
-          "end": 7,
+          "start": 2.59,
+          "end": 5.5,
           "en": "Does your team work at the weekend? No, we don't.",
           "ru": "Твоя команда работает по выходным? Нет."
         },
         {
-          "start": 7,
-          "end": 9,
+          "start": 5.5,
+          "end": 6.86,
           "en": "But the boss does.",
           "ru": "А начальник — да."
         }

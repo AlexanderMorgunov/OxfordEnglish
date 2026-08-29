@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.42,
           "en": "How was the interview?",
           "ru": "Как прошло собеседование?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.42,
+          "end": 4.35,
           "en": "Fine. They asked where I had studied.",
           "ru": "Хорошо. Они спросили, где я учился."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 4.35,
+          "end": 6.43,
           "en": "Did they ask about your last job?",
           "ru": "Они спрашивали о прошлой работе?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 6.43,
+          "end": 9.23,
           "en": "Yes, and they asked if I could travel a lot.",
           "ru": "Да, и спросили, могу ли я много путешествовать."
         }

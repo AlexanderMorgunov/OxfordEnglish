@@ -289,25 +289,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.17,
           "en": "Are you free on Saturday afternoon?",
           "ru": "Ты свободен в субботу днём?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.17,
+          "end": 5.24,
           "en": "Let me check. Yes, I'm available after two.",
           "ru": "Дай проверю. Да, я свободен после двух."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.24,
+          "end": 7.85,
           "en": "Great. Shall we say three at the park?",
           "ru": "Отлично. Скажем, в три в парке?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 7.85,
+          "end": 10.7,
           "en": "Perfect. So we're meeting at three on Saturday.",
           "ru": "Отлично. Значит, встречаемся в три в субботу."
         }

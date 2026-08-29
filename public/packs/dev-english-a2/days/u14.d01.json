@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.59,
           "en": "Did you go to Mia's party?",
           "ru": "Ты был на вечеринке у Мии?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.59,
+          "end": 2.98,
           "en": "Yes, I did. It was great!",
           "ru": "Да, был. Было здорово!"
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 2.98,
+          "end": 6.13,
           "en": "Have you ever been to such a big party?",
           "ru": "Ты когда-нибудь был на такой большой вечеринке?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 6.13,
+          "end": 9.37,
           "en": "Never! Next time I am going to bring my brother.",
           "ru": "Никогда! В следующий раз приведу брата."
         }

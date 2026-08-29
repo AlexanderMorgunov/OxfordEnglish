@@ -290,25 +290,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 2.68,
           "en": "You look tired. Is everything okay?",
           "ru": "Ты выглядишь уставшим. Всё нормально?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 2.68,
+          "end": 5,
           "en": "I wish I had more time for myself.",
           "ru": "Жаль, что у меня мало времени на себя."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5,
+          "end": 8.2,
           "en": "I know the feeling. If only the days were longer!",
           "ru": "Знакомое чувство. Если бы только дни были длиннее!"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 8.2,
+          "end": 12.27,
           "en": "Exactly. I wish I could just stop and rest for a week.",
           "ru": "Именно. Хотел бы просто остановиться и отдохнуть неделю."
         }

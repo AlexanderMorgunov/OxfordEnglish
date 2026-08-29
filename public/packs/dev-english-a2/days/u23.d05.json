@@ -289,25 +289,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.79,
           "en": "Do you think life is better now?",
           "ru": "Думаешь, сейчас жизнь лучше?"
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 1.79,
+          "end": 5.56,
           "en": "In some ways. We used to have less, but we talked more.",
           "ru": "В чём-то. Раньше у нас было меньше, но мы больше общались."
         },
         {
-          "start": 8,
-          "end": 12,
+          "start": 5.56,
+          "end": 7.21,
           "en": "Do you miss those days?",
           "ru": "Скучаешь по тем дням?"
         },
         {
-          "start": 12,
-          "end": 16,
+          "start": 7.21,
+          "end": 11.58,
           "en": "A little. Life used to be simpler, but I like the modern world too.",
           "ru": "Немного. Жизнь была проще, но современный мир мне тоже нравится."
         }

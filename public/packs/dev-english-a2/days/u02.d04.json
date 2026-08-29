@@ -304,13 +304,13 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 4.62,
           "en": "Excuse me, is there a shop near here? Yes, there is one on the corner.",
           "ru": "Извините, здесь есть магазин? Да, на углу."
         },
         {
-          "start": 4,
-          "end": 8,
+          "start": 4.62,
+          "end": 7.52,
           "en": "Are there any cafés? Yes, there are two.",
           "ru": "А кафе есть? Да, два."
         }

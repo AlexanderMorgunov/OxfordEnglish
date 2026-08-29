@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.52,
           "en": "How was the interview?",
           "ru": "Как прошло собеседование?"
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 1.52,
+          "end": 4.99,
           "en": "Unbelievable. Never have I been so nervous in my life.",
           "ru": "Невероятно. Никогда в жизни я так не нервничал."
         },
         {
-          "start": 9,
-          "end": 14,
+          "start": 4.99,
+          "end": 6.31,
           "en": "But it went well?",
           "ru": "Но всё прошло хорошо?"
         },
         {
-          "start": 14,
-          "end": 19,
+          "start": 6.31,
+          "end": 9.48,
           "en": "No sooner had I answered than they offered me the job.",
           "ru": "Не успел я ответить, как мне предложили работу."
         }

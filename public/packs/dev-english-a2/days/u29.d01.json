@@ -291,25 +291,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 4,
+          "end": 1.3,
           "en": "Did Tom call? What did he say?",
           "ru": "Том звонил? Что он сказал?"
         },
         {
-          "start": 4,
-          "end": 9,
+          "start": 1.3,
+          "end": 5.18,
           "en": "He said he was stuck in traffic and would be late.",
           "ru": "Он сказал, что застрял в пробке и опоздает."
         },
         {
-          "start": 9,
-          "end": 13,
+          "start": 5.18,
+          "end": 6.77,
           "en": "Did he mention the meeting?",
           "ru": "Он упомянул встречу?"
         },
         {
-          "start": 13,
-          "end": 17,
+          "start": 6.77,
+          "end": 9.79,
           "en": "Yes, he said he had already sent the slides.",
           "ru": "Да, он сказал, что уже отправил слайды."
         }

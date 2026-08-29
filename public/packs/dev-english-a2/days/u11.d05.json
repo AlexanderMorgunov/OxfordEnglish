@@ -288,25 +288,25 @@
       "transcript": [
         {
           "start": 0,
-          "end": 3,
+          "end": 1.19,
           "en": "What's the matter?",
           "ru": "Что случилось?"
         },
         {
-          "start": 3,
-          "end": 6,
+          "start": 1.19,
+          "end": 2.8,
           "en": "I have a pain in my stomach.",
           "ru": "У меня болит живот."
         },
         {
-          "start": 6,
-          "end": 9,
+          "start": 2.8,
+          "end": 4.25,
           "en": "How long have you had it?",
           "ru": "Как давно это у вас?"
         },
         {
-          "start": 9,
-          "end": 12,
+          "start": 4.25,
+          "end": 7.76,
           "en": "Since yesterday. You should rest and take this medicine.",
           "ru": "Со вчерашнего дня. — Вам стоит отдохнуть и принять это лекарство."
         }
