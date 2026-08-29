@@ -1,0 +1,527 @@
+{
+  "id": "u27.d90",
+  "unitId": "u27",
+  "insertAt": 2,
+  "tags": [
+    "grammar.past-modals",
+    "grammar.modals-deduction-past",
+    "functions.storytelling",
+    "vocab.feelings"
+  ],
+  "title": {
+    "en": "Second Thoughts",
+    "ru": "Сомнения"
+  },
+  "vocab": {
+    "title": {
+      "en": "Money and machines",
+      "ru": "Деньги и машины"
+    },
+    "words": [
+      {
+        "word": "machine",
+        "ru": "машина, кофемашина",
+        "ipa": "/məˈʃiːn/",
+        "example": "The machine makes great coffee.",
+        "exampleRu": "Машина делает отличный кофе."
+      },
+      {
+        "word": "expensive",
+        "ru": "дорогой",
+        "ipa": "/ɪkˈspensɪv/",
+        "example": "The machine was very expensive.",
+        "exampleRu": "Машина была очень дорогой."
+      },
+      {
+        "word": "cheap",
+        "ru": "дешёвый",
+        "ipa": "/tʃiːp/",
+        "example": "Den could have found a cheaper one.",
+        "exampleRu": "Ден мог найти более дешёвую."
+      },
+      {
+        "word": "deal",
+        "ru": "сделка",
+        "ipa": "/diːl/",
+        "example": "It wasn't a good deal at all.",
+        "exampleRu": "Это вообще была невыгодная сделка."
+      },
+      {
+        "word": "regret",
+        "ru": "сожаление",
+        "ipa": "/rɪˈɡret/",
+        "example": "She felt regret about the purchase.",
+        "exampleRu": "Она почувствовала сожаление о покупке."
+      },
+      {
+        "word": "worried",
+        "ru": "обеспокоенный",
+        "ipa": "/ˈwʌrid/",
+        "example": "We were worried about the price.",
+        "exampleRu": "Мы беспокоились о цене."
+      },
+      {
+        "word": "extra",
+        "ru": "дополнительный",
+        "ipa": "/ˈekstrə/",
+        "example": "We didn't need the extra cups.",
+        "exampleRu": "Нам не нужны были дополнительные чашки."
+      },
+      {
+        "word": "fancy",
+        "ru": "навороченный",
+        "ipa": "/ˈfænsi/",
+        "example": "The fancy machine had many buttons.",
+        "exampleRu": "Эта навороченная машина имела много кнопок."
+      },
+      {
+        "word": "afford",
+        "ru": "позволить себе",
+        "ipa": "/əˈfɔːd/",
+        "example": "Can we afford this?",
+        "exampleRu": "Можем ли мы себе это позволить?"
+      },
+      {
+        "word": "receipt",
+        "ru": "чек",
+        "ipa": "/rɪˈsiːt/",
+        "example": "Den kept the receipt just in case.",
+        "exampleRu": "Ден сохранил чек на всякий случай."
+      },
+      {
+        "word": "worth",
+        "ru": "стоящий",
+        "ipa": "/wɜːθ/",
+        "example": "It was worth every penny.",
+        "exampleRu": "Это стоило каждой копейки."
+      },
+      {
+        "word": "fortune",
+        "ru": "состояние",
+        "ipa": "/ˈfɔːtʃən/",
+        "example": "It must have cost a fortune.",
+        "exampleRu": "Это, должно быть, стоило состояние."
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "Past modals",
+      "ru": "Модальные глаголы в прошлом"
+    },
+    "ref": "past-modals",
+    "rule": {
+      "en": "Use past modals to talk about past actions from the present point of view. 'should have + V3' means a past action was a mistake or a missed opportunity. 'must have + V3' is a strong guess about the past. 'might have + V3' is a weaker guess. 'can't have + V3' means an action was impossible in the past. 'needn't have + V3' means something was done but was not necessary.",
+      "ru": "Используйте модальные глаголы в прошлом, чтобы говорить о прошлых действиях с точки зрения настоящего. «should have + V3» означает, что прошлое действие было ошибкой или упущенной возможностью. «must have + V3» — уверенное предположение о прошлом. «might have + V3» — менее уверенное предположение. «can't have + V3» — действие было невозможным в прошлом. «needn't have + V3» — действие было сделано, но не было необходимым."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "Criticism and regret",
+          "ru": "Критика и сожаление"
+        },
+        "formula": "subject + should(n't) have + V3",
+        "examples": [
+          {
+            "en": "We shouldn't have spent so much.",
+            "ru": "Нам не стоило тратить столько."
+          }
+        ],
+        "ref": "past-modals"
+      },
+      {
+        "label": {
+          "en": "Deduction (sure)",
+          "ru": "Предположение (уверенное)"
+        },
+        "formula": "subject + must have + V3",
+        "examples": [
+          {
+            "en": "It must have cost a fortune.",
+            "ru": "Это, должно быть, стоило состояние."
+          }
+        ],
+        "ref": "past-modals"
+      },
+      {
+        "label": {
+          "en": "Impossible deduction",
+          "ru": "Невозможное предположение"
+        },
+        "formula": "subject + can't have + V3",
+        "examples": [
+          {
+            "en": "It can't have been a good deal.",
+            "ru": "Это не могла быть хорошая сделка."
+          }
+        ],
+        "ref": "past-modals"
+      },
+      {
+        "label": {
+          "en": "Unnecessary action",
+          "ru": "Ненужное действие"
+        },
+        "formula": "subject + needn't have + V3",
+        "examples": [
+          {
+            "en": "We needn't have bought extra cups.",
+            "ru": "Нам не нужно было покупать дополнительные чашки."
+          }
+        ],
+        "ref": "past-modals"
+      },
+      {
+        "label": {
+          "en": "Possibility (not sure)",
+          "ru": "Возможность (не уверены)"
+        },
+        "formula": "subject + might have + V3",
+        "examples": [
+          {
+            "en": "We might have made a mistake.",
+            "ru": "Мы, возможно, совершили ошибку."
+          }
+        ],
+        "ref": "past-modals"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Use the past participle (V3) after modal + have: 'should have bought', not 'should have buy'.",
+        "ru": "Используйте третью форму после модального + have: 'should have bought', а не 'should have buy'."
+      },
+      {
+        "en": "'must have' is for deduction, not criticism. To say that someone should not have done something, use 'shouldn't have'.",
+        "ru": "«must have» — для предположения, а не для критики. Чтобы сказать, что кто-то не должен был что-то делать, используйте «shouldn't have»."
+      },
+      {
+        "en": "'needn't have done' means the action happened but was unnecessary. 'didn't need to do' usually means it wasn't done.",
+        "ru": "«needn't have done» означает, что действие произошло, но было ненужным. «didn't need to do» обычно означает, что действие не было сделано."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "Second Thoughts",
+      "ru": "Сомнения"
+    },
+    "blocks": [
+      {
+        "en": "The new coffee machine stood in the office kitchen. It was beautiful, shiny and very, very expensive. After the first sip everyone went quiet. 'Maybe we shouldn't have spent so much,' Kate whispered. Den frowned. 'You should have asked me first. I would have found a cheaper one.'",
+        "ru": "Новая кофемашина стояла в офисной кухне. Она была красивой, блестящей и очень, очень дорогой. После первого глотка все замолчали. «Может, нам не стоило тратить столько», — прошептала Кейт. Ден нахмурился. «Надо было сначала спросить меня. Я бы нашёл более дешёвую».",
+        "image": "b1",
+        "alt": {
+          "en": "Kate and Den worry about the expensive coffee machine",
+          "ru": "Кейт и Ден переживают из-за дорогой кофемашины"
+        }
+      },
+      {
+        "en": "Alex looked at the shiny machine. 'It must have cost a fortune.' Pol shook his head. 'It can't have been a good deal.' Peter added quietly, 'We needn't have bought the extra cups. We already had plenty.' Kate sighed. 'We might have made a terrible mistake.'",
+        "ru": "Алекс посмотрел на блестящую машину. «Она, должно быть, стоила целое состояние». Пол покачал головой. «Это не могла быть хорошая сделка». Питер тихо добавил: «Нам не нужно было покупать дополнительные чашки. У нас уже было много». Кейт вздохнула. «Мы, возможно, совершили ужасную ошибку»."
+      },
+      {
+        "en": "Then Peter pressed the button. The machine hummed softly and poured a perfect coffee. The aroma filled the room. Alex tasted it and smiled. 'Actually, we might have made the right choice.' Kate laughed. 'Yes! We needn't have worried after all.' Everyone drank their coffee in happy silence.",
+        "ru": "Потом Питер нажал кнопку. Машина мягко зажужжала и налила идеальный кофе. Аромат наполнил комнату. Алекс попробовал и улыбнулся. «Вообще-то, мы, возможно, сделали правильный выбор». Кейт засмеялась. «Да! Нам не нужно было волноваться в конце концов». Все молча и радостно пили свой кофе.",
+        "image": "b3",
+        "alt": {
+          "en": "The team enjoys a perfect cup of coffee",
+          "ru": "Команда наслаждается идеальной чашкой кофе"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "shiny",
+        "ru": "блестящий",
+        "ipa": "/ˈʃaɪni/"
+      },
+      {
+        "word": "sip",
+        "ru": "глоток",
+        "ipa": "/sɪp/"
+      },
+      {
+        "word": "aroma",
+        "ru": "аромат",
+        "ipa": "/əˈrəʊmə/"
+      },
+      {
+        "word": "plenty",
+        "ru": "много",
+        "ipa": "/ˈplenti/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "The verdict",
+      "ru": "Вердикт"
+    },
+    "dialogue": [
+      [
+        "We shouldn't have bought it.",
+        "Нам не следовало это покупать."
+      ],
+      [
+        "It must have cost a fortune.",
+        "Это, должно быть, стоило состояние."
+      ],
+      [
+        "We needn't have bought cups.",
+        "Нам не нужно было покупать чашки."
+      ],
+      [
+        "It might have been a mistake.",
+        "Возможно, это была ошибка."
+      ],
+      [
+        "We couldn't have chosen better.",
+        "Мы не могли бы выбрать лучше."
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u27.d90.ex.l.01",
+        "instruction": {
+          "en": "What did Peter say they needn't have bought?",
+          "ru": "Что, по словам Питера, им не нужно было покупать?"
+        },
+        "tags": [
+          "listening.detail",
+          "vocab.feelings"
+        ],
+        "prompt": "We needn't have bought ___.",
+        "options": [
+          "extra cups",
+          "extra milk",
+          "extra coffee"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u27.d90.ex.g.01",
+        "instruction": {
+          "en": "Complete with the correct past modal.",
+          "ru": "Дополните правильным модальным глаголом."
+        },
+        "tags": [
+          "grammar.past-modals"
+        ],
+        "prompt": "We ___ have spent so much on the machine.",
+        "cue": "(not should)",
+        "answers": [
+          "shouldn't have",
+          "should not have"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u27.d90.ex.c.01",
+        "instruction": {
+          "en": "Choose the correct past modal.",
+          "ru": "Выберите правильный модальный глагол."
+        },
+        "tags": [
+          "grammar.modals-deduction-past"
+        ],
+        "prompt": "It ___ have cost a fortune — it was top of the range.",
+        "options": [
+          "must",
+          "can't",
+          "should"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "u27.d90.ex.g.02",
+        "instruction": {
+          "en": "Complete with a negative past modal.",
+          "ru": "Дополните отрицательным модальным глаголом."
+        },
+        "tags": [
+          "grammar.modals-deduction-past"
+        ],
+        "prompt": "It ___ have been a good deal — it broke the next day.",
+        "cue": "(not can)",
+        "answers": [
+          "can't"
+        ]
+      },
+      {
+        "type": "spot-error",
+        "id": "u27.d90.ex.s.01",
+        "instruction": {
+          "en": "Which sentence is correct?",
+          "ru": "Какое предложение верное?"
+        },
+        "tags": [
+          "grammar.past-modals"
+        ],
+        "variants": [
+          "We needn't have bought extra cups.",
+          "We needn't have buy extra cups.",
+          "We needn't to have bought extra cups."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "order-words",
+        "id": "u27.d90.ex.o.01",
+        "instruction": {
+          "en": "Put the words in order.",
+          "ru": "Расставьте слова по порядку."
+        },
+        "tags": [
+          "grammar.past-modals"
+        ],
+        "tokens": [
+          "We",
+          "shouldn't",
+          "have",
+          "spent",
+          "so",
+          "much"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "type": "match",
+        "id": "u27.d90.ex.m.01",
+        "instruction": {
+          "en": "Match the past modal to its meaning.",
+          "ru": "Сопоставьте модальный глагол с его значением."
+        },
+        "tags": [
+          "grammar.past-modals",
+          "grammar.modals-deduction-past"
+        ],
+        "pairs": [
+          {
+            "left": "should have done",
+            "right": "сожаление/критика"
+          },
+          {
+            "left": "must have done",
+            "right": "уверенная догадка"
+          },
+          {
+            "left": "can't have done",
+            "right": "невозможность"
+          },
+          {
+            "left": "needn't have done",
+            "right": "ненужное действие"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u27.d90.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведите на английский."
+        },
+        "tags": [
+          "grammar.past-modals",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Нам не нужно было покупать эту машину.",
+        "answers": [
+          "We needn't have bought this machine.",
+          "We didn't need to buy this machine."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "we needn't to have bought"
+            ],
+            "explanation": {
+              "en": "Don't add 'to' after needn't.",
+              "ru": "Не добавляйте «to» после needn't."
+            }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u27.d90.ex.t.02",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведите на английский."
+        },
+        "tags": [
+          "grammar.modals-deduction-past",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Она, должно быть, стоила целое состояние.",
+        "answers": [
+          "It must have cost a fortune.",
+          "It must have cost an absolute fortune."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "it must has cost"
+            ],
+            "explanation": {
+              "en": "Use 'have' after must, not 'has'.",
+              "ru": "После must используйте «have», а не «has»."
+            }
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u27.d90.ex.c.02",
+        "instruction": {
+          "en": "Choose the correct meaning.",
+          "ru": "Выберите правильное значение."
+        },
+        "tags": [
+          "grammar.past-modals",
+          "vocab.feelings"
+        ],
+        "prompt": "\"We might have made the right choice\" means:",
+        "options": [
+          "We are sure it was a good choice.",
+          "It is possible it was a good choice.",
+          "It was definitely a bad choice."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "type": "gap-fill",
+        "id": "u27.d90.ex.g.03",
+        "instruction": {
+          "en": "Complete with the correct past modal.",
+          "ru": "Дополните правильным модальным глаголом."
+        },
+        "tags": [
+          "grammar.past-modals"
+        ],
+        "prompt": "We ___ have bought extra cups — we already had plenty.",
+        "cue": "(not need)",
+        "answers": [
+          "needn't"
+        ]
+      }
+    ]
+  }
+}

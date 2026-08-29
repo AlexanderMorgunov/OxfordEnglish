@@ -1,0 +1,667 @@
+{
+  "id": "u25.d90",
+  "title": {
+    "en": "Too Many Meetings",
+    "ru": "Слишком много встреч"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.too-enough",
+    "grammar.so-such",
+    "vocab.emphasis",
+    "vocab.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u25.d90.vocab",
+      "title": {
+        "en": "Office time",
+        "ru": "Офисное время"
+      },
+      "words": [
+        {
+          "word": "meeting",
+          "ru": "совещание",
+          "ipa": "/ˈmiːtɪŋ/",
+          "example": "There are too many meetings.",
+          "exampleRu": "Здесь слишком много совещаний.",
+          "audio": {
+            "src": "media/audio/u25.d90.vocab.meeting.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "schedule",
+          "ru": "расписание",
+          "ipa": "/ˈʃedjuːl/",
+          "example": "My schedule is full.",
+          "exampleRu": "Моё расписание заполнено.",
+          "audio": {
+            "src": "media/audio/u25.d90.vocab.schedule.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "smoothie",
+          "ru": "смузи",
+          "ipa": "/ˈsmuːði/",
+          "example": "Pol drinks a smoothie.",
+          "exampleRu": "Пол пьёт смузи.",
+          "audio": {
+            "src": "media/audio/u25.d90.vocab.smoothie.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cake",
+          "ru": "торт",
+          "ipa": "/keɪk/",
+          "example": "There is too much cake.",
+          "exampleRu": "Здесь слишком много торта.",
+          "audio": {
+            "src": "media/audio/u25.d90.vocab.cake.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "email",
+          "ru": "электронное письмо",
+          "ipa": "/ˈiːmeɪl/",
+          "example": "I have so many emails.",
+          "exampleRu": "У меня так много писем.",
+          "audio": {
+            "src": "media/audio/u25.d90.vocab.email.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "team",
+          "ru": "команда",
+          "ipa": "/tiːm/",
+          "example": "We are a great team.",
+          "exampleRu": "Мы отличная команда.",
+          "audio": {
+            "src": "media/audio/u25.d90.vocab.team.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "time",
+          "ru": "время",
+          "ipa": "/taɪm/",
+          "example": "There isn't enough time.",
+          "exampleRu": "Недостаточно времени.",
+          "audio": {
+            "src": "media/audio/u25.d90.vocab.time.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sleep",
+          "ru": "сон",
+          "ipa": "/sliːp/",
+          "example": "So little sleep!",
+          "exampleRu": "Так мало сна!",
+          "audio": {
+            "src": "media/audio/u25.d90.vocab.sleep.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fruit",
+          "ru": "фрукты",
+          "ipa": "/fruːt/",
+          "example": "There is enough fruit.",
+          "exampleRu": "Достаточно фруктов.",
+          "audio": {
+            "src": "media/audio/u25.d90.vocab.fruit.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "idea",
+          "ru": "идея",
+          "ipa": "/aɪˈdɪə/",
+          "example": "It's such a good idea.",
+          "exampleRu": "Это такая хорошая идея.",
+          "audio": {
+            "src": "media/audio/u25.d90.vocab.idea.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to cancel",
+          "ru": "отменять",
+          "ipa": "/ˈkænsəl/",
+          "example": "Kate cancelled the meeting.",
+          "exampleRu": "Кейт отменила совещание.",
+          "audio": {
+            "src": "media/audio/u25.d90.vocab.tocancel.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "enough",
+          "ru": "достаточно",
+          "ipa": "/ɪˈnʌf/",
+          "example": "We have enough time.",
+          "exampleRu": "У нас достаточно времени.",
+          "audio": {
+            "src": "media/audio/u25.d90.vocab.enough.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u25.d90.grammar",
+      "title": {
+        "en": "too much / too many / enough · so / such",
+        "ru": "too much / too many / enough · so / such"
+      },
+      "ref": "too-enough",
+      "rule": {
+        "en": "Use too much with uncountable nouns, too many with countable nouns, and (not) enough before a noun. Enough comes after an adjective. So makes adjectives stronger; such is used before a noun phrase. Use so much / so many before nouns.",
+        "ru": "Используйте too much с неисчисляемыми существительными, too many с исчисляемыми, а (not) enough — перед существительным. Enough стоит после прилагательного. So усиливает прилагательные; such используется перед существительной фразой. Используйте so much / so many перед существительными."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "too much + uncount. / too many + count.",
+            "ru": "too much + неисчисляемое / too many + исчисляемое"
+          },
+          "formula": "too much + uncountable noun / too many + countable noun",
+          "examples": [
+            {
+              "en": "There is too much coffee.",
+              "ru": "Здесь слишком много кофе."
+            },
+            {
+              "en": "There are too many meetings.",
+              "ru": "Здесь слишком много встреч."
+            }
+          ],
+          "ref": "too-enough"
+        },
+        {
+          "label": {
+            "en": "enough + noun / adjective + enough",
+            "ru": "enough + существительное / прилагательное + enough"
+          },
+          "formula": "(not) enough + noun / adjective + enough",
+          "examples": [
+            {
+              "en": "There isn't enough time.",
+              "ru": "Недостаточно времени."
+            },
+            {
+              "en": "He is old enough to drive.",
+              "ru": "Он достаточно взрослый, чтобы водить машину."
+            }
+          ],
+          "ref": "too-enough"
+        },
+        {
+          "label": {
+            "en": "so + adjective/adverb",
+            "ru": "so + прилагательное/наречие"
+          },
+          "formula": "so + adjective/adverb",
+          "examples": [
+            {
+              "en": "Kate is so happy.",
+              "ru": "Кейт так счастлива."
+            },
+            {
+              "en": "Alex works so slowly.",
+              "ru": "Алекс работает так медленно."
+            }
+          ],
+          "ref": "so-such"
+        },
+        {
+          "label": {
+            "en": "such (a) + noun",
+            "ru": "such (a) + существительное"
+          },
+          "formula": "such a + singular noun / such + plural noun",
+          "examples": [
+            {
+              "en": "It's such a good idea.",
+              "ru": "Это такая хорошая идея."
+            },
+            {
+              "en": "They are such nice people.",
+              "ru": "Они такие приятные люди."
+            }
+          ],
+          "ref": "so-such"
+        },
+        {
+          "label": {
+            "en": "so much + uncount. / so many + count.",
+            "ru": "so much + неисчисляемое / so many + исчисляемое"
+          },
+          "formula": "so much + uncountable noun / so many + countable noun",
+          "examples": [
+            {
+              "en": "We have so much work.",
+              "ru": "У нас так много работы."
+            },
+            {
+              "en": "There are so many emails.",
+              "ru": "Здесь так много писем."
+            }
+          ],
+          "ref": "so-such"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use 'too many' with countable nouns and 'too much' with uncountable nouns.",
+          "ru": "Используйте 'too many' с исчисляемыми и 'too much' с неисчисляемыми."
+        },
+        {
+          "en": "'Enough' comes before a noun (enough time) but after an adjective (good enough).",
+          "ru": "'Enough' стоит перед существительным (enough time), но после прилагательного (good enough)."
+        },
+        {
+          "en": "Use 'such a' before a singular noun phrase: 'such a good idea', not 'so a good idea'.",
+          "ru": "Используйте 'such a' перед единственным числом: 'such a good idea', а не 'so a good idea'."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u25.d90.reading",
+      "title": {
+        "en": "Too Many Meetings",
+        "ru": "Слишком много встреч"
+      },
+      "blocks": [
+        {
+          "id": "u25.d90.reading.b1",
+          "en": "Kate planned more team-building games. 'We have too many meetings!' said Den. 'There isn't enough time for work.'",
+          "ru": "Кейт запланировала больше тимбилдингов. «У нас слишком много встреч!» — сказал Ден. «Недостаточно времени для работы».",
+          "audio": {
+            "src": "media/audio/u25.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u25.d90.reading.b2",
+          "en": "Alex yawned. 'So much coffee, so little sleep.' Pol said, 'There isn't enough fruit for my smoothie.' Peter counted, 'We have too much cake and too many emails!'",
+          "ru": "Алекс зевнул. «Так много кофе, так мало сна». Пол сказал: «Недостаточно фруктов для моего смузи». Питер подсчитал: «У нас слишком много торта и слишком много писем!»",
+          "audio": {
+            "src": "media/audio/u25.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u25.d90.reading.b3",
+          "en": "Kate smiled. 'It's such a good idea! We are such a great team!' She looked at the schedule. 'Maybe one meeting is too many.' She cancelled it. 'Finally, enough time to work!' everyone cheered.",
+          "ru": "Кейт улыбнулась. «Это такая хорошая идея! Мы такая отличная команда!» Она посмотрела на расписание. «Может, одна встреча — это слишком много». Она отменила её. «Наконец-то достаточно времени для работы!» — все закричали.",
+          "audio": {
+            "src": "media/audio/u25.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "yawned",
+          "ru": "зевнул",
+          "ipa": "/jɔːnd/"
+        },
+        {
+          "word": "counted",
+          "ru": "подсчитал",
+          "ipa": "/ˈkaʊntɪd/"
+        },
+        {
+          "word": "cheered",
+          "ru": "закричали от радости",
+          "ipa": "/tʃɪəd/"
+        },
+        {
+          "word": "little",
+          "ru": "мало (неисчисляемое)",
+          "ipa": "/ˈlɪtl/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u25.d90.listening",
+      "title": {
+        "en": "Too much or not enough?",
+        "ru": "Слишком много или недостаточно?"
+      },
+      "audio": {
+        "src": "media/audio/u25.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.71,
+          "en": "There are too many meetings!",
+          "ru": "Слишком много встреч!"
+        },
+        {
+          "start": 1.71,
+          "end": 3.4,
+          "en": "There isn't enough time!",
+          "ru": "Недостаточно времени!"
+        },
+        {
+          "start": 3.4,
+          "end": 5.77,
+          "en": "So much coffee, so little sleep!",
+          "ru": "Так много кофе, так мало сна!"
+        },
+        {
+          "start": 5.77,
+          "end": 7.36,
+          "en": "It's such a good idea!",
+          "ru": "Это такая хорошая идея!"
+        },
+        {
+          "start": 7.36,
+          "end": 9.36,
+          "en": "Finally, enough time to work!",
+          "ru": "Наконец-то достаточно времени для работы!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u25.d90.ex.l.01",
+          "instruction": {
+            "en": "What did Kate cancel?",
+            "ru": "Что отменила Кейт?"
+          },
+          "tags": [
+            "listening.detail",
+            "vocab.work"
+          ],
+          "prompt": "Kate cancelled a ___.",
+          "options": [
+            "meeting",
+            "smoothie",
+            "email"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u25.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u25.d90.ex.g.01",
+          "instruction": {
+            "en": "Complete with too much or too many.",
+            "ru": "Вставьте too much или too many."
+          },
+          "tags": [
+            "grammar.too-enough"
+          ],
+          "prompt": "There are too ___ meetings.",
+          "answers": [
+            "many"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u25.d90.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct word.",
+            "ru": "Выберите правильное слово."
+          },
+          "tags": [
+            "grammar.too-enough"
+          ],
+          "prompt": "There isn't ___ time.",
+          "options": [
+            "enough",
+            "many",
+            "much"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u25.d90.ex.s.01",
+          "instruction": {
+            "en": "Choose the correct sentence.",
+            "ru": "Выберите правильное предложение."
+          },
+          "tags": [
+            "grammar.so-such"
+          ],
+          "variants": [
+            "It's such a good idea.",
+            "It's such good idea."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u25.d90.ex.g.02",
+          "instruction": {
+            "en": "Complete with so much or so many.",
+            "ru": "Вставьте so much или so many."
+          },
+          "tags": [
+            "grammar.so-such"
+          ],
+          "prompt": "We have so ___ emails.",
+          "answers": [
+            "many"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u25.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.too-enough"
+          ],
+          "tokens": [
+            "There",
+            "isn't",
+            "enough",
+            "time",
+            "for",
+            "work"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u25.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставьте слово и перевод."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "meeting",
+              "right": "совещание"
+            },
+            {
+              "left": "schedule",
+              "right": "расписание"
+            },
+            {
+              "left": "smoothie",
+              "right": "смузи"
+            },
+            {
+              "left": "to cancel",
+              "right": "отменять"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u25.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведите на английский."
+          },
+          "tags": [
+            "grammar.too-enough",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У нас слишком много встреч.",
+          "answers": [
+            "We have too many meetings."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "too much meetings"
+              ],
+              "explanation": {
+                "en": "'Meetings' is countable, so use 'too many'.",
+                "ru": "'Meetings' — исчисляемое, поэтому используйте 'too many'."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u25.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведите на английский."
+          },
+          "tags": [
+            "grammar.so-such",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это такая хорошая идея.",
+          "answers": [
+            "It's such a good idea."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "It's so a good idea."
+              ],
+              "explanation": {
+                "en": "'Such a' is used before a singular noun phrase, not 'so a'.",
+                "ru": "'Such a' используется перед существительной фразой в единственном числе, а не 'so a'."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u25.d90.ex.g.03",
+          "instruction": {
+            "en": "Complete with enough.",
+            "ru": "Вставьте enough."
+          },
+          "tags": [
+            "grammar.too-enough"
+          ],
+          "prompt": "He is old ___ to drive.",
+          "answers": [
+            "enough"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u25.d90.ex.c.02",
+          "instruction": {
+            "en": "Choose so much or so many.",
+            "ru": "Выберите so much или so many."
+          },
+          "tags": [
+            "grammar.so-such"
+          ],
+          "prompt": "Pol drinks so ___ coffee.",
+          "options": [
+            "much",
+            "many"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    }
+  ]
+}
