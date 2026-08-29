@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Section } from '@/content/schema';
 import { packMediaUrl } from '@/content/loader';
 import { Button, Console, Input, SegmentedToggle } from '@/shared/ui';
@@ -89,6 +89,7 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
   const [showTranscript, setShowTranscript] = useState(false);
   const [dictation, setDictation] = useState(false);
   const loop = useRef<{ a: number; b: number | null; once: boolean }>({ a: 0, b: null, once: false });
+  const rafId = useRef<number | null>(null);
   const cues = section.transcript ?? [];
   const active = activeCueIndex(time, cues);
 
@@ -97,12 +98,50 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
     const el = audio();
     if (el) el.currentTime = t;
   };
+  // Stop/loop a bounded segment exactly at `b`. Read `loop.current` fresh (the A-B buttons mutate it
+  // and the segment plays via the main play button, not playFrom). `b > a` guards against a reversed
+  // A-B range turning into a per-frame seek storm.
+  const checkBoundary = (el: HTMLAudioElement) => {
+    const { a, b, once } = loop.current;
+    if (b === null || el.currentTime < b) return;
+    if (once) {
+      el.pause();
+      loop.current = { a: 0, b: null, once: false };
+    } else if (b > a) {
+      el.currentTime = a;
+    }
+  };
+  const stopWatch = () => {
+    if (rafId.current !== null) {
+      cancelAnimationFrame(rafId.current);
+      rafId.current = null;
+    }
+  };
+  // rAF (~16 ms) is the precise stop; the onTimeUpdate check (~250 ms) is a backstop for a hidden tab,
+  // where rAF is suspended but timeupdate keeps firing. Self-terminates on paused/ended (a natural end
+  // fires `ended`, not `pause`).
+  const startWatch = () => {
+    if (rafId.current !== null) return;
+    const tick = () => {
+      const el = audio();
+      if (!el || el.paused || el.ended) {
+        rafId.current = null;
+        return;
+      }
+      checkBoundary(el);
+      rafId.current = requestAnimationFrame(tick);
+    };
+    rafId.current = requestAnimationFrame(tick);
+  };
+  useEffect(() => stopWatch, []);
+
   const playFrom = (start: number, end?: number, once = false) => {
     const el = audio();
     if (!el) return;
     el.currentTime = start;
     loop.current = { a: start, b: end ?? null, once };
     void el.play();
+    startWatch();
   };
   const setRateKey = (k: RateKey) => {
     setRate(k);
@@ -119,20 +158,19 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
         onPlay={() => {
           setPlaying(true);
           setHasPlayed(true);
+          startWatch();
         }}
-        onPause={() => setPlaying(false)}
+        onPause={() => {
+          setPlaying(false);
+          stopWatch();
+        }}
+        onEnded={() => {
+          setPlaying(false);
+          stopWatch();
+        }}
         onTimeUpdate={(e) => {
-          const t = e.currentTarget.currentTime;
-          setTime(t);
-          const { a, b, once } = loop.current;
-          if (b !== null && t >= b) {
-            if (once) {
-              e.currentTarget.pause();
-              loop.current = { a: 0, b: null, once: false };
-            } else {
-              e.currentTarget.currentTime = a;
-            }
-          }
+          setTime(e.currentTarget.currentTime);
+          checkBoundary(e.currentTarget);
         }}
       />
 
