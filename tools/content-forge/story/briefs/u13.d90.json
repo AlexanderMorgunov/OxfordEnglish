@@ -1,0 +1,12 @@
+{
+  "id": "u13.d90",
+  "unitId": "u13",
+  "insertAt": 2,
+  "tags": ["grammar.first-conditional", "grammar.zero-conditional", "grammar.relative-clauses", "vocab.plans"],
+  "level": "A2",
+  "episode": "The Office Barbecue",
+  "grammarName": { "en": "First conditional · relative clauses (who/which/that)", "ru": "First conditional · относительные предложения (who/which/that)" },
+  "grammarRef": "conditionals-0-1",
+  "characters": ["Kate", "Den", "Alex", "Pol", "Valery", "Peter"],
+  "scenario": "The team plans a summer barbecue, so the episode is full of first-conditional planning and relative clauses. Kate: 'If the weather is good, we'll have it in the park. If it rains, we'll move to the office.' Pol: 'The person who brings the best salad wins a prize.' Den worries: 'If Alex cooks, everyone will be ill.' Alex: 'If Den brings his guitar, we'll all sing.' Peter offers to make a playlist. Valery says, 'If it's after six, I won't come.' A little zero-conditional fact slips in ('If you heat cheese, it melts'). Relative clauses describe things: 'the park which is near the office', 'the salad that Pol makes'. Warm, funny planning. Short A2 sentences; keep 'if + present, will + verb' clear."
+}

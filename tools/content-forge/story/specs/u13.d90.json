@@ -1,0 +1,492 @@
+{
+  "id": "u13.d90",
+  "unitId": "u13",
+  "insertAt": 2,
+  "tags": [
+    "grammar.first-conditional",
+    "grammar.zero-conditional",
+    "grammar.relative-clauses",
+    "vocab.plans"
+  ],
+  "title": {
+    "en": "The Office Barbecue",
+    "ru": "Офисное барбекю"
+  },
+  "vocab": {
+    "title": {
+      "en": "Planning the barbecue",
+      "ru": "Планируем барбекю"
+    },
+    "words": [
+      {
+        "word": "barbecue",
+        "ru": "барбекю",
+        "ipa": "/ˈbɑːbɪkjuː/",
+        "example": "We'll have a barbecue in the park.",
+        "exampleRu": "Мы устроим барбекю в парке."
+      },
+      {
+        "word": "weather",
+        "ru": "погода",
+        "ipa": "/ˈweðə(r)/",
+        "example": "The weather is good today.",
+        "exampleRu": "Сегодня хорошая погода."
+      },
+      {
+        "word": "rain",
+        "ru": "дождь",
+        "ipa": "/reɪn/",
+        "example": "If it rains, we'll move.",
+        "exampleRu": "Если пойдёт дождь, мы переедем."
+      },
+      {
+        "word": "park",
+        "ru": "парк",
+        "ipa": "/pɑːk/",
+        "example": "The park is near the office.",
+        "exampleRu": "Парк рядом с офисом."
+      },
+      {
+        "word": "salad",
+        "ru": "салат",
+        "ipa": "/ˈsæləd/",
+        "example": "Who brings the best salad?",
+        "exampleRu": "Кто приносит лучший салат?"
+      },
+      {
+        "word": "prize",
+        "ru": "приз",
+        "ipa": "/praɪz/",
+        "example": "The winner gets a prize.",
+        "exampleRu": "Победитель получает приз."
+      },
+      {
+        "word": "grill",
+        "ru": "жарить на гриле",
+        "ipa": "/ɡrɪl/",
+        "example": "Alex will grill the meat.",
+        "exampleRu": "Алекс пожарит мясо на гриле."
+      },
+      {
+        "word": "playlist",
+        "ru": "плейлист",
+        "ipa": "/ˈpleɪlɪst/",
+        "example": "Peter makes a playlist.",
+        "exampleRu": "Питер делает плейлист."
+      },
+      {
+        "word": "guitar",
+        "ru": "гитара",
+        "ipa": "/ɡɪˈtɑː(r)/",
+        "example": "Den can play the guitar.",
+        "exampleRu": "Ден умеет играть на гитаре."
+      },
+      {
+        "word": "cheese",
+        "ru": "сыр",
+        "ipa": "/tʃiːz/",
+        "example": "The cheese melts in the sun.",
+        "exampleRu": "Сыр тает на солнце."
+      },
+      {
+        "word": "to melt",
+        "ru": "таять, плавиться",
+        "ipa": "/melt/",
+        "example": "If you heat cheese, it melts.",
+        "exampleRu": "Если нагреть сыр, он плавится."
+      },
+      {
+        "word": "plan",
+        "ru": "план",
+        "ipa": "/plæn/",
+        "example": "Kate has a good plan.",
+        "exampleRu": "У Кейт хороший план."
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "First conditional & relative clauses",
+      "ru": "Первый тип условных и относительные придаточные"
+    },
+    "ref": "conditionals-0-1",
+    "rule": {
+      "en": "Use the first conditional (if + present simple, will + base verb) for real future possibilities. Use the zero conditional (if + present simple, present simple) for facts. Use who for people and which/that for things.",
+      "ru": "Используй первый тип условных (if + present simple, will + base verb) для реальных возможностей в будущем. Используй нулевой тип для фактов (if + present simple, present simple). Используй who для людей и which/that для предметов."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "First conditional",
+          "ru": "Первый тип условных"
+        },
+        "formula": "If + present simple, will + base verb",
+        "examples": [
+          {
+            "en": "If the weather is good, we'll have a barbecue.",
+            "ru": "Если погода будет хорошей, мы устроим барбекю."
+          }
+        ],
+        "ref": "first-conditional"
+      },
+      {
+        "label": {
+          "en": "Zero conditional",
+          "ru": "Нулевой тип условных"
+        },
+        "formula": "If + present simple, present simple",
+        "examples": [
+          {
+            "en": "If you heat cheese, it melts.",
+            "ru": "Если нагреть сыр, он плавится."
+          }
+        ],
+        "ref": "zero-conditional"
+      },
+      {
+        "label": {
+          "en": "Relative clauses",
+          "ru": "Относительные придаточные"
+        },
+        "formula": "noun + who/which/that + clause",
+        "examples": [
+          {
+            "en": "The person who brings the best salad wins a prize.",
+            "ru": "Человек, который приносит лучший салат, получает приз."
+          }
+        ],
+        "ref": "relative-clauses"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Do not use will after if in the first conditional. Say: If it rains, we'll move. Not: If it will rain, we'll move.",
+        "ru": "Не ставь will после if в первом типе. Говори: If it rains, we'll move. Не: If it will rain, we'll move."
+      },
+      {
+        "en": "Use who for people and which/that for things. Say: the person who, the park which. Not: the person which.",
+        "ru": "Используй who для людей и which/that для предметов. Говори: the person who, the park which. Не: the person which."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "The Office Barbecue",
+      "ru": "Офисное барбекю"
+    },
+    "blocks": [
+      {
+        "en": "Kate has a plan. \"If the weather is good, we'll have a barbecue in the park. If it rains, we'll move to the office.\" The team loves the idea. The park which is near the office is green and quiet.",
+        "ru": "У Кейт есть план. «Если погода будет хорошей, мы устроим барбекю в парке. Если пойдёт дождь, мы перейдём в офис». Команде нравится идея. Парк, который находится рядом с офисом, зелёный и тихий.",
+        "image": "b1",
+        "alt": {
+          "en": "Kate presents her plan for the barbecue",
+          "ru": "Кейт представляет свой план барбекю"
+        }
+      },
+      {
+        "en": "Pol is happy. \"The person who brings the best salad wins a prize,\" he says. Den is worried. \"If Alex cooks, everyone will be ill,\" he says. Alex laughs. \"If Den brings his guitar, we'll all sing!\" Peter asks, \"Can I make a playlist? It will be the playlist that everyone likes.\"",
+        "ru": "Пол рад. «Человек, который приносит лучший салат, получает приз», — говорит он. Ден волнуется. «Если Алекс будет готовить, все заболеют», — говорит он. Алекс смеётся. «Если Ден принесёт свою гитару, мы все будем петь!» Питер спрашивает: «Можно я сделаю плейлист? Это будет плейлист, который понравится всем»."
+      },
+      {
+        "en": "Valery looks at his watch. \"If it's after six, I won't come,\" he says. Peter smiles. \"If you heat cheese, it melts. And there will be cheese.\" Valery says, \"Maybe I'll come.\" Kate writes the plan on the board. It is a good plan, and everyone is happy.",
+        "ru": "Валерий смотрит на часы. «Если будет после шести, я не приду», — говорит он. Питер улыбается. «Если нагреть сыр, он плавится. И будет сыр». Валерий говорит: «Может быть, я приду». Кейт записывает план на доске. Это хороший план, и все рады.",
+        "image": "b3",
+        "alt": {
+          "en": "Valery thinks about the cheese and smiles",
+          "ru": "Валерий думает о сыре и улыбается"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "idea",
+        "ru": "идея",
+        "ipa": "/aɪˈdɪə/"
+      },
+      {
+        "word": "board",
+        "ru": "доска",
+        "ipa": "/bɔːd/"
+      },
+      {
+        "word": "watch",
+        "ru": "часы",
+        "ipa": "/wɒtʃ/"
+      },
+      {
+        "word": "ill",
+        "ru": "больной",
+        "ipa": "/ɪl/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "The plan",
+      "ru": "План"
+    },
+    "dialogue": [
+      [
+        "If it's nice, we'll go.",
+        "Если будет хорошая погода, мы пойдём."
+      ],
+      [
+        "Who brings the salad?",
+        "Кто приносит салат?"
+      ],
+      [
+        "If Alex cooks, I'll worry.",
+        "Если Алекс готовит, я буду волноваться."
+      ],
+      [
+        "I will make a playlist.",
+        "Я сделаю плейлист."
+      ],
+      [
+        "If it's after six, I won't.",
+        "Если будет после шести, я не приду."
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u13.d90.ex.l.01",
+        "instruction": {
+          "en": "What will Peter make?",
+          "ru": "Что сделает Питер?"
+        },
+        "tags": [
+          "listening.detail",
+          "vocab.plans"
+        ],
+        "prompt": "Peter will make ___.",
+        "options": [
+          "a playlist",
+          "a salad",
+          "a cake"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u13.d90.ex.g.01",
+        "instruction": {
+          "en": "First conditional: if + present simple.",
+          "ru": "Первый тип условных: if + present simple."
+        },
+        "tags": [
+          "grammar.first-conditional"
+        ],
+        "prompt": "If the weather ___ good, we'll have a barbecue.",
+        "cue": "(be)",
+        "answers": [
+          "is"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u13.d90.ex.c.01",
+        "instruction": {
+          "en": "Choose the correct form.",
+          "ru": "Выбери правильную форму."
+        },
+        "tags": [
+          "grammar.first-conditional"
+        ],
+        "prompt": "If it rains, we ___ to the office.",
+        "options": [
+          "will move",
+          "move",
+          "moves"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "u13.d90.ex.g.02",
+        "instruction": {
+          "en": "Relative pronoun for people.",
+          "ru": "Относительное местоимение для людей."
+        },
+        "tags": [
+          "grammar.relative-clauses"
+        ],
+        "prompt": "The person ___ brings the best salad wins a prize.",
+        "cue": "(who)",
+        "answers": [
+          "who"
+        ]
+      },
+      {
+        "type": "spot-error",
+        "id": "u13.d90.ex.s.01",
+        "instruction": {
+          "en": "Find the correct sentence.",
+          "ru": "Найди правильное предложение."
+        },
+        "tags": [
+          "grammar.zero-conditional"
+        ],
+        "variants": [
+          "If you heat cheese, it melts.",
+          "If you heat cheese, it will melts."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "choice",
+        "id": "u13.d90.ex.c.02",
+        "instruction": {
+          "en": "Relative pronoun for things.",
+          "ru": "Относительное местоимение для предметов."
+        },
+        "tags": [
+          "grammar.relative-clauses"
+        ],
+        "prompt": "The park ___ is near the office is green.",
+        "options": [
+          "which",
+          "who",
+          "where"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "order-words",
+        "id": "u13.d90.ex.o.01",
+        "instruction": {
+          "en": "Make a sentence.",
+          "ru": "Собери предложение."
+        },
+        "tags": [
+          "grammar.first-conditional"
+        ],
+        "tokens": [
+          "If",
+          "Den",
+          "brings",
+          "his",
+          "guitar",
+          "we'll",
+          "sing"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "type": "match",
+        "id": "u13.d90.ex.m.01",
+        "instruction": {
+          "en": "Match the word to the Russian.",
+          "ru": "Сопоставь слово с переводом."
+        },
+        "tags": [
+          "vocab.plans"
+        ],
+        "pairs": [
+          {
+            "left": "barbecue",
+            "right": "барбекю"
+          },
+          {
+            "left": "weather",
+            "right": "погода"
+          },
+          {
+            "left": "salad",
+            "right": "салат"
+          },
+          {
+            "left": "prize",
+            "right": "приз"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u13.d90.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.first-conditional",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Если пойдёт дождь, мы перейдём в офис.",
+        "answers": [
+          "If it rains, we'll move to the office.",
+          "If it rains, we will move to the office."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "If it will rain, we'll move to the office."
+            ],
+            "explanation": {
+              "en": "No will after if in first conditional.",
+              "ru": "После if в первом типе не ставится will."
+            }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u13.d90.ex.t.02",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.relative-clauses",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Человек, который приносит лучший салат, получает приз.",
+        "answers": [
+          "The person who brings the best salad wins a prize."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "The person which brings the best salad wins a prize."
+            ],
+            "explanation": {
+              "en": "Use who for people.",
+              "ru": "Для людей используй who."
+            }
+          }
+        ]
+      },
+      {
+        "type": "gap-fill",
+        "id": "u13.d90.ex.g.03",
+        "instruction": {
+          "en": "Zero conditional: general truth.",
+          "ru": "Нулевой тип: общая истина."
+        },
+        "tags": [
+          "grammar.zero-conditional"
+        ],
+        "prompt": "If you heat cheese, it ___.",
+        "cue": "(melt)",
+        "answers": [
+          "melts"
+        ]
+      }
+    ]
+  }
+}

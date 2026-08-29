@@ -1,0 +1,625 @@
+{
+  "id": "u14.d90",
+  "title": {
+    "en": "Who Ate the Cake?",
+    "ru": "Кто съел торт?"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.passive",
+    "functions.storytelling",
+    "vocab.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u14.d90.vocab",
+      "title": {
+        "en": "Office mystery",
+        "ru": "Офисная тайна"
+      },
+      "words": [
+        {
+          "word": "cake",
+          "ru": "торт",
+          "ipa": "/keɪk/",
+          "example": "The cake was in the kitchen.",
+          "exampleRu": "Торт был на кухне.",
+          "audio": {
+            "src": "media/audio/u14.d90.vocab.cake.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "eaten",
+          "ru": "съеденный",
+          "ipa": "/ˈiːtən/",
+          "example": "The cake was eaten.",
+          "exampleRu": "Торт был съеден.",
+          "audio": {
+            "src": "media/audio/u14.d90.vocab.eaten.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "watered",
+          "ru": "политый",
+          "ipa": "/ˈwɔːtəd/",
+          "example": "The plant was watered.",
+          "exampleRu": "Растение было полито.",
+          "audio": {
+            "src": "media/audio/u14.d90.vocab.watered.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "report",
+          "ru": "отчёт",
+          "ipa": "/rɪˈpɔːt/",
+          "example": "Den wrote a long report.",
+          "exampleRu": "Ден написал длинный отчёт.",
+          "audio": {
+            "src": "media/audio/u14.d90.vocab.report.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "finished",
+          "ru": "законченный",
+          "ipa": "/ˈfɪnɪʃt/",
+          "example": "The report was finished.",
+          "exampleRu": "Отчёт был закончен.",
+          "audio": {
+            "src": "media/audio/u14.d90.vocab.finished.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "window",
+          "ru": "окно",
+          "ipa": "/ˈwɪndəʊ/",
+          "example": "The window was open.",
+          "exampleRu": "Окно было открыто.",
+          "audio": {
+            "src": "media/audio/u14.d90.vocab.window.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "left",
+          "ru": "оставленный",
+          "ipa": "/left/",
+          "example": "The window was left open.",
+          "exampleRu": "Окно было оставлено открытым.",
+          "audio": {
+            "src": "media/audio/u14.d90.vocab.left.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "plant",
+          "ru": "растение",
+          "ipa": "/plɑːnt/",
+          "example": "The plant was green.",
+          "exampleRu": "Растение было зелёное.",
+          "audio": {
+            "src": "media/audio/u14.d90.vocab.plant.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "weekend",
+          "ru": "выходные",
+          "ipa": "/ˌwiːkˈend/",
+          "example": "It happened on the weekend.",
+          "exampleRu": "Это случилось в выходные.",
+          "audio": {
+            "src": "media/audio/u14.d90.vocab.weekend.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "kids",
+          "ru": "дети",
+          "ipa": "/kɪdz/",
+          "example": "Alex has four kids.",
+          "exampleRu": "У Алекса четверо детей.",
+          "audio": {
+            "src": "media/audio/u14.d90.vocab.kids.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "mystery",
+          "ru": "тайна",
+          "ipa": "/ˈmɪstəri/",
+          "example": "It was a mystery.",
+          "exampleRu": "Это была тайна.",
+          "audio": {
+            "src": "media/audio/u14.d90.vocab.mystery.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "office",
+          "ru": "офис",
+          "ipa": "/ˈɒfɪs/",
+          "example": "The office was quiet.",
+          "exampleRu": "В офисе было тихо.",
+          "audio": {
+            "src": "media/audio/u14.d90.vocab.office.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u14.d90.grammar",
+      "title": {
+        "en": "The passive (was/were + past participle)",
+        "ru": "Пассивный залог (was/were + past participle)"
+      },
+      "ref": "passive",
+      "rule": {
+        "en": "Use the passive when the action is more important than the person. In the past, use was/were + past participle. For example: The cake was eaten. To say who did it, add 'by': The cake was eaten by kids.",
+        "ru": "Используйте пассив, когда действие важнее человека. В прошлом используйте was/were + past participle. Например: The cake was eaten. Чтобы сказать, кто сделал, добавьте by: The cake was eaten by kids."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Affirmative",
+            "ru": "Утверждение"
+          },
+          "formula": "subject + was/were + past participle (+ by + agent)",
+          "examples": [
+            {
+              "en": "The cake was eaten.",
+              "ru": "Торт был съеден."
+            },
+            {
+              "en": "The plants were watered.",
+              "ru": "Растения были политы."
+            }
+          ],
+          "ref": "passive"
+        },
+        {
+          "label": {
+            "en": "Negative",
+            "ru": "Отрицание"
+          },
+          "formula": "subject + was/were not + past participle",
+          "examples": [
+            {
+              "en": "The window was not opened.",
+              "ru": "Окно не было открыто."
+            }
+          ],
+          "ref": "passive"
+        },
+        {
+          "label": {
+            "en": "Question",
+            "ru": "Вопрос"
+          },
+          "formula": "Was/Were + subject + past participle?",
+          "examples": [
+            {
+              "en": "Was the cake eaten?",
+              "ru": "Был ли торт съеден?"
+            }
+          ],
+          "ref": "passive"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use was/were: say 'The cake was eaten', not 'The cake eaten'.",
+          "ru": "Используйте was/were: говорите «The cake was eaten», а не «The cake eaten»."
+        },
+        {
+          "en": "Use the past participle: 'eaten', not 'ate'.",
+          "ru": "Используйте причастие: «eaten», а не «ate»."
+        },
+        {
+          "en": "Say 'eaten by kids', not 'eaten kids'.",
+          "ru": "Говорите «eaten by kids», а не «eaten kids»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u14.d90.reading",
+      "title": {
+        "en": "Who Ate the Cake?",
+        "ru": "Кто съел торт?"
+      },
+      "blocks": [
+        {
+          "id": "u14.d90.reading.b1",
+          "en": "On Monday morning the office was quiet. But something was strange. The cake in the kitchen was eaten! The plant was watered. Den's report was finished. And the window was left open. Nobody said anything.",
+          "ru": "В понедельник утром в офисе было тихо. Но что-то было странно. Торт на кухне был съеден! Растение было полито. Отчёт Дена был закончен. А окно было оставлено открытым. Никто ничего не говорил.",
+          "audio": {
+            "src": "media/audio/u14.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u14.d90.reading.b2",
+          "en": "Kate said, 'The cake was eaten! Who did it?' Den said, 'My report was finished — but not by me!' Alex said, 'The window was opened on Saturday.' Peter was quiet.",
+          "ru": "Кейт сказала: «Торт был съеден! Кто это сделал?» Ден сказал: «Мой отчёт был закончен, но не мной!» Алекс сказал: «Окно было открыто в субботу». Питер молчал.",
+          "audio": {
+            "src": "media/audio/u14.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u14.d90.reading.b3",
+          "en": "Then Pol laughed. 'On Saturday I opened the window. I watered the plant and finished the report. It was easy.' And Alex said, 'Sorry! My kids came here on Saturday. The cake was eaten by them!' Everybody laughed. Nobody was angry.",
+          "ru": "Потом Пол засмеялся. «В субботу я открыл окно. Я полил растение и закончил отчёт. Это было легко». А Алекс сказал: «Извините! Мои дети приезжали сюда в субботу. Торт был съеден ими!» Все засмеялись. Никто не злился.",
+          "audio": {
+            "src": "media/audio/u14.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "strange",
+          "ru": "странный",
+          "ipa": "/streɪndʒ/"
+        },
+        {
+          "word": "quiet",
+          "ru": "тихий",
+          "ipa": "/ˈkwaɪət/"
+        },
+        {
+          "word": "laugh",
+          "ru": "смеяться",
+          "ipa": "/lɑːf/"
+        },
+        {
+          "word": "angry",
+          "ru": "злой",
+          "ipa": "/ˈæŋɡri/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u14.d90.listening",
+      "title": {
+        "en": "The Mystery",
+        "ru": "Тайна"
+      },
+      "audio": {
+        "src": "media/audio/u14.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.21,
+          "en": "The cake was eaten!",
+          "ru": "Торт был съеден!"
+        },
+        {
+          "start": 1.21,
+          "end": 2.69,
+          "en": "Who was it eaten by?",
+          "ru": "Кем он был съеден?"
+        },
+        {
+          "start": 2.69,
+          "end": 4.44,
+          "en": "It was not eaten by me.",
+          "ru": "Он не был съеден мной."
+        },
+        {
+          "start": 4.44,
+          "end": 5.97,
+          "en": "Was it eaten by kids?",
+          "ru": "Он был съеден детьми?"
+        },
+        {
+          "start": 5.97,
+          "end": 7.78,
+          "en": "Yes, I think so.",
+          "ru": "Да, я думаю да."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u14.d90.ex.l.01",
+          "instruction": {
+            "en": "What does Kate think?",
+            "ru": "Что думает Кейт?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "Kate thinks ___.",
+          "options": [
+            "it was eaten by kids",
+            "it was eaten by Den",
+            "it was eaten by Pol"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u14.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u14.d90.ex.g.01",
+          "instruction": {
+            "en": "Choose the past participle.",
+            "ru": "Выбери причастие."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The cake was ___.",
+          "cue": "(eat)",
+          "answers": [
+            "eaten"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u14.d90.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct form of was/were.",
+            "ru": "Выбери правильную форму was/were."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The plants ___ watered.",
+          "options": [
+            "was",
+            "were",
+            "is"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d90.ex.g.02",
+          "instruction": {
+            "en": "Past participle of leave.",
+            "ru": "Причастие от leave."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The window was ___ open.",
+          "cue": "(leave)",
+          "answers": [
+            "left"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u14.d90.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "The report was finished.",
+            "The report was finish."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u14.d90.ex.c.02",
+          "instruction": {
+            "en": "Which preposition is used with the agent?",
+            "ru": "Какой предлог используется для деятеля?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "Was the cake eaten ___ kids?",
+          "options": [
+            "by",
+            "from",
+            "with"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u14.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "tokens": [
+            "The",
+            "cake",
+            "was",
+            "eaten",
+            "by",
+            "kids"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u14.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "cake",
+              "right": "торт"
+            },
+            {
+              "left": "report",
+              "right": "отчёт"
+            },
+            {
+              "left": "plant",
+              "right": "растение"
+            },
+            {
+              "left": "window",
+              "right": "окно"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u14.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Торт был съеден.",
+          "answers": [
+            "The cake was eaten."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "The cake was ate."
+              ],
+              "explanation": {
+                "en": "Use the past participle: eaten, not ate.",
+                "ru": "Используй причастие: eaten, не ate."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u14.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Окно было открыто.",
+          "answers": [
+            "The window was opened."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "The window was open."
+              ],
+              "explanation": {
+                "en": "In the passive use the past participle: opened.",
+                "ru": "В пассиве используй причастие: opened."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u14.d90.ex.g.03",
+          "instruction": {
+            "en": "Past participle of water.",
+            "ru": "Причастие от water."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "Were the plants ___?",
+          "cue": "(water)",
+          "answers": [
+            "watered"
+          ]
+        }
+      ]
+    }
+  ]
+}

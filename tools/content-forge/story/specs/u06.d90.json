@@ -1,0 +1,498 @@
+{
+  "id": "u06.d90",
+  "unitId": "u06",
+  "insertAt": 2,
+  "tags": [
+    "grammar.prepositions-place",
+    "grammar.there-is",
+    "grammar.demonstratives",
+    "vocab.furniture"
+  ],
+  "title": {
+    "en": "The Big Rearrange",
+    "ru": "Большая перестановка"
+  },
+  "vocab": {
+    "title": {
+      "en": "Office furniture",
+      "ru": "Офисная мебель"
+    },
+    "words": [
+      {
+        "word": "desk",
+        "ru": "письменный стол",
+        "ipa": "/desk/",
+        "example": "My desk is near the window.",
+        "exampleRu": "Мой стол у окна."
+      },
+      {
+        "word": "chair",
+        "ru": "стул",
+        "ipa": "/tʃeər/",
+        "example": "The chair is next to the desk.",
+        "exampleRu": "Стул рядом со столом."
+      },
+      {
+        "word": "shelf",
+        "ru": "полка",
+        "ipa": "/ʃelf/",
+        "example": "The mug is on the shelf.",
+        "exampleRu": "Кружка на полке."
+      },
+      {
+        "word": "box",
+        "ru": "коробка",
+        "ipa": "/bɒks/",
+        "example": "There are boxes on the floor.",
+        "exampleRu": "На полу коробки."
+      },
+      {
+        "word": "plant",
+        "ru": "растение",
+        "ipa": "/plɑːnt/",
+        "example": "The plant is behind the sofa.",
+        "exampleRu": "Растение за диваном."
+      },
+      {
+        "word": "sofa",
+        "ru": "диван",
+        "ipa": "/ˈsəʊfə/",
+        "example": "There is a new sofa near the window.",
+        "exampleRu": "У окна новый диван."
+      },
+      {
+        "word": "keyboard",
+        "ru": "клавиатура",
+        "ipa": "/ˈkiːbɔːd/",
+        "example": "Your keyboard is under the plant.",
+        "exampleRu": "Твоя клавиатура под растением."
+      },
+      {
+        "word": "mug",
+        "ru": "кружка",
+        "ipa": "/mʌɡ/",
+        "example": "This is my favourite mug.",
+        "exampleRu": "Это моя любимая кружка."
+      },
+      {
+        "word": "window",
+        "ru": "окно",
+        "ipa": "/ˈwɪndəʊ/",
+        "example": "The plant is between the sofa and the window.",
+        "exampleRu": "Растение между диваном и окном."
+      },
+      {
+        "word": "door",
+        "ru": "дверь",
+        "ipa": "/dɔːr/",
+        "example": "His chair is by the door.",
+        "exampleRu": "Его стул у двери."
+      },
+      {
+        "word": "corner",
+        "ru": "угол",
+        "ipa": "/ˈkɔːnə/",
+        "example": "This corner is nice.",
+        "exampleRu": "Этот угол красивый."
+      },
+      {
+        "word": "floor",
+        "ru": "пол",
+        "ipa": "/flɔːr/",
+        "example": "The boxes are on the floor.",
+        "exampleRu": "Коробки на полу."
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "Prepositions of place · there is/are · this/that",
+      "ru": "Предлоги места · there is/are · this/that"
+    },
+    "ref": "prepositions-place",
+    "rule": {
+      "en": "Use prepositions of place to say where things are: on, in, under, behind, next to, near, between. Use 'there is' for one thing and 'there are' for many. Use 'this/these' for things near you and 'that/those' for things far from you.",
+      "ru": "Предлоги места показывают, где находятся предметы: on, in, under, behind, next to, near, between. Используйте 'there is' для одного предмета и 'there are' для многих. 'This/these' — для предметов рядом, 'that/those' — для дальних."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "Prepositions",
+          "ru": "Предлоги"
+        },
+        "formula": "subject + be + preposition + noun",
+        "examples": [
+          {
+            "en": "The mug is on the shelf.",
+            "ru": "Кружка на полке."
+          },
+          {
+            "en": "The chair is next to the door.",
+            "ru": "Стул рядом с дверью."
+          }
+        ],
+        "ref": "prepositions-place"
+      },
+      {
+        "label": {
+          "en": "There is / There are",
+          "ru": "There is / There are"
+        },
+        "formula": "There is + singular noun; There are + plural noun",
+        "examples": [
+          {
+            "en": "There is a sofa near the window.",
+            "ru": "У окна диван."
+          },
+          {
+            "en": "There are boxes on the floor.",
+            "ru": "На полу коробки."
+          }
+        ],
+        "ref": "there-is"
+      },
+      {
+        "label": {
+          "en": "This / That / These / Those",
+          "ru": "This / That / These / Those"
+        },
+        "formula": "this/these (near) · that/those (far)",
+        "examples": [
+          {
+            "en": "This is my desk. That is yours.",
+            "ru": "Это мой стол. Тот — твой."
+          },
+          {
+            "en": "These are your boxes. Those are mine.",
+            "ru": "Эти коробки ваши. Те — мои."
+          }
+        ],
+        "ref": "demonstratives"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "There is a plant. — not 'There are a plant.'",
+        "ru": "There is a plant. — а не 'There are a plant'."
+      },
+      {
+        "en": "'That' is for one thing, 'those' is for many: Those are boxes, not that are boxes.",
+        "ru": "'That' — для одного предмета, 'those' — для многих: Those are boxes, а не that are boxes."
+      },
+      {
+        "en": "Between is used for two things: between the sofa and the window.",
+        "ru": "Between используется для двух предметов: между диваном и окном."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "The Big Rearrange",
+      "ru": "Большая перестановка"
+    },
+    "blocks": [
+      {
+        "en": "On Saturday Kate came to the office. She moved everything. There is a new sofa near the window. There are boxes everywhere. Kate says, \"This office has good energy now!\"",
+        "ru": "В субботу Кейт пришла в офис. Она передвинула всё. У окна новый диван. Повсюду коробки. Кейт говорит: «Теперь у этого офиса хорошая энергия!»",
+        "image": "b1",
+        "alt": {
+          "en": "Kate in the rearranged office with a new sofa and boxes",
+          "ru": "Кейт в переставленном офисе с новым диваном и коробками"
+        }
+      },
+      {
+        "en": "On Monday morning Den comes in. He looks at his desk. There is no mug on it. \"Where is my mug?\" Den looks up. His mug is on a high shelf, behind a plant. His chair is next to the door. \"My mug was on my desk!\" Den is upset.",
+        "ru": "Утром в понедельник входит Ден. Он смотрит на свой стол. На нём нет кружки. «Где моя кружка?» Ден смотрит вверх. Его кружка на высокой полке, за растением. Его стул стоит у двери. «Моя кружка была на столе!» — расстроен Ден."
+      },
+      {
+        "en": "Kate shows everybody the new office. \"These boxes are yours, and those are mine. Your keyboard is under the plant, Den.\" Pol loves the plant corner. \"This corner is great! The plant is between the sofa and the window.\" Alex laughs. \"My desk is a perfect place for a nap.\" Den drinks coffee from a new mug. \"Okay, but my chair belongs next to my desk.\" Everyone laughs.",
+        "ru": "Кейт показывает всем новый офис. «Эти коробки ваши, а те — мои. Твоя клавиатура под растением, Ден». Пол в восторге от уголка с растениями. «Этот уголок отличный! Растение между диваном и окном». Алекс смеётся: «Мой стол — идеальное место для сна». Ден пьёт кофе из новой кружки. «Хорошо, но мой стул должен быть рядом с моим столом». Все смеются.",
+        "image": "b3",
+        "alt": {
+          "en": "Kate and team in the new office; Den holds a new mug, Pol stands near the plants",
+          "ru": "Кейт и команда в новом офисе; Ден держит новую кружку, Пол стоит у растений"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "rearrange",
+        "ru": "переставлять",
+        "ipa": "/ˌriːəˈreɪndʒ/"
+      },
+      {
+        "word": "weekend",
+        "ru": "выходные",
+        "ipa": "/ˌwiːkˈend/"
+      },
+      {
+        "word": "move",
+        "ru": "двигать",
+        "ipa": "/muːv/"
+      },
+      {
+        "word": "upset",
+        "ru": "расстроенный",
+        "ipa": "/ʌpˈset/"
+      },
+      {
+        "word": "nap",
+        "ru": "короткий сон",
+        "ipa": "/næp/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "Where is my mug?",
+      "ru": "Где моя кружка?"
+    },
+    "dialogue": [
+      [
+        "Where is my mug?",
+        "Где моя кружка?"
+      ],
+      [
+        "It is on the shelf.",
+        "Она на полке."
+      ],
+      [
+        "Behind that plant?",
+        "За тем растением?"
+      ],
+      [
+        "Yes, next to the boxes.",
+        "Да, рядом с коробками."
+      ],
+      [
+        "This is crazy!",
+        "Это безумие!"
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u06.d90.ex.l.01",
+        "instruction": {
+          "en": "Where is Den's mug?",
+          "ru": "Где кружка Дена?"
+        },
+        "tags": [
+          "listening.detail",
+          "grammar.prepositions-place"
+        ],
+        "prompt": "The mug is ___.",
+        "options": [
+          "on the shelf",
+          "under the desk",
+          "next to the door"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u06.d90.ex.g.01",
+        "instruction": {
+          "en": "There is / there are (singular).",
+          "ru": "There is / there are (единственное число)."
+        },
+        "tags": [
+          "grammar.there-is"
+        ],
+        "prompt": "There ___ a new sofa near the window.",
+        "cue": "(be)",
+        "answers": [
+          "is"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u06.d90.ex.c.01",
+        "instruction": {
+          "en": "Choose the correct preposition.",
+          "ru": "Выбери правильный предлог."
+        },
+        "tags": [
+          "grammar.prepositions-place"
+        ],
+        "prompt": "The mug is ___ the shelf.",
+        "options": [
+          "on",
+          "in",
+          "under"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "u06.d90.ex.g.02",
+        "instruction": {
+          "en": "Demonstratives (far plural).",
+          "ru": "Указательные местоимения (далеко, мн.ч.)."
+        },
+        "tags": [
+          "grammar.demonstratives"
+        ],
+        "prompt": "These are your boxes, but ___ are mine.",
+        "answers": [
+          "those"
+        ]
+      },
+      {
+        "type": "spot-error",
+        "id": "u06.d90.ex.s.01",
+        "instruction": {
+          "en": "Choose the correct sentence.",
+          "ru": "Выбери верное предложение."
+        },
+        "tags": [
+          "grammar.there-is"
+        ],
+        "variants": [
+          "There is a plant under the keyboard.",
+          "There are a plant under the keyboard."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "order-words",
+        "id": "u06.d90.ex.o.01",
+        "instruction": {
+          "en": "Make a sentence.",
+          "ru": "Собери предложение."
+        },
+        "tags": [
+          "grammar.prepositions-place"
+        ],
+        "tokens": [
+          "The",
+          "mug",
+          "is",
+          "on",
+          "the",
+          "shelf"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "type": "match",
+        "id": "u06.d90.ex.m.01",
+        "instruction": {
+          "en": "Match the word and the translation.",
+          "ru": "Сопоставь слово и перевод."
+        },
+        "tags": [
+          "vocab.furniture"
+        ],
+        "pairs": [
+          {
+            "left": "sofa",
+            "right": "диван"
+          },
+          {
+            "left": "shelf",
+            "right": "полка"
+          },
+          {
+            "left": "keyboard",
+            "right": "клавиатура"
+          },
+          {
+            "left": "mug",
+            "right": "кружка"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u06.d90.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.prepositions-place",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Моя кружка на полке.",
+        "answers": [
+          "My mug is on the shelf."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "my mug on the shelf",
+              "on the shelf my mug"
+            ],
+            "explanation": {
+              "en": "Don't forget the verb 'is'.",
+              "ru": "Не забывай глагол 'is'."
+            }
+          }
+        ]
+      },
+      {
+        "type": "gap-fill",
+        "id": "u06.d90.ex.g.03",
+        "instruction": {
+          "en": "Preposition (two words).",
+          "ru": "Предлог (из двух слов)."
+        },
+        "tags": [
+          "grammar.prepositions-place"
+        ],
+        "prompt": "The chair is ___ ___ the door.",
+        "cue": "(next to)",
+        "answers": [
+          "next to"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u06.d90.ex.c.02",
+        "instruction": {
+          "en": "Demonstratives: near vs far.",
+          "ru": "Указательные местоимения: рядом vs далеко."
+        },
+        "tags": [
+          "grammar.demonstratives"
+        ],
+        "prompt": "___ is my keyboard and ___ is yours.",
+        "options": [
+          "This / that",
+          "These / those",
+          "That / this"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "spot-error",
+        "id": "u06.d90.ex.s.02",
+        "instruction": {
+          "en": "Choose the correct sentence.",
+          "ru": "Выбери верное предложение."
+        },
+        "tags": [
+          "grammar.there-is"
+        ],
+        "variants": [
+          "There are boxes on the floor.",
+          "There is boxes on the floor."
+        ],
+        "correctIndex": 0
+      }
+    ]
+  }
+}

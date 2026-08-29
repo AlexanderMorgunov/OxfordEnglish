@@ -1,0 +1,12 @@
+{
+  "id": "u14.d90",
+  "unitId": "u14",
+  "insertAt": 2,
+  "tags": ["grammar.passive", "functions.storytelling", "vocab.work"],
+  "level": "A2",
+  "episode": "Who Ate the Cake?",
+  "grammarName": { "en": "The passive (was/were + past participle)", "ru": "Пассивный залог (was/were + past participle)" },
+  "grammarRef": "passive",
+  "characters": ["Kate", "Den", "Alex", "Pol", "Peter"],
+  "scenario": "A small, light office mystery, told mostly in the passive. On Monday morning strange things are discovered: the birthday cake was eaten, the plant was watered, Den's report was finished early, and the window was left open. Kate says, 'The cake was eaten! Who did it?' Den: 'My report was finished — but not by me!' Everyone investigates. The mystery is solved warmly: the nice things (the plant was watered, the report was helped) were done by Pol on Saturday, and the cake was eaten by Alex's four kids when he popped in at the weekend. Nobody is angry; everyone laughs. Use the passive throughout: 'was/were + past participle' with common verbs (eaten, watered, finished, sent, left, opened, done). Keep sentences short and A2; contrast active vs passive lightly."
+}
