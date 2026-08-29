@@ -30,6 +30,17 @@ export function playClip(url: string, rate = 1): void {
   void audio.play();
 }
 
+/** Play/resume a caller-owned <audio> element as the single active clip (stops any other clip or
+ *  speech first). Unlike playClip it does NOT reset the element, so a paused paragraph resumes from
+ *  where it stopped — the caller pauses with `el.pause()` and drives its own play/pause button. */
+export function resumeExclusive(el: HTMLAudioElement, rate = 1): void {
+  if (current && current !== el) stopClip();
+  cancelSpeech();
+  el.playbackRate = rate;
+  current = el;
+  void el.play();
+}
+
 let cachedVoice: SpeechSynthesisVoice | null | undefined;
 /** A user-chosen voice (by voiceURI) overrides the auto-pick; null = auto. */
 let preferredVoiceURI: string | null = null;

@@ -3,7 +3,7 @@ import type { Section } from '@/content/schema';
 import { packMediaUrl } from '@/content/loader';
 import { PixelImage, SegmentedToggle } from '@/shared/ui';
 import { useVocabStore } from '@/features/vocab/vocabStore';
-import { canSpeak, playClip, speakWord } from '@/shared/lib/audio';
+import { canSpeak, resumeExclusive, speakWord } from '@/shared/lib/audio';
 import { translateText } from '@/features/vocab/translate';
 import { addWordCard, addPhraseCard } from '@/features/srs/service';
 import { WordToken, type Gloss } from '@/features/reader/reading-text';
@@ -67,6 +67,12 @@ function ReadingBlock({
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [showRu, setShowRu] = useState(false);
   const tokens = useMemo(() => en.split(/(\b[a-zA-Z']+\b)/), [en]);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [playing, setPlaying] = useState(false);
+  useEffect(() => {
+    const el = audioRef.current;
+    if (el) el.playbackRate = rate;
+  }, [rate]);
 
   return (
     <div className="border-b border-line pb-4 last:border-b-0">
@@ -77,15 +83,38 @@ function ReadingBlock({
           className="mb-3 w-full rounded-md border border-line"
         />
       )}
+      {audioUrl && (
+        <audio
+          ref={audioRef}
+          src={audioUrl}
+          preload="none"
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+          onEnded={() => setPlaying(false)}
+        />
+      )}
       <p className="text-lg leading-relaxed">
         {audioUrl && (
           <button
             type="button"
-            aria-label={ru ? 'Прослушать абзац' : 'Play paragraph'}
+            aria-label={
+              playing
+                ? ru
+                  ? 'Пауза'
+                  : 'Pause'
+                : ru
+                  ? 'Прослушать абзац'
+                  : 'Play paragraph'
+            }
             className="mr-1.5 align-middle text-teal transition-opacity hover:opacity-80"
-            onClick={() => playClip(audioUrl, rate)}
+            onClick={() => {
+              const el = audioRef.current;
+              if (!el) return;
+              if (playing) el.pause();
+              else resumeExclusive(el, rate);
+            }}
           >
-            ▶
+            {playing ? '❚❚' : '▶'}
           </button>
         )}
         {tokens.map((tok, i) => {
