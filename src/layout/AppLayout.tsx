@@ -1,11 +1,8 @@
-import { Suspense, useEffect, useRef } from 'react';
+import { Suspense, useEffect } from 'react';
 import { NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import { useLearner } from '@/features/learner/store';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { InstallPrompt } from '@/features/pwa/InstallPrompt';
-import { UpdatePrompt } from '@/features/pwa/UpdatePrompt';
-import { UpdateDialog } from '@/features/pwa/UpdateDialog';
-import { markEngaged } from '@/features/pwa/update';
 import { metricaHit } from '@/features/analytics/metrica';
 import { MigrationNotice } from '@/features/migration/MigrationNotice';
 import { ErrorBoundary, PixelImage } from '@/shared/ui';
@@ -27,12 +24,8 @@ export function AppLayout() {
   const level = useLearner((s) => s.level);
   const ru = useUiLang((s) => s.lang) === 'ru';
   const location = useLocation();
-  // Once the user navigates away from the entry route, an update found later goes to the banner,
-  // not the launch modal (see features/pwa/update.ts).
-  const firstPath = useRef(location.pathname);
   useEffect(() => {
     metricaHit(location.pathname);
-    if (location.pathname !== firstPath.current) markEngaged();
   }, [location.pathname]);
   return (
     <div className="min-h-screen">
@@ -86,16 +79,10 @@ export function AppLayout() {
         </div>
       </header>
 
-      <UpdateDialog />
       <MigrationNotice />
-      <UpdatePrompt />
       <InstallPrompt />
 
-      <main
-        className="mx-auto max-w-3xl px-5 py-8 pb-20"
-        onPointerDownCapture={markEngaged}
-        onKeyDownCapture={markEngaged}
-      >
+      <main className="mx-auto max-w-3xl px-5 py-8 pb-20">
         <ErrorBoundary resetKey={location.pathname}>
           <Suspense fallback={<p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading…'}</p>}>
             <Outlet />

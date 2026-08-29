@@ -18,10 +18,12 @@ export default defineConfig({
     react(),
     tailwindcss(),
     VitePWA({
-      // 'prompt', not 'autoUpdate': a new deploy surfaces a visible "Обновить" banner and applies
-      // only on the user's action (see src/features/pwa/update.ts) — no silent reload mid-reading,
-      // and an open PWA is polled so it actually notices new versions.
-      registerType: 'prompt',
+      // 'autoUpdate', not 'prompt': the SW self-activates (skipWaiting + clientsClaim) and the page
+      // reloads onto the fresh build. This is what heals a client stuck on an OLD cached SW — a
+      // prompt-mode SW only updates on the user's click, so a stale course.json kept hiding new days
+      // on installed PWAs / returning visitors. Update checks run on focus/visibility, not a timer,
+      // so an actively-used session isn't reloaded mid-exercise (see src/features/pwa/update.ts).
+      registerType: 'autoUpdate',
       includeAssets: ['icons/app-256.png', 'icons/app-512.png', 'icons/app-512-maskable.png'],
       manifest: {
         name: 'DayEnglish',

@@ -1,12 +1,7 @@
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button, Card, Eyebrow, Input, Option, PixelImage } from '@/shared/ui';
-import {
-  subscribeAppUpdate,
-  isUpdateReady,
-  checkForAppUpdate,
-  applyAppUpdate,
-} from '@/features/pwa/update';
+import { checkForAppUpdate } from '@/features/pwa/update';
 import { getKeyLimits, subscribeKeyLimits } from '@/features/ai/limits';
 import { PROVIDERS, type AiProviderId } from '@/features/ai/provider';
 import { useAiStore } from '@/features/ai/store';
@@ -94,7 +89,6 @@ export function SettingsPage() {
     else window.location.reload();
   };
 
-  const updateReady = useSyncExternalStore(subscribeAppUpdate, isUpdateReady, () => false);
   const keyLimits = useSyncExternalStore(subscribeKeyLimits, getKeyLimits, () => null);
   const [checking, setChecking] = useState(false);
   const [updateMsg, setUpdateMsg] = useState('');
@@ -102,25 +96,15 @@ export function SettingsPage() {
     setChecking(true);
     setUpdateMsg('');
     const result = await checkForAppUpdate();
+    setChecking(false);
     if (result === 'unavailable') {
-      setChecking(false);
       setUpdateMsg(
         ru ? '⚠ проверка недоступна (офлайн или SW не готов)' : '⚠ check unavailable (offline or SW not ready)'
       );
       return;
     }
-    // The check completed; a newly-found SW flips isUpdateReady shortly after via onNeedRefresh.
-    await new Promise((r) => setTimeout(r, 700));
-    setChecking(false);
-    setUpdateMsg(
-      isUpdateReady()
-        ? ru
-          ? 'найдено обновление ↓'
-          : 'update found ↓'
-        : ru
-          ? '✓ установлена последняя версия'
-          : '✓ you have the latest version'
-    );
+    // A newly-found SW auto-activates and reloads the page; if we're still here, we're up to date.
+    setUpdateMsg(ru ? '✓ установлена последняя версия' : '✓ you have the latest version');
   };
 
   const [dataMsg, setDataMsg] = useState('');
@@ -452,11 +436,6 @@ export function SettingsPage() {
                 ? 'Проверить обновления'
                 : 'Check for updates'}
           </Button>
-          {updateReady && (
-            <Button onClick={() => void applyAppUpdate()}>
-              {ru ? 'Обновить сейчас' : 'Update now'}
-            </Button>
-          )}
           {updateMsg && <span className="font-mono text-2xs text-teal">{updateMsg}</span>}
         </div>
         <p className="mt-3 font-mono text-2xs text-faint">version: {__APP_VERSION__}</p>
