@@ -1,0 +1,641 @@
+{
+  "id": "u28.d90",
+  "title": {
+    "en": "The Renovation",
+    "ru": "Ремонт"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.causative",
+    "grammar.passive",
+    "functions.storytelling",
+    "vocab.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u28.d90.vocab",
+      "title": {
+        "en": "Office renovation",
+        "ru": "Офисный ремонт"
+      },
+      "words": [
+        {
+          "word": "renovation",
+          "ru": "ремонт",
+          "ipa": "/ˌrenəˈveɪʃn/",
+          "example": "The office renovation starts today.",
+          "exampleRu": "Сегодня начинается ремонт офиса.",
+          "audio": {
+            "src": "media/audio/u28.d90.vocab.renovation.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wall",
+          "ru": "стена",
+          "ipa": "/wɔːl/",
+          "example": "The walls are being painted.",
+          "exampleRu": "Стены красят.",
+          "audio": {
+            "src": "media/audio/u28.d90.vocab.wall.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "paint",
+          "ru": "красить",
+          "ipa": "/peɪnt/",
+          "example": "They painted the wall blue.",
+          "exampleRu": "Они покрасили стену в синий.",
+          "audio": {
+            "src": "media/audio/u28.d90.vocab.paint.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "carpet",
+          "ru": "ковёр",
+          "ipa": "/ˈkɑːpɪt/",
+          "example": "The carpet is very old.",
+          "exampleRu": "Ковёр очень старый.",
+          "audio": {
+            "src": "media/audio/u28.d90.vocab.carpet.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fix",
+          "ru": "чинить",
+          "ipa": "/fɪks/",
+          "example": "I got my chair fixed.",
+          "exampleRu": "Мне починили стул.",
+          "audio": {
+            "src": "media/audio/u28.d90.vocab.fix.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "install",
+          "ru": "устанавливать",
+          "ipa": "/ɪnˈstɔːl/",
+          "example": "We are having a new system installed.",
+          "exampleRu": "Нам устанавливают новую систему.",
+          "audio": {
+            "src": "media/audio/u28.d90.vocab.install.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "move",
+          "ru": "перемещать",
+          "ipa": "/muːv/",
+          "example": "The smoothie station was moved.",
+          "exampleRu": "Смузи-станцию перенесли.",
+          "audio": {
+            "src": "media/audio/u28.d90.vocab.move.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "desk",
+          "ru": "письменный стол",
+          "ipa": "/desk/",
+          "example": "My desk was taken away.",
+          "exampleRu": "Мой стол убрали.",
+          "audio": {
+            "src": "media/audio/u28.d90.vocab.desk.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "chair",
+          "ru": "стул",
+          "ipa": "/tʃeə/",
+          "example": "This chair is broken.",
+          "exampleRu": "Этот стул сломан.",
+          "audio": {
+            "src": "media/audio/u28.d90.vocab.chair.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "week",
+          "ru": "неделя",
+          "ipa": "/wiːk/",
+          "example": "The work will take a week.",
+          "exampleRu": "Работа займёт неделю.",
+          "audio": {
+            "src": "media/audio/u28.d90.vocab.week.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "finish",
+          "ru": "заканчивать",
+          "ipa": "/ˈfɪnɪʃ/",
+          "example": "It all gets done by Friday.",
+          "exampleRu": "Всё будет готово к пятнице.",
+          "audio": {
+            "src": "media/audio/u28.d90.vocab.finish.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "unplug",
+          "ru": "отключать от сети",
+          "ipa": "/ˌʌnˈplʌɡ/",
+          "example": "Someone unplugged the coffee machine.",
+          "exampleRu": "Кто-то отключил кофемашину.",
+          "audio": {
+            "src": "media/audio/u28.d90.vocab.unplug.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u28.d90.grammar",
+      "title": {
+        "en": "Causative have/get something done · the passive",
+        "ru": "Каузатив have/get something done · пассив"
+      },
+      "ref": "passive-extended",
+      "rule": {
+        "en": "We use the passive when the action is more important than the person who does it. We form it with be + past participle. We use the causative have/get something done when we arrange for somebody else to do something for us. The form is have/get + object + past participle.",
+        "ru": "Мы используем пассив, когда действие важнее того, кто его выполняет. Он образуется с be + причастие прошедшего времени. Каузатив have/get something done используем, когда мы договариваемся, чтобы кто-то другой сделал что-то для нас. Форма: have/get + объект + причастие прошедшего времени."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Causative have/get something done",
+            "ru": "Каузатив have/get something done"
+          },
+          "formula": "have/get + object + past participle",
+          "examples": [
+            {
+              "en": "We are having the walls painted.",
+              "ru": "Нам красят стены."
+            }
+          ],
+          "ref": "passive-extended"
+        },
+        {
+          "label": {
+            "en": "Present continuous passive (is being done)",
+            "ru": "Настоящее продолженное время в пассиве (is being done)"
+          },
+          "formula": "am/is/are being + past participle",
+          "examples": [
+            {
+              "en": "The kitchen is being redone.",
+              "ru": "Кухня сейчас ремонтируется."
+            }
+          ],
+          "ref": "passive-extended"
+        },
+        {
+          "label": {
+            "en": "Present perfect passive (has been done)",
+            "ru": "Настоящее совершенное время в пассиве (has been done)"
+          },
+          "formula": "has/have been + past participle",
+          "examples": [
+            {
+              "en": "The smoothie station has been moved.",
+              "ru": "Смузи-станцию перенесли."
+            }
+          ],
+          "ref": "passive-extended"
+        },
+        {
+          "label": {
+            "en": "Past and future passive (was/will be done)",
+            "ru": "Прошедшее и будущее время в пассиве (was/will be done)"
+          },
+          "formula": "was/were + past participle · will be + past participle",
+          "examples": [
+            {
+              "en": "My desk was taken away.",
+              "ru": "Мой стол убрали."
+            },
+            {
+              "en": "It will be finished by Friday.",
+              "ru": "Это будет закончено к пятнице."
+            }
+          ],
+          "ref": "passive-extended"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Don't use the causative for actions you do yourself: \"I had my hair cut\" means somebody cut it for you.",
+          "ru": "Не используй каузатив для действий, которые ты делаешь сам: «I had my hair cut» означает, что тебе подстригли волосы."
+        },
+        {
+          "en": "In the passive, the agent (by...) is often omitted: \"The walls were painted\" — not \"The walls were painted by painters\" if it's not important.",
+          "ru": "В пассиве агенс (by...) часто опускают: «The walls were painted», а не «The walls were painted by painters», если это неважно."
+        },
+        {
+          "en": "Be careful: \"get\" is more informal than \"have\". In office talk \"get\" is common.",
+          "ru": "Будь аккуратен: «get» неформальнее, чем «have». В офисной речи «get» распространён."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u28.d90.reading",
+      "title": {
+        "en": "The Renovation",
+        "ru": "Ремонт"
+      },
+      "blocks": [
+        {
+          "id": "u28.d90.reading.b1",
+          "en": "Monday morning. Kate stood in the middle of the office. 'This week we are having the walls painted and the carpet cleaned,' she said. Den looked at his broken chair. 'I am finally getting it fixed,' he said. 'It has been broken for a year.'",
+          "ru": "Утро понедельника. Кейт стояла в центре офиса. «На этой неделе нам красят стены и чистят ковёр», — сказала она. Ден посмотрел на свой сломанный стул. «Мне наконец его чинят», — сказал он. «Он сломан уже год».",
+          "audio": {
+            "src": "media/audio/u28.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u28.d90.reading.b2",
+          "en": "Pol had news too. 'The kitchen is being redone, so my smoothie station has been moved to the hall.' Alex smiled. 'I am having a nap pod installed... I wish.' Then Peter looked worried. 'Where do I sit? My desk was taken away yesterday.' Nobody had an answer.",
+          "ru": "У Пола тоже были новости. «Кухню сейчас ремонтируют, поэтому мою смузи-станцию перенесли в холл». Алекс улыбнулся. «Мне устанавливают капсулу для сна... Хотелось бы». Потом Питер заволновался. «Где мне сидеть? Мой стол убрали вчера». Никто не знал ответа.",
+          "audio": {
+            "src": "media/audio/u28.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u28.d90.reading.b3",
+          "en": "On Friday everything was different. The walls were pale green, not blue. 'The wrong colour has been used,' said Kate. Then the coffee machine was unplugged. Den shouted, 'My coffee!' But Peter smiled. 'I got it plugged in again.' Kate laughed. 'It all gets done in the end.'",
+          "ru": "В пятницу всё было по-другому. Стены были бледно-зелёными, а не синими. «Использовали не тот цвет», — сказала Кейт. Потом кофемашину отключили от сети. Ден закричал: «Мой кофе!» Но Питер улыбнулся. «Я снова её подключил». Кейт засмеялась. «В конце концов всё делается».",
+          "audio": {
+            "src": "media/audio/u28.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "renovation",
+          "ru": "ремонт",
+          "ipa": "/ˌrenəˈveɪʃn/"
+        },
+        {
+          "word": "nap pod",
+          "ru": "капсула для сна",
+          "ipa": "/næp pɒd/"
+        },
+        {
+          "word": "pale",
+          "ru": "бледный",
+          "ipa": "/peɪl/"
+        },
+        {
+          "word": "unplug",
+          "ru": "отключать от сети",
+          "ipa": "/ˌʌnˈplʌɡ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u28.d90.listening",
+      "title": {
+        "en": "Where is my desk?",
+        "ru": "Где мой стол?"
+      },
+      "audio": {
+        "src": "media/audio/u28.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.66,
+          "en": "We're having the walls painted.",
+          "ru": "Нам красят стены."
+        },
+        {
+          "start": 1.66,
+          "end": 3.35,
+          "en": "I got my chair fixed.",
+          "ru": "Мне починили стул."
+        },
+        {
+          "start": 3.35,
+          "end": 5.24,
+          "en": "My desk was taken away.",
+          "ru": "Мой стол убрали."
+        },
+        {
+          "start": 5.24,
+          "end": 6.52,
+          "en": "Where do I sit?",
+          "ru": "Где мне сидеть?"
+        },
+        {
+          "start": 6.52,
+          "end": 7.92,
+          "en": "It all gets done.",
+          "ru": "Всё делается."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u28.d90.ex.l.01",
+          "instruction": {
+            "en": "What did Den get fixed?",
+            "ru": "Что починили Дену?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "I got my ___ fixed.",
+          "options": [
+            "chair",
+            "desk",
+            "carpet"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u28.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u28.d90.ex.g.01",
+          "instruction": {
+            "en": "Causative: have/get something done.",
+            "ru": "Каузатив: have/get something done."
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "prompt": "We are having the walls ___.",
+          "cue": "(paint)",
+          "answers": [
+            "painted"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u28.d90.ex.c.01",
+          "instruction": {
+            "en": "Choose the sentence that means somebody painted it for us.",
+            "ru": "Выбери предложение, которое означает, что это покрасили для нас."
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "prompt": "Which sentence is correct?",
+          "options": [
+            "We painted the walls.",
+            "We had the walls painted.",
+            "We are painting the walls."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "gap-fill",
+          "id": "u28.d90.ex.g.02",
+          "instruction": {
+            "en": "Passive: past simple.",
+            "ru": "Пассив: прошедшее простое."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "My desk ___ taken away yesterday.",
+          "cue": "(be)",
+          "answers": [
+            "was"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u28.d90.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "The carpet is being cleaned.",
+            "The carpet is being cleaning."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u28.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "tokens": [
+            "We",
+            "are",
+            "having",
+            "the",
+            "carpet",
+            "cleaned"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u28.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the passive form and its name.",
+            "ru": "Сопоставь пассивную форму и её название."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "pairs": [
+            {
+              "left": "is being painted",
+              "right": "present continuous passive"
+            },
+            {
+              "left": "has been moved",
+              "right": "present perfect passive"
+            },
+            {
+              "left": "was taken away",
+              "right": "past simple passive"
+            },
+            {
+              "left": "will be finished",
+              "right": "future passive"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u28.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.causative",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Нам красят стены.",
+          "answers": [
+            "We are having the walls painted.",
+            "We are getting the walls painted."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "we are painting the walls"
+              ],
+              "explanation": {
+                "en": "The causative is needed: somebody else does it.",
+                "ru": "Нужен каузатив: это делают другие."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u28.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Кофемашину отключили от сети.",
+          "answers": [
+            "The coffee machine was unplugged."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the coffee machine unplugged"
+              ],
+              "explanation": {
+                "en": "Use the passive: was + past participle.",
+                "ru": "Используй пассив: was + причастие прошедшего времени."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u28.d90.ex.g.03",
+          "instruction": {
+            "en": "Causative: get something done.",
+            "ru": "Каузатив: get something done."
+          },
+          "tags": [
+            "grammar.causative"
+          ],
+          "prompt": "I finally got my chair ___.",
+          "cue": "(fix)",
+          "answers": [
+            "fixed"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u28.d90.ex.c.02",
+          "instruction": {
+            "en": "What does \"The kitchen is being redone\" mean?",
+            "ru": "Что означает «The kitchen is being redone»?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The kitchen is being redone.",
+          "options": [
+            "The kitchen does the work.",
+            "Somebody is redoing it now.",
+            "It is finished."
+          ],
+          "correctIndex": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,637 @@
+{
+  "id": "u31.d90",
+  "title": {
+    "en": "What Might Have Been",
+    "ru": "Что могло бы быть"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.third-conditional",
+    "grammar.wish-past",
+    "functions.storytelling",
+    "vocab.life"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u31.d90.vocab",
+      "title": {
+        "en": "Coffee break words",
+        "ru": "Слова для перерыва на кофе"
+      },
+      "words": [
+        {
+          "word": "organised",
+          "ru": "организованный",
+          "ipa": "/ˈɔːrɡənaɪzd/",
+          "example": "Pol is not the most organised person.",
+          "exampleRu": "Пол не самый организованный человек.",
+          "audio": {
+            "src": "media/audio/u31.d90.vocab.organised.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "stuck",
+          "ru": "застрявший",
+          "ipa": "/stʌk/",
+          "example": "We got stuck in the lift.",
+          "exampleRu": "Мы застряли в лифте.",
+          "audio": {
+            "src": "media/audio/u31.d90.vocab.stuck.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lift",
+          "ru": "лифт",
+          "ipa": "/lɪft/",
+          "example": "The lift stopped between floors.",
+          "exampleRu": "Лифт остановился между этажами.",
+          "audio": {
+            "src": "media/audio/u31.d90.vocab.lift.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "regret",
+          "ru": "сожалеть",
+          "ipa": "/rɪˈɡret/",
+          "example": "I don't regret my choice.",
+          "exampleRu": "Я не жалею о своём выборе.",
+          "audio": {
+            "src": "media/audio/u31.d90.vocab.regret.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "choice",
+          "ru": "выбор",
+          "ipa": "/tʃɔɪs/",
+          "example": "It was a difficult choice.",
+          "exampleRu": "Это был трудный выбор.",
+          "audio": {
+            "src": "media/audio/u31.d90.vocab.choice.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "join",
+          "ru": "присоединиться",
+          "ipa": "/dʒɔɪn/",
+          "example": "She joined our team last year.",
+          "exampleRu": "Она присоединилась к нашей команде в прошлом году.",
+          "audio": {
+            "src": "media/audio/u31.d90.vocab.join.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "report",
+          "ru": "отчёт",
+          "ipa": "/rɪˈpɔːt/",
+          "example": "The report was due yesterday.",
+          "exampleRu": "Отчёт нужно было сдать вчера.",
+          "audio": {
+            "src": "media/audio/u31.d90.vocab.report.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sooner",
+          "ru": "раньше",
+          "ipa": "/ˈsuːnər/",
+          "example": "I wish I had started sooner.",
+          "exampleRu": "Жаль, что я не начал раньше.",
+          "audio": {
+            "src": "media/audio/u31.d90.vocab.sooner.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "glad",
+          "ru": "рад",
+          "ipa": "/ɡlæd/",
+          "example": "I am glad you are here.",
+          "exampleRu": "Я рад, что ты здесь.",
+          "audio": {
+            "src": "media/audio/u31.d90.vocab.glad.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "coffee",
+          "ru": "кофе",
+          "ipa": "/ˈkɒfi/",
+          "example": "We talked over coffee.",
+          "exampleRu": "Мы разговаривали за кофе.",
+          "audio": {
+            "src": "media/audio/u31.d90.vocab.coffee.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "luck",
+          "ru": "удача",
+          "ipa": "/lʌk/",
+          "example": "It was pure luck.",
+          "exampleRu": "Это была чистая удача.",
+          "audio": {
+            "src": "media/audio/u31.d90.vocab.luck.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "team",
+          "ru": "команда",
+          "ipa": "/tiːm/",
+          "example": "Our team works well.",
+          "exampleRu": "Наша команда хорошо работает.",
+          "audio": {
+            "src": "media/audio/u31.d90.vocab.team.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u31.d90.grammar",
+      "title": {
+        "en": "Mixed conditionals · wish · inversion",
+        "ru": "Смешанные условные · wish · инверсия"
+      },
+      "ref": "mixed-conditionals-wish-inversion",
+      "rule": {
+        "en": "Mixed conditionals join a past condition to a present result (If + past perfect, would + verb) or a present condition to a past result (If + past simple, would have + past participle). Use wish + past perfect to express regret about the past. For a formal style, remove 'if' and invert: Had I known, ... instead of If I had known, ...",
+        "ru": "Смешанные условные соединяют условие в прошлом с результатом в настоящем (If + past perfect, would + глагол) или условие в настоящем с результатом в прошлом (If + past simple, would have + причастие). Используйте wish + past perfect для сожаления о прошлом. В формальном стиле уберите 'if' и переставьте слова: Had I known ... вместо If I had known ..."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Past condition → present result",
+            "ru": "Условие в прошлом → результат в настоящем"
+          },
+          "formula": "If + past perfect, would + base verb",
+          "examples": [
+            {
+              "en": "If I hadn't joined this company, I wouldn't be sitting here with you now.",
+              "ru": "Если бы я не пришла в эту компанию, меня бы сейчас здесь с вами не было."
+            }
+          ],
+          "ref": "mixed-conditionals-wish-inversion"
+        },
+        {
+          "label": {
+            "en": "Present condition → past result",
+            "ru": "Условие в настоящем → результат в прошлом"
+          },
+          "formula": "If + past simple, would have + past participle",
+          "examples": [
+            {
+              "en": "If I were more organised, I would have finished the report yesterday.",
+              "ru": "Если бы я был более организованным, я бы закончил отчёт вчера."
+            }
+          ],
+          "ref": "mixed-conditionals-wish-inversion"
+        },
+        {
+          "label": {
+            "en": "Wish + past perfect",
+            "ru": "Wish + past perfect"
+          },
+          "formula": "wish/if only + had + past participle",
+          "examples": [
+            {
+              "en": "I wish I had learned to code sooner.",
+              "ru": "Жаль, что я не научился программировать раньше."
+            }
+          ],
+          "ref": "mixed-conditionals-wish-inversion"
+        },
+        {
+          "label": {
+            "en": "Inverted conditional",
+            "ru": "Инверсия в условном предложении"
+          },
+          "formula": "Had + subject + past participle",
+          "examples": [
+            {
+              "en": "Had I known you earlier, I would have been happier sooner.",
+              "ru": "Знал бы я вас раньше, я был бы счастливее."
+            }
+          ],
+          "ref": "mixed-conditionals-wish-inversion"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use 'had + past participle' after wish: 'I wish I had learned', not 'I wish I learned'.",
+          "ru": "После wish используйте 'had + причастие': 'I wish I had learned', а не 'I wish I learned'."
+        },
+        {
+          "en": "In inversion, use 'Had I known', not 'Had I knew'.",
+          "ru": "В инверсии используйте 'Had I known', а не 'Had I knew'."
+        },
+        {
+          "en": "Keep the two halves of a mixed conditional in different times: past condition + present result.",
+          "ru": "Держите две части смешанного условия в разных временах: условие в прошлом + результат в настоящем."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u31.d90.reading",
+      "title": {
+        "en": "What Might Have Been",
+        "ru": "Что могло бы быть"
+      },
+      "blocks": [
+        {
+          "id": "u31.d90.reading.b1",
+          "en": "It was Friday, four o'clock. The team sat in the kitchen with coffee. Kate laughed. \"Let's play a game! It's called 'what might have been'.\" She said, \"If I hadn't joined this company, I wouldn't be sitting here with you now.\" Everybody smiled.",
+          "ru": "Была пятница, четыре часа. Команда сидела на кухне с кофе. Кейт засмеялась: «Давайте сыграем в игру! Она называется „что могло бы быть“». Она сказала: «Если бы я не пришла в эту компанию, меня бы сейчас здесь с вами не было». Все улыбнулись.",
+          "audio": {
+            "src": "media/audio/u31.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u31.d90.reading.b2",
+          "en": "Den nodded. \"If Valery hadn't retired, he'd still be grumbling in that corner.\" Alex said, \"Had we left ten minutes earlier that day, we wouldn't have been stuck in the lift. It was hilarious.\" Pol sighed. \"If I were more organised, I would have finished the report yesterday. Instead, I watched a cooking show.\" Peter looked down. \"I wish I had learned to code sooner.\"",
+          "ru": "Ден кивнул: «Если бы Валерий не вышел на пенсию, он бы до сих пор ворчал в том углу». Алекс сказал: «Уйди мы на десять минут раньше в тот день, мы бы не застряли в лифте. Это было уморительно». Пол вздохнул: «Если бы я был более организованным, я бы закончил отчёт вчера. А вместо этого я смотрел кулинарное шоу». Питер опустил глаза: «Жаль, что я не научился программировать раньше».",
+          "audio": {
+            "src": "media/audio/u31.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u31.d90.reading.b3",
+          "en": "Then Kate raised her cup. \"But listen. We're all here. Nobody really regrets anything. Right?\" Peter smiled. \"Right. Had I known you all earlier, I would have been happier sooner.\" They all laughed and drank their coffee.",
+          "ru": "Затем Кейт подняла чашку: «Но послушайте. Мы все здесь. Никто ни о чём не жалеет. Верно?» Питер улыбнулся: «Верно. Знал бы я вас всех раньше — был бы счастливее». Все засмеялись и допили кофе.",
+          "audio": {
+            "src": "media/audio/u31.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "grumble",
+          "ru": "ворчать",
+          "ipa": "/ˈɡrʌmbəl/"
+        },
+        {
+          "word": "hilarious",
+          "ru": "уморительный",
+          "ipa": "/hɪˈleəriəs/"
+        },
+        {
+          "word": "sigh",
+          "ru": "вздыхать",
+          "ipa": "/saɪ/"
+        },
+        {
+          "word": "raise",
+          "ru": "поднимать",
+          "ipa": "/reɪz/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u31.d90.listening",
+      "title": {
+        "en": "No regrets",
+        "ru": "Без сожалений"
+      },
+      "audio": {
+        "src": "media/audio/u31.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.96,
+          "en": "Let's play what might have been.",
+          "ru": "Давай сыграем в „что могло бы быть“."
+        },
+        {
+          "start": 1.96,
+          "end": 3.81,
+          "en": "I wouldn't be sitting here now.",
+          "ru": "Меня бы сейчас здесь не было."
+        },
+        {
+          "start": 3.81,
+          "end": 5.24,
+          "en": "We'd have missed the fun.",
+          "ru": "Мы бы пропустили веселье."
+        },
+        {
+          "start": 5.24,
+          "end": 6.98,
+          "en": "I wish I'd learned sooner.",
+          "ru": "Жаль, что не научился раньше."
+        },
+        {
+          "start": 6.98,
+          "end": 8.72,
+          "en": "No regrets, right?",
+          "ru": "Никаких сожалений, правда?"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u31.d90.ex.l.01",
+          "instruction": {
+            "en": "What had Peter learned later than he wanted?",
+            "ru": "Чему Питер научился позже, чем хотел?"
+          },
+          "tags": [
+            "listening.detail",
+            "vocab.life"
+          ],
+          "prompt": "Peter: I wish I'd learned ___ sooner.",
+          "options": [
+            "to code",
+            "to cook",
+            "to drive"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u31.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u31.d90.ex.g.01",
+          "instruction": {
+            "en": "Complete with the correct verb form.",
+            "ru": "Заполни пропуск правильной формой глагола."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "If I hadn't joined this company, I ___ be sitting here with you now.",
+          "cue": "(would)",
+          "answers": [
+            "wouldn't"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u31.d90.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct word.",
+            "ru": "Выбери правильное слово."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "If Valery hadn't retired, he'd still ___ grumbling in that corner.",
+          "options": [
+            "be",
+            "been",
+            "being"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u31.d90.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "variants": [
+            "Had I known, I would have been happier.",
+            "Had I knew, I would have been happier."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u31.d90.ex.g.02",
+          "instruction": {
+            "en": "Complete with 'wish + past perfect'.",
+            "ru": "Заполни пропуск, используя wish + past perfect."
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "prompt": "I wish I ___ learned to code sooner.",
+          "cue": "(had)",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "u31.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.wish-past"
+          ],
+          "tokens": [
+            "I",
+            "wish",
+            "I",
+            "had",
+            "learned",
+            "earlier"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u31.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.life"
+          ],
+          "pairs": [
+            {
+              "left": "organised",
+              "right": "организованный"
+            },
+            {
+              "left": "stuck",
+              "right": "застрявший"
+            },
+            {
+              "left": "lift",
+              "right": "лифт"
+            },
+            {
+              "left": "regret",
+              "right": "сожаление"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u31.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.wish-past",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Жаль, что я не научился программировать раньше.",
+          "answers": [
+            "I wish I had learned to code sooner."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "I wish I learned to code sooner"
+              ],
+              "explanation": {
+                "en": "Use 'had + past participle' after wish.",
+                "ru": "Используйте 'had + причастие' после wish."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u31.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.third-conditional",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Если бы я был организованнее, я бы закончил отчёт вчера.",
+          "answers": [
+            "If I were more organised, I would have finished the report yesterday."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "If I was more organised, I would have finished the report yesterday."
+              ],
+              "explanation": {
+                "en": "Use 'were' in formal conditional clauses.",
+                "ru": "В формальных условных предложениях используйте 'were'."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u31.d90.ex.g.03",
+          "instruction": {
+            "en": "Complete with the inverted conditional.",
+            "ru": "Заполни пропуск, используя инверсию."
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "Had we left earlier, we ___ have been stuck in the lift.",
+          "cue": "(would)",
+          "answers": [
+            "wouldn't"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u31.d90.ex.c.02",
+          "instruction": {
+            "en": "What does 'Had I known you earlier' mean?",
+            "ru": "Что означает 'Had I known you earlier'?"
+          },
+          "tags": [
+            "grammar.third-conditional"
+          ],
+          "prompt": "Had I known you earlier, ...",
+          "options": [
+            "If I had known you earlier",
+            "If I knew you earlier",
+            "If I have known you earlier"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    }
+  ]
+}

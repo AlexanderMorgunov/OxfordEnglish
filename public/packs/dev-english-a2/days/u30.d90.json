@@ -1,0 +1,636 @@
+{
+  "id": "u30.d90",
+  "title": {
+    "en": "Which Reminds Me",
+    "ru": "Что напоминает мне"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.relative-clauses",
+    "grammar.non-defining-clauses",
+    "functions.storytelling",
+    "vocab.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u30.d90.vocab",
+      "title": {
+        "en": "Telling stories",
+        "ru": "Рассказываем истории"
+      },
+      "words": [
+        {
+          "word": "story",
+          "ru": "история, рассказ",
+          "ipa": "/ˈstɔːri/",
+          "example": "She told a long story.",
+          "exampleRu": "Она рассказала длинную историю.",
+          "audio": {
+            "src": "media/audio/u30.d90.vocab.story.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "remind",
+          "ru": "напоминать",
+          "ipa": "/rɪˈmaɪnd/",
+          "example": "That reminds me of my promise.",
+          "exampleRu": "Это напоминает мне о моём обещании.",
+          "audio": {
+            "src": "media/audio/u30.d90.vocab.remind.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "digress",
+          "ru": "отклоняться от темы",
+          "ipa": "/daɪˈɡres/",
+          "example": "She tends to digress a lot.",
+          "exampleRu": "Она имеет обыкновение сильно отклоняться от темы.",
+          "audio": {
+            "src": "media/audio/u30.d90.vocab.digress.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "aside",
+          "ru": "отступление, реплика в сторону",
+          "ipa": "/əˈsaɪd/",
+          "example": "He told an interesting aside.",
+          "exampleRu": "Он сделал интересное отступление.",
+          "audio": {
+            "src": "media/audio/u30.d90.vocab.aside.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "owe",
+          "ru": "быть должным",
+          "ipa": "/əʊ/",
+          "example": "He still owes me money.",
+          "exampleRu": "Он всё ещё должен мне деньги.",
+          "audio": {
+            "src": "media/audio/u30.d90.vocab.owe.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "classmate",
+          "ru": "одноклассник",
+          "ipa": "/ˈklɑːsmeɪt/",
+          "example": "She met an old classmate.",
+          "exampleRu": "Она встретила старого одноклассника.",
+          "audio": {
+            "src": "media/audio/u30.d90.vocab.classmate.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "packed",
+          "ru": "переполненный, набитый",
+          "ipa": "/pækt/",
+          "example": "The café was packed.",
+          "exampleRu": "Кафе было переполнено.",
+          "audio": {
+            "src": "media/audio/u30.d90.vocab.packed.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "surprise",
+          "ru": "сюрприз",
+          "ipa": "/səˈpraɪz/",
+          "example": "It was a lovely surprise.",
+          "exampleRu": "Это был приятный сюрприз.",
+          "audio": {
+            "src": "media/audio/u30.d90.vocab.surprise.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "meanwhile",
+          "ru": "тем временем",
+          "ipa": "/ˈmiːnwaɪl/",
+          "example": "Meanwhile, Peter wrote notes.",
+          "exampleRu": "Тем временем Питер писал заметки.",
+          "audio": {
+            "src": "media/audio/u30.d90.vocab.meanwhile.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "actually",
+          "ru": "на самом деле",
+          "ipa": "/ˈæktʃuəli/",
+          "example": "Actually, the story was short.",
+          "exampleRu": "На самом деле, история была короткой.",
+          "audio": {
+            "src": "media/audio/u30.d90.vocab.actually.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "notice",
+          "ru": "замечать",
+          "ipa": "/ˈnəʊtɪs/",
+          "example": "Did you notice the time?",
+          "exampleRu": "Ты заметил время?",
+          "audio": {
+            "src": "media/audio/u30.d90.vocab.notice.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lovely",
+          "ru": "прекрасный, милый",
+          "ipa": "/ˈlʌvli/",
+          "example": "We had a lovely chat.",
+          "exampleRu": "У нас был приятный разговор.",
+          "audio": {
+            "src": "media/audio/u30.d90.vocab.lovely.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u30.d90.grammar",
+      "title": {
+        "en": "Non-defining & sentential relative clauses",
+        "ru": "Неограничительные и присоединительные относительные предложения"
+      },
+      "ref": "non-defining-clauses",
+      "rule": {
+        "en": "Non-defining relative clauses give extra information about a noun. They are separated by commas. Use who for people, which for things and whole sentences, and whose for possession. Do not use that. A sentential which clause comments on the whole previous clause. Reduced relatives drop who/which + be: 'The man sitting by the window' = 'The man who was sitting...'.",
+        "ru": "Неограничительные относительные предложения дают дополнительную информацию о существительном. Они отделяются запятыми. Используйте who для людей, which для вещей и целых предложений, whose для принадлежности. Не используйте that. Присоединительное which относится ко всему предыдущему предложению. Сокращённые относительные конструкции опускают who/which + be: 'The man sitting by the window' = 'The man who was sitting...'."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Non-defining who/which/whose",
+            "ru": "Неограничительные who/which/whose"
+          },
+          "formula": "Noun, who/which/whose + clause, + main clause",
+          "examples": [
+            {
+              "en": "David, who runs the New York office, owes Pol a yoghurt.",
+              "ru": "Дэвид, который руководит нью-йоркским офисом, должен Полу йогурт."
+            },
+            {
+              "en": "The café, which had just reopened, was packed.",
+              "ru": "Кафе, которое только что открылось, было переполнено."
+            },
+            {
+              "en": "Den, whose desk is nearest the door, tried to help.",
+              "ru": "Ден, чей стол ближе всех к двери, попытался помочь."
+            }
+          ],
+          "ref": "non-defining-clauses"
+        },
+        {
+          "label": {
+            "en": "Sentential which",
+            "ru": "Присоединительное which"
+          },
+          "formula": "Main clause + , which + comment",
+          "examples": [
+            {
+              "en": "The man was her classmate, which was a lovely surprise.",
+              "ru": "Мужчина оказался её одноклассником, что было приятным сюрпризом."
+            },
+            {
+              "en": "He owes Pol a yoghurt, which reminds me of a funny story.",
+              "ru": "Он должен Полу йогурт, что напоминает мне забавную историю."
+            }
+          ],
+          "ref": "non-defining-clauses"
+        },
+        {
+          "label": {
+            "en": "Reduced relative clauses",
+            "ru": "Сокращённые относительные конструкции"
+          },
+          "formula": "Noun + -ing / -ed (instead of who/which + be)",
+          "examples": [
+            {
+              "en": "The man sitting by the window was her classmate.",
+              "ru": "Мужчина, сидевший у окна, был её одноклассником."
+            }
+          ],
+          "ref": "non-defining-clauses"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Never use 'that' in a non-defining relative clause: 'The café, which had just reopened' ✔, not 'The café, that had just reopened' ✘.",
+          "ru": "Никогда не используйте that в неограничительном относительном предложении: The café, which had just reopened ✔, а не The café, that had just reopened ✘."
+        },
+        {
+          "en": "Do not forget the commas. Without them, the clause becomes defining and changes the meaning: 'The café, which had just reopened, was packed' vs 'The café which had just reopened was packed' (implying there were several cafés).",
+          "ru": "Не забывайте запятые. Без них придаточное становится ограничительным и меняет смысл: The café, which had just reopened, was packed — кафе, которое только что открылось, было переполнено; The café which had just reopened was packed — то кафе, которое только что открылось (среди нескольких), было переполнено."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u30.d90.reading",
+      "title": {
+        "en": "Which Reminds Me",
+        "ru": "Что напоминает мне"
+      },
+      "blocks": [
+        {
+          "id": "u30.d90.reading.b1",
+          "en": "Kate started her story. \"Yesterday I met David, who runs the New York office.\" Den sighed. \"The point, Kate.\" But she added, \"Which reminds me, he still owes Pol a yoghurt. The café, which had just reopened, was packed.\"",
+          "ru": "Кейт начала свой рассказ. «Вчера я встретила Дэвида, который руководит нью-йоркским офисом». Ден вздохнул: «Ближе к делу, Кейт». Но она добавила: «Что напоминает мне, он всё ещё должен Полу йогурт. Кафе, которое только что открылось, было переполнено».",
+          "audio": {
+            "src": "media/audio/u30.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u30.d90.reading.b2",
+          "en": "Den, whose desk is nearest the door, tried to steer her back. \"Please, the main point.\" Kate, however, noticed a man at the window. \"The man sitting by the window turned out to be an old classmate, which was a lovely surprise.\" They chatted about school, which made everyone hungry.",
+          "ru": "Ден, чей стол ближе всех к двери, попытался вернуть её к теме. «Пожалуйста, главную мысль». Однако Кейт заметила мужчину у окна. «Мужчина, сидевший у окна, оказался старым одноклассником, что было приятным сюрпризом». Они поболтали о школе, из-за чего все проголодались.",
+          "audio": {
+            "src": "media/audio/u30.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u30.d90.reading.b3",
+          "en": "Peter took notes, which was difficult. Alex checked his watch, which showed fourteen minutes. Finally Kate reached her point. \"The café had no spoons.\" Everybody laughed. \"Which reminds me, I need to buy spoons for the office.\"",
+          "ru": "Питер делал заметки, что было трудно. Алекс посмотрел на часы, которые показывали четырнадцать минут. Наконец Кейт добралась до сути. «В кафе не было ложек». Все засмеялись. «Что напоминает мне, мне нужно купить ложки для офиса».",
+          "audio": {
+            "src": "media/audio/u30.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "to steer",
+          "ru": "направлять, возвращать",
+          "ipa": "/stɪə/"
+        },
+        {
+          "word": "point",
+          "ru": "суть",
+          "ipa": "/pɔɪnt/"
+        },
+        {
+          "word": "sighed",
+          "ru": "вздохнул",
+          "ipa": "/saɪd/"
+        },
+        {
+          "word": "spoon",
+          "ru": "ложка",
+          "ipa": "/spuːn/"
+        },
+        {
+          "word": "to lose track",
+          "ru": "терять нить",
+          "ipa": "/tuː luːz træk/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u30.d90.listening",
+      "title": {
+        "en": "Kate's story",
+        "ru": "История Кейт"
+      },
+      "audio": {
+        "src": "media/audio/u30.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.62,
+          "en": "I met David yesterday.",
+          "ru": "Я вчера встретила Дэвида."
+        },
+        {
+          "start": 1.62,
+          "end": 3.48,
+          "en": "Which reminds me of Pol.",
+          "ru": "Что напоминает мне о Поле."
+        },
+        {
+          "start": 3.48,
+          "end": 4.88,
+          "en": "The café was packed.",
+          "ru": "Кафе было переполнено."
+        },
+        {
+          "start": 4.88,
+          "end": 6.81,
+          "en": "That man was my classmate.",
+          "ru": "Тот мужчина был моим одноклассником."
+        },
+        {
+          "start": 6.81,
+          "end": 8.31,
+          "en": "That was the whole point.",
+          "ru": "В этом и была вся суть."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u30.d90.ex.l.01",
+          "instruction": {
+            "en": "What was Kate's final point?",
+            "ru": "Какова была главная мысль Кейт?"
+          },
+          "tags": [
+            "listening.detail",
+            "functions.storytelling"
+          ],
+          "prompt": "The café had no ___.",
+          "options": [
+            "spoons",
+            "cups",
+            "chairs"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u30.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u30.d90.ex.g.01",
+          "instruction": {
+            "en": "Complete with who, which or whose.",
+            "ru": "Заполните пропуск: who, which или whose."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "David, ___ runs the New York office, owes Pol a yoghurt.",
+          "answers": [
+            "who"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u30.d90.ex.g.02",
+          "instruction": {
+            "en": "Complete with who, which or whose.",
+            "ru": "Заполните пропуск: who, which или whose."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "The café, ___ had just reopened, was packed.",
+          "answers": [
+            "which"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u30.d90.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct relative pronoun.",
+            "ru": "Выберите правильное относительное местоимение."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "Den, ___ desk is nearest the door, tried to help.",
+          "options": [
+            "whose",
+            "who",
+            "which"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u30.d90.ex.s.01",
+          "instruction": {
+            "en": "Choose the correct sentence.",
+            "ru": "Выберите правильное предложение."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "grammar.non-defining-clauses"
+          ],
+          "variants": [
+            "David, which runs the office, is American.",
+            "David, who runs the office, is American."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "order-words",
+          "id": "u30.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.non-defining-clauses"
+          ],
+          "tokens": [
+            "The",
+            "café,",
+            "which",
+            "had",
+            "just",
+            "reopened,",
+            "was",
+            "packed."
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u30.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the noun with its relative phrase.",
+            "ru": "Сопоставьте существительное с относительной конструкцией."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "grammar.non-defining-clauses"
+          ],
+          "pairs": [
+            {
+              "left": "David",
+              "right": "who runs the NY office"
+            },
+            {
+              "left": "The café",
+              "right": "which had just reopened"
+            },
+            {
+              "left": "The man",
+              "right": "sitting by the window"
+            },
+            {
+              "left": "Den",
+              "right": "whose desk is nearest the door"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u30.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "grammar.non-defining-clauses",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Дэвид, который руководит нью-йоркским офисом, всё ещё должен Полу йогурт.",
+          "answers": [
+            "David, who runs the New York office, still owes Pol a yoghurt.",
+            "David, who runs the New York office, still owes Pol a yogurt."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "David, which runs",
+                "David, that runs"
+              ],
+              "explanation": {
+                "en": "Use who for people in non-defining clauses.",
+                "ru": "Используйте who для людей в неограничительных предложениях."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u30.d90.ex.g.03",
+          "instruction": {
+            "en": "Complete with a reduced relative form.",
+            "ru": "Заполните пропуск сокращённой формой."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "The man ___ by the window was an old classmate.",
+          "answers": [
+            "sitting"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u30.d90.ex.c.02",
+          "instruction": {
+            "en": "Choose the sentence with sentential 'which'.",
+            "ru": "Выберите предложение с присоединительным which."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "grammar.non-defining-clauses"
+          ],
+          "prompt": "Which sentence uses 'which' to comment on the whole clause?",
+          "options": [
+            "The café was packed, which annoyed me.",
+            "Which café did you like?",
+            "He is the man which I saw."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u30.d90.ex.s.02",
+          "instruction": {
+            "en": "Choose the correct sentence.",
+            "ru": "Выберите правильное предложение."
+          },
+          "tags": [
+            "grammar.relative-clauses",
+            "grammar.non-defining-clauses"
+          ],
+          "variants": [
+            "The café, that had just reopened, was packed.",
+            "The café, which had just reopened, was packed."
+          ],
+          "correctIndex": 1
+        }
+      ]
+    }
+  ]
+}
