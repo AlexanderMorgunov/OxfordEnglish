@@ -1,0 +1,12 @@
+{
+  "id": "u22.d90",
+  "unitId": "u22",
+  "insertAt": 2,
+  "tags": ["grammar.relative-clauses", "grammar.non-defining-clauses", "functions.storytelling", "vocab.describing"],
+  "level": "B1",
+  "episode": "The Team Page",
+  "grammarName": { "en": "Relative clauses (who/which/that/whose/where)", "ru": "Относительные предложения (who/which/that/whose/where)" },
+  "grammarRef": "relative-clauses",
+  "characters": ["Kate", "Den", "Alex", "Pol", "Peter"],
+  "scenario": "Peter is building a little 'team page' for the company website and asks about everyone, so the team describes each other with relative clauses (defining and non-defining, whose, where, and contact clauses with the pronoun left out). Kate: 'Den is the man whose mug you must never touch.' Alex: 'Pol is the guy who makes the famous smoothies.' Pol: 'Kate, who loves team-buildings, is our manager.' They also describe places: 'the café where we have lunch', 'the corner where the plant lives', 'the day when Alex was late.' Peter reads a contact clause back: 'The photo you sent is great.' Warm, funny, affectionate descriptions. Use clear relative clauses: defining (who/which/that/whose/where/when), one or two non-defining with commas, and a contact clause (dropped object pronoun). Short B1 sentences."
+}

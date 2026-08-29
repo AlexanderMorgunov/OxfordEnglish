@@ -1,0 +1,653 @@
+{
+  "id": "u24.d90",
+  "title": {
+    "en": "Pol's Famous Smoothie",
+    "ru": "Знаменитый смузи Пола"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.passive",
+    "functions.storytelling",
+    "vocab.food",
+    "vocab.cafe"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u24.d90.vocab",
+      "title": {
+        "en": "In the kitchen",
+        "ru": "На кухне"
+      },
+      "words": [
+        {
+          "word": "smoothie",
+          "ru": "смузи",
+          "ipa": "/ˈsmuːði/",
+          "example": "Pol drinks a green smoothie.",
+          "exampleRu": "Пол пьёт зелёный смузи.",
+          "audio": {
+            "src": "media/audio/u24.d90.vocab.smoothie.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "blender",
+          "ru": "блендер",
+          "ipa": "/ˈblendər/",
+          "example": "The fruit goes into the blender.",
+          "exampleRu": "Фрукт идёт в блендер.",
+          "audio": {
+            "src": "media/audio/u24.d90.vocab.blender.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "recipe",
+          "ru": "рецепт",
+          "ipa": "/ˈresəpi/",
+          "example": "The recipe is secret.",
+          "exampleRu": "Рецепт секретный.",
+          "audio": {
+            "src": "media/audio/u24.d90.vocab.recipe.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ingredient",
+          "ru": "ингредиент",
+          "ipa": "/ɪnˈɡriːdiənt/",
+          "example": "Add the last ingredient.",
+          "exampleRu": "Добавь последний ингредиент.",
+          "audio": {
+            "src": "media/audio/u24.d90.vocab.ingredient.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to wash",
+          "ru": "мыть",
+          "ipa": "/wɒʃ/",
+          "example": "The fruit is washed.",
+          "exampleRu": "Фрукт моют.",
+          "audio": {
+            "src": "media/audio/u24.d90.vocab.towash.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to cut",
+          "ru": "резать",
+          "ipa": "/kʌt/",
+          "example": "The fruit is cut into pieces.",
+          "exampleRu": "Фрукт нарезают на кусочки.",
+          "audio": {
+            "src": "media/audio/u24.d90.vocab.tocut.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to add",
+          "ru": "добавлять",
+          "ipa": "/æd/",
+          "example": "The banana is added.",
+          "exampleRu": "Банан добавляется.",
+          "audio": {
+            "src": "media/audio/u24.d90.vocab.toadd.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fresh",
+          "ru": "свежий",
+          "ipa": "/freʃ/",
+          "example": "It must be drunk fresh.",
+          "exampleRu": "Его нужно пить свежим.",
+          "audio": {
+            "src": "media/audio/u24.d90.vocab.fresh.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "energy",
+          "ru": "энергия",
+          "ipa": "/ˈenədʒi/",
+          "example": "It gives you energy.",
+          "exampleRu": "Он даёт энергию.",
+          "audio": {
+            "src": "media/audio/u24.d90.vocab.energy.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to improve",
+          "ru": "улучшать",
+          "ipa": "/ɪmˈpruːv/",
+          "example": "The recipe has been improved.",
+          "exampleRu": "Рецепт был улучшен.",
+          "audio": {
+            "src": "media/audio/u24.d90.vocab.toimprove.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to serve",
+          "ru": "подавать",
+          "ipa": "/sɜːv/",
+          "example": "It will be served cold.",
+          "exampleRu": "Будет подаваться холодным.",
+          "audio": {
+            "src": "media/audio/u24.d90.vocab.toserve.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "banana",
+          "ru": "банан",
+          "ipa": "/bəˈnɑːnə/",
+          "example": "The banana is added at the end.",
+          "exampleRu": "Банан добавляется в конце.",
+          "audio": {
+            "src": "media/audio/u24.d90.vocab.banana.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u24.d90.grammar",
+      "title": {
+        "en": "The passive for processes",
+        "ru": "Пассив для процессов"
+      },
+      "ref": "passive-extended",
+      "rule": {
+        "en": "Use the passive to talk about a process. The person is not important. The present passive uses is/are + past participle. The perfect passive uses has/have been + past participle. The modal passive uses must/can + be + past participle. To talk about general opinion, use 'it is said that...' or 'is said to...'.",
+        "ru": "Используй пассив, чтобы говорить о процессе. Человек не важен. Настоящий пассив: is/are + причастие прошедшего времени. Перфектный пассив: has/have been + причастие. Модальный пассив: must/can + be + причастие. Для общего мнения используй «it is said that...» или «is said to...»."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Present passive (process)",
+            "ru": "Настоящий пассив (процесс)"
+          },
+          "formula": "subject + is/are + past participle",
+          "examples": [
+            {
+              "en": "The fruit is washed.",
+              "ru": "Фрукт моют."
+            }
+          ],
+          "ref": "passive-extended"
+        },
+        {
+          "label": {
+            "en": "Perfect passive",
+            "ru": "Перфектный пассив"
+          },
+          "formula": "subject + has/have been + past participle",
+          "examples": [
+            {
+              "en": "The recipe has been improved.",
+              "ru": "Рецепт был улучшен."
+            }
+          ],
+          "ref": "passive-extended"
+        },
+        {
+          "label": {
+            "en": "Modal and future passive",
+            "ru": "Модальный и будущий пассив"
+          },
+          "formula": "modal/will + be + past participle",
+          "examples": [
+            {
+              "en": "It must be drunk fresh.",
+              "ru": "Его нужно пить свежим."
+            },
+            {
+              "en": "It will be served cold.",
+              "ru": "Будет подаваться холодным."
+            }
+          ],
+          "ref": "passive-extended"
+        },
+        {
+          "label": {
+            "en": "Reported passive",
+            "ru": "Пассив «говорят»"
+          },
+          "formula": "it is said that + clause / subject + is said to + verb",
+          "examples": [
+            {
+              "en": "It is said that Pol never shares the recipe.",
+              "ru": "Говорят, что Пол никогда не делится рецептом."
+            },
+            {
+              "en": "It is said to give you energy.",
+              "ru": "Говорят, он даёт энергию."
+            }
+          ],
+          "ref": "passive-extended"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Don't forget the verb 'be' in the passive: 'The fruit is washed', not 'The fruit washed'.",
+          "ru": "Не забывай глагол be в пассиве: The fruit is washed, а не The fruit washed."
+        },
+        {
+          "en": "Use the past participle, not the base form: 'It must be drunk', not 'It must be drank'.",
+          "ru": "Используй причастие прошедшего времени: It must be drunk, а не It must be drank."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u24.d90.reading",
+      "title": {
+        "en": "Pol's Famous Smoothie",
+        "ru": "Знаменитый смузи Пола"
+      },
+      "blocks": [
+        {
+          "id": "u24.d90.reading.b1",
+          "en": "Pol makes a green smoothie at his desk. Kate comes in. 'How is it made?' she asks. Pol smiles. 'First, the fruit is washed. Then it is cut and put into the blender.'",
+          "ru": "Пол делает зелёный смузи за своим столом. Заходит Кейт. «Как он делается?» — спрашивает она. Пол улыбается. «Сначала фрукт моется. Потом он режется и кладётся в блендер».",
+          "audio": {
+            "src": "media/audio/u24.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u24.d90.reading.b2",
+          "en": "Pol says, 'The recipe has been improved over five years. The banana is always added at the end.' Den writes everything down. He is sure he can copy it. Peter also takes notes. Kate smells it. 'It smells great!'",
+          "ru": "Пол говорит: «Рецепт был улучшен за пять лет. Банан всегда добавляется в конце». Ден всё записывает. Он уверен, что сможет повторить. Питер тоже делает заметки. Кейт вдыхает запах. «Пахнет отлично!»",
+          "audio": {
+            "src": "media/audio/u24.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u24.d90.reading.b3",
+          "en": "Pol adds one more thing. 'It must be drunk fresh. It will be served cold.' Then he laughs. 'It is said to give you energy. It is said that I never share the recipe.' Den tries to make it at home. His smoothie is green, but it is not good. 'Hmm, maybe something is missing,' he says. Everybody laughs.",
+          "ru": "Пол добавляет ещё одну деталь. «Его нужно пить свежим. Он будет подаваться холодным». Потом он смеётся. «Говорят, он даёт энергию. Говорят, что я никогда не делюсь рецептом». Ден пробует сделать его дома. Его смузи зелёный, но не вкусный. «Хм, наверное, чего-то не хватает», — говорит он. Все смеются.",
+          "audio": {
+            "src": "media/audio/u24.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "famous",
+          "ru": "известный",
+          "ipa": "/ˈfeɪməs/"
+        },
+        {
+          "word": "share",
+          "ru": "делиться",
+          "ipa": "/ʃeər/"
+        },
+        {
+          "word": "copy",
+          "ru": "копировать",
+          "ipa": "/ˈkɒpi/"
+        },
+        {
+          "word": "missing",
+          "ru": "отсутствующий",
+          "ipa": "/ˈmɪsɪŋ/"
+        },
+        {
+          "word": "smell",
+          "ru": "пахнуть",
+          "ipa": "/smel/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u24.d90.listening",
+      "title": {
+        "en": "How is it made?",
+        "ru": "Как это делается?"
+      },
+      "audio": {
+        "src": "media/audio/u24.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.14,
+          "en": "How is it made?",
+          "ru": "Как это делается?"
+        },
+        {
+          "start": 1.14,
+          "end": 2.4,
+          "en": "The fruit is washed.",
+          "ru": "Фрукт моется."
+        },
+        {
+          "start": 2.4,
+          "end": 3.85,
+          "en": "The banana is added.",
+          "ru": "Банан добавляется."
+        },
+        {
+          "start": 3.85,
+          "end": 5.66,
+          "en": "The recipe has been improved.",
+          "ru": "Рецепт был улучшен."
+        },
+        {
+          "start": 5.66,
+          "end": 7.44,
+          "en": "It must be drunk fresh.",
+          "ru": "Его нужно пить свежим."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u24.d90.ex.l.01",
+          "instruction": {
+            "en": "When is the banana added?",
+            "ru": "Когда добавляется банан?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.passive",
+            "vocab.food"
+          ],
+          "prompt": "The banana is added ___.",
+          "options": [
+            "at the beginning",
+            "at the end",
+            "in the middle"
+          ],
+          "correctIndex": 1
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u24.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u24.d90.ex.g.01",
+          "instruction": {
+            "en": "Present passive (process).",
+            "ru": "Настоящий пассив (процесс)."
+          },
+          "tags": [
+            "grammar.passive",
+            "vocab.food"
+          ],
+          "prompt": "The fruit is ___ before it is cut.",
+          "cue": "(wash)",
+          "answers": [
+            "washed"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u24.d90.ex.g.02",
+          "instruction": {
+            "en": "Perfect passive.",
+            "ru": "Перфектный пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "The recipe has been ___ over five years.",
+          "cue": "(improve)",
+          "answers": [
+            "improved"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u24.d90.ex.c.01",
+          "instruction": {
+            "en": "Modal passive.",
+            "ru": "Модальный пассив."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "It must ___ drunk fresh.",
+          "options": [
+            "be",
+            "been",
+            "is"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "u24.d90.ex.c.02",
+          "instruction": {
+            "en": "Present passive.",
+            "ru": "Настоящий пассив."
+          },
+          "tags": [
+            "grammar.passive",
+            "vocab.food"
+          ],
+          "prompt": "The banana is ___ at the end.",
+          "options": [
+            "added",
+            "adding",
+            "adds"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u24.d90.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "variants": [
+            "The fruit are washed.",
+            "The fruit is washed."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "order-words",
+          "id": "u24.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.passive",
+            "functions.storytelling"
+          ],
+          "tokens": [
+            "The",
+            "fruit",
+            "is",
+            "washed",
+            "every",
+            "morning"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u24.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.food",
+            "vocab.cafe"
+          ],
+          "pairs": [
+            {
+              "left": "smoothie",
+              "right": "смузи"
+            },
+            {
+              "left": "blender",
+              "right": "блендер"
+            },
+            {
+              "left": "recipe",
+              "right": "рецепт"
+            },
+            {
+              "left": "energy",
+              "right": "энергия"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u24.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Рецепт был улучшен.",
+          "answers": [
+            "The recipe has been improved.",
+            "The recipe was improved."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "The recipe has improved"
+              ],
+              "explanation": {
+                "en": "Missing 'been' in the passive.",
+                "ru": "Пропущено been в пассиве."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u24.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.passive",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Говорят, что Пол никогда не делится рецептом.",
+          "answers": [
+            "It is said that Pol never shares the recipe.",
+            "Pol is said to never share the recipe."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "They say Pol never share the recipe"
+              ],
+              "explanation": {
+                "en": "Use the passive form 'it is said'.",
+                "ru": "Используй пассивную форму it is said."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u24.d90.ex.g.03",
+          "instruction": {
+            "en": "Reported passive.",
+            "ru": "Пассив «говорят»."
+          },
+          "tags": [
+            "grammar.passive"
+          ],
+          "prompt": "It is ___ to give you energy.",
+          "cue": "(say)",
+          "answers": [
+            "said"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "u24.d90",
+  "unitId": "u24",
+  "insertAt": 2,
+  "tags": ["grammar.passive", "functions.storytelling", "vocab.food", "vocab.cafe"],
+  "level": "B1",
+  "episode": "Pol's Famous Smoothie",
+  "grammarName": { "en": "The passive for processes (is made, has been improved, is said to)", "ru": "Пассив для процессов (is made, has been improved, is said to)" },
+  "grammarRef": "passive-extended",
+  "characters": ["Pol", "Kate", "Den", "Alex", "Peter"],
+  "scenario": "Pol finally reveals how his legendary office smoothie is made, giving a mock TV-chef explanation — so the episode is full of the passive for processes, the perfect passive, and 'it is said that / is said to'. Pol: 'First, the fruit is washed. Then it is cut and put into the blender. The banana is added at the end.' Perfect passive: 'The recipe has been improved over five years.' Modal/future passive: 'It must be drunk fresh. It will be served cold.' Reported passive: 'It is said to give you energy. It is said that Pol never shares the recipe.' Den is sure he can copy it; Peter takes notes. Warm, funny, on-brand (smoothies are Pol's thing). Use clear passives: present (is washed/is added), perfect (has been improved), modal/future (must be drunk / will be served), and 'it is said that / is said to'. Short B1 sentences."
+}

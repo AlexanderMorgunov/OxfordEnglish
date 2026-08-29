@@ -1,0 +1,544 @@
+{
+  "id": "u22.d90",
+  "unitId": "u22",
+  "insertAt": 2,
+  "tags": [
+    "grammar.relative-clauses",
+    "grammar.non-defining-clauses",
+    "functions.storytelling",
+    "vocab.describing"
+  ],
+  "title": {
+    "en": "The Team Page",
+    "ru": "Страница команды"
+  },
+  "vocab": {
+    "title": {
+      "en": "The team page",
+      "ru": "Страница команды"
+    },
+    "words": [
+      {
+        "word": "team page",
+        "ru": "страница команды",
+        "ipa": "/tiːm peɪdʒ/",
+        "example": "We need a team page for the website.",
+        "exampleRu": "Нам нужна страница команды для сайта."
+      },
+      {
+        "word": "website",
+        "ru": "сайт",
+        "ipa": "/ˈweb.saɪt/",
+        "example": "Our website shows the team.",
+        "exampleRu": "Наш сайт показывает команду."
+      },
+      {
+        "word": "description",
+        "ru": "описание",
+        "ipa": "/dɪˈskrɪp.ʃən/",
+        "example": "Please write a description.",
+        "exampleRu": "Пожалуйста, напиши описание."
+      },
+      {
+        "word": "photo",
+        "ru": "фотография",
+        "ipa": "/ˈfəʊ.təʊ/",
+        "example": "Send me your photo.",
+        "exampleRu": "Пришли мне свою фотографию."
+      },
+      {
+        "word": "mug",
+        "ru": "кружка",
+        "ipa": "/mʌɡ/",
+        "example": "That is Den's mug.",
+        "exampleRu": "Это кружка Дена."
+      },
+      {
+        "word": "smoothie",
+        "ru": "смузи",
+        "ipa": "/ˈsmuː.ði/",
+        "example": "Pol makes a tasty smoothie.",
+        "exampleRu": "Пол делает вкусный смузи."
+      },
+      {
+        "word": "corner",
+        "ru": "угол",
+        "ipa": "/ˈkɔː.nər/",
+        "example": "The plant lives in the corner.",
+        "exampleRu": "Растение живёт в углу."
+      },
+      {
+        "word": "plant",
+        "ru": "растение",
+        "ipa": "/plɑːnt/",
+        "example": "That is the corner where the plant lives.",
+        "exampleRu": "Это угол, где живёт растение."
+      },
+      {
+        "word": "manager",
+        "ru": "руководитель",
+        "ipa": "/ˈmæn.ɪ.dʒər/",
+        "example": "Kate is our manager.",
+        "exampleRu": "Кейт — наш руководитель."
+      },
+      {
+        "word": "famous",
+        "ru": "известный",
+        "ipa": "/ˈfeɪ.məs/",
+        "example": "His smoothies are famous.",
+        "exampleRu": "Его смузи известные."
+      },
+      {
+        "word": "to describe",
+        "ru": "описывать",
+        "ipa": "/dɪˈskraɪb/",
+        "example": "Can you describe your team?",
+        "exampleRu": "Можешь описать свою команду?"
+      },
+      {
+        "word": "to touch",
+        "ru": "трогать",
+        "ipa": "/tʌtʃ/",
+        "example": "Do not touch his mug.",
+        "exampleRu": "Не трогай его кружку."
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "Relative clauses (who/which/that/whose/where)",
+      "ru": "Относительные предложения (who/which/that/whose/where)"
+    },
+    "ref": "relative-clauses",
+    "rule": {
+      "en": "Use relative clauses to give extra information about a person, thing, place or time. Use who for people, which for things, that for people or things, whose for possession, where for places, when for times. In an identifying relative clause, we use no commas. In a non-defining clause, we use commas. In a contact clause, we can leave out the object pronoun (the photo you sent).",
+      "ru": "Используйте относительные предложения, чтобы дать дополнительную информацию о человеке, вещи, месте или времени. Используйте who для людей, which для вещей, that для людей или вещей, whose для принадлежности, where для мест, when для времени. В определяющих предложениях запятые не нужны. В неопределяющих — запятые. В контактных предложениях можно опустить местоимение (например, the photo you sent — фото, которое ты прислал)."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "who / which / that for people and things",
+          "ru": "who / which / that для людей и вещей"
+        },
+        "formula": "noun + who/which/that + verb",
+        "examples": [
+          {
+            "en": "Pol is the guy who makes smoothies.",
+            "ru": "Пол — парень, который делает смузи."
+          },
+          {
+            "en": "The photo which you sent is great.",
+            "ru": "Фото, которое ты прислал, отличное."
+          }
+        ],
+        "ref": "relative-clauses"
+      },
+      {
+        "label": {
+          "en": "whose for possession",
+          "ru": "whose для принадлежности"
+        },
+        "formula": "noun + whose + noun + verb",
+        "examples": [
+          {
+            "en": "Den is the man whose mug you must never touch.",
+            "ru": "Ден — тот, чью кружку ты никогда не должен трогать."
+          }
+        ],
+        "ref": "relative-clauses"
+      },
+      {
+        "label": {
+          "en": "where / when for places and times",
+          "ru": "where / when для мест и времени"
+        },
+        "formula": "noun + where/when + clause",
+        "examples": [
+          {
+            "en": "This is the café where we have lunch.",
+            "ru": "Это кафе, где мы обедаем."
+          },
+          {
+            "en": "This is the day when Alex was late.",
+            "ru": "Это день, когда Алекс опоздал."
+          }
+        ],
+        "ref": "relative-clauses"
+      },
+      {
+        "label": {
+          "en": "non-defining clauses (with commas)",
+          "ru": "неопределяющие (с запятыми)"
+        },
+        "formula": "noun, + relative clause, + rest of sentence",
+        "examples": [
+          {
+            "en": "Kate, who loves team-buildings, is our manager.",
+            "ru": "Кейт, которая любит тимбилдинги, — наш руководитель."
+          }
+        ],
+        "ref": "relative-clauses"
+      },
+      {
+        "label": {
+          "en": "contact clauses (pronoun left out)",
+          "ru": "контактные (без местоимения)"
+        },
+        "formula": "noun + (that) + subject + verb",
+        "examples": [
+          {
+            "en": "The photo you sent is great.",
+            "ru": "Фото, которое ты прислал, отличное."
+          }
+        ],
+        "ref": "relative-clauses"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Don't use 'which' for people. Wrong: 'the man which left.' Right: 'the man who left.'",
+        "ru": "Не используй which для людей. Неверно: the man which left. Верно: the man who left."
+      },
+      {
+        "en": "Don't use 'what' as a relative pronoun. Wrong: 'the man what makes smoothies.'",
+        "ru": "Не используй what как относительное местоимение. Неверно: the man what makes smoothies."
+      },
+      {
+        "en": "In non-defining clauses, use commas and don't use 'that'. Wrong: 'Kate, that loves team-buildings, is...'",
+        "ru": "В неопределяющих предложениях используй запятые и не используй that. Неверно: Kate, that loves team-buildings, is..."
+      },
+      {
+        "en": "In contact clauses, do not repeat the object. Wrong: 'The photo you sent it is great.'",
+        "ru": "В контактных предложениях не повторяй дополнение. Неверно: The photo you sent it is great."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "The Team Page",
+      "ru": "Страница команды"
+    },
+    "blocks": [
+      {
+        "en": "Peter is building a team page for the company website. He needs a photo and a description for everyone. He asks the team, \"Tell me about yourselves.\" Pol says, \"Ask Kate. She knows everybody.\"",
+        "ru": "Питер создаёт страницу команды для сайта компании. Ему нужны фото и описание для каждого. Он спрашивает команду: «Расскажите о себе». Пол говорит: «Спроси Кейт. Она знает всех».",
+        "image": "b1",
+        "alt": {
+          "en": "Peter asks the team for descriptions",
+          "ru": "Питер просит команду дать описания"
+        }
+      },
+      {
+        "en": "Kate says, \"Den is the man whose mug you must never touch.\" Alex adds, \"Pol is the guy who makes the famous smoothies.\" Pol smiles. \"Kate, who loves team-buildings, is our manager.\" Peter writes all the notes.",
+        "ru": "Кейт говорит: «Ден — тот, чью кружку ты никогда не должен трогать». Алекс добавляет: «Пол — парень, который делает знаменитые смузи». Пол улыбается: «Кейт, которая любит тимбилдинги, — наш руководитель». Питер записывает все заметки."
+      },
+      {
+        "en": "Peter finishes the page and reads it aloud. \"This is the corner where the plant lives. This is the café where we have lunch. And this is the day when Alex was late.\" He looks at Pol's photo. \"The photo you sent is great.\" Everybody claps. Even Den smiles.",
+        "ru": "Питер заканчивает страницу и читает вслух: «Это угол, где живёт растение. Это кафе, где мы обедаем. А это день, когда Алекс опоздал». Он смотрит на фото Пола: «Фото, которое ты прислал, отличное». Все хлопают. Даже Ден улыбается.",
+        "image": "b3",
+        "alt": {
+          "en": "Peter reads the team page to everyone",
+          "ru": "Питер читает страницу команды всем"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "aloud",
+        "ru": "вслух",
+        "ipa": "/əˈlaʊd/"
+      },
+      {
+        "word": "notes",
+        "ru": "записи",
+        "ipa": "/nəʊts/"
+      },
+      {
+        "word": "claps",
+        "ru": "хлопает",
+        "ipa": "/klæps/"
+      },
+      {
+        "word": "everybody",
+        "ru": "все",
+        "ipa": "/ˈev.ri.bɒd.i/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "Who is who?",
+      "ru": "Кто кто?"
+    },
+    "dialogue": [
+      [
+        "Who is that man?",
+        "Кто тот мужчина?"
+      ],
+      [
+        "Den, whose mug is special.",
+        "Ден, чья кружка особенная."
+      ],
+      [
+        "And who is Pol?",
+        "А кто такой Пол?"
+      ],
+      [
+        "Pol makes the smoothies.",
+        "Пол делает смузи."
+      ],
+      [
+        "The photo you sent is great.",
+        "Фото, которое ты прислал, отличное."
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u22.d90.ex.l.01",
+        "instruction": {
+          "en": "What does Pol make?",
+          "ru": "Что делает Пол?"
+        },
+        "tags": [
+          "listening.detail"
+        ],
+        "prompt": "Pol makes the ___.",
+        "options": [
+          "coffee",
+          "smoothies",
+          "pizza"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u22.d90.ex.g.01",
+        "instruction": {
+          "en": "Complete with the right word.",
+          "ru": "Дополни подходящим словом."
+        },
+        "tags": [
+          "grammar.relative-clauses"
+        ],
+        "prompt": "Den is the man ___ mug you must never touch.",
+        "cue": "(possessive)",
+        "answers": [
+          "whose"
+        ]
+      },
+      {
+        "type": "gap-fill",
+        "id": "u22.d90.ex.g.02",
+        "instruction": {
+          "en": "Complete with a relative word.",
+          "ru": "Дополни относительным словом."
+        },
+        "tags": [
+          "grammar.relative-clauses"
+        ],
+        "prompt": "Pol is the guy ___ makes the famous smoothies.",
+        "answers": [
+          "who",
+          "that"
+        ]
+      },
+      {
+        "type": "gap-fill",
+        "id": "u22.d90.ex.g.03",
+        "instruction": {
+          "en": "Complete with a relative adverb.",
+          "ru": "Дополни относительным наречием."
+        },
+        "tags": [
+          "grammar.relative-clauses"
+        ],
+        "prompt": "This is the café ___ we have lunch.",
+        "answers": [
+          "where"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u22.d90.ex.c.01",
+        "instruction": {
+          "en": "Choose the correct word.",
+          "ru": "Выбери правильное слово."
+        },
+        "tags": [
+          "grammar.relative-clauses",
+          "grammar.non-defining-clauses"
+        ],
+        "prompt": "Kate, ___ loves team-buildings, is our manager.",
+        "options": [
+          "who",
+          "which",
+          "what"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "spot-error",
+        "id": "u22.d90.ex.s.01",
+        "instruction": {
+          "en": "Find the incorrect sentence.",
+          "ru": "Найди неверное предложение."
+        },
+        "tags": [
+          "grammar.relative-clauses"
+        ],
+        "variants": [
+          "Den is the man who loves order.",
+          "Den is the man which loves order.",
+          "Den is the man whose mug is full."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "type": "order-words",
+        "id": "u22.d90.ex.o.01",
+        "instruction": {
+          "en": "Make a sentence.",
+          "ru": "Собери предложение."
+        },
+        "tags": [
+          "grammar.relative-clauses",
+          "functions.storytelling"
+        ],
+        "tokens": [
+          "This",
+          "is",
+          "the",
+          "day",
+          "when",
+          "Alex",
+          "was",
+          "late"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "type": "match",
+        "id": "u22.d90.ex.m.01",
+        "instruction": {
+          "en": "Match the relative word with its use.",
+          "ru": "Сопоставь слово с его значением."
+        },
+        "tags": [
+          "grammar.relative-clauses",
+          "vocab.describing"
+        ],
+        "pairs": [
+          {
+            "left": "who",
+            "right": "люди"
+          },
+          {
+            "left": "which",
+            "right": "вещи"
+          },
+          {
+            "left": "whose",
+            "right": "принадлежность"
+          },
+          {
+            "left": "where",
+            "right": "места"
+          },
+          {
+            "left": "when",
+            "right": "время"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u22.d90.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.relative-clauses",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Фото, которое ты прислал, отличное.",
+        "answers": [
+          "The photo you sent is great.",
+          "The photo that you sent is great."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "The photo who you sent is great"
+            ],
+            "explanation": {
+              "en": "Use 'that' or nothing for things, not 'who'.",
+              "ru": "Для вещей используй that или ничего, не who."
+            }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u22.d90.ex.t.02",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.relative-clauses",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Это угол, где живёт растение.",
+        "answers": [
+          "This is the corner where the plant lives."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "This is the corner which the plant lives"
+            ],
+            "explanation": {
+              "en": "Use 'where' for places.",
+              "ru": "Для мест используй where."
+            }
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u22.d90.ex.c.02",
+        "instruction": {
+          "en": "Choose the contact clause.",
+          "ru": "Выбери контактное предложение."
+        },
+        "tags": [
+          "grammar.relative-clauses"
+        ],
+        "prompt": "Which sentence is a contact clause?",
+        "options": [
+          "The photo that you sent is great.",
+          "The photo you sent is great.",
+          "The photo who you sent is great."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  }
+}

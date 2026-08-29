@@ -1,0 +1,512 @@
+{
+  "id": "u23.d90",
+  "unitId": "u23",
+  "insertAt": 2,
+  "tags": [
+    "grammar.used-to",
+    "grammar.be-used-to",
+    "functions.storytelling",
+    "vocab.life"
+  ],
+  "title": {
+    "en": "The Old Days",
+    "ru": "Старые добрые времена"
+  },
+  "vocab": {
+    "title": {
+      "en": "Office memories",
+      "ru": "Офисные воспоминания"
+    },
+    "words": [
+      {
+        "word": "photo",
+        "ru": "фото, фотография",
+        "ipa": "/ˈfəʊtəʊ/",
+        "example": "This is an old photo of our office.",
+        "exampleRu": "Это старое фото нашего офиса."
+      },
+      {
+        "word": "computer",
+        "ru": "компьютер",
+        "ipa": "/kəmˈpjuːtə/",
+        "example": "We used to share one computer.",
+        "exampleRu": "Раньше мы делили один компьютер."
+      },
+      {
+        "word": "tiny",
+        "ru": "крошечный",
+        "ipa": "/ˈtaɪni/",
+        "example": "The office used to be tiny.",
+        "exampleRu": "Офис раньше был крошечный."
+      },
+      {
+        "word": "plant",
+        "ru": "растение",
+        "ipa": "/plɑːnt/",
+        "example": "There didn't use to be a plant.",
+        "exampleRu": "Раньше здесь не было растения."
+      },
+      {
+        "word": "share",
+        "ru": "делить(ся)",
+        "ipa": "/ʃeə/",
+        "example": "We used to share the computer.",
+        "exampleRu": "Раньше мы делили компьютер."
+      },
+      {
+        "word": "arrive",
+        "ru": "прибывать",
+        "ipa": "/əˈraɪv/",
+        "example": "Den would always arrive first.",
+        "exampleRu": "Ден всегда приходил первым."
+      },
+      {
+        "word": "coffee",
+        "ru": "кофе",
+        "ipa": "/ˈkɒfi/",
+        "example": "He would make coffee for everyone.",
+        "exampleRu": "Он обычно делал кофе для всех."
+      },
+      {
+        "word": "grumble",
+        "ru": "ворчать",
+        "ipa": "/ˈɡrʌmbəl/",
+        "example": "Valery would grumble every morning.",
+        "exampleRu": "Вэлери обычно ворчал каждое утро."
+      },
+      {
+        "word": "miss",
+        "ru": "скучать (по кому-то); пропускать",
+        "ipa": "/mɪs/",
+        "example": "I miss Valery.",
+        "exampleRu": "Я скучаю по Вэлери."
+      },
+      {
+        "word": "habit",
+        "ru": "привычка",
+        "ipa": "/ˈhæbɪt/",
+        "example": "A morning coffee is a good habit.",
+        "exampleRu": "Утренний кофе — хорошая привычка."
+      },
+      {
+        "word": "remember",
+        "ru": "помнить",
+        "ipa": "/rɪˈmembə/",
+        "example": "I remember that tiny office.",
+        "exampleRu": "Я помню тот крошечный офис."
+      },
+      {
+        "word": "team",
+        "ru": "команда",
+        "ipa": "/tiːm/",
+        "example": "We work as a team.",
+        "exampleRu": "Мы работаем как команда."
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "used to · would · be/get used to",
+      "ru": "used to · would · be/get used to"
+    },
+    "ref": "used-to",
+    "rule": {
+      "en": "Use 'used to + verb' for past states or habits that stopped. Use 'would + verb' for repeated past actions. Use 'be used to + verb-ing' for being accustomed now, and 'get used to + verb-ing' for becoming accustomed.",
+      "ru": "Используйте «used to + глагол» для прошлых состояний или привычек, которые закончились. Используйте «would + глагол» для повторяющихся действий в прошлом. Используйте «be used to + глагол с -ing» для актуальной привычности, а «get used to + глагол с -ing» для процесса привыкания."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "used to + verb (past habit/state)",
+          "ru": "used to + глагол (прошлая привычка/состояние)"
+        },
+        "formula": "subject + used to + base verb",
+        "examples": [
+          {
+            "en": "We used to have one computer.",
+            "ru": "Раньше у нас был один компьютер."
+          },
+          {
+            "en": "There didn't use to be a plant.",
+            "ru": "Раньше здесь не было растения."
+          }
+        ],
+        "ref": "used-to"
+      },
+      {
+        "label": {
+          "en": "would + verb (repeated past action)",
+          "ru": "would + глагол (повторяющееся действие в прошлом)"
+        },
+        "formula": "subject + would + base verb",
+        "examples": [
+          {
+            "en": "Den would always make the coffee.",
+            "ru": "Ден всегда готовил кофе."
+          },
+          {
+            "en": "Valery would grumble every morning.",
+            "ru": "Вэлери обычно ворчал каждое утро."
+          }
+        ],
+        "ref": "used-to"
+      },
+      {
+        "label": {
+          "en": "be/get used to + verb-ing (accustomed)",
+          "ru": "be/get used to + глагол с -ing (привыкший)"
+        },
+        "formula": "subject + be/get used to + verb-ing",
+        "examples": [
+          {
+            "en": "I'm still getting used to the new coffee machine.",
+            "ru": "Я всё ещё привыкаю к новой кофе-машине."
+          },
+          {
+            "en": "We're all used to working together.",
+            "ru": "Мы все привыкли работать вместе."
+          }
+        ],
+        "ref": "be-used-to"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "After 'used to', use the base verb: 'We used to have', not 'We used to had'.",
+        "ru": "После «used to» — начальная форма: «We used to have», а не «We used to had»."
+      },
+      {
+        "en": "Use 'didn't use to', not 'didn't used to' for past negatives.",
+        "ru": "Для отрицания в прошлом используйте «didn't use to», а не «didn't used to»."
+      },
+      {
+        "en": "After 'be/get used to', use a verb with -ing: 'I am used to working', not 'I am used to work'.",
+        "ru": "После «be/get used to» используйте глагол с -ing: «I am used to working», а не «I am used to work»."
+      },
+      {
+        "en": "'Would' is for repeated actions, not states: 'We used to have a computer', not 'We would have a computer'.",
+        "ru": "«Would» — для повторяющихся действий, а не состояний: «We used to have a computer», а не «We would have a computer»."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "The Old Days",
+      "ru": "Старые добрые времена"
+    },
+    "blocks": [
+      {
+        "en": "Peter found an old photo in a drawer. He showed it to the team. \"Look! This is our office ten years ago.\" Everybody smiled.",
+        "ru": "Питер нашёл старое фото в ящике стола. Он показал его команде. «Смотрите! Это наш офис десять лет назад». Все улыбнулись.",
+        "image": "b1",
+        "alt": {
+          "en": "Peter shows an old photo to the team",
+          "ru": "Питер показывает команде старое фото"
+        }
+      },
+      {
+        "en": "Kate looked at the photo. \"We used to have just one computer. We all shared it.\" Den laughed. \"I would always arrive first and make the coffee.\" Alex pointed at a plant. \"There didn't use to be a plant. The office used to be tiny.\"",
+        "ru": "Кейт посмотрела на фото. «Раньше у нас был только один компьютер. Мы все делили его». Ден засмеялся. «Я всегда приходил первым и делал кофе». Алекс показал на растение. «Раньше здесь не было растения. Офис был крошечный»."
+      },
+      {
+        "en": "Pol sighed. \"Valery would grumble every single morning. I miss it now that he has retired.\" Peter smiled. \"I'm still getting used to the new coffee machine.\" Kate nodded. \"We're all used to working together now.\"",
+        "ru": "Пол вздохнул. «Вэлери обычно ворчал каждое утро. Я скучаю по этому теперь, когда он ушёл на пенсию». Питер улыбнулся. «Я всё ещё привыкаю к новой кофе-машине». Кейт кивнула. «Мы все уже привыкли работать вместе».",
+        "image": "b3",
+        "alt": {
+          "en": "The team smiles and talks about the old times",
+          "ru": "Команда улыбается и вспоминает прошлое"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "drawer",
+        "ru": "ящик (стола)",
+        "ipa": "/drɔː/"
+      },
+      {
+        "word": "show",
+        "ru": "показывать",
+        "ipa": "/ʃəʊ/"
+      },
+      {
+        "word": "point",
+        "ru": "указывать",
+        "ipa": "/pɔɪnt/"
+      },
+      {
+        "word": "retire",
+        "ru": "выходить на пенсию",
+        "ipa": "/rɪˈtaɪə/"
+      },
+      {
+        "word": "nod",
+        "ru": "кивать",
+        "ipa": "/nɒd/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "Back then",
+      "ru": "Тогда"
+    },
+    "dialogue": [
+      [
+        "Look at this old photo!",
+        "Посмотри на это старое фото!"
+      ],
+      [
+        "We used to share one computer.",
+        "Раньше мы делили один компьютер."
+      ],
+      [
+        "Den would make the coffee.",
+        "Ден обычно готовил кофе."
+      ],
+      [
+        "I'm used to the machine now.",
+        "Я привык к этой машине."
+      ],
+      [
+        "We're all used to working together.",
+        "Мы все привыкли работать вместе."
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u23.d90.ex.l.01",
+        "instruction": {
+          "en": "What did Peter find?",
+          "ru": "Что нашёл Питер?"
+        },
+        "tags": [
+          "listening.detail",
+          "vocab.life"
+        ],
+        "prompt": "Peter found ___.",
+        "options": [
+          "an old photo",
+          "a new computer",
+          "a coffee machine"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u23.d90.ex.g.01",
+        "instruction": {
+          "en": "Past habit with used to.",
+          "ru": "Прошлая привычка: used to."
+        },
+        "tags": [
+          "grammar.used-to"
+        ],
+        "prompt": "We ___ to share one computer.",
+        "cue": "(use)",
+        "answers": [
+          "used"
+        ]
+      },
+      {
+        "type": "gap-fill",
+        "id": "u23.d90.ex.g.02",
+        "instruction": {
+          "en": "be/get used to + verb-ing.",
+          "ru": "be/get used to + глагол с -ing."
+        },
+        "tags": [
+          "grammar.be-used-to"
+        ],
+        "prompt": "I'm getting used to ___ in a team.",
+        "cue": "(work)",
+        "answers": [
+          "working"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u23.d90.ex.c.01",
+        "instruction": {
+          "en": "Past negative: didn't use to.",
+          "ru": "Отрицание в прошлом: didn't use to."
+        },
+        "tags": [
+          "grammar.used-to"
+        ],
+        "prompt": "There didn't ___ to be a plant.",
+        "options": [
+          "use",
+          "used",
+          "using"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "u23.d90.ex.g.03",
+        "instruction": {
+          "en": "Repeated past action with would.",
+          "ru": "Повторяющееся действие в прошлом: would."
+        },
+        "tags": [
+          "grammar.used-to"
+        ],
+        "prompt": "Den would always ___ first.",
+        "cue": "(arrive)",
+        "answers": [
+          "arrive"
+        ]
+      },
+      {
+        "type": "spot-error",
+        "id": "u23.d90.ex.s.01",
+        "instruction": {
+          "en": "Which sentence is correct?",
+          "ru": "Какое предложение верное?"
+        },
+        "tags": [
+          "grammar.used-to"
+        ],
+        "variants": [
+          "He didn't used to make coffee.",
+          "He didn't use to make coffee."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "type": "gap-fill",
+        "id": "u23.d90.ex.g.04",
+        "instruction": {
+          "en": "would + base verb.",
+          "ru": "would + начальная форма глагола."
+        },
+        "tags": [
+          "grammar.used-to"
+        ],
+        "prompt": "Valery would ___ every morning.",
+        "cue": "(grumble)",
+        "answers": [
+          "grumble"
+        ]
+      },
+      {
+        "type": "order-words",
+        "id": "u23.d90.ex.o.01",
+        "instruction": {
+          "en": "Make a sentence.",
+          "ru": "Собери предложение."
+        },
+        "tags": [
+          "grammar.used-to"
+        ],
+        "tokens": [
+          "I",
+          "used",
+          "to",
+          "work",
+          "here"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "type": "match",
+        "id": "u23.d90.ex.m.01",
+        "instruction": {
+          "en": "Match the word and the translation.",
+          "ru": "Сопоставь слово и перевод."
+        },
+        "tags": [
+          "vocab.life"
+        ],
+        "pairs": [
+          {
+            "left": "tiny",
+            "right": "крошечный"
+          },
+          {
+            "left": "grumble",
+            "right": "ворчать"
+          },
+          {
+            "left": "share",
+            "right": "делить"
+          },
+          {
+            "left": "miss",
+            "right": "скучать"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u23.d90.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.used-to",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Раньше у нас был один компьютер.",
+        "answers": [
+          "We used to have one computer."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "We used to had one computer."
+            ],
+            "explanation": {
+              "en": "After 'used to', use the base verb: have, not had.",
+              "ru": "После «used to» — начальная форма: have, а не had."
+            }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u23.d90.ex.t.02",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.be-used-to",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Я привыкаю к новой кофе-машине.",
+        "answers": [
+          "I am getting used to the new coffee machine.",
+          "I'm getting used to the new coffee machine."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "I get used to the new coffee machine.",
+              "I am used to get used to the new coffee machine."
+            ],
+            "explanation": {
+              "en": "Use 'get used to' + verb-ing: 'getting used to the machine'.",
+              "ru": "Используйте «get used to» + глагол с -ing: «getting used to the machine»."
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
