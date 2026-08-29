@@ -259,8 +259,10 @@ const Paragraph = memo(function Paragraph({
   lang,
   speaking,
   active,
+  activeSentence,
   activeWord,
   onRead,
+  onReadSentence,
   bookmarked,
   onToggleBookmark,
   typoClass,
@@ -271,10 +273,14 @@ const Paragraph = memo(function Paragraph({
   lang: 'en' | 'ru';
   /** This paragraph is the current read-aloud one (playing or paused). */
   speaking: boolean;
-  /** An utterance is currently in flight for this paragraph — drives the ▶/❚❚ glyph. */
+  /** A whole-paragraph utterance is in flight for this paragraph — drives the paragraph ▶/❚❚ glyph. */
   active: boolean;
+  /** The sentence index currently playing as a one-shot, or null — drives that sentence's ▶/❚❚. */
+  activeSentence: number | null;
   activeWord: number;
   onRead: (index: number) => void;
+  /** Play a single sentence (paraIndex, sentenceIndex, its paragraph-global first-word index, text). */
+  onReadSentence: (index: number, sentenceIndex: number, startWord: number, sentence: string) => void;
   /** Book reader only: this paragraph is bookmarked, and a per-paragraph bookmark toggle. */
   bookmarked?: boolean;
   onToggleBookmark?: (index: number) => void;
@@ -346,8 +352,32 @@ const Paragraph = memo(function Paragraph({
       )}
       {sentences.map((sentence, si) => {
         const open = openIdx === si;
+        // At this point `wordIndex` is the last word index of sentence si-1 (−1 for si=0), so +1 is,
+        // by construction, the render's own paragraph-global index for this sentence's first word —
+        // the highlight offset for a one-shot sentence play, with no re-tokenisation.
+        const sentenceStartWord = wordIndex + 1;
+        const sentencePlaying = activeSentence === si;
         return (
           <span key={si}>
+            {canSpeak() && (
+              <button
+                type="button"
+                aria-label={
+                  sentencePlaying
+                    ? lang === 'ru'
+                      ? 'Остановить предложение'
+                      : 'Stop sentence'
+                    : lang === 'ru'
+                      ? `Прослушать предложение ${si + 1}`
+                      : `Play sentence ${si + 1}`
+                }
+                aria-pressed={sentencePlaying}
+                onClick={() => onReadSentence(index, si, sentenceStartWord, sentence)}
+                className="mr-0.5 align-baseline font-mono text-[0.65em] text-teal opacity-45 transition-opacity hover:opacity-100"
+              >
+                {sentencePlaying ? '❚❚' : '▶'}
+              </button>
+            )}
             {sentence.split(WORD_SPLIT_RE).map((tok, i) => {
               if (!WORD_TEST_RE.test(tok)) return <span key={i}>{tok}</span>;
               wordIndex += 1;
@@ -430,8 +460,6 @@ export function ReadingText({
   const setRate = useReaderSettings((s) => s.setRate);
   const highlightSpoken = useReaderSettings((s) => s.highlightSpoken);
   const toggleHighlightSpoken = useReaderSettings((s) => s.toggleHighlightSpoken);
-  const readMode = useReaderSettings((s) => s.readMode);
-  const setReadMode = useReaderSettings((s) => s.setReadMode);
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>(() => listEnglishVoices());
   useEffect(() => {
     const sync = () => setVoices(listEnglishVoices());
@@ -452,17 +480,18 @@ export function ReadingText({
   // chunk (sentence) to resume from inside `speakingIdx` — so a pause continues where it stopped
   // instead of restarting the paragraph, and sentence-mode advances one sentence per play.
   const [speakingActive, setSpeakingActive] = useState(false);
+  // Non-null while a single sentence (not the whole paragraph) is playing — its index within
+  // `speakingIdx`. Keeps the per-sentence ▶ and the paragraph ▶ as separate, unambiguous controls.
+  const [speakingSentence, setSpeakingSentence] = useState<number | null>(null);
   const playingRef = useRef(false);
   const activeRef = useRef(false);
   const resumeChunkRef = useRef(0);
   // Read live in speakFrom's continuation chain (whose onEnd closure is frozen at play time),
-  // so mid-read changes to speed/highlight/mode take effect from the next paragraph or sentence.
+  // so mid-read changes to speed/highlight take effect from the next paragraph or sentence.
   const rateRef = useRef(rate);
   rateRef.current = rate;
   const highlightSpokenRef = useRef(highlightSpoken);
   highlightSpokenRef.current = highlightSpoken;
-  const readModeRef = useRef(readMode);
-  readModeRef.current = readMode;
   const reduceMotion = useMemo(
     () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false,
     []
@@ -589,7 +618,6 @@ export function ReadingText({
     speakPassage(spoken, {
       rate: rateRef.current,
       startChunk,
-      single: readModeRef.current === 'sentence',
       // Checked per boundary event so toggling the highlight off mid-paragraph stops immediately.
       onWord: (idx) => {
         if (highlightSpokenRef.current) setActiveWord(idx);
@@ -597,29 +625,10 @@ export function ReadingText({
       onChunk: (c) => {
         resumeChunkRef.current = c;
       },
-      onEnd: (nextChunk, total) => {
+      onEnd: () => {
         if (!playingRef.current) return;
-        if (readModeRef.current === 'sentence') {
-          // One sentence spoken — pause and wait for the next play (repeat-after-the-narrator).
-          activeRef.current = false;
-          setSpeakingActive(false);
-          if (nextChunk >= total) {
-            const next = i + 1;
-            if (next >= paragraphs.length) {
-              stopReading();
-              return;
-            }
-            resumeChunkRef.current = 0;
-            setSpeakingIdx(next);
-            setActiveWord(-1);
-            scrollToPara(next);
-          } else {
-            resumeChunkRef.current = nextChunk;
-          }
-        } else {
-          resumeChunkRef.current = 0;
-          speakFrom(i + 1, 0);
-        }
+        resumeChunkRef.current = 0;
+        speakFrom(i + 1, 0);
       },
     });
   };
@@ -630,25 +639,31 @@ export function ReadingText({
     resumeChunkRef.current = 0;
     cancelSpeech();
     setSpeakingActive(false);
+    setSpeakingSentence(null);
     setSpeakingIdx(-1);
     setActiveWord(-1);
   };
 
   const read = (idx: number) => {
-    // Actively speaking this paragraph → pause, remembering the current sentence.
-    if (activeRef.current && speakingIdx === idx) {
-      activeRef.current = false;
-      setSpeakingActive(false);
-      cancelSpeech();
-      return;
+    // Only the paragraph (continuous) session pauses/resumes; a one-shot sentence play does not.
+    if (speakingSentence === null) {
+      // Actively speaking this paragraph → pause, remembering the current sentence.
+      if (activeRef.current && speakingIdx === idx) {
+        activeRef.current = false;
+        setSpeakingActive(false);
+        cancelSpeech();
+        return;
+      }
+      // Paused on this paragraph → resume from where it stopped.
+      if (playingRef.current && speakingIdx === idx) {
+        playingRef.current = true;
+        speakFrom(idx, resumeChunkRef.current);
+        return;
+      }
     }
-    // Paused on this paragraph → resume from where it stopped.
-    if (playingRef.current && speakingIdx === idx) {
-      playingRef.current = true;
-      speakFrom(idx, resumeChunkRef.current);
-      return;
-    }
-    // Fresh start (a different paragraph, or nothing playing).
+    // Fresh start (a different paragraph, nothing playing, or cancelling a sentence play).
+    cancelSpeech();
+    setSpeakingSentence(null);
     resumeChunkRef.current = 0;
     playingRef.current = true;
     speakFrom(idx, 0);
@@ -657,6 +672,35 @@ export function ReadingText({
   const readRef = useRef(read);
   readRef.current = read;
   const onRead = useCallback((i: number) => readRef.current(i), []);
+
+  // Play exactly one sentence, on demand and replayable. Speaks the sentence text standalone (chunk ≠
+  // sentence, so startChunk/single would truncate a long one); `startWord` is the paragraph-global
+  // index of the sentence's first word, captured in the render, so the spoken-word highlight lines up
+  // with no re-tokenisation. Clicking the sentence that's already playing stops it.
+  const readSentence = (paraIdx: number, sIdx: number, startWord: number, sentence: string) => {
+    const wasThis = speakingIdx === paraIdx && speakingSentence === sIdx;
+    stopReading();
+    if (wasThis) return;
+    playingRef.current = true;
+    activeRef.current = true;
+    setSpeakingActive(true);
+    setSpeakingIdx(paraIdx);
+    setSpeakingSentence(sIdx);
+    setActiveWord(-1);
+    speakPassage(sentence, {
+      rate: rateRef.current,
+      onWord: (idx) => {
+        if (highlightSpokenRef.current) setActiveWord(startWord + idx);
+      },
+      onEnd: () => stopReading(),
+    });
+  };
+  const readSentenceRef = useRef(readSentence);
+  readSentenceRef.current = readSentence;
+  const onReadSentence = useCallback(
+    (p: number, s: number, w: number, t: string) => readSentenceRef.current(p, s, w, t),
+    []
+  );
 
   // Stable identity so a memoized Paragraph isn't re-rendered by a fresh callback each render.
   const toggleBookmarkRef = useRef(onToggleBookmark);
@@ -786,28 +830,6 @@ export function ReadingText({
           </div>
         )}
         {canSpeak() && (
-          <div className="flex items-center gap-1.5" role="group" aria-label={ru ? 'Режим озвучки' : 'Read-aloud mode'}>
-            <span className="font-mono text-2xs text-muted">{ru ? 'режим' : 'mode'}</span>
-            <button
-              type="button"
-              aria-pressed={readMode === 'paragraph'}
-              onClick={() => setReadMode('paragraph')}
-              className={cn('font-mono text-2xs hover:underline', readMode === 'paragraph' ? 'text-teal' : 'text-muted')}
-            >
-              {ru ? 'абзац' : 'paragraph'}
-            </button>
-            <button
-              type="button"
-              aria-pressed={readMode === 'sentence'}
-              onClick={() => setReadMode('sentence')}
-              className={cn('font-mono text-2xs hover:underline', readMode === 'sentence' ? 'text-teal' : 'text-muted')}
-              title={ru ? 'по предложению — пауза после каждого, чтобы повторить' : 'sentence-at-a-time — pauses after each so you can repeat'}
-            >
-              {ru ? 'предложение' : 'sentence'}
-            </button>
-          </div>
-        )}
-        {canSpeak() && (
           <button
             type="button"
             onClick={toggleHighlightSpoken}
@@ -897,9 +919,15 @@ export function ReadingText({
               glossary={glossary}
               lang={lang}
               speaking={speakingIdx === i}
-              active={speakingActive && speakingIdx === i}
+              // The paragraph ▶/❚❚ reflects only continuous (whole-paragraph) playback, never a
+              // one-shot sentence play — those are separate controls.
+              active={speakingActive && speakingIdx === i && speakingSentence === null}
+              activeSentence={
+                speakingActive && speakingIdx === i && speakingSentence !== null ? speakingSentence : null
+              }
               activeWord={speakingIdx === i ? activeWord : -1}
               onRead={onRead}
+              onReadSentence={onReadSentence}
               bookmarked={bookmarkedParas?.has(i) ?? false}
               onToggleBookmark={onToggleBookmark ? onToggleBm : undefined}
               typoClass={typoClass}

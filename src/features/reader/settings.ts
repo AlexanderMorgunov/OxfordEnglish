@@ -6,10 +6,6 @@ const KEY = 'oxford-reader-settings';
 export const FONT_CLASSES = ['text-base', 'text-lg', 'text-xl'] as const;
 export const LEADING_CLASSES = ['leading-relaxed', 'leading-loose'] as const;
 
-/** Read-aloud granularity: play a whole paragraph continuously, or one sentence at a time (pausing
- *  after each — for repeating after the narrator). */
-export type ReadMode = 'paragraph' | 'sentence';
-
 type Persisted = {
   coloring: boolean;
   fontStep: number;
@@ -19,7 +15,6 @@ type Persisted = {
   rate: number;
   /** Highlight the currently-spoken word during read-aloud (where the browser fires boundary events). */
   highlightSpoken: boolean;
-  readMode: ReadMode;
 };
 
 const DEFAULTS: Persisted = {
@@ -29,7 +24,6 @@ const DEFAULTS: Persisted = {
   voiceURI: null,
   rate: 1,
   highlightSpoken: true,
-  readMode: 'paragraph',
 };
 
 const clampStep = (n: number, max: number) => Math.max(0, Math.min(n, max));
@@ -55,7 +49,6 @@ type ReaderSettings = Persisted & {
   setVoiceURI: (uri: string | null) => void;
   setRate: (n: number) => void;
   toggleHighlightSpoken: () => void;
-  setReadMode: (m: ReadMode) => void;
 };
 
 export const useReaderSettings = create<ReaderSettings>((set, get) => {
@@ -72,7 +65,6 @@ export const useReaderSettings = create<ReaderSettings>((set, get) => {
       voiceURI: get().voiceURI,
       rate: get().rate,
       highlightSpoken: get().highlightSpoken,
-      readMode: get().readMode,
       ...patch,
     };
     try {
@@ -93,6 +85,5 @@ export const useReaderSettings = create<ReaderSettings>((set, get) => {
     },
     setRate: (n) => persist({ rate: clampRate(n) }),
     toggleHighlightSpoken: () => persist({ highlightSpoken: !get().highlightSpoken }),
-    setReadMode: (m) => persist({ readMode: m }),
   };
 });

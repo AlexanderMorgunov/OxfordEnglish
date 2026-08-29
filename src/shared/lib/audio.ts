@@ -180,16 +180,15 @@ export function chunkPassage(text: string, maxLen = 160): { text: string; offset
  *
  * `startChunk` resumes from a chunk (sentence) rather than the top — the word offsets stay global
  * (mapped against the whole-passage `spans`) so the highlight is correct regardless of where we
- * start. `single: true` speaks exactly one chunk then stops, for the reader's sentence-at-a-time
- * mode. `onChunk(i)` reports each chunk as it begins (so a pause can be resumed from it); `onEnd`
- * fires when speech stops naturally, carrying the next chunk index and the chunk count.
+ * start. `onChunk(i)` reports each chunk as it begins (so a pause can be resumed from it); `onEnd`
+ * fires when speech stops naturally, carrying the next chunk index and the chunk count. To read a
+ * single sentence, pass just that sentence as `text` (the reader does this for per-sentence replay).
  */
 export function speakPassage(
   text: string,
   opts: {
     rate?: number;
     startChunk?: number;
-    single?: boolean;
     onWord?: (index: number) => void;
     onChunk?: (index: number) => void;
     onEnd?: (nextChunk: number, totalChunks: number) => void;
@@ -259,10 +258,6 @@ export function speakPassage(
     const advance = () => {
       chunkAlive = false;
       if (!alive()) return;
-      if (opts.single) {
-        done(ci);
-        return;
-      }
       speakNext();
     };
     u.onend = advance;
