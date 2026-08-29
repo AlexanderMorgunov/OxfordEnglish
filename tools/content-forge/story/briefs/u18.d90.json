@@ -1,0 +1,12 @@
+{
+  "id": "u18.d90",
+  "unitId": "u18",
+  "insertAt": 2,
+  "tags": ["grammar.reported-speech", "grammar.reported-questions", "functions.storytelling", "vocab.news"],
+  "level": "B1",
+  "episode": "Breaking News",
+  "grammarName": { "en": "Reported statements & questions (backshift)", "ru": "Косвенная речь: утверждения и вопросы (backshift)" },
+  "grammarRef": "reported-speech",
+  "characters": ["Kate", "David", "Den", "Alex", "Pol", "Peter"],
+  "scenario": "David, the US client, gives a short video interview about the project, and afterwards the team retells the news to Peter, who missed the call — so the episode is full of reported statements and reported questions with backshift. Kate says, 'David said the project was going well. He told us the deadline had moved to June.' Den reports, 'David asked if we needed more time.' Pol says, 'He said the company would open a new office.' Alex jokes, 'And he asked who had eaten his yoghurt last year!' Peter asks lots of questions, and the others report them: 'Peter asked when the new office would open', 'He wanted to know if he could join the next call.' A company email is also reported: 'The email said the office would close early on Friday.' Warm, light, a little office excitement. Use clear reported statements (say/tell + backshift: is->was, will->would, has->had) and reported questions (ask if/whether, no do/does/did, normal word order). Short B1 sentences."
+}

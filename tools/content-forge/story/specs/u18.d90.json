@@ -1,0 +1,515 @@
+{
+  "id": "u18.d90",
+  "unitId": "u18",
+  "insertAt": 2,
+  "tags": [
+    "grammar.reported-speech",
+    "grammar.reported-questions",
+    "functions.storytelling",
+    "vocab.news"
+  ],
+  "title": {
+    "en": "Breaking News",
+    "ru": "Срочные новости"
+  },
+  "vocab": {
+    "title": {
+      "en": "Project news",
+      "ru": "Новости проекта"
+    },
+    "words": [
+      {
+        "word": "interview",
+        "ru": "интервью",
+        "ipa": "/ˈɪntəvjuː/",
+        "example": "He gave a short interview.",
+        "exampleRu": "Он дал короткое интервью."
+      },
+      {
+        "word": "news",
+        "ru": "новости",
+        "ipa": "/njuːz/",
+        "example": "This is good news!",
+        "exampleRu": "Это хорошие новости!"
+      },
+      {
+        "word": "project",
+        "ru": "проект",
+        "ipa": "/ˈprɒdʒekt/",
+        "example": "Our project is going well.",
+        "exampleRu": "Наш проект идёт хорошо."
+      },
+      {
+        "word": "deadline",
+        "ru": "срок, дедлайн",
+        "ipa": "/ˈdedlaɪn/",
+        "example": "The deadline moved to June.",
+        "exampleRu": "Срок перенесли на июнь."
+      },
+      {
+        "word": "office",
+        "ru": "офис",
+        "ipa": "/ˈɒfɪs/",
+        "example": "They will open a new office.",
+        "exampleRu": "Они откроют новый офис."
+      },
+      {
+        "word": "company",
+        "ru": "компания",
+        "ipa": "/ˈkʌmpəni/",
+        "example": "The company is in New York.",
+        "exampleRu": "Компания в Нью-Йорке."
+      },
+      {
+        "word": "report",
+        "ru": "сообщать; отчёт",
+        "ipa": "/rɪˈpɔːt/",
+        "example": "Please report the news.",
+        "exampleRu": "Пожалуйста, сообщите новости."
+      },
+      {
+        "word": "question",
+        "ru": "вопрос",
+        "ipa": "/ˈkwestʃən/",
+        "example": "He asked a question.",
+        "exampleRu": "Он задал вопрос."
+      },
+      {
+        "word": "answer",
+        "ru": "ответ",
+        "ipa": "/ˈɑːnsə/",
+        "example": "She gave a short answer.",
+        "exampleRu": "Она дала короткий ответ."
+      },
+      {
+        "word": "meeting",
+        "ru": "встреча, совещание",
+        "ipa": "/ˈmiːtɪŋ/",
+        "example": "We have a meeting at 10.",
+        "exampleRu": "У нас совещание в 10."
+      },
+      {
+        "word": "email",
+        "ru": "электронное письмо",
+        "ipa": "/ˈiːmeɪl/",
+        "example": "The email said the office would close.",
+        "exampleRu": "В письме говорилось, что офис закроется."
+      },
+      {
+        "word": "join",
+        "ru": "присоединяться",
+        "ipa": "/dʒɔɪn/",
+        "example": "Can I join the call?",
+        "exampleRu": "Могу я присоединиться к звонку?"
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "Reported speech & questions",
+      "ru": "Косвенная речь и вопросы"
+    },
+    "ref": "reported-speech",
+    "rule": {
+      "en": "We use reported speech to tell someone what another person said. Usually we move the tense back one step (backshift). We also change pronouns and time expressions. For reported questions, we use ask + if/whether or question word, and the word order becomes normal (subject + verb).",
+      "ru": "Мы используем косвенную речь, чтобы передать чужие слова. Обычно время сдвигается на шаг назад (backshift). Также меняются местоимения и обстоятельства времени. В косвенных вопросах используется ask + if/whether или вопросительное слово, а порядок слов становится прямым (подлежащее + сказуемое)."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "statement with say/tell",
+          "ru": "утверждение с say/tell"
+        },
+        "formula": "say/tell + (that) + subject + verb (backshift)",
+        "examples": [
+          {
+            "en": "He said (that) the project was going well.",
+            "ru": "Он сказал, что проект идёт хорошо."
+          }
+        ],
+        "ref": "reported-speech"
+      },
+      {
+        "label": {
+          "en": "backshift",
+          "ru": "сдвиг времён"
+        },
+        "formula": "is/are → was/were, will → would, has/have → had",
+        "examples": [
+          {
+            "en": "She said she would come.",
+            "ru": "Она сказала, что придёт."
+          }
+        ],
+        "ref": "reported-speech"
+      },
+      {
+        "label": {
+          "en": "yes/no question",
+          "ru": "общий вопрос"
+        },
+        "formula": "ask + if/whether + subject + verb",
+        "examples": [
+          {
+            "en": "He asked if we needed more time.",
+            "ru": "Он спросил, нужно ли нам больше времени."
+          }
+        ],
+        "ref": "reported-questions"
+      },
+      {
+        "label": {
+          "en": "wh-question",
+          "ru": "специальный вопрос"
+        },
+        "formula": "ask + question word + subject + verb",
+        "examples": [
+          {
+            "en": "Peter asked when the office would open.",
+            "ru": "Питер спросил, когда откроется офис."
+          }
+        ],
+        "ref": "reported-questions"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "In reported questions we do not use do/does/did. Say 'He asked if we needed...' not 'He asked did we need...'.",
+        "ru": "В косвенных вопросах не используется do/does/did: «He asked if we needed...», а не «He asked did we need...»."
+      },
+      {
+        "en": "Use tell with an object: 'He told us', not 'He said us'.",
+        "ru": "С tell нужен объект: «He told us», а не «He said us»."
+      },
+      {
+        "en": "After 'said that' and 'asked if', keep the word order of a statement.",
+        "ru": "После «said that» и «asked if» сохраняйте прямой порядок слов."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "Breaking News",
+      "ru": "Срочные новости"
+    },
+    "blocks": [
+      {
+        "en": "Today David gave a short interview. He talked about the project. He said, \"The project is going well.\" He also said, \"The deadline has moved to June.\" And he said, \"We will open a new office in New York.\" Kate smiled. \"This is great news!\" she said.",
+        "ru": "Сегодня Дэвид дал короткое интервью. Он рассказал о проекте. Он сказал: «Проект идёт хорошо». Он также сказал: «Дедлайн перенесён на июнь». И он сказал: «Мы откроем новый офис в Нью-Йорке». Кейт улыбнулась. «Это отличные новости!» — сказала она.",
+        "image": "b1",
+        "alt": {
+          "en": "David gives a video interview about the project",
+          "ru": "Дэвид даёт видеоинтервью о проекте"
+        }
+      },
+      {
+        "en": "After the call, Peter came in. He missed the interview. He asked, \"What did David say?\" Kate reported: \"David said the project was going well.\" Den added: \"He told us the deadline had moved to June.\" Pol said: \"He said the company would open a new office.\" Alex laughed: \"And he asked who had eaten his yoghurt last year!\"",
+        "ru": "После звонка зашёл Питер. Он пропустил интервью. Он спросил: «Что сказал Дэвид?» Кейт передала: «Дэвид сказал, что проект идёт хорошо». Ден добавил: «Он сказал нам, что дедлайн перенесли на июнь». Пол сказал: «Он сказал, что компания откроет новый офис». Алекс засмеялся: «А ещё он спросил, кто съел его йогурт в прошлом году!»"
+      },
+      {
+        "en": "Peter had many questions. He asked, \"When will the new office open?\" He wanted to know, \"Can I join the next call?\" The team reported his questions. Den said, \"Peter asked when the new office would open.\" Kate said, \"He wanted to know if he could join the next call.\" Then an email came. \"The email said the office would close early on Friday,\" said Pol. Everybody was happy.",
+        "ru": "У Питера было много вопросов. Он спросил: «Когда откроется новый офис?» Он хотел знать: «Могу я присоединиться к следующему звонку?» Команда передала его вопросы. Ден сказал: «Питер спросил, когда откроется новый офис». Кейт сказала: «Он хотел узнать, сможет ли он присоединиться к следующему звонку». Потом пришло письмо. «В письме говорилось, что офис закроется рано в пятницу», — сказал Пол. Все были рады.",
+        "image": "b3",
+        "alt": {
+          "en": "The team reports David's news to Peter",
+          "ru": "Команда пересказывает новости Дэвида Питеру"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "interview",
+        "ru": "интервью",
+        "ipa": "/ˈɪntəvjuː/"
+      },
+      {
+        "word": "deadline",
+        "ru": "срок, дедлайн",
+        "ipa": "/ˈdedlaɪn/"
+      },
+      {
+        "word": "report",
+        "ru": "передавать, сообщать",
+        "ipa": "/rɪˈpɔːt/"
+      },
+      {
+        "word": "join",
+        "ru": "присоединяться",
+        "ipa": "/dʒɔɪn/"
+      },
+      {
+        "word": "email",
+        "ru": "электронное письмо",
+        "ipa": "/ˈiːmeɪl/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "What did David say?",
+      "ru": "Что сказал Дэвид?"
+    },
+    "dialogue": [
+      [
+        "What did David say?",
+        "Что сказал Дэвид?"
+      ],
+      [
+        "He said it was going well.",
+        "Он сказал, что всё идёт хорошо."
+      ],
+      [
+        "Did he say that?",
+        "Он это сказал?"
+      ],
+      [
+        "He asked if we needed more time.",
+        "Он спросил, нужно ли нам больше времени."
+      ],
+      [
+        "We said no.",
+        "Мы сказали нет."
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u18.d90.ex.l.01",
+        "instruction": {
+          "en": "What did David ask about?",
+          "ru": "О чём спросил Дэвид?"
+        },
+        "tags": [
+          "listening.detail",
+          "grammar.reported-questions"
+        ],
+        "prompt": "He asked ___.",
+        "options": [
+          "if we needed more time",
+          "when we would finish",
+          "who drank his coffee"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u18.d90.ex.g.01",
+        "instruction": {
+          "en": "Reported statement: choose the right past form.",
+          "ru": "Косвенное утверждение: выбери правильную прошедшую форму."
+        },
+        "tags": [
+          "grammar.reported-speech"
+        ],
+        "prompt": "David said that the project ___ going well.",
+        "cue": "(be)",
+        "answers": [
+          "was"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u18.d90.ex.c.01",
+        "instruction": {
+          "en": "Choose the correct connector.",
+          "ru": "Выбери правильный союз."
+        },
+        "tags": [
+          "grammar.reported-speech"
+        ],
+        "prompt": "He told us ___ the deadline had moved to June.",
+        "options": [
+          "that",
+          "if",
+          "what"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "u18.d90.ex.g.02",
+        "instruction": {
+          "en": "Reported yes/no question.",
+          "ru": "Косвенный общий вопрос."
+        },
+        "tags": [
+          "grammar.reported-questions"
+        ],
+        "prompt": "Peter asked ___ he could join the call.",
+        "cue": "(if/whether)",
+        "answers": [
+          "if",
+          "whether"
+        ]
+      },
+      {
+        "type": "spot-error",
+        "id": "u18.d90.ex.s.01",
+        "instruction": {
+          "en": "Which reported question is correct?",
+          "ru": "Какой косвенный вопрос правильный?"
+        },
+        "tags": [
+          "grammar.reported-questions"
+        ],
+        "variants": [
+          "He asked when would the office open.",
+          "He asked when the office would open."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "type": "order-words",
+        "id": "u18.d90.ex.o.01",
+        "instruction": {
+          "en": "Put the words in order.",
+          "ru": "Расставь слова по порядку."
+        },
+        "tags": [
+          "grammar.reported-questions"
+        ],
+        "tokens": [
+          "He",
+          "asked",
+          "if",
+          "we",
+          "needed",
+          "more",
+          "time"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "type": "match",
+        "id": "u18.d90.ex.m.01",
+        "instruction": {
+          "en": "Match direct speech with reported speech.",
+          "ru": "Сопоставь прямую речь с косвенной."
+        },
+        "tags": [
+          "grammar.reported-speech"
+        ],
+        "pairs": [
+          {
+            "left": "I will open a new office",
+            "right": "He said he would open a new office"
+          },
+          {
+            "left": "We are happy",
+            "right": "They said they were happy"
+          },
+          {
+            "left": "Can I join?",
+            "right": "He asked if he could join"
+          },
+          {
+            "left": "When will it open?",
+            "right": "He asked when it would open"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u18.d90.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.reported-speech",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Он сказал, что проект идёт хорошо.",
+        "answers": [
+          "He said that the project was going well.",
+          "He said the project was going well."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "He said the project is going well"
+            ],
+            "explanation": {
+              "en": "Use backshift: is → was in reported speech.",
+              "ru": "Используй сдвиг времён: is → was в косвенной речи."
+            }
+          }
+        ]
+      },
+      {
+        "type": "gap-fill",
+        "id": "u18.d90.ex.g.03",
+        "instruction": {
+          "en": "Reported statement with will → would.",
+          "ru": "Косвенное утверждение: will → would."
+        },
+        "tags": [
+          "grammar.reported-speech"
+        ],
+        "prompt": "They said they ___ open a new office.",
+        "cue": "(will)",
+        "answers": [
+          "would"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u18.d90.ex.c.02",
+        "instruction": {
+          "en": "Reported wh-question word order.",
+          "ru": "Порядок слов в косвенном специальном вопросе."
+        },
+        "tags": [
+          "grammar.reported-questions"
+        ],
+        "prompt": "She asked where ___.",
+        "options": [
+          "was the meeting",
+          "the meeting was"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "type": "translate",
+        "id": "u18.d90.ex.t.02",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.reported-questions",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Питер спросил, когда откроется офис.",
+        "answers": [
+          "Peter asked when the office would open."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "Peter asked when would the office open"
+            ],
+            "explanation": {
+              "en": "In reported wh-questions, keep statement word order: subject + verb.",
+              "ru": "В косвенных вопросах сохраняй прямой порядок слов: подлежащее + сказуемое."
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

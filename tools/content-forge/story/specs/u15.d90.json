@@ -1,0 +1,506 @@
+{
+  "id": "u15.d90",
+  "unitId": "u15",
+  "insertAt": 2,
+  "tags": [
+    "grammar.second-conditional",
+    "grammar.wish-past",
+    "functions.preferences",
+    "vocab.dreams"
+  ],
+  "title": {
+    "en": "The Dream Office",
+    "ru": "Офис мечты"
+  },
+  "vocab": {
+    "title": {
+      "en": "Dreams and wishes",
+      "ru": "Мечты и желания"
+    },
+    "words": [
+      {
+        "word": "dream",
+        "ru": "мечта; сон",
+        "ipa": "/driːm/",
+        "example": "I had a strange dream last night.",
+        "exampleRu": "Мне прошлой ночью приснился странный сон."
+      },
+      {
+        "word": "sea",
+        "ru": "море",
+        "ipa": "/siː/",
+        "example": "She lives by the sea.",
+        "exampleRu": "Она живёт у моря."
+      },
+      {
+        "word": "yoga",
+        "ru": "йога",
+        "ipa": "/ˈjəʊɡə/",
+        "example": "I do yoga in the morning.",
+        "exampleRu": "Я делаю йогу утром."
+      },
+      {
+        "word": "quiet",
+        "ru": "тихий, спокойный",
+        "ipa": "/ˈkwaɪət/",
+        "example": "I need a quiet room.",
+        "exampleRu": "Мне нужна тихая комната."
+      },
+      {
+        "word": "boss",
+        "ru": "начальник",
+        "ipa": "/bɒs/",
+        "example": "The boss is on vacation.",
+        "exampleRu": "Начальник в отпуске."
+      },
+      {
+        "word": "mug",
+        "ru": "кружка",
+        "ipa": "/mʌɡ/",
+        "example": "This is my favourite mug.",
+        "exampleRu": "Это моя любимая кружка."
+      },
+      {
+        "word": "shy",
+        "ru": "застенчивый",
+        "ipa": "/ʃaɪ/",
+        "example": "He is shy with strangers.",
+        "exampleRu": "Он застенчив с незнакомцами."
+      },
+      {
+        "word": "party",
+        "ru": "вечеринка",
+        "ipa": "/ˈpɑːti/",
+        "example": "We had a party yesterday.",
+        "exampleRu": "Вчера у нас была вечеринка."
+      },
+      {
+        "word": "desk",
+        "ru": "письменный стол",
+        "ipa": "/desk/",
+        "example": "My desk is very small.",
+        "exampleRu": "Мой письменный стол очень маленький."
+      },
+      {
+        "word": "anywhere",
+        "ru": "где угодно",
+        "ipa": "/ˈeniweə/",
+        "example": "I can work anywhere.",
+        "exampleRu": "Я могу работать где угодно."
+      },
+      {
+        "word": "wish",
+        "ru": "желание; хотеть",
+        "ipa": "/wɪʃ/",
+        "example": "I have a wish.",
+        "exampleRu": "У меня есть желание."
+      },
+      {
+        "word": "change",
+        "ru": "менять; изменение",
+        "ipa": "/tʃeɪndʒ/",
+        "example": "I want to change my job.",
+        "exampleRu": "Я хочу поменять работу."
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "Second conditional · wish / if only",
+      "ru": "Second conditional · wish / if only"
+    },
+    "ref": "second-conditional",
+    "rule": {
+      "en": "Use the second conditional for unreal situations in the present or future: if + past simple, would + base verb. Use 'were' for all persons in formal English. To express a wish, use 'I wish' or 'If only' with the past simple.",
+      "ru": "Second conditional используется для нереальных ситуаций в настоящем или будущем: if + past simple, would + инфинитив. В формальном английском используйте 'were' для всех лиц. Чтобы выразить желание, используйте 'I wish' или 'If only' с past simple."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "Second conditional",
+          "ru": "Условное предложение второго типа"
+        },
+        "formula": "If + past simple, would + base verb",
+        "examples": [
+          {
+            "en": "If I were the boss, I would make new rules.",
+            "ru": "Если бы я был начальником, я бы создал новые правила."
+          }
+        ],
+        "ref": "second-conditional"
+      },
+      {
+        "label": {
+          "en": "I wish + past simple",
+          "ru": "I wish + past simple"
+        },
+        "formula": "wish + subject + past simple",
+        "examples": [
+          {
+            "en": "I wish I had a bigger desk.",
+            "ru": "Жаль, что у меня нет стола побольше."
+          }
+        ],
+        "ref": "wish-past"
+      },
+      {
+        "label": {
+          "en": "If only + past simple",
+          "ru": "If only + past simple"
+        },
+        "formula": "If only + subject + past simple",
+        "examples": [
+          {
+            "en": "If only it were Friday every day.",
+            "ru": "Если бы только каждый день была пятница."
+          }
+        ],
+        "ref": "wish-past"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Don't use 'would' in the if clause: 'If I would be rich' is wrong.",
+        "ru": "Не используйте 'would' в придаточном с if: 'If I would be rich' — неверно."
+      },
+      {
+        "en": "Use 'were' for all persons in formal English: 'If I were you', not 'If I was you'.",
+        "ru": "Используйте 'were' для всех лиц в формальном английском: 'If I were you', а не 'If I was you'."
+      },
+      {
+        "en": "After 'wish' use past simple, not 'would': 'I wish I had', not 'I wish I would have'.",
+        "ru": "После 'wish' используйте past simple, а не 'would': 'I wish I had', не 'I wish I would have'."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "The Dream Office",
+      "ru": "Офис мечты"
+    },
+    "blocks": [
+      {
+        "en": "It was a slow Friday afternoon. The team was tired. Kate smiled. 'Let's play a game! If you could change one thing, what would you do?' Everyone thought.",
+        "ru": "Это был спокойный пятничный день. Команда устала. Кейт улыбнулась. «Давайте сыграем в игру! Если бы вы могли изменить одну вещь, что бы вы сделали?» Все задумались.",
+        "image": "b1",
+        "alt": {
+          "en": "Kate starts a dream game in the office on Friday afternoon",
+          "ru": "Кейт начинает игру о мечтах в офисе в пятницу днём"
+        }
+      },
+      {
+        "en": "Pol said, 'If I could work from anywhere, I would live by the sea and do yoga every morning.' Alex laughed. 'If I had a quiet room, I would sleep all day. I have four kids!' Den said, 'If I were the boss, nobody would touch my mug.' Peter whispered, 'If I weren't so shy, I would sing at the party.'",
+        "ru": "Пол сказал: «Если бы я мог работать где угодно, я бы жил у моря и каждое утро делал йогу». Алекс засмеялся: «Если бы у меня была тихая комната, я бы спал весь день. У меня четверо детей!» Ден сказал: «Если бы я был начальником, никто бы не трогал мою кружку». Питер прошептал: «Если бы я не был таким застенчивым, я бы пел на вечеринке»."
+      },
+      {
+        "en": "Valery said, 'If it were up to me, we would all finish at five.' Kate dreamed too. 'If we won a big project, I would take everyone to the sea.' She smiled. 'I wish I had a bigger desk,' said Peter. 'If only it were Friday every day!'",
+        "ru": "Валерий сказал: «Если бы это зависело от меня, мы бы все заканчивали в пять». Кейт тоже мечтала: «Если бы мы выиграли большой проект, я бы отвезла всех к морю». Она улыбнулась. «Жаль, что у меня нет стола побольше», — сказал Питер. «Если бы только каждый день была пятница!»",
+        "image": "b3",
+        "alt": {
+          "en": "Everyone daydreams about the sea and a perfect Friday",
+          "ru": "Все мечтают о море и идеальной пятнице"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "slow",
+        "ru": "медленный, спокойный",
+        "ipa": "/sləʊ/"
+      },
+      {
+        "word": "tired",
+        "ru": "усталый",
+        "ipa": "/ˈtaɪəd/"
+      },
+      {
+        "word": "whispered",
+        "ru": "прошептал",
+        "ipa": "/ˈwɪspəd/"
+      },
+      {
+        "word": "game",
+        "ru": "игра",
+        "ipa": "/ɡeɪm/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "What would you do?",
+      "ru": "Что бы вы сделали?"
+    },
+    "dialogue": [
+      [
+        "Let's play a game.",
+        "Давайте сыграем в игру."
+      ],
+      [
+        "What would you do?",
+        "Что бы вы сделали?"
+      ],
+      [
+        "I would live by the sea.",
+        "Я бы жил у моря."
+      ],
+      [
+        "I wish I had a bigger desk.",
+        "Жаль, что у меня нет стола побольше."
+      ],
+      [
+        "If only it were Friday!",
+        "Если бы только была пятница!"
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u15.d90.ex.l.01",
+        "instruction": {
+          "en": "Listen again. Where would Pol live?",
+          "ru": "Послушай ещё раз. Где бы жил Пол?"
+        },
+        "tags": [
+          "listening.detail",
+          "vocab.dreams"
+        ],
+        "prompt": "Pol would live ___.",
+        "options": [
+          "by the sea",
+          "in the city",
+          "in the mountains"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u15.d90.ex.g.01",
+        "instruction": {
+          "en": "Second conditional: were.",
+          "ru": "Second conditional: were."
+        },
+        "tags": [
+          "grammar.second-conditional"
+        ],
+        "prompt": "If I ___ (be) the boss, I would make new rules.",
+        "cue": "(be)",
+        "answers": [
+          "were"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u15.d90.ex.c.01",
+        "instruction": {
+          "en": "Choose the correct word.",
+          "ru": "Выбери правильное слово."
+        },
+        "tags": [
+          "grammar.second-conditional"
+        ],
+        "prompt": "If I ___ a quiet room, I would sleep all day.",
+        "options": [
+          "had",
+          "have",
+          "would have"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "spot-error",
+        "id": "u15.d90.ex.s.01",
+        "instruction": {
+          "en": "Which sentence is correct?",
+          "ru": "Какое предложение верное?"
+        },
+        "tags": [
+          "grammar.second-conditional"
+        ],
+        "variants": [
+          "If I would be rich, I would travel.",
+          "If I were rich, I would travel."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "type": "order-words",
+        "id": "u15.d90.ex.o.01",
+        "instruction": {
+          "en": "Make a sentence.",
+          "ru": "Собери предложение."
+        },
+        "tags": [
+          "grammar.second-conditional"
+        ],
+        "tokens": [
+          "If",
+          "I",
+          "could",
+          "work",
+          "anywhere",
+          "I",
+          "would",
+          "live",
+          "by",
+          "the",
+          "sea"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      {
+        "type": "match",
+        "id": "u15.d90.ex.m.01",
+        "instruction": {
+          "en": "Match the word and the translation.",
+          "ru": "Сопоставь слово и перевод."
+        },
+        "tags": [
+          "vocab.dreams"
+        ],
+        "pairs": [
+          {
+            "left": "sea",
+            "right": "море"
+          },
+          {
+            "left": "mug",
+            "right": "кружка"
+          },
+          {
+            "left": "shy",
+            "right": "застенчивый"
+          },
+          {
+            "left": "desk",
+            "right": "письменный стол"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u15.d90.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.second-conditional",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Если бы у меня был большой стол, я был бы счастлив.",
+        "answers": [
+          "If I had a big desk, I would be happy.",
+          "I would be happy if I had a big desk."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "if i would have a big desk",
+              "if i have a big desk"
+            ],
+            "explanation": {
+              "en": "Use past simple after 'if' in the second conditional.",
+              "ru": "Используйте past simple после 'if' в second conditional."
+            }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u15.d90.ex.t.02",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.wish-past",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Если бы только была пятница каждый день.",
+        "answers": [
+          "If only it were Friday every day.",
+          "If only it was Friday every day."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "if only it is friday"
+            ],
+            "explanation": {
+              "en": "Use past simple after 'if only' for unreal wishes.",
+              "ru": "Используйте past simple после 'if only' для нереальных желаний."
+            }
+          }
+        ]
+      },
+      {
+        "type": "gap-fill",
+        "id": "u15.d90.ex.g.02",
+        "instruction": {
+          "en": "Wish + past simple.",
+          "ru": "Wish + past simple."
+        },
+        "tags": [
+          "grammar.wish-past"
+        ],
+        "prompt": "I wish I ___ (have) a bigger desk.",
+        "cue": "(have)",
+        "answers": [
+          "had"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u15.d90.ex.c.02",
+        "instruction": {
+          "en": "Choose the correct form.",
+          "ru": "Выбери правильную форму."
+        },
+        "tags": [
+          "grammar.wish-past"
+        ],
+        "prompt": "If only it ___ Friday.",
+        "options": [
+          "is",
+          "was",
+          "were"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "type": "gap-fill",
+        "id": "u15.d90.ex.g.03",
+        "instruction": {
+          "en": "Second conditional: not be.",
+          "ru": "Second conditional: not be."
+        },
+        "tags": [
+          "grammar.second-conditional"
+        ],
+        "prompt": "If Peter ___ (be not) so shy, he would sing at the party.",
+        "cue": "(be not)",
+        "answers": [
+          "weren't"
+        ]
+      }
+    ]
+  }
+}

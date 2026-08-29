@@ -1,0 +1,492 @@
+{
+  "id": "u16.d90",
+  "unitId": "u16",
+  "insertAt": 2,
+  "tags": [
+    "grammar.past-perfect",
+    "grammar.past-perfect-vs-past",
+    "functions.storytelling",
+    "vocab.stories"
+  ],
+  "title": {
+    "en": "The Legend of the Office",
+    "ru": "Легенда офиса"
+  },
+  "vocab": {
+    "title": {
+      "en": "Office history",
+      "ru": "История офиса"
+    },
+    "words": [
+      {
+        "word": "legend",
+        "ru": "легенда",
+        "ipa": "/ˈledʒənd/",
+        "example": "This is the legend of our office.",
+        "exampleRu": "Это легенда нашего офиса."
+      },
+      {
+        "word": "office",
+        "ru": "офис",
+        "ipa": "/ˈɒfɪs/",
+        "example": "The office is small but friendly.",
+        "exampleRu": "Офис маленький, но дружный."
+      },
+      {
+        "word": "plant",
+        "ru": "растение",
+        "ipa": "/plɑːnt/",
+        "example": "Pol brought the first plant.",
+        "exampleRu": "Пол принёс первое растение."
+      },
+      {
+        "word": "team",
+        "ru": "команда",
+        "ipa": "/tiːm/",
+        "example": "The team had no manager before.",
+        "exampleRu": "Раньше у команды не было руководителя."
+      },
+      {
+        "word": "manager",
+        "ru": "менеджер, руководитель",
+        "ipa": "/ˈmænɪdʒə/",
+        "example": "Kate became the manager later.",
+        "exampleRu": "Кейт стала руководителем позже."
+      },
+      {
+        "word": "to join",
+        "ru": "присоединяться",
+        "ipa": "/dʒɔɪn/",
+        "example": "Alex joined the team first.",
+        "exampleRu": "Алекс присоединился к команде первым."
+      },
+      {
+        "word": "to grow",
+        "ru": "расти",
+        "ipa": "/ɡrəʊ/",
+        "example": "The company grew quickly.",
+        "exampleRu": "Компания быстро росла."
+      },
+      {
+        "word": "to gather",
+        "ru": "собираться",
+        "ipa": "/ˈɡæðə/",
+        "example": "They gathered around the machine.",
+        "exampleRu": "Они собрались вокруг машины."
+      },
+      {
+        "word": "to remember",
+        "ru": "помнить",
+        "ipa": "/rɪˈmembə/",
+        "example": "Den still remembers that day.",
+        "exampleRu": "Ден до сих пор помнит тот день."
+      },
+      {
+        "word": "already",
+        "ru": "уже",
+        "ipa": "/ɔːlˈredi/",
+        "example": "Den had already worked here.",
+        "exampleRu": "Ден уже работал здесь."
+      },
+      {
+        "word": "before",
+        "ru": "до этого, раньше",
+        "ipa": "/bɪˈfɔː/",
+        "example": "Before that, they had no plant.",
+        "exampleRu": "До этого у них не было растения."
+      },
+      {
+        "word": "first",
+        "ru": "первый",
+        "ipa": "/fɜːst/",
+        "example": "It was the first coffee machine.",
+        "exampleRu": "Это была первая кофемашина."
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "Past perfect vs past simple",
+      "ru": "Past perfect и past simple"
+    },
+    "ref": "past-perfect",
+    "rule": {
+      "en": "Use the past simple for the main events in a story. Use the past perfect (had + past participle) for an action that happened earlier, before another past action. Example: When Alex joined, Den had already worked here for five years.",
+      "ru": "Используйте past simple для основных событий в рассказе. Используйте past perfect (had + причастие прошедшего времени) для действия, которое произошло раньше, до другого действия в прошлом. Пример: Когда Алекс пришёл, Ден уже работал здесь пять лет."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "Earlier action (past perfect)",
+          "ru": "Более раннее действие (past perfect)"
+        },
+        "formula": "had + past participle",
+        "examples": [
+          {
+            "en": "By the time Kate came, the team had already met.",
+            "ru": "Когда Кейт пришла, команда уже встретилась."
+          }
+        ],
+        "ref": "past-perfect"
+      },
+      {
+        "label": {
+          "en": "Later action (past simple)",
+          "ru": "Более позднее действие (past simple)"
+        },
+        "formula": "subject + past form",
+        "examples": [
+          {
+            "en": "The team had a meeting yesterday.",
+            "ru": "Вчера у команды была встречa."
+          }
+        ],
+        "ref": "past-simple"
+      },
+      {
+        "label": {
+          "en": "Contrast in one sentence",
+          "ru": "Контраст в одном предложении"
+        },
+        "formula": "After/When/Before + past perfect / past simple",
+        "examples": [
+          {
+            "en": "After Pol had brought the plant, the office looked better.",
+            "ru": "После того как Пол принёс растение, офис стал выглядеть лучше."
+          }
+        ],
+        "ref": "past-perfect-vs-past"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Do not use the past perfect when the order is clear from words like 'after'. Say 'After he arrived, we had coffee.', not 'After he had arrived, we had had coffee.'.",
+        "ru": "Не используйте past perfect, когда порядок понятен из слов типа 'after'. Говорите 'After he arrived, we had coffee.', а не 'After he had arrived, we had had coffee.'."
+      },
+      {
+        "en": "Do not confuse past perfect with present perfect. Past perfect is for the past of the past, not for the present.",
+        "ru": "Не путайте past perfect с present perfect. Past perfect — для прошлого в прошлом, а не для настоящего."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "The Legend of the Office",
+      "ru": "Легенда офиса"
+    },
+    "blocks": [
+      {
+        "en": "Peter asked Kate how the team had started. Kate smiled. \"It is a legend,\" she said. \"When Alex joined, Den had already worked here for five years. Before I became the manager, the team had never had a plant.\"",
+        "ru": "Питер спросил Кейт, как началась команда. Кейт улыбнулась. «Это легенда, — сказала она. — Когда Алекс пришёл, Ден уже работал здесь пять лет. До того как я стала руководителем, у команды никогда не было растения».",
+        "image": "b1",
+        "alt": {
+          "en": "Peter asks Kate a question in the office",
+          "ru": "Питер задаёт вопрос Кейт в офисе"
+        }
+      },
+      {
+        "en": "Kate remembered the first coffee machine. \"We had gathered around it before it even worked,\" she said. Pol added, \"I had brought the first office plant. It was a small green plant.\"",
+        "ru": "Кейт вспомнила первую кофемашину. «Мы собрались вокруг неё, прежде чем она вообще заработала», — сказала она. Пол добавил: «Я принёс первое офисное растение. Это был маленький зелёный цветок»."
+      },
+      {
+        "en": "Alex laughed. \"I had been late on my very first day,\" he said. Den nodded. \"I still remember it. You had run into the office with a cup of coffee.\" Peter said, \"Now I know the legend. The office is like a family.\"",
+        "ru": "Алекс засмеялся. «Я опоздал в самый первый день», — сказал он. Ден кивнул. «Я до сих пор помню. Ты вбежал в офис с чашкой кофе». Питер сказал: «Теперь я знаю легенду. Офис — как семья».",
+        "image": "b3",
+        "alt": {
+          "en": "Alex tells how he was late on his first day",
+          "ru": "Алекс рассказывает, как опоздал в первый день"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "smiled",
+        "ru": "улыбнулась",
+        "ipa": "/smaɪld/"
+      },
+      {
+        "word": "added",
+        "ru": "добавил",
+        "ipa": "/ˈædɪd/"
+      },
+      {
+        "word": "nodded",
+        "ru": "кивнул",
+        "ipa": "/ˈnɒdɪd/"
+      },
+      {
+        "word": "still",
+        "ru": "до сих пор",
+        "ipa": "/stɪl/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "The story begins",
+      "ru": "История начинается"
+    },
+    "dialogue": [
+      [
+        "How did the team start?",
+        "Как начиналась команда?"
+      ],
+      [
+        "Den had worked here for years.",
+        "Ден работал здесь годами."
+      ],
+      [
+        "Had you had a plant before?",
+        "У вас раньше было растение?"
+      ],
+      [
+        "Pol had brought the first plant.",
+        "Пол принёс первое растение."
+      ],
+      [
+        "I had been late, too.",
+        "Я тоже опоздал."
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u16.d90.ex.l.01",
+        "instruction": {
+          "en": "What had Pol brought?",
+          "ru": "Что принёс Пол?"
+        },
+        "tags": [
+          "listening.detail",
+          "vocab.stories"
+        ],
+        "prompt": "Pol had brought the first ___.",
+        "options": [
+          "plant",
+          "coffee machine",
+          "computer"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u16.d90.ex.g.01",
+        "instruction": {
+          "en": "Past perfect (had + participle).",
+          "ru": "Past perfect (had + причастие)."
+        },
+        "tags": [
+          "grammar.past-perfect"
+        ],
+        "prompt": "When Alex joined, Den ___ already worked here for five years.",
+        "cue": "(have)",
+        "answers": [
+          "had"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u16.d90.ex.c.01",
+        "instruction": {
+          "en": "Past perfect: before.",
+          "ru": "Past perfect: before."
+        },
+        "tags": [
+          "grammar.past-perfect"
+        ],
+        "prompt": "Before Kate became the manager, the team ___ had a plant.",
+        "options": [
+          "had never",
+          "never have",
+          "did never"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "u16.d90.ex.g.02",
+        "instruction": {
+          "en": "Past perfect (gather).",
+          "ru": "Past perfect (gather)."
+        },
+        "tags": [
+          "grammar.past-perfect"
+        ],
+        "prompt": "Everyone ___ around the machine before it worked.",
+        "cue": "(gather)",
+        "answers": [
+          "had gathered"
+        ]
+      },
+      {
+        "type": "spot-error",
+        "id": "u16.d90.ex.s.01",
+        "instruction": {
+          "en": "Which sentence is correct?",
+          "ru": "Какое предложение верное?"
+        },
+        "tags": [
+          "grammar.past-perfect-vs-past"
+        ],
+        "variants": [
+          "Pol had brought a plant.",
+          "Pol have brought a plant."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "order-words",
+        "id": "u16.d90.ex.o.01",
+        "instruction": {
+          "en": "Make a sentence.",
+          "ru": "Собери предложение."
+        },
+        "tags": [
+          "grammar.past-perfect"
+        ],
+        "tokens": [
+          "Den",
+          "had",
+          "already",
+          "worked",
+          "here"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "type": "match",
+        "id": "u16.d90.ex.m.01",
+        "instruction": {
+          "en": "Match the verb and the past participle.",
+          "ru": "Сопоставь глагол и причастие прошедшего времени."
+        },
+        "tags": [
+          "grammar.past-perfect",
+          "vocab.stories"
+        ],
+        "pairs": [
+          {
+            "left": "bring",
+            "right": "brought"
+          },
+          {
+            "left": "gather",
+            "right": "gathered"
+          },
+          {
+            "left": "grow",
+            "right": "grown"
+          },
+          {
+            "left": "remember",
+            "right": "remembered"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u16.d90.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.past-perfect-vs-past",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Когда мы пришли, они уже ушли.",
+        "answers": [
+          "When we arrived, they had already left.",
+          "They had already left when we arrived."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "when we arrived, they already left",
+              "they already left when we arrived"
+            ],
+            "explanation": {
+              "en": "Use past perfect for the earlier action: they had already left.",
+              "ru": "Используйте past perfect для более раннего действия: they had already left."
+            }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u16.d90.ex.t.02",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.past-perfect",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Он сказал, что уже завтракал.",
+        "answers": [
+          "He said he had already had breakfast.",
+          "He said that he had already had breakfast."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "he said he already had breakfast",
+              "he said he already breakfasted"
+            ],
+            "explanation": {
+              "en": "The earlier action needs past perfect: had had breakfast.",
+              "ru": "Для более раннего действия нужен past perfect: had had breakfast."
+            }
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u16.d90.ex.c.02",
+        "instruction": {
+          "en": "Past perfect: by the time.",
+          "ru": "Past perfect: by the time."
+        },
+        "tags": [
+          "grammar.past-perfect-vs-past"
+        ],
+        "prompt": "By the time the company grew, they ___ friends.",
+        "options": [
+          "had become",
+          "have become",
+          "became"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "u16.d90.ex.g.03",
+        "instruction": {
+          "en": "Past perfect (question).",
+          "ru": "Past perfect (вопрос)."
+        },
+        "tags": [
+          "grammar.past-perfect"
+        ],
+        "prompt": "Peter asked how the team ___ started.",
+        "cue": "(have)",
+        "answers": [
+          "had"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "u16.d90",
+  "unitId": "u16",
+  "insertAt": 2,
+  "tags": ["grammar.past-perfect", "grammar.past-perfect-vs-past", "functions.storytelling", "vocab.stories"],
+  "level": "B1",
+  "episode": "The Legend of the Office",
+  "grammarName": { "en": "Past perfect vs past simple (narrative)", "ru": "Past perfect и past simple (повествование)" },
+  "grammarRef": "past-perfect",
+  "characters": ["Kate", "Den", "Alex", "Pol", "Peter"],
+  "scenario": "Peter, the new junior, asks how the team started, so Kate tells the 'legend' of the office — a nostalgic story that naturally mixes past simple and past perfect (an earlier past inside the past). 'When Alex joined, Den had already worked here for five years. Before Kate became the manager, the team had never had a plant. By the time the company grew, they had all become friends.' Kate remembers the day the first coffee machine arrived: everyone had gathered around it before it even worked. Pol adds that he had brought the first office plant. Alex says he had been late on his very first day, and Den still remembers it. Warm, funny nostalgia. Use clear past perfect for the earlier event ('had + past participle') contrasted with past simple for the main story. Short B1 sentences."
+}
