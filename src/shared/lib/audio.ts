@@ -178,6 +178,31 @@ export function chunkPassage(text: string, maxLen = 160): { text: string; offset
 let cpsEma = 15;
 const clampCps = (n: number) => Math.max(6, Math.min(40, n));
 
+/** The furthest chunk word whose estimated start time (`at`/`cps` seconds) has been reached by
+ *  `elapsedSec`, or -1 before the first. Pure core of the boundary-less highlight estimate: because it
+ *  reads real elapsed time each frame there is no fixed baseline lag. `chunkWords` is ordered by `at`. */
+export function wordAtElapsed(
+  chunkWords: { k: number; at: number }[],
+  cps: number,
+  elapsedSec: number
+): number {
+  let idx = -1;
+  for (const w of chunkWords) {
+    if (w.at / cps <= elapsedSec) idx = w.k;
+    else break;
+  }
+  return idx;
+}
+
+/** Fold a completed chunk's measured pace into the EMA (chars/sec at rate 1); returns `prev` unchanged
+ *  when the sample is unusable (too short, or an absurd rate from a cut/buffered chunk). Pure. */
+export function calibrateCps(prev: number, chunkChars: number, durSec: number, rate: number): number {
+  if (durSec < 0.3 || chunkChars <= 0 || rate <= 0) return prev;
+  const measured = chunkChars / durSec / rate;
+  if (!(measured > 3 && measured < 60)) return prev;
+  return clampCps(prev * 0.6 + measured * 0.4);
+}
+
 /**
  * Read a passage aloud as natural speech, calling `onWord(index)` as each word is spoken (via
  * `boundary` events) so the caller can highlight it. The text is split into sentence-sized chunks
@@ -271,19 +296,17 @@ export function speakPassage(
       setTimeout(() => {
         if (!alive() || !chunkAlive || boundarySeen || rafId !== null) return;
         const cps = cpsEma * rate; // chars/sec at this playback rate
-        let wi = 0;
+        let lastIdx = -1;
         const tick = () => {
           if (!alive() || !chunkAlive || boundarySeen) {
             rafId = null;
             return;
           }
-          const elapsed = (performance.now() - chunkStart) / 1000;
-          let idx = -1;
-          while (wi < chunkWords.length && chunkWords[wi]!.at / cps <= elapsed) {
-            idx = chunkWords[wi]!.k;
-            wi += 1;
+          const idx = wordAtElapsed(chunkWords, cps, (performance.now() - chunkStart) / 1000);
+          if (idx >= 0 && idx !== lastIdx) {
+            lastIdx = idx;
+            opts.onWord?.(idx);
           }
-          if (idx >= 0) opts.onWord?.(idx);
           rafId = requestAnimationFrame(tick);
         };
         rafId = requestAnimationFrame(tick);
@@ -302,11 +325,7 @@ export function speakPassage(
       // (a cancel bumps speechToken so alive() is false; onerror uses `advance` directly) that ran long
       // enough to be a clean sample. Normalised to rate 1 so it's reusable across speeds.
       if (alive() && chunkAlive && chunkStart > 0) {
-        const dur = (performance.now() - chunkStart) / 1000;
-        const measured = chunk.text.length / dur / rate;
-        if (dur >= 0.3 && measured > 3 && measured < 60) {
-          cpsEma = clampCps(cpsEma * 0.6 + measured * 0.4);
-        }
+        cpsEma = calibrateCps(cpsEma, chunk.text.length, (performance.now() - chunkStart) / 1000, rate);
       }
       advance();
     };
