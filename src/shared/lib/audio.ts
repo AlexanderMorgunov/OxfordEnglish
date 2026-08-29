@@ -171,6 +171,13 @@ export function chunkPassage(text: string, maxLen = 160): { text: string; offset
   return out;
 }
 
+// Self-calibrated English TTS pace (chars/sec at rate 1) for the estimate fallback used when the
+// engine emits no `boundary` events (local Windows voices, Android WebView, iOS). Seeded at a rough 15
+// and refined from each completed chunk's measured duration, so the highlight tracks the real voice
+// and speed instead of a fixed guess.
+let cpsEma = 15;
+const clampCps = (n: number) => Math.max(6, Math.min(40, n));
+
 /**
  * Read a passage aloud as natural speech, calling `onWord(index)` as each word is spoken (via
  * `boundary` events) so the caller can highlight it. The text is split into sentence-sized chunks
@@ -206,8 +213,6 @@ export function speakPassage(
   const alive = () => myToken === speechToken;
   const spans = wordSpans(text);
   const rate = opts.rate ?? 1;
-  // Rough English TTS pace for the estimate fallback below (~15 chars/s at rate 1).
-  const charsPerSec = 15 * rate;
 
   let ci = Math.min(Math.max(0, Math.floor(opts.startChunk ?? 0)), chunks.length);
   const speakNext = () => {
@@ -225,42 +230,86 @@ export function speakPassage(
     u.rate = rate;
 
     let boundarySeen = false;
-    let chunkAlive = true; // false once this chunk ends, so its stale estimate timers can't fire
+    let chunkAlive = true; // false once this chunk ends, so a stale estimate frame can't fire
+    let chunkStart = 0; // real speech start (set in onstart) — anchor for the estimate AND calibration
+    let rafId: number | null = null;
+    const stopEstimate = () => {
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    };
 
     u.onboundary = (e: SpeechSynthesisEvent) => {
       if (!alive() || (e.name && e.name !== 'word')) return;
       boundarySeen = true; // precise events available — the estimate fallback stands down
+      stopEstimate();
       const at = chunk.offset + e.charIndex;
       let idx = spans.findIndex((s) => at >= s.start && at < s.end);
       if (idx < 0) idx = spans.findIndex((s) => s.start >= at);
       if (idx >= 0) opts.onWord?.(idx);
     };
 
-    // Many engines (local Windows voices, iOS Safari) speak but never emit `boundary`, so the
-    // highlight would never move. When none has arrived shortly after speech starts, drive it by an
-    // estimated pace instead — approximate, but it follows along.
+    // This chunk's words with their char offset from the chunk start, in order — the estimator walks
+    // this short list (O(1) amortised per frame) instead of rescanning the whole passage.
+    const chunkWords: { k: number; at: number }[] = [];
+    for (let k = 0; k < spans.length; k++) {
+      const s = spans[k]!;
+      if (s.start >= chunk.offset && s.start < chunk.offset + chunk.text.length) {
+        chunkWords.push({ k, at: s.start - chunk.offset });
+      }
+    }
+
+    // Many engines (local Windows voices, Android WebView, iOS) never emit `boundary`, so drive the
+    // highlight by an estimated pace. A single rAF loop re-derives the word from *elapsed since
+    // chunkStart* each frame — self-correcting, so there is no fixed baseline lag and no per-timer
+    // jitter. It arms after a short window so a boundary-capable voice takes over first.
     u.onstart = () => {
-      if (!alive() || !opts.onWord) return;
+      if (!alive()) return;
+      chunkStart = performance.now();
+      if (!opts.onWord) return;
       setTimeout(() => {
-        if (!alive() || !chunkAlive || boundarySeen) return;
-        for (let k = 0; k < spans.length; k++) {
-          const s = spans[k]!;
-          if (s.start < chunk.offset || s.start >= chunk.offset + chunk.text.length) continue;
-          const delayMs = ((s.start - chunk.offset) / charsPerSec) * 1000;
-          setTimeout(() => {
-            if (alive() && chunkAlive && !boundarySeen) opts.onWord?.(k);
-          }, delayMs);
-        }
-      }, 220);
+        if (!alive() || !chunkAlive || boundarySeen || rafId !== null) return;
+        const cps = cpsEma * rate; // chars/sec at this playback rate
+        let wi = 0;
+        const tick = () => {
+          if (!alive() || !chunkAlive || boundarySeen) {
+            rafId = null;
+            return;
+          }
+          const elapsed = (performance.now() - chunkStart) / 1000;
+          let idx = -1;
+          while (wi < chunkWords.length && chunkWords[wi]!.at / cps <= elapsed) {
+            idx = chunkWords[wi]!.k;
+            wi += 1;
+          }
+          if (idx >= 0) opts.onWord?.(idx);
+          rafId = requestAnimationFrame(tick);
+        };
+        rafId = requestAnimationFrame(tick);
+      }, 120);
     };
 
     // Advance on end; on error, skip the failed chunk rather than stall the whole read.
     const advance = () => {
       chunkAlive = false;
+      stopEstimate();
       if (!alive()) return;
       speakNext();
     };
-    u.onend = advance;
+    u.onend = () => {
+      // Refine the pace EMA from this chunk's real duration — only a naturally-completed, live chunk
+      // (a cancel bumps speechToken so alive() is false; onerror uses `advance` directly) that ran long
+      // enough to be a clean sample. Normalised to rate 1 so it's reusable across speeds.
+      if (alive() && chunkAlive && chunkStart > 0) {
+        const dur = (performance.now() - chunkStart) / 1000;
+        const measured = chunk.text.length / dur / rate;
+        if (dur >= 0.3 && measured > 3 && measured < 60) {
+          cpsEma = clampCps(cpsEma * 0.6 + measured * 0.4);
+        }
+      }
+      advance();
+    };
     u.onerror = advance;
     window.speechSynthesis.speak(u);
   };
