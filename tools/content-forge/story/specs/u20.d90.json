@@ -1,0 +1,497 @@
+{
+  "id": "u20.d90",
+  "unitId": "u20",
+  "insertAt": 2,
+  "tags": [
+    "grammar.gerund-infinitive",
+    "functions.preferences",
+    "vocab.feelings",
+    "vocab.work"
+  ],
+  "title": {
+    "en": "Music On or Off?",
+    "ru": "Музыка: вкл или выкл?"
+  },
+  "vocab": {
+    "title": {
+      "en": "Music and feelings",
+      "ru": "Музыка и чувства"
+    },
+    "words": [
+      {
+        "word": "music",
+        "ru": "музыка",
+        "ipa": "/ˈmjuːzɪk/",
+        "example": "The music is too loud.",
+        "exampleRu": "Музыка слишком громкая."
+      },
+      {
+        "word": "headphones",
+        "ru": "наушники",
+        "ipa": "/ˈhedfəʊnz/",
+        "example": "I use headphones at work.",
+        "exampleRu": "Я использую наушники на работе."
+      },
+      {
+        "word": "speakers",
+        "ru": "колонки",
+        "ipa": "/ˈspiːkəz/",
+        "example": "The speakers are on the table.",
+        "exampleRu": "Колонки на столе."
+      },
+      {
+        "word": "to enjoy",
+        "ru": "наслаждаться, любить",
+        "ipa": "/ɪnˈdʒɔɪ/",
+        "example": "I enjoy listening to pop music.",
+        "exampleRu": "Я люблю слушать поп-музыку."
+      },
+      {
+        "word": "to prefer",
+        "ru": "предпочитать",
+        "ipa": "/prɪˈfɜːr/",
+        "example": "I prefer working in silence.",
+        "exampleRu": "Я предпочитаю работать в тишине."
+      },
+      {
+        "word": "to hate",
+        "ru": "ненавидеть",
+        "ipa": "/heɪt/",
+        "example": "I hate loud music.",
+        "exampleRu": "Я ненавижу громкую музыку."
+      },
+      {
+        "word": "to relax",
+        "ru": "расслабляться",
+        "ipa": "/rɪˈlæks/",
+        "example": "Music helps me to relax.",
+        "exampleRu": "Музыка помогает мне расслабиться."
+      },
+      {
+        "word": "to concentrate",
+        "ru": "сосредотачиваться",
+        "ipa": "/ˈkɒnsəntreɪt/",
+        "example": "I need to concentrate.",
+        "exampleRu": "Мне нужно сосредоточиться."
+      },
+      {
+        "word": "silence",
+        "ru": "тишина",
+        "ipa": "/ˈsaɪləns/",
+        "example": "I like the silence here.",
+        "exampleRu": "Мне нравится тишина здесь."
+      },
+      {
+        "word": "smoothie",
+        "ru": "смузи",
+        "ipa": "/ˈsmuːði/",
+        "example": "Pol drinks a green smoothie.",
+        "exampleRu": "Пол пьёт зелёный смузи."
+      },
+      {
+        "word": "rule",
+        "ru": "правило",
+        "ipa": "/ruːl/",
+        "example": "We need a fair rule.",
+        "exampleRu": "Нам нужно справедливое правило."
+      },
+      {
+        "word": "tired",
+        "ru": "уставший",
+        "ipa": "/ˈtaɪəd/",
+        "example": "Den is tired today.",
+        "exampleRu": "Ден сегодня уставший."
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "Verb + -ing vs verb + to-infinitive",
+      "ru": "Глагол + -ing и глагол + to (предпочтения)"
+    },
+    "ref": "gerund-infinitive",
+    "rule": {
+      "en": "Use verb + -ing after like, love, hate, enjoy and prefer. Use verb + to-infinitive after want, need, decide and try. Some verbs can take both forms, but the meaning can change. Look at stop: stop + -ing means finish; stop + to-infinitive means pause and do something.",
+      "ru": "После like, love, hate, enjoy и prefer используем глагол с -ing. После want, need, decide и try — to + глагол. Некоторые глаголы могут принимать обе формы, но значение меняется. Например, stop + -ing значит «перестать»; stop + to-infinitive значит «остановиться, чтобы»."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "Verb + -ing (preferences)",
+          "ru": "Глагол + -ing (предпочтения)"
+        },
+        "formula": "subject + like/love/hate/enjoy/prefer + verb-ing",
+        "examples": [
+          {
+            "en": "I love listening to music.",
+            "ru": "Я люблю слушать музыку."
+          }
+        ],
+        "ref": "gerund-infinitive"
+      },
+      {
+        "label": {
+          "en": "Verb + to-infinitive (plans and needs)",
+          "ru": "Глагол + to-infinitive (планы и потребности)"
+        },
+        "formula": "subject + want/need/decide/try + to-infinitive",
+        "examples": [
+          {
+            "en": "I need to concentrate.",
+            "ru": "Мне нужно сосредоточиться."
+          }
+        ],
+        "ref": "gerund-infinitive"
+      },
+      {
+        "label": {
+          "en": "Stop + -ing vs stop + to-infinitive",
+          "ru": "Stop + -ing и stop + to-infinitive"
+        },
+        "formula": "stop + verb-ing / stop + to-infinitive",
+        "examples": [
+          {
+            "en": "Den stopped drinking coffee.",
+            "ru": "Ден перестал пить кофе."
+          },
+          {
+            "en": "Pol stopped to drink his smoothie.",
+            "ru": "Пол остановился, чтобы выпить свой смузи."
+          }
+        ],
+        "ref": "gerund-infinitive"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "After enjoy, use verb-ing: \"I enjoy listening\", not \"I enjoy to listen\".",
+        "ru": "После enjoy используй глагол с -ing: «I enjoy listening», а не «I enjoy to listen»."
+      },
+      {
+        "en": "Stop + -ing and stop + to have different meanings: stop talking = finish talking; stop to talk = stop in order to talk.",
+        "ru": "Stop + -ing и stop + to имеют разные значения: stop talking = перестать говорить; stop to talk = остановиться, чтобы поговорить."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "Music On or Off?",
+      "ru": "Музыка: вкл или выкл?"
+    },
+    "blocks": [
+      {
+        "en": "Peter loves listening to music at work. He turns on his speakers. Loud pop music fills the office. Kate smiles. Den puts his hands over his ears.",
+        "ru": "Питер любит слушать музыку на работе. Он включает колонки. Громкая поп-музыка заполняет офис. Кейт улыбается. Ден закрывает уши руками.",
+        "image": "b1",
+        "alt": {
+          "en": "Peter turns on his speakers in the office",
+          "ru": "Питер включает колонки в офисе"
+        }
+      },
+      {
+        "en": "Pol says, \"I love listening to music while I work.\" Den shakes his head. \"I hate hearing music. I need to concentrate.\" Alex jokes, \"I enjoy sleeping, and music helps me to relax.\" Valery says, \"I prefer working in silence. I stopped listening to music years ago.\"",
+        "ru": "Пол говорит: «Я люблю слушать музыку, пока работаю». Ден качает головой. «Терпеть не могу слышать музыку. Мне нужно сосредоточиться». Алекс шутит: «Я люблю спать, а музыка помогает мне расслабиться». Валери говорит: «Я предпочитаю работать в тишине. Я перестала слушать музыку много лет назад»."
+      },
+      {
+        "en": "Kate wants to make everyone happy. \"Let's try to find a fair rule.\" Den says, \"I stopped drinking coffee last week, so I am tired.\" Pol laughs. \"I stopped to drink my smoothie, and now I feel better.\" Everyone laughs. They agree on headphones.",
+        "ru": "Кейт хочет сделать всех счастливыми. «Давайте попробуем найти справедливое правило». Ден говорит: «Я перестал пить кофе на прошлой неделе, поэтому я устал». Пол смеётся. «Я остановился, чтобы выпить мой смузи, и теперь чувствую себя лучше». Все смеются. Они договариваются о наушниках.",
+        "image": "b3",
+        "alt": {
+          "en": "Everyone agrees to use headphones",
+          "ru": "Все соглашаются использовать наушники"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "turn on",
+        "ru": "включать",
+        "ipa": "/tɜːn ɒn/"
+      },
+      {
+        "word": "fill",
+        "ru": "наполнять",
+        "ipa": "/fɪl/"
+      },
+      {
+        "word": "fair",
+        "ru": "справедливый",
+        "ipa": "/feər/"
+      },
+      {
+        "word": "agree",
+        "ru": "соглашаться",
+        "ipa": "/əˈɡriː/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "Music in the office",
+      "ru": "Музыка в офисе"
+    },
+    "dialogue": [
+      [
+        "I love listening to music.",
+        "Я люблю слушать музыку."
+      ],
+      [
+        "I hate hearing it.",
+        "Я ненавижу слышать её."
+      ],
+      [
+        "I need to concentrate.",
+        "Мне нужно сосредоточиться."
+      ],
+      [
+        "I prefer working in silence.",
+        "Я предпочитаю работать в тишине."
+      ],
+      [
+        "Let's use headphones.",
+        "Давайте использовать наушники."
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u20.d90.ex.l.01",
+        "instruction": {
+          "en": "What does Den hate?",
+          "ru": "Что ненавидит Ден?"
+        },
+        "tags": [
+          "listening.detail",
+          "vocab.feelings"
+        ],
+        "prompt": "I hate ___.",
+        "options": [
+          "hearing music",
+          "drinking coffee",
+          "working in silence"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u20.d90.ex.g.01",
+        "instruction": {
+          "en": "Complete with love/like + -ing.",
+          "ru": "Дополни love/like + -ing."
+        },
+        "tags": [
+          "grammar.gerund-infinitive",
+          "functions.preferences"
+        ],
+        "prompt": "Peter ___ listening to music.",
+        "cue": "(love)",
+        "answers": [
+          "loves"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u20.d90.ex.c.01",
+        "instruction": {
+          "en": "Choose the correct form.",
+          "ru": "Выбери правильную форму."
+        },
+        "tags": [
+          "grammar.gerund-infinitive",
+          "vocab.feelings"
+        ],
+        "prompt": "Den hates ___ music.",
+        "options": [
+          "hearing",
+          "to hear",
+          "hear"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "u20.d90.ex.g.02",
+        "instruction": {
+          "en": "Complete with enjoy + -ing.",
+          "ru": "Дополни enjoy + -ing."
+        },
+        "tags": [
+          "grammar.gerund-infinitive",
+          "vocab.feelings"
+        ],
+        "prompt": "Alex enjoys ___ in the office.",
+        "cue": "(relax)",
+        "answers": [
+          "relaxing"
+        ]
+      },
+      {
+        "type": "spot-error",
+        "id": "u20.d90.ex.s.01",
+        "instruction": {
+          "en": "Which sentence is correct?",
+          "ru": "Какое предложение верное?"
+        },
+        "tags": [
+          "grammar.gerund-infinitive"
+        ],
+        "variants": [
+          "I need to concentrate.",
+          "I need concentrate."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "u20.d90.ex.g.03",
+        "instruction": {
+          "en": "Complete with prefer + -ing.",
+          "ru": "Дополни prefer + -ing."
+        },
+        "tags": [
+          "grammar.gerund-infinitive",
+          "functions.preferences"
+        ],
+        "prompt": "Valery prefers ___ in silence.",
+        "cue": "(work)",
+        "answers": [
+          "working"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u20.d90.ex.c.02",
+        "instruction": {
+          "en": "Choose the correct form.",
+          "ru": "Выбери правильную форму."
+        },
+        "tags": [
+          "grammar.gerund-infinitive",
+          "vocab.work"
+        ],
+        "prompt": "We decided ___ headphones.",
+        "options": [
+          "to use",
+          "using",
+          "use"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "order-words",
+        "id": "u20.d90.ex.o.01",
+        "instruction": {
+          "en": "Make a sentence.",
+          "ru": "Собери предложение."
+        },
+        "tags": [
+          "grammar.gerund-infinitive"
+        ],
+        "tokens": [
+          "Den",
+          "stopped",
+          "drinking",
+          "coffee"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "type": "match",
+        "id": "u20.d90.ex.m.01",
+        "instruction": {
+          "en": "Match the word and the translation.",
+          "ru": "Сопоставь слово и перевод."
+        },
+        "tags": [
+          "vocab.feelings"
+        ],
+        "pairs": [
+          {
+            "left": "enjoy",
+            "right": "наслаждаться"
+          },
+          {
+            "left": "hate",
+            "right": "ненавидеть"
+          },
+          {
+            "left": "prefer",
+            "right": "предпочитать"
+          },
+          {
+            "left": "concentrate",
+            "right": "сосредотачиваться"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u20.d90.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.gerund-infinitive",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Я люблю слушать музыку.",
+        "answers": [
+          "I love listening to music.",
+          "I like listening to music."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "i love to listen to music",
+              "i love listen to music"
+            ],
+            "explanation": {
+              "en": "After love we use verb + -ing.",
+              "ru": "После love используется глагол с -ing."
+            }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u20.d90.ex.t.02",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.gerund-infinitive",
+          "writing.translation",
+          "vocab.food"
+        ],
+        "direction": "ru-en",
+        "prompt": "Он остановился, чтобы выпить смузи.",
+        "answers": [
+          "He stopped to drink his smoothie."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "he stopped drinking his smoothie"
+            ],
+            "explanation": {
+              "en": "stop to do = pause in order to do; stop doing = finish.",
+              "ru": "stop to do = остановиться, чтобы сделать; stop doing = перестать делать."
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

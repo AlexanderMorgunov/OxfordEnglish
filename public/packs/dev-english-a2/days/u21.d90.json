@@ -1,0 +1,629 @@
+{
+  "id": "u21.d90",
+  "title": {
+    "en": "Valery Retires",
+    "ru": "Валерий выходит на пенсию"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.future-continuous",
+    "grammar.be-about-to",
+    "vocab.celebrations",
+    "vocab.plans"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u21.d90.vocab",
+      "title": {
+        "en": "Farewell party",
+        "ru": "Прощальная вечеринка"
+      },
+      "words": [
+        {
+          "word": "retire",
+          "ru": "уходить на пенсию",
+          "ipa": "/rɪˈtaɪə/",
+          "example": "He wants to retire.",
+          "exampleRu": "Он хочет выйти на пенсию.",
+          "audio": {
+            "src": "media/audio/u21.d90.vocab.retire.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "retirement",
+          "ru": "выход на пенсию",
+          "ipa": "/rɪˈtaɪəmənt/",
+          "example": "Their retirement is next month.",
+          "exampleRu": "Их выход на пенсию в следующем месяце.",
+          "audio": {
+            "src": "media/audio/u21.d90.vocab.retirement.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "farewell",
+          "ru": "прощание",
+          "ipa": "/ˌfeəˈwel/",
+          "example": "We have a small farewell for Valery.",
+          "exampleRu": "У нас небольшое прощание для Валерия.",
+          "audio": {
+            "src": "media/audio/u21.d90.vocab.farewell.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "speech",
+          "ru": "речь",
+          "ipa": "/spiːtʃ/",
+          "example": "Kate will give a speech.",
+          "exampleRu": "Кейт произнесёт речь.",
+          "audio": {
+            "src": "media/audio/u21.d90.vocab.speech.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cake",
+          "ru": "торт",
+          "ipa": "/keɪk/",
+          "example": "The cake arrives at four.",
+          "exampleRu": "Торт привезут в четыре.",
+          "audio": {
+            "src": "media/audio/u21.d90.vocab.cake.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "stamp",
+          "ru": "марка",
+          "ipa": "/stæmp/",
+          "example": "He collects old stamps.",
+          "exampleRu": "Он коллекционирует старые марки.",
+          "audio": {
+            "src": "media/audio/u21.d90.vocab.stamp.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "alarm",
+          "ru": "будильник",
+          "ipa": "/əˈlɑːm/",
+          "example": "I won't set an alarm.",
+          "exampleRu": "Я не буду заводить будильник.",
+          "audio": {
+            "src": "media/audio/u21.d90.vocab.alarm.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "relax",
+          "ru": "отдыхать",
+          "ipa": "/rɪˈlæks/",
+          "example": "He will be relaxing at home.",
+          "exampleRu": "Он будет отдыхать дома.",
+          "audio": {
+            "src": "media/audio/u21.d90.vocab.relax.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "collect",
+          "ru": "коллекционировать",
+          "ipa": "/kəˈlekt/",
+          "example": "She collects stamps.",
+          "exampleRu": "Она коллекционирует марки.",
+          "audio": {
+            "src": "media/audio/u21.d90.vocab.collect.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "timetable",
+          "ru": "расписание",
+          "ipa": "/ˈtaɪmˌteɪbl/",
+          "example": "The timetable says the cake comes at four.",
+          "exampleRu": "По расписанию торт привезут в четыре.",
+          "audio": {
+            "src": "media/audio/u21.d90.vocab.timetable.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "present",
+          "ru": "подарок",
+          "ipa": "/ˈprezənt/",
+          "example": "They gave him a present.",
+          "exampleRu": "Ему подарили подарок.",
+          "audio": {
+            "src": "media/audio/u21.d90.vocab.present.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "party",
+          "ru": "вечеринка",
+          "ipa": "/ˈpɑːti/",
+          "example": "The party starts at five.",
+          "exampleRu": "Вечеринка начинается в пять.",
+          "audio": {
+            "src": "media/audio/u21.d90.vocab.party.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u21.d90.grammar",
+      "title": {
+        "en": "Future continuous · be about to · timetables",
+        "ru": "Future continuous · be about to · расписания"
+      },
+      "ref": "future-forms-extended",
+      "rule": {
+        "en": "Use will be + -ing for actions in progress at a future time. Use be about to + base verb for the very near future. Use present simple (arrives, starts) for timetables and schedules.",
+        "ru": "Используй will be + -ing для действий, которые будут в процессе в будущем. Используй be about to + начальная форма для самого ближайшего будущего. Используй present simple (arrives, starts) для расписаний и графиков."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Future continuous",
+            "ru": "Future continuous"
+          },
+          "formula": "subject + will be + verb-ing",
+          "examples": [
+            {
+              "en": "This time next week, Valery will be relaxing at home.",
+              "ru": "В это время на следующей неделе Валерий будет отдыхать дома."
+            }
+          ],
+          "ref": "future-forms-extended"
+        },
+        {
+          "label": {
+            "en": "be about to",
+            "ru": "be about to"
+          },
+          "formula": "subject + am/is/are about to + base verb",
+          "examples": [
+            {
+              "en": "Kate is about to give a speech.",
+              "ru": "Кейт сейчас скажет речь."
+            }
+          ],
+          "ref": "future-forms-extended"
+        },
+        {
+          "label": {
+            "en": "Present simple for timetables",
+            "ru": "Present simple для расписаний"
+          },
+          "formula": "subject + present simple (arrives, starts)",
+          "examples": [
+            {
+              "en": "The cake arrives at four.",
+              "ru": "Торт привезут в четыре."
+            }
+          ],
+          "ref": "future-forms-extended"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use will be for timetables. Say 'The cake arrives at four', not 'The cake will be arriving at four'.",
+          "ru": "Не используй will be для расписаний. Говори «The cake arrives at four», а не «The cake will be arriving at four»."
+        },
+        {
+          "en": "Use the base verb after 'about to': 'I am about to start', not 'I am about to starting'.",
+          "ru": "Используй начальную форму после «about to»: «I am about to start», а не «I am about to starting»."
+        },
+        {
+          "en": "Negative future continuous: 'won't be + verb-ing', not 'won't be + verb'.",
+          "ru": "Отрицательное future continuous: «won't be + глагол с -ing», а не «won't be + глагол»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u21.d90.reading",
+      "title": {
+        "en": "Valery Retires",
+        "ru": "Валерий выходит на пенсию"
+      },
+      "blocks": [
+        {
+          "id": "u21.d90.reading.b1",
+          "en": "For years, Valery said, \"I'm retiring on Friday.\" It was a joke. But today it is real. Kate smiles: \"This time next week, Valery will be relaxing at home, not fixing bugs.\" Everyone looks at Valery. He nods.",
+          "ru": "Много лет Валерий говорил: «Я выхожу на пенсию в пятницу». Это была шутка. Но сегодня это по-настоящему. Кейт улыбается: «В это время на следующей неделе Валерий будет отдыхать дома, а не чинить баги». Все смотрят на Валерия. Он кивает.",
+          "audio": {
+            "src": "media/audio/u21.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u21.d90.reading.b2",
+          "en": "The team plans a small farewell. Kate reads the timetable: \"The cake arrives at four. The speeches start at five.\" Pol adds, \"He'll be collecting his stamps every morning.\" Peter asks, \"What'll you be doing next year?\" Valery smiles. \"I'll be reading and sleeping.\"",
+          "ru": "Команда планирует маленькое прощание. Кейт читает расписание: «Торт привезут в четыре. Речи начнутся в пять». Пол добавляет: «Он будет каждое утро коллекционировать свои марки». Питер спрашивает: «Что ты будешь делать в следующем году?» Валерий улыбается: «Буду читать и спать».",
+          "audio": {
+            "src": "media/audio/u21.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u21.d90.reading.b3",
+          "en": "At five, everyone is ready. Alex looks at the clock. \"Kate is about to speak!\" Kate talks about Valery's work. Valery is quiet and happy. \"This time tomorrow, I won't be setting an alarm.\" The team is a little sad, but mostly happy. They all raise their cups.",
+          "ru": "В пять все готовы. Алекс смотрит на часы. «Кейт сейчас скажет речь!» Кейт говорит о работе Валерия. Валерий тих и счастлив. «Завтра в это время я не буду заводить будильник». Команде немного грустно, но в основном радостно. Все поднимают чашки.",
+          "audio": {
+            "src": "media/audio/u21.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "nod",
+          "ru": "кивать",
+          "ipa": "/nɒd/"
+        },
+        {
+          "word": "to raise",
+          "ru": "поднимать",
+          "ipa": "/reɪz/"
+        },
+        {
+          "word": "real",
+          "ru": "настоящий",
+          "ipa": "/rɪəl/"
+        },
+        {
+          "word": "cup",
+          "ru": "чашка",
+          "ipa": "/kʌp/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u21.d90.listening",
+      "title": {
+        "en": "The farewell plan",
+        "ru": "Прощальный план"
+      },
+      "audio": {
+        "src": "media/audio/u21.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.72,
+          "en": "The cake arrives at four.",
+          "ru": "Торт привезут в четыре."
+        },
+        {
+          "start": 1.72,
+          "end": 3.3,
+          "en": "What'll you be doing next year?",
+          "ru": "Что ты будешь делать в следующем году?"
+        },
+        {
+          "start": 3.3,
+          "end": 5.15,
+          "en": "I'll be relaxing at home.",
+          "ru": "Я буду отдыхать дома."
+        },
+        {
+          "start": 5.15,
+          "end": 6.54,
+          "en": "Kate is about to speak!",
+          "ru": "Кейт сейчас скажет речь!"
+        },
+        {
+          "start": 6.54,
+          "end": 8.29,
+          "en": "I won't be setting an alarm.",
+          "ru": "Я не буду заводить будильник."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u21.d90.ex.l.01",
+          "instruction": {
+            "en": "What time does the cake arrive?",
+            "ru": "Во сколько привезут торт?"
+          },
+          "tags": [
+            "listening.detail",
+            "vocab.celebrations"
+          ],
+          "prompt": "The cake arrives at ___.",
+          "options": [
+            "four",
+            "five",
+            "six"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u21.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u21.d90.ex.g.01",
+          "instruction": {
+            "en": "Future continuous.",
+            "ru": "Future continuous."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "prompt": "This time next week, Valery ___ at home.",
+          "cue": "(relax)",
+          "answers": [
+            "will be relaxing"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u21.d90.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct phrase.",
+            "ru": "Выбери правильную фразу."
+          },
+          "tags": [
+            "grammar.be-about-to"
+          ],
+          "prompt": "The meeting ___ start!",
+          "options": [
+            "is about to",
+            "will be starting",
+            "starts"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u21.d90.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "variants": [
+            "Valery will be collect stamps.",
+            "Valery will be collecting stamps."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "order-words",
+          "id": "u21.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.future-continuous",
+            "vocab.plans"
+          ],
+          "tokens": [
+            "I",
+            "will",
+            "be",
+            "collecting",
+            "stamps",
+            "every",
+            "morning"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u21.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.celebrations"
+          ],
+          "pairs": [
+            {
+              "left": "retire",
+              "right": "уходить на пенсию"
+            },
+            {
+              "left": "speech",
+              "right": "речь"
+            },
+            {
+              "left": "timetable",
+              "right": "расписание"
+            },
+            {
+              "left": "stamp",
+              "right": "марка"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u21.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.future-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он будет отдыхать дома.",
+          "answers": [
+            "He will be relaxing at home.",
+            "He'll be relaxing at home."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he will relaxing",
+                "he will be relax"
+              ],
+              "explanation": {
+                "en": "Use will be + verb-ing.",
+                "ru": "Используй will be + глагол с -ing."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u21.d90.ex.g.02",
+          "instruction": {
+            "en": "Present simple for timetables.",
+            "ru": "Present simple для расписаний."
+          },
+          "tags": [
+            "vocab.plans"
+          ],
+          "prompt": "The cake ___ at four.",
+          "cue": "(arrive)",
+          "answers": [
+            "arrives"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u21.d90.ex.c.02",
+          "instruction": {
+            "en": "Choose the correct verb form.",
+            "ru": "Выбери правильную форму глагола."
+          },
+          "tags": [
+            "grammar.be-about-to"
+          ],
+          "prompt": "I am about to ___.",
+          "options": [
+            "give",
+            "giving",
+            "gives"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "u21.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.be-about-to",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Кейт сейчас скажет речь.",
+          "answers": [
+            "Kate is about to give a speech.",
+            "Kate's about to give a speech."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "kate is about to giving a speech",
+                "kate about to give a speech"
+              ],
+              "explanation": {
+                "en": "Use am/is/are + about to + base verb.",
+                "ru": "Используй am/is/are + about to + начальная форма."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u21.d90.ex.g.03",
+          "instruction": {
+            "en": "Future continuous: question.",
+            "ru": "Future continuous: вопрос."
+          },
+          "tags": [
+            "grammar.future-continuous"
+          ],
+          "prompt": "What ___ you be doing next year?",
+          "answers": [
+            "will"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,495 @@
+{
+  "id": "u19.d90",
+  "unitId": "u19",
+  "insertAt": 2,
+  "tags": [
+    "grammar.modals-deduction",
+    "grammar.modals-deduction-past",
+    "functions.storytelling",
+    "vocab.work"
+  ],
+  "title": {
+    "en": "The Mysterious Gift",
+    "ru": "Загадочный подарок"
+  },
+  "vocab": {
+    "title": {
+      "en": "Office detective",
+      "ru": "Офисный детектив"
+    },
+    "words": [
+      {
+        "word": "gift",
+        "ru": "подарок",
+        "ipa": "/ɡɪft/",
+        "example": "The gift was on the desk.",
+        "exampleRu": "Подарок был на столе."
+      },
+      {
+        "word": "card",
+        "ru": "открытка",
+        "ipa": "/kɑːd/",
+        "example": "She read the card.",
+        "exampleRu": "Она прочитала открытку."
+      },
+      {
+        "word": "note",
+        "ru": "записка",
+        "ipa": "/nəʊt/",
+        "example": "There was a note on the gift.",
+        "exampleRu": "На подарке была записка."
+      },
+      {
+        "word": "smell",
+        "ru": "запах",
+        "ipa": "/smel/",
+        "example": "The smell was sweet.",
+        "exampleRu": "Запах был сладким."
+      },
+      {
+        "word": "smoothie",
+        "ru": "смузи",
+        "ipa": "/ˈsmuːði/",
+        "example": "He drinks a smoothie every morning.",
+        "exampleRu": "Он пьёт смузи каждое утро."
+      },
+      {
+        "word": "desk",
+        "ru": "письменный стол",
+        "ipa": "/desk/",
+        "example": "Kate's desk is by the window.",
+        "exampleRu": "Стол Кейт у окна."
+      },
+      {
+        "word": "paper",
+        "ru": "бумага, обёртка",
+        "ipa": "/ˈpeɪpə/",
+        "example": "The gift was in green paper.",
+        "exampleRu": "Подарок был в зелёной бумаге."
+      },
+      {
+        "word": "name",
+        "ru": "имя",
+        "ipa": "/neɪm/",
+        "example": "There was no name on it.",
+        "exampleRu": "На нём не было имени."
+      },
+      {
+        "word": "writing",
+        "ru": "почерк",
+        "ipa": "/ˈraɪtɪŋ/",
+        "example": "The writing was neat.",
+        "exampleRu": "Почерк был аккуратным."
+      },
+      {
+        "word": "cleaner",
+        "ru": "уборщик",
+        "ipa": "/ˈkliːnə/",
+        "example": "The cleaner left at seven.",
+        "exampleRu": "Уборщик ушёл в семь."
+      },
+      {
+        "word": "clue",
+        "ru": "улика",
+        "ipa": "/kluː/",
+        "example": "The smell was a clue.",
+        "exampleRu": "Запах был уликой."
+      },
+      {
+        "word": "present",
+        "ru": "подарок",
+        "ipa": "/ˈpreznt/",
+        "example": "He gave her a present.",
+        "exampleRu": "Он подарил ей подарок."
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "Deduction: must / can't / might (+ have)",
+      "ru": "Дедукция: must / can't / might (+ have)"
+    },
+    "ref": "modals-deduction",
+    "rule": {
+      "en": "Use must to say you are sure something is true. Use can't to say you are sure something is impossible. Use might to say something is possible. For the past, use must have, can't have, or might have + past participle.",
+      "ru": "Используйте must, когда вы уверены, что что-то правда. Используйте can't, когда вы уверены, что что-то невозможно. Используйте might, когда что-то возможно. Для прошлого используйте must have, can't have или might have + причастие прошедшего времени."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "Present deduction",
+          "ru": "Дедукция в настоящем"
+        },
+        "formula": "subject + must/can't/might + base verb",
+        "examples": [
+          {
+            "en": "It must be from a client.",
+            "ru": "Это, должно быть, от клиента."
+          },
+          {
+            "en": "It can't be from Alex.",
+            "ru": "Это не может быть от Алекса."
+          },
+          {
+            "en": "It might be a present.",
+            "ru": "Возможно, это подарок."
+          }
+        ],
+        "ref": "modals-deduction"
+      },
+      {
+        "label": {
+          "en": "Past deduction",
+          "ru": "Дедукция в прошлом"
+        },
+        "formula": "subject + must/can't/might have + past participle",
+        "examples": [
+          {
+            "en": "Someone must have made it.",
+            "ru": "Кто-то, должно быть, сделал это."
+          },
+          {
+            "en": "It can't have been the cleaners.",
+            "ru": "Это не могли быть уборщики."
+          },
+          {
+            "en": "She might have left it early.",
+            "ru": "Возможно, она оставила это рано."
+          }
+        ],
+        "ref": "modals-deduction-past"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "Don't use \"mustn't\" for deduction. Use \"can't\" to say something is impossible.",
+        "ru": "Не используйте «mustn't» для дедукции. Используйте «can't», чтобы сказать, что что-то невозможно."
+      },
+      {
+        "en": "After \"might have\" and \"can't have\", use the past participle, not the base verb.",
+        "ru": "После «might have» и «can't have» используйте причастие прошедшего времени, а не начальную форму."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "The Mysterious Gift",
+      "ru": "Загадочный подарок"
+    },
+    "blocks": [
+      {
+        "en": "On Monday morning Kate came to work. There was a small gift on her desk. There was no name on it. The team looked at the gift. \"What is this?\" said Alex. \"Who left it?\" said Kate.",
+        "ru": "В понедельник утром Кейт пришла на работу. На её столе лежал маленький подарок. На нём не было имени. Команда посмотрела на подарок. «Что это?» — сказал Алекс. «Кто его оставил?» — сказала Кейт.",
+        "image": "b1",
+        "alt": {
+          "en": "The team looks at a mysterious gift on Kate's desk",
+          "ru": "Команда смотрит на загадочный подарок на столе Кейт"
+        }
+      },
+      {
+        "en": "Den looked at the paper. \"It must be from someone kind,\" he said. \"It can't be from Alex — he never buys presents.\" Alex smiled. \"It might be from a client.\" Pol came closer. \"It smells like a smoothie. Someone must have made it this morning.\"",
+        "ru": "Ден посмотрел на бумагу. «Это, должно быть, от доброго человека, — сказал он. — Это не может быть от Алекса — он никогда не покупает подарки». Алекс улыбнулся. «Возможно, это от клиента». Пол подошёл ближе. «Пахнет смузи. Кто-то, должно быть, сделал его этим утром»."
+      },
+      {
+        "en": "Kate read the card. \"The writing is neat. It was left before nine.\" Then she thought. \"It can't have been the cleaners — they left at seven.\" Pol laughed. \"I left it. It's a thank-you present, Kate.\" Everybody laughed warmly.",
+        "ru": "Кейт прочитала открытку. «Почерк аккуратный. Это оставили до девяти». Потом она задумалась. «Это не могли быть уборщики — они ушли в семь». Пол засмеялся. «Это оставил я. Это благодарственный подарок, Кейт». Все тепло засмеялись.",
+        "image": "b3",
+        "alt": {
+          "en": "Pol admits he left the thank-you gift",
+          "ru": "Пол признаётся, что оставил благодарственный подарок"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "wrapping",
+        "ru": "обёртка",
+        "ipa": "/ˈræpɪŋ/"
+      },
+      {
+        "word": "neat",
+        "ru": "аккуратный",
+        "ipa": "/niːt/"
+      },
+      {
+        "word": "cleaner",
+        "ru": "уборщик",
+        "ipa": "/ˈkliːnə/"
+      },
+      {
+        "word": "detective",
+        "ru": "детектив",
+        "ipa": "/dɪˈtektɪv/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "Detective work",
+      "ru": "Работа детектива"
+    },
+    "dialogue": [
+      [
+        "Who left this gift?",
+        "Кто оставил этот подарок?"
+      ],
+      [
+        "It must be for Kate.",
+        "Это, должно быть, для Кейт."
+      ],
+      [
+        "It can't be from Alex.",
+        "Это не может быть от Алекса."
+      ],
+      [
+        "It might be from a client.",
+        "Возможно, это от клиента."
+      ],
+      [
+        "I left it. Thank you.",
+        "Это оставил я. Спасибо."
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u19.d90.ex.l.01",
+        "instruction": {
+          "en": "Who actually left the gift?",
+          "ru": "Кто на самом деле оставил подарок?"
+        },
+        "tags": [
+          "listening.detail",
+          "functions.storytelling"
+        ],
+        "prompt": "___ left it.",
+        "options": [
+          "Pol",
+          "Alex",
+          "A client"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u19.d90.ex.g.01",
+        "instruction": {
+          "en": "Fill in the modal.",
+          "ru": "Вставь модальный глагол."
+        },
+        "tags": [
+          "grammar.modals-deduction"
+        ],
+        "prompt": "The gift ___ be from a client.",
+        "cue": "(might)",
+        "answers": [
+          "might"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u19.d90.ex.c.01",
+        "instruction": {
+          "en": "Choose the correct modal.",
+          "ru": "Выбери правильный модальный глагол."
+        },
+        "tags": [
+          "grammar.modals-deduction"
+        ],
+        "prompt": "It ___ be from Alex — he never buys presents.",
+        "options": [
+          "must",
+          "can't",
+          "might"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "type": "spot-error",
+        "id": "u19.d90.ex.s.01",
+        "instruction": {
+          "en": "Which sentence is correct?",
+          "ru": "Какое предложение верное?"
+        },
+        "tags": [
+          "grammar.modals-deduction-past"
+        ],
+        "variants": [
+          "It might has been a client.",
+          "It might have been a client."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "type": "order-words",
+        "id": "u19.d90.ex.o.01",
+        "instruction": {
+          "en": "Make a sentence.",
+          "ru": "Собери предложение."
+        },
+        "tags": [
+          "grammar.modals-deduction-past"
+        ],
+        "tokens": [
+          "Someone",
+          "must",
+          "have",
+          "made",
+          "it",
+          "this",
+          "morning"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "type": "match",
+        "id": "u19.d90.ex.m.01",
+        "instruction": {
+          "en": "Match the word and translation.",
+          "ru": "Сопоставь слово и перевод."
+        },
+        "tags": [
+          "vocab.work",
+          "vocab.food"
+        ],
+        "pairs": [
+          {
+            "left": "gift",
+            "right": "подарок"
+          },
+          {
+            "left": "smell",
+            "right": "запах"
+          },
+          {
+            "left": "smoothie",
+            "right": "смузи"
+          },
+          {
+            "left": "desk",
+            "right": "письменный стол"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u19.d90.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.modals-deduction",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Это не может быть от Алекса.",
+        "answers": [
+          "It can't be from Alex."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "it mustn't be from alex"
+            ],
+            "explanation": {
+              "en": "Use can't, not mustn't, for impossible.",
+              "ru": "Используйте can't, а не mustn't, для невозможного."
+            }
+          }
+        ]
+      },
+      {
+        "type": "gap-fill",
+        "id": "u19.d90.ex.g.02",
+        "instruction": {
+          "en": "Past deduction with can't.",
+          "ru": "Дедукция в прошлом с can't."
+        },
+        "tags": [
+          "grammar.modals-deduction-past"
+        ],
+        "prompt": "It ___ have been the cleaners.",
+        "cue": "(can't)",
+        "answers": [
+          "can't"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u19.d90.ex.c.02",
+        "instruction": {
+          "en": "Choose the correct word.",
+          "ru": "Выбери правильное слово."
+        },
+        "tags": [
+          "functions.storytelling"
+        ],
+        "prompt": "___ smells like a smoothie.",
+        "options": [
+          "It",
+          "He",
+          "They"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "translate",
+        "id": "u19.d90.ex.t.02",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.modals-deduction-past",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Кто-то, должно быть, сделал это утром.",
+        "answers": [
+          "Someone must have made it this morning."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "someone must has made",
+              "someone must make"
+            ],
+            "explanation": {
+              "en": "Use \"must have + past participle\" for past deduction.",
+              "ru": "Используйте «must have + причастие» для дедукции в прошлом."
+            }
+          }
+        ]
+      },
+      {
+        "type": "gap-fill",
+        "id": "u19.d90.ex.g.03",
+        "instruction": {
+          "en": "Fill in the modal for deduction.",
+          "ru": "Вставь модальный глагол для дедукции."
+        },
+        "tags": [
+          "grammar.modals-deduction"
+        ],
+        "prompt": "The gift ___ be for Kate.",
+        "cue": "(must)",
+        "answers": [
+          "must"
+        ]
+      }
+    ]
+  }
+}
