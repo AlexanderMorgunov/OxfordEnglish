@@ -147,12 +147,14 @@ export function wordSpans(text: string): WordSpan[] {
 
 /**
  * Split a passage into small, utterance-sized chunks. Chrome silently drops utterances that are too
- * long (and cuts any off after ~15s), so one big paragraph — common in PDFs, where paragraphs get
- * merged — simply never plays. We prefer sentence boundaries and hard-split any sentence still over
- * `maxLen` at a space. Each chunk carries its `offset` in the original text so a chunk-local boundary
- * event maps back to the correct global word for highlighting.
+ * long (and cuts any off after ~15s), so one big paragraph never plays. Each chunk is ALSO the unit the
+ * read-aloud highlight advances through (one chunk per `start` event), so we split finely — at sentence
+ * ends, then at clause punctuation (`, ; : —`, a following space required so digit forms like 1,000 /
+ * 9:30 / 1–2 never split), tiny fragments merged forward, and anything still over `maxLen` hard-split at
+ * a space — giving roughly line-sized chunks so the highlight tracks a phrase, not a whole sentence.
+ * Each chunk carries its `offset` in the original text (chunks are contiguous slices).
  */
-export function chunkPassage(text: string, maxLen = 160): { text: string; offset: number }[] {
+export function chunkPassage(text: string, maxLen = 72): { text: string; offset: number }[] {
   const out: { text: string; offset: number }[] = [];
   const sentenceRe = /[^.!?…]*[.!?…]+["')\]»]*\s*|[^.!?…]+$/g;
   let m: RegExpExecArray | null;
@@ -160,21 +162,41 @@ export function chunkPassage(text: string, maxLen = 160): { text: string; offset
     const sentence = m[0];
     if (!sentence.trim()) continue;
     const base = m.index;
-    if (sentence.length <= maxLen) {
-      out.push({ text: sentence, offset: base });
-      continue;
+    // Break the sentence into clause pieces (contiguous slices, punctuation kept with its clause).
+    const clauses: { text: string; offset: number }[] = [];
+    const clauseRe = /[,;:—–]\s+/g;
+    let cm: RegExpExecArray | null;
+    let last = 0;
+    while ((cm = clauseRe.exec(sentence)) !== null) {
+      const cut = cm.index + cm[0].length;
+      clauses.push({ text: sentence.slice(last, cut), offset: base + last });
+      last = cut;
     }
-    // A single sentence longer than maxLen: break it at spaces near the limit.
-    let i = 0;
-    while (i < sentence.length) {
-      let end = Math.min(i + maxLen, sentence.length);
-      if (end < sentence.length) {
-        const sp = sentence.lastIndexOf(' ', end);
-        if (sp > i) end = sp + 1;
+    clauses.push({ text: sentence.slice(last), offset: base + last });
+    // Merge a very short piece forward so we don't get 1–2-word fragments.
+    const clean: { text: string; offset: number }[] = [];
+    for (const c of clauses) {
+      const prev = clean[clean.length - 1];
+      if (prev && prev.text.trim().length < 16) prev.text += c.text;
+      else clean.push({ ...c });
+    }
+    // Hard-split any piece still over maxLen at a space.
+    for (const c of clean) {
+      if (c.text.length <= maxLen) {
+        out.push(c);
+        continue;
       }
-      const piece = sentence.slice(i, end);
-      if (piece.trim()) out.push({ text: piece, offset: base + i });
-      i = end;
+      let i = 0;
+      while (i < c.text.length) {
+        let end = Math.min(i + maxLen, c.text.length);
+        if (end < c.text.length) {
+          const sp = c.text.lastIndexOf(' ', end);
+          if (sp > i) end = sp + 1;
+        }
+        const piece = c.text.slice(i, end);
+        if (piece.trim()) out.push({ text: piece, offset: c.offset + i });
+        i = end;
+      }
     }
   }
   if (out.length === 0 && text.trim()) out.push({ text, offset: 0 });
