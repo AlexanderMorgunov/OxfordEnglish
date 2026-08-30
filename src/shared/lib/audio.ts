@@ -124,6 +124,16 @@ export type WordSpan = { start: number; end: number };
 export const WORD_SPLIT_RE = /([A-Za-z']+)/;
 export const WORD_TEST_RE = /^[A-Za-z']+$/;
 
+/** Abbreviations whose trailing period is NOT a sentence end ("Mr. Blood", "St. James"). Shared by
+ *  the reader's sentence splitter (`toSentences`) and TTS chunking so neither treats them, nor a lone
+ *  initial ("H. G. Wells"), as a boundary. Alternation source (no internal dots). */
+export const ABBREVIATIONS =
+  'Mr|Mrs|Ms|Mx|Dr|Prof|Rev|Fr|Sr|Jr|St|Gen|Col|Maj|Capt|Lt|Sgt|Cpl|Hon|Pres|Gov|Sen|Rep|Messrs|Mmes|vs|etc|cf|al|viz|esp|approx|No|Vol|Ch|Fig|pp|Ave|Rd|Blvd|Mt|Ft|Co|Inc|Ltd|Corp|Dept|Univ';
+
+/** True if `s` ends in an abbreviation or a single-letter initial + period — i.e. its final period is
+ *  not a real sentence end. */
+const ABBR_END_RE = new RegExp(`(?:\\b(?:${ABBREVIATIONS})|\\b[A-Z])\\.$`);
+
 /** Char offsets [start, end) of each spoken word — used to map speech position to a token. */
 export function wordSpans(text: string): WordSpan[] {
   const spans: WordSpan[] = [];
@@ -168,7 +178,16 @@ export function chunkPassage(text: string, maxLen = 160): { text: string; offset
     }
   }
   if (out.length === 0 && text.trim()) out.push({ text, offset: 0 });
-  return out;
+  // Merge a chunk ending in an abbreviation/initial ("Mr.", "H.") into the next so TTS never pauses
+  // mid-name. Chunks are contiguous slices, so the merged text is still the original substring at the
+  // earlier offset.
+  const merged: { text: string; offset: number }[] = [];
+  for (const c of out) {
+    const prev = merged[merged.length - 1];
+    if (prev && ABBR_END_RE.test(prev.text.trim())) prev.text += c.text;
+    else merged.push({ ...c });
+  }
+  return merged;
 }
 
 // Self-calibrated English TTS pace (chars/sec at rate 1) for the estimate fallback used when the

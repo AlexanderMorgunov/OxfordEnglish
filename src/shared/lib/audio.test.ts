@@ -76,6 +76,7 @@ test('rendered word tokens align 1:1 with spoken word spans', () => {
     "I don't know — well-known facts about 1720 and 'quoted' words.",
     'A plain sentence. Then another one! And a third?',
     'ALL CAPS SHOUTING here.',
+    "Mr. Blood's attention was divided. Dr. Watson and H. G. Wells agreed.",
   ];
   for (const p of paragraphs) {
     const spoken = toSentences(p).join(' ');
@@ -131,4 +132,40 @@ test('calibrateCps ignores unusable samples (short/cut/blank), so pause & cancel
 test('calibrateCps clamps the EMA to a sane 6–40 band', () => {
   expect(calibrateCps(40, 590, 10, 1)).toBe(40); // 59 c/s sample can't push above 40
   expect(calibrateCps(6, 40, 10, 1)).toBe(6); // 4 c/s sample can't push below 6
+});
+
+test('toSentences does not split after abbreviations or initials', () => {
+  // The reported bug: "Mr." became its own sentence before a capitalised name.
+  expect(toSentences("His attention wandered. Mr. Blood's task was hard.")).toEqual([
+    'His attention wandered.',
+    "Mr. Blood's task was hard.",
+  ]);
+  expect(toSentences('She saw Dr. Watson and Mrs. Hudson leave. They walked on.')).toEqual([
+    'She saw Dr. Watson and Mrs. Hudson leave.',
+    'They walked on.',
+  ]);
+  expect(toSentences('He lived on St. James Street. It was quiet.')).toEqual([
+    'He lived on St. James Street.',
+    'It was quiet.',
+  ]);
+  // Single-letter initials stay with their name.
+  expect(toSentences('The author was H. G. Wells. Everyone knew him.')).toEqual([
+    'The author was H. G. Wells.',
+    'Everyone knew him.',
+  ]);
+  // Real boundaries still split.
+  expect(toSentences('He smoked a pipe. He tended the geraniums.')).toEqual([
+    'He smoked a pipe.',
+    'He tended the geraniums.',
+  ]);
+});
+
+test('chunkPassage merges an abbreviation/initial chunk into the next (no mid-name TTS pause)', () => {
+  const text = "His attention wandered. Mr. Blood's task was hard.";
+  const chunks = chunkPassage(text);
+  expect(chunks.map((c) => c.text.trim())).toEqual([
+    'His attention wandered.',
+    "Mr. Blood's task was hard.",
+  ]);
+  for (const c of chunks) expect(text.slice(c.offset, c.offset + c.text.length)).toBe(c.text);
 });

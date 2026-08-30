@@ -1,4 +1,12 @@
+import { ABBREVIATIONS } from '@/shared/lib/audio';
+
 const BLOCK = /^(p|div|section|article|h[1-6]|li|blockquote|tr|figcaption|pre)$/;
+
+// Split on a terminator + space + capital, but NOT when the period belongs to an abbreviation
+// ("Mr. Blood") or a single-letter initial ("H. G. Wells") — those aren't sentence ends.
+const SENTENCE_BOUNDARY = new RegExp(
+  `(?<!\\b(?:${ABBREVIATIONS})\\.)(?<![A-Z]\\.)(?<=[.!?])["')\\]]?\\s+(?=[A-Z"'(])`
+);
 
 function walk(node: Node): string {
   if (node.nodeType === Node.TEXT_NODE) return node.textContent ?? '';
@@ -43,7 +51,7 @@ export function htmlToText(html: string): string {
 export function toSentences(text: string): string[] {
   return text
     .replace(/\s+/g, ' ')
-    .split(/(?<=[.!?])["')\]]?\s+(?=[A-Z"'(])/)
+    .split(SENTENCE_BOUNDARY)
     .map((s) => s.trim())
     .filter((s) => s.length > 0);
 }
