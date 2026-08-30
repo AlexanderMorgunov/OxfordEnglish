@@ -15,6 +15,8 @@ type Persisted = {
   rate: number;
   /** Highlight the currently-spoken word during read-aloud (where the browser fires boundary events). */
   highlightSpoken: boolean;
+  /** Translate reader sentences/phrases with the BYOK AI instead of the free (MyMemory) service. */
+  aiTranslation: boolean;
 };
 
 const DEFAULTS: Persisted = {
@@ -24,6 +26,7 @@ const DEFAULTS: Persisted = {
   voiceURI: null,
   rate: 1,
   highlightSpoken: true,
+  aiTranslation: false,
 };
 
 const clampStep = (n: number, max: number) => Math.max(0, Math.min(n, max));
@@ -49,6 +52,7 @@ type ReaderSettings = Persisted & {
   setVoiceURI: (uri: string | null) => void;
   setRate: (n: number) => void;
   toggleHighlightSpoken: () => void;
+  toggleAiTranslation: () => void;
 };
 
 export const useReaderSettings = create<ReaderSettings>((set, get) => {
@@ -65,6 +69,7 @@ export const useReaderSettings = create<ReaderSettings>((set, get) => {
       voiceURI: get().voiceURI,
       rate: get().rate,
       highlightSpoken: get().highlightSpoken,
+      aiTranslation: get().aiTranslation,
       ...patch,
     };
     try {
@@ -85,5 +90,6 @@ export const useReaderSettings = create<ReaderSettings>((set, get) => {
     },
     setRate: (n) => persist({ rate: clampRate(n) }),
     toggleHighlightSpoken: () => persist({ highlightSpoken: !get().highlightSpoken }),
+    toggleAiTranslation: () => persist({ aiTranslation: !get().aiTranslation }),
   };
 });

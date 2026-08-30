@@ -12,7 +12,8 @@ import {
   WORD_SPLIT_RE,
   WORD_TEST_RE,
 } from '@/shared/lib/audio';
-import { translateWord, translateText } from '@/features/vocab/translate';
+import { translateWord } from '@/features/vocab/translate';
+import { translateReaderText } from './translate';
 import { addWordCard, addPhraseCard } from '@/features/srs/service';
 import { isConfigured, useAiStore } from '@/features/ai/store';
 import { wordInContext } from '@/features/ai/functions';
@@ -263,6 +264,8 @@ const Paragraph = memo(function Paragraph({
   activeWord,
   onRead,
   onReadSentence,
+  translateMode,
+  onTranslate,
   bookmarked,
   onToggleBookmark,
   typoClass,
@@ -281,6 +284,10 @@ const Paragraph = memo(function Paragraph({
   onRead: (index: number) => void;
   /** Play a single sentence (paraIndex, sentenceIndex, its paragraph-global first-word index, text). */
   onReadSentence: (index: number, sentenceIndex: number, startWord: number, sentence: string) => void;
+  /** 'free' | 'ai' — a PRIMITIVE so a mode change re-renders the paragraph and its cache keys by mode. */
+  translateMode: 'free' | 'ai';
+  /** Stable EN→RU translate callback (routes free/AI per the setting); null on offline/unavailable. */
+  onTranslate: (text: string) => Promise<string | null>;
   /** Book reader only: this paragraph is bookmarked, and a per-paragraph bookmark toggle. */
   bookmarked?: boolean;
   onToggleBookmark?: (index: number) => void;
@@ -288,7 +295,8 @@ const Paragraph = memo(function Paragraph({
 }) {
   const sentences = useMemo(() => toSentences(text), [text]);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
-  const [trs, setTrs] = useState<Record<number, string | null>>({});
+  // Keyed by `${translateMode}:${sentenceIndex}` so switching free↔AI doesn't serve a stale translation.
+  const [trs, setTrs] = useState<Record<string, string | null>>({});
   const [loadingIdx, setLoadingIdx] = useState<number | null>(null);
   let wordIndex = -1;
 
@@ -298,10 +306,11 @@ const Paragraph = memo(function Paragraph({
       return;
     }
     setOpenIdx(idx); // one at a time — keeps the reading unit small
-    if (!(idx in trs) && loadingIdx !== idx) {
+    const cacheKey = `${translateMode}:${idx}`;
+    if (!(cacheKey in trs) && loadingIdx !== idx) {
       setLoadingIdx(idx);
-      const ru = await translateText(sentence);
-      setTrs((t) => ({ ...t, [idx]: ru }));
+      const ru = await onTranslate(sentence);
+      setTrs((t) => ({ ...t, [cacheKey]: ru }));
       setLoadingIdx(null);
     }
   };
@@ -357,55 +366,75 @@ const Paragraph = memo(function Paragraph({
         // the highlight offset for a one-shot sentence play, with no re-tokenisation.
         const sentenceStartWord = wordIndex + 1;
         const sentencePlaying = activeSentence === si;
+        // Split on the SAME pattern as audio's wordSpans so the spoken-word index and this rendered
+        // index name the same token. `renderTok` keeps each token's ORIGINAL array index `i` as its
+        // key/tokenId (phrase-select re-derives `.t` from it) and increments `wordIndex` once per word.
+        const toks = sentence.split(WORD_SPLIT_RE);
+        const firstWordAt = toks.findIndex((t) => WORD_TEST_RE.test(t));
+        const renderTok = (tok: string, i: number) => {
+          if (!WORD_TEST_RE.test(tok)) return <span key={i}>{tok}</span>;
+          wordIndex += 1;
+          const idx = wordIndex;
+          const key = tok.replace(/^'+|'+$/g, '');
+          if (!key) {
+            return (
+              <span key={i} className={cn(speaking && idx === activeWord && 'bg-teal-dim text-ink')}>
+                {tok}
+              </span>
+            );
+          }
+          return (
+            <WordToken
+              key={i}
+              word={tok}
+              lookupWord={key}
+              gloss={glossary?.get(key.toLowerCase())}
+              sentence={sentence}
+              enableContextFetch
+              tokenId={`${index}:${si}:${i}`}
+              highlighted={speaking && idx === activeWord}
+            />
+          );
+        };
+        const playButton = canSpeak() ? (
+          <button
+            key="play"
+            type="button"
+            aria-label={
+              sentencePlaying
+                ? lang === 'ru'
+                  ? 'Остановить предложение'
+                  : 'Stop sentence'
+                : lang === 'ru'
+                  ? `Прослушать предложение ${si + 1}`
+                  : `Play sentence ${si + 1}`
+            }
+            aria-pressed={sentencePlaying}
+            onClick={() => onReadSentence(index, si, sentenceStartWord, sentence)}
+            className="mr-1 align-baseline font-mono text-[0.78em] text-teal opacity-60 transition-opacity hover:opacity-100"
+          >
+            {sentencePlaying ? '❚❚' : '▶'}
+          </button>
+        ) : null;
         return (
           <span key={si}>
-            {canSpeak() && (
-              <button
-                type="button"
-                aria-label={
-                  sentencePlaying
-                    ? lang === 'ru'
-                      ? 'Остановить предложение'
-                      : 'Stop sentence'
-                    : lang === 'ru'
-                      ? `Прослушать предложение ${si + 1}`
-                      : `Play sentence ${si + 1}`
-                }
-                aria-pressed={sentencePlaying}
-                onClick={() => onReadSentence(index, si, sentenceStartWord, sentence)}
-                className="mr-0.5 align-baseline font-mono text-[0.65em] text-teal opacity-45 transition-opacity hover:opacity-100"
-              >
-                {sentencePlaying ? '❚❚' : '▶'}
-              </button>
+            {firstWordAt < 0 ? (
+              // No word token (e.g. "123 — 456!"): nothing to orphan; render button + tokens plainly.
+              <>
+                {playButton}
+                {toks.map(renderTok)}
+              </>
+            ) : (
+              // Keep the ▶ glued to its sentence's first word (through any leading dash/number/ellipsis
+              // token + its space), so a line-wrap never leaves the button dangling a line above.
+              <>
+                <span className="whitespace-nowrap">
+                  {playButton}
+                  {toks.slice(0, firstWordAt + 1).map(renderTok)}
+                </span>
+                {toks.slice(firstWordAt + 1).map((tok, j) => renderTok(tok, firstWordAt + 1 + j))}
+              </>
             )}
-            {sentence.split(WORD_SPLIT_RE).map((tok, i) => {
-              if (!WORD_TEST_RE.test(tok)) return <span key={i}>{tok}</span>;
-              wordIndex += 1;
-              const idx = wordIndex;
-              // Must split on the SAME pattern as audio's wordSpans, or the spoken-word index and
-              // this rendered index name different tokens and the highlight drifts. Edge apostrophes
-              // (opening/closing quotes) are stripped for the vocab identity but kept for display.
-              const key = tok.replace(/^'+|'+$/g, '');
-              if (!key) {
-                return (
-                  <span key={i} className={cn(speaking && idx === activeWord && 'bg-teal-dim text-ink')}>
-                    {tok}
-                  </span>
-                );
-              }
-              return (
-                <WordToken
-                  key={i}
-                  word={tok}
-                  lookupWord={key}
-                  gloss={glossary?.get(key.toLowerCase())}
-                  sentence={sentence}
-                  enableContextFetch
-                  tokenId={`${index}:${si}:${i}`}
-                  highlighted={speaking && idx === activeWord}
-                />
-              );
-            })}
             <button
               type="button"
               aria-label={lang === 'ru' ? 'перевод предложения' : 'translate sentence'}
@@ -419,8 +448,8 @@ const Paragraph = memo(function Paragraph({
               <span className="text-base text-muted">
                 {loadingIdx === si
                   ? `(${lang === 'ru' ? 'перевод…' : 'translating…'})`
-                  : trs[si]
-                    ? `(${trs[si]}) `
+                  : trs[`${translateMode}:${si}`]
+                    ? `(${trs[`${translateMode}:${si}`]}) `
                     : `(${lang === 'ru' ? 'перевод недоступен' : 'translation unavailable'}) `}
               </span>
             )}
@@ -460,6 +489,15 @@ export function ReadingText({
   const setRate = useReaderSettings((s) => s.setRate);
   const highlightSpoken = useReaderSettings((s) => s.highlightSpoken);
   const toggleHighlightSpoken = useReaderSettings((s) => s.toggleHighlightSpoken);
+  const aiTranslation = useReaderSettings((s) => s.aiTranslation);
+  const toggleAiTranslation = useReaderSettings((s) => s.toggleAiTranslation);
+  const aiConfig = useAiStore((s) => s.config);
+  const aiConfigured = isConfigured(aiConfig);
+  // Stable translate callback (reads the live mode+config via a ref) so the memoized Paragraph gets a
+  // constant `onTranslate` and only re-renders when the primitive `translateMode` prop changes.
+  const translateArgs = useRef({ ai: aiTranslation, config: aiConfig });
+  translateArgs.current = { ai: aiTranslation, config: aiConfig };
+  const onTranslate = useCallback((text: string) => translateReaderText(text, translateArgs.current), []);
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>(() => listEnglishVoices());
   useEffect(() => {
     const sync = () => setVoices(listEnglishVoices());
@@ -530,7 +568,7 @@ export function ReadingText({
     setPhraseRu(null);
     setPhraseSaved(false);
     setPhraseLoading(true);
-    void translateText(text).then((tr) => {
+    void translateReaderText(text, translateArgs.current).then((tr) => {
       setPhraseRu(tr);
       setPhraseLoading(false);
     });
@@ -845,6 +883,30 @@ export function ReadingText({
                 : 'spoken word: off'}
           </button>
         )}
+        <button
+          type="button"
+          onClick={toggleAiTranslation}
+          disabled={!aiConfigured}
+          aria-pressed={aiTranslation && aiConfigured}
+          title={
+            aiConfigured
+              ? ru
+                ? 'Переводить предложения и фразы через ИИ (текст уходит вашему AI-провайдеру)'
+                : 'Translate sentences and phrases with the AI (text is sent to your AI provider)'
+              : ru
+                ? 'Сначала включите ИИ в настройках'
+                : 'Enable AI in settings first'
+          }
+          className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline disabled:text-faint disabled:no-underline"
+        >
+          {aiTranslation && aiConfigured
+            ? ru
+              ? 'перевод: ИИ'
+              : 'translate: AI'
+            : ru
+              ? 'перевод: бесплатный'
+              : 'translate: free'}
+        </button>
         </div>
       </details>
       {pickAnchor && (
@@ -928,6 +990,8 @@ export function ReadingText({
               activeWord={speakingIdx === i ? activeWord : -1}
               onRead={onRead}
               onReadSentence={onReadSentence}
+              translateMode={aiTranslation ? 'ai' : 'free'}
+              onTranslate={onTranslate}
               bookmarked={bookmarkedParas?.has(i) ?? false}
               onToggleBookmark={onToggleBookmark ? onToggleBm : undefined}
               typoClass={typoClass}

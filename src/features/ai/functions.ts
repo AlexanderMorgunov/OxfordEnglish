@@ -1,5 +1,45 @@
 import { complete, type AiConfig } from './provider';
+import { db } from '@/db/db';
 import type { Exercise } from '@/content/schema';
+
+const RU_TRANSLATOR =
+  'Ты — переводчик с английского на русский. Переведи текст точно и естественно. Верни ТОЛЬКО перевод, без пояснений и без кавычек.';
+
+const hasCyrillic = (s: string) => /[а-яё]/i.test(s);
+
+/**
+ * Translate a reader sentence or phrase EN→RU with the BYOK model. Cached in IndexedDB under an
+ * `ai:`-namespaced key so it never collides with (or evicts, via localStorage quota) the free path or
+ * other AI features. Only a real Russian result is cached — a model that echoes English or refuses is
+ * NOT persisted; it throws so the caller can fall back to the free translator.
+ */
+export async function aiTranslate(config: AiConfig, text: string, signal?: AbortSignal): Promise<string> {
+  const q = text.trim();
+  if (!q) return '';
+  const cacheKey = `ai:${config.model}:${q}`;
+  try {
+    const cached = await db.translations.get(cacheKey);
+    if (cached && hasCyrillic(cached.ru)) return cached.ru;
+  } catch {
+    // ignore cache miss
+  }
+  const raw = await complete(
+    config,
+    [
+      { role: 'system', content: RU_TRANSLATOR },
+      { role: 'user', content: q },
+    ],
+    { temperature: 0.2, signal }
+  );
+  const ru = raw.trim().replace(/^["'«»“”]+|["'«»“”]+$/g, '').trim();
+  if (!hasCyrillic(ru)) throw new Error('ai translation is not Russian');
+  try {
+    await db.translations.put({ word: cacheKey, ru, source: 'ai' });
+  } catch {
+    // best-effort cache
+  }
+  return ru;
+}
 
 function cacheGet(key: string): string | undefined {
   try {
