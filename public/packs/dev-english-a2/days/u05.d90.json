@@ -275,6 +275,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u05.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "The team is in the lift and the lights go off",
+              "ru": "Команда в лифте, и свет гаснет"
+            }
           }
         },
         {
@@ -298,6 +309,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u05.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "The doors open and the team cheers",
+              "ru": "Двери открываются, и команда радуется"
             }
           }
         }
@@ -342,31 +364,31 @@
       "transcript": [
         {
           "start": 0,
-          "end": 1.71,
+          "end": 1.66,
           "en": "The lift stopped suddenly.",
           "ru": "Лифт внезапно остановился."
         },
         {
-          "start": 1.71,
-          "end": 3.01,
+          "start": 1.66,
+          "end": 2.87,
           "en": "What were you doing?",
           "ru": "Что ты делал?"
         },
         {
-          "start": 3.01,
-          "end": 4.57,
+          "start": 2.87,
+          "end": 4.36,
           "en": "I was eating my lunch.",
           "ru": "Я ел обед."
         },
         {
-          "start": 4.57,
-          "end": 6.11,
+          "start": 4.36,
+          "end": 5.75,
           "en": "Pol was doing yoga.",
           "ru": "Пол занимался йогой."
         },
         {
-          "start": 6.11,
-          "end": 7.9,
+          "start": 5.75,
+          "end": 7.62,
           "en": "The doors opened at last.",
           "ru": "Наконец двери открылись."
         }
