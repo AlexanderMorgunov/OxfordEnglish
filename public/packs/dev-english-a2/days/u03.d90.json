@@ -287,6 +287,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u03.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate announces the talent show",
+              "ru": "Кейт объявляет шоу талантов"
+            }
           }
         },
         {
@@ -310,6 +321,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u03.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Peter juggles three oranges for the talent show",
+              "ru": "Питер жонглирует тремя апельсинами на шоу талантов"
             }
           }
         }
@@ -354,31 +376,31 @@
       "transcript": [
         {
           "start": 0,
-          "end": 1.6,
+          "end": 1.8,
           "en": "Can you sing, Peter?",
           "ru": "Ты умеешь петь, Питер?"
         },
         {
-          "start": 1.6,
-          "end": 2.94,
+          "start": 1.8,
+          "end": 3,
           "en": "No, I can't.",
           "ru": "Нет, не умею."
         },
         {
-          "start": 2.94,
-          "end": 4.13,
+          "start": 3,
+          "end": 4.19,
           "en": "What can you do?",
           "ru": "Что ты умеешь делать?"
         },
         {
-          "start": 4.13,
-          "end": 5.77,
+          "start": 4.19,
+          "end": 5.85,
           "en": "I can juggle oranges.",
           "ru": "Я умею жонглировать апельсинами."
         },
         {
-          "start": 5.77,
-          "end": 6.86,
+          "start": 5.85,
+          "end": 7.01,
           "en": "That's amazing!",
           "ru": "Это потрясающе!"
         }
