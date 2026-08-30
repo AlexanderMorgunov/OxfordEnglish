@@ -291,6 +291,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u06.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate in the rearranged office with a new sofa and boxes",
+              "ru": "Кейт в переставленном офисе с новым диваном и коробками"
+            }
           }
         },
         {
@@ -314,6 +325,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u06.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate and team in the new office; Den holds a new mug, Pol stands near the plants",
+              "ru": "Кейт и команда в новом офисе; Ден держит новую кружку, Пол стоит у растений"
             }
           }
         }
@@ -363,31 +385,31 @@
       "transcript": [
         {
           "start": 0,
-          "end": 1.23,
+          "end": 1.19,
           "en": "Where is my mug?",
           "ru": "Где моя кружка?"
         },
         {
-          "start": 1.23,
-          "end": 2.49,
+          "start": 1.19,
+          "end": 2.45,
           "en": "It is on the shelf.",
           "ru": "Она на полке."
         },
         {
-          "start": 2.49,
-          "end": 3.69,
+          "start": 2.45,
+          "end": 3.84,
           "en": "Behind that plant?",
           "ru": "За тем растением?"
         },
         {
-          "start": 3.69,
-          "end": 5.75,
+          "start": 3.84,
+          "end": 5.84,
           "en": "Yes, next to the boxes.",
           "ru": "Да, рядом с коробками."
         },
         {
-          "start": 5.75,
-          "end": 6.94,
+          "start": 5.84,
+          "end": 6.98,
           "en": "This is crazy!",
           "ru": "Это безумие!"
         }

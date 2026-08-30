@@ -275,6 +275,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u13.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate presents her plan for the barbecue",
+              "ru": "Кейт представляет свой план барбекю"
+            }
           }
         },
         {
@@ -298,6 +309,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u13.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Valery thinks about the cheese and smiles",
+              "ru": "Валерий думает о сыре и улыбается"
             }
           }
         }
@@ -342,31 +364,31 @@
       "transcript": [
         {
           "start": 0,
-          "end": 1.99,
+          "end": 1.91,
           "en": "If it's nice, we'll go.",
           "ru": "Если будет хорошая погода, мы пойдём."
         },
         {
-          "start": 1.99,
-          "end": 3.52,
+          "start": 1.91,
+          "end": 3.44,
           "en": "Who brings the salad?",
           "ru": "Кто приносит салат?"
         },
         {
-          "start": 3.52,
-          "end": 5.69,
+          "start": 3.44,
+          "end": 5.56,
           "en": "If Alex cooks, I'll worry.",
           "ru": "Если Алекс готовит, я буду волноваться."
         },
         {
-          "start": 5.69,
-          "end": 7.35,
+          "start": 5.56,
+          "end": 7.06,
           "en": "I will make a playlist.",
           "ru": "Я сделаю плейлист."
         },
         {
-          "start": 7.35,
-          "end": 9.34,
+          "start": 7.06,
+          "end": 9.03,
           "en": "If it's after six, I won't.",
           "ru": "Если будет после шести, я не приду."
         }

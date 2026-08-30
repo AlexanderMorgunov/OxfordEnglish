@@ -291,6 +291,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u01.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate shows Peter the office and points at Den's desk",
+              "ru": "Кейт показывает Питеру офис и указывает на стол Дена"
+            }
           }
         },
         {
@@ -314,6 +325,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u01.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Pol gives Peter a smoothie and Peter mixes up Alex's name",
+              "ru": "Пол даёт Питеру смузи, а Питер путает имя Алекса"
             }
           }
         }
@@ -363,31 +385,31 @@
       "transcript": [
         {
           "start": 0,
-          "end": 1.56,
+          "end": 1.34,
           "en": "Is this your desk?",
           "ru": "Это твой стол?"
         },
         {
-          "start": 1.56,
-          "end": 3.23,
+          "start": 1.34,
+          "end": 3.33,
           "en": "No, that is Den's desk.",
           "ru": "Нет, это стол Дена."
         },
         {
-          "start": 3.23,
-          "end": 4.66,
+          "start": 3.33,
+          "end": 4.83,
           "en": "Are you his new boss?",
           "ru": "Ты его новая начальница?"
         },
         {
-          "start": 4.66,
-          "end": 6.27,
+          "start": 4.83,
+          "end": 6.56,
           "en": "Yes, my name is Kate.",
           "ru": "Да, меня зовут Кейт."
         },
         {
-          "start": 6.27,
-          "end": 7.51,
+          "start": 6.56,
+          "end": 7.86,
           "en": "Is that your mug?",
           "ru": "Это твоя кружка?"
         }
