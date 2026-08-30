@@ -10,11 +10,11 @@ import type { AiConfig } from '@/features/ai/provider';
  */
 export async function translateReaderText(
   text: string,
-  opts: { ai: boolean; config: AiConfig | null }
+  opts: { ai: boolean; config: AiConfig | null; sentence?: string }
 ): Promise<string | null> {
   if (opts.ai && isConfigured(opts.config)) {
     try {
-      const ru = await aiTranslate(opts.config, text);
+      const ru = await aiTranslate(opts.config, text, { sentence: opts.sentence });
       if (ru) return ru;
     } catch {
       // fall through to the free translator

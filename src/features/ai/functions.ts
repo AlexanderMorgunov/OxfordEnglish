@@ -8,28 +8,40 @@ const RU_TRANSLATOR =
 const hasCyrillic = (s: string) => /[а-яё]/i.test(s);
 
 /**
- * Translate a reader sentence or phrase EN→RU with the BYOK model. Cached in IndexedDB under an
- * `ai:`-namespaced key so it never collides with (or evicts, via localStorage quota) the free path or
- * other AI features. Only a real Russian result is cached — a model that echoes English or refuses is
- * NOT persisted; it throws so the caller can fall back to the free translator.
+ * Translate a reader sentence or phrase EN→RU with the BYOK model. When `sentence` context is given and
+ * differs from the text, the model translates the FRAGMENT as it means IN that sentence (so "fowling
+ * pieces" becomes "охотничьи ружья", not a literal "кусочки") and returns only the fragment's
+ * translation. Cached in IndexedDB under an `ai:`-namespaced key (context included in the key) so it
+ * never collides with (or evicts, via localStorage quota) the free path or other AI features. Only a
+ * real Russian result is cached — a model that echoes English or refuses is NOT persisted; it throws so
+ * the caller can fall back to the free translator.
  */
-export async function aiTranslate(config: AiConfig, text: string, signal?: AbortSignal): Promise<string> {
+export async function aiTranslate(
+  config: AiConfig,
+  text: string,
+  opts: { sentence?: string; signal?: AbortSignal } = {}
+): Promise<string> {
   const q = text.trim();
   if (!q) return '';
-  const cacheKey = `ai:${config.model}:${q}`;
+  const ctx = opts.sentence?.trim();
+  const inContext = ctx && ctx !== q ? ctx : undefined;
+  const cacheKey = inContext ? `ai:${config.model}:${q}|@|${inContext}` : `ai:${config.model}:${q}`;
   try {
     const cached = await db.translations.get(cacheKey);
     if (cached && hasCyrillic(cached.ru)) return cached.ru;
   } catch {
     // ignore cache miss
   }
+  const user = inContext
+    ? `Фрагмент: "${q}"\nПредложение: "${inContext}"\nПереведи ТОЛЬКО фрагмент так, как он значит в этом предложении. Верни только перевод фрагмента.`
+    : q;
   const raw = await complete(
     config,
     [
       { role: 'system', content: RU_TRANSLATOR },
-      { role: 'user', content: q },
+      { role: 'user', content: user },
     ],
-    { temperature: 0.2, signal }
+    { temperature: 0.2, signal: opts.signal }
   );
   const ru = raw.trim().replace(/^["'«»“”]+|["'«»“”]+$/g, '').trim();
   if (!hasCyrillic(ru)) throw new Error('ai translation is not Russian');

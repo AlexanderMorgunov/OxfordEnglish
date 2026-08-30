@@ -582,7 +582,9 @@ export function ReadingText({
     setPhraseRu(null);
     setPhraseSaved(false);
     setPhraseLoading(true);
-    void translateReaderText(text, translateArgs.current).then((tr) => {
+    // Pass the phrase's sentence so the AI translates it IN context ("fowling pieces" → "охотничьи
+    // ружья", not a literal "кусочки"); the free path ignores the context.
+    void translateReaderText(text, { ...translateArgs.current, sentence }).then((tr) => {
       setPhraseRu(tr);
       setPhraseLoading(false);
     });
