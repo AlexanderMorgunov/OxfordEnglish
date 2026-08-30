@@ -261,7 +261,8 @@ const Paragraph = memo(function Paragraph({
   speaking,
   active,
   activeSentence,
-  activeWord,
+  activeFrom,
+  activeTo,
   onRead,
   onReadSentence,
   translateMode,
@@ -280,7 +281,9 @@ const Paragraph = memo(function Paragraph({
   active: boolean;
   /** The sentence index currently playing as a one-shot, or null — drives that sentence's ▶/❚❚. */
   activeSentence: number | null;
-  activeWord: number;
+  /** The highlighted word RANGE [activeFrom, activeTo) for this paragraph (-1,-1 = none). */
+  activeFrom: number;
+  activeTo: number;
   onRead: (index: number) => void;
   /** Play a single sentence (paraIndex, sentenceIndex, its paragraph-global first-word index, text). */
   onReadSentence: (index: number, sentenceIndex: number, startWord: number, sentence: string) => void;
@@ -378,7 +381,10 @@ const Paragraph = memo(function Paragraph({
           const key = tok.replace(/^'+|'+$/g, '');
           if (!key) {
             return (
-              <span key={i} className={cn(speaking && idx === activeWord && 'bg-teal-dim text-ink')}>
+              <span
+                key={i}
+                className={cn(speaking && idx >= activeFrom && idx < activeTo && 'bg-teal-dim text-ink')}
+              >
                 {tok}
               </span>
             );
@@ -392,7 +398,7 @@ const Paragraph = memo(function Paragraph({
               sentence={sentence}
               enableContextFetch
               tokenId={`${index}:${si}:${i}`}
-              highlighted={speaking && idx === activeWord}
+              highlighted={speaking && idx >= activeFrom && idx < activeTo}
             />
           );
         };
@@ -512,7 +518,15 @@ export function ReadingText({
   const typoClass = `${FONT_CLASSES[fontStep] ?? FONT_CLASSES[1]} ${LEADING_CLASSES[lineStep] ?? LEADING_CLASSES[0]}`;
   const [freq, setFreq] = useState<FreqIndex | null>(null);
   const [speakingIdx, setSpeakingIdx] = useState(-1);
-  const [activeWord, setActiveWord] = useState(-1);
+  // The highlighted word RANGE `[activeFrom, activeTo)` (paragraph-global). Read-aloud highlights the
+  // current spoken CHUNK's whole range on its `start` event (drift-free on every platform); where the
+  // engine emits real per-word boundaries it narrows to the single spoken word.
+  const [activeFrom, setActiveFrom] = useState(-1);
+  const [activeTo, setActiveTo] = useState(-1);
+  const setRange = (from: number, to: number) => {
+    setActiveFrom(from);
+    setActiveTo(to);
+  };
   // `speakingActive` = an utterance is in flight (drives the ❚❚ glyph); `playingRef` = a read
   // session is engaged, whether actively speaking or paused mid-paragraph. `resumeChunkRef` is the
   // chunk (sentence) to resume from inside `speakingIdx` — so a pause continues where it stopped
@@ -559,7 +573,7 @@ export function ReadingText({
   );
   // Clear a lingering highlight the moment the toggle is switched off during read-aloud.
   useEffect(() => {
-    if (!highlightSpoken) setActiveWord(-1);
+    if (!highlightSpoken) setRange(-1, -1);
   }, [highlightSpoken]);
 
   const setPhraseText = (text: string, sentence?: string) => {
@@ -646,7 +660,7 @@ export function ReadingText({
       return;
     }
     setSpeakingIdx(i);
-    setActiveWord(-1);
+    setRange(-1, -1);
     activeRef.current = true;
     setSpeakingActive(true);
     scrollToPara(i);
@@ -656,12 +670,15 @@ export function ReadingText({
     speakPassage(spoken, {
       rate: rateRef.current,
       startChunk,
-      // Checked per boundary event so toggling the highlight off mid-paragraph stops immediately.
-      onWord: (idx) => {
-        if (highlightSpokenRef.current) setActiveWord(idx);
+      // Fired from each chunk's `start` event: remember the resume point AND highlight its word range.
+      // highlightSpokenRef is read live so toggling the highlight off mid-read stops it immediately.
+      onChunk: (chunkIdx, from, to) => {
+        resumeChunkRef.current = chunkIdx;
+        if (highlightSpokenRef.current) setRange(from, to);
       },
-      onChunk: (c) => {
-        resumeChunkRef.current = c;
+      // Only where the engine emits real per-word boundaries — narrows to the single spoken word.
+      onWord: (idx) => {
+        if (highlightSpokenRef.current) setRange(idx, idx + 1);
       },
       onEnd: () => {
         if (!playingRef.current) return;
@@ -679,7 +696,7 @@ export function ReadingText({
     setSpeakingActive(false);
     setSpeakingSentence(null);
     setSpeakingIdx(-1);
-    setActiveWord(-1);
+    setRange(-1, -1);
   };
 
   const read = (idx: number) => {
@@ -724,11 +741,15 @@ export function ReadingText({
     setSpeakingActive(true);
     setSpeakingIdx(paraIdx);
     setSpeakingSentence(sIdx);
-    setActiveWord(-1);
+    setRange(-1, -1);
     speakPassage(sentence, {
       rate: rateRef.current,
+      // Sentence-local chunk/word indices → shift by the sentence's paragraph-global first-word index.
+      onChunk: (_chunkIdx, from, to) => {
+        if (highlightSpokenRef.current) setRange(startWord + from, startWord + to);
+      },
       onWord: (idx) => {
-        if (highlightSpokenRef.current) setActiveWord(startWord + idx);
+        if (highlightSpokenRef.current) setRange(startWord + idx, startWord + idx + 1);
       },
       onEnd: () => stopReading(),
     });
@@ -987,7 +1008,8 @@ export function ReadingText({
               activeSentence={
                 speakingActive && speakingIdx === i && speakingSentence !== null ? speakingSentence : null
               }
-              activeWord={speakingIdx === i ? activeWord : -1}
+              activeFrom={speakingIdx === i ? activeFrom : -1}
+              activeTo={speakingIdx === i ? activeTo : -1}
               onRead={onRead}
               onReadSentence={onReadSentence}
               translateMode={aiTranslation ? 'ai' : 'free'}

@@ -190,50 +190,36 @@ export function chunkPassage(text: string, maxLen = 160): { text: string; offset
   return merged;
 }
 
-// Self-calibrated English TTS pace (chars/sec at rate 1) for the estimate fallback used when the
-// engine emits no `boundary` events (local Windows voices, Android WebView, iOS). Seeded at a rough 15
-// and refined from each completed chunk's measured duration, so the highlight tracks the real voice
-// and speed instead of a fixed guess.
-let cpsEma = 15;
-const clampCps = (n: number) => Math.max(6, Math.min(40, n));
-
-/** The furthest chunk word whose estimated start time (`at`/`cps` seconds) has been reached by
- *  `elapsedSec`, or -1 before the first. Pure core of the boundary-less highlight estimate: because it
- *  reads real elapsed time each frame there is no fixed baseline lag. `chunkWords` is ordered by `at`. */
-export function wordAtElapsed(
-  chunkWords: { k: number; at: number }[],
-  cps: number,
-  elapsedSec: number
-): number {
-  let idx = -1;
-  for (const w of chunkWords) {
-    if (w.at / cps <= elapsedSec) idx = w.k;
-    else break;
+/** Each chunk's paragraph-global word range `[from, to)` into `wordSpans(text)`. Chunks are contiguous
+ *  and cover the whole text, so the ranges TILE `[0, wordCount)`: first `from` is 0, each `to` is the
+ *  next `from`, the last `to` is the word count (a word-less chunk yields an empty `from===to` range).
+ *  This is what the read-aloud highlight advances through, one chunk per `start` event. */
+export function chunkWordRanges(text: string): { from: number; to: number }[] {
+  const chunks = chunkPassage(text);
+  const spans = wordSpans(text);
+  const ranges: { from: number; to: number }[] = [];
+  let w = 0;
+  for (const c of chunks) {
+    const from = w;
+    while (w < spans.length && spans[w]!.start >= c.offset && spans[w]!.start < c.offset + c.text.length)
+      w += 1;
+    ranges.push({ from, to: w });
   }
-  return idx;
-}
-
-/** Fold a completed chunk's measured pace into the EMA (chars/sec at rate 1); returns `prev` unchanged
- *  when the sample is unusable (too short, or an absurd rate from a cut/buffered chunk). Pure. */
-export function calibrateCps(prev: number, chunkChars: number, durSec: number, rate: number): number {
-  if (durSec < 0.3 || chunkChars <= 0 || rate <= 0) return prev;
-  const measured = chunkChars / durSec / rate;
-  if (!(measured > 3 && measured < 60)) return prev;
-  return clampCps(prev * 0.6 + measured * 0.4);
+  return ranges;
 }
 
 /**
- * Read a passage aloud as natural speech, calling `onWord(index)` as each word is spoken (via
- * `boundary` events) so the caller can highlight it. The text is split into sentence-sized chunks
- * spoken back-to-back — this is what makes long paragraphs play at all — but never per word: natural
- * prose matters more for listening-while-reading than a perfect highlight (which Safari/iOS omits
- * anyway, as it reports `boundary` but never emits it).
+ * Read a passage aloud one sentence-sized chunk at a time, calling `onChunk(index, from, to)` from each
+ * chunk's `start` event — the only word-timing signal the browser fires reliably on EVERY platform
+ * (Android/iOS/Windows all fire `start`; the per-word `boundary` event is missing on Android, coarse on
+ * Safari, unreliable on local voices). The caller highlights that word range, so the highlight is
+ * drift-free everywhere with no estimate. Where the engine additionally emits real per-word `boundary`
+ * events (desktop local voices, Firefox), `onWord(index)` narrows the highlight to the current word
+ * WITHIN the chunk.
  *
- * `startChunk` resumes from a chunk (sentence) rather than the top — the word offsets stay global
- * (mapped against the whole-passage `spans`) so the highlight is correct regardless of where we
- * start. `onChunk(i)` reports each chunk as it begins (so a pause can be resumed from it); `onEnd`
- * fires when speech stops naturally, carrying the next chunk index and the chunk count. To read a
- * single sentence, pass just that sentence as `text` (the reader does this for per-sentence replay).
+ * `startChunk` resumes from a chunk; word indices are global (mapped against the whole-passage spans) so
+ * the highlight is correct wherever we start. `onEnd(nextChunk, total)` fires when speech stops
+ * naturally. To read a single sentence, pass just that sentence as `text`.
  */
 export function speakPassage(
   text: string,
@@ -241,11 +227,12 @@ export function speakPassage(
     rate?: number;
     startChunk?: number;
     onWord?: (index: number) => void;
-    onChunk?: (index: number) => void;
+    onChunk?: (index: number, from: number, to: number) => void;
     onEnd?: (nextChunk: number, totalChunks: number) => void;
   } = {}
 ): void {
   const chunks = chunkPassage(text);
+  const ranges = chunkWordRanges(text);
   const done = (next: number) => opts.onEnd?.(next, chunks.length);
   if (!canSpeak()) {
     done(chunks.length);
@@ -268,86 +255,35 @@ export function speakPassage(
     const chunk = chunks[ci]!;
     const myChunk = ci;
     ci += 1;
-    opts.onChunk?.(myChunk);
     const u = new SpeechSynthesisUtterance(chunk.text);
     applyVoice(u);
     u.rate = rate;
 
-    let boundarySeen = false;
-    let chunkAlive = true; // false once this chunk ends, so a stale estimate frame can't fire
-    let chunkStart = 0; // real speech start (set in onstart) — anchor for the estimate AND calibration
-    let rafId: number | null = null;
-    const stopEstimate = () => {
-      if (rafId !== null) {
-        cancelAnimationFrame(rafId);
-        rafId = null;
-      }
+    // Highlight the chunk's word range the moment the engine actually STARTS speaking it (not at
+    // enqueue) — this keeps the highlight and the resume index in lockstep with the audio, with no lag.
+    u.onstart = () => {
+      if (!alive()) return;
+      const r = ranges[myChunk];
+      if (r) opts.onChunk?.(myChunk, r.from, r.to);
     };
 
+    // Optional per-word narrowing where the engine reports true word boundaries. `charLength` is absent
+    // on engines that only fire coarse (sentence) boundaries (Safari) — skip those so we never pin the
+    // highlight to a phrase's first word; the chunk range stands instead.
     u.onboundary = (e: SpeechSynthesisEvent) => {
-      if (!alive() || (e.name && e.name !== 'word')) return;
-      boundarySeen = true; // precise events available — the estimate fallback stands down
-      stopEstimate();
+      if (!alive() || (e.name && e.name !== 'word') || !e.charLength || !opts.onWord) return;
       const at = chunk.offset + e.charIndex;
       let idx = spans.findIndex((s) => at >= s.start && at < s.end);
       if (idx < 0) idx = spans.findIndex((s) => s.start >= at);
-      if (idx >= 0) opts.onWord?.(idx);
-    };
-
-    // This chunk's words with their char offset from the chunk start, in order — the estimator walks
-    // this short list (O(1) amortised per frame) instead of rescanning the whole passage.
-    const chunkWords: { k: number; at: number }[] = [];
-    for (let k = 0; k < spans.length; k++) {
-      const s = spans[k]!;
-      if (s.start >= chunk.offset && s.start < chunk.offset + chunk.text.length) {
-        chunkWords.push({ k, at: s.start - chunk.offset });
-      }
-    }
-
-    // Many engines (local Windows voices, Android WebView, iOS) never emit `boundary`, so drive the
-    // highlight by an estimated pace. A single rAF loop re-derives the word from *elapsed since
-    // chunkStart* each frame — self-correcting, so there is no fixed baseline lag and no per-timer
-    // jitter. It arms after a short window so a boundary-capable voice takes over first.
-    u.onstart = () => {
-      if (!alive()) return;
-      chunkStart = performance.now();
-      if (!opts.onWord) return;
-      setTimeout(() => {
-        if (!alive() || !chunkAlive || boundarySeen || rafId !== null) return;
-        const cps = cpsEma * rate; // chars/sec at this playback rate
-        let lastIdx = -1;
-        const tick = () => {
-          if (!alive() || !chunkAlive || boundarySeen) {
-            rafId = null;
-            return;
-          }
-          const idx = wordAtElapsed(chunkWords, cps, (performance.now() - chunkStart) / 1000);
-          if (idx >= 0 && idx !== lastIdx) {
-            lastIdx = idx;
-            opts.onWord?.(idx);
-          }
-          rafId = requestAnimationFrame(tick);
-        };
-        rafId = requestAnimationFrame(tick);
-      }, 120);
+      if (idx >= 0) opts.onWord(idx);
     };
 
     // Advance on end; on error, skip the failed chunk rather than stall the whole read.
     const advance = () => {
-      chunkAlive = false;
-      stopEstimate();
       if (!alive()) return;
       speakNext();
     };
-    u.onend = () => {
-      // Refine the pace EMA from this chunk's real duration — only a naturally-completed, live chunk
-      // (a cancel bumps speechToken so alive() is false; onerror uses `advance` directly) that ran long
-      // enough to be a clean sample. Normalised to rate 1 so it's reusable across speeds.
-      if (alive() && chunkAlive && chunkStart > 0) {
-        cpsEma = calibrateCps(cpsEma, chunk.text.length, (performance.now() - chunkStart) / 1000, rate);
-      }
-      advance();
-    };
+    u.onend = advance;
     u.onerror = advance;
     window.speechSynthesis.speak(u);
   };
