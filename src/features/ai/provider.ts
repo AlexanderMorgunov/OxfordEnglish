@@ -2,6 +2,7 @@ import { recordKeyLimits } from './limits';
 
 export type AiProviderId =
   | 'vsegpt'
+  | 'deepseek'
   | 'groq'
   | 'openrouter'
   | 'cerebras'
@@ -29,9 +30,8 @@ type Preset = {
 };
 
 export const PROVIDERS: Record<AiProviderId, Preset> = {
-  // RU OpenAI-compatible proxy: reachable from Russia WITHOUT a VPN and — unlike z.ai/DeepSeek —
-  // verified to send CORS (ACAO:*) on the *actual* POST, so it works from the browser. Paid (ruble
-  // card) with a small no-card starter credit; proxies 120+ models — pick any in the model field.
+  // RU OpenAI-compatible proxy: reachable from Russia WITHOUT a VPN. Paid (ruble card) with a small
+  // no-card starter credit; proxies 120+ models — pick any in the model field.
   vsegpt: {
     label: 'VseGPT',
     baseUrl: 'https://api.vsegpt.ru/v1',
@@ -39,6 +39,17 @@ export const PROVIDERS: Record<AiProviderId, Preset> = {
     browserSafe: true,
     noCard: false,
     keyUrl: 'https://vsegpt.ru/',
+  },
+  // DeepSeek's own OpenAI-compatible API. Reachable from Russia without a VPN and verified to send CORS
+  // (ACAO echoes the origin) on the actual POST, so it works from the browser. Paid (top up a balance);
+  // cheap. `deepseek-v4-flash` is the fast/cheap default (the account may also expose `deepseek-v4-pro`).
+  deepseek: {
+    label: 'DeepSeek',
+    baseUrl: 'https://api.deepseek.com',
+    model: 'deepseek-v4-flash',
+    browserSafe: true,
+    noCard: false,
+    keyUrl: 'https://platform.deepseek.com/api_keys',
   },
   groq: {
     label: 'Groq',
