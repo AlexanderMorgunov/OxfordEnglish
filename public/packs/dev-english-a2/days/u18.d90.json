@@ -293,6 +293,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u18.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "David gives a video interview about the project",
+              "ru": "Дэвид даёт видеоинтервью о проекте"
+            }
           }
         },
         {
@@ -316,6 +327,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u18.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "The team reports David's news to Peter",
+              "ru": "Команда пересказывает новости Дэвида Питеру"
             }
           }
         }
@@ -365,31 +387,31 @@
       "transcript": [
         {
           "start": 0,
-          "end": 1.62,
+          "end": 1.37,
           "en": "What did David say?",
           "ru": "Что сказал Дэвид?"
         },
         {
-          "start": 1.62,
-          "end": 3.24,
+          "start": 1.37,
+          "end": 2.93,
           "en": "He said it was going well.",
           "ru": "Он сказал, что всё идёт хорошо."
         },
         {
-          "start": 3.24,
-          "end": 4.38,
+          "start": 2.93,
+          "end": 4.2,
           "en": "Did he say that?",
           "ru": "Он это сказал?"
         },
         {
-          "start": 4.38,
-          "end": 6.48,
+          "start": 4.2,
+          "end": 6.45,
           "en": "He asked if we needed more time.",
           "ru": "Он спросил, нужно ли нам больше времени."
         },
         {
-          "start": 6.48,
-          "end": 7.7,
+          "start": 6.45,
+          "end": 7.63,
           "en": "We said no.",
           "ru": "Мы сказали нет."
         }

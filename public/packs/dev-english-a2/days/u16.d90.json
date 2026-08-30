@@ -275,6 +275,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u16.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Peter asks Kate a question in the office",
+              "ru": "Питер задаёт вопрос Кейт в офисе"
+            }
           }
         },
         {
@@ -298,6 +309,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u16.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Alex tells how he was late on his first day",
+              "ru": "Алекс рассказывает, как опоздал в первый день"
             }
           }
         }
@@ -342,31 +364,31 @@
       "transcript": [
         {
           "start": 0,
-          "end": 1.36,
+          "end": 1.48,
           "en": "How did the team start?",
           "ru": "Как начиналась команда?"
         },
         {
-          "start": 1.36,
-          "end": 3.27,
+          "start": 1.48,
+          "end": 3.55,
           "en": "Den had worked here for years.",
           "ru": "Ден работал здесь годами."
         },
         {
-          "start": 3.27,
-          "end": 5.08,
+          "start": 3.55,
+          "end": 5.23,
           "en": "Had you had a plant before?",
           "ru": "У вас раньше было растение?"
         },
         {
-          "start": 5.08,
-          "end": 7.03,
+          "start": 5.23,
+          "end": 7,
           "en": "Pol had brought the first plant.",
           "ru": "Пол принёс первое растение."
         },
         {
-          "start": 7.03,
-          "end": 8.73,
+          "start": 7,
+          "end": 8.93,
           "en": "I had been late, too.",
           "ru": "Я тоже опоздал."
         }

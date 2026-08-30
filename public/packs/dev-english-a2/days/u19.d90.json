@@ -277,6 +277,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u19.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "The team looks at a mysterious gift on Kate's desk",
+              "ru": "Команда смотрит на загадочный подарок на столе Кейт"
+            }
           }
         },
         {
@@ -300,6 +311,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u19.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Pol admits he left the thank-you gift",
+              "ru": "Пол признаётся, что оставил благодарственный подарок"
             }
           }
         }
@@ -344,31 +366,31 @@
       "transcript": [
         {
           "start": 0,
-          "end": 1.27,
+          "end": 1.35,
           "en": "Who left this gift?",
           "ru": "Кто оставил этот подарок?"
         },
         {
-          "start": 1.27,
-          "end": 2.73,
+          "start": 1.35,
+          "end": 2.88,
           "en": "It must be for Kate.",
           "ru": "Это, должно быть, для Кейт."
         },
         {
-          "start": 2.73,
-          "end": 4.25,
+          "start": 2.88,
+          "end": 4.51,
           "en": "It can't be from Alex.",
           "ru": "Это не может быть от Алекса."
         },
         {
-          "start": 4.25,
-          "end": 5.94,
+          "start": 4.51,
+          "end": 6.42,
           "en": "It might be from a client.",
           "ru": "Возможно, это от клиента."
         },
         {
-          "start": 5.94,
-          "end": 8,
+          "start": 6.42,
+          "end": 8.37,
           "en": "I left it. Thank you.",
           "ru": "Это оставил я. Спасибо."
         }
