@@ -13,8 +13,6 @@ type Persisted = {
   voiceURI: string | null;
   /** Read-aloud playback rate for passage narration (SpeechSynthesis `rate`). */
   rate: number;
-  /** Highlight the currently-spoken word during read-aloud (where the browser fires boundary events). */
-  highlightSpoken: boolean;
   /** Translate reader sentences/phrases with the BYOK AI instead of the free (MyMemory) service. */
   aiTranslation: boolean;
 };
@@ -25,7 +23,6 @@ const DEFAULTS: Persisted = {
   lineStep: 0,
   voiceURI: null,
   rate: 1,
-  highlightSpoken: true,
   aiTranslation: false,
 };
 
@@ -51,7 +48,6 @@ type ReaderSettings = Persisted & {
   /** Read-aloud voice by SpeechSynthesis voiceURI; null = auto-pick the best available. */
   setVoiceURI: (uri: string | null) => void;
   setRate: (n: number) => void;
-  toggleHighlightSpoken: () => void;
   toggleAiTranslation: () => void;
 };
 
@@ -68,7 +64,6 @@ export const useReaderSettings = create<ReaderSettings>((set, get) => {
       lineStep: get().lineStep,
       voiceURI: get().voiceURI,
       rate: get().rate,
-      highlightSpoken: get().highlightSpoken,
       aiTranslation: get().aiTranslation,
       ...patch,
     };
@@ -89,7 +84,6 @@ export const useReaderSettings = create<ReaderSettings>((set, get) => {
       persist({ voiceURI: uri });
     },
     setRate: (n) => persist({ rate: clampRate(n) }),
-    toggleHighlightSpoken: () => persist({ highlightSpoken: !get().highlightSpoken }),
     toggleAiTranslation: () => persist({ aiTranslation: !get().aiTranslation }),
   };
 });

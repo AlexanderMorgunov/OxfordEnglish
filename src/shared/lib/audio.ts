@@ -117,10 +117,9 @@ export function speakWord(word: string): void {
 
 export type WordSpan = { start: number; end: number };
 
-/** The word-token pattern, shared by read-aloud highlighting (`wordSpans`) and the reader's render +
- *  phrase tokenizer, so the spoken-word index and the rendered-word index always name the SAME token.
- *  A "word" is a maximal run of letters/apostrophes ("don't", "'Tis") — the two consumers must split
- *  on the identical class or the highlight drifts off the spoken word. */
+/** The word-token pattern, shared by the reader's render tokenizer and the phrase selector
+ *  (`phraseFromRange`) so a token's index means the same array slot in both. A "word" is a maximal run
+ *  of letters/apostrophes ("don't", "'Tis"). */
 export const WORD_SPLIT_RE = /([A-Za-z']+)/;
 export const WORD_TEST_RE = /^[A-Za-z']+$/;
 
@@ -146,15 +145,13 @@ export function wordSpans(text: string): WordSpan[] {
 }
 
 /**
- * Split a passage into small, utterance-sized chunks. Chrome silently drops utterances that are too
- * long (and cuts any off after ~15s), so one big paragraph never plays. Each chunk is ALSO the unit the
- * read-aloud highlight advances through (one chunk per `start` event), so we split finely — at sentence
- * ends, then at clause punctuation (`, ; : —`, a following space required so digit forms like 1,000 /
- * 9:30 / 1–2 never split), tiny fragments merged forward, and anything still over `maxLen` hard-split at
- * a space — giving roughly line-sized chunks so the highlight tracks a phrase, not a whole sentence.
- * Each chunk carries its `offset` in the original text (chunks are contiguous slices).
+ * Split a passage into small, utterance-sized chunks for read-aloud. Chrome silently drops utterances
+ * that are too long (and cuts any off after ~15s), so one big paragraph never plays — split at sentence
+ * ends and hard-split any sentence still over `maxLen` at a space. Sentence-sized (not finer) keeps the
+ * narration smooth. Each chunk carries its `offset` in the original text (chunks are contiguous slices);
+ * a chunk ending in an abbreviation/initial ("Mr.", "H.") is merged forward so TTS never pauses mid-name.
  */
-export function chunkPassage(text: string, maxLen = 72): { text: string; offset: number }[] {
+export function chunkPassage(text: string, maxLen = 160): { text: string; offset: number }[] {
   const out: { text: string; offset: number }[] = [];
   const sentenceRe = /[^.!?…]*[.!?…]+["')\]»]*\s*|[^.!?…]+$/g;
   let m: RegExpExecArray | null;
@@ -162,47 +159,24 @@ export function chunkPassage(text: string, maxLen = 72): { text: string; offset:
     const sentence = m[0];
     if (!sentence.trim()) continue;
     const base = m.index;
-    // Break the sentence into clause pieces (contiguous slices, punctuation kept with its clause).
-    const clauses: { text: string; offset: number }[] = [];
-    const clauseRe = /[,;:—–]\s+/g;
-    let cm: RegExpExecArray | null;
-    let last = 0;
-    while ((cm = clauseRe.exec(sentence)) !== null) {
-      const cut = cm.index + cm[0].length;
-      clauses.push({ text: sentence.slice(last, cut), offset: base + last });
-      last = cut;
+    if (sentence.length <= maxLen) {
+      out.push({ text: sentence, offset: base });
+      continue;
     }
-    clauses.push({ text: sentence.slice(last), offset: base + last });
-    // Merge a very short piece forward so we don't get 1–2-word fragments.
-    const clean: { text: string; offset: number }[] = [];
-    for (const c of clauses) {
-      const prev = clean[clean.length - 1];
-      if (prev && prev.text.trim().length < 16) prev.text += c.text;
-      else clean.push({ ...c });
-    }
-    // Hard-split any piece still over maxLen at a space.
-    for (const c of clean) {
-      if (c.text.length <= maxLen) {
-        out.push(c);
-        continue;
+    // A single sentence longer than maxLen: break it at spaces near the limit.
+    let i = 0;
+    while (i < sentence.length) {
+      let end = Math.min(i + maxLen, sentence.length);
+      if (end < sentence.length) {
+        const sp = sentence.lastIndexOf(' ', end);
+        if (sp > i) end = sp + 1;
       }
-      let i = 0;
-      while (i < c.text.length) {
-        let end = Math.min(i + maxLen, c.text.length);
-        if (end < c.text.length) {
-          const sp = c.text.lastIndexOf(' ', end);
-          if (sp > i) end = sp + 1;
-        }
-        const piece = c.text.slice(i, end);
-        if (piece.trim()) out.push({ text: piece, offset: c.offset + i });
-        i = end;
-      }
+      const piece = sentence.slice(i, end);
+      if (piece.trim()) out.push({ text: piece, offset: base + i });
+      i = end;
     }
   }
   if (out.length === 0 && text.trim()) out.push({ text, offset: 0 });
-  // Merge a chunk ending in an abbreviation/initial ("Mr.", "H.") into the next so TTS never pauses
-  // mid-name. Chunks are contiguous slices, so the merged text is still the original substring at the
-  // earlier offset.
   const merged: { text: string; offset: number }[] = [];
   for (const c of out) {
     const prev = merged[merged.length - 1];
@@ -212,49 +186,22 @@ export function chunkPassage(text: string, maxLen = 72): { text: string; offset:
   return merged;
 }
 
-/** Each chunk's paragraph-global word range `[from, to)` into `wordSpans(text)`. Chunks are contiguous
- *  and cover the whole text, so the ranges TILE `[0, wordCount)`: first `from` is 0, each `to` is the
- *  next `from`, the last `to` is the word count (a word-less chunk yields an empty `from===to` range).
- *  This is what the read-aloud highlight advances through, one chunk per `start` event. */
-export function chunkWordRanges(text: string): { from: number; to: number }[] {
-  const chunks = chunkPassage(text);
-  const spans = wordSpans(text);
-  const ranges: { from: number; to: number }[] = [];
-  let w = 0;
-  for (const c of chunks) {
-    const from = w;
-    while (w < spans.length && spans[w]!.start >= c.offset && spans[w]!.start < c.offset + c.text.length)
-      w += 1;
-    ranges.push({ from, to: w });
-  }
-  return ranges;
-}
-
 /**
- * Read a passage aloud one sentence-sized chunk at a time, calling `onChunk(index, from, to)` from each
- * chunk's `start` event — the only word-timing signal the browser fires reliably on EVERY platform
- * (Android/iOS/Windows all fire `start`; the per-word `boundary` event is missing on Android, coarse on
- * Safari, unreliable on local voices). The caller highlights that word range, so the highlight is
- * drift-free everywhere with no estimate. Where the engine additionally emits real per-word `boundary`
- * events (desktop local voices, Firefox), `onWord(index)` narrows the highlight to the current word
- * WITHIN the chunk.
- *
- * `startChunk` resumes from a chunk; word indices are global (mapped against the whole-passage spans) so
- * the highlight is correct wherever we start. `onEnd(nextChunk, total)` fires when speech stops
- * naturally. To read a single sentence, pass just that sentence as `text`.
+ * Read a passage aloud one sentence-sized chunk at a time (sequential utterances — what lets a long
+ * paragraph play at all). `onChunk(index)` fires from each chunk's `start` event so a pause can resume
+ * from that chunk; `onEnd(nextChunk, total)` fires when speech stops naturally. To read a single
+ * sentence, pass just that sentence as `text`.
  */
 export function speakPassage(
   text: string,
   opts: {
     rate?: number;
     startChunk?: number;
-    onWord?: (index: number) => void;
-    onChunk?: (index: number, from: number, to: number) => void;
+    onChunk?: (index: number) => void;
     onEnd?: (nextChunk: number, totalChunks: number) => void;
   } = {}
 ): void {
   const chunks = chunkPassage(text);
-  const ranges = chunkWordRanges(text);
   const done = (next: number) => opts.onEnd?.(next, chunks.length);
   if (!canSpeak()) {
     done(chunks.length);
@@ -264,7 +211,6 @@ export function speakPassage(
   cancelSpeech();
   const myToken = speechToken;
   const alive = () => myToken === speechToken;
-  const spans = wordSpans(text);
   const rate = opts.rate ?? 1;
 
   let ci = Math.min(Math.max(0, Math.floor(opts.startChunk ?? 0)), chunks.length);
@@ -274,32 +220,15 @@ export function speakPassage(
       done(chunks.length);
       return;
     }
-    const chunk = chunks[ci]!;
     const myChunk = ci;
     ci += 1;
-    const u = new SpeechSynthesisUtterance(chunk.text);
+    const u = new SpeechSynthesisUtterance(chunks[myChunk]!.text);
     applyVoice(u);
     u.rate = rate;
-
-    // Highlight the chunk's word range the moment the engine actually STARTS speaking it (not at
-    // enqueue) — this keeps the highlight and the resume index in lockstep with the audio, with no lag.
+    // Report the chunk from its real `start` (not at enqueue) so a pause resumes from the right chunk.
     u.onstart = () => {
-      if (!alive()) return;
-      const r = ranges[myChunk];
-      if (r) opts.onChunk?.(myChunk, r.from, r.to);
+      if (alive()) opts.onChunk?.(myChunk);
     };
-
-    // Optional per-word narrowing where the engine reports true word boundaries. `charLength` is absent
-    // on engines that only fire coarse (sentence) boundaries (Safari) — skip those so we never pin the
-    // highlight to a phrase's first word; the chunk range stands instead.
-    u.onboundary = (e: SpeechSynthesisEvent) => {
-      if (!alive() || (e.name && e.name !== 'word') || !e.charLength || !opts.onWord) return;
-      const at = chunk.offset + e.charIndex;
-      let idx = spans.findIndex((s) => at >= s.start && at < s.end);
-      if (idx < 0) idx = spans.findIndex((s) => s.start >= at);
-      if (idx >= 0) opts.onWord(idx);
-    };
-
     // Advance on end; on error, skip the failed chunk rather than stall the whole read.
     const advance = () => {
       if (!alive()) return;

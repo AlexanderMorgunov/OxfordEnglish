@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest';
-import { wordSpans, chunkPassage, chunkWordRanges, WORD_SPLIT_RE, WORD_TEST_RE } from './audio';
+import { wordSpans, chunkPassage, WORD_SPLIT_RE, WORD_TEST_RE } from './audio';
 import { toSentences } from '@/features/reader/parse/text';
 
 test('chunkPassage splits on sentences, each chunk sliceable back at its offset', () => {
@@ -74,28 +74,6 @@ test('rendered word tokens align 1:1 with spoken word spans', () => {
   for (const p of paragraphs) {
     const spoken = toSentences(p).join(' ');
     expect(renderWordCount(p)).toBe(wordSpans(spoken).length);
-  }
-});
-
-// The read-aloud highlight advances one CHUNK per `start` event. The chunk word-ranges MUST tile the
-// whole word list — a gap = permanently unhighlighted words, an overlap = double-highlight — and must
-// line up 1:1 with the rendered word count (renderWordCount below).
-test('chunkWordRanges tile [0, wordCount) with no gap or overlap', () => {
-  const texts = [
-    'Peter Blood smoked a pipe. He tended the geraniums. All Bridgewater was in arms.',
-    "Mr. Blood's attention was divided. Dr. Watson agreed, and left.",
-    'A single clause, then more, and yet more — right to the end.',
-    "'Tis a fine morning. 'Go,' she said. Now.",
-    `${'word '.repeat(120).trim()}.`, // one long sentence that chunkPassage hard-splits
-  ];
-  for (const text of texts) {
-    const ranges = chunkWordRanges(text);
-    const total = wordSpans(text).length;
-    expect(ranges[0]!.from).toBe(0);
-    for (let i = 1; i < ranges.length; i++) expect(ranges[i]!.from).toBe(ranges[i - 1]!.to);
-    expect(ranges[ranges.length - 1]!.to).toBe(total);
-    // Ranges are ordered and non-decreasing (a word-less chunk yields an empty from===to range).
-    for (const r of ranges) expect(r.to).toBeGreaterThanOrEqual(r.from);
   }
 });
 

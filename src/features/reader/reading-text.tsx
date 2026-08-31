@@ -125,11 +125,10 @@ export const WordToken = memo(function WordToken({
   sentence,
   enableContextFetch,
   tokenId,
-  highlighted,
 }: {
   word: string;
   /** The vocabulary identity (status/glossary/save/pronounce), with edge apostrophes stripped so
-   *  "'Tis" tracks as "Tis". Defaults to `word`; `word` is what we display and highlight. */
+   *  "'Tis" tracks as "Tis". Defaults to `word`; `word` is what we display. */
   lookupWord?: string;
   gloss?: Gloss;
   sentence: string;
@@ -138,7 +137,6 @@ export const WordToken = memo(function WordToken({
   enableContextFetch?: boolean;
   /** `${paraIndex}:${sentenceIndex}:${tokenIndex}` — enables phrase selection (book reader only). */
   tokenId?: string;
-  highlighted?: boolean;
 }) {
   const lookup = lookupWord ?? word;
   const status = useVocabStore((s) => s.statuses.get(lookup.toLowerCase()));
@@ -169,7 +167,11 @@ export const WordToken = memo(function WordToken({
   const translation = gloss?.ru ?? fetched ?? undefined;
   const classified: WordMark | undefined =
     coloring && freq ? classifyWord(lookup, { status, freq, rankThreshold }) : undefined;
-  const raw = classified ?? (status === 'learning' ? 'learning' : status === 'unknown' ? 'new' : undefined);
+  // Gate the status underline on the coloring setting too — with coloring OFF a saved-"learning" word
+  // must not stay underlined (the classify fallback used to leak through when `freq`/classify was null).
+  const raw = coloring
+    ? classified ?? (status === 'learning' ? 'learning' : status === 'unknown' ? 'new' : undefined)
+    : undefined;
   const visible = raw === 'learning' || raw === 'new' ? raw : undefined;
 
   return (
@@ -186,9 +188,7 @@ export const WordToken = memo(function WordToken({
             visible ? 'underline decoration-2 underline-offset-4' : 'hover:bg-surface-2',
             visible === 'learning' && '[text-decoration-color:var(--color-word-learning)]',
             visible === 'new' && '[text-decoration-color:var(--color-word-unknown)]',
-            // cn is plain clsx (no merge) — keep the two backgrounds mutually exclusive.
-            highlighted && 'bg-teal-dim text-ink',
-            !highlighted && selected && 'bg-violet-dim text-content'
+            selected && 'bg-violet-dim text-content'
           )}
         >
           {word}
@@ -258,11 +258,8 @@ const Paragraph = memo(function Paragraph({
   text,
   glossary,
   lang,
-  speaking,
   active,
   activeSentence,
-  activeFrom,
-  activeTo,
   onRead,
   onReadSentence,
   translateMode,
@@ -275,18 +272,13 @@ const Paragraph = memo(function Paragraph({
   text: string;
   glossary?: Map<string, Gloss>;
   lang: 'en' | 'ru';
-  /** This paragraph is the current read-aloud one (playing or paused). */
-  speaking: boolean;
   /** A whole-paragraph utterance is in flight for this paragraph — drives the paragraph ▶/❚❚ glyph. */
   active: boolean;
   /** The sentence index currently playing as a one-shot, or null — drives that sentence's ▶/❚❚. */
   activeSentence: number | null;
-  /** The highlighted word RANGE [activeFrom, activeTo) for this paragraph (-1,-1 = none). */
-  activeFrom: number;
-  activeTo: number;
   onRead: (index: number) => void;
-  /** Play a single sentence (paraIndex, sentenceIndex, its paragraph-global first-word index, text). */
-  onReadSentence: (index: number, sentenceIndex: number, startWord: number, sentence: string) => void;
+  /** Play a single sentence (paraIndex, sentenceIndex, text). */
+  onReadSentence: (index: number, sentenceIndex: number, sentence: string) => void;
   /** 'free' | 'ai' — a PRIMITIVE so a mode change re-renders the paragraph and its cache keys by mode. */
   translateMode: 'free' | 'ai';
   /** Stable EN→RU translate callback (routes free/AI per the setting); null on offline/unavailable. */
@@ -301,7 +293,6 @@ const Paragraph = memo(function Paragraph({
   // Keyed by `${translateMode}:${sentenceIndex}` so switching free↔AI doesn't serve a stale translation.
   const [trs, setTrs] = useState<Record<string, string | null>>({});
   const [loadingIdx, setLoadingIdx] = useState<number | null>(null);
-  let wordIndex = -1;
 
   const toggleSentence = async (idx: number, sentence: string) => {
     if (openIdx === idx) {
@@ -364,31 +355,15 @@ const Paragraph = memo(function Paragraph({
       )}
       {sentences.map((sentence, si) => {
         const open = openIdx === si;
-        // At this point `wordIndex` is the last word index of sentence si-1 (−1 for si=0), so +1 is,
-        // by construction, the render's own paragraph-global index for this sentence's first word —
-        // the highlight offset for a one-shot sentence play, with no re-tokenisation.
-        const sentenceStartWord = wordIndex + 1;
         const sentencePlaying = activeSentence === si;
-        // Split on the SAME pattern as audio's wordSpans so the spoken-word index and this rendered
-        // index name the same token. `renderTok` keeps each token's ORIGINAL array index `i` as its
-        // key/tokenId (phrase-select re-derives `.t` from it) and increments `wordIndex` once per word.
+        // Split on the SAME pattern the phrase selector uses so a token's index means the same array
+        // slot; keep each token's ORIGINAL index `i` as its key/tokenId (`phraseFromRange` re-derives it).
         const toks = sentence.split(WORD_SPLIT_RE);
         const firstWordAt = toks.findIndex((t) => WORD_TEST_RE.test(t));
         const renderTok = (tok: string, i: number) => {
           if (!WORD_TEST_RE.test(tok)) return <span key={i}>{tok}</span>;
-          wordIndex += 1;
-          const idx = wordIndex;
           const key = tok.replace(/^'+|'+$/g, '');
-          if (!key) {
-            return (
-              <span
-                key={i}
-                className={cn(speaking && idx >= activeFrom && idx < activeTo && 'bg-teal-dim text-ink')}
-              >
-                {tok}
-              </span>
-            );
-          }
+          if (!key) return <span key={i}>{tok}</span>;
           return (
             <WordToken
               key={i}
@@ -398,7 +373,6 @@ const Paragraph = memo(function Paragraph({
               sentence={sentence}
               enableContextFetch
               tokenId={`${index}:${si}:${i}`}
-              highlighted={speaking && idx >= activeFrom && idx < activeTo}
             />
           );
         };
@@ -416,7 +390,7 @@ const Paragraph = memo(function Paragraph({
                   : `Play sentence ${si + 1}`
             }
             aria-pressed={sentencePlaying}
-            onClick={() => onReadSentence(index, si, sentenceStartWord, sentence)}
+            onClick={() => onReadSentence(index, si, sentence)}
             className="mr-1 align-baseline font-mono text-[0.78em] text-teal opacity-60 transition-opacity hover:opacity-100"
           >
             {sentencePlaying ? '❚❚' : '▶'}
@@ -493,8 +467,6 @@ export function ReadingText({
   const setVoiceURI = useReaderSettings((s) => s.setVoiceURI);
   const rate = useReaderSettings((s) => s.rate);
   const setRate = useReaderSettings((s) => s.setRate);
-  const highlightSpoken = useReaderSettings((s) => s.highlightSpoken);
-  const toggleHighlightSpoken = useReaderSettings((s) => s.toggleHighlightSpoken);
   const aiTranslation = useReaderSettings((s) => s.aiTranslation);
   const toggleAiTranslation = useReaderSettings((s) => s.toggleAiTranslation);
   const aiConfig = useAiStore((s) => s.config);
@@ -518,15 +490,6 @@ export function ReadingText({
   const typoClass = `${FONT_CLASSES[fontStep] ?? FONT_CLASSES[1]} ${LEADING_CLASSES[lineStep] ?? LEADING_CLASSES[0]}`;
   const [freq, setFreq] = useState<FreqIndex | null>(null);
   const [speakingIdx, setSpeakingIdx] = useState(-1);
-  // The highlighted word RANGE `[activeFrom, activeTo)` (paragraph-global). Read-aloud highlights the
-  // current spoken CHUNK's whole range on its `start` event (drift-free on every platform); where the
-  // engine emits real per-word boundaries it narrows to the single spoken word.
-  const [activeFrom, setActiveFrom] = useState(-1);
-  const [activeTo, setActiveTo] = useState(-1);
-  const setRange = (from: number, to: number) => {
-    setActiveFrom(from);
-    setActiveTo(to);
-  };
   // `speakingActive` = an utterance is in flight (drives the ❚❚ glyph); `playingRef` = a read
   // session is engaged, whether actively speaking or paused mid-paragraph. `resumeChunkRef` is the
   // chunk (sentence) to resume from inside `speakingIdx` — so a pause continues where it stopped
@@ -542,8 +505,6 @@ export function ReadingText({
   // so mid-read changes to speed/highlight take effect from the next paragraph or sentence.
   const rateRef = useRef(rate);
   rateRef.current = rate;
-  const highlightSpokenRef = useRef(highlightSpoken);
-  highlightSpokenRef.current = highlightSpoken;
   const reduceMotion = useMemo(
     () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false,
     []
@@ -571,10 +532,6 @@ export function ReadingText({
     },
     []
   );
-  // Clear a lingering highlight the moment the toggle is switched off during read-aloud.
-  useEffect(() => {
-    if (!highlightSpoken) setRange(-1, -1);
-  }, [highlightSpoken]);
 
   const setPhraseText = (text: string, sentence?: string) => {
     setPhrase(text);
@@ -662,25 +619,16 @@ export function ReadingText({
       return;
     }
     setSpeakingIdx(i);
-    setRange(-1, -1);
     activeRef.current = true;
     setSpeakingActive(true);
     scrollToPara(i);
-    // Speak the exact string the paragraph renders (sentences joined) so audio's word spans line up
-    // 1:1 with the rendered word tokens — otherwise the spoken-word highlight drifts.
     const spoken = toSentences(paragraphs[i]!).join(' ');
     speakPassage(spoken, {
       rate: rateRef.current,
       startChunk,
-      // Fired from each chunk's `start` event: remember the resume point AND highlight its word range.
-      // highlightSpokenRef is read live so toggling the highlight off mid-read stops it immediately.
-      onChunk: (chunkIdx, from, to) => {
+      // Remember the resume point as each chunk actually starts (from `onstart`, not enqueue).
+      onChunk: (chunkIdx) => {
         resumeChunkRef.current = chunkIdx;
-        if (highlightSpokenRef.current) setRange(from, to);
-      },
-      // Only where the engine emits real per-word boundaries — narrows to the single spoken word.
-      onWord: (idx) => {
-        if (highlightSpokenRef.current) setRange(idx, idx + 1);
       },
       onEnd: () => {
         if (!playingRef.current) return;
@@ -698,7 +646,6 @@ export function ReadingText({
     setSpeakingActive(false);
     setSpeakingSentence(null);
     setSpeakingIdx(-1);
-    setRange(-1, -1);
   };
 
   const read = (idx: number) => {
@@ -730,11 +677,9 @@ export function ReadingText({
   readRef.current = read;
   const onRead = useCallback((i: number) => readRef.current(i), []);
 
-  // Play exactly one sentence, on demand and replayable. Speaks the sentence text standalone (chunk ≠
-  // sentence, so startChunk/single would truncate a long one); `startWord` is the paragraph-global
-  // index of the sentence's first word, captured in the render, so the spoken-word highlight lines up
-  // with no re-tokenisation. Clicking the sentence that's already playing stops it.
-  const readSentence = (paraIdx: number, sIdx: number, startWord: number, sentence: string) => {
+  // Play exactly one sentence, on demand and replayable. Speaks the sentence text standalone; clicking
+  // the sentence that's already playing stops it.
+  const readSentence = (paraIdx: number, sIdx: number, sentence: string) => {
     const wasThis = speakingIdx === paraIdx && speakingSentence === sIdx;
     stopReading();
     if (wasThis) return;
@@ -743,23 +688,15 @@ export function ReadingText({
     setSpeakingActive(true);
     setSpeakingIdx(paraIdx);
     setSpeakingSentence(sIdx);
-    setRange(-1, -1);
     speakPassage(sentence, {
       rate: rateRef.current,
-      // Sentence-local chunk/word indices → shift by the sentence's paragraph-global first-word index.
-      onChunk: (_chunkIdx, from, to) => {
-        if (highlightSpokenRef.current) setRange(startWord + from, startWord + to);
-      },
-      onWord: (idx) => {
-        if (highlightSpokenRef.current) setRange(startWord + idx, startWord + idx + 1);
-      },
       onEnd: () => stopReading(),
     });
   };
   const readSentenceRef = useRef(readSentence);
   readSentenceRef.current = readSentence;
   const onReadSentence = useCallback(
-    (p: number, s: number, w: number, t: string) => readSentenceRef.current(p, s, w, t),
+    (p: number, s: number, t: string) => readSentenceRef.current(p, s, t),
     []
   );
 
@@ -890,22 +827,6 @@ export function ReadingText({
             ))}
           </div>
         )}
-        {canSpeak() && (
-          <button
-            type="button"
-            onClick={toggleHighlightSpoken}
-            aria-pressed={highlightSpoken}
-            className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
-          >
-            {highlightSpoken
-              ? ru
-                ? 'подсветка слова: вкл'
-                : 'spoken word: on'
-              : ru
-                ? 'подсветка слова: выкл'
-                : 'spoken word: off'}
-          </button>
-        )}
         <button
           type="button"
           onClick={toggleAiTranslation}
@@ -1003,15 +924,12 @@ export function ReadingText({
               text={p}
               glossary={glossary}
               lang={lang}
-              speaking={speakingIdx === i}
               // The paragraph ▶/❚❚ reflects only continuous (whole-paragraph) playback, never a
               // one-shot sentence play — those are separate controls.
               active={speakingActive && speakingIdx === i && speakingSentence === null}
               activeSentence={
                 speakingActive && speakingIdx === i && speakingSentence !== null ? speakingSentence : null
               }
-              activeFrom={speakingIdx === i ? activeFrom : -1}
-              activeTo={speakingIdx === i ? activeTo : -1}
               onRead={onRead}
               onReadSentence={onReadSentence}
               translateMode={aiTranslation ? 'ai' : 'free'}
