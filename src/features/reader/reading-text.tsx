@@ -24,6 +24,8 @@ import { classifyWord, loadFreq, rankThresholdFor, type FreqIndex, type WordMark
 import { useReaderSettings, FONT_CLASSES, LEADING_CLASSES } from './settings';
 import { toSentences } from './parse/text';
 import { usePhraseSelect, parsePos, samePos, inPhraseRange, type WordPos } from './phrase-select';
+import { useSavedPhrases } from './saved-phrases';
+import { phraseMarkedTokens } from './phrase-marks';
 
 /** Reference line for auditioning a read-aloud voice — natural prose so prosody is audible. */
 const VOICE_SAMPLE = 'The morning light spilled across the quiet room as she opened the book.';
@@ -125,6 +127,7 @@ export const WordToken = memo(function WordToken({
   sentence,
   enableContextFetch,
   tokenId,
+  phrase,
 }: {
   word: string;
   /** The vocabulary identity (status/glossary/save/pronounce), with edge apostrophes stripped so
@@ -137,6 +140,9 @@ export const WordToken = memo(function WordToken({
   enableContextFetch?: boolean;
   /** `${paraIndex}:${sentenceIndex}:${tokenIndex}` — enables phrase selection (book reader only). */
   tokenId?: string;
+  /** This token is inside a saved phrase → underline it as *learning* (gated on the coloring setting,
+   *  like word status). Wins over the word's own `new` status on the same token. */
+  phrase?: boolean;
 }) {
   const lookup = lookupWord ?? word;
   const status = useVocabStore((s) => s.statuses.get(lookup.toLowerCase()));
@@ -173,6 +179,8 @@ export const WordToken = memo(function WordToken({
     ? classified ?? (status === 'learning' ? 'learning' : status === 'unknown' ? 'new' : undefined)
     : undefined;
   const visible = raw === 'learning' || raw === 'new' ? raw : undefined;
+  // A saved-phrase token underlines as learning (also gated on coloring); it wins over `new`.
+  const deco: 'learning' | 'new' | undefined = phrase && coloring ? 'learning' : visible;
 
   return (
     <Popover
@@ -185,9 +193,9 @@ export const WordToken = memo(function WordToken({
           onClick={openLookup}
           className={cn(
             'cursor-pointer rounded-[2px]',
-            visible ? 'underline decoration-2 underline-offset-4' : 'hover:bg-surface-2',
-            visible === 'learning' && '[text-decoration-color:var(--color-word-learning)]',
-            visible === 'new' && '[text-decoration-color:var(--color-word-unknown)]',
+            deco ? 'underline decoration-2 underline-offset-4' : 'hover:bg-surface-2',
+            deco === 'learning' && '[text-decoration-color:var(--color-word-learning)]',
+            deco === 'new' && '[text-decoration-color:var(--color-word-unknown)]',
             selected && 'bg-violet-dim text-content'
           )}
         >
@@ -257,6 +265,7 @@ const Paragraph = memo(function Paragraph({
   index,
   text,
   glossary,
+  savedPhrases,
   lang,
   active,
   activeSentence,
@@ -271,6 +280,9 @@ const Paragraph = memo(function Paragraph({
   index: number;
   text: string;
   glossary?: Map<string, Gloss>;
+  /** Saved-phrase keys (`phraseKey`); tokens inside one underline as learning. Stable identity — a
+   *  new Set only when a phrase is actually added — so this doesn't re-render the chapter each render. */
+  savedPhrases: Set<string>;
   lang: 'en' | 'ru';
   /** A whole-paragraph utterance is in flight for this paragraph — drives the paragraph ▶/❚❚ glyph. */
   active: boolean;
@@ -289,6 +301,12 @@ const Paragraph = memo(function Paragraph({
   typoClass: string;
 }) {
   const sentences = useMemo(() => toSentences(text), [text]);
+  // Per-sentence token indices inside a saved phrase; recomputed only when the text or the saved
+  // set changes (not on unrelated re-renders like a sibling word's status flip).
+  const phraseMarks = useMemo(
+    () => sentences.map((s) => phraseMarkedTokens(s, savedPhrases)),
+    [sentences, savedPhrases]
+  );
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   // Keyed by `${translateMode}:${sentenceIndex}` so switching free↔AI doesn't serve a stale translation.
   const [trs, setTrs] = useState<Record<string, string | null>>({});
@@ -360,6 +378,7 @@ const Paragraph = memo(function Paragraph({
         // slot; keep each token's ORIGINAL index `i` as its key/tokenId (`phraseFromRange` re-derives it).
         const toks = sentence.split(WORD_SPLIT_RE);
         const firstWordAt = toks.findIndex((t) => WORD_TEST_RE.test(t));
+        const marks = phraseMarks[si]!;
         const renderTok = (tok: string, i: number) => {
           if (!WORD_TEST_RE.test(tok)) return <span key={i}>{tok}</span>;
           const key = tok.replace(/^'+|'+$/g, '');
@@ -373,6 +392,7 @@ const Paragraph = memo(function Paragraph({
               sentence={sentence}
               enableContextFetch
               tokenId={`${index}:${si}:${i}`}
+              phrase={marks.has(i)}
             />
           );
         };
@@ -518,10 +538,12 @@ export function ReadingText({
   const [phraseSaved, setPhraseSaved] = useState(false);
   const pickAnchor = usePhraseSelect((s) => s.anchor);
   const clearPick = usePhraseSelect((s) => s.clear);
+  const savedPhrases = useSavedPhrases((s) => s.phrases);
 
   useEffect(() => {
     void loadVocab();
     void loadFreq().then(setFreq);
+    void useSavedPhrases.getState().load();
     usePhraseSelect.getState().clear();
     return () => usePhraseSelect.getState().clear();
   }, [loadVocab]);
@@ -537,7 +559,8 @@ export function ReadingText({
     setPhrase(text);
     setPhraseSentence(sentence ?? null);
     setPhraseRu(null);
-    setPhraseSaved(false);
+    // Already in the word bank → show it as saved instead of offering "+ save" again.
+    setPhraseSaved(useSavedPhrases.getState().has(text));
     setPhraseLoading(true);
     // Pass the phrase's sentence so the AI translates it IN context ("fowling pieces" → "охотничьи
     // ружья", not a literal "кусочки"); the free path ignores the context.
@@ -550,11 +573,32 @@ export function ReadingText({
   // A multi-word selection becomes a savable phrase ("took a train"); single-word taps stay on the
   // WordToken popover. On touch, native selection is disabled (select-none, coarse pointers) and the
   // phrase is built by tapping — see onPickTap. On a mouse, drag-select still works.
+  const tokenPosAt = (node: Node | null): WordPos | null => {
+    const start = node?.nodeType === Node.TEXT_NODE ? node.parentElement : (node as HTMLElement | null);
+    const el = start?.closest('[data-widx]') as HTMLElement | null;
+    return el?.dataset.widx ? parsePos(el.dataset.widx) : null;
+  };
+
   const onSelect = () => {
     const sel = window.getSelection();
-    const text = sel?.toString().trim().replace(/\s+/g, ' ') ?? '';
     const inside = sel?.anchorNode ? (textRef.current?.contains(sel.anchorNode) ?? false) : false;
-    if (inside && text.includes(' ') && text.length <= 80) setPhraseText(text);
+    if (!sel || !inside) {
+      if (!pickAnchor) setPhrase(null);
+      return;
+    }
+    // Prefer deriving the phrase from the two endpoint word tokens: this keeps button glyphs (▶, ru)
+    // out of the saved text (a drag past the sentence end would otherwise capture them) and carries
+    // the sentence as context for the AI translator. Fall back to the raw selection only when an
+    // endpoint isn't a word token.
+    const a = tokenPosAt(sel.anchorNode);
+    const b = tokenPosAt(sel.focusNode);
+    if (a && b && a.p === b.p && a.s === b.s && a.t !== b.t) {
+      const sentence = toSentences(paragraphs[a.p] ?? '')[a.s] ?? '';
+      setPhraseText(phraseFromRange(a, b, sentence), sentence);
+      return;
+    }
+    const text = sel.toString().trim().replace(/\s+/g, ' ');
+    if (text.includes(' ') && text.length <= 80) setPhraseText(text);
     else if (!pickAnchor) setPhrase(null);
   };
 
@@ -594,6 +638,7 @@ export function ReadingText({
     if (!phrase) return;
     setPhraseSaved(true);
     clearPick();
+    useSavedPhrases.getState().add(phrase);
     void addPhraseCard(phrase, phraseRu ?? phrase, phraseSentence ?? undefined);
   };
 
@@ -923,6 +968,7 @@ export function ReadingText({
               index={i}
               text={p}
               glossary={glossary}
+              savedPhrases={savedPhrases}
               lang={lang}
               // The paragraph ▶/❚❚ reflects only continuous (whole-paragraph) playback, never a
               // one-shot sentence play — those are separate controls.
