@@ -1,4 +1,5 @@
 import { isAnalyticsEnabled } from './analytics';
+import { getAttribution } from './attribution';
 
 const METRICA_ID = import.meta.env.VITE_YANDEX_METRICA_ID;
 
@@ -46,6 +47,17 @@ export function initMetrica(): void {
   s.src = 'https://mc.yandex.ru/metrika/tag.js';
   document.head.appendChild(s);
   window.ym(Number(METRICA_ID), 'init', { defer: true });
+  // First-touch acquisition as visitor-level params, so every visit carries where the user
+  // originally came from (Metrica's own utm/referrer attribution is per-visit, last-non-direct).
+  const attr = getAttribution();
+  if (attr) window.ym(Number(METRICA_ID), 'userParams', { firstTouch: attr });
+}
+
+/** Report a conversion to Metrica as a JS goal. The goal id must be created in the Metrica dashboard
+ *  (identifier = `name`) to appear in reports; an unconfigured id is a harmless no-op. */
+export function metricaGoal(name: string): void {
+  if (!metricaActive() || !window.ym) return;
+  window.ym(Number(METRICA_ID), 'reachGoal', name);
 }
 
 let lastHitPath: string | null = null;

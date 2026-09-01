@@ -14,6 +14,7 @@ import './app.css';
 import { router } from '@/router';
 import { initAnalytics } from '@/features/analytics/analytics';
 import { initMetrica } from '@/features/analytics/metrica';
+import { captureAttribution } from '@/features/analytics/attribution';
 import { initPwaInstall } from '@/features/pwa/install';
 import { initAppUpdate } from '@/features/pwa/update';
 import { initFeedback } from '@/features/feedback/service';
@@ -34,6 +35,8 @@ if (isMirrorHost() && !stayOnMirror) {
   const rootEl = document.getElementById('root');
   if (!rootEl) throw new Error('Root element #root not found');
 
+  // Capture first-touch acquisition (utm/referrer) BEFORE init, so Metrica's userParams get it.
+  captureAttribution();
   initAnalytics();
   initMetrica();
   initPwaInstall();

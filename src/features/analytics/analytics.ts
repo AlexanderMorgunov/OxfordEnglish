@@ -1,5 +1,11 @@
 import { db, type AnalyticsEvent } from '@/db/db';
 import { ANALYTICS_ENDPOINT } from './config';
+import { metricaGoal } from './metrica';
+import { getAttribution } from './attribution';
+
+/** Conversion milestones mirrored to Metrica as goals (roughly once-per-user). Kept off high-frequency
+ *  events (e.g. book_open) so they don't inflate goal counts and poison per-source comparison. */
+const METRICA_GOALS = new Set(['placement_done', 'onboarding_end', 'day_complete', 'pwa_installed']);
 
 const ANON_KEY = 'analytics.anonId';
 const FIRST_SEEN_KEY = 'analytics.firstSeen';
@@ -67,6 +73,9 @@ export async function track(
   event: string,
   props?: AnalyticsEvent['props']
 ): Promise<void> {
+  // Mirror conversions to Metrica independently of the custom endpoint (which is inert until one is set)
+  // — this is what makes "which channel converts" answerable via Metrica's built-in source reports.
+  if (METRICA_GOALS.has(event)) metricaGoal(event);
   if (!active()) return;
   try {
     await db.analyticsQueue.add({ event, props, ts: Date.now() });
@@ -97,6 +106,7 @@ export async function flush(): Promise<void> {
       body: JSON.stringify({
         anonId: anonId(),
         firstSeen: firstSeen(),
+        attribution: getAttribution(),
         events: batch.map(({ event, props, ts }) => ({ event, props, ts })),
       }),
     });
