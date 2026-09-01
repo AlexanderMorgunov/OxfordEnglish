@@ -1,0 +1,12 @@
+{
+  "id": "u32.d90",
+  "unitId": "u32",
+  "insertAt": 2,
+  "tags": ["grammar.cleft", "grammar.emphasis", "grammar.inversion", "vocab.work"],
+  "level": "B2",
+  "episode": "The Missing Mug",
+  "grammarName": { "en": "Cleft sentences & emphasis (it-cleft, what-cleft, emphatic do, negative inversion)", "ru": "Эмфаза: расщеплённые предложения, усилительное do, инверсия" },
+  "grammarRef": "cleft",
+  "characters": ["Den", "Alex", "Kate", "Pol", "Peter", "Valery"],
+  "scenario": "Den's favourite coffee mug disappears and he turns it into a dramatic office investigation, giving everyone an excuse to emphasise everything. Use it-cleft to point fingers and defend: 'It was you who moved my mug!' 'It wasn't me — what I touched was only the kettle.' Use wh-cleft to reframe: 'What Den really needs is a spare mug.' Use emphatic do for insistence: 'I DID put it right here.' 'I do remember washing it.' Use negative inversion for comic drama: 'Never have I lost that mug.' 'Not once did I touch your desk.' Wherever it fits, show the plain version and the emphatic version so the structure is obvious. Keep it warm and silly; nobody is truly upset. The twist: shy Peter quietly washed the mug to be helpful and left it drying on the shelf — 'It was Peter who saved the day.' Short, clear B2 sentences."
+}

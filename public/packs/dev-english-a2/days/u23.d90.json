@@ -295,6 +295,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u23.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Peter shows an old photo to the team",
+              "ru": "Питер показывает команде старое фото"
+            }
           }
         },
         {
@@ -318,6 +329,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u23.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "The team smiles and talks about the old times",
+              "ru": "Команда улыбается и вспоминает прошлое"
             }
           }
         }

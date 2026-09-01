@@ -293,6 +293,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u31.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate proposes a game in the office kitchen",
+              "ru": "Кейт предлагает игру на офисной кухне"
+            }
           }
         },
         {
@@ -316,6 +327,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u31.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "The team laughs and drinks coffee together",
+              "ru": "Команда смеётся и пьёт кофе вместе"
             }
           }
         }

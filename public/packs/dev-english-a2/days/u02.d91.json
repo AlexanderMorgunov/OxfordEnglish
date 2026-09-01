@@ -1,0 +1,649 @@
+{
+  "id": "u02.d91",
+  "title": {
+    "en": "The Standing Desk",
+    "ru": "Стол для работы стоя"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.present-vs-continuous",
+    "vocab.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u02.d91.vocab",
+      "title": {
+        "en": "Office work",
+        "ru": "Офисная работа"
+      },
+      "words": [
+        {
+          "word": "to stand",
+          "ru": "стоять",
+          "ipa": "/stænd/",
+          "example": "Den stands at his desk.",
+          "exampleRu": "Ден стоит у своего стола.",
+          "audio": {
+            "src": "media/audio/u02.d91.vocab.tostand.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "desk",
+          "ru": "письменный стол",
+          "ipa": "/desk/",
+          "example": "This is my desk.",
+          "exampleRu": "Это мой стол.",
+          "audio": {
+            "src": "media/audio/u02.d91.vocab.desk.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "usually",
+          "ru": "обычно",
+          "ipa": "/ˈjuːʒuəli/",
+          "example": "I usually sit.",
+          "exampleRu": "Обычно я сижу.",
+          "audio": {
+            "src": "media/audio/u02.d91.vocab.usually.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "right now",
+          "ru": "прямо сейчас",
+          "ipa": "/raɪt naʊ/",
+          "example": "Right now I am standing.",
+          "exampleRu": "Прямо сейчас я стою.",
+          "audio": {
+            "src": "media/audio/u02.d91.vocab.rightnow.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to raise",
+          "ru": "поднимать",
+          "ipa": "/reɪz/",
+          "example": "He raises the desk.",
+          "exampleRu": "Он поднимает стол.",
+          "audio": {
+            "src": "media/audio/u02.d91.vocab.toraise.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to sit",
+          "ru": "сидеть",
+          "ipa": "/sɪt/",
+          "example": "We sit every day.",
+          "exampleRu": "Мы сидим каждый день.",
+          "audio": {
+            "src": "media/audio/u02.d91.vocab.tosit.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to work",
+          "ru": "работать",
+          "ipa": "/wɜːk/",
+          "example": "Peter works at the computer.",
+          "exampleRu": "Питер работает за компьютером.",
+          "audio": {
+            "src": "media/audio/u02.d91.vocab.towork.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "office",
+          "ru": "офис",
+          "ipa": "/ˈɒfɪs/",
+          "example": "The office is small.",
+          "exampleRu": "Офис маленький.",
+          "audio": {
+            "src": "media/audio/u02.d91.vocab.office.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "healthy",
+          "ru": "здоровый",
+          "ipa": "/ˈhelθi/",
+          "example": "A healthy team works well.",
+          "exampleRu": "Здоровая команда хорошо работает.",
+          "audio": {
+            "src": "media/audio/u02.d91.vocab.healthy.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to show",
+          "ru": "показывать",
+          "ipa": "/ʃoʊ/",
+          "example": "Den shows us his desk.",
+          "exampleRu": "Ден показывает нам свой стол.",
+          "audio": {
+            "src": "media/audio/u02.d91.vocab.toshow.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to make",
+          "ru": "делать; готовить",
+          "ipa": "/meɪk/",
+          "example": "Pol makes a smoothie.",
+          "exampleRu": "Пол делает смузи.",
+          "audio": {
+            "src": "media/audio/u02.d91.vocab.tomake.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "every day",
+          "ru": "каждый день",
+          "ipa": "/ˈevri deɪ/",
+          "example": "I drink coffee every day.",
+          "exampleRu": "Я пью кофе каждый день.",
+          "audio": {
+            "src": "media/audio/u02.d91.vocab.everyday.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u02.d91.grammar",
+      "title": {
+        "en": "Present simple vs Present continuous",
+        "ru": "Present simple и Present continuous"
+      },
+      "ref": "present-vs-continuous",
+      "rule": {
+        "en": "Use the present simple for habits and facts. Use the present continuous for actions happening now.",
+        "ru": "Используйте present simple для привычек и фактов. Используйте present continuous для действий, происходящих сейчас."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Habits and facts (present simple)",
+            "ru": "Привычки и факты (present simple)"
+          },
+          "formula": "subject + verb (s/es)",
+          "examples": [
+            {
+              "en": "Den usually sits at his desk.",
+              "ru": "Ден обычно сидит за своим столом."
+            },
+            {
+              "en": "He drinks coffee every morning.",
+              "ru": "Он пьёт кофе каждое утро."
+            }
+          ],
+          "ref": "present-simple"
+        },
+        {
+          "label": {
+            "en": "Actions now (present continuous)",
+            "ru": "Действия сейчас (present continuous)"
+          },
+          "formula": "subject + am/is/are + verb-ing",
+          "examples": [
+            {
+              "en": "Right now Den is standing.",
+              "ru": "Прямо сейчас Ден стоит."
+            },
+            {
+              "en": "Kate is drinking coffee at the moment.",
+              "ru": "Кейт сейчас пьёт кофе."
+            }
+          ],
+          "ref": "present-continuous"
+        },
+        {
+          "label": {
+            "en": "Time words",
+            "ru": "Слова-указатели"
+          },
+          "formula": "usually / every day / always / right now / at the moment",
+          "examples": [
+            {
+              "en": "Usually I sit, but right now I am standing.",
+              "ru": "Обычно я сижу, но прямо сейчас я стою."
+            }
+          ],
+          "ref": "time-words"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Don't use present continuous for habits: \"I am working every day\" is wrong. Say \"I work every day\".",
+          "ru": "Не используйте present continuous для привычек: «I am working every day» — неправильно. Скажите «I work every day»."
+        },
+        {
+          "en": "Don't use present simple for actions happening now: \"He is standing now\" is correct, not \"He stands now\".",
+          "ru": "Не используйте present simple для действий, происходящих сейчас: «He is standing now» — правильно, а не «He stands now»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u02.d91.reading",
+      "title": {
+        "en": "The Standing Desk",
+        "ru": "Стол для работы стоя"
+      },
+      "blocks": [
+        {
+          "id": "u02.d91.reading.b1",
+          "en": "Today Den has a new standing desk. He usually sits, but right now he is standing. \"Look at me!\" he says. \"I am working and standing at the same time!\"",
+          "ru": "Сегодня у Дена новый стол для работы стоя. Обычно он сидит, но прямо сейчас он стоит. «Посмотрите на меня! — говорит он. — Я работаю и стою одновременно!»",
+          "audio": {
+            "src": "media/audio/u02.d91.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u02.d91.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Den stands proudly at his new standing desk",
+              "ru": "Ден гордо стоит у своего нового стола для работы стоя"
+            }
+          }
+        },
+        {
+          "id": "u02.d91.reading.b2",
+          "en": "Alex watches Den and smiles. He says: \"Kate is drinking coffee, Pol is making a smoothie, and Den is showing us his desk again.\" Peter is new. He asks: \"Does Den always stand?\" Alex answers: \"No, he usually sits. Today is special.\"",
+          "ru": "Алекс смотрит на Дена и улыбается. Он говорит: «Кейт пьёт кофе, Пол делает смузи, а Ден снова показывает нам свой стол». Питер новенький. Он спрашивает: «Ден всегда стоит?» Алекс отвечает: «Нет, обычно он сидит. Сегодня особенный день».",
+          "audio": {
+            "src": "media/audio/u02.d91.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u02.d91.reading.b3",
+          "en": "Kate comes over. She says: \"Den, this is great! A healthy team is a happy team. Right now we are all working together.\" Den smiles. \"Yes! And tomorrow I will stand again!\"",
+          "ru": "Кейт подходит. Она говорит: «Ден, это здорово! Здоровая команда — счастливая команда. Прямо сейчас мы все работаем вместе». Ден улыбается. «Да! И завтра я снова буду стоять!»",
+          "audio": {
+            "src": "media/audio/u02.d91.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u02.d91.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate and the team watch Den at his standing desk",
+              "ru": "Кейт и команда смотрят на Дена у его стола для работы стоя"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "standing desk",
+          "ru": "стол для работы стоя",
+          "ipa": "/ˈstændɪŋ desk/"
+        },
+        {
+          "word": "smoothie",
+          "ru": "смузи",
+          "ipa": "/ˈsmuːði/"
+        },
+        {
+          "word": "special",
+          "ru": "особенный",
+          "ipa": "/ˈspeʃəl/"
+        },
+        {
+          "word": "team",
+          "ru": "команда",
+          "ipa": "/tiːm/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u02.d91.listening",
+      "title": {
+        "en": "Den's announcement",
+        "ru": "Объявление Дена"
+      },
+      "audio": {
+        "src": "media/audio/u02.d91.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.34,
+          "en": "I usually sit.",
+          "ru": "Обычно я сижу."
+        },
+        {
+          "start": 1.34,
+          "end": 2.84,
+          "en": "Today I am standing.",
+          "ru": "Сегодня я стою."
+        },
+        {
+          "start": 2.84,
+          "end": 4.54,
+          "en": "Right now I am working.",
+          "ru": "Прямо сейчас я работаю."
+        },
+        {
+          "start": 4.54,
+          "end": 6,
+          "en": "Does he always stand?",
+          "ru": "Он всегда стоит?"
+        },
+        {
+          "start": 6,
+          "end": 7.97,
+          "en": "No, he usually sits.",
+          "ru": "Нет, обычно он сидит."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u02.d91.ex.l.01",
+          "instruction": {
+            "en": "What is Pol making?",
+            "ru": "Что делает Пол?"
+          },
+          "tags": [
+            "listening.detail",
+            "vocab.work"
+          ],
+          "prompt": "Pol is making a ___.",
+          "options": [
+            "smoothie",
+            "coffee",
+            "tea"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u02.d91.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u02.d91.ex.g.01",
+          "instruction": {
+            "en": "Present simple (habit).",
+            "ru": "Present simple (привычка)."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "Den ___ at his desk every day.",
+          "cue": "(sit)",
+          "answers": [
+            "sits"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u02.d91.ex.c.01",
+          "instruction": {
+            "en": "Present continuous (now).",
+            "ru": "Present continuous (сейчас)."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "Right now Den ___ at his desk.",
+          "options": [
+            "is standing",
+            "stands",
+            "stand"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d91.ex.g.02",
+          "instruction": {
+            "en": "Present continuous (now).",
+            "ru": "Present continuous (сейчас)."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "Kate ___ coffee at the moment.",
+          "cue": "(drink)",
+          "answers": [
+            "is drinking"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "u02.d91.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "variants": [
+            "He is working every day.",
+            "He works every day."
+          ],
+          "correctIndex": 1
+        },
+        {
+          "type": "order-words",
+          "id": "u02.d91.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "tokens": [
+            "Den",
+            "usually",
+            "sits",
+            "at",
+            "his",
+            "desk"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u02.d91.ex.m.01",
+          "instruction": {
+            "en": "Match the sentence and its meaning.",
+            "ru": "Сопоставь предложение и его значение."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "pairs": [
+            {
+              "left": "I usually drink coffee",
+              "right": "Я обычно пью кофе"
+            },
+            {
+              "left": "I am drinking coffee",
+              "right": "Я сейчас пью кофе"
+            },
+            {
+              "left": "He works",
+              "right": "Он работает (обычно)"
+            },
+            {
+              "left": "He is working",
+              "right": "Он работает (сейчас)"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u02.d91.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-vs-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Обычно я сижу за столом.",
+          "answers": [
+            "I usually sit at the desk.",
+            "Usually I sit at the desk."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i am usually sitting"
+              ],
+              "explanation": {
+                "en": "Use present simple for habits.",
+                "ru": "Используйте present simple для привычек."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u02.d91.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-vs-continuous",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Прямо сейчас он стоит.",
+          "answers": [
+            "He is standing right now.",
+            "Right now he is standing."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he stands right now"
+              ],
+              "explanation": {
+                "en": "Use present continuous for actions happening now.",
+                "ru": "Используйте present continuous для действий, происходящих сейчас."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u02.d91.ex.g.03",
+          "instruction": {
+            "en": "Present continuous (now).",
+            "ru": "Present continuous (сейчас)."
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "Pol ___ a smoothie at the moment.",
+          "cue": "(make)",
+          "answers": [
+            "is making"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u02.d91.ex.c.02",
+          "instruction": {
+            "en": "Which time word shows a habit?",
+            "ru": "Какое слово указывает на привычку?"
+          },
+          "tags": [
+            "grammar.present-vs-continuous"
+          ],
+          "prompt": "___ = a habit.",
+          "options": [
+            "usually",
+            "now",
+            "at the moment"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    }
+  ]
+}

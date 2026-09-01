@@ -1,0 +1,475 @@
+{
+  "id": "u04.d91",
+  "unitId": "u04",
+  "insertAt": 3,
+  "tags": [
+    "grammar.past-simple",
+    "vocab.work"
+  ],
+  "title": {
+    "en": "The Weekend Stories",
+    "ru": "Истории выходных"
+  },
+  "vocab": {
+    "title": {
+      "en": "Weekend activities",
+      "ru": "Активности на выходных"
+    },
+    "words": [
+      {
+        "word": "weekend",
+        "ru": "выходные",
+        "ipa": "/ˈwiːkend/",
+        "example": "My weekend was great.",
+        "exampleRu": "Мои выходные были отличными."
+      },
+      {
+        "word": "smoothie",
+        "ru": "смузи",
+        "ipa": "/ˈsmuːði/",
+        "example": "Pol tried a new smoothie.",
+        "exampleRu": "Пол попробовал новый смузи."
+      },
+      {
+        "word": "kilometre",
+        "ru": "километр",
+        "ipa": "/kɪˈlɒmɪtə/",
+        "example": "He cycled thirty kilometres.",
+        "exampleRu": "Он проехал тридцать километров."
+      },
+      {
+        "word": "blanket",
+        "ru": "одеяло",
+        "ipa": "/ˈblæŋkɪt/",
+        "example": "The children sat on a blanket.",
+        "exampleRu": "Дети сидели на одеяле."
+      },
+      {
+        "word": "fort",
+        "ru": "крепость",
+        "ipa": "/fɔːt/",
+        "example": "The kids built a blanket fort.",
+        "exampleRu": "Дети построили крепость из одеял."
+      },
+      {
+        "word": "cartoon",
+        "ru": "мультфильм",
+        "ipa": "/kɑːˈtuːn/",
+        "example": "We watched cartoons.",
+        "exampleRu": "Мы смотрели мультфильмы."
+      },
+      {
+        "word": "flat",
+        "ru": "квартира",
+        "ipa": "/flæt/",
+        "example": "Den cleaned his flat.",
+        "exampleRu": "Ден убрал свою квартиру."
+      },
+      {
+        "word": "mug",
+        "ru": "кружка",
+        "ipa": "/mʌɡ/",
+        "example": "He organised his mugs by size.",
+        "exampleRu": "Он разложил кружки по размеру."
+      },
+      {
+        "word": "to visit",
+        "ru": "навещать",
+        "ipa": "/ˈvɪzɪt/",
+        "example": "Kate visited her sister.",
+        "exampleRu": "Кейт навестила сестру."
+      },
+      {
+        "word": "to cycle",
+        "ru": "ездить на велосипеде",
+        "ipa": "/ˈsaɪkəl/",
+        "example": "Pol cycled thirty kilometres.",
+        "exampleRu": "Пол проехал тридцать километров на велосипеде."
+      },
+      {
+        "word": "to build",
+        "ru": "строить",
+        "ipa": "/bɪld/",
+        "example": "Alex built a fort.",
+        "exampleRu": "Алекс построил крепость."
+      },
+      {
+        "word": "to stay",
+        "ru": "оставаться",
+        "ipa": "/steɪ/",
+        "example": "Valery stayed home.",
+        "exampleRu": "Валерий остался дома."
+      }
+    ]
+  },
+  "grammar": {
+    "title": {
+      "en": "Past simple",
+      "ru": "Past simple"
+    },
+    "ref": "past-simple",
+    "rule": {
+      "en": "Use the past simple for finished actions in the past. Regular verbs add -ed (visit → visited). Many common verbs are irregular and must be learned: build → built, do → did, sleep → slept.",
+      "ru": "Past simple — для законченных действий в прошлом. Правильные глаголы получают -ed (visit → visited). Многие частые глаголы неправильные, их нужно запомнить: build → built, do → did, sleep → slept."
+    },
+    "patterns": [
+      {
+        "label": {
+          "en": "regular (+ed)",
+          "ru": "правильные (+ed)"
+        },
+        "formula": "subject + verb-ed",
+        "examples": [
+          {
+            "en": "Kate visited her sister.",
+            "ru": "Кейт навестила сестру."
+          }
+        ],
+        "ref": "past-simple"
+      },
+      {
+        "label": {
+          "en": "irregular",
+          "ru": "неправильные"
+        },
+        "formula": "subject + past form",
+        "examples": [
+          {
+            "en": "Alex built a huge fort.",
+            "ru": "Алекс построил огромную крепость."
+          }
+        ],
+        "ref": "past-simple"
+      },
+      {
+        "label": {
+          "en": "negative with did not",
+          "ru": "отрицание с did not"
+        },
+        "formula": "subject + did not + base verb",
+        "examples": [
+          {
+            "en": "Alex did not sleep.",
+            "ru": "Алекс не спал."
+          }
+        ],
+        "ref": "past-simple"
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "After \"did not\", use the base verb: \"did not sleep\", not \"did not slept\".",
+        "ru": "После «did not» — начальная форма: «did not sleep», а не «did not slept»."
+      },
+      {
+        "en": "Irregular verbs have no -ed: \"built\", not \"builded\"; \"did\", not \"doed\".",
+        "ru": "У неправильных глаголов нет -ed: «built», а не «builded»; «did», а не «doed»."
+      }
+    ]
+  },
+  "reading": {
+    "title": {
+      "en": "The Weekend Stories",
+      "ru": "Истории выходных"
+    },
+    "blocks": [
+      {
+        "en": "Monday morning. Kate asked the team, \"How was your weekend?\" She visited her sister and they cooked all day. Den cleaned his flat and organised his mugs by size.",
+        "ru": "Утро понедельника. Кейт спросила команду: «Как прошли ваши выходные?» Она навестила сестру, и они готовили весь день. Ден убрал свою квартиру и разложил кружки по размеру.",
+        "image": "b1",
+        "alt": {
+          "en": "Kate asks the team about their weekend",
+          "ru": "Кейт спрашивает команду о выходных"
+        }
+      },
+      {
+        "en": "Pol tried a new smoothie bar and cycled thirty kilometres. Alex did not sleep. He watched cartoons with his kids and built a huge blanket fort. Valery stayed home. He said, \"I did nothing, and it was perfect.\"",
+        "ru": "Пол попробовал новый смузи-бар и проехал на велосипеде тридцать километров. Алекс не спал. Он смотрел мультфильмы с детьми и построил огромную крепость из одеял. Валерий остался дома. Он сказал: «Я ничего не делал, и это было прекрасно»."
+      },
+      {
+        "en": "Peter was shy. \"I studied English all weekend,\" he said. Kate smiled. \"You are our hero, Peter!\" The team laughed. It was a cosy Monday.",
+        "ru": "Питер был застенчив. «Я учил английский все выходные», — сказал он. Кейт улыбнулась. «Ты наш герой, Питер!» Команда засмеялась. Это был уютный понедельник.",
+        "image": "b3",
+        "alt": {
+          "en": "Peter tells the team he studied English",
+          "ru": "Питер говорит команде, что учил английский"
+        }
+      }
+    ],
+    "glossary": [
+      {
+        "word": "team",
+        "ru": "команда",
+        "ipa": "/tiːm/"
+      },
+      {
+        "word": "huge",
+        "ru": "огромный",
+        "ipa": "/hjuːdʒ/"
+      },
+      {
+        "word": "shy",
+        "ru": "застенчивый",
+        "ipa": "/ʃaɪ/"
+      },
+      {
+        "word": "cosy",
+        "ru": "уютный",
+        "ipa": "/ˈkəʊzi/"
+      },
+      {
+        "word": "hero",
+        "ru": "герой",
+        "ipa": "/ˈhɪərəʊ/"
+      }
+    ]
+  },
+  "listening": {
+    "title": {
+      "en": "What did you do?",
+      "ru": "Что ты делал?"
+    },
+    "dialogue": [
+      [
+        "How was your weekend?",
+        "Как прошли твои выходные?"
+      ],
+      [
+        "I visited my sister.",
+        "Я навестил сестру."
+      ],
+      [
+        "I did not sleep.",
+        "Я не спал."
+      ],
+      [
+        "I cycled thirty kilometres.",
+        "Я проехал тридцать километров."
+      ],
+      [
+        "I studied English all weekend.",
+        "Я учил английский все выходные."
+      ]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "u04.d91.ex.l.01",
+        "instruction": {
+          "en": "What did Peter study?",
+          "ru": "Что Питер учил?"
+        },
+        "tags": [
+          "listening.detail"
+        ],
+        "prompt": "I studied ___ all weekend.",
+        "options": [
+          "English",
+          "French",
+          "Spanish"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "u04.d91.ex.g.01",
+        "instruction": {
+          "en": "Past simple (regular).",
+          "ru": "Past simple (правильные глаголы)."
+        },
+        "tags": [
+          "grammar.past-simple"
+        ],
+        "prompt": "Kate ___ her sister.",
+        "cue": "(visit)",
+        "answers": [
+          "visited"
+        ]
+      },
+      {
+        "type": "choice",
+        "id": "u04.d91.ex.c.01",
+        "instruction": {
+          "en": "Choose the past simple form.",
+          "ru": "Выберите форму Past simple."
+        },
+        "tags": [
+          "grammar.past-simple"
+        ],
+        "prompt": "Pol ___ thirty kilometres.",
+        "options": [
+          "cycled",
+          "cycle",
+          "cycles"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "u04.d91.ex.g.02",
+        "instruction": {
+          "en": "Past simple (irregular).",
+          "ru": "Past simple (неправильные глаголы)."
+        },
+        "tags": [
+          "grammar.past-simple"
+        ],
+        "prompt": "Alex ___ a huge blanket fort.",
+        "cue": "(build)",
+        "answers": [
+          "built"
+        ]
+      },
+      {
+        "type": "spot-error",
+        "id": "u04.d91.ex.s.01",
+        "instruction": {
+          "en": "Which sentence is correct?",
+          "ru": "Какое предложение верное?"
+        },
+        "tags": [
+          "grammar.past-simple"
+        ],
+        "variants": [
+          "Valery did nothing.",
+          "Valery done nothing."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "u04.d91.ex.g.03",
+        "instruction": {
+          "en": "Negative with did (base verb).",
+          "ru": "Отрицание с did (начальная форма)."
+        },
+        "tags": [
+          "grammar.past-simple"
+        ],
+        "prompt": "Alex did not ___.",
+        "cue": "(sleep)",
+        "answers": [
+          "sleep"
+        ]
+      },
+      {
+        "type": "order-words",
+        "id": "u04.d91.ex.o.01",
+        "instruction": {
+          "en": "Make a sentence.",
+          "ru": "Собери предложение."
+        },
+        "tags": [
+          "grammar.past-simple"
+        ],
+        "tokens": [
+          "I",
+          "studied",
+          "English",
+          "all",
+          "weekend"
+        ],
+        "correctOrder": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "type": "match",
+        "id": "u04.d91.ex.m.01",
+        "instruction": {
+          "en": "Match the word and the translation.",
+          "ru": "Сопоставь слово и перевод."
+        },
+        "tags": [
+          "vocab.work"
+        ],
+        "pairs": [
+          {
+            "left": "weekend",
+            "right": "выходные"
+          },
+          {
+            "left": "flat",
+            "right": "квартира"
+          },
+          {
+            "left": "mug",
+            "right": "кружка"
+          },
+          {
+            "left": "fort",
+            "right": "крепость"
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u04.d91.ex.t.01",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.past-simple",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Мы смотрели мультфильмы.",
+        "answers": [
+          "We watched cartoons.",
+          "We watched the cartoons."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "we watch cartoons",
+              "we watches cartoons"
+            ],
+            "explanation": {
+              "en": "Use past simple: watch → watched.",
+              "ru": "Используйте Past simple: watch → watched."
+            }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "u04.d91.ex.t.02",
+        "instruction": {
+          "en": "Translate into English.",
+          "ru": "Переведи на английский."
+        },
+        "tags": [
+          "grammar.past-simple",
+          "writing.translation"
+        ],
+        "direction": "ru-en",
+        "prompt": "Я ничего не делал.",
+        "answers": [
+          "I did nothing.",
+          "I did nothing at all."
+        ],
+        "commonErrors": [
+          {
+            "match": [
+              "I didn't nothing",
+              "I didn't do nothing"
+            ],
+            "explanation": {
+              "en": "Use one negative: did nothing.",
+              "ru": "Используйте одно отрицание: did nothing."
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

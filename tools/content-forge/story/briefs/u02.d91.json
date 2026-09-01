@@ -1,0 +1,12 @@
+{
+  "id": "u02.d91",
+  "unitId": "u02",
+  "insertAt": 3,
+  "tags": ["grammar.present-vs-continuous", "vocab.work"],
+  "level": "A2",
+  "episode": "The Standing Desk",
+  "grammarName": { "en": "Present simple vs present continuous", "ru": "Present simple и present continuous" },
+  "grammarRef": "present-vs-continuous",
+  "characters": ["Den", "Alex", "Kate", "Pol", "Peter"],
+  "scenario": "Den gets a new standing desk and keeps announcing the difference between what he usually does and what he is doing right now. Contrast habits and facts (present simple) with actions happening at the moment (present continuous). Den: 'I usually sit, but today I am standing.' Alex trolls gently by narrating the room: 'Kate is drinking coffee, Pol is making a smoothie, and Den is showing us his desk again.' Present simple for routines: 'Den always arrives at nine. He drinks two coffees every morning.' Present continuous for now: 'Right now he is raising the desk higher.' Kate loves it: 'This is what a healthy team looks like.' Warm, light teasing, nobody is annoyed. Short A2 sentences; make the now-vs-usually contrast very clear, with time words like 'usually', 'every day', 'right now', 'at the moment'."
+}

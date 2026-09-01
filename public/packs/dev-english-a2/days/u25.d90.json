@@ -327,6 +327,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u25.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate shows a schedule full of team-building meetings",
+              "ru": "Кейт показывает расписание, полное тимбилдингов"
+            }
           }
         },
         {
@@ -350,6 +361,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u25.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate cancels a meeting and everyone cheers",
+              "ru": "Кейт отменяет встречу, и все радуются"
             }
           }
         }

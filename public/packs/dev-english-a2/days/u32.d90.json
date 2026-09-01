@@ -1,0 +1,659 @@
+{
+  "id": "u32.d90",
+  "title": {
+    "en": "The Missing Mug",
+    "ru": "Пропавшая кружка"
+  },
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.cleft",
+    "grammar.emphasis",
+    "grammar.inversion",
+    "vocab.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "u32.d90.vocab",
+      "title": {
+        "en": "Office kitchen",
+        "ru": "Офисная кухня"
+      },
+      "words": [
+        {
+          "word": "mug",
+          "ru": "кружка",
+          "ipa": "/mʌɡ/",
+          "example": "This is my favourite mug.",
+          "exampleRu": "Это моя любимая кружка.",
+          "audio": {
+            "src": "media/audio/u32.d90.vocab.mug.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "shelf",
+          "ru": "полка",
+          "ipa": "/ʃelf/",
+          "example": "The mug is on the shelf.",
+          "exampleRu": "Кружка на полке.",
+          "audio": {
+            "src": "media/audio/u32.d90.vocab.shelf.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to disappear",
+          "ru": "исчезать",
+          "ipa": "/ˌdɪsəˈpɪə/",
+          "example": "The mug disappeared from my desk.",
+          "exampleRu": "Кружка исчезла с моего стола.",
+          "audio": {
+            "src": "media/audio/u32.d90.vocab.todisappear.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to wash",
+          "ru": "мыть",
+          "ipa": "/wɒʃ/",
+          "example": "Peter washed the mug.",
+          "exampleRu": "Питер помыл кружку.",
+          "audio": {
+            "src": "media/audio/u32.d90.vocab.towash.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "kettle",
+          "ru": "чайник",
+          "ipa": "/ˈketl/",
+          "example": "The kettle is by the window.",
+          "exampleRu": "Чайник у окна.",
+          "audio": {
+            "src": "media/audio/u32.d90.vocab.kettle.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to touch",
+          "ru": "трогать",
+          "ipa": "/tʌtʃ/",
+          "example": "Don't touch my desk.",
+          "exampleRu": "Не трогай мой стол.",
+          "audio": {
+            "src": "media/audio/u32.d90.vocab.totouch.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "spare",
+          "ru": "запасной",
+          "ipa": "/speə/",
+          "example": "Do you have a spare mug?",
+          "exampleRu": "У тебя есть запасная кружка?",
+          "audio": {
+            "src": "media/audio/u32.d90.vocab.spare.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to remember",
+          "ru": "помнить",
+          "ipa": "/rɪˈmembə/",
+          "example": "I do remember washing it.",
+          "exampleRu": "Я точно помню, что мыл её.",
+          "audio": {
+            "src": "media/audio/u32.d90.vocab.toremember.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "evidence",
+          "ru": "улика",
+          "ipa": "/ˈevɪdəns/",
+          "example": "There was no evidence.",
+          "exampleRu": "Улик не было.",
+          "audio": {
+            "src": "media/audio/u32.d90.vocab.evidence.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to save",
+          "ru": "спасать",
+          "ipa": "/seɪv/",
+          "example": "Peter saved the day.",
+          "exampleRu": "Питер спас день.",
+          "audio": {
+            "src": "media/audio/u32.d90.vocab.tosave.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "shy",
+          "ru": "застенчивый",
+          "ipa": "/ʃaɪ/",
+          "example": "Peter is shy and quiet.",
+          "exampleRu": "Питер застенчивый и тихий.",
+          "audio": {
+            "src": "media/audio/u32.d90.vocab.shy.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "investigation",
+          "ru": "расследование",
+          "ipa": "/ɪnˌvestɪˈɡeɪʃn/",
+          "example": "The investigation took five minutes.",
+          "exampleRu": "Расследование заняло пять минут.",
+          "audio": {
+            "src": "media/audio/u32.d90.vocab.investigation.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "u32.d90.grammar",
+      "title": {
+        "en": "Cleft sentences & emphasis",
+        "ru": "Эмфаза: расщеплённые предложения и инверсия"
+      },
+      "ref": "cleft",
+      "rule": {
+        "en": "Cleft sentences split one sentence into two parts to focus on one element. Use it-cleft to highlight a person or thing, what-cleft to focus on an action or object. Emphatic do stresses the verb. Negative inversion puts a negative adverb at the start and swaps subject and auxiliary.",
+        "ru": "Расщеплённые предложения делят одно предложение на две части, чтобы выделить один элемент. It-cleft выделяет человека или предмет, what-cleft — действие или объект. Усилительное do подчёркивает глагол. При отрицательной инверсии отрицательное наречие стоит в начале, а подлежащее и вспомогательный глагол меняются местами."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "It-cleft",
+            "ru": "It-cleft"
+          },
+          "formula": "It + be + emphasized part + that/who + rest",
+          "examples": [
+            {
+              "en": "It was you who moved my mug.",
+              "ru": "Это ты передвинул мою кружку."
+            }
+          ],
+          "ref": "cleft"
+        },
+        {
+          "label": {
+            "en": "What-cleft",
+            "ru": "What-cleft"
+          },
+          "formula": "What + clause + be + focus",
+          "examples": [
+            {
+              "en": "What Den needs is a spare mug.",
+              "ru": "Что Дену нужно — так это запасная кружка."
+            }
+          ],
+          "ref": "cleft"
+        },
+        {
+          "label": {
+            "en": "Emphatic do",
+            "ru": "Усилительное do"
+          },
+          "formula": "do/does/did + base verb",
+          "examples": [
+            {
+              "en": "I did put it here.",
+              "ru": "Я ведь поставил её сюда."
+            }
+          ],
+          "ref": "emphasis"
+        },
+        {
+          "label": {
+            "en": "Negative inversion",
+            "ru": "Отрицательная инверсия"
+          },
+          "formula": "Negative adverbial + auxiliary + subject + verb",
+          "examples": [
+            {
+              "en": "Not once did I touch it.",
+              "ru": "Я ни разу её не трогал."
+            }
+          ],
+          "ref": "inversion"
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After negative adverbials, invert subject and auxiliary: \"Never have I seen\" not \"Never I have seen\".",
+          "ru": "После отрицательных наречий меняй подлежащее и вспомогательный глагол: «Never have I seen», а не «Never I have seen»."
+        },
+        {
+          "en": "In it-cleft, keep that/who: \"It was Peter who helped\" not \"It was Peter helped\".",
+          "ru": "В it-cleft не опускай that/who: «It was Peter who helped», а не «It was Peter helped»."
+        },
+        {
+          "en": "Use the base verb after emphatic do: \"I did put\" not \"I did putted\".",
+          "ru": "После усилительного do используй начальную форму: «I did put», а не «I did putted»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "u32.d90.reading",
+      "title": {
+        "en": "The Missing Mug",
+        "ru": "Пропавшая кружка"
+      },
+      "blocks": [
+        {
+          "id": "u32.d90.reading.b1",
+          "en": "Den's favourite mug disappeared this morning. He looked on his desk. It wasn't there. \"I DID put it right here,\" he said. \"It was on this spot!\" Den started a loud investigation.",
+          "ru": "Любимая кружка Дена исчезла этим утром. Он посмотрел на свой стол. Её там не было. «Я ведь поставил её прямо сюда! — сказал он. — Она была на этом месте!» Ден начал громкое расследование.",
+          "audio": {
+            "src": "media/audio/u32.d90.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u32.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Den looks at his empty desk",
+              "ru": "Ден смотрит на свой пустой стол"
+            }
+          }
+        },
+        {
+          "id": "u32.d90.reading.b2",
+          "en": "\"It was you who moved it!\" Den told Alex. \"Not once did I touch your desk,\" Alex said. Pol said, \"What I touched was only the kettle.\" Kate sighed. \"What Den really needs is a spare mug.\"",
+          "ru": "«Это ты её передвинул!» — сказал Ден Алексу. «Я ни разу не трогал твой стол, — сказал Алекс. — Что я трогал, так это только чайник». Кейт вздохнула. «Что Дену действительно нужно — так это запасная кружка».",
+          "audio": {
+            "src": "media/audio/u32.d90.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "u32.d90.reading.b3",
+          "en": "Then shy Peter raised his hand. \"I washed your mug, Den. It's on the shelf.\" Den stopped. It was Peter who saved the day. \"What I wanted was my mug,\" Den smiled. \"And what I got was a clean one.\"",
+          "ru": "Тут застенчивый Питер поднял руку. «Я помыл твою кружку, Ден. Она на полке». Ден остановился. Это Питер спас день. «Я хотел свою кружку, — улыбнулся Ден. — А получил чистую».",
+          "audio": {
+            "src": "media/audio/u32.d90.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u32.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Peter points at the mug on the shelf",
+              "ru": "Питер показывает на кружку на полке"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "spot",
+          "ru": "место",
+          "ipa": "/spɒt/"
+        },
+        {
+          "word": "sighed",
+          "ru": "вздохнул",
+          "ipa": "/saɪd/"
+        },
+        {
+          "word": "raised",
+          "ru": "поднял",
+          "ipa": "/reɪzd/"
+        },
+        {
+          "word": "clean",
+          "ru": "чистый",
+          "ipa": "/kliːn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "u32.d90.listening",
+      "title": {
+        "en": "The suspect",
+        "ru": "Подозреваемый"
+      },
+      "audio": {
+        "src": "media/audio/u32.d90.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.5,
+          "en": "I did put it here.",
+          "ru": "Я ведь поставил её сюда."
+        },
+        {
+          "start": 1.5,
+          "end": 3.11,
+          "en": "It was you who moved it.",
+          "ru": "Это ты её передвинул."
+        },
+        {
+          "start": 3.11,
+          "end": 4.79,
+          "en": "Not once did I touch it.",
+          "ru": "Я ни разу её не трогал."
+        },
+        {
+          "start": 4.79,
+          "end": 6.37,
+          "en": "What Den needs is a mug.",
+          "ru": "Что Дену нужно, так это кружка."
+        },
+        {
+          "start": 6.37,
+          "end": 8.07,
+          "en": "It was Peter who saved it.",
+          "ru": "Это Питер её спас."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "u32.d90.ex.l.01",
+          "instruction": {
+            "en": "Who saved the mug?",
+            "ru": "Кто спас кружку?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.cleft"
+          ],
+          "prompt": "___ saved the mug.",
+          "options": [
+            "Peter",
+            "Alex",
+            "Den"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "u32.d90.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "u32.d90.ex.g.01",
+          "instruction": {
+            "en": "Complete the it-cleft.",
+            "ru": "Дополни it-cleft."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "It ___ you who moved my mug.",
+          "answers": [
+            "was"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u32.d90.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct adverb.",
+            "ru": "Выбери правильное наречие."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "What Den ___ needs is a spare mug.",
+          "options": [
+            "really",
+            "real",
+            "does"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u32.d90.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "variants": [
+            "Not once did I touch it.",
+            "Not once I did touch it."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "u32.d90.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "tokens": [
+            "It",
+            "was",
+            "you",
+            "who",
+            "moved",
+            "my",
+            "mug"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "type": "match",
+          "id": "u32.d90.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.work"
+          ],
+          "pairs": [
+            {
+              "left": "mug",
+              "right": "кружка"
+            },
+            {
+              "left": "shelf",
+              "right": "полка"
+            },
+            {
+              "left": "kettle",
+              "right": "чайник"
+            },
+            {
+              "left": "evidence",
+              "right": "улика"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u32.d90.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.cleft",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это ты передвинул мою кружку.",
+          "answers": [
+            "It was you who moved my mug."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "It was you moved my mug"
+              ],
+              "explanation": {
+                "en": "In it-cleft, use who: ... who moved.",
+                "ru": "В it-cleft нужно who: ... who moved."
+              }
+            }
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "u32.d90.ex.g.02",
+          "instruction": {
+            "en": "Complete the inversion.",
+            "ru": "Дополни инверсию."
+          },
+          "tags": [
+            "grammar.inversion"
+          ],
+          "prompt": "Never ___ I seen such a mess.",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "u32.d90.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.emphasis",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я ведь поставил её сюда.",
+          "answers": [
+            "I did put it here."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "I put it here"
+              ],
+              "explanation": {
+                "en": "Add emphatic did: I did put.",
+                "ru": "Добавь усилительное did: I did put."
+              }
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "u32.d90.ex.c.02",
+          "instruction": {
+            "en": "Complete the what-cleft.",
+            "ru": "Дополни what-cleft."
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "prompt": "What ___ touched was only the kettle.",
+          "options": [
+            "I",
+            "me",
+            "my"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "u32.d90.ex.s.02",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.cleft"
+          ],
+          "variants": [
+            "It was Peter who saved the day.",
+            "It was Peter saved the day."
+          ],
+          "correctIndex": 0
+        }
+      ]
+    }
+  ]
+}

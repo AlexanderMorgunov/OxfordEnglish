@@ -49,6 +49,28 @@ Vocabulary is controlled to the episode's CEFR tier (A1–B1).
 | 9 | The Wi-Fi Outage | present perfect continuous | u17 | u17.d90 |
 | 10 | Karaoke Party | reported speech | u29 | u29.d90 |
 
+## Season 2 → one episode per remaining unit (u01, u03, u05–u28, u30, u31; all `.d90`)
+
+Season 2 filled a `.d90` story day for every A2/B1/B2 unit that Season 1 didn't cover, reusing each
+host unit's grammar in a fresh office conflict. Complete. The final breadth episode is **u32.d90**
+(host unit u32 = cleft / emphasis / inversion — see the emphasis structures below).
+
+| Episode | Grammar | Host unit | id |
+|---|---|---|---|
+| The Missing Mug | cleft sentences, emphatic *do*, negative inversion | u32 | u32.d90 |
+
+## Season 3 → depth pass (a SECOND episode per unit, `.d91`)
+
+Once breadth is done, Season 3 adds a second story day (`uNN.d91`) to units that benefit from more
+reading, starting with the earliest/highest-traffic units. Same cast & canon, brand-new everyday
+conflicts (never reuse a Season 1/2 plot), same host-unit grammar. `insertAt` places it after the
+unit's existing `.d90` (a later middle slot — never last, same interleaving rule as `.d90`).
+
+| # | Episode | Grammar | Host unit | id |
+|---|---|---|---|---|
+| 1 | The Standing Desk | present simple vs continuous | u02 | u02.d91 |
+| 2 | The Weekend Stories | past simple | u04 | u04.d91 |
+
 ## Production pipeline (DeepSeek → review → build)
 
 Text scales via DeepSeek; audio via Piper; art stays a separate manual pass.

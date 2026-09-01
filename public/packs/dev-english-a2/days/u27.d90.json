@@ -307,6 +307,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u27.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate and Den worry about the expensive coffee machine",
+              "ru": "Кейт и Ден переживают из-за дорогой кофемашины"
+            }
           }
         },
         {
@@ -330,6 +341,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u27.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "The team enjoys a perfect cup of coffee",
+              "ru": "Команда наслаждается идеальной чашкой кофе"
             }
           }
         }

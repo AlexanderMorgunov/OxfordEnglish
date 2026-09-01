@@ -275,6 +275,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u26.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Rain falls outside while Kate looks at the broken coffee machine",
+              "ru": "За окном идёт дождь, а Кейт смотрит на сломанную кофемашину"
+            }
           }
         },
         {
@@ -298,6 +309,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u26.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate smiles while the team listens to Peter",
+              "ru": "Кейт улыбается, а команда слушает Питера"
             }
           }
         }

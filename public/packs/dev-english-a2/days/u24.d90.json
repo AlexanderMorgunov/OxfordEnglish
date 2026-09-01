@@ -297,6 +297,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u24.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Pol makes a smoothie at his desk",
+              "ru": "Пол делает смузи за своим столом"
+            }
           }
         },
         {
@@ -320,6 +331,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u24.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Den tries to make the smoothie and fails",
+              "ru": "Ден пытается сделать смузи и терпит неудачу"
             }
           }
         }

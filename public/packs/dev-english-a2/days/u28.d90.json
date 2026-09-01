@@ -297,6 +297,17 @@
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
             }
+          },
+          "image": {
+            "src": "media/images/u28.d90.reading.b1.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "Kate announces the renovation",
+              "ru": "Кейт объявляет о ремонте"
+            }
           }
         },
         {
@@ -320,6 +331,17 @@
             "license": {
               "type": "original",
               "attribution": "Project authors (LLM-assisted)"
+            }
+          },
+          "image": {
+            "src": "media/images/u28.d90.reading.b3.png",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            },
+            "alt": {
+              "en": "The team sees the pale green walls and Peter fixes the coffee machine",
+              "ru": "Команда видит бледно-зелёные стены, а Питер чинит кофемашину"
             }
           }
         }
