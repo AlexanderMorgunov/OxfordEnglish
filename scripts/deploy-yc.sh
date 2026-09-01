@@ -88,5 +88,18 @@ if [ -d "$DIST/grammar" ]; then
   done
 fi
 
+# Same for reading-catalog book pages at key library/catalog/<id> (build-seo.mjs prerenders a preview +
+# metadata into dist/library/catalog/<id>.html). 3-level nested keys under the library/ prefix; the flat
+# library index stays at key `library`. Verify a 3-level key resolves after deploy (see note above).
+if [ -d "$DIST/library/catalog" ]; then
+  echo "3d/3 reading-catalog book pages (indexable /library/catalog/<id>)…"
+  for f in "$DIST"/library/catalog/*.html; do
+    [ -f "$f" ] || continue
+    id="$(basename "$f" .html)"
+    "${S3[@]}" cp "$f" "s3://$YC_BUCKET/library/catalog/$id" \
+      --content-type "text/html; charset=utf-8" --cache-control "$NOCACHE" --no-progress
+  done
+fi
+
 echo "Done. NOTE: CDN must honor origin Cache-Control (or force-revalidate sw.js/index.html/manifest),"
 echo "otherwise the edge serves a stale sw.js and PWA updates stall. No --delete (orphans pruned separately)."

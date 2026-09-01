@@ -174,6 +174,76 @@ function topicLd(a, url) {
   };
 }
 
+// ── Reading catalog (programmatic SEO for /library) ────────────────────────────────────────────────
+const CATALOG_JSON = join(HERE, '..', 'public', 'reader', 'catalog.json');
+const CATALOG_DIR = join(HERE, '..', 'public', 'reader', 'catalog');
+const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+let catalog = [];
+try {
+  const raw = JSON.parse(readFileSync(CATALOG_JSON, 'utf8'));
+  catalog = (raw.books || raw).filter((b) => /^[a-z0-9-]+$/.test(b.id));
+  catalog.sort((a, b) => LEVELS.indexOf(a.level) - LEVELS.indexOf(b.level) || a.title.localeCompare(b.title));
+} catch {
+  console.warn('build-seo: reader/catalog.json not readable — skipping library pages.');
+}
+
+/** First couple of paragraphs of a bundled book (its JSON lives under /public/reader/, readable at
+ *  build). Gives each bundled book landing real, unique English content; remote books have none locally. */
+function bookPreview(entry) {
+  if (entry.kind !== 'bundled' || !entry.path) return '';
+  try {
+    const book = JSON.parse(readFileSync(join(HERE, '..', 'public', entry.path), 'utf8'));
+    const text = book.chapters?.[0]?.text || '';
+    const ps = text.split(/\n{2,}/).map((p) => p.replace(/\n/g, ' ').trim()).filter(Boolean).slice(0, 2);
+    const joined = ps.join(' ');
+    const clipped = joined.length > 420 ? `${joined.slice(0, 419).trimEnd()}…` : joined;
+    return clipped ? `<h2>Начало книги</h2><p>${esc(clipped)}</p>` : '';
+  } catch {
+    return '';
+  }
+}
+
+function bookBody(b) {
+  const by = b.author ? `${esc(b.author)} · ` : '';
+  return (
+    `<main><nav><a href="/library">← Книги на английском</a></nav>` +
+    `<article><h1>${esc(b.title)}</h1>` +
+    `<p>${by}уровень ${esc(b.level)}</p>` +
+    `<p>Читайте «${esc(b.title)}» на английском прямо в браузере: перевод слов и фраз по клику, озвучка и закладки. Бесплатно, без регистрации.</p>` +
+    bookPreview(b) +
+    (b.license?.sourceUrl
+      ? `<p><small>Источник: ${esc(b.license?.attribution || '')} — <a href="${esc(b.license.sourceUrl)}" rel="nofollow">оригинал</a>.</small></p>`
+      : '') +
+    `</article></main>`
+  );
+}
+
+function bookLd(b, url) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Book',
+    name: b.title,
+    author: b.author ? { '@type': 'Person', name: b.author } : undefined,
+    inLanguage: 'en',
+    url,
+    isAccessibleForFree: true,
+    learningResourceType: 'Graded reader',
+    isPartOf: { '@type': 'WebSite', '@id': 'https://dayenglish.ru/#website' },
+  };
+}
+
+const libraryHubBody =
+  `<main><h1>Книги на английском для чтения — с переводом</h1>` +
+  `<p>Бесплатная читалка: ${catalog.length} книг на английском (public domain и CC-BY) с переводом слов и фраз по клику, озвучкой и закладками. Уровни A2–C1, для любого уровня.</p>` +
+  `<ul>` +
+  catalog
+    .map(
+      (b) =>
+        `<li><a href="/library/catalog/${b.id}">«${esc(b.title)}»${b.author ? ` — ${esc(b.author)}` : ''}</a> · ${esc(b.level)}</li>`
+    )
+    .join('') +
+  `</ul></main>`;
+
 // /grammar hub body: h1 + the full crawlable topic link list (internal-linking is the point).
 const hubBody =
   `<main><h1>Грамматика английского языка</h1>` +
@@ -187,7 +257,12 @@ const hubBody =
 // ── Write pages ──────────────────────────────────────────────────────────────────────────────────
 for (const r of ROUTES) {
   const url = `${ORIGIN}/${r.key}`;
-  const body = r.key === 'grammar' && grammar.length ? hubBody : undefined;
+  const body =
+    r.key === 'grammar' && grammar.length
+      ? hubBody
+      : r.key === 'library' && catalog.length
+        ? libraryHubBody
+        : undefined;
   writeFileSync(join(DIST, `${r.key}.html`), renderPage({ ...r, url, body }));
 }
 
@@ -207,12 +282,29 @@ if (grammar.length) {
   }
 }
 
+if (catalog.length) {
+  mkdirSync(join(DIST, 'library', 'catalog'), { recursive: true });
+  for (const b of catalog) {
+    const url = `${ORIGIN}/library/catalog/${b.id}`;
+    const html = renderPage({
+      url,
+      title: `${b.title}${b.author ? ` (${b.author})` : ''} — читать на английском | DayEnglish`,
+      desc: `Читать «${b.title}»${b.author ? ` (${b.author})` : ''} на английском с переводом слов и фраз, озвучкой и закладками. Уровень ${b.level}. Бесплатно, без регистрации.`,
+      index: true,
+      ldjson: bookLd(b, url),
+      body: bookBody(b),
+    });
+    writeFileSync(join(DIST, 'library', 'catalog', `${b.id}.html`), html);
+  }
+}
+
 // ── Sitemap: home + indexable flat routes + every grammar topic ────────────────────────────────────
 const lastmod = new Date().toISOString().slice(0, 10);
 const urls = [
   { loc: `${ORIGIN}/`, priority: '1.0', changefreq: 'weekly' },
   ...ROUTES.filter((r) => r.index).map((r) => ({ loc: `${ORIGIN}/${r.key}`, priority: '0.8', changefreq: 'monthly' })),
   ...grammar.map((a) => ({ loc: `${ORIGIN}/grammar/${a.id}`, priority: '0.7', changefreq: 'monthly' })),
+  ...catalog.map((b) => ({ loc: `${ORIGIN}/library/catalog/${b.id}`, priority: '0.6', changefreq: 'monthly' })),
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -224,5 +316,5 @@ ${urls
 writeFileSync(join(DIST, 'sitemap.xml'), sitemap);
 
 console.log(
-  `build-seo: wrote ${ROUTES.length} flat routes + ${grammar.length} grammar topics + sitemap (${urls.length} urls, lastmod ${lastmod}).`
+  `build-seo: wrote ${ROUTES.length} flat routes + ${grammar.length} grammar topics + ${catalog.length} catalog books + sitemap (${urls.length} urls, lastmod ${lastmod}).`
 );
