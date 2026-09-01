@@ -1,0 +1,601 @@
+{
+  "id": "a11.d05",
+  "title": {
+    "en": "How old are you?",
+    "ru": "Сколько тебе лет?"
+  },
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.be",
+    "vocab.daily",
+    "functions.small-talk"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "a11.d05.vocab",
+      "title": {
+        "en": "Numbers and age",
+        "ru": "Числа и возраст"
+      },
+      "words": [
+        {
+          "word": "how",
+          "ru": "как; сколько",
+          "ipa": "/haʊ/",
+          "example": "How old are you?",
+          "exampleRu": "Сколько тебе лет?",
+          "audio": {
+            "src": "media/audio/a11.d05.vocab.how.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "old",
+          "ru": "старый; возраст",
+          "ipa": "/əʊld/",
+          "example": "I am ten years old.",
+          "exampleRu": "Мне десять лет.",
+          "audio": {
+            "src": "media/audio/a11.d05.vocab.old.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "year",
+          "ru": "год",
+          "ipa": "/jɪə/",
+          "example": "one year, two years",
+          "exampleRu": "один год, два года",
+          "audio": {
+            "src": "media/audio/a11.d05.vocab.year.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "number",
+          "ru": "число, номер",
+          "ipa": "/ˈnʌmbə/",
+          "example": "My phone number is…",
+          "exampleRu": "Мой номер телефона…",
+          "audio": {
+            "src": "media/audio/a11.d05.vocab.number.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "phone",
+          "ru": "телефон",
+          "ipa": "/fəʊn/",
+          "example": "This is my phone.",
+          "exampleRu": "Это мой телефон.",
+          "audio": {
+            "src": "media/audio/a11.d05.vocab.phone.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "zero",
+          "ru": "ноль",
+          "ipa": "/ˈzɪərəʊ/",
+          "example": "zero, one, two",
+          "exampleRu": "ноль, один, два",
+          "audio": {
+            "src": "media/audio/a11.d05.vocab.zero.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ten",
+          "ru": "десять",
+          "ipa": "/ten/",
+          "example": "I am ten.",
+          "exampleRu": "Мне десять.",
+          "audio": {
+            "src": "media/audio/a11.d05.vocab.ten.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "twenty",
+          "ru": "двадцать",
+          "ipa": "/ˈtwenti/",
+          "example": "twenty-one, twenty-two",
+          "exampleRu": "двадцать один, двадцать два",
+          "audio": {
+            "src": "media/audio/a11.d05.vocab.twenty.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "thirty",
+          "ru": "тридцать",
+          "ipa": "/ˈθɜːti/",
+          "example": "She is thirty.",
+          "exampleRu": "Ей тридцать.",
+          "audio": {
+            "src": "media/audio/a11.d05.vocab.thirty.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hundred",
+          "ru": "сто",
+          "ipa": "/ˈhʌndrəd/",
+          "example": "one hundred",
+          "exampleRu": "сто",
+          "audio": {
+            "src": "media/audio/a11.d05.vocab.hundred.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "please",
+          "ru": "пожалуйста",
+          "ipa": "/pliːz/",
+          "example": "Your name, please?",
+          "exampleRu": "Ваше имя, пожалуйста?",
+          "audio": {
+            "src": "media/audio/a11.d05.vocab.please.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "thanks",
+          "ru": "спасибо",
+          "ipa": "/θæŋks/",
+          "example": "Thanks!",
+          "exampleRu": "Спасибо!",
+          "audio": {
+            "src": "media/audio/a11.d05.vocab.thanks.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "a11.d05.grammar",
+      "title": {
+        "en": "Age with be, and numbers",
+        "ru": "Возраст с глаголом be и числа"
+      },
+      "ref": "verb-be",
+      "rule": {
+        "en": "In English we talk about age with be, not have: I am 25 (years old). Ask: How old are you? — I am twenty. For 21–99 join tens and ones with a hyphen: twenty-one, thirty-five.",
+        "ru": "О возрасте в английском говорят через be, а не have: I am 25 (years old). Вопрос: How old are you? — I am twenty. Для 21–99 соединяем десятки и единицы через дефис: twenty-one, thirty-five."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Age: be + number",
+            "ru": "Возраст: be + число"
+          },
+          "formula": "subject + be + number (+ years old)",
+          "examples": [
+            {
+              "en": "I am twenty years old.",
+              "ru": "Мне двадцать лет."
+            },
+            {
+              "en": "She is thirty.",
+              "ru": "Ей тридцать."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Question: How old…?",
+            "ru": "Вопрос: How old…?"
+          },
+          "formula": "How old + be + subject?",
+          "examples": [
+            {
+              "en": "How old are you?",
+              "ru": "Сколько тебе лет?"
+            },
+            {
+              "en": "How old is he?",
+              "ru": "Сколько ему лет?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Numbers 21–99",
+            "ru": "Числа 21–99"
+          },
+          "formula": "ten + -one/two/… (with a hyphen)",
+          "examples": [
+            {
+              "en": "twenty-one, thirty-five",
+              "ru": "двадцать один, тридцать пять"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Age uses be, not have: \"I am 25\", not \"I have 25 years\".",
+          "ru": "Возраст — через be, не have: «I am 25», а не «I have 25 years»."
+        },
+        {
+          "en": "Ask \"How old are you?\", not \"How many years…?\".",
+          "ru": "Спрашиваем «How old are you?», а не «How many years…?»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "a11.d05.reading",
+      "title": {
+        "en": "About me",
+        "ru": "Обо мне"
+      },
+      "blocks": [
+        {
+          "id": "a11.d05.reading.b1",
+          "en": "Hello! My name is Tom. I am twenty years old. I am a student.",
+          "ru": "Привет! Меня зовут Том. Мне двадцать лет. Я студент.",
+          "audio": {
+            "src": "media/audio/a11.d05.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a11.d05.reading.b2",
+          "en": "This is my friend Kate. She is twenty-one. She is from England.",
+          "ru": "Это моя подруга Кейт. Ей двадцать один. Она из Англии.",
+          "audio": {
+            "src": "media/audio/a11.d05.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a11.d05.reading.b3",
+          "en": "\"How old are you?\" \"I am thirty. And you?\" \"I am twenty-five.\"",
+          "ru": "«Сколько тебе лет?» «Мне тридцать. А тебе?» «Мне двадцать пять.»",
+          "audio": {
+            "src": "media/audio/a11.d05.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "years old",
+          "ru": "лет (о возрасте)",
+          "ipa": "/jɪəz əʊld/"
+        },
+        {
+          "word": "and you?",
+          "ru": "а ты? / а вы?",
+          "ipa": "/ænd juː/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "a11.d05.listening",
+      "title": {
+        "en": "How old?",
+        "ru": "Сколько лет?"
+      },
+      "audio": {
+        "src": "media/audio/a11.d05.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.08,
+          "en": "How old are you?",
+          "ru": "Сколько тебе лет?"
+        },
+        {
+          "start": 1.08,
+          "end": 2.61,
+          "en": "I am twenty years old.",
+          "ru": "Мне двадцать лет."
+        },
+        {
+          "start": 2.61,
+          "end": 3.96,
+          "en": "How old is your friend?",
+          "ru": "Сколько лет твоему другу?"
+        },
+        {
+          "start": 3.96,
+          "end": 5.21,
+          "en": "She is twenty-one.",
+          "ru": "Ей двадцать один."
+        },
+        {
+          "start": 5.21,
+          "end": 6.03,
+          "en": "Thanks!",
+          "ru": "Спасибо!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "a11.d05.ex.l.01",
+          "instruction": {
+            "en": "How old is the speaker?",
+            "ru": "Сколько лет говорящему?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "___",
+          "options": [
+            "Twenty",
+            "Twenty-one",
+            "Thirty"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "a11.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "a11.d05.ex.g.01",
+          "instruction": {
+            "en": "Complete with am / is / are.",
+            "ru": "Вставь am / is / are."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "I ___ twenty years old.",
+          "cue": "(be)",
+          "answers": [
+            "am"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "a11.d05.ex.g.02",
+          "instruction": {
+            "en": "Complete with am / is / are.",
+            "ru": "Вставь am / is / are."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "How old ___ she?",
+          "cue": "(be)",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "a11.d05.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct sentence.",
+            "ru": "Выбери правильное предложение."
+          },
+          "tags": [
+            "grammar.be",
+            "functions.small-talk"
+          ],
+          "prompt": "___",
+          "options": [
+            "I am twenty-five.",
+            "I have twenty-five years.",
+            "I twenty-five."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "a11.d05.ex.c.02",
+          "instruction": {
+            "en": "Choose the correct question.",
+            "ru": "Выбери правильный вопрос."
+          },
+          "tags": [
+            "functions.small-talk"
+          ],
+          "prompt": "___",
+          "options": [
+            "How old are you?",
+            "How many years you?",
+            "How old you are?"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "a11.d05.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "tokens": [
+            "She",
+            "is",
+            "thirty",
+            "years",
+            "old"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "match",
+          "id": "a11.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the number and the word.",
+            "ru": "Сопоставь число и слово."
+          },
+          "tags": [
+            "vocab.daily"
+          ],
+          "pairs": [
+            {
+              "left": "0",
+              "right": "zero"
+            },
+            {
+              "left": "10",
+              "right": "ten"
+            },
+            {
+              "left": "20",
+              "right": "twenty"
+            },
+            {
+              "left": "100",
+              "right": "hundred"
+            }
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "a11.d05.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "variants": [
+            "He is forty years old.",
+            "He has forty years."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "a11.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.be",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Мне двадцать лет.",
+          "answers": [
+            "I am twenty years old.",
+            "I am twenty.",
+            "I'm twenty years old.",
+            "I'm twenty."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i have twenty years",
+                "i have twenty years old"
+              ],
+              "explanation": {
+                "en": "Age uses be: I am twenty (years old).",
+                "ru": "Возраст через be: I am twenty (years old)."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a11.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.small-talk",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Сколько тебе лет?",
+          "answers": [
+            "How old are you?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "how many years you?",
+                "how old you are?"
+              ],
+              "explanation": {
+                "en": "How old + are + you: How old are you?",
+                "ru": "How old + are + you: How old are you?"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

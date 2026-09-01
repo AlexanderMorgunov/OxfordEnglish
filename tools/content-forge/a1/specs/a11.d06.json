@@ -1,0 +1,181 @@
+{
+  "id": "a11.d06",
+  "unitId": "a11",
+  "insertAt": 99,
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": ["grammar.review", "grammar.be", "grammar.pronouns", "grammar.articles", "vocab.daily"],
+  "title": { "en": "Review: me and my friends", "ru": "Повторение: я и мои друзья" },
+  "vocab": {
+    "title": { "en": "Useful little words", "ru": "Полезные маленькие слова" },
+    "words": [
+      { "word": "people", "ru": "люди", "ipa": "/ˈpiːpl/", "example": "These people are my friends.", "exampleRu": "Эти люди — мои друзья." },
+      { "word": "very", "ru": "очень", "ipa": "/ˈveri/", "example": "She is very nice.", "exampleRu": "Она очень милая." },
+      { "word": "also", "ru": "тоже, также", "ipa": "/ˈɔːlsəʊ/", "example": "I am also a student.", "exampleRu": "Я тоже студент." },
+      { "word": "together", "ru": "вместе", "ipa": "/təˈɡeðə/", "example": "We are together.", "exampleRu": "Мы вместе." },
+      { "word": "new", "ru": "новый", "ipa": "/njuː/", "example": "This is my new phone.", "exampleRu": "Это мой новый телефон." },
+      { "word": "good", "ru": "хороший, хорошо", "ipa": "/ɡʊd/", "example": "It is a good day.", "exampleRu": "Это хороший день." },
+      { "word": "day", "ru": "день", "ipa": "/deɪ/", "example": "Have a good day!", "exampleRu": "Хорошего дня!" },
+      { "word": "welcome", "ru": "добро пожаловать", "ipa": "/ˈwelkəm/", "example": "Welcome!", "exampleRu": "Добро пожаловать!" },
+      { "word": "family", "ru": "семья", "ipa": "/ˈfæmɪli/", "example": "This is my family.", "exampleRu": "Это моя семья." },
+      { "word": "now", "ru": "сейчас, теперь", "ipa": "/naʊ/", "example": "Now I can say hello.", "exampleRu": "Теперь я могу поздороваться." },
+      { "word": "little", "ru": "немного; маленький", "ipa": "/ˈlɪtl/", "example": "I speak a little English.", "exampleRu": "Я немного говорю по-английски." },
+      { "word": "English", "ru": "английский (язык)", "ipa": "/ˈɪŋɡlɪʃ/", "example": "I speak English.", "exampleRu": "Я говорю по-английски." }
+    ]
+  },
+  "grammar": {
+    "title": { "en": "Everything together: be, pronouns, a/an, plurals, this/that", "ru": "Всё вместе: be, местоимения, a/an, множественное, this/that" },
+    "rule": {
+      "en": "You can now: say who you are with be (I am, he is, we are); ask and answer yes/no questions (Are you…? Yes, I am.); use a/an and plurals (a book, two books); point with this/that/these/those; and give your age (I am twenty). That is enough to meet people — the A2 course (unit 1) starts right here.",
+      "ru": "Теперь ты умеешь: сказать, кто ты, через be (I am, he is, we are); задавать и отвечать на вопросы да/нет (Are you…? Yes, I am.); использовать a/an и множественное (a book, two books); указывать this/that/these/those; называть возраст (I am twenty). Этого хватает, чтобы знакомиться — курс A2 (юнит 1) начинается прямо отсюда."
+    },
+    "patterns": [
+      {
+        "label": { "en": "Introduce yourself", "ru": "Представься" },
+        "formula": "I am … + I am from … + I am a …",
+        "examples": [
+          { "en": "I am Ann. I am from Russia. I am a student.", "ru": "Я Анна. Я из России. Я студентка." }
+        ]
+      },
+      {
+        "label": { "en": "Ask about someone", "ru": "Спроси о ком-то" },
+        "formula": "Who is …? / Are you …? / How old …?",
+        "examples": [
+          { "en": "Who is he? Is he a teacher? How old is he?", "ru": "Кто он? Он учитель? Сколько ему лет?" }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "Don't drop be, and match it: I am, he is, they are.", "ru": "Не пропускай be и согласуй: I am, he is, they are." },
+      { "en": "One thing → a/an + is; many → plural + are.", "ru": "Один предмет → a/an + is; несколько → множественное + are." }
+    ]
+  },
+  "reading": {
+    "title": { "en": "Nice to meet you all", "ru": "Рад со всеми познакомиться" },
+    "blocks": [
+      { "en": "Hello! My name is Ann. I am from Russia. I am twenty years old. I am a student.", "ru": "Привет! Меня зовут Анна. Я из России. Мне двадцать лет. Я студентка." },
+      { "en": "These are my friends. Ben is a teacher. He is from England. Tom and Kate are students too.", "ru": "Это мои друзья. Бен — учитель. Он из Англии. Том и Кейт тоже студенты." },
+      { "en": "We are a good team. Now I speak a little English. Nice to meet you all!", "ru": "Мы хорошая команда. Теперь я немного говорю по-английски. Рад со всеми познакомиться!" }
+    ],
+    "glossary": [
+      { "word": "team", "ru": "команда", "ipa": "/tiːm/" },
+      { "word": "all", "ru": "все", "ipa": "/ɔːl/" }
+    ]
+  },
+  "listening": {
+    "title": { "en": "Meeting the team", "ru": "Знакомство с командой" },
+    "dialogue": [
+      ["Hi! I am Ann. I am a new student.", "Привет! Я Анна. Я новая студентка."],
+      ["Welcome, Ann! I am Ben. I am your teacher.", "Добро пожаловать, Анна! Я Бен. Я твой учитель."],
+      ["Are these students my friends?", "Эти студенты — мои друзья?"],
+      ["Yes, they are. Tom and Kate.", "Да. Том и Кейт."],
+      ["Nice to meet you all!", "Рад со всеми познакомиться!"]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "a11.d06.ex.l.01",
+        "instruction": { "en": "Who is Ben?", "ru": "Кто такой Бен?" },
+        "tags": ["listening.detail"],
+        "prompt": "Ben is Ann's ___.",
+        "options": ["teacher", "friend", "doctor"],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "a11.d06.ex.g.01",
+        "instruction": { "en": "Complete with am / is / are.", "ru": "Вставь am / is / are." },
+        "tags": ["grammar.be"],
+        "prompt": "They ___ my friends.",
+        "cue": "(be)",
+        "answers": ["are"]
+      },
+      {
+        "type": "choice",
+        "id": "a11.d06.ex.c.01",
+        "instruction": { "en": "Choose the correct pronoun.", "ru": "Выбери правильное местоимение." },
+        "tags": ["grammar.pronouns"],
+        "prompt": "Ben is a teacher. ___ is from England.",
+        "options": ["He", "She", "They"],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "a11.d06.ex.g.02",
+        "instruction": { "en": "Complete with a or an.", "ru": "Вставь a или an." },
+        "tags": ["grammar.articles"],
+        "prompt": "I am ___ student.",
+        "cue": "(a / an)",
+        "answers": ["a"]
+      },
+      {
+        "type": "choice",
+        "id": "a11.d06.ex.c.02",
+        "instruction": { "en": "Choose the correct word.", "ru": "Выбери правильное слово." },
+        "tags": ["grammar.demonstratives"],
+        "prompt": "___ are my friends.",
+        "options": ["These", "This", "It"],
+        "correctIndex": 0
+      },
+      {
+        "type": "choice",
+        "id": "a11.d06.ex.c.03",
+        "instruction": { "en": "Choose the correct short answer to \"Are you a student?\"", "ru": "Выбери краткий ответ на «Are you a student?»." },
+        "tags": ["grammar.be"],
+        "prompt": "___",
+        "options": ["Yes, I am.", "Yes, I do.", "I student."],
+        "correctIndex": 0
+      },
+      {
+        "type": "order-words",
+        "id": "a11.d06.ex.o.01",
+        "instruction": { "en": "Make a sentence about yourself.", "ru": "Собери предложение о себе." },
+        "tags": ["grammar.be", "grammar.review"],
+        "tokens": ["I", "am", "from", "Russia"],
+        "correctOrder": [0, 1, 2, 3]
+      },
+      {
+        "type": "spot-error",
+        "id": "a11.d06.ex.s.01",
+        "instruction": { "en": "Which is correct?", "ru": "Что верно?" },
+        "tags": ["grammar.review"],
+        "variants": ["These are my friends.", "This are my friend."],
+        "correctIndex": 0
+      },
+      {
+        "type": "translate",
+        "id": "a11.d06.ex.t.01",
+        "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
+        "tags": ["grammar.review", "writing.translation"],
+        "direction": "ru-en",
+        "prompt": "Я студент, и я из России.",
+        "answers": ["I am a student, and I am from Russia.", "I'm a student and I'm from Russia.", "I am a student and I am from Russia."],
+        "commonErrors": [
+          {
+            "match": ["i student and i from russia"],
+            "explanation": { "en": "Use be twice: I am a student and I am from Russia.", "ru": "be нужен дважды: I am a student and I am from Russia." }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "a11.d06.ex.t.02",
+        "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
+        "tags": ["grammar.review", "writing.translation"],
+        "direction": "ru-en",
+        "prompt": "Это мои друзья.",
+        "answers": ["These are my friends."],
+        "commonErrors": [
+          {
+            "match": ["this is my friends", "these is my friends"],
+            "explanation": { "en": "many + near = these are: These are my friends.", "ru": "много + близко = these are: These are my friends." }
+          }
+        ]
+      }
+    ]
+  }
+}

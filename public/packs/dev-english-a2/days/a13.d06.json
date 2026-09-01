@@ -1,0 +1,570 @@
+{
+  "id": "a13.d06",
+  "title": {
+    "en": "Review: my life in English",
+    "ru": "Повторение: моя жизнь на английском"
+  },
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.review",
+    "grammar.present-simple",
+    "grammar.modals-ability",
+    "grammar.questions",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "a13.d06.vocab",
+      "title": {
+        "en": "Talking about your life",
+        "ru": "Рассказываем о своей жизни"
+      },
+      "words": [
+        {
+          "word": "life",
+          "ru": "жизнь",
+          "ipa": "/laɪf/",
+          "example": "This is my life.",
+          "exampleRu": "Это моя жизнь.",
+          "audio": {
+            "src": "media/audio/a13.d06.vocab.life.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "day",
+          "ru": "день",
+          "ipa": "/deɪ/",
+          "example": "Have a good day!",
+          "exampleRu": "Хорошего дня!",
+          "audio": {
+            "src": "media/audio/a13.d06.vocab.day.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "job",
+          "ru": "работа",
+          "ipa": "/dʒɒb/",
+          "example": "I like my job.",
+          "exampleRu": "Мне нравится моя работа.",
+          "audio": {
+            "src": "media/audio/a13.d06.vocab.job.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "free time",
+          "ru": "свободное время",
+          "ipa": "/friː taɪm/",
+          "example": "In my free time I read.",
+          "exampleRu": "В свободное время я читаю.",
+          "audio": {
+            "src": "media/audio/a13.d06.vocab.freetime.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "also",
+          "ru": "тоже, также",
+          "ipa": "/ˈɔːlsəʊ/",
+          "example": "I also play football.",
+          "exampleRu": "Я ещё играю в футбол.",
+          "audio": {
+            "src": "media/audio/a13.d06.vocab.also.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "but",
+          "ru": "но",
+          "ipa": "/bʌt/",
+          "example": "I can swim, but I can't drive.",
+          "exampleRu": "Я умею плавать, но не умею водить.",
+          "audio": {
+            "src": "media/audio/a13.d06.vocab.but.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "because",
+          "ru": "потому что",
+          "ipa": "/bɪˈkɒz/",
+          "example": "I like it because it is fun.",
+          "exampleRu": "Мне нравится, потому что это весело.",
+          "audio": {
+            "src": "media/audio/a13.d06.vocab.because.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "fun",
+          "ru": "весёлый; веселье",
+          "ipa": "/fʌn/",
+          "example": "Football is fun.",
+          "exampleRu": "Футбол — это весело.",
+          "audio": {
+            "src": "media/audio/a13.d06.vocab.fun.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "really",
+          "ru": "очень, действительно",
+          "ipa": "/ˈrɪəli/",
+          "example": "I really like music.",
+          "exampleRu": "Я очень люблю музыку.",
+          "audio": {
+            "src": "media/audio/a13.d06.vocab.really.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "next",
+          "ru": "следующий",
+          "ipa": "/nekst/",
+          "example": "the next lesson",
+          "exampleRu": "следующий урок",
+          "audio": {
+            "src": "media/audio/a13.d06.vocab.next.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lesson",
+          "ru": "урок",
+          "ipa": "/ˈlesn/",
+          "example": "The next lesson is A2.",
+          "exampleRu": "Следующий урок — A2.",
+          "audio": {
+            "src": "media/audio/a13.d06.vocab.lesson.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "ready",
+          "ru": "готов",
+          "ipa": "/ˈredi/",
+          "example": "Now I am ready for A2.",
+          "exampleRu": "Теперь я готов к A2.",
+          "audio": {
+            "src": "media/audio/a13.d06.vocab.ready.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "a13.d06.grammar",
+      "title": {
+        "en": "Everything together: Present Simple, questions, can, time",
+        "ru": "Всё вместе: Present Simple, вопросы, can, время"
+      },
+      "rule": {
+        "en": "You can now talk about your life: routines in the Present Simple (I work, she works); negatives and questions with don't/doesn't and do/does; what you like and how often (I always drink tea); what you can and can't do; and time (at 7, on Monday, in the morning). Great job — you are ready for the A2 course!",
+        "ru": "Теперь ты можешь рассказать о своей жизни: распорядок в Present Simple (I work, she works); отрицания и вопросы с don't/doesn't и do/does; что нравится и как часто (I always drink tea); что умеешь и не умеешь; и время (at 7, on Monday, in the morning). Отлично — ты готов к курсу A2!"
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Talk about your day",
+            "ru": "Расскажи о своём дне"
+          },
+          "formula": "Present Simple + time + frequency",
+          "examples": [
+            {
+              "en": "I usually get up at seven and go to work at eight.",
+              "ru": "Обычно я встаю в семь и иду на работу в восемь."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Ask and say what you can do",
+            "ru": "Спроси и скажи, что умеешь"
+          },
+          "formula": "Can you…? / I can … but I can't …",
+          "examples": [
+            {
+              "en": "Can you cook? I can cook, but I can't drive.",
+              "ru": "Ты умеешь готовить? Я умею готовить, но не умею водить."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "he/she/it → verb-s; after don't/doesn't/can use the base verb.",
+          "ru": "he/she/it → глагол-s; после don't/doesn't/can — базовый глагол."
+        },
+        {
+          "en": "at + time, on + day, in + part of the day.",
+          "ru": "at + время, on + день, in + часть дня."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "a13.d06.reading",
+      "title": {
+        "en": "This is my life",
+        "ru": "Это моя жизнь"
+      },
+      "blocks": [
+        {
+          "id": "a13.d06.reading.b1",
+          "en": "Hello again! I am Ann. I usually get up at seven and go to work at eight. I work in an office.",
+          "ru": "И снова привет! Я Анна. Обычно я встаю в семь и иду на работу в восемь. Я работаю в офисе.",
+          "audio": {
+            "src": "media/audio/a13.d06.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a13.d06.reading.b2",
+          "en": "I really like my job. In my free time I read and I sometimes play football. I can swim, but I can't drive.",
+          "ru": "Мне очень нравится моя работа. В свободное время я читаю и иногда играю в футбол. Я умею плавать, но не умею водить.",
+          "audio": {
+            "src": "media/audio/a13.d06.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a13.d06.reading.b3",
+          "en": "At the weekend I don't work. Now I speak a little English, and I am ready for the next lesson — A2!",
+          "ru": "На выходных я не работаю. Теперь я немного говорю по-английски и готова к следующему уроку — A2!",
+          "audio": {
+            "src": "media/audio/a13.d06.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "again",
+          "ru": "снова, опять",
+          "ipa": "/əˈɡen/"
+        },
+        {
+          "word": "ready for",
+          "ru": "готов к",
+          "ipa": "/ˈredi fɔː/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "a13.d06.listening",
+      "title": {
+        "en": "My life",
+        "ru": "Моя жизнь"
+      },
+      "audio": {
+        "src": "media/audio/a13.d06.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.11,
+          "en": "What do you do?",
+          "ru": "Чем ты занимаешься?"
+        },
+        {
+          "start": 1.11,
+          "end": 4.37,
+          "en": "I work in an office. I really like my job.",
+          "ru": "Я работаю в офисе. Мне очень нравится работа."
+        },
+        {
+          "start": 4.37,
+          "end": 6.27,
+          "en": "What do you do in your free time?",
+          "ru": "Что делаешь в свободное время?"
+        },
+        {
+          "start": 6.27,
+          "end": 8.88,
+          "en": "I read, and I sometimes play football.",
+          "ru": "Я читаю и иногда играю в футбол."
+        },
+        {
+          "start": 8.88,
+          "end": 9.91,
+          "en": "Can you drive?",
+          "ru": "Ты умеешь водить?"
+        },
+        {
+          "start": 9.91,
+          "end": 12.34,
+          "en": "No, I can't. But I can swim!",
+          "ru": "Нет. Зато умею плавать!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "a13.d06.ex.l.01",
+          "instruction": {
+            "en": "What can't the speaker do?",
+            "ru": "Что не умеет говорящий?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "They can't ___.",
+          "options": [
+            "drive",
+            "swim",
+            "read"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "a13.d06.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "a13.d06.ex.g.01",
+          "instruction": {
+            "en": "Put the verb in the Present Simple.",
+            "ru": "Поставь глагол в Present Simple."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "She ___ in an office.",
+          "cue": "(work)",
+          "answers": [
+            "works"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "a13.d06.ex.g.02",
+          "instruction": {
+            "en": "Complete with don't or doesn't.",
+            "ru": "Вставь don't или doesn't."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "He ___ work at the weekend.",
+          "cue": "(not)",
+          "answers": [
+            "doesn't",
+            "does not"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "a13.d06.ex.g.03",
+          "instruction": {
+            "en": "Complete with can or can't.",
+            "ru": "Вставь can или can't."
+          },
+          "tags": [
+            "grammar.modals-ability"
+          ],
+          "prompt": "I have no car. I ___ drive.",
+          "cue": "(ability no)",
+          "answers": [
+            "can't",
+            "cannot"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "a13.d06.ex.c.01",
+          "instruction": {
+            "en": "Put the adverb in the right place.",
+            "ru": "Поставь наречие на место."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "I ___ play football. (sometimes)",
+          "options": [
+            "sometimes play",
+            "play sometimes",
+            "play football sometimes now"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "a13.d06.ex.c.02",
+          "instruction": {
+            "en": "Choose the correct preposition of time.",
+            "ru": "Выбери правильный предлог времени."
+          },
+          "tags": [
+            "grammar.prepositions-time"
+          ],
+          "prompt": "I get up ___ seven o'clock.",
+          "options": [
+            "at",
+            "on",
+            "in"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "a13.d06.ex.o.01",
+          "instruction": {
+            "en": "Make a question.",
+            "ru": "Собери вопрос."
+          },
+          "tags": [
+            "grammar.questions"
+          ],
+          "tokens": [
+            "What",
+            "do",
+            "you",
+            "do"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "a13.d06.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.review"
+          ],
+          "variants": [
+            "She doesn't drive.",
+            "She doesn't drives."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "translate",
+          "id": "a13.d06.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.review",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я умею плавать, но не умею водить.",
+          "answers": [
+            "I can swim, but I can't drive.",
+            "I can swim but I can't drive."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i can swim but i can't to drive"
+              ],
+              "explanation": {
+                "en": "can/can't + base verb: I can swim, but I can't drive.",
+                "ru": "can/can't + базовый глагол: I can swim, but I can't drive."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a13.d06.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.review",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Чем ты занимаешься?",
+          "answers": [
+            "What do you do?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "what you do?",
+                "what are you do?"
+              ],
+              "explanation": {
+                "en": "What + do + you + do: What do you do?",
+                "ru": "What + do + you + do: What do you do?"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

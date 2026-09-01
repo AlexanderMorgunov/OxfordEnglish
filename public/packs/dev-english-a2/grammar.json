@@ -233,6 +233,138 @@
     ]
   },
   {
+    "id": "plurals",
+    "level": "A1",
+    "title": {
+      "en": "Plural nouns (-s)",
+      "ru": "Множественное число существительных (-s)"
+    },
+    "summary": {
+      "en": "How to say more than one: add -s, add -es, or change the word.",
+      "ru": "Как сказать «больше одного»: добавить -s, добавить -es или изменить слово."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "en": "Regular plurals: add -s",
+          "ru": "Обычное множественное: добавляем -s"
+        },
+        "text": {
+          "en": "For most nouns, add -s to talk about more than one.",
+          "ru": "К большинству существительных добавляем -s, чтобы сказать о нескольких."
+        },
+        "examples": [
+          {
+            "en": "a friend → two friends",
+            "ru": "друг → два друга"
+          },
+          {
+            "en": "a book → books",
+            "ru": "книга → книги"
+          },
+          {
+            "en": "a teacher → teachers",
+            "ru": "учитель → учителя"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "-es after s, x, ch, sh, o",
+          "ru": "-es после s, x, ch, sh, o"
+        },
+        "text": {
+          "en": "If the word ends in -s, -x, -ch, -sh or -o, add -es (it adds an extra sound).",
+          "ru": "Если слово оканчивается на -s, -x, -ch, -sh или -o, добавляем -es (появляется лишний звук)."
+        },
+        "examples": [
+          {
+            "en": "bus → buses",
+            "ru": "автобус → автобусы"
+          },
+          {
+            "en": "box → boxes",
+            "ru": "коробка → коробки"
+          },
+          {
+            "en": "watch → watches",
+            "ru": "часы → (много) часов"
+          },
+          {
+            "en": "tomato → tomatoes",
+            "ru": "помидор → помидоры"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "consonant + y → -ies",
+          "ru": "согласная + y → -ies"
+        },
+        "text": {
+          "en": "If the word ends in a consonant + y, change y to i and add -es. But a vowel + y just takes -s.",
+          "ru": "Если перед -y стоит согласная, меняем y на i и добавляем -es. Но если перед -y гласная — просто -s."
+        },
+        "examples": [
+          {
+            "en": "city → cities",
+            "ru": "город → города"
+          },
+          {
+            "en": "baby → babies",
+            "ru": "малыш → малыши"
+          },
+          {
+            "en": "day → days",
+            "ru": "день → дни"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "en": "Irregular plurals",
+          "ru": "Особые формы"
+        },
+        "text": {
+          "en": "Some common words change completely — learn them by heart.",
+          "ru": "Некоторые частые слова меняются полностью — их учим наизусть."
+        },
+        "examples": [
+          {
+            "en": "man → men",
+            "ru": "мужчина → мужчины"
+          },
+          {
+            "en": "woman → women",
+            "ru": "женщина → женщины"
+          },
+          {
+            "en": "child → children",
+            "ru": "ребёнок → дети"
+          },
+          {
+            "en": "person → people",
+            "ru": "человек → люди"
+          }
+        ]
+      }
+    ],
+    "pitfalls": [
+      {
+        "en": "a / an is for ONE thing only — no a/an with plurals: \"friends\", not \"a friends\".",
+        "ru": "a / an — только для ОДНОГО предмета; с множественным не ставим: «friends», а не «a friends»."
+      },
+      {
+        "en": "Irregular plurals do not take -s: \"children\", not \"childs\".",
+        "ru": "Особые формы не берут -s: «children», а не «childs»."
+      }
+    ],
+    "seeAlso": [
+      "articles",
+      "verb-be"
+    ]
+  },
+  {
     "id": "past-simple",
     "title": {
       "en": "Past Simple",

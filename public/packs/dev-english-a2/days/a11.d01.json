@@ -1,0 +1,615 @@
+{
+  "id": "a11.d01",
+  "title": {
+    "en": "Hello! I am…",
+    "ru": "Привет! Я…"
+  },
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.be",
+    "grammar.pronouns",
+    "vocab.daily",
+    "functions.small-talk"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "a11.d01.vocab",
+      "title": {
+        "en": "Hello and about me",
+        "ru": "Приветствие и о себе"
+      },
+      "words": [
+        {
+          "word": "hello",
+          "ru": "привет, здравствуйте",
+          "ipa": "/həˈləʊ/",
+          "example": "Hello! I am Ann.",
+          "exampleRu": "Привет! Я Анна.",
+          "audio": {
+            "src": "media/audio/a11.d01.vocab.hello.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hi",
+          "ru": "привет",
+          "ipa": "/haɪ/",
+          "example": "Hi! I am Ben.",
+          "exampleRu": "Привет! Я Бен.",
+          "audio": {
+            "src": "media/audio/a11.d01.vocab.hi.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "name",
+          "ru": "имя",
+          "ipa": "/neɪm/",
+          "example": "My name is Ann.",
+          "exampleRu": "Меня зовут Анна.",
+          "audio": {
+            "src": "media/audio/a11.d01.vocab.name.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "from",
+          "ru": "из",
+          "ipa": "/frɒm/",
+          "example": "I am from Russia.",
+          "exampleRu": "Я из России.",
+          "audio": {
+            "src": "media/audio/a11.d01.vocab.from.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "this",
+          "ru": "это",
+          "ipa": "/ðɪs/",
+          "example": "This is my friend.",
+          "exampleRu": "Это мой друг.",
+          "audio": {
+            "src": "media/audio/a11.d01.vocab.this.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "friend",
+          "ru": "друг, подруга",
+          "ipa": "/frend/",
+          "example": "She is my friend.",
+          "exampleRu": "Она моя подруга.",
+          "audio": {
+            "src": "media/audio/a11.d01.vocab.friend.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "teacher",
+          "ru": "учитель, преподаватель",
+          "ipa": "/ˈtiːtʃə/",
+          "example": "He is a teacher.",
+          "exampleRu": "Он учитель.",
+          "audio": {
+            "src": "media/audio/a11.d01.vocab.teacher.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "student",
+          "ru": "студент, ученик",
+          "ipa": "/ˈstjuːdnt/",
+          "example": "I am a student.",
+          "exampleRu": "Я студент.",
+          "audio": {
+            "src": "media/audio/a11.d01.vocab.student.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "Russia",
+          "ru": "Россия",
+          "ipa": "/ˈrʌʃə/",
+          "example": "Ann is from Russia.",
+          "exampleRu": "Анна из России.",
+          "audio": {
+            "src": "media/audio/a11.d01.vocab.russia.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "England",
+          "ru": "Англия",
+          "ipa": "/ˈɪŋɡlənd/",
+          "example": "Ben is from England.",
+          "exampleRu": "Бен из Англии.",
+          "audio": {
+            "src": "media/audio/a11.d01.vocab.england.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "nice",
+          "ru": "приятный, милый",
+          "ipa": "/naɪs/",
+          "example": "Nice to meet you!",
+          "exampleRu": "Приятно познакомиться!",
+          "audio": {
+            "src": "media/audio/a11.d01.vocab.nice.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "and",
+          "ru": "и, а",
+          "ipa": "/ænd/",
+          "example": "Ann and Ben are friends.",
+          "exampleRu": "Анна и Бен — друзья.",
+          "audio": {
+            "src": "media/audio/a11.d01.vocab.and.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "a11.d01.grammar",
+      "title": {
+        "en": "Subject pronouns and the verb be (am / is / are)",
+        "ru": "Личные местоимения и глагол be (am / is / are)"
+      },
+      "ref": "verb-be",
+      "rule": {
+        "en": "English needs the verb be in almost every sentence about who or what someone is. It has three present forms: I → am, he/she/it → is, you/we/they → are. In speech we usually shorten it: I'm, he's, she's, it's, you're, we're, they're.",
+        "ru": "В английском почти в каждом предложении о том, кто человек или какой он, нужен глагол be. У него три формы в настоящем: I → am, he/she/it → is, you/we/they → are. В речи обычно сокращаем: I'm, he's, she's, it's, you're, we're, they're."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "I am / I'm",
+            "ru": "I am / I'm"
+          },
+          "formula": "I + am (+ a/an + noun)",
+          "examples": [
+            {
+              "en": "I am a student.",
+              "ru": "Я студент."
+            },
+            {
+              "en": "I'm from Russia.",
+              "ru": "Я из России."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "he / she / it is",
+            "ru": "he / she / it is"
+          },
+          "formula": "he/she/it + is",
+          "examples": [
+            {
+              "en": "She is a teacher.",
+              "ru": "Она учитель."
+            },
+            {
+              "en": "He's my friend.",
+              "ru": "Он мой друг."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "you / we / they are",
+            "ru": "you / we / they are"
+          },
+          "formula": "you/we/they + are",
+          "examples": [
+            {
+              "en": "We are friends.",
+              "ru": "Мы друзья."
+            },
+            {
+              "en": "They're from England.",
+              "ru": "Они из Англии."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Don't drop be: not \"I a student\" but \"I am a student.\"",
+          "ru": "Нельзя пропускать be: не «I a student», а «I am a student»."
+        },
+        {
+          "en": "he/she/it takes is, not are: \"She is\", not \"She are.\"",
+          "ru": "После he/she/it — is, а не are: «She is», не «She are»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "a11.d01.reading",
+      "title": {
+        "en": "Ann and Ben",
+        "ru": "Анна и Бен"
+      },
+      "blocks": [
+        {
+          "id": "a11.d01.reading.b1",
+          "en": "Hello! My name is Ann. I am from Russia. I am a student.",
+          "ru": "Привет! Меня зовут Анна. Я из России. Я студентка.",
+          "audio": {
+            "src": "media/audio/a11.d01.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a11.d01.reading.b2",
+          "en": "This is Ben. He is my friend. He is from England. He is a teacher.",
+          "ru": "Это Бен. Он мой друг. Он из Англии. Он учитель.",
+          "audio": {
+            "src": "media/audio/a11.d01.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a11.d01.reading.b3",
+          "en": "We are friends. Nice to meet you!",
+          "ru": "Мы друзья. Приятно познакомиться!",
+          "audio": {
+            "src": "media/audio/a11.d01.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "my",
+          "ru": "мой, моя",
+          "ipa": "/maɪ/"
+        },
+        {
+          "word": "meet",
+          "ru": "встречать, знакомиться",
+          "ipa": "/miːt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "a11.d01.listening",
+      "title": {
+        "en": "Nice to meet you",
+        "ru": "Приятно познакомиться"
+      },
+      "audio": {
+        "src": "media/audio/a11.d01.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 2.25,
+          "en": "Hello! My name is Ann.",
+          "ru": "Привет! Меня зовут Анна."
+        },
+        {
+          "start": 2.25,
+          "end": 4.22,
+          "en": "Hi! I am Ben.",
+          "ru": "Привет! Я Бен."
+        },
+        {
+          "start": 4.22,
+          "end": 5.52,
+          "en": "I am from England.",
+          "ru": "Я из Англии."
+        },
+        {
+          "start": 5.52,
+          "end": 6.67,
+          "en": "I am a teacher.",
+          "ru": "Я учитель."
+        },
+        {
+          "start": 6.67,
+          "end": 7.95,
+          "en": "Nice to meet you!",
+          "ru": "Приятно познакомиться!"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "a11.d01.ex.l.01",
+          "instruction": {
+            "en": "What is Ben?",
+            "ru": "Кто Бен по профессии?"
+          },
+          "tags": [
+            "listening.detail",
+            "vocab.daily"
+          ],
+          "prompt": "Ben is a ___.",
+          "options": [
+            "teacher",
+            "student",
+            "friend"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "a11.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "a11.d01.ex.g.01",
+          "instruction": {
+            "en": "Complete with am / is / are.",
+            "ru": "Вставь am / is / are."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "I ___ a student.",
+          "cue": "(be)",
+          "answers": [
+            "am"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "a11.d01.ex.g.02",
+          "instruction": {
+            "en": "Complete with am / is / are.",
+            "ru": "Вставь am / is / are."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "She ___ from England.",
+          "cue": "(be)",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "a11.d01.ex.g.03",
+          "instruction": {
+            "en": "Complete with am / is / are.",
+            "ru": "Вставь am / is / are."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "We ___ friends.",
+          "cue": "(be)",
+          "answers": [
+            "are"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "a11.d01.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct pronoun.",
+            "ru": "Выбери правильное местоимение."
+          },
+          "tags": [
+            "grammar.pronouns"
+          ],
+          "prompt": "___ am from Russia.",
+          "options": [
+            "I",
+            "He",
+            "They"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "a11.d01.ex.c.02",
+          "instruction": {
+            "en": "Choose the correct form of be.",
+            "ru": "Выбери правильную форму be."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "He ___ my friend.",
+          "options": [
+            "is",
+            "am",
+            "are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "a11.d01.ex.s.01",
+          "instruction": {
+            "en": "Which sentence is correct?",
+            "ru": "Какое предложение верное?"
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "variants": [
+            "She is a teacher.",
+            "She are a teacher."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "a11.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "tokens": [
+            "I",
+            "am",
+            "a",
+            "student"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "match",
+          "id": "a11.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the pronoun and the form of be.",
+            "ru": "Сопоставь местоимение и форму be."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "pairs": [
+            {
+              "left": "I",
+              "right": "am"
+            },
+            {
+              "left": "he",
+              "right": "is"
+            },
+            {
+              "left": "they",
+              "right": "are"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a11.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.be",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я студент.",
+          "answers": [
+            "I am a student.",
+            "I'm a student."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i student",
+                "i am student"
+              ],
+              "explanation": {
+                "en": "Use be and the article a: I am a student.",
+                "ru": "Нужен глагол be и артикль a: I am a student."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a11.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.be",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она из Англии.",
+          "answers": [
+            "She is from England.",
+            "She's from England."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she are from england",
+                "she from england"
+              ],
+              "explanation": {
+                "en": "he/she/it takes is: She is from England.",
+                "ru": "После she — is: She is from England."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

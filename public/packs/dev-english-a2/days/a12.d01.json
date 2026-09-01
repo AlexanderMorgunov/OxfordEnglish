@@ -1,0 +1,610 @@
+{
+  "id": "a12.d01",
+  "title": {
+    "en": "I have got a sister",
+    "ru": "У меня есть сестра"
+  },
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.have-got",
+    "vocab.family",
+    "functions.describing"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "a12.d01.vocab",
+      "title": {
+        "en": "Family",
+        "ru": "Семья"
+      },
+      "words": [
+        {
+          "word": "mother",
+          "ru": "мама, мать",
+          "ipa": "/ˈmʌðə/",
+          "example": "My mother is a doctor.",
+          "exampleRu": "Моя мама — врач.",
+          "audio": {
+            "src": "media/audio/a12.d01.vocab.mother.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "father",
+          "ru": "папа, отец",
+          "ipa": "/ˈfɑːðə/",
+          "example": "His father is a teacher.",
+          "exampleRu": "Его отец — учитель.",
+          "audio": {
+            "src": "media/audio/a12.d01.vocab.father.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sister",
+          "ru": "сестра",
+          "ipa": "/ˈsɪstə/",
+          "example": "I have got a sister.",
+          "exampleRu": "У меня есть сестра.",
+          "audio": {
+            "src": "media/audio/a12.d01.vocab.sister.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "brother",
+          "ru": "брат",
+          "ipa": "/ˈbrʌðə/",
+          "example": "She has got two brothers.",
+          "exampleRu": "У неё два брата.",
+          "audio": {
+            "src": "media/audio/a12.d01.vocab.brother.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "parents",
+          "ru": "родители",
+          "ipa": "/ˈpeərənts/",
+          "example": "My parents are here.",
+          "exampleRu": "Мои родители здесь.",
+          "audio": {
+            "src": "media/audio/a12.d01.vocab.parents.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "son",
+          "ru": "сын",
+          "ipa": "/sʌn/",
+          "example": "They have got a son.",
+          "exampleRu": "У них есть сын.",
+          "audio": {
+            "src": "media/audio/a12.d01.vocab.son.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "daughter",
+          "ru": "дочь",
+          "ipa": "/ˈdɔːtə/",
+          "example": "He has got a daughter.",
+          "exampleRu": "У него есть дочь.",
+          "audio": {
+            "src": "media/audio/a12.d01.vocab.daughter.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "wife",
+          "ru": "жена",
+          "ipa": "/waɪf/",
+          "example": "This is my wife.",
+          "exampleRu": "Это моя жена.",
+          "audio": {
+            "src": "media/audio/a12.d01.vocab.wife.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "husband",
+          "ru": "муж",
+          "ipa": "/ˈhʌzbənd/",
+          "example": "Her husband is a driver.",
+          "exampleRu": "Её муж — водитель.",
+          "audio": {
+            "src": "media/audio/a12.d01.vocab.husband.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "baby",
+          "ru": "малыш, ребёнок",
+          "ipa": "/ˈbeɪbi/",
+          "example": "They have got a baby.",
+          "exampleRu": "У них есть малыш.",
+          "audio": {
+            "src": "media/audio/a12.d01.vocab.baby.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pet",
+          "ru": "домашний питомец",
+          "ipa": "/pet/",
+          "example": "Have you got a pet?",
+          "exampleRu": "У тебя есть питомец?",
+          "audio": {
+            "src": "media/audio/a12.d01.vocab.pet.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "big",
+          "ru": "большой",
+          "ipa": "/bɪɡ/",
+          "example": "I have got a big family.",
+          "exampleRu": "У меня большая семья.",
+          "audio": {
+            "src": "media/audio/a12.d01.vocab.big.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "a12.d01.grammar",
+      "title": {
+        "en": "have got / has got",
+        "ru": "have got / has got (иметь, у ... есть)"
+      },
+      "ref": "have-got",
+      "rule": {
+        "en": "Use have got to say what you own or what family you have. I/you/we/they → have got (short: 've got); he/she/it → has got (short: 's got). Negative: haven't got / hasn't got. Question: Have you got…? / Has she got…?",
+        "ru": "have got говорит, что у тебя есть (вещь, семья). I/you/we/they → have got (кратко 've got); he/she/it → has got (кратко 's got). Отрицание: haven't got / hasn't got. Вопрос: Have you got…? / Has she got…?"
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "have / has got",
+            "ru": "have / has got"
+          },
+          "formula": "I/you/we/they have got · he/she/it has got",
+          "examples": [
+            {
+              "en": "I have got a sister.",
+              "ru": "У меня есть сестра."
+            },
+            {
+              "en": "She has got two brothers.",
+              "ru": "У неё два брата."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Negative",
+            "ru": "Отрицание"
+          },
+          "formula": "haven't got / hasn't got",
+          "examples": [
+            {
+              "en": "We haven't got a pet.",
+              "ru": "У нас нет питомца."
+            },
+            {
+              "en": "He hasn't got a car.",
+              "ru": "У него нет машины."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Question",
+            "ru": "Вопрос"
+          },
+          "formula": "Have/Has + subject + got…?",
+          "examples": [
+            {
+              "en": "Have you got a brother?",
+              "ru": "У тебя есть брат?"
+            },
+            {
+              "en": "Has she got a dog?",
+              "ru": "У неё есть собака?"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "he/she/it → has got, not have got: \"She has got\", not \"She have got\".",
+          "ru": "he/she/it → has got, не have got: «She has got», а не «She have got»."
+        },
+        {
+          "en": "have got = own/possess (it's not \"receive\").",
+          "ru": "have got = иметь/владеть (это не «получать»)."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "a12.d01.reading",
+      "title": {
+        "en": "My family",
+        "ru": "Моя семья"
+      },
+      "blocks": [
+        {
+          "id": "a12.d01.reading.b1",
+          "en": "I have got a big family. I have got a mother, a father and two brothers.",
+          "ru": "У меня большая семья. У меня есть мама, папа и два брата.",
+          "audio": {
+            "src": "media/audio/a12.d01.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a12.d01.reading.b2",
+          "en": "My brother has got a wife and a baby. They have got a small dog too.",
+          "ru": "У моего брата есть жена и малыш. У них ещё есть маленькая собака.",
+          "audio": {
+            "src": "media/audio/a12.d01.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a12.d01.reading.b3",
+          "en": "\"Have you got a sister?\" \"No, I haven't. But I have got a cat!\"",
+          "ru": "«У тебя есть сестра?» «Нет. Зато у меня есть кот!»",
+          "audio": {
+            "src": "media/audio/a12.d01.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "'ve got",
+          "ru": "= have got",
+          "ipa": "/vɡɒt/"
+        },
+        {
+          "word": "'s got",
+          "ru": "= has got",
+          "ipa": "/zɡɒt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "a12.d01.listening",
+      "title": {
+        "en": "Have you got…?",
+        "ru": "У тебя есть…?"
+      },
+      "audio": {
+        "src": "media/audio/a12.d01.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.26,
+          "en": "Have you got a brother?",
+          "ru": "У тебя есть брат?"
+        },
+        {
+          "start": 1.26,
+          "end": 4.25,
+          "en": "Yes, I have. I have got two brothers.",
+          "ru": "Да. У меня два брата."
+        },
+        {
+          "start": 4.25,
+          "end": 6,
+          "en": "Has your brother got children?",
+          "ru": "У твоего брата есть дети?"
+        },
+        {
+          "start": 6,
+          "end": 7.87,
+          "en": "Yes, he has got a baby.",
+          "ru": "Да, у него есть малыш."
+        },
+        {
+          "start": 7.87,
+          "end": 9.07,
+          "en": "Have you got a pet?",
+          "ru": "У тебя есть питомец?"
+        },
+        {
+          "start": 9.07,
+          "end": 10.6,
+          "en": "No, I haven't.",
+          "ru": "Нет."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "a12.d01.ex.l.01",
+          "instruction": {
+            "en": "How many brothers has the speaker got?",
+            "ru": "Сколько братьев у говорящего?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "___",
+          "options": [
+            "Two",
+            "One",
+            "None"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "a12.d01.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "a12.d01.ex.g.01",
+          "instruction": {
+            "en": "Complete with have got or has got.",
+            "ru": "Вставь have got или has got."
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "prompt": "She ___ a sister.",
+          "cue": "(have got)",
+          "answers": [
+            "has got"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "a12.d01.ex.g.02",
+          "instruction": {
+            "en": "Complete with have got or has got.",
+            "ru": "Вставь have got или has got."
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "prompt": "We ___ a big family.",
+          "cue": "(have got)",
+          "answers": [
+            "have got"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "a12.d01.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct form.",
+            "ru": "Выбери правильную форму."
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "prompt": "He ___ a dog.",
+          "options": [
+            "has got",
+            "have got",
+            "is got"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "a12.d01.ex.g.03",
+          "instruction": {
+            "en": "Make it negative.",
+            "ru": "Сделай отрицание."
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "prompt": "They ___ a car.",
+          "cue": "(have not got)",
+          "answers": [
+            "haven't got",
+            "have not got"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "a12.d01.ex.o.01",
+          "instruction": {
+            "en": "Make a question.",
+            "ru": "Собери вопрос."
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "tokens": [
+            "Have",
+            "you",
+            "got",
+            "a",
+            "pet"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "a12.d01.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.have-got"
+          ],
+          "variants": [
+            "She has got a baby.",
+            "She have got a baby."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "match",
+          "id": "a12.d01.ex.m.01",
+          "instruction": {
+            "en": "Match the word and the translation.",
+            "ru": "Сопоставь слово и перевод."
+          },
+          "tags": [
+            "vocab.family"
+          ],
+          "pairs": [
+            {
+              "left": "mother",
+              "right": "мама"
+            },
+            {
+              "left": "brother",
+              "right": "брат"
+            },
+            {
+              "left": "daughter",
+              "right": "дочь"
+            },
+            {
+              "left": "husband",
+              "right": "муж"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a12.d01.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.have-got",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У меня есть сестра.",
+          "answers": [
+            "I have got a sister.",
+            "I've got a sister.",
+            "I have a sister."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i have got sister",
+                "i has got a sister"
+              ],
+              "explanation": {
+                "en": "I → have got + a: I have got a sister.",
+                "ru": "I → have got + a: I have got a sister."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a12.d01.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.have-got",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У неё есть собака.",
+          "answers": [
+            "She has got a dog.",
+            "She's got a dog.",
+            "She has a dog."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she have got a dog",
+                "she got a dog"
+              ],
+              "explanation": {
+                "en": "she → has got: She has got a dog.",
+                "ru": "she → has got: She has got a dog."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

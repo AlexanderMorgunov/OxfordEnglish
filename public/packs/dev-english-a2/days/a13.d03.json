@@ -1,0 +1,594 @@
+{
+  "id": "a13.d03",
+  "title": {
+    "en": "I always drink tea",
+    "ru": "Я всегда пью чай"
+  },
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.present-simple",
+    "functions.preferences",
+    "vocab.hobbies"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "a13.d03.vocab",
+      "title": {
+        "en": "Free time and how often",
+        "ru": "Досуг и как часто"
+      },
+      "words": [
+        {
+          "word": "music",
+          "ru": "музыка",
+          "ipa": "/ˈmjuːzɪk/",
+          "example": "I love music.",
+          "exampleRu": "Я люблю музыку.",
+          "audio": {
+            "src": "media/audio/a13.d03.vocab.music.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "film",
+          "ru": "фильм",
+          "ipa": "/fɪlm/",
+          "example": "She likes films.",
+          "exampleRu": "Она любит фильмы.",
+          "audio": {
+            "src": "media/audio/a13.d03.vocab.film.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "football",
+          "ru": "футбол",
+          "ipa": "/ˈfʊtbɔːl/",
+          "example": "They play football.",
+          "exampleRu": "Они играют в футбол.",
+          "audio": {
+            "src": "media/audio/a13.d03.vocab.football.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "game",
+          "ru": "игра",
+          "ipa": "/ɡeɪm/",
+          "example": "He likes computer games.",
+          "exampleRu": "Он любит компьютерные игры.",
+          "audio": {
+            "src": "media/audio/a13.d03.vocab.game.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pizza",
+          "ru": "пицца",
+          "ipa": "/ˈpiːtsə/",
+          "example": "We love pizza.",
+          "exampleRu": "Мы обожаем пиццу.",
+          "audio": {
+            "src": "media/audio/a13.d03.vocab.pizza.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to like",
+          "ru": "нравиться, любить",
+          "ipa": "/laɪk/",
+          "example": "I like tea.",
+          "exampleRu": "Мне нравится чай.",
+          "audio": {
+            "src": "media/audio/a13.d03.vocab.tolike.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to love",
+          "ru": "обожать, очень любить",
+          "ipa": "/lʌv/",
+          "example": "She loves music.",
+          "exampleRu": "Она обожает музыку.",
+          "audio": {
+            "src": "media/audio/a13.d03.vocab.tolove.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "to hate",
+          "ru": "ненавидеть",
+          "ipa": "/heɪt/",
+          "example": "He hates coffee.",
+          "exampleRu": "Он ненавидит кофе.",
+          "audio": {
+            "src": "media/audio/a13.d03.vocab.tohate.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "always",
+          "ru": "всегда",
+          "ipa": "/ˈɔːlweɪz/",
+          "example": "I always drink tea.",
+          "exampleRu": "Я всегда пью чай.",
+          "audio": {
+            "src": "media/audio/a13.d03.vocab.always.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "usually",
+          "ru": "обычно",
+          "ipa": "/ˈjuːʒuəli/",
+          "example": "She usually walks.",
+          "exampleRu": "Она обычно ходит пешком.",
+          "audio": {
+            "src": "media/audio/a13.d03.vocab.usually.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "sometimes",
+          "ru": "иногда",
+          "ipa": "/ˈsʌmtaɪmz/",
+          "example": "We sometimes play games.",
+          "exampleRu": "Мы иногда играем в игры.",
+          "audio": {
+            "src": "media/audio/a13.d03.vocab.sometimes.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "never",
+          "ru": "никогда",
+          "ipa": "/ˈnevə/",
+          "example": "He never drinks coffee.",
+          "exampleRu": "Он никогда не пьёт кофе.",
+          "audio": {
+            "src": "media/audio/a13.d03.vocab.never.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "a13.d03.grammar",
+      "title": {
+        "en": "like / love / hate and adverbs of frequency",
+        "ru": "like / love / hate и наречия частотности"
+      },
+      "ref": "present-simple",
+      "rule": {
+        "en": "like, love and hate say how you feel about something: I like tea, she loves music (he/she/it → likes, loves). Adverbs of frequency (always, usually, often, sometimes, never) say HOW OFTEN. They go BEFORE the main verb (I always drink tea) but AFTER be (She is never late).",
+        "ru": "like, love, hate говорят, как ты относишься: I like tea, she loves music (he/she/it → likes, loves). Наречия частотности (always, usually, often, sometimes, never) говорят, КАК ЧАСТО. Они стоят ПЕРЕД основным глаголом (I always drink tea), но ПОСЛЕ be (She is never late)."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "like / love / hate + noun",
+            "ru": "like / love / hate + слово"
+          },
+          "formula": "subject + like/love/hate (+ -s) + noun",
+          "examples": [
+            {
+              "en": "I like tea. She loves music.",
+              "ru": "Мне нравится чай. Она обожает музыку."
+            },
+            {
+              "en": "He hates coffee.",
+              "ru": "Он ненавидит кофе."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "frequency before the main verb",
+            "ru": "частотность перед основным глаголом"
+          },
+          "formula": "subject + always/usually/… + verb",
+          "examples": [
+            {
+              "en": "I always drink tea.",
+              "ru": "Я всегда пью чай."
+            },
+            {
+              "en": "He never plays football.",
+              "ru": "Он никогда не играет в футбол."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "frequency after be",
+            "ru": "частотность после be"
+          },
+          "formula": "subject + be + always/never + …",
+          "examples": [
+            {
+              "en": "She is usually late.",
+              "ru": "Она обычно опаздывает."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Frequency goes before the main verb but after be.",
+          "ru": "Частотность — перед основным глаголом, но после be."
+        },
+        {
+          "en": "he/she/it → likes / loves / hates (with -s).",
+          "ru": "he/she/it → likes / loves / hates (с -s)."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "a13.d03.reading",
+      "title": {
+        "en": "What we like",
+        "ru": "Что мы любим"
+      },
+      "blocks": [
+        {
+          "id": "a13.d03.reading.b1",
+          "en": "I love music. I always listen to music in the morning. I sometimes play games.",
+          "ru": "Я обожаю музыку. Я всегда слушаю музыку утром. Иногда я играю в игры.",
+          "audio": {
+            "src": "media/audio/a13.d03.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a13.d03.reading.b2",
+          "en": "Ben likes films. He usually watches a film in the evening. He never drinks coffee.",
+          "ru": "Бен любит фильмы. Обычно он смотрит фильм вечером. Он никогда не пьёт кофе.",
+          "audio": {
+            "src": "media/audio/a13.d03.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a13.d03.reading.b3",
+          "en": "Ann and Tom love pizza. They often play football at the weekend.",
+          "ru": "Анна и Том обожают пиццу. Они часто играют в футбол на выходных.",
+          "audio": {
+            "src": "media/audio/a13.d03.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "to listen to",
+          "ru": "слушать",
+          "ipa": "/ˈlɪsn tuː/"
+        },
+        {
+          "word": "often",
+          "ru": "часто",
+          "ipa": "/ˈɒfn/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "a13.d03.listening",
+      "title": {
+        "en": "How often?",
+        "ru": "Как часто?"
+      },
+      "audio": {
+        "src": "media/audio/a13.d03.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 3.02,
+          "en": "I love music. I always listen in the morning.",
+          "ru": "Я обожаю музыку. Я всегда слушаю утром."
+        },
+        {
+          "start": 3.02,
+          "end": 4.35,
+          "en": "Do you like films?",
+          "ru": "Ты любишь фильмы?"
+        },
+        {
+          "start": 4.35,
+          "end": 7.16,
+          "en": "Yes, I usually watch a film in the evening.",
+          "ru": "Да, обычно я смотрю фильм вечером."
+        },
+        {
+          "start": 7.16,
+          "end": 9.08,
+          "en": "Ben never drinks coffee.",
+          "ru": "Бен никогда не пьёт кофе."
+        },
+        {
+          "start": 9.08,
+          "end": 11.13,
+          "en": "We sometimes play football.",
+          "ru": "Мы иногда играем в футбол."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "a13.d03.ex.l.01",
+          "instruction": {
+            "en": "How often does Ben drink coffee?",
+            "ru": "Как часто Бен пьёт кофе?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "___",
+          "options": [
+            "Never",
+            "Always",
+            "Usually"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "a13.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "a13.d03.ex.c.01",
+          "instruction": {
+            "en": "Put the adverb in the right place.",
+            "ru": "Поставь наречие на правильное место."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "prompt": "I ___ drink tea. (always)",
+          "options": [
+            "always drink",
+            "drink always",
+            "drink always tea"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "a13.d03.ex.g.01",
+          "instruction": {
+            "en": "Put the verb in the correct form.",
+            "ru": "Поставь глагол в правильную форму."
+          },
+          "tags": [
+            "grammar.present-simple",
+            "functions.preferences"
+          ],
+          "prompt": "She ___ music.",
+          "cue": "(love)",
+          "answers": [
+            "loves"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "a13.d03.ex.g.02",
+          "instruction": {
+            "en": "Put the verb in the correct form.",
+            "ru": "Поставь глагол в правильную форму."
+          },
+          "tags": [
+            "grammar.present-simple",
+            "functions.preferences"
+          ],
+          "prompt": "He ___ coffee.",
+          "cue": "(hate)",
+          "answers": [
+            "hates"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "a13.d03.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "variants": [
+            "He never plays football.",
+            "He plays never football."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "a13.d03.ex.s.02",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "variants": [
+            "She is usually late.",
+            "She usually is late."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "order-words",
+          "id": "a13.d03.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "tokens": [
+            "I",
+            "sometimes",
+            "play",
+            "games"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "match",
+          "id": "a13.d03.ex.m.01",
+          "instruction": {
+            "en": "Match the adverb and the translation.",
+            "ru": "Сопоставь наречие и перевод."
+          },
+          "tags": [
+            "grammar.present-simple"
+          ],
+          "pairs": [
+            {
+              "left": "always",
+              "right": "всегда"
+            },
+            {
+              "left": "usually",
+              "right": "обычно"
+            },
+            {
+              "left": "sometimes",
+              "right": "иногда"
+            },
+            {
+              "left": "never",
+              "right": "никогда"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a13.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.present-simple",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я всегда пью чай.",
+          "answers": [
+            "I always drink tea."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i drink always tea",
+                "i drink tea always"
+              ],
+              "explanation": {
+                "en": "Frequency before the main verb: I always drink tea.",
+                "ru": "Частотность перед основным глаголом: I always drink tea."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a13.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.preferences",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Она обожает музыку.",
+          "answers": [
+            "She loves music."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "she love music"
+              ],
+              "explanation": {
+                "en": "he/she/it → loves: She loves music.",
+                "ru": "he/she/it → loves: She loves music."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

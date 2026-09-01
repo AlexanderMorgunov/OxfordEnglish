@@ -1,0 +1,196 @@
+{
+  "id": "a13.d04",
+  "unitId": "a13",
+  "insertAt": 99,
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": ["grammar.modals-ability", "vocab.hobbies", "vocab.sport"],
+  "title": { "en": "I can swim", "ru": "Я умею плавать" },
+  "vocab": {
+    "title": { "en": "Things we can do", "ru": "Что мы умеем" },
+    "words": [
+      { "word": "to swim", "ru": "плавать", "ipa": "/swɪm/", "example": "I can swim.", "exampleRu": "Я умею плавать." },
+      { "word": "to dance", "ru": "танцевать", "ipa": "/dɑːns/", "example": "She can dance.", "exampleRu": "Она умеет танцевать." },
+      { "word": "to sing", "ru": "петь", "ipa": "/sɪŋ/", "example": "He can't sing.", "exampleRu": "Он не умеет петь." },
+      { "word": "to cook", "ru": "готовить", "ipa": "/kʊk/", "example": "Can you cook?", "exampleRu": "Ты умеешь готовить?" },
+      { "word": "to drive", "ru": "водить машину", "ipa": "/draɪv/", "example": "I can't drive.", "exampleRu": "Я не умею водить." },
+      { "word": "to run", "ru": "бегать", "ipa": "/rʌn/", "example": "They can run fast.", "exampleRu": "Они умеют быстро бегать." },
+      { "word": "to speak", "ru": "говорить", "ipa": "/spiːk/", "example": "She can speak English.", "exampleRu": "Она говорит по-английски." },
+      { "word": "to draw", "ru": "рисовать", "ipa": "/drɔː/", "example": "He can draw well.", "exampleRu": "Он хорошо рисует." },
+      { "word": "to ride", "ru": "ездить (на велосипеде)", "ipa": "/raɪd/", "example": "I can ride a bike.", "exampleRu": "Я умею ездить на велосипеде." },
+      { "word": "well", "ru": "хорошо", "ipa": "/wel/", "example": "She sings well.", "exampleRu": "Она хорошо поёт." },
+      { "word": "fast", "ru": "быстро", "ipa": "/fɑːst/", "example": "He runs fast.", "exampleRu": "Он быстро бегает." },
+      { "word": "a little", "ru": "немного", "ipa": "/ə ˈlɪtl/", "example": "I can speak a little English.", "exampleRu": "Я немного говорю по-английски." }
+    ]
+  },
+  "grammar": {
+    "title": { "en": "can / can't for ability", "ru": "can / can't (умение)" },
+    "ref": "modals-can",
+    "rule": {
+      "en": "Use can + the base verb to say what you are able to do. It is the SAME for everyone — no -s, no to: I can swim, she can swim. Negative: can't (cannot). Question: Can you…? Short answers: Yes, I can. / No, I can't.",
+      "ru": "can + базовый глагол — что ты умеешь. Форма ОДИНАКОВА для всех — без -s, без to: I can swim, she can swim. Отрицание: can't (cannot). Вопрос: Can you…? Краткие ответы: Yes, I can. / No, I can't."
+    },
+    "patterns": [
+      {
+        "label": { "en": "can + base verb", "ru": "can + базовый глагол" },
+        "formula": "subject + can + verb",
+        "examples": [
+          { "en": "I can swim.", "ru": "Я умею плавать." },
+          { "en": "She can speak English.", "ru": "Она говорит по-английски." }
+        ]
+      },
+      {
+        "label": { "en": "can't (negative)", "ru": "can't (отрицание)" },
+        "formula": "subject + can't + verb",
+        "examples": [
+          { "en": "He can't drive.", "ru": "Он не умеет водить." },
+          { "en": "I can't sing.", "ru": "Я не умею петь." }
+        ]
+      },
+      {
+        "label": { "en": "Question & short answer", "ru": "Вопрос и краткий ответ" },
+        "formula": "Can + subject + verb? → Yes, … can. / No, … can't.",
+        "examples": [
+          { "en": "Can you cook? Yes, I can.", "ru": "Ты умеешь готовить? Да." },
+          { "en": "Can he swim? No, he can't.", "ru": "Он умеет плавать? Нет." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "No -s and no to after can: \"she can swim\", not \"she cans\" / \"can to swim\".", "ru": "После can нет -s и нет to: «she can swim», а не «she cans» / «can to swim»." },
+      { "en": "can't is the same for everyone: I/he/they can't.", "ru": "can't — одинаково для всех: I/he/they can't." }
+    ]
+  },
+  "reading": {
+    "title": { "en": "Our talents", "ru": "Наши таланты" },
+    "blocks": [
+      { "en": "I can swim and I can ride a bike. But I can't drive a car.", "ru": "Я умею плавать и ездить на велосипеде. Но я не умею водить машину." },
+      { "en": "Ann can sing very well. She can also speak a little French.", "ru": "Анна очень хорошо поёт. Ещё она немного говорит по-французски." },
+      { "en": "\"Can you cook?\" \"Yes, I can! But Ben can't cook. He can only make tea.\"", "ru": "«Ты умеешь готовить?» «Да! А Бен не умеет. Он умеет только заваривать чай.»" }
+    ],
+    "glossary": [
+      { "word": "also", "ru": "тоже, также", "ipa": "/ˈɔːlsəʊ/" },
+      { "word": "only", "ru": "только", "ipa": "/ˈəʊnli/" }
+    ]
+  },
+  "listening": {
+    "title": { "en": "Can you…?", "ru": "Ты умеешь…?" },
+    "dialogue": [
+      ["Can you swim?", "Ты умеешь плавать?"],
+      ["Yes, I can.", "Да."],
+      ["Can you drive?", "Ты умеешь водить?"],
+      ["No, I can't.", "Нет."],
+      ["Ann can sing very well.", "Анна очень хорошо поёт."],
+      ["But Ben can't cook.", "А Бен не умеет готовить."]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "a13.d04.ex.l.01",
+        "instruction": { "en": "Can the speaker drive?", "ru": "Говорящий умеет водить?" },
+        "tags": ["listening.detail"],
+        "prompt": "___",
+        "options": ["No, they can't.", "Yes, they can.", "They can swim."],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "a13.d04.ex.g.01",
+        "instruction": { "en": "Complete with can or can't.", "ru": "Вставь can или can't." },
+        "tags": ["grammar.modals-ability"],
+        "prompt": "She sings well. She ___ sing.",
+        "cue": "(ability yes)",
+        "answers": ["can"]
+      },
+      {
+        "type": "gap-fill",
+        "id": "a13.d04.ex.g.02",
+        "instruction": { "en": "Complete with can or can't.", "ru": "Вставь can или can't." },
+        "tags": ["grammar.modals-ability"],
+        "prompt": "He has no car and no licence. He ___ drive.",
+        "cue": "(ability no)",
+        "answers": ["can't", "cannot"]
+      },
+      {
+        "type": "choice",
+        "id": "a13.d04.ex.c.01",
+        "instruction": { "en": "Choose the correct sentence.", "ru": "Выбери правильное предложение." },
+        "tags": ["grammar.modals-ability"],
+        "prompt": "___",
+        "options": ["She can swim.", "She cans swim.", "She can to swim."],
+        "correctIndex": 0
+      },
+      {
+        "type": "order-words",
+        "id": "a13.d04.ex.o.01",
+        "instruction": { "en": "Make a question.", "ru": "Собери вопрос." },
+        "tags": ["grammar.modals-ability"],
+        "tokens": ["Can", "you", "cook"],
+        "correctOrder": [0, 1, 2]
+      },
+      {
+        "type": "spot-error",
+        "id": "a13.d04.ex.s.01",
+        "instruction": { "en": "Which is correct?", "ru": "Что верно?" },
+        "tags": ["grammar.modals-ability"],
+        "variants": ["He can ride a bike.", "He can rides a bike."],
+        "correctIndex": 0
+      },
+      {
+        "type": "choice",
+        "id": "a13.d04.ex.c.02",
+        "instruction": { "en": "Choose the short answer to \"Can you swim?\"", "ru": "Выбери краткий ответ на «Can you swim?»." },
+        "tags": ["grammar.modals-ability"],
+        "prompt": "___",
+        "options": ["Yes, I can.", "Yes, I do.", "Yes, I am."],
+        "correctIndex": 0
+      },
+      {
+        "type": "match",
+        "id": "a13.d04.ex.m.01",
+        "instruction": { "en": "Match the verb and the translation.", "ru": "Сопоставь глагол и перевод." },
+        "tags": ["vocab.hobbies"],
+        "pairs": [
+          { "left": "swim", "right": "плавать" },
+          { "left": "sing", "right": "петь" },
+          { "left": "cook", "right": "готовить" },
+          { "left": "drive", "right": "водить" }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "a13.d04.ex.t.01",
+        "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
+        "tags": ["grammar.modals-ability", "writing.translation"],
+        "direction": "ru-en",
+        "prompt": "Я умею плавать.",
+        "answers": ["I can swim."],
+        "commonErrors": [
+          {
+            "match": ["i can to swim", "i can swimming"],
+            "explanation": { "en": "can + base verb: I can swim.", "ru": "can + базовый глагол: I can swim." }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "a13.d04.ex.t.02",
+        "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
+        "tags": ["grammar.modals-ability", "writing.translation"],
+        "direction": "ru-en",
+        "prompt": "Она не умеет водить.",
+        "answers": ["She can't drive.", "She cannot drive."],
+        "commonErrors": [
+          {
+            "match": ["she can't drives", "she doesn't can drive"],
+            "explanation": { "en": "can't + base verb: She can't drive.", "ru": "can't + базовый глагол: She can't drive." }
+          }
+        ]
+      }
+    ]
+  }
+}

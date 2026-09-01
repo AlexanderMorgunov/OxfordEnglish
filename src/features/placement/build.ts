@@ -75,10 +75,10 @@ export function scorePlacement(scores: Record<Band, BandScore>): PlacementOutcom
   if (easy.correct < 3) {
     return {
       level: 'A1',
-      recommendedUnitId: 'u00',
+      recommendedUnitId: 'a11',
       message: {
-        ru: 'Начнём с основ — повторение A1 задаст фундамент.',
-        en: 'Start from the basics — the A1 refresh will set you up.',
+        ru: 'Начнём с нуля — уровень A1 задаст фундамент шаг за шагом.',
+        en: 'Start from zero — the A1 level builds your foundation step by step.',
       },
       b1Ready: false,
     };

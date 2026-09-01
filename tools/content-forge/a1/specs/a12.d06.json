@@ -1,0 +1,181 @@
+{
+  "id": "a12.d06",
+  "unitId": "a12",
+  "insertAt": 99,
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": ["grammar.review", "grammar.have-got", "grammar.there-is", "grammar.prepositions-place", "vocab.house"],
+  "title": { "en": "Review: my home and family", "ru": "Повторение: мой дом и семья" },
+  "vocab": {
+    "title": { "en": "Putting it together", "ru": "Собираем всё вместе" },
+    "words": [
+      { "word": "home", "ru": "дом (домашний очаг)", "ipa": "/həʊm/", "example": "Welcome to my home.", "exampleRu": "Добро пожаловать ко мне домой." },
+      { "word": "family", "ru": "семья", "ipa": "/ˈfæmɪli/", "example": "I have got a big family.", "exampleRu": "У меня большая семья." },
+      { "word": "small", "ru": "маленький", "ipa": "/smɔːl/", "example": "Our flat is small.", "exampleRu": "Наша квартира маленькая." },
+      { "word": "nice", "ru": "приятный, хороший", "ipa": "/naɪs/", "example": "It is a nice room.", "exampleRu": "Это хорошая комната." },
+      { "word": "together", "ru": "вместе", "ipa": "/təˈɡeðə/", "example": "We live together.", "exampleRu": "Мы живём вместе." },
+      { "word": "here", "ru": "здесь", "ipa": "/hɪə/", "example": "My family is here.", "exampleRu": "Моя семья здесь." },
+      { "word": "chair", "ru": "стул", "ipa": "/tʃeə/", "example": "There are two chairs.", "exampleRu": "Здесь два стула." },
+      { "word": "cat", "ru": "кот, кошка", "ipa": "/kæt/", "example": "The cat is on the sofa.", "exampleRu": "Кот на диване." },
+      { "word": "dog", "ru": "собака", "ipa": "/dɒɡ/", "example": "Their dog is small.", "exampleRu": "Их собака маленькая." },
+      { "word": "food", "ru": "еда", "ipa": "/fuːd/", "example": "There is some food.", "exampleRu": "Есть еда." },
+      { "word": "very", "ru": "очень", "ipa": "/ˈveri/", "example": "It is very nice.", "exampleRu": "Это очень хорошо." },
+      { "word": "welcome", "ru": "добро пожаловать", "ipa": "/ˈwelkəm/", "example": "Welcome!", "exampleRu": "Добро пожаловать!" }
+    ]
+  },
+  "grammar": {
+    "title": { "en": "Everything together: have got, 's, there is/are, prepositions, some/any", "ru": "Всё вместе: have got, 's, there is/are, предлоги, some/any" },
+    "rule": {
+      "en": "You can now: say what you have (I have got a sister); say whose it is (my, her, Ann's); say what is in a place (There is / There are); say where (in, on, under, next to); and use some / any. That is enough to describe your home and family.",
+      "ru": "Теперь ты умеешь: сказать, что у тебя есть (I have got a sister); чьё это (my, her, Ann's); что находится в месте (There is / There are); где (in, on, under, next to); и использовать some / any. Этого хватает, чтобы описать свой дом и семью."
+    },
+    "patterns": [
+      {
+        "label": { "en": "Describe your home", "ru": "Опиши свой дом" },
+        "formula": "There is/are … + preposition + …",
+        "examples": [
+          { "en": "There is a sofa next to the window.", "ru": "Диван рядом с окном." }
+        ]
+      },
+      {
+        "label": { "en": "Describe your family", "ru": "Опиши свою семью" },
+        "formula": "I have got … + my/his/her …",
+        "examples": [
+          { "en": "I have got a sister. Her name is Kate.", "ru": "У меня есть сестра. Её зовут Кейт." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "has got for he/she/it; There is for one, There are for many.", "ru": "has got для he/she/it; There is для одного, There are для нескольких." },
+      { "en": "some in positives, any in questions/negatives.", "ru": "some в утверждениях, any в вопросах/отрицаниях." }
+    ]
+  },
+  "reading": {
+    "title": { "en": "Welcome to my home", "ru": "Добро пожаловать ко мне домой" },
+    "blocks": [
+      { "en": "Welcome to my home! We have got a small flat, but it is very nice. There are three rooms.", "ru": "Добро пожаловать ко мне домой! У нас маленькая квартира, но очень хорошая. Здесь три комнаты." },
+      { "en": "This is my sister. Her name is Kate. Her room is next to the kitchen.", "ru": "Это моя сестра. Её зовут Кейт. Её комната рядом с кухней." },
+      { "en": "There is some food on the table. Our cat is under the chair. We are happy here together.", "ru": "На столе есть еда. Наш кот под стулом. Мы счастливы здесь вместе." }
+    ],
+    "glossary": [
+      { "word": "happy", "ru": "счастливый, довольный", "ipa": "/ˈhæpi/" },
+      { "word": "live", "ru": "жить", "ipa": "/lɪv/" }
+    ]
+  },
+  "listening": {
+    "title": { "en": "A home tour", "ru": "Экскурсия по дому" },
+    "dialogue": [
+      ["Welcome! This is our flat.", "Добро пожаловать! Это наша квартира."],
+      ["It is nice! How many rooms are there?", "Хорошая! Сколько здесь комнат?"],
+      ["There are three rooms. My sister's room is next to the kitchen.", "Здесь три комнаты. Комната сестры рядом с кухней."],
+      ["Have you got a pet?", "У вас есть питомец?"],
+      ["Yes, we have got a cat. It is under the chair.", "Да, у нас есть кот. Он под стулом."]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "a12.d06.ex.l.01",
+        "instruction": { "en": "Where is the cat?", "ru": "Где кот?" },
+        "tags": ["listening.detail"],
+        "prompt": "It is ___ the chair.",
+        "options": ["under", "on", "in"],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "a12.d06.ex.g.01",
+        "instruction": { "en": "Complete with have got or has got.", "ru": "Вставь have got или has got." },
+        "tags": ["grammar.have-got"],
+        "prompt": "My sister ___ a small dog.",
+        "cue": "(have got)",
+        "answers": ["has got"]
+      },
+      {
+        "type": "gap-fill",
+        "id": "a12.d06.ex.g.02",
+        "instruction": { "en": "Complete with is or are.", "ru": "Вставь is или are." },
+        "tags": ["grammar.there-is"],
+        "prompt": "There ___ three rooms.",
+        "cue": "(be)",
+        "answers": ["are"]
+      },
+      {
+        "type": "choice",
+        "id": "a12.d06.ex.c.01",
+        "instruction": { "en": "Choose the correct possessive.", "ru": "Выбери правильное притяжательное." },
+        "tags": ["grammar.possessives"],
+        "prompt": "Kate is my sister. ___ room is nice.",
+        "options": ["Her", "His", "Their"],
+        "correctIndex": 0
+      },
+      {
+        "type": "choice",
+        "id": "a12.d06.ex.c.02",
+        "instruction": { "en": "Choose the correct preposition.", "ru": "Выбери правильный предлог." },
+        "tags": ["grammar.prepositions-place"],
+        "prompt": "The cat is ___ the chair (below it).",
+        "options": ["under", "on", "in"],
+        "correctIndex": 0
+      },
+      {
+        "type": "choice",
+        "id": "a12.d06.ex.c.03",
+        "instruction": { "en": "Choose some or any.", "ru": "Выбери some или any." },
+        "tags": ["grammar.some-any"],
+        "prompt": "There is ___ food on the table.",
+        "options": ["some", "any"],
+        "correctIndex": 0
+      },
+      {
+        "type": "spot-error",
+        "id": "a12.d06.ex.s.01",
+        "instruction": { "en": "Which is correct?", "ru": "Что верно?" },
+        "tags": ["grammar.review"],
+        "variants": ["She has got a cat.", "She have got a cat."],
+        "correctIndex": 0
+      },
+      {
+        "type": "order-words",
+        "id": "a12.d06.ex.o.01",
+        "instruction": { "en": "Make a sentence.", "ru": "Собери предложение." },
+        "tags": ["grammar.there-is", "grammar.prepositions-place"],
+        "tokens": ["There", "is", "a", "sofa", "next to", "the", "window"],
+        "correctOrder": [0, 1, 2, 3, 4, 5, 6]
+      },
+      {
+        "type": "translate",
+        "id": "a12.d06.ex.t.01",
+        "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
+        "tags": ["grammar.review", "writing.translation"],
+        "direction": "ru-en",
+        "prompt": "У меня есть сестра. Её зовут Кейт.",
+        "answers": ["I have got a sister. Her name is Kate.", "I have a sister. Her name is Kate.", "I've got a sister. Her name is Kate."],
+        "commonErrors": [
+          {
+            "match": ["i have got a sister. his name is kate"],
+            "explanation": { "en": "A sister is a woman → her: Her name is Kate.", "ru": "Сестра — женщина → her: Her name is Kate." }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "a12.d06.ex.t.02",
+        "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
+        "tags": ["grammar.review", "writing.translation"],
+        "direction": "ru-en",
+        "prompt": "На столе есть еда.",
+        "answers": ["There is some food on the table."],
+        "commonErrors": [
+          {
+            "match": ["there is any food on the table", "there are some food on the table"],
+            "explanation": { "en": "Positive + uncountable → There is some food.", "ru": "Утверждение + неисчисляемое → There is some food." }
+          }
+        ]
+      }
+    ]
+  }
+}

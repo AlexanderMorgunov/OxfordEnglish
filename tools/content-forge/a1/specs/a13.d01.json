@@ -1,0 +1,203 @@
+{
+  "id": "a13.d01",
+  "unitId": "a13",
+  "insertAt": 99,
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": ["grammar.present-simple", "vocab.daily"],
+  "title": { "en": "I work every day", "ru": "Я работаю каждый день" },
+  "vocab": {
+    "title": { "en": "Daily routine", "ru": "Распорядок дня" },
+    "words": [
+      { "word": "to get up", "ru": "вставать", "ipa": "/ɡet ʌp/", "example": "I get up at seven.", "exampleRu": "Я встаю в семь." },
+      { "word": "to go", "ru": "идти, ехать", "ipa": "/ɡəʊ/", "example": "I go to work.", "exampleRu": "Я иду на работу." },
+      { "word": "to work", "ru": "работать", "ipa": "/wɜːk/", "example": "She works in an office.", "exampleRu": "Она работает в офисе." },
+      { "word": "to live", "ru": "жить", "ipa": "/lɪv/", "example": "We live in Moscow.", "exampleRu": "Мы живём в Москве." },
+      { "word": "to eat", "ru": "есть, кушать", "ipa": "/iːt/", "example": "I eat breakfast.", "exampleRu": "Я завтракаю." },
+      { "word": "to drink", "ru": "пить", "ipa": "/drɪŋk/", "example": "He drinks coffee.", "exampleRu": "Он пьёт кофе." },
+      { "word": "to read", "ru": "читать", "ipa": "/riːd/", "example": "She reads books.", "exampleRu": "Она читает книги." },
+      { "word": "to watch", "ru": "смотреть", "ipa": "/wɒtʃ/", "example": "He watches TV.", "exampleRu": "Он смотрит телевизор." },
+      { "word": "to play", "ru": "играть", "ipa": "/pleɪ/", "example": "They play football.", "exampleRu": "Они играют в футбол." },
+      { "word": "to start", "ru": "начинать(ся)", "ipa": "/stɑːt/", "example": "Work starts at nine.", "exampleRu": "Работа начинается в девять." },
+      { "word": "to study", "ru": "учиться, изучать", "ipa": "/ˈstʌdi/", "example": "She studies English.", "exampleRu": "Она изучает английский." },
+      { "word": "every day", "ru": "каждый день", "ipa": "/ˈevri deɪ/", "example": "I work every day.", "exampleRu": "Я работаю каждый день." }
+    ]
+  },
+  "grammar": {
+    "title": { "en": "Present Simple: I work, she works", "ru": "Present Simple: I work, she works" },
+    "ref": "present-simple",
+    "rule": {
+      "en": "Use the Present Simple for habits, routines and facts. For I/you/we/they the verb has no ending: I work. For he/she/it add -s: she works. Add -es after -o, -ch, -sh, -s, -x (goes, watches); a consonant + y becomes -ies (study → studies).",
+      "ru": "Present Simple — для привычек, распорядка и фактов. Для I/you/we/they глагол без окончания: I work. Для he/she/it добавляем -s: she works. После -o, -ch, -sh, -s, -x — -es (goes, watches); согласная + y → -ies (study → studies)."
+    },
+    "patterns": [
+      {
+        "label": { "en": "I / you / we / they + verb", "ru": "I / you / we / they + глагол" },
+        "formula": "subject + verb",
+        "examples": [
+          { "en": "I work every day.", "ru": "Я работаю каждый день." },
+          { "en": "They play football.", "ru": "Они играют в футбол." }
+        ]
+      },
+      {
+        "label": { "en": "he / she / it + verb-s", "ru": "he / she / it + глагол-s" },
+        "formula": "he/she/it + verb + -s",
+        "examples": [
+          { "en": "She works in an office.", "ru": "Она работает в офисе." },
+          { "en": "He drinks coffee.", "ru": "Он пьёт кофе." }
+        ]
+      },
+      {
+        "label": { "en": "spelling: -es / -ies", "ru": "написание: -es / -ies" },
+        "formula": "go → goes · watch → watches · study → studies",
+        "examples": [
+          { "en": "He goes to work. She watches TV.", "ru": "Он ходит на работу. Она смотрит телевизор." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "he/she/it needs -s: \"she works\", not \"she work\".", "ru": "he/she/it — с -s: «she works», а не «she work»." },
+      { "en": "go → goes, watch → watches (not \"gos\"/\"watchs\").", "ru": "go → goes, watch → watches (не «gos»/«watchs»)." }
+    ]
+  },
+  "reading": {
+    "title": { "en": "Ann's day", "ru": "День Анны" },
+    "blocks": [
+      { "en": "I am Ann. Every day I get up at seven. I eat breakfast and drink tea.", "ru": "Я Анна. Каждый день я встаю в семь. Я завтракаю и пью чай." },
+      { "en": "I go to work at eight. I work in an office. I study English in the evening.", "ru": "Я иду на работу в восемь. Я работаю в офисе. Вечером я изучаю английский." },
+      { "en": "My friend Ben is a teacher. He works at a school. He reads a lot and watches films.", "ru": "Мой друг Бен — учитель. Он работает в школе. Он много читает и смотрит фильмы." }
+    ],
+    "glossary": [
+      { "word": "breakfast", "ru": "завтрак", "ipa": "/ˈbrekfəst/" },
+      { "word": "a lot", "ru": "много", "ipa": "/ə lɒt/" }
+    ]
+  },
+  "listening": {
+    "title": { "en": "Every day", "ru": "Каждый день" },
+    "dialogue": [
+      ["I get up at seven every day.", "Я встаю в семь каждый день."],
+      ["I go to work at eight.", "Я иду на работу в восемь."],
+      ["My friend works in an office too.", "Мой друг тоже работает в офисе."],
+      ["In the evening I study English.", "Вечером я изучаю английский."],
+      ["He reads a lot and watches films.", "Он много читает и смотрит фильмы."]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "a13.d01.ex.l.01",
+        "instruction": { "en": "When does the speaker get up?", "ru": "Когда встаёт говорящий?" },
+        "tags": ["listening.detail"],
+        "prompt": "At ___.",
+        "options": ["seven", "eight", "nine"],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "a13.d01.ex.g.01",
+        "instruction": { "en": "Put the verb in the Present Simple.", "ru": "Поставь глагол в Present Simple." },
+        "tags": ["grammar.present-simple"],
+        "prompt": "She ___ in an office.",
+        "cue": "(work)",
+        "answers": ["works"]
+      },
+      {
+        "type": "gap-fill",
+        "id": "a13.d01.ex.g.02",
+        "instruction": { "en": "Put the verb in the Present Simple.", "ru": "Поставь глагол в Present Simple." },
+        "tags": ["grammar.present-simple"],
+        "prompt": "I ___ tea every morning.",
+        "cue": "(drink)",
+        "answers": ["drink"]
+      },
+      {
+        "type": "gap-fill",
+        "id": "a13.d01.ex.g.03",
+        "instruction": { "en": "Put the verb in the Present Simple (spelling!).", "ru": "Поставь глагол в Present Simple (написание!)." },
+        "tags": ["grammar.present-simple"],
+        "prompt": "He ___ to work at eight.",
+        "cue": "(go)",
+        "answers": ["goes"]
+      },
+      {
+        "type": "gap-fill",
+        "id": "a13.d01.ex.g.04",
+        "instruction": { "en": "Put the verb in the Present Simple (spelling!).", "ru": "Поставь глагол в Present Simple (написание!)." },
+        "tags": ["grammar.present-simple"],
+        "prompt": "She ___ English.",
+        "cue": "(study)",
+        "answers": ["studies"]
+      },
+      {
+        "type": "choice",
+        "id": "a13.d01.ex.c.01",
+        "instruction": { "en": "Choose the correct form.", "ru": "Выбери правильную форму." },
+        "tags": ["grammar.present-simple"],
+        "prompt": "He ___ TV in the evening.",
+        "options": ["watches", "watch", "watchs"],
+        "correctIndex": 0
+      },
+      {
+        "type": "spot-error",
+        "id": "a13.d01.ex.s.01",
+        "instruction": { "en": "Which is correct?", "ru": "Что верно?" },
+        "tags": ["grammar.present-simple"],
+        "variants": ["She works in an office.", "She work in an office."],
+        "correctIndex": 0
+      },
+      {
+        "type": "order-words",
+        "id": "a13.d01.ex.o.01",
+        "instruction": { "en": "Make a sentence.", "ru": "Собери предложение." },
+        "tags": ["grammar.present-simple"],
+        "tokens": ["I", "get up", "at", "seven"],
+        "correctOrder": [0, 1, 2, 3]
+      },
+      {
+        "type": "match",
+        "id": "a13.d01.ex.m.01",
+        "instruction": { "en": "Match the verb and its he/she/it form.", "ru": "Сопоставь глагол и форму he/she/it." },
+        "tags": ["grammar.present-simple"],
+        "pairs": [
+          { "left": "work", "right": "works" },
+          { "left": "go", "right": "goes" },
+          { "left": "watch", "right": "watches" },
+          { "left": "study", "right": "studies" }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "a13.d01.ex.t.01",
+        "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
+        "tags": ["grammar.present-simple", "writing.translation"],
+        "direction": "ru-en",
+        "prompt": "Она работает в офисе.",
+        "answers": ["She works in an office."],
+        "commonErrors": [
+          {
+            "match": ["she work in an office", "she works in office"],
+            "explanation": { "en": "he/she/it → verb-s: She works in an office.", "ru": "he/she/it → глагол-s: She works in an office." }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "a13.d01.ex.t.02",
+        "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
+        "tags": ["grammar.present-simple", "writing.translation"],
+        "direction": "ru-en",
+        "prompt": "Я живу в Москве.",
+        "answers": ["I live in Moscow."],
+        "commonErrors": [
+          {
+            "match": ["i lives in moscow"],
+            "explanation": { "en": "I → no -s: I live in Moscow.", "ru": "I → без -s: I live in Moscow." }
+          }
+        ]
+      }
+    ]
+  }
+}

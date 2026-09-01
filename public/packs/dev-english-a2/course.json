@@ -29,6 +29,75 @@
       }
     },
     {
+      "id": "a11",
+      "title": {
+        "en": "From zero: hello & be",
+        "ru": "С нуля: привет и глагол be"
+      },
+      "dayIds": [
+        "a11.d01",
+        "a11.d02",
+        "a11.d03",
+        "a11.d04",
+        "a11.d05",
+        "a11.d06"
+      ],
+      "checkpoint": {
+        "id": "a11.checkpoint",
+        "title": {
+          "en": "Unit A1.1 checkpoint",
+          "ru": "Контрольная: юнит A1.1"
+        },
+        "questionCount": 12
+      }
+    },
+    {
+      "id": "a12",
+      "title": {
+        "en": "My world: have got, home & family",
+        "ru": "Мой мир: have got, дом и семья"
+      },
+      "dayIds": [
+        "a12.d01",
+        "a12.d02",
+        "a12.d03",
+        "a12.d04",
+        "a12.d05",
+        "a12.d06"
+      ],
+      "checkpoint": {
+        "id": "a12.checkpoint",
+        "title": {
+          "en": "Unit A1.2 checkpoint",
+          "ru": "Контрольная: юнит A1.2"
+        },
+        "questionCount": 12
+      }
+    },
+    {
+      "id": "a13",
+      "title": {
+        "en": "Every day: routines and can",
+        "ru": "Каждый день: распорядок и can"
+      },
+      "dayIds": [
+        "a13.d01",
+        "a13.d02",
+        "a13.d03",
+        "a13.d04",
+        "a13.d05",
+        "a13.d06"
+      ],
+      "checkpoint": {
+        "id": "a13.checkpoint",
+        "title": {
+          "en": "Unit A1.3 checkpoint",
+          "ru": "Контрольная: юнит A1.3"
+        },
+        "questionCount": 12
+      }
+    },
+    {
       "id": "u01",
       "title": {
         "en": "Nice to meet you",

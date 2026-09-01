@@ -1,0 +1,193 @@
+{
+  "id": "a13.d02",
+  "unitId": "a13",
+  "insertAt": 99,
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": ["grammar.present-simple", "grammar.questions", "vocab.daily"],
+  "title": { "en": "Do you work here?", "ru": "Ты здесь работаешь?" },
+  "vocab": {
+    "title": { "en": "Times of day", "ru": "Время суток" },
+    "words": [
+      { "word": "morning", "ru": "утро", "ipa": "/ˈmɔːnɪŋ/", "example": "in the morning", "exampleRu": "утром" },
+      { "word": "evening", "ru": "вечер", "ipa": "/ˈiːvnɪŋ/", "example": "in the evening", "exampleRu": "вечером" },
+      { "word": "night", "ru": "ночь", "ipa": "/naɪt/", "example": "at night", "exampleRu": "ночью" },
+      { "word": "breakfast", "ru": "завтрак", "ipa": "/ˈbrekfəst/", "example": "I have breakfast at eight.", "exampleRu": "Я завтракаю в восемь." },
+      { "word": "dinner", "ru": "ужин", "ipa": "/ˈdɪnə/", "example": "We have dinner at seven.", "exampleRu": "Мы ужинаем в семь." },
+      { "word": "office", "ru": "офис", "ipa": "/ˈɒfɪs/", "example": "She works in an office.", "exampleRu": "Она работает в офисе." },
+      { "word": "home", "ru": "дом; домой", "ipa": "/həʊm/", "example": "I work at home.", "exampleRu": "Я работаю дома." },
+      { "word": "weekend", "ru": "выходные", "ipa": "/ˌwiːkˈend/", "example": "at the weekend", "exampleRu": "на выходных" },
+      { "word": "early", "ru": "рано", "ipa": "/ˈɜːli/", "example": "I get up early.", "exampleRu": "Я встаю рано." },
+      { "word": "late", "ru": "поздно", "ipa": "/leɪt/", "example": "He works late.", "exampleRu": "Он работает допоздна." },
+      { "word": "what", "ru": "что", "ipa": "/wɒt/", "example": "What do you do?", "exampleRu": "Чем ты занимаешься?" },
+      { "word": "where", "ru": "где", "ipa": "/weə/", "example": "Where do you live?", "exampleRu": "Где ты живёшь?" }
+    ]
+  },
+  "grammar": {
+    "title": { "en": "Present Simple: don't / doesn't and questions with do/does", "ru": "Present Simple: don't / doesn't и вопросы с do/does" },
+    "ref": "present-simple",
+    "rule": {
+      "en": "For negatives use don't (I/you/we/they) and doesn't (he/she/it) + the BASE verb: I don't work, she doesn't work. For questions put Do / Does first + the base verb: Do you work? Does she work? After doesn't and does the verb has NO -s.",
+      "ru": "Для отрицания — don't (I/you/we/they) и doesn't (he/she/it) + БАЗОВЫЙ глагол: I don't work, she doesn't work. Для вопросов ставим Do / Does впереди + базовый глагол: Do you work? Does she work? После doesn't и does у глагола НЕТ -s."
+    },
+    "patterns": [
+      {
+        "label": { "en": "Negative", "ru": "Отрицание" },
+        "formula": "don't / doesn't + base verb",
+        "examples": [
+          { "en": "I don't work at the weekend.", "ru": "Я не работаю на выходных." },
+          { "en": "She doesn't drink coffee.", "ru": "Она не пьёт кофе." }
+        ]
+      },
+      {
+        "label": { "en": "Yes/No question", "ru": "Вопрос да/нет" },
+        "formula": "Do/Does + subject + base verb?",
+        "examples": [
+          { "en": "Do you live here?", "ru": "Ты здесь живёшь?" },
+          { "en": "Does he work late?", "ru": "Он работает допоздна?" }
+        ]
+      },
+      {
+        "label": { "en": "Wh- question", "ru": "Wh-вопрос" },
+        "formula": "What/Where + do/does + subject + base verb?",
+        "examples": [
+          { "en": "Where do you work?", "ru": "Где ты работаешь?" },
+          { "en": "What does she study?", "ru": "Что она изучает?" }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "After doesn't / does use the base verb: \"she doesn't work\", not \"doesn't works\".", "ru": "После doesn't / does — базовый глагол: «she doesn't work», а не «doesn't works»." },
+      { "en": "Questions need do/does: \"Do you live…?\", not \"You live…?\".", "ru": "В вопросе нужен do/does: «Do you live…?», а не «You live…?»." }
+    ]
+  },
+  "reading": {
+    "title": { "en": "A new job", "ru": "Новая работа" },
+    "blocks": [
+      { "en": "\"Do you work here?\" \"Yes, I do. I work in this office.\"", "ru": "«Ты здесь работаешь?» «Да. Я работаю в этом офисе.»" },
+      { "en": "\"Where do you live?\" \"I live near the office. I don't drive; I walk.\"", "ru": "«Где ты живёшь?» «Я живу рядом с офисом. Я не езжу на машине; я хожу пешком.»" },
+      { "en": "Ben doesn't work at the weekend. He doesn't get up early on Sunday.", "ru": "Бен не работает на выходных. В воскресенье он не встаёт рано." }
+    ],
+    "glossary": [
+      { "word": "to walk", "ru": "идти пешком", "ipa": "/wɔːk/" },
+      { "word": "near", "ru": "рядом, около", "ipa": "/nɪə/" }
+    ]
+  },
+  "listening": {
+    "title": { "en": "Questions at work", "ru": "Вопросы на работе" },
+    "dialogue": [
+      ["Do you work here?", "Ты здесь работаешь?"],
+      ["Yes, I do.", "Да."],
+      ["Where do you live?", "Где ты живёшь?"],
+      ["I live near the office.", "Я живу рядом с офисом."],
+      ["Does Ben work at the weekend?", "Бен работает на выходных?"],
+      ["No, he doesn't.", "Нет."]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "a13.d02.ex.l.01",
+        "instruction": { "en": "Does Ben work at the weekend?", "ru": "Бен работает на выходных?" },
+        "tags": ["listening.detail"],
+        "prompt": "___",
+        "options": ["No, he doesn't.", "Yes, he does.", "He works late."],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "gap-fill",
+        "id": "a13.d02.ex.g.01",
+        "instruction": { "en": "Complete with don't or doesn't.", "ru": "Вставь don't или doesn't." },
+        "tags": ["grammar.present-simple"],
+        "prompt": "She ___ drink coffee.",
+        "cue": "(not)",
+        "answers": ["doesn't", "does not"]
+      },
+      {
+        "type": "gap-fill",
+        "id": "a13.d02.ex.g.02",
+        "instruction": { "en": "Complete with don't or doesn't.", "ru": "Вставь don't или doesn't." },
+        "tags": ["grammar.present-simple"],
+        "prompt": "I ___ work at the weekend.",
+        "cue": "(not)",
+        "answers": ["don't", "do not"]
+      },
+      {
+        "type": "gap-fill",
+        "id": "a13.d02.ex.g.03",
+        "instruction": { "en": "Complete with Do or Does.", "ru": "Вставь Do или Does." },
+        "tags": ["grammar.questions"],
+        "prompt": "___ he work late?",
+        "cue": "(do / does)",
+        "answers": ["Does", "does"]
+      },
+      {
+        "type": "choice",
+        "id": "a13.d02.ex.c.01",
+        "instruction": { "en": "Choose the correct sentence.", "ru": "Выбери правильное предложение." },
+        "tags": ["grammar.present-simple"],
+        "prompt": "___",
+        "options": ["She doesn't work here.", "She doesn't works here.", "She don't work here."],
+        "correctIndex": 0
+      },
+      {
+        "type": "order-words",
+        "id": "a13.d02.ex.o.01",
+        "instruction": { "en": "Make a question.", "ru": "Собери вопрос." },
+        "tags": ["grammar.questions"],
+        "tokens": ["Where", "do", "you", "live"],
+        "correctOrder": [0, 1, 2, 3]
+      },
+      {
+        "type": "spot-error",
+        "id": "a13.d02.ex.s.01",
+        "instruction": { "en": "Which question is correct?", "ru": "Какой вопрос верный?" },
+        "tags": ["grammar.questions"],
+        "variants": ["Do you live here?", "You live here?"],
+        "correctIndex": 0
+      },
+      {
+        "type": "choice",
+        "id": "a13.d02.ex.c.02",
+        "instruction": { "en": "Choose the correct short answer to \"Do you work here?\"", "ru": "Выбери краткий ответ на «Do you work here?»." },
+        "tags": ["grammar.present-simple"],
+        "prompt": "___",
+        "options": ["Yes, I do.", "Yes, I am.", "Yes, I work."],
+        "correctIndex": 0
+      },
+      {
+        "type": "translate",
+        "id": "a13.d02.ex.t.01",
+        "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
+        "tags": ["grammar.present-simple", "writing.translation"],
+        "direction": "ru-en",
+        "prompt": "Она не пьёт кофе.",
+        "answers": ["She doesn't drink coffee.", "She does not drink coffee."],
+        "commonErrors": [
+          {
+            "match": ["she doesn't drinks coffee", "she don't drink coffee"],
+            "explanation": { "en": "doesn't + base verb: She doesn't drink coffee.", "ru": "doesn't + базовый глагол: She doesn't drink coffee." }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "a13.d02.ex.t.02",
+        "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
+        "tags": ["grammar.questions", "writing.translation"],
+        "direction": "ru-en",
+        "prompt": "Где ты живёшь?",
+        "answers": ["Where do you live?"],
+        "commonErrors": [
+          {
+            "match": ["where you live?", "where do you living?"],
+            "explanation": { "en": "Where + do + you + base verb: Where do you live?", "ru": "Where + do + you + базовый глагол: Where do you live?" }
+          }
+        ]
+      }
+    ]
+  }
+}

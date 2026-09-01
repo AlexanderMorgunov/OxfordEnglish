@@ -1,0 +1,196 @@
+{
+  "id": "a12.d02",
+  "unitId": "a12",
+  "insertAt": 99,
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": ["grammar.possessives", "vocab.family", "vocab.daily"],
+  "title": { "en": "My, your, his, her", "ru": "Мой, твой, его, её" },
+  "vocab": {
+    "title": { "en": "People and their things", "ru": "Люди и их вещи" },
+    "words": [
+      { "word": "room", "ru": "комната", "ipa": "/ruːm/", "example": "This is my room.", "exampleRu": "Это моя комната." },
+      { "word": "key", "ru": "ключ", "ipa": "/kiː/", "example": "Her key is here.", "exampleRu": "Её ключ здесь." },
+      { "word": "toy", "ru": "игрушка", "ipa": "/tɔɪ/", "example": "The baby's toy is red.", "exampleRu": "Игрушка малыша красная." },
+      { "word": "bike", "ru": "велосипед", "ipa": "/baɪk/", "example": "His bike is new.", "exampleRu": "Его велосипед новый." },
+      { "word": "ball", "ru": "мяч", "ipa": "/bɔːl/", "example": "Their ball is big.", "exampleRu": "Их мяч большой." },
+      { "word": "book", "ru": "книга", "ipa": "/bʊk/", "example": "This is her book.", "exampleRu": "Это её книга." },
+      { "word": "name", "ru": "имя", "ipa": "/neɪm/", "example": "What is his name?", "exampleRu": "Как его зовут?" },
+      { "word": "friend", "ru": "друг, подруга", "ipa": "/frend/", "example": "Ann's friend is nice.", "exampleRu": "Подруга Анны милая." },
+      { "word": "sister", "ru": "сестра", "ipa": "/ˈsɪstə/", "example": "My sister's room is big.", "exampleRu": "Комната моей сестры большая." },
+      { "word": "our", "ru": "наш", "ipa": "/ˈaʊə/", "example": "This is our house.", "exampleRu": "Это наш дом." },
+      { "word": "their", "ru": "их", "ipa": "/ðeə/", "example": "Their car is black.", "exampleRu": "Их машина чёрная." },
+      { "word": "its", "ru": "его/её (о предмете, животном)", "ipa": "/ɪts/", "example": "The dog and its ball.", "exampleRu": "Собака и её мяч." }
+    ]
+  },
+  "grammar": {
+    "title": { "en": "Possessive adjectives and 's", "ru": "Притяжательные слова и 's" },
+    "ref": "possessives",
+    "rule": {
+      "en": "Say whose it is with my, your, his, her, its, our, their before the noun: my book, her name. Use his for a man, her for a woman. For a person's things add 's to the name: Ann's dog, my sister's room. Note: its = belonging to it; it's = it is.",
+      "ru": "Чьё это — говорим словами my, your, his, her, its, our, their перед словом: my book, her name. his — для мужчины, her — для женщины. Для вещей человека добавляем 's к имени: Ann's dog, my sister's room. Внимание: its = принадлежащий ему/ей (о предмете); it's = it is."
+    },
+    "patterns": [
+      {
+        "label": { "en": "Possessive adjective + noun", "ru": "Притяжательное + слово" },
+        "formula": "my/your/his/her/its/our/their + noun",
+        "examples": [
+          { "en": "This is my room.", "ru": "Это моя комната." },
+          { "en": "Her name is Kate.", "ru": "Её зовут Кейт." }
+        ]
+      },
+      {
+        "label": { "en": "his vs her", "ru": "his и her" },
+        "formula": "man → his · woman → her",
+        "examples": [
+          { "en": "Ben and his bike.", "ru": "Бен и его велосипед." },
+          { "en": "Ann and her book.", "ru": "Анна и её книга." }
+        ]
+      },
+      {
+        "label": { "en": "name + 's", "ru": "имя + 's" },
+        "formula": "person's + noun",
+        "examples": [
+          { "en": "Ann's dog is small.", "ru": "Собака Анны маленькая." },
+          { "en": "My sister's room is big.", "ru": "Комната моей сестры большая." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "Match the owner: a man → his, a woman → her (not the thing).", "ru": "Согласуй с владельцем: мужчина → his, женщина → her (не с предметом)." },
+      { "en": "its = possessive, it's = it is: \"the dog and its ball\".", "ru": "its = притяжательное, it's = it is: «the dog and its ball»." }
+    ]
+  },
+  "reading": {
+    "title": { "en": "Whose is it?", "ru": "Чьё это?" },
+    "blocks": [
+      { "en": "This is Ben. His bike is new. That is Ann. Her book is red.", "ru": "Это Бен. Его велосипед новый. Это Анна. Её книга красная." },
+      { "en": "My sister's room is big. Our house is small, but it is nice.", "ru": "Комната моей сестры большая. Наш дом маленький, но он хороший." },
+      { "en": "The dog has got its ball. \"Whose ball is it?\" \"It is the dog's ball.\"", "ru": "У собаки есть её мяч. «Чей это мяч?» «Это мяч собаки.»" }
+    ],
+    "glossary": [
+      { "word": "whose", "ru": "чей", "ipa": "/huːz/" },
+      { "word": "but", "ru": "но", "ipa": "/bʌt/" }
+    ]
+  },
+  "listening": {
+    "title": { "en": "His and her", "ru": "Его и её" },
+    "dialogue": [
+      ["Whose bike is this?", "Чей это велосипед?"],
+      ["It is Ben's bike. His bike is new.", "Это велосипед Бена. Его велосипед новый."],
+      ["And this red book?", "А эта красная книга?"],
+      ["It is Ann's book. Her book is red.", "Это книга Анны. Её книга красная."],
+      ["Is this your house?", "Это ваш дом?"],
+      ["Yes, it is our house.", "Да, это наш дом."]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "a12.d02.ex.l.01",
+        "instruction": { "en": "Whose is the new bike?", "ru": "Чей новый велосипед?" },
+        "tags": ["listening.detail"],
+        "prompt": "It is ___ bike.",
+        "options": ["Ben's", "Ann's", "our"],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "a12.d02.ex.c.01",
+        "instruction": { "en": "Choose his or her.", "ru": "Выбери his или her." },
+        "tags": ["grammar.possessives"],
+        "prompt": "Ann and ___ book.",
+        "options": ["her", "his", "its"],
+        "correctIndex": 0
+      },
+      {
+        "type": "choice",
+        "id": "a12.d02.ex.c.02",
+        "instruction": { "en": "Choose his or her.", "ru": "Выбери his или her." },
+        "tags": ["grammar.possessives"],
+        "prompt": "Ben and ___ bike.",
+        "options": ["his", "her", "their"],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "a12.d02.ex.g.01",
+        "instruction": { "en": "Complete with our or their.", "ru": "Вставь our или their." },
+        "tags": ["grammar.possessives"],
+        "prompt": "We are a family. ___ house is small.",
+        "cue": "(we)",
+        "answers": ["Our", "our"]
+      },
+      {
+        "type": "gap-fill",
+        "id": "a12.d02.ex.g.02",
+        "instruction": { "en": "Add 's to show it belongs to Ann.", "ru": "Добавь 's — это принадлежит Анне." },
+        "tags": ["grammar.possessives"],
+        "prompt": "This is ___ dog.",
+        "cue": "(Ann)",
+        "answers": ["Ann's"]
+      },
+      {
+        "type": "spot-error",
+        "id": "a12.d02.ex.s.01",
+        "instruction": { "en": "Which is correct?", "ru": "Что верно?" },
+        "tags": ["grammar.possessives"],
+        "variants": ["The dog and its ball.", "The dog and it's ball."],
+        "correctIndex": 0
+      },
+      {
+        "type": "match",
+        "id": "a12.d02.ex.m.01",
+        "instruction": { "en": "Match the pronoun and the possessive.", "ru": "Сопоставь местоимение и притяжательное." },
+        "tags": ["grammar.possessives"],
+        "pairs": [
+          { "left": "I", "right": "my" },
+          { "left": "he", "right": "his" },
+          { "left": "she", "right": "her" },
+          { "left": "they", "right": "their" }
+        ]
+      },
+      {
+        "type": "order-words",
+        "id": "a12.d02.ex.o.01",
+        "instruction": { "en": "Make a sentence.", "ru": "Собери предложение." },
+        "tags": ["grammar.possessives"],
+        "tokens": ["This", "is", "my", "sister's", "room"],
+        "correctOrder": [0, 1, 2, 3, 4]
+      },
+      {
+        "type": "translate",
+        "id": "a12.d02.ex.t.01",
+        "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
+        "tags": ["grammar.possessives", "writing.translation"],
+        "direction": "ru-en",
+        "prompt": "Её имя — Кейт.",
+        "answers": ["Her name is Kate."],
+        "commonErrors": [
+          {
+            "match": ["his name is kate", "she name is kate"],
+            "explanation": { "en": "A woman → her: Her name is Kate.", "ru": "Женщина → her: Her name is Kate." }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "a12.d02.ex.t.02",
+        "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
+        "tags": ["grammar.possessives", "writing.translation"],
+        "direction": "ru-en",
+        "prompt": "Это собака Анны.",
+        "answers": ["This is Ann's dog.", "It is Ann's dog.", "It's Ann's dog."],
+        "commonErrors": [
+          {
+            "match": ["this is ann dog", "this is dog of ann"],
+            "explanation": { "en": "Add 's to the owner: Ann's dog.", "ru": "К владельцу добавляем 's: Ann's dog." }
+          }
+        ]
+      }
+    ]
+  }
+}

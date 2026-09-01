@@ -1,0 +1,187 @@
+{
+  "id": "a11.d04",
+  "unitId": "a11",
+  "insertAt": 99,
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": ["grammar.demonstratives", "vocab.daily", "vocab.describing"],
+  "title": { "en": "This and that", "ru": "Это и то" },
+  "vocab": {
+    "title": { "en": "Near, far and colours", "ru": "Близко, далеко и цвета" },
+    "words": [
+      { "word": "here", "ru": "здесь, тут", "ipa": "/hɪə/", "example": "This car is here.", "exampleRu": "Эта машина здесь." },
+      { "word": "there", "ru": "там", "ipa": "/ðeə/", "example": "That dog is there.", "exampleRu": "Та собака там." },
+      { "word": "big", "ru": "большой", "ipa": "/bɪɡ/", "example": "This is a big city.", "exampleRu": "Это большой город." },
+      { "word": "small", "ru": "маленький", "ipa": "/smɔːl/", "example": "That is a small cat.", "exampleRu": "То маленький кот." },
+      { "word": "red", "ru": "красный", "ipa": "/red/", "example": "These pens are red.", "exampleRu": "Эти ручки красные." },
+      { "word": "blue", "ru": "синий, голубой", "ipa": "/bluː/", "example": "That bag is blue.", "exampleRu": "Та сумка синяя." },
+      { "word": "green", "ru": "зелёный", "ipa": "/ɡriːn/", "example": "This apple is green.", "exampleRu": "Это яблоко зелёное." },
+      { "word": "black", "ru": "чёрный", "ipa": "/blæk/", "example": "Those cars are black.", "exampleRu": "Те машины чёрные." },
+      { "word": "white", "ru": "белый", "ipa": "/waɪt/", "example": "This chair is white.", "exampleRu": "Этот стул белый." },
+      { "word": "car", "ru": "машина", "ipa": "/kɑː/", "example": "This is my car.", "exampleRu": "Это моя машина." },
+      { "word": "cat", "ru": "кот, кошка", "ipa": "/kæt/", "example": "That cat is small.", "exampleRu": "Тот кот маленький." },
+      { "word": "dog", "ru": "собака", "ipa": "/dɒɡ/", "example": "These dogs are big.", "exampleRu": "Эти собаки большие." }
+    ]
+  },
+  "grammar": {
+    "title": { "en": "this / that / these / those", "ru": "this / that / these / those" },
+    "ref": "demonstratives",
+    "rule": {
+      "en": "Use this / these for things NEAR you, and that / those for things FAR from you. Use this / that for ONE thing (this is…), and these / those for MORE than one (these are…).",
+      "ru": "this / these — для того, что БЛИЗКО; that / those — для того, что ДАЛЕКО. this / that — для ОДНОГО (this is…); these / those — для НЕСКОЛЬКИХ (these are…)."
+    },
+    "patterns": [
+      {
+        "label": { "en": "one thing: this / that", "ru": "один предмет: this / that" },
+        "formula": "this/that + is + …",
+        "examples": [
+          { "en": "This is my car.", "ru": "Это моя машина." },
+          { "en": "That is a small cat.", "ru": "То маленький кот." }
+        ]
+      },
+      {
+        "label": { "en": "many things: these / those", "ru": "несколько: these / those" },
+        "formula": "these/those + are + …",
+        "examples": [
+          { "en": "These are red pens.", "ru": "Это красные ручки." },
+          { "en": "Those dogs are big.", "ru": "Те собаки большие." }
+        ]
+      }
+    ],
+    "pitfalls": [
+      { "en": "these / those go with plural + are: \"these are\", not \"this are\".", "ru": "these / those — с множественным и are: «these are», а не «this are»." },
+      { "en": "this / that go with one thing + is.", "ru": "this / that — с одним предметом и is." }
+    ]
+  },
+  "reading": {
+    "title": { "en": "My things", "ru": "Мои вещи" },
+    "blocks": [
+      { "en": "This is my car. It is white. That car is black.", "ru": "Это моя машина. Она белая. Та машина чёрная." },
+      { "en": "These are my pens. They are red. Those pens are blue.", "ru": "Это мои ручки. Они красные. Те ручки синие." },
+      { "en": "This cat is small. Those dogs are big.", "ru": "Этот кот маленький. Те собаки большие." }
+    ],
+    "glossary": [
+      { "word": "it", "ru": "оно, она, он (о предмете)", "ipa": "/ɪt/" },
+      { "word": "they", "ru": "они", "ipa": "/ðeɪ/" }
+    ]
+  },
+  "listening": {
+    "title": { "en": "This or that?", "ru": "Это или то?" },
+    "dialogue": [
+      ["This is my car. It is white.", "Это моя машина. Она белая."],
+      ["That car is black.", "Та машина чёрная."],
+      ["These pens are red.", "Эти ручки красные."],
+      ["Those dogs are big.", "Те собаки большие."],
+      ["This cat is small.", "Этот кот маленький."]
+    ],
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "a11.d04.ex.l.01",
+        "instruction": { "en": "What colour is the speaker's car?", "ru": "Какого цвета машина говорящего?" },
+        "tags": ["listening.detail", "vocab.describing"],
+        "prompt": "It is ___.",
+        "options": ["white", "black", "red"],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "practice": {
+    "exercises": [
+      {
+        "type": "choice",
+        "id": "a11.d04.ex.c.01",
+        "instruction": { "en": "Choose this or that (near / far).", "ru": "Выбери this или that (близко / далеко)." },
+        "tags": ["grammar.demonstratives"],
+        "prompt": "___ car here is mine.",
+        "options": ["This", "These", "Those"],
+        "correctIndex": 0
+      },
+      {
+        "type": "choice",
+        "id": "a11.d04.ex.c.02",
+        "instruction": { "en": "Choose the correct word.", "ru": "Выбери правильное слово." },
+        "tags": ["grammar.demonstratives"],
+        "prompt": "___ are my red pens.",
+        "options": ["These", "This", "That"],
+        "correctIndex": 0
+      },
+      {
+        "type": "gap-fill",
+        "id": "a11.d04.ex.g.01",
+        "instruction": { "en": "Complete with is or are.", "ru": "Вставь is или are." },
+        "tags": ["grammar.demonstratives", "grammar.be"],
+        "prompt": "These ___ big dogs.",
+        "cue": "(be)",
+        "answers": ["are"]
+      },
+      {
+        "type": "gap-fill",
+        "id": "a11.d04.ex.g.02",
+        "instruction": { "en": "Complete with is or are.", "ru": "Вставь is или are." },
+        "tags": ["grammar.demonstratives", "grammar.be"],
+        "prompt": "That cat ___ small.",
+        "cue": "(be)",
+        "answers": ["is"]
+      },
+      {
+        "type": "spot-error",
+        "id": "a11.d04.ex.s.01",
+        "instruction": { "en": "Which is correct?", "ru": "Что верно?" },
+        "tags": ["grammar.demonstratives"],
+        "variants": ["These are my books.", "This are my books."],
+        "correctIndex": 0
+      },
+      {
+        "type": "match",
+        "id": "a11.d04.ex.m.01",
+        "instruction": { "en": "Match the word and the meaning.", "ru": "Сопоставь слово и значение." },
+        "tags": ["grammar.demonstratives"],
+        "pairs": [
+          { "left": "this", "right": "один, близко" },
+          { "left": "that", "right": "один, далеко" },
+          { "left": "these", "right": "много, близко" },
+          { "left": "those", "right": "много, далеко" }
+        ]
+      },
+      {
+        "type": "order-words",
+        "id": "a11.d04.ex.o.01",
+        "instruction": { "en": "Make a sentence.", "ru": "Собери предложение." },
+        "tags": ["grammar.demonstratives"],
+        "tokens": ["These", "are", "my", "pens"],
+        "correctOrder": [0, 1, 2, 3]
+      },
+      {
+        "type": "translate",
+        "id": "a11.d04.ex.t.01",
+        "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
+        "tags": ["grammar.demonstratives", "writing.translation"],
+        "direction": "ru-en",
+        "prompt": "Это моя машина.",
+        "answers": ["This is my car.", "This is my car."],
+        "commonErrors": [
+          {
+            "match": ["these is my car", "this are my car"],
+            "explanation": { "en": "One thing near = this is: This is my car.", "ru": "Один предмет рядом = this is: This is my car." }
+          }
+        ]
+      },
+      {
+        "type": "translate",
+        "id": "a11.d04.ex.t.02",
+        "instruction": { "en": "Translate into English.", "ru": "Переведи на английский." },
+        "tags": ["grammar.demonstratives", "writing.translation"],
+        "direction": "ru-en",
+        "prompt": "Те собаки большие.",
+        "answers": ["Those dogs are big."],
+        "commonErrors": [
+          {
+            "match": ["that dogs are big", "those dogs is big"],
+            "explanation": { "en": "many + far = those … are: Those dogs are big.", "ru": "много + далеко = those … are: Those dogs are big." }
+          }
+        ]
+      }
+    ]
+  }
+}

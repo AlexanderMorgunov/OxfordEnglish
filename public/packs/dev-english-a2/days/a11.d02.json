@@ -1,0 +1,608 @@
+{
+  "id": "a11.d02",
+  "title": {
+    "en": "Are you a student?",
+    "ru": "Ты студент?"
+  },
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.be",
+    "grammar.questions",
+    "functions.small-talk",
+    "vocab.work"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "a11.d02.vocab",
+      "title": {
+        "en": "Questions and jobs",
+        "ru": "Вопросы и профессии"
+      },
+      "words": [
+        {
+          "word": "yes",
+          "ru": "да",
+          "ipa": "/jes/",
+          "example": "Yes, I am.",
+          "exampleRu": "Да.",
+          "audio": {
+            "src": "media/audio/a11.d02.vocab.yes.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "no",
+          "ru": "нет",
+          "ipa": "/nəʊ/",
+          "example": "No, I'm not.",
+          "exampleRu": "Нет.",
+          "audio": {
+            "src": "media/audio/a11.d02.vocab.no.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "not",
+          "ru": "не",
+          "ipa": "/nɒt/",
+          "example": "I am not a doctor.",
+          "exampleRu": "Я не врач.",
+          "audio": {
+            "src": "media/audio/a11.d02.vocab.not.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "doctor",
+          "ru": "врач",
+          "ipa": "/ˈdɒktə/",
+          "example": "She is a doctor.",
+          "exampleRu": "Она врач.",
+          "audio": {
+            "src": "media/audio/a11.d02.vocab.doctor.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "driver",
+          "ru": "водитель",
+          "ipa": "/ˈdraɪvə/",
+          "example": "He is a driver.",
+          "exampleRu": "Он водитель.",
+          "audio": {
+            "src": "media/audio/a11.d02.vocab.driver.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "engineer",
+          "ru": "инженер",
+          "ipa": "/ˌendʒɪˈnɪə/",
+          "example": "I am an engineer.",
+          "exampleRu": "Я инженер.",
+          "audio": {
+            "src": "media/audio/a11.d02.vocab.engineer.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "worker",
+          "ru": "рабочий",
+          "ipa": "/ˈwɜːkə/",
+          "example": "They are workers.",
+          "exampleRu": "Они рабочие.",
+          "audio": {
+            "src": "media/audio/a11.d02.vocab.worker.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "job",
+          "ru": "работа",
+          "ipa": "/dʒɒb/",
+          "example": "It is a good job.",
+          "exampleRu": "Это хорошая работа.",
+          "audio": {
+            "src": "media/audio/a11.d02.vocab.job.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "here",
+          "ru": "здесь",
+          "ipa": "/hɪə/",
+          "example": "I am here.",
+          "exampleRu": "Я здесь.",
+          "audio": {
+            "src": "media/audio/a11.d02.vocab.here.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "too",
+          "ru": "тоже",
+          "ipa": "/tuː/",
+          "example": "She is a student too.",
+          "exampleRu": "Она тоже студентка.",
+          "audio": {
+            "src": "media/audio/a11.d02.vocab.too.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "really",
+          "ru": "правда, действительно",
+          "ipa": "/ˈrɪəli/",
+          "example": "Are you really a teacher?",
+          "exampleRu": "Ты правда учитель?",
+          "audio": {
+            "src": "media/audio/a11.d02.vocab.really.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "who",
+          "ru": "кто",
+          "ipa": "/huː/",
+          "example": "Who is he?",
+          "exampleRu": "Кто он?",
+          "audio": {
+            "src": "media/audio/a11.d02.vocab.who.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "a11.d02.grammar",
+      "title": {
+        "en": "The verb be: negatives and questions",
+        "ru": "Глагол be: отрицания и вопросы"
+      },
+      "ref": "verb-be",
+      "rule": {
+        "en": "To make a negative, put not after be: I am not, he is not (isn't), they are not (aren't). To make a yes/no question, put be BEFORE the person: Am I…? Is he…? Are you…? Short answers keep be: Yes, I am. / No, he isn't.",
+        "ru": "Для отрицания ставим not после be: I am not, he is not (isn't), they are not (aren't). Для вопроса «да/нет» ставим be ПЕРЕД лицом: Am I…? Is he…? Are you…? В коротком ответе be сохраняется: Yes, I am. / No, he isn't."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Negative: be + not",
+            "ru": "Отрицание: be + not"
+          },
+          "formula": "subject + be + not",
+          "examples": [
+            {
+              "en": "I'm not a doctor.",
+              "ru": "Я не врач."
+            },
+            {
+              "en": "He isn't from England.",
+              "ru": "Он не из Англии."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Yes/No question: be first",
+            "ru": "Вопрос да/нет: be впереди"
+          },
+          "formula": "be + subject + …?",
+          "examples": [
+            {
+              "en": "Are you a student?",
+              "ru": "Ты студент?"
+            },
+            {
+              "en": "Is she a teacher?",
+              "ru": "Она учитель?"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Short answers",
+            "ru": "Короткие ответы"
+          },
+          "formula": "Yes, subject + be. / No, subject + be + n't.",
+          "examples": [
+            {
+              "en": "Yes, I am. / No, I'm not.",
+              "ru": "Да. / Нет."
+            },
+            {
+              "en": "Yes, he is. / No, he isn't.",
+              "ru": "Да. / Нет."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Question word order: \"Are you…?\", not \"You are…?\"",
+          "ru": "Порядок слов в вопросе: «Are you…?», а не «You are…?»."
+        },
+        {
+          "en": "Keep be in the short answer: \"Yes, I am\", not just \"Yes\".",
+          "ru": "В коротком ответе оставляем be: «Yes, I am», а не просто «Yes»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "a11.d02.reading",
+      "title": {
+        "en": "Who are you?",
+        "ru": "Кто ты?"
+      },
+      "blocks": [
+        {
+          "id": "a11.d02.reading.b1",
+          "en": "Is Ben a student? No, he isn't. He is a teacher.",
+          "ru": "Бен студент? Нет. Он учитель.",
+          "audio": {
+            "src": "media/audio/a11.d02.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a11.d02.reading.b2",
+          "en": "\"Are you from England, Ann?\" \"No, I'm not. I am from Russia.\"",
+          "ru": "«Ты из Англии, Анна?» «Нет. Я из России.»",
+          "audio": {
+            "src": "media/audio/a11.d02.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a11.d02.reading.b3",
+          "en": "Ben and Ann are not doctors. They are friends.",
+          "ru": "Бен и Анна не врачи. Они друзья.",
+          "audio": {
+            "src": "media/audio/a11.d02.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "isn't",
+          "ru": "= is not (не является)",
+          "ipa": "/ˈɪznt/"
+        },
+        {
+          "word": "aren't",
+          "ru": "= are not (не являются)",
+          "ipa": "/ɑːnt/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "a11.d02.listening",
+      "title": {
+        "en": "Are you a teacher?",
+        "ru": "Ты учитель?"
+      },
+      "audio": {
+        "src": "media/audio/a11.d02.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.2,
+          "en": "Are you a teacher?",
+          "ru": "Ты учитель?"
+        },
+        {
+          "start": 1.2,
+          "end": 2.62,
+          "en": "Yes, I am.",
+          "ru": "Да."
+        },
+        {
+          "start": 2.62,
+          "end": 4.02,
+          "en": "Is Ann a teacher too?",
+          "ru": "Анна тоже учитель?"
+        },
+        {
+          "start": 4.02,
+          "end": 6.25,
+          "en": "No, she isn't. She is a student.",
+          "ru": "Нет. Она студентка."
+        },
+        {
+          "start": 6.25,
+          "end": 7.53,
+          "en": "Are you from England?",
+          "ru": "Ты из Англии?"
+        },
+        {
+          "start": 7.53,
+          "end": 9.09,
+          "en": "Yes, I am.",
+          "ru": "Да."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "a11.d02.ex.l.01",
+          "instruction": {
+            "en": "Is Ann a teacher?",
+            "ru": "Анна учитель?"
+          },
+          "tags": [
+            "listening.detail",
+            "grammar.be"
+          ],
+          "prompt": "___",
+          "options": [
+            "No, she isn't.",
+            "Yes, she is.",
+            "She is a doctor."
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "a11.d02.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "a11.d02.ex.g.01",
+          "instruction": {
+            "en": "Make it negative with isn't / aren't / 'm not.",
+            "ru": "Сделай отрицание: isn't / aren't / 'm not."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "He ___ a doctor.",
+          "cue": "(is not)",
+          "answers": [
+            "isn't",
+            "is not"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "a11.d02.ex.g.02",
+          "instruction": {
+            "en": "Make it negative.",
+            "ru": "Сделай отрицание."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "They ___ from England.",
+          "cue": "(are not)",
+          "answers": [
+            "aren't",
+            "are not"
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "a11.d02.ex.o.01",
+          "instruction": {
+            "en": "Make a question.",
+            "ru": "Собери вопрос."
+          },
+          "tags": [
+            "grammar.questions",
+            "grammar.be"
+          ],
+          "tokens": [
+            "Are",
+            "you",
+            "a",
+            "student"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "a11.d02.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct question.",
+            "ru": "Выбери правильный вопрос."
+          },
+          "tags": [
+            "grammar.questions"
+          ],
+          "prompt": "___ a teacher?",
+          "options": [
+            "Is she",
+            "She is",
+            "She are"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "a11.d02.ex.c.02",
+          "instruction": {
+            "en": "Choose the correct short answer to \"Are you a student?\"",
+            "ru": "Выбери правильный краткий ответ на «Are you a student?»."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "prompt": "___",
+          "options": [
+            "Yes, I am.",
+            "Yes, I do.",
+            "Yes."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "a11.d02.ex.s.01",
+          "instruction": {
+            "en": "Which question is correct?",
+            "ru": "Какой вопрос верный?"
+          },
+          "tags": [
+            "grammar.questions"
+          ],
+          "variants": [
+            "Are you from Russia?",
+            "You are from Russia?"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "match",
+          "id": "a11.d02.ex.m.01",
+          "instruction": {
+            "en": "Match the question and the answer.",
+            "ru": "Сопоставь вопрос и ответ."
+          },
+          "tags": [
+            "grammar.be"
+          ],
+          "pairs": [
+            {
+              "left": "Are you a student?",
+              "right": "Yes, I am."
+            },
+            {
+              "left": "Is he a doctor?",
+              "right": "No, he isn't."
+            },
+            {
+              "left": "Who is she?",
+              "right": "She is my friend."
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a11.d02.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.be",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Он не врач.",
+          "answers": [
+            "He is not a doctor.",
+            "He isn't a doctor.",
+            "He's not a doctor."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "he not a doctor",
+                "he no doctor"
+              ],
+              "explanation": {
+                "en": "Negative = be + not: He is not a doctor.",
+                "ru": "Отрицание = be + not: He is not a doctor."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a11.d02.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.questions",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Ты студент?",
+          "answers": [
+            "Are you a student?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "you are a student?",
+                "you student?"
+              ],
+              "explanation": {
+                "en": "Put be first: Are you a student?",
+                "ru": "be впереди: Are you a student?"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,587 @@
+{
+  "id": "a13.d05",
+  "title": {
+    "en": "What time is it?",
+    "ru": "Который час?"
+  },
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.prepositions-time",
+    "vocab.daily",
+    "functions.small-talk"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "a13.d05.vocab",
+      "title": {
+        "en": "Time and days",
+        "ru": "Время и дни"
+      },
+      "words": [
+        {
+          "word": "time",
+          "ru": "время",
+          "ipa": "/taɪm/",
+          "example": "What time is it?",
+          "exampleRu": "Который час?",
+          "audio": {
+            "src": "media/audio/a13.d05.vocab.time.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "o'clock",
+          "ru": "часов (ровно)",
+          "ipa": "/əˈklɒk/",
+          "example": "It is seven o'clock.",
+          "exampleRu": "Сейчас семь часов.",
+          "audio": {
+            "src": "media/audio/a13.d05.vocab.oclock.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "half",
+          "ru": "половина",
+          "ipa": "/hɑːf/",
+          "example": "half past six",
+          "exampleRu": "половина седьмого",
+          "audio": {
+            "src": "media/audio/a13.d05.vocab.half.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "quarter",
+          "ru": "четверть",
+          "ipa": "/ˈkwɔːtə/",
+          "example": "quarter past nine",
+          "exampleRu": "четверть десятого",
+          "audio": {
+            "src": "media/audio/a13.d05.vocab.quarter.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "hour",
+          "ru": "час (60 минут)",
+          "ipa": "/ˈaʊə/",
+          "example": "one hour",
+          "exampleRu": "один час",
+          "audio": {
+            "src": "media/audio/a13.d05.vocab.hour.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "minute",
+          "ru": "минута",
+          "ipa": "/ˈmɪnɪt/",
+          "example": "five minutes",
+          "exampleRu": "пять минут",
+          "audio": {
+            "src": "media/audio/a13.d05.vocab.minute.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "Monday",
+          "ru": "понедельник",
+          "ipa": "/ˈmʌndeɪ/",
+          "example": "on Monday",
+          "exampleRu": "в понедельник",
+          "audio": {
+            "src": "media/audio/a13.d05.vocab.monday.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "week",
+          "ru": "неделя",
+          "ipa": "/wiːk/",
+          "example": "this week",
+          "exampleRu": "на этой неделе",
+          "audio": {
+            "src": "media/audio/a13.d05.vocab.week.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "weekend",
+          "ru": "выходные",
+          "ipa": "/ˌwiːkˈend/",
+          "example": "at the weekend",
+          "exampleRu": "на выходных",
+          "audio": {
+            "src": "media/audio/a13.d05.vocab.weekend.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "today",
+          "ru": "сегодня",
+          "ipa": "/təˈdeɪ/",
+          "example": "What day is it today?",
+          "exampleRu": "Какой сегодня день?",
+          "audio": {
+            "src": "media/audio/a13.d05.vocab.today.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "tomorrow",
+          "ru": "завтра",
+          "ipa": "/təˈmɒrəʊ/",
+          "example": "See you tomorrow!",
+          "exampleRu": "Увидимся завтра!",
+          "audio": {
+            "src": "media/audio/a13.d05.vocab.tomorrow.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "now",
+          "ru": "сейчас",
+          "ipa": "/naʊ/",
+          "example": "It is late now.",
+          "exampleRu": "Сейчас поздно.",
+          "audio": {
+            "src": "media/audio/a13.d05.vocab.now.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "a13.d05.grammar",
+      "title": {
+        "en": "Telling the time and at / on / in",
+        "ru": "Как назвать время и at / on / in"
+      },
+      "ref": "present-simple",
+      "rule": {
+        "en": "Tell the time with It is…: It is seven o'clock, half past six, quarter past nine. Use at with clock times (at 7 o'clock), on with days (on Monday), in with parts of the day and months (in the morning, in July). But: at night, at the weekend.",
+        "ru": "Время называем через It is…: It is seven o'clock, half past six, quarter past nine. at — с точным временем (at 7 o'clock), on — с днями (on Monday), in — с частями дня и месяцами (in the morning, in July). Но: at night, at the weekend."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "Telling the time",
+            "ru": "Называем время"
+          },
+          "formula": "It is + (half/quarter past) + hour",
+          "examples": [
+            {
+              "en": "It is seven o'clock.",
+              "ru": "Сейчас семь часов."
+            },
+            {
+              "en": "It is half past six.",
+              "ru": "Сейчас половина седьмого."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "at / on / in",
+            "ru": "at / on / in"
+          },
+          "formula": "at + time · on + day · in + part of day/month",
+          "examples": [
+            {
+              "en": "at 8 o'clock, on Monday, in the morning",
+              "ru": "в 8 часов, в понедельник, утром"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Fixed phrases",
+            "ru": "Устойчивые выражения"
+          },
+          "formula": "at night · at the weekend",
+          "examples": [
+            {
+              "en": "I work in the morning and sleep at night.",
+              "ru": "Я работаю утром и сплю ночью."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "at night, not \"in the night\"; on Monday, not \"in Monday\".",
+          "ru": "at night, не «in the night»; on Monday, не «in Monday»."
+        },
+        {
+          "en": "at + clock time: \"at 7 o'clock\".",
+          "ru": "at + точное время: «at 7 o'clock»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "a13.d05.reading",
+      "title": {
+        "en": "A busy Monday",
+        "ru": "Занятой понедельник"
+      },
+      "blocks": [
+        {
+          "id": "a13.d05.reading.b1",
+          "en": "It is Monday today. I get up at seven o'clock and have breakfast at half past seven.",
+          "ru": "Сегодня понедельник. Я встаю в семь часов и завтракаю в половине восьмого.",
+          "audio": {
+            "src": "media/audio/a13.d05.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a13.d05.reading.b2",
+          "en": "I start work at nine. In the morning I am busy. I have lunch at one.",
+          "ru": "Я начинаю работать в девять. Утром я занят. Я обедаю в час.",
+          "audio": {
+            "src": "media/audio/a13.d05.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a13.d05.reading.b3",
+          "en": "At the weekend I don't work. On Sunday I sleep late. See you tomorrow!",
+          "ru": "На выходных я не работаю. В воскресенье я сплю допоздна. Увидимся завтра!",
+          "audio": {
+            "src": "media/audio/a13.d05.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "busy",
+          "ru": "занятой",
+          "ipa": "/ˈbɪzi/"
+        },
+        {
+          "word": "lunch",
+          "ru": "обед",
+          "ipa": "/lʌntʃ/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "a13.d05.listening",
+      "title": {
+        "en": "What time?",
+        "ru": "Во сколько?"
+      },
+      "audio": {
+        "src": "media/audio/a13.d05.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.15,
+          "en": "What time is it?",
+          "ru": "Который час?"
+        },
+        {
+          "start": 1.15,
+          "end": 2.76,
+          "en": "It is half past seven.",
+          "ru": "Половина восьмого."
+        },
+        {
+          "start": 2.76,
+          "end": 4.55,
+          "en": "What time do you start work?",
+          "ru": "Во сколько ты начинаешь работать?"
+        },
+        {
+          "start": 4.55,
+          "end": 6.11,
+          "en": "I start at nine o'clock.",
+          "ru": "Я начинаю в девять."
+        },
+        {
+          "start": 6.11,
+          "end": 7.59,
+          "en": "Do you work at the weekend?",
+          "ru": "Ты работаешь на выходных?"
+        },
+        {
+          "start": 7.59,
+          "end": 9.81,
+          "en": "No, I don't work on Sunday.",
+          "ru": "Нет, в воскресенье я не работаю."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "a13.d05.ex.l.01",
+          "instruction": {
+            "en": "What time does the speaker start work?",
+            "ru": "Во сколько говорящий начинает работать?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "At ___ o'clock.",
+          "options": [
+            "nine",
+            "seven",
+            "one"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "a13.d05.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "a13.d05.ex.g.01",
+          "instruction": {
+            "en": "Complete with at, on or in.",
+            "ru": "Вставь at, on или in."
+          },
+          "tags": [
+            "grammar.prepositions-time"
+          ],
+          "prompt": "I start work ___ nine o'clock.",
+          "cue": "(at / on / in)",
+          "answers": [
+            "at"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "a13.d05.ex.g.02",
+          "instruction": {
+            "en": "Complete with at, on or in.",
+            "ru": "Вставь at, on или in."
+          },
+          "tags": [
+            "grammar.prepositions-time"
+          ],
+          "prompt": "We don't work ___ Monday? Yes, we do.",
+          "cue": "(at / on / in)",
+          "answers": [
+            "on"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "a13.d05.ex.g.03",
+          "instruction": {
+            "en": "Complete with at, on or in.",
+            "ru": "Вставь at, on или in."
+          },
+          "tags": [
+            "grammar.prepositions-time"
+          ],
+          "prompt": "I read books ___ the evening.",
+          "cue": "(at / on / in)",
+          "answers": [
+            "in"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "a13.d05.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct phrase.",
+            "ru": "Выбери верное выражение."
+          },
+          "tags": [
+            "grammar.prepositions-time"
+          ],
+          "prompt": "I sleep ___.",
+          "options": [
+            "at night",
+            "in the night",
+            "on night"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "a13.d05.ex.c.02",
+          "instruction": {
+            "en": "What time is 6:30?",
+            "ru": "Сколько это — 6:30?"
+          },
+          "tags": [
+            "functions.small-talk"
+          ],
+          "prompt": "It is ___.",
+          "options": [
+            "half past six",
+            "half past seven",
+            "quarter past six"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "a13.d05.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.prepositions-time"
+          ],
+          "variants": [
+            "I work on Monday.",
+            "I work in Monday."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "match",
+          "id": "a13.d05.ex.m.01",
+          "instruction": {
+            "en": "Match the preposition and the time word.",
+            "ru": "Сопоставь предлог и слово времени."
+          },
+          "tags": [
+            "grammar.prepositions-time"
+          ],
+          "pairs": [
+            {
+              "left": "at",
+              "right": "7 o'clock"
+            },
+            {
+              "left": "on",
+              "right": "Monday"
+            },
+            {
+              "left": "in",
+              "right": "the morning"
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a13.d05.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.prepositions-time",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Я начинаю работать в девять.",
+          "answers": [
+            "I start work at nine.",
+            "I start work at nine o'clock."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i start work in nine",
+                "i start work on nine"
+              ],
+              "explanation": {
+                "en": "at + clock time: at nine (o'clock).",
+                "ru": "at + точное время: at nine (o'clock)."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a13.d05.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "functions.small-talk",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Который час?",
+          "answers": [
+            "What time is it?"
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "what is the time now?",
+                "how much time?"
+              ],
+              "explanation": {
+                "en": "Standard question: What time is it?",
+                "ru": "Стандартный вопрос: What time is it?"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

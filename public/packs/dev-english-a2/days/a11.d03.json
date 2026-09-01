@@ -1,0 +1,607 @@
+{
+  "id": "a11.d03",
+  "title": {
+    "en": "One and many",
+    "ru": "Один и много"
+  },
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.articles",
+    "grammar.plurals",
+    "vocab.daily"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "a11.d03.vocab",
+      "title": {
+        "en": "Everyday things",
+        "ru": "Повседневные вещи"
+      },
+      "words": [
+        {
+          "word": "apple",
+          "ru": "яблоко",
+          "ipa": "/ˈæpl/",
+          "example": "This is an apple.",
+          "exampleRu": "Это яблоко.",
+          "audio": {
+            "src": "media/audio/a11.d03.vocab.apple.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "egg",
+          "ru": "яйцо",
+          "ipa": "/eɡ/",
+          "example": "I have an egg.",
+          "exampleRu": "У меня есть яйцо.",
+          "audio": {
+            "src": "media/audio/a11.d03.vocab.egg.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "orange",
+          "ru": "апельсин",
+          "ipa": "/ˈɒrɪndʒ/",
+          "example": "an orange and two apples",
+          "exampleRu": "апельсин и два яблока",
+          "audio": {
+            "src": "media/audio/a11.d03.vocab.orange.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "book",
+          "ru": "книга",
+          "ipa": "/bʊk/",
+          "example": "a book, two books",
+          "exampleRu": "книга, две книги",
+          "audio": {
+            "src": "media/audio/a11.d03.vocab.book.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "pen",
+          "ru": "ручка",
+          "ipa": "/pen/",
+          "example": "This is a pen.",
+          "exampleRu": "Это ручка.",
+          "audio": {
+            "src": "media/audio/a11.d03.vocab.pen.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "bag",
+          "ru": "сумка",
+          "ipa": "/bæɡ/",
+          "example": "two bags",
+          "exampleRu": "две сумки",
+          "audio": {
+            "src": "media/audio/a11.d03.vocab.bag.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "box",
+          "ru": "коробка",
+          "ipa": "/bɒks/",
+          "example": "one box, three boxes",
+          "exampleRu": "одна коробка, три коробки",
+          "audio": {
+            "src": "media/audio/a11.d03.vocab.box.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "chair",
+          "ru": "стул",
+          "ipa": "/tʃeə/",
+          "example": "a chair and a table",
+          "exampleRu": "стул и стол",
+          "audio": {
+            "src": "media/audio/a11.d03.vocab.chair.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "table",
+          "ru": "стол",
+          "ipa": "/ˈteɪbl/",
+          "example": "This is a table.",
+          "exampleRu": "Это стол.",
+          "audio": {
+            "src": "media/audio/a11.d03.vocab.table.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "boy",
+          "ru": "мальчик",
+          "ipa": "/bɔɪ/",
+          "example": "a boy, two boys",
+          "exampleRu": "мальчик, два мальчика",
+          "audio": {
+            "src": "media/audio/a11.d03.vocab.boy.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "girl",
+          "ru": "девочка",
+          "ipa": "/ɡɜːl/",
+          "example": "a girl, two girls",
+          "exampleRu": "девочка, две девочки",
+          "audio": {
+            "src": "media/audio/a11.d03.vocab.girl.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "city",
+          "ru": "город",
+          "ipa": "/ˈsɪti/",
+          "example": "one city, two cities",
+          "exampleRu": "один город, два города",
+          "audio": {
+            "src": "media/audio/a11.d03.vocab.city.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "a11.d03.grammar",
+      "title": {
+        "en": "a / an and plural nouns",
+        "ru": "a / an и множественное число"
+      },
+      "ref": "plurals",
+      "rule": {
+        "en": "Use a / an for ONE thing: a before a consonant sound (a book), an before a vowel sound (an apple). For more than one, add -s. Add -es after s, x, ch, sh, o (boxes). A consonant + y becomes -ies (city → cities). Use no a/an with plurals.",
+        "ru": "a / an — для ОДНОГО предмета: a перед согласным звуком (a book), an перед гласным (an apple). Для нескольких добавляем -s. После s, x, ch, sh, o — -es (boxes). Согласная + y → -ies (city → cities). С множественным a/an не ставим."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "a / an (one)",
+            "ru": "a / an (один)"
+          },
+          "formula": "a + consonant sound · an + vowel sound",
+          "examples": [
+            {
+              "en": "a book, a pen, a table",
+              "ru": "книга, ручка, стол"
+            },
+            {
+              "en": "an apple, an egg, an orange",
+              "ru": "яблоко, яйцо, апельсин"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "plural: + -s",
+            "ru": "множественное: + -s"
+          },
+          "formula": "noun + -s",
+          "examples": [
+            {
+              "en": "two books, three pens",
+              "ru": "две книги, три ручки"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "+ -es / -ies",
+            "ru": "+ -es / -ies"
+          },
+          "formula": "…s/x/ch/sh/o + -es · consonant+y → -ies",
+          "examples": [
+            {
+              "en": "box → boxes",
+              "ru": "коробка → коробки"
+            },
+            {
+              "en": "city → cities",
+              "ru": "город → города"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "an before a vowel sound: \"an apple\", not \"a apple\".",
+          "ru": "an перед гласным звуком: «an apple», а не «a apple»."
+        },
+        {
+          "en": "No a/an with plurals: \"two books\", not \"two a books\".",
+          "ru": "С множественным нет a/an: «two books», а не «two a books»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "a11.d03.reading",
+      "title": {
+        "en": "On the table",
+        "ru": "На столе"
+      },
+      "blocks": [
+        {
+          "id": "a11.d03.reading.b1",
+          "en": "This is a book. This is a pen. This is an apple.",
+          "ru": "Это книга. Это ручка. Это яблоко.",
+          "audio": {
+            "src": "media/audio/a11.d03.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a11.d03.reading.b2",
+          "en": "Here are two books and three pens. Here are two apples.",
+          "ru": "Вот две книги и три ручки. Вот два яблока.",
+          "audio": {
+            "src": "media/audio/a11.d03.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a11.d03.reading.b3",
+          "en": "Ann has two bags and one box. Ben has an orange.",
+          "ru": "У Анны две сумки и одна коробка. У Бена апельсин.",
+          "audio": {
+            "src": "media/audio/a11.d03.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "have",
+          "ru": "иметь, у ... есть",
+          "ipa": "/hæv/"
+        },
+        {
+          "word": "here are",
+          "ru": "вот (о нескольких)",
+          "ipa": "/hɪər ɑː/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "a11.d03.listening",
+      "title": {
+        "en": "How many?",
+        "ru": "Сколько?"
+      },
+      "audio": {
+        "src": "media/audio/a11.d03.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.16,
+          "en": "This is an apple.",
+          "ru": "Это яблоко."
+        },
+        {
+          "start": 1.16,
+          "end": 2.35,
+          "en": "These are apples.",
+          "ru": "Это яблоки."
+        },
+        {
+          "start": 2.35,
+          "end": 4.09,
+          "en": "I have a book and two pens.",
+          "ru": "У меня есть книга и две ручки."
+        },
+        {
+          "start": 4.09,
+          "end": 5.85,
+          "en": "Ann has three boxes.",
+          "ru": "У Анны три коробки."
+        },
+        {
+          "start": 5.85,
+          "end": 7.19,
+          "en": "Ben has an orange.",
+          "ru": "У Бена апельсин."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "a11.d03.ex.l.01",
+          "instruction": {
+            "en": "How many pens does the speaker have?",
+            "ru": "Сколько ручек у говорящего?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "___",
+          "options": [
+            "Two",
+            "One",
+            "Three"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "a11.d03.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "gap-fill",
+          "id": "a11.d03.ex.g.01",
+          "instruction": {
+            "en": "Complete with a or an.",
+            "ru": "Вставь a или an."
+          },
+          "tags": [
+            "grammar.articles"
+          ],
+          "prompt": "This is ___ apple.",
+          "cue": "(a / an)",
+          "answers": [
+            "an"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "a11.d03.ex.g.02",
+          "instruction": {
+            "en": "Complete with a or an.",
+            "ru": "Вставь a или an."
+          },
+          "tags": [
+            "grammar.articles"
+          ],
+          "prompt": "This is ___ book.",
+          "cue": "(a / an)",
+          "answers": [
+            "a"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "a11.d03.ex.g.03",
+          "instruction": {
+            "en": "Write the plural.",
+            "ru": "Напиши множественное число."
+          },
+          "tags": [
+            "grammar.plurals"
+          ],
+          "prompt": "one box, two ___",
+          "cue": "(box)",
+          "answers": [
+            "boxes"
+          ]
+        },
+        {
+          "type": "gap-fill",
+          "id": "a11.d03.ex.g.04",
+          "instruction": {
+            "en": "Write the plural.",
+            "ru": "Напиши множественное число."
+          },
+          "tags": [
+            "grammar.plurals"
+          ],
+          "prompt": "one city, two ___",
+          "cue": "(city)",
+          "answers": [
+            "cities"
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "a11.d03.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct form.",
+            "ru": "Выбери правильную форму."
+          },
+          "tags": [
+            "grammar.plurals"
+          ],
+          "prompt": "I have three ___.",
+          "options": [
+            "pens",
+            "pen",
+            "a pens"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "spot-error",
+          "id": "a11.d03.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.articles"
+          ],
+          "variants": [
+            "an orange",
+            "a orange"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "match",
+          "id": "a11.d03.ex.m.01",
+          "instruction": {
+            "en": "Match singular and plural.",
+            "ru": "Сопоставь единственное и множественное."
+          },
+          "tags": [
+            "grammar.plurals"
+          ],
+          "pairs": [
+            {
+              "left": "book",
+              "right": "books"
+            },
+            {
+              "left": "box",
+              "right": "boxes"
+            },
+            {
+              "left": "city",
+              "right": "cities"
+            }
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "a11.d03.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.plurals"
+          ],
+          "tokens": [
+            "I",
+            "have",
+            "two",
+            "books"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a11.d03.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.articles",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Это яблоко.",
+          "answers": [
+            "This is an apple.",
+            "It is an apple.",
+            "It's an apple."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "this is a apple",
+                "it is a apple"
+              ],
+              "explanation": {
+                "en": "an before a vowel sound: an apple.",
+                "ru": "an перед гласным звуком: an apple."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a11.d03.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.plurals",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "У меня две сумки.",
+          "answers": [
+            "I have two bags."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "i have two bag",
+                "i have two a bags"
+              ],
+              "explanation": {
+                "en": "Plural takes -s and no a/an: two bags.",
+                "ru": "Множественное берёт -s и без a/an: two bags."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

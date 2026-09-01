@@ -119,6 +119,9 @@ function buildDay(spec, dry) {
   return {
     id: D,
     title: spec.title,
+    // Opt-in only: story specs never carry `level` (they must stay out of the level-exit test), so this
+    // is inert for them; leveled days (e.g. the A1 on-ramp) set it to enter placement / exit-test sampling.
+    ...(spec.level ? { level: spec.level } : {}),
     estimatedMinutes: spec.estimatedMinutes ?? 90,
     tags: spec.tags,
     sections: [vocab, { type: 'grammar', id: `${D}.grammar`, ...spec.grammar }, reading, listening, practice],

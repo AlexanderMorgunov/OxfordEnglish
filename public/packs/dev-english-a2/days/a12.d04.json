@@ -1,0 +1,612 @@
+{
+  "id": "a12.d04",
+  "title": {
+    "en": "Where is the cat?",
+    "ru": "Где кот?"
+  },
+  "level": "A1",
+  "estimatedMinutes": 90,
+  "tags": [
+    "grammar.prepositions-place",
+    "vocab.furniture",
+    "vocab.house"
+  ],
+  "sections": [
+    {
+      "type": "vocabulary",
+      "id": "a12.d04.vocab",
+      "title": {
+        "en": "In the room",
+        "ru": "В комнате"
+      },
+      "words": [
+        {
+          "word": "bed",
+          "ru": "кровать",
+          "ipa": "/bed/",
+          "example": "The cat is on the bed.",
+          "exampleRu": "Кот на кровати.",
+          "audio": {
+            "src": "media/audio/a12.d04.vocab.bed.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "lamp",
+          "ru": "лампа",
+          "ipa": "/læmp/",
+          "example": "The lamp is on the table.",
+          "exampleRu": "Лампа на столе.",
+          "audio": {
+            "src": "media/audio/a12.d04.vocab.lamp.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "shelf",
+          "ru": "полка",
+          "ipa": "/ʃelf/",
+          "example": "Books are on the shelf.",
+          "exampleRu": "Книги на полке.",
+          "audio": {
+            "src": "media/audio/a12.d04.vocab.shelf.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "cup",
+          "ru": "чашка",
+          "ipa": "/kʌp/",
+          "example": "The cup is on the table.",
+          "exampleRu": "Чашка на столе.",
+          "audio": {
+            "src": "media/audio/a12.d04.vocab.cup.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "clock",
+          "ru": "часы (настенные)",
+          "ipa": "/klɒk/",
+          "example": "The clock is on the wall.",
+          "exampleRu": "Часы на стене.",
+          "audio": {
+            "src": "media/audio/a12.d04.vocab.clock.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "picture",
+          "ru": "картина, фото",
+          "ipa": "/ˈpɪktʃə/",
+          "example": "A picture is on the wall.",
+          "exampleRu": "Картина на стене.",
+          "audio": {
+            "src": "media/audio/a12.d04.vocab.picture.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "floor",
+          "ru": "пол",
+          "ipa": "/flɔː/",
+          "example": "The ball is on the floor.",
+          "exampleRu": "Мяч на полу.",
+          "audio": {
+            "src": "media/audio/a12.d04.vocab.floor.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "corner",
+          "ru": "угол",
+          "ipa": "/ˈkɔːnə/",
+          "example": "The chair is in the corner.",
+          "exampleRu": "Стул в углу.",
+          "audio": {
+            "src": "media/audio/a12.d04.vocab.corner.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "in",
+          "ru": "в (внутри)",
+          "ipa": "/ɪn/",
+          "example": "The keys are in the bag.",
+          "exampleRu": "Ключи в сумке.",
+          "audio": {
+            "src": "media/audio/a12.d04.vocab.in.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "on",
+          "ru": "на (поверхности)",
+          "ipa": "/ɒn/",
+          "example": "The cup is on the table.",
+          "exampleRu": "Чашка на столе.",
+          "audio": {
+            "src": "media/audio/a12.d04.vocab.on.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "under",
+          "ru": "под",
+          "ipa": "/ˈʌndə/",
+          "example": "The cat is under the bed.",
+          "exampleRu": "Кот под кроватью.",
+          "audio": {
+            "src": "media/audio/a12.d04.vocab.under.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "word": "next to",
+          "ru": "рядом с",
+          "ipa": "/nekst tuː/",
+          "example": "The lamp is next to the bed.",
+          "exampleRu": "Лампа рядом с кроватью.",
+          "audio": {
+            "src": "media/audio/a12.d04.vocab.nextto.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "id": "a12.d04.grammar",
+      "title": {
+        "en": "Prepositions of place",
+        "ru": "Предлоги места"
+      },
+      "ref": "prepositions-place",
+      "rule": {
+        "en": "Prepositions say WHERE something is: in (inside), on (a surface), under (below), next to (beside), behind (at the back), in front of (before). Use them after be: The cat is under the table.",
+        "ru": "Предлоги говорят, ГДЕ что-то находится: in (внутри), on (на поверхности), under (под), next to (рядом), behind (позади), in front of (перед). Ставим их после be: The cat is under the table."
+      },
+      "patterns": [
+        {
+          "label": {
+            "en": "be + preposition + the + place",
+            "ru": "be + предлог + the + место"
+          },
+          "formula": "thing + is/are + preposition + the + noun",
+          "examples": [
+            {
+              "en": "The cup is on the table.",
+              "ru": "Чашка на столе."
+            },
+            {
+              "en": "The keys are in the bag.",
+              "ru": "Ключи в сумке."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "in / on / under",
+            "ru": "in / on / under"
+          },
+          "formula": "in = inside · on = surface · under = below",
+          "examples": [
+            {
+              "en": "The cat is under the bed.",
+              "ru": "Кот под кроватью."
+            },
+            {
+              "en": "The clock is on the wall.",
+              "ru": "Часы на стене."
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "next to / behind / in front of",
+            "ru": "next to / behind / in front of"
+          },
+          "formula": "beside · at the back · before",
+          "examples": [
+            {
+              "en": "The lamp is next to the bed.",
+              "ru": "Лампа рядом с кроватью."
+            },
+            {
+              "en": "The car is in front of the house.",
+              "ru": "Машина перед домом."
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "in = inside, on = on a surface: \"in the bag\" vs \"on the table\".",
+          "ru": "in = внутри, on = на поверхности: «in the bag» и «on the table»."
+        },
+        {
+          "en": "next to = beside (very near), not \"near to\".",
+          "ru": "next to = рядом (совсем близко), не «near to»."
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "id": "a12.d04.reading",
+      "title": {
+        "en": "In my room",
+        "ru": "В моей комнате"
+      },
+      "blocks": [
+        {
+          "id": "a12.d04.reading.b1",
+          "en": "This is my room. The bed is next to the window. There is a lamp on the table.",
+          "ru": "Это моя комната. Кровать рядом с окном. На столе лампа.",
+          "audio": {
+            "src": "media/audio/a12.d04.reading.b1.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a12.d04.reading.b2",
+          "en": "My books are on the shelf. The ball is under the bed. A picture is on the wall.",
+          "ru": "Мои книги на полке. Мяч под кроватью. На стене картина.",
+          "audio": {
+            "src": "media/audio/a12.d04.reading.b2.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        },
+        {
+          "id": "a12.d04.reading.b3",
+          "en": "\"Where is the cat?\" \"It is in the box in the corner!\"",
+          "ru": "«Где кот?» «Он в коробке в углу!»",
+          "audio": {
+            "src": "media/audio/a12.d04.reading.b3.mp3",
+            "license": {
+              "type": "original",
+              "attribution": "Project authors (LLM-assisted)"
+            }
+          }
+        }
+      ],
+      "glossary": [
+        {
+          "word": "where",
+          "ru": "где",
+          "ipa": "/weə/"
+        },
+        {
+          "word": "behind",
+          "ru": "позади, за",
+          "ipa": "/bɪˈhaɪnd/"
+        }
+      ]
+    },
+    {
+      "type": "listening",
+      "id": "a12.d04.listening",
+      "title": {
+        "en": "Where is it?",
+        "ru": "Где это?"
+      },
+      "audio": {
+        "src": "media/audio/a12.d04.listening.mp3",
+        "license": {
+          "type": "original",
+          "attribution": "Project authors (LLM-assisted)"
+        }
+      },
+      "transcript": [
+        {
+          "start": 0,
+          "end": 1.35,
+          "en": "Where is my phone?",
+          "ru": "Где мой телефон?"
+        },
+        {
+          "start": 1.35,
+          "end": 3.44,
+          "en": "It is on the table, next to the lamp.",
+          "ru": "Он на столе, рядом с лампой."
+        },
+        {
+          "start": 3.44,
+          "end": 4.93,
+          "en": "And my keys?",
+          "ru": "А мои ключи?"
+        },
+        {
+          "start": 4.93,
+          "end": 6.19,
+          "en": "They are in your bag.",
+          "ru": "Они в твоей сумке."
+        },
+        {
+          "start": 6.19,
+          "end": 7.42,
+          "en": "Where is the cat?",
+          "ru": "Где кот?"
+        },
+        {
+          "start": 7.42,
+          "end": 8.8,
+          "en": "It is under the bed.",
+          "ru": "Он под кроватью."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "a12.d04.ex.l.01",
+          "instruction": {
+            "en": "Where are the keys?",
+            "ru": "Где ключи?"
+          },
+          "tags": [
+            "listening.detail"
+          ],
+          "prompt": "They are ___ the bag.",
+          "options": [
+            "in",
+            "on",
+            "under"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "type": "practice",
+      "id": "a12.d04.practice",
+      "title": {
+        "en": "Practice",
+        "ru": "Практика"
+      },
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "a12.d04.ex.c.01",
+          "instruction": {
+            "en": "Choose the correct preposition.",
+            "ru": "Выбери правильный предлог."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "prompt": "The cup is ___ the table.",
+          "options": [
+            "on",
+            "in",
+            "under"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "a12.d04.ex.c.02",
+          "instruction": {
+            "en": "Choose the correct preposition.",
+            "ru": "Выбери правильный предлог."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "prompt": "The keys are ___ the bag.",
+          "options": [
+            "in",
+            "on",
+            "next to"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "choice",
+          "id": "a12.d04.ex.c.03",
+          "instruction": {
+            "en": "Choose the correct preposition.",
+            "ru": "Выбери правильный предлог."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "prompt": "The cat is ___ the bed (below it).",
+          "options": [
+            "under",
+            "on",
+            "in"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "gap-fill",
+          "id": "a12.d04.ex.g.01",
+          "instruction": {
+            "en": "Complete with is or are.",
+            "ru": "Вставь is или are."
+          },
+          "tags": [
+            "grammar.prepositions-place",
+            "grammar.be"
+          ],
+          "prompt": "My books ___ on the shelf.",
+          "cue": "(be)",
+          "answers": [
+            "are"
+          ]
+        },
+        {
+          "type": "spot-error",
+          "id": "a12.d04.ex.s.01",
+          "instruction": {
+            "en": "Which is correct?",
+            "ru": "Что верно?"
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "variants": [
+            "The lamp is next to the bed.",
+            "The lamp is next the bed."
+          ],
+          "correctIndex": 0
+        },
+        {
+          "type": "match",
+          "id": "a12.d04.ex.m.01",
+          "instruction": {
+            "en": "Match the preposition and the meaning.",
+            "ru": "Сопоставь предлог и значение."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "pairs": [
+            {
+              "left": "in",
+              "right": "внутри"
+            },
+            {
+              "left": "on",
+              "right": "на поверхности"
+            },
+            {
+              "left": "under",
+              "right": "под"
+            },
+            {
+              "left": "next to",
+              "right": "рядом"
+            }
+          ]
+        },
+        {
+          "type": "order-words",
+          "id": "a12.d04.ex.o.01",
+          "instruction": {
+            "en": "Make a sentence.",
+            "ru": "Собери предложение."
+          },
+          "tags": [
+            "grammar.prepositions-place"
+          ],
+          "tokens": [
+            "The",
+            "cat",
+            "is",
+            "under",
+            "the",
+            "bed"
+          ],
+          "correctOrder": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a12.d04.ex.t.01",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.prepositions-place",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Чашка на столе.",
+          "answers": [
+            "The cup is on the table."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the cup is in the table",
+                "the cup on the table"
+              ],
+              "explanation": {
+                "en": "on a surface + use be: The cup is on the table.",
+                "ru": "на поверхности + нужен be: The cup is on the table."
+              }
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "id": "a12.d04.ex.t.02",
+          "instruction": {
+            "en": "Translate into English.",
+            "ru": "Переведи на английский."
+          },
+          "tags": [
+            "grammar.prepositions-place",
+            "writing.translation"
+          ],
+          "direction": "ru-en",
+          "prompt": "Кот под кроватью.",
+          "answers": [
+            "The cat is under the bed."
+          ],
+          "commonErrors": [
+            {
+              "match": [
+                "the cat under the bed",
+                "the cat is on the bed"
+              ],
+              "explanation": {
+                "en": "under = below, and use be: The cat is under the bed.",
+                "ru": "under = под, и нужен be: The cat is under the bed."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
