@@ -74,5 +74,19 @@ for route in grammar library support credits feedback review progress vocabulary
     --content-type "text/html; charset=utf-8" --cache-control "$NOCACHE" --no-progress
 done
 
+# Programmatic SEO: one indexable object per grammar topic at key grammar/<id> (build-seo.mjs prerenders
+# the article text + meta into dist/grammar/<id>.html). Nested keys under the grammar/ prefix; the flat
+# grammar index stays at key `grammar` above. Verify after deploy that a key that is also a prefix
+# resolves on Yandex static hosting: curl -sI /grammar and curl /grammar/present-simple | grep '<title'.
+if [ -d "$DIST/grammar" ]; then
+  echo "3c/3 grammar topic pages (indexable /grammar/<id>)…"
+  for f in "$DIST"/grammar/*.html; do
+    [ -f "$f" ] || continue
+    id="$(basename "$f" .html)"
+    "${S3[@]}" cp "$f" "s3://$YC_BUCKET/grammar/$id" \
+      --content-type "text/html; charset=utf-8" --cache-control "$NOCACHE" --no-progress
+  done
+fi
+
 echo "Done. NOTE: CDN must honor origin Cache-Control (or force-revalidate sw.js/index.html/manifest),"
 echo "otherwise the edge serves a stale sw.js and PWA updates stall. No --delete (orphans pruned separately)."
