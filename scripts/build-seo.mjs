@@ -76,7 +76,12 @@ function renderPage({ url, title, desc, index = true, ldjson, body }) {
       `  <script type="application/ld+json">${jsonld(ldjson)}</script>\n  </head>`
     );
   }
-  if (body) html = html.replace(ROOT, `<div id="root">${body}</div>`);
+  if (body) {
+    // #root now carries page-specific content that no-JS crawlers can read, so the shell's generic
+    // home <noscript> fallback (its own <h1> + home copy) would only add a duplicate h1 and off-topic
+    // boilerplate to every topic/hub page. Drop it here; pages WITHOUT a body keep it as their fallback.
+    html = html.replace(/\n?\s*<noscript>[\s\S]*?<\/noscript>/, '').replace(ROOT, `<div id="root">${body}</div>`);
+  }
   return html;
 }
 
