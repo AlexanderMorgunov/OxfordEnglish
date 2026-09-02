@@ -1,5 +1,6 @@
 import { db, type SrsCard } from '@/db/db';
 import { addPhraseCard, addWordCard } from '@/features/srs/service';
+import { patchSrsCard } from '@/features/sync/local';
 import type { LexiconEntry } from './lexicon';
 
 /** Edit a term's Russian translation: the card's back (if any) is the display source; the
@@ -8,7 +9,7 @@ import type { LexiconEntry } from './lexicon';
 export async function setTranslation(entry: LexiconEntry, ru: string): Promise<void> {
   const value = ru.trim();
   try {
-    if (entry.cardId) await db.srsCards.update(entry.cardId, { back: value || entry.display });
+    if (entry.cardId) await patchSrsCard(entry.cardId, { back: value || entry.display });
     await db.translations.put({ word: entry.key, ru: value, source: 'manual' });
   } catch {
     // best-effort
@@ -33,7 +34,7 @@ export async function addTerm(term: string, translation: string, context: string
   if (tr) patch.back = tr;
   if (ctx) patch.contextSentence = ctx;
   try {
-    if (Object.keys(patch).length) await db.srsCards.update(id, patch);
+    if (Object.keys(patch).length) await patchSrsCard(id, patch);
     if (tr) await db.translations.put({ word: key, ru: tr, source: 'manual' });
   } catch {
     // best-effort

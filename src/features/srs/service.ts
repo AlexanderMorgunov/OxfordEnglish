@@ -6,6 +6,7 @@ import {
   type Grade,
 } from 'ts-fsrs';
 import { db, type SrsCard } from '@/db/db';
+import { addSrsCard, putSrsCard } from '@/features/sync/local';
 
 export { Rating };
 
@@ -16,9 +17,8 @@ type NewCard = Omit<SrsCard, 'due' | 'card'>;
 /** Create a card if one with this id doesn't already exist (never resets a live schedule). */
 async function upsert(card: NewCard): Promise<void> {
   try {
-    if (await db.srsCards.get(card.id)) return;
     const fsrsCard = createEmptyCard(new Date());
-    await db.srsCards.add({ ...card, due: fsrsCard.due, card: fsrsCard });
+    await addSrsCard({ ...card, due: fsrsCard.due, card: fsrsCard });
   } catch {
     // best-effort — SRS is non-critical if IndexedDB is unavailable
   }
@@ -98,5 +98,5 @@ export async function gradeCard(id: string, rating: Grade): Promise<void> {
   const row = await db.srsCards.get(id);
   if (!row) return;
   const next = scheduler.next(row.card, new Date(), rating).card;
-  await db.srsCards.put({ ...row, card: next, due: next.due });
+  await putSrsCard({ ...row, card: next, due: next.due });
 }

@@ -18,6 +18,7 @@ import { captureAttribution } from '@/features/analytics/attribution';
 import { initPwaInstall } from '@/features/pwa/install';
 import { initAppUpdate } from '@/features/pwa/update';
 import { initFeedback } from '@/features/feedback/service';
+import { initSync } from '@/features/sync/run';
 import { isMirrorHost, migrateThenRedirect } from '@/features/migration/sender';
 import { isReceiverPath, receiveMigration } from '@/features/migration/receiver';
 
@@ -42,6 +43,7 @@ if (isMirrorHost() && !stayOnMirror) {
   initPwaInstall();
   initAppUpdate();
   initFeedback();
+  initSync();
 
   createRoot(rootEl).render(
     <StrictMode>

@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { db, type WordStatusValue } from '@/db/db';
+import { putWordStatus } from '@/features/sync/local';
 
 type VocabState = {
   statuses: Map<string, WordStatusValue>;
@@ -29,7 +30,7 @@ export const useVocabStore = create<VocabState>((set, get) => ({
     set({ statuses: next });
     try {
       const existing = await db.wordStatus.get(word);
-      await db.wordStatus.put({
+      await putWordStatus({
         word,
         status,
         firstSeenAt: existing?.firstSeenAt ?? Date.now(),
@@ -46,7 +47,7 @@ export const useVocabStore = create<VocabState>((set, get) => ({
     set({ statuses: next });
     try {
       const existing = await db.wordStatus.get(word);
-      await db.wordStatus.put({
+      await putWordStatus({
         word,
         status,
         firstSeenAt: existing?.firstSeenAt ?? Date.now(),

@@ -1,4 +1,5 @@
 import { db, type Bookmark } from '@/db/db';
+import { addBookmark as addBookmarkSynced } from '@/features/sync/local';
 
 export type { Bookmark };
 export type NewBookmark = Omit<Bookmark, 'id' | 'createdAt'>;
@@ -79,7 +80,7 @@ export async function addBookmark(input: NewBookmark): Promise<Bookmark> {
   const existing = await findBookmark(input.bookKey, input.page, input.paragraph);
   if (existing) return existing;
   const bookmark: Bookmark = { ...input, id: crypto.randomUUID(), createdAt: Date.now() };
-  await db.bookmarks.add(bookmark);
+  await addBookmarkSynced(bookmark);
   return bookmark;
 }
 
