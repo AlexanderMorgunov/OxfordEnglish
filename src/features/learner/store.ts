@@ -1,8 +1,11 @@
 import { create } from 'zustand';
 import type { Level } from '@/content/schema';
 import { track } from '@/features/analytics/analytics';
+import { stampSetting } from '@/features/sync/local';
+import { registerSettingBridge } from '@/features/sync/settingsBridge';
 
 const KEY = 'oxford-learner';
+const SETTING_KEY = 'learner';
 
 export type LearnerState = {
   level: Level | null;
@@ -21,12 +24,13 @@ function load(): LearnerState {
   }
 }
 
-function persist(state: LearnerState) {
+function persist(state: LearnerState, sync = true) {
   try {
     localStorage.setItem(KEY, JSON.stringify(state));
   } catch {
     // ignore storage failures
   }
+  if (sync) void stampSetting(SETTING_KEY, state);
 }
 
 type LearnerStore = LearnerState & {
@@ -52,7 +56,25 @@ export const useLearner = create<LearnerStore>((set) => ({
     }),
   reset: () =>
     set(() => {
-      persist(EMPTY);
+      persist(EMPTY, false); // device-local only — never sync a wipe (would clobber the level on other devices)
       return EMPTY;
     }),
 }));
+
+/** Apply a learner state synced from another device. `placementDone` is monotonic — a stale `false`
+ *  never re-shows the placement flow to someone who already finished it. Persists without re-stamping. */
+export function applyLearnerFromSync(value: unknown): void {
+  if (!value || typeof value !== 'object') return;
+  const v = value as Partial<LearnerState>;
+  useLearner.setState((s) => {
+    const next: LearnerState = {
+      level: (v.level ?? s.level) as Level | null,
+      recommendedUnitId: v.recommendedUnitId ?? s.recommendedUnitId,
+      placementDone: !!v.placementDone || s.placementDone,
+    };
+    persist(next, false);
+    return next;
+  });
+}
+
+registerSettingBridge({ key: SETTING_KEY, applyFromSync: applyLearnerFromSync });

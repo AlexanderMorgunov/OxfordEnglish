@@ -80,6 +80,30 @@ export const SyncPullResponseSchema = z.object({ head: z.number(), entries: z.ar
 export type SyncChange = z.infer<typeof SyncChangeSchema>;
 export type SyncEntry = z.infer<typeof SyncEntrySchema>;
 
+// --- Book file blobs (slice 3, opt-in) ---
+export const BLOB_MAX_BYTES = 20 * 1024 * 1024; // per book
+export const BLOB_ACCOUNT_MAX_BYTES = 300 * 1024 * 1024; // per account
+
+/** Ask for an upload target for a book file. `size` is the client's declared size (re-verified at commit). */
+export const BlobUploadRequestSchema = z.object({ bookId: z.string().min(1).max(200), size: z.number().int().nonnegative() });
+/** Where + how to upload. In prod this is a presigned Object Storage POST/PUT with a content-length-range;
+ *  the dev skeleton returns a same-API PUT endpoint. `url` may be absolute (prod) or API-relative (dev). */
+export const BlobUploadTargetSchema = z.object({
+  url: z.string(),
+  method: z.enum(['PUT', 'POST']),
+  headers: z.record(z.string()),
+  key: z.string(),
+  maxBytes: z.number(),
+});
+/** Finalize an upload: the server HEADs the object, verifies size, and records the blob (or rolls back). */
+export const BlobCommitRequestSchema = z.object({ bookId: z.string().min(1).max(200), key: z.string().min(1), size: z.number().int().nonnegative() });
+export const BlobMetaSchema = z.object({ bookId: z.string(), size: z.number(), uploadedAt: z.number() });
+export const BlobListResponseSchema = z.object({ blobs: z.array(BlobMetaSchema), usedBytes: z.number(), limitBytes: z.number() });
+export const BlobDownloadResponseSchema = z.object({ url: z.string(), method: z.literal('GET') });
+
+export type BlobUploadTarget = z.infer<typeof BlobUploadTargetSchema>;
+export type BlobMeta = z.infer<typeof BlobMetaSchema>;
+
 export const ErrorCode = {
   InvalidCredentials: 'invalid_credentials',
   AccountExists: 'account_exists',
@@ -88,5 +112,9 @@ export const ErrorCode = {
   RefreshReused: 'refresh_reused',
   BadRequest: 'bad_request',
   Unauthorized: 'unauthorized',
+  BlobTooLarge: 'blob_too_large',
+  QuotaExceeded: 'quota_exceeded',
+  SizeMismatch: 'size_mismatch',
+  BlobNotFound: 'blob_not_found',
 } as const;
 export type ErrorCode = (typeof ErrorCode)[keyof typeof ErrorCode];

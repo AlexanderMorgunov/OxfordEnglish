@@ -4,6 +4,7 @@
  * Run: `npx tsx src/smoke.ts`. Exits non-zero on any failure.
  */
 import { createApp } from './app.js';
+import { InMemoryBlobStore } from './blobs.js';
 
 const app = createApp();
 const H = { 'content-type': 'application/json' };
@@ -152,6 +153,58 @@ check('append-only attempt re-push → no-op (immutable union)', ((await push3.j
 const snap = await app.request('/v1/sync?since=0', { headers: syncAuth });
 const sp = (await snap.json()) as Pulled;
 check('pull since=0 → snapshot of current state (2 rows: attempt + card)', sp.snapshot === true && sp.entries.length === 2);
+
+// --- Book file blobs ---
+const put = (path: string, bytes: Uint8Array) => app.request(path, { method: 'PUT', headers: syncAuth, body: bytes });
+
+const noAuthBlobs = await app.request('/v1/blobs');
+check('blobs list without auth → 401', noAuthBlobs.status === 401);
+
+const tooBig = await post('/v1/blobs/upload-url', { bookId: 'bk1', size: 21 * 1024 * 1024 }, syncAuth);
+check('upload-url over per-book cap → 413 blob_too_large', tooBig.status === 413);
+
+const up = await post('/v1/blobs/upload-url', { bookId: 'bk1', size: 5 }, syncAuth);
+const target = (await up.json()) as { url: string; key: string };
+check('upload-url → target with key', up.status === 200 && !!target.url && !!target.key);
+
+const bytes = new Uint8Array([1, 2, 3, 4, 5]);
+const dataPut = await put(target.url, bytes);
+check('PUT bytes to the dev upload target → 204', dataPut.status === 204);
+
+const mismatch = await post('/v1/blobs/commit', { bookId: 'bk1', key: target.key, size: 999 }, syncAuth);
+check('commit wrong size → 409 size_mismatch', mismatch.status === 409);
+
+const commit = await post('/v1/blobs/commit', { bookId: 'bk1', key: target.key, size: 5 }, syncAuth);
+const meta = (await commit.json()) as { bookId: string; size: number };
+check('commit correct size → blob meta', commit.status === 200 && meta.bookId === 'bk1' && meta.size === 5);
+
+const listBlobs = await app.request('/v1/blobs', { headers: syncAuth });
+const bl = (await listBlobs.json()) as { blobs: unknown[]; usedBytes: number };
+check('blobs list → 1 blob, usedBytes = 5', bl.blobs.length === 1 && bl.usedBytes === 5);
+
+const dlUrl = await app.request('/v1/blobs/bk1/download-url', { headers: syncAuth });
+const dlt = (await dlUrl.json()) as { url: string };
+const got = await app.request(dlt.url, { headers: syncAuth });
+const gotBytes = new Uint8Array(await got.arrayBuffer());
+check('download-url → same 5 bytes back', got.status === 200 && gotBytes.length === 5 && gotBytes[0] === 1);
+
+const foreign = await app.request(`/v1/blobs/data/${encodeURIComponent('someone-else/bk1')}`, { headers: syncAuth });
+check("cannot read another user's key prefix → 403", foreign.status === 403);
+
+const del = await app.request('/v1/blobs/bk1', { method: 'DELETE', headers: syncAuth });
+check('delete blob → ok', del.status === 200);
+const afterDel = await app.request('/v1/blobs', { headers: syncAuth });
+check('after delete → usage back to 0', ((await afterDel.json()) as { usedBytes: number }).usedBytes === 0);
+
+// gcOrphans is the seam for a future server-side maintenance cron (not a client route — a client's
+// partial view could delete a blob another device references). Unit-check it directly here.
+const gcStore = new InMemoryBlobStore();
+await gcStore.putObject(gcStore.objectKey('u', 'keep'), new Uint8Array([1]));
+await gcStore.commit('u', 'keep', 1);
+await gcStore.putObject(gcStore.objectKey('u', 'orphan'), new Uint8Array([2]));
+await gcStore.commit('u', 'orphan', 1);
+const removed = await gcStore.gcOrphans('u', ['keep']); // 'orphan' is no longer a live book
+check('gcOrphans removes only blobs whose book is gone', removed === 1 && (await gcStore.list('u')).length === 1);
 
 console.log(failures ? `\n${failures} FAILED` : '\nALL PASS');
 process.exit(failures ? 1 : 0);

@@ -443,6 +443,12 @@ export function SettingsPage() {
         </div>
         <p className="mt-3 font-mono text-2xs text-faint">version: {__APP_VERSION__}</p>
       </div>
+
+      <div className="mt-10 border-t border-line pt-6">
+        <Link to="/privacy" className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">
+          {ru ? 'политика конфиденциальности →' : 'privacy policy →'}
+        </Link>
+      </div>
     </section>
   );
 }

@@ -1,9 +1,25 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Card, Eyebrow, Input } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { accountsEnabled } from './config';
 import { useAccount } from './store';
+import { blobList } from './api';
+import { useBookFileSync } from '@/features/reader/blobSync';
+import { useSyncStatus } from '@/features/sync/status';
 import type { Device, DeviceStartResponse } from './contract';
+
+const mb = (bytes: number): string => (bytes / (1024 * 1024)).toFixed(bytes < 10 * 1024 * 1024 ? 1 : 0);
+
+function ago(ts: number, ru: boolean): string {
+  const s = Math.max(0, Date.now() - ts) / 1000;
+  if (s < 45) return ru ? 'только что' : 'just now';
+  const m = Math.round(s / 60);
+  if (m < 60) return ru ? `${m} мин назад` : `${m} min ago`;
+  const h = Math.round(m / 60);
+  if (h < 24) return ru ? `${h} ч назад` : `${h} h ago`;
+  return ru ? `${Math.round(h / 24)} дн назад` : `${Math.round(h / 24)} d ago`;
+}
 
 /** Settings → Account. Absent entirely when no backend is configured (`accountsEnabled()` false), so
  *  prod/staging without an API is clean. Slice 1: create / save recovery key / link by key / link a
@@ -113,12 +129,14 @@ function AccountSectionBody() {
           <p className="mb-1 text-sm text-content">
             {ru ? 'Вы вошли. Прогресс будет синхронизироваться между устройствами.' : 'Signed in. Your progress will sync across devices.'}
           </p>
-          <p className="mb-3 font-mono text-2xs text-muted">
+          <p className="mb-1 font-mono text-2xs text-muted">
             id: {accountId?.slice(0, 10)}… · {ru ? 'это устройство' : 'this device'}: {deviceId.slice(0, 8)}
           </p>
-          <Button size="sm" variant="ghost" onClick={() => void logout()}>
+          <SyncStatusLine ru={ru} />
+          <Button size="sm" variant="ghost" className="mt-3" onClick={() => void logout()}>
             {ru ? 'Выйти' : 'Log out'}
           </Button>
+          <BookFileSyncToggle ru={ru} />
           <DeviceManager ru={ru} thisDeviceId={deviceId} />
         </div>
       ) : (
@@ -155,6 +173,13 @@ function AccountSectionBody() {
             </div>
           )}
           {showDeviceLink && <DeviceLinkNew ru={ru} />}
+          <p className="mt-3 text-2xs text-faint text-pretty">
+            {ru ? 'Создавая аккаунт, вы соглашаетесь с ' : 'By creating an account you agree to the '}
+            <Link to="/privacy" className="text-teal hover:underline">
+              {ru ? 'политикой конфиденциальности' : 'privacy policy'}
+            </Link>
+            {ru ? '. Без email — только ключ восстановления.' : '. No email — just a recovery key.'}
+          </p>
         </div>
       )}
 
@@ -240,6 +265,81 @@ function DeviceLinkNew({ ru }: { ru: boolean }) {
         <p className="mt-2 font-mono text-2xs text-coral">{ru ? 'Не удалось. Попробуйте ещё раз.' : 'Something went wrong. Try again.'}</p>
       )}
     </Card>
+  );
+}
+
+/** One-line sync state: syncing / synced-N-ago / offline (with the local unsynced count) / error. */
+function SyncStatusLine({ ru }: { ru: boolean }) {
+  const phase = useSyncStatus((s) => s.phase);
+  const lastSyncedAt = useSyncStatus((s) => s.lastSyncedAt);
+  const pending = useSyncStatus((s) => s.pending);
+
+  let text: string;
+  let tone = 'text-muted';
+  if (phase === 'syncing') {
+    text = ru ? 'Синхронизация…' : 'Syncing…';
+  } else if (phase === 'offline') {
+    const tail = pending ? (ru ? ` — ${pending} изм. сохранено локально` : ` — ${pending} change(s) saved locally`) : '';
+    text = (ru ? 'Нет сети' : 'Offline') + tail;
+    tone = 'text-amber';
+  } else if (phase === 'error') {
+    text = ru ? 'Ошибка синхронизации — повторим позже' : 'Sync error — will retry';
+    tone = 'text-coral';
+  } else {
+    text = lastSyncedAt
+      ? (ru ? 'Синхронизировано · ' : 'Synced · ') + ago(lastSyncedAt, ru)
+      : ru
+        ? 'Готово к синхронизации'
+        : 'Ready to sync';
+    tone = 'text-teal';
+  }
+  return <p className={`font-mono text-2xs ${tone}`}>{text}</p>;
+}
+
+/** Opt-in to upload this device's imported book files to the cloud (position/meta already sync). */
+function BookFileSyncToggle({ ru }: { ru: boolean }) {
+  const enabled = useBookFileSync((s) => s.enabled);
+  const setEnabled = useBookFileSync((s) => s.setEnabled);
+  const [quota, setQuota] = useState<{ used: number; limit: number } | null>(null);
+
+  useEffect(() => {
+    if (!enabled) {
+      setQuota(null);
+      return;
+    }
+    let cancelled = false;
+    void (async () => {
+      const token = await useAccount.getState().getAccessToken();
+      if (!token) return;
+      try {
+        const r = await blobList(token);
+        if (!cancelled) setQuota({ used: r.usedBytes, limit: r.limitBytes });
+      } catch {
+        // best-effort — quota display is non-essential
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [enabled]);
+
+  return (
+    <label className="mt-3 flex items-start gap-2 text-sm text-muted">
+      <input type="checkbox" className="mt-0.5" checked={enabled} onChange={(e) => setEnabled(e.target.checked)} />
+      <span>
+        {ru ? 'Синхронизировать файлы книг' : 'Sync book files'}
+        <span className="block text-2xs text-faint">
+          {ru
+            ? 'Загружать импортированные книги в облако, чтобы читать их на других устройствах (до 20 МБ на книгу).'
+            : 'Upload imported books to the cloud to read them on other devices (up to 20 MB per book).'}
+        </span>
+        {quota && (
+          <span className="mt-1 block font-mono text-2xs text-muted">
+            {ru ? 'Использовано' : 'Used'}: {mb(quota.used)} / {mb(quota.limit)} {ru ? 'МБ' : 'MB'}
+          </span>
+        )}
+      </span>
+    </label>
   );
 }
 

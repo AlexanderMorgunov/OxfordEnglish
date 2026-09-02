@@ -1,5 +1,6 @@
 import { db, type Bookmark } from '@/db/db';
-import { addBookmark as addBookmarkSynced } from '@/features/sync/local';
+import { addBookmark as addBookmarkSynced, softDeleteBookmark, isSyncing } from '@/features/sync/local';
+import { isDeleted } from '@/features/sync/resolve';
 
 export type { Bookmark };
 export type NewBookmark = Omit<Bookmark, 'id' | 'createdAt'>;
@@ -61,18 +62,19 @@ export function resolveParagraphIndex(
 export async function listBookmarks(bookKey: string): Promise<Bookmark[]> {
   try {
     const rows = await db.bookmarks.where('bookKey').equals(bookKey).toArray();
-    return rows.sort((a, b) => a.page - b.page || a.paragraph - b.paragraph);
+    return rows.filter((b) => !isDeleted(b)).sort((a, b) => a.page - b.page || a.paragraph - b.paragraph);
   } catch {
     return [];
   }
 }
 
-export function findBookmark(
+export async function findBookmark(
   bookKey: string,
   page: number,
   paragraph: number
 ): Promise<Bookmark | undefined> {
-  return db.bookmarks.where('[bookKey+page+paragraph]').equals([bookKey, page, paragraph]).first();
+  const rows = await db.bookmarks.where('[bookKey+page+paragraph]').equals([bookKey, page, paragraph]).toArray();
+  return rows.find((b) => !isDeleted(b)); // a tombstoned bookmark reads as gone (so it can be re-added)
 }
 
 /** Add unless an identical (bookKey, page, paragraph) bookmark already exists (dedupe). */
@@ -85,14 +87,16 @@ export async function addBookmark(input: NewBookmark): Promise<Bookmark> {
 }
 
 export async function removeBookmark(id: string): Promise<void> {
-  await db.bookmarks.delete(id);
+  // Tombstone when signed in (so the delete propagates), else hard-delete (anonymous → no garbage rows).
+  if (isSyncing()) await softDeleteBookmark(id);
+  else await db.bookmarks.delete(id);
 }
 
 /** Add the bookmark, or remove the existing one at the same spot. Returns whether it was added. */
 export async function toggleBookmark(input: NewBookmark): Promise<{ added: boolean }> {
   const existing = await findBookmark(input.bookKey, input.page, input.paragraph);
   if (existing) {
-    await db.bookmarks.delete(existing.id);
+    await removeBookmark(existing.id);
     return { added: false };
   }
   await addBookmark(input);

@@ -18,6 +18,7 @@ const SettingsPage = lazy(() => import('@/pages/SettingsPage').then((m) => ({ de
 const SupportPage = lazy(() => import('@/pages/SupportPage').then((m) => ({ default: m.SupportPage })));
 const CreditsPage = lazy(() => import('@/pages/CreditsPage').then((m) => ({ default: m.CreditsPage })));
 const FeedbackPage = lazy(() => import('@/pages/FeedbackPage').then((m) => ({ default: m.FeedbackPage })));
+const PrivacyPage = lazy(() => import('@/pages/PrivacyPage').then((m) => ({ default: m.PrivacyPage })));
 const LibraryPage = lazy(() => import('@/pages/LibraryPage').then((m) => ({ default: m.LibraryPage })));
 const BookReaderPage = lazy(() => import('@/pages/BookReaderPage').then((m) => ({ default: m.BookReaderPage })));
 const CatalogReaderPage = lazy(() => import('@/pages/CatalogReaderPage').then((m) => ({ default: m.CatalogReaderPage })));
@@ -41,6 +42,7 @@ const routes: RouteObject[] = [
   { path: '/support', element: <SupportPage /> },
   { path: '/credits', element: <CreditsPage /> },
   { path: '/feedback', element: <FeedbackPage /> },
+  { path: '/privacy', element: <PrivacyPage /> },
   // Dev-only playground — never routed in a production build.
   ...(import.meta.env.DEV ? [{ path: '/kitchen-sink', element: <KitchenSinkPage /> }] : []),
   { path: '*', element: <NotFoundPage /> },
