@@ -91,5 +91,67 @@ check('revoke device → ok', rev.status === 200 && ((await rev.json()) as { ok?
 const revRefresh = await post('/v1/auth/refresh', { refreshToken: pd.session!.refreshToken });
 check('revoked device refresh → invalid', revRefresh.status === 401);
 
+// --- Sync ---
+const syncAuth = { authorization: `Bearer ${okj.accessToken}` };
+type Entry = { seq: number; store: string; id: string; payload: unknown };
+type Pushed = { head: number; applied: Entry[] };
+type Pulled = { head: number; entries: Entry[]; snapshot?: boolean };
+
+const noAuthPull = await app.request('/v1/sync?since=0');
+check('sync pull without auth → 401', noAuthPull.status === 401);
+
+const push1 = await post(
+  '/v1/sync',
+  {
+    cursorSeq: 0,
+    idempotencyKey: 'batch-0001',
+    changes: [
+      { store: 'attempts', id: 'inst:a1', updatedAt: 1000, updatedBy: 'inst', payload: { exerciseId: 'e1' } },
+      { store: 'srsCards', id: 'word:apple', updatedAt: 10, updatedBy: 'inst', payload: { front: 'apple', card: { reps: 3, last_review: 5 } } },
+    ],
+  },
+  syncAuth
+);
+const p1 = (await push1.json()) as Pushed;
+check('push → contiguous seqs from 1, head=2', push1.status === 200 && p1.head === 2 && p1.applied.map((e) => e.seq).join(',') === '1,2');
+
+const replay = await post(
+  '/v1/sync',
+  { cursorSeq: 0, idempotencyKey: 'batch-0001', changes: [{ store: 'attempts', id: 'inst:a1', updatedAt: 1000, updatedBy: 'inst', payload: { exerciseId: 'e1' } }] },
+  syncAuth
+);
+check('push replay (same idempotencyKey) → memoized, no new seqs', ((await replay.json()) as Pushed).head === 2);
+
+const pullSince1 = await app.request('/v1/sync?since=1', { headers: syncAuth });
+const ps1 = (await pullSince1.json()) as Pulled;
+check('pull since=1 → only seq 2', ps1.entries.length === 1 && ps1.entries[0]!.seq === 2 && ps1.head === 2);
+
+// srsCards resolution: a higher-reps schedule from another device must win the card even if it arrives
+// with an OLDER content updatedAt (atomic card, F5).
+const push2 = await post(
+  '/v1/sync',
+  {
+    cursorSeq: 2,
+    idempotencyKey: 'batch-0002',
+    changes: [{ store: 'srsCards', id: 'word:apple', updatedAt: 5, updatedBy: 'other', payload: { front: 'apple', card: { reps: 9, last_review: 50 } } }],
+  },
+  syncAuth
+);
+const p2 = (await push2.json()) as Pushed;
+const applePayload = p2.applied.find((e) => e.id === 'word:apple')?.payload as { front?: string; card?: { reps?: number } } | undefined;
+check('srsCard resolution → higher-reps card wins (reps 9), content stays LWW', p2.applied.length === 1 && applePayload?.card?.reps === 9 && applePayload?.front === 'apple');
+
+// Append-only idempotency: re-pushing the same attempt id changes nothing.
+const push3 = await post(
+  '/v1/sync',
+  { cursorSeq: p2.head, idempotencyKey: 'batch-0003', changes: [{ store: 'attempts', id: 'inst:a1', updatedAt: 9999, updatedBy: 'other', payload: { exerciseId: 'CHANGED' } }] },
+  syncAuth
+);
+check('append-only attempt re-push → no-op (immutable union)', ((await push3.json()) as Pushed).applied.length === 0);
+
+const snap = await app.request('/v1/sync?since=0', { headers: syncAuth });
+const sp = (await snap.json()) as Pulled;
+check('pull since=0 → snapshot of current state (2 rows: attempt + card)', sp.snapshot === true && sp.entries.length === 2);
+
 console.log(failures ? `\n${failures} FAILED` : '\nALL PASS');
 process.exit(failures ? 1 : 0);

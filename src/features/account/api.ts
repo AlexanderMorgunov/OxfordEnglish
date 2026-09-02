@@ -5,12 +5,17 @@ import {
   DeviceListSchema,
   DeviceStartResponseSchema,
   DevicePollResponseSchema,
+  SyncPushResponseSchema,
+  SyncPullResponseSchema,
   ApiErrorSchema,
   type AuthRequest,
   type Session,
   type Device,
   type DeviceStartResponse,
   type DevicePollResponse,
+  type SyncChange,
+  type SyncPushResponse,
+  type SyncPullResponse,
 } from './contract';
 
 /** A typed API failure carrying the server's stable `code` (see contract ErrorCode). */
@@ -110,5 +115,24 @@ export function deviceRevoke(accessToken: string, deviceId: string): Promise<voi
     Routes.deviceRevoke,
     { method: 'POST', headers: { authorization: `Bearer ${accessToken}` }, body: JSON.stringify({ deviceId }) },
     () => undefined
+  );
+}
+
+export function syncPush(
+  accessToken: string,
+  body: { cursorSeq: number; changes: SyncChange[]; idempotencyKey: string }
+): Promise<SyncPushResponse> {
+  return request(
+    Routes.sync,
+    { method: 'POST', headers: { authorization: `Bearer ${accessToken}` }, body: JSON.stringify(body) },
+    (j) => SyncPushResponseSchema.parse(j)
+  );
+}
+
+export function syncPull(accessToken: string, since: number): Promise<SyncPullResponse> {
+  return request(
+    `${Routes.sync}?since=${since}`,
+    { method: 'GET', headers: { authorization: `Bearer ${accessToken}` } },
+    (j) => SyncPullResponseSchema.parse(j)
   );
 }

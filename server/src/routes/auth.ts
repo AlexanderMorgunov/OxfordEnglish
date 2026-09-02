@@ -11,7 +11,7 @@ import {
   type Session,
 } from '../contract.js';
 import { type AuthStore, hashVerifier, verifyVerifier } from '../store.js';
-import { signAccess, verifyAccess } from '../tokens.js';
+import { signAccess, bearerClaims } from '../tokens.js';
 
 const err = (code: string, status: 400 | 401 | 409) =>
   Response.json({ error: { code } }, { status });
@@ -72,16 +72,7 @@ export function authRoutes(store: AuthStore): Hono {
     return c.body(null, 204);
   });
 
-  /** Verify the Bearer access token; returns claims or null. */
-  const claimsOf = async (c: { req: { header(name: string): string | undefined } }) => {
-    const auth = c.req.header('authorization') ?? '';
-    const token = auth.startsWith('Bearer ') ? auth.slice(7) : '';
-    try {
-      return await verifyAccess(token);
-    } catch {
-      return null;
-    }
-  };
+  const claimsOf = bearerClaims;
 
   app.get('/v1/auth/devices', async (c) => {
     const claims = await claimsOf(c);

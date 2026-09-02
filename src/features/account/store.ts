@@ -3,6 +3,8 @@ import { accountsEnabled } from './config';
 import { deriveCredentials, generateRecoveryKey } from './keys';
 import * as api from './api';
 import { ApiFailure } from './api';
+import { db } from '@/db/db';
+import { wipeSyncedData } from '@/features/sync/engine';
 import type { Device, DeviceStartResponse, Session } from './contract';
 
 const KEY = 'oxford-account';
@@ -43,6 +45,13 @@ function save(p: Persisted | null): void {
   } catch {
     // ignore storage failures
   }
+}
+
+/** Adopting a session for a DIFFERENT account than the one stored = an account switch. Wipe the previous
+ *  account's synced rows before adopting, so A's data never merges into B on the next reconcile (H5). */
+async function maybeSwitchWipe(newAccountId: string): Promise<void> {
+  const prev = load()?.accountId;
+  if (prev && prev !== newAccountId) await wipeSyncedData().catch(() => undefined);
 }
 
 /** A device id is minted once and reused, so the same physical device keeps one entry in the device list. */
@@ -130,6 +139,7 @@ export const useAccount = create<AccountState>((set, get) => {
         const recoveryKey = generateRecoveryKey();
         const creds = await deriveCredentials(recoveryKey);
         const session = await api.register({ ...creds, deviceName: deviceName() });
+        await maybeSwitchWipe(session.accountId);
         applySession(session);
         return recoveryKey;
       } catch (e) {
@@ -146,6 +156,7 @@ export const useAccount = create<AccountState>((set, get) => {
       try {
         const creds = await deriveCredentials(recoveryKey.trim());
         const session = await api.login({ ...creds, deviceName: deviceName() });
+        await maybeSwitchWipe(session.accountId);
         applySession(session);
       } catch (e) {
         set({ error: e instanceof ApiFailure ? e.code : 'error' });
@@ -192,15 +203,24 @@ export const useAccount = create<AccountState>((set, get) => {
       const token = load()?.refreshToken;
       if (token) await api.logout(token).catch(() => undefined);
       clearSession();
-      // NOTE (slice 2): once sync exists, also clear locally-synced Dexie data here to avoid
-      // account-switch contamination (design H5).
+      // Wipe only when nothing is unsynced — an OFFLINE logout keeps local data so unpushed progress
+      // isn't lost (it re-syncs on the next login to the same account). Switching to a DIFFERENT account
+      // is handled by maybeSwitchWipe on adopt, so contamination is covered either way (H5).
+      try {
+        if ((await db.pending.count()) === 0) await wipeSyncedData();
+      } catch {
+        // best-effort
+      }
     },
 
     startDeviceLink: () => api.deviceStart(deviceName()),
 
     pollDeviceLink: async (requestId) => {
       const res = await api.devicePoll(requestId);
-      if (res.status === 'approved' && res.session) applySession(res.session);
+      if (res.status === 'approved' && res.session) {
+        await maybeSwitchWipe(res.session.accountId);
+        applySession(res.session);
+      }
       return res.status;
     },
 

@@ -63,6 +63,17 @@ export async function verifyAccess(token: string): Promise<{ sub: string; device
   return { sub: String(payload.sub), deviceId: String((payload as { deviceId?: unknown }).deviceId ?? '') };
 }
 
+/** Extract + verify Bearer claims from a request; null on missing/invalid token. Shared by authed routes. */
+export async function bearerClaims(c: { req: { header(name: string): string | undefined } }): Promise<{ sub: string; deviceId: string } | null> {
+  const auth = c.req.header('authorization') ?? '';
+  const token = auth.startsWith('Bearer ') ? auth.slice(7) : '';
+  try {
+    return await verifyAccess(token);
+  } catch {
+    return null;
+  }
+}
+
 /** Public JWKS document for token verification by this and future services. */
 export async function jwks(): Promise<{ keys: JWK[] }> {
   const { publicJwk } = await signing();

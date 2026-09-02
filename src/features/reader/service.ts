@@ -1,5 +1,6 @@
 import { db, type BookRecord } from '@/db/db';
 import { track } from '@/features/analytics/analytics';
+import { addBook, patchBook } from '@/features/sync/local';
 import { detectFormat, parseBook, type ParsedBook } from './parse';
 import { saveBookFile, getBookFile, deleteBookFile, opfsAvailable } from './storage';
 
@@ -34,7 +35,7 @@ export async function importBook(file: File): Promise<ImportResult> {
     chapterCount: book.chapters.length,
     lastChapter: 0,
   };
-  await db.books.add(record);
+  await addBook(record);
   if (format === 'pdf') await cacheParsed(id, book);
   return { record, book };
 }
@@ -82,7 +83,7 @@ export async function removeBook(id: string): Promise<void> {
 
 export async function saveProgress(id: string, chapter: number): Promise<void> {
   try {
-    await db.books.update(id, { lastChapter: chapter });
+    await patchBook(id, { lastChapter: chapter });
   } catch {
     // progress is best-effort
   }

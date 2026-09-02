@@ -1,8 +1,24 @@
 import Dexie, { type EntityTable } from 'dexie';
 import type { Card } from 'ts-fsrs';
 
-export interface ExerciseAttempt {
+/** Sync metadata (slice 2). Optional until the write-through layer (slice 2d) stamps every new write;
+ *  the v7 migration backfills existing rows from their natural creation time (never `now()` — F11).
+ *  `updatedBy` is the install id (see syncState), NOT the account deviceId (which is not stable across
+ *  device-linking). Rows count as deleted iff `deletedAt >= updatedAt` (H1). */
+export interface SyncMetaFields {
+  updatedAt?: number;
+  updatedBy?: string;
+  deletedAt?: number;
+}
+
+/** Low sentinel for backfilled `updatedAt` when a row has no natural creation timestamp — ancient enough
+ *  that a real server value always wins the first-reconcile LWW race (never 0/`now()`/a future `due`). */
+export const EPOCH_SENTINEL = 1;
+
+export interface ExerciseAttempt extends SyncMetaFields {
   id?: number;
+  /** Globally-unique sync identity (`installId:localId`); the local `++id` stays device-private. */
+  syncId?: string;
   exerciseId: string;
   tags: string[];
   correct: boolean;
@@ -15,11 +31,13 @@ export interface ExerciseAttempt {
 
 export type WordStatusValue = 'unknown' | 'learning' | 'known' | 'ignored';
 
-export interface WordStatus {
+export interface WordStatus extends SyncMetaFields {
   word: string;
   status: WordStatusValue;
   firstSeenAt: number;
   encounters: number;
+  /** Separate clock for `status` LWW (F6) — distinct from `updatedAt`, which tracks any field change. */
+  statusUpdatedAt?: number;
 }
 
 export interface WordTranslation {
@@ -28,7 +46,7 @@ export interface WordTranslation {
   source: string;
 }
 
-export interface SrsCard {
+export interface SrsCard extends SyncMetaFields {
   id: string;
   kind: 'word' | 'phrase' | 'grammar-pattern';
   front: string;
@@ -44,8 +62,9 @@ export interface SrsCard {
   card: Card;
 }
 
-export interface CheckpointResult {
+export interface CheckpointResult extends SyncMetaFields {
   id?: number;
+  syncId?: string;
   unitId: string;
   timestamp: number;
   score: number;
@@ -54,7 +73,7 @@ export interface CheckpointResult {
 }
 
 /** A user-imported book. The file itself lives in OPFS; this is only its metadata. */
-export interface BookRecord {
+export interface BookRecord extends SyncMetaFields {
   id: string;
   title: string;
   author?: string;
@@ -67,7 +86,7 @@ export interface BookRecord {
 
 /** A reader bookmark. Anchored to content (page + paragraph index + a text snippet), not pixels,
  *  so it survives font-size changes and reflow. `scrollY` is a cosmetic fallback only. */
-export interface Bookmark {
+export interface Bookmark extends SyncMetaFields {
   id: string;
   /** = the reader's idPrefix: `reader.<uuid>` (imported) or `reader.catalog.<slug>` (catalog). */
   bookKey: string;
@@ -103,6 +122,39 @@ export interface FeedbackOutboxItem {
   createdAt: number;
 }
 
+/** The synced "settings" tier — the learner level/placement + reader/AI/i18n prefs that today live in
+ *  Zustand's hand-rolled localStorage persist (F9). The v7 table exists now; bridging the actual stores
+ *  into it is slice 2d, so it may be empty until then. LWW `(updatedAt, updatedBy)`. */
+export interface SettingRecord extends SyncMetaFields {
+  key: string;
+  value: unknown;
+}
+
+/** Per-account sync bookkeeping + the one install-global row (`account: '__install__'`) that owns the
+ *  stable install id. Deliberately holds NO tokens (the account store owns those). */
+export interface SyncStateRecord {
+  account: string;
+  /** Only on the `__install__` row: this browser's stable sync identity (the LWW `updatedBy`). */
+  installId?: string;
+  /** Per-account pull cursor — highest contiguous changelog seq applied (F1). */
+  cursorSeq?: number;
+}
+
+/** The install-global syncState row key (distinct from any real accountId). */
+export const INSTALL_ROW = '__install__';
+
+/** A dirty marker: a synced row awaiting push. Keyed on the SYNC identity (`syncId` for the append-only
+ *  stores, the domain PK otherwise) so the engine sends the right `Change.id` without a second guess and
+ *  the marker survives re-reads. Deduped by `key` (put overwrites). */
+export interface PendingChange {
+  key: string;
+  store: string;
+  /** The domain primary key (local `++id` string / word / bookKey…) used to re-read the row. */
+  id: string;
+  /** Present for append-only stores (attempts/checkpoints) — the value sent as `Change.id`. */
+  syncId?: string;
+}
+
 const db = new Dexie('oxford-english') as Dexie & {
   attempts: EntityTable<ExerciseAttempt, 'id'>;
   wordStatus: EntityTable<WordStatus, 'word'>;
@@ -114,6 +166,9 @@ const db = new Dexie('oxford-english') as Dexie & {
   catalogCache: EntityTable<CatalogCacheEntry, 'id'>;
   analyticsQueue: EntityTable<AnalyticsEvent, 'id'>;
   feedbackOutbox: EntityTable<FeedbackOutboxItem, 'id'>;
+  settings: EntityTable<SettingRecord, 'key'>;
+  syncState: EntityTable<SyncStateRecord, 'account'>;
+  pending: EntityTable<PendingChange, 'key'>;
 };
 
 db.version(1).stores({
@@ -144,15 +199,53 @@ db.version(6).stores({
   bookmarks: 'id, bookKey, createdAt, [bookKey+page+paragraph]',
 });
 
-export { db };
+/** v7 (slice 2): sync scaffolding. Adds sync-meta indexes + a globally-unique `&syncId` for the
+ *  append-only stores (kept alongside the private `++id` — Dexie can't change a primary key in an
+ *  upgrade), the synced `settings` tier table, and `syncState`. The upgrade backfills every existing
+ *  row's `updatedAt`/`statusUpdatedAt` from its natural creation time (F11), stamps a fresh install id,
+ *  and never uses `now()`. */
+db.version(7)
+  .stores({
+    attempts: '++id, exerciseId, timestamp, *tags, &syncId, updatedAt',
+    wordStatus: 'word, status, statusUpdatedAt, updatedAt',
+    srsCards: 'id, due, *tags, updatedAt, deletedAt',
+    checkpoints: '++id, unitId, timestamp, &syncId, updatedAt',
+    books: 'id, addedAt, updatedAt',
+    bookmarks: 'id, bookKey, createdAt, [bookKey+page+paragraph], updatedAt',
+    settings: 'key, updatedAt',
+    syncState: 'account',
+    pending: 'key',
+  })
+  .upgrade(async (tx) => {
+    const installId = crypto.randomUUID();
+    await tx.table('syncState').put({ account: INSTALL_ROW, installId });
+    await tx.table('attempts').toCollection().modify((r: ExerciseAttempt) => {
+      r.updatedBy = installId;
+      r.updatedAt = r.timestamp ?? EPOCH_SENTINEL;
+      r.syncId = `${installId}:a${r.id ?? ''}`;
+    });
+    await tx.table('checkpoints').toCollection().modify((r: CheckpointResult) => {
+      r.updatedBy = installId;
+      r.updatedAt = r.timestamp ?? EPOCH_SENTINEL;
+      r.syncId = `${installId}:c${r.id ?? ''}`;
+    });
+    await tx.table('wordStatus').toCollection().modify((r: WordStatus) => {
+      r.updatedBy = installId;
+      r.statusUpdatedAt = r.firstSeenAt ?? EPOCH_SENTINEL;
+      r.updatedAt = r.firstSeenAt ?? EPOCH_SENTINEL;
+    });
+    await tx.table('srsCards').toCollection().modify((r: SrsCard) => {
+      r.updatedBy = installId;
+      r.updatedAt = r.card?.last_review ? new Date(r.card.last_review).getTime() : EPOCH_SENTINEL;
+    });
+    await tx.table('books').toCollection().modify((r: BookRecord) => {
+      r.updatedBy = installId;
+      r.updatedAt = r.addedAt ?? EPOCH_SENTINEL;
+    });
+    await tx.table('bookmarks').toCollection().modify((r: Bookmark) => {
+      r.updatedBy = installId;
+      r.updatedAt = r.createdAt ?? EPOCH_SENTINEL;
+    });
+  });
 
-/** Best-effort — analytics must never block the UI or throw where IndexedDB is absent. */
-export async function recordAttempt(
-  attempt: Omit<ExerciseAttempt, 'id'>
-): Promise<void> {
-  try {
-    await db.attempts.add(attempt);
-  } catch {
-    // no-op: attempts are non-critical telemetry
-  }
-}
+export { db };

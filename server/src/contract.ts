@@ -56,6 +56,30 @@ export type AuthRequest = z.infer<typeof AuthRequestSchema>;
 export type Session = z.infer<typeof SessionSchema>;
 export type Device = z.infer<typeof DeviceSchema>;
 
+// --- Sync (slice 2) ---
+export const SyncStoreSchema = z.enum(['srsCards', 'wordStatus', 'attempts', 'checkpoints', 'books', 'bookmarks', 'settings']);
+/** One record change on the wire. `payload` is the full domain row (unknown fields preserved). */
+export const SyncChangeSchema = z.object({
+  store: SyncStoreSchema,
+  id: z.string().min(1).max(200),
+  updatedAt: z.number(),
+  updatedBy: z.string().min(1).max(64),
+  deletedAt: z.number().optional(),
+  statusUpdatedAt: z.number().optional(),
+  payload: z.unknown(),
+});
+export const SyncEntrySchema = SyncChangeSchema.extend({ seq: z.number() });
+export const SyncPushRequestSchema = z.object({
+  cursorSeq: z.number().int().nonnegative(),
+  changes: z.array(SyncChangeSchema).max(500),
+  idempotencyKey: z.string().min(8).max(200),
+});
+export const SyncPushResponseSchema = z.object({ head: z.number(), applied: z.array(SyncEntrySchema) });
+export const SyncPullResponseSchema = z.object({ head: z.number(), entries: z.array(SyncEntrySchema), snapshot: z.boolean().optional() });
+
+export type SyncChange = z.infer<typeof SyncChangeSchema>;
+export type SyncEntry = z.infer<typeof SyncEntrySchema>;
+
 export const ErrorCode = {
   InvalidCredentials: 'invalid_credentials',
   AccountExists: 'account_exists',
