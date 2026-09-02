@@ -84,6 +84,23 @@ export const SyncPushRequestSchema = z.object({
 export const SyncPushResponseSchema = z.object({ head: z.number(), applied: z.array(SyncEntrySchema) });
 export const SyncPullResponseSchema = z.object({ head: z.number(), entries: z.array(SyncEntrySchema), snapshot: z.boolean().optional() });
 
+// --- Book file blobs (slice 3) — mirror of server/src/contract.ts ---
+export const BLOB_MAX_BYTES = 20 * 1024 * 1024;
+export const BLOB_ACCOUNT_MAX_BYTES = 300 * 1024 * 1024;
+export const BlobUploadTargetSchema = z.object({
+  url: z.string(),
+  method: z.enum(['PUT', 'POST']),
+  headers: z.record(z.string()),
+  key: z.string(),
+  maxBytes: z.number(),
+});
+export const BlobMetaSchema = z.object({ bookId: z.string(), size: z.number(), uploadedAt: z.number() });
+export const BlobListResponseSchema = z.object({ blobs: z.array(BlobMetaSchema), usedBytes: z.number(), limitBytes: z.number() });
+export const BlobDownloadResponseSchema = z.object({ url: z.string(), method: z.literal('GET') });
+export type BlobUploadTarget = z.infer<typeof BlobUploadTargetSchema>;
+export type BlobMeta = z.infer<typeof BlobMetaSchema>;
+export type BlobListResponse = z.infer<typeof BlobListResponseSchema>;
+
 export type Credentials = z.infer<typeof CredentialsSchema>;
 export type AuthRequest = z.infer<typeof AuthRequestSchema>;
 export type Session = z.infer<typeof SessionSchema>;
@@ -118,4 +135,7 @@ export const Routes = {
   deviceRevoke: '/v1/auth/device/revoke',
   jwks: '/v1/.well-known/jwks.json',
   sync: '/v1/sync',
+  blobs: '/v1/blobs',
+  blobUploadUrl: '/v1/blobs/upload-url',
+  blobCommit: '/v1/blobs/commit',
 } as const;

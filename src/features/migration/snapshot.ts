@@ -1,5 +1,6 @@
 import { db, type Bookmark, type SrsCard } from '@/db/db';
 import { reviveCard, stripId } from '@/features/progress/backup';
+import { stampImported, currentInstallId } from '@/features/sync/local';
 
 export const SNAPSHOT_VERSION = 1;
 
@@ -133,19 +134,21 @@ export async function applySnapshot(s: Snapshot): Promise<ApplyResult> {
   if (!snapshotHasData(s)) return 'empty';
   if (await hasProgress()) return 'skipped-nonempty';
   const d = s.dexie;
+  const iid = await currentInstallId(); // before the tx (syncState is out of scope inside it)
   await db.transaction(
     'rw',
     [db.attempts, db.checkpoints, db.wordStatus, db.srsCards, db.translations, db.bookmarks, db.feedbackOutbox],
     async () => {
       // `++id` stores: append (never bulkPut-by-id, which would clobber). Guarded by hasProgress()
-      // + the caller's idempotency flag so a re-run can't double-append.
-      if (d.attempts?.length) await db.attempts.bulkAdd(stripId(d.attempts) as never);
-      if (d.checkpoints?.length) await db.checkpoints.bulkAdd(stripId(d.checkpoints) as never);
-      if (d.feedbackOutbox?.length) await db.feedbackOutbox.bulkAdd(stripId(d.feedbackOutbox) as never);
-      if (d.wordStatus?.length) await db.wordStatus.bulkPut(d.wordStatus as never);
-      if (d.srsCards?.length) await db.srsCards.bulkPut(d.srsCards.map(reviveCard));
-      if (d.translations?.length) await db.translations.bulkPut(d.translations as never);
-      if (d.bookmarks?.length) await db.bookmarks.bulkPut(d.bookmarks);
+      // + the caller's idempotency flag so a re-run can't double-append. Stamped so the imported rows
+      // carry a global syncId + meta (a later first-login reconcile then pushes them correctly).
+      if (d.attempts?.length) await db.attempts.bulkAdd(stampImported('attempts', stripId(d.attempts) as object[], iid) as never);
+      if (d.checkpoints?.length) await db.checkpoints.bulkAdd(stampImported('checkpoints', stripId(d.checkpoints) as object[], iid) as never);
+      if (d.feedbackOutbox?.length) await db.feedbackOutbox.bulkAdd(stripId(d.feedbackOutbox) as never); // not synced
+      if (d.wordStatus?.length) await db.wordStatus.bulkPut(stampImported('wordStatus', d.wordStatus as object[], iid) as never);
+      if (d.srsCards?.length) await db.srsCards.bulkPut(stampImported('srsCards', d.srsCards.map(reviveCard), iid));
+      if (d.translations?.length) await db.translations.bulkPut(d.translations as never); // not synced
+      if (d.bookmarks?.length) await db.bookmarks.bulkPut(stampImported('bookmarks', d.bookmarks, iid));
     }
   );
   for (const [key, value] of Object.entries(s.local)) {

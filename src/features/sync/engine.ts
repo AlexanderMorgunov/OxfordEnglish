@@ -7,7 +7,7 @@
  * is unit-tested without a network. Nothing here runs unless the caller is authenticated.
  */
 import { db, EPOCH_SENTINEL, INSTALL_ROW, type SrsCard } from '@/db/db';
-import { reviveCard } from '@/features/progress/backup';
+import { reviveCard } from '@/features/srs/reviveCard';
 import type { SyncChange, SyncEntry, SyncPushResponse, SyncPullResponse } from '@/features/account/contract';
 import { resolveByStore, type SyncedStore } from './resolve';
 

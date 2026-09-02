@@ -7,6 +7,10 @@ import {
   DevicePollResponseSchema,
   SyncPushResponseSchema,
   SyncPullResponseSchema,
+  BlobUploadTargetSchema,
+  BlobMetaSchema,
+  BlobListResponseSchema,
+  BlobDownloadResponseSchema,
   ApiErrorSchema,
   type AuthRequest,
   type Session,
@@ -16,6 +20,9 @@ import {
   type SyncChange,
   type SyncPushResponse,
   type SyncPullResponse,
+  type BlobUploadTarget,
+  type BlobMeta,
+  type BlobListResponse,
 } from './contract';
 
 /** A typed API failure carrying the server's stable `code` (see contract ErrorCode). */
@@ -135,4 +142,58 @@ export function syncPull(accessToken: string, since: number): Promise<SyncPullRe
     { method: 'GET', headers: { authorization: `Bearer ${accessToken}` } },
     (j) => SyncPullResponseSchema.parse(j)
   );
+}
+
+// --- Book file blobs (slice 3) ---
+
+export function blobUploadUrl(accessToken: string, bookId: string, size: number): Promise<BlobUploadTarget> {
+  return request(
+    Routes.blobUploadUrl,
+    { method: 'POST', headers: { authorization: `Bearer ${accessToken}` }, body: JSON.stringify({ bookId, size }) },
+    (j) => BlobUploadTargetSchema.parse(j)
+  );
+}
+
+export function blobCommit(accessToken: string, bookId: string, key: string, size: number): Promise<BlobMeta> {
+  return request(
+    Routes.blobCommit,
+    { method: 'POST', headers: { authorization: `Bearer ${accessToken}` }, body: JSON.stringify({ bookId, key, size }) },
+    (j) => BlobMetaSchema.parse(j)
+  );
+}
+
+export function blobList(accessToken: string): Promise<BlobListResponse> {
+  return request(Routes.blobs, { method: 'GET', headers: { authorization: `Bearer ${accessToken}` } }, (j) => BlobListResponseSchema.parse(j));
+}
+
+export function blobDelete(accessToken: string, bookId: string): Promise<void> {
+  return request(`${Routes.blobs}/${encodeURIComponent(bookId)}`, { method: 'DELETE', headers: { authorization: `Bearer ${accessToken}` } }, () => undefined);
+}
+
+/** A relative target (the dev/skeleton endpoint) needs our Bearer; an absolute one (a prod presigned URL)
+ *  is self-authorizing and must NOT get an Authorization header (it would break the signature). */
+function targetHeaders(url: string, accessToken: string, extra: Record<string, string> = {}): Record<string, string> {
+  return url.startsWith('http') ? extra : { ...extra, authorization: `Bearer ${accessToken}` };
+}
+const absolute = (url: string): string => (url.startsWith('http') ? url : `${API_BASE}${url}`);
+
+/** Upload the raw bytes to a target from `blobUploadUrl` (direct-to-storage in prod). */
+export async function blobUpload(accessToken: string, target: BlobUploadTarget, blob: Blob): Promise<void> {
+  const res = await fetch(absolute(target.url), { method: target.method, headers: targetHeaders(target.url, accessToken, target.headers), body: blob });
+  if (!res.ok) throw new ApiFailure('blob_upload_failed', res.status);
+}
+
+export async function blobDownloadUrl(accessToken: string, bookId: string): Promise<string> {
+  const res = await request(
+    `${Routes.blobs}/${encodeURIComponent(bookId)}/download-url`,
+    { method: 'GET', headers: { authorization: `Bearer ${accessToken}` } },
+    (j) => BlobDownloadResponseSchema.parse(j)
+  );
+  return res.url;
+}
+
+export async function blobDownload(accessToken: string, url: string): Promise<Blob> {
+  const res = await fetch(absolute(url), { headers: targetHeaders(url, accessToken) });
+  if (!res.ok) throw new ApiFailure('blob_download_failed', res.status);
+  return res.blob();
 }

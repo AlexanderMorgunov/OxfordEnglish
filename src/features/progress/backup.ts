@@ -1,4 +1,9 @@
 import { db, type Bookmark, type SrsCard } from '@/db/db';
+import { reviveCard } from '@/features/srs/reviveCard';
+import { stampImported, enqueueForPush, currentInstallId } from '@/features/sync/local';
+import { triggerSync } from '@/features/sync/run';
+
+export { reviveCard };
 
 export async function exportData(): Promise<string> {
   const [attempts, wordStatus, srsCards, checkpoints, translations, catalogCache, bookmarks] =
@@ -33,19 +38,6 @@ export async function exportData(): Promise<string> {
   );
 }
 
-/** FSRS cards carry Date fields that JSON flattens to strings — revive them. */
-export function reviveCard(row: SrsCard): SrsCard {
-  const card = row.card as SrsCard['card'] & { last_review?: string | Date };
-  return {
-    ...row,
-    due: new Date(row.due),
-    card: {
-      ...card,
-      due: new Date(card.due),
-      last_review: card.last_review ? new Date(card.last_review) : undefined,
-    },
-  };
-}
 
 type Backup = {
   attempts?: unknown[];
@@ -68,19 +60,24 @@ export function stripId(rows: unknown[]): unknown[] {
 
 export async function importData(json: string): Promise<void> {
   const data = JSON.parse(json) as Backup;
+  const iid = await currentInstallId(); // fetched before the tx (syncState is out of its table scope)
   await db.transaction(
     'rw',
     [db.attempts, db.wordStatus, db.srsCards, db.checkpoints, db.translations, db.catalogCache, db.bookmarks],
     async () => {
-      // `++id` stores: append (a merge across devices), never bulkPut-by-id (which would clobber).
-      if (data.attempts) await db.attempts.bulkAdd(stripId(data.attempts) as never);
-      if (data.checkpoints) await db.checkpoints.bulkAdd(stripId(data.checkpoints) as never);
+      // `++id` stores: append (a merge across devices), never bulkPut-by-id (which would clobber). Stamped
+      // with a global syncId + meta so a later sync/reconcile treats them as distinct, sync-able rows.
+      if (data.attempts) await db.attempts.bulkAdd(stampImported('attempts', stripId(data.attempts) as object[], iid) as never);
+      if (data.checkpoints) await db.checkpoints.bulkAdd(stampImported('checkpoints', stripId(data.checkpoints) as object[], iid) as never);
       // Natural-key stores: merge by key (bookmarks carry an inbound string UUID — never stripId).
-      if (data.wordStatus) await db.wordStatus.bulkPut(data.wordStatus as never);
-      if (data.srsCards) await db.srsCards.bulkPut(data.srsCards.map(reviveCard));
-      if (data.translations) await db.translations.bulkPut(data.translations as never);
-      if (data.catalogCache) await db.catalogCache.bulkPut(data.catalogCache as never);
-      if (data.bookmarks) await db.bookmarks.bulkPut(data.bookmarks);
+      if (data.wordStatus) await db.wordStatus.bulkPut(stampImported('wordStatus', data.wordStatus as object[], iid) as never);
+      if (data.srsCards) await db.srsCards.bulkPut(stampImported('srsCards', data.srsCards.map(reviveCard), iid));
+      if (data.translations) await db.translations.bulkPut(data.translations as never); // not synced
+      if (data.catalogCache) await db.catalogCache.bulkPut(data.catalogCache as never); // not synced
+      if (data.bookmarks) await db.bookmarks.bulkPut(stampImported('bookmarks', data.bookmarks, iid));
     }
   );
+  // If signed in, push the restored data now (otherwise it would sit local until a future reconcile).
+  await enqueueForPush(['attempts', 'checkpoints', 'wordStatus', 'srsCards', 'bookmarks']);
+  void triggerSync();
 }

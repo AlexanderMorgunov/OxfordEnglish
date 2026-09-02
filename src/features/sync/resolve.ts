@@ -20,9 +20,11 @@ export interface SyncMeta {
 
 export type Synced<T> = T & SyncMeta;
 
-/** A row is effectively deleted when its tombstone is at least as recent as its last content edit (H1). */
-export function isDeleted(row: SyncMeta): boolean {
-  return row.deletedAt != null && row.deletedAt >= row.updatedAt;
+/** A row is effectively deleted when its tombstone is at least as recent as its last content edit (H1).
+ *  Accepts partial meta (books carry optional sync fields until stamped) — a missing `updatedAt` counts
+ *  as ancient, so any tombstone wins. */
+export function isDeleted(row: { updatedAt?: number; deletedAt?: number }): boolean {
+  return row.deletedAt != null && row.deletedAt >= (row.updatedAt ?? 0);
 }
 
 /** Last-writer-wins order: later `updatedAt`, ties broken by the larger `updatedBy` (a total, stable

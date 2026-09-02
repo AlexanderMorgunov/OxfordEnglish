@@ -1,6 +1,8 @@
 import { db, type BookRecord } from '@/db/db';
 import { track } from '@/features/analytics/analytics';
-import { addBook, patchBook } from '@/features/sync/local';
+import { addBook, patchBook, softDeleteBook, isSyncing } from '@/features/sync/local';
+import { isDeleted } from '@/features/sync/resolve';
+import { deleteRemoteBookFile, downloadBookFileIfMissing, uploadBookFile } from './blobSync';
 import { detectFormat, parseBook, type ParsedBook } from './parse';
 import { saveBookFile, getBookFile, deleteBookFile, opfsAvailable } from './storage';
 
@@ -36,20 +38,23 @@ export async function importBook(file: File): Promise<ImportResult> {
     lastChapter: 0,
   };
   await addBook(record);
+  void uploadBookFile(id); // opt-in cloud copy (self-guards on the toggle + auth)
   if (format === 'pdf') await cacheParsed(id, book);
   return { record, book };
 }
 
 export async function listBooks(): Promise<BookRecord[]> {
   try {
-    return await db.books.orderBy('addedAt').reverse().toArray();
+    const all = await db.books.orderBy('addedAt').reverse().toArray();
+    return all.filter((b) => !isDeleted(b)); // hide tombstones (soft-deleted, kept for sync propagation)
   } catch {
     return [];
   }
 }
 
 export async function getBook(id: string): Promise<BookRecord | undefined> {
-  return db.books.get(id);
+  const b = await db.books.get(id);
+  return b && !isDeleted(b) ? b : undefined; // a tombstoned book reads as gone
 }
 
 export async function openBook(record: BookRecord): Promise<ParsedBook> {
@@ -64,6 +69,7 @@ export async function openBook(record: BookRecord): Promise<ParsedBook> {
       // cache unavailable — fall through to a fresh parse
     }
   }
+  await downloadBookFileIfMissing(record.id); // fetch the cloud copy on a device that only has the metadata
   const file = await getBookFile(record.id);
   const parsed = await parseBook(file, record.format);
   if (record.format === 'pdf') await cacheParsed(record.id, parsed);
@@ -73,7 +79,11 @@ export async function openBook(record: BookRecord): Promise<ParsedBook> {
 
 export async function removeBook(id: string): Promise<void> {
   await deleteBookFile(id);
-  await db.books.delete(id);
+  await deleteRemoteBookFile(id).catch(() => undefined); // release the cloud blob + its quota (no-op if not synced)
+  // Tombstone only when signed in (so the delete propagates); otherwise hard-delete so anonymous users
+  // don't accumulate garbage rows that never sync.
+  if (isSyncing()) await softDeleteBook(id);
+  else await db.books.delete(id);
   try {
     await db.catalogCache.delete(parseCacheKey(id));
   } catch {
