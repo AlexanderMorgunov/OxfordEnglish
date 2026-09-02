@@ -15,6 +15,7 @@ import {
 import { metricaConfigured, initMetrica } from '@/features/analytics/metrica';
 import { useLearner } from '@/features/learner/store';
 import { useUiLang } from '@/features/i18n/uiLang';
+import { AccountSection } from '@/features/account/AccountSection';
 import type { Level } from '@/content/schema';
 
 const PROVIDER_IDS = Object.keys(PROVIDERS) as AiProviderId[];
@@ -171,6 +172,8 @@ export function SettingsPage() {
           ))}
         </div>
       </div>
+
+      <AccountSection />
 
       <div id="ai-section" className="scroll-mt-6" aria-hidden="true" />
       <Eyebrow className="mb-3.5">config · ai (byok)</Eyebrow>
