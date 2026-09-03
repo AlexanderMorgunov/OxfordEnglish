@@ -20,8 +20,7 @@ export function blobRoutes(store: BlobStore): Hono {
     if (body.data.size > BLOB_MAX_BYTES) return err(ErrorCode.BlobTooLarge, 413);
     const existing = (await store.list(claims.sub)).find((b) => b.bookId === body.data.bookId)?.size ?? 0;
     if ((await store.usage(claims.sub)) - existing + body.data.size > BLOB_ACCOUNT_MAX_BYTES) return err(ErrorCode.QuotaExceeded, 409);
-    const key = store.objectKey(claims.sub, body.data.bookId);
-    return c.json({ url: `/v1/blobs/data/${encodeURIComponent(key)}`, method: 'PUT', headers: {}, key, maxBytes: BLOB_MAX_BYTES });
+    return c.json(await store.presignUpload(claims.sub, body.data.bookId));
   });
 
   // Dev stand-in for the direct-to-storage upload (prod: client PUTs the presigned URL instead).
@@ -66,8 +65,7 @@ export function blobRoutes(store: BlobStore): Hono {
     const bookId = c.req.param('bookId');
     const meta = (await store.list(claims.sub)).find((b) => b.bookId === bookId);
     if (!meta) return err(ErrorCode.BlobNotFound, 404);
-    const key = store.objectKey(claims.sub, bookId);
-    return c.json({ url: `/v1/blobs/data/${encodeURIComponent(key)}`, method: 'GET' });
+    return c.json(await store.presignDownload(claims.sub, bookId));
   });
 
   app.get('/v1/blobs/data/:key', async (c) => {

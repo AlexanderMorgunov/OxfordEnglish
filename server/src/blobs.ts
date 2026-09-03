@@ -8,14 +8,19 @@
  * `statObject` is the seam for that HEAD: the in-memory impl answers from its map, the YC impl does a real
  * HEAD against the object key.
  */
-import type { BlobMeta } from './contract.js';
+import { BLOB_MAX_BYTES, type BlobMeta, type BlobUploadTarget } from './contract.js';
 
 export interface BlobStore {
   /** Total committed bytes for a user (the account-quota basis). */
   usage(userId: string): Promise<number>;
   list(userId: string): Promise<BlobMeta[]>;
-  /** The storage key for a user's book file (per-user prefix). */
+  /** The storage key for a user's book file (per-user prefix). MUST equal what the client sends at commit. */
   objectKey(userId: string, bookId: string): string;
+  /** Build the client's upload target: dev = a same-API PUT endpoint; prod = a presigned S3 PUT (absolute).
+   *  The returned `key` must equal `objectKey(userId, bookId)` (the commit route re-checks it). */
+  presignUpload(userId: string, bookId: string): Promise<BlobUploadTarget>;
+  /** Build the client's download target (dev = same-API GET; prod = a presigned S3 GET). */
+  presignDownload(userId: string, bookId: string): Promise<{ url: string; method: 'GET' }>;
   /** Dev stand-in for the direct-to-storage upload (prod: client PUTs a presigned URL, not this). */
   putObject(key: string, bytes: Uint8Array): Promise<void>;
   getObject(key: string): Promise<Uint8Array | null>;
@@ -37,6 +42,13 @@ export class InMemoryBlobStore implements BlobStore {
 
   objectKey(userId: string, bookId: string): string {
     return `${userId}/${bookId}`;
+  }
+  async presignUpload(userId: string, bookId: string): Promise<BlobUploadTarget> {
+    const key = this.objectKey(userId, bookId);
+    return { url: `/v1/blobs/data/${encodeURIComponent(key)}`, method: 'PUT', headers: {}, key, maxBytes: BLOB_MAX_BYTES };
+  }
+  async presignDownload(userId: string, bookId: string): Promise<{ url: string; method: 'GET' }> {
+    return { url: `/v1/blobs/data/${encodeURIComponent(this.objectKey(userId, bookId))}`, method: 'GET' };
   }
   async usage(userId: string): Promise<number> {
     let sum = 0;
