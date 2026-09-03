@@ -10,7 +10,8 @@ import {
   ErrorCode,
   type Session,
 } from '../contract.js';
-import { type AuthStore, hashVerifier, verifyVerifier } from '../store.js';
+import { type AuthStore } from '../store.js';
+import { hashVerifier, verifyVerifier } from '../password.js';
 import { signAccess, bearerClaims } from '../tokens.js';
 
 const err = (code: string, status: 400 | 401 | 409) =>
@@ -32,7 +33,7 @@ export function authRoutes(store: AuthStore): Hono {
     const body = AuthRequestSchema.safeParse(await c.req.json().catch(() => null));
     if (!body.success) return err(ErrorCode.BadRequest, 400);
     if (await store.getAccount(body.data.accountId)) return err(ErrorCode.AccountExists, 409);
-    await store.createAccount(body.data.accountId, hashVerifier(body.data.verifier));
+    await store.createAccount(body.data.accountId, await hashVerifier(body.data.verifier));
     return c.json(await issueSession(body.data.accountId, body.data.deviceName, true));
   });
 
@@ -41,7 +42,7 @@ export function authRoutes(store: AuthStore): Hono {
     if (!body.success) return err(ErrorCode.BadRequest, 400);
     const account = await store.getAccount(body.data.accountId);
     // Generic failure — no account-existence enumeration.
-    if (!account || !verifyVerifier(body.data.verifier, account.verifierHash)) {
+    if (!account || !(await verifyVerifier(body.data.verifier, account.verifierHash))) {
       return err(ErrorCode.InvalidCredentials, 401);
     }
     return c.json(await issueSession(body.data.accountId, body.data.deviceName, false));

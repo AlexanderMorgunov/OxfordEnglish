@@ -104,7 +104,7 @@ export function resolveServer(stored: Change | undefined, incoming: Change): Cha
 }
 
 /** Deep-ish equality just precise enough to decide "did resolution change the stored row?" */
-function sameChange(a: Change, b: Change): boolean {
+export function sameChange(a: Change, b: Change): boolean {
   return (
     a.updatedAt === b.updatedAt &&
     a.updatedBy === b.updatedBy &&

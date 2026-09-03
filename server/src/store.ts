@@ -4,22 +4,8 @@
  *  - the client's `verifier` is scrypt-hashed here (production: argon2id),
  *  - refresh tokens are stored by their SHA-256 hash (the raw token lives only on the client).
  */
-import { randomBytes, scryptSync, timingSafeEqual, createHash } from 'node:crypto';
+import { randomBytes, createHash } from 'node:crypto';
 import type { Device } from './contract.js';
-
-export function hashVerifier(verifier: string): string {
-  const salt = randomBytes(16);
-  const key = scryptSync(verifier, salt, 32);
-  return `${salt.toString('base64')}:${key.toString('base64')}`;
-}
-
-export function verifyVerifier(verifier: string, stored: string): boolean {
-  const [saltB64, keyB64] = stored.split(':');
-  if (!saltB64 || !keyB64) return false;
-  const key = Buffer.from(keyB64, 'base64');
-  const check = scryptSync(verifier, Buffer.from(saltB64, 'base64'), key.length);
-  return key.length === check.length && timingSafeEqual(key, check);
-}
 
 const newRefreshToken = (): string => randomBytes(32).toString('base64url');
 const hashToken = (t: string): string => createHash('sha256').update(t).digest('base64');
