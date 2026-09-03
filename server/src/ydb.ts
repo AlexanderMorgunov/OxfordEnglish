@@ -8,16 +8,38 @@
  */
 import ydbSdk from 'ydb-sdk';
 import type { Driver as YdbDriver, IAuthService } from 'ydb-sdk';
+import { Metadata } from '@grpc/grpc-js';
 
 // ydb-sdk is CommonJS; Node's ESM interop doesn't expose its named exports, so pull them off the default.
-const { Driver, TokenAuthService, MetadataAuthService, TypedData, TypedValues, Types } = ydbSdk;
+const { Driver, TokenAuthService, TypedData, TypedValues, Types } = ydbSdk;
 
 export { TypedValues, Types };
+
+const METADATA_TOKEN_URL = 'http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token';
+
+/** Container auth: fetch + refresh the SA's IAM token from the instance metadata service, without pulling
+ *  in the heavy `@yandex-cloud/nodejs-sdk` that ydb-sdk's own MetadataAuthService requires. */
+class MetadataAuth implements IAuthService {
+  private token = '';
+  private expiresAt = 0;
+  async getAuthMetadata(): Promise<Metadata> {
+    if (!this.token || Date.now() > this.expiresAt - 60_000) {
+      const res = await fetch(METADATA_TOKEN_URL, { headers: { 'Metadata-Flavor': 'Google' } });
+      if (!res.ok) throw new Error(`metadata token fetch failed: ${res.status}`);
+      const j = (await res.json()) as { access_token: string; expires_in: number };
+      this.token = j.access_token;
+      this.expiresAt = Date.now() + j.expires_in * 1000;
+    }
+    const md = new Metadata();
+    md.add('x-ydb-auth-ticket', this.token);
+    return md;
+  }
+}
 
 /** Local/dev: an IAM token via YDB_ACCESS_TOKEN_CREDENTIALS. Container: the SA metadata identity. */
 function authService(): IAuthService {
   const token = process.env.YDB_ACCESS_TOKEN_CREDENTIALS;
-  return token ? new TokenAuthService(token) : new MetadataAuthService();
+  return token ? new TokenAuthService(token) : new MetadataAuth();
 }
 
 /** True when a real YDB is configured; else the app falls back to the in-memory stores (local/tests). */
