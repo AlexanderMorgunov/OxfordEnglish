@@ -3,6 +3,7 @@ import { cors } from 'hono/cors';
 import { authRoutes } from './routes/auth.js';
 import { syncRoutes } from './routes/sync.js';
 import { blobRoutes } from './routes/blobs.js';
+import { accountRoutes } from './routes/account.js';
 import { InMemoryAuthStore, type AuthStore } from './store.js';
 import { InMemorySyncStore, type SyncStore } from './sync.js';
 import { InMemoryBlobStore, type BlobStore } from './blobs.js';
@@ -42,6 +43,7 @@ export function createApp(store?: AuthStore, sync?: SyncStore, blobs?: BlobStore
   app.route('/', authRoutes(authStore));
   app.route('/', syncRoutes(syncStore));
   app.route('/', blobRoutes(blobStore));
+  app.route('/', accountRoutes(authStore, syncStore, blobStore));
 
   return app;
 }

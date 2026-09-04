@@ -129,6 +129,8 @@ export interface SyncStore {
   push(userId: string, cursorSeq: number, changes: Change[], idempotencyKey: string): Promise<PushResult>;
   /** Return log entries with `seq > since`, capped; `since === 0` returns the current-state snapshot. */
   pull(userId: string, since: number, limit?: number): Promise<PullResult>;
+  /** Delete-account: drop all of a user's changelog, current-state, seq counter, and idempotency records. */
+  purge(userId: string): Promise<void>;
 }
 
 const MAX_PULL = 500;
@@ -183,6 +185,13 @@ export class InMemorySyncStore implements SyncStore {
     const log = this.log.get(userId) ?? [];
     const entries = log.filter((e) => e.seq > since).slice(0, limit);
     return { head, entries };
+  }
+
+  async purge(userId: string): Promise<void> {
+    this.log.delete(userId);
+    this.state.delete(userId);
+    this.seqs.delete(userId);
+    for (const k of this.idem.keys()) if (k.startsWith(`${userId}:`)) this.idem.delete(k);
   }
 }
 

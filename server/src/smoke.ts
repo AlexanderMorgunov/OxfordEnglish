@@ -206,5 +206,13 @@ await gcStore.commit('u', 'orphan', 1);
 const removed = await gcStore.gcOrphans('u', ['keep']); // 'orphan' is no longer a live book
 check('gcOrphans removes only blobs whose book is gone', removed === 1 && (await gcStore.list('u')).length === 1);
 
+// --- Delete account (152-ФЗ) ---
+const delAcc = await app.request('/v1/account', { method: 'DELETE', headers: syncAuth });
+check('delete account → ok', delAcc.status === 200);
+const loginGone = await post('/v1/auth/login', { accountId: ACC, verifier: VER });
+check('login after delete → 401 (account purged)', loginGone.status === 401);
+const syncGone = await app.request('/v1/sync?since=0', { headers: syncAuth });
+check('sync after delete → empty snapshot', ((await syncGone.json()) as { entries: unknown[] }).entries.length === 0);
+
 console.log(failures ? `\n${failures} FAILED` : '\nALL PASS');
 process.exit(failures ? 1 : 0);

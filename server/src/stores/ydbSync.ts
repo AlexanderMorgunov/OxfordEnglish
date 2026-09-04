@@ -163,4 +163,10 @@ export class YdbSyncStore implements SyncStore {
     );
     return { head, entries: rows.map((r) => ({ ...rowToChange(r), seq: num(r.seq) })) };
   }
+
+  async purge(userId: string): Promise<void> {
+    for (const t of ['changelog', 'current_state', 'seq_counter', 'idempotency']) {
+      await query(`DECLARE $u AS Utf8; DELETE FROM ${t} WHERE user_id=$u;`, { $u: T.utf8(userId) });
+    }
+  }
 }

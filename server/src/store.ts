@@ -39,6 +39,8 @@ export interface AuthStore {
   revokeByToken(token: string): Promise<void>;
   /** Revoke a device: kill all its refresh families and drop it from the device list. */
   revokeDevice(accountId: string, deviceId: string): Promise<void>;
+  /** Delete-account: remove the account + all its refresh tokens, devices, and link requests (152-ФЗ). */
+  deleteAccount(accountId: string): Promise<void>;
 
   // --- Device linking by approval ---
   createLinkRequest(deviceName?: string): Promise<{ requestId: string; code: string; expiresAt: number }>;
@@ -113,6 +115,13 @@ export class InMemoryAuthStore implements AuthStore {
     for (const fam of this.deviceFamilies.get(key) ?? []) this.revokedFamilies.add(fam);
     this.deviceFamilies.delete(key);
     this.devices.get(accountId)?.delete(deviceId);
+  }
+  async deleteAccount(accountId: string) {
+    this.accounts.delete(accountId);
+    this.devices.delete(accountId);
+    for (const [h, rec] of this.refresh) if (rec.accountId === accountId) this.refresh.delete(h);
+    for (const k of this.deviceFamilies.keys()) if (k.startsWith(`${accountId}:`)) this.deviceFamilies.delete(k);
+    for (const [id, req] of this.links) if (req.accountId === accountId) this.links.delete(id);
   }
 
   async createLinkRequest(deviceName?: string) {

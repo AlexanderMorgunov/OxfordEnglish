@@ -138,4 +138,5 @@ export const Routes = {
   blobs: '/v1/blobs',
   blobUploadUrl: '/v1/blobs/upload-url',
   blobCommit: '/v1/blobs/commit',
+  account: '/v1/account',
 } as const;
