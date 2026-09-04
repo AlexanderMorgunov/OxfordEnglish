@@ -127,7 +127,7 @@ export class InMemoryAuthStore implements AuthStore {
   async createLinkRequest(deviceName?: string) {
     const requestId = randomBytes(16).toString('hex');
     const code = randomBytes(10).toString('base64url'); // ~80-bit, QR/type-able
-    const expiresAt = Date.now() + 60_000;
+    const expiresAt = Date.now() + 5 * 60_000; // 5 min — roomy for a scan flow (client auto-refreshes)
     this.links.set(requestId, { codeHash: hashToken(code), newDeviceName: deviceName, status: 'pending', expiresAt });
     return { requestId, code, expiresAt };
   }
