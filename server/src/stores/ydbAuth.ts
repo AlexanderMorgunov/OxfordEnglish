@@ -12,7 +12,7 @@ import { query, withSerializableTx, TypedValues as T, Types, type Tx } from '../
 const newRefreshToken = (): string => randomBytes(32).toString('base64url');
 const hashToken = (t: string): string => createHash('sha256').update(t).digest('base64');
 const REFRESH_TTL_MS = 365 * 24 * 60 * 60 * 1000; // per-device sliding cap (design H4)
-const LINK_TTL_MS = 60 * 1000;
+const LINK_TTL_MS = 5 * 60 * 1000; // roomy for a scan flow (camera permission + aim); auto-refreshed client-side
 
 /** YDB Timestamp comes back as a Date (or micros); normalize to epoch ms. */
 function tsMs(v: unknown): number {

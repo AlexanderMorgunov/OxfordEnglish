@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { QRCodeSVG } from 'qrcode.react';
 import { Button, Card, Eyebrow, Input } from '@/shared/ui';
+import { QrScanner } from './QrScanner';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { accountsEnabled } from './config';
 import { useAccount } from './store';
@@ -197,30 +199,39 @@ function DeviceLinkNew({ ru }: { ru: boolean }) {
   const pollDeviceLink = useAccount((s) => s.pollDeviceLink);
 
   const [req, setReq] = useState<DeviceStartResponse | null>(null);
-  const [state, setState] = useState<'idle' | 'waiting' | 'expired' | 'error'>('idle');
+  const [state, setState] = useState<'idle' | 'waiting' | 'error'>('idle');
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const cancelled = useRef(false);
 
   useEffect(() => {
+    cancelled.current = false;
     return () => {
+      cancelled.current = true; // stop the interval AND any in-flight poll from rescheduling after unmount
       if (timer.current) clearInterval(timer.current);
     };
   }, []);
 
   const start = async () => {
+    if (cancelled.current) return;
     if (timer.current) clearInterval(timer.current);
     setState('waiting');
     try {
       const r = await startDeviceLink();
+      if (cancelled.current) return; // unmounted during the await
       setReq(r);
       timer.current = setInterval(() => {
         void pollDeviceLink(r.requestId)
           .then((status) => {
+            if (cancelled.current) {
+              if (timer.current) clearInterval(timer.current);
+              return;
+            }
             if (status === 'approved') {
               if (timer.current) clearInterval(timer.current);
               // parent flips to the authenticated view
             } else if (status === 'expired') {
               if (timer.current) clearInterval(timer.current);
-              setState('expired');
+              void start(); // auto-refresh the code + QR so the scan flow never dead-ends on a manual tap
             }
           })
           .catch(() => undefined);
@@ -234,28 +245,22 @@ function DeviceLinkNew({ ru }: { ru: boolean }) {
     <Card className="mt-3">
       <p className="mb-2 text-sm text-content">
         {ru
-          ? 'На устройстве, где вы уже вошли, откройте Настройки → Аккаунт → «Одобрить устройство» и введите этот код:'
-          : 'On the device where you are already signed in, open Settings → Account → “Approve a device” and enter this code:'}
+          ? 'На устройстве, где вы уже вошли, откройте Настройки → Аккаунт → «Одобрить устройство» и отсканируйте QR (или введите код):'
+          : 'On the device where you are already signed in, open Settings → Account → “Approve a device” and scan the QR (or enter the code):'}
       </p>
       {req ? (
         <>
-          <p className="mb-2 select-all rounded-sm bg-surface px-3 py-2 text-center font-mono text-xl tracking-widest text-teal">
+          <div className="mb-2 flex justify-center">
+            <div className="rounded-sm bg-white p-2.5">
+              <QRCodeSVG value={req.code} size={160} bgColor="#ffffff" fgColor="#000000" level="M" />
+            </div>
+          </div>
+          <p className="mb-2 select-all rounded-sm bg-surface px-3 py-2 text-center font-mono text-lg tracking-widest text-teal">
             {req.code}
           </p>
           <p className="text-2xs text-muted">
-            {state === 'expired'
-              ? ru
-                ? 'Код истёк. Обновите и попробуйте снова.'
-                : 'Code expired. Refresh and try again.'
-              : ru
-                ? 'Ждём одобрения… Код действует около минуты.'
-                : 'Waiting for approval… The code lasts about a minute.'}
+            {ru ? 'Ждём одобрения… Код обновляется автоматически.' : 'Waiting for approval… the code auto-refreshes.'}
           </p>
-          {state === 'expired' && (
-            <Button size="sm" variant="ghost" className="mt-2" onClick={() => void start()}>
-              {ru ? 'Новый код' : 'New code'}
-            </Button>
-          )}
         </>
       ) : (
         <Button size="sm" disabled={state === 'waiting'} onClick={() => void start()}>
@@ -407,6 +412,7 @@ function DeviceManager({ ru, thisDeviceId }: { ru: boolean; thisDeviceId: string
   const [approved, setApproved] = useState<string | null>(null);
   const [approveErr, setApproveErr] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [scanning, setScanning] = useState(false);
   const [devices, setDevices] = useState<Device[] | null>(null);
 
   const refreshList = () => {
@@ -420,12 +426,14 @@ function DeviceManager({ ru, thisDeviceId }: { ru: boolean; thisDeviceId: string
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
-  const onApprove = async () => {
+  const onApprove = async (override?: string) => {
+    const value = (override ?? code).trim();
+    if (value.length < 8) return;
     setBusy(true);
     setApproveErr(false);
     setApproved(null);
     try {
-      const name = await approveDevice(code);
+      const name = await approveDevice(value);
       setApproved(name ?? (ru ? 'новое устройство' : 'a new device'));
       setCode('');
       refreshList();
@@ -461,8 +469,8 @@ function DeviceManager({ ru, thisDeviceId }: { ru: boolean; thisDeviceId: string
       <p className="mb-2 text-sm font-semibold text-content">{ru ? 'Одобрить устройство' : 'Approve a device'}</p>
       <p className="mb-2 text-2xs text-muted text-pretty">
         {ru
-          ? 'На новом устройстве нажмите «Уже вошли на другом устройстве?» и введите здесь показанный код.'
-          : 'On the new device, tap “Already signed in elsewhere?” and enter the code it shows here.'}
+          ? 'На новом устройстве нажмите «Уже вошли на другом устройстве?» — отсканируйте показанный QR или введите код.'
+          : 'On the new device, tap “Already signed in elsewhere?” — scan the QR it shows, or enter the code.'}
       </p>
       <div className="mb-1 flex flex-wrap items-center gap-2">
         <Input
@@ -476,7 +484,22 @@ function DeviceManager({ ru, thisDeviceId }: { ru: boolean; thisDeviceId: string
         <Button size="sm" disabled={busy || code.trim().length < 8} onClick={() => void onApprove()}>
           {ru ? 'Одобрить' : 'Approve'}
         </Button>
+        <Button size="sm" variant="ghost" onClick={() => setScanning((v) => !v)}>
+          {scanning ? (ru ? 'Отмена скана' : 'Cancel scan') : ru ? '📷 Сканировать QR' : '📷 Scan QR'}
+        </Button>
       </div>
+      {scanning && (
+        <QrScanner
+          ru={ru}
+          accept={(t) => /^[A-Za-z0-9_-]{8,64}$/.test(t)} // our approval code shape (base64url) — ignore stray QRs
+          onClose={() => setScanning(false)}
+          onResult={(text) => {
+            setScanning(false);
+            setCode(text);
+            void onApprove(text);
+          }}
+        />
+      )}
       {approved && (
         <p className="mb-2 font-mono text-2xs text-teal">
           {ru ? `Одобрено: ${approved}` : `Approved: ${approved}`}
