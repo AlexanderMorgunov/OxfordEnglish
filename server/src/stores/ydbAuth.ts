@@ -127,6 +127,13 @@ export class YdbAuthStore implements AuthStore {
     });
   }
 
+  async deleteAccount(accountId: string): Promise<void> {
+    await query('DECLARE $a AS Utf8; DELETE FROM accounts WHERE account_id=$a;', { $a: T.utf8(accountId) });
+    await query('DECLARE $a AS Utf8; DELETE FROM devices WHERE account_id=$a;', { $a: T.utf8(accountId) });
+    await query('DECLARE $a AS Utf8; DELETE FROM refresh_tokens WHERE account_id=$a;', { $a: T.utf8(accountId) });
+    await query('DECLARE $a AS Utf8; DELETE FROM link_requests WHERE account_id=$a;', { $a: T.utf8(accountId) });
+  }
+
   async createLinkRequest(deviceName?: string): Promise<{ requestId: string; code: string; expiresAt: number }> {
     const requestId = randomBytes(16).toString('hex');
     const code = randomBytes(10).toString('base64url');

@@ -94,6 +94,8 @@ type AccountState = {
   listDevices: () => Promise<Device[]>;
   /** Revoke another device by id. */
   revokeDevice: (deviceId: string) => Promise<void>;
+  /** Permanently delete the account server-side, then drop to anonymous + wipe local synced data. */
+  deleteAccount: () => Promise<void>;
 };
 
 /** Shared across all concurrent refresh callers in this tab, so a burst never sends the refresh token
@@ -241,6 +243,13 @@ export const useAccount = create<AccountState>((set, get) => {
       const token = await get().getAccessToken();
       if (!token) throw new ApiFailure('unauthorized', 401);
       await api.deviceRevoke(token, targetDeviceId);
+    },
+
+    deleteAccount: async () => {
+      const token = await get().getAccessToken();
+      if (token) await api.deleteAccount(token);
+      clearSession();
+      await wipeSyncedData().catch(() => undefined); // remove the now-orphaned local copy too
     },
   };
 });

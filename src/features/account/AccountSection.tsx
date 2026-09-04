@@ -138,6 +138,7 @@ function AccountSectionBody() {
           </Button>
           <BookFileSyncToggle ru={ru} />
           <DeviceManager ru={ru} thisDeviceId={deviceId} />
+          <DangerZone ru={ru} />
         </div>
       ) : (
         <div>
@@ -265,6 +266,58 @@ function DeviceLinkNew({ ru }: { ru: boolean }) {
         <p className="mt-2 font-mono text-2xs text-coral">{ru ? 'Не удалось. Попробуйте ещё раз.' : 'Something went wrong. Try again.'}</p>
       )}
     </Card>
+  );
+}
+
+/** Delete-account: two-step confirm, then wipes server-side + local (152-ФЗ right to erasure). */
+function DangerZone({ ru }: { ru: boolean }) {
+  const deleteAccount = useAccount((s) => s.deleteAccount);
+  const [confirming, setConfirming] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState(false);
+
+  const onDelete = async () => {
+    setBusy(true);
+    setErr(false);
+    try {
+      await deleteAccount();
+      // store drops to anonymous; the component re-renders into the signed-out view.
+    } catch {
+      setErr(true);
+      setBusy(false);
+    }
+  };
+
+  return (
+    <div className="mt-6 border-t border-line pt-4">
+      {!confirming ? (
+        <button type="button" className="font-mono text-2xs text-coral hover:underline" onClick={() => setConfirming(true)}>
+          {ru ? 'Удалить аккаунт' : 'Delete account'}
+        </button>
+      ) : (
+        <div className="rounded-sm border border-coral/40 bg-coral/5 p-3">
+          <p className="mb-2 text-sm text-content text-pretty">
+            {ru
+              ? 'Удалить аккаунт и все синхронизированные данные с сервера (прогресс, словарь, книги)? Локальная копия на этом устройстве тоже сотрётся. Действие необратимо.'
+              : 'Delete the account and all synced data from the server (progress, vocabulary, books)? The local copy on this device is wiped too. This cannot be undone.'}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <Button size="sm" variant="ghost" disabled={busy} onClick={() => setConfirming(false)}>
+              {ru ? 'Отмена' : 'Cancel'}
+            </Button>
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => void onDelete()}
+              className="rounded-sm bg-coral px-3 py-1.5 font-mono text-2xs font-semibold text-ink transition-opacity hover:opacity-90 disabled:opacity-50"
+            >
+              {busy ? (ru ? 'Удаляю…' : 'Deleting…') : ru ? 'Удалить навсегда' : 'Delete forever'}
+            </button>
+          </div>
+          {err && <p className="mt-2 font-mono text-2xs text-coral">{ru ? 'Не удалось — попробуйте позже.' : 'Failed — try again later.'}</p>}
+        </div>
+      )}
+    </div>
   );
 }
 

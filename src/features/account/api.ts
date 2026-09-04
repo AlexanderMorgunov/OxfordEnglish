@@ -125,6 +125,10 @@ export function deviceRevoke(accessToken: string, deviceId: string): Promise<voi
   );
 }
 
+export function deleteAccount(accessToken: string): Promise<void> {
+  return request(Routes.account, { method: 'DELETE', headers: { authorization: `Bearer ${accessToken}` } }, () => undefined);
+}
+
 export function syncPush(
   accessToken: string,
   body: { cursorSeq: number; changes: SyncChange[]; idempotencyKey: string }
