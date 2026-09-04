@@ -8,13 +8,18 @@ import {
   DeviceApproveRequestSchema,
   DeviceRevokeRequestSchema,
   ErrorCode,
+  REGISTER_MAX_PER_IP,
+  REGISTER_WINDOW_MS,
+  IP_BUCKET_CAPACITY,
+  IP_BUCKET_REFILL_PER_SEC,
   type Session,
 } from '../contract.js';
 import { type AuthStore } from '../store.js';
 import { hashVerifier, verifyVerifier } from '../password.js';
 import { signAccess, bearerClaims } from '../tokens.js';
+import { clientIp, ipBucketLimiter } from '../rateLimit.js';
 
-const err = (code: string, status: 400 | 401 | 409) =>
+const err = (code: string, status: 400 | 401 | 409 | 429) =>
   Response.json({ error: { code } }, { status });
 
 /** Mount all `/v1/auth/*` routes against a storage backend. */
@@ -29,15 +34,20 @@ export function authRoutes(store: AuthStore): Hono {
     return { accountId, deviceId, accessToken: access.token, refreshToken, accessExpiresAt: access.expiresAt, created };
   }
 
+  // Separate bucket maps per endpoint (login and device-start must not share a counter).
+  const loginLimiter = ipBucketLimiter(IP_BUCKET_CAPACITY, IP_BUCKET_REFILL_PER_SEC);
+  const deviceStartLimiter = ipBucketLimiter(IP_BUCKET_CAPACITY, IP_BUCKET_REFILL_PER_SEC);
+
   app.post('/v1/auth/register', async (c) => {
     const body = AuthRequestSchema.safeParse(await c.req.json().catch(() => null));
     if (!body.success) return err(ErrorCode.BadRequest, 400);
+    if (!(await store.hitRegisterRate(clientIp(c), REGISTER_WINDOW_MS, REGISTER_MAX_PER_IP))) return err(ErrorCode.RateLimited, 429);
     if (await store.getAccount(body.data.accountId)) return err(ErrorCode.AccountExists, 409);
     await store.createAccount(body.data.accountId, await hashVerifier(body.data.verifier));
     return c.json(await issueSession(body.data.accountId, body.data.deviceName, true));
   });
 
-  app.post('/v1/auth/login', async (c) => {
+  app.post('/v1/auth/login', loginLimiter, async (c) => {
     const body = AuthRequestSchema.safeParse(await c.req.json().catch(() => null));
     if (!body.success) return err(ErrorCode.BadRequest, 400);
     const account = await store.getAccount(body.data.accountId);
@@ -93,7 +103,7 @@ export function authRoutes(store: AuthStore): Hono {
 
   // --- Device linking by approval ---
   // New device starts a request and shows the returned code (no auth).
-  app.post('/v1/auth/device/start', async (c) => {
+  app.post('/v1/auth/device/start', deviceStartLimiter, async (c) => {
     const body = DeviceStartRequestSchema.safeParse(await c.req.json().catch(() => null));
     if (!body.success) return err(ErrorCode.BadRequest, 400);
     return c.json(await store.createLinkRequest(body.data.deviceName));
