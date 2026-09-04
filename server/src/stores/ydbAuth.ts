@@ -1,13 +1,14 @@
 /**
  * AuthStore on YDB (Track B). Tables: accounts, devices, refresh_tokens (+ by_family index),
- * link_requests (+ by_code index). Refresh rotation + reuse-detection run in a serializable transaction;
+ * link_requests (+ by_code index), register_rate (per-IP register throttle). Refresh rotation +
+ * reuse-detection run in a serializable transaction;
  * a reuse revokes the whole token family. Verifier hashing is done in the route (argon2id); this store
  * only persists the opaque hash. See docs/yc-backend-setup.md for the schema.
  */
 import { randomBytes, createHash } from 'node:crypto';
 import type { AuthStore } from '../store.js';
 import type { Device } from '../contract.js';
-import { query, withSerializableTx, TypedValues as T, Types, type Tx } from '../ydb.js';
+import { query, withSerializableTx, TypedValues as T, Types, num, type Tx } from '../ydb.js';
 
 const newRefreshToken = (): string => randomBytes(32).toString('base64url');
 const hashToken = (t: string): string => createHash('sha256').update(t).digest('base64');
@@ -132,6 +133,23 @@ export class YdbAuthStore implements AuthStore {
     await query('DECLARE $a AS Utf8; DELETE FROM devices WHERE account_id=$a;', { $a: T.utf8(accountId) });
     await query('DECLARE $a AS Utf8; DELETE FROM refresh_tokens WHERE account_id=$a;', { $a: T.utf8(accountId) });
     await query('DECLARE $a AS Utf8; DELETE FROM link_requests WHERE account_id=$a;', { $a: T.utf8(accountId) });
+  }
+
+  async hitRegisterRate(ip: string, windowMs: number, max: number): Promise<boolean> {
+    return withSerializableTx(async (tx) => {
+      const [rows] = await tx.exec('DECLARE $ip AS Utf8; SELECT window_start, count FROM register_rate WHERE ip=$ip;', { $ip: T.utf8(ip) });
+      const rec = rows[0];
+      const now = Date.now();
+      const fresh = !rec || now - tsMs(rec.window_start) >= windowMs;
+      const windowStart = fresh ? now : tsMs(rec!.window_start);
+      const count = fresh ? 1 : num(rec!.count) + 1;
+      await tx.exec(
+        'DECLARE $ip AS Utf8; DECLARE $ws AS Timestamp; DECLARE $c AS Uint64; UPSERT INTO register_rate (ip, window_start, count) VALUES ($ip, $ws, $c);',
+        { $ip: T.utf8(ip), $ws: T.timestamp(new Date(windowStart)), $c: T.uint64(count) },
+        true
+      );
+      return count <= max;
+    });
   }
 
   async createLinkRequest(deviceName?: string): Promise<{ requestId: string; code: string; expiresAt: number }> {

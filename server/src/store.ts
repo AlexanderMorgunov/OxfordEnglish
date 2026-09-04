@@ -41,6 +41,9 @@ export interface AuthStore {
   revokeDevice(accountId: string, deviceId: string): Promise<void>;
   /** Delete-account: remove the account + all its refresh tokens, devices, and link requests (152-ФЗ). */
   deleteAccount(accountId: string): Promise<void>;
+  /** Per-IP fixed-window register throttle. Records this attempt; returns false once it exceeds `max` in the
+   *  trailing `windowMs`. Persisted (YDB) so it holds across serverless instances. */
+  hitRegisterRate(ip: string, windowMs: number, max: number): Promise<boolean>;
 
   // --- Device linking by approval ---
   createLinkRequest(deviceName?: string): Promise<{ requestId: string; code: string; expiresAt: number }>;
@@ -60,6 +63,7 @@ export class InMemoryAuthStore implements AuthStore {
   private devices = new Map<string, Map<string, Device>>();
   private deviceFamilies = new Map<string, Set<string>>(); // `${accountId}:${deviceId}` -> familyIds
   private links = new Map<string, LinkReq>(); // requestId -> pending/approved link
+  private registerHits = new Map<string, { windowStart: number; count: number }>();
 
   async getAccount(accountId: string) {
     return this.accounts.get(accountId) ?? null;
@@ -122,6 +126,16 @@ export class InMemoryAuthStore implements AuthStore {
     for (const [h, rec] of this.refresh) if (rec.accountId === accountId) this.refresh.delete(h);
     for (const k of this.deviceFamilies.keys()) if (k.startsWith(`${accountId}:`)) this.deviceFamilies.delete(k);
     for (const [id, req] of this.links) if (req.accountId === accountId) this.links.delete(id);
+  }
+  async hitRegisterRate(ip: string, windowMs: number, max: number) {
+    const now = Date.now();
+    const rec = this.registerHits.get(ip);
+    if (!rec || now - rec.windowStart >= windowMs) {
+      this.registerHits.set(ip, { windowStart: now, count: 1 });
+      return 1 <= max;
+    }
+    rec.count += 1;
+    return rec.count <= max;
   }
 
   async createLinkRequest(deviceName?: string) {

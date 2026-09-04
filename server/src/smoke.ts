@@ -5,6 +5,7 @@
  */
 import { createApp } from './app.js';
 import { InMemoryBlobStore } from './blobs.js';
+import { REGISTER_MAX_PER_IP, IP_BUCKET_CAPACITY } from './contract.js';
 
 const app = createApp();
 const H = { 'content-type': 'application/json' };
@@ -205,6 +206,29 @@ await gcStore.putObject(gcStore.objectKey('u', 'orphan'), new Uint8Array([2]));
 await gcStore.commit('u', 'orphan', 1);
 const removed = await gcStore.gcOrphans('u', ['keep']); // 'orphan' is no longer a live book
 check('gcOrphans removes only blobs whose book is gone', removed === 1 && (await gcStore.list('u')).length === 1);
+
+// --- Rate limiting (abuse throttles) ---
+// Distinct X-Forwarded-For per sub-test isolates these buckets from the main flow (which sends no XFF).
+const xff = (ip: string) => ({ ...H, 'x-forwarded-for': ip });
+
+let regBlocked = false;
+for (let i = 0; i <= REGISTER_MAX_PER_IP; i++) {
+  const r = await post('/v1/auth/register', { accountId: `flood${i}-0123456789abcdef`, verifier: VER }, xff('203.0.113.7'));
+  if (i === REGISTER_MAX_PER_IP) regBlocked = r.status === 429;
+}
+check(`register flood → attempt ${REGISTER_MAX_PER_IP + 1} from one IP is 429`, regBlocked);
+
+const freshIp = await post('/v1/auth/register', { accountId: 'freship-0123456789abcdef', verifier: VER }, xff('203.0.113.99'));
+check('register from a different IP → not limited (200)', freshIp.status === 200);
+
+let loginBlocked = false;
+let loginBefore = true;
+for (let i = 0; i <= IP_BUCKET_CAPACITY; i++) {
+  const r = await post('/v1/auth/login', { accountId: ACC, verifier: 'WRONG-verifier-xx' }, xff('203.0.113.8'));
+  if (i < IP_BUCKET_CAPACITY && r.status === 429) loginBefore = false; // must not trip early
+  if (i === IP_BUCKET_CAPACITY) loginBlocked = r.status === 429;
+}
+check(`login bucket → first ${IP_BUCKET_CAPACITY} pass, next is 429`, loginBefore && loginBlocked);
 
 // --- Delete account (152-ФЗ) ---
 const delAcc = await app.request('/v1/account', { method: 'DELETE', headers: syncAuth });

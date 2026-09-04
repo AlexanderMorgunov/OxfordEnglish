@@ -80,6 +80,17 @@ export const SyncPullResponseSchema = z.object({ head: z.number(), entries: z.ar
 export type SyncChange = z.infer<typeof SyncChangeSchema>;
 export type SyncEntry = z.infer<typeof SyncEntrySchema>;
 
+// --- Abuse throttles (rate-limit) ---
+// register is the one unauthenticated, cost-unlocking create path (each account unlocks a 300 MB quota), so
+// it gets a persisted per-IP fixed-window cap that holds across serverless instances. The cap is generous on
+// purpose — a classroom/library behind one NAT must still onboard — while bulk creation (thousands) dies.
+export const REGISTER_MAX_PER_IP = 20;
+export const REGISTER_WINDOW_MS = 24 * 60 * 60 * 1000;
+// login / device-start: an in-memory per-IP token bucket (per instance) — cheaper abuse, higher legit
+// frequency, so a YDB write per request isn't worth it. Burst = capacity, sustained = refill/sec.
+export const IP_BUCKET_CAPACITY = 15;
+export const IP_BUCKET_REFILL_PER_SEC = 0.2; // ~12/min sustained
+
 // --- Book file blobs (slice 3, opt-in) ---
 export const BLOB_MAX_BYTES = 20 * 1024 * 1024; // per book
 export const BLOB_ACCOUNT_MAX_BYTES = 300 * 1024 * 1024; // per account

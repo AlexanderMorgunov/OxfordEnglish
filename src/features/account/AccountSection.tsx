@@ -57,9 +57,13 @@ function AccountSectionBody() {
         ? ru
           ? 'Нет сети — попробуйте позже.'
           : 'Offline — try again later.'
-        : ru
-          ? 'Не удалось. Попробуйте ещё раз.'
-          : 'Something went wrong. Try again.'
+        : error === 'rate_limited'
+          ? ru
+            ? 'Слишком много попыток. Подождите немного и попробуйте снова.'
+            : 'Too many attempts. Wait a moment and try again.'
+          : ru
+            ? 'Не удалось. Попробуйте ещё раз.'
+            : 'Something went wrong. Try again.'
     : null;
 
   const onCreate = async () => {
