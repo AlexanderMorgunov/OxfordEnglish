@@ -1,5 +1,5 @@
 import { complete, type AiConfig } from './provider';
-import { clampBand, simplifySystem, simplifyShot, SIMPLIFY_PROMPT_VERSION } from './simplify-prompts';
+import { clampBand, simplifySystem, simplifyShot, SIMPLIFY_PROMPT_VERSION, type Band } from './simplify-prompts';
 import { db } from '@/db/db';
 import type { Exercise, Level } from '@/content/schema';
 
@@ -115,6 +115,66 @@ export async function aiSimplify(
   }
   try {
     await db.translations.put({ word: cacheKey, ru: '', en: out, source: 'lens-simplify' });
+  } catch {
+    // best-effort cache
+  }
+  return out;
+}
+
+const GRAMMAR_VERSION = 'v1';
+// One completed example teaches the SHORT, one-structure style (a bad answer would list every tense +
+// article + clause). Delivered as a user/assistant turn like simplify's few-shot.
+const GRAMMAR_SHOT = {
+  src: 'By the time we arrived, the film had already started.',
+  out: 'Главное здесь — «had started» (Past Perfect): фильм начался РАНЬШЕ, чем мы пришли. Так показывают, что одно прошлое действие произошло до другого.',
+};
+function grammarSystem(band: Band): string {
+  return [
+    `Ты объясняешь грамматику английского предложения русскоговорящему ученику уровня CEFR ${band}.`,
+    'Правила:',
+    '1. Найди ОДНУ самую важную/трудную для этого уровня конструкцию в предложении — не разбирай всё подряд.',
+    '2. Объясни её просто, по-русски, в 2–3 коротких предложениях (не длиннее ~40 слов). Не читай лекцию и не приводи посторонних примеров.',
+    '3. Термин называй только если без него никак (лучше «действие, которое ещё длится», чем «Present Continuous»).',
+    '4. Опирайся именно на это предложение. Верни ТОЛЬКО объяснение — без вступлений, кавычек и markdown.',
+  ].join('\n');
+}
+
+/**
+ * Reader "Grammar" lens: explain (in Russian) the ONE most salient/level-relevant grammar structure of a
+ * sentence — Noticing / consciousness-raising, not a textbook dump. Mirrors `aiSimplify`; the length
+ * discipline comes from the prompt + few-shot, not a tight cap. Cached in `db.translations` under a
+ * `lens:grammar:` key in the `ru` field (namespaced — never read by the translate path). Rejects a
+ * non-Russian answer so the caller can fall back.
+ */
+export async function aiGrammar(
+  config: AiConfig,
+  sentence: string,
+  opts: { level?: Level | null; signal?: AbortSignal } = {}
+): Promise<string> {
+  const q = sentence.trim();
+  if (!q) return '';
+  const band = clampBand(opts.level, 0);
+  const cacheKey = `lens:grammar:${GRAMMAR_VERSION}:${band}:${config.model}:${q}`;
+  try {
+    const cached = await db.translations.get(cacheKey);
+    if (cached?.ru) return cached.ru;
+  } catch {
+    // ignore cache miss
+  }
+  const raw = await complete(
+    config,
+    [
+      { role: 'system', content: grammarSystem(band) },
+      { role: 'user', content: GRAMMAR_SHOT.src },
+      { role: 'assistant', content: GRAMMAR_SHOT.out },
+      { role: 'user', content: q },
+    ],
+    { temperature: 0.3, maxTokens: 512, noReasoning: true, signal: opts.signal }
+  );
+  const out = cleanRewrite(raw);
+  if (!out || !hasCyrillic(out)) throw new Error('ai grammar unavailable'); // empty or answered in English
+  try {
+    await db.translations.put({ word: cacheKey, ru: out, source: 'lens-grammar' });
   } catch {
     // best-effort cache
   }

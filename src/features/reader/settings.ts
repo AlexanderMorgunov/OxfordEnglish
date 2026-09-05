@@ -16,7 +16,7 @@ type Persisted = {
   /** Translate reader sentences/phrases with the BYOK AI instead of the free (MyMemory) service. */
   aiTranslation: boolean;
   /** Per-sentence lens: EN→RU translate, or an AI same-language simplification at the learner's level. */
-  lens: 'translate' | 'simplify';
+  lens: 'translate' | 'simplify' | 'grammar';
 };
 
 const DEFAULTS: Persisted = {
@@ -52,7 +52,7 @@ type ReaderSettings = Persisted & {
   setVoiceURI: (uri: string | null) => void;
   setRate: (n: number) => void;
   toggleAiTranslation: () => void;
-  setLens: (lens: 'translate' | 'simplify') => void;
+  setLens: (lens: 'translate' | 'simplify' | 'grammar') => void;
 };
 
 export const useReaderSettings = create<ReaderSettings>((set, get) => {
