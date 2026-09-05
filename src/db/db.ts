@@ -25,6 +25,9 @@ export interface WordStatus {
 export interface WordTranslation {
   word: string;
   ru: string;
+  /** Reader "Simplify" lens cache: an English rewrite (not a translation), under a `lens:simplify:` key.
+   *  Non-indexed → no version bump. Translate consumers gate on `hasCyrillic(ru)` and skip these rows. */
+  en?: string;
   source: string;
 }
 
