@@ -1,6 +1,7 @@
 import { complete, type AiConfig } from './provider';
+import { clampBand, simplifySystem, simplifyShot, SIMPLIFY_PROMPT_VERSION } from './simplify-prompts';
 import { db } from '@/db/db';
-import type { Exercise } from '@/content/schema';
+import type { Exercise, Level } from '@/content/schema';
 
 const RU_TRANSLATOR =
   'Ты — переводчик с английского на русский. Переведи текст точно и естественно. Верни ТОЛЬКО перевод, без пояснений и без кавычек.';
@@ -41,7 +42,7 @@ export async function aiTranslate(
       { role: 'system', content: RU_TRANSLATOR },
       { role: 'user', content: user },
     ],
-    { temperature: 0.2, signal: opts.signal }
+    { temperature: 0.2, maxTokens: 300, noReasoning: true, signal: opts.signal }
   );
   const ru = raw.trim().replace(/^["'«»“”]+|["'«»“”]+$/g, '').trim();
   if (!hasCyrillic(ru)) throw new Error('ai translation is not Russian');
@@ -51,6 +52,73 @@ export async function aiTranslate(
     // best-effort cache
   }
   return ru;
+}
+
+/** Strip the model's wrapping noise so a lead-in ("Here is the simpler version: …"), code fence,
+ *  markdown bold, list bullet, or surrounding quotes doesn't render as the rewrite. */
+function cleanRewrite(raw: string): string {
+  const noFence = raw.trim().replace(/^```[a-z]*\n?|\n?```$/gi, '').trim();
+  // Drop a leading meta lead-in that ends in a colon ("Here is the simpler version:", "Simplified:").
+  const noLead = noFence.replace(/^[^:\n]{0,60}\b(here|simpl\w*|version|rewrite|sure|okay)\b[^:\n]{0,60}:\s*/i, '');
+  return noLead
+    .replace(/\*\*(.+?)\*\*/g, '$1')
+    .replace(/^[-*]\s+/gm, '')
+    .replace(/^["'«»“”\s]+|["'«»“”\s]+$/g, '')
+    .trim();
+}
+
+const countCyrillic = (s: string): number => (s.match(/[а-яё]/gi) ?? []).length;
+const countLatin = (s: string): number => (s.match(/[a-z]/gi) ?? []).length;
+
+/**
+ * Reader "Simplify" lens: rewrite ONE English sentence in simpler English at the learner's CEFR band
+ * (from placement; `stepDown` walks the band ladder toward A1 for the "even simpler" action). Mirrors
+ * `aiTranslate` — same `complete()` + temp 0.2, cached in `db.translations` under a `lens:simplify:`
+ * key (English in `en`, so `hasCyrillic`-gated translate consumers ignore it). Output is validated
+ * (de-noised, non-empty, predominantly English) before caching; garbage throws so the caller can offer
+ * the RU fallback. An echo (result ≈ input) is returned as-is — the caller decides how to render it.
+ */
+export async function aiSimplify(
+  config: AiConfig,
+  sentence: string,
+  opts: { level?: Level | null; stepDown?: number; signal?: AbortSignal } = {}
+): Promise<string> {
+  const q = sentence.trim();
+  if (!q) return '';
+  const band = clampBand(opts.level, opts.stepDown);
+  const cacheKey = `lens:simplify:${SIMPLIFY_PROMPT_VERSION}:${band}:${config.model}:${q}`;
+  try {
+    const cached = await db.translations.get(cacheKey);
+    if (cached?.en) return cached.en;
+  } catch {
+    // ignore cache miss
+  }
+  const shot = simplifyShot(band);
+  const raw = await complete(
+    config,
+    [
+      { role: 'system', content: simplifySystem(band) },
+      { role: 'user', content: shot.src },
+      { role: 'assistant', content: shot.out },
+      { role: 'user', content: q },
+    ],
+    // `noReasoning` disables/minimizes chain-of-thought (deepseek off entirely; groq gpt-oss only down to
+    // 'low' — it can't turn off). The cap must therefore leave room for any residual reasoning PLUS the
+    // answer, or `content` comes back empty; 512 covers groq's low-effort reasoning and is a harmless
+    // ceiling for deepseek (which stops naturally at ~50). Kills the 48k-output runaway either way.
+    { temperature: 0.2, maxTokens: 512, noReasoning: true, signal: opts.signal }
+  );
+  const out = cleanRewrite(raw);
+  // Reject empty, runaway, or a straight RU translation (model ignored "English only").
+  if (!out || out.length > Math.max(140, q.length * 5) || countCyrillic(out) > countLatin(out)) {
+    throw new Error('ai simplification unavailable');
+  }
+  try {
+    await db.translations.put({ word: cacheKey, ru: '', en: out, source: 'lens-simplify' });
+  } catch {
+    // best-effort cache
+  }
+  return out;
 }
 
 function cacheGet(key: string): string | undefined {
@@ -77,10 +145,14 @@ async function ask(
   const key = `${config.model}|${cacheKey}`;
   const hit = cacheGet(key);
   if (hit) return hit;
-  const out = await complete(config, [
-    { role: 'system', content: system },
-    { role: 'user', content: user },
-  ]);
+  const out = await complete(
+    config,
+    [
+      { role: 'system', content: system },
+      { role: 'user', content: user },
+    ],
+    { noReasoning: true, maxTokens: 220 }
+  );
   cacheSet(key, out);
   return out;
 }
@@ -109,7 +181,8 @@ export function explainError(
     history +
     `Правильный ответ: "${ctx.correct}"\n` +
     `Тема: ${ctx.topic}\n` +
-    'Объясни в 1–2 предложениях, в чём именно ошибка (укажи на неё конкретно, например порядок слов или форму), какое правило работает. Если попыток несколько — отметь, какая была ближе. Не морализируй.';
+    'Объясни в 1–2 предложениях, в чём именно ошибка (укажи на неё конкретно, например порядок слов или форму), какое правило работает. Если попыток несколько — отметь, какая была ближе. ' +
+    'Опирайся ТОЛЬКО на текст задания и данные ответы: не выдумывай содержание аудио или текста, которых тебе не показали. Если суть ошибки зависит от непоказанного материала (например, это восприятие на слух), объясни разницу между вариантами ответа и что стоит переслушать/перечитать. Не морализируй.';
   return ask(config, RU_TUTOR, user, `explain|${ctx.prompt}|${ctx.attempts?.join('|') ?? ctx.userAnswer}`);
 }
 
@@ -128,10 +201,14 @@ export function hint(
     'Одна короткая подсказка, которая направляет к исправлению, но НЕ раскрывает готовый ответ.';
   // No cache: a hint must react to the current answer, and re-requesting after a
   // change must return a fresh hint, not a stale cached one.
-  return complete(config, [
-    { role: 'system', content: system },
-    { role: 'user', content: user },
-  ]);
+  return complete(
+    config,
+    [
+      { role: 'system', content: system },
+      { role: 'user', content: user },
+    ],
+    { noReasoning: true, maxTokens: 160 }
+  );
 }
 
 type AiItem = { q?: unknown; options?: unknown; answer?: unknown };
@@ -191,10 +268,14 @@ export async function generateReaderExercises(
     'замени одно содержательное слово на ___ и дай 4 варианта: один верный (исходное слово) и три ' +
     'правдоподобных неверных той же части речи. Формат каждого элемента: ' +
     '{"q":"предложение с ___","options":["w1","w2","w3","w4"],"answer":"верное"}. Только JSON-массив.';
-  const raw = await complete(config, [
-    { role: 'system', content: system },
-    { role: 'user', content: user },
-  ]);
+  const raw = await complete(
+    config,
+    [
+      { role: 'system', content: system },
+      { role: 'user', content: user },
+    ],
+    { noReasoning: true, maxTokens: 700 }
+  );
   return coerceExercises(raw, ctx.idPrefix);
 }
 

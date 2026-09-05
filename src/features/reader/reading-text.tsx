@@ -20,8 +20,13 @@ import { wordInContext } from '@/features/ai/functions';
 import type { AiConfig } from '@/features/ai/provider';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { useLearner } from '@/features/learner/store';
-import { classifyWord, loadFreq, rankThresholdFor, type FreqIndex, type WordMark } from './difficulty';
+import { classifyWord, estimateCoverage, loadFreq, rankThresholdFor, type FreqIndex, type WordMark } from './difficulty';
 import { useReaderSettings, FONT_CLASSES, LEADING_CLASSES } from './settings';
+import { runLens, lensKey, type LensArgs, type LensMode } from './lens';
+import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
+import { clampBand } from '@/features/ai/simplify-prompts';
+import { track } from '@/features/analytics/analytics';
+import type { Level } from '@/content/schema';
 import { toSentences } from './parse/text';
 import { usePhraseSelect, parsePos, samePos, inPhraseRange, type WordPos } from './phrase-select';
 import { useSavedPhrases } from './saved-phrases';
@@ -261,6 +266,15 @@ export const WordToken = memo(function WordToken({
   );
 });
 
+/** One sentence's shown lens output. `fail` covers offline/no-key/model-failure AND an unverified echo. */
+type LensCell =
+  | { kind: 'translate'; text: string }
+  | { kind: 'simplify'; text: string; stepDown: number }
+  | { kind: 'echo' }
+  | { kind: 'fail' };
+
+const NO_KNOWN: Set<string> = new Set();
+
 const Paragraph = memo(function Paragraph({
   index,
   text,
@@ -271,8 +285,10 @@ const Paragraph = memo(function Paragraph({
   activeSentence,
   onRead,
   onReadSentence,
-  translateMode,
-  onTranslate,
+  lens,
+  lensK,
+  level,
+  onLens,
   bookmarked,
   onToggleBookmark,
   typoClass,
@@ -291,10 +307,14 @@ const Paragraph = memo(function Paragraph({
   onRead: (index: number) => void;
   /** Play a single sentence (paraIndex, sentenceIndex, text). */
   onReadSentence: (index: number, sentenceIndex: number, sentence: string) => void;
-  /** 'free' | 'ai' — a PRIMITIVE so a mode change re-renders the paragraph and its cache keys by mode. */
-  translateMode: 'free' | 'ai';
-  /** Stable EN→RU translate callback (routes free/AI per the setting); null on offline/unavailable. */
-  onTranslate: (text: string) => Promise<string | null>;
+  /** Active lens — the per-sentence button runs this ('translate' | 'simplify'). */
+  lens: LensMode;
+  /** PRIMITIVE key of the active lens config (mode + translate sub-mode + simplify band); a change
+   *  re-renders this memoized paragraph and clears its result cells so none go stale. */
+  lensK: string;
+  level: Level | null;
+  /** Run a lens on a sentence (translate / simplify / step-down simplify); null = unavailable. */
+  onLens: (mode: LensMode, text: string, stepDown?: number) => Promise<string | null>;
   /** Book reader only: this paragraph is bookmarked, and a per-paragraph bookmark toggle. */
   bookmarked?: boolean;
   onToggleBookmark?: (index: number) => void;
@@ -307,24 +327,89 @@ const Paragraph = memo(function Paragraph({
     () => sentences.map((s) => phraseMarkedTokens(s, savedPhrases)),
     [sentences, savedPhrases]
   );
+  const { freq } = use(ReaderContext);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
-  // Keyed by `${translateMode}:${sentenceIndex}` so switching free↔AI doesn't serve a stale translation.
-  const [trs, setTrs] = useState<Record<string, string | null>>({});
-  const [loadingIdx, setLoadingIdx] = useState<number | null>(null);
+  const [out, setOut] = useState<Record<number, LensCell>>({});
+  const [loading, setLoading] = useState<{ idx: number; mode: LensMode } | null>(null);
+  // Switching lens / sub-mode / band invalidates every shown cell (a translate result must never linger
+  // when the reader flips to simplify), replacing the old `${mode}:${idx}` cache keying.
+  useEffect(() => {
+    setOut({});
+    setOpenIdx(null);
+    setLoading(null);
+  }, [lensK]);
 
-  const toggleSentence = async (idx: number, sentence: string) => {
-    if (openIdx === idx) {
-      setOpenIdx(null);
-      return;
+  const runAt = async (si: number, sentence: string, mode: LensMode, stepDown = 0) => {
+    setOpenIdx(si); // one open at a time — keeps the reading unit small
+    setLoading({ idx: si, mode });
+    if (mode === 'simplify') void track('simplify_used', { band: clampBand(level, stepDown), step: stepDown });
+    const res = await onLens(mode, sentence, stepDown);
+    let cell: LensCell;
+    if (res == null) cell = { kind: 'fail' };
+    else if (mode === 'translate') cell = { kind: 'translate', text: res };
+    else if (res.trim() === sentence.trim()) {
+      // Echo: only call it "already simple" if the sentence genuinely scores at/under the band — else the
+      // model likely ignored the instruction on a hard sentence, so offer the RU fallback instead (audit).
+      const band = clampBand(level, stepDown);
+      const atBand =
+        !!freq && estimateCoverage(sentence, { freq, known: NO_KNOWN, rankThreshold: rankThresholdFor(band) }).coverage >= 0.9;
+      cell = atBand ? { kind: 'echo' } : { kind: 'fail' };
+    } else cell = { kind: 'simplify', text: res, stepDown };
+    setOut((o) => ({ ...o, [si]: cell }));
+    setLoading(null);
+  };
+
+  const ruAction = (si: number, sentence: string) => (
+    <button
+      type="button"
+      onClick={() => void runAt(si, sentence, 'translate', 0)}
+      className="ml-1 align-baseline font-mono text-2xs text-teal hover:underline"
+    >
+      ru →
+    </button>
+  );
+
+  const renderOut = (si: number, sentence: string) => {
+    const r = lang === 'ru';
+    if (loading?.idx === si) {
+      return (
+        <span className="text-base text-muted">
+          ({loading.mode === 'simplify' ? (r ? 'упрощаю…' : 'simplifying…') : r ? 'перевод…' : 'translating…'})
+        </span>
+      );
     }
-    setOpenIdx(idx); // one at a time — keeps the reading unit small
-    const cacheKey = `${translateMode}:${idx}`;
-    if (!(cacheKey in trs) && loadingIdx !== idx) {
-      setLoadingIdx(idx);
-      const ru = await onTranslate(sentence);
-      setTrs((t) => ({ ...t, [cacheKey]: ru }));
-      setLoadingIdx(null);
+    const cell = out[si];
+    if (!cell || cell.kind === 'fail') {
+      return (
+        <span className="text-base text-muted">
+          ({r ? 'не удалось' : 'unavailable'} {ruAction(si, sentence)})
+        </span>
+      );
     }
+    if (cell.kind === 'translate') return <span className="text-base text-muted">({cell.text}) </span>;
+    if (cell.kind === 'echo') {
+      return (
+        <span className="text-base text-muted">
+          ({r ? '✓ уже простое' : '✓ already simple'} {ruAction(si, sentence)})
+        </span>
+      );
+    }
+    const canDeeper = clampBand(level, cell.stepDown) !== 'A1';
+    return (
+      <span className="text-base text-muted">
+        <span className="text-teal">≈</span> {cell.text}
+        {canDeeper && (
+          <button
+            type="button"
+            onClick={() => void runAt(si, sentence, 'simplify', cell.stepDown + 1)}
+            className="ml-1.5 align-baseline font-mono text-2xs text-teal hover:underline"
+          >
+            {r ? 'ещё проще ↓' : 'simpler ↓'}
+          </button>
+        )}
+        {ruAction(si, sentence)}{' '}
+      </span>
+    );
   };
 
   return (
@@ -437,22 +522,29 @@ const Paragraph = memo(function Paragraph({
             )}
             <button
               type="button"
-              aria-label={lang === 'ru' ? 'перевод предложения' : 'translate sentence'}
+              aria-label={
+                open
+                  ? lang === 'ru'
+                    ? 'Свернуть'
+                    : 'Close'
+                  : lens === 'simplify'
+                    ? lang === 'ru'
+                      ? 'упростить предложение'
+                      : 'simplify sentence'
+                    : lang === 'ru'
+                      ? 'перевод предложения'
+                      : 'translate sentence'
+              }
               aria-pressed={open}
-              onClick={() => void toggleSentence(si, sentence)}
+              onClick={() => {
+                if (open) setOpenIdx(null);
+                else void runAt(si, sentence, lens, 0);
+              }}
               className="ml-0.5 align-super font-mono text-2xs text-teal hover:underline"
             >
-              {open ? '×' : 'ru'}
+              {open ? '×' : lens === 'simplify' ? 'en↓' : 'ru'}
             </button>{' '}
-            {open && (
-              <span className="text-base text-muted">
-                {loadingIdx === si
-                  ? `(${lang === 'ru' ? 'перевод…' : 'translating…'})`
-                  : trs[`${translateMode}:${si}`]
-                    ? `(${trs[`${translateMode}:${si}`]}) `
-                    : `(${lang === 'ru' ? 'перевод недоступен' : 'translation unavailable'}) `}
-              </span>
-            )}
+            {open && renderOut(si, sentence)}
           </span>
         );
       })}
@@ -489,13 +581,24 @@ export function ReadingText({
   const setRate = useReaderSettings((s) => s.setRate);
   const aiTranslation = useReaderSettings((s) => s.aiTranslation);
   const toggleAiTranslation = useReaderSettings((s) => s.toggleAiTranslation);
+  const lens = useReaderSettings((s) => s.lens);
+  const setLens = useReaderSettings((s) => s.setLens);
   const aiConfig = useAiStore((s) => s.config);
   const aiConfigured = isConfigured(aiConfig);
-  // Stable translate callback (reads the live mode+config via a ref) so the memoized Paragraph gets a
-  // constant `onTranslate` and only re-renders when the primitive `translateMode` prop changes.
+  // Simplify needs a BYOK key; with AI off, fall back to the translate lens so the button always works.
+  const effLens: LensMode = lens === 'simplify' && aiConfigured ? 'simplify' : 'translate';
+  // Stable lens callback (reads live mode/config/level via a ref) so the memoized Paragraph gets a constant
+  // `onLens` and only re-renders when the primitive `lensK` changes. `translateArgs` still serves the phrase
+  // path below.
   const translateArgs = useRef({ ai: aiTranslation, config: aiConfig });
   translateArgs.current = { ai: aiTranslation, config: aiConfig };
-  const onTranslate = useCallback((text: string) => translateReaderText(text, translateArgs.current), []);
+  const lensArgs = useRef<LensArgs>({ ai: aiTranslation, config: aiConfig, level });
+  lensArgs.current = { ai: aiTranslation, config: aiConfig, level };
+  const onLens = useCallback(
+    (mode: LensMode, text: string, stepDown?: number) => runLens(mode, text, lensArgs.current, stepDown),
+    []
+  );
+  const lensK = lensKey(effLens, { ai: aiTranslation, config: aiConfig, level });
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>(() => listEnglishVoices());
   useEffect(() => {
     const sync = () => setVoices(listEnglishVoices());
@@ -896,7 +999,35 @@ export function ReadingText({
               ? 'перевод: бесплатный'
               : 'translate: free'}
         </button>
+        <button
+          type="button"
+          onClick={() => setLens(lens === 'simplify' ? 'translate' : 'simplify')}
+          disabled={!aiConfigured}
+          aria-pressed={effLens === 'simplify'}
+          title={
+            aiConfigured
+              ? ru
+                ? 'Линза по тапу на предложение: перевод на русский или упрощение на английском под ваш уровень (текст уходит вашему AI-провайдеру)'
+                : 'Per-sentence lens: translate to Russian, or simplify in English at your level (text is sent to your AI provider)'
+              : ru
+                ? 'Упрощение требует ИИ — включите его в настройках'
+                : 'Simplify needs AI — enable it in settings'
+          }
+          className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline disabled:text-faint disabled:no-underline"
+        >
+          {effLens === 'simplify' ? (ru ? 'линза: упрощение' : 'lens: simplify') : ru ? 'линза: перевод' : 'lens: translate'}
+        </button>
         </div>
+        {!aiConfigured && (
+          <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 font-mono text-2xs text-muted">
+            <span>
+              {ru
+                ? 'AI-перевод и упрощение предложений требуют ключ ИИ (перевод слов и озвучка работают и без него).'
+                : 'AI translation and sentence simplification need an AI key (word lookup and read-aloud work without one).'}
+            </span>
+            <AiUpsellLink />
+          </p>
+        )}
       </details>
       {pickAnchor && (
         <div className="sticky top-2 z-10 mb-2 flex items-center gap-3 rounded-sm border border-violet-dim bg-violet-dim/15 px-3 py-2 text-sm">
@@ -978,8 +1109,10 @@ export function ReadingText({
               }
               onRead={onRead}
               onReadSentence={onReadSentence}
-              translateMode={aiTranslation ? 'ai' : 'free'}
-              onTranslate={onTranslate}
+              lens={effLens}
+              lensK={lensK}
+              level={level}
+              onLens={onLens}
               bookmarked={bookmarkedParas?.has(i) ?? false}
               onToggleBookmark={onToggleBookmark ? onToggleBm : undefined}
               typoClass={typoClass}

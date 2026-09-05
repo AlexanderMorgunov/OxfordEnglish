@@ -106,15 +106,40 @@ export const PROVIDERS: Record<AiProviderId, Preset> = {
   },
 };
 
-export type ChatMessage = { role: 'system' | 'user'; content: string };
+export type ChatMessage = { role: 'system' | 'user' | 'assistant'; content: string };
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-/** One OpenAI-compatible chat call with exponential backoff on 429/5xx. */
+/** Provider-specific body params that turn OFF a model's chain-of-thought. Our reader micro-tasks (a
+ *  one-sentence rewrite/translate) never want reasoning: it's slow and bills thousands of tokens per tap
+ *  (`deepseek-v4-flash` reasons by default — the ~1¢/sentence, 48k-token bug). Sent ONLY for providers
+ *  known to accept it — an unknown field 400s elsewhere (DeepSeek itself rejects `reasoning_effort:none`). */
+function reasoningOffParams(provider: AiProviderId): Record<string, unknown> {
+  switch (provider) {
+    case 'deepseek':
+      return { thinking: { type: 'disabled' } }; // rejects reasoning_effort:none
+    case 'groq':
+      return { reasoning_effort: 'low' }; // gpt-oss on Groq can't turn reasoning OFF (rejects 'none'); 'low' = min
+    case 'cerebras':
+      return { reasoning_effort: 'low' }; // cerebras gpt-oss: 'low' | 'medium' | 'high' (no 'none'), like Groq
+    case 'gemini':
+      return { reasoning_effort: 'none' }; // Gemini 2.5 OpenAI-compat: 'none' disables thinking
+    case 'openrouter':
+      return { reasoning: { enabled: false } };
+    // deepseek/gemini verified live; groq verified live; cerebras/openrouter by-docs (not yet live-tested —
+    // their default models are gpt-oss reasoning models, so leaving this off shows the empty-output symptom).
+    default:
+      return {};
+  }
+}
+
+/** One OpenAI-compatible chat call with exponential backoff on 429/5xx. `maxTokens` HARD-caps the
+ *  completion; `noReasoning` disables the model's chain-of-thought where the provider supports it. Always
+ *  set both for short outputs, or a reasoning model runs to its default ceiling (thousands of tokens). */
 export async function complete(
   config: AiConfig,
   messages: ChatMessage[],
-  opts: { temperature?: number; signal?: AbortSignal } = {}
+  opts: { temperature?: number; maxTokens?: number; noReasoning?: boolean; signal?: AbortSignal } = {}
 ): Promise<string> {
   const baseUrl = (config.baseUrl || PROVIDERS[config.provider].baseUrl).replace(/\/$/, '');
   if (!baseUrl) throw new Error('No base URL configured for the AI provider.');
@@ -130,6 +155,8 @@ export async function complete(
         model: config.model,
         messages,
         temperature: opts.temperature ?? 0.4,
+        ...(opts.maxTokens ? { max_tokens: opts.maxTokens } : {}),
+        ...(opts.noReasoning ? reasoningOffParams(config.provider) : {}),
       }),
       signal: opts.signal,
     });

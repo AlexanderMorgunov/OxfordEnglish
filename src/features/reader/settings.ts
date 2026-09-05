@@ -15,6 +15,8 @@ type Persisted = {
   rate: number;
   /** Translate reader sentences/phrases with the BYOK AI instead of the free (MyMemory) service. */
   aiTranslation: boolean;
+  /** Per-sentence lens: EN→RU translate, or an AI same-language simplification at the learner's level. */
+  lens: 'translate' | 'simplify';
 };
 
 const DEFAULTS: Persisted = {
@@ -24,6 +26,7 @@ const DEFAULTS: Persisted = {
   voiceURI: null,
   rate: 1,
   aiTranslation: false,
+  lens: 'translate',
 };
 
 const clampStep = (n: number, max: number) => Math.max(0, Math.min(n, max));
@@ -49,6 +52,7 @@ type ReaderSettings = Persisted & {
   setVoiceURI: (uri: string | null) => void;
   setRate: (n: number) => void;
   toggleAiTranslation: () => void;
+  setLens: (lens: 'translate' | 'simplify') => void;
 };
 
 export const useReaderSettings = create<ReaderSettings>((set, get) => {
@@ -65,6 +69,7 @@ export const useReaderSettings = create<ReaderSettings>((set, get) => {
       voiceURI: get().voiceURI,
       rate: get().rate,
       aiTranslation: get().aiTranslation,
+      lens: get().lens,
       ...patch,
     };
     try {
@@ -85,5 +90,6 @@ export const useReaderSettings = create<ReaderSettings>((set, get) => {
     },
     setRate: (n) => persist({ rate: clampRate(n) }),
     toggleAiTranslation: () => persist({ aiTranslation: !get().aiTranslation }),
+    setLens: (lens) => persist({ lens }),
   };
 });
