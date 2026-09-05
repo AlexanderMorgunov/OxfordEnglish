@@ -15,6 +15,8 @@ import {
   type LexiconFilter,
   type LexiconSort,
 } from '@/features/vocab/lexicon';
+import { loadLemma, baseForm, type LemmaData } from '@/features/vocab/lemma';
+import { ContextSentence } from '@/features/vocab/ContextSentence';
 
 const FILTERS: { id: LexiconFilter; ru: string; en: string }[] = [
   { id: 'all', ru: 'все', en: 'all' },
@@ -60,6 +62,11 @@ export function VocabularyPage() {
   const [newCtx, setNewCtx] = useState('');
   const [editKey, setEditKey] = useState<string | null>(null);
   const [draft, setDraft] = useState('');
+  // Lazy lemma data (base forms + inflection matching); empty until loaded, so rows render immediately.
+  const [lemma, setLemma] = useState<LemmaData>({ byForm: new Map(), lemmas: new Set() });
+  useEffect(() => {
+    void loadLemma().then(setLemma);
+  }, []);
 
   const reload = useCallback(async () => {
     try {
@@ -256,7 +263,9 @@ export function VocabularyPage() {
           </p>
 
           <ul className="flex flex-col gap-2" role="group" aria-label={ru ? 'Словарь' : 'Vocabulary list'}>
-            {view.slice(0, limit).map((e) => (
+            {view.slice(0, limit).map((e) => {
+              const base = e.kind === 'word' ? baseForm(e.display, lemma) : null;
+              return (
               <li key={e.key} className="rounded-md border border-line bg-surface px-4 py-3">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                   <span className="flex items-baseline gap-2">
@@ -289,6 +298,11 @@ export function VocabularyPage() {
                     {e.kind === 'phrase' && (
                       <span className="font-mono text-2xs uppercase tracking-[0.06em] text-violet">
                         {ru ? 'фраза' : 'phrase'}
+                      </span>
+                    )}
+                    {base && (
+                      <span className="font-mono text-2xs text-muted">
+                        {ru ? 'база' : 'base'}: <span className="text-content">{base}</span>
                       </span>
                     )}
                   </span>
@@ -360,7 +374,13 @@ export function VocabularyPage() {
                 )}
 
                 {e.context && (
-                  <p className="mt-1.5 border-l-2 border-line pl-2 text-sm text-muted text-pretty">{e.context}</p>
+                  <ContextSentence
+                    text={e.context}
+                    term={e.display}
+                    isPhrase={e.kind === 'phrase'}
+                    data={lemma}
+                    className="mt-1.5 border-l-2 border-line pl-2 text-sm text-muted text-pretty"
+                  />
                 )}
 
                 <div className="mt-2 flex flex-wrap items-center gap-1.5">
@@ -386,7 +406,8 @@ export function VocabularyPage() {
                   )}
                 </div>
               </li>
-            ))}
+              );
+            })}
           </ul>
 
           {view.length > limit && (

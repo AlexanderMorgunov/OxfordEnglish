@@ -75,7 +75,9 @@ export async function buildSnapshot(opts: { includeHistory?: boolean } = {}): Pr
       includeHistory ? db.checkpoints.toArray() : Promise.resolve([]),
       db.wordStatus.toArray(),
       db.srsCards.toArray(),
-      db.translations.toArray(),
+      // Exclude the reader lens caches (simplify/grammar) — book-derived, unbounded, regenerable; they must
+      // not bloat this size-bounded transport. Only real word/phrase translations travel.
+      db.translations.filter((t) => !t.source.startsWith('lens-')).toArray(),
       db.bookmarks.toArray(),
       db.feedbackOutbox.toArray(),
       db.books.count(),

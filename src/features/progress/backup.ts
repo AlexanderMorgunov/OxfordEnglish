@@ -7,7 +7,8 @@ export async function exportData(): Promise<string> {
       db.wordStatus.toArray(),
       db.srsCards.toArray(),
       db.checkpoints.toArray(),
-      db.translations.toArray(),
+      // Exclude reader lens caches (simplify/grammar): book-derived, regenerable, and can be large.
+      db.translations.filter((t) => !t.source.startsWith('lens-')).toArray(),
       db.catalogCache.toArray(),
       db.bookmarks.toArray(),
     ]);

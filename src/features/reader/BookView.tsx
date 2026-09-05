@@ -5,6 +5,7 @@ import type { ParsedBook } from './parse';
 import { paginateChapters } from './paginate';
 import { ReadingText } from './reading-text';
 import { ChapterStudy } from './ChapterStudy';
+import { BookQuestion } from './BookQuestion';
 import {
   listBookmarks,
   toggleBookmark,
@@ -244,6 +245,7 @@ export function BookView({
         bookmarkedParas={bookmarkedParas}
         onToggleBookmark={(p) => void toggleParaBookmark(p)}
       />
+      <BookQuestion pageText={ch.text} />
       <ChapterStudy text={ch.text} idPrefix={`${idPrefix}.${chapter}`} />
       {nav && <div className="mt-8 border-t border-line pt-5">{nav}</div>}
     </>

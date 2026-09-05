@@ -1,15 +1,15 @@
 import type { AiConfig } from '@/features/ai/provider';
 import type { Level } from '@/content/schema';
-import { aiSimplify } from '@/features/ai/functions';
+import { aiSimplify, aiGrammar } from '@/features/ai/functions';
 import { clampBand } from '@/features/ai/simplify-prompts';
 import { translateReaderText } from './translate';
 
 /**
- * A per-sentence reader "lens": one AI-or-service call on a sentence, rendered inline. Translate (EN→RU)
- * and Simplify (same-language rewrite at the learner's CEFR band) are the two modes today; a grammar
- * explainer is the natural third and slots in here with a new mode + system prompt, no new reader plumbing.
+ * A per-sentence reader "lens": one AI-or-service call on a sentence, rendered inline. Translate (EN→RU),
+ * Simplify (same-language rewrite at the learner's CEFR band), and Grammar (RU explanation of the one
+ * salient structure). Adding a mode is a new prompt + a `runLens` branch — no new reader plumbing.
  */
-export type LensMode = 'translate' | 'simplify';
+export type LensMode = 'translate' | 'simplify' | 'grammar';
 
 export type LensArgs = {
   /** Translate sub-mode: BYOK AI vs the free MyMemory service. */
@@ -25,7 +25,8 @@ export type LensArgs = {
  * not part of it (it's per-tap, not a global switch).
  */
 export function lensKey(lens: LensMode, a: LensArgs): string {
-  return lens === 'translate' ? `translate:${a.ai ? 'ai' : 'free'}` : `simplify:${clampBand(a.level, 0)}`;
+  if (lens === 'translate') return `translate:${a.ai ? 'ai' : 'free'}`;
+  return `${lens}:${clampBand(a.level, 0)}`; // simplify / grammar both carry the band/level dimension
 }
 
 /**
@@ -36,7 +37,9 @@ export async function runLens(mode: LensMode, text: string, a: LensArgs, stepDow
   if (mode === 'translate') return translateReaderText(text, { ai: a.ai, config: a.config });
   if (!a.config) return null;
   try {
-    return await aiSimplify(a.config, text, { level: a.level, stepDown });
+    return mode === 'grammar'
+      ? await aiGrammar(a.config, text, { level: a.level })
+      : await aiSimplify(a.config, text, { level: a.level, stepDown });
   } catch {
     return null;
   }
