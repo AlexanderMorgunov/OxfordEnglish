@@ -181,6 +181,43 @@ export async function aiGrammar(
   return out;
 }
 
+/**
+ * Reader "ask about this page" Q&A. Page-scoped: the current page text is stuffed as the CONSTANT prefix
+ * (system) so a provider prefix-cache hits across questions on the same page; the varying question goes last
+ * (user). Grounded — answer only from the text, an explicit "not in the text" fallback, and an optional
+ * verbatim quote that we validate is a real substring before the caller offers "show in text". Not cached
+ * (questions vary); the page prefix carries the cost win. Reasoning off + a room-y cap (answer + quote).
+ */
+export async function aiBookQuestion(
+  config: AiConfig,
+  opts: { pageText: string; question: string; signal?: AbortSignal }
+): Promise<{ answer: string; quote?: string }> {
+  const q = opts.question.trim();
+  if (!q) return { answer: '' };
+  const system =
+    'Ты отвечаешь на вопрос ученика по фрагменту книги, который он сейчас читает. Отвечай КРАТКО и по-русски, ' +
+    'ТОЛЬКО на основе приведённого ниже текста — не додумывай и не используй знания извне. Если ответа в тексте ' +
+    'нет, честно скажи: «В этом фрагменте об этом не сказано.» Если в тексте есть предложение, прямо подтверждающее ' +
+    'ответ, добавь его ПОСЛЕДНЕЙ строкой в формате: ЦИТАТА: <точное предложение из текста>.\n\nТекст:\n"""\n' +
+    opts.pageText +
+    '\n"""';
+  const raw = await complete(
+    config,
+    [
+      { role: 'system', content: system },
+      { role: 'user', content: q },
+    ],
+    { temperature: 0.3, maxTokens: 600, noReasoning: true, signal: opts.signal }
+  );
+  const m = raw.match(/ЦИТАТА:\s*([^\n]+)\s*$/);
+  const answer = cleanRewrite(raw.replace(/ЦИТАТА:[^\n]*$/, '').trim());
+  // Keep the quote only if it's a real substring of the page (LLMs fabricate citations).
+  const norm = (s: string) => s.toLowerCase().replace(/\s+/g, ' ').trim();
+  const candidate = m?.[1]?.trim().replace(/^["'«»“”]+|["'«»“”]+$/g, '');
+  const quote = candidate && norm(opts.pageText).includes(norm(candidate)) ? candidate : undefined;
+  return { answer, quote };
+}
+
 function cacheGet(key: string): string | undefined {
   try {
     return localStorage.getItem(`ai:${key}`) ?? undefined;
