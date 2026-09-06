@@ -343,10 +343,16 @@ const Paragraph = memo(function Paragraph({
     setLoading(null);
     setMenuIdx(null);
   }, [lensK]);
-  // Close an open menu on any outside click (listener only while a menu is open).
+  // Close an open menu on an outside click. Ignore the trigger and the menu itself: React 19 flushes
+  // the listener-adding effect synchronously, so the very click that opened the menu would otherwise
+  // bubble to document and close it again (menu opened-then-closed in one gesture).
   useEffect(() => {
     if (menuIdx === null) return;
-    const close = () => setMenuIdx(null);
+    const close = (e: MouseEvent) => {
+      const t = e.target as HTMLElement | null;
+      if (t?.closest('[role="menu"]') || t?.closest('[data-lens-trigger]')) return;
+      setMenuIdx(null);
+    };
     document.addEventListener('click', close);
     return () => document.removeEventListener('click', close);
   }, [menuIdx]);
@@ -523,6 +529,7 @@ const Paragraph = memo(function Paragraph({
             <span className="relative mx-1.5 inline-flex align-middle">
               <button
                 type="button"
+                data-lens-trigger
                 aria-haspopup="menu"
                 aria-expanded={menuIdx === si}
                 aria-label={open ? (lang === 'ru' ? 'Свернуть' : 'Close') : lang === 'ru' ? 'линза по предложению' : 'sentence lens'}
