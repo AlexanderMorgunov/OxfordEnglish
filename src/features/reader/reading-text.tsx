@@ -520,7 +520,7 @@ const Paragraph = memo(function Paragraph({
                 {toks.slice(firstWordAt + 1).map((tok, j) => renderTok(tok, firstWordAt + 1 + j))}
               </>
             )}
-            <span className="relative ml-0.5 inline-block align-super">
+            <span className="relative mx-1.5 inline-flex align-middle">
               <button
                 type="button"
                 aria-haspopup="menu"
@@ -532,7 +532,7 @@ const Paragraph = memo(function Paragraph({
                     setMenuIdx(null);
                   } else setMenuIdx(menuIdx === si ? null : si);
                 }}
-                className="font-mono text-2xs text-teal hover:underline"
+                className="inline-flex h-7 min-w-[1.9rem] items-center justify-center rounded-md border border-line bg-surface-2/50 px-1.5 font-mono text-sm leading-none text-teal transition-colors hover:bg-surface-2 active:bg-surface-2"
               >
                 {open ? '×' : '⋯'}
               </button>
