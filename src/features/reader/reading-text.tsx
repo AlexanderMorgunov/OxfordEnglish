@@ -22,7 +22,7 @@ import { useUiLang } from '@/features/i18n/uiLang';
 import { useLearner } from '@/features/learner/store';
 import { classifyWord, estimateCoverage, loadFreq, rankThresholdFor, type FreqIndex, type WordMark } from './difficulty';
 import { useReaderSettings, FONT_CLASSES, LEADING_CLASSES } from './settings';
-import { runLens, lensKey, type LensArgs, type LensMode } from './lens';
+import { runLens, type LensArgs, type LensMode } from './lens';
 import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
 import { clampBand } from '@/features/ai/simplify-prompts';
 import { track } from '@/features/analytics/analytics';
@@ -286,7 +286,7 @@ const Paragraph = memo(function Paragraph({
   activeSentence,
   onRead,
   onReadSentence,
-  lens,
+  aiReady,
   lensK,
   level,
   onLens,
@@ -308,13 +308,13 @@ const Paragraph = memo(function Paragraph({
   onRead: (index: number) => void;
   /** Play a single sentence (paraIndex, sentenceIndex, text). */
   onReadSentence: (index: number, sentenceIndex: number, sentence: string) => void;
-  /** Active lens — the per-sentence button runs this ('translate' | 'simplify'). */
-  lens: LensMode;
-  /** PRIMITIVE key of the active lens config (mode + translate sub-mode + simplify band); a change
-   *  re-renders this memoized paragraph and clears its result cells so none go stale. */
+  /** AI available (BYOK key set) — gates the simplify/grammar items in the per-sentence lens menu. */
+  aiReady: boolean;
+  /** PRIMITIVE key of the lens config (translate sub-mode + band); a change re-renders this memoized
+   *  paragraph and clears its result cells so none go stale. The lens MODE is now chosen per sentence. */
   lensK: string;
   level: Level | null;
-  /** Run a lens on a sentence (translate / simplify / step-down simplify); null = unavailable. */
+  /** Run a lens on a sentence (translate / simplify / grammar / step-down simplify); null = unavailable. */
   onLens: (mode: LensMode, text: string, stepDown?: number) => Promise<string | null>;
   /** Book reader only: this paragraph is bookmarked, and a per-paragraph bookmark toggle. */
   bookmarked?: boolean;
@@ -332,13 +332,23 @@ const Paragraph = memo(function Paragraph({
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [out, setOut] = useState<Record<number, LensCell>>({});
   const [loading, setLoading] = useState<{ idx: number; mode: LensMode } | null>(null);
-  // Switching lens / sub-mode / band invalidates every shown cell (a translate result must never linger
-  // when the reader flips to simplify), replacing the old `${mode}:${idx}` cache keying.
+  // Which sentence's lens menu is open (translate / simplify / grammar), or null.
+  const [menuIdx, setMenuIdx] = useState<number | null>(null);
+  // Changing the translate sub-mode / band invalidates shown cells (a free translation must not linger
+  // after switching to AI). The lens MODE is per-sentence now, so it's not part of the key.
   useEffect(() => {
     setOut({});
     setOpenIdx(null);
     setLoading(null);
+    setMenuIdx(null);
   }, [lensK]);
+  // Close an open menu on any outside click (listener only while a menu is open).
+  useEffect(() => {
+    if (menuIdx === null) return;
+    const close = () => setMenuIdx(null);
+    document.addEventListener('click', close);
+    return () => document.removeEventListener('click', close);
+  }, [menuIdx]);
 
   const runAt = async (si: number, sentence: string, mode: LensMode, stepDown = 0) => {
     setOpenIdx(si); // one open at a time — keeps the reading unit small
@@ -532,34 +542,52 @@ const Paragraph = memo(function Paragraph({
                 {toks.slice(firstWordAt + 1).map((tok, j) => renderTok(tok, firstWordAt + 1 + j))}
               </>
             )}
-            <button
-              type="button"
-              aria-label={
-                open
-                  ? lang === 'ru'
-                    ? 'Свернуть'
-                    : 'Close'
-                  : lens === 'grammar'
-                    ? lang === 'ru'
-                      ? 'грамматика предложения'
-                      : 'sentence grammar'
-                    : lens === 'simplify'
-                      ? lang === 'ru'
-                        ? 'упростить предложение'
-                        : 'simplify sentence'
-                      : lang === 'ru'
-                        ? 'перевод предложения'
-                        : 'translate sentence'
-              }
-              aria-pressed={open}
-              onClick={() => {
-                if (open) setOpenIdx(null);
-                else void runAt(si, sentence, lens, 0);
-              }}
-              className="ml-0.5 align-super font-mono text-2xs text-teal hover:underline"
-            >
-              {open ? '×' : lens === 'grammar' ? 'гр' : lens === 'simplify' ? 'en↓' : 'ru'}
-            </button>{' '}
+            <span className="relative ml-0.5 inline-block align-super">
+              <button
+                type="button"
+                aria-haspopup="menu"
+                aria-expanded={menuIdx === si}
+                aria-label={open ? (lang === 'ru' ? 'Свернуть' : 'Close') : lang === 'ru' ? 'линза по предложению' : 'sentence lens'}
+                onClick={() => {
+                  if (open) {
+                    setOpenIdx(null);
+                    setMenuIdx(null);
+                  } else setMenuIdx(menuIdx === si ? null : si);
+                }}
+                className="font-mono text-2xs text-teal hover:underline"
+              >
+                {open ? '×' : '⋯'}
+              </button>
+              {menuIdx === si && !open && (
+                <span
+                  role="menu"
+                  className="absolute left-0 top-full z-10 mt-1 flex min-w-[8rem] flex-col rounded-sm border border-line bg-surface py-1 shadow-md"
+                >
+                  {(
+                    [
+                      ['translate', lang === 'ru' ? 'перевод' : 'translate', 'ru', false],
+                      ['simplify', lang === 'ru' ? 'проще' : 'simplify', 'en↓', true],
+                      ['grammar', lang === 'ru' ? 'грамматика' : 'grammar', 'гр', true],
+                    ] as const
+                  ).map(([m, label, mark, needsAi]) => (
+                    <button
+                      key={m}
+                      type="button"
+                      role="menuitem"
+                      disabled={needsAi && !aiReady}
+                      onClick={() => {
+                        setMenuIdx(null);
+                        void runAt(si, sentence, m, 0);
+                      }}
+                      className="flex items-center gap-2 px-2.5 py-1 font-mono text-2xs text-muted hover:bg-surface-2 hover:text-content disabled:text-faint disabled:hover:bg-transparent"
+                    >
+                      <span className="w-6 text-teal">{mark}</span>
+                      {label}
+                    </button>
+                  ))}
+                </span>
+              )}
+            </span>{' '}
             {open && renderOut(si, sentence)}
           </span>
         );
@@ -597,12 +625,8 @@ export function ReadingText({
   const setRate = useReaderSettings((s) => s.setRate);
   const aiTranslation = useReaderSettings((s) => s.aiTranslation);
   const toggleAiTranslation = useReaderSettings((s) => s.toggleAiTranslation);
-  const lens = useReaderSettings((s) => s.lens);
-  const setLens = useReaderSettings((s) => s.setLens);
   const aiConfig = useAiStore((s) => s.config);
   const aiConfigured = isConfigured(aiConfig);
-  // Simplify needs a BYOK key; with AI off, fall back to the translate lens so the button always works.
-  const effLens: LensMode = (lens === 'simplify' || lens === 'grammar') && aiConfigured ? lens : 'translate';
   // Stable lens callback (reads live mode/config/level via a ref) so the memoized Paragraph gets a constant
   // `onLens` and only re-renders when the primitive `lensK` changes. `translateArgs` still serves the phrase
   // path below.
@@ -614,7 +638,9 @@ export function ReadingText({
     (mode: LensMode, text: string, stepDown?: number) => runLens(mode, text, lensArgs.current, stepDown),
     []
   );
-  const lensK = lensKey(effLens, { ai: aiTranslation, config: aiConfig, level });
+  // Re-render + clear cells only when the translate sub-mode or the band changes; the lens mode is
+  // now chosen per sentence via the menu.
+  const lensK = `${aiTranslation ? 'ai' : 'free'}:${clampBand(level, 0)}`;
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>(() => listEnglishVoices());
   useEffect(() => {
     const sync = () => setVoices(listEnglishVoices());
@@ -1015,39 +1041,6 @@ export function ReadingText({
               ? 'перевод: бесплатный'
               : 'translate: free'}
         </button>
-        <div className="inline-flex items-center gap-1" role="group" aria-label={ru ? 'Линза по предложению' : 'Per-sentence lens'}>
-          <span className="mr-0.5 font-mono text-2xs uppercase tracking-[0.08em] text-muted">{ru ? 'линза' : 'lens'}</span>
-          {(
-            [
-              ['translate', ru ? 'перевод' : 'translate', false],
-              ['simplify', ru ? 'проще' : 'simplify', true],
-              ['grammar', ru ? 'грамм' : 'grammar', true],
-            ] as const
-          ).map(([m, label, needsAi]) => (
-            <button
-              key={m}
-              type="button"
-              onClick={() => setLens(m)}
-              disabled={needsAi && !aiConfigured}
-              aria-pressed={effLens === m}
-              title={
-                needsAi && !aiConfigured
-                  ? ru
-                    ? 'Требует ИИ — включите его в настройках'
-                    : 'Needs AI — enable it in settings'
-                  : ru
-                    ? 'Текст предложения уходит вашему AI-провайдеру'
-                    : 'The sentence text is sent to your AI provider'
-              }
-              className={cn(
-                'rounded-sm px-1.5 py-0.5 font-mono text-2xs uppercase tracking-[0.06em] transition-colors disabled:text-faint',
-                effLens === m ? 'bg-surface-2 text-teal' : 'text-muted hover:text-content'
-              )}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
         </div>
         {!aiConfigured && (
           <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 font-mono text-2xs text-muted">
@@ -1140,7 +1133,7 @@ export function ReadingText({
               }
               onRead={onRead}
               onReadSentence={onReadSentence}
-              lens={effLens}
+              aiReady={aiConfigured}
               lensK={lensK}
               level={level}
               onLens={onLens}
