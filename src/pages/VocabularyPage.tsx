@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { db } from '@/db/db';
 import { Button, Eyebrow, Input, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
@@ -45,6 +45,10 @@ function Stat({ n, label }: { n: number; label: string }) {
 export function VocabularyPage() {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const updateStatus = useVocabStore((s) => s.updateStatus);
+  const navigate = useNavigate();
+  // Arrived from the reader's widget → offer a back-to-reader that pops history (restores scroll +
+  // chapter). Only shown then, since /vocabulary is also reachable from the header nav.
+  const fromReader = useSearchParams()[0].get('from') === 'reader';
 
   const [entries, setEntries] = useState<LexiconEntry[] | null>(null);
   const [stats, setStats] = useState({ marked: 0, cards: 0, due: 0 });
@@ -142,6 +146,15 @@ export function VocabularyPage() {
 
   return (
     <section aria-label={ru ? 'Словарь' : 'Vocabulary'}>
+      {fromReader && (
+        <button
+          type="button"
+          onClick={() => navigate(-1)}
+          className="mb-3.5 font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
+        >
+          ← {ru ? 'назад к чтению' : 'back to reading'}
+        </button>
+      )}
       <Eyebrow className="mb-3.5">lexicon</Eyebrow>
       <div className="mb-6 flex items-center gap-3">
         <PixelImage src="/assets/pixel/nav/vocab.png" alt="" className="h-7 w-7 shrink-0" />

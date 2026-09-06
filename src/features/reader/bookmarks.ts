@@ -57,26 +57,54 @@ export function resolveParagraphIndex(
   return clamp(paragraph);
 }
 
+/** Resolve a bookmark's sentence within its paragraph: prefer the stored index if its snippet still
+ *  matches (short repeats like "Yes." stay put), else the sentence that begins with the snippet, else
+ *  clamp. Null when the bookmark has no stored sentence (legacy paragraph-level). */
+export function resolveSentenceIndex(
+  sentences: string[],
+  sentence: number | undefined,
+  snippet: string
+): number | null {
+  if (sentence == null || sentences.length === 0) return null;
+  const clamp = (n: number) => Math.max(0, Math.min(n, sentences.length - 1));
+  const key = snippet.replace(/…$/, '').slice(0, 24);
+  if (key) {
+    if (sentences[sentence]?.replace(/\s+/g, ' ').trim().startsWith(key)) return clamp(sentence);
+    const i = sentences.findIndex((s) => s.replace(/\s+/g, ' ').trim().startsWith(key));
+    if (i >= 0) return i;
+  }
+  return clamp(sentence);
+}
+
 export async function listBookmarks(bookKey: string): Promise<Bookmark[]> {
   try {
     const rows = await db.bookmarks.where('bookKey').equals(bookKey).toArray();
-    return rows.sort((a, b) => a.page - b.page || a.paragraph - b.paragraph);
+    return rows.sort(
+      (a, b) => a.page - b.page || a.paragraph - b.paragraph || (a.sentence ?? -1) - (b.sentence ?? -1)
+    );
   } catch {
     return [];
   }
 }
 
-export function findBookmark(
+/** The bookmark at an exact spot. Fetches the paragraph's rows via the compound index, then matches
+ *  `sentence` in JS — so two sentence-level bookmarks in one paragraph are distinct (undefined ≠ 0). */
+export async function findBookmark(
   bookKey: string,
   page: number,
-  paragraph: number
+  paragraph: number,
+  sentence?: number
 ): Promise<Bookmark | undefined> {
-  return db.bookmarks.where('[bookKey+page+paragraph]').equals([bookKey, page, paragraph]).first();
+  const rows = await db.bookmarks
+    .where('[bookKey+page+paragraph]')
+    .equals([bookKey, page, paragraph])
+    .toArray();
+  return rows.find((b) => (b.sentence ?? null) === (sentence ?? null));
 }
 
-/** Add unless an identical (bookKey, page, paragraph) bookmark already exists (dedupe). */
+/** Add unless an identical (bookKey, page, paragraph, sentence) bookmark already exists (dedupe). */
 export async function addBookmark(input: NewBookmark): Promise<Bookmark> {
-  const existing = await findBookmark(input.bookKey, input.page, input.paragraph);
+  const existing = await findBookmark(input.bookKey, input.page, input.paragraph, input.sentence);
   if (existing) return existing;
   const bookmark: Bookmark = { ...input, id: crypto.randomUUID(), createdAt: Date.now() };
   await db.bookmarks.add(bookmark);
@@ -89,7 +117,7 @@ export async function removeBookmark(id: string): Promise<void> {
 
 /** Add the bookmark, or remove the existing one at the same spot. Returns whether it was added. */
 export async function toggleBookmark(input: NewBookmark): Promise<{ added: boolean }> {
-  const existing = await findBookmark(input.bookKey, input.page, input.paragraph);
+  const existing = await findBookmark(input.bookKey, input.page, input.paragraph, input.sentence);
   if (existing) {
     await db.bookmarks.delete(existing.id);
     return { added: false };

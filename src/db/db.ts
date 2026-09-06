@@ -76,6 +76,10 @@ export interface Bookmark {
   bookKey: string;
   page: number;
   paragraph: number;
+  /** Sentence index within the paragraph (`toSentences`). Non-indexed (no version bump): the compound
+   *  `[bookKey+page+paragraph]` index still fetches the paragraph's rows; dedupe matches `sentence` in JS.
+   *  Absent on legacy paragraph-level bookmarks. */
+  sentence?: number;
   /** `chapters[page].id` — resolves the page even if pagination shifts later indices. */
   pageId: string;
   scrollY?: number;
