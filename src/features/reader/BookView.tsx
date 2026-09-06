@@ -272,7 +272,12 @@ export function BookView({
       <BookQuestion pageText={ch.text} />
       <ChapterStudy text={ch.text} idPrefix={`${idPrefix}.${chapter}`} />
       {nav && <div className="mt-8 border-t border-line pt-5">{nav}</div>}
-      <ReaderWidget onBookmarkHere={toggleHere} />
+      <ReaderWidget
+        onBookmarkHere={toggleHere}
+        bookmarks={bookmarks}
+        onJump={jumpTo}
+        onDelete={(id) => void deleteBookmark(id)}
+      />
     </>
   );
 }
