@@ -3,15 +3,22 @@ import { Link } from 'react-router-dom';
 import { PixelImage } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import { useUiLang } from '@/features/i18n/uiLang';
+import type { Bookmark } from './bookmarks';
 
-/** Floating quick-access widget for the reader: vocabulary nav + one-tap bookmark of the current
- *  spot. A disclosure (not a menu — two big tap targets), pinned to the bottom-right corner and
- *  dimmed while scrolling so it never fights the prose underneath. */
+/** Floating quick-access widget for the reader: vocabulary nav, one-tap bookmark of the current
+ *  spot, and the bookmark list (jump / delete). A disclosure (not a menu), pinned to the bottom-right
+ *  corner and dimmed while scrolling so it never fights the prose underneath. */
 export function ReaderWidget({
   onBookmarkHere,
+  bookmarks,
+  onJump,
+  onDelete,
 }: {
   /** Bookmark (or un-bookmark) the top-of-screen sentence. Returns whether it was added, for the toast. */
   onBookmarkHere: () => Promise<{ added: boolean }>;
+  bookmarks: Bookmark[];
+  onJump: (bm: Bookmark) => void;
+  onDelete: (id: string) => void;
 }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [open, setOpen] = useState(false);
@@ -94,7 +101,7 @@ export function ReaderWidget({
       {open && (
         <div
           id="reader-widget-panel"
-          className="flex flex-col items-stretch gap-1 rounded-md border border-line bg-surface p-1.5 shadow-lg"
+          className="flex w-64 max-w-[80vw] flex-col items-stretch gap-1 rounded-md border border-line bg-surface p-1.5 shadow-lg"
         >
           <Link
             to="/vocabulary?from=reader"
@@ -112,6 +119,44 @@ export function ReaderWidget({
             <span className="w-4 shrink-0 text-center">🔖</span>
             {ru ? 'заложить это место' : 'bookmark here'}
           </button>
+          {bookmarks.length > 0 && (
+            <div className="mt-1 border-t border-line pt-1">
+              <p className="px-3 py-1 font-mono text-2xs uppercase tracking-[0.08em] text-muted">
+                {ru ? 'закладки' : 'bookmarks'} ({bookmarks.length})
+              </p>
+              <ul
+                className="flex max-h-[45vh] flex-col gap-0.5 overflow-y-auto"
+                aria-label={ru ? 'Закладки' : 'Bookmarks'}
+              >
+                {bookmarks.map((bm) => (
+                  <li key={bm.id} className="flex items-start gap-1">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onJump(bm);
+                        setOpen(false);
+                      }}
+                      className="min-w-0 flex-1 rounded-sm px-3 py-1.5 text-left hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+                    >
+                      <span className="block font-mono text-2xs text-muted">
+                        {ru ? 'стр.' : 'p.'} {bm.page + 1}
+                        {bm.chapterTitle ? ` · ${bm.chapterTitle}` : ''}
+                      </span>
+                      <span className="mt-0.5 line-clamp-2 block text-xs text-content">{bm.snippet}</span>
+                    </button>
+                    <button
+                      type="button"
+                      aria-label={ru ? 'Удалить закладку' : 'Delete bookmark'}
+                      onClick={() => onDelete(bm.id)}
+                      className="shrink-0 rounded-sm px-2 py-1.5 text-muted hover:text-coral focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+                    >
+                      ×
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
       <button
