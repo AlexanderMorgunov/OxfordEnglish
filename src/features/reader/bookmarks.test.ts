@@ -5,6 +5,7 @@ import {
   topVisibleParagraph,
   resolvePageIndex,
   resolveParagraphIndex,
+  resolveSentenceIndex,
   addBookmark,
   toggleBookmark,
   listBookmarks,
@@ -81,6 +82,31 @@ test('toggleBookmark adds then removes at the same spot', async () => {
   const second = await toggleBookmark(spot);
   expect(second.added).toBe(false);
   expect(await findBookmark(key, 0, 3)).toBeUndefined();
+});
+
+test('resolveSentenceIndex self-heals via the snippet; null without a stored sentence', () => {
+  const sents = ['Yes.', 'The rabbit checked its watch.', 'Yes.'];
+  expect(resolveSentenceIndex(sents, 1, 'The rabbit checked')).toBe(1);
+  // index drifted but the snippet still pins the right (non-first) sentence
+  expect(resolveSentenceIndex(sents, 4, 'The rabbit checked')).toBe(1);
+  // short repeat: prefer the stored index, not the first "Yes."
+  expect(resolveSentenceIndex(sents, 2, 'Yes.')).toBe(2);
+  expect(resolveSentenceIndex(sents, undefined, 'x')).toBeNull();
+});
+
+test('bookmarks in the same paragraph are distinct per sentence (no collapse)', async () => {
+  const key = 'reader.sentences';
+  const s0 = { ...base, bookKey: key, sentence: 0, snippet: 'First sentence.' };
+  const s1 = { ...base, bookKey: key, sentence: 1, snippet: 'Second sentence.' };
+  await toggleBookmark(s0);
+  await toggleBookmark(s1);
+  expect((await listBookmarks(key)).length).toBe(2); // the second did not overwrite the first
+  expect(await findBookmark(key, 0, 3, 0)).toBeDefined();
+  expect(await findBookmark(key, 0, 3, 1)).toBeDefined();
+  const removed = await toggleBookmark(s0);
+  expect(removed.added).toBe(false);
+  expect(await findBookmark(key, 0, 3, 0)).toBeUndefined();
+  expect(await findBookmark(key, 0, 3, 1)).toBeDefined(); // sibling sentence untouched
 });
 
 test('listBookmarks returns a book’s bookmarks in reading order', async () => {

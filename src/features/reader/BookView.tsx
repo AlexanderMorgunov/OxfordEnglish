@@ -6,6 +6,8 @@ import { paginateChapters } from './paginate';
 import { ReadingText } from './reading-text';
 import { ChapterStudy } from './ChapterStudy';
 import { BookQuestion } from './BookQuestion';
+import { ReaderWidget } from './ReaderWidget';
+import { toSentences } from './parse/text';
 import {
   listBookmarks,
   toggleBookmark,
@@ -14,6 +16,7 @@ import {
   topVisibleParagraph,
   resolvePageIndex,
   resolveParagraphIndex,
+  resolveSentenceIndex,
   type Bookmark,
 } from './bookmarks';
 
@@ -41,7 +44,9 @@ export function BookView({
   // A jump carries a nonce so a bookmark on the *current* page (no chapter change) still scrolls:
   // an effect keyed on `chapter` would bail out. `jumpingRef` tells the scroll-restore effect to
   // yield so the two don't fight over the scroll position.
-  const [jump, setJump] = useState<{ paragraph: number; nonce: number } | null>(null);
+  const [jump, setJump] = useState<{ paragraph: number; sentence: number | null; nonce: number } | null>(
+    null
+  );
   const jumpingRef = useRef(false);
   const nonceRef = useRef(0);
   const reduceMotion = useMemo(
@@ -71,9 +76,19 @@ export function BookView({
     } catch {
       // ignore
     }
-    const raf = restore ? requestAnimationFrame(() => window.scrollTo(0, saved)) : 0;
+    // Ignore scroll writes until the initial restore has run, and once the reading text has left the
+    // DOM (navigating away): otherwise the window's snap to 0 — RR scrolling the next, shorter page to
+    // top while this listener is still attached — clobbers the saved position with 0.
+    let restored = !restore;
+    const raf = restore
+      ? requestAnimationFrame(() => {
+          window.scrollTo(0, saved);
+          restored = true;
+        })
+      : 0;
     let writeRaf = 0;
     const onScroll = () => {
+      if (!restored || !document.querySelector('[data-para]')) return;
       cancelAnimationFrame(writeRaf);
       writeRaf = requestAnimationFrame(() => {
         try {
@@ -96,9 +111,14 @@ export function BookView({
   useEffect(() => {
     if (!jump) return;
     const raf = requestAnimationFrame(() => {
-      document
-        .querySelector(`[data-para="${jump.paragraph}"]`)
-        ?.scrollIntoView({ block: 'start', behavior: reduceMotion ? 'auto' : 'smooth' });
+      const sent =
+        jump.sentence != null
+          ? document.querySelector(`[data-sent="${jump.paragraph}:${jump.sentence}"]`)
+          : null;
+      (sent ?? document.querySelector(`[data-para="${jump.paragraph}"]`))?.scrollIntoView({
+        block: 'start',
+        behavior: reduceMotion ? 'auto' : 'smooth',
+      });
       jumpingRef.current = false;
     });
     return () => cancelAnimationFrame(raf);
@@ -108,52 +128,59 @@ export function BookView({
   const paragraphs = useMemo(() => splitParas(ch.text), [ch]);
   const multi = chapters.length > 1;
 
-  // Which paragraphs on the current page are bookmarked — drives the per-paragraph marker. Matched
-  // on the stable pageId (like the jump path), so a bookmark still shows if pagination shifted the
-  // raw page index.
-  const bookmarkedParas = useMemo(() => {
-    const s = new Set<number>();
-    for (const bm of bookmarks) if (bm.pageId === ch.id) s.add(bm.paragraph);
+  // Which sentences on the current page are bookmarked (keys `${para}:${sentence}`) — drives the
+  // lens-menu заложить/убрать label. Matched on the stable pageId (like the jump path).
+  const bookmarkedSentences = useMemo(() => {
+    const s = new Set<string>();
+    for (const bm of bookmarks) if (bm.pageId === ch.id && bm.sentence != null) s.add(`${bm.paragraph}:${bm.sentence}`);
     return s;
   }, [bookmarks, ch.id]);
 
-  const toggleParaBookmark = async (p: number) => {
+  // Precise: anchor a bookmark to a specific sentence (from the per-sentence lens menu).
+  const toggleSentenceBookmark = async (p: number, si: number, sentence: string) => {
     await toggleBookmark({
       bookKey: idPrefix,
       page: chapter,
       paragraph: p,
+      sentence: si,
       pageId: ch.id,
-      snippet: snippetOf(paragraphs[p] ?? ''),
+      snippet: snippetOf(sentence),
       chapterTitle: ch.title,
       scrollY: Math.round(window.scrollY),
     });
     reloadBookmarks();
   };
 
+  // Quick: bookmark the current spot — the first sentence of the top-visible paragraph (widget).
   const toggleHere = async () => {
     const rects = Array.from(document.querySelectorAll<HTMLElement>('[data-para]')).map((el) => ({
       index: Number(el.dataset.para),
       top: el.getBoundingClientRect().top,
     }));
     const p = topVisibleParagraph(rects);
-    if (p == null) return;
-    await toggleBookmark({
+    if (p == null) return { added: false };
+    const firstSentence = toSentences(paragraphs[p] ?? '')[0] ?? paragraphs[p] ?? '';
+    const res = await toggleBookmark({
       bookKey: idPrefix,
       page: chapter,
       paragraph: p,
+      sentence: 0,
       pageId: ch.id,
-      snippet: snippetOf(paragraphs[p] ?? ''),
+      snippet: snippetOf(firstSentence),
       chapterTitle: ch.title,
       scrollY: Math.round(window.scrollY),
     });
     reloadBookmarks();
+    return res;
   };
 
   const jumpTo = (bm: Bookmark) => {
     const page = resolvePageIndex(chapters, bm.pageId, bm.page);
-    const para = resolveParagraphIndex(splitParas(chapters[page]!.text), bm.paragraph, bm.snippet);
+    const paras = splitParas(chapters[page]!.text);
+    const para = resolveParagraphIndex(paras, bm.paragraph, bm.snippet);
+    const sentence = resolveSentenceIndex(toSentences(paras[para] ?? ''), bm.sentence, bm.snippet);
     jumpingRef.current = true;
-    setJump({ paragraph: para, nonce: (nonceRef.current += 1) });
+    setJump({ paragraph: para, sentence, nonce: (nonceRef.current += 1) });
     go(page);
     setPanelOpen(false);
   };
@@ -196,21 +223,18 @@ export function BookView({
       {ch.title && <h1 className="mb-6 text-2xl font-bold tracking-tight text-balance">{ch.title}</h1>}
       {nav && <div className="mb-4">{nav}</div>}
 
-      <div className="mb-6 flex flex-wrap items-center gap-2">
-        <Button variant="ghost" size="sm" onClick={() => void toggleHere()}>
-          🔖 {ru ? 'Закладка' : 'Bookmark'}
-        </Button>
-        {bookmarks.length > 0 && (
+      {bookmarks.length > 0 && (
+        <div className="mb-6 flex flex-wrap items-center gap-2">
           <Button
             variant="ghost"
             size="sm"
             aria-expanded={panelOpen}
             onClick={() => setPanelOpen((v) => !v)}
           >
-            {ru ? 'Закладки' : 'Bookmarks'} ({bookmarks.length})
+            🔖 {ru ? 'Закладки' : 'Bookmarks'} ({bookmarks.length})
           </Button>
-        )}
-      </div>
+        </div>
+      )}
 
       {panelOpen && bookmarks.length > 0 && (
         <ul className="mb-6 flex flex-col gap-1.5 rounded-md border border-line bg-surface-2 p-2" aria-label={ru ? 'Закладки' : 'Bookmarks'}>
@@ -242,12 +266,13 @@ export function BookView({
 
       <ReadingText
         paragraphs={paragraphs}
-        bookmarkedParas={bookmarkedParas}
-        onToggleBookmark={(p) => void toggleParaBookmark(p)}
+        bookmarkedSentences={bookmarkedSentences}
+        onBookmarkSentence={(p, si, s) => void toggleSentenceBookmark(p, si, s)}
       />
       <BookQuestion pageText={ch.text} />
       <ChapterStudy text={ch.text} idPrefix={`${idPrefix}.${chapter}`} />
       {nav && <div className="mt-8 border-t border-line pt-5">{nav}</div>}
+      <ReaderWidget onBookmarkHere={toggleHere} />
     </>
   );
 }

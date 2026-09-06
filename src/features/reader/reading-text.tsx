@@ -290,8 +290,8 @@ const Paragraph = memo(function Paragraph({
   lensK,
   level,
   onLens,
-  bookmarked,
-  onToggleBookmark,
+  bookmarkedSents,
+  onBookmark,
   typoClass,
 }: {
   index: number;
@@ -316,9 +316,10 @@ const Paragraph = memo(function Paragraph({
   level: Level | null;
   /** Run a lens on a sentence (translate / simplify / grammar / step-down simplify); null = unavailable. */
   onLens: (mode: LensMode, text: string, stepDown?: number) => Promise<string | null>;
-  /** Book reader only: this paragraph is bookmarked, and a per-paragraph bookmark toggle. */
-  bookmarked?: boolean;
-  onToggleBookmark?: (index: number) => void;
+  /** Book reader only: sentence indices in THIS paragraph that are bookmarked (drives the menu
+   *  item's заложить/убрать label), and a toggle that anchors a bookmark to a sentence. */
+  bookmarkedSents?: Set<number>;
+  onBookmark?: (paraIndex: number, sentenceIndex: number, sentence: string) => void;
   typoClass: string;
 }) {
   const sentences = useMemo(() => toSentences(text), [text]);
@@ -455,29 +456,6 @@ const Paragraph = memo(function Paragraph({
           {active ? '❚❚' : '▶'}
         </button>
       )}
-      {onToggleBookmark && (
-        <button
-          type="button"
-          aria-label={
-            bookmarked
-              ? lang === 'ru'
-                ? 'Убрать закладку с абзаца'
-                : 'Remove bookmark'
-              : lang === 'ru'
-                ? 'Заложить этот абзац'
-                : 'Bookmark this paragraph'
-          }
-          aria-pressed={bookmarked}
-          onClick={() => onToggleBookmark(index)}
-          className={cn(
-            'mr-1.5 rounded-sm px-0.5 align-middle text-sm transition-opacity hover:opacity-100',
-            // 🔖 is an emoji (ignores text color), so signal on/off with opacity + an amber tint.
-            bookmarked ? 'bg-amber-dim/25 opacity-100' : 'opacity-40'
-          )}
-        >
-          🔖
-        </button>
-      )}
       {sentences.map((sentence, si) => {
         const open = openIdx === si;
         const sentencePlaying = activeSentence === si;
@@ -524,7 +502,7 @@ const Paragraph = memo(function Paragraph({
           </button>
         ) : null;
         return (
-          <span key={si}>
+          <span key={si} data-sent={`${index}:${si}`}>
             {firstWordAt < 0 ? (
               // No word token (e.g. "123 — 456!"): nothing to orphan; render button + tokens plainly.
               <>
@@ -542,7 +520,7 @@ const Paragraph = memo(function Paragraph({
                 {toks.slice(firstWordAt + 1).map((tok, j) => renderTok(tok, firstWordAt + 1 + j))}
               </>
             )}
-            <span className="relative ml-0.5 inline-block align-super">
+            <span className="relative mx-1.5 inline-flex align-middle">
               <button
                 type="button"
                 aria-haspopup="menu"
@@ -554,7 +532,7 @@ const Paragraph = memo(function Paragraph({
                     setMenuIdx(null);
                   } else setMenuIdx(menuIdx === si ? null : si);
                 }}
-                className="font-mono text-2xs text-teal hover:underline"
+                className="inline-flex h-7 min-w-[1.9rem] items-center justify-center rounded-md border border-line bg-surface-2/50 px-1.5 font-mono text-sm leading-none text-teal transition-colors hover:bg-surface-2 active:bg-surface-2"
               >
                 {open ? '×' : '⋯'}
               </button>
@@ -585,6 +563,26 @@ const Paragraph = memo(function Paragraph({
                       {label}
                     </button>
                   ))}
+                  {onBookmark && (
+                    <button
+                      type="button"
+                      role="menuitem"
+                      onClick={() => {
+                        setMenuIdx(null);
+                        onBookmark(index, si, sentence);
+                      }}
+                      className="flex items-center gap-2 border-t border-line px-2.5 py-1 font-mono text-2xs text-muted hover:bg-surface-2 hover:text-content"
+                    >
+                      <span className="w-6 text-center">🔖</span>
+                      {bookmarkedSents?.has(si)
+                        ? lang === 'ru'
+                          ? 'убрать'
+                          : 'remove'
+                        : lang === 'ru'
+                          ? 'заложить'
+                          : 'bookmark'}
+                    </button>
+                  )}
                 </span>
               )}
             </span>{' '}
@@ -600,14 +598,15 @@ const Paragraph = memo(function Paragraph({
 export function ReadingText({
   paragraphs,
   glossary,
-  bookmarkedParas,
-  onToggleBookmark,
+  bookmarkedSentences,
+  onBookmarkSentence,
 }: {
   paragraphs: string[];
   glossary?: Map<string, Gloss>;
-  /** Book reader only: paragraph indices bookmarked on this page, and a per-paragraph toggle. */
-  bookmarkedParas?: Set<number>;
-  onToggleBookmark?: (paraIndex: number) => void;
+  /** Book reader only: keys `${para}:${sentence}` bookmarked on this page, and a sentence-level toggle
+   *  (invoked from the per-sentence lens menu's "заложить" item). */
+  bookmarkedSentences?: Set<string>;
+  onBookmarkSentence?: (paraIndex: number, sentenceIndex: number, sentence: string) => void;
 }) {
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
@@ -787,6 +786,20 @@ export function ReadingText({
     void addPhraseCard(phrase, phraseRu ?? phrase, phraseSentence ?? undefined);
   };
 
+  // Per-paragraph bookmarked-sentence sets. Memoized so a non-bookmarked paragraph gets a stable
+  // `undefined` and stays memoized; only paragraphs with a bookmark re-render when the set changes.
+  const bmByPara = useMemo(() => {
+    const m = new Map<number, Set<number>>();
+    if (bookmarkedSentences) {
+      for (const key of bookmarkedSentences) {
+        const [p, s] = key.split(':').map(Number);
+        if (p == null || s == null) continue;
+        (m.get(p) ?? m.set(p, new Set()).get(p)!).add(s);
+      }
+    }
+    return m;
+  }, [bookmarkedSentences]);
+
   const rankThreshold = rankThresholdFor(level);
   const readerCtx = useMemo<ReaderCtx>(
     () => ({ freq, rankThreshold, coloring }),
@@ -891,9 +904,12 @@ export function ReadingText({
   );
 
   // Stable identity so a memoized Paragraph isn't re-rendered by a fresh callback each render.
-  const toggleBookmarkRef = useRef(onToggleBookmark);
-  toggleBookmarkRef.current = onToggleBookmark;
-  const onToggleBm = useCallback((i: number) => toggleBookmarkRef.current?.(i), []);
+  const bookmarkRef = useRef(onBookmarkSentence);
+  bookmarkRef.current = onBookmarkSentence;
+  const onBookmark = useCallback(
+    (p: number, s: number, t: string) => bookmarkRef.current?.(p, s, t),
+    []
+  );
 
   // Leaving the tab/app stops read-aloud and drops the resume position — the browser cancels speech
   // on hide anyway, and without this the React state would stay stuck on "speaking".
@@ -1137,8 +1153,8 @@ export function ReadingText({
               lensK={lensK}
               level={level}
               onLens={onLens}
-              bookmarked={bookmarkedParas?.has(i) ?? false}
-              onToggleBookmark={onToggleBookmark ? onToggleBm : undefined}
+              bookmarkedSents={bmByPara.get(i)}
+              onBookmark={onBookmarkSentence ? onBookmark : undefined}
               typoClass={typoClass}
             />
           ))}

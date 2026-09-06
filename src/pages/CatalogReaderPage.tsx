@@ -7,6 +7,24 @@ import { getCatalogEntry, openCatalogBook, type CatalogEntry } from '@/features/
 import { BookView } from '@/features/reader/BookView';
 import { RelatedShelf } from '@/features/reader/RelatedShelf';
 
+// Catalog books have no DB record, so their last-read chapter lives in localStorage (imported books
+// persist it via `lastChapter`). Keeps a return-from-vocabulary landing on the right chapter.
+const chapterKey = (id: string) => `reader.catalog.${id}.chapter`;
+function readCatalogChapter(id: string): number {
+  try {
+    return Number(localStorage.getItem(chapterKey(id))) || 0;
+  } catch {
+    return 0;
+  }
+}
+function saveCatalogChapter(id: string, i: number) {
+  try {
+    localStorage.setItem(chapterKey(id), String(i));
+  } catch {
+    // best-effort
+  }
+}
+
 export function CatalogReaderPage() {
   const { catalogId } = useParams();
   const ru = useUiLang((s) => s.lang) === 'ru';
@@ -61,7 +79,12 @@ export function CatalogReaderPage() {
         </Link>
       </div>
 
-      <BookView book={book} idPrefix={`reader.catalog.${entry.id}`} />
+      <BookView
+        book={book}
+        idPrefix={`reader.catalog.${entry.id}`}
+        initialChapter={readCatalogChapter(entry.id)}
+        onChapter={(i) => saveCatalogChapter(entry.id, i)}
+      />
 
       <p className="mt-8 border-t border-line pt-5 text-xs leading-relaxed text-muted">
         {ru ? 'Свободная лицензия: ' : 'Free license: '}
