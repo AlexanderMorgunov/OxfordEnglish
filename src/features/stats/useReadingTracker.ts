@@ -120,26 +120,29 @@ export function useReadingTracker({
     const onInput = () => {
       lastInput = Date.now();
     };
-    const onHide = () => {
+    const onVisibility = () => {
       if (document.visibilityState === 'visible') lastPoll = Date.now();
       else stash();
     };
+    // pagehide must stash unconditionally: on a reload/tab close Chrome still reports the document as
+    // visible here, so a visibility check would drop the last seconds. A second stash is a no-op.
+    const onPageHide = () => stash();
 
     const timer = window.setInterval(poll, POLL_MS);
     window.addEventListener('scroll', onInput, { passive: true });
     window.addEventListener('pointerdown', onInput);
     window.addEventListener('keydown', onInput);
     window.addEventListener('touchstart', onInput, { passive: true });
-    document.addEventListener('visibilitychange', onHide);
-    window.addEventListener('pagehide', onHide);
+    document.addEventListener('visibilitychange', onVisibility);
+    window.addEventListener('pagehide', onPageHide);
     return () => {
       window.clearInterval(timer);
       window.removeEventListener('scroll', onInput);
       window.removeEventListener('pointerdown', onInput);
       window.removeEventListener('keydown', onInput);
       window.removeEventListener('touchstart', onInput);
-      document.removeEventListener('visibilitychange', onHide);
-      window.removeEventListener('pagehide', onHide);
+      document.removeEventListener('visibilitychange', onVisibility);
+      window.removeEventListener('pagehide', onPageHide);
       stash();
       setCurrentReading(null);
     };
