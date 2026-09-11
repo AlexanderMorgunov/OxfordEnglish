@@ -21,7 +21,7 @@ import type { AiConfig } from '@/features/ai/provider';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { useLearner } from '@/features/learner/store';
 import { classifyWord, estimateCoverage, loadFreq, rankThresholdFor, type FreqIndex, type WordMark } from './difficulty';
-import { useReaderSettings, FONT_CLASSES, LEADING_CLASSES } from './settings';
+import { useReaderSettings, FONT_CLASSES, LEADING_CLASSES, RATE_STEPS } from './settings';
 import { runLens, type LensArgs, type LensMode } from './lens';
 import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
 import { clampBand } from '@/features/ai/simplify-prompts';
@@ -34,9 +34,6 @@ import { phraseMarkedTokens } from './phrase-marks';
 
 /** Reference line for auditioning a read-aloud voice — natural prose so prosody is audible. */
 const VOICE_SAMPLE = 'The morning light spilled across the quiet room as she opened the book.';
-
-/** Read-aloud playback-speed presets. */
-const RATE_STEPS = [0.75, 1, 1.25, 1.5] as const;
 
 export type Gloss = { ru?: string; ipa?: string };
 
@@ -1077,7 +1074,7 @@ export function ReadingText({
         )}
       </details>
       {pickAnchor && (
-        <div className="sticky top-2 z-10 mb-2 flex items-center gap-3 rounded-sm border border-violet-dim bg-violet-dim/15 px-3 py-2 text-sm">
+        <div className="sticky top-2 z-10 mb-2 flex items-center gap-3 rounded-sm border border-violet-dim bg-surface-2 px-3 py-2 text-sm shadow-md">
           <span className="text-content">
             {ru ? 'Тапните последнее слово фразы' : 'Tap the last word of the phrase'}
           </span>
@@ -1091,7 +1088,7 @@ export function ReadingText({
         </div>
       )}
       {phrase && (
-        <div className="sticky top-2 z-10 flex flex-wrap items-center gap-2 rounded-sm border border-teal-dim bg-surface-2 px-3 py-2 text-sm shadow-md">
+        <div className="sticky top-2 z-10 flex flex-wrap items-center gap-2 rounded-sm border border-teal-dim bg-surface-2 py-2 pl-3 pr-11 text-sm shadow-md">
           <span className="font-mono text-teal">{phrase}</span>
           {canSpeak() && (
             <button
@@ -1125,7 +1122,7 @@ export function ReadingText({
           <button
             type="button"
             aria-label={ru ? 'Закрыть' : 'Dismiss'}
-            className="font-mono text-2xs text-muted hover:text-content"
+            className="absolute right-1 top-1 inline-flex h-8 w-8 items-center justify-center rounded-sm text-xl leading-none text-muted hover:bg-surface hover:text-content focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
             onClick={cancelPick}
           >
             ×

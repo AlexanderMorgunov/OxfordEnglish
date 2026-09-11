@@ -5,6 +5,8 @@ const KEY = 'oxford-reader-settings';
 
 export const FONT_CLASSES = ['text-base', 'text-lg', 'text-xl'] as const;
 export const LEADING_CLASSES = ['leading-relaxed', 'leading-loose'] as const;
+/** Read-aloud playback-speed presets. */
+export const RATE_STEPS = [0.75, 1, 1.25, 1.5] as const;
 
 type Persisted = {
   coloring: boolean;
