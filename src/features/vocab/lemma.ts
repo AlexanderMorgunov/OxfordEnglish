@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { stems } from '@/features/reader/difficulty';
 
 /**
@@ -30,6 +31,21 @@ export function loadLemma(): Promise<LemmaData> {
       .catch(() => EMPTY);
   }
   return dataPromise;
+}
+
+/** The lemma list, empty until loaded (callers render without it first). */
+export function useLemma(): LemmaData {
+  const [data, setData] = useState<LemmaData>(EMPTY);
+  useEffect(() => {
+    let alive = true;
+    void loadLemma().then((d) => {
+      if (alive) setData(d);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
+  return data;
 }
 
 /** The dictionary base form of a surface word, or null when it IS a base or can't be resolved confidently. */

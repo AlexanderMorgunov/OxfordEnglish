@@ -15,9 +15,11 @@ import {
   type LexiconFilter,
   type LexiconSort,
 } from '@/features/vocab/lexicon';
-import { loadLemma, baseForm, type LemmaData } from '@/features/vocab/lemma';
+import { baseForm, useLemma } from '@/features/vocab/lemma';
 import { irregularForms } from '@/features/vocab/irregular';
 import { FormsLine } from '@/features/vocab/FormsLine';
+import { cefrOf, useCefr } from '@/features/vocab/cefr';
+import { CefrChip } from '@/features/vocab/CefrChip';
 import { ContextSentence } from '@/features/vocab/ContextSentence';
 
 const FILTERS: { id: LexiconFilter; ru: string; en: string }[] = [
@@ -33,6 +35,7 @@ const SORTS: { id: LexiconSort; ru: string; en: string }[] = [
   { id: 'recent', ru: 'недавние', en: 'recent' },
   { id: 'alpha', ru: 'по алфавиту', en: 'A–Z' },
   { id: 'due', ru: 'по сроку', en: 'due' },
+  { id: 'useful', ru: 'по полезности', en: 'most useful' },
 ];
 
 function Stat({ n, label }: { n: number; label: string }) {
@@ -68,11 +71,9 @@ export function VocabularyPage() {
   const [newCtx, setNewCtx] = useState('');
   const [editKey, setEditKey] = useState<string | null>(null);
   const [draft, setDraft] = useState('');
-  // Lazy lemma data (base forms + inflection matching); empty until loaded, so rows render immediately.
-  const [lemma, setLemma] = useState<LemmaData>({ byForm: new Map(), lemmas: new Set() });
-  useEffect(() => {
-    void loadLemma().then(setLemma);
-  }, []);
+  // Lazy word data (base forms, CEFR levels); empty until loaded, so rows render immediately.
+  const lemma = useLemma();
+  const cefr = useCefr();
 
   const reload = useCallback(async () => {
     try {
@@ -107,8 +108,8 @@ export function VocabularyPage() {
         (e) => e.display.toLowerCase().includes(needle) || e.translation?.toLowerCase().includes(needle)
       );
     }
-    return sortLexicon(v, sort);
-  }, [entries, filter, q, sort]);
+    return sortLexicon(v, sort, (e) => cefrOf(e.display, cefr, lemma)?.order ?? Number.MAX_SAFE_INTEGER);
+  }, [entries, filter, q, sort, cefr, lemma]);
 
   const changeStatus = async (e: LexiconEntry, status: 'learning' | 'known' | 'ignored') => {
     await updateStatus(e.display, status);
@@ -281,6 +282,8 @@ export function VocabularyPage() {
             {view.slice(0, limit).map((e) => {
               const forms = e.kind === 'word' ? irregularForms(e.display, lemma) : [];
               const base = e.kind === 'word' && !forms.length ? baseForm(e.display, lemma) : null;
+              const rated = cefrOf(e.display, cefr, lemma);
+              const showLevel = cefr.size > 0 && (e.kind === 'word' || rated !== null);
               return (
               <li key={e.key} className="rounded-md border border-line bg-surface px-4 py-3">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
@@ -316,6 +319,7 @@ export function VocabularyPage() {
                         {ru ? 'фраза' : 'phrase'}
                       </span>
                     )}
+                    {showLevel && <CefrChip level={rated?.level ?? null} />}
                     {base && (
                       <span className="font-mono text-2xs text-muted">
                         {ru ? 'база' : 'base'}: <span className="text-content">{base}</span>

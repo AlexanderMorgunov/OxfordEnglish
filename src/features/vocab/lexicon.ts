@@ -103,11 +103,19 @@ export function matchesFilter(e: LexiconEntry, f: LexiconFilter): boolean {
   }
 }
 
-export type LexiconSort = 'recent' | 'alpha' | 'due';
+export type LexiconSort = 'recent' | 'alpha' | 'due' | 'useful';
 
-export function sortLexicon(entries: LexiconEntry[], sort: LexiconSort): LexiconEntry[] {
+/** `usefulness` (lower = more useful) drives the `useful` sort; ties and unrated terms fall back to recency. */
+export function sortLexicon(
+  entries: LexiconEntry[],
+  sort: LexiconSort,
+  usefulness?: (e: LexiconEntry) => number
+): LexiconEntry[] {
   const out = [...entries];
-  if (sort === 'alpha') {
+  if (sort === 'useful' && usefulness) {
+    const score = new Map(out.map((e) => [e.key, usefulness(e)]));
+    out.sort((a, b) => score.get(a.key)! - score.get(b.key)! || b.sortAt - a.sortAt);
+  } else if (sort === 'alpha') {
     out.sort((a, b) => a.display.localeCompare(b.display));
   } else if (sort === 'due') {
     out.sort((a, b) => (a.due ?? Infinity) - (b.due ?? Infinity));

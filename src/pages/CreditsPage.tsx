@@ -16,6 +16,17 @@ const TECH: { name: string; use: string }[] = [
   { name: 'Space Grotesk · JetBrains Mono', use: 'fonts (self-hosted via Fontsource)' },
 ];
 
+const WORD_LISTS: { name: string; ru: string; en: string; cite?: string }[] = [
+  {
+    name: 'CEFR-J Wordlist 1.5 (Open Language Profiles)',
+    ru: 'уровни слов A1–B2',
+    en: 'A1–B2 word levels',
+    cite: 'The CEFR-J Wordlist Version 1.5. Compiled by Yukio Tono, Tokyo University of Foreign Studies. Retrieved from http://www.cefr-j.org/download.html on 1/20/2020.',
+  },
+  { name: 'lemma.en · skywind3000 (MIT)', ru: 'базовые и неправильные формы', en: 'base and irregular forms' },
+  { name: 'google-10000-english · first20hours (MIT)', ru: 'частотность слов в читалке', en: 'word frequency in the reader' },
+];
+
 // all-contributors emoji key, generalized to this project's kinds of contribution.
 const KEY: { emoji: string; en: string; ru: string }[] = [
   { emoji: '💻', en: 'code', ru: 'код' },
@@ -87,6 +98,18 @@ export function CreditsPage() {
             </ul>
           </li>
         )}
+      </ul>
+
+      <h2 className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
+        {ru ? 'списки слов' : 'word lists'}
+      </h2>
+      <ul className="mb-8 flex flex-col gap-1.5 text-sm text-pretty">
+        {WORD_LISTS.map((w) => (
+          <li key={w.name}>
+            {w.name} <span className="font-mono text-2xs text-muted">— {ru ? w.ru : w.en}</span>
+            {w.cite && <p className="mt-0.5 text-xs text-muted">{w.cite}</p>}
+          </li>
+        ))}
       </ul>
 
       <h2 className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
