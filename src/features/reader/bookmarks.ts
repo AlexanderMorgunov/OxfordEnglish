@@ -1,4 +1,7 @@
 import { db, type Bookmark } from '@/db/db';
+import { toSentences } from './parse/text';
+import { countWords, splitParas } from './position';
+import type { BookmarkSort } from './settings';
 
 export type { Bookmark };
 export type NewBookmark = Omit<Bookmark, 'id' | 'createdAt'>;
@@ -74,6 +77,47 @@ export function resolveSentenceIndex(
     if (i >= 0) return i;
   }
   return clamp(sentence);
+}
+
+/** Where a bookmark points in the current pagination (self-healing via pageId + snippet), plus how
+ *  many words into its paragraph the bookmarked sentence starts. */
+export function locateBookmark(pages: { id: string; text: string }[], bm: Bookmark) {
+  const page = resolvePageIndex(pages, bm.pageId, bm.page);
+  const paras = splitParas(pages[page]?.text ?? '');
+  const paragraph = resolveParagraphIndex(paras, bm.paragraph, bm.snippet);
+  const sentences = toSentences(paras[paragraph] ?? '');
+  const sentence = resolveSentenceIndex(sentences, bm.sentence, bm.snippet);
+  const wordsIn = sentence ? countWords(sentences.slice(0, sentence).join(' ')) : 0;
+  return { page, paragraph, sentence, wordsIn };
+}
+
+export function sortBookmarks(list: Bookmark[], mode: BookmarkSort): Bookmark[] {
+  const out = [...list];
+  return mode === 'recent'
+    ? out.sort((a, b) => b.createdAt - a.createdAt)
+    : out.sort(
+        (a, b) => a.page - b.page || a.paragraph - b.paragraph || (a.sentence ?? -1) - (b.sentence ?? -1)
+      );
+}
+
+const dayStart = (t: number) => new Date(t).setHours(0, 0, 0, 0);
+
+/** «сегодня 14:32» / «вчера 14:32» / «12 сент., 14:32» (year added when it differs). */
+export function formatBookmarkTime(ts: number, ru: boolean, now = Date.now()): string {
+  const locale = ru ? 'ru-RU' : 'en-GB';
+  const d = new Date(ts);
+  const time = d.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
+  // Rounded, not floored: a DST day is 23 or 25 hours long.
+  const days = Math.round((dayStart(now) - dayStart(ts)) / 86_400_000);
+  if (days === 0) return `${ru ? 'сегодня' : 'today'} ${time}`;
+  if (days === 1) return `${ru ? 'вчера' : 'yesterday'} ${time}`;
+  const sameYear = d.getFullYear() === new Date(now).getFullYear();
+  const date = d.toLocaleDateString(locale, {
+    day: 'numeric',
+    month: 'short',
+    ...(sameYear ? {} : { year: 'numeric' }),
+  });
+  return `${date}, ${time}`;
 }
 
 export async function listBookmarks(bookKey: string): Promise<Bookmark[]> {

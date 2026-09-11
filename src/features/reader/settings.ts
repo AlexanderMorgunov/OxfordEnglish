@@ -8,6 +8,8 @@ export const LEADING_CLASSES = ['leading-relaxed', 'leading-loose'] as const;
 /** Read-aloud playback-speed presets. */
 export const RATE_STEPS = [0.75, 1, 1.25, 1.5] as const;
 
+export type BookmarkSort = 'recent' | 'book';
+
 type Persisted = {
   coloring: boolean;
   fontStep: number;
@@ -19,6 +21,7 @@ type Persisted = {
   aiTranslation: boolean;
   /** Per-sentence lens: EN→RU translate, or an AI same-language simplification at the learner's level. */
   lens: 'translate' | 'simplify' | 'grammar';
+  bookmarkSort: BookmarkSort;
 };
 
 const DEFAULTS: Persisted = {
@@ -29,6 +32,7 @@ const DEFAULTS: Persisted = {
   rate: 1,
   aiTranslation: false,
   lens: 'translate',
+  bookmarkSort: 'recent',
 };
 
 const clampStep = (n: number, max: number) => Math.max(0, Math.min(n, max));
@@ -39,7 +43,11 @@ function load(): Persisted {
   try {
     const raw = localStorage.getItem(KEY);
     const merged = raw ? { ...DEFAULTS, ...(JSON.parse(raw) as Partial<Persisted>) } : DEFAULTS;
-    return { ...merged, rate: clampRate(merged.rate) };
+    return {
+      ...merged,
+      rate: clampRate(merged.rate),
+      bookmarkSort: merged.bookmarkSort === 'book' ? 'book' : 'recent',
+    };
   } catch {
     return DEFAULTS;
   }
@@ -55,6 +63,7 @@ type ReaderSettings = Persisted & {
   setRate: (n: number) => void;
   toggleAiTranslation: () => void;
   setLens: (lens: 'translate' | 'simplify' | 'grammar') => void;
+  setBookmarkSort: (mode: BookmarkSort) => void;
 };
 
 export const useReaderSettings = create<ReaderSettings>((set, get) => {
@@ -72,6 +81,7 @@ export const useReaderSettings = create<ReaderSettings>((set, get) => {
       rate: get().rate,
       aiTranslation: get().aiTranslation,
       lens: get().lens,
+      bookmarkSort: get().bookmarkSort,
       ...patch,
     };
     try {
@@ -93,5 +103,6 @@ export const useReaderSettings = create<ReaderSettings>((set, get) => {
     setRate: (n) => persist({ rate: clampRate(n) }),
     toggleAiTranslation: () => persist({ aiTranslation: !get().aiTranslation }),
     setLens: (lens) => persist({ lens }),
+    setBookmarkSort: (bookmarkSort) => persist({ bookmarkSort }),
   };
 });
