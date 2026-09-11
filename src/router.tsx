@@ -21,11 +21,13 @@ const FeedbackPage = lazy(() => import('@/pages/FeedbackPage').then((m) => ({ de
 const LibraryPage = lazy(() => import('@/pages/LibraryPage').then((m) => ({ default: m.LibraryPage })));
 const BookReaderPage = lazy(() => import('@/pages/BookReaderPage').then((m) => ({ default: m.BookReaderPage })));
 const CatalogReaderPage = lazy(() => import('@/pages/CatalogReaderPage').then((m) => ({ default: m.CatalogReaderPage })));
+const AboutPage = lazy(() => import('@/pages/AboutPage').then((m) => ({ default: m.AboutPage })));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })));
 const KitchenSinkPage = lazy(() => import('@/pages/KitchenSinkPage').then((m) => ({ default: m.KitchenSinkPage })));
 
 const routes: RouteObject[] = [
   { path: '/', element: <DashboardPage /> },
+  { path: '/about', element: <AboutPage /> },
   { path: '/placement', element: <PlacementPage /> },
   { path: '/course/:unitId/day/:dayId', element: <DayPage /> },
   { path: '/grammar', element: <GrammarIndexPage /> },

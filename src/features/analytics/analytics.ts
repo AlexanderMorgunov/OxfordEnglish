@@ -5,7 +5,13 @@ import { getAttribution } from './attribution';
 
 /** Conversion milestones mirrored to Metrica as goals (roughly once-per-user). Kept off high-frequency
  *  events (e.g. book_open) so they don't inflate goal counts and poison per-source comparison. */
-const METRICA_GOALS = new Set(['placement_done', 'onboarding_end', 'day_complete', 'pwa_installed']);
+const METRICA_GOALS = new Set([
+  'placement_done',
+  'onboarding_end',
+  'day_complete',
+  'pwa_installed',
+  'landing_cta',
+]);
 
 const ANON_KEY = 'analytics.anonId';
 const FIRST_SEEN_KEY = 'analytics.firstSeen';
