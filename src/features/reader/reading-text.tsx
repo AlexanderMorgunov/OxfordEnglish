@@ -31,6 +31,11 @@ import { toSentences } from './parse/text';
 import { usePhraseSelect, parsePos, samePos, inPhraseRange, type WordPos } from './phrase-select';
 import { useSavedPhrases } from './saved-phrases';
 import { phraseMarkedTokens } from './phrase-marks';
+import { useLemma } from '@/features/vocab/lemma';
+import { irregularForms } from '@/features/vocab/irregular';
+import { FormsLine } from '@/features/vocab/FormsLine';
+import { cefrOf, useCefr } from '@/features/vocab/cefr';
+import { CefrChip } from '@/features/vocab/CefrChip';
 
 /** Reference line for auditioning a read-aloud voice — natural prose so prosody is audible. */
 const VOICE_SAMPLE = 'The morning light spilled across the quiet room as she opened the book.';
@@ -96,6 +101,21 @@ function ContextGloss({
       )}
     </div>
   );
+}
+
+/** Irregular forms of the tapped word. Lives in the panel so the lemma list loads on first open only. */
+function PopoverForms({ word }: { word: string }) {
+  const lemma = useLemma();
+  const forms = useMemo(() => irregularForms(word, lemma), [word, lemma]);
+  return <FormsLine word={word} forms={forms} className="mt-1 font-mono text-2xs" />;
+}
+
+/** CEFR usefulness chip for the tapped word (lazy CEFR list, loaded on first open). */
+function PopoverLevel({ word }: { word: string }) {
+  const lemma = useLemma();
+  const cefr = useCefr();
+  if (!cefr.size) return null;
+  return <CefrChip level={cefrOf(word, cefr, lemma)?.level ?? null} />;
 }
 
 /** Rendered inside the word popover (book reader only): starts a phrase selection anchored at this
@@ -217,9 +237,11 @@ export const WordToken = memo(function WordToken({
             🔊
           </button>
         )}
+        <PopoverLevel word={lookup} />
       </div>
       {gloss?.ipa && <p className="font-mono text-xs text-muted">{gloss.ipa}</p>}
       {translation && <p className="mt-1 text-sm text-content">{translation}</p>}
+      <PopoverForms word={lookup} />
       {loading && <p className="mt-1 font-mono text-2xs text-faint">translating…</p>}
       {failed && !translation && (
         <p className="mt-1 font-mono text-2xs text-faint">

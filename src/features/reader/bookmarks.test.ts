@@ -6,6 +6,9 @@ import {
   resolvePageIndex,
   resolveParagraphIndex,
   resolveSentenceIndex,
+  locateBookmark,
+  sortBookmarks,
+  formatBookmarkTime,
   addBookmark,
   toggleBookmark,
   listBookmarks,
@@ -107,6 +110,40 @@ test('bookmarks in the same paragraph are distinct per sentence (no collapse)', 
   expect(removed.added).toBe(false);
   expect(await findBookmark(key, 0, 3, 0)).toBeUndefined();
   expect(await findBookmark(key, 0, 3, 1)).toBeDefined(); // sibling sentence untouched
+});
+
+const mk = (page: number, paragraph: number, createdAt: number, sentence?: number) => ({
+  ...base,
+  id: `${page}-${paragraph}-${sentence ?? ''}`,
+  page,
+  paragraph,
+  createdAt,
+  ...(sentence != null ? { sentence } : {}),
+});
+
+test('sortBookmarks: newest first, or book order; input untouched', () => {
+  const list = [mk(1, 0, 100), mk(0, 5, 300), mk(0, 2, 200, 1)];
+  expect(sortBookmarks(list, 'recent').map((b) => b.createdAt)).toEqual([300, 200, 100]);
+  expect(sortBookmarks(list, 'book').map((b) => [b.page, b.paragraph])).toEqual([
+    [0, 2],
+    [0, 5],
+    [1, 0],
+  ]);
+  expect(list[0]!.createdAt).toBe(100);
+});
+
+test('formatBookmarkTime: today / yesterday / date, year only when it differs', () => {
+  const now = new Date(2026, 8, 11, 18, 0).getTime();
+  expect(formatBookmarkTime(new Date(2026, 8, 11, 14, 32).getTime(), true, now)).toBe('сегодня 14:32');
+  expect(formatBookmarkTime(new Date(2026, 8, 10, 9, 5).getTime(), false, now)).toBe('yesterday 09:05');
+  expect(formatBookmarkTime(new Date(2026, 8, 1, 7, 0).getTime(), true, now)).toMatch(/^1 сент.*, 07:00$/);
+  expect(formatBookmarkTime(new Date(2025, 0, 3, 7, 0).getTime(), false, now)).toContain('2025');
+});
+
+test('locateBookmark resolves the sentence and the words before it in its paragraph', () => {
+  const pages = [{ id: 'p1', text: 'One two.\n\nThree four. Five six seven.' }];
+  const bm = { ...mk(0, 1, 0, 1), pageId: 'p1', snippet: 'Five six seven.' };
+  expect(locateBookmark(pages, bm)).toEqual({ page: 0, paragraph: 1, sentence: 1, wordsIn: 2 });
 });
 
 test('listBookmarks returns a book’s bookmarks in reading order', async () => {

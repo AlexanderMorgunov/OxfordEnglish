@@ -5,6 +5,7 @@ import { cn } from '@/shared/lib/cn';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { canSpeak } from '@/shared/lib/audio';
 import { useReaderSettings, RATE_STEPS } from './settings';
+import { BookmarkList } from './BookmarkList';
 import type { Bookmark } from './bookmarks';
 
 /** Floating quick-access widget for the reader: vocabulary nav, one-tap bookmark of the current
@@ -13,12 +14,15 @@ import type { Bookmark } from './bookmarks';
 export function ReaderWidget({
   onBookmarkHere,
   bookmarks,
+  progress,
   onJump,
   onDelete,
 }: {
   /** Bookmark (or un-bookmark) the top-of-screen sentence. Returns whether it was added, for the toast. */
   onBookmarkHere: () => Promise<{ added: boolean }>;
   bookmarks: Bookmark[];
+  /** Position of each bookmark in the book (0–1), by id. */
+  progress: Map<string, number>;
   onJump: (bm: Bookmark) => void;
   onDelete: (id: string) => void;
 }) {
@@ -151,37 +155,17 @@ export function ReaderWidget({
               <p className="px-3 py-1 font-mono text-2xs uppercase tracking-[0.08em] text-muted">
                 {ru ? 'закладки' : 'bookmarks'} ({bookmarks.length})
               </p>
-              <ul
-                className="flex max-h-[45vh] flex-col gap-0.5 overflow-y-auto"
-                aria-label={ru ? 'Закладки' : 'Bookmarks'}
-              >
-                {bookmarks.map((bm) => (
-                  <li key={bm.id} className="flex items-start gap-1">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        onJump(bm);
-                        setOpen(false);
-                      }}
-                      className="min-w-0 flex-1 rounded-sm px-3 py-1.5 text-left hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
-                    >
-                      <span className="block font-mono text-2xs text-muted">
-                        {ru ? 'стр.' : 'p.'} {bm.page + 1}
-                        {bm.chapterTitle ? ` · ${bm.chapterTitle}` : ''}
-                      </span>
-                      <span className="mt-0.5 line-clamp-2 block text-xs text-content">{bm.snippet}</span>
-                    </button>
-                    <button
-                      type="button"
-                      aria-label={ru ? 'Удалить закладку' : 'Delete bookmark'}
-                      onClick={() => onDelete(bm.id)}
-                      className="shrink-0 rounded-sm px-2 py-1.5 text-muted hover:text-coral focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
-                    >
-                      ×
-                    </button>
-                  </li>
-                ))}
-              </ul>
+              <BookmarkList
+                bookmarks={bookmarks}
+                progress={progress}
+                onJump={(bm) => {
+                  onJump(bm);
+                  setOpen(false);
+                }}
+                onDelete={onDelete}
+                className="max-h-[45vh] overflow-y-auto"
+              />
+
             </div>
           )}
         </div>

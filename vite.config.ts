@@ -52,6 +52,17 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 3_000_000,
         runtimeCaching: [
           {
+            // Reader word lists (frequency, lemma, CEFR): lazy, rarely rebuilt — instant from cache and
+            // offline, refreshed in the background. Deliberately not precached (size).
+            urlPattern: /\/reader\/en-[\w-]+\.json$/,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'reader-data',
+              expiration: { maxEntries: 10, purgeOnQuotaError: true },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
             // Pack JSON (course.json, days/*.json, manifest.json) CHANGES when content is added or
             // edited, so it must revalidate — CacheFirst would pin the first course.json forever and
             // new days would never appear. NetworkFirst serves fresh when online (new content shows

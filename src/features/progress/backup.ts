@@ -1,7 +1,8 @@
-import { db, type Bookmark, type SrsCard } from '@/db/db';
+import { db, type ActivityDay, type Bookmark, type ReviewLogEntry, type SrsCard } from '@/db/db';
+import { mergeActivity } from '@/features/stats/accounting';
 
 export async function exportData(): Promise<string> {
-  const [attempts, wordStatus, srsCards, checkpoints, translations, catalogCache, bookmarks] =
+  const [attempts, wordStatus, srsCards, checkpoints, translations, catalogCache, bookmarks, activity, reviewLog] =
     await Promise.all([
       db.attempts.toArray(),
       db.wordStatus.toArray(),
@@ -11,10 +12,12 @@ export async function exportData(): Promise<string> {
       db.translations.filter((t) => !t.source.startsWith('lens-')).toArray(),
       db.catalogCache.toArray(),
       db.bookmarks.toArray(),
+      db.activity.toArray(),
+      db.reviewLog.toArray(),
     ]);
   return JSON.stringify(
     {
-      version: 3,
+      version: 4,
       exportedAt: Date.now(),
       attempts,
       wordStatus,
@@ -28,6 +31,8 @@ export async function exportData(): Promise<string> {
       // Reader bookmarks. Only catalog bookmarks (stable keys) rematch after restore; imported-book
       // bookmarks (reader.<uuid>) become harmless orphans since a re-import mints a new id.
       bookmarks,
+      activity,
+      reviewLog,
     },
     null,
     2
@@ -56,6 +61,8 @@ type Backup = {
   translations?: unknown[];
   catalogCache?: unknown[];
   bookmarks?: Bookmark[];
+  activity?: ActivityDay[];
+  reviewLog?: ReviewLogEntry[];
 };
 
 /** Drop the autoincrement primary key so imported rows append instead of overwriting the target
@@ -71,7 +78,17 @@ export async function importData(json: string): Promise<void> {
   const data = JSON.parse(json) as Backup;
   await db.transaction(
     'rw',
-    [db.attempts, db.wordStatus, db.srsCards, db.checkpoints, db.translations, db.catalogCache, db.bookmarks],
+    [
+      db.attempts,
+      db.wordStatus,
+      db.srsCards,
+      db.checkpoints,
+      db.translations,
+      db.catalogCache,
+      db.bookmarks,
+      db.activity,
+      db.reviewLog,
+    ],
     async () => {
       // `++id` stores: append (a merge across devices), never bulkPut-by-id (which would clobber).
       if (data.attempts) await db.attempts.bulkAdd(stripId(data.attempts) as never);
@@ -82,6 +99,11 @@ export async function importData(json: string): Promise<void> {
       if (data.translations) await db.translations.bulkPut(data.translations as never);
       if (data.catalogCache) await db.catalogCache.bulkPut(data.catalogCache as never);
       if (data.bookmarks) await db.bookmarks.bulkPut(data.bookmarks);
+      // Activity rows may already exist here (same device-day): keep the larger counts, never add twice.
+      for (const row of data.activity ?? []) {
+        await db.activity.put(mergeActivity(await db.activity.get(row.id), row));
+      }
+      if (data.reviewLog) await db.reviewLog.bulkPut(data.reviewLog);
     }
   );
 }

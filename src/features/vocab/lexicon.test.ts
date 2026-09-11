@@ -103,3 +103,19 @@ test('sort: alpha and recent', () => {
   expect(sortLexicon(lex, 'alpha').map((e) => e.display)).toEqual(['apple', 'zebra']);
   expect(sortLexicon(lex, 'recent').map((e) => e.display)).toEqual(['apple', 'zebra']); // 200 > 100
 });
+
+test('sort: useful puts lower scores first, ties and unrated by recency', () => {
+  const lex = buildLexicon({
+    statuses: [
+      status({ word: 'rare', firstSeenAt: 400 }),
+      status({ word: 'basic', firstSeenAt: 100 }),
+      status({ word: 'old', firstSeenAt: 200 }),
+      status({ word: 'new', firstSeenAt: 300 }),
+    ],
+    cards: [],
+    translations: [],
+  });
+  const score: Record<string, number> = { basic: 1, old: 5, new: 5 };
+  const useful = sortLexicon(lex, 'useful', (e) => score[e.display] ?? Number.MAX_SAFE_INTEGER);
+  expect(useful.map((e) => e.display)).toEqual(['basic', 'new', 'old', 'rare']);
+});

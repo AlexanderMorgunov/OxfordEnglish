@@ -7,20 +7,19 @@ import { ReadingText } from './reading-text';
 import { ChapterStudy } from './ChapterStudy';
 import { BookQuestion } from './BookQuestion';
 import { ReaderWidget } from './ReaderWidget';
+import { BookmarkList } from './BookmarkList';
 import { toSentences } from './parse/text';
+import { buildBookIndex, positionOf, splitParas } from './position';
+import { saveProgress, useReadingTracker } from '@/features/stats/useReadingTracker';
 import {
   listBookmarks,
   toggleBookmark,
   removeBookmark,
   snippetOf,
   topVisibleParagraph,
-  resolvePageIndex,
-  resolveParagraphIndex,
-  resolveSentenceIndex,
+  locateBookmark,
   type Bookmark,
 } from './bookmarks';
-
-const splitParas = (text: string) => text.split(/\n{2,}/).filter(Boolean);
 
 /** Shared reader view: chapter navigation, reading text, bookmarks, and the chapter study panel. */
 export function BookView({
@@ -128,6 +127,23 @@ export function BookView({
   const paragraphs = useMemo(() => splitParas(ch.text), [ch]);
   const multi = chapters.length > 1;
 
+  const bookIndex = useMemo(() => buildBookIndex(chapters), [chapters]);
+  useReadingTracker({
+    bookKey: idPrefix,
+    title: book.title,
+    pageKey: ch.id,
+    paragraphs,
+    onPosition: (p) => saveProgress(idPrefix, positionOf(bookIndex, chapter, p)),
+  });
+  const progress = useMemo(() => {
+    const at = new Map<string, number>();
+    for (const bm of bookmarks) {
+      const loc = locateBookmark(chapters, bm);
+      at.set(bm.id, positionOf(bookIndex, loc.page, loc.paragraph, loc.wordsIn));
+    }
+    return at;
+  }, [bookmarks, chapters, bookIndex]);
+
   // Which sentences on the current page are bookmarked (keys `${para}:${sentence}`) — drives the
   // lens-menu заложить/убрать label. Matched on the stable pageId (like the jump path).
   const bookmarkedSentences = useMemo(() => {
@@ -175,12 +191,9 @@ export function BookView({
   };
 
   const jumpTo = (bm: Bookmark) => {
-    const page = resolvePageIndex(chapters, bm.pageId, bm.page);
-    const paras = splitParas(chapters[page]!.text);
-    const para = resolveParagraphIndex(paras, bm.paragraph, bm.snippet);
-    const sentence = resolveSentenceIndex(toSentences(paras[para] ?? ''), bm.sentence, bm.snippet);
+    const { page, paragraph, sentence } = locateBookmark(chapters, bm);
     jumpingRef.current = true;
-    setJump({ paragraph: para, sentence, nonce: (nonceRef.current += 1) });
+    setJump({ paragraph, sentence, nonce: (nonceRef.current += 1) });
     go(page);
     setPanelOpen(false);
   };
@@ -237,31 +250,13 @@ export function BookView({
       )}
 
       {panelOpen && bookmarks.length > 0 && (
-        <ul className="mb-6 flex flex-col gap-1.5 rounded-md border border-line bg-surface-2 p-2" aria-label={ru ? 'Закладки' : 'Bookmarks'}>
-          {bookmarks.map((bm) => (
-            <li key={bm.id} className="flex items-start gap-2">
-              <button
-                type="button"
-                onClick={() => jumpTo(bm)}
-                className="flex-1 rounded-sm px-2 py-1.5 text-left text-sm hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
-              >
-                <span className="font-mono text-2xs text-muted">
-                  {ru ? 'стр.' : 'p.'} {bm.page + 1}
-                  {bm.chapterTitle ? ` · ${bm.chapterTitle}` : ''}
-                </span>
-                <span className="mt-0.5 block text-content">{bm.snippet}</span>
-              </button>
-              <button
-                type="button"
-                aria-label={ru ? 'Удалить закладку' : 'Delete bookmark'}
-                onClick={() => void deleteBookmark(bm.id)}
-                className="shrink-0 rounded-sm px-2 py-1.5 text-muted hover:text-coral focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
-              >
-                ×
-              </button>
-            </li>
-          ))}
-        </ul>
+        <BookmarkList
+          bookmarks={bookmarks}
+          progress={progress}
+          onJump={jumpTo}
+          onDelete={(id) => void deleteBookmark(id)}
+          className="mb-6 rounded-md border border-line bg-surface p-2"
+        />
       )}
 
       <ReadingText
@@ -275,6 +270,7 @@ export function BookView({
       <ReaderWidget
         onBookmarkHere={toggleHere}
         bookmarks={bookmarks}
+        progress={progress}
         onJump={jumpTo}
         onDelete={(id) => void deleteBookmark(id)}
       />
