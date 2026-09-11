@@ -16,6 +16,8 @@ import {
   type LexiconSort,
 } from '@/features/vocab/lexicon';
 import { loadLemma, baseForm, type LemmaData } from '@/features/vocab/lemma';
+import { irregularForms } from '@/features/vocab/irregular';
+import { FormsLine } from '@/features/vocab/FormsLine';
 import { ContextSentence } from '@/features/vocab/ContextSentence';
 
 const FILTERS: { id: LexiconFilter; ru: string; en: string }[] = [
@@ -277,7 +279,8 @@ export function VocabularyPage() {
 
           <ul className="flex flex-col gap-2" role="group" aria-label={ru ? 'Словарь' : 'Vocabulary list'}>
             {view.slice(0, limit).map((e) => {
-              const base = e.kind === 'word' ? baseForm(e.display, lemma) : null;
+              const forms = e.kind === 'word' ? irregularForms(e.display, lemma) : [];
+              const base = e.kind === 'word' && !forms.length ? baseForm(e.display, lemma) : null;
               return (
               <li key={e.key} className="rounded-md border border-line bg-surface px-4 py-3">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
@@ -376,6 +379,8 @@ export function VocabularyPage() {
                     </span>
                   )}
                 </div>
+
+                <FormsLine word={e.display} forms={forms} className="mt-1 font-mono text-2xs" />
 
                 {e.contextGloss && (
                   <p className="mt-1.5 text-sm text-content">
