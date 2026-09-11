@@ -6,6 +6,7 @@ import { useUiLang } from '@/features/i18n/uiLang';
 import { importBook, listBooks, removeBook } from '@/features/reader/service';
 import { opfsAvailable, requestPersistence } from '@/features/reader/storage';
 import { RecommendedShelf } from '@/features/reader/RecommendedShelf';
+import { readProgress } from '@/features/stats/useReadingTracker';
 
 export function LibraryPage() {
   const ru = useUiLang((s) => s.lang) === 'ru';
@@ -124,34 +125,35 @@ export function LibraryPage() {
         </div>
       ) : (
         <div className="flex flex-col gap-2">
-          {books.map((b) => (
-            <Card key={b.id} className="flex items-center justify-between gap-3">
-              <Link to={`/library/${b.id}`} className="min-w-0 flex-1">
-                <p className="truncate font-semibold">{b.title}</p>
-                <p className="truncate font-mono text-2xs uppercase tracking-[0.06em] text-muted">
-                  {b.author ? `${b.author} · ` : ''}
-                  {b.format} ·{' '}
-                  {b.lastChapter > 0
-                    ? ru
-                      ? `глава ${b.lastChapter + 1}/${b.chapterCount}`
-                      : `ch. ${b.lastChapter + 1}/${b.chapterCount}`
-                    : `${b.chapterCount} ${ru ? 'глав' : 'ch.'}`}
-                </p>
-              </Link>
-              <button
-                type="button"
-                aria-label={ru ? 'Удалить' : 'Delete'}
-                className="shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-muted hover:text-coral"
-                onClick={() => {
-                  if (confirm(ru ? `Удалить «${b.title}»?` : `Delete “${b.title}”?`)) {
-                    void removeBook(b.id).then(reload);
-                  }
-                }}
-              >
-                {ru ? 'удалить' : 'delete'}
-              </button>
-            </Card>
-          ))}
+          {books.map((b) => {
+            const read = readProgress(`reader.${b.id}`);
+            return (
+              <Card key={b.id} className="flex items-center justify-between gap-3">
+                <Link to={`/library/${b.id}`} className="min-w-0 flex-1">
+                  <p className="truncate font-semibold">{b.title}</p>
+                  <p className="truncate font-mono text-2xs uppercase tracking-[0.06em] text-muted">
+                    {b.author ? `${b.author} · ` : ''}
+                    {b.format} ·{' '}
+                    {read != null
+                      ? `${ru ? 'прочитано' : 'read'} ${Math.round(read * 100)}%`
+                      : `${b.chapterCount} ${ru ? 'глав' : 'ch.'}`}
+                  </p>
+                </Link>
+                <button
+                  type="button"
+                  aria-label={ru ? 'Удалить' : 'Delete'}
+                  className="shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-muted hover:text-coral"
+                  onClick={() => {
+                    if (confirm(ru ? `Удалить «${b.title}»?` : `Delete “${b.title}”?`)) {
+                      void removeBook(b.id).then(reload);
+                    }
+                  }}
+                >
+                  {ru ? 'удалить' : 'delete'}
+                </button>
+              </Card>
+            );
+          })}
         </div>
       )}
     </section>

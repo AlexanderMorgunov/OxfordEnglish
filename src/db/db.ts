@@ -45,6 +45,8 @@ export interface SrsCard {
   fromError?: boolean;
   due: Date;
   card: Card;
+  /** When the card was added (ms). Non-indexed: no version bump; absent on cards from before it existed. */
+  createdAt?: number;
 }
 
 export interface CheckpointResult {
@@ -88,6 +90,35 @@ export interface Bookmark {
   createdAt: number;
 }
 
+export interface BookActivity {
+  title: string;
+  sec: number;
+  words: number;
+  saved: number;
+}
+
+/** One device's reading/learning tallies for one local day. Keyed per device-day (`${day}:${installId}`)
+ *  so devices never write the same row once synced; displays sum the rows of a day. */
+export interface ActivityDay {
+  id: string;
+  day: string;
+  readSec: number;
+  readWords: number;
+  wordsSaved: number;
+  phrasesSaved: number;
+  learned: number;
+  /** By reader idPrefix (`reader.<uuid>` / `reader.catalog.<slug>`). */
+  books: Record<string, BookActivity>;
+}
+
+/** Append-only history of review grades (ts-fsrs Rating) — review stats are derived from it. */
+export interface ReviewLogEntry {
+  id: string;
+  cardId: string;
+  rating: number;
+  ts: number;
+}
+
 /** A remote catalog book fetched once and kept for offline rereading. `book` is a ParsedBook. */
 export interface CatalogCacheEntry {
   id: string;
@@ -121,6 +152,8 @@ const db = new Dexie('oxford-english') as Dexie & {
   catalogCache: EntityTable<CatalogCacheEntry, 'id'>;
   analyticsQueue: EntityTable<AnalyticsEvent, 'id'>;
   feedbackOutbox: EntityTable<FeedbackOutboxItem, 'id'>;
+  activity: EntityTable<ActivityDay, 'id'>;
+  reviewLog: EntityTable<ReviewLogEntry, 'id'>;
 };
 
 db.version(1).stores({
@@ -149,6 +182,13 @@ db.version(5).stores({
 
 db.version(6).stores({
   bookmarks: 'id, bookKey, createdAt, [bookKey+page+paragraph]',
+});
+
+// The account/sync branch also has a v7: it must be renumbered to v8 on merge — with two version(7)
+// blocks Dexie silently skips one upgrade.
+db.version(7).stores({
+  activity: 'id, day',
+  reviewLog: 'id, ts, cardId',
 });
 
 export { db };

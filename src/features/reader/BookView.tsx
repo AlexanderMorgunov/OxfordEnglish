@@ -10,6 +10,7 @@ import { ReaderWidget } from './ReaderWidget';
 import { BookmarkList } from './BookmarkList';
 import { toSentences } from './parse/text';
 import { buildBookIndex, positionOf, splitParas } from './position';
+import { saveProgress, useReadingTracker } from '@/features/stats/useReadingTracker';
 import {
   listBookmarks,
   toggleBookmark,
@@ -127,6 +128,13 @@ export function BookView({
   const multi = chapters.length > 1;
 
   const bookIndex = useMemo(() => buildBookIndex(chapters), [chapters]);
+  useReadingTracker({
+    bookKey: idPrefix,
+    title: book.title,
+    pageKey: ch.id,
+    paragraphs,
+    onPosition: (p) => saveProgress(idPrefix, positionOf(bookIndex, chapter, p)),
+  });
   const progress = useMemo(() => {
     const at = new Map<string, number>();
     for (const bm of bookmarks) {

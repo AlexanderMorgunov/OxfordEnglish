@@ -1,5 +1,12 @@
 import { create } from 'zustand';
-import { db, type WordStatusValue } from '@/db/db';
+import { db, type WordStatus, type WordStatusValue } from '@/db/db';
+import { recordActivity } from '@/features/stats/activity';
+
+/** A move into `known` counts for the «marked known» stat. Compared against the stored row, not the
+ *  in-memory map, which both setters update optimistically before the write. */
+const countKnown = (prev: WordStatus | undefined, next: WordStatusValue) => {
+  if (next === 'known' && prev?.status !== 'known') void recordActivity({ learned: 1 });
+};
 
 type VocabState = {
   statuses: Map<string, WordStatusValue>;
@@ -35,6 +42,7 @@ export const useVocabStore = create<VocabState>((set, get) => ({
         firstSeenAt: existing?.firstSeenAt ?? Date.now(),
         encounters: (existing?.encounters ?? 0) + 1,
       });
+      countKnown(existing, status);
     } catch {
       // best-effort — word status is non-critical if IndexedDB is unavailable
     }
@@ -52,6 +60,7 @@ export const useVocabStore = create<VocabState>((set, get) => ({
         firstSeenAt: existing?.firstSeenAt ?? Date.now(),
         encounters: existing?.encounters ?? 0, // reclassification is not a new sighting
       });
+      countKnown(existing, status);
     } catch {
       // best-effort
     }

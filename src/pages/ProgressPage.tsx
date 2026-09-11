@@ -16,6 +16,7 @@ import {
   loadAttempts,
   vocabSize,
 } from '@/features/progress/queries';
+import { ReadingStats } from '@/features/stats/ReadingStats';
 
 const pct = (n: number) => `${Math.round(n * 100)}%`;
 
@@ -120,6 +121,8 @@ export function ProgressPage() {
         </p>
         <ActivityStrip days={days} ru={ru} />
       </div>
+
+      <ReadingStats />
 
       <div className="mb-8">
         <p className="mb-3 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
