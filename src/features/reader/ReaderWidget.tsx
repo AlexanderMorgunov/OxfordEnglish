@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { PixelImage } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import { useUiLang } from '@/features/i18n/uiLang';
+import { canSpeak } from '@/shared/lib/audio';
+import { useReaderSettings, RATE_STEPS } from './settings';
 import type { Bookmark } from './bookmarks';
 
 /** Floating quick-access widget for the reader: vocabulary nav, one-tap bookmark of the current
@@ -21,6 +23,8 @@ export function ReaderWidget({
   onDelete: (id: string) => void;
 }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
+  const rate = useReaderSettings((s) => s.rate);
+  const setRate = useReaderSettings((s) => s.setRate);
   const [open, setOpen] = useState(false);
   const [dim, setDim] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -117,8 +121,31 @@ export function ReaderWidget({
             className="flex items-center gap-2 rounded-sm px-3 py-2 text-left font-mono text-xs text-content hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
           >
             <span className="w-4 shrink-0 text-center">🔖</span>
-            {ru ? 'заложить это место' : 'bookmark here'}
+            {ru ? 'добавить закладку' : 'add bookmark'}
           </button>
+          {canSpeak() && (
+            <div
+              role="group"
+              aria-label={ru ? 'Скорость озвучки' : 'Read-aloud speed'}
+              className="flex items-center gap-0.5 px-3 py-1"
+            >
+              <span className="mr-auto font-mono text-2xs text-muted">{ru ? 'скорость' : 'speed'}</span>
+              {RATE_STEPS.map((r) => (
+                <button
+                  key={r}
+                  type="button"
+                  aria-pressed={rate === r}
+                  onClick={() => setRate(r)}
+                  className={cn(
+                    'min-w-9 rounded-sm px-1.5 py-1.5 font-mono text-2xs hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal',
+                    rate === r ? 'bg-surface-2 text-teal' : 'text-muted'
+                  )}
+                >
+                  {r}×
+                </button>
+              ))}
+            </div>
+          )}
           {bookmarks.length > 0 && (
             <div className="mt-1 border-t border-line pt-1">
               <p className="px-3 py-1 font-mono text-2xs uppercase tracking-[0.08em] text-muted">
