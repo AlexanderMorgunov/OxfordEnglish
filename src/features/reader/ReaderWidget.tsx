@@ -8,7 +8,18 @@ import { useReaderSettings, RATE_STEPS } from './settings';
 import { BookmarkList } from './BookmarkList';
 import type { Bookmark } from './bookmarks';
 
-/** Floating quick-access widget for the reader: vocabulary nav, one-tap bookmark of the current
+/** Where a reader jumps from mid-book. Icon-only so the whole row fits one line of the panel; the
+ *  same sprites as the header nav, so the icons are already familiar. Vocabulary keeps `from=reader`,
+ *  which is what puts a "back to reading" link on that page. */
+const NAV = [
+  { to: '/vocabulary?from=reader', icon: '/assets/pixel/nav/vocab.png', ru: 'Словарь', en: 'Vocabulary' },
+  { to: '/', icon: '/assets/pixel/nav/today.png', ru: 'Сегодня', en: 'Today' },
+  { to: '/grammar', icon: '/assets/pixel/nav/grammar.png', ru: 'Грамматика', en: 'Grammar' },
+  { to: '/review', icon: '/assets/pixel/nav/review.png', ru: 'Повторение', en: 'Review' },
+  { to: '/library', icon: '/assets/pixel/nav/library.png', ru: 'Библиотека', en: 'Library' },
+] as const;
+
+/** Floating quick-access widget for the reader: section nav, one-tap bookmark of the current
  *  spot, and the bookmark list (jump / delete). A disclosure (not a menu), pinned to the bottom-right
  *  corner and dimmed while scrolling so it never fights the prose underneath. */
 export function ReaderWidget({
@@ -111,14 +122,24 @@ export function ReaderWidget({
           id="reader-widget-panel"
           className="flex w-64 max-w-[80vw] flex-col items-stretch gap-1 rounded-md border border-line bg-surface p-1.5 shadow-lg"
         >
-          <Link
-            to="/vocabulary?from=reader"
-            onClick={() => setOpen(false)}
-            className="flex items-center gap-2 rounded-sm px-3 py-2 font-mono text-xs text-content hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+          <nav
+            aria-label={ru ? 'Разделы' : 'Sections'}
+            className="flex items-center justify-between gap-0.5 px-1 pb-0.5"
           >
-            <PixelImage src="/assets/pixel/nav/vocab.png" alt="" className="h-4 w-4 shrink-0" />
-            {ru ? 'словарь' : 'vocabulary'}
-          </Link>
+            {NAV.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setOpen(false)}
+                aria-label={ru ? item.ru : item.en}
+                title={ru ? item.ru : item.en}
+                // Icon-only, so the label lives in aria-label/title; 44px keeps the tap target usable.
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+              >
+                <PixelImage src={item.icon} alt="" className="h-5 w-5" />
+              </Link>
+            ))}
+          </nav>
           <button
             type="button"
             onClick={() => void bookmarkHere()}
