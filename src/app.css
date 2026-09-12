@@ -124,6 +124,19 @@ body {
     @apply font-mono text-xs uppercase text-teal;
     letter-spacing: var(--tracking-eyebrow);
   }
+  /* Landing scroll-reveal. Armed by JS only (see features/landing/reveal.ts), so a page without JS —
+     or without IntersectionObserver — never gets stuck at opacity 0. */
+  .reveal-armed [data-reveal] {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity var(--duration-slow) var(--ease-out-soft),
+      transform var(--duration-slow) var(--ease-out-soft);
+  }
+  .reveal-armed [data-reveal].reveal-in {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ================================================================

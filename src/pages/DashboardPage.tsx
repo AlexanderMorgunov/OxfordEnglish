@@ -84,6 +84,9 @@ export function DashboardPage() {
                     ? 'Пройдите 5-минутный тест, чтобы найти свою точку старта.'
                     : 'Take a 5-minute placement test to find your starting point.'}
                 </p>
+                <Link to="/about" className="mt-1 inline-block font-mono text-2xs text-muted hover:text-content">
+                  {ru ? 'что это за приложение →' : 'what is this app →'}
+                </Link>
               </div>
               <Link
                 to="/placement"
