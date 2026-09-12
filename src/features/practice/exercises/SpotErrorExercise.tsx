@@ -3,6 +3,7 @@ import type { Exercise } from '@/content/schema';
 import { Console, Option } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { useExerciseAttempt, type ExerciseStatus } from './shared';
+import { useShuffledOptions } from '../useShuffledOptions';
 import { ExerciseShell } from './ExerciseShell';
 
 type Props = {
@@ -26,11 +27,14 @@ export function SpotErrorExercise({ exercise, onSolved }: Props) {
   const [chosen, setChosen] = useState<number | null>(null);
   const attempt = useExerciseAttempt(exercise, onSolved);
   const { status, submit } = attempt;
+  // `chosen`/`correctAt` are on-screen positions; `original` maps back to the authored variants.
+  const { items, correctAt } = useShuffledOptions(exercise.variants, exercise.correctIndex);
 
   const pick = (i: number) => {
     if (status === 'correct') return;
     setChosen(i);
-    submit(i === exercise.correctIndex, exercise.variants[i] ?? '', {
+    const original = items[i]?.original ?? -1;
+    submit(original === exercise.correctIndex, exercise.variants[original] ?? '', {
       front: exercise.instruction.en,
       back: exercise.variants[exercise.correctIndex] ?? '',
     });
@@ -42,7 +46,7 @@ export function SpotErrorExercise({ exercise, onSolved }: Props) {
       attempt={attempt}
       ai={{
         prompt: `Which line is correct? ${exercise.variants.join(' / ')}`,
-        userAnswer: chosen !== null ? (exercise.variants[chosen] ?? '') : '',
+        userAnswer: chosen !== null ? (exercise.variants[items[chosen]?.original ?? -1] ?? '') : '',
         correct: exercise.variants[exercise.correctIndex] ?? '',
       }}
       feedback={
@@ -63,17 +67,17 @@ export function SpotErrorExercise({ exercise, onSolved }: Props) {
         className="flex flex-col gap-2"
         onKeyDown={(e) => {
           const n = Number(e.key);
-          if (n >= 1 && n <= exercise.variants.length) pick(n - 1);
+          if (n >= 1 && n <= items.length) pick(n - 1);
         }}
       >
-        {exercise.variants.map((variant, i) => (
+        {items.map((variant, i) => (
           <Option
-            key={variant}
+            key={variant.original}
             disabled={status === 'correct'}
-            state={optionState(i, chosen, exercise.correctIndex, status)}
+            state={optionState(i, chosen, correctAt, status)}
             onClick={() => pick(i)}
           >
-            <span className="text-faint">{i + 1}.</span> {variant}
+            <span className="text-faint">{i + 1}.</span> {variant.text}
           </Option>
         ))}
       </div>

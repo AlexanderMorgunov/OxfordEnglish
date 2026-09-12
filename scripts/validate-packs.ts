@@ -165,6 +165,9 @@ function validatePack(dir: string, problems: Problem[], warnings: Problem[]): vo
   }
   const course = courseResult.data;
 
+  // A6 answer-slot skew: how often the key sits in each position, per exercise type.
+  const answerSlots: Record<string, { total: number; byIndex: Map<number, number> }> = {};
+
   const ids = new Set<string>();
   const addId = (id: string, where: string) => {
     if (ids.has(id)) fail(`duplicate id "${id}" (in ${where})`);
@@ -210,6 +213,15 @@ function validatePack(dir: string, problems: Problem[], warnings: Problem[]): vo
         checkExercise(obj, fail, warn);
       }
     });
+    for (const ex of exercises) {
+      const list = ex.type === 'spot-error' ? ex.variants : ex.options;
+      if (Array.isArray(list) && typeof ex.correctIndex === 'number' && typeof ex.type === 'string') {
+        const stat = (answerSlots[ex.type] ??= { total: 0, byIndex: new Map<number, number>() });
+        stat.total += 1;
+        stat.byIndex.set(ex.correctIndex, (stat.byIndex.get(ex.correctIndex) ?? 0) + 1);
+      }
+    }
+
     // A5 within-section verbatim duplicate (report-only — may be intentional spaced practice).
     const firstByContent = new Map<string, string>();
     for (const ex of exercises) {
@@ -220,6 +232,18 @@ function validatePack(dir: string, problems: Problem[], warnings: Problem[]): vo
       const prev = firstByContent.get(key);
       if (prev) warn(`exercise ${id}: verbatim duplicate of ${prev} (same section) — intentional spaced practice?`);
       else firstByContent.set(key, id);
+    }
+  }
+
+  // A6 (report-only): the UI shuffles options at render, so skew isn't user-visible — but authored
+  // content that always parks the key in one slot is still a smell, and unshuffled surfaces (export,
+  // print, a future reviewer UI) would expose it.
+  for (const [type, stat] of Object.entries(answerSlots)) {
+    if (stat.total < 20) continue;
+    const [slot, hits] = [...stat.byIndex.entries()].sort((a, b) => b[1] - a[1])[0]!;
+    const share = hits / stat.total;
+    if (share > 0.7) {
+      warn(`${type}: the correct answer sits at position ${slot + 1} in ${Math.round(share * 100)}% of ${stat.total} exercises — vary the slot when authoring`);
     }
   }
 

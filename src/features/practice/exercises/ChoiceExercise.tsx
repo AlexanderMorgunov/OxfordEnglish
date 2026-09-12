@@ -3,6 +3,7 @@ import type { Exercise } from '@/content/schema';
 import { Console, Option } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { useExerciseAttempt, type ExerciseStatus } from './shared';
+import { useShuffledOptions } from '../useShuffledOptions';
 import { ExerciseShell } from './ExerciseShell';
 
 type Props = {
@@ -28,11 +29,14 @@ export function ChoiceExercise({ exercise, onSolved }: Props) {
   const attempt = useExerciseAttempt(exercise, onSolved);
   const { status, submit } = attempt;
   const [before, after] = exercise.prompt.split(/_{2,}/);
+  // `chosen`/`correctAt` are on-screen positions; `original` maps back to the authored options.
+  const { items, correctAt } = useShuffledOptions(exercise.options, exercise.correctIndex);
 
   const pick = (i: number) => {
     if (status === 'correct') return;
     setChosen(i);
-    submit(i === exercise.correctIndex, exercise.options[i] ?? '', {
+    const original = items[i]?.original ?? -1;
+    submit(original === exercise.correctIndex, exercise.options[original] ?? '', {
       front: exercise.prompt,
       back: exercise.options[exercise.correctIndex] ?? '',
     });
@@ -44,7 +48,7 @@ export function ChoiceExercise({ exercise, onSolved }: Props) {
       attempt={attempt}
       ai={{
         prompt: exercise.prompt,
-        userAnswer: chosen !== null ? (exercise.options[chosen] ?? '') : '',
+        userAnswer: chosen !== null ? (exercise.options[items[chosen]?.original ?? -1] ?? '') : '',
         correct: exercise.options[exercise.correctIndex] ?? '',
       }}
       feedback={
@@ -70,17 +74,17 @@ export function ChoiceExercise({ exercise, onSolved }: Props) {
         className="flex flex-wrap gap-2"
         onKeyDown={(e) => {
           const n = Number(e.key);
-          if (n >= 1 && n <= exercise.options.length) pick(n - 1);
+          if (n >= 1 && n <= items.length) pick(n - 1);
         }}
       >
-        {exercise.options.map((opt, i) => (
+        {items.map((opt, i) => (
           <Option
-            key={opt}
+            key={opt.original}
             disabled={status === 'correct'}
-            state={optionState(i, chosen, exercise.correctIndex, status)}
+            state={optionState(i, chosen, correctAt, status)}
             onClick={() => pick(i)}
           >
-            <span className="text-faint">{i + 1}.</span> {opt}
+            <span className="text-faint">{i + 1}.</span> {opt.text}
           </Option>
         ))}
       </div>

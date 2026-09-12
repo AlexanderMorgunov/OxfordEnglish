@@ -5,6 +5,7 @@ import { playClip } from '@/shared/lib/audio';
 import { Button, Console, Option } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { useExerciseAttempt, type ExerciseStatus } from './shared';
+import { useShuffledOptions } from '../useShuffledOptions';
 import { ExerciseShell } from './ExerciseShell';
 
 type Props = {
@@ -28,11 +29,14 @@ export function MinimalPairsExercise({ exercise, onSolved }: Props) {
   const [chosen, setChosen] = useState<number | null>(null);
   const attempt = useExerciseAttempt(exercise, onSolved);
   const { status, submit } = attempt;
+  // `chosen`/`correctAt` are on-screen positions; `original` maps back to the authored options.
+  const { items, correctAt } = useShuffledOptions(exercise.options, exercise.correctIndex);
 
   const pick = (i: number) => {
     if (status === 'correct') return;
     setChosen(i);
-    submit(i === exercise.correctIndex, exercise.options[i] ?? '');
+    const original = items[i]?.original ?? -1;
+    submit(original === exercise.correctIndex, exercise.options[original] ?? '');
   };
 
   return (
@@ -59,14 +63,14 @@ export function MinimalPairsExercise({ exercise, onSolved }: Props) {
         {ru ? '▶ слушать' : '▶ listen'}
       </Button>
       <div className="flex flex-wrap gap-2">
-        {exercise.options.map((opt, i) => (
+        {items.map((opt, i) => (
           <Option
-            key={opt}
+            key={opt.original}
             disabled={status === 'correct'}
-            state={optionState(i, chosen, exercise.correctIndex, status)}
+            state={optionState(i, chosen, correctAt, status)}
             onClick={() => pick(i)}
           >
-            {opt}
+            {opt.text}
           </Option>
         ))}
       </div>
