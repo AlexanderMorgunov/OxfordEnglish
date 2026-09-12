@@ -47,10 +47,36 @@ test('gap-fill allows retry after a wrong answer, then passes', async () => {
   expect(onSolved).toHaveBeenCalledOnce();
 });
 
-test('choice can be answered with the number key', async () => {
+// Options are shuffled per mount, so tests must find them by text, never by position.
+const optionButton = (text: string) =>
+  screen.getByRole('button', { name: new RegExp(`\\d\\. ${text}$`) });
+
+test('choice passes when the authored answer is picked, wherever it is shown', async () => {
   const onSolved = vi.fn();
   renderR(<ChoiceExercise exercise={choice} onSolved={onSolved} />);
-  await userEvent.click(screen.getByRole('button', { name: /1\. Did/ }));
+  await userEvent.click(optionButton('Did'));
   expect(screen.getByText(/correct answer: Did/)).toBeInTheDocument();
   expect(onSolved).toHaveBeenCalledOnce();
+});
+
+// A solved outcome is remembered per exercise id in the session-results store, which outlives a
+// remount — so each test needs its own id, or the next one starts already "correct".
+test('choice rejects a wrong option even when it is shown first', async () => {
+  const onSolved = vi.fn();
+  renderR(<ChoiceExercise exercise={{ ...choice, id: 'ex.choice.reject' }} onSolved={onSolved} />);
+  await userEvent.click(optionButton('Was'));
+  expect(screen.getByText(/not quite/i)).toBeInTheDocument();
+  expect(onSolved).not.toHaveBeenCalled();
+});
+
+test('choice does not always render the authored answer first', () => {
+  const seen = new Set<string>();
+  for (let run = 0; run < 40; run++) {
+    const { unmount } = renderR(
+      <ChoiceExercise exercise={{ ...choice, id: `ex.choice.order.${run}` }} onSolved={vi.fn()} />
+    );
+    seen.add(screen.getByRole('button', { name: /^1\./ }).textContent ?? '');
+    unmount();
+  }
+  expect(seen.size).toBeGreaterThan(1);
 });
