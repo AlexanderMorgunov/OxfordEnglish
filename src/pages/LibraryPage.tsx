@@ -6,6 +6,7 @@ import { useUiLang } from '@/features/i18n/uiLang';
 import { importBook, listBooks, removeBook } from '@/features/reader/service';
 import { opfsAvailable, requestPersistence } from '@/features/reader/storage';
 import { RecommendedShelf } from '@/features/reader/RecommendedShelf';
+import { BackToReader } from '@/features/reader/BackToReader';
 import { readProgress } from '@/features/stats/useReadingTracker';
 
 export function LibraryPage() {
@@ -56,6 +57,7 @@ export function LibraryPage() {
 
   return (
     <section aria-label={ru ? 'Библиотека' : 'Library'}>
+      <BackToReader />
       <Eyebrow className="mb-3.5">{ru ? 'библиотека' : 'library'}</Eyebrow>
 
       <RecommendedShelf />
