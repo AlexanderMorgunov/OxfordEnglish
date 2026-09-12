@@ -7,7 +7,17 @@ import { metricaHit } from '@/features/analytics/metrica';
 import { MigrationNotice } from '@/features/migration/MigrationNotice';
 import { ErrorBoundary, PixelImage } from '@/shared/ui';
 
-const NAV = [
+/** `icon` defaults to the nav sprite named after `label.en`; set it when no such sprite exists. */
+type NavItem = {
+  to: string;
+  label: { en: string; ru: string };
+  end: boolean;
+  devOnly: boolean;
+  tour?: string;
+  icon?: string;
+};
+
+const NAV: NavItem[] = [
   { to: '/', label: { en: 'today', ru: 'сегодня' }, end: true, devOnly: false, tour: undefined },
   { to: '/grammar', label: { en: 'grammar', ru: 'грамматика' }, end: false, devOnly: false, tour: undefined },
   { to: '/review', label: { en: 'review', ru: 'повторение' }, end: false, devOnly: false, tour: 'nav-review' },
@@ -17,8 +27,16 @@ const NAV = [
   { to: '/settings', label: { en: 'settings', ru: 'настройки' }, end: false, devOnly: false, tour: 'nav-settings' },
   { to: '/feedback', label: { en: 'feedback', ru: 'обратная связь' }, end: false, devOnly: false, tour: undefined },
   { to: '/support', label: { en: 'support', ru: 'поддержка' }, end: false, devOnly: false, tour: undefined },
+  {
+    to: '/about',
+    label: { en: 'about', ru: 'о нас' },
+    end: false,
+    devOnly: false,
+    tour: undefined,
+    icon: '/assets/pixel/mascot.png',
+  },
   { to: '/kitchen-sink', label: { en: 'kit', ru: 'kit' }, end: false, devOnly: true, tour: undefined },
-] as const;
+];
 
 export function AppLayout() {
   const level = useLearner((s) => s.level);
@@ -67,7 +85,7 @@ export function AppLayout() {
               >
                 <span className="flex items-center gap-1.5">
                   <PixelImage
-                    src={`/assets/pixel/nav/${item.label.en}.png`}
+                    src={item.icon ?? `/assets/pixel/nav/${item.label.en}.png`}
                     alt=""
                     className="h-4 w-4 shrink-0"
                   />

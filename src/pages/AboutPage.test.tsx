@@ -24,6 +24,15 @@ test('the word demo reveals the lookup card only after a tap', async () => {
   expect(screen.getByText(/go — went — gone/)).toBeInTheDocument();
 });
 
+test('the phrase demo builds a phrase from the first and last word', async () => {
+  renderPage();
+  await userEvent.click(screen.getByRole('button', { name: /^make$/i }));
+  await userEvent.click(screen.getByRole('button', { name: /select phrase/i }));
+  await userEvent.click(screen.getByRole('button', { name: /^mind$/i }));
+  expect(screen.getByText(/make up her mind/i)).toBeInTheDocument();
+  expect(screen.getByText(/to decide/i)).toBeInTheDocument();
+});
+
 test('the review demo hides the grades until the card is revealed', async () => {
   renderPage();
   expect(screen.queryByRole('group', { name: /grade/i })).not.toBeInTheDocument();
