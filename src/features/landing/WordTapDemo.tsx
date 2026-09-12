@@ -25,7 +25,8 @@ export function WordTapDemo() {
       <p className="mb-3 font-mono text-2xs uppercase tracking-[0.08em] text-muted">
         {ru ? 'страница книги — нажмите подчёркнутое слово' : 'a book page — tap an underlined word'}
       </p>
-      <p className="text-lg leading-relaxed text-content">
+      {/* Same guard as the reader: on touch, a tap on a word must not start a native text selection. */}
+      <p className="text-lg leading-relaxed text-content [@media(pointer:coarse)]:select-none [@media(pointer:coarse)]:[-webkit-touch-callout:none]">
         {SENTENCE.split(/(\s+)/).map((chunk, i) => {
           const key = chunk.replace(/[^A-Za-z]/g, '').toLowerCase();
           if (!WORDS[key]) return <span key={i}>{chunk}</span>;

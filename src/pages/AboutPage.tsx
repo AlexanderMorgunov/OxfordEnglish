@@ -5,6 +5,7 @@ import { useUiLang } from '@/features/i18n/uiLang';
 import { track } from '@/features/analytics/analytics';
 import { useReveal } from '@/features/landing/reveal';
 import { WordTapDemo } from '@/features/landing/WordTapDemo';
+import { PhraseDemo } from '@/features/landing/PhraseDemo';
 import { ReviewDemo } from '@/features/landing/ReviewDemo';
 
 function Cta({
@@ -252,6 +253,16 @@ export function AboutPage() {
           )}
         </p>
         <WordTapDemo />
+      </Section>
+
+      <Section title={t('Фразы, а не только слова', 'Phrases, not just words')}>
+        <p className="mb-4 max-w-prose text-base text-muted text-pretty">
+          {t(
+            'Идиому бесполезно учить по одному слову. Отметьте первое и последнее слово — приложение сохранит фразу целиком, с переводом, и будет возвращать её в повторениях.',
+            'An idiom is useless word by word. Mark the first and the last word — the app saves the whole phrase with its translation and brings it back in review.'
+          )}
+        </p>
+        <PhraseDemo />
       </Section>
 
       <Section title={t('Слова возвращаются вовремя', 'Words come back on time')}>

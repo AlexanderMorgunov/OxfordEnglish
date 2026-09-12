@@ -6,19 +6,36 @@ import { InstallPrompt } from '@/features/pwa/InstallPrompt';
 import { metricaHit } from '@/features/analytics/metrica';
 import { MigrationNotice } from '@/features/migration/MigrationNotice';
 import { ErrorBoundary, PixelImage } from '@/shared/ui';
+import { NavMore } from './NavMore';
 
-const NAV = [
+/** `icon` defaults to the nav sprite named after `label.en`; set it when no such sprite exists. */
+type NavItem = {
+  to: string;
+  label: { en: string; ru: string };
+  end: boolean;
+  devOnly: boolean;
+  tour?: string;
+  icon?: string;
+};
+
+/** The daily loop — always visible. Secondary destinations live behind "more" (NavMore), which keeps
+ *  the header at two rows on a phone instead of four. */
+const NAV: NavItem[] = [
   { to: '/', label: { en: 'today', ru: 'сегодня' }, end: true, devOnly: false, tour: undefined },
   { to: '/grammar', label: { en: 'grammar', ru: 'грамматика' }, end: false, devOnly: false, tour: undefined },
   { to: '/review', label: { en: 'review', ru: 'повторение' }, end: false, devOnly: false, tour: 'nav-review' },
-  { to: '/progress', label: { en: 'progress', ru: 'прогресс' }, end: false, devOnly: false, tour: undefined },
   { to: '/vocabulary', label: { en: 'vocab', ru: 'словарь' }, end: false, devOnly: false, tour: undefined },
   { to: '/library', label: { en: 'library', ru: 'библиотека' }, end: false, devOnly: false, tour: 'nav-library' },
-  { to: '/settings', label: { en: 'settings', ru: 'настройки' }, end: false, devOnly: false, tour: 'nav-settings' },
-  { to: '/feedback', label: { en: 'feedback', ru: 'обратная связь' }, end: false, devOnly: false, tour: undefined },
-  { to: '/support', label: { en: 'support', ru: 'поддержка' }, end: false, devOnly: false, tour: undefined },
   { to: '/kitchen-sink', label: { en: 'kit', ru: 'kit' }, end: false, devOnly: true, tour: undefined },
-] as const;
+];
+
+const MORE: NavItem[] = [
+  { to: '/progress', label: { en: 'progress', ru: 'прогресс' }, end: false, devOnly: false },
+  { to: '/settings', label: { en: 'settings', ru: 'настройки' }, end: false, devOnly: false },
+  { to: '/feedback', label: { en: 'feedback', ru: 'обратная связь' }, end: false, devOnly: false },
+  { to: '/support', label: { en: 'support', ru: 'поддержка' }, end: false, devOnly: false },
+  { to: '/about', label: { en: 'about', ru: 'о нас' }, end: false, devOnly: false, icon: '/assets/pixel/mascot.png' },
+];
 
 export function AppLayout() {
   const level = useLearner((s) => s.level);
@@ -48,7 +65,7 @@ export function AppLayout() {
               {level ?? 'A1–A2'}
             </span>
           </NavLink>
-          <nav className="flex flex-wrap items-center gap-1">
+          <nav className="relative flex flex-wrap items-center gap-1">
             {NAV.filter((item) => !item.devOnly || import.meta.env.DEV).map((item) => (
               <NavLink
                 key={item.to}
@@ -67,7 +84,7 @@ export function AppLayout() {
               >
                 <span className="flex items-center gap-1.5">
                   <PixelImage
-                    src={`/assets/pixel/nav/${item.label.en}.png`}
+                    src={item.icon ?? `/assets/pixel/nav/${item.label.en}.png`}
                     alt=""
                     className="h-4 w-4 shrink-0"
                   />
@@ -75,6 +92,14 @@ export function AppLayout() {
                 </span>
               </NavLink>
             ))}
+            <NavMore
+              label={ru ? 'ещё' : 'more'}
+              items={MORE.map((item) => ({
+                to: item.to,
+                label: ru ? item.label.ru : item.label.en,
+                icon: item.icon ?? `/assets/pixel/nav/${item.label.en}.png`,
+              }))}
+            />
           </nav>
         </div>
       </header>
