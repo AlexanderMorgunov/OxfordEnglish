@@ -26,7 +26,6 @@ const NAV: NavItem[] = [
   { to: '/review', label: { en: 'review', ru: 'повторение' }, end: false, devOnly: false, tour: 'nav-review' },
   { to: '/vocabulary', label: { en: 'vocab', ru: 'словарь' }, end: false, devOnly: false, tour: undefined },
   { to: '/library', label: { en: 'library', ru: 'библиотека' }, end: false, devOnly: false, tour: 'nav-library' },
-  { to: '/support', label: { en: 'support', ru: 'поддержка' }, end: false, devOnly: false, tour: undefined },
   { to: '/kitchen-sink', label: { en: 'kit', ru: 'kit' }, end: false, devOnly: true, tour: undefined },
 ];
 
@@ -34,6 +33,7 @@ const MORE: NavItem[] = [
   { to: '/progress', label: { en: 'progress', ru: 'прогресс' }, end: false, devOnly: false },
   { to: '/settings', label: { en: 'settings', ru: 'настройки' }, end: false, devOnly: false },
   { to: '/feedback', label: { en: 'feedback', ru: 'обратная связь' }, end: false, devOnly: false },
+  { to: '/support', label: { en: 'support', ru: 'поддержка' }, end: false, devOnly: false },
   { to: '/about', label: { en: 'about', ru: 'о нас' }, end: false, devOnly: false, icon: '/assets/pixel/mascot.png' },
 ];
 

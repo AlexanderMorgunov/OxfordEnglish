@@ -18,6 +18,7 @@ test('primary destinations stay visible, secondary ones hide behind "more"', () 
   expect(screen.getByRole('link', { name: /library/i })).toBeInTheDocument();
   expect(screen.queryByRole('link', { name: /settings/i })).not.toBeInTheDocument();
   expect(screen.queryByRole('link', { name: /about/i })).not.toBeInTheDocument();
+  expect(screen.queryByRole('link', { name: /support/i })).not.toBeInTheDocument();
   expect(screen.getByRole('button', { name: /more/i })).toHaveAttribute('aria-expanded', 'false');
 });
 
@@ -28,6 +29,7 @@ test('"more" opens the secondary links and Escape closes it', async () => {
   expect(trigger).toHaveAttribute('aria-expanded', 'true');
   expect(screen.getByRole('link', { name: /settings/i })).toBeInTheDocument();
   expect(screen.getByRole('link', { name: /progress/i })).toBeInTheDocument();
+  expect(screen.getByRole('link', { name: /support/i })).toBeInTheDocument();
 
   await userEvent.keyboard('{Escape}');
   expect(trigger).toHaveAttribute('aria-expanded', 'false');
