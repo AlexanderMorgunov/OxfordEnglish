@@ -4,6 +4,7 @@ import { useContentStore } from '@/content/store';
 import { useUiLang, tr } from '@/features/i18n/uiLang';
 import { Card, Eyebrow, LevelDivider, PageStub, PixelImage } from '@/shared/ui';
 import { LEVEL_ORDER } from '@/shared/levels';
+import { BackToReader } from '@/features/reader/BackToReader';
 import type { Level } from '@/content/schema';
 
 export function GrammarIndexPage() {
@@ -23,6 +24,7 @@ export function GrammarIndexPage() {
 
   return (
     <section aria-label="Grammar reference" className="max-w-prose">
+      <BackToReader />
       <Eyebrow className="mb-3.5">reference</Eyebrow>
       <div className="mb-2 flex items-center gap-3">
         <PixelImage src="/assets/pixel/nav/grammar.png" alt="" className="h-7 w-7 shrink-0" />

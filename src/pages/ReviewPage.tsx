@@ -6,6 +6,7 @@ import { useUiLang } from '@/features/i18n/uiLang';
 import { canSpeak, speakWord } from '@/shared/lib/audio';
 import { translateWord } from '@/features/vocab/translate';
 import { gradeCard, getDueCards, Rating } from '@/features/srs/service';
+import { BackToReader } from '@/features/reader/BackToReader';
 
 const GRADES = [
   { rating: Rating.Again, ru: 'снова', en: 'again' },
@@ -44,6 +45,7 @@ export function ReviewPage() {
 
   return (
     <section aria-label={ru ? 'Повторение' : 'Review'}>
+      <BackToReader />
       <Eyebrow className="mb-3.5">srs · review</Eyebrow>
       <div className="mb-8 flex items-center gap-3">
         <PixelImage src="/assets/pixel/nav/review.png" alt="" className="h-7 w-7 shrink-0" />

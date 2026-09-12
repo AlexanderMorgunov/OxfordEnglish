@@ -5,6 +5,7 @@ import { cn } from '@/shared/lib/cn';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { canSpeak } from '@/shared/lib/audio';
 import { useReaderSettings, RATE_STEPS } from './settings';
+import { withReaderReturn } from './return-to-reader';
 import { BookmarkList } from './BookmarkList';
 import type { Bookmark } from './bookmarks';
 
@@ -12,11 +13,11 @@ import type { Bookmark } from './bookmarks';
  *  same sprites as the header nav, so the icons are already familiar. Vocabulary keeps `from=reader`,
  *  which is what puts a "back to reading" link on that page. */
 const NAV = [
-  { to: '/vocabulary?from=reader', icon: '/assets/pixel/nav/vocab.png', ru: 'Словарь', en: 'Vocabulary' },
-  { to: '/', icon: '/assets/pixel/nav/today.png', ru: 'Сегодня', en: 'Today' },
-  { to: '/grammar', icon: '/assets/pixel/nav/grammar.png', ru: 'Грамматика', en: 'Grammar' },
-  { to: '/review', icon: '/assets/pixel/nav/review.png', ru: 'Повторение', en: 'Review' },
-  { to: '/library', icon: '/assets/pixel/nav/library.png', ru: 'Библиотека', en: 'Library' },
+  { to: withReaderReturn('/vocabulary'), icon: '/assets/pixel/nav/vocab.png', ru: 'Словарь', en: 'Vocabulary' },
+  { to: withReaderReturn('/'), icon: '/assets/pixel/nav/today.png', ru: 'Сегодня', en: 'Today' },
+  { to: withReaderReturn('/grammar'), icon: '/assets/pixel/nav/grammar.png', ru: 'Грамматика', en: 'Grammar' },
+  { to: withReaderReturn('/review'), icon: '/assets/pixel/nav/review.png', ru: 'Повторение', en: 'Review' },
+  { to: withReaderReturn('/library'), icon: '/assets/pixel/nav/library.png', ru: 'Библиотека', en: 'Library' },
 ] as const;
 
 /** Floating quick-access widget for the reader: section nav, one-tap bookmark of the current

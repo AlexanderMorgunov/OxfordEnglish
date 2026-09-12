@@ -32,12 +32,13 @@ test('the panel is closed until the trigger is pressed', async () => {
 test('icon-only section links keep an accessible name and the right target', async () => {
   renderWidget();
   await openPanel();
+  // Every destination carries the marker, which is what puts a "back to reading" link on that page.
   const expected: [RegExp, string][] = [
     [/vocabulary/i, '/vocabulary?from=reader'],
-    [/today/i, '/'],
-    [/grammar/i, '/grammar'],
-    [/review/i, '/review'],
-    [/library/i, '/library'],
+    [/today/i, '/?from=reader'],
+    [/grammar/i, '/grammar?from=reader'],
+    [/review/i, '/review?from=reader'],
+    [/library/i, '/library?from=reader'],
   ];
   for (const [name, href] of expected) {
     expect(screen.getByRole('link', { name })).toHaveAttribute('href', href);

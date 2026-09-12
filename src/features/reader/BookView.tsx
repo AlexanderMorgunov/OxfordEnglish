@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Button } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import type { ParsedBook } from './parse';
@@ -10,6 +11,7 @@ import { ReaderWidget } from './ReaderWidget';
 import { BookmarkList } from './BookmarkList';
 import { toSentences } from './parse/text';
 import { buildBookIndex, positionOf, splitParas } from './position';
+import { rememberReader } from './return-to-reader';
 import { saveProgress, useReadingTracker } from '@/features/stats/useReadingTracker';
 import {
   listBookmarks,
@@ -34,6 +36,9 @@ export function BookView({
   onChapter?: (index: number) => void;
 }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
+  const { pathname } = useLocation();
+  // Where "back to reading" returns to, from anywhere the widget links out to.
+  useEffect(() => rememberReader(pathname), [pathname]);
   // Long chapters are paginated so one render never mounts tens of thousands of word tokens.
   const chapters = useMemo(() => paginateChapters(book.chapters), [book]);
   const [chapter, setChapter] = useState(Math.min(Math.max(initialChapter, 0), chapters.length - 1));
