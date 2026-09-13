@@ -112,6 +112,21 @@ export type SyncEntry = z.infer<typeof SyncEntrySchema>;
 export type SyncPushResponse = z.infer<typeof SyncPushResponseSchema>;
 export type SyncPullResponse = z.infer<typeof SyncPullResponseSchema>;
 
+// --- Entitlements (paid plan) ---
+export const PlanSchema = z.enum(['free', 'trial', 'pro']);
+export const EntitlementSchema = z.object({
+  plan: PlanSchema,
+  active: z.boolean(),
+  trialEndsAt: z.number().optional(),
+  paidUntil: z.number().optional(),
+  ai: z.object({ used: z.number(), limit: z.number(), resetsAt: z.number().optional() }),
+});
+export const TrialClaimRequestSchema = z.object({ installId: z.string().min(8).max(200) });
+export const RedeemRequestSchema = z.object({ grantToken: z.string().min(16).max(200) });
+
+export type Plan = z.infer<typeof PlanSchema>;
+export type Entitlement = z.infer<typeof EntitlementSchema>;
+
 /** Stable error codes both ends agree on. */
 export const ErrorCode = {
   InvalidCredentials: 'invalid_credentials',
@@ -119,6 +134,9 @@ export const ErrorCode = {
   RefreshInvalid: 'refresh_invalid',
   RefreshReused: 'refresh_reused',
   BadRequest: 'bad_request',
+  TrialAlreadyClaimed: 'trial_already_claimed',
+  NoPlan: 'no_plan',
+  GrantInvalid: 'grant_invalid',
 } as const;
 export type ErrorCode = (typeof ErrorCode)[keyof typeof ErrorCode];
 
@@ -139,4 +157,7 @@ export const Routes = {
   blobUploadUrl: '/v1/blobs/upload-url',
   blobCommit: '/v1/blobs/commit',
   account: '/v1/account',
+  entitlement: '/v1/entitlement',
+  entitlementTrial: '/v1/entitlement/trial',
+  entitlementRedeem: '/v1/entitlement/redeem',
 } as const;

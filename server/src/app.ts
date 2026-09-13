@@ -4,23 +4,27 @@ import { authRoutes } from './routes/auth.js';
 import { syncRoutes } from './routes/sync.js';
 import { blobRoutes } from './routes/blobs.js';
 import { accountRoutes } from './routes/account.js';
+import { entitlementRoutes } from './routes/entitlement.js';
 import { InMemoryAuthStore, type AuthStore } from './store.js';
 import { InMemorySyncStore, type SyncStore } from './sync.js';
 import { InMemoryBlobStore, type BlobStore } from './blobs.js';
+import { InMemoryEntitlementStore, type EntitlementStore } from './entitlements.js';
 import { ydbConfigured } from './ydb.js';
 import { YdbAuthStore } from './stores/ydbAuth.js';
 import { YdbSyncStore } from './stores/ydbSync.js';
 import { YcBlobStore } from './stores/ycBlob.js';
+import { YdbEntitlementStore } from './stores/ydbEntitlement.js';
 import { jwks } from './tokens.js';
 
 /** Build the API app. Storage is injectable (tests pass explicit stores); otherwise it picks the YDB +
  *  Object Storage impls when a real backend is configured (YDB_DATABASE set), else the in-memory skeleton
  *  (local/tests). Separated from index.ts so tests use `app.request(...)` in-process. */
-export function createApp(store?: AuthStore, sync?: SyncStore, blobs?: BlobStore): Hono {
+export function createApp(store?: AuthStore, sync?: SyncStore, blobs?: BlobStore, ent?: EntitlementStore): Hono {
   const real = ydbConfigured();
   const authStore = store ?? (real ? new YdbAuthStore() : new InMemoryAuthStore());
   const syncStore = sync ?? (real ? new YdbSyncStore() : new InMemorySyncStore());
   const blobStore = blobs ?? (real ? new YcBlobStore() : new InMemoryBlobStore());
+  const entStore = ent ?? (real ? new YdbEntitlementStore() : new InMemoryEntitlementStore());
   const app = new Hono();
 
   const origins = (process.env.CORS_ORIGINS ?? 'https://dayenglish.ru,https://www.dayenglish.ru')
@@ -29,7 +33,8 @@ export function createApp(store?: AuthStore, sync?: SyncStore, blobs?: BlobStore
     .filter(Boolean);
   app.use(
     '/v1/*',
-    cors({ origin: origins, allowMethods: ['GET', 'POST', 'OPTIONS'], allowHeaders: ['content-type', 'authorization'], maxAge: 86400 })
+    // DELETE is here for /v1/account — without it the browser preflight for delete-account fails.
+    cors({ origin: origins, allowMethods: ['GET', 'POST', 'DELETE', 'OPTIONS'], allowHeaders: ['content-type', 'authorization'], maxAge: 86400 })
   );
 
   app.onError((e, c) => {
@@ -43,7 +48,8 @@ export function createApp(store?: AuthStore, sync?: SyncStore, blobs?: BlobStore
   app.route('/', authRoutes(authStore));
   app.route('/', syncRoutes(syncStore));
   app.route('/', blobRoutes(blobStore));
-  app.route('/', accountRoutes(authStore, syncStore, blobStore));
+  app.route('/', accountRoutes(authStore, syncStore, blobStore, entStore));
+  app.route('/', entitlementRoutes(entStore));
 
   return app;
 }

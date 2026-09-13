@@ -115,6 +115,26 @@ export const BlobDownloadResponseSchema = z.object({ url: z.string(), method: z.
 export type BlobUploadTarget = z.infer<typeof BlobUploadTargetSchema>;
 export type BlobMeta = z.infer<typeof BlobMetaSchema>;
 
+// --- Entitlements (paid plan) ---
+export const PlanSchema = z.enum(['free', 'trial', 'pro']);
+export const EntitlementSchema = z.object({
+  plan: PlanSchema,
+  active: z.boolean(),
+  trialEndsAt: z.number().optional(),
+  paidUntil: z.number().optional(),
+  ai: z.object({ used: z.number(), limit: z.number(), resetsAt: z.number().optional() }),
+});
+/** Claiming the trial passes the device's install id so a re-registered account on the same install
+ *  doesn't get a second trial. A weak signal by construction (the client can mint a new one) — the
+ *  hard bound on trial cost is the one-time AI budget, not this. */
+export const TrialClaimRequestSchema = z.object({ installId: z.string().min(8).max(200) });
+/** Redeem a paid grant minted by the billing callback. The token is the ONLY thing that crosses from
+ *  the payment side; it carries no payment identifiers (see backend-v1-design §Privacy). */
+export const RedeemRequestSchema = z.object({ grantToken: z.string().min(16).max(200) });
+
+export type Plan = z.infer<typeof PlanSchema>;
+export type Entitlement = z.infer<typeof EntitlementSchema>;
+
 export const ErrorCode = {
   InvalidCredentials: 'invalid_credentials',
   AccountExists: 'account_exists',
@@ -127,5 +147,8 @@ export const ErrorCode = {
   QuotaExceeded: 'quota_exceeded',
   SizeMismatch: 'size_mismatch',
   BlobNotFound: 'blob_not_found',
+  TrialAlreadyClaimed: 'trial_already_claimed',
+  NoPlan: 'no_plan',
+  GrantInvalid: 'grant_invalid',
 } as const;
 export type ErrorCode = (typeof ErrorCode)[keyof typeof ErrorCode];

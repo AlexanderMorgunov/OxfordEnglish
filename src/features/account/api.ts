@@ -11,6 +11,7 @@ import {
   BlobMetaSchema,
   BlobListResponseSchema,
   BlobDownloadResponseSchema,
+  EntitlementSchema,
   ApiErrorSchema,
   type AuthRequest,
   type Session,
@@ -23,6 +24,7 @@ import {
   type BlobUploadTarget,
   type BlobMeta,
   type BlobListResponse,
+  type Entitlement,
 } from './contract';
 
 /** A typed API failure carrying the server's stable `code` (see contract ErrorCode). */
@@ -200,4 +202,31 @@ export async function blobDownload(accessToken: string, url: string): Promise<Bl
   const res = await fetch(absolute(url), { headers: targetHeaders(url, accessToken) });
   if (!res.ok) throw new ApiFailure('blob_download_failed', res.status);
   return res.blob();
+}
+
+const authed = (accessToken: string) => ({ authorization: `Bearer ${accessToken}` });
+
+/** Current plan + AI quota. Always fetched, never read off the access token: entitlement can lapse
+ *  mid-token (refund, expiry, quota) and an hour-long JWT cannot be revoked. */
+export function getEntitlement(accessToken: string): Promise<Entitlement> {
+  return request(Routes.entitlement, { method: 'GET', headers: authed(accessToken) }, (j) => EntitlementSchema.parse(j));
+}
+
+/** Start the free trial. `installId` lets the server refuse a second trial from the same install
+ *  (throws ApiFailure `trial_already_claimed`). */
+export function claimTrial(accessToken: string, installId: string): Promise<Entitlement> {
+  return request(
+    Routes.entitlementTrial,
+    { method: 'POST', headers: authed(accessToken), body: JSON.stringify({ installId }) },
+    (j) => EntitlementSchema.parse(j)
+  );
+}
+
+/** Exchange a grant token issued by checkout for paid time. One-time: a replay fails `grant_invalid`. */
+export function redeemGrant(accessToken: string, grantToken: string): Promise<Entitlement> {
+  return request(
+    Routes.entitlementRedeem,
+    { method: 'POST', headers: authed(accessToken), body: JSON.stringify({ grantToken }) },
+    (j) => EntitlementSchema.parse(j)
+  );
 }
