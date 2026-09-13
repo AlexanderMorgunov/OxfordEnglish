@@ -15,7 +15,8 @@ import {
 import { translateWord } from '@/features/vocab/translate';
 import { translateReaderText } from './translate';
 import { addWordCard, addPhraseCard } from '@/features/srs/service';
-import { isConfigured, useAiStore } from '@/features/ai/store';
+import { useAiStore } from '@/features/ai/store';
+import { useAiEnabled } from '@/features/ai/route';
 import { wordInContext } from '@/features/ai/functions';
 import type { AiConfig } from '@/features/ai/provider';
 import { useUiLang } from '@/features/i18n/uiLang';
@@ -59,7 +60,7 @@ function ContextGloss({
 }: {
   word: string;
   sentence: string;
-  config: AiConfig;
+  config: AiConfig | null;
   onResolved: (firstLine: string) => void;
 }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
@@ -178,7 +179,7 @@ export const WordToken = memo(function WordToken({
   const [failed, setFailed] = useState(false);
   const [done, setDone] = useState(false);
   const config = useAiStore((s) => s.config);
-  const aiReady = isConfigured(config);
+  const aiReady = useAiEnabled();
   // The in-context meaning shown (AI); its first line is what we save to the word's vocab card.
   const [wicGloss, setWicGloss] = useState<string | null>(null);
 
@@ -651,7 +652,7 @@ export function ReadingText({
   const aiTranslation = useReaderSettings((s) => s.aiTranslation);
   const toggleAiTranslation = useReaderSettings((s) => s.toggleAiTranslation);
   const aiConfig = useAiStore((s) => s.config);
-  const aiConfigured = isConfigured(aiConfig);
+  const aiConfigured = useAiEnabled();
   // Stable lens callback (reads live mode/config/level via a ref) so the memoized Paragraph gets a constant
   // `onLens` and only re-renders when the primitive `lensK` changes. `translateArgs` still serves the phrase
   // path below.

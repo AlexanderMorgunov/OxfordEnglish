@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react';
 import type { Exercise } from '@/content/schema';
 import { AiAction } from '@/features/ai/AiAction';
 import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
-import { isConfigured, useAiStore } from '@/features/ai/store';
+import { useAiEnabled } from '@/features/ai/route';
 import { explainError, hint as aiHint } from '@/features/ai/functions';
 import { useUiLang, tr } from '@/features/i18n/uiLang';
 import { exLabels } from '@/features/i18n/ui-strings';
@@ -34,7 +34,7 @@ export function ExerciseShell({
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
   const L = exLabels(lang);
-  const aiConfigured = isConfigured(useAiStore((s) => s.config));
+  const aiConfigured = useAiEnabled();
   const [showHint, setShowHint] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
 

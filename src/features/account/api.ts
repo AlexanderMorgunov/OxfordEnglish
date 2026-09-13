@@ -12,6 +12,7 @@ import {
   BlobListResponseSchema,
   BlobDownloadResponseSchema,
   EntitlementSchema,
+  AiCompleteResponseSchema,
   ApiErrorSchema,
   type AuthRequest,
   type Session,
@@ -25,6 +26,8 @@ import {
   type BlobMeta,
   type BlobListResponse,
   type Entitlement,
+  type AiTaskRequest,
+  type AiCompleteResponse,
 } from './contract';
 
 /** A typed API failure carrying the server's stable `code` (see contract ErrorCode). */
@@ -228,5 +231,16 @@ export function redeemGrant(accessToken: string, grantToken: string): Promise<En
     Routes.entitlementRedeem,
     { method: 'POST', headers: authed(accessToken), body: JSON.stringify({ grantToken }) },
     (j) => EntitlementSchema.parse(j)
+  );
+}
+
+/** Managed-AI call: the server holds the key, assembles the prompt, and charges the account's quota.
+ *  Throws ApiFailure with `no_plan` / `quota_exhausted` / `ai_unavailable` — all recoverable by falling
+ *  back to BYOK or to the free path, so callers should catch rather than surface a raw error. */
+export function aiComplete(accessToken: string, req: AiTaskRequest): Promise<AiCompleteResponse> {
+  return request(
+    Routes.ai,
+    { method: 'POST', headers: authed(accessToken), body: JSON.stringify(req) },
+    (j) => AiCompleteResponseSchema.parse(j)
   );
 }

@@ -1,4 +1,6 @@
 import { complete, type AiConfig } from './provider';
+import { runTask, aiPathLabel } from './route';
+import type { AiTaskRequest } from '@/features/account/contract';
 import { clampBand, simplifySystem, simplifyShot, SIMPLIFY_PROMPT_VERSION, type Band } from './simplify-prompts';
 import { db } from '@/db/db';
 import type { Exercise, Level } from '@/content/schema';
@@ -18,7 +20,7 @@ const hasCyrillic = (s: string) => /[а-яё]/i.test(s);
  * the caller can fall back to the free translator.
  */
 export async function aiTranslate(
-  config: AiConfig,
+  config: AiConfig | null,
   text: string,
   opts: { sentence?: string; signal?: AbortSignal } = {}
 ): Promise<string> {
@@ -26,7 +28,8 @@ export async function aiTranslate(
   if (!q) return '';
   const ctx = opts.sentence?.trim();
   const inContext = ctx && ctx !== q ? ctx : undefined;
-  const cacheKey = inContext ? `ai:${config.model}:${q}|@|${inContext}` : `ai:${config.model}:${q}`;
+  const path = aiPathLabel(config);
+  const cacheKey = inContext ? `ai:${path}:${q}|@|${inContext}` : `ai:${path}:${q}`;
   try {
     const cached = await db.translations.get(cacheKey);
     if (cached && hasCyrillic(cached.ru)) return cached.ru;
@@ -36,13 +39,15 @@ export async function aiTranslate(
   const user = inContext
     ? `Фрагмент: "${q}"\nПредложение: "${inContext}"\nПереведи ТОЛЬКО фрагмент так, как он значит в этом предложении. Верни только перевод фрагмента.`
     : q;
-  const raw = await complete(
-    config,
-    [
-      { role: 'system', content: RU_TRANSLATOR },
-      { role: 'user', content: user },
-    ],
-    { temperature: 0.2, maxTokens: 300, noReasoning: true, signal: opts.signal }
+  const raw = await runTask({ task: 'translate', text: q, sentence: inContext }, config, (c) =>
+    complete(
+      c,
+      [
+        { role: 'system', content: RU_TRANSLATOR },
+        { role: 'user', content: user },
+      ],
+      { temperature: 0.2, maxTokens: 300, noReasoning: true, signal: opts.signal }
+    )
   );
   const ru = raw.trim().replace(/^["'«»“”]+|["'«»“”]+$/g, '').trim();
   if (!hasCyrillic(ru)) throw new Error('ai translation is not Russian');
@@ -79,14 +84,14 @@ const countLatin = (s: string): number => (s.match(/[a-z]/gi) ?? []).length;
  * the RU fallback. An echo (result ≈ input) is returned as-is — the caller decides how to render it.
  */
 export async function aiSimplify(
-  config: AiConfig,
+  config: AiConfig | null,
   sentence: string,
   opts: { level?: Level | null; stepDown?: number; signal?: AbortSignal } = {}
 ): Promise<string> {
   const q = sentence.trim();
   if (!q) return '';
   const band = clampBand(opts.level, opts.stepDown);
-  const cacheKey = `lens:simplify:${SIMPLIFY_PROMPT_VERSION}:${band}:${config.model}:${q}`;
+  const cacheKey = `lens:simplify:${SIMPLIFY_PROMPT_VERSION}:${band}:${aiPathLabel(config)}:${q}`;
   try {
     const cached = await db.translations.get(cacheKey);
     if (cached?.en) return cached.en;
@@ -94,19 +99,24 @@ export async function aiSimplify(
     // ignore cache miss
   }
   const shot = simplifyShot(band);
-  const raw = await complete(
+  const raw = await runTask(
+    { task: 'simplify', sentence: q, level: opts.level ?? undefined, stepDown: opts.stepDown },
     config,
-    [
-      { role: 'system', content: simplifySystem(band) },
-      { role: 'user', content: shot.src },
-      { role: 'assistant', content: shot.out },
-      { role: 'user', content: q },
-    ],
-    // `noReasoning` disables/minimizes chain-of-thought (deepseek off entirely; groq gpt-oss only down to
-    // 'low' — it can't turn off). The cap must therefore leave room for any residual reasoning PLUS the
-    // answer, or `content` comes back empty; 512 covers groq's low-effort reasoning and is a harmless
-    // ceiling for deepseek (which stops naturally at ~50). Kills the 48k-output runaway either way.
-    { temperature: 0.2, maxTokens: 512, noReasoning: true, signal: opts.signal }
+    (c) =>
+      complete(
+        c,
+        [
+          { role: 'system', content: simplifySystem(band) },
+          { role: 'user', content: shot.src },
+          { role: 'assistant', content: shot.out },
+          { role: 'user', content: q },
+        ],
+        // `noReasoning` disables/minimizes chain-of-thought (deepseek off entirely; groq gpt-oss only down
+        // to 'low' — it can't turn off). The cap must therefore leave room for any residual reasoning PLUS
+        // the answer, or `content` comes back empty; 512 covers groq's low-effort reasoning and is a
+        // harmless ceiling for deepseek (which stops naturally at ~50). Kills the 48k runaway either way.
+        { temperature: 0.2, maxTokens: 512, noReasoning: true, signal: opts.signal }
+      )
   );
   const out = cleanRewrite(raw);
   // Reject empty, runaway, or a straight RU translation (model ignored "English only").
@@ -147,29 +157,31 @@ function grammarSystem(band: Band): string {
  * non-Russian answer so the caller can fall back.
  */
 export async function aiGrammar(
-  config: AiConfig,
+  config: AiConfig | null,
   sentence: string,
   opts: { level?: Level | null; signal?: AbortSignal } = {}
 ): Promise<string> {
   const q = sentence.trim();
   if (!q) return '';
   const band = clampBand(opts.level, 0);
-  const cacheKey = `lens:grammar:${GRAMMAR_VERSION}:${band}:${config.model}:${q}`;
+  const cacheKey = `lens:grammar:${GRAMMAR_VERSION}:${band}:${aiPathLabel(config)}:${q}`;
   try {
     const cached = await db.translations.get(cacheKey);
     if (cached?.ru) return cached.ru;
   } catch {
     // ignore cache miss
   }
-  const raw = await complete(
-    config,
-    [
-      { role: 'system', content: grammarSystem(band) },
-      { role: 'user', content: GRAMMAR_SHOT.src },
-      { role: 'assistant', content: GRAMMAR_SHOT.out },
-      { role: 'user', content: q },
-    ],
-    { temperature: 0.3, maxTokens: 512, noReasoning: true, signal: opts.signal }
+  const raw = await runTask({ task: 'grammar', sentence: q, level: opts.level ?? undefined }, config, (c) =>
+    complete(
+      c,
+      [
+        { role: 'system', content: grammarSystem(band) },
+        { role: 'user', content: GRAMMAR_SHOT.src },
+        { role: 'assistant', content: GRAMMAR_SHOT.out },
+        { role: 'user', content: q },
+      ],
+      { temperature: 0.3, maxTokens: 512, noReasoning: true, signal: opts.signal }
+    )
   );
   const out = cleanRewrite(raw);
   if (!out || !hasCyrillic(out)) throw new Error('ai grammar unavailable'); // empty or answered in English
@@ -189,7 +201,7 @@ export async function aiGrammar(
  * (questions vary); the page prefix carries the cost win. Reasoning off + a room-y cap (answer + quote).
  */
 export async function aiBookQuestion(
-  config: AiConfig,
+  config: AiConfig | null,
   opts: { pageText: string; question: string; signal?: AbortSignal }
 ): Promise<{ answer: string; quote?: string }> {
   const q = opts.question.trim();
@@ -201,13 +213,15 @@ export async function aiBookQuestion(
     'ответ, добавь его ПОСЛЕДНЕЙ строкой в формате: ЦИТАТА: <точное предложение из текста>.\n\nТекст:\n"""\n' +
     opts.pageText +
     '\n"""';
-  const raw = await complete(
-    config,
-    [
-      { role: 'system', content: system },
-      { role: 'user', content: q },
-    ],
-    { temperature: 0.3, maxTokens: 600, noReasoning: true, signal: opts.signal }
+  const raw = await runTask({ task: 'bookqa', pageText: opts.pageText, question: q }, config, (c) =>
+    complete(
+      c,
+      [
+        { role: 'system', content: system },
+        { role: 'user', content: q },
+      ],
+      { temperature: 0.3, maxTokens: 600, noReasoning: true, signal: opts.signal }
+    )
   );
   const m = raw.match(/ЦИТАТА:\s*([^\n]+)\s*$/);
   const answer = cleanRewrite(raw.replace(/ЦИТАТА:[^\n]*$/, '').trim());
@@ -234,21 +248,24 @@ function cacheSet(key: string, value: string): void {
 }
 
 async function ask(
-  config: AiConfig,
+  config: AiConfig | null,
+  req: AiTaskRequest,
   system: string,
   user: string,
   cacheKey: string
 ): Promise<string> {
-  const key = `${config.model}|${cacheKey}`;
+  const key = `${aiPathLabel(config)}|${cacheKey}`;
   const hit = cacheGet(key);
   if (hit) return hit;
-  const out = await complete(
-    config,
-    [
-      { role: 'system', content: system },
-      { role: 'user', content: user },
-    ],
-    { noReasoning: true, maxTokens: 220 }
+  const out = await runTask(req, config, (c) =>
+    complete(
+      c,
+      [
+        { role: 'system', content: system },
+        { role: 'user', content: user },
+      ],
+      { noReasoning: true, maxTokens: 220 }
+    )
   );
   cacheSet(key, out);
   return out;
@@ -258,7 +275,7 @@ const RU_TUTOR =
   'Ты — преподаватель английского для русскоговорящего ученика уровня A2–B1. Отвечай кратко и по-русски.';
 
 export function explainError(
-  config: AiConfig,
+  config: AiConfig | null,
   ctx: {
     prompt: string;
     userAnswer: string;
@@ -280,11 +297,24 @@ export function explainError(
     `Тема: ${ctx.topic}\n` +
     'Объясни в 1–2 предложениях, в чём именно ошибка (укажи на неё конкретно, например порядок слов или форму), какое правило работает. Если попыток несколько — отметь, какая была ближе. ' +
     'Опирайся ТОЛЬКО на текст задания и данные ответы: не выдумывай содержание аудио или текста, которых тебе не показали. Если суть ошибки зависит от непоказанного материала (например, это восприятие на слух), объясни разницу между вариантами ответа и что стоит переслушать/перечитать. Не морализируй.';
-  return ask(config, RU_TUTOR, user, `explain|${ctx.prompt}|${ctx.attempts?.join('|') ?? ctx.userAnswer}`);
+  return ask(
+    config,
+    {
+      task: 'explain',
+      prompt: ctx.prompt,
+      userAnswer: ctx.userAnswer,
+      correct: ctx.correct,
+      topic: ctx.topic,
+      attempts: ctx.attempts,
+    },
+    RU_TUTOR,
+    user,
+    `explain|${ctx.prompt}|${ctx.attempts?.join('|') ?? ctx.userAnswer}`
+  );
 }
 
 export function hint(
-  config: AiConfig,
+  config: AiConfig | null,
   ctx: { prompt: string; topic: string; userAnswer?: string; attempt?: number }
 ): Promise<string> {
   const system = `${RU_TUTOR} Дай наводящую подсказку, но НИКОГДА не давай готовый ответ.`;
@@ -298,13 +328,15 @@ export function hint(
     'Одна короткая подсказка, которая направляет к исправлению, но НЕ раскрывает готовый ответ.';
   // No cache: a hint must react to the current answer, and re-requesting after a
   // change must return a fresh hint, not a stale cached one.
-  return complete(
-    config,
-    [
-      { role: 'system', content: system },
-      { role: 'user', content: user },
-    ],
-    { noReasoning: true, maxTokens: 160 }
+  return runTask({ task: 'hint', prompt: ctx.prompt, topic: ctx.topic, userAnswer: ctx.userAnswer }, config, (c) =>
+    complete(
+      c,
+      [
+        { role: 'system', content: system },
+        { role: 'user', content: user },
+      ],
+      { noReasoning: true, maxTokens: 160 }
+    )
   );
 }
 
@@ -348,7 +380,7 @@ export function coerceExercises(raw: string, idPrefix: string): Exercise[] {
 
 /** Generate vocabulary exercises from a chapter with the AI (the "both" option alongside deterministic). */
 export async function generateReaderExercises(
-  config: AiConfig,
+  config: AiConfig | null,
   ctx: { text: string; targets: string[]; idPrefix: string; count?: number }
 ): Promise<Exercise[]> {
   const n = ctx.count ?? 6;
@@ -365,19 +397,21 @@ export async function generateReaderExercises(
     'замени одно содержательное слово на ___ и дай 4 варианта: один верный (исходное слово) и три ' +
     'правдоподобных неверных той же части речи. Формат каждого элемента: ' +
     '{"q":"предложение с ___","options":["w1","w2","w3","w4"],"answer":"верное"}. Только JSON-массив.';
-  const raw = await complete(
-    config,
-    [
-      { role: 'system', content: system },
-      { role: 'user', content: user },
-    ],
-    { noReasoning: true, maxTokens: 700 }
+  const raw = await runTask({ task: 'exercises', text: ctx.text, targets: ctx.targets, count: n }, config, (c) =>
+    complete(
+      c,
+      [
+        { role: 'system', content: system },
+        { role: 'user', content: user },
+      ],
+      { noReasoning: true, maxTokens: 700 }
+    )
   );
   return coerceExercises(raw, ctx.idPrefix);
 }
 
 export function wordInContext(
-  config: AiConfig,
+  config: AiConfig | null,
   word: string,
   sentence: string
 ): Promise<string> {
@@ -385,5 +419,5 @@ export function wordInContext(
     `Слово: "${word}"\nПредложение: "${sentence}"\n` +
     'Дай перевод слова ИМЕННО в этом предложении (одно-два слова). ' +
     'Затем, если у слова есть другие частые значения, добавь строкой "Ещё: …" с 1–2 из них. Кратко.';
-  return ask(config, RU_TUTOR, user, `wic|${word}|${sentence}`);
+  return ask(config, { task: 'wordInContext', word, sentence }, RU_TUTOR, user, `wic|${word}|${sentence}`);
 }

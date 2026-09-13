@@ -1,22 +1,24 @@
 import { useState } from 'react';
 import { Button } from '@/shared/ui';
 import { AiUpsellLink } from './AiUpsellLink';
-import { isConfigured, useAiStore } from './store';
+import { useAiStore } from './store';
+import { useAiEnabled } from './route';
 import type { AiConfig } from './provider';
 
 type Props = {
   label: string;
-  run: (config: AiConfig) => Promise<string>;
+  run: (config: AiConfig | null) => Promise<string>;
   onRun?: () => void;
 };
 
 export function AiAction({ label, run, onRun }: Props) {
   const config = useAiStore((s) => s.config);
+  const enabled = useAiEnabled();
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  if (!isConfigured(config)) {
+  if (!enabled) {
     return <AiUpsellLink />;
   }
 

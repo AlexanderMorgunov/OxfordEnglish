@@ -5,26 +5,38 @@ import { syncRoutes } from './routes/sync.js';
 import { blobRoutes } from './routes/blobs.js';
 import { accountRoutes } from './routes/account.js';
 import { entitlementRoutes } from './routes/entitlement.js';
+import { aiRoutes } from './routes/ai.js';
 import { InMemoryAuthStore, type AuthStore } from './store.js';
 import { InMemorySyncStore, type SyncStore } from './sync.js';
 import { InMemoryBlobStore, type BlobStore } from './blobs.js';
 import { InMemoryEntitlementStore, type EntitlementStore } from './entitlements.js';
+import { InMemoryAiCacheStore, type AiCacheStore } from './ai.js';
 import { ydbConfigured } from './ydb.js';
 import { YdbAuthStore } from './stores/ydbAuth.js';
 import { YdbSyncStore } from './stores/ydbSync.js';
 import { YcBlobStore } from './stores/ycBlob.js';
 import { YdbEntitlementStore } from './stores/ydbEntitlement.js';
+import { YdbAiCacheStore } from './stores/ydbAiCache.js';
+import type { Completer } from './aiProvider.js';
 import { jwks } from './tokens.js';
 
 /** Build the API app. Storage is injectable (tests pass explicit stores); otherwise it picks the YDB +
  *  Object Storage impls when a real backend is configured (YDB_DATABASE set), else the in-memory skeleton
  *  (local/tests). Separated from index.ts so tests use `app.request(...)` in-process. */
-export function createApp(store?: AuthStore, sync?: SyncStore, blobs?: BlobStore, ent?: EntitlementStore): Hono {
+export function createApp(
+  store?: AuthStore,
+  sync?: SyncStore,
+  blobs?: BlobStore,
+  ent?: EntitlementStore,
+  aiCache?: AiCacheStore,
+  completer?: Completer
+): Hono {
   const real = ydbConfigured();
   const authStore = store ?? (real ? new YdbAuthStore() : new InMemoryAuthStore());
   const syncStore = sync ?? (real ? new YdbSyncStore() : new InMemorySyncStore());
   const blobStore = blobs ?? (real ? new YcBlobStore() : new InMemoryBlobStore());
   const entStore = ent ?? (real ? new YdbEntitlementStore() : new InMemoryEntitlementStore());
+  const aiCacheStore = aiCache ?? (real ? new YdbAiCacheStore() : new InMemoryAiCacheStore());
   const app = new Hono();
 
   const origins = (process.env.CORS_ORIGINS ?? 'https://dayenglish.ru,https://www.dayenglish.ru')
@@ -50,6 +62,7 @@ export function createApp(store?: AuthStore, sync?: SyncStore, blobs?: BlobStore
   app.route('/', blobRoutes(blobStore));
   app.route('/', accountRoutes(authStore, syncStore, blobStore, entStore));
   app.route('/', entitlementRoutes(entStore));
+  app.route('/', aiRoutes(entStore, aiCacheStore, completer));
 
   return app;
 }

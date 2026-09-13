@@ -137,6 +137,14 @@ export function consumeAi(
   return { allowed: true, row: next, entitlement: evaluate(next, now) };
 }
 
+/** Give back a charge whose work failed (an upstream error). Read-modify-write, so a refund racing a
+ *  concurrent charge can lose one unit — acceptable at our scale, and it errs toward the user only if
+ *  the refund wins. Never goes below zero, and never revives a window that has since rolled. */
+export function refundAi(row: EntitlementRow | null | undefined, cost = 1): EntitlementRow | null {
+  if (!row) return null;
+  return { ...row, aiUsed: Math.max(0, row.aiUsed - cost) };
+}
+
 /** The raw install id is also stamped into synced rows as `updatedBy`, so storing it here would let the
  *  trial-claims table be joined against a user's content. Hash it — we only ever test equality. */
 export const installHash = (installId: string): string =>

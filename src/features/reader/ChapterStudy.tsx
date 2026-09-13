@@ -5,7 +5,8 @@ import { useUiLang } from '@/features/i18n/uiLang';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import { useLearner } from '@/features/learner/store';
 import { ExerciseView } from '@/features/practice/exercises/ExerciseView';
-import { useAiStore, isConfigured } from '@/features/ai/store';
+import { useAiStore } from '@/features/ai/store';
+import { useAiEnabled, aiAvailable } from '@/features/ai/route';
 import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
 import { generateReaderExercises } from '@/features/ai/functions';
 import { estimateCoverage, loadFreq, rankThresholdFor, type FreqIndex } from './difficulty';
@@ -17,7 +18,7 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
   const statuses = useVocabStore((s) => s.statuses);
   const loadVocab = useVocabStore((s) => s.load);
   const aiConfig = useAiStore((s) => s.config);
-  const aiReady = isConfigured(aiConfig);
+  const aiReady = useAiEnabled();
   const [freq, setFreq] = useState<FreqIndex | null>(null);
   const [exercises, setExercises] = useState<Exercise[] | null>(null);
   const [aiState, setAiState] = useState<'idle' | 'loading' | 'error'>('idle');
@@ -76,7 +77,7 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
   };
 
   const generateAi = async () => {
-    if (!coverage || !isConfigured(aiConfig)) return;
+    if (!coverage || !aiAvailable(aiConfig)) return;
     setAiState('loading');
     try {
       const targets = [...coverage.unknown.keys()];

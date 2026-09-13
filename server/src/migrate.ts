@@ -12,6 +12,7 @@
 import ydbSdk from 'ydb-sdk';
 import { driver, query } from './ydb.js';
 import { TRIAL_CLAIM_RETENTION_MS } from './entitlements.js';
+import { AI_CACHE_TTL_DAYS } from './stores/ydbAiCache.js';
 
 // ydb-sdk is CommonJS; Node's ESM interop hides its named exports behind the default.
 const { Column, TableDescription, Types } = ydbSdk;
@@ -45,6 +46,17 @@ const TABLES: Table[] = [
         .withColumn(new Column('claimed_at', ts()))
         .withPrimaryKey('install_hash')
         .withTtl('claimed_at', Math.floor(TRIAL_CLAIM_RETENTION_MS / 1000)),
+  },
+  {
+    name: 'ai_cache',
+    describe: () =>
+      new TableDescription()
+        .withColumn(new Column('cache_key', utf8()))
+        .withColumn(new Column('task', utf8()))
+        .withColumn(new Column('content', utf8()))
+        .withColumn(new Column('created_at', ts()))
+        .withPrimaryKey('cache_key')
+        .withTtl('created_at', AI_CACHE_TTL_DAYS * 24 * 60 * 60),
   },
   {
     name: 'payment_grants',

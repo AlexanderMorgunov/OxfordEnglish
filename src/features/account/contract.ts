@@ -127,6 +127,28 @@ export const RedeemRequestSchema = z.object({ grantToken: z.string().min(16).max
 export type Plan = z.infer<typeof PlanSchema>;
 export type Entitlement = z.infer<typeof EntitlementSchema>;
 
+// --- Managed AI (server key) ---
+/** Mirrors the server's discriminated union. The proxy takes a NAMED TASK, never raw messages: prompts
+ *  are assembled server-side, so model/temperature/token-ceiling are not client inputs. */
+export const AiTaskRequestSchema = z.discriminatedUnion('task', [
+  z.object({ task: z.literal('translate'), text: z.string().min(1), sentence: z.string().optional() }),
+  z.object({ task: z.literal('simplify'), sentence: z.string().min(1), level: z.string().optional(), stepDown: z.number().int().min(0).max(3).optional() }),
+  z.object({ task: z.literal('grammar'), sentence: z.string().min(1), level: z.string().optional() }),
+  z.object({ task: z.literal('wordInContext'), word: z.string().min(1), sentence: z.string().min(1) }),
+  z.object({ task: z.literal('explain'), prompt: z.string().min(1), userAnswer: z.string(), correct: z.string(), topic: z.string(), attempts: z.array(z.string()).max(20).optional() }),
+  z.object({ task: z.literal('hint'), prompt: z.string().min(1), topic: z.string(), userAnswer: z.string().optional() }),
+  z.object({ task: z.literal('bookqa'), pageText: z.string().min(1), question: z.string().min(1) }),
+  z.object({ task: z.literal('exercises'), text: z.string().min(1), targets: z.array(z.string()).max(40), count: z.number().int().min(1).max(12).optional() }),
+]);
+export const AiCompleteResponseSchema = z.object({
+  content: z.string(),
+  cached: z.boolean(),
+  ai: z.object({ used: z.number(), limit: z.number(), resetsAt: z.number().optional() }),
+});
+
+export type AiTaskRequest = z.infer<typeof AiTaskRequestSchema>;
+export type AiCompleteResponse = z.infer<typeof AiCompleteResponseSchema>;
+
 /** Stable error codes both ends agree on. */
 export const ErrorCode = {
   InvalidCredentials: 'invalid_credentials',
@@ -137,6 +159,9 @@ export const ErrorCode = {
   TrialAlreadyClaimed: 'trial_already_claimed',
   NoPlan: 'no_plan',
   GrantInvalid: 'grant_invalid',
+  QuotaExhausted: 'quota_exhausted',
+  InputTooLarge: 'input_too_large',
+  AiUnavailable: 'ai_unavailable',
 } as const;
 export type ErrorCode = (typeof ErrorCode)[keyof typeof ErrorCode];
 
@@ -160,4 +185,5 @@ export const Routes = {
   entitlement: '/v1/entitlement',
   entitlementTrial: '/v1/entitlement/trial',
   entitlementRedeem: '/v1/entitlement/redeem',
+  ai: '/v1/ai',
 } as const;

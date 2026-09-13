@@ -7,6 +7,7 @@
 import { db } from '@/db/db';
 import { accountsEnabled } from '@/features/account/config';
 import { useAccount } from '@/features/account/store';
+import { useEntitlement } from '@/features/account/entitlement';
 import { ApiFailure, syncPull, syncPush } from '@/features/account/api';
 import { syncWith, type SyncTransport } from './engine';
 import { hydrateSettings } from './settingsBridge';
@@ -71,11 +72,17 @@ export function initSync(): void {
   if (!accountsEnabled()) return;
   void hydrateSettings(); // apply settings synced in a previous session before the first sync completes
   void triggerSync();
+  void useEntitlement.getState().load();
   if (typeof window !== 'undefined') window.addEventListener('online', () => void triggerSync());
   let wasAuthed = useAccount.getState().status === 'authenticated';
   useAccount.subscribe((state) => {
     const authed = state.status === 'authenticated';
-    if (authed && !wasAuthed) void triggerSync(); // just signed in / linked
+    if (authed && !wasAuthed) {
+      void triggerSync(); // just signed in / linked
+      void useEntitlement.getState().load();
+    }
+    // Signing out must drop the plan too, or the AI affordances stay visible with no token behind them.
+    if (!authed && wasAuthed) useEntitlement.getState().clear();
     wasAuthed = authed;
   });
 }
