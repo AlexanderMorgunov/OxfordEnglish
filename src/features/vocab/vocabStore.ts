@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { db, type WordStatus, type WordStatusValue } from '@/db/db';
+import { putWordStatus } from '@/features/sync/local';
 import { recordActivity } from '@/features/stats/activity';
 
 /** A move into `known` counts for the «marked known» stat. Compared against the stored row, not the
@@ -36,7 +37,7 @@ export const useVocabStore = create<VocabState>((set, get) => ({
     set({ statuses: next });
     try {
       const existing = await db.wordStatus.get(word);
-      await db.wordStatus.put({
+      await putWordStatus({
         word,
         status,
         firstSeenAt: existing?.firstSeenAt ?? Date.now(),
@@ -54,7 +55,7 @@ export const useVocabStore = create<VocabState>((set, get) => ({
     set({ statuses: next });
     try {
       const existing = await db.wordStatus.get(word);
-      await db.wordStatus.put({
+      await putWordStatus({
         word,
         status,
         firstSeenAt: existing?.firstSeenAt ?? Date.now(),

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { recordAttempt } from '@/db/db';
+import { addAttempt } from '@/features/sync/local';
 import { addErrorCard } from '@/features/srs/service';
 import { useSessionResults } from '@/features/progress/sessionResults';
 import type { LocalizedText } from '@/content/schema';
@@ -45,7 +45,7 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
     setAttemptNumber(n);
     setAttempts((prev) => [...prev, userAnswer]);
     useSessionResults.getState().record(exercise.id, correct, exercise.tags);
-    void recordAttempt({
+    void addAttempt({
       exerciseId: exercise.id,
       tags: exercise.tags,
       correct,
@@ -54,7 +54,7 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
       timestamp: Date.now(),
       usedHint,
       usedAI: false,
-    });
+    }).catch(() => undefined);
     if (correct) {
       setStatus('correct');
       onSolved?.();

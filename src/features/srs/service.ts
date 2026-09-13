@@ -7,6 +7,7 @@ import {
 } from 'ts-fsrs';
 import { db, type SrsCard } from '@/db/db';
 import { logReview, recordSave } from '@/features/stats/activity';
+import { addSrsCard, putSrsCard } from '@/features/sync/local';
 
 export { Rating };
 
@@ -20,7 +21,7 @@ async function upsert(card: NewCard): Promise<boolean> {
   try {
     if (await db.srsCards.get(card.id)) return false;
     const fsrsCard = createEmptyCard(new Date());
-    await db.srsCards.add({ ...card, due: fsrsCard.due, card: fsrsCard, createdAt: Date.now() });
+    await addSrsCard({ ...card, due: fsrsCard.due, card: fsrsCard, createdAt: Date.now() });
     return true;
   } catch {
     // best-effort — SRS is non-critical if IndexedDB is unavailable
@@ -104,6 +105,6 @@ export async function gradeCard(id: string, rating: Grade): Promise<void> {
   const row = await db.srsCards.get(id);
   if (!row) return;
   const next = scheduler.next(row.card, new Date(), rating).card;
-  await db.srsCards.put({ ...row, card: next, due: next.due });
+  await putSrsCard({ ...row, card: next, due: next.due });
   await logReview(id, rating);
 }

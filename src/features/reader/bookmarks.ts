@@ -2,6 +2,8 @@ import { db, type Bookmark } from '@/db/db';
 import { toSentences } from './parse/text';
 import { countWords, splitParas } from './position';
 import type { BookmarkSort } from './settings';
+import { addBookmark as addBookmarkSynced, softDeleteBookmark, isSyncing } from '@/features/sync/local';
+import { isDeleted } from '@/features/sync/resolve';
 
 export type { Bookmark };
 export type NewBookmark = Omit<Bookmark, 'id' | 'createdAt'>;
@@ -123,16 +125,19 @@ export function formatBookmarkTime(ts: number, ru: boolean, now = Date.now()): s
 export async function listBookmarks(bookKey: string): Promise<Bookmark[]> {
   try {
     const rows = await db.bookmarks.where('bookKey').equals(bookKey).toArray();
-    return rows.sort(
-      (a, b) => a.page - b.page || a.paragraph - b.paragraph || (a.sentence ?? -1) - (b.sentence ?? -1)
-    );
+    return rows
+      .filter((b) => !isDeleted(b))
+      .sort(
+        (a, b) => a.page - b.page || a.paragraph - b.paragraph || (a.sentence ?? -1) - (b.sentence ?? -1)
+      );
   } catch {
     return [];
   }
 }
 
 /** The bookmark at an exact spot. Fetches the paragraph's rows via the compound index, then matches
- *  `sentence` in JS — so two sentence-level bookmarks in one paragraph are distinct (undefined ≠ 0). */
+ *  `sentence` in JS — so two sentence-level bookmarks in one paragraph are distinct (undefined ≠ 0).
+ *  A tombstoned row reads as gone, so the same spot can be bookmarked again. */
 export async function findBookmark(
   bookKey: string,
   page: number,
@@ -143,7 +148,7 @@ export async function findBookmark(
     .where('[bookKey+page+paragraph]')
     .equals([bookKey, page, paragraph])
     .toArray();
-  return rows.find((b) => (b.sentence ?? null) === (sentence ?? null));
+  return rows.find((b) => !isDeleted(b) && (b.sentence ?? null) === (sentence ?? null));
 }
 
 /** Add unless an identical (bookKey, page, paragraph, sentence) bookmark already exists (dedupe). */
@@ -151,19 +156,21 @@ export async function addBookmark(input: NewBookmark): Promise<Bookmark> {
   const existing = await findBookmark(input.bookKey, input.page, input.paragraph, input.sentence);
   if (existing) return existing;
   const bookmark: Bookmark = { ...input, id: crypto.randomUUID(), createdAt: Date.now() };
-  await db.bookmarks.add(bookmark);
+  await addBookmarkSynced(bookmark);
   return bookmark;
 }
 
 export async function removeBookmark(id: string): Promise<void> {
-  await db.bookmarks.delete(id);
+  // Tombstone when signed in (so the delete propagates), else hard-delete (anonymous → no garbage rows).
+  if (isSyncing()) await softDeleteBookmark(id);
+  else await db.bookmarks.delete(id);
 }
 
 /** Add the bookmark, or remove the existing one at the same spot. Returns whether it was added. */
 export async function toggleBookmark(input: NewBookmark): Promise<{ added: boolean }> {
   const existing = await findBookmark(input.bookKey, input.page, input.paragraph, input.sentence);
   if (existing) {
-    await db.bookmarks.delete(existing.id);
+    await removeBookmark(existing.id);
     return { added: false };
   }
   await addBookmark(input);
