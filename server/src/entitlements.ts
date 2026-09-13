@@ -19,13 +19,20 @@ export const TRIAL_MS = TRIAL_DAYS * DAY_MS;
 /** Pro quota renews on a rolling window anchored at the last reset, not on a calendar month. */
 export const PRO_WINDOW_MS = 30 * DAY_MS;
 
-/** Trial AI budget is ONE-TIME over the whole trial — it never resets, which is what bounds the cost
- *  of farming trials by re-registering. Provisional: re-derive once per-request cost is measured. */
-export const TRIAL_AI_REQUESTS = 300;
-/** Provisional too, and the more consequential of the two: this is what decides whether 199 ₽ survives
- *  a heavy user (docs/monetization-analysis.md puts AI COGS at 15–31 ₽/mo). Re-derive in the AI-proxy
- *  slice from measured per-request cost — do not treat as settled. */
-export const PRO_AI_REQUESTS = 2000;
+/**
+ * Both limits are derived from MEASURED token usage (prod, 2026-09-13 — see the table in
+ * docs/monetization-analysis.md), not from guesswork. Worst case is ~$0.00014 per call: every task's
+ * tokens at PEAK deepseek-flash pricing with a full cache miss. Real cost runs well under that, because
+ * the cross-user cache serves a large share at zero upstream cost.
+ *
+ * Trial AI budget is ONE-TIME over the whole trial — it never resets, which is what bounds the cost of
+ * farming trials by re-registering. 500 calls ≈ 6 ₽ worst case, so a farmed trial is not worth chasing.
+ */
+export const TRIAL_AI_REQUESTS = 500;
+/** 5 000 calls ≈ 55 ₽/mo worst case against a 199 ₽ subscription — and a heavy reader tapping translate
+ *  on most sentences lands near 3 000/mo, so this has to clear that with room rather than sit on it.
+ *  The earlier 2 000 was set before measurement and was needlessly tight for what it saves. */
+export const PRO_AI_REQUESTS = 5000;
 
 /** Retention bound for a trial claim: once the trial it could block has expired plus a margin, the row
  *  can only deny a trial that is already over, so it is dead weight — and keeping a device-derived value
