@@ -79,4 +79,6 @@ check('pro reports a quota reset date', typeof pro.ai.resetsAt === 'number');
 check('grant is one-time', (await post('/v1/entitlement/redeem', { grantToken: grant2 }, tokenC)).status === 400);
 
 console.log(failures === 0 ? '\nentitlement API: all checks passed' : `\nentitlement API: ${failures} FAILED`);
-process.exit(failures === 0 ? 0 : 1);
+// Set the code and let the loop drain: forcing exit() while a wasm/grpc handle is mid-close trips a
+// libuv assertion on Windows and turns a passing run into a nonzero exit.
+process.exitCode = failures === 0 ? 0 : 1;

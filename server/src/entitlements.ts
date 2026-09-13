@@ -25,13 +25,17 @@ export const PRO_WINDOW_MS = 30 * DAY_MS;
  * tokens at PEAK deepseek-flash pricing with a full cache miss. Real cost runs well under that, because
  * the cross-user cache serves a large share at zero upstream cost.
  *
- * Trial AI budget is ONE-TIME over the whole trial — it never resets, which is what bounds the cost of
- * farming trials by re-registering. 500 calls ≈ 6 ₽ worst case, so a farmed trial is not worth chasing.
+ * Both are budgets in UNITS, not calls: a one-sentence translate costs 1, a page-stuffing bookqa or a
+ * chapter-stuffing exercises costs 4 (see `TASKS` in ai.ts). A flat per-call charge made the same
+ * advertised budget mean 55 ₽ of tokens for a reader and 129 ₽ for someone generating exercises.
+ *
+ * Trial budget is ONE-TIME over the whole trial — it never resets, which is what bounds the cost of
+ * farming trials by re-registering. 500 units ≈ 6 ₽ worst case, so a farmed trial is not worth chasing.
  */
 export const TRIAL_AI_REQUESTS = 500;
-/** 5 000 calls ≈ 55 ₽/mo worst case against a 199 ₽ subscription — and a heavy reader tapping translate
- *  on most sentences lands near 3 000/mo, so this has to clear that with room rather than sit on it.
- *  The earlier 2 000 was set before measurement and was needlessly tight for what it saves. */
+/** 5 000 units ≈ 55 ₽/mo against a 199 ₽ subscription, now genuinely a ceiling rather than an average,
+ *  since the weights stop an exercises-heavy mix from costing multiples of it. A heavy reader tapping
+ *  translate on most sentences lands near 3 000 units/mo, so this clears that with room. */
 export const PRO_AI_REQUESTS = 5000;
 
 /** Retention bound for a trial claim: once the trial it could block has expired plus a margin, the row

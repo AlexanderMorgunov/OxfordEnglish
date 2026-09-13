@@ -2,7 +2,7 @@ import { Hono } from 'hono';
 import { ErrorCode, AiTaskRequestSchema, AI_MAX_INPUT_CHARS } from '../contract.js';
 import { bearerClaims } from '../tokens.js';
 import { consumeAi, refundAi, evaluate, type EntitlementStore } from '../entitlements.js';
-import { TASKS, AI_COST_PER_CALL, buildMessages, cacheKey, inputSize, type AiCacheStore } from '../ai.js';
+import { TASKS, aiCost, buildMessages, cacheKey, inputSize, type AiCacheStore } from '../ai.js';
 import { deepseekCompleter, aiConfigured, AI_MODEL, type Completer } from '../aiProvider.js';
 
 const err = (code: string, status: 400 | 401 | 402 | 413 | 429 | 503) =>
@@ -29,7 +29,8 @@ export function aiRoutes(ent: EntitlementStore, cache: AiCacheStore, completer: 
     if (inputSize(req) > AI_MAX_INPUT_CHARS) return err(ErrorCode.InputTooLarge, 413);
 
     const now = Date.now();
-    const charge = consumeAi(await ent.get(claims.sub), now, AI_COST_PER_CALL);
+    const cost = aiCost(req.task);
+    const charge = consumeAi(await ent.get(claims.sub), now, cost);
     if (!charge.allowed) {
       return charge.reason === 'no_plan' ? err(ErrorCode.NoPlan, 402) : err(ErrorCode.QuotaExhausted, 429);
     }
@@ -50,7 +51,7 @@ export function aiRoutes(ent: EntitlementStore, cache: AiCacheStore, completer: 
         task: req.task,
       });
     } catch {
-      const refunded = refundAi(await ent.get(claims.sub), AI_COST_PER_CALL);
+      const refunded = refundAi(await ent.get(claims.sub), cost);
       if (refunded) await ent.put(refunded);
       return err(ErrorCode.AiUnavailable, 503);
     }

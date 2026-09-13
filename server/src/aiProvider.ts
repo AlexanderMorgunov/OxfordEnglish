@@ -14,6 +14,15 @@ const BASE_URL = (process.env.AI_BASE_URL ?? 'https://api.deepseek.com').replace
 
 export const AI_MODEL = process.env.AI_MODEL ?? 'deepseek-v4-flash';
 
+/**
+ * Our own deadline for the whole upstream call, retries included. It MUST stay below the container's
+ * `execution_timeout` (30 s), because the platform's timeout is not per-request: "если хотя бы один
+ * вызов достигнет таймаута, он и все остальные вызовы, которые обрабатываются тем же экземпляром
+ * контейнера, завершатся". At concurrency 16 that means one stalled DeepSeek call would kill up to
+ * fifteen unrelated readers' taps. Aborting ourselves keeps the blast radius at one request.
+ */
+const UPSTREAM_DEADLINE_MS = Number(process.env.AI_UPSTREAM_DEADLINE_MS ?? 20_000);
+
 export function aiConfigured(): boolean {
   return !!process.env.DEEPSEEK_API_KEY;
 }
@@ -40,24 +49,34 @@ export const deepseekCompleter: Completer = async (messages, opts) => {
   const key = process.env.DEEPSEEK_API_KEY;
   if (!key) throw new AiUpstreamError('DEEPSEEK_API_KEY is not set');
 
+  const deadline = AbortSignal.timeout(UPSTREAM_DEADLINE_MS);
+  const signal = opts.signal ? AbortSignal.any([opts.signal, deadline]) : deadline;
+
   for (let attempt = 0; attempt < 3; attempt++) {
-    const res = await fetch(`${BASE_URL}/chat/completions`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', authorization: `Bearer ${key}` },
-      body: JSON.stringify({
-        model: AI_MODEL,
-        messages,
-        temperature: opts.temperature,
-        max_tokens: opts.maxTokens,
-        // DeepSeek rejects `reasoning_effort: none`; this is the form it accepts.
-        thinking: { type: 'disabled' },
-      }),
-      signal: opts.signal,
-    });
+    let res: Response;
+    try {
+      res = await fetch(`${BASE_URL}/chat/completions`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', authorization: `Bearer ${key}` },
+        body: JSON.stringify({
+          model: AI_MODEL,
+          messages,
+          temperature: opts.temperature,
+          max_tokens: opts.maxTokens,
+          // DeepSeek rejects `reasoning_effort: none`; this is the form it accepts.
+          thinking: { type: 'disabled' },
+        }),
+        signal,
+      });
+    } catch (e) {
+      if (deadline.aborted) throw new AiUpstreamError('upstream deadline exceeded');
+      throw e;
+    }
 
     if (res.status === 429 || res.status >= 500) {
-      // Shorter than the client's backoff on purpose: this runs inside a request the user is waiting on,
-      // and the container has a 30 s ceiling.
+      // Shorter than the client's backoff on purpose: this runs inside a request the user is waiting on.
+      // Give up rather than sleep past our own deadline and be killed by the platform instead.
+      if (deadline.aborted) throw new AiUpstreamError('upstream deadline exceeded');
       await sleep(2 ** attempt * 600);
       continue;
     }

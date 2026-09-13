@@ -33,27 +33,37 @@ type TaskSpec = {
   maxTokens: number;
   /** False where a fresh answer is the point, so a cache would be a bug rather than a saving. */
   cacheable: boolean;
+  /**
+   * Quota units this task costs, normalized so a one-sentence translate = 1. Rounded up from the tokens
+   * measured in prod (table in docs/monetization-analysis.md): the tasks that stuff a context — a whole
+   * page for bookqa, a chapter slice for exercises — really do cost ~4.5× a translate.
+   *
+   * A FLAT charge was the original design and it was wrong: it made the advertised budget mean 55 ₽ of
+   * tokens for a reader and 129 ₽ — two thirds of the subscription — for someone who only generates
+   * exercises. Weighting makes the budget mean the same amount of money whatever the mix.
+   */
+  cost: number;
 };
 
 export const TASKS: Record<AiTaskName, TaskSpec> = {
-  translate: { version: 'v1', temperature: 0.2, maxTokens: 300, cacheable: true },
-  simplify: { version: 'v1', temperature: 0.2, maxTokens: 512, cacheable: true },
-  grammar: { version: 'v1', temperature: 0.3, maxTokens: 512, cacheable: true },
-  wordInContext: { version: 'v1', temperature: 0.4, maxTokens: 220, cacheable: true },
-  explain: { version: 'v1', temperature: 0.4, maxTokens: 220, cacheable: true },
+  translate: { version: 'v1', temperature: 0.2, maxTokens: 300, cacheable: true, cost: 1 },
+  wordInContext: { version: 'v1', temperature: 0.4, maxTokens: 220, cacheable: true, cost: 1 },
+  simplify: { version: 'v1', temperature: 0.2, maxTokens: 512, cacheable: true, cost: 1 },
   // A hint must react to the learner's CURRENT answer; re-asking after a change must not replay the
   // previous hint.
-  hint: { version: 'v1', temperature: 0.4, maxTokens: 160, cacheable: false },
+  hint: { version: 'v1', temperature: 0.4, maxTokens: 160, cacheable: false, cost: 1 },
+  explain: { version: 'v1', temperature: 0.4, maxTokens: 220, cacheable: true, cost: 2 },
+  grammar: { version: 'v1', temperature: 0.3, maxTokens: 512, cacheable: true, cost: 2 },
   // Questions vary per reader; the win here is the provider's own prefix cache on the page text.
-  bookqa: { version: 'v1', temperature: 0.3, maxTokens: 600, cacheable: false },
-  exercises: { version: 'v1', temperature: 0.4, maxTokens: 700, cacheable: true },
+  bookqa: { version: 'v1', temperature: 0.3, maxTokens: 600, cacheable: false, cost: 4 },
+  exercises: { version: 'v1', temperature: 0.4, maxTokens: 700, cacheable: true, cost: 4 },
 };
 
-/** Every request costs the same whether or not the cache answers it. Charging zero for a hit would void
- *  the trial's one-time budget as an abuse bound: shared packs give a high hit rate precisely on the
- *  common path, so a farmed trial would draw unlimited completions. Revisit only by raising limits —
- *  the bound cannot be recovered once counters are issued against a free-hit rule. */
-export const AI_COST_PER_CALL = 1;
+/** A cache hit costs the same as a miss. Charging zero for a hit would void the trial's one-time budget
+ *  as an abuse bound: shared packs give a high hit rate precisely on the common path, so a farmed trial
+ *  would draw unlimited completions. The bound cannot be recovered once counters are issued against a
+ *  free-hit rule, so this stays even though a hit costs us nothing upstream. */
+export const aiCost = (task: AiTaskName): number => TASKS[task].cost;
 
 export function buildMessages(req: AiTaskRequest): ChatMessage[] {
   switch (req.task) {

@@ -239,4 +239,4 @@ const syncGone = await app.request('/v1/sync?since=0', { headers: syncAuth });
 check('sync after delete → empty snapshot', ((await syncGone.json()) as { entries: unknown[] }).entries.length === 0);
 
 console.log(failures ? `\n${failures} FAILED` : '\nALL PASS');
-process.exit(failures ? 1 : 0);
+process.exitCode = failures ? 1 : 0;

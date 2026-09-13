@@ -88,6 +88,11 @@ const other = await post('/v1/ai', { task: 'translate', text: 'the harpoon' }, t
 check('another account hits the same cached entry', ((await other.json()) as AiCompleteResponse).cached === true);
 check('still one upstream call across two accounts', upstreamCalls === 1);
 
+// --- the budget is in units, not calls: a context-stuffing task costs more ---
+const light = (await (await ask({ task: 'translate', text: 'anchor chain' })).json()) as AiCompleteResponse;
+const heavy = (await (await ask({ task: 'exercises', text: 'A short chapter about the sea.', targets: ['sea'] })).json()) as AiCompleteResponse;
+check('exercises charges 4 units where translate charges 1', heavy.ai.used === light.ai.used + 4);
+
 // --- uncacheable tasks must actually re-ask ---
 await ask({ task: 'hint', prompt: 'p', topic: 't', userAnswer: 'a' });
 const hintCalls = upstreamCalls;
@@ -112,4 +117,6 @@ check('exhausted quota → 429', exhausted.status === 429);
 check('exhausted quota never reached the upstream', upstreamCalls === callsBefore);
 
 console.log(failures === 0 ? '\nai API: all checks passed' : `\nai API: ${failures} FAILED`);
-process.exit(failures === 0 ? 0 : 1);
+// Set the code and let the loop drain: forcing exit() while a wasm/grpc handle is mid-close trips a
+// libuv assertion on Windows and turns a passing run into a nonzero exit.
+process.exitCode = failures === 0 ? 0 : 1;

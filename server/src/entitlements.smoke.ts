@@ -84,4 +84,6 @@ check('consume increments and reports the new state', (() => {
 check('consume cannot straddle the cap', consumeAi({ ...pro, aiUsed: PRO_AI_REQUESTS - 1 }, T0, 2).allowed === false);
 
 console.log(failures === 0 ? '\nentitlements: all checks passed' : `\nentitlements: ${failures} FAILED`);
-process.exit(failures === 0 ? 0 : 1);
+// Set the code and let the loop drain: forcing exit() while a wasm/grpc handle is mid-close trips a
+// libuv assertion on Windows and turns a passing run into a nonzero exit.
+process.exitCode = failures === 0 ? 0 : 1;
