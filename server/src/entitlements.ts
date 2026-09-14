@@ -94,7 +94,13 @@ const aiLimit = (plan: Plan): number =>
 
 export function evaluate(row: EntitlementRow | null | undefined, now: number): Entitlement {
   const plan = planOf(row, now);
-  if (!row || plan === 'free') return FREE;
+  if (!row) return FREE;
+  // A lapsed trial still reports WHEN it ended. Without that the paywall cannot tell "never tried" from
+  // "already used it", so it offers the free trial again and answers a hopeful click with an error.
+  // Nothing is unlocked by it: `active` stays false and the AI limit stays 0.
+  if (plan === 'free') {
+    return row.trialStartedAt == null ? FREE : { ...FREE, trialEndsAt: row.trialStartedAt + TRIAL_MS };
+  }
   const rolled = windowExpired(row, plan, now);
   return {
     plan,
@@ -189,6 +195,34 @@ export const bindHash = (accountId: string): string =>
  *  the caller wants to read out of the decision. */
 export type Mutation<T> = { row?: EntitlementRow; result: T };
 
+/**
+ * A grant is created UNPAID at checkout and only flipped to paid by the signature-verified callback.
+ * Minting it on the callback instead would mean a new token per retry — and the acquirer retries until
+ * it is acknowledged, so a slow reply would grant the same payment twice.
+ *
+ * `amountKopecks` is what we asked for. It is re-checked against what the callback says was actually
+ * paid: a valid signature proves the acquirer sent the notification, never that the sum is the one we
+ * priced.
+ */
+export type GrantDraft = {
+  /** Acquirer-side reference, e.g. `robokassa:<invoice>`. The only value in our database that can be
+   *  joined against the payment processor's records — deliberately, so refunds and disputes remain
+   *  answerable without us storing who bought anything. */
+  paymentRef: string;
+  /** The acquirer's numeric invoice id, as a decimal string. Also the parent of any future recurring
+   *  charge, which is why it is stored rather than derived. */
+  invoiceId: string;
+  days: number;
+  amountKopecks: number;
+  /** The account that started checkout. Hashed by the store, never stored raw: enough to refuse a
+   *  leaked token presented by someone else, not enough to read the table as "who paid". */
+  boundTo: string;
+};
+
+/** `unknown` = no such invoice; `underpaid` = the callback's sum is below what we priced, which is the
+ *  one case we refuse to confirm rather than grant something nobody paid for. */
+export type GrantPaidResult = 'ok' | 'unknown' | 'underpaid';
+
 export interface EntitlementStore {
   get(accountId: string): Promise<EntitlementRow | null>;
   put(row: EntitlementRow): Promise<void>;
@@ -204,12 +238,23 @@ export interface EntitlementStore {
   mutate<T>(accountId: string, decide: (row: EntitlementRow | null) => Mutation<T>): Promise<T>;
   trialClaimed(hash: string): Promise<boolean>;
   markTrialClaimed(hash: string): Promise<void>;
-  /** Called by the billing callback once a payment is confirmed; returns the token to hand the client.
-   *  `boundTo` is the account that started checkout — always pass it, so a leaked token (URL, logs,
-   *  shared screen) cannot be spent by whoever presents it first. */
-  createGrant(paymentRef: string, days: number, boundTo?: string): Promise<string>;
-  /** One-time: returns the granted days, or null if unknown, already redeemed, or bound to another account. */
+  /** Mint an UNPAID grant at checkout and return the token to hand the client. */
+  createGrant(draft: GrantDraft): Promise<string>;
+  /** Confirm the invoice from the payment callback. Idempotent — the acquirer retries the notification
+   *  until we acknowledge it, and a second delivery must not produce a second grant. */
+  markGrantPaid(invoiceId: string, paidKopecks: number): Promise<GrantPaidResult>;
+  /** One-time: returns the granted days, or null if unknown, unpaid, already redeemed, or bound to
+   *  another account. */
   redeemGrant(token: string, accountId: string): Promise<number | null>;
+  /**
+   * The token of a grant this account has PAID FOR and not yet redeemed, if there is one.
+   *
+   * Without it, a paid customer whose device lost the token — cleared storage, bought on a phone and
+   * opened the laptop — has no way to reach what they bought except a support ticket. The lookup is by
+   * `bindHash(accountId)`, the same comparison `redeemGrant` already makes, so it grants no authority
+   * that did not exist and reveals nothing to anyone who is not already authenticated as that account.
+   */
+  findUnclaimedGrant(accountId: string): Promise<string | null>;
   /** Delete-account: drop this account's entitlement. Grants are payment records, not account data. */
   purge(accountId: string): Promise<void>;
 }
@@ -218,7 +263,7 @@ export class InMemoryEntitlementStore implements EntitlementStore {
   private rows = new Map<string, EntitlementRow>();
   private claims = new Set<string>();
   private claimedAt = new Map<string, number>();
-  private grants = new Map<string, { paymentRef: string; days: number; redeemed: boolean; boundTo?: string }>();
+  private grants = new Map<string, Omit<GrantDraft, 'boundTo'> & { boundToHash: string; redeemed: boolean; paid: boolean }>();
 
   async get(accountId: string) {
     return this.rows.get(accountId) ?? null;
@@ -240,15 +285,27 @@ export class InMemoryEntitlementStore implements EntitlementStore {
     this.claims.add(hash);
     this.claimedAt.set(hash, Date.now());
   }
-  async createGrant(paymentRef: string, days: number, boundTo?: string) {
+  async createGrant(draft: GrantDraft) {
     const token = randomBytes(24).toString('base64url');
-    this.grants.set(token, { paymentRef, days, redeemed: false, boundTo: boundTo && bindHash(boundTo) });
+    this.grants.set(token, { ...draft, boundToHash: bindHash(draft.boundTo), redeemed: false, paid: false });
     return token;
+  }
+  async markGrantPaid(invoiceId: string, paidKopecks: number): Promise<GrantPaidResult> {
+    const g = [...this.grants.values()].find((x) => x.invoiceId === invoiceId);
+    if (!g) return 'unknown';
+    if (paidKopecks < g.amountKopecks) return 'underpaid';
+    g.paid = true;
+    return 'ok';
+  }
+  async findUnclaimedGrant(accountId: string) {
+    const want = bindHash(accountId);
+    for (const [token, g] of this.grants) if (g.paid && !g.redeemed && g.boundToHash === want) return token;
+    return null;
   }
   async redeemGrant(token: string, accountId: string) {
     const g = this.grants.get(token);
-    if (!g || g.redeemed) return null;
-    if (g.boundTo != null && g.boundTo !== bindHash(accountId)) return null;
+    if (!g || g.redeemed || !g.paid) return null;
+    if (g.boundToHash !== bindHash(accountId)) return null;
     g.redeemed = true;
     return g.days;
   }

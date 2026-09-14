@@ -3,8 +3,8 @@ import { Eyebrow } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 
 /** Public privacy page (slice 4d). Reflects the no-PII recovery-key model: no email/name/phone; an
- *  account is a pseudonymous id derived from a recovery key we never store. Operator details are
- *  placeholders for the owner/counsel to fill; this is not legal advice. */
+ *  account is a pseudonymous id derived from a recovery key we never store. Operator details mirror
+ *  the ones in /terms — keep the two in step. Counsel should review this; it is not legal advice. */
 export function PrivacyPage() {
   const ru = useUiLang((s) => s.lang) === 'ru';
   return ru ? <Ru /> : <En />;
@@ -99,8 +99,14 @@ function Ru() {
       </Section>
 
       <Section title="Оператор и изменения">
-        <p>Оператор: [ФИО], самозанятый, ИНН [—]. Контакт по вопросам данных: [email].</p>
-        <p>Актуальная версия политики публикуется на этой странице. Дата вступления в силу: [дата].</p>
+        <p>
+          Оператор: Моргунов Александр Сергеевич, самозанятый, ИНН 361302397520. Контакт по вопросам данных:{' '}
+          <a href="mailto:morgunowalex@gmail.com" className="text-teal hover:underline">
+            morgunowalex@gmail.com
+          </a>
+          .
+        </p>
+        <p>Актуальная версия политики публикуется на этой странице. Дата вступления в силу: 14 сентября 2026 г.</p>
       </Section>
     </article>
   );
@@ -171,8 +177,14 @@ function En() {
       </Section>
 
       <Section title="Operator and changes">
-        <p>Operator: [name], self-employed, TIN [—]. Data contact: [email].</p>
-        <p>The current version is published on this page. Effective date: [date].</p>
+        <p>
+          Operator: Alexander Morgunov, self-employed, TIN 361302397520. Data contact:{' '}
+          <a href="mailto:morgunowalex@gmail.com" className="text-teal hover:underline">
+            morgunowalex@gmail.com
+          </a>
+          .
+        </p>
+        <p>The current version is published on this page. Effective date: 14 September 2026.</p>
       </Section>
     </article>
   );

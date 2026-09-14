@@ -107,6 +107,11 @@ const ROUTES = [
     title: 'Политика конфиденциальности | DayEnglish',
     desc: 'Как DayEnglish обрабатывает данные: без email и персональных данных, аккаунт по ключу восстановления, хранение в РФ. Приложением можно пользоваться без регистрации.',
   },
+  {
+    key: 'terms', index: true,
+    title: 'Условия оказания услуг и публичная оферта | DayEnglish',
+    desc: 'Условия подписки DayEnglish Pro: что входит, сколько стоит, как отказаться и вернуть деньги. Реквизиты исполнителя и полный текст публичной оферты.',
+  },
   { key: 'support', index: false, title: 'Поддержать проект | DayEnglish' },
   { key: 'credits', index: false, title: 'Благодарности и источники | DayEnglish' },
   { key: 'feedback', index: false, title: 'Обратная связь | DayEnglish' },
@@ -114,6 +119,11 @@ const ROUTES = [
   { key: 'progress', index: false, title: 'Мой прогресс | DayEnglish' },
   { key: 'vocabulary', index: false, title: 'Мой словарь | DayEnglish' },
   { key: 'settings', index: false, title: 'Настройки | DayEnglish' },
+  // Where the acquirer returns the payer. Static hosting answers a missing key with a soft-404, and a
+  // 404 is not what someone should meet straight after being charged — so these get real 200 objects
+  // like every other SPA route. Never indexable.
+  { key: 'billing/success', index: false, title: 'Оплата | DayEnglish' },
+  { key: 'billing/fail', index: false, title: 'Оплата не прошла | DayEnglish' },
 ];
 
 // ── Grammar topics (programmatic SEO) ──────────────────────────────────────────────────────────────
@@ -256,6 +266,31 @@ const libraryHubBody =
 
 /** The landing's copy as crawlable HTML. Keep in sync with src/pages/AboutPage.tsx — the SPA replaces
  *  this on mount, so it exists purely for search engines and no-JS visitors. */
+// The acquirer's moderation checks that the site itself carries contacts, the price, the seller's
+// details and the refund procedure. React renders all of that, but a checker that does not run JS would
+// see an empty shell — so the four required facts are prerendered here too. Keep in step with
+// src/pages/TermsPage.tsx.
+const termsBody =
+  `<main><h1>Условия оказания услуг и публичная оферта</h1>` +
+  `<p>Приложение DayEnglish бесплатно. Платная подписка DayEnglish Pro стоит 199 ₽ за 30 дней, открывает функции на основе искусственного интеллекта, не продлевается автоматически и возвращается за неиспользованный период.</p>` +
+  `<h2>Услуга и стоимость</h2>` +
+  `<ul><li><strong>DayEnglish Pro — 199 ₽ за расчётный период в 30 дней.</strong> В период включено 10 000 единиц ИИ-запросов.</li>` +
+  `<li>Что входит: разбор грамматики предложения, упрощение текста до уровня изучающего, перевод слова с учётом контекста предложения — на ключе Исполнителя, без настройки со стороны Заказчика.</li>` +
+  `<li>Пробный период: 14 дней бесплатно, без привязки карты, бюджет 1 000 единиц (разовый, не обновляется).</li>` +
+  `<li>Подписка не продлевается автоматически: по окончании оплаченного периода доступ прекращается, следующий период оплачивается вручную.</li>` +
+  `<li>Оплата банковской картой или через СБП, платёжный сервис Robokassa; кассовый чек формирует и направляет платёжный сервис.</li>` +
+  `<li>Курс, читалка, повторения и словарь бесплатны и работают без оплаты и без аккаунта.</li></ul>` +
+  `<h2>Отказ от услуги и возврат денежных средств</h2>` +
+  `<p>Отказаться можно в любой момент: автоматическое продление не применяется, достаточно не оплачивать следующий период. Возврат за неиспользованную часть оплаченного периода производится по заявлению на morgunowalex@gmail.com с указанием даты и суммы платежа. Срок рассмотрения — 10 рабочих дней; при положительном решении деньги возвращаются тем же способом, которым была произведена оплата, в срок не более 10 рабочих дней. Сумма рассчитывается пропорционально полным дням, оставшимся до конца оплаченного периода. Если платные функции были недоступны по вине Исполнителя, оплата возвращается полностью.</p>` +
+  `<h2>Реквизиты Исполнителя</h2>` +
+  `<p>Моргунов Александр Сергеевич, самозанятый (плательщик налога на профессиональный доход).<br>` +
+  `ИНН: 361302397520<br>` +
+  `ОГРН/ОГРНИП: не применимо — Исполнитель является физическим лицом, применяющим специальный налоговый режим «Налог на профессиональный доход».<br>` +
+  `Контактный e-mail: <a href="mailto:morgunowalex@gmail.com">morgunowalex@gmail.com</a><br>` +
+  `Контактный телефон: +7 995 040-35-70<br>` +
+  `Сайт: https://dayenglish.ru</p>` +
+  `<p>Полный текст публичной оферты о заключении договора об оказании услуг опубликован на этой странице.</p></main>`;
+
 const aboutBody =
   `<main><h1>DayEnglish — английский по одному дню за раз</h1>` +
   `<p>Бесплатный курс английского от A1 до B2 и читалка книг в одном приложении: слова, которые встретились вам в тексте, попадают в интервальные повторения и возвращаются, пока не запомнятся. Без рекламы, без регистрации, работает офлайн.</p>` +
@@ -298,14 +333,18 @@ const hubBody =
 for (const r of ROUTES) {
   const url = `${ORIGIN}/${r.key}`;
   const body =
-    r.key === 'about'
+    r.key === 'terms'
+      ? termsBody
+      : r.key === 'about'
       ? aboutBody
       : r.key === 'grammar' && grammar.length
         ? hubBody
         : r.key === 'library' && catalog.length
           ? libraryHubBody
           : undefined;
-  writeFileSync(join(DIST, `${r.key}.html`), renderPage({ ...r, url, body }));
+  const out = join(DIST, `${r.key}.html`);
+  mkdirSync(dirname(out), { recursive: true }); // a nested key (billing/success) has no directory yet
+  writeFileSync(out, renderPage({ ...r, url, body }));
 }
 
 if (grammar.length) {

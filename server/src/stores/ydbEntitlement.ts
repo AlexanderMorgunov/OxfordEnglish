@@ -4,13 +4,16 @@
  * carries no account id, so neither query can reconstruct "who paid":
  *   entitlements(account_id PK, trial_started_at?, paid_until?, ai_used, window_started_at)
  *   trial_claims(install_hash PK, claimed_at)            -- hashed, see entitlements.installHash; TTL'd
- *   payment_grants(grant_token PK, payment_ref, days, bound_to?, redeemed, created_at)
+ *   payment_grants(grant_token PK, payment_ref, invoice_id, amount_kopecks, days, bound_to?,
+ *                  paid, redeemed, created_at, paid_at?)  -- INDEX by_invoice(invoice_id)
  * `bound_to` is a hash of the account that started checkout, not the account id — enough to reject a
- * leaked token presented by someone else, not enough to read the table as "who paid".
+ * leaked token presented by someone else, not enough to read the table as "who paid". `payment_ref` and
+ * `invoice_id` do point outwards, at the acquirer's own records — which is what makes a refund or a
+ * dispute answerable at all — but nothing on this side turns them back into an account.
  * See docs/yc-backend-setup.md for the DDL.
  */
 import { randomBytes } from 'node:crypto';
-import { bindHash, type EntitlementStore, type EntitlementRow, type Mutation } from '../entitlements.js';
+import { bindHash, type EntitlementStore, type EntitlementRow, type Mutation, type GrantDraft, type GrantPaidResult } from '../entitlements.js';
 import { query, withSerializableTx, TypedValues as T, Types, num } from '../ydb.js';
 
 /** YDB Timestamp comes back as a Date (or micros); normalize to epoch ms. */
@@ -20,6 +23,8 @@ function tsMs(v: unknown): number {
   if (v != null) return Number((v as { toString(): string }).toString());
   return 0;
 }
+const TOKEN_LIST = Types.list(Types.struct({ grant_token: Types.UTF8 }));
+
 const optTs = (ms: number | undefined) =>
   ms == null ? T.optionalNull(Types.TIMESTAMP) : T.optional(T.timestamp(new Date(ms)));
 
@@ -106,20 +111,87 @@ export class YdbEntitlementStore implements EntitlementStore {
     );
   }
 
-  async createGrant(paymentRef: string, days: number, boundTo?: string): Promise<string> {
+  /** Created UNPAID: only the signature-verified callback may flip `paid`. See `GrantDraft`. */
+  async createGrant(draft: GrantDraft): Promise<string> {
     const token = randomBytes(24).toString('base64url');
     await query(
-      'DECLARE $g AS Utf8; DECLARE $r AS Utf8; DECLARE $d AS Uint32; DECLARE $b AS Utf8?; DECLARE $ts AS Timestamp;' +
-        'UPSERT INTO payment_grants (grant_token, payment_ref, days, bound_to, redeemed, created_at) VALUES ($g, $r, $d, $b, false, $ts);',
+      'DECLARE $g AS Utf8; DECLARE $r AS Utf8; DECLARE $i AS Utf8; DECLARE $k AS Uint32; DECLARE $d AS Uint32; DECLARE $b AS Utf8?; DECLARE $ts AS Timestamp;' +
+        'UPSERT INTO payment_grants (grant_token, payment_ref, invoice_id, amount_kopecks, days, bound_to, paid, redeemed, created_at)' +
+        ' VALUES ($g, $r, $i, $k, $d, $b, false, false, $ts);',
       {
         $g: T.utf8(token),
-        $r: T.utf8(paymentRef),
-        $d: T.uint32(days),
-        $b: boundTo == null ? T.optionalNull(Types.UTF8) : T.optional(T.utf8(bindHash(boundTo))),
+        $r: T.utf8(draft.paymentRef),
+        $i: T.utf8(draft.invoiceId),
+        $k: T.uint32(draft.amountKopecks),
+        $d: T.uint32(draft.days),
+        $b: T.optional(T.utf8(bindHash(draft.boundTo))),
         $ts: T.timestamp(new Date()),
       }
     );
     return token;
+  }
+
+  /**
+   * Confirm by invoice — the only identifier the acquirer sends back. Read through the `by_invoice`
+   * index, then write by primary key: a global secondary index is its own table, so the row it hands
+   * back carries only the indexed column plus the key.
+   *
+   * Serializable and idempotent: the acquirer retries the notification until it is acknowledged, so a
+   * second delivery lands on an already-paid row and must be a no-op that still answers `ok`.
+   */
+  async markGrantPaid(invoiceId: string, paidKopecks: number): Promise<GrantPaidResult> {
+    return withSerializableTx(async (tx) => {
+      const [rows] = await tx.exec(
+        'DECLARE $i AS Utf8; SELECT grant_token FROM payment_grants VIEW by_invoice WHERE invoice_id=$i;',
+        { $i: T.utf8(invoiceId) }
+      );
+      const token = rows[0]?.grant_token;
+      if (token == null) return 'unknown';
+      const [grantRows] = await tx.exec(
+        'DECLARE $g AS Utf8; SELECT amount_kopecks, paid FROM payment_grants WHERE grant_token=$g;',
+        { $g: T.utf8(String(token)) }
+      );
+      const g = grantRows[0];
+      if (!g) return 'unknown';
+      if (paidKopecks < num(g.amount_kopecks)) return 'underpaid';
+      if (g.paid === true) return 'ok';
+      await tx.exec(
+        'DECLARE $g AS Utf8; DECLARE $ts AS Timestamp; UPSERT INTO payment_grants (grant_token, paid, paid_at) VALUES ($g, true, $ts);',
+        { $g: T.utf8(String(token)), $ts: T.timestamp(new Date()) },
+        true
+      );
+      return 'ok';
+    });
+  }
+
+  /**
+   * Paid but unredeemed, for the account that bought it. Read through `by_bound`, then the rows by key:
+   * a global secondary index is its own table and carries only the indexed column plus the primary key,
+   * so `paid`/`redeemed` have to come from a second read. `AS_TABLE` turns that into ONE query rather
+   * than a round-trip per candidate.
+   *
+   * Not a transaction: the worst case is handing back a token that someone redeemed a moment ago, and
+   * `redeemGrant` is serializable, so that attempt simply fails — which is the same answer as not
+   * offering the token at all.
+   */
+  async findUnclaimedGrant(accountId: string): Promise<string | null> {
+    const [indexRows] = await query(
+      'DECLARE $b AS Utf8; SELECT grant_token FROM payment_grants VIEW by_bound WHERE bound_to=$b LIMIT 50;',
+      { $b: T.utf8(bindHash(accountId)) }
+    );
+    const tokens = indexRows.map((r) => String(r.grant_token)).filter(Boolean);
+    if (tokens.length === 0) return null;
+
+    const [rows] = await query(
+      'DECLARE $rows AS List<Struct<grant_token:Utf8>>;' +
+        'SELECT g.grant_token AS grant_token, g.paid AS paid, g.redeemed AS redeemed, g.created_at AS created_at' +
+        ' FROM AS_TABLE($rows) AS r INNER JOIN payment_grants AS g ON g.grant_token = r.grant_token;',
+      { $rows: T.fromNative(TOKEN_LIST, tokens.map((grant_token) => ({ grant_token }))) }
+    );
+    const open = rows.filter((r) => r.paid === true && r.redeemed !== true);
+    // Newest first: a second purchase while an older one is somehow stuck should be what gets applied.
+    open.sort((a, b) => tsMs(b.created_at) - tsMs(a.created_at));
+    return open.length > 0 ? String(open[0].grant_token) : null;
   }
 
   /** Serializable: a token replayed from two tabs must grant days exactly once. The partial UPSERT is
@@ -128,11 +200,13 @@ export class YdbEntitlementStore implements EntitlementStore {
   async redeemGrant(token: string, accountId: string): Promise<number | null> {
     return withSerializableTx(async (tx) => {
       const [rows] = await tx.exec(
-        'DECLARE $g AS Utf8; SELECT days, redeemed, bound_to FROM payment_grants WHERE grant_token=$g;',
+        'DECLARE $g AS Utf8; SELECT days, paid, redeemed, bound_to FROM payment_grants WHERE grant_token=$g;',
         { $g: T.utf8(token) }
       );
       const r = rows[0];
       if (!r || r.redeemed === true) return null;
+      // NULL on a row written before billing existed, and unpaid is the safe reading of an unknown.
+      if (r.paid !== true) return null;
       if (r.bound_to != null && String(r.bound_to) !== bindHash(accountId)) return null;
       const days = num(r.days);
       await tx.exec('DECLARE $g AS Utf8; UPSERT INTO payment_grants (grant_token, redeemed) VALUES ($g, true);', { $g: T.utf8(token) }, true);

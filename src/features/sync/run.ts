@@ -8,6 +8,7 @@ import { db } from '@/db/db';
 import { accountsEnabled } from '@/features/account/config';
 import { useAccount } from '@/features/account/store';
 import { useEntitlement } from '@/features/account/entitlement';
+import { claimPending } from '@/features/account/billing';
 import { ApiFailure, syncPull, syncPush } from '@/features/account/api';
 import { syncWith, type SyncTransport } from './engine';
 import { hydrateSettings } from './settingsBridge';
@@ -73,6 +74,10 @@ export function initSync(): void {
   void hydrateSettings(); // apply settings synced in a previous session before the first sync completes
   void triggerSync();
   void useEntitlement.getState().load();
+  // A payment can be confirmed long after the payer stopped looking at the success page — they close the
+  // tab, the callback lands a minute later, and nothing would ever redeem the token. One quiet attempt
+  // per boot picks that up; with nothing pending it does not even touch the network.
+  void claimPending(1);
   if (typeof window !== 'undefined') window.addEventListener('online', () => void triggerSync());
   let wasAuthed = useAccount.getState().status === 'authenticated';
   useAccount.subscribe((state) => {
@@ -80,6 +85,9 @@ export function initSync(): void {
     if (authed && !wasAuthed) {
       void triggerSync(); // just signed in / linked
       void useEntitlement.getState().load();
+      // Also here, not only at boot: a payment made before the session was ready has nothing to redeem
+      // against until this moment.
+      void claimPending(1);
     }
     // Signing out must drop the plan too, or the AI affordances stay visible with no token behind them.
     if (!authed && wasAuthed) useEntitlement.getState().clear();

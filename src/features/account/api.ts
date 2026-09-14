@@ -12,6 +12,9 @@ import {
   BlobListResponseSchema,
   BlobDownloadResponseSchema,
   EntitlementSchema,
+  BillingPlansSchema,
+  CheckoutResponseSchema,
+  UnclaimedGrantSchema,
   AiCompleteResponseSchema,
   TotpStatusSchema,
   TotpEnrollResponseSchema,
@@ -29,6 +32,8 @@ import {
   type BlobMeta,
   type BlobListResponse,
   type Entitlement,
+  type BillingPlans,
+  type CheckoutResponse,
   type AiTaskRequest,
   type AiCompleteResponse,
   type TotpStatus,
@@ -228,6 +233,28 @@ export function claimTrial(accessToken: string, installId: string): Promise<Enti
     { method: 'POST', headers: authed(accessToken), body: JSON.stringify({ installId }) },
     (j) => EntitlementSchema.parse(j)
   );
+}
+
+/** The plan catalog and whether payments are switched on at all. Public — the paywall has to name a
+ *  price before anyone signs in, and the price is the server's to state. */
+export function billingPlans(): Promise<BillingPlans> {
+  return request(Routes.billingPlans, { method: 'GET' }, (j) => BillingPlansSchema.parse(j));
+}
+
+/** Open a checkout. The server prices the plan, mints an unpaid grant bound to this account, and
+ *  returns both the acquirer's payment page and the token to redeem once the money lands. */
+export function startCheckout(accessToken: string, plan: string): Promise<CheckoutResponse> {
+  return request(
+    Routes.billingCheckout,
+    { method: 'POST', headers: authed(accessToken), body: JSON.stringify({ plan }) },
+    (j) => CheckoutResponseSchema.parse(j)
+  );
+}
+
+/** A purchase this account has paid for and not yet redeemed, for a device that never held the token
+ *  (bought on another device, or storage cleared). Null when there is nothing outstanding. */
+export function unclaimedGrant(accessToken: string): Promise<string | null> {
+  return request(Routes.billingUnclaimed, { method: 'GET', headers: authed(accessToken) }, (j) => UnclaimedGrantSchema.parse(j).grantToken);
 }
 
 /** Exchange a grant token issued by checkout for paid time. One-time: a replay fails `grant_invalid`. */

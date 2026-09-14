@@ -61,17 +61,34 @@ const tokenC = await register('acc-cccc0123456789ab');
 const other = await post('/v1/entitlement/trial', { installId: 'install-bbbbbbbbbbbbbbbb' }, tokenC);
 check('a different install still gets its trial', other.status === 200);
 
-// --- redeem: the grant is minted server-side (billing callback will do this), never by the client ---
-const grant = await ent.createGrant('robokassa:inv-1', 30, 'acc-cccc0123456789ab');
+// --- redeem: the grant is minted server-side at checkout, never by the client, and stays UNPAID until
+//     the signature-verified payment callback confirms it ---
+const draft = (invoiceId: string) => ({
+  paymentRef: `robokassa:${invoiceId}`,
+  invoiceId,
+  days: 30,
+  amountKopecks: 19900,
+  boundTo: 'acc-cccc0123456789ab',
+});
+const grant = await ent.createGrant(draft('inv-1'));
 const bad = await post('/v1/entitlement/redeem', { grantToken: 'x'.repeat(32) }, tokenC);
 check('unknown grant → 400', bad.status === 400);
+
+// The whole point of the pending state: a token handed out at checkout buys nothing until the money
+// actually arrives, so a client that simply keeps its token cannot self-serve a subscription.
+check('an unpaid grant → 400', (await post('/v1/entitlement/redeem', { grantToken: grant }, tokenC)).status === 400);
+check('a short payment does not confirm the grant', (await ent.markGrantPaid('inv-1', 19899)) === 'underpaid');
+check('the underpaid grant still will not redeem', (await post('/v1/entitlement/redeem', { grantToken: grant }, tokenC)).status === 400);
+check('paying in full confirms it', (await ent.markGrantPaid('inv-1', 19900)) === 'ok');
+check('a replayed callback is a no-op, not a second grant', (await ent.markGrantPaid('inv-1', 19900)) === 'ok');
 
 // A leaked token (URL, logs, shared screen) must be worthless to anyone but the buyer.
 const tokenD = await register('acc-dddd0123456789ab');
 check('grant bound to another account → 400', (await post('/v1/entitlement/redeem', { grantToken: grant }, tokenD)).status === 400);
 check('a refused bound redeem does NOT burn the grant', (await ent.redeemGrant(grant, 'acc-cccc0123456789ab')) === 30);
 
-const grant2 = await ent.createGrant('robokassa:inv-2', 30, 'acc-cccc0123456789ab');
+const grant2 = await ent.createGrant(draft('inv-2'));
+await ent.markGrantPaid('inv-2', 19900);
 const ok = await post('/v1/entitlement/redeem', { grantToken: grant2 }, tokenC);
 const pro = (await ok.json()) as Entitlement;
 check('redeem → pro with the monthly quota', ok.status === 200 && pro.plan === 'pro' && pro.ai.limit === PRO_AI_REQUESTS);

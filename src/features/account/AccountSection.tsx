@@ -5,6 +5,7 @@ import { Button, Card, Eyebrow, Input } from '@/shared/ui';
 import { QrScanner } from './QrScanner';
 import { TotpEnroll, TotpRecover } from './TotpSection';
 import { QuotaNotice } from './QuotaNotice';
+import { PlanSection } from './PlanSection';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { accountsEnabled } from './config';
 import { useAccount } from './store';
@@ -152,6 +153,7 @@ function AccountSectionBody() {
           <Button size="sm" variant="ghost" className="mt-3" onClick={() => void logout()}>
             {ru ? 'Выйти' : 'Log out'}
           </Button>
+          <PlanSection ru={ru} />
           <BookFileSyncToggle ru={ru} />
           <TotpEnroll ru={ru} />
           <DeviceManager ru={ru} thisDeviceId={deviceId} />

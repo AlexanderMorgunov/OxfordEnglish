@@ -40,29 +40,53 @@ await s.markTrialClaimed(h);
 check('claimed install → true', (await s.trialClaimed(h)) === true);
 
 // --- grants ---
-const ref = 'smoke:' + randomBytes(4).toString('hex');
-const g = await s.createGrant(ref, 30, ACC);
+const INV = randomBytes(7).toString('hex');
+const ref = 'smoke:' + INV;
+const g = await s.createGrant({ paymentRef: ref, invoiceId: INV, days: 30, amountKopecks: 19900, boundTo: ACC });
+check('a freshly minted grant is unpaid and redeems for nobody', (await s.redeemGrant(g, ACC)) === null);
+check('an invoice nobody issued → unknown', (await s.markGrantPaid('no-such-' + INV, 19900)) === 'unknown');
+check('a short payment → underpaid', (await s.markGrantPaid(INV, 19899)) === 'underpaid');
+// The index read is the part in-memory cannot check: the callback knows only the invoice number.
+check('paying in full confirms the grant through by_invoice', (await s.markGrantPaid(INV, 19900)) === 'ok');
+check('a replayed callback is idempotent', (await s.markGrantPaid(INV, 19900)) === 'ok');
 check('grant bound to another account → refused', (await s.redeemGrant(g, OTHER)) === null);
 check('refused redeem did not burn the grant', (await s.redeemGrant(g, ACC)) === 30);
 check('grant is one-time', (await s.redeemGrant(g, ACC)) === null);
 
 const [rows] = await query(
-  'DECLARE $g AS Utf8; SELECT payment_ref, days, created_at, redeemed FROM payment_grants WHERE grant_token=$g;',
+  'DECLARE $g AS Utf8; SELECT payment_ref, invoice_id, amount_kopecks, days, created_at, paid, paid_at, redeemed FROM payment_grants WHERE grant_token=$g;',
   { $g: T.utf8(g) }
 );
 const r = rows[0];
 check('partial UPSERT kept payment_ref', r != null && String(r.payment_ref) === ref);
 check('partial UPSERT kept days + created_at', r?.days != null && r?.created_at != null);
+check('partial UPSERT kept invoice_id + amount', r != null && String(r.invoice_id) === INV && r.amount_kopecks != null);
+check('paid flag and paid_at survived the redeem write', r?.paid === true && r?.paid_at != null);
 check('redeemed flag is set', r?.redeemed === true);
 
-const unbound = await s.createGrant(ref + ':u', 7);
-check('an unbound grant redeems for anyone', (await s.redeemGrant(unbound, OTHER)) === 7);
+// --- findUnclaimedGrant: the by_bound read and the AS_TABLE join, which in-memory cannot exercise ---
+const BUYER = 'acc-' + randomBytes(8).toString('hex');
+check('no purchase → nothing outstanding', (await s.findUnclaimedGrant(BUYER)) === null);
+const INV2 = randomBytes(7).toString('hex');
+const ref2 = 'smoke:' + INV2;
+const g2 = await s.createGrant({ paymentRef: ref2, invoiceId: INV2, days: 30, amountKopecks: 19900, boundTo: BUYER });
+check('an UNPAID purchase is not offered back', (await s.findUnclaimedGrant(BUYER)) === null);
+await s.markGrantPaid(INV2, 19900);
+check('a paid, unredeemed grant is found through by_bound', (await s.findUnclaimedGrant(BUYER)) === g2);
+check('another account gets its own answer, not this one', (await s.findUnclaimedGrant(OTHER)) === null);
+await s.redeemGrant(g2, BUYER);
+check('once redeemed, nothing is outstanding again', (await s.findUnclaimedGrant(BUYER)) === null);
 
 await s.purge(ACC);
 check('purge drops the entitlement', (await s.get(ACC)) === null);
 check('purge leaves the trial claim (abuse marker outlives the account)', (await s.trialClaimed(h)) === true);
 
 await query('DECLARE $h AS Utf8; DELETE FROM trial_claims WHERE install_hash=$h;', { $h: T.utf8(h) });
+// Grants are payment records and have no TTL, so a smoke that leaves them behind slowly fills the
+// table this run's own by_bound lookup reads. These two are ours; delete them.
+for (const token of [g, g2]) {
+  await query('DECLARE $g AS Utf8; DELETE FROM payment_grants WHERE grant_token=$g;', { $g: T.utf8(token) });
+}
 
 console.log(fail ? `\n${fail} FAILED` : '\nALL PASS');
 (await driver()).destroy();

@@ -142,6 +142,9 @@ export const TrialClaimRequestSchema = z.object({ installId: z.string().min(8).m
 /** Redeem a paid grant minted by the billing callback. The token is the ONLY thing that crosses from
  *  the payment side; it carries no payment identifiers (see backend-v1-design §Privacy). */
 export const RedeemRequestSchema = z.object({ grantToken: z.string().min(16).max(200) });
+/** Start a checkout. The plan code is validated against the server-side catalog (billing.ts PLANS) —
+ *  the amount is never taken from the client. */
+export const CheckoutRequestSchema = z.object({ plan: z.string().min(1).max(40) });
 
 export type Plan = z.infer<typeof PlanSchema>;
 export type Entitlement = z.infer<typeof EntitlementSchema>;
@@ -225,6 +228,7 @@ export const ErrorCode = {
   QuotaExhausted: 'quota_exhausted',
   InputTooLarge: 'input_too_large',
   AiUnavailable: 'ai_unavailable',
+  BillingUnavailable: 'billing_unavailable',
   /** Deliberately covers "no such account", "not enrolled" and "wrong code" alike on the recovery
    *  path: distinguishing them would turn it into an account-id oracle. */
   TotpInvalid: 'totp_invalid',
