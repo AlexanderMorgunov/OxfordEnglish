@@ -23,6 +23,9 @@ const LibraryPage = lazy(() => import('@/pages/LibraryPage').then((m) => ({ defa
 const BookReaderPage = lazy(() => import('@/pages/BookReaderPage').then((m) => ({ default: m.BookReaderPage })));
 const CatalogReaderPage = lazy(() => import('@/pages/CatalogReaderPage').then((m) => ({ default: m.CatalogReaderPage })));
 const AboutPage = lazy(() => import('@/pages/AboutPage').then((m) => ({ default: m.AboutPage })));
+const TermsPage = lazy(() => import('@/pages/TermsPage').then((m) => ({ default: m.TermsPage })));
+const BillingSuccessPage = lazy(() => import('@/pages/BillingReturnPage').then((m) => ({ default: m.BillingSuccessPage })));
+const BillingFailPage = lazy(() => import('@/pages/BillingReturnPage').then((m) => ({ default: m.BillingFailPage })));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })));
 const KitchenSinkPage = lazy(() => import('@/pages/KitchenSinkPage').then((m) => ({ default: m.KitchenSinkPage })));
 
@@ -45,6 +48,11 @@ const routes: RouteObject[] = [
   { path: '/credits', element: <CreditsPage /> },
   { path: '/feedback', element: <FeedbackPage /> },
   { path: '/privacy', element: <PrivacyPage /> },
+  { path: '/terms', element: <TermsPage /> },
+  // Where the acquirer returns the payer. Configured in the Robokassa merchant panel as SuccessURL /
+  // FailURL — changing these paths means changing them there too.
+  { path: '/billing/success', element: <BillingSuccessPage /> },
+  { path: '/billing/fail', element: <BillingFailPage /> },
   // Dev-only playground — never routed in a production build.
   ...(import.meta.env.DEV ? [{ path: '/kitchen-sink', element: <KitchenSinkPage /> }] : []),
   { path: '*', element: <NotFoundPage /> },

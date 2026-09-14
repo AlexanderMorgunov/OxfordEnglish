@@ -78,14 +78,20 @@ const TABLES: Table[] = [
   },
   {
     name: 'payment_grants',
+    // No TTL, unlike every other table here: these ARE the payment records. `invoice_id` is also the
+    // parent a future recurring charge is filed against, so a grant has to outlive the subscription.
     describe: () =>
       new TableDescription()
         .withColumn(new Column('grant_token', utf8()))
         .withColumn(new Column('payment_ref', utf8()))
+        .withColumn(new Column('invoice_id', utf8()))
+        .withColumn(new Column('amount_kopecks', u32()))
         .withColumn(new Column('days', u32()))
         .withColumn(new Column('bound_to', utf8()))
+        .withColumn(new Column('paid', bool()))
         .withColumn(new Column('redeemed', bool()))
         .withColumn(new Column('created_at', ts()))
+        .withColumn(new Column('paid_at', ts()))
         .withPrimaryKey('grant_token'),
   },
 ];
@@ -148,7 +154,39 @@ const INDEXES: Array<{ table: string; name: string; columns: string[]; why: stri
     columns: ['account_id', 'device_id'],
     why: 'revoke-device and delete-account were full scans of EVERY user\'s tokens',
   },
+  {
+    table: 'payment_grants',
+    name: 'by_invoice',
+    columns: ['invoice_id'],
+    why: 'the payment callback knows only the invoice number, never the grant token',
+  },
+  {
+    table: 'payment_grants',
+    name: 'by_bound',
+    columns: ['bound_to'],
+    why: 'a buyer whose device lost the grant token would otherwise need a support ticket',
+  },
 ];
+
+/**
+ * Columns added to tables that predate them. Optional columns only — YDB has no DEFAULT, so every
+ * pre-existing row reads NULL and the code must already treat that as the absent case.
+ */
+const COLUMNS: Array<{ table: string; name: string; type: ReturnType<typeof utf8>; why: string }> = [
+  { table: 'payment_grants', name: 'invoice_id', type: utf8(), why: 'the acquirer identifies a payment by invoice, not by our token' },
+  { table: 'payment_grants', name: 'amount_kopecks', type: u32(), why: 'a valid signature proves who sent the callback, not what was priced' },
+  { table: 'payment_grants', name: 'paid', type: bool(), why: 'a grant is minted at checkout and confirmed later; NULL reads as unpaid' },
+  { table: 'payment_grants', name: 'paid_at', type: ts(), why: 'audit trail for a confirmed payment' },
+];
+
+async function hasColumn(table: string, column: string): Promise<boolean> {
+  try {
+    await query(`SELECT ${column} FROM ${table} LIMIT 0;`);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 async function hasIndex(table: string, name: string): Promise<boolean> {
   try {
@@ -173,6 +211,25 @@ for (const t of TTLS) {
   altered += 1;
 }
 
+// Before the indexes: an index cannot be built on a column that does not exist yet.
+let added = 0;
+for (const col of COLUMNS) {
+  if (!(await exists(col.table))) {
+    console.log(`· ${col.table} — absent, column skipped`);
+    continue;
+  }
+  if (await hasColumn(col.table, col.name)) {
+    console.log(`· ${col.table}.${col.name} — already present, skipped`);
+    continue;
+  }
+  const d = await driver();
+  const desc = new AlterTableDescription();
+  desc.addColumns.push(new Column(col.name, col.type));
+  await d.tableClient.withSession((session) => session.alterTable(col.table, desc));
+  console.log(`+ ${col.table}.${col.name} — added (${col.why})`);
+  added += 1;
+}
+
 let indexed = 0;
 for (const ix of INDEXES) {
   if (!(await exists(ix.table))) {
@@ -192,8 +249,8 @@ for (const ix of INDEXES) {
 }
 
 console.log(
-  created === 0 && altered === 0 && indexed === 0
+  created === 0 && altered === 0 && indexed === 0 && added === 0
     ? '\nnothing to do — schema already current'
-    : `\n${created} table(s) created, ${altered} TTL(s) applied, ${indexed} index(es) created`
+    : `\n${created} table(s) created, ${altered} TTL(s) applied, ${added} column(s) added, ${indexed} index(es) created`
 );
 (await driver()).destroy();

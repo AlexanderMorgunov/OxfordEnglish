@@ -5,6 +5,7 @@ import { syncRoutes } from './routes/sync.js';
 import { blobRoutes } from './routes/blobs.js';
 import { accountRoutes } from './routes/account.js';
 import { entitlementRoutes } from './routes/entitlement.js';
+import { billingRoutes } from './routes/billing.js';
 import { aiRoutes } from './routes/ai.js';
 import { totpRoutes } from './routes/totp.js';
 import { InMemoryAuthStore, type AuthStore } from './store.js';
@@ -88,6 +89,7 @@ export function createApp(
   app.route('/', blobRoutes(blobStore));
   app.route('/', accountRoutes(authStore, syncStore, blobStore, entStore, totpStore));
   app.route('/', entitlementRoutes(entStore));
+  app.route('/', billingRoutes(entStore));
   app.route('/', aiRoutes(entStore, aiCacheStore, completer));
   app.route('/', totpRoutes(authStore, totpStore));
 

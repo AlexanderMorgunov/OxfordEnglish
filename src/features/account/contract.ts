@@ -129,6 +129,29 @@ export const EntitlementSchema = z.object({
   ai: z.object({ used: z.number(), limit: z.number(), resetsAt: z.number().optional() }),
 });
 export const TrialClaimRequestSchema = z.object({ installId: z.string().min(8).max(200) });
+
+/** Plan catalog. Prices are the SERVER's — the client never states an amount, it only renders one. */
+export const BillingPlanSchema = z.object({
+  code: z.string(),
+  days: z.number(),
+  priceKopecks: z.number(),
+  title: z.string(),
+});
+export const BillingPlansSchema = z.object({ available: z.boolean(), plans: z.array(BillingPlanSchema) });
+/** A grant this account paid for and has not redeemed, for a device that lost its own copy. */
+export const UnclaimedGrantSchema = z.object({ grantToken: z.string().nullable() });
+/** What checkout hands back: where to pay, and the token that will later be worth the plan. The token
+ *  is useless until the payment callback confirms it, so it is safe to keep on the device. */
+export const CheckoutResponseSchema = z.object({
+  paymentUrl: z.string(),
+  grantToken: z.string(),
+  invoiceId: z.string(),
+  plan: z.string(),
+  amountKopecks: z.number(),
+});
+export type BillingPlan = z.infer<typeof BillingPlanSchema>;
+export type BillingPlans = z.infer<typeof BillingPlansSchema>;
+export type CheckoutResponse = z.infer<typeof CheckoutResponseSchema>;
 export const RedeemRequestSchema = z.object({ grantToken: z.string().min(16).max(200) });
 
 export type Plan = z.infer<typeof PlanSchema>;
@@ -225,6 +248,9 @@ export const Routes = {
   entitlement: '/v1/entitlement',
   entitlementTrial: '/v1/entitlement/trial',
   entitlementRedeem: '/v1/entitlement/redeem',
+  billingPlans: '/v1/billing/plans',
+  billingCheckout: '/v1/billing/checkout',
+  billingUnclaimed: '/v1/billing/unclaimed',
   ai: '/v1/ai',
   totpStatus: '/v1/totp/status',
   totpEnroll: '/v1/totp/enroll',
