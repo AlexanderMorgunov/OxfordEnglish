@@ -4,6 +4,7 @@ import { QRCodeSVG } from 'qrcode.react';
 import { Button, Card, Eyebrow, Input } from '@/shared/ui';
 import { QrScanner } from './QrScanner';
 import { TotpEnroll, TotpRecover } from './TotpSection';
+import { QuotaNotice } from './QuotaNotice';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { accountsEnabled } from './config';
 import { useAccount } from './store';
@@ -146,6 +147,7 @@ function AccountSectionBody() {
           <p className="mb-1 font-mono text-2xs text-muted">
             id: {accountId?.slice(0, 10)}… · {ru ? 'это устройство' : 'this device'}: {deviceId.slice(0, 8)}
           </p>
+          <QuotaNotice />
           <SyncStatusLine ru={ru} />
           <Button size="sm" variant="ghost" className="mt-3" onClick={() => void logout()}>
             {ru ? 'Выйти' : 'Log out'}

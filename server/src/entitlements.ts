@@ -25,18 +25,30 @@ export const PRO_WINDOW_MS = 30 * DAY_MS;
  * tokens at PEAK deepseek-flash pricing with a full cache miss. Real cost runs well under that, because
  * the cross-user cache serves a large share at zero upstream cost.
  *
- * Both are budgets in UNITS, not calls: a one-sentence translate costs 1, a page-stuffing bookqa or a
- * chapter-stuffing exercises costs 4 (see `TASKS` in ai.ts). A flat per-call charge made the same
- * advertised budget mean 55 ₽ of tokens for a reader and 129 ₽ for someone generating exercises.
+ * Both are budgets in UNITS, not calls: a one-sentence translate costs 1, a chapter-stuffing exercises
+ * costs 4 (see `TASKS` in ai.ts). A flat per-call charge made the same advertised budget mean 55 ₽ of
+ * tokens for a reader and 129 ₽ for someone generating exercises.
+ *
+ * The two numbers do NOT move together, because they bound different things. The trial is free and
+ * farmable — register, claim, spend — so its budget is the cost of an abusive account. Pro has already
+ * been paid for, so its budget is only ever a fairness ceiling.
  *
  * Trial budget is ONE-TIME over the whole trial — it never resets, which is what bounds the cost of
- * farming trials by re-registering. 500 units ≈ 6 ₽ worst case, so a farmed trial is not worth chasing.
+ * farming trials by re-registering. 1 000 units ≈ 12 ₽ worst case: enough for two weeks of real use to
+ * be convincing, still too little for a farmed account to be worth the trouble.
  */
-export const TRIAL_AI_REQUESTS = 500;
-/** 5 000 units ≈ 55 ₽/mo against a 199 ₽ subscription, now genuinely a ceiling rather than an average,
- *  since the weights stop an exercises-heavy mix from costing multiples of it. A heavy reader tapping
- *  translate on most sentences lands near 3 000 units/mo, so this clears that with room. */
-export const PRO_AI_REQUESTS = 5000;
+export const TRIAL_AI_REQUESTS = 1000;
+/**
+ * 10 000 units ≈ 60 ₽/mo worst case against a 199 ₽ subscription — and that worst case assumes the
+ * budget is exhausted every month with zero cache hits.
+ *
+ * Sized against the asymmetry, not against the tokens: a subscriber who exhausts the budget costs us
+ * ~60 ₽ once, while a subscriber who hits a wall mid-book cancels and costs 199 ₽ every month after. A
+ * heavy daily user models at 1 200–2 100 units/mo (docs/monetization-analysis.md §7) because almost
+ * every task is cached locally and permanently, so a unit is spent on a genuinely NEW word or sentence
+ * rather than on activity. This clears even a doubled heavy user.
+ */
+export const PRO_AI_REQUESTS = 10000;
 
 /** Retention bound for a trial claim: once the trial it could block has expired plus a margin, the row
  *  can only deny a trial that is already over, so it is dead weight — and keeping a device-derived value

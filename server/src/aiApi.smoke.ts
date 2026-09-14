@@ -60,7 +60,7 @@ check('free account never reached the upstream', upstreamCalls === 0);
 await post('/v1/entitlement/trial', { installId: 'install-ai-000000000' }, token);
 
 // --- input cap: output is bounded by maxTokens, input is what an attacker inflates ---
-const huge = await ask({ task: 'bookqa', pageText: 'x'.repeat(9000), question: 'why?' });
+const huge = await ask({ task: 'exercises', text: 'x'.repeat(9000), targets: ['x'] });
 check('oversized input → 413', huge.status === 413);
 check('oversized input never reached the upstream', upstreamCalls === 0);
 

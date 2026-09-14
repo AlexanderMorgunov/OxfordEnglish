@@ -139,7 +139,6 @@ export const AiTaskRequestSchema = z.discriminatedUnion('task', [
   z.object({ task: z.literal('wordInContext'), word: z.string().min(1), sentence: z.string().min(1) }),
   z.object({ task: z.literal('explain'), prompt: z.string().min(1), userAnswer: z.string(), correct: z.string(), topic: z.string(), attempts: z.array(z.string()).max(20).optional() }),
   z.object({ task: z.literal('hint'), prompt: z.string().min(1), topic: z.string(), userAnswer: z.string().optional() }),
-  z.object({ task: z.literal('bookqa'), pageText: z.string().min(1), question: z.string().min(1) }),
   z.object({ task: z.literal('exercises'), text: z.string().min(1), targets: z.array(z.string()).max(40), count: z.number().int().min(1).max(12).optional() }),
 ]);
 export const AiCompleteResponseSchema = z.object({

@@ -135,22 +135,6 @@ export const grammarMessages = (sentence: string, band: Band): ChatMessage[] => 
   { role: 'user', content: sentence },
 ];
 
-/** Page text is the CONSTANT system prefix so the provider's prefix cache hits across questions on the
- *  same page; the varying question goes last. */
-export const bookQaMessages = (pageText: string, question: string): ChatMessage[] => [
-  {
-    role: 'system',
-    content:
-      'Ты отвечаешь на вопрос ученика по фрагменту книги, который он сейчас читает. Отвечай КРАТКО и по-русски, ' +
-      'ТОЛЬКО на основе приведённого ниже текста — не додумывай и не используй знания извне. Если ответа в тексте ' +
-      'нет, честно скажи: «В этом фрагменте об этом не сказано.» Если в тексте есть предложение, прямо подтверждающее ' +
-      'ответ, добавь его ПОСЛЕДНЕЙ строкой в формате: ЦИТАТА: <точное предложение из текста>.\n\nТекст:\n"""\n' +
-      pageText +
-      '\n"""',
-  },
-  { role: 'user', content: question },
-];
-
 export const wordInContextMessages = (word: string, sentence: string): ChatMessage[] => [
   { role: 'system', content: RU_TUTOR },
   {
