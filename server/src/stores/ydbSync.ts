@@ -146,14 +146,16 @@ export class YdbSyncStore implements SyncStore {
     });
   }
 
-  async pull(userId: string, since: number, limit = 500): Promise<PullResult> {
+  async pull(userId: string, since: number, limit = 500, snapshot = false): Promise<PullResult> {
     const [headRows] = await query('DECLARE $u AS Utf8; SELECT seq FROM seq_counter WHERE user_id=$u;', { $u: T.utf8(userId) });
     const head = headRows[0] ? num(headRows[0].seq) : 0;
 
-    if (since <= 0) {
+    if (since <= 0 || snapshot) {
+      // `seq` is not part of the PK (user_id, store, id), so this reads the user's own rows and sorts
+      // them. Fine at per-user row counts; a secondary index on (user_id, seq) is the lever if it bites.
       const [rows] = await query(
-        'DECLARE $u AS Utf8; DECLARE $lim AS Uint64; SELECT store, id, seq, updated_at, updated_by, deleted_at, status_updated_at, payload FROM current_state WHERE user_id=$u ORDER BY seq LIMIT $lim;',
-        { $u: T.utf8(userId), $lim: T.uint64(limit) }
+        'DECLARE $u AS Utf8; DECLARE $since AS Uint64; DECLARE $lim AS Uint64; SELECT store, id, seq, updated_at, updated_by, deleted_at, status_updated_at, payload FROM current_state WHERE user_id=$u AND seq > $since ORDER BY seq LIMIT $lim;',
+        { $u: T.utf8(userId), $since: T.uint64(Math.max(0, since)), $lim: T.uint64(limit) }
       );
       return { head, entries: rows.map((r) => ({ ...rowToChange(r), seq: num(r.seq) })), snapshot: true };
     }

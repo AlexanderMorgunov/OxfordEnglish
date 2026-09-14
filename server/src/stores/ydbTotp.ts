@@ -8,7 +8,7 @@
  * would buy nothing. See docs/yc-backend-setup.md for the DDL.
  */
 import type { TotpStore, TotpRow } from '../totp.js';
-import { query, TypedValues as T, Types, num } from '../ydb.js';
+import { query, withSerializableTx, TypedValues as T, Types, num } from '../ydb.js';
 
 function tsMs(v: unknown): number {
   if (v instanceof Date) return v.getTime();
@@ -61,5 +61,52 @@ export class YdbTotpStore implements TotpStore {
 
   async remove(accountId: string): Promise<void> {
     await query('DECLARE $a AS Utf8; DELETE FROM totp WHERE account_id=$a;', { $a: T.utf8(accountId) });
+  }
+
+  /** Read and write in ONE serializable transaction, so parallel guesses against the same account are
+   *  counted one after another. Outside a transaction the lockout counts round-trips, not attempts. */
+  async verify<R>(accountId: string, decide: (row: TotpRow | null) => { row?: TotpRow; result: R }): Promise<R> {
+    return withSerializableTx(async (tx) => {
+      const rows = await tx.exec(
+        'DECLARE $a AS Utf8; SELECT secret_enc, confirmed_at, last_step, backup_hashes, fail_count, fail_window_start FROM totp WHERE account_id=$a;',
+        { $a: T.utf8(accountId) }
+      );
+      const r = rows[0]?.[0];
+      const joined = r ? str(r.backup_hashes) : '';
+      const current: TotpRow | null = r
+        ? {
+            accountId,
+            secretEnc: str(r.secret_enc),
+            confirmedAt: r.confirmed_at == null ? undefined : tsMs(r.confirmed_at),
+            lastStep: r.last_step == null ? undefined : num(r.last_step),
+            backupHashes: joined ? joined.split('\n') : [],
+            failCount: num(r.fail_count),
+            failWindowStart: tsMs(r.fail_window_start),
+          }
+        : null;
+
+      const { row, result } = decide(current);
+      await tx.exec(
+        row
+          ? 'DECLARE $a AS Utf8; DECLARE $s AS Utf8; DECLARE $c AS Timestamp?; DECLARE $l AS Uint32?; DECLARE $b AS Utf8;' +
+            'DECLARE $f AS Uint32; DECLARE $w AS Timestamp;' +
+            'UPSERT INTO totp (account_id, secret_enc, confirmed_at, last_step, backup_hashes, fail_count, fail_window_start)' +
+            ' VALUES ($a, $s, $c, $l, $b, $f, $w);'
+          : 'SELECT 1;', // nothing to write, but the tx still has to commit
+        row
+          ? {
+              $a: T.utf8(row.accountId),
+              $s: T.utf8(row.secretEnc),
+              $c: optTs(row.confirmedAt),
+              $l: optU32(row.lastStep),
+              $b: T.utf8(row.backupHashes.join('\n')),
+              $f: T.uint32(row.failCount),
+              $w: T.timestamp(new Date(row.failWindowStart)),
+            }
+          : {},
+        true
+      );
+      return result;
+    });
   }
 }

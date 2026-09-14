@@ -10,7 +10,7 @@
  * See docs/yc-backend-setup.md for the DDL.
  */
 import { randomBytes } from 'node:crypto';
-import { bindHash, type EntitlementStore, type EntitlementRow } from '../entitlements.js';
+import { bindHash, type EntitlementStore, type EntitlementRow, type Mutation } from '../entitlements.js';
 import { query, withSerializableTx, TypedValues as T, Types, num } from '../ydb.js';
 
 /** YDB Timestamp comes back as a Date (or micros); normalize to epoch ms. */
@@ -52,6 +52,46 @@ export class YdbEntitlementStore implements EntitlementStore {
         $w: T.timestamp(new Date(row.windowStartedAt)),
       }
     );
+  }
+
+  /** Read and write inside ONE serializable transaction, so concurrent AI calls on the same account are
+   *  charged one after another instead of all reading the same pre-charge `ai_used`. */
+  async mutate<R>(accountId: string, decide: (row: EntitlementRow | null) => Mutation<R>): Promise<R> {
+    return withSerializableTx(async (tx) => {
+      const rows = await tx.exec(
+        'DECLARE $a AS Utf8; SELECT trial_started_at, paid_until, ai_used, window_started_at FROM entitlements WHERE account_id=$a;',
+        { $a: T.utf8(accountId) }
+      );
+      const r = rows[0]?.[0];
+      const current: EntitlementRow | null = r
+        ? {
+            accountId,
+            trialStartedAt: r.trial_started_at == null ? undefined : tsMs(r.trial_started_at),
+            paidUntil: r.paid_until == null ? undefined : tsMs(r.paid_until),
+            aiUsed: num(r.ai_used),
+            windowStartedAt: tsMs(r.window_started_at),
+          }
+        : null;
+
+      const { row, result } = decide(current);
+      await tx.exec(
+        row
+          ? 'DECLARE $a AS Utf8; DECLARE $t AS Timestamp?; DECLARE $p AS Timestamp?; DECLARE $u AS Uint32; DECLARE $w AS Timestamp;' +
+            'UPSERT INTO entitlements (account_id, trial_started_at, paid_until, ai_used, window_started_at) VALUES ($a, $t, $p, $u, $w);'
+          : 'SELECT 1;', // nothing to write, but the tx still has to commit
+        row
+          ? {
+              $a: T.utf8(row.accountId),
+              $t: optTs(row.trialStartedAt),
+              $p: optTs(row.paidUntil),
+              $u: T.uint32(row.aiUsed),
+              $w: T.timestamp(new Date(row.windowStartedAt)),
+            }
+          : {},
+        true
+      );
+      return result;
+    });
   }
 
   async trialClaimed(hash: string): Promise<boolean> {

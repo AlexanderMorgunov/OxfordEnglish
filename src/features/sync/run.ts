@@ -23,7 +23,7 @@ function transport(): SyncTransport {
   };
   return {
     push: async (body) => syncPush(await token(), body),
-    pull: async (since) => syncPull(await token(), since),
+    pull: async (since, snapshot) => syncPull(await token(), since, snapshot),
   };
 }
 

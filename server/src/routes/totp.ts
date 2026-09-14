@@ -20,6 +20,7 @@ import type { AuthStore } from '../store.js';
 import {
   type TotpStore,
   type TotpRow,
+  type AttemptResult,
   generateSecret,
   otpauthUri,
   base32Encode,
@@ -59,6 +60,25 @@ function unseal(row: TotpRow, key: Buffer): Uint8Array | null {
   } catch {
     return null;
   }
+}
+
+/** `missing` = no enrollment at all; `sealed` = the row will not decrypt. Both are kept distinct from a
+ *  wrong code inside the server and collapsed to one answer at the edge, where enumeration matters. */
+type Attempt = AttemptResult | { ok: false; reason: 'missing' | 'sealed' };
+
+/**
+ * One verification attempt: read the row, check the code, and record the failure — all inside a single
+ * transaction. Counting failures outside one lets parallel guesses share a stale counter, so the lockout
+ * ends up counting database round-trips rather than attempts.
+ */
+function attemptVerify(totp: TotpStore, accountId: string, code: string, key: Buffer, now: number): Promise<Attempt> {
+  return totp.verify<Attempt>(accountId, (row) => {
+    if (!row) return { result: { ok: false, reason: 'missing' } };
+    const secret = unseal(row, key);
+    if (!secret) return { result: { ok: false, reason: 'sealed' } };
+    const attempt = verifyAttempt(row, secret, code, now);
+    return { row: attempt.row, result: attempt };
+  });
 }
 
 const freshRow = (accountId: string, secretEnc: string): TotpRow => ({
@@ -142,14 +162,21 @@ export function totpRoutes(store: AuthStore, totp: TotpStore): Hono {
     const body = TotpDisableRequestSchema.safeParse(await c.req.json().catch(() => null));
     if (!body.success) return err(ErrorCode.BadRequest, 400);
 
-    const row = await totp.get(claims.sub);
-    if (!row?.confirmedAt) return err(ErrorCode.TotpNotEnrolled, 409);
     const now = Date.now();
 
     if (body.data.verifier) {
+      // Gate on the throttle BEFORE argon2: this branch is otherwise the only argon2 path on the whole
+      // surface with no limiter in front of it, which makes it an amplifier as well as a guessing oracle.
+      const gate = await totp.verify(claims.sub, (row) => {
+        if (!row?.confirmedAt) return { result: 'not_enrolled' as const };
+        return { result: throttled(row, now) ? ('throttled' as const) : ('ok' as const) };
+      });
+      if (gate === 'not_enrolled') return err(ErrorCode.TotpNotEnrolled, 409);
+      if (gate === 'throttled') return err(ErrorCode.RateLimited, 429);
+
       const account = await store.getAccount(claims.sub);
       if (!account || !(await verifyVerifier(body.data.verifier, account.verifierHash))) {
-        await totp.put(noteFailure(row, now));
+        await totp.verify(claims.sub, (row) => ({ row: row ? noteFailure(row, now) : undefined, result: undefined }));
         return err(ErrorCode.TotpInvalid, 401);
       }
       await totp.remove(claims.sub);
@@ -157,11 +184,10 @@ export function totpRoutes(store: AuthStore, totp: TotpStore): Hono {
     }
 
     if (!body.data.code) return err(ErrorCode.BadRequest, 400);
-    const secret = unseal(row, key);
-    if (!secret) return err(ErrorCode.TotpUnavailable, 503);
-    const res = verifyAttempt(row, secret, body.data.code, now);
+    const res = await attemptVerify(totp, claims.sub, body.data.code, key, now);
     if (!res.ok) {
-      await totp.put(res.row);
+      if (res.reason === 'sealed') return err(ErrorCode.TotpUnavailable, 503);
+      if (res.reason === 'missing' || res.reason === 'unconfirmed') return err(ErrorCode.TotpNotEnrolled, 409);
       return res.reason === 'throttled' ? err(ErrorCode.RateLimited, 429) : err(ErrorCode.TotpInvalid, 401);
     }
     await totp.remove(claims.sub);
@@ -177,18 +203,13 @@ export function totpRoutes(store: AuthStore, totp: TotpStore): Hono {
 
     // Every failure below answers `totp_invalid`: telling "no such account" apart from "wrong code"
     // would make this endpoint an oracle for guessing account ids.
-    const row = await totp.get(accountId);
-    if (!row) return err(ErrorCode.TotpInvalid, 401);
     const now = Date.now();
-    const secret = unseal(row, key);
-    if (!secret) return err(ErrorCode.TotpUnavailable, 503);
-    const res = verifyAttempt(row, secret, code, now);
+    const res = await attemptVerify(totp, accountId, code, key, now);
     if (!res.ok) {
-      await totp.put(res.row);
+      if (res.reason === 'sealed') return err(ErrorCode.TotpUnavailable, 503);
       return res.reason === 'throttled' ? err(ErrorCode.RateLimited, 429) : err(ErrorCode.TotpInvalid, 401);
     }
     if (!(await store.getAccount(accountId))) return err(ErrorCode.TotpInvalid, 401);
-    await totp.put(res.row);
 
     await store.setVerifier(accountId, await hashVerifier(verifier));
     // The old key may have been stolen rather than lost, so every existing session dies with it.

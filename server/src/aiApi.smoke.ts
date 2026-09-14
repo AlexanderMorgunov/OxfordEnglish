@@ -116,6 +116,45 @@ const exhausted = await ask({ task: 'translate', text: 'something new entirely' 
 check('exhausted quota → 429', exhausted.status === 429);
 check('exhausted quota never reached the upstream', upstreamCalls === callsBefore);
 
+
+// --- the charge must be atomic, or concurrency is a discount ---
+// Before the store's `mutate`, a get→put pair let N concurrent calls all read the same `aiUsed`, all
+// pass the limit check, and all write the same result: N calls charged once, with us paying the
+// upstream for every one of them.
+{
+  const raceToken = await register('acc-race0123456789ab');
+  await post('/v1/entitlement/trial', { installId: 'install-race-00000000' }, raceToken);
+  const before = ((await (await post('/v1/ai', { task: 'translate', text: 'race baseline' }, raceToken)).json()) as AiCompleteResponse).ai.used;
+
+  const N = 12;
+  const bodies = await Promise.all(
+    Array.from(
+      { length: N },
+      async (_, i) => (await (await post('/v1/ai', { task: 'translate', text: `race ${i}` }, raceToken)).json()) as AiCompleteResponse
+    )
+  );
+  const highest = Math.max(...bodies.map((b) => b.ai.used));
+  check('every concurrent call is charged (no lost updates)', highest === before + N);
+
+  const settled = (await (await post('/v1/ai', { task: 'translate', text: 'race settled' }, raceToken)).json()) as AiCompleteResponse;
+  check('the stored balance reflects all of them', settled.ai.used === before + N + 1);
+}
+
+// A burst that straddles the cap must stop AT the cap, not sail past it.
+{
+  const capToken = await register('acc-cap00123456789ab');
+  await post('/v1/entitlement/trial', { installId: 'install-cap-000000000' }, capToken);
+  const row = await ent.get('acc-cap00123456789ab');
+  await ent.put({ ...row!, aiUsed: TRIAL_AI_REQUESTS - 5 }); // room for exactly 5 single-unit calls
+
+  const results = await Promise.all(
+    Array.from({ length: 15 }, async (_, i) => (await post('/v1/ai', { task: 'translate', text: `cap ${i}` }, capToken)).status)
+  );
+  check('a burst over the cap allows exactly the remaining budget', results.filter((s) => s === 200).length === 5);
+  check('the rest are refused', results.filter((s) => s === 429).length === 10);
+  check('the balance never exceeds the limit', (await ent.get('acc-cap00123456789ab'))!.aiUsed === TRIAL_AI_REQUESTS);
+}
+
 console.log(failures === 0 ? '\nai API: all checks passed' : `\nai API: ${failures} FAILED`);
 // Set the code and let the loop drain: forcing exit() while a wasm/grpc handle is mid-close trips a
 // libuv assertion on Windows and turns a passing run into a nonzero exit.

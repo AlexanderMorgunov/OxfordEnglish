@@ -150,9 +150,9 @@ export function syncPush(
   );
 }
 
-export function syncPull(accessToken: string, since: number): Promise<SyncPullResponse> {
+export function syncPull(accessToken: string, since: number, snapshot = false): Promise<SyncPullResponse> {
   return request(
-    `${Routes.sync}?since=${since}`,
+    `${Routes.sync}?since=${since}${snapshot ? '&snapshot=1' : ''}`,
     { method: 'GET', headers: { authorization: `Bearer ${accessToken}` } },
     (j) => SyncPullResponseSchema.parse(j)
   );

@@ -60,15 +60,27 @@ function initDriver(): Promise<YdbDriver> {
 }
 
 export function driver(): Promise<YdbDriver> {
-  return (driverPromise ??= initDriver());
+  // Clear the memo on failure. `??=` only reassigns when the slot is null, and a REJECTED promise is not
+  // null — so one transient init failure (a YDB blip, a slow metadata token) would otherwise be cached
+  // forever and every later request on that instance would fail while the instance stayed alive.
+  return (driverPromise ??= initDriver().catch((e: unknown) => {
+    driverPromise = null;
+    throw e;
+  }));
 }
 
 type Rows = Record<string, unknown>[];
 
-/** Run a single YQL statement, returning each result set as plain JS objects. */
+/**
+ * Run a single YQL statement, returning each result set as plain JS objects.
+ *
+ * withSessionRetry, not withSession: the latter passes maxRetries=0, so a transient BadSession,
+ * Overloaded, or transaction-locks-invalidated surfaced as a 500 to the caller instead of being retried
+ * in a fresh session.
+ */
 export async function query(yql: string, params: Record<string, unknown> = {}): Promise<Rows[]> {
   const d = await driver();
-  return d.tableClient.withSession(async (session) => {
+  return d.tableClient.withSessionRetry(async (session) => {
     const res = await session.executeQuery(yql, params as never);
     return res.resultSets.map((rs) => TypedData.createNativeObjects(rs) as Rows);
   });
@@ -83,7 +95,10 @@ export interface Tx {
  *  commits. Any throw rolls back (the session is returned to the pool without a commit). */
 export async function withSerializableTx<T>(fn: (tx: Tx) => Promise<T>): Promise<T> {
   const d = await driver();
-  return d.tableClient.withSession(async (session) => {
+  // A retry re-runs `fn` from the start in a fresh session with `txId` reset — which is exactly what a
+  // serializable conflict calls for. Safe because every `fn` here touches nothing but YDB, and the commit
+  // is atomic on the final exec, so a retried attempt never re-applies half-written state.
+  return d.tableClient.withSessionRetry(async (session) => {
     let txId: string | undefined;
     const exec = async (yql: string, params: Record<string, unknown> = {}, commit = false): Promise<Rows[]> => {
       const txControl = txId

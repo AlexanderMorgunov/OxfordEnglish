@@ -127,8 +127,16 @@ export interface PullResult {
 export interface SyncStore {
   /** Apply a batch (idempotent by key). Returns the authoritative rows that actually changed + head seq. */
   push(userId: string, cursorSeq: number, changes: Change[], idempotencyKey: string): Promise<PushResult>;
-  /** Return log entries with `seq > since`, capped; `since === 0` returns the current-state snapshot. */
-  pull(userId: string, since: number, limit?: number): Promise<PullResult>;
+  /**
+   * Return log entries with `seq > since`, capped.
+   *
+   * `since === 0` (or `snapshot`) returns the current-state baseline instead, ALSO paged on `seq` —
+   * a baseline that silently stopped at the cap left every device past the first page permanently
+   * short of rows the server still held. `current_state.seq` is the seq a row was last written at and
+   * is unique per user, so it is a valid page cursor: a row can only ever move forward, so paging
+   * across a concurrent write may repeat a row (harmless, application is LWW) but cannot skip one.
+   */
+  pull(userId: string, since: number, limit?: number, snapshot?: boolean): Promise<PullResult>;
   /** Delete-account: drop all of a user's changelog, current-state, seq counter, and idempotency records. */
   purge(userId: string): Promise<void>;
 }
@@ -175,11 +183,13 @@ export class InMemorySyncStore implements SyncStore {
     return result;
   }
 
-  async pull(userId: string, since: number, limit = MAX_PULL): Promise<PullResult> {
+  async pull(userId: string, since: number, limit = MAX_PULL, snapshot = false): Promise<PullResult> {
     const head = this.seqs.get(userId) ?? 0;
-    if (since <= 0) {
+    if (since <= 0 || snapshot) {
       // Bootstrap baseline: the current-state rows (each carries the seq it was last written at), seq-ordered.
-      const rows = [...(this.state.get(userId)?.values() ?? [])].sort((a, b) => a.seq - b.seq);
+      const rows = [...(this.state.get(userId)?.values() ?? [])]
+        .filter((r) => r.seq > since)
+        .sort((a, b) => a.seq - b.seq);
       return { head, entries: rows.slice(0, limit), snapshot: true };
     }
     const log = this.log.get(userId) ?? [];

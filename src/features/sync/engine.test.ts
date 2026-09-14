@@ -133,3 +133,72 @@ test('drainPush chunks a large dirty set under the 500-per-push cap', async () =
   expect(await db.pending.count()).toBe(0);
   expect(await server._count()).toBe(n);
 }, 20_000);
+
+// A baseline larger than one page must arrive IN FULL. The snapshot branch used to set the cursor to
+// `head` after the first page and return, so every row past the cap was never requested again — silent,
+// permanent divergence for anyone with more than a page of history (~a month of daily study).
+test('pullLoop pages the snapshot to the end instead of stopping at the cap', async () => {
+  const PAGE = 50;
+  const total = 130; // 2 full pages + a partial one
+  const state = Array.from({ length: total }, (_, i) => bookEntry(`b${i + 1}`, i + 1, `t${i + 1}`, 1000 + i));
+  const asked: Array<{ since: number; snapshot?: boolean }> = [];
+
+  const transport: SyncTransport = {
+    push: async () => ({ head: total, applied: [] }),
+    pull: async (since, snapshot): Promise<SyncPullResponse> => {
+      asked.push({ since, snapshot });
+      if (since <= 0 || snapshot) {
+        return { head: total, entries: state.filter((e) => e.seq > since).slice(0, PAGE), snapshot: true };
+      }
+      return { head: total, entries: [] };
+    },
+  };
+
+  await pullLoop(transport, 'A', 0);
+
+  expect(await db.books.count()).toBe(total);
+  expect(await db.books.get('b130')).toBeTruthy(); // the row that used to be dropped
+  expect((await db.syncState.get('A'))?.cursorSeq).toBe(total);
+  expect(asked.length).toBeGreaterThan(1); // it actually paged
+  expect(asked.every((a) => a.snapshot === true || a.since === 0)).toBe(true);
+});
+
+// The cursor is the changelog position. Writing it mid-baseline would make a crash look like a consumed
+// log, and the unread rows would never be asked for again — worse than not paging at all.
+test('the cursor is not written until the whole snapshot has landed', async () => {
+  const PAGE = 10;
+  const state = Array.from({ length: 25 }, (_, i) => bookEntry(`c${i + 1}`, i + 1, `t${i + 1}`, 2000 + i));
+  const cursorsDuringPaging: (number | undefined)[] = [];
+
+  const transport: SyncTransport = {
+    push: async () => ({ head: 25, applied: [] }),
+    pull: async (since, snapshot): Promise<SyncPullResponse> => {
+      cursorsDuringPaging.push((await db.syncState.get('A'))?.cursorSeq);
+      if (since <= 0 || snapshot) {
+        return { head: 25, entries: state.filter((e) => e.seq > since).slice(0, PAGE), snapshot: true };
+      }
+      return { head: 25, entries: [] };
+    },
+  };
+
+  await pullLoop(transport, 'A', 0);
+
+  expect(cursorsDuringPaging.every((c) => c === undefined)).toBe(true);
+  expect((await db.syncState.get('A'))?.cursorSeq).toBe(25);
+});
+
+// A server that never advances must not spin the client forever.
+test('a snapshot that stops progressing terminates', async () => {
+  const stuck = [bookEntry('s1', 1, 'one', 1)];
+  let calls = 0;
+  const transport: SyncTransport = {
+    push: async () => ({ head: 9, applied: [] }),
+    pull: async (): Promise<SyncPullResponse> => {
+      calls += 1;
+      return { head: 9, entries: stuck, snapshot: true }; // always the same row
+    },
+  };
+
+  await pullLoop(transport, 'A', 0);
+  expect(calls).toBeLessThan(5);
+});

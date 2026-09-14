@@ -6,8 +6,10 @@
 import { z } from 'zod';
 
 export const CredentialsSchema = z.object({
-  accountId: z.string().min(16),
-  verifier: z.string().min(16),
+  // Upper bounds as well as lower: unbounded strings on an unauthenticated route are a free way to make
+  // a 512 MB container buffer megabytes per request, next to argon2 already holding 19 MiB per hash.
+  accountId: z.string().min(16).max(256),
+  verifier: z.string().min(16).max(256),
 });
 
 export const AuthRequestSchema = CredentialsSchema.extend({
@@ -176,7 +178,7 @@ export const TotpConfirmResponseSchema = z.object({ backupCodes: z.array(z.strin
 /** Disabling accepts EITHER proof: a live code, or the recovery key the user still holds. One of the two
  *  must be present — a session alone is not enough, or a stolen session could strip the second factor. */
 export const TotpDisableRequestSchema = z
-  .object({ code: z.string().min(6).max(20).optional(), verifier: z.string().min(16).optional() })
+  .object({ code: z.string().min(6).max(20).optional(), verifier: z.string().min(16).max(256).optional() })
   .refine((v) => !!v.code || !!v.verifier, { message: 'code or verifier required' });
 /** `available` is false when the server has no sealing key: the whole feature is off, and offering an
  *  enroll button that can only 503 is worse than showing nothing. */
@@ -188,9 +190,9 @@ export const TotpStatusSchema = z.object({ available: z.boolean(), enrolled: z.b
  * replaces only the stored verifier, so synced data, blobs and the paid plan stay attached.
  */
 export const TotpRecoverRequestSchema = z.object({
-  accountId: z.string().min(16),
+  accountId: z.string().min(16).max(256),
   code: z.string().min(6).max(20),
-  verifier: z.string().min(16),
+  verifier: z.string().min(16).max(256),
   deviceName: z.string().max(60).optional(),
 });
 

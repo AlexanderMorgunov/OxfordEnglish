@@ -179,6 +179,16 @@ export interface TotpStore {
   get(accountId: string): Promise<TotpRow | null>;
   put(row: TotpRow): Promise<void>;
   remove(accountId: string): Promise<void>;
+  /**
+   * Read, decide and write as ONE atomic step — how every verification must go.
+   *
+   * With a plain get→put the failure counter is a lost update: parallel guesses all read the same
+   * `failCount`, so it advances about once per database round-trip instead of once per attempt, and the
+   * 10-per-15-minutes lockout silently becomes hundreds. Against a six-digit code with a ±1 step
+   * tolerance (three live codes, ~333k expected guesses) that is the difference between "not
+   * brute-forceable" and "a few days of free, scriptable traffic".
+   */
+  verify<R>(accountId: string, decide: (row: TotpRow | null) => { row?: TotpRow; result: R }): Promise<R>;
 }
 
 /** Six digits with a ±1 step tolerance leave ~3 codes live at once, so the code space is not what stops
@@ -233,5 +243,11 @@ export class InMemoryTotpStore implements TotpStore {
   }
   async remove(accountId: string) {
     this.rows.delete(accountId);
+  }
+  /** Atomic by construction: nothing awaits between the read and the write. */
+  async verify<R>(accountId: string, decide: (row: TotpRow | null) => { row?: TotpRow; result: R }): Promise<R> {
+    const { row, result } = decide(this.rows.get(accountId) ?? null);
+    if (row) this.rows.set(row.accountId, row);
+    return result;
   }
 }
