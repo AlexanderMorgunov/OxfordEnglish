@@ -1,9 +1,10 @@
 import { Hono } from 'hono';
-import { ErrorCode, AiTaskRequestSchema, AI_MAX_INPUT_CHARS } from '../contract.js';
+import { ErrorCode, AiTaskRequestSchema, AI_MAX_INPUT_CHARS, IP_BUCKET_CAPACITY, IP_BUCKET_REFILL_PER_SEC } from '../contract.js';
 import { bearerClaims } from '../tokens.js';
 import { consumeAi, refundAi, evaluate, type EntitlementStore } from '../entitlements.js';
 import { TASKS, aiCost, buildMessages, cacheKey, inputSize, type AiCacheStore } from '../ai.js';
 import { deepseekCompleter, aiConfigured, AI_MODEL, type Completer } from '../aiProvider.js';
+import { ipBucketLimiter } from '../rateLimit.js';
 
 const err = (code: string, status: 400 | 401 | 402 | 413 | 429 | 503) =>
   Response.json({ error: { code } }, { status });
@@ -18,8 +19,13 @@ const err = (code: string, status: 400 | 401 | 402 | 413 | 429 | 503) =>
  */
 export function aiRoutes(ent: EntitlementStore, cache: AiCacheStore, completer: Completer = deepseekCompleter): Hono {
   const app = new Hono();
+  // The one expensive route with no limiter at all. Quota bounds the MONTH; this bounds the moment — a
+  // subscriber firing their whole budget 50 at a time can otherwise occupy the container's entire
+  // concurrency allowance from inside a perfectly legitimate plan, and one stalled call takes every
+  // co-tenant request down with it.
+  const burstLimiter = ipBucketLimiter(IP_BUCKET_CAPACITY, IP_BUCKET_REFILL_PER_SEC);
 
-  app.post('/v1/ai', async (c) => {
+  app.post('/v1/ai', burstLimiter, async (c) => {
     const claims = await bearerClaims(c);
     if (!claims) return err(ErrorCode.Unauthorized, 401);
     if (!aiConfigured()) return err(ErrorCode.AiUnavailable, 503);

@@ -143,7 +143,7 @@ export const useAccount = create<AccountState>((set, get) => {
       try {
         const recoveryKey = generateRecoveryKey();
         const creds = await deriveCredentials(recoveryKey);
-        const session = await api.register({ ...creds, deviceName: deviceName() });
+        const session = await api.register({ ...creds, deviceName: deviceName(), deviceId: get().deviceId });
         await maybeSwitchWipe(session.accountId);
         applySession(session);
         return recoveryKey;
@@ -160,7 +160,7 @@ export const useAccount = create<AccountState>((set, get) => {
       set({ busy: true, error: null });
       try {
         const creds = await deriveCredentials(recoveryKey.trim());
-        const session = await api.login({ ...creds, deviceName: deviceName() });
+        const session = await api.login({ ...creds, deviceName: deviceName(), deviceId: get().deviceId });
         await maybeSwitchWipe(session.accountId);
         applySession(session);
       } catch (e) {

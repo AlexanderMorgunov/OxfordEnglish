@@ -15,7 +15,7 @@ import { TRIAL_CLAIM_RETENTION_MS } from './entitlements.js';
 import { AI_CACHE_TTL_DAYS } from './stores/ydbAiCache.js';
 
 // ydb-sdk is CommonJS; Node's ESM interop hides its named exports behind the default.
-const { Column, TableDescription, Types, AlterTableDescription } = ydbSdk;
+const { Column, TableDescription, Types, AlterTableDescription, TableIndex } = ydbSdk;
 
 // TtlSettings is not re-exported from the SDK index (AlterTableDescription is), so build the shape its
 // constructor produces: { dateTypeColumn: { columnName, expireAfterSeconds } }.
@@ -128,7 +128,36 @@ for (const t of TABLES) {
  */
 const TTLS: Array<{ table: string; column: string; seconds: number; why: string }> = [
   { table: 'idempotency', column: 'created_at', seconds: 24 * 60 * 60, why: 'replay window is minutes, not forever' },
+  // Nothing deleted expired refresh rows, and rotation UPSERTs a NEW row per refresh while keeping the
+  // old one (its `used=true` is the reuse-detection signal, so it must not simply be deleted). Expiring
+  // them on their own `expires_at` bounds a table that otherwise grows a row per refresh, forever.
+  { table: 'refresh_tokens', column: 'expires_at', seconds: 0, why: 'an expired token is already useless' },
+  // A link request that nobody polls again is never cleaned up — and an APPROVED one holds a RAW refresh
+  // token until collected, which is the one place a live token sits unhashed at rest.
+  { table: 'link_requests', column: 'expires_at', seconds: 60 * 60, why: 'abandoned requests hold a raw token' },
 ];
+
+/**
+ * Indexes added to tables that predate them. `alterTable` with `addIndexes` builds a global secondary
+ * index online; re-running would fail on an index that already exists, so each is probed first.
+ */
+const INDEXES: Array<{ table: string; name: string; columns: string[]; why: string }> = [
+  {
+    table: 'refresh_tokens',
+    name: 'by_account',
+    columns: ['account_id', 'device_id'],
+    why: 'revoke-device and delete-account were full scans of EVERY user\'s tokens',
+  },
+];
+
+async function hasIndex(table: string, name: string): Promise<boolean> {
+  try {
+    await query(`SELECT * FROM ${table} VIEW ${name} LIMIT 0;`);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 let altered = 0;
 for (const t of TTLS) {
@@ -144,9 +173,27 @@ for (const t of TTLS) {
   altered += 1;
 }
 
+let indexed = 0;
+for (const ix of INDEXES) {
+  if (!(await exists(ix.table))) {
+    console.log(`· ${ix.table} — absent, index skipped`);
+    continue;
+  }
+  if (await hasIndex(ix.table, ix.name)) {
+    console.log(`· ${ix.table}.${ix.name} — already present, skipped`);
+    continue;
+  }
+  const d = await driver();
+  const desc = new AlterTableDescription();
+  desc.addIndexes.push(new TableIndex(ix.name).withIndexColumns(...ix.columns).withGlobalAsync(false));
+  await d.tableClient.withSession((session) => session.alterTable(ix.table, desc));
+  console.log(`+ ${ix.table}.${ix.name} on (${ix.columns.join(', ')}) — created (${ix.why})`);
+  indexed += 1;
+}
+
 console.log(
-  created === 0 && altered === 0
+  created === 0 && altered === 0 && indexed === 0
     ? '\nnothing to do — schema already current'
-    : `\n${created} table(s) created, ${altered} TTL(s) applied`
+    : `\n${created} table(s) created, ${altered} TTL(s) applied, ${indexed} index(es) created`
 );
 (await driver()).destroy();

@@ -15,8 +15,13 @@ export const CredentialsSchema = z.object({
 
 /** Register-or-login is one call: create the account if `accountId` is new, else verify. A `deviceName`
  *  is a self-chosen label (e.g. "Chrome on Android") — NOT PII, purely for the per-device revoke list. */
+/** The client mints a device id ONCE and reuses it, so one physical device keeps one entry in the
+ *  revoke list. Without it the server minted a fresh id per call and "devices" was really a login log —
+ *  a new row and a new token family every sign-in, neither ever cleaned up. Scoped to the caller's own
+ *  account, so a chosen value can only ever collide with the caller's own device. */
 export const AuthRequestSchema = CredentialsSchema.extend({
   deviceName: z.string().max(60).optional(),
+  deviceId: z.string().min(8).max(64).optional(),
 });
 
 /** Session tokens. `accessToken` is a short-lived JWT (Bearer); `refreshToken` is opaque + rotating. */
