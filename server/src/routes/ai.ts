@@ -62,7 +62,12 @@ export function aiRoutes(ent: EntitlementStore, cache: AiCacheStore, completer: 
         maxTokens: spec.maxTokens,
         task: req.task,
       });
-    } catch {
+    } catch (e) {
+      // WHY the upstream failed, or a total outage is indistinguishable from a bad key in the logs —
+      // which cost an hour of guessing once. `AiUpstreamError` messages carry the upstream status and a
+      // clipped upstream body, never the prompt, the answer or the key.
+      // eslint-disable-next-line no-console
+      console.error(`[ai] upstream failed task=${req.task}: ${e instanceof Error ? e.message : 'unknown'}`);
       // Atomic for the same reason: a refund read outside a transaction could observe a pre-charge
       // `aiUsed` and write back a value that erases someone else's successful charge.
       await ent.mutate(claims.sub, (row) => ({ row: refundAi(row, cost) ?? undefined, result: undefined }));
