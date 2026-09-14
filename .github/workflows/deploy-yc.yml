@@ -28,6 +28,11 @@ jobs:
       - run: npm test
       - run: npm run build
         env:
+          # A literal, not a secret: this URL is in every request the browser makes, and an EMPTY value
+          # is not a safe default here — `accountsEnabled()` reads it, so an unset secret silently ships
+          # a build with no sign-in, no sync, no TOTP and no paywall, against a backend that is running
+          # perfectly. That is exactly what happened until 2026-09-15.
+          VITE_API_BASE: https://api.dayenglish.ru
           VITE_YANDEX_METRICA_ID: ${{ secrets.VITE_YANDEX_METRICA_ID }}
           VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.VITE_WEB3FORMS_ACCESS_KEY }}
           VITE_FEEDBACK_ENDPOINT: ${{ secrets.VITE_FEEDBACK_ENDPOINT }}
