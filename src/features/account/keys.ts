@@ -10,6 +10,8 @@
 const KEY_BYTES = 16; // 128-bit
 const INFO_ACCOUNT = 'dayenglish/v1/accountId';
 const INFO_VERIFIER = 'dayenglish/v1/verifier';
+/** Mirrors COMPOSITE_KEY_SEPARATOR in the wire contract. */
+const COMPOSITE_SEPARATOR = '.';
 
 /** Crockford base32 (no I/L/O/U — copy-safe), used to render the recovery key for humans. */
 const ALPHABET = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
@@ -102,7 +104,32 @@ export async function deriveVerifier(key: string): Promise<string> {
   return base64url(await hkdf(keyToBytes(key), INFO_VERIFIER, 256));
 }
 
-/** Both derivations at once (what the client needs to register/login). */
-export async function deriveCredentials(key: string): Promise<{ accountId: string; verifier: string }> {
-  return { accountId: await deriveAccountId(key), verifier: await deriveVerifier(key) };
+/**
+ * After a TOTP recovery the account id can no longer be derived: the server kept the OLD id (a new one
+ * would orphan every synced row, book and paid grant) while the key is new. The credential therefore
+ * carries the id alongside the key, and both shapes must keep working forever:
+ *   "A1B2-C3D4-…"            — original, id and verifier both derived;
+ *   "<accountId>.A1B2-C3D4-" — post-recovery, id explicit, only the verifier derived.
+ * The id is base64url and the key is Crockford base32, so neither half can contain the separator.
+ */
+export function splitCredential(input: string): { accountId?: string; key: string } {
+  const trimmed = input.trim();
+  const at = trimmed.indexOf(COMPOSITE_SEPARATOR);
+  if (at < 0) return { key: trimmed };
+  const accountId = trimmed.slice(0, at);
+  const key = trimmed.slice(at + 1);
+  // A second separator means this is not a credential we wrote.
+  if (!accountId || !key || key.includes(COMPOSITE_SEPARATOR)) throw new Error('invalid recovery key');
+  return { accountId, key };
+}
+
+/** Render the credential a recovered account must save from now on. */
+export const formatCompositeKey = (accountId: string, key: string): string =>
+  `${accountId}${COMPOSITE_SEPARATOR}${key}`;
+
+/** Both credentials at once (what the client needs to register/login), for either shape. */
+export async function deriveCredentials(input: string): Promise<{ accountId: string; verifier: string }> {
+  const { accountId, key } = splitCredential(input);
+  // The id is base64url and case-sensitive — it is passed through untouched, never normalized like a key.
+  return { accountId: accountId ?? (await deriveAccountId(key)), verifier: await deriveVerifier(key) };
 }

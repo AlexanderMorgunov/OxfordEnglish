@@ -150,6 +150,36 @@ export type AiTaskRequest = z.infer<typeof AiTaskRequestSchema>;
 export type AiCompleteResponse = z.infer<typeof AiCompleteResponseSchema>;
 
 /** Stable error codes both ends agree on. */
+// --- TOTP recovery ---
+/** Enrollment happens while logged in; the secret is shown once. Backup codes arrive only from
+ *  `confirm`, once the authenticator has proved it works. */
+export const TotpEnrollResponseSchema = z.object({ secret: z.string(), uri: z.string() });
+export const TotpConfirmRequestSchema = z.object({ code: z.string().min(6).max(12) });
+export const TotpConfirmResponseSchema = z.object({ backupCodes: z.array(z.string()) });
+/** Disabling accepts EITHER proof: a live code, or the recovery key the user still holds. One of the two
+ *  must be present — a session alone is not enough, or a stolen session could strip the second factor. */
+export const TotpDisableRequestSchema = z
+  .object({ code: z.string().min(6).max(20).optional(), verifier: z.string().min(16).optional() })
+  .refine((v) => !!v.code || !!v.verifier, { message: 'code or verifier required' });
+/** `available` is false when the server has no sealing key: the whole feature is off, and offering an
+ *  enroll button that can only 503 is worse than showing nothing. */
+export const TotpStatusSchema = z.object({ available: z.boolean(), enrolled: z.boolean(), backupCodesLeft: z.number() });
+/** Recovery runs without a session: `accountId` is read off the authenticator entry, and `verifier` is
+ *  derived from the NEW key. The server keeps the id and swaps only the verifier. */
+export const TotpRecoverRequestSchema = z.object({
+  accountId: z.string().min(16),
+  code: z.string().min(6).max(20),
+  verifier: z.string().min(16),
+  deviceName: z.string().max(60).optional(),
+});
+
+/** Separator in a post-recovery composite credential `<accountId>.<key>`. Neither half can contain it:
+ *  the id is base64url and the key is Crockford base32. */
+export const COMPOSITE_KEY_SEPARATOR = '.';
+
+export type TotpStatus = z.infer<typeof TotpStatusSchema>;
+export type TotpEnrollResponse = z.infer<typeof TotpEnrollResponseSchema>;
+
 export const ErrorCode = {
   InvalidCredentials: 'invalid_credentials',
   RateLimited: 'rate_limited',
@@ -162,6 +192,10 @@ export const ErrorCode = {
   QuotaExhausted: 'quota_exhausted',
   InputTooLarge: 'input_too_large',
   AiUnavailable: 'ai_unavailable',
+  TotpInvalid: 'totp_invalid',
+  TotpAlreadyEnrolled: 'totp_already_enrolled',
+  TotpNotEnrolled: 'totp_not_enrolled',
+  TotpUnavailable: 'totp_unavailable',
 } as const;
 export type ErrorCode = (typeof ErrorCode)[keyof typeof ErrorCode];
 
@@ -186,4 +220,9 @@ export const Routes = {
   entitlementTrial: '/v1/entitlement/trial',
   entitlementRedeem: '/v1/entitlement/redeem',
   ai: '/v1/ai',
+  totpStatus: '/v1/totp/status',
+  totpEnroll: '/v1/totp/enroll',
+  totpConfirm: '/v1/totp/confirm',
+  totpDisable: '/v1/totp/disable',
+  totpRecover: '/v1/totp/recover',
 } as const;

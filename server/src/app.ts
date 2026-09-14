@@ -6,17 +6,20 @@ import { blobRoutes } from './routes/blobs.js';
 import { accountRoutes } from './routes/account.js';
 import { entitlementRoutes } from './routes/entitlement.js';
 import { aiRoutes } from './routes/ai.js';
+import { totpRoutes } from './routes/totp.js';
 import { InMemoryAuthStore, type AuthStore } from './store.js';
 import { InMemorySyncStore, type SyncStore } from './sync.js';
 import { InMemoryBlobStore, type BlobStore } from './blobs.js';
 import { InMemoryEntitlementStore, type EntitlementStore } from './entitlements.js';
 import { InMemoryAiCacheStore, type AiCacheStore } from './ai.js';
+import { InMemoryTotpStore, type TotpStore } from './totp.js';
 import { ydbConfigured } from './ydb.js';
 import { YdbAuthStore } from './stores/ydbAuth.js';
 import { YdbSyncStore } from './stores/ydbSync.js';
 import { YcBlobStore } from './stores/ycBlob.js';
 import { YdbEntitlementStore } from './stores/ydbEntitlement.js';
 import { YdbAiCacheStore } from './stores/ydbAiCache.js';
+import { YdbTotpStore } from './stores/ydbTotp.js';
 import type { Completer } from './aiProvider.js';
 import { jwks } from './tokens.js';
 
@@ -29,7 +32,8 @@ export function createApp(
   blobs?: BlobStore,
   ent?: EntitlementStore,
   aiCache?: AiCacheStore,
-  completer?: Completer
+  completer?: Completer,
+  totp?: TotpStore
 ): Hono {
   const real = ydbConfigured();
   const authStore = store ?? (real ? new YdbAuthStore() : new InMemoryAuthStore());
@@ -37,6 +41,7 @@ export function createApp(
   const blobStore = blobs ?? (real ? new YcBlobStore() : new InMemoryBlobStore());
   const entStore = ent ?? (real ? new YdbEntitlementStore() : new InMemoryEntitlementStore());
   const aiCacheStore = aiCache ?? (real ? new YdbAiCacheStore() : new InMemoryAiCacheStore());
+  const totpStore = totp ?? (real ? new YdbTotpStore() : new InMemoryTotpStore());
   const app = new Hono();
 
   const origins = (process.env.CORS_ORIGINS ?? 'https://dayenglish.ru,https://www.dayenglish.ru')
@@ -60,9 +65,10 @@ export function createApp(
   app.route('/', authRoutes(authStore));
   app.route('/', syncRoutes(syncStore));
   app.route('/', blobRoutes(blobStore));
-  app.route('/', accountRoutes(authStore, syncStore, blobStore, entStore));
+  app.route('/', accountRoutes(authStore, syncStore, blobStore, entStore, totpStore));
   app.route('/', entitlementRoutes(entStore));
   app.route('/', aiRoutes(entStore, aiCacheStore, completer));
+  app.route('/', totpRoutes(authStore, totpStore));
 
   return app;
 }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
 import { Button, Card, Eyebrow, Input } from '@/shared/ui';
 import { QrScanner } from './QrScanner';
+import { TotpEnroll, TotpRecover } from './TotpSection';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { accountsEnabled } from './config';
 import { useAccount } from './store';
@@ -47,6 +48,8 @@ function AccountSectionBody() {
   const [showLink, setShowLink] = useState(false);
   const [keyInput, setKeyInput] = useState('');
   const [showDeviceLink, setShowDeviceLink] = useState(false);
+  const [showRecover, setShowRecover] = useState(false);
+  const [keyReason, setKeyReason] = useState<'created' | 'recovered'>('created');
 
   const errText = error
     ? error === 'invalid_credentials'
@@ -70,6 +73,7 @@ function AccountSectionBody() {
     try {
       const key = await createAccount();
       setSavedKey(key);
+      setKeyReason('created');
       setConfirmedSaved(false);
     } catch {
       // error surfaced via store.error
@@ -103,13 +107,17 @@ function AccountSectionBody() {
       <Eyebrow className="mb-3.5">config · account</Eyebrow>
       <h2 className="mb-2 text-2xl font-bold tracking-tight">{ru ? 'Аккаунт' : 'Account'}</h2>
 
-      {/* Save-your-key screen, shown once right after creating an account. */}
+      {/* Save-your-key screen: after creating an account, and again after a recovery mints a new key. */}
       {savedKey ? (
         <Card className="border-amber-dim bg-amber-dim/15">
           <p className="mb-2 text-sm text-content">
-            {ru
-              ? 'Это ваш ключ восстановления. Сохраните его — без него доступ к облачной копии не восстановить. Мы его не храним.'
-              : 'This is your recovery key. Save it — it is the only way back to your cloud copy, and we do not store it.'}
+            {keyReason === 'recovered'
+              ? ru
+                ? 'Аккаунт восстановлен, и у него новый ключ. Старый больше не работает — сохраните этот вместо него. Он длиннее прежнего, потому что содержит и ваш ID.'
+                : 'Your account is back, with a new key. The old one no longer works — save this one in its place. It is longer than before because it also carries your ID.'
+              : ru
+                ? 'Это ваш ключ восстановления. Сохраните его — без него доступ к облачной копии не восстановить. Мы его не храним.'
+                : 'This is your recovery key. Save it — it is the only way back to your cloud copy, and we do not store it.'}
           </p>
           <p className="mb-3 select-all break-all rounded-sm bg-surface px-3 py-2 font-mono text-base text-teal">
             {savedKey}
@@ -143,6 +151,7 @@ function AccountSectionBody() {
             {ru ? 'Выйти' : 'Log out'}
           </Button>
           <BookFileSyncToggle ru={ru} />
+          <TotpEnroll ru={ru} />
           <DeviceManager ru={ru} thisDeviceId={deviceId} />
           <DangerZone ru={ru} />
         </div>
@@ -163,6 +172,9 @@ function AccountSectionBody() {
             <Button size="sm" variant="ghost" disabled={busy} onClick={() => setShowDeviceLink((v) => !v)}>
               {ru ? 'Уже вошли на другом устройстве?' : 'Already signed in elsewhere?'}
             </Button>
+            <Button size="sm" variant="ghost" disabled={busy} onClick={() => setShowRecover((v) => !v)}>
+              {ru ? 'Потеряли ключ?' : 'Lost your key?'}
+            </Button>
           </div>
           {showLink && (
             <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -180,6 +192,17 @@ function AccountSectionBody() {
             </div>
           )}
           {showDeviceLink && <DeviceLinkNew ru={ru} />}
+          {showRecover && (
+            <TotpRecover
+              ru={ru}
+              onRecovered={(composite) => {
+                setShowRecover(false);
+                setSavedKey(composite);
+                setKeyReason('recovered');
+                setConfirmedSaved(false);
+              }}
+            />
+          )}
           <p className="mt-3 text-2xs text-faint text-pretty">
             {ru ? 'Создавая аккаунт, вы соглашаетесь с ' : 'By creating an account you agree to the '}
             <Link to="/privacy" className="text-teal hover:underline">

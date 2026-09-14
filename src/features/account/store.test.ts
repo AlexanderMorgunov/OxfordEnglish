@@ -17,10 +17,12 @@ vi.mock('./api', () => ({
   devicePoll: vi.fn(),
   deviceApprove: vi.fn(),
   deviceRevoke: vi.fn(),
+  totpRecover: vi.fn(),
 }));
 
 import * as api from './api';
 import { useAccount } from './store';
+import { splitCredential, deriveVerifier } from './keys';
 
 const session = (over: Partial<Session> = {}): Session => ({
   accountId: 'acc-1',
@@ -135,4 +137,39 @@ test('revokeDevice calls the API with a fresh access token', async () => {
   await useAccount.getState().revokeDevice('device-x');
 
   expect(api.deviceRevoke).toHaveBeenCalledWith('access-1', 'device-x');
+});
+
+test('recoverWithTotp rebinds a NEW key onto the account and returns a composite credential', async () => {
+  vi.mocked(api.totpRecover).mockResolvedValue(session({ accountId: 'acc-original' }));
+
+  const composite = await useAccount.getState().recoverWithTotp('acc-original', '123456');
+
+  const arg = vi.mocked(api.totpRecover).mock.calls[0]![0];
+  expect(arg.accountId).toBe('acc-original');
+  expect(arg.code).toBe('123456');
+  expect(arg.verifier).toEqual(expect.any(String));
+
+  // The composite must carry the id and a key that derives the verifier just sent.
+  const parts = splitCredential(composite);
+  expect(parts.accountId).toBe('acc-original');
+  expect(await deriveVerifier(parts.key)).toBe(arg.verifier);
+
+  expect(useAccount.getState().status).toBe('authenticated');
+  expect(useAccount.getState().accountId).toBe('acc-original');
+});
+
+test('the composite carries the id the SERVER returned, not the one that was typed', async () => {
+  // A typo in the typed id would otherwise be baked into the only credential the user has left.
+  vi.mocked(api.totpRecover).mockResolvedValue(session({ accountId: 'acc-canonical' }));
+  const composite = await useAccount.getState().recoverWithTotp('  acc-canonical  ', ' 123456 ');
+
+  expect(splitCredential(composite).accountId).toBe('acc-canonical');
+  expect(vi.mocked(api.totpRecover).mock.calls[0]![0].accountId).toBe('acc-canonical'); // trimmed
+});
+
+test('a failed recovery surfaces the server code and leaves the session alone', async () => {
+  vi.mocked(api.totpRecover).mockRejectedValue(new api.ApiFailure('totp_invalid', 401));
+  await expect(useAccount.getState().recoverWithTotp('acc-1', '000000')).rejects.toThrow();
+  expect(useAccount.getState().error).toBe('totp_invalid');
+  expect(useAccount.getState().status).toBe('anonymous');
 });

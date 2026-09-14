@@ -8,6 +8,7 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
+    "typecheck:smoke": "tsc -p tsconfig.smoke.json",
     "migrate": "tsx src/migrate.ts",
     "build:bundle": "node build.mjs --with-smoke"
   },

@@ -6,6 +6,8 @@ import {
   deriveAccountId,
   deriveVerifier,
   deriveCredentials,
+  splitCredential,
+  formatCompositeKey,
 } from './keys';
 
 test('generateRecoveryKey yields a 128-bit key that round-trips to 16 bytes', () => {
@@ -53,4 +55,48 @@ test('deriveCredentials returns both derivations consistent with the singles', a
   const { accountId, verifier } = await deriveCredentials(key);
   expect(accountId).toBe(await deriveAccountId(key));
   expect(verifier).toBe(await deriveVerifier(key));
+});
+
+test('a legacy key still derives both halves', async () => {
+  const key = generateRecoveryKey();
+  const { accountId, verifier } = await deriveCredentials(key);
+  expect(accountId).toBe(await deriveAccountId(key));
+  expect(verifier).toBe(await deriveVerifier(key));
+});
+
+test('a composite credential keeps the OLD account id and derives only the verifier', async () => {
+  // The whole point of recovery: the id survives so synced data, books and the paid plan stay attached.
+  const oldId = await deriveAccountId(generateRecoveryKey());
+  const newKey = generateRecoveryKey();
+  const composite = formatCompositeKey(oldId, newKey);
+
+  const { accountId, verifier } = await deriveCredentials(composite);
+  expect(accountId).toBe(oldId);
+  expect(accountId).not.toBe(await deriveAccountId(newKey));
+  expect(verifier).toBe(await deriveVerifier(newKey));
+});
+
+test('the account id half is case-sensitive (base64url), never normalized like a key', async () => {
+  const id = 'aB-cD_0123456789xyz012';
+  const key = generateRecoveryKey();
+  const { accountId } = await deriveCredentials(formatCompositeKey(id, key));
+  expect(accountId).toBe(id);
+});
+
+test('splitCredential tells the two shapes apart', () => {
+  const key = generateRecoveryKey();
+  expect(splitCredential(key)).toEqual({ key });
+  expect(splitCredential(formatCompositeKey('acc-id', key))).toEqual({ accountId: 'acc-id', key });
+  expect(splitCredential(`  ${key}  `)).toEqual({ key });
+});
+
+test('splitCredential rejects malformed composites', () => {
+  expect(() => splitCredential('.ABCD')).toThrow();
+  expect(() => splitCredential('acc-id.')).toThrow();
+  expect(() => splitCredential('acc-id.ABCD.EFGH')).toThrow();
+});
+
+test('a composite whose key half is malformed still fails loudly', async () => {
+  // Without the split, keyToBytes would strip the dot and silently decode the id as key material.
+  await expect(deriveCredentials(formatCompositeKey('acc-id', 'ABC'))).rejects.toThrow();
 });

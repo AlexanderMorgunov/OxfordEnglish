@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { accountsEnabled } from './config';
-import { deriveCredentials, generateRecoveryKey } from './keys';
+import { deriveCredentials, deriveVerifier, formatCompositeKey, generateRecoveryKey } from './keys';
 import * as api from './api';
 import { ApiFailure } from './api';
 import { db } from '@/db/db';
@@ -75,8 +75,11 @@ type AccountState = {
   error: string | null;
   /** Create a brand-new account; returns the recovery key to show on the save-your-key screen. */
   createAccount: () => Promise<string>;
-  /** Link this device to an existing account by its recovery key. */
+  /** Link this device to an existing account by its recovery key (either shape — see keys.ts). */
   linkWithKey: (recoveryKey: string) => Promise<void>;
+  /** Recover an account whose key is lost, using the authenticator. Returns the NEW composite credential
+   *  the user must save — it is the only copy, and the old key is dead the moment this resolves. */
+  recoverWithTotp: (accountId: string, code: string) => Promise<string>;
   /** Silent refresh (single-flight across concurrent callers and, where supported, across tabs). */
   refresh: () => Promise<void>;
   /** A valid access token, refreshing first if it is missing/expired. Null when not authenticated. */
@@ -160,6 +163,26 @@ export const useAccount = create<AccountState>((set, get) => {
         const session = await api.login({ ...creds, deviceName: deviceName() });
         await maybeSwitchWipe(session.accountId);
         applySession(session);
+      } catch (e) {
+        set({ error: e instanceof ApiFailure ? e.code : 'error' });
+        throw e;
+      } finally {
+        set({ busy: false });
+      }
+    },
+
+    recoverWithTotp: async (accountId, code) => {
+      if (!accountsEnabled()) throw new Error('accounts disabled');
+      set({ busy: true, error: null });
+      try {
+        const newKey = generateRecoveryKey();
+        const verifier = await deriveVerifier(newKey);
+        const session = await api.totpRecover({ accountId: accountId.trim(), code: code.trim(), verifier, deviceName: deviceName() });
+        await maybeSwitchWipe(session.accountId);
+        applySession(session);
+        // The id comes from the SERVER's response, not the typed-in one: it is the id the credential must
+        // carry, and echoing back what the user typed would bake a typo into their only way in.
+        return formatCompositeKey(session.accountId, newKey);
       } catch (e) {
         set({ error: e instanceof ApiFailure ? e.code : 'error' });
         throw e;

@@ -47,6 +47,13 @@ export class YdbAuthStore implements AuthStore {
     );
   }
 
+  async setVerifier(accountId: string, verifierHash: string): Promise<void> {
+    await query(
+      'DECLARE $id AS Utf8; DECLARE $vh AS Utf8; UPDATE accounts SET verifier_hash=$vh WHERE account_id=$id;',
+      { $id: T.utf8(accountId), $vh: T.utf8(verifierHash) }
+    );
+  }
+
   async touchDevice(accountId: string, deviceId: string, deviceName?: string): Promise<void> {
     const [rows] = await query(
       'DECLARE $a AS Utf8; DECLARE $d AS Utf8; SELECT created_at, device_name FROM devices WHERE account_id=$a AND device_id=$d;',

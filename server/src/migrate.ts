@@ -59,6 +59,20 @@ const TABLES: Table[] = [
         .withTtl('created_at', AI_CACHE_TTL_DAYS * 24 * 60 * 60),
   },
   {
+    name: 'totp',
+    // No TTL: the enrollment must outlive everything, since it is the last way back into a paid account.
+    describe: () =>
+      new TableDescription()
+        .withColumn(new Column('account_id', utf8()))
+        .withColumn(new Column('secret_enc', utf8()))
+        .withColumn(new Column('confirmed_at', ts()))
+        .withColumn(new Column('last_step', u32()))
+        .withColumn(new Column('backup_hashes', utf8()))
+        .withColumn(new Column('fail_count', u32()))
+        .withColumn(new Column('fail_window_start', ts()))
+        .withPrimaryKey('account_id'),
+  },
+  {
     name: 'payment_grants',
     describe: () =>
       new TableDescription()

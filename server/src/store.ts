@@ -28,6 +28,9 @@ type RotateResult =
 export interface AuthStore {
   getAccount(accountId: string): Promise<{ verifierHash: string } | null>;
   createAccount(accountId: string, verifierHash: string): Promise<void>;
+  /** Replace the credential on an EXISTING account, keeping its id — the TOTP recovery rebind. A new id
+   *  would orphan every synced row, blob and grant, so recovery must never mint one. */
+  setVerifier(accountId: string, verifierHash: string): Promise<void>;
   /** Record/refresh a device's presence for the revoke list. */
   touchDevice(accountId: string, deviceId: string, deviceName?: string): Promise<void>;
   listDevices(accountId: string): Promise<Device[]>;
@@ -126,6 +129,10 @@ export class InMemoryAuthStore implements AuthStore {
     for (const [h, rec] of this.refresh) if (rec.accountId === accountId) this.refresh.delete(h);
     for (const k of this.deviceFamilies.keys()) if (k.startsWith(`${accountId}:`)) this.deviceFamilies.delete(k);
     for (const [id, req] of this.links) if (req.accountId === accountId) this.links.delete(id);
+  }
+  async setVerifier(accountId: string, verifierHash: string) {
+    const acc = this.accounts.get(accountId);
+    if (acc) acc.verifierHash = verifierHash;
   }
   async hitRegisterRate(ip: string, windowMs: number, max: number) {
     const now = Date.now();

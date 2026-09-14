@@ -13,5 +13,9 @@
     "rootDir": "src",
     "skipLibCheck": true
   },
-  "include": ["src"]
+  // Smokes are dev-only and one of them reaches into the client tree; the image build context is
+  // server/src alone, so shipping them would break the Docker build outright. Typechecked separately
+  // via tsconfig.smoke.json.
+  "include": ["src"],
+  "exclude": ["src/**/*.smoke.ts"]
 }

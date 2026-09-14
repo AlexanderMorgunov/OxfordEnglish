@@ -13,6 +13,9 @@ import {
   BlobDownloadResponseSchema,
   EntitlementSchema,
   AiCompleteResponseSchema,
+  TotpStatusSchema,
+  TotpEnrollResponseSchema,
+  TotpConfirmResponseSchema,
   ApiErrorSchema,
   type AuthRequest,
   type Session,
@@ -28,6 +31,8 @@ import {
   type Entitlement,
   type AiTaskRequest,
   type AiCompleteResponse,
+  type TotpStatus,
+  type TotpEnrollResponse,
 } from './contract';
 
 /** A typed API failure carrying the server's stable `code` (see contract ErrorCode). */
@@ -243,4 +248,51 @@ export function aiComplete(accessToken: string, req: AiTaskRequest): Promise<AiC
     { method: 'POST', headers: authed(accessToken), body: JSON.stringify(req) },
     (j) => AiCompleteResponseSchema.parse(j)
   );
+}
+
+// --- TOTP recovery ---
+
+/** Whether this account has a working authenticator, and how many backup codes are left. */
+export function totpStatus(accessToken: string): Promise<TotpStatus> {
+  return request(Routes.totpStatus, { method: 'GET', headers: authed(accessToken) }, (j) => TotpStatusSchema.parse(j));
+}
+
+/** Begin enrollment. The secret is returned ONCE — it is not retrievable afterwards, so the caller must
+ *  show it before navigating away. Nothing is active until `totpConfirm` succeeds. */
+export function totpEnroll(accessToken: string): Promise<TotpEnrollResponse> {
+  return request(
+    Routes.totpEnroll,
+    { method: 'POST', headers: authed(accessToken), body: '{}' },
+    (j) => TotpEnrollResponseSchema.parse(j)
+  );
+}
+
+/** Prove the authenticator works; returns the backup codes, also shown only once. */
+export function totpConfirm(accessToken: string, code: string): Promise<string[]> {
+  return request(
+    Routes.totpConfirm,
+    { method: 'POST', headers: authed(accessToken), body: JSON.stringify({ code }) },
+    (j) => TotpConfirmResponseSchema.parse(j).backupCodes
+  );
+}
+
+/** Turn the authenticator off. Either proof works: a live code, or the recovery key the user still
+ *  holds — the second door exists for a phone lost along with the backup codes. */
+export function totpDisable(accessToken: string, proof: { code?: string; verifier?: string }): Promise<void> {
+  return request(
+    Routes.totpDisable,
+    { method: 'POST', headers: authed(accessToken), body: JSON.stringify(proof) },
+    () => undefined
+  );
+}
+
+/** Rebind a lost account to a new key. No session: this is the path for someone who has nothing but
+ *  their authenticator. `accountId` is read off the authenticator entry's label. */
+export function totpRecover(body: {
+  accountId: string;
+  code: string;
+  verifier: string;
+  deviceName?: string;
+}): Promise<Session> {
+  return request(Routes.totpRecover, { method: 'POST', body: JSON.stringify(body) }, asSession);
 }
