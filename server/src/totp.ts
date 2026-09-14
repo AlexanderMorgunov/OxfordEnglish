@@ -1,0 +1,237 @@
+/**
+ * TOTP (RFC 6238) core — pure functions, no I/O, `now` always passed in.
+ *
+ * Why an authenticator and not e-mail: the account holds no PII, so there is no address to send to.
+ * An open-standard authenticator works offline, on any app, and needs no Google services — which also
+ * matters for a RuStore build. The seed and the backup codes are random secrets, not personal data, so
+ * the no-PII posture survives.
+ *
+ * Defaults are the ones every authenticator app assumes: SHA-1, 30-second steps, 6 digits. They are NOT
+ * a security choice we are free to modernise — an app that scans our QR will compute SHA-1/30/6.
+ */
+import { createHmac, randomBytes, timingSafeEqual, createHash, createCipheriv, createDecipheriv } from 'node:crypto';
+
+export const STEP_SECONDS = 30;
+export const DIGITS = 6;
+/** Accept the neighbouring steps so a phone clock that is a few seconds off still works. ±1 is the
+ *  usual compromise: it triples the codes live at any moment, which is why verification has to be
+ *  rate-limited per account rather than relying on the code space. */
+export const STEP_WINDOW = 1;
+
+/** RFC 4648 base32 — what `otpauth://` URIs use. Deliberately NOT the Crockford alphabet in
+ *  `src/features/account/keys.ts`: that one omits I/L/O/U for copy safety, and feeding it to an
+ *  authenticator would produce codes that never match. */
+const B32 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+
+export function base32Encode(bytes: Uint8Array): string {
+  let bits = 0;
+  let value = 0;
+  let out = '';
+  for (const b of bytes) {
+    value = (value << 8) | b;
+    bits += 8;
+    while (bits >= 5) {
+      out += B32[(value >>> (bits - 5)) & 31];
+      bits -= 5;
+    }
+  }
+  if (bits > 0) out += B32[(value << (5 - bits)) & 31];
+  return out;
+}
+
+export function base32Decode(s: string): Uint8Array {
+  const clean = s.toUpperCase().replace(/=+$/, '').replace(/\s/g, '');
+  let bits = 0;
+  let value = 0;
+  const out: number[] = [];
+  for (const ch of clean) {
+    const v = B32.indexOf(ch);
+    if (v < 0) throw new Error('invalid base32');
+    value = (value << 5) | v;
+    bits += 5;
+    if (bits >= 8) {
+      out.push((value >>> (bits - 8)) & 0xff);
+      bits -= 8;
+    }
+  }
+  return new Uint8Array(out);
+}
+
+/** A fresh 160-bit seed — the size RFC 4226 recommends for HMAC-SHA1. */
+export const generateSecret = (): Uint8Array => new Uint8Array(randomBytes(20));
+
+export const stepAt = (nowMs: number): number => Math.floor(nowMs / 1000 / STEP_SECONDS);
+
+/** One code for one time step. Dynamic truncation exactly as RFC 4226 §5.3. */
+export function codeForStep(secret: Uint8Array, step: number, digits = DIGITS): string {
+  const counter = Buffer.alloc(8);
+  // Steps stay well inside 2^53, so a 32-bit split is enough and avoids BigInt.
+  counter.writeUInt32BE(Math.floor(step / 2 ** 32), 0);
+  counter.writeUInt32BE(step >>> 0, 4);
+  const mac = createHmac('sha1', Buffer.from(secret)).update(counter).digest();
+  const offset = mac[mac.length - 1]! & 0x0f;
+  const bin =
+    ((mac[offset]! & 0x7f) << 24) | (mac[offset + 1]! << 16) | (mac[offset + 2]! << 8) | mac[offset + 3]!;
+  return String(bin % 10 ** digits).padStart(digits, '0');
+}
+
+export type VerifyResult = { ok: false } | { ok: true; step: number };
+
+/**
+ * Check a submitted code against the steps around `nowMs`.
+ *
+ * `lastUsedStep` makes a code single-use: without it a code stays valid for its whole 30–90 s life, so
+ * anyone who sees it over a shoulder or in a log can replay it. Callers must persist the returned step
+ * and pass it back next time.
+ */
+export function verifyCode(
+  secret: Uint8Array,
+  submitted: string,
+  nowMs: number,
+  lastUsedStep?: number
+): VerifyResult {
+  const code = submitted.replace(/\s/g, '');
+  if (!/^\d+$/.test(code) || code.length !== DIGITS) return { ok: false };
+  const current = stepAt(nowMs);
+  for (let d = -STEP_WINDOW; d <= STEP_WINDOW; d += 1) {
+    const step = current + d;
+    if (lastUsedStep != null && step <= lastUsedStep) continue; // already spent
+    if (constantTimeEqual(code, codeForStep(secret, step))) return { ok: true, step };
+  }
+  return { ok: false };
+}
+
+function constantTimeEqual(a: string, b: string): boolean {
+  const ab = Buffer.from(a);
+  const bb = Buffer.from(b);
+  return ab.length === bb.length && timingSafeEqual(ab, bb);
+}
+
+/** The URI an authenticator scans. `label` carries the accountId on purpose: after losing the recovery
+ *  key that entry is the only place the user can still read their own id, and the same app already holds
+ *  the stronger secret, so showing the id there costs nothing. */
+export function otpauthUri(accountId: string, secret: Uint8Array, issuer = 'DayEnglish'): string {
+  const label = `${encodeURIComponent(issuer)}:${encodeURIComponent(accountId)}`;
+  const params = new URLSearchParams({
+    secret: base32Encode(secret),
+    issuer,
+    algorithm: 'SHA1',
+    digits: String(DIGITS),
+    period: String(STEP_SECONDS),
+  });
+  return `otpauth://totp/${label}?${params.toString()}`;
+}
+
+export const BACKUP_CODE_COUNT = 10;
+
+/** One-time codes for the case the authenticator itself is lost. Crockford-ish rendering (no vowels, so
+ *  no accidental words) and hashed at rest like refresh tokens — the server never keeps them readable. */
+export function generateBackupCodes(count = BACKUP_CODE_COUNT): string[] {
+  const alphabet = '23456789BCDFGHJKMNPQRSTVWXZ';
+  const codes: string[] = [];
+  for (let i = 0; i < count; i += 1) {
+    const raw = randomBytes(10);
+    let s = '';
+    for (const b of raw) s += alphabet[b % alphabet.length];
+    codes.push(`${s.slice(0, 5)}-${s.slice(5)}`);
+  }
+  return codes;
+}
+
+export const hashBackupCode = (code: string): string =>
+  createHash('sha256').update(code.toUpperCase().replace(/[^0-9A-Z]/g, '')).digest('base64');
+
+// --- secret at rest ---
+/**
+ * Verification needs the plaintext seed, so it cannot be hashed the way the verifier and refresh tokens
+ * are. That makes it the one row in the database whose leak is directly exploitable: a seed next to its
+ * `accountId` is a single factor away from taking the account over. Sealing it under a key held in
+ * Lockbox (never in YDB) keeps a database dump as useless as it is today.
+ */
+export function sealSecret(secret: Uint8Array, key: Buffer): string {
+  const iv = randomBytes(12);
+  const cipher = createCipheriv('aes-256-gcm', key, iv);
+  const body = Buffer.concat([cipher.update(secret), cipher.final()]);
+  return [iv, body, cipher.getAuthTag()].map((b) => b.toString('base64url')).join('.');
+}
+
+export function openSecret(blob: string, key: Buffer): Uint8Array {
+  const [iv, body, tag] = blob.split('.').map((p) => Buffer.from(p, 'base64url'));
+  if (!iv || !body || !tag) throw new Error('malformed sealed secret');
+  const decipher = createDecipheriv('aes-256-gcm', key, iv);
+  decipher.setAuthTag(tag);
+  return new Uint8Array(Buffer.concat([decipher.update(body), decipher.final()]));
+}
+
+// --- persistence ---
+export type TotpRow = {
+  accountId: string;
+  secretEnc: string;
+  /** Unset while enrollment is pending: a seed nobody has proved they can read must never unlock anything. */
+  confirmedAt?: number;
+  lastStep?: number;
+  backupHashes: string[];
+  failCount: number;
+  failWindowStart: number;
+};
+
+export interface TotpStore {
+  get(accountId: string): Promise<TotpRow | null>;
+  put(row: TotpRow): Promise<void>;
+  remove(accountId: string): Promise<void>;
+}
+
+/** Six digits with a ±1 step tolerance leave ~3 codes live at once, so the code space is not what stops
+ *  a guessing run — this throttle is. Keyed on the account, because the attack comes at one account from
+ *  many addresses, and persisted, because serverless instances share no memory. */
+export const VERIFY_MAX_FAILURES = 10;
+export const VERIFY_WINDOW_MS = 15 * 60_000;
+
+export const throttled = (row: TotpRow, now: number): boolean =>
+  now - row.failWindowStart < VERIFY_WINDOW_MS && row.failCount >= VERIFY_MAX_FAILURES;
+
+export type AttemptResult =
+  | { ok: false; reason: 'throttled' | 'unconfirmed' | 'bad_code'; row: TotpRow }
+  | { ok: true; row: TotpRow; usedBackup: boolean };
+
+/**
+ * The whole security decision for one submitted code, as a pure function: throttle, then TOTP, then
+ * backup codes, with the counters and single-use bookkeeping folded into the returned row. Callers
+ * persist `row` whatever the outcome — a failure that is not written down does not throttle anything.
+ */
+export function verifyAttempt(row: TotpRow, secret: Uint8Array, code: string, now: number): AttemptResult {
+  if (throttled(row, now)) return { ok: false, reason: 'throttled', row };
+  if (!row.confirmedAt) return { ok: false, reason: 'unconfirmed', row };
+
+  const totp = verifyCode(secret, code, now, row.lastStep);
+  if (totp.ok) return { ok: true, row: { ...clearFailures(row), lastStep: totp.step }, usedBackup: false };
+
+  const hash = hashBackupCode(code);
+  if (row.backupHashes.includes(hash)) {
+    const backupHashes = row.backupHashes.filter((h) => h !== hash); // single use
+    return { ok: true, row: { ...clearFailures(row), backupHashes }, usedBackup: true };
+  }
+  return { ok: false, reason: 'bad_code', row: noteFailure(row, now) };
+}
+
+export function noteFailure(row: TotpRow, now: number): TotpRow {
+  const fresh = now - row.failWindowStart >= VERIFY_WINDOW_MS;
+  return fresh
+    ? { ...row, failCount: 1, failWindowStart: now }
+    : { ...row, failCount: row.failCount + 1 };
+}
+
+export const clearFailures = (row: TotpRow): TotpRow => ({ ...row, failCount: 0, failWindowStart: 0 });
+
+export class InMemoryTotpStore implements TotpStore {
+  private rows = new Map<string, TotpRow>();
+  async get(accountId: string) {
+    return this.rows.get(accountId) ?? null;
+  }
+  async put(row: TotpRow) {
+    this.rows.set(row.accountId, row);
+  }
+  async remove(accountId: string) {
+    this.rows.delete(accountId);
+  }
+}

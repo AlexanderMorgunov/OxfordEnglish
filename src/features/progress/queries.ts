@@ -1,4 +1,5 @@
 import { db, type CheckpointResult, type ExerciseAttempt } from '@/db/db';
+import { addCheckpoint } from '@/features/sync/local';
 
 export async function loadAttempts(): Promise<ExerciseAttempt[]> {
   try {
@@ -25,9 +26,9 @@ export async function checkpointHistory(): Promise<CheckpointResult[]> {
   }
 }
 
-export async function saveCheckpoint(result: Omit<CheckpointResult, 'id'>): Promise<void> {
+export async function saveCheckpoint(result: Omit<CheckpointResult, 'id' | 'syncId'>): Promise<void> {
   try {
-    await db.checkpoints.add(result);
+    await addCheckpoint(result);
   } catch {
     // best-effort
   }

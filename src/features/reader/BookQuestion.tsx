@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Button } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
-import { useAiStore, isConfigured } from '@/features/ai/store';
+import { useAiStore } from '@/features/ai/store';
+import { useAiEnabled, aiAvailable } from '@/features/ai/route';
 import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
 import { aiBookQuestion } from '@/features/ai/functions';
 
@@ -14,12 +15,13 @@ import { aiBookQuestion } from '@/features/ai/functions';
 export function BookQuestion({ pageText }: { pageText: string }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const config = useAiStore((s) => s.config);
+  const enabled = useAiEnabled();
   const [q, setQ] = useState('');
   const [answer, setAnswer] = useState<{ answer: string; quote?: string } | null>(null);
   const [state, setState] = useState<'idle' | 'loading' | 'error'>('idle');
 
   const ask = async () => {
-    if (!q.trim() || !isConfigured(config)) return;
+    if (!q.trim() || !aiAvailable(config)) return;
     setState('loading');
     setAnswer(null);
     try {
@@ -48,7 +50,7 @@ export function BookQuestion({ pageText }: { pageText: string }) {
         ❓ {ru ? 'Спросить по этой странице' : 'Ask about this page'}
       </summary>
       <div className="mt-3 flex flex-col gap-2.5 rounded-lg border border-line bg-surface p-4">
-        {isConfigured(config) ? (
+        {enabled ? (
           <>
             <div className="flex gap-2">
               <input

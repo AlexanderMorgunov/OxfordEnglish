@@ -1,7 +1,10 @@
 import { create } from 'zustand';
 import { setPreferredVoiceURI } from '@/shared/lib/audio';
+import { stampSetting } from '@/features/sync/local';
+import { registerSettingBridge } from '@/features/sync/settingsBridge';
 
 const KEY = 'oxford-reader-settings';
+const SETTING_KEY = 'reader';
 
 export const FONT_CLASSES = ['text-base', 'text-lg', 'text-xl'] as const;
 export const LEADING_CLASSES = ['leading-relaxed', 'leading-loose'] as const;
@@ -90,6 +93,8 @@ export const useReaderSettings = create<ReaderSettings>((set, get) => {
       // ignore storage failures
     }
     set(patch);
+    // Only the behavioral toggles sync; font/line/rate/voice are device preferences (like voiceURI).
+    void stampSetting(SETTING_KEY, { coloring: next.coloring, aiTranslation: next.aiTranslation });
   };
   return {
     ...initial,
@@ -106,3 +111,25 @@ export const useReaderSettings = create<ReaderSettings>((set, get) => {
     setBookmarkSort: (bookmarkSort) => persist({ bookmarkSort }),
   };
 });
+
+/** Apply the synced reader toggles from another device (persists to localStorage without re-stamping). */
+export function applyReaderFromSync(value: unknown): void {
+  const v = value as { coloring?: unknown; aiTranslation?: unknown } | null;
+  if (!v || typeof v !== 'object') return;
+  const patch: Partial<Persisted> = {};
+  if (typeof v.coloring === 'boolean') patch.coloring = v.coloring;
+  if (typeof v.aiTranslation === 'boolean') patch.aiTranslation = v.aiTranslation;
+  if (!Object.keys(patch).length) return;
+  const s = useReaderSettings.getState();
+  // Every Persisted field must be listed: the type makes an omission a compile error, which is how a
+  // newly added setting (lens, bookmarkSort) gets caught here instead of being dropped on sync.
+  const next: Persisted = { coloring: s.coloring, fontStep: s.fontStep, lineStep: s.lineStep, voiceURI: s.voiceURI, rate: s.rate, aiTranslation: s.aiTranslation, lens: s.lens, bookmarkSort: s.bookmarkSort, ...patch };
+  try {
+    localStorage.setItem(KEY, JSON.stringify(next));
+  } catch {
+    // ignore storage failures
+  }
+  useReaderSettings.setState(patch);
+}
+
+registerSettingBridge({ key: SETTING_KEY, applyFromSync: applyReaderFromSync });

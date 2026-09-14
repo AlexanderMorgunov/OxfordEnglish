@@ -15,6 +15,7 @@ import {
 import { metricaConfigured, initMetrica } from '@/features/analytics/metrica';
 import { useLearner } from '@/features/learner/store';
 import { useUiLang } from '@/features/i18n/uiLang';
+import { AccountSection } from '@/features/account/AccountSection';
 import type { Level } from '@/content/schema';
 
 const PROVIDER_IDS = Object.keys(PROVIDERS) as AiProviderId[];
@@ -171,6 +172,8 @@ export function SettingsPage() {
           ))}
         </div>
       </div>
+
+      <AccountSection />
 
       <div id="ai-section" className="scroll-mt-6" aria-hidden="true" />
       <Eyebrow className="mb-3.5">config · ai (byok)</Eyebrow>
@@ -439,6 +442,12 @@ export function SettingsPage() {
           {updateMsg && <span className="font-mono text-2xs text-teal">{updateMsg}</span>}
         </div>
         <p className="mt-3 font-mono text-2xs text-faint">version: {__APP_VERSION__}</p>
+      </div>
+
+      <div className="mt-10 border-t border-line pt-6">
+        <Link to="/privacy" className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">
+          {ru ? 'политика конфиденциальности →' : 'privacy policy →'}
+        </Link>
       </div>
     </section>
   );

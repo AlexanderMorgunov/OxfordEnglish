@@ -1,6 +1,6 @@
 import { translateText } from '@/features/vocab/translate';
 import { aiTranslate } from '@/features/ai/functions';
-import { isConfigured } from '@/features/ai/store';
+import { aiAvailable } from '@/features/ai/route';
 import type { AiConfig } from '@/features/ai/provider';
 
 /**
@@ -12,7 +12,7 @@ export async function translateReaderText(
   text: string,
   opts: { ai: boolean; config: AiConfig | null; sentence?: string }
 ): Promise<string | null> {
-  if (opts.ai && isConfigured(opts.config)) {
+  if (opts.ai && aiAvailable(opts.config)) {
     try {
       const ru = await aiTranslate(opts.config, text, { sentence: opts.sentence });
       if (ru) return ru;
