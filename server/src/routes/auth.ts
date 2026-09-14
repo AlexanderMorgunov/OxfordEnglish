@@ -26,8 +26,10 @@ const err = (code: string, status: 400 | 401 | 409 | 429) =>
 export function authRoutes(store: AuthStore): Hono {
   const app = new Hono();
 
-  async function issueSession(accountId: string, deviceName: string | undefined, created: boolean): Promise<Session> {
-    const deviceId = randomUUID();
+  async function issueSession(accountId: string, deviceName: string | undefined, created: boolean, requestedDeviceId?: string): Promise<Session> {
+    // Reuse the caller's own id when it offers one: a fresh uuid per login turned the device list into a
+    // login list and left a token family behind every time.
+    const deviceId = requestedDeviceId ?? randomUUID();
     await store.touchDevice(accountId, deviceId, deviceName);
     const refreshToken = await store.issueRefresh(accountId, deviceId);
     const access = await signAccess(accountId, deviceId);
@@ -43,8 +45,12 @@ export function authRoutes(store: AuthStore): Hono {
     if (!body.success) return err(ErrorCode.BadRequest, 400);
     if (!(await store.hitRegisterRate(clientIp(c), REGISTER_WINDOW_MS, REGISTER_MAX_PER_IP))) return err(ErrorCode.RateLimited, 429);
     if (await store.getAccount(body.data.accountId)) return err(ErrorCode.AccountExists, 409);
-    await store.createAccount(body.data.accountId, await hashVerifier(body.data.verifier));
-    return c.json(await issueSession(body.data.accountId, body.data.deviceName, true));
+    // The check above is a separate read, so the INSERT is what actually decides — it loses the race
+    // rather than overwriting the winner's credential.
+    if (!(await store.createAccount(body.data.accountId, await hashVerifier(body.data.verifier)))) {
+      return err(ErrorCode.AccountExists, 409);
+    }
+    return c.json(await issueSession(body.data.accountId, body.data.deviceName, true, body.data.deviceId));
   });
 
   app.post('/v1/auth/login', loginLimiter, async (c) => {
@@ -55,7 +61,7 @@ export function authRoutes(store: AuthStore): Hono {
     if (!account || !(await verifyVerifier(body.data.verifier, account.verifierHash))) {
       return err(ErrorCode.InvalidCredentials, 401);
     }
-    return c.json(await issueSession(body.data.accountId, body.data.deviceName, false));
+    return c.json(await issueSession(body.data.accountId, body.data.deviceName, false, body.data.deviceId));
   });
 
   app.post('/v1/auth/refresh', async (c) => {

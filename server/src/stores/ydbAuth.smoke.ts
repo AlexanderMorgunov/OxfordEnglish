@@ -52,6 +52,26 @@ check('poll one-time → expired', poll3.status === 'expired');
 const devices2 = await s.listDevices(acc);
 check('device list ≥2 after linking', devices2.length >= 2);
 
+// --- the paths that now read through `by_account` instead of scanning every account's tokens ---
+const revokeTarget = devices2[0]!.deviceId;
+const liveToken = await s.issueRefresh(acc, revokeTarget);
+check('a token issued for that device rotates', (await s.rotateRefresh(liveToken)).status === 'ok');
+
+const t2 = await s.issueRefresh(acc, revokeTarget);
+await s.revokeDevice(acc, revokeTarget);
+check('revokeDevice kills that device\'s tokens (via by_account)', (await s.rotateRefresh(t2)).status === 'invalid');
+check('...and drops it from the device list', (await s.listDevices(acc)).every((d) => d.deviceId !== revokeTarget));
+
+// createAccount is now INSERT: a second attempt on a live id must lose rather than overwrite.
+check('createAccount refuses an id that already exists', (await s.createAccount(acc, 'some-other-hash')) === false);
+check('...and the original verifier is intact', (await s.getAccount(acc))?.verifierHash === 'argon2-hash-placeholder');
+
+const survivor = await s.issueRefresh(acc, 'device-survivor');
+await s.deleteAccount(acc);
+check('deleteAccount removes the account', (await s.getAccount(acc)) === null);
+check('...and every remaining token with it (via by_account)', (await s.rotateRefresh(survivor)).status === 'invalid');
+check('...and every device', (await s.listDevices(acc)).length === 0);
+
 console.log(fail ? `\n${fail} FAILED` : '\nALL PASS');
 (await driver()).destroy();
 process.exit(fail ? 1 : 0);

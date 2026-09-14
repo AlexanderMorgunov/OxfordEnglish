@@ -24,13 +24,44 @@ function tsMs(v: unknown): number {
 }
 const str = (v: unknown): string => (v == null ? '' : String(v));
 
-async function revokeFamily(tx: Tx, familyId: string): Promise<void> {
-  const [rows] = await tx.exec(
-    'DECLARE $fam AS Utf8; SELECT token_hash FROM refresh_tokens VIEW by_family WHERE family_id=$fam;',
-    { $fam: T.utf8(familyId) }
+const HASH_LIST = Types.list(Types.struct({ token_hash: Types.UTF8, revoked: Types.BOOL }));
+const DELETE_LIST = Types.list(Types.struct({ token_hash: Types.UTF8 }));
+
+/** One statement per page rather than per row. `revoke` is the write both callers need. */
+async function revokeHashes(tx: Tx, hashes: string[]): Promise<void> {
+  if (!hashes.length) return;
+  await tx.exec(
+    'DECLARE $rows AS List<Struct<token_hash:Utf8,revoked:Bool>>;' +
+      'UPSERT INTO refresh_tokens SELECT token_hash, revoked FROM AS_TABLE($rows);',
+    { $rows: T.fromNative(HASH_LIST, hashes.map((token_hash) => ({ token_hash, revoked: true }))) }
   );
-  for (const r of rows) {
-    await tx.exec('DECLARE $h AS Utf8; UPSERT INTO refresh_tokens (token_hash, revoked) VALUES ($h, true);', { $h: T.utf8(str(r.token_hash)) });
+}
+
+/**
+ * YQL truncates a result set at 1 000 rows and only flags it on the response, so an unpaged SELECT here
+ * meant reuse-detection revoked the first 1 000 tokens of a long-lived family and silently left the rest
+ * live — a security defect, not a slow query. `family_id` is constant across rotations, so a device that
+ * refreshes daily accumulates a row per rotation and reaches that in under three years.
+ *
+ * Paging on `token_hash` also replaces one sequential UPSERT per row (~365/year for an active device,
+ * all inside a single serializable transaction, which is a non-AI path to the 30 s platform timeout).
+ */
+const REVOKE_PAGE = 500;
+
+async function revokeFamily(tx: Tx, familyId: string): Promise<void> {
+  let after = '';
+  for (;;) {
+    const [rows] = await tx.exec(
+      'DECLARE $fam AS Utf8; DECLARE $after AS Utf8; DECLARE $lim AS Uint64;' +
+        'SELECT token_hash FROM refresh_tokens VIEW by_family WHERE family_id=$fam AND token_hash > $after' +
+        ' ORDER BY family_id, token_hash LIMIT $lim;',
+      { $fam: T.utf8(familyId), $after: T.utf8(after), $lim: T.uint64(REVOKE_PAGE) }
+    );
+    if (!rows.length) return;
+    const hashes = rows.map((r) => str(r.token_hash));
+    await revokeHashes(tx, hashes);
+    if (rows.length < REVOKE_PAGE) return;
+    after = hashes[hashes.length - 1]!;
   }
 }
 
@@ -40,11 +71,18 @@ export class YdbAuthStore implements AuthStore {
     return rows[0] ? { verifierHash: str(rows[0].verifier_hash) } : null;
   }
 
-  async createAccount(accountId: string, verifierHash: string): Promise<void> {
-    await query(
-      'DECLARE $id AS Utf8; DECLARE $vh AS Utf8; DECLARE $ts AS Timestamp; UPSERT INTO accounts (account_id, verifier_hash, created_at) VALUES ($id, $vh, $ts);',
-      { $id: T.utf8(accountId), $vh: T.utf8(verifierHash), $ts: T.timestamp(new Date()) }
-    );
+  async createAccount(accountId: string, verifierHash: string): Promise<boolean> {
+    try {
+      // INSERT fails on an existing key; UPSERT would have quietly replaced the verifier of whichever
+      // registration got there first.
+      await query(
+        'DECLARE $id AS Utf8; DECLARE $vh AS Utf8; DECLARE $ts AS Timestamp; INSERT INTO accounts (account_id, verifier_hash, created_at) VALUES ($id, $vh, $ts);',
+        { $id: T.utf8(accountId), $vh: T.utf8(verifierHash), $ts: T.timestamp(new Date()) }
+      );
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   async setVerifier(accountId: string, verifierHash: string): Promise<void> {
@@ -124,13 +162,25 @@ export class YdbAuthStore implements AuthStore {
     if (rows[0]) await withSerializableTx((tx) => revokeFamily(tx, str(rows[0].family_id)).then(() => tx.exec('SELECT 1;', {}, true)));
   }
 
+  /** Reads through `by_account`: the table is keyed on `token_hash`, so without the index this was a full
+   *  scan of every user's tokens — one person's revoke walking everybody else's rows. Paged for the same
+   *  truncation reason as `revokeFamily`. */
   async revokeDevice(accountId: string, deviceId: string): Promise<void> {
     await withSerializableTx(async (tx) => {
-      const [rows] = await tx.exec(
-        'DECLARE $a AS Utf8; DECLARE $d AS Utf8; SELECT token_hash FROM refresh_tokens WHERE account_id=$a AND device_id=$d;',
-        { $a: T.utf8(accountId), $d: T.utf8(deviceId) }
-      );
-      for (const r of rows) await tx.exec('DECLARE $h AS Utf8; UPSERT INTO refresh_tokens (token_hash, revoked) VALUES ($h, true);', { $h: T.utf8(str(r.token_hash)) });
+      let after = '';
+      for (;;) {
+        const [rows] = await tx.exec(
+          'DECLARE $a AS Utf8; DECLARE $d AS Utf8; DECLARE $after AS Utf8; DECLARE $lim AS Uint64;' +
+            'SELECT token_hash FROM refresh_tokens VIEW by_account WHERE account_id=$a AND device_id=$d' +
+            ' AND token_hash > $after ORDER BY account_id, device_id, token_hash LIMIT $lim;',
+          { $a: T.utf8(accountId), $d: T.utf8(deviceId), $after: T.utf8(after), $lim: T.uint64(REVOKE_PAGE) }
+        );
+        if (!rows.length) break;
+        const hashes = rows.map((r) => str(r.token_hash));
+        await revokeHashes(tx, hashes);
+        if (rows.length < REVOKE_PAGE) break;
+        after = hashes[hashes.length - 1]!;
+      }
       await tx.exec('DECLARE $a AS Utf8; DECLARE $d AS Utf8; DELETE FROM devices WHERE account_id=$a AND device_id=$d;', { $a: T.utf8(accountId), $d: T.utf8(deviceId) }, true);
     });
   }
@@ -138,7 +188,21 @@ export class YdbAuthStore implements AuthStore {
   async deleteAccount(accountId: string): Promise<void> {
     await query('DECLARE $a AS Utf8; DELETE FROM accounts WHERE account_id=$a;', { $a: T.utf8(accountId) });
     await query('DECLARE $a AS Utf8; DELETE FROM devices WHERE account_id=$a;', { $a: T.utf8(accountId) });
-    await query('DECLARE $a AS Utf8; DELETE FROM refresh_tokens WHERE account_id=$a;', { $a: T.utf8(accountId) });
+    // Locate through `by_account`, then delete by primary key. `DELETE ... WHERE account_id=` on a table
+    // keyed by `token_hash` scanned every account's rows to erase one account's.
+    for (;;) {
+      const [rows] = await query(
+        'DECLARE $a AS Utf8; DECLARE $lim AS Uint64; SELECT token_hash FROM refresh_tokens VIEW by_account WHERE account_id=$a LIMIT $lim;',
+        { $a: T.utf8(accountId), $lim: T.uint64(REVOKE_PAGE) }
+      );
+      if (!rows.length) break;
+      await query(
+        'DECLARE $rows AS List<Struct<token_hash:Utf8>>; DELETE FROM refresh_tokens ON SELECT token_hash FROM AS_TABLE($rows);',
+        { $rows: T.fromNative(DELETE_LIST, rows.map((r) => ({ token_hash: str(r.token_hash) }))) }
+      );
+      if (rows.length < REVOKE_PAGE) break;
+    }
+    // Small and TTL'd (an abandoned request expires within the hour), so a scan here stays cheap.
     await query('DECLARE $a AS Utf8; DELETE FROM link_requests WHERE account_id=$a;', { $a: T.utf8(accountId) });
   }
 

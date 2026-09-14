@@ -12,8 +12,13 @@ export const CredentialsSchema = z.object({
   verifier: z.string().min(16).max(256),
 });
 
+/** The client mints a device id ONCE and reuses it, so one physical device keeps one entry in the
+ *  revoke list. Without it the server minted a fresh id per call and "devices" was really a login log —
+ *  a new row and a new token family every sign-in, neither ever cleaned up. Scoped to the caller's own
+ *  account, so a chosen value can only ever collide with the caller's own device. */
 export const AuthRequestSchema = CredentialsSchema.extend({
   deviceName: z.string().max(60).optional(),
+  deviceId: z.string().min(8).max(64).optional(),
 });
 
 export const SessionSchema = z.object({
@@ -84,9 +89,13 @@ export type SyncEntry = z.infer<typeof SyncEntrySchema>;
 
 // --- Abuse throttles (rate-limit) ---
 // register is the one unauthenticated, cost-unlocking create path (each account unlocks a 300 MB quota), so
-// it gets a persisted per-IP fixed-window cap that holds across serverless instances. The cap is generous on
-// purpose — a classroom/library behind one NAT must still onboard — while bulk creation (thousands) dies.
-export const REGISTER_MAX_PER_IP = 20;
+// it gets a persisted per-IP fixed-window cap that holds across serverless instances.
+//
+// 20/day was far too tight for the actual audience: Russian mobile operators put very large subscriber
+// pools behind one egress address, so the cap was a per-CARRIER limit, not a per-person one, and the 21st
+// honest signup of the day would have been refused with no way to explain it. 300 still kills bulk
+// creation — the hard bound on a farmed account is the one-time trial budget, not this.
+export const REGISTER_MAX_PER_IP = 300;
 export const REGISTER_WINDOW_MS = 24 * 60 * 60 * 1000;
 // login / device-start: an in-memory per-IP token bucket (per instance) — cheaper abuse, higher legit
 // frequency, so a YDB write per request isn't worth it. Burst = capacity, sustained = refill/sec.

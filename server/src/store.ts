@@ -27,7 +27,10 @@ type RotateResult =
 
 export interface AuthStore {
   getAccount(accountId: string): Promise<{ verifierHash: string } | null>;
-  createAccount(accountId: string, verifierHash: string): Promise<void>;
+  /** Returns false when the id was already taken. INSERT, not UPSERT: register checks existence in a
+   *  separate read, so an UPSERT let two concurrent registrations for the same id silently overwrite one
+   *  another's verifier — the loser would hold a key that no longer opens the account. */
+  createAccount(accountId: string, verifierHash: string): Promise<boolean>;
   /** Replace the credential on an EXISTING account, keeping its id — the TOTP recovery rebind. A new id
    *  would orphan every synced row, blob and grant, so recovery must never mint one. */
   setVerifier(accountId: string, verifierHash: string): Promise<void>;
@@ -72,7 +75,9 @@ export class InMemoryAuthStore implements AuthStore {
     return this.accounts.get(accountId) ?? null;
   }
   async createAccount(accountId: string, verifierHash: string) {
+    if (this.accounts.has(accountId)) return false;
     this.accounts.set(accountId, { verifierHash });
+    return true;
   }
   async touchDevice(accountId: string, deviceId: string, deviceName?: string) {
     const map = this.devices.get(accountId) ?? new Map<string, Device>();

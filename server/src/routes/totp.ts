@@ -212,7 +212,11 @@ export function totpRoutes(store: AuthStore, totp: TotpStore): Hono {
     if (!(await store.getAccount(accountId))) return err(ErrorCode.TotpInvalid, 401);
 
     await store.setVerifier(accountId, await hashVerifier(verifier));
-    // The old key may have been stolen rather than lost, so every existing session dies with it.
+    // The old key may have been stolen rather than lost, so every refresh family dies with it. Access
+    // tokens are NOT revoked here — `verifyAccess` checks only the signature, iss/aud and exp, with no
+    // revocation lookup — so a thief keeps API access until their current one expires (ACCESS_TTL_S,
+    // 1 hour). Bounded and rare, but real: closing it means either a much shorter access TTL or a
+    // per-account revocation epoch read on every authed request.
     for (const d of await store.listDevices(accountId)) await store.revokeDevice(accountId, d.deviceId);
 
     const deviceId = randomUUID();
