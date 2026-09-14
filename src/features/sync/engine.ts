@@ -13,7 +13,7 @@ import { resolveByStore, type SyncedStore } from './resolve';
 
 export interface SyncTransport {
   push(body: { cursorSeq: number; changes: SyncChange[]; idempotencyKey: string }): Promise<SyncPushResponse>;
-  pull(since: number): Promise<SyncPullResponse>;
+  pull(since: number, snapshot?: boolean): Promise<SyncPullResponse>;
 }
 
 const APPEND_ONLY = new Set<SyncedStore>(['attempts', 'checkpoints']);
@@ -187,19 +187,37 @@ async function setCursor(account: string, cursorSeq: number): Promise<void> {
   await db.syncState.put({ ...row, account, cursorSeq });
 }
 
+/**
+ * Page the current-state baseline by `seq` until the server runs out of rows, then adopt head.
+ *
+ * The cursor is written ONCE, at the end. Writing it per page would be worse than not paging at all:
+ * a crash mid-baseline would leave a cursor that looks like a consumed changelog position, and the
+ * unread rows would never be requested again. Leaving it unset means a crash simply restarts the
+ * baseline, which is safe because applying a row twice is idempotent (LWW).
+ */
+async function snapshotLoop(transport: SyncTransport, account: string): Promise<void> {
+  let at = 0;
+  for (;;) {
+    const res = await transport.pull(at, true);
+    const sorted = [...res.entries].sort((a, b) => a.seq - b.seq);
+    for (const e of sorted) await applyEntry(e);
+    const last = sorted.length ? sorted[sorted.length - 1]!.seq : at;
+    // Strict progress or stop: without this a server that kept returning the same page would spin.
+    if (last <= at) {
+      await setCursor(account, res.head);
+      return;
+    }
+    at = last;
+  }
+}
+
 /** Pull from the cursor to head, applying only the contiguous prefix (F1) and advancing the cursor to
- *  the last contiguous seq. A snapshot response (since=0) is a baseline: apply all, cursor = head. */
+ *  the last contiguous seq. `from <= 0` means no baseline yet — take the paged snapshot instead. */
 export async function pullLoop(transport: SyncTransport, account: string, from: number): Promise<void> {
+  if (from <= 0) return snapshotLoop(transport, account);
   let cursor = from;
   for (;;) {
     const res = await transport.pull(cursor);
-    if (res.snapshot) {
-      for (const e of [...res.entries].sort((a, b) => a.seq - b.seq)) await applyEntry(e);
-      cursor = res.head;
-      await setCursor(account, cursor);
-      if (cursor >= res.head) return;
-      continue;
-    }
     const sorted = [...res.entries].sort((a, b) => a.seq - b.seq);
     let advanced = cursor;
     for (const e of sorted) {

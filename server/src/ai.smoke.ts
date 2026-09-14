@@ -38,11 +38,10 @@ check('inputSize counts array members', inputSize({ task: 'exercises', text: 'ab
 check('inputSize ignores the task name itself', inputSize({ task: 'hint', prompt: 'ab', topic: 'cd' }) === 4);
 
 check('hint is never cached (must react to the current answer)', TASKS.hint.cacheable === false);
-check('bookqa is never cached (questions vary)', TASKS.bookqa.cacheable === false);
 check('translate/simplify/grammar are cached', TASKS.translate.cacheable && TASKS.simplify.cacheable && TASKS.grammar.cacheable);
 check('every task caps its output', Object.values(TASKS).every((t) => t.maxTokens > 0 && t.maxTokens <= 700));
 check('a one-sentence translate is the unit', aiCost('translate') === 1);
-check('context-stuffing tasks cost more than a translate', aiCost('bookqa') > aiCost('translate') && aiCost('exercises') > aiCost('simplify'));
+check('context-stuffing tasks cost more than a translate', aiCost('exercises') > aiCost('translate') && aiCost('exercises') > aiCost('simplify'));
 check('no task costs more than 4 units (the measured spread is ~4.5x)', Object.values(TASKS).every((t) => t.cost >= 1 && t.cost <= 4));
 
 const msgs = buildMessages({ task: 'simplify', sentence: 'Having finished, he left.', level: 'A2' });
@@ -51,10 +50,6 @@ check('the band reaches the system prompt', msgs[0]!.content.includes('CEFR leve
 check('translate without context sends the bare text', (() => {
   const m = buildMessages(base);
   return m.length === 2 && m[1]?.content === 'the harpoon';
-})());
-check('bookqa puts the page in the constant system prefix', (() => {
-  const m = buildMessages({ task: 'bookqa', pageText: 'PAGE', question: 'why?' });
-  return m[0]!.content.includes('PAGE') && m[1]!.content === 'why?';
 })());
 
 console.log(failures === 0 ? '\nai core: all checks passed' : `\nai core: ${failures} FAILED`);

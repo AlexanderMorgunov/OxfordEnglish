@@ -30,12 +30,16 @@ export function lensKey(lens: LensMode, a: LensArgs): string {
 }
 
 /**
- * Run one lens on one sentence. Returns `null` when unavailable (offline, no AI key, or the model failed)
- * so the caller can show the fallback affordance. `stepDown` walks the simplify band toward A1.
+ * Run one lens on one sentence. Returns `null` when unavailable (offline, no AI at all, or the model
+ * failed) so the caller can show the fallback affordance. `stepDown` walks the simplify band toward A1.
+ *
+ * Deliberately does NOT gate on `a.config`: that is the BYOK key, and since the managed-AI path landed,
+ * `aiSimplify`/`aiGrammar` take `AiConfig | null` and route through the server for a subscriber who has
+ * no key of their own. Gating here meant the lens menu — shown on `useAiEnabled`, which counts the
+ * subscription — offered buttons that silently did nothing for exactly the people who paid.
  */
 export async function runLens(mode: LensMode, text: string, a: LensArgs, stepDown = 0): Promise<string | null> {
   if (mode === 'translate') return translateReaderText(text, { ai: a.ai, config: a.config });
-  if (!a.config) return null;
   try {
     return mode === 'grammar'
       ? await aiGrammar(a.config, text, { level: a.level })

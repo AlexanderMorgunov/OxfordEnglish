@@ -15,7 +15,9 @@ export function syncRoutes(store: SyncStore): Hono {
     if (!claims) return err(ErrorCode.Unauthorized, 401);
     const since = Number(c.req.query('since') ?? '0');
     if (!Number.isFinite(since) || since < 0) return err(ErrorCode.BadRequest, 400);
-    return c.json(await store.pull(claims.sub, since));
+    // `snapshot=1` continues a baseline past the page cap; without it `since > 0` reads the changelog.
+    const snapshot = c.req.query('snapshot') === '1';
+    return c.json(await store.pull(claims.sub, since, undefined, snapshot));
   });
 
   app.post('/v1/sync', async (c) => {

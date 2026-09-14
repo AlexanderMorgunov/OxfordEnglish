@@ -15,7 +15,6 @@ import {
   wordInContextMessages,
   explainMessages,
   hintMessages,
-  bookQaMessages,
   exercisesMessages,
   type ChatMessage,
 } from './aiPrompts.js';
@@ -35,8 +34,8 @@ type TaskSpec = {
   cacheable: boolean;
   /**
    * Quota units this task costs, normalized so a one-sentence translate = 1. Rounded up from the tokens
-   * measured in prod (table in docs/monetization-analysis.md): the tasks that stuff a context — a whole
-   * page for bookqa, a chapter slice for exercises — really do cost ~4.5× a translate.
+   * measured in prod (table in docs/monetization-analysis.md): a task that stuffs a context — a chapter
+   * slice for exercises — really does cost ~4.5× a translate.
    *
    * A FLAT charge was the original design and it was wrong: it made the advertised budget mean 55 ₽ of
    * tokens for a reader and 129 ₽ — two thirds of the subscription — for someone who only generates
@@ -55,7 +54,6 @@ export const TASKS: Record<AiTaskName, TaskSpec> = {
   explain: { version: 'v1', temperature: 0.4, maxTokens: 220, cacheable: true, cost: 2 },
   grammar: { version: 'v1', temperature: 0.3, maxTokens: 512, cacheable: true, cost: 2 },
   // Questions vary per reader; the win here is the provider's own prefix cache on the page text.
-  bookqa: { version: 'v1', temperature: 0.3, maxTokens: 600, cacheable: false, cost: 4 },
   exercises: { version: 'v1', temperature: 0.4, maxTokens: 700, cacheable: true, cost: 4 },
 };
 
@@ -79,8 +77,6 @@ export function buildMessages(req: AiTaskRequest): ChatMessage[] {
       return explainMessages(req);
     case 'hint':
       return hintMessages(req);
-    case 'bookqa':
-      return bookQaMessages(req.pageText, req.question.trim());
     case 'exercises':
       return exercisesMessages({ text: req.text, targets: req.targets, count: req.count ?? 6 });
   }

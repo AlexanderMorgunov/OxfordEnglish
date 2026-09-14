@@ -6,7 +6,7 @@ import type { ParsedBook } from './parse';
 import { paginateChapters } from './paginate';
 import { ReadingText } from './reading-text';
 import { ChapterStudy } from './ChapterStudy';
-import { BookQuestion } from './BookQuestion';
+import { QuotaNotice } from '@/features/account/QuotaNotice';
 import { ReaderWidget } from './ReaderWidget';
 import { BookmarkList } from './BookmarkList';
 import { toSentences } from './parse/text';
@@ -264,12 +264,12 @@ export function BookView({
         />
       )}
 
+      <QuotaNotice compact />
       <ReadingText
         paragraphs={paragraphs}
         bookmarkedSentences={bookmarkedSentences}
         onBookmarkSentence={(p, si, s) => void toggleSentenceBookmark(p, si, s)}
       />
-      <BookQuestion pageText={ch.text} />
       <ChapterStudy text={ch.text} idPrefix={`${idPrefix}.${chapter}`} />
       {nav && <div className="mt-8 border-t border-line pt-5">{nav}</div>}
       <ReaderWidget

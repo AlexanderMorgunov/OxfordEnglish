@@ -15,7 +15,11 @@ import { TRIAL_CLAIM_RETENTION_MS } from './entitlements.js';
 import { AI_CACHE_TTL_DAYS } from './stores/ydbAiCache.js';
 
 // ydb-sdk is CommonJS; Node's ESM interop hides its named exports behind the default.
-const { Column, TableDescription, Types } = ydbSdk;
+const { Column, TableDescription, Types, AlterTableDescription } = ydbSdk;
+
+// TtlSettings is not re-exported from the SDK index (AlterTableDescription is), so build the shape its
+// constructor produces: { dateTypeColumn: { columnName, expireAfterSeconds } }.
+const ttlSettings = (columnName: string, expireAfterSeconds: number) => ({ dateTypeColumn: { columnName, expireAfterSeconds } });
 
 const utf8 = () => Types.optional(Types.UTF8);
 const ts = () => Types.optional(Types.TIMESTAMP);
@@ -113,5 +117,36 @@ for (const t of TABLES) {
   created += 1;
 }
 
-console.log(created === 0 ? '\nnothing to do — schema already current' : `\n${created} table(s) created`);
+/**
+ * TTLs added to tables that already existed before they had one. Setting a TTL is idempotent — the same
+ * settings applied twice is a no-op — so this runs unconditionally.
+ *
+ * `idempotency` is the load-bearing entry: each row holds the ENTIRE PushResult, payloads included, and
+ * nothing ever deleted them. It was measured as ~56% of all database growth, against a 50 GiB ceiling.
+ * The row exists only to make a retried push idempotent, which stops mattering within minutes; a day is
+ * already generous.
+ */
+const TTLS: Array<{ table: string; column: string; seconds: number; why: string }> = [
+  { table: 'idempotency', column: 'created_at', seconds: 24 * 60 * 60, why: 'replay window is minutes, not forever' },
+];
+
+let altered = 0;
+for (const t of TTLS) {
+  if (!(await exists(t.table))) {
+    console.log(`· ${t.table} — absent, TTL skipped`);
+    continue;
+  }
+  const d = await driver();
+  const desc = new AlterTableDescription();
+  desc.setTtlSettings = ttlSettings(t.column, t.seconds);
+  await d.tableClient.withSession((session) => session.alterTable(t.table, desc));
+  console.log(`~ ${t.table} — TTL ${t.seconds}s on ${t.column} (${t.why})`);
+  altered += 1;
+}
+
+console.log(
+  created === 0 && altered === 0
+    ? '\nnothing to do — schema already current'
+    : `\n${created} table(s) created, ${altered} TTL(s) applied`
+);
 (await driver()).destroy();

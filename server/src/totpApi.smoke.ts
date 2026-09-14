@@ -153,6 +153,26 @@ await post('/v1/totp/enroll', {}, fresh.accessToken);
 await app.request('/v1/account', { method: 'DELETE', headers: { authorization: `Bearer ${fresh.accessToken}` } });
 check('deleting the account purges its sealed seed', (await totp.get(ERASE)) === null);
 
+// --- the lockout must count ATTEMPTS, not round trips ---
+// With a plain get→put the failure counter is a lost update: parallel guesses read the same count, so
+// the 10-per-15-minutes lockout silently becomes "however many requests fit in one database round
+// trip". Against three live six-digit codes that is the whole difference between safe and brute-forceable.
+{
+  const RACE = 'acc-lock0123456789ab';
+  const rt = (await (await post('/v1/auth/register', { accountId: RACE, verifier: 'verifier-lock-012345678', deviceName: 'L' })).json()) as Session;
+  const en = (await (await post('/v1/totp/enroll', {}, rt.accessToken)).json()) as { secret: string };
+  const sec = base32Decode(en.secret);
+  await post('/v1/totp/confirm', { code: codeForStep(sec, stepAt(Date.now())) }, rt.accessToken);
+
+  const statuses = await Promise.all(
+    Array.from({ length: 40 }, async () => (await post('/v1/totp/recover', { accountId: RACE, code: '111111', verifier: NEW_VERIFIER })).status)
+  );
+  const rejected = statuses.filter((s) => s === 401).length;
+  check('a parallel burst is throttled after the failure budget', rejected <= VERIFY_MAX_FAILURES);
+  check('the rest are locked out', statuses.filter((s) => s === 429).length >= 40 - VERIFY_MAX_FAILURES);
+  check('the stored counter matches the attempts it let through', (await totp.get(RACE))!.failCount === rejected);
+}
+
 console.log(failures === 0 ? '\ntotp API: all checks passed' : `\ntotp API: ${failures} FAILED`);
 // Set the code and let the loop drain: forcing exit() while a wasm/grpc handle is mid-close trips a
 // libuv assertion on Windows and turns a passing run into a nonzero exit.
