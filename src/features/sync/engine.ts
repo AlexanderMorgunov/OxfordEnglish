@@ -233,23 +233,39 @@ export async function pullLoop(transport: SyncTransport, account: string, from: 
 }
 
 /** First contact for an account: snapshot-merge the server, enqueue every local row, push, then pull. */
-export async function reconcile(transport: SyncTransport, account: string): Promise<void> {
+export async function reconcile(transport: SyncTransport, account: string): Promise<SyncOutcome> {
   await pullLoop(transport, account, 0); // snapshot merge → cursor = head
   for (const store of ['srsCards', 'wordStatus', 'attempts', 'checkpoints', 'books', 'bookmarks', 'settings'] as SyncedStore[]) {
     const rows = (await db.table(store).toArray()) as Row[];
     for (const row of rows) await markDirty(store, row);
   }
-  await drainPush(transport, account);
+  const pushBlocked = await drainPush(transport, account);
   await pullLoop(transport, account, (await db.syncState.get(account))?.cursorSeq ?? 0);
+  return { pushBlocked };
 }
 
-async function drainPush(transport: SyncTransport, account: string): Promise<void> {
+/**
+ * Uploading is part of the paid plan; downloading never is. Duck-typed rather than importing the API's
+ * error class, so the engine stays transport-agnostic and unit-testable with a fake.
+ */
+const isNoPlan = (e: unknown): boolean =>
+  typeof e === 'object' && e !== null && (e as { code?: string }).code === 'no_plan';
+
+/** Returns true when the server refused the upload for want of a plan. The dirty queue is left intact:
+ *  the rows are the user's own work and must survive until they can be sent. */
+async function drainPush(transport: SyncTransport, account: string): Promise<boolean> {
   for (let i = 0; i < 50; i += 1) {
     const before = await db.pending.count();
-    if (!before) return;
-    await pushOnce(transport, (await db.syncState.get(account))?.cursorSeq ?? 0);
-    if ((await db.pending.count()) >= before) return; // no progress — avoid a spin
+    if (!before) return false;
+    try {
+      await pushOnce(transport, (await db.syncState.get(account))?.cursorSeq ?? 0);
+    } catch (e) {
+      if (isNoPlan(e)) return true;
+      throw e;
+    }
+    if ((await db.pending.count()) >= before) return false; // no progress — avoid a spin
   }
+  return false;
 }
 
 const SYNCED_TABLES: SyncedStore[] = ['srsCards', 'wordStatus', 'attempts', 'checkpoints', 'books', 'bookmarks', 'settings'];
@@ -265,20 +281,22 @@ export async function wipeSyncedData(): Promise<void> {
   await Promise.all(rows.filter((r) => r.account !== INSTALL_ROW).map((r) => db.syncState.delete(r.account)));
 }
 
-let inFlight: Promise<void> | null = null;
+let inFlight: Promise<SyncOutcome> | null = null;
 
 /** Run one full sync cycle for an account (single-flight). Reconciles on first contact, else push→pull. */
-export function syncWith(account: string, transport: SyncTransport): Promise<void> {
+/** `pushBlocked` means the upload needs a plan the account does not have. The pull still ran: that is
+ *  the restore path for someone whose subscription lapsed, and it is deliberately never gated. */
+export type SyncOutcome = { pushBlocked: boolean };
+
+export function syncWith(account: string, transport: SyncTransport): Promise<SyncOutcome> {
   if (inFlight) return inFlight;
-  const run = async () => {
+  const run = async (): Promise<SyncOutcome> => {
     try {
       const state = await db.syncState.get(account);
-      if (state?.cursorSeq == null) {
-        await reconcile(transport, account);
-      } else {
-        await drainPush(transport, account);
-        await pullLoop(transport, account, state.cursorSeq);
-      }
+      if (state?.cursorSeq == null) return await reconcile(transport, account);
+      const pushBlocked = await drainPush(transport, account);
+      await pullLoop(transport, account, state.cursorSeq);
+      return { pushBlocked };
     } finally {
       inFlight = null;
     }

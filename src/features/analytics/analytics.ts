@@ -11,6 +11,7 @@ const METRICA_GOALS = new Set([
   'day_complete',
   'pwa_installed',
   'landing_cta',
+  'pro_page_view',
 ]);
 
 const ANON_KEY = 'analytics.anonId';

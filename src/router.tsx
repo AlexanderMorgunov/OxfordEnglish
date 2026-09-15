@@ -24,6 +24,7 @@ const BookReaderPage = lazy(() => import('@/pages/BookReaderPage').then((m) => (
 const CatalogReaderPage = lazy(() => import('@/pages/CatalogReaderPage').then((m) => ({ default: m.CatalogReaderPage })));
 const AboutPage = lazy(() => import('@/pages/AboutPage').then((m) => ({ default: m.AboutPage })));
 const TermsPage = lazy(() => import('@/pages/TermsPage').then((m) => ({ default: m.TermsPage })));
+const ProPage = lazy(() => import('@/pages/ProPage').then((m) => ({ default: m.ProPage })));
 const BillingSuccessPage = lazy(() => import('@/pages/BillingReturnPage').then((m) => ({ default: m.BillingSuccessPage })));
 const BillingFailPage = lazy(() => import('@/pages/BillingReturnPage').then((m) => ({ default: m.BillingFailPage })));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })));
@@ -49,6 +50,7 @@ const routes: RouteObject[] = [
   { path: '/feedback', element: <FeedbackPage /> },
   { path: '/privacy', element: <PrivacyPage /> },
   { path: '/terms', element: <TermsPage /> },
+  { path: '/pro', element: <ProPage /> },
   // Where the acquirer returns the payer. Configured in the Robokassa merchant panel as SuccessURL /
   // FailURL — changing these paths means changing them there too.
   { path: '/billing/success', element: <BillingSuccessPage /> },

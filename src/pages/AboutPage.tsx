@@ -147,8 +147,8 @@ export function AboutPage() {
     {
       q: t('Сколько это стоит?', 'How much does it cost?'),
       a: t(
-        'Нисколько. Нет рекламы, платных уровней и подписки: проект сделан как открытый исходный код.',
-        'Nothing. No ads, no paid tiers, no subscription — the project is open source.'
+        'Курс, читалка, повторения и словарь — бесплатно, без рекламы и платных уровней. Отдельно есть необязательная подписка Pro: она включает разборы на основе ИИ на нашем ключе. Те же функции доступны и со своим ключом ИИ.',
+        'The course, the reader, reviews and the vocabulary are free — no ads, no paid tiers. There is a separate, optional Pro subscription that adds AI explanations on our key; the same features also work with your own AI key.'
       ),
     },
     {

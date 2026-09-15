@@ -202,3 +202,54 @@ test('a snapshot that stops progressing terminates', async () => {
   await pullLoop(transport, 'A', 0);
   expect(calls).toBeLessThan(5);
 });
+
+// Uploading is part of Pro; downloading never is. A refused push must not look like a failed sync:
+// the pull still has to run (that is the restore path for a lapsed subscriber) and the dirty queue —
+// the user's own unsent work — must survive untouched.
+test('a push refused for want of a plan still pulls, keeps the queue, and reports pushBlocked', async () => {
+  await db.syncState.put({ account: 'A', cursorSeq: 0 });
+  await db.books.put({
+    id: 'mine', title: 'local only', format: 'epub', addedAt: 1, chapterCount: 1, lastChapter: 0,
+    updatedAt: 10, updatedBy: 'me',
+  } as never);
+  await db.pending.put({ key: 'books:mine', store: 'books', id: 'mine' });
+
+  let pulled = 0;
+  const noPlan = Object.assign(new Error('no_plan'), { code: 'no_plan' });
+  const transport: SyncTransport = {
+    push: async () => {
+      throw noPlan;
+    },
+    pull: async (since) => {
+      pulled += 1;
+      return { head: 1, entries: since < 1 ? [bookEntry('theirs', 1, 'from the cloud', 20)] : [] };
+    },
+  };
+
+  const outcome = await syncWith('A', transport);
+
+  expect(outcome.pushBlocked).toBe(true);
+  expect(pulled).toBeGreaterThan(0); // the download half ran
+  expect(await db.books.get('theirs')).toBeTruthy(); // ...and actually merged
+  expect(await db.pending.get('books:mine')).toBeTruthy(); // unsent local work is not discarded
+});
+
+// Any other push failure is a real error and must still propagate — the plan gate must not become a
+// blanket swallow of upload problems.
+test('a push that fails for any other reason still throws', async () => {
+  await db.syncState.put({ account: 'A', cursorSeq: 0 });
+  await db.books.put({
+    id: 'mine', title: 'local only', format: 'epub', addedAt: 1, chapterCount: 1, lastChapter: 0,
+    updatedAt: 10, updatedBy: 'me',
+  } as never);
+  await db.pending.put({ key: 'books:mine', store: 'books', id: 'mine' });
+
+  const transport: SyncTransport = {
+    push: async () => {
+      throw Object.assign(new Error('boom'), { code: 'internal' });
+    },
+    pull: async () => ({ head: 0, entries: [] }),
+  };
+
+  await expect(syncWith('A', transport)).rejects.toThrow('boom');
+});

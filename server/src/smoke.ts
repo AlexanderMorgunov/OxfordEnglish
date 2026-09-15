@@ -102,6 +102,16 @@ type Pulled = { head: number; entries: Entry[]; snapshot?: boolean };
 const noAuthPull = await app.request('/v1/sync?since=0');
 check('sync pull without auth → 401', noAuthPull.status === 401);
 
+// Sync is part of Pro. Only WRITING is gated: a lapsed or never-paying account must still be able to
+// retrieve the cloud copy it already has, which is what the offer at /terms promises.
+const pushNoPlan = await post('/v1/sync', { cursorSeq: 0, changes: [], idempotencyKey: 'no-plan-attempt' }, { ...H, ...syncAuth });
+check('push without a plan → 402 no_plan', pushNoPlan.status === 402);
+check('...and it says no_plan, not a generic error', ((await pushNoPlan.json()) as { error?: { code?: string } }).error?.code === 'no_plan');
+const pullNoPlan = await app.request('/v1/sync?since=0', { headers: syncAuth });
+check('pull without a plan still works (the cloud copy is never held hostage)', pullNoPlan.status === 200);
+
+await post('/v1/entitlement/trial', { installId: 'install-smoke-sync-0001' }, { ...H, ...syncAuth });
+
 const push1 = await post(
   '/v1/sync',
   {
@@ -160,6 +170,19 @@ const put = (path: string, bytes: Uint8Array) => app.request(path, { method: 'PU
 
 const noAuthBlobs = await app.request('/v1/blobs');
 check('blobs list without auth → 401', noAuthBlobs.status === 401);
+
+// Same rule as sync, on the one part of Pro with a real per-user storage cost: writing needs a plan,
+// reading and deleting never do.
+{
+  const free = (await (
+    await post('/v1/auth/register', { accountId: 'acc-noplanblobs00000', verifier: 'verifier-noplan-0123456789', deviceName: 'Free' })
+  ).json()) as { accessToken: string };
+  const freeAuth = { ...H, authorization: `Bearer ${free.accessToken}` };
+  check('upload-url without a plan → 402', (await post('/v1/blobs/upload-url', { bookId: 'bk1', size: 10 }, freeAuth)).status === 402);
+  check('commit without a plan → 402', (await post('/v1/blobs/commit', { bookId: 'bk1', key: 'k', size: 10 }, freeAuth)).status === 402);
+  check('listing own files without a plan still works', (await app.request('/v1/blobs', { headers: freeAuth })).status === 200);
+  check('deleting own file without a plan still works', (await app.request('/v1/blobs/bk1', { method: 'DELETE', headers: freeAuth })).status === 200);
+}
 
 const tooBig = await post('/v1/blobs/upload-url', { bookId: 'bk1', size: 21 * 1024 * 1024 }, syncAuth);
 check('upload-url over per-book cap → 413 blob_too_large', tooBig.status === 413);

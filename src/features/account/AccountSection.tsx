@@ -143,7 +143,7 @@ function AccountSectionBody() {
       ) : status === 'authenticated' ? (
         <div>
           <p className="mb-1 text-sm text-content">
-            {ru ? 'Вы вошли. Прогресс будет синхронизироваться между устройствами.' : 'Signed in. Your progress will sync across devices.'}
+            {ru ? 'Вы вошли.' : 'Signed in.'}
           </p>
           <p className="mb-1 font-mono text-2xs text-muted">
             id: {accountId?.slice(0, 10)}… · {ru ? 'это устройство' : 'this device'}: {deviceId.slice(0, 8)}
@@ -163,8 +163,8 @@ function AccountSectionBody() {
         <div>
           <p className="mb-3 text-sm text-muted text-pretty">
             {ru
-              ? 'Вход не обязателен — всё работает и хранится на этом устройстве. Войдите, чтобы заниматься на нескольких устройствах: прогресс, словарь и книги будут синхронизироваться, и появится резервная копия. Без email — только ключ восстановления.'
-              : 'You don’t need an account — everything works and stays on this device. Sign in to study on several devices: progress, vocabulary and books sync, with a cloud backup. No email — just a recovery key.'}
+              ? 'Вход не обязателен — всё работает и хранится на этом устройстве. Аккаунт нужен, чтобы заниматься на нескольких устройствах: синхронизация прогресса, словаря и книг входит в подписку Pro, и её можно попробовать 14 дней бесплатно. Без email — только ключ восстановления.'
+              : 'You don’t need an account — everything works and stays on this device. An account lets you study on several devices: syncing progress, vocabulary and books is part of the Pro subscription, and you can try it free for 14 days. No email — just a recovery key.'}
           </p>
           <div className="flex flex-wrap gap-2">
             <Button size="sm" disabled={busy} onClick={() => void onCreate()}>
@@ -374,6 +374,12 @@ function SyncStatusLine({ ru }: { ru: boolean }) {
   } else if (phase === 'error') {
     text = ru ? 'Ошибка синхронизации — повторим позже' : 'Sync error — will retry';
     tone = 'text-coral';
+  } else if (phase === 'paused') {
+    // Deliberately not an error tone: nothing is broken and nothing is lost. Changes keep accumulating
+    // locally and go up the moment a plan is active.
+    const tail = pending ? (ru ? `, ${pending} изм. ждёт` : `, ${pending} change(s) waiting`) : '';
+    text = (ru ? `Выгрузка в облако входит в Pro${tail}` : `Uploading to the cloud is part of Pro${tail}`);
+    tone = 'text-amber';
   } else {
     text = lastSyncedAt
       ? (ru ? 'Синхронизировано · ' : 'Synced · ') + ago(lastSyncedAt, ru)

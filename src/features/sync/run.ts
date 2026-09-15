@@ -12,7 +12,7 @@ import { claimPending } from '@/features/account/billing';
 import { ApiFailure, syncPull, syncPush } from '@/features/account/api';
 import { syncWith, type SyncTransport } from './engine';
 import { hydrateSettings } from './settingsBridge';
-import { setSyncStatus } from './status';
+import { setSyncStatus, useSyncStatus } from './status';
 
 const pendingCount = (): Promise<number> => db.pending.count().catch(() => 0);
 
@@ -38,9 +38,15 @@ export async function triggerSync(): Promise<void> {
   running = true;
   setSyncStatus({ phase: 'syncing' });
   try {
-    await syncWith(account, transport());
+    const { pushBlocked } = await syncWith(account, transport());
     await hydrateSettings(); // apply any settings other devices just pushed
-    setSyncStatus({ phase: 'idle', lastSyncedAt: Date.now(), pending: await pendingCount() });
+    setSyncStatus({
+      // Refused for want of a plan is not a failure: the download half ran, the local queue is intact,
+      // and showing an error badge for a deliberate product boundary would read as a broken app.
+      phase: pushBlocked ? 'paused' : 'idle',
+      lastSyncedAt: pushBlocked ? useSyncStatus.getState().lastSyncedAt : Date.now(),
+      pending: await pendingCount(),
+    });
   } catch {
     // soft — a later trigger retries; offline errors just leave the dirty queue intact
     const offline = typeof navigator !== 'undefined' && navigator.onLine === false;

@@ -28,7 +28,7 @@ export default defineConfig({
       manifest: {
         name: 'DayEnglish',
         short_name: 'DayEnglish',
-        description: 'Offline-first English course, A1 → B1, with a book reader.',
+        description: 'Offline-first English course, A1 → B2, with a book reader.',
         theme_color: '#12141c',
         background_color: '#12141c',
         display: 'standalone',

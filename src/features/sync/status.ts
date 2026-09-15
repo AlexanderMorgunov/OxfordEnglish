@@ -4,7 +4,9 @@
  */
 import { create } from 'zustand';
 
-export type SyncPhase = 'idle' | 'syncing' | 'error' | 'offline';
+/** `paused` = the account may download but not upload: syncing is part of the paid plan. It is NOT an
+ *  error state, and must never be rendered as one — nothing is broken and nothing is lost. */
+export type SyncPhase = 'idle' | 'syncing' | 'error' | 'offline' | 'paused';
 
 export interface SyncStatus {
   phase: SyncPhase;
