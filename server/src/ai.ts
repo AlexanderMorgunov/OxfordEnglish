@@ -52,7 +52,7 @@ export const TASKS: Record<AiTaskName, TaskSpec> = {
   // previous hint.
   hint: { version: 'v1', temperature: 0.4, maxTokens: 160, cacheable: false, cost: 1 },
   explain: { version: 'v1', temperature: 0.4, maxTokens: 220, cacheable: true, cost: 2 },
-  grammar: { version: 'v1', temperature: 0.3, maxTokens: 512, cacheable: true, cost: 2 },
+  grammar: { version: 'v2', temperature: 0.3, maxTokens: 700, cacheable: true, cost: 2 },
   // Questions vary per reader; the win here is the provider's own prefix cache on the page text.
   exercises: { version: 'v1', temperature: 0.4, maxTokens: 700, cacheable: true, cost: 4 },
 };

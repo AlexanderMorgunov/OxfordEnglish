@@ -91,19 +91,35 @@ export const RU_TRANSLATOR =
 export const RU_TUTOR =
   'Ты — преподаватель английского для русскоговорящего ученика уровня A2–B1. Отвечай кратко и по-русски.';
 
-const GRAMMAR_SHOT = {
-  src: 'By the time we arrived, the film had already started.',
-  out: 'Главное здесь — «had started» (Past Perfect): фильм начался РАНЬШЕ, чем мы пришли. Так показывают, что одно прошлое действие произошло до другого.',
-};
+/**
+ * Two shots, not one. The short example alone taught the model to answer in that shape regardless of
+ * the input, which is why a 60-word period came back explained as if it were a simple sentence: a
+ * completed example outweighs a system rule. The second shot demonstrates the skeleton-then-detail
+ * form the rules ask for on a multi-clause sentence.
+ *
+ * MUST stay byte-identical with the copy in src/features/ai/functions.ts — the managed and BYOK paths
+ * have to give the same answer. `grammar-prompt-parity.test.ts` guards it.
+ */
+const GRAMMAR_SHOTS = [
+  {
+    src: 'By the time we arrived, the film had already started.',
+    out: 'Главное здесь — «had started» (Past Perfect): фильм начался РАНЬШЕ, чем мы пришли. Так показывают, что одно прошлое действие произошло до другого.',
+  },
+  {
+    src: 'The letter, which had been lying on the hall table since Tuesday, was still unopened when she finally came home, although everyone had told her it was urgent.',
+    out: 'Скелет: «the letter was unopened» — всё остальное уточнения: «which had been lying…» (какое письмо), «when she came home» (когда), «although…» (вопреки чему). Труднее всего «had been lying»: письмо пролежало там какое-то время ДО того момента, о котором речь.',
+  },
+];
 
 export function grammarSystem(band: Band): string {
   return [
     `Ты объясняешь грамматику английского предложения русскоговорящему ученику уровня CEFR ${band}.`,
     'Правила:',
-    '1. Найди ОДНУ самую важную/трудную для этого уровня конструкцию в предложении — не разбирай всё подряд.',
-    '2. Объясни её просто, по-русски, в 2–3 коротких предложениях (не длиннее ~40 слов). Не читай лекцию и не приводи посторонних примеров.',
-    '3. Термин называй только если без него никак (лучше «действие, которое ещё длится», чем «Present Continuous»).',
-    '4. Опирайся именно на это предложение. Верни ТОЛЬКО объяснение — без вступлений, кавычек и markdown.',
+    '1. Если в предложении одна грамматическая основа — разбери ОДНУ самую важную/трудную для этого уровня конструкцию.',
+    '2. Если основ несколько — сначала ОДНОЙ фразой назови скелет (что здесь главное и что к чему цепляется), и только потом разбери самую трудную часть. Не пересказывай всё подряд.',
+    '3. Уложись примерно в 70 слов. Не читай лекцию и не приводи посторонних примеров.',
+    '4. Термин называй только если без него никак (лучше «действие, которое ещё длится», чем «Present Continuous»).',
+    '5. Опирайся именно на это предложение. Верни ТОЛЬКО объяснение — без вступлений, кавычек и markdown.',
   ].join('\n');
 }
 
@@ -130,8 +146,10 @@ export const simplifyMessages = (sentence: string, band: Band): ChatMessage[] =>
 
 export const grammarMessages = (sentence: string, band: Band): ChatMessage[] => [
   { role: 'system', content: grammarSystem(band) },
-  { role: 'user', content: GRAMMAR_SHOT.src },
-  { role: 'assistant', content: GRAMMAR_SHOT.out },
+  ...GRAMMAR_SHOTS.flatMap((s): ChatMessage[] => [
+    { role: 'user', content: s.src },
+    { role: 'assistant', content: s.out },
+  ]),
   { role: 'user', content: sentence },
 ];
 

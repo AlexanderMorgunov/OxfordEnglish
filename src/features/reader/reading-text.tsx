@@ -420,7 +420,11 @@ const Paragraph = memo(function Paragraph({
           : loading.mode === 'grammar'
             ? r ? 'разбираю…' : 'parsing…'
             : r ? 'перевод…' : 'translating…';
-      return <span className="text-base text-muted">({label})</span>;
+      return (
+        <span role="status" aria-live="polite" className="text-base text-muted">
+          ({label})
+        </span>
+      );
     }
     const cell = out[si];
     if (!cell || cell.kind === 'fail') {
@@ -430,11 +434,16 @@ const Paragraph = memo(function Paragraph({
         </span>
       );
     }
-    if (cell.kind === 'translate') return <span className="text-base text-muted">({cell.text}) </span>;
+    if (cell.kind === 'translate')
+      return (
+        <span role="status" aria-live="polite" className="text-base text-muted">
+          ({cell.text}){' '}
+        </span>
+      );
     if (cell.kind === 'grammar') {
       return (
-        <span className="text-base text-muted">
-          <span className="text-amber">гр</span> {cell.text} {ruAction(si, sentence)}{' '}
+        <span role="status" aria-live="polite" className="text-base text-muted">
+          <span className="text-amber">{r ? 'гр' : 'gr'}</span> {cell.text} {ruAction(si, sentence)}{' '}
         </span>
       );
     }

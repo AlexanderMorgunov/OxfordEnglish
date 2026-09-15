@@ -41,9 +41,13 @@ describe('aiGrammar', () => {
       { role: string }[],
       { maxTokens?: number; noReasoning?: boolean },
     ];
+    // The cap still exists to stop the 48k-token runaway; it is 700 rather than 512 because the
+    // answer target grew and groq's gpt-oss reasoning shares the same budget.
     expect(opts.maxTokens).toBeGreaterThan(0);
-    expect(opts.maxTokens).toBeLessThanOrEqual(512);
+    expect(opts.maxTokens).toBeLessThanOrEqual(1000);
     expect(opts.noReasoning).toBe(true);
-    expect(messages.map((m) => m.role)).toEqual(['system', 'user', 'assistant', 'user']);
+    // TWO few-shot pairs: the short one, and a multi-clause one. With only the short example the model
+    // answered every sentence in that shape, which is what made long periods look half-explained.
+    expect(messages.map((m) => m.role)).toEqual(['system', 'user', 'assistant', 'user', 'assistant', 'user']);
   });
 });

@@ -83,11 +83,17 @@ export const deepseekCompleter: Completer = async (messages, opts) => {
     if (!res.ok) throw new AiUpstreamError(`upstream ${res.status}: ${(await res.text()).slice(0, 200)}`);
 
     const data = (await res.json()) as {
-      choices?: { message?: { content?: string } }[];
+      choices?: { message?: { content?: string }; finish_reason?: string }[];
       usage?: { prompt_tokens?: number; completion_tokens?: number; prompt_cache_hit_tokens?: number };
     };
-    const content = data.choices?.[0]?.message?.content?.trim();
+    const choice = data.choices?.[0];
+    const content = choice?.message?.content?.trim();
     if (!content) throw new AiUpstreamError('empty completion');
+    // A completion cut off at the token cap is a half-sentence. The route caches whatever it gets, in a
+    // cache SHARED BY EVERY USER — so one truncated answer would be served forever to everyone asking
+    // the same thing. Refuse it: the caller refunds the quota and the user sees a retryable error
+    // instead of a permanent stub.
+    if (choice?.finish_reason === 'length') throw new AiUpstreamError('completion truncated at the token cap');
     // Token counts only — never the prompt or the answer. This is what turns the provisional
     // TRIAL_AI_REQUESTS / PRO_AI_REQUESTS into measured numbers; it is also why it carries no account id.
     const u = data.usage;
