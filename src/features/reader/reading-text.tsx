@@ -1,4 +1,5 @@
 import { createContext, memo, use, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Popover, usePopoverClose } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import { useVocabStore } from '@/features/vocab/vocabStore';
@@ -353,6 +354,7 @@ const Paragraph = memo(function Paragraph({
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [out, setOut] = useState<Record<number, LensCell>>({});
   const [loading, setLoading] = useState<{ idx: number; mode: LensMode } | null>(null);
+  const navigate = useNavigate();
   // Which sentence's lens menu is open (translate / simplify / grammar), or null.
   const [menuIdx, setMenuIdx] = useState<number | null>(null);
   // Changing the translate sub-mode / band invalidates shown cells (a free translation must not linger
@@ -575,19 +577,26 @@ const Paragraph = memo(function Paragraph({
                       ['grammar', lang === 'ru' ? 'грамматика' : 'grammar', 'гр', true],
                     ] as const
                   ).map(([m, label, mark, needsAi]) => (
+                    // A locked item stays REACHABLE and says why. It used to be `disabled`: greyed out,
+                    // no tooltip, no way forward — and a disabled `role="menuitem"` is also skipped by
+                    // screen readers (§8.5). This is the best moment in the app to explain the plan:
+                    // the reader has just reached for the thing themselves.
                     <button
                       key={m}
                       type="button"
                       role="menuitem"
-                      disabled={needsAi && !aiReady}
                       onClick={() => {
                         setMenuIdx(null);
-                        void runAt(si, sentence, m, 0);
+                        if (needsAi && !aiReady) navigate(`/pro?from=reader`);
+                        else void runAt(si, sentence, m, 0);
                       }}
-                      className="flex items-center gap-2 px-2.5 py-1 font-mono text-2xs text-muted hover:bg-surface-2 hover:text-content disabled:text-faint disabled:hover:bg-transparent"
+                      className="flex items-center gap-2 px-2.5 py-1 font-mono text-2xs text-muted hover:bg-surface-2 hover:text-content"
                     >
                       <span className="w-6 text-teal">{mark}</span>
                       {label}
+                      {needsAi && !aiReady && (
+                        <span className="ml-auto pl-2 text-violet">{lang === 'ru' ? 'что это →' : "what's this →"}</span>
+                      )}
                     </button>
                   ))}
                   {onBookmark && (

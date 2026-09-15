@@ -6,6 +6,7 @@ import { accountsEnabled } from '@/features/account/config';
 import { billingPlans } from '@/features/account/api';
 import { formatPrice } from '@/features/account/billing';
 import { track } from '@/features/analytics/analytics';
+import { BackToReader } from '@/features/reader/BackToReader';
 import type { BillingPlan } from '@/features/account/contract';
 
 /**
@@ -100,6 +101,7 @@ export function ProPage() {
 
   return (
     <article className="max-w-prose">
+      <BackToReader />
       <Eyebrow className="mb-3.5">{ru ? 'подписка' : 'subscription'}</Eyebrow>
       <h1 className="text-2xl font-bold tracking-tight text-balance">
         {ru ? 'DayEnglish Pro' : 'DayEnglish Pro'}
@@ -199,6 +201,25 @@ export function ProPage() {
           {ru
             ? 'Когда пробный период или оплаченный месяц закончится: разборы вернутся к вашему ключу, а выгрузка в облако остановится. Ничего при этом не пропадает — облачная копия сохраняется, её по-прежнему можно загрузить на устройство, а новые изменения продолжают копиться локально и уйдут наверх, как только подписка снова активна. Курс, читалка, повторения и словарь не меняются вообще.'
             : 'When the trial or a paid month ends: the explanations go back to needing your own key, and uploading to the cloud stops. Nothing is lost — the cloud copy is kept and can still be downloaded to a device, and new changes keep accumulating locally and go up as soon as a plan is active again. The course, the reader, reviews and the vocabulary do not change at all.'}
+        </p>
+      </Section>
+
+      {/* Kept as the LAST argument, never the first: the buyer is paying for a service with an offer,
+          a refund policy and consumer-protection law behind it. Funding the project is a true and
+          welcome consequence of that purchase, not what the purchase is. */}
+      <Section title={ru ? 'Куда идут деньги' : 'Where the money goes'}>
+        <p>
+          {ru
+            ? 'Приложение делает один человек в свободное время. Здесь нет рекламы, инвесторов и продажи данных — подписка это единственный доход проекта. Она оплачивает серверы, хранилище и ключ ИИ, и она же позволяет курсу, читалке и повторениям оставаться бесплатными для всех остальных.'
+            : 'This app is built by one person in their spare time. There are no ads, no investors and no data sales — the subscription is the project\'s only income. It pays for the servers, the storage and the AI key, and it is what lets the course, the reader and the reviews stay free for everyone else.'}
+        </p>
+        <p>
+          {ru
+            ? 'Если Pro вам не нужен, а поддержать проект хочется — для этого есть отдельная страница, и она ничего не открывает.'
+            : 'If you do not need Pro but would like to support the project anyway, there is a separate page for that — and it unlocks nothing.'}{' '}
+          <Link to="/support" className="text-teal hover:underline">
+            {ru ? 'Поддержать проект' : 'Support the project'}
+          </Link>
         </p>
       </Section>
 

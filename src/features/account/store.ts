@@ -63,7 +63,7 @@ function ensureDeviceId(): string {
   return id;
 }
 
-type Status = 'anonymous' | 'authenticated';
+export type Status = 'anonymous' | 'authenticated';
 
 type AccountState = {
   status: Status;
