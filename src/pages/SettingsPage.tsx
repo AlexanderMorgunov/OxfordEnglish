@@ -199,7 +199,11 @@ export function SettingsPage() {
               Groq/OpenRouter/Cerebras/Gemini/OpenAI гео-блокируют РФ (нужен VPN). Без VPN работает{' '}
               <b className="text-content">VseGPT</b> — RU-прокси (OpenAI-совместимый, 120+ моделей):
               платный по рублёвой карте, но с небольшим бесплатным кредитом на старте (без карты) — можно
-              попробовать. Свой AI без ключа — в планах.
+              попробовать. Не хочется возиться с ключом —{' '}
+              <Link to="/pro" className="text-teal hover:underline">
+                есть подписка Pro
+              </Link>
+              : тот же ИИ на нашем ключе, без VPN и без настройки.
             </>
           ) : (
             <>
@@ -207,8 +211,12 @@ export function SettingsPage() {
               sentences, but know it. <b className="text-content">From Russia without a VPN:</b>{' '}
               Groq/OpenRouter/Cerebras/Gemini/OpenAI geo-block RU (need a VPN). Without a VPN,{' '}
               <b className="text-content">VseGPT</b> works — a RU proxy (OpenAI-compatible, 120+ models):
-              paid by ruble card, but with a small no-card starter credit to try. A key-free managed AI is
-              planned.
+              paid by ruble card, but with a small no-card starter credit to try. Rather not deal with a
+              key —{' '}
+              <Link to="/pro" className="text-teal hover:underline">
+                there is a Pro subscription
+              </Link>
+              : the same AI on our key, no VPN and nothing to set up.
             </>
           )}
         </p>

@@ -85,8 +85,8 @@ export function createApp(
   app.get('/health', (c) => c.text('ok'));
   app.get('/v1/.well-known/jwks.json', async (c) => c.json(await jwks()));
   app.route('/', authRoutes(authStore));
-  app.route('/', syncRoutes(syncStore));
-  app.route('/', blobRoutes(blobStore));
+  app.route('/', syncRoutes(syncStore, entStore));
+  app.route('/', blobRoutes(blobStore, entStore));
   app.route('/', accountRoutes(authStore, syncStore, blobStore, entStore, totpStore));
   app.route('/', entitlementRoutes(entStore));
   app.route('/', billingRoutes(entStore));

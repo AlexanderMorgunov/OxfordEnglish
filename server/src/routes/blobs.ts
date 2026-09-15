@@ -1,13 +1,21 @@
 import { Hono } from 'hono';
 import { BlobUploadRequestSchema, BlobCommitRequestSchema, BLOB_MAX_BYTES, BLOB_ACCOUNT_MAX_BYTES, ErrorCode } from '../contract.js';
 import { bearerClaims } from '../tokens.js';
+import { evaluate, type EntitlementStore } from '../entitlements.js';
 import type { BlobStore } from '../blobs.js';
 
-const err = (code: string, status: 400 | 401 | 403 | 404 | 409 | 413) => Response.json({ error: { code } }, { status });
+const err = (code: string, status: 400 | 401 | 402 | 403 | 404 | 409 | 413) => Response.json({ error: { code } }, { status });
 
-/** Mount `/v1/blobs/*` (opt-in book-file upload/download). All require a Bearer access token; the account
- *  id is the storage partition. See blobs.ts for the no-reservation quota model. */
-export function blobRoutes(store: BlobStore): Hono {
+/**
+ * Mount `/v1/blobs/*` (opt-in book-file upload/download). All require a Bearer access token; the
+ * account id is the storage partition. See blobs.ts for the no-reservation quota model.
+ *
+ * Book-file sync is part of Pro — and of the three things Pro covers, this is the one with a real
+ * per-user cost (300 MB of Object Storage against a few rows of progress). Only the WRITE path is
+ * gated: listing, downloading and deleting stay open, so a lapsed subscriber can always retrieve or
+ * remove their own files. See routes/sync.ts for the same rule and why.
+ */
+export function blobRoutes(store: BlobStore, ent: EntitlementStore): Hono {
   const app = new Hono();
 
   // Ask for an upload target. Enforces the per-object cap up front; account quota is re-checked at commit
@@ -15,6 +23,7 @@ export function blobRoutes(store: BlobStore): Hono {
   app.post('/v1/blobs/upload-url', async (c) => {
     const claims = await bearerClaims(c);
     if (!claims) return err(ErrorCode.Unauthorized, 401);
+    if (!evaluate(await ent.get(claims.sub), Date.now()).active) return err(ErrorCode.NoPlan, 402);
     const body = BlobUploadRequestSchema.safeParse(await c.req.json().catch(() => null));
     if (!body.success) return err(ErrorCode.BadRequest, 400);
     if (body.data.size > BLOB_MAX_BYTES) return err(ErrorCode.BlobTooLarge, 413);
@@ -27,6 +36,7 @@ export function blobRoutes(store: BlobStore): Hono {
   app.put('/v1/blobs/data/:key', async (c) => {
     const claims = await bearerClaims(c);
     if (!claims) return err(ErrorCode.Unauthorized, 401);
+    if (!evaluate(await ent.get(claims.sub), Date.now()).active) return err(ErrorCode.NoPlan, 402);
     const key = decodeURIComponent(c.req.param('key'));
     if (!key.startsWith(`${claims.sub}/`)) return err(ErrorCode.Unauthorized, 403); // key is another user's prefix
     const bytes = new Uint8Array(await c.req.arrayBuffer());
@@ -39,6 +49,7 @@ export function blobRoutes(store: BlobStore): Hono {
   app.post('/v1/blobs/commit', async (c) => {
     const claims = await bearerClaims(c);
     if (!claims) return err(ErrorCode.Unauthorized, 401);
+    if (!evaluate(await ent.get(claims.sub), Date.now()).active) return err(ErrorCode.NoPlan, 402);
     const body = BlobCommitRequestSchema.safeParse(await c.req.json().catch(() => null));
     if (!body.success) return err(ErrorCode.BadRequest, 400);
     if (body.data.key !== store.objectKey(claims.sub, body.data.bookId)) return err(ErrorCode.BadRequest, 400);

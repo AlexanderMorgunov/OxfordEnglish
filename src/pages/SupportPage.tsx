@@ -29,13 +29,13 @@ export function SupportPage() {
 
       <p className="mb-4 text-base leading-relaxed text-pretty text-muted">
         {ru
-          ? 'Это приложение бесплатное и с открытым исходным кодом. Его делает один человек в свободное время — без рекламы, без подписок, без слежки.'
-          : 'This app is free and open source. It is built by one person in their spare time — no ads, no subscriptions, no tracking.'}
+          ? 'Это приложение бесплатное и с открытым исходным кодом. Его делает один человек в свободное время — без рекламы и без слежки.'
+          : 'This app is free and open source. It is built by one person in their spare time — no ads, no tracking.'}
       </p>
       <p className="mb-8 text-base leading-relaxed text-pretty text-muted">
         {ru
-          ? 'Если оно помогает тебе учить английский, ты можешь поддержать разработку. Это добровольно и ничего не открывает — приложение и так полностью бесплатное. Спасибо, что помогаешь проекту жить.'
-          : 'If it helps you learn English, you can support its development. It is voluntary and unlocks nothing — the app is already fully free. Thank you for helping the project keep going.'}
+          ? 'Если оно помогает тебе учить английский, ты можешь поддержать разработку. Это добровольно и ничего не открывает — в том числе подписку Pro. Учебная часть приложения и так полностью бесплатна. Спасибо, что помогаешь проекту жить.'
+          : 'If it helps you learn English, you can support its development. It is voluntary and unlocks nothing — the Pro subscription included. The learning side of the app is free anyway. Thank you for helping the project keep going.'}
       </p>
 
       {SUPPORT_URL ? (

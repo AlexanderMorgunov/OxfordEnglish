@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Eyebrow } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
+import { BLOB_MAX_BYTES, BLOB_ACCOUNT_MAX_BYTES } from '@/features/account/contract';
 
 /**
  * Public offer + service terms (`/terms`).
@@ -19,6 +20,10 @@ const OWNER = 'Моргунов Александр Сергеевич';
 const INN = '361302397520';
 const EMAIL = 'morgunowalex@gmail.com';
 const PHONE = '+7 995 040-35-70';
+
+/** Quotas are stated in the contract, so they must come from the same constants the server enforces. */
+const BLOB_PER_BOOK_MB = Math.round(BLOB_MAX_BYTES / (1024 * 1024));
+const BLOB_TOTAL_MB = Math.round(BLOB_ACCOUNT_MAX_BYTES / (1024 * 1024));
 
 const PRICE_RUB = 199;
 const PERIOD_DAYS = 30;
@@ -176,8 +181,18 @@ function Service({ ru }: { ru: boolean }) {
     <Section title={ru ? 'Услуга и стоимость' : 'The service and its price'}>
       <p>
         {ru
-          ? `DayEnglish Pro — доступ к функциям приложения на основе искусственного интеллекта: разбор грамматики предложения, упрощение текста до уровня изучающего и перевод слова с учётом контекста предложения. Работает на ключе Исполнителя, настройка со стороны Заказчика не требуется.`
-          : `DayEnglish Pro — access to the app's AI features: sentence grammar explanations, text simplification to a learner's level, and word translation in the context of the sentence. It runs on the seller's key; the customer sets nothing up.`}
+          ? 'DayEnglish Pro включает две группы возможностей.'
+          : 'DayEnglish Pro covers two groups of capabilities.'}
+      </p>
+      <p>
+        {ru
+          ? `1. Функции на основе искусственного интеллекта: разбор грамматики предложения, упрощение текста до уровня изучающего и перевод слова с учётом контекста предложения. Работают на ключе Исполнителя, настройка со стороны Заказчика не требуется.`
+          : `1. AI features: sentence grammar explanations, text simplification to a learner's level, and word translation in the context of the sentence. They run on the seller's key; the customer sets nothing up.`}
+      </p>
+      <p>
+        {ru
+          ? `2. Синхронизация и резервное копирование: учебный прогресс, словарь и позиции чтения переносятся между устройствами Заказчика и хранятся в виде облачной копии. Сюда же входит синхронизация файлов загруженных книг — до ${BLOB_PER_BOOK_MB} МБ на книгу и до ${BLOB_TOTAL_MB} МБ суммарно на аккаунт.`
+          : `2. Sync and backup: learning progress, vocabulary and reading positions move between the customer's devices and are kept as a cloud copy. This includes syncing imported book files — up to ${BLOB_PER_BOOK_MB} MB per book and up to ${BLOB_TOTAL_MB} MB per account in total.`}
       </p>
       <p>
         {ru
@@ -199,10 +214,17 @@ function Service({ ru }: { ru: boolean }) {
           ? 'Оплата принимается через платёжный сервис Robokassa банковской картой или через СБП. Кассовый чек формируется и направляется Заказчику платёжным сервисом. Услуга считается оказанной с момента открытия доступа к платным функциям, который происходит автоматически сразу после подтверждения оплаты.'
           : 'Payments are taken through the Robokassa payment service by bank card or SBP. The fiscal receipt is issued and sent by the payment service. The service is considered delivered from the moment the paid features are switched on, which happens automatically as soon as the payment is confirmed.'}
       </p>
+      {/* The lapse rule is a promise about someone's own learning data, so it belongs in the contract
+          and not only in the UI: sync stops, nothing is taken away, and the copy stays retrievable. */}
+      <p className="text-content">
+        {ru
+          ? 'По окончании оплаченного периода синхронизация прекращается, но облачная копия Заказчика не удаляется: её по-прежнему можно загрузить на устройство. Перестаёт работать только отправка новых изменений в облако.'
+          : 'When the paid period ends, syncing stops, but the customer\'s cloud copy is not deleted: it can still be downloaded to a device. Only sending new changes to the cloud stops working.'}
+      </p>
       <p>
         {ru
-          ? 'Всё остальное в приложении — курс, читалка, повторения, словарь — бесплатно и работает без оплаты и без аккаунта.'
-          : 'Everything else in the app — the course, the reader, reviews, the vocabulary — is free and works with no payment and no account.'}
+          ? 'Всё остальное в приложении — курс, читалка, интервальные повторения, словарь и справочник грамматики — бесплатно и работает без оплаты и без аккаунта, на одном устройстве. Восстановление доступа к аккаунту через приложение-аутентификатор также бесплатно.'
+          : 'Everything else in the app — the course, the reader, spaced repetition, the vocabulary and the grammar reference — is free and works with no payment and no account, on a single device. Recovering access to an account with an authenticator app is free as well.'}
       </p>
     </Section>
   );
