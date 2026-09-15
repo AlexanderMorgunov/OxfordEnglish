@@ -30,6 +30,16 @@ export function QuotaNotice({ compact = false }: { compact?: boolean }) {
           <Link to="/settings" className="text-teal hover:underline">
             {ru ? 'Настройки' : 'Settings'}
           </Link>
+          {/* Only when nothing will refill: a paid window that resets on a date needs no plan pitch,
+              and showing one to someone who has already paid is the bug this slice removes. */}
+          {entitlement?.ai.resetsAt == null && (
+            <>
+              {' · '}
+              <Link to="/pro" className="text-teal hover:underline">
+                {ru ? 'О подписке' : 'About Pro'}
+              </Link>
+            </>
+          )}
         </>
       )}
     </div>

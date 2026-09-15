@@ -37,6 +37,27 @@ export function SupportPage() {
           ? 'Если оно помогает тебе учить английский, ты можешь поддержать разработку. Это добровольно и ничего не открывает — в том числе подписку Pro. Учебная часть приложения и так полностью бесплатна. Спасибо, что помогаешь проекту жить.'
           : 'If it helps you learn English, you can support its development. It is voluntary and unlocks nothing — the Pro subscription included. The learning side of the app is free anyway. Thank you for helping the project keep going.'}
       </p>
+      <p className="mb-8 text-base leading-relaxed text-pretty text-muted">
+        {ru ? (
+          <>
+            Есть и второй способ: подписка{' '}
+            <Link to="/pro" className="text-teal hover:underline">
+              DayEnglish Pro
+            </Link>{' '}
+            — она даёт синхронизацию между устройствами и ИИ-разборы, и заодно оплачивает серверы, на
+            которых держится бесплатная часть.
+          </>
+        ) : (
+          <>
+            There is a second way: the{' '}
+            <Link to="/pro" className="text-teal hover:underline">
+              DayEnglish Pro
+            </Link>{' '}
+            subscription — it gives you cross-device sync and the AI explanations, and it pays for the
+            servers the free side runs on.
+          </>
+        )}
+      </p>
 
       {SUPPORT_URL ? (
         <a href={SUPPORT_URL} target="_blank" rel="noopener noreferrer" className={linkClass}>

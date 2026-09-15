@@ -57,7 +57,27 @@ export function PlanSection({ ru }: { ru: boolean }) {
     };
   }, []);
 
-  if (!entitlement) return null;
+  // Entitlement is deliberately never cached (see entitlement.ts), so `null` is an ordinary state for a
+  // PAYING subscriber offline or on a cold start. Vanishing the whole block there left them with no
+  // plan, no expiry and no way to re-check a payment. Show a placeholder — never a stale "pro", which
+  // would promise a feature the server then refuses.
+  if (!entitlement) {
+    return (
+      <section className="mt-5 border-t border-line pt-4">
+        <Eyebrow>{ru ? 'Подписка' : 'Subscription'}</Eyebrow>
+        <p role="status" className="mt-1 text-sm text-muted text-pretty">
+          {ru
+            ? 'Не удалось проверить план — нет связи с сервером. Появится, как только связь вернётся.'
+            : 'Could not check your plan — no connection to the server. It will appear once the connection is back.'}
+        </p>
+        <p className="mt-2 text-2xs text-muted">
+          <Link to="/pro" className="text-teal hover:underline">
+            {ru ? 'Что входит в Pro' : "What's in Pro"}
+          </Link>
+        </p>
+      </section>
+    );
+  }
 
   const monthly = plans?.plans.find((p) => p.code === 'pro_month');
   const canBuy = !!plans?.available && !!monthly;
@@ -163,6 +183,17 @@ export function PlanSection({ ru }: { ru: boolean }) {
       {note && (
         <p role="status" className="mt-2 text-2xs text-muted text-pretty">
           {note}
+        </p>
+      )}
+
+      {canBuy && entitlement.plan !== 'pro' && (
+        <p className="mt-3 text-2xs text-muted text-pretty">
+          {ru
+            ? 'Подписка — единственный доход проекта: она оплачивает серверы и ключ ИИ и позволяет остальному оставаться бесплатным.'
+            : 'The subscription is the project’s only income: it pays for the servers and the AI key, and keeps everything else free.'}{' '}
+          <Link to="/pro" className="text-teal hover:underline">
+            {ru ? 'Подробнее' : 'More'}
+          </Link>
         </p>
       )}
 
