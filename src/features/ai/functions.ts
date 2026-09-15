@@ -131,21 +131,37 @@ export async function aiSimplify(
   return out;
 }
 
-const GRAMMAR_VERSION = 'v1';
-// One completed example teaches the SHORT, one-structure style (a bad answer would list every tense +
-// article + clause). Delivered as a user/assistant turn like simplify's few-shot.
-const GRAMMAR_SHOT = {
-  src: 'By the time we arrived, the film had already started.',
-  out: 'Главное здесь — «had started» (Past Perfect): фильм начался РАНЬШЕ, чем мы пришли. Так показывают, что одно прошлое действие произошло до другого.',
-};
+// Bumped with the prompt: this key does NOT hash the prompt (unlike the server's), so without a bump
+// every sentence a user has already looked at keeps serving the old, short-form answer forever.
+const GRAMMAR_VERSION = 'v2';
+/**
+ * Two shots, not one. The short example alone taught the model to answer in that shape regardless of
+ * the input, which is why a 60-word period came back explained as if it were a simple sentence: a
+ * completed example outweighs a system rule. The second shot demonstrates the skeleton-then-detail
+ * form the rules ask for on a multi-clause sentence.
+ *
+ * MUST stay byte-identical with the copy in server/src/aiPrompts.ts — the managed and BYOK paths have
+ * to give the same answer. `grammar-prompt-parity.test.ts` guards it.
+ */
+const GRAMMAR_SHOTS = [
+  {
+    src: 'By the time we arrived, the film had already started.',
+    out: 'Главное здесь — «had started» (Past Perfect): фильм начался РАНЬШЕ, чем мы пришли. Так показывают, что одно прошлое действие произошло до другого.',
+  },
+  {
+    src: 'The letter, which had been lying on the hall table since Tuesday, was still unopened when she finally came home, although everyone had told her it was urgent.',
+    out: 'Скелет: «the letter was unopened» — всё остальное уточнения: «which had been lying…» (какое письмо), «when she came home» (когда), «although…» (вопреки чему). Труднее всего «had been lying»: письмо пролежало там какое-то время ДО того момента, о котором речь.',
+  },
+];
 function grammarSystem(band: Band): string {
   return [
     `Ты объясняешь грамматику английского предложения русскоговорящему ученику уровня CEFR ${band}.`,
     'Правила:',
-    '1. Найди ОДНУ самую важную/трудную для этого уровня конструкцию в предложении — не разбирай всё подряд.',
-    '2. Объясни её просто, по-русски, в 2–3 коротких предложениях (не длиннее ~40 слов). Не читай лекцию и не приводи посторонних примеров.',
-    '3. Термин называй только если без него никак (лучше «действие, которое ещё длится», чем «Present Continuous»).',
-    '4. Опирайся именно на это предложение. Верни ТОЛЬКО объяснение — без вступлений, кавычек и markdown.',
+    '1. Если в предложении одна грамматическая основа — разбери ОДНУ самую важную/трудную для этого уровня конструкцию.',
+    '2. Если основ несколько — сначала ОДНОЙ фразой назови скелет (что здесь главное и что к чему цепляется), и только потом разбери самую трудную часть. Не пересказывай всё подряд.',
+    '3. Уложись примерно в 70 слов. Не читай лекцию и не приводи посторонних примеров.',
+    '4. Термин называй только если без него никак (лучше «действие, которое ещё длится», чем «Present Continuous»).',
+    '5. Опирайся именно на это предложение. Верни ТОЛЬКО объяснение — без вступлений, кавычек и markdown.',
   ].join('\n');
 }
 
@@ -176,11 +192,15 @@ export async function aiGrammar(
       c,
       [
         { role: 'system', content: grammarSystem(band) },
-        { role: 'user', content: GRAMMAR_SHOT.src },
-        { role: 'assistant', content: GRAMMAR_SHOT.out },
+        ...GRAMMAR_SHOTS.flatMap((s) => [
+          { role: 'user' as const, content: s.src },
+          { role: 'assistant' as const, content: s.out },
+        ]),
         { role: 'user', content: q },
       ],
-      { temperature: 0.3, maxTokens: 512, noReasoning: true, signal: opts.signal }
+      // 700, not 512: the answer target went from ~40 to ~70 words, and on groq's gpt-oss reasoning
+      // cannot be turned off and eats the same budget — the old cap left no headroom on that path.
+      { temperature: 0.3, maxTokens: 700, noReasoning: true, signal: opts.signal }
     )
   );
   const out = cleanRewrite(raw);
