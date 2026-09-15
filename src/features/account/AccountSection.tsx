@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
-import { Button, Card, Eyebrow, Input } from '@/shared/ui';
+import { Button, Card, Eyebrow, Input, PixelImage } from '@/shared/ui';
 import { QrScanner } from './QrScanner';
 import { TotpEnroll, TotpRecover } from './TotpSection';
 import { QuotaNotice } from './QuotaNotice';
 import { PlanSection } from './PlanSection';
+import { avatarSrc } from './avatar';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { accountsEnabled } from './config';
 import { useAccount } from './store';
@@ -142,12 +143,24 @@ function AccountSectionBody() {
         </Card>
       ) : status === 'authenticated' ? (
         <div>
-          <p className="mb-1 text-sm text-content">
-            {ru ? 'Вы вошли.' : 'Signed in.'}
-          </p>
-          <p className="mb-1 font-mono text-2xs text-muted">
-            id: {accountId?.slice(0, 10)}… · {ru ? 'это устройство' : 'this device'}: {deviceId.slice(0, 8)}
-          </p>
+          {/* The avatar is derived from the account id, so it needs no state and matches on every
+              device. It is here because this block otherwise reads as a console dump — a bare hash is
+              a poor thing to greet someone with right after they saved a recovery key. */}
+          <div className="mb-1 flex items-center gap-2.5">
+            {accountId && (
+              <PixelImage
+                src={avatarSrc(accountId)}
+                alt=""
+                className="h-10 w-10 shrink-0 rounded-sm border border-line bg-surface"
+              />
+            )}
+            <div>
+              <p className="text-sm text-content">{ru ? 'Вы вошли.' : 'Signed in.'}</p>
+              <p className="font-mono text-2xs text-muted">
+                id: {accountId?.slice(0, 10)}… · {ru ? 'это устройство' : 'this device'}: {deviceId.slice(0, 8)}
+              </p>
+            </div>
+          </div>
           <QuotaNotice />
           <SyncStatusLine ru={ru} />
           <Button size="sm" variant="ghost" className="mt-3" onClick={() => void logout()}>
