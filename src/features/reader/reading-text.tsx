@@ -599,15 +599,29 @@ const Paragraph = memo(function Paragraph({
                         if (needsAi && !aiReady) navigate(`/pro?from=reader`);
                         else void runAt(si, sentence, m, 0);
                       }}
-                      className="flex items-center gap-2 px-2.5 py-1 font-mono text-2xs text-muted hover:bg-surface-2 hover:text-content"
+                      className="flex items-center gap-2 whitespace-nowrap px-2.5 py-1 font-mono text-2xs text-muted hover:bg-surface-2 hover:text-content"
                     >
                       <span className="w-6 text-teal">{mark}</span>
                       {label}
-                      {needsAi && !aiReady && (
-                        <span className="ml-auto pl-2 text-violet">{lang === 'ru' ? 'что это →' : "what's this →"}</span>
-                      )}
+                      {needsAi && !aiReady && <span className="ml-auto pl-2 text-faint">🔒</span>}
                     </button>
                   ))}
+                  {/* One explanation for both locked rows, not a repeated hint per row — and it names
+                      BOTH ways in, because the same features are free with your own key. Saying only
+                      "Pro" here would hide that. */}
+                  {!aiReady && (
+                    <button
+                      type="button"
+                      role="menuitem"
+                      onClick={() => {
+                        setMenuIdx(null);
+                        navigate('/pro?from=reader');
+                      }}
+                      className="whitespace-nowrap px-2.5 pb-1 pt-0.5 text-left font-mono text-2xs text-violet hover:underline"
+                    >
+                      {lang === 'ru' ? '🔒 нужен ИИ: Pro или свой ключ →' : '🔒 needs AI: Pro or your own key →'}
+                    </button>
+                  )}
                   {onBookmark && (
                     <button
                       type="button"
