@@ -12,6 +12,9 @@ const CATEGORIES: { id: FeedbackCategory; ru: string; en: string }[] = [
   { id: 'other', ru: 'Другое', en: 'Something else' },
 ];
 
+/** Low enough not to nag ("не грузится аудио" passes), high enough to reject "ок" and "...". */
+const MIN_DETAIL = 10;
+
 export function FeedbackForm() {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const lang = useUiLang((s) => s.lang);
@@ -80,14 +83,20 @@ export function FeedbackForm() {
         </div>
       </div>
 
+      {/* Required, not optional. A category on its own ("что-то сломалось" + the auto-collected page)
+          is not actionable — it cannot be reproduced or fixed, so submitting it wastes the reporter's
+          goodwill as much as our time. The hint says WHY the button is inert rather than leaving a
+          greyed-out control with no explanation. */}
       <label className="flex flex-col gap-1.5">
         <span className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          {ru ? 'подробнее (необязательно)' : 'more detail (optional)'}
+          {ru ? 'подробнее' : 'more detail'}
         </span>
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={4}
+          required
+          aria-describedby="feedback-detail-hint"
           placeholder={
             ru
               ? 'напр.: на последнем упражнении не проигрывалось аудио'
@@ -95,6 +104,11 @@ export function FeedbackForm() {
           }
           className="w-full rounded-sm border border-line bg-ink px-3 py-2.5 text-base text-content transition-colors duration-150 placeholder:text-faint focus:border-teal"
         />
+        <span id="feedback-detail-hint" className="text-2xs text-muted">
+          {ru
+            ? 'Пары фраз достаточно — без них не понять, что чинить.'
+            : 'A sentence or two is enough — without it there is nothing to act on.'}
+        </span>
       </label>
 
       <label className="flex flex-col gap-1.5">
@@ -145,7 +159,7 @@ export function FeedbackForm() {
       </div>
 
       <div>
-        <Button onClick={() => void send()} disabled={!category || busy}>
+        <Button onClick={() => void send()} disabled={!category || text.trim().length < MIN_DETAIL || busy}>
           {busy ? (ru ? 'Отправляю…' : 'Sending…') : ru ? 'Отправить' : 'Send'}
         </Button>
       </div>
