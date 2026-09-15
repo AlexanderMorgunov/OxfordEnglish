@@ -2,11 +2,7 @@ import { Link } from 'react-router-dom';
 import { Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { SUPPORT_URL } from '@/features/support/config';
-import {
-  FEATURE_REQUEST_URL,
-  BUG_REPORT_URL,
-  SECURITY_REPORT_URL,
-} from '@/features/community/config';
+import { SECURITY_EMAIL } from '@/features/community/config';
 
 const linkClass =
   'inline-flex items-center justify-center gap-2 rounded-sm px-5 py-3 text-sm font-mono ' +
@@ -101,26 +97,24 @@ export function SupportPage() {
         </div>
       </div>
 
+      {/* No issue tracker or discussions link here on purpose. Inviting contributions we do not intend
+          to service is a promise, and an unanswered issue sitting at the top of the repo tells a
+          prospective user the project is abandoned — worse than no link at all. Feedback has its own
+          in-app form (no account, nothing personal), which is linked above. */}
       <div className="mt-10 border-t border-line pt-8">
         <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          {ru ? 'для разработчиков' : 'for developers'}
+          {ru ? 'безопасность' : 'security'}
         </p>
         <p className="mb-3 text-sm text-muted text-pretty">
           {ru
-            ? 'Проект открыт на GitHub — issues, обсуждения и приватные security-репорты.'
-            : "The project is open on GitHub — issues, discussions and private security reports."}
+            ? 'Нашли уязвимость? Напишите на почту — пожалуйста, не публикуйте её до ответа. Это учебное приложение, но в нём есть аккаунты и оплата, так что сообщения такого рода читаются в первую очередь.'
+            : 'Found a vulnerability? Email it — please do not publish it before we reply. This is a learning app, but it has accounts and payments, so reports like this are read first.'}
         </p>
-        <div className="flex flex-col gap-2 text-sm">
-          <a href={FEATURE_REQUEST_URL} target="_blank" rel="noopener noreferrer" className="text-teal hover:underline">
-            {ru ? '💡 Идеи и голосование (GitHub Discussions) →' : '💡 Ideas & voting (GitHub Discussions) →'}
+        {SECURITY_EMAIL && (
+          <a href={`mailto:${SECURITY_EMAIL}?subject=${encodeURIComponent('DayEnglish security')}`} className="text-sm text-teal hover:underline">
+            🔒 {SECURITY_EMAIL}
           </a>
-          <a href={BUG_REPORT_URL} target="_blank" rel="noopener noreferrer" className="text-teal hover:underline">
-            {ru ? '🐛 Issue на GitHub →' : '🐛 Open a GitHub issue →'}
-          </a>
-          <a href={SECURITY_REPORT_URL} target="_blank" rel="noopener noreferrer" className="text-teal hover:underline">
-            {ru ? '🔒 Сообщить об уязвимости (приватно) →' : '🔒 Report a vulnerability (private) →'}
-          </a>
-        </div>
+        )}
       </div>
     </section>
   );
