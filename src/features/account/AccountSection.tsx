@@ -438,9 +438,12 @@ function BookFileSyncToggle({ ru }: { ru: boolean }) {
       <span>
         {ru ? 'Синхронизировать файлы книг' : 'Sync book files'}
         <span className="block text-2xs text-faint">
+          {/* Says "on all devices" because it now is: without that, the natural reading is that each
+              device decides for itself, and the device where it is off quietly hands the others books
+              they can never open. */}
           {ru
-            ? 'Загружать импортированные книги в облако, чтобы читать их на других устройствах (до 20 МБ на книгу).'
-            : 'Upload imported books to the cloud to read them on other devices (up to 20 MB per book).'}
+            ? 'Загружать импортированные книги в облако, чтобы читать их на других устройствах (до 20 МБ на книгу). Настройка общая для аккаунта и действует на всех ваших устройствах.'
+            : 'Upload imported books to the cloud to read them on other devices (up to 20 MB per book). This setting belongs to the account and applies on all your devices.'}
         </span>
         {quota && (
           <span className="mt-1 block font-mono text-2xs text-muted">
