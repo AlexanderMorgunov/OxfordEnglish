@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Eyebrow } from '@/shared/ui';
 import * as api from './api';
 import { ApiFailure } from './api';
-import { useEntitlement } from './entitlement';
+import { useEntitlement, type TrialClaim } from './entitlement';
 import { beginCheckout, claimPurchase, readPending, formatPrice, type PendingPayment } from './billing';
 import type { BillingPlan, Entitlement } from './contract';
 
@@ -32,6 +32,20 @@ function planLine(e: Entitlement, ru: boolean): string {
   // `trialEndsAt` on a free plan means the trial has been used and has run out (server `evaluate`).
   if (e.trialEndsAt) return ru ? `Пробный период закончился ${date(e.trialEndsAt, ru)}` : `Your free trial ended on ${date(e.trialEndsAt, ru)}`;
   return ru ? 'Бесплатный план' : 'Free plan';
+}
+
+/** One sentence per outcome. This used to be a single line for every failure, which told people the
+ *  trial was already used even when the request had never left the device. */
+function trialNote(outcome: Exclude<TrialClaim, 'ok'>, ru: boolean): string {
+  if (outcome === 'already-claimed') {
+    return ru ? 'Пробный период уже использован на этом устройстве.' : 'The free trial has already been used on this device.';
+  }
+  if (outcome === 'network') {
+    return ru
+      ? 'Не удалось связаться с сервером. Если подписка всё же оформилась, она появится здесь сама.'
+      : 'Could not reach the server. If the trial did start, it will show up here on its own.';
+  }
+  return ru ? 'Не получилось начать пробный период. Попробуйте ещё раз.' : 'Could not start the free trial. Please try again.';
 }
 
 const PRO_PITCH_RU = 'Pro открывает разборы, упрощение текста и перевод в контексте предложения — на нашем ключе, без настройки.';
@@ -86,8 +100,8 @@ export function PlanSection({ ru }: { ru: boolean }) {
   const onTrial = async () => {
     setBusy(true);
     setNote(null);
-    const ok = await claimTrial();
-    if (!ok) setNote(ru ? 'Пробный период уже использован на этом устройстве.' : 'The free trial has already been used on this device.');
+    const outcome = await claimTrial();
+    if (outcome !== 'ok') setNote(trialNote(outcome, ru));
     setBusy(false);
   };
 

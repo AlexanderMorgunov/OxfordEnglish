@@ -8,8 +8,12 @@ const SETTING_KEY = 'reader';
 
 export const FONT_CLASSES = ['text-base', 'text-lg', 'text-xl'] as const;
 export const LEADING_CLASSES = ['leading-relaxed', 'leading-loose'] as const;
-/** Read-aloud playback-speed presets. */
-export const RATE_STEPS = [0.75, 1, 1.25, 1.5] as const;
+/**
+ * Read-aloud playback-speed presets. Weighted below 1× on purpose: a learner slows speech down to
+ * catch it, and rarely speeds up speech they are still decoding. The 1.25× ceiling matches the
+ * recorded-audio players in the reading and listening sections.
+ */
+export const RATE_STEPS = [0.5, 0.75, 1, 1.25] as const;
 
 export type BookmarkSort = 'recent' | 'book';
 
@@ -39,8 +43,17 @@ const DEFAULTS: Persisted = {
 };
 
 const clampStep = (n: number, max: number) => Math.max(0, Math.min(n, max));
-/** SpeechSynthesis rate must stay usable across engines; clamp to a sane two-sided range. */
-const clampRate = (n: number) => Math.max(0.5, Math.min(2, Number.isFinite(n) ? n : 1));
+/**
+ * Snap to the nearest preset. Not just a clamp: a rate saved before the presets changed would
+ * otherwise survive in storage with no button to match it, leaving the row with nothing selected
+ * while narration ran at a speed the user could no longer see or undo.
+ */
+const clampRate = (n: number) => {
+  const wanted = Number.isFinite(n) ? n : 1;
+  return RATE_STEPS.reduce((best, step) =>
+    Math.abs(step - wanted) < Math.abs(best - wanted) ? step : best
+  );
+};
 
 function load(): Persisted {
   try {

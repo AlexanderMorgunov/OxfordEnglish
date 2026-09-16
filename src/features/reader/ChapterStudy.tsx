@@ -6,7 +6,7 @@ import { useVocabStore } from '@/features/vocab/vocabStore';
 import { useLearner } from '@/features/learner/store';
 import { ExerciseView } from '@/features/practice/exercises/ExerciseView';
 import { useAiStore } from '@/features/ai/store';
-import { useAiEnabled, aiAvailable } from '@/features/ai/route';
+import { useAiEnabled, useAiUnknown, aiAvailable } from '@/features/ai/route';
 import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
 import { generateReaderExercises } from '@/features/ai/functions';
 import { estimateCoverage, loadFreq, rankThresholdFor, type FreqIndex } from './difficulty';
@@ -19,6 +19,8 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
   const loadVocab = useVocabStore((s) => s.load);
   const aiConfig = useAiStore((s) => s.config);
   const aiReady = useAiEnabled();
+  // Offer the button when the plan is merely unreadable; the server is the one that can refuse.
+  const aiUnknown = useAiUnknown();
   const [freq, setFreq] = useState<FreqIndex | null>(null);
   const [exercises, setExercises] = useState<Exercise[] | null>(null);
   const [aiState, setAiState] = useState<'idle' | 'loading' | 'error'>('idle');
@@ -107,7 +109,7 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
           <Button variant="ghost" onClick={generate}>
             {ru ? 'Упражнения из этой главы' : 'Exercises from this chapter'}
           </Button>
-          {aiReady && (
+          {(aiReady || aiUnknown) && (
             <Button
               variant="ghost"
               className="border-violet-dim text-violet"

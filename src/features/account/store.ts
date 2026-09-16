@@ -192,11 +192,15 @@ export const useAccount = create<AccountState>((set, get) => {
     },
 
     refresh: async () => {
-      const token = load()?.refreshToken;
-      if (!token) return;
+      if (!load()?.refreshToken) return;
       if (refreshInFlight) return refreshInFlight;
       const run = async () => {
         try {
+          // Read INSIDE the lock. Read outside it and a tab that queues behind another tab's rotation
+          // sends the token that rotation just retired; the server reads a replayed token as theft and
+          // revokes the whole family, dropping every tab to anonymous — with nothing actually stolen.
+          const token = load()?.refreshToken;
+          if (!token) return;
           const session = await api.refresh(token);
           applySession(session);
         } catch (e) {

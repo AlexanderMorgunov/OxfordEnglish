@@ -17,7 +17,7 @@ import { translateWord } from '@/features/vocab/translate';
 import { translateReaderText } from './translate';
 import { addWordCard, addPhraseCard } from '@/features/srs/service';
 import { useAiStore } from '@/features/ai/store';
-import { useAiEnabled } from '@/features/ai/route';
+import { useAiEnabled, useAiUnknown } from '@/features/ai/route';
 import { wordInContext } from '@/features/ai/functions';
 import type { AiConfig } from '@/features/ai/provider';
 import { useUiLang } from '@/features/i18n/uiLang';
@@ -181,6 +181,7 @@ export const WordToken = memo(function WordToken({
   const [done, setDone] = useState(false);
   const config = useAiStore((s) => s.config);
   const aiReady = useAiEnabled();
+  const aiUnknown = useAiUnknown();
   // The in-context meaning shown (AI); its first line is what we save to the word's vocab card.
   const [wicGloss, setWicGloss] = useState<string | null>(null);
 
@@ -252,7 +253,7 @@ export const WordToken = memo(function WordToken({
             : 'unavailable — offline or the free dictionary’s daily limit'}
         </p>
       )}
-      {aiReady && enableContextFetch && sentence.includes(' ') && (
+      {(aiReady || aiUnknown) && enableContextFetch && sentence.includes(' ') && (
         <ContextGloss word={word} sentence={sentence} config={config} onResolved={setWicGloss} />
       )}
       {tokenId && (
@@ -308,6 +309,7 @@ const Paragraph = memo(function Paragraph({
   onRead,
   onReadSentence,
   aiReady,
+  aiUnknown,
   lensK,
   level,
   onLens,
@@ -331,6 +333,9 @@ const Paragraph = memo(function Paragraph({
   onReadSentence: (index: number, sentenceIndex: number, sentence: string) => void;
   /** AI available (BYOK key set) — gates the simplify/grammar items in the per-sentence lens menu. */
   aiReady: boolean;
+  /** Signed in, but the plan is unreadable. Not the same as "no AI": the lock and the paywall link are
+   *  claims about the user's plan, and this is the state where we have no basis for either. */
+  aiUnknown: boolean;
   /** PRIMITIVE key of the lens config (translate sub-mode + band); a change re-renders this memoized
    *  paragraph and clears its result cells so none go stale. The lens MODE is now chosen per sentence. */
   lensK: string;
@@ -596,20 +601,20 @@ const Paragraph = memo(function Paragraph({
                       role="menuitem"
                       onClick={() => {
                         setMenuIdx(null);
-                        if (needsAi && !aiReady) navigate(`/pro?from=reader`);
+                        if (needsAi && !aiReady && !aiUnknown) navigate(`/pro?from=reader`);
                         else void runAt(si, sentence, m, 0);
                       }}
                       className="flex items-center gap-2 whitespace-nowrap px-2.5 py-1 font-mono text-2xs text-muted hover:bg-surface-2 hover:text-content"
                     >
                       <span className="w-6 text-teal">{mark}</span>
                       {label}
-                      {needsAi && !aiReady && <span className="ml-auto pl-2 text-faint">🔒</span>}
+                      {needsAi && !aiReady && !aiUnknown && <span className="ml-auto pl-2 text-faint">🔒</span>}
                     </button>
                   ))}
                   {/* One explanation for both locked rows, not a repeated hint per row — and it names
                       BOTH ways in, because the same features are free with your own key. Saying only
                       "Pro" here would hide that. */}
-                  {!aiReady && (
+                  {!aiReady && !aiUnknown && (
                     <button
                       type="button"
                       role="menuitem"
@@ -685,6 +690,7 @@ export function ReadingText({
   const toggleAiTranslation = useReaderSettings((s) => s.toggleAiTranslation);
   const aiConfig = useAiStore((s) => s.config);
   const aiConfigured = useAiEnabled();
+  const aiUnknown = useAiUnknown();
   // Stable lens callback (reads live mode/config/level via a ref) so the memoized Paragraph gets a constant
   // `onLens` and only re-renders when the primitive `lensK` changes. `translateArgs` still serves the phrase
   // path below.
@@ -1117,7 +1123,7 @@ export function ReadingText({
               : 'translate: free'}
         </button>
         </div>
-        {!aiConfigured && (
+        {!aiConfigured && !aiUnknown && (
           <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 font-mono text-2xs text-muted">
             <span>
               {ru
@@ -1209,6 +1215,7 @@ export function ReadingText({
               onRead={onRead}
               onReadSentence={onReadSentence}
               aiReady={aiConfigured}
+              aiUnknown={aiUnknown}
               lensK={lensK}
               level={level}
               onLens={onLens}

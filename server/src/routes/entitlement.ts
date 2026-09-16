@@ -24,8 +24,15 @@ export function entitlementRoutes(store: EntitlementStore): Hono {
 
     const now = Date.now();
     const row = await store.get(claims.sub);
-    if (row?.trialStartedAt != null) return err(ErrorCode.TrialAlreadyClaimed, 409);
+    // This account already holds the trial, so the answer it is asking for is simply its own state.
+    // Returning an error here left a client whose first response was lost stuck on "free" until the next
+    // boot, with a retry that could only ever make it look worse.
+    if (row?.trialStartedAt != null) return c.json(evaluate(row, now));
     const hash = installHash(body.data.installId);
+    // Stays an error, and the check above is what makes that safe: an account retrying its OWN claim
+    // always has `trialStartedAt` and never reaches here, so this can only be a DIFFERENT account on an
+    // install that already drew a trial. Answering with state would be a silent no — the caller is still
+    // on `free`, the offer stays on screen, and nothing ever explains why the button does nothing.
     if (await store.trialClaimed(hash)) return err(ErrorCode.TrialAlreadyClaimed, 409);
 
     const next = grantTrial(row, claims.sub, now);

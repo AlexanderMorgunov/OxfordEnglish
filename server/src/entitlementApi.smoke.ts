@@ -47,8 +47,12 @@ check('claim trial → 200 trial with the one-time budget', claim.status === 200
 check('trial reports an end date and no quota reset', typeof trial.trialEndsAt === 'number' && trial.ai.resetsAt === undefined);
 check('GET reflects the claim', (await getEnt(tokenA)).plan === 'trial');
 
+// Idempotent on purpose: a client whose first answer was lost retries, and must be able to learn that
+// it already has what it asked for instead of being told it cannot have it.
 const again = await post('/v1/entitlement/trial', { installId: INSTALL }, tokenA);
-check('re-claiming on the same account → 409', again.status === 409);
+const againBody = (await again.json()) as Entitlement;
+check('re-claiming on the same account → 200 with the same trial', again.status === 200 && againBody.plan === 'trial');
+check('the retry does not extend the trial', againBody.trialEndsAt === trial.trialEndsAt);
 
 // The abuse path: drop the account, register a new one, claim from the same install.
 await app.request('/v1/account', { method: 'DELETE', headers: { authorization: `Bearer ${tokenA}` } });
