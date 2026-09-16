@@ -139,13 +139,34 @@ describe('claimPurchase', () => {
     expect(api.redeemGrant).not.toHaveBeenCalled();
   });
 
-  it('never reaches the server while a local token is still worth retrying', async () => {
+  // This used to stop at `pending` and never ask. That short-circuit disabled the lookup in exactly the
+  // cases it was built for: a token overwritten by a second checkout, and a token already spent — both
+  // leaving a paid account on "payment pending" for three days while the server held the answer.
+  it('still asks the server when the local token is going nowhere', async () => {
+    vi.mocked(api.startCheckout).mockResolvedValue(CHECKOUT);
+    await beginCheckout('pro_month');
+    vi.mocked(api.redeemGrant).mockRejectedValueOnce(invalid()).mockRejectedValueOnce(invalid());
+    vi.mocked(api.unclaimedGrant).mockResolvedValue('other-token-0123456789');
+    vi.mocked(api.redeemGrant).mockResolvedValueOnce({ plan: 'pro', active: true, ai: { used: 0, limit: 10000 } });
+
+    expect(await claimPurchase(2, 0)).toBe('granted');
+    expect(api.unclaimedGrant).toHaveBeenCalled();
+  });
+
+  it('keeps saying pending when the server has nothing either', async () => {
     vi.mocked(api.startCheckout).mockResolvedValue(CHECKOUT);
     await beginCheckout('pro_month');
     vi.mocked(api.redeemGrant).mockRejectedValue(invalid());
+    vi.mocked(api.unclaimedGrant).mockResolvedValue(null);
 
     expect(await claimPurchase(2, 0)).toBe('pending');
-    expect(api.unclaimedGrant).not.toHaveBeenCalled();
+  });
+
+  // "No purchase on this account" is a claim about the account. A request that never arrived is no
+  // basis for making it.
+  it('does not declare an account empty when it could not reach the server', async () => {
+    vi.mocked(api.unclaimedGrant).mockRejectedValue(new ApiFailure('network', 0));
+    expect(await claimPurchase(1, 0)).toBe('unreachable');
   });
 });
 

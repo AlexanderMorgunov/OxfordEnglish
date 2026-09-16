@@ -84,7 +84,10 @@ export type ClaimOutcome =
    * apart — and guessing "failed" at someone who has just been charged is the worse mistake. Stale
    * records expire on their own (PENDING_TTL_MS).
    */
-  | 'pending';
+  | 'pending'
+  /** We could not reach the server, so we know nothing — distinct from `none`, which is the server
+   *  telling us this account is owed nothing. */
+  | 'unreachable';
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
@@ -131,19 +134,26 @@ export async function claimPending(attempts = 10, intervalMs = 3000): Promise<Cl
  */
 export async function claimPurchase(attempts = 5, intervalMs = 2000): Promise<ClaimOutcome> {
   const local = await claimPending(attempts, intervalMs);
-  if (local !== 'none') return local;
+  if (local === 'granted') return local;
+  // Anything short of granted must still ask the server. Returning `pending` here short-circuited the
+  // lookup in exactly the two cases it was built for: a token overwritten by a second checkout, and a
+  // token already spent — both leaving a paid account on "payment pending" for the full three days
+  // while the server held the answer all along.
 
   const token = await useAccount.getState().getAccessToken();
-  if (!token) return 'none';
+  if (!token) return local === 'pending' ? 'pending' : 'unreachable';
   try {
     const grantToken = await api.unclaimedGrant(token);
-    if (!grantToken) return 'none';
+    if (!grantToken) return local === 'pending' ? 'pending' : 'none';
     await api.redeemGrant(token, grantToken);
     await useEntitlement.getState().load();
     return 'granted';
-  } catch {
-    // Nothing recoverable to say: either there is no purchase, or the network is down.
-    return 'none';
+  } catch (e) {
+    // "No purchase on this account" is a claim about the account, and a failed request is no basis for
+    // it. Only the server saying so — an answer that arrived — can mean nothing is owed.
+    const code = e instanceof ApiFailure ? e.code : 'network';
+    if (code === 'network') return 'unreachable';
+    return local === 'pending' ? 'pending' : 'none';
   }
 }
 

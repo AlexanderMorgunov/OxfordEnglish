@@ -142,6 +142,15 @@ export function PlanSection({ ru }: { ru: boolean }) {
           : 'This account has no purchase outstanding.'
       );
     }
+    // Saying "nothing outstanding" here would be a statement about the account made without an answer
+    // from the server — the one thing that could actually say it.
+    if (outcome === 'unreachable') {
+      setNote(
+        ru
+          ? 'Не удалось связаться с сервером — проверить покупку сейчас нельзя. Попробуйте ещё раз, когда появится связь.'
+          : 'Could not reach the server, so the purchase cannot be checked right now. Try again once you are back online.'
+      );
+    }
     setBusy(false);
   };
 
