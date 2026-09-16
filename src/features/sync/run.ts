@@ -86,6 +86,7 @@ export function initSync(): void {
   void claimPending(1);
   if (typeof window !== 'undefined') window.addEventListener('online', () => void triggerSync());
   let wasAuthed = useAccount.getState().status === 'authenticated';
+  let wasAccount = useAccount.getState().accountId;
   useAccount.subscribe((state) => {
     const authed = state.status === 'authenticated';
     if (authed && !wasAuthed) {
@@ -95,8 +96,15 @@ export function initSync(): void {
       // against until this moment.
       void claimPending(1);
     }
+    // Switching accounts never passes through anonymous, so neither branch above fires and the previous
+    // account's plan would survive into the new session — one account showing another's Pro.
+    if (authed && wasAuthed && state.accountId !== wasAccount) {
+      useEntitlement.getState().clear();
+      void useEntitlement.getState().load();
+    }
     // Signing out must drop the plan too, or the AI affordances stay visible with no token behind them.
     if (!authed && wasAuthed) useEntitlement.getState().clear();
     wasAuthed = authed;
+    wasAccount = state.accountId;
   });
 }

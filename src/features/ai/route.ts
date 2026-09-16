@@ -1,9 +1,10 @@
 import * as api from '@/features/account/api';
 import { ApiFailure } from '@/features/account/api';
 import { useAccount } from '@/features/account/store';
-import { useEntitlement, managedAiAvailable, hasManagedAi } from '@/features/account/entitlement';
+import { useEntitlement, managedAiAvailable, planUnreadable, hasManagedAi } from '@/features/account/entitlement';
 import type { AiTaskRequest } from '@/features/account/contract';
 import { isConfigured, useAiStore } from './store';
+import { upsellTarget } from './upsell';
 import type { AiConfig } from './provider';
 
 /**
@@ -19,7 +20,10 @@ export async function runTask(
   config: AiConfig | null,
   byok: (config: AiConfig) => Promise<string>
 ): Promise<string> {
-  if (managedAiAvailable()) {
+  // `planUnreadable` is in here deliberately: refusing locally when we simply have no answer is how a
+  // subscriber on a bad connection got told to buy what they already own. Ask the proxy and let its
+  // 401/402 be the refusal — it is the only party that actually knows.
+  if (managedAiAvailable() || planUnreadable()) {
     try {
       const token = await useAccount.getState().getAccessToken();
       if (token) {
@@ -55,4 +59,16 @@ export function useAiEnabled(): boolean {
   const config = useAiStore((s) => s.config);
   const entitlement = useEntitlement((s) => s.entitlement);
   return isConfigured(config) || hasManagedAi(entitlement);
+}
+
+/**
+ * Reactive "we cannot tell": no key of their own, signed in, and no answer about the plan. A surface
+ * that locks on `!useAiEnabled()` must check this too — the lock is a statement about the user's plan,
+ * and this is exactly the state where we have no right to make one.
+ */
+export function useAiUnknown(): boolean {
+  const config = useAiStore((s) => s.config);
+  const status = useAccount((s) => s.status);
+  const entitlement = useEntitlement((s) => s.entitlement);
+  return !isConfigured(config) && upsellTarget(status, entitlement) === 'unknown';
 }

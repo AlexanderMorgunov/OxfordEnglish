@@ -14,17 +14,41 @@ import type { Entitlement } from './contract';
  * the BYOK path (and the free translator) stay available either way — accounts are additive, never a
  * precondition for the app working.
  */
+/**
+ * Why a trial claim ended the way it did. A bare boolean made every failure read as
+ * "already used it" — including the case where no request was ever sent.
+ */
+export type TrialClaim = 'ok' | 'already-claimed' | 'network' | 'failed';
+
 type EntitlementState = {
   entitlement: Entitlement | null;
   loading: boolean;
   /** Last error code from a claim attempt, for the UI to explain (e.g. `trial_already_claimed`). */
   error: string | null;
   load: () => Promise<void>;
-  claimTrial: () => Promise<boolean>;
+  claimTrial: () => Promise<TrialClaim>;
   clear: () => void;
   /** Apply the quota figures the AI proxy returns, so the counter moves without an extra round-trip. */
   applyUsage: (ai: Entitlement['ai']) => void;
 };
+
+/**
+ * Whether a usage block returned by the AI proxy is newer than the one we hold.
+ *
+ * The proxy computes its figures when the request reaches it, so an answer can arrive after the plan
+ * underneath it has changed. Applied blindly, a reply computed under a spent trial and delivered after
+ * a purchase gave a fresh subscriber `used >= limit` and no `resetsAt` — which the upsell logic reads
+ * as "trial over, pay up", to someone who had just paid.
+ */
+function acceptsUsage(current: Entitlement['ai'], next: Entitlement['ai']): boolean {
+  // A different budget means a different plan window: the answer was computed against a plan we are no
+  // longer on. The next load() carries the authoritative figures.
+  if (current.limit !== next.limit) return false;
+  // A new window legitimately resets the counter, so it is the one case where `used` may fall.
+  if (current.resetsAt !== next.resetsAt) return true;
+  // Same window: two calls in flight can resolve out of order, and usage only ever grows.
+  return next.used >= current.used;
+}
 
 export const useEntitlement = create<EntitlementState>((set, get) => ({
   entitlement: null,
@@ -33,10 +57,10 @@ export const useEntitlement = create<EntitlementState>((set, get) => ({
 
   load: async () => {
     const token = await useAccount.getState().getAccessToken();
-    if (!token) {
-      set({ entitlement: null });
-      return;
-    }
+    // No token is not "no plan": `getAccessToken` returns null whenever a refresh fails, which on a bad
+    // connection it does silently. Nulling here downgraded a paying subscriber mid-session — the very
+    // thing the catch below refuses to do. Signing out clears this explicitly (features/sync/run.ts).
+    if (!token) return;
     set({ loading: true });
     try {
       set({ entitlement: await api.getEntitlement(token), error: null });
@@ -49,14 +73,27 @@ export const useEntitlement = create<EntitlementState>((set, get) => ({
 
   claimTrial: async () => {
     const token = await useAccount.getState().getAccessToken();
-    if (!token) return false;
+    // Nothing was sent, and re-checking would ask the same question of the same failed refresh.
+    if (!token) {
+      set({ error: 'network' });
+      return 'network';
+    }
     set({ loading: true, error: null });
     try {
       set({ entitlement: await api.claimTrial(token, await getInstallId()) });
-      return true;
+      return 'ok';
     } catch (e) {
-      set({ error: e instanceof ApiFailure ? e.code : 'network' });
-      return false;
+      const code = e instanceof ApiFailure ? e.code : 'network';
+      // The grant may well have landed with only the answer lost — on a flaky link that is the likeliest
+      // reading. Ask the server what it holds before telling someone their trial failed.
+      await get().load();
+      if (get().entitlement?.active) {
+        set({ error: null });
+        return 'ok';
+      }
+      set({ error: code });
+      if (code === 'trial_already_claimed') return 'already-claimed';
+      return code === 'network' ? 'network' : 'failed';
     } finally {
       set({ loading: false });
     }
@@ -66,7 +103,8 @@ export const useEntitlement = create<EntitlementState>((set, get) => ({
 
   applyUsage: (ai) => {
     const current = get().entitlement;
-    if (current) set({ entitlement: { ...current, ai } });
+    if (!current || !acceptsUsage(current.ai, ai)) return;
+    set({ entitlement: { ...current, ai } });
   },
 }));
 
@@ -77,6 +115,14 @@ export function hasManagedAi(e: Entitlement | null): boolean {
 
 /** Non-hook read for module-level code (lens/translate helpers) that isn't inside a component. */
 export const managedAiAvailable = (): boolean => hasManagedAi(useEntitlement.getState().entitlement);
+
+/**
+ * Signed in, but we hold no answer about the plan — a cold start, or a request that did not land.
+ * Distinct from "no plan": the server may well grant this, so the only honest move is to ask it rather
+ * than to decide locally that the user cannot have the feature.
+ */
+export const planUnreadable = (): boolean =>
+  useAccount.getState().status === 'authenticated' && useEntitlement.getState().entitlement === null;
 
 /** How much of the AI budget is gone. `spent` gates the managed path; `warn` is the heads-up before it. */
 export const QUOTA_WARN_AT = 0.8;
