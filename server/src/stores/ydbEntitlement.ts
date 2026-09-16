@@ -13,7 +13,16 @@
  * See docs/yc-backend-setup.md for the DDL.
  */
 import { randomBytes } from 'node:crypto';
-import { bindHash, type EntitlementStore, type EntitlementRow, type Mutation, type GrantDraft, type GrantPaidResult } from '../entitlements.js';
+import {
+  bindHash,
+  applyPayment,
+  type EntitlementStore,
+  type EntitlementRow,
+  type Mutation,
+  type GrantDraft,
+  type GrantPaidResult,
+  type RedeemResult,
+} from '../entitlements.js';
 import { query, withSerializableTx, TypedValues as T, Types, num } from '../ydb.js';
 
 /** YDB Timestamp comes back as a Date (or micros); normalize to epoch ms. */
@@ -175,8 +184,15 @@ export class YdbEntitlementStore implements EntitlementStore {
    * offering the token at all.
    */
   async findUnclaimedGrant(accountId: string): Promise<string | null> {
+    // The index carries only `bound_to`, so `paid`/`redeemed`/`created_at` are filtered and ordered
+    // below — which means this LIMIT is an ARBITRARY window, not the newest rows. At 50 it was reachable:
+    // every checkout tap mints a grant, abandoned ones are never cleaned up, and `payment_grants` has no
+    // TTL by design (it is the payment record). Once an account crossed 50 rows, a real purchase could
+    // fall outside the window and this endpoint would answer "nothing to claim" to someone who had paid.
+    // A proper fix is an index on (bound_to, created_at) so the scan can be ordered and truly bounded;
+    // until then the window is wide enough that reaching it takes hundreds of abandoned checkouts.
     const [indexRows] = await query(
-      'DECLARE $b AS Utf8; SELECT grant_token FROM payment_grants VIEW by_bound WHERE bound_to=$b LIMIT 50;',
+      'DECLARE $b AS Utf8; SELECT grant_token FROM payment_grants VIEW by_bound WHERE bound_to=$b LIMIT 1000;',
       { $b: T.utf8(bindHash(accountId)) }
     );
     const tokens = indexRows.map((r) => String(r.grant_token)).filter(Boolean);
@@ -211,6 +227,61 @@ export class YdbEntitlementStore implements EntitlementStore {
       const days = num(r.days);
       await tx.exec('DECLARE $g AS Utf8; UPSERT INTO payment_grants (grant_token, redeemed) VALUES ($g, true);', { $g: T.utf8(token) }, true);
       return days;
+    });
+  }
+
+  /** The grant flip and the entitlement write share one serializable transaction: either the buyer gets
+   *  their days or the grant stays unspent, never the gap between the two. */
+  async redeemInto(token: string, accountId: string, now: number): Promise<RedeemResult> {
+    return withSerializableTx<RedeemResult>(async (tx) => {
+      const [grants] = await tx.exec(
+        'DECLARE $g AS Utf8; SELECT days, paid, redeemed, bound_to FROM payment_grants WHERE grant_token=$g;',
+        { $g: T.utf8(token) }
+      );
+      const g = grants[0];
+      const mine = g?.bound_to != null && String(g.bound_to) === bindHash(accountId);
+      // NULL on a row written before billing existed, and unpaid is the safe reading of an unknown.
+      if (!g || g.paid !== true || !mine) {
+        await tx.exec('SELECT 1;', {}, true);
+        return { status: 'invalid' };
+      }
+
+      const [entRows] = await tx.exec(
+        'DECLARE $a AS Utf8; SELECT trial_started_at, paid_until, ai_used, window_started_at FROM entitlements WHERE account_id=$a;',
+        { $a: T.utf8(accountId) }
+      );
+      const e = entRows[0];
+      const current: EntitlementRow | null = e
+        ? {
+            accountId,
+            trialStartedAt: e.trial_started_at == null ? undefined : tsMs(e.trial_started_at),
+            paidUntil: e.paid_until == null ? undefined : tsMs(e.paid_until),
+            aiUsed: num(e.ai_used),
+            windowStartedAt: tsMs(e.window_started_at),
+          }
+        : null;
+
+      if (g.redeemed === true) {
+        await tx.exec('SELECT 1;', {}, true);
+        return { status: 'already', row: current };
+      }
+
+      const next = applyPayment(current, accountId, now, num(g.days));
+      // Partial UPSERT, as in redeemGrant: payment_ref, days and created_at are the audit trail.
+      await tx.exec('DECLARE $g AS Utf8; UPSERT INTO payment_grants (grant_token, redeemed) VALUES ($g, true);', { $g: T.utf8(token) });
+      await tx.exec(
+        'DECLARE $a AS Utf8; DECLARE $t AS Timestamp?; DECLARE $p AS Timestamp?; DECLARE $u AS Uint32; DECLARE $w AS Timestamp;' +
+          'UPSERT INTO entitlements (account_id, trial_started_at, paid_until, ai_used, window_started_at) VALUES ($a, $t, $p, $u, $w);',
+        {
+          $a: T.utf8(next.accountId),
+          $t: optTs(next.trialStartedAt),
+          $p: optTs(next.paidUntil),
+          $u: T.uint32(next.aiUsed),
+          $w: T.timestamp(new Date(next.windowStartedAt)),
+        },
+        true
+      );
+      return { status: 'applied', row: next };
     });
   }
 

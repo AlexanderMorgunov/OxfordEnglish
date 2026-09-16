@@ -10,6 +10,7 @@ import { useAccount } from '@/features/account/store';
 import { useEntitlement } from '@/features/account/entitlement';
 import { claimPending } from '@/features/account/billing';
 import { ApiFailure, syncPull, syncPush } from '@/features/account/api';
+import { syncAllBookFiles } from '@/features/reader/blobSync';
 import { syncWith, type SyncTransport } from './engine';
 import { hydrateSettings } from './settingsBridge';
 import { setSyncStatus, useSyncStatus } from './status';
@@ -39,6 +40,8 @@ export async function triggerSync(): Promise<void> {
   setSyncStatus({ phase: 'syncing' });
   try {
     const { pushBlocked } = await syncWith(account, transport());
+    cancelRetry(); // a cycle got through; the backoff starts from scratch next time one does not
+    void sweepBookFiles();
     await hydrateSettings(); // apply any settings other devices just pushed
     setSyncStatus({
       // Refused for want of a plan is not a failure: the download half ran, the local queue is intact,
@@ -48,12 +51,53 @@ export async function triggerSync(): Promise<void> {
       pending: await pendingCount(),
     });
   } catch {
-    // soft — a later trigger retries; offline errors just leave the dirty queue intact
     const offline = typeof navigator !== 'undefined' && navigator.onLine === false;
     setSyncStatus({ phase: offline ? 'offline' : 'error', pending: await pendingCount() });
+    scheduleRetry();
   } finally {
     running = false;
   }
+}
+
+
+/** A failed book-file upload had no retry at all: it was fired and forgotten from the import path, and
+ *  the only thing that ever tried again was switching the setting off and on. `syncAllBookFiles` lists
+ *  what the cloud already holds and uploads the rest, so re-running it is safe; throttling keeps it off
+ *  the hot path, since a sync cycle can follow every few local writes. */
+const BOOK_SWEEP_EVERY_MS = 10 * 60_000;
+let lastBookSweep = 0;
+
+async function sweepBookFiles(): Promise<void> {
+  if (Date.now() - lastBookSweep < BOOK_SWEEP_EVERY_MS) return;
+  lastBookSweep = Date.now();
+  await syncAllBookFiles().catch(() => undefined);
+}
+
+/** Backoff schedule for a failed cycle, in ms. Ends rather than looping forever: past a few minutes the
+ *  app is almost certainly in the background, and returning to the tab triggers a fresh attempt. */
+const RETRY_DELAYS = [15_000, 30_000, 60_000, 120_000, 300_000];
+let retryAt = 0;
+let retryTimer: ReturnType<typeof setTimeout> | null = null;
+
+/**
+ * The UI says "we'll retry later", so something has to. Nothing did: the triggers were app open, the
+ * `online` event, signing in, and a local write — and on a VPN or a flaky link `navigator.onLine` stays
+ * true, so `online` never fires. A failed sync simply sat there until the user reloaded the page.
+ */
+function scheduleRetry(): void {
+  if (retryTimer || retryAt >= RETRY_DELAYS.length) return;
+  const delay = RETRY_DELAYS[retryAt];
+  retryAt += 1;
+  retryTimer = setTimeout(() => {
+    retryTimer = null;
+    void triggerSync();
+  }, delay);
+}
+
+function cancelRetry(): void {
+  if (retryTimer) clearTimeout(retryTimer);
+  retryTimer = null;
+  retryAt = 0;
 }
 
 let scheduled: ReturnType<typeof setTimeout> | null = null;
@@ -85,6 +129,16 @@ export function initSync(): void {
   // per boot picks that up; with nothing pending it does not even touch the network.
   void claimPending(1);
   if (typeof window !== 'undefined') window.addEventListener('online', () => void triggerSync());
+  // Coming back to the tab is the most reliable "the network is probably fine now" signal there is — and
+  // unlike `online`, it fires on a VPN, where the browser never thought anything was wrong.
+  if (typeof document !== 'undefined') {
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState !== 'visible') return;
+      cancelRetry();
+      void triggerSync();
+      if (useSyncStatus.getState().phase === 'error') void useEntitlement.getState().load();
+    });
+  }
   let wasAuthed = useAccount.getState().status === 'authenticated';
   let wasAccount = useAccount.getState().accountId;
   useAccount.subscribe((state) => {

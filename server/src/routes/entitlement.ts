@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import { ErrorCode, TrialClaimRequestSchema, RedeemRequestSchema } from '../contract.js';
 import { bearerClaims } from '../tokens.js';
-import { evaluate, grantTrial, applyPayment, installHash, type EntitlementStore } from '../entitlements.js';
+import { evaluate, grantTrial, installHash, type EntitlementStore } from '../entitlements.js';
 
 const err = (code: string, status: 400 | 401 | 409) => Response.json({ error: { code } }, { status });
 
@@ -47,12 +47,12 @@ export function entitlementRoutes(store: EntitlementStore): Hono {
     const body = RedeemRequestSchema.safeParse(await c.req.json().catch(() => null));
     if (!body.success) return err(ErrorCode.BadRequest, 400);
 
-    const days = await store.redeemGrant(body.data.grantToken, claims.sub);
-    if (days == null) return err(ErrorCode.GrantInvalid, 400);
     const now = Date.now();
-    const next = applyPayment(await store.get(claims.sub), claims.sub, now, days);
-    await store.put(next);
-    return c.json(evaluate(next, now));
+    const res = await store.redeemInto(body.data.grantToken, claims.sub, now);
+    if (res.status === 'invalid') return err(ErrorCode.GrantInvalid, 400);
+    // `already` is not a failure: the grant is this account's own and its days are on the row. Saying
+    // "invalid" here is what left a buyer whose answer was lost retrying a purchase they already had.
+    return c.json(evaluate(res.row, now));
   });
 
   return app;

@@ -177,7 +177,20 @@ export const useAccount = create<AccountState>((set, get) => {
       try {
         const newKey = generateRecoveryKey();
         const verifier = await deriveVerifier(newKey);
-        const session = await api.totpRecover({ accountId: accountId.trim(), code: code.trim(), verifier, deviceName: deviceName() });
+        let session;
+        try {
+          session = await api.totpRecover({ accountId: accountId.trim(), code: code.trim(), verifier, deviceName: deviceName() });
+        } catch (e) {
+          // The rebind may have landed with only the answer lost — and `newKey` exists nowhere but this
+          // closure, while the OLD key is already dead on the server. Throwing here would close the
+          // account for good. The new key either works as a credential or it does not, so ask.
+          if (!(e instanceof ApiFailure) || e.code !== 'network') throw e;
+          session = await api.login({
+            ...(await deriveCredentials(formatCompositeKey(accountId.trim(), newKey))),
+            deviceName: deviceName(),
+            deviceId: get().deviceId,
+          });
+        }
         await maybeSwitchWipe(session.accountId);
         applySession(session);
         // The id comes from the SERVER's response, not the typed-in one: it is the id the credential must

@@ -42,6 +42,11 @@ const enroll = (await (await post('/v1/totp/enroll', {}, token)).json()) as { se
 check('enroll returns a base32 secret', /^[A-Z2-7]{32}$/.test(enroll.secret));
 check('the otpauth label carries the account id (the only way back to it)', enroll.uri.includes(encodeURIComponent(ACC)));
 
+// A retry, a reload or a second tab used to mint a NEW secret over the pending one, so the QR the user
+// had just scanned produced codes confirm rejected — each rejection counted toward a lockout.
+const enrollAgain = (await (await post('/v1/totp/enroll', {}, token)).json()) as { secret: string; uri: string };
+check('enrolling again before confirm keeps the scanned secret', enrollAgain.secret === enroll.secret);
+
 const secret = base32Decode(enroll.secret);
 const codeNow = () => codeForStep(secret, stepAt(Date.now()));
 // The routes read the real clock, and a spent step stays spent for its whole 30 s life, so back-to-back
@@ -78,6 +83,24 @@ const statusAfter = (await (await get('/v1/totp/status', token)).json()) as { en
 check('status reports enrolled with ten codes left', statusAfter.enrolled && statusAfter.backupCodesLeft === 10);
 check('enrolling twice → 409', (await post('/v1/totp/enroll', {}, token)).status === 409);
 
+// Codes are shown once and stored as hashes, so a dropped response used to destroy them outright:
+// enrolled, no codes, and every retry answering "already enrolled". This is the way back.
+check('fresh codes need a real one', (await post('/v1/totp/backup-codes', { code: '000000' }, token)).status === 401);
+await laterStep(ACC);
+const reissued = await post('/v1/totp/backup-codes', { code: codeNow() }, token);
+const freshCodes = ((await reissued.json()) as { backupCodes: string[] }).backupCodes;
+check('a live code reissues ten codes', reissued.status === 200 && freshCodes.length === 10);
+check('the reissued set is not the old one', freshCodes[0] !== backupCodes[0]);
+check(
+  'reissuing replaces rather than adds',
+  ((await (await get('/v1/totp/status', token)).json()) as { backupCodesLeft: number }).backupCodesLeft === 10
+);
+// The old list must be worthless the moment a new one exists, or losing a printout keeps its value.
+check(
+  'an old backup code no longer recovers',
+  (await post('/v1/totp/recover', { accountId: ACC, code: backupCodes[9]!, verifier: NEW_VERIFIER })).status === 401
+);
+
 // --- recovery must not be an account-id oracle ---
 const unknown = await post('/v1/totp/recover', { accountId: 'acc-nosuchaccount00000', code: codeNow(), verifier: NEW_VERIFIER });
 const wrongCode = await post('/v1/totp/recover', { accountId: ACC, code: '000000', verifier: NEW_VERIFIER });
@@ -103,11 +126,11 @@ check('the NEW key logs in to the same account', loginNew.status === 200 && ((aw
 check('sessions from before the rebind are revoked', (await post('/v1/auth/refresh', { refreshToken: reg.refreshToken })).status === 401);
 
 // --- backup codes are single-use ---
-const viaBackup = await post('/v1/totp/recover', { accountId: ACC, code: backupCodes[0]!, verifier: NEW_VERIFIER });
+const viaBackup = await post('/v1/totp/recover', { accountId: ACC, code: freshCodes[0]!, verifier: NEW_VERIFIER });
 const backupBody = (await viaBackup.json()) as { usedBackupCode: boolean; backupCodesLeft: number };
 check('a backup code recovers the account', viaBackup.status === 200 && backupBody.usedBackupCode === true);
 check('the used code is burned (nine left)', backupBody.backupCodesLeft === 9);
-check('replaying the same backup code → 401', (await post('/v1/totp/recover', { accountId: ACC, code: backupCodes[0]!, verifier: NEW_VERIFIER })).status === 401);
+check('replaying the same backup code → 401', (await post('/v1/totp/recover', { accountId: ACC, code: freshCodes[0]!, verifier: NEW_VERIFIER })).status === 401);
 
 // --- guessing is throttled per account ---
 let sawRateLimit = false;

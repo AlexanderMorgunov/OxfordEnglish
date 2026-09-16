@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { Button } from '@/shared/ui';
 import { AiUpsellLink } from './AiUpsellLink';
 import { useAiStore } from './store';
-import { useAiEnabled } from './route';
+import { useAiEnabled, useAiUnknown } from './route';
+import { useUiLang } from '@/features/i18n/uiLang';
+import { ApiFailure } from '@/features/account/api';
 import type { AiConfig } from './provider';
 
 type Props = {
@@ -11,14 +13,29 @@ type Props = {
   onRun?: () => void;
 };
 
+
+/** One readable sentence per failure the AI path can actually produce. */
+function aiErrorText(e: unknown, ru: boolean): string {
+  const code = e instanceof ApiFailure ? e.code : '';
+  if (code === 'quota_exhausted') return ru ? 'Запросы ИИ на этот период израсходованы.' : 'The AI budget for this period is spent.';
+  if (code === 'no_plan') return ru ? 'Для этого нужна подписка или свой ключ ИИ.' : 'This needs a subscription or your own AI key.';
+  if (code === 'network') return ru ? 'Нет связи с сервером — попробуйте позже.' : 'No connection to the server — try again later.';
+  if (code === 'rate_limited') return ru ? 'Слишком часто. Подождите немного.' : 'Too many requests. Wait a moment.';
+  return ru ? 'ИИ не ответил. Попробуйте ещё раз.' : 'The AI did not answer. Try again.';
+}
+
 export function AiAction({ label, run, onRun }: Props) {
   const config = useAiStore((s) => s.config);
   const enabled = useAiEnabled();
+  const unknown = useAiUnknown();
+  const ru = useUiLang((s) => s.lang) === 'ru';
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  if (!enabled) {
+  //  means we could not read the plan, not that there is none — let the request go and the
+  // server answer. Refusing here is how a subscriber got shown an upsell for what they already own.
+  if (!enabled && !unknown) {
     return <AiUpsellLink />;
   }
 
@@ -29,7 +46,8 @@ export function AiAction({ label, run, onRun }: Props) {
     try {
       setText(await run(config));
     } catch (e) {
-      setError((e as Error).message);
+      // Raw messages leaked internal codes and an English literal into a Russian UI.
+      setError(aiErrorText(e, ru));
     } finally {
       setLoading(false);
     }

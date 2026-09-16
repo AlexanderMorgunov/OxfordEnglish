@@ -97,7 +97,14 @@ const ok = await post('/v1/entitlement/redeem', { grantToken: grant2 }, tokenC);
 const pro = (await ok.json()) as Entitlement;
 check('redeem → pro with the monthly quota', ok.status === 200 && pro.plan === 'pro' && pro.ai.limit === PRO_AI_REQUESTS);
 check('pro reports a quota reset date', typeof pro.ai.resetsAt === 'number');
-check('grant is one-time', (await post('/v1/entitlement/redeem', { grantToken: grant2 }, tokenC)).status === 400);
+// One-time in the sense that matters — the days are applied once — but the buyer's OWN retry answers
+// with what they already hold rather than "invalid", so a lost response repairs itself instead of
+// reading as a failed payment.
+const twice = await post('/v1/entitlement/redeem', { grantToken: grant2 }, tokenC);
+const again2 = (await twice.json()) as Entitlement;
+check('the buyer re-redeeming their own grant → 200 with the plan they hold', twice.status === 200 && again2.plan === 'pro');
+check('a second redeem does not add a second month', again2.paidUntil === pro.paidUntil);
+check('someone else re-redeeming a spent grant still → 400', (await post('/v1/entitlement/redeem', { grantToken: grant2 }, tokenD)).status === 400);
 
 console.log(failures === 0 ? '\nentitlement API: all checks passed' : `\nentitlement API: ${failures} FAILED`);
 // Set the code and let the loop drain: forcing exit() while a wasm/grpc handle is mid-close trips a

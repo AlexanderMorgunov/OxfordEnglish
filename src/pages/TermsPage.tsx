@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { Eyebrow } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { BLOB_MAX_BYTES, BLOB_ACCOUNT_MAX_BYTES } from '@/features/account/contract';
+import { SELLER } from '@/shared/seller';
 
 /**
  * Public offer + service terms (`/terms`).
@@ -15,11 +16,7 @@ import { BLOB_MAX_BYTES, BLOB_ACCOUNT_MAX_BYTES } from '@/features/account/contr
  * This is not legal advice; the owner should have counsel review it.
  */
 
-const SITE = 'https://dayenglish.ru';
-const OWNER = 'Моргунов Александр Сергеевич';
-const INN = '361302397520';
-const EMAIL = 'morgunowalex@gmail.com';
-const PHONE = '+7 995 040-35-70';
+const { name: OWNER, inn: INN, email: EMAIL, phone: PHONE, site: SITE } = SELLER;
 
 /** Quotas are stated in the contract, so they must come from the same constants the server enforces. */
 const BLOB_PER_BOOK_MB = Math.round(BLOB_MAX_BYTES / (1024 * 1024));
@@ -230,23 +227,102 @@ function Service({ ru }: { ru: boolean }) {
   );
 }
 
+/** Numbered steps, so the path a buyer has to walk is literally a list and not a paragraph to parse. */
+function Steps({ items }: { items: string[] }) {
+  return (
+    <ol className="ml-4 list-decimal space-y-2 marker:font-mono marker:text-teal">
+      {items.map((s, i) => (
+        <li key={i}>{s}</li>
+      ))}
+    </ol>
+  );
+}
+
+function Order({ ru }: { ru: boolean }) {
+  return (
+    <Section title={ru ? 'Как оформить заказ и когда услуга оказана' : 'Ordering, and when the service is delivered'}>
+      <p>
+        {ru
+          ? 'Услуга оказывается дистанционно через сайт и приложение. Физической доставки нет: доступ к платным функциям открывается в том же аккаунте, в котором была произведена оплата.'
+          : 'The service is delivered online through the site and the app. There is nothing to ship: the paid features switch on inside the same account that paid for them.'}
+      </p>
+      <Steps
+        items={
+          ru
+            ? [
+                'Создайте аккаунт в приложении: «Настройки» → «Аккаунт». Аккаунт создаётся по ключу восстановления, без e-mail и телефона.',
+                'Откройте страницу «Pro» и нажмите «Оформить подписку».',
+                `Оплатите ${PRICE_RUB} ₽ на стороне платёжного сервиса Robokassa — банковской картой или через СБП.`,
+                'Доступ к платным функциям открывается автоматически сразу после подтверждения оплаты платёжным сервисом — обычно в течение минуты, но не позднее одного рабочего дня.',
+                `Оплаченный период — ${PERIOD_DAYS} дней с момента открытия доступа. Срок окончания показан в «Настройках» → «Подписка».`,
+              ]
+            : [
+                'Create an account in the app: Settings → Account. An account is created from a recovery key, with no e-mail and no phone number.',
+                'Open the Pro page and press the subscribe button.',
+                `Pay ${PRICE_RUB} ₽ on the Robokassa payment service — by bank card or via SBP.`,
+                'The paid features switch on automatically as soon as the payment service confirms the payment — usually within a minute, and no later than one working day.',
+                `The paid period is ${PERIOD_DAYS} days from the moment access opens. The end date is shown in Settings → Subscription.`,
+              ]
+        }
+      />
+      <p>
+        {ru
+          ? `Если оплата прошла, а доступ не открылся, нажмите «Я уже оплатил(а)» в «Настройках» → «Подписка»: приложение само найдёт платёж по аккаунту. Если это не помогло — напишите на ${EMAIL}, мы откроем доступ вручную.`
+          : `If the payment went through but access did not open, press "I have already paid" in Settings → Subscription: the app looks the payment up by account. If that does not help, write to ${EMAIL} and we will open it by hand.`}
+      </p>
+    </Section>
+  );
+}
+
 function Refund({ ru }: { ru: boolean }) {
   return (
     <Section title={ru ? 'Отказ от услуги и возврат денежных средств' : 'Cancelling and refunds'}>
-      <p>
+      <p className="text-content">
         {ru
-          ? 'Отказаться от услуги можно в любой момент: поскольку автоматическое продление не применяется, достаточно не оплачивать следующий период. Никаких действий по отмене совершать не требуется.'
-          : 'You can stop at any time: since nothing renews automatically, simply do not pay for the next period. There is nothing to cancel.'}
+          ? 'Отказаться можно и до начала пользования услугой, и в любой день оплаченного периода.'
+          : 'You can cancel before you start using the service, and on any day of a paid period.'}
       </p>
       <p>
         {ru
-          ? `Возврат за неиспользованную часть оплаченного периода производится по заявлению Заказчика, направленному на ${EMAIL} с указанием даты и суммы платежа. Заявление рассматривается в течение 10 (десяти) рабочих дней; при положительном решении денежные средства возвращаются тем же способом, которым была произведена оплата, в срок не более 10 (десяти) рабочих дней с момента принятия решения. Сумма возврата рассчитывается пропорционально количеству полных дней, оставшихся до конца оплаченного периода.`
-          : `A refund for the unused part of a paid period is issued on request sent to ${EMAIL} with the date and amount of the payment. Requests are reviewed within 10 working days; if approved, the money is returned by the same means it was paid, within 10 working days of the decision. The amount is pro-rated by the whole days remaining in the paid period.`}
+          ? 'До открытия доступа. Если оплата прошла, но доступ к платным функциям ещё не открыт, услуга не считается оказанной и оплата возвращается полностью.'
+          : 'Before access opens. If the payment went through but the paid features have not switched on yet, the service has not been delivered and the payment is refunded in full.'}
       </p>
       <p>
         {ru
-          ? 'Если платные функции были недоступны по причинам, зависящим от Исполнителя, оплата за соответствующий период возвращается полностью.'
-          : 'If the paid features were unavailable for reasons on the seller’s side, the payment for that period is refunded in full.'}
+          ? 'В процессе оказания услуги. Отказаться можно в любой день оплаченного периода. Возвращается сумма за неиспользованную часть — пропорционально количеству полных дней, оставшихся до конца периода. Специально отменять ничего не нужно: подписка не продлевается автоматически, и чтобы просто перестать пользоваться, достаточно не оплачивать следующий период.'
+          : 'While the service is being provided. You may cancel on any day of the paid period. The unused part is refunded, pro-rated by the whole days remaining. There is nothing to switch off: the subscription never renews by itself, so to simply stop, do not pay for the next period.'}
+      </p>
+      <p className="pt-1 font-mono text-2xs uppercase tracking-[0.08em] text-teal">
+        {ru ? 'как вернуть деньги' : 'how to get a refund'}
+      </p>
+      <Steps
+        items={
+          ru
+            ? [
+                `Направьте обращение на e-mail ${EMAIL} с темой «Возврат». Укажите дату и сумму платежа, номер счёта (InvId — он показан на странице после оплаты и в письме от Robokassa) и идентификатор вашего аккаунта из «Настроек».`,
+                'Мы подтверждаем получение обращения в течение 1 (одного) рабочего дня.',
+                'Обращение рассматривается в срок не более 10 (десяти) рабочих дней с даты получения.',
+                'При положительном решении денежные средства возвращаются тем же способом, которым была произведена оплата — на ту же банковскую карту или счёт, — в срок не более 10 (десяти) рабочих дней с даты принятия решения.',
+                'Если в возврате отказано, вы получите мотивированный письменный ответ на тот же адрес, с которого поступило обращение.',
+              ]
+            : [
+                `Send a request to ${EMAIL} with the subject "Refund". Include the date and amount of the payment, the invoice number (InvId — shown on the page after payment and in the e-mail from Robokassa) and your account id from Settings.`,
+                'We confirm receipt within 1 working day.',
+                'The request is reviewed within 10 working days of receipt.',
+                'If approved, the money is returned by the same means it was paid — to the same card or account — within 10 working days of the decision.',
+                'If a refund is refused, you receive a written, reasoned answer at the same address the request came from.',
+              ]
+        }
+      />
+      <p className="text-content">
+        {ru
+          ? 'Возврат производится в полном объёме рассчитанной суммы. Комиссия платёжного сервиса, банка или иные расходы Исполнителя из суммы возврата не удерживаются.'
+          : 'The calculated amount is refunded in full. No payment-service fee, bank fee or other cost of the seller is deducted from it.'}
+      </p>
+      <p>
+        {ru
+          ? 'Если платные функции были недоступны по причинам, зависящим от Исполнителя, оплата за соответствующий период возвращается полностью, независимо от того, сколько дней периода прошло.'
+          : 'If the paid features were unavailable for reasons on the seller’s side, the payment for that period is refunded in full, no matter how much of the period has passed.'}
       </p>
     </Section>
   );
@@ -267,6 +343,7 @@ export function TermsPage() {
       </p>
 
       <Service ru={ru} />
+      <Order ru={ru} />
       <Refund ru={ru} />
       <Requisites ru={ru} />
 

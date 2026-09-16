@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import { Button, Card, Input } from '@/shared/ui';
 import { useAccount } from './store';
-import { ApiFailure, totpStatus, totpEnroll, totpConfirm, totpDisable } from './api';
+import { ApiFailure, totpStatus, totpEnroll, totpConfirm, totpBackupCodes, totpDisable } from './api';
 import { deriveVerifier, splitCredential } from './keys';
 import type { TotpStatus } from './contract';
 
@@ -18,11 +18,13 @@ const verifierFor = (key: string): Promise<string> => deriveVerifier(splitCreden
  * confirmed authenticator is the second way in. See docs/backend-v1-design.md.
  */
 
-const withToken = async <T,>(fn: (token: string) => Promise<T>): Promise<T> => {
+const accessToken = async (): Promise<string> => {
   const token = await useAccount.getState().getAccessToken();
   if (!token) throw new ApiFailure('unauthorized', 401);
-  return fn(token);
+  return token;
 };
+
+const withToken = async <T,>(fn: (token: string) => Promise<T>): Promise<T> => fn(await accessToken());
 
 function errorText(code: string, ru: boolean): string {
   if (code === 'bad_key') return ru ? 'Это не похоже на код или ключ восстановления. Проверьте, что скопировали ключ целиком.' : 'That is neither a code nor a recovery key. Check you copied the whole key.';
@@ -48,7 +50,7 @@ function downloadText(name: string, body: string): void {
 
 export function TotpEnroll({ ru }: { ru: boolean }) {
   const [status, setStatus] = useState<TotpStatus | null>(null);
-  const [stage, setStage] = useState<'idle' | 'scanning' | 'codes' | 'disabling'>('idle');
+  const [stage, setStage] = useState<'idle' | 'scanning' | 'codes' | 'disabling' | 'regenerating'>('idle');
   const [enrollment, setEnrollment] = useState<{ secret: string; uri: string } | null>(null);
   const [backupCodes, setBackupCodes] = useState<string[] | null>(null);
   const [input, setInput] = useState('');
@@ -88,11 +90,37 @@ export function TotpEnroll({ ru }: { ru: boolean }) {
 
   const confirm = () =>
     run(async () => {
-      const codes = await withToken((t) => totpConfirm(t, input.trim()));
+      const code = input.trim();
+      try {
+        const codes = await totpConfirm(await accessToken(), code);
+        setBackupCodes(codes);
+        setEnrollment(null); // the secret must not linger in memory once it is live
+        setStage('codes');
+        setInput('');
+        setStatus((s) => (s ? { ...s, enrolled: true, backupCodesLeft: codes.length } : s));
+      } catch (e) {
+        // The server may well have turned the authenticator on and only the answer been lost — and the
+        // codes it minted are gone with it, shown once and stored as hashes. Rather than leaving someone
+        // live with no codes and a screen claiming they are not enrolled, ask for a fresh set with the
+        // same code they just typed.
+        if (codeOf(e) !== 'totp_already_enrolled') throw e;
+        const codes = await totpBackupCodes(await accessToken(), code);
+        setBackupCodes(codes);
+        setEnrollment(null);
+        setStage('codes');
+        setInput('');
+        setStatus((s) => (s ? { ...s, enrolled: true, backupCodesLeft: codes.length } : s));
+      }
+    });
+
+  /** Fresh codes for someone who already has the authenticator and lost the list. */
+  const regenerate = () =>
+    run(async () => {
+      const codes = await totpBackupCodes(await accessToken(), input.trim());
       setBackupCodes(codes);
-      setEnrollment(null); // the secret must not linger in memory once it is live
       setStage('codes');
       setInput('');
+      setStatus((s) => (s ? { ...s, backupCodesLeft: codes.length } : s));
     });
 
   const disable = () =>
@@ -200,12 +228,28 @@ export function TotpEnroll({ ru }: { ru: boolean }) {
           </p>
           {status.backupCodesLeft <= 2 && (
             <p className="mb-1 text-2xs text-coral">
-              {ru
-                ? 'Коды почти закончились. Отключите и настройте заново, чтобы получить новые.'
-                : 'Almost out of codes. Disable and set up again to get a fresh set.'}
+              {ru ? 'Коды почти закончились — выпустите новые.' : 'Almost out of codes — issue a fresh set.'}
             </p>
           )}
-          {stage === 'disabling' ? (
+          {stage === 'regenerating' ? (
+            <div className="mt-2 flex flex-wrap items-center gap-2">
+              <Input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder={ru ? '6 цифр из приложения' : '6 digits from the app'}
+                inputMode="numeric"
+                autoComplete="one-time-code"
+                className="max-w-[12rem] font-mono"
+                spellCheck={false}
+              />
+              <Button size="sm" disabled={busy || input.trim().length < 6} onClick={() => void regenerate()}>
+                {ru ? 'Выпустить коды' : 'Issue codes'}
+              </Button>
+              <Button size="sm" variant="ghost" disabled={busy} onClick={() => { setStage('idle'); setInput(''); }}>
+                {ru ? 'Отмена' : 'Cancel'}
+              </Button>
+            </div>
+          ) : stage === 'disabling' ? (
             <div className="mt-2 flex flex-wrap items-center gap-2">
               <Input
                 value={input}
@@ -223,9 +267,14 @@ export function TotpEnroll({ ru }: { ru: boolean }) {
               </Button>
             </div>
           ) : (
-            <Button size="sm" variant="ghost" className="mt-2" onClick={() => setStage('disabling')}>
-              {ru ? 'Отключить' : 'Disable'}
-            </Button>
+            <div className="mt-2 flex flex-wrap gap-2">
+              <Button size="sm" variant="ghost" onClick={() => { setStage('regenerating'); setInput(''); }}>
+                {ru ? 'Новые резервные коды' : 'New backup codes'}
+              </Button>
+              <Button size="sm" variant="ghost" onClick={() => { setStage('disabling'); setInput(''); }}>
+                {ru ? 'Отключить' : 'Disable'}
+              </Button>
+            </div>
           )}
         </div>
       ) : (

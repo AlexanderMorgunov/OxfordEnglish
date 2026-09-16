@@ -6,6 +6,7 @@ import { InstallPrompt } from '@/features/pwa/InstallPrompt';
 import { metricaHit } from '@/features/analytics/metrica';
 import { MigrationNotice } from '@/features/migration/MigrationNotice';
 import { ErrorBoundary, PixelImage } from '@/shared/ui';
+import { SELLER } from '@/shared/seller';
 import { NavMore } from './NavMore';
 
 /** `icon` defaults to the nav sprite named after `label.en`; set it when no such sprite exists. */
@@ -114,8 +115,50 @@ export function AppLayout() {
           </Suspense>
         </ErrorBoundary>
       </main>
+      <SiteFooter ru={ru} />
       {/* New paths open at the top; returning to a seen path restores its scroll. */}
       <ScrollRestoration getKey={(location) => location.pathname} />
     </div>
+  );
+}
+
+/**
+ * Seller, contacts and the legal pages, on every screen.
+ *
+ * The acquirer's moderation reads the SITE, not the settings screen — before this the offer, the
+ * privacy policy and the seller's details were reachable only from Settings and the paywall, which is
+ * a poor place to look for them and, for a buyer deciding whether to pay, the wrong one.
+ */
+function SiteFooter({ ru }: { ru: boolean }) {
+  const links = [
+    { to: '/terms', ru: 'Условия и оферта', en: 'Terms and offer' },
+    { to: '/privacy', ru: 'Конфиденциальность', en: 'Privacy' },
+    { to: '/pro', ru: 'Подписка и цена', en: 'Subscription and price' },
+    { to: '/support', ru: 'Поддержка', en: 'Support' },
+  ];
+  return (
+    <footer className="mt-4 border-t border-line">
+      <div className="mx-auto max-w-3xl px-5 py-6 font-mono text-2xs leading-relaxed text-muted">
+        <nav className="mb-3 flex flex-wrap gap-x-4 gap-y-1.5">
+          {links.map((l) => (
+            <NavLink key={l.to} to={l.to} className="hover:text-teal hover:underline">
+              {ru ? l.ru : l.en}
+            </NavLink>
+          ))}
+        </nav>
+        <p>
+          {SELLER.name}
+          {ru ? ', самозанятый · ИНН ' : ', self-employed · INN '}
+          {SELLER.inn}
+        </p>
+        <p className="mt-1">
+          <a href={`mailto:${SELLER.email}`} className="hover:text-teal hover:underline">
+            {SELLER.email}
+          </a>
+          <span className="px-2 text-faint">·</span>
+          {SELLER.phone}
+        </p>
+      </div>
+    </footer>
   );
 }

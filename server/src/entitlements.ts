@@ -223,6 +223,14 @@ export type GrantDraft = {
  *  one case we refuse to confirm rather than grant something nobody paid for. */
 export type GrantPaidResult = 'ok' | 'unknown' | 'underpaid';
 
+export type RedeemResult =
+  /** The days were applied by this call. */
+  | { status: 'applied'; row: EntitlementRow }
+  /** This account had already redeemed this grant; `row` is what it holds now. */
+  | { status: 'already'; row: EntitlementRow | null }
+  /** Unknown, unpaid, or bound to a different account. */
+  | { status: 'invalid' };
+
 export interface EntitlementStore {
   get(accountId: string): Promise<EntitlementRow | null>;
   put(row: EntitlementRow): Promise<void>;
@@ -246,6 +254,19 @@ export interface EntitlementStore {
   /** One-time: returns the granted days, or null if unknown, unpaid, already redeemed, or bound to
    *  another account. */
   redeemGrant(token: string, accountId: string): Promise<number | null>;
+  /**
+   * Spend a paid grant AND apply its days as ONE atomic step.
+   *
+   * Doing it in two calls loses money. `redeemGrant` commits `redeemed = true` in its own transaction;
+   * if anything goes wrong before the entitlement is written — a recycled container, an unavailable
+   * database — the grant is spent, the days were never granted, and NO repair path can see it:
+   * redeeming again refuses a spent grant and `findUnclaimedGrant` skips it. The buyer has paid, holds
+   * no plan, and every self-service route answers "nothing to claim".
+   *
+   * A grant this account has already redeemed answers with its current state rather than an error, so a
+   * client whose answer was lost repairs itself on the retry instead of being told the payment failed.
+   */
+  redeemInto(token: string, accountId: string, now: number): Promise<RedeemResult>;
   /**
    * The token of a grant this account has PAID FOR and not yet redeemed, if there is one.
    *
@@ -308,6 +329,18 @@ export class InMemoryEntitlementStore implements EntitlementStore {
     if (g.boundToHash !== bindHash(accountId)) return null;
     g.redeemed = true;
     return g.days;
+  }
+  /** Atomic by construction here, for the same reason `mutate` is: nothing awaits mid-way. */
+  async redeemInto(token: string, accountId: string, now: number): Promise<RedeemResult> {
+    const g = this.grants.get(token);
+    // Ownership is checked before anything is revealed, so `already` can only ever describe the
+    // caller's own state.
+    if (!g || !g.paid || g.boundToHash !== bindHash(accountId)) return { status: 'invalid' };
+    if (g.redeemed) return { status: 'already', row: this.rows.get(accountId) ?? null };
+    g.redeemed = true;
+    const row = applyPayment(this.rows.get(accountId) ?? null, accountId, now, g.days);
+    this.rows.set(accountId, row);
+    return { status: 'applied', row };
   }
   async purge(accountId: string) {
     this.rows.delete(accountId);

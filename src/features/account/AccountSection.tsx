@@ -8,6 +8,7 @@ import { QuotaNotice } from './QuotaNotice';
 import { PlanSection } from './PlanSection';
 import { avatarSrc } from './avatar';
 import { useUiLang } from '@/features/i18n/uiLang';
+import { ApiFailure } from './api';
 import { accountsEnabled } from './config';
 import { useAccount } from './store';
 import { blobList } from './api';
@@ -460,7 +461,7 @@ function DeviceManager({ ru, thisDeviceId }: { ru: boolean; thisDeviceId: string
   const [open, setOpen] = useState(false);
   const [code, setCode] = useState('');
   const [approved, setApproved] = useState<string | null>(null);
-  const [approveErr, setApproveErr] = useState(false);
+  const [approveErr, setApproveErr] = useState<'bad-code' | 'network' | null>(null);
   const [busy, setBusy] = useState(false);
   const [scanning, setScanning] = useState(false);
   const [devices, setDevices] = useState<Device[] | null>(null);
@@ -480,15 +481,18 @@ function DeviceManager({ ru, thisDeviceId }: { ru: boolean; thisDeviceId: string
     const value = (override ?? code).trim();
     if (value.length < 8) return;
     setBusy(true);
-    setApproveErr(false);
+    setApproveErr(null);
     setApproved(null);
     try {
       const name = await approveDevice(value);
       setApproved(name ?? (ru ? 'новое устройство' : 'a new device'));
       setCode('');
       refreshList();
-    } catch {
-      setApproveErr(true);
+    } catch (e) {
+      // A request that never arrived says nothing about the code. Calling it wrong or expired sent people
+      // back to re-scan a code the server may well have just consumed — after which it really is spent,
+      // and the same message appears again for a device that is in fact signed in.
+      setApproveErr(e instanceof ApiFailure && e.code === 'network' ? 'network' : 'bad-code');
     } finally {
       setBusy(false);
     }
@@ -556,7 +560,15 @@ function DeviceManager({ ru, thisDeviceId }: { ru: boolean; thisDeviceId: string
         </p>
       )}
       {approveErr && (
-        <p className="mb-2 font-mono text-2xs text-coral">{ru ? 'Неверный или истёкший код.' : 'Wrong or expired code.'}</p>
+        <p className="mb-2 font-mono text-2xs text-coral">
+          {approveErr === 'network'
+            ? ru
+              ? 'Не удалось связаться с сервером. Проверьте список устройств ниже — возможно, вход уже прошёл.'
+              : 'Could not reach the server. Check the device list below — the sign-in may have gone through.'
+            : ru
+              ? 'Неверный или истёкший код.'
+              : 'Wrong or expired code.'}
+        </p>
       )}
 
       <p className="mb-2 mt-4 text-sm font-semibold text-content">{ru ? 'Ваши устройства' : 'Your devices'}</p>

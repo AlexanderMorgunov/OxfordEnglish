@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Eyebrow } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
+import { SELLER } from '@/shared/seller';
 
 /** Public privacy page (slice 4d). Reflects the no-PII recovery-key model: no email/name/phone; an
  *  account is a pseudonymous id derived from a recovery key we never store. Operator details mirror
@@ -23,7 +24,7 @@ function Ru() {
   return (
     <article className="max-w-prose">
       <Eyebrow className="mb-3.5">политика конфиденциальности</Eyebrow>
-      <h1 className="text-2xl font-bold tracking-tight text-balance">Конфиденциальность</h1>
+      <h1 className="text-2xl font-bold tracking-tight text-balance">Политика обработки персональных данных</h1>
       <p className="mt-3 text-sm leading-relaxed text-pretty text-muted">
         Коротко: приложением можно пользоваться без регистрации — тогда все данные остаются только на вашем
         устройстве. Мы не собираем email, имя, телефон и другие персональные данные. Аккаунт (по желанию)
@@ -100,9 +101,9 @@ function Ru() {
 
       <Section title="Оператор и изменения">
         <p>
-          Оператор: Моргунов Александр Сергеевич, самозанятый, ИНН 361302397520. Контакт по вопросам данных:{' '}
-          <a href="mailto:morgunowalex@gmail.com" className="text-teal hover:underline">
-            morgunowalex@gmail.com
+          Оператор: {SELLER.name}, самозанятый, ИНН {SELLER.inn}. Контакт по вопросам данных:{' '}
+          <a href={`mailto:${SELLER.email}`} className="text-teal hover:underline">
+            {SELLER.email}
           </a>
           .
         </p>
