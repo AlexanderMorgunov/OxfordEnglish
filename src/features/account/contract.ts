@@ -255,6 +255,7 @@ export const Routes = {
   totpStatus: '/v1/totp/status',
   totpEnroll: '/v1/totp/enroll',
   totpConfirm: '/v1/totp/confirm',
+  totpBackupCodes: '/v1/totp/backup-codes',
   totpDisable: '/v1/totp/disable',
   totpRecover: '/v1/totp/recover',
 } as const;

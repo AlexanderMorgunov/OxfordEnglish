@@ -303,6 +303,20 @@ export function totpConfirm(accessToken: string, code: string): Promise<string[]
   );
 }
 
+/**
+ * Replace the backup codes with a fresh set, proved by a live code.
+ *
+ * The way out of a lost set — and losing one needs nothing more than a dropped response, since
+ * `totpConfirm` shows them once and answers every retry with "already enrolled".
+ */
+export function totpBackupCodes(accessToken: string, code: string): Promise<string[]> {
+  return request(
+    Routes.totpBackupCodes,
+    { method: 'POST', headers: authed(accessToken), body: JSON.stringify({ code }) },
+    (j) => TotpConfirmResponseSchema.parse(j).backupCodes
+  );
+}
+
 /** Turn the authenticator off. Either proof works: a live code, or the recovery key the user still
  *  holds — the second door exists for a phone lost along with the backup codes. */
 export function totpDisable(accessToken: string, proof: { code?: string; verifier?: string }): Promise<void> {

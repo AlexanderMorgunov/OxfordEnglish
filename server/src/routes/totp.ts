@@ -111,9 +111,50 @@ export function totpRoutes(store: AuthStore, totp: TotpStore): Hono {
     const existing = await totp.get(claims.sub);
     if (existing?.confirmedAt) return err(ErrorCode.TotpAlreadyEnrolled, 409);
 
+    // Hand back a pending enrollment rather than minting over it. A second call — a retry after a lost
+    // response, a reload, a second tab — used to replace the secret behind an already-scanned QR, so the
+    // authenticator the user had just set up produced codes `confirm` rejected, each one counted as a
+    // failure on the way to a lockout.
+    const pending = existing ? unseal(existing, key) : null;
+    if (pending) return c.json({ secret: base32Encode(pending), uri: otpauthUri(claims.sub, pending) });
+
     const secret = generateSecret();
     await totp.put(freshRow(claims.sub, sealSecret(secret, key)));
     return c.json({ secret: base32Encode(secret), uri: otpauthUri(claims.sub, secret) });
+  });
+
+  /**
+   * A fresh set of backup codes, replacing whatever is on the row.
+   *
+   * Without this there is no way back from a lost set, and losing one takes nothing more than a dropped
+   * response: `confirm` shows the codes exactly once, stores only their hashes, and answers every retry
+   * with "already enrolled". That left people holding a live authenticator, no codes, and a UI that
+   * still claimed they were not enrolled.
+   *
+   * Proof required is a live code — the same bar as disabling, and the person must have the app in hand.
+   */
+  app.post('/v1/totp/backup-codes', async (c) => {
+    const claims = await bearerClaims(c);
+    if (!claims) return err(ErrorCode.Unauthorized, 401);
+    const key = sealingKey();
+    if (!key) return err(ErrorCode.TotpUnavailable, 503);
+    const body = TotpConfirmRequestSchema.safeParse(await c.req.json().catch(() => null));
+    if (!body.success) return err(ErrorCode.BadRequest, 400);
+
+    const now = Date.now();
+    const res = await attemptVerify(totp, claims.sub, body.data.code, key, now);
+    if (!res.ok) {
+      if (res.reason === 'sealed') return err(ErrorCode.TotpUnavailable, 503);
+      if (res.reason === 'missing' || res.reason === 'unconfirmed') return err(ErrorCode.TotpNotEnrolled, 409);
+      return res.reason === 'throttled' ? err(ErrorCode.RateLimited, 429) : err(ErrorCode.TotpInvalid, 401);
+    }
+
+    const codes = generateBackupCodes();
+    await totp.verify(claims.sub, (row) => ({
+      row: row ? { ...row, backupHashes: codes.map(hashBackupCode) } : undefined,
+      result: undefined,
+    }));
+    return c.json({ backupCodes: codes });
   });
 
   app.post('/v1/totp/confirm', async (c) => {
