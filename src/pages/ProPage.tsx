@@ -168,7 +168,10 @@ export function ProPage() {
             ? 'Pro решает именно это: те же разборы работают на нашем ключе, сразу, без VPN и без настройки. Вы платите не за функции — они есть и бесплатно, — а за то, что они работают.'
             : 'That is what Pro is for: the same explanations, on our key, immediately, with no VPN and no setup. You are not paying for the features — those are free too — but for them working.'}
         </p>
-        {canBuy && price && (
+        {/* The price is stated whether or not the button works. It is what this page is for, it is what
+            the footer link promises, and hiding it while payments are switched off leaves the one page
+            named "subscription and price" with no price on it. */}
+        {price && monthly && (
           <p className="text-content">
             {ru
               ? `${price} за ${monthly.days} дней. Подписка не продлевается автоматически: когда период закончится, доступ к разборам просто прекратится, пока вы не оплатите следующий.`
