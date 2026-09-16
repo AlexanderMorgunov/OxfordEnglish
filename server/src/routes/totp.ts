@@ -100,7 +100,15 @@ export function totpRoutes(store: AuthStore, totp: TotpStore): Hono {
     const enrolled = !!row?.confirmedAt;
     // Reported rather than 503: this is the one route that must answer while the feature is off, so the
     // UI can stay silent instead of offering a button that only errors.
-    return c.json({ available: totpConfigured(), enrolled, backupCodesLeft: enrolled ? row.backupHashes.length : 0 });
+    return c.json({
+      available: totpConfigured(),
+      enrolled,
+      backupCodesLeft: enrolled ? row.backupHashes.length : 0,
+      // An enrollment started and not finished. Read-only on purpose: the UI needs to know whether a
+      // half-finished setup exists, and `enroll` cannot answer that — it MINTS one when none exists,
+      // so asking it would create the very state it was meant to report.
+      pending: !!row && !row.confirmedAt,
+    });
   });
 
   app.post('/v1/totp/enroll', async (c) => {
@@ -155,6 +163,25 @@ export function totpRoutes(store: AuthStore, totp: TotpStore): Hono {
       result: undefined,
     }));
     return c.json({ backupCodes: codes });
+  });
+
+  /**
+   * Abandon a setup that was never confirmed.
+   *
+   * Needed because `enroll` returns the pending secret rather than minting over it (which is what keeps
+   * an already-scanned QR working across an app switch) — so without this, a half-finished enrollment
+   * is immortal: every later attempt hands back the same secret, and there is no way to start clean
+   * after the key was shoulder-surfed or half-configured.
+   *
+   * Scoped to the caller's own account, and refuses a CONFIRMED row: taking away a live second factor
+   * is what /v1/totp/disable is for, and that deliberately demands a code or the recovery key.
+   */
+  app.post('/v1/totp/cancel', async (c) => {
+    const claims = await bearerClaims(c);
+    if (!claims) return err(ErrorCode.Unauthorized, 401);
+    const removed = await totp.removeIfUnconfirmed(claims.sub);
+    if (!removed) return err(ErrorCode.TotpAlreadyEnrolled, 409);
+    return c.json({ ok: true });
   });
 
   app.post('/v1/totp/confirm', async (c) => {

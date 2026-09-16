@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import { Button, Card, Input } from '@/shared/ui';
 import { useAccount } from './store';
-import { ApiFailure, totpStatus, totpEnroll, totpConfirm, totpBackupCodes, totpDisable } from './api';
+import { ApiFailure, totpStatus, totpEnroll, totpConfirm, totpBackupCodes, totpCancel, totpDisable } from './api';
 import { deriveVerifier, splitCredential } from './keys';
 import type { TotpStatus } from './contract';
 
@@ -48,6 +48,15 @@ function downloadText(name: string, body: string): void {
   URL.revokeObjectURL(url);
 }
 
+
+/** Base32 in blocks of four — the shape every authenticator shows and the only one a person can read
+ *  aloud or retype without losing their place. Returns the groups, never a joined string — see the
+ *  render site for why the spaces must not exist in the DOM text. */
+const groupKey = (secret: string): string[] => secret.match(/.{1,4}/g) ?? [secret];
+
+/** A touch device is where an authenticator app might be installed and where the QR is unscannable. */
+const coarsePointer = (): boolean => window.matchMedia?.('(pointer: coarse)').matches ?? false;
+
 export function TotpEnroll({ ru }: { ru: boolean }) {
   const [status, setStatus] = useState<TotpStatus | null>(null);
   const [stage, setStage] = useState<'idle' | 'scanning' | 'codes' | 'disabling' | 'regenerating'>('idle');
@@ -56,7 +65,7 @@ export function TotpEnroll({ ru }: { ru: boolean }) {
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [showSecret, setShowSecret] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     let alive = true;
@@ -86,6 +95,34 @@ export function TotpEnroll({ ru }: { ru: boolean }) {
       setEnrollment(e);
       setStage('scanning');
       setInput('');
+      setCopied(false);
+    });
+
+  /** Copies the RAW key, not the spaced-out one on screen — most apps reject a secret with spaces. */
+  const copyKey = async (secret: string) => {
+    try {
+      await navigator.clipboard?.writeText(secret);
+      setCopied(true);
+    } catch {
+      setCopied(false); // no clipboard permission — the key is selectable on screen either way
+    }
+  };
+
+  /**
+   * Abandon a setup that was never confirmed — on the server too, not just on screen.
+   *
+   * Since `enroll` returns the pending secret rather than minting over it (which is what lets an
+   * already-scanned QR survive a trip to the authenticator app), clearing only local state would leave
+   * that secret alive forever: every later attempt would hand back the same one.
+   */
+  const cancelEnrollment = () =>
+    run(async () => {
+      await withToken(totpCancel).catch(() => undefined); // already confirmed elsewhere → nothing to drop
+      setStage('idle');
+      setEnrollment(null);
+      setInput('');
+      setCopied(false);
+      setStatus((s) => (s ? { ...s, pending: false } : s));
     });
 
   const confirm = () =>
@@ -99,17 +136,20 @@ export function TotpEnroll({ ru }: { ru: boolean }) {
         setInput('');
         setStatus((s) => (s ? { ...s, enrolled: true, backupCodesLeft: codes.length } : s));
       } catch (e) {
-        // The server may well have turned the authenticator on and only the answer been lost — and the
-        // codes it minted are gone with it, shown once and stored as hashes. Rather than leaving someone
-        // live with no codes and a screen claiming they are not enrolled, ask for a fresh set with the
-        // same code they just typed.
+        // The server turned the authenticator on and the answer was lost; the codes it minted went with
+        // it, shown once and stored as hashes. So ask for a fresh set — but NOT with the code just
+        // typed: `confirm` records it as spent (`lastStep`), so replaying it fails as a wrong code AND
+        // burns one of the ten attempts before a fifteen-minute lockout that blocks correct codes too.
         if (codeOf(e) !== 'totp_already_enrolled') throw e;
-        const codes = await totpBackupCodes(await accessToken(), code);
-        setBackupCodes(codes);
         setEnrollment(null);
-        setStage('codes');
         setInput('');
-        setStatus((s) => (s ? { ...s, enrolled: true, backupCodesLeft: codes.length } : s));
+        setStage('regenerating');
+        setStatus((s) => (s ? { ...s, enrolled: true } : s));
+        setError(
+          ru
+            ? 'Приложение уже подключено — похоже, ответ на подтверждение потерялся. Резервные коды показываются один раз, поэтому выпустим новые: дождитесь СЛЕДУЮЩЕГО кода в приложении и введите его.'
+            : 'The app is already connected — the confirmation answer seems to have been lost. Backup codes are shown only once, so we will issue a fresh set: wait for the NEXT code in the app and enter it.'
+        );
       }
     });
 
@@ -186,20 +226,51 @@ export function TotpEnroll({ ru }: { ru: boolean }) {
         </Card>
       ) : stage === 'scanning' && enrollment ? (
         <Card>
+          {/* The key comes FIRST. On the device that also runs the authenticator — which is where people
+              actually do this — the QR cannot be scanned at all, so hiding the key behind "can't scan?"
+              put the only workable route behind a question the user has to think to ask. */}
           <p className="mb-3 text-sm text-content text-pretty">
             {ru
-              ? 'Отсканируйте код в приложении-аутентификаторе (Google Authenticator, Aegis, 2FAS — подойдёт любое), затем введите шестизначный код из приложения.'
-              : 'Scan this in an authenticator app (Google Authenticator, Aegis, 2FAS — any will do), then enter the six-digit code it shows.'}
+              ? 'Добавьте этот ключ в приложение-аутентификатор (Google Authenticator, Aegis, 2FAS — подойдёт любое), затем введите шестизначный код из приложения.'
+              : 'Add this key to an authenticator app (Google Authenticator, Aegis, 2FAS — any will do), then enter the six-digit code it shows.'}
           </p>
-          <div className="mb-3 inline-block rounded-sm bg-white p-3">
-            <QRCodeSVG value={enrollment.uri} size={168} />
+
+          {/* Groups are separate spans with margin, not spaces in the text: selecting the block on a
+              phone and copying it would otherwise yield a secret with spaces in it, which is the exact
+              paste failure the Copy button exists to avoid. */}
+          <p id="totp-key" className="mb-2 select-all break-all rounded-sm bg-surface px-3 py-2 font-mono text-sm text-teal">
+            {groupKey(enrollment.secret).map((g) => (
+              <span key={g} className="mr-2 inline-block">
+                {g}
+              </span>
+            ))}
+          </p>
+          <div className="mb-4 flex flex-wrap items-center gap-2">
+            <Button size="sm" variant="ghost" onClick={() => void copyKey(enrollment.secret)}>
+              {copied ? (ru ? 'Скопировано' : 'Copied') : ru ? 'Скопировать' : 'Copy'}
+            </Button>
+            {/* Only where an authenticator app could plausibly be installed. A custom scheme has no
+                fallback: on a desktop, or a phone with no such app, tapping it dead-ends in a browser
+                error — so the key above stays visible and this is never the only way forward. */}
+            {coarsePointer() && (
+              <a
+                href={enrollment.uri}
+                className="rounded-sm px-2.5 py-1.5 font-mono text-2xs text-violet hover:underline"
+              >
+                {ru ? 'Открыть в приложении →' : 'Open in the app →'}
+              </a>
+            )}
           </div>
-          <p className="mb-3 text-2xs text-muted">
-            <button type="button" className="text-teal hover:underline" onClick={() => setShowSecret((v) => !v)}>
-              {ru ? 'Не получается отсканировать?' : 'Can’t scan?'}
-            </button>
-            {showSecret && <span className="ml-2 select-all break-all font-mono text-content">{enrollment.secret}</span>}
-          </p>
+
+          <details className="mb-4">
+            <summary className="cursor-pointer font-mono text-2xs text-muted hover:text-content">
+              {ru ? 'Сканировать QR с другого устройства' : 'Scan a QR from another device'}
+            </summary>
+            <div className="mt-2 inline-block rounded-sm bg-white p-3">
+              <QRCodeSVG value={enrollment.uri} size={168} aria-hidden />
+            </div>
+          </details>
+
           <div className="flex flex-wrap items-center gap-2">
             <Input
               value={input}
@@ -213,7 +284,7 @@ export function TotpEnroll({ ru }: { ru: boolean }) {
             <Button size="sm" disabled={busy || input.trim().length < 6} onClick={() => void confirm()}>
               {ru ? 'Подтвердить' : 'Confirm'}
             </Button>
-            <Button size="sm" variant="ghost" disabled={busy} onClick={() => { setStage('idle'); setEnrollment(null); setInput(''); }}>
+            <Button size="sm" variant="ghost" disabled={busy} onClick={() => void cancelEnrollment()}>
               {ru ? 'Отмена' : 'Cancel'}
             </Button>
           </div>
@@ -284,9 +355,34 @@ export function TotpEnroll({ ru }: { ru: boolean }) {
               ? 'Ключ восстановления — единственный способ войти. Подключите приложение-аутентификатор, и если ключ потеряется, вы сможете вернуть аккаунт и выпустить новый ключ.'
               : 'The recovery key is the only way in. Connect an authenticator app and you can get the account back — and issue a new key — even if the key is lost.'}
           </p>
-          <Button size="sm" disabled={busy} onClick={() => void start()}>
-            {ru ? 'Подключить приложение' : 'Connect an app'}
-          </Button>
+          {/* A setup left half-finished — the usual cause being a trip to the authenticator app that the
+              browser did not survive. The server still holds that secret and `enroll` hands back the SAME
+              one, so the entry already added there keeps working. Deliberately a button rather than
+              something that fires on mount: `enroll` MINTS an enrollment when none exists, so an
+              automatic call would create setups nobody asked for whenever this flag was stale. */}
+          {status.pending && (
+            <p className="mb-2 text-2xs text-amber">
+              {ru
+                ? 'Подключение начато, но не завершено. Можно продолжить с того же ключа — заново сканировать не нужно.'
+                : 'A setup was started and never finished. You can continue with the same key — no need to scan again.'}
+            </p>
+          )}
+          <div className="flex flex-wrap gap-2">
+            <Button size="sm" disabled={busy} onClick={() => void start()}>
+              {status.pending
+                ? ru
+                  ? 'Продолжить подключение'
+                  : 'Continue setup'
+                : ru
+                  ? 'Подключить приложение'
+                  : 'Connect an app'}
+            </Button>
+            {status.pending && (
+              <Button size="sm" variant="ghost" disabled={busy} onClick={() => void cancelEnrollment()}>
+                {ru ? 'Начать заново' : 'Start over'}
+              </Button>
+            )}
+          </div>
         </div>
       )}
 

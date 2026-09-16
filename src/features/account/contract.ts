@@ -192,7 +192,13 @@ export const TotpDisableRequestSchema = z
   .refine((v) => !!v.code || !!v.verifier, { message: 'code or verifier required' });
 /** `available` is false when the server has no sealing key: the whole feature is off, and offering an
  *  enroll button that can only 503 is worse than showing nothing. */
-export const TotpStatusSchema = z.object({ available: z.boolean(), enrolled: z.boolean(), backupCodesLeft: z.number() });
+export const TotpStatusSchema = z.object({
+  available: z.boolean(),
+  enrolled: z.boolean(),
+  backupCodesLeft: z.number(),
+  /** A setup started and never confirmed. Optional so an older server still parses. */
+  pending: z.boolean().optional(),
+});
 /** Recovery runs without a session: `accountId` is read off the authenticator entry, and `verifier` is
  *  derived from the NEW key. The server keeps the id and swaps only the verifier. */
 export const TotpRecoverRequestSchema = z.object({
@@ -225,6 +231,12 @@ export const ErrorCode = {
   TotpAlreadyEnrolled: 'totp_already_enrolled',
   TotpNotEnrolled: 'totp_not_enrolled',
   TotpUnavailable: 'totp_unavailable',
+  // Blob codes the server has always sent; the client used to hardcode the strings it cared about and
+  // ignore the rest, which is how a missing cloud copy read as a generic failure.
+  BlobTooLarge: 'blob_too_large',
+  QuotaExceeded: 'quota_exceeded',
+  SizeMismatch: 'size_mismatch',
+  BlobNotFound: 'blob_not_found',
 } as const;
 export type ErrorCode = (typeof ErrorCode)[keyof typeof ErrorCode];
 
@@ -256,6 +268,7 @@ export const Routes = {
   totpEnroll: '/v1/totp/enroll',
   totpConfirm: '/v1/totp/confirm',
   totpBackupCodes: '/v1/totp/backup-codes',
+  totpCancel: '/v1/totp/cancel',
   totpDisable: '/v1/totp/disable',
   totpRecover: '/v1/totp/recover',
 } as const;

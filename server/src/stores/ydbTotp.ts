@@ -109,4 +109,21 @@ export class YdbTotpStore implements TotpStore {
       return result;
     });
   }
+
+  /** Read and delete in ONE serializable transaction, so a `confirm` cannot slip in between the check
+   *  and the delete and turn cancelling a setup into stripping a live second factor. */
+  async removeIfUnconfirmed(accountId: string): Promise<boolean> {
+    return withSerializableTx<boolean>(async (tx) => {
+      const [rows] = await tx.exec('DECLARE $a AS Utf8; SELECT confirmed_at FROM totp WHERE account_id=$a;', {
+        $a: T.utf8(accountId),
+      });
+      const r = rows[0];
+      if (!r || r.confirmed_at != null) {
+        await tx.exec('SELECT 1;', {}, true); // commit the (empty) tx
+        return false;
+      }
+      await tx.exec('DECLARE $a AS Utf8; DELETE FROM totp WHERE account_id=$a;', { $a: T.utf8(accountId) }, true);
+      return true;
+    });
+  }
 }
