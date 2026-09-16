@@ -33,6 +33,7 @@ import { toSentences } from './parse/text';
 import { usePhraseSelect, parsePos, samePos, inPhraseRange, type WordPos } from './phrase-select';
 import { useSavedPhrases } from './saved-phrases';
 import { phraseMarkedTokens } from './phrase-marks';
+import { inLensOutput, LENS_OUT_ATTR } from './lens-output';
 import { useLemma } from '@/features/vocab/lemma';
 import { irregularForms } from '@/features/vocab/irregular';
 import { FormsLine } from '@/features/vocab/FormsLine';
@@ -43,6 +44,7 @@ import { CefrChip } from '@/features/vocab/CefrChip';
 const VOICE_SAMPLE = 'The morning light spilled across the quiet room as she opened the book.';
 
 export type Gloss = { ru?: string; ipa?: string };
+
 
 /** Chapter-level, stable-per-render coloring inputs. Kept in context so a single word's status
  *  change re-renders only that token, not the whole chapter (thousands of WordTokens). */
@@ -650,7 +652,9 @@ const Paragraph = memo(function Paragraph({
                 </span>
               )}
             </span>{' '}
-            {open && renderOut(si, sentence)}
+            {/* Marked so the phrase picker can tell the lens OUTPUT from the source text. Without it,
+                selecting words inside a Russian translation offered to translate them — into Russian. */}
+            {open && <span {...{ [LENS_OUT_ATTR]: true }}>{renderOut(si, sentence)}</span>}
           </span>
         );
       })}
@@ -792,6 +796,13 @@ export function ReadingText({
     const sel = window.getSelection();
     const inside = sel?.anchorNode ? (textRef.current?.contains(sel.anchorNode) ?? false) : false;
     if (!sel || !inside) {
+      if (!pickAnchor) setPhrase(null);
+      return;
+    }
+    // Selecting inside a translation used to fall through to the raw-text branch below and offer to
+    // translate Russian into Russian. Nothing here is a word of the book, so there is nothing to look
+    // up, save or translate.
+    if (inLensOutput(sel.anchorNode) || inLensOutput(sel.focusNode)) {
       if (!pickAnchor) setPhrase(null);
       return;
     }

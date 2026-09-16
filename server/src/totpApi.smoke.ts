@@ -47,6 +47,9 @@ check('the otpauth label carries the account id (the only way back to it)', enro
 const enrollAgain = (await (await post('/v1/totp/enroll', {}, token)).json()) as { secret: string; uri: string };
 check('enrolling again before confirm keeps the scanned secret', enrollAgain.secret === enroll.secret);
 
+const pendingStatus = (await (await get('/v1/totp/status', token)).json()) as { pending: boolean; enrolled: boolean };
+check('status reports an unfinished setup without creating one', pendingStatus.pending === true && pendingStatus.enrolled === false);
+
 const secret = base32Decode(enroll.secret);
 const codeNow = () => codeForStep(secret, stepAt(Date.now()));
 // The routes read the real clock, and a spent step stays spent for its whole 30 s life, so back-to-back
@@ -196,7 +199,26 @@ check('deleting the account purges its sealed seed', (await totp.get(ERASE)) ===
   check('the stored counter matches the attempts it let through', (await totp.get(RACE))!.failCount === rejected);
 }
 
+// --- cancelling a setup that was never confirmed ---
+// Needed because enroll hands back the pending secret rather than minting over it: without a way to
+// drop it, a half-finished enrollment would be immortal.
+const ACC_X = 'acc-cancel0123456789ab';
+const regX = (await (await post('/v1/auth/register', { accountId: ACC_X, verifier: 'verifier-x-0123456789', deviceName: 'X' })).json()) as Session;
+const tokenX = regX.accessToken;
+check('cancelling with nothing pending → 409', (await post('/v1/totp/cancel', {}, tokenX)).status === 409);
+const first = (await (await post('/v1/totp/enroll', {}, tokenX)).json()) as { secret: string };
+check('cancel drops the pending row outright', (await post('/v1/totp/cancel', {}, tokenX)).status === 200);
+check('...and the row is gone, not merely replaced', (await totp.get(ACC_X)) === null);
+const second = (await (await post('/v1/totp/enroll', {}, tokenX)).json()) as { secret: string };
+check('a fresh enroll after cancel mints a NEW secret', second.secret !== first.secret);
+
+// The security boundary: cancel must never become a way to strip a LIVE second factor, which
+// /v1/totp/disable deliberately guards with a code or the recovery key.
+const sx = base32Decode(second.secret);
+await post('/v1/totp/confirm', { code: codeForStep(sx, stepAt(Date.now())) }, tokenX);
+check('cancel against a CONFIRMED enrollment is refused', (await post('/v1/totp/cancel', {}, tokenX)).status === 409);
+check('...and the enrollment is still there', (await totp.get(ACC_X))?.confirmedAt != null);
+check('cancel without a session → 401', (await post('/v1/totp/cancel', {})).status === 401);
+
 console.log(failures === 0 ? '\ntotp API: all checks passed' : `\ntotp API: ${failures} FAILED`);
-// Set the code and let the loop drain: forcing exit() while a wasm/grpc handle is mid-close trips a
-// libuv assertion on Windows and turns a passing run into a nonzero exit.
 process.exitCode = failures === 0 ? 0 : 1;

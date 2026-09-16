@@ -2,7 +2,7 @@ import { db, type BookRecord } from '@/db/db';
 import { track } from '@/features/analytics/analytics';
 import { addBook, patchBook, softDeleteBook, isSyncing } from '@/features/sync/local';
 import { isDeleted } from '@/features/sync/resolve';
-import { deleteRemoteBookFile, downloadBookFileIfMissing, uploadBookFile } from './blobSync';
+import { deleteRemoteBookFile, downloadBookFileIfMissing, uploadBookFile, type BookFileIssue } from './blobSync';
 import { detectFormat, parseBook, type ParsedBook } from './parse';
 import { saveBookFile, getBookFile, deleteBookFile, opfsAvailable } from './storage';
 
@@ -17,6 +17,16 @@ async function cacheParsed(id: string, book: ParsedBook): Promise<void> {
     await db.catalogCache.put({ id: parseCacheKey(id), book, cachedAt: Date.now() });
   } catch {
     // best-effort cache
+  }
+}
+
+
+/** Thrown by openBook when the device has no readable file and says WHY. A bare throw here is what the
+ *  reader turned into one blanket stub for five unrelated situations. */
+export class BookFileUnavailable extends Error {
+  constructor(public readonly issue: BookFileIssue) {
+    super(issue);
+    this.name = 'BookFileUnavailable';
   }
 }
 
@@ -69,7 +79,10 @@ export async function openBook(record: BookRecord): Promise<ParsedBook> {
       // cache unavailable — fall through to a fresh parse
     }
   }
-  await downloadBookFileIfMissing(record.id); // fetch the cloud copy on a device that only has the metadata
+  // Fetch the cloud copy on a device that only has the metadata. The reason it could not is carried out
+  // rather than swallowed — on this path it is the whole explanation the reader has to offer.
+  const issue = await downloadBookFileIfMissing(record.id);
+  if (issue) throw new BookFileUnavailable(issue);
   const file = await getBookFile(record.id);
   const parsed = await parseBook(file, record.format);
   if (record.format === 'pdf') await cacheParsed(record.id, parsed);

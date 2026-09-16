@@ -317,6 +317,12 @@ export function totpBackupCodes(accessToken: string, code: string): Promise<stri
   );
 }
 
+/** Abandon a setup that was never confirmed. Refused (409) once it is confirmed — taking away a live
+ *  second factor is what totpDisable is for, and that needs a code or the recovery key. */
+export function totpCancel(accessToken: string): Promise<void> {
+  return request(Routes.totpCancel, { method: 'POST', headers: authed(accessToken), body: '{}' }, () => undefined);
+}
+
 /** Turn the authenticator off. Either proof works: a live code, or the recovery key the user still
  *  holds — the second door exists for a phone lost along with the backup codes. */
 export function totpDisable(accessToken: string, proof: { code?: string; verifier?: string }): Promise<void> {

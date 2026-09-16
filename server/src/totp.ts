@@ -189,6 +189,15 @@ export interface TotpStore {
    * brute-forceable" and "a few days of free, scriptable traffic".
    */
   verify<R>(accountId: string, decide: (row: TotpRow | null) => { row?: TotpRow; result: R }): Promise<R>;
+  /**
+   * Delete an enrollment ONLY while it is still unconfirmed. Returns whether anything was deleted.
+   *
+   * Atomic for the same reason `verify` is, and here the stakes are higher than a lost counter: a plain
+   * get-then-remove lets a `confirm` land in the gap, turning an innocent "cancel setup" into the one
+   * thing /v1/totp/disable refuses to do without a live code or the recovery key — stripping a live
+   * second factor. A user pressing Confirm, losing the response and pressing Cancel is all it takes.
+   */
+  removeIfUnconfirmed(accountId: string): Promise<boolean>;
 }
 
 /** Six digits with a ±1 step tolerance leave ~3 codes live at once, so the code space is not what stops
@@ -249,5 +258,11 @@ export class InMemoryTotpStore implements TotpStore {
     const { row, result } = decide(this.rows.get(accountId) ?? null);
     if (row) this.rows.set(row.accountId, row);
     return result;
+  }
+  async removeIfUnconfirmed(accountId: string): Promise<boolean> {
+    const row = this.rows.get(accountId);
+    if (!row || row.confirmedAt) return false;
+    this.rows.delete(accountId);
+    return true;
   }
 }
