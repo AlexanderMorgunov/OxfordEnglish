@@ -198,6 +198,11 @@ export const TotpStatusSchema = z.object({
   backupCodesLeft: z.number(),
   /** A setup started and never confirmed. Optional so an older server still parses. */
   pending: z.boolean().optional(),
+  /** Failed attempts on the UNAUTHENTICATED recovery route in the current window — the owner's only
+   *  sign that someone is trying, now that those failures no longer spend their own budget. */
+  recoverFailures: z.number().optional(),
+  /** Whether a recovery name is set — never the name, which is stored only as a keyed hash. */
+  recoveryName: z.boolean().optional(),
 });
 /** Recovery runs without a session: `accountId` is read off the authenticator entry, and `verifier` is
  *  derived from the NEW key. The server keeps the id and swaps only the verifier. */
@@ -207,6 +212,22 @@ export const TotpRecoverRequestSchema = z.object({
   verifier: z.string().min(16).max(256),
   deviceName: z.string().max(60).optional(),
 });
+
+/**
+ * The same recovery, addressed by a name the user chose instead of the account id nobody remembers.
+ *
+ * The name is NOT a credential: several accounts may share one, and it only narrows which accounts the
+ * authenticator code is tried against. Kept deliberately non-unique — "is this name taken?" would be an
+ * oracle for who has an account here.
+ */
+export const TotpRecoverByNameRequestSchema = z.object({
+  name: z.string().min(1).max(120),
+  code: z.string().min(6).max(20),
+  verifier: z.string().min(16).max(256),
+  deviceName: z.string().max(60).optional(),
+});
+
+export const RecoveryNameRequestSchema = z.object({ name: z.string().min(1).max(120) });
 
 /** Separator in a post-recovery composite credential `<accountId>.<key>`. Neither half can contain it:
  *  the id is base64url and the key is Crockford base32. */
@@ -231,6 +252,8 @@ export const ErrorCode = {
   TotpAlreadyEnrolled: 'totp_already_enrolled',
   TotpNotEnrolled: 'totp_not_enrolled',
   TotpUnavailable: 'totp_unavailable',
+  RecoveryNameInvalid: 'recovery_name_invalid',
+  RecoveryNameCrowded: 'recovery_name_crowded',
   // Blob codes the server has always sent; the client used to hardcode the strings it cared about and
   // ignore the rest, which is how a missing cloud copy read as a generic failure.
   BlobTooLarge: 'blob_too_large',
@@ -269,6 +292,9 @@ export const Routes = {
   totpConfirm: '/v1/totp/confirm',
   totpBackupCodes: '/v1/totp/backup-codes',
   totpCancel: '/v1/totp/cancel',
+  totpRotateKey: '/v1/totp/rotate-key',
   totpDisable: '/v1/totp/disable',
   totpRecover: '/v1/totp/recover',
+  totpRecoverByName: '/v1/totp/recover-by-name',
+  recoveryName: '/v1/recovery-name',
 } as const;

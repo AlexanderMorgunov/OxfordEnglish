@@ -171,9 +171,27 @@ export type TotpRow = {
   confirmedAt?: number;
   lastStep?: number;
   backupHashes: string[];
+  /**
+   * Failed attempts on the OWNER's routes — confirm, reissue backup codes, disable. Every caller there
+   * is authenticated as this account.
+   */
   failCount: number;
   failWindowStart: number;
+  /**
+   * Failed attempts on `/v1/totp/recover`, which needs no session. Separate because the two used to
+   * share one counter: a stranger who knew an account id could spend the owner's budget ten requests at
+   * a time and keep them locked out of reissuing codes or disabling TOTP, indefinitely. NULL on rows
+   * written before the split, which reads as zero.
+   */
+  anonFailCount?: number;
+  anonFailWindowStart?: number;
 };
+
+/**
+ * Which budget an attempt spends. The axis is authentication, not the route: `/confirm` is on the
+ * owner's side because its caller is already authenticated as the account.
+ */
+export type FailScope = 'owner' | 'anon';
 
 export interface TotpStore {
   get(accountId: string): Promise<TotpRow | null>;
@@ -206,8 +224,15 @@ export interface TotpStore {
 export const VERIFY_MAX_FAILURES = 10;
 export const VERIFY_WINDOW_MS = 15 * 60_000;
 
-export const throttled = (row: TotpRow, now: number): boolean =>
-  now - row.failWindowStart < VERIFY_WINDOW_MS && row.failCount >= VERIFY_MAX_FAILURES;
+const counters = (row: TotpRow, scope: FailScope): { count: number; start: number } =>
+  scope === 'owner'
+    ? { count: row.failCount, start: row.failWindowStart }
+    : { count: row.anonFailCount ?? 0, start: row.anonFailWindowStart ?? 0 };
+
+export const throttled = (row: TotpRow, now: number, scope: FailScope): boolean => {
+  const { count, start } = counters(row, scope);
+  return now - start < VERIFY_WINDOW_MS && count >= VERIFY_MAX_FAILURES;
+};
 
 export type AttemptResult =
   | { ok: false; reason: 'throttled' | 'unconfirmed' | 'bad_code'; row: TotpRow }
@@ -218,29 +243,85 @@ export type AttemptResult =
  * backup codes, with the counters and single-use bookkeeping folded into the returned row. Callers
  * persist `row` whatever the outcome — a failure that is not written down does not throttle anything.
  */
-export function verifyAttempt(row: TotpRow, secret: Uint8Array, code: string, now: number): AttemptResult {
-  if (throttled(row, now)) return { ok: false, reason: 'throttled', row };
+export function verifyAttempt(
+  row: TotpRow,
+  secret: Uint8Array,
+  code: string,
+  now: number,
+  scope: FailScope
+): AttemptResult {
   if (!row.confirmedAt) return { ok: false, reason: 'unconfirmed', row };
 
-  const totp = verifyCode(secret, code, now, row.lastStep);
-  if (totp.ok) return { ok: true, row: { ...clearFailures(row), lastStep: totp.step }, usedBackup: false };
-
+  /**
+   * A backup code is checked BEFORE the throttle, deliberately.
+   *
+   * The throttle exists against guessing a six-digit TOTP: a million values, about three live at once,
+   * so roughly 333k expected attempts — the code space is not what stops that, the counter is. A backup
+   * code is ten characters from a 27-symbol alphabet, about 2·10^14 values, and ten of them live; at the
+   * IP limiter's dozen requests a minute, guessing one is out of reach by many orders of magnitude.
+   *
+   * It is also the one credential a locked-out owner actually holds. Without this, anyone who knows an
+   * account id can keep it permanently unrecoverable at ten requests per fifteen minutes — which is the
+   * difference between a denial of service that is contained and one that is total.
+   */
   const hash = hashBackupCode(code);
   if (row.backupHashes.includes(hash)) {
     const backupHashes = row.backupHashes.filter((h) => h !== hash); // single use
-    return { ok: true, row: { ...clearFailures(row), backupHashes }, usedBackup: true };
+    return { ok: true, row: { ...clearFailures(row, scope), backupHashes }, usedBackup: true };
   }
-  return { ok: false, reason: 'bad_code', row: noteFailure(row, now) };
+
+  if (throttled(row, now, scope)) return { ok: false, reason: 'throttled', row };
+
+  const totp = verifyCode(secret, code, now, row.lastStep);
+  if (totp.ok) return { ok: true, row: { ...clearFailures(row, scope), lastStep: totp.step }, usedBackup: false };
+
+  return { ok: false, reason: 'bad_code', row: noteFailure(row, now, scope) };
 }
 
-export function noteFailure(row: TotpRow, now: number): TotpRow {
-  const fresh = now - row.failWindowStart >= VERIFY_WINDOW_MS;
-  return fresh
-    ? { ...row, failCount: 1, failWindowStart: now }
-    : { ...row, failCount: row.failCount + 1 };
+export function noteFailure(row: TotpRow, now: number, scope: FailScope): TotpRow {
+  const { count, start } = counters(row, scope);
+  const fresh = now - start >= VERIFY_WINDOW_MS;
+  const next = fresh ? { count: 1, start: now } : { count: count + 1, start };
+  return scope === 'owner'
+    ? { ...row, failCount: next.count, failWindowStart: next.start }
+    : { ...row, anonFailCount: next.count, anonFailWindowStart: next.start };
 }
 
-export const clearFailures = (row: TotpRow): TotpRow => ({ ...row, failCount: 0, failWindowStart: 0 });
+/** Clears only the scope in play: a routine success on the owner's routes must not wipe an attacker's
+ *  `/recover` lockout, and a successful recovery must not wipe the owner's. */
+export const clearFailures = (row: TotpRow, scope: FailScope): TotpRow =>
+  scope === 'owner'
+    ? { ...row, failCount: 0, failWindowStart: 0 }
+    : { ...row, anonFailCount: 0, anonFailWindowStart: 0 };
+
+/**
+ * One submitted code against ONE candidate account, with no counter bookkeeping at all.
+ *
+ * Recovery by name cannot go through `verifyAttempt`: that one reads and charges this account's
+ * counters, and a name resolves to several accounts, so a stranger typing a common name ten times would
+ * lock every holder of it out of their own recovery. The name path is throttled on the NAME instead
+ * (see recoveryName.ts), which is why nothing here is counted.
+ *
+ * What it still does is everything that is not a counter: refuse an unconfirmed enrolment, honour
+ * `lastStep` so a code cannot be replayed, and spend a backup code exactly once. The caller persists
+ * `row` only on success — a miss against a candidate must leave no trace on that account.
+ */
+export function verifyUncounted(
+  row: TotpRow,
+  secret: Uint8Array,
+  code: string,
+  now: number
+): { ok: false } | { ok: true; row: TotpRow; usedBackup: boolean } {
+  if (!row.confirmedAt) return { ok: false };
+
+  const hash = hashBackupCode(code);
+  if (row.backupHashes.includes(hash)) {
+    return { ok: true, row: { ...row, backupHashes: row.backupHashes.filter((h) => h !== hash) }, usedBackup: true };
+  }
+
+  const totp = verifyCode(secret, code, now, row.lastStep);
+  return totp.ok ? { ok: true, row: { ...row, lastStep: totp.step }, usedBackup: false } : { ok: false };
+}
 
 export class InMemoryTotpStore implements TotpStore {
   private rows = new Map<string, TotpRow>();
