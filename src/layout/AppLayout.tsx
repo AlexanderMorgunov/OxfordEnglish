@@ -155,8 +155,6 @@ function SiteFooter({ ru }: { ru: boolean }) {
           <a href={`mailto:${SELLER.email}`} className="hover:text-teal hover:underline">
             {SELLER.email}
           </a>
-          <span className="px-2 text-faint">·</span>
-          {SELLER.phone}
         </p>
       </div>
     </footer>
