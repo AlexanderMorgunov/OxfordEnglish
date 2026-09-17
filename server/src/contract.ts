@@ -193,7 +193,17 @@ export const TotpDisableRequestSchema = z
   .refine((v) => !!v.code || !!v.verifier, { message: 'code or verifier required' });
 /** `available` is false when the server has no sealing key: the whole feature is off, and offering an
  *  enroll button that can only 503 is worse than showing nothing. */
-export const TotpStatusSchema = z.object({ available: z.boolean(), enrolled: z.boolean(), backupCodesLeft: z.number() });
+export const TotpStatusSchema = z.object({
+  available: z.boolean(),
+  enrolled: z.boolean(),
+  backupCodesLeft: z.number(),
+  /** A setup started and never confirmed. */
+  pending: z.boolean().optional(),
+  /** Failed recovery attempts in the current window — the owner's only sign that someone is trying. */
+  recoverFailures: z.number().optional(),
+  /** Whether a recovery name is set. Never the name itself — it is stored as a keyed hash. */
+  recoveryName: z.boolean().optional(),
+});
 /**
  * Recovery runs WITHOUT a session — the caller has lost the recovery key, which is the only credential.
  * `accountId` comes from the authenticator entry's label, `code` is a TOTP or a backup code, and
@@ -205,6 +215,31 @@ export const TotpRecoverRequestSchema = z.object({
   code: z.string().min(6).max(20),
   verifier: z.string().min(16).max(256),
   deviceName: z.string().max(60).optional(),
+});
+
+/**
+ * The same thing, addressed by a name the user chose instead of the account id nobody remembers. The
+ * name is not a credential and resolves to several accounts on purpose; the code picks between them.
+ * Bounded generously here and judged properly server-side, after normalisation.
+ */
+export const TotpRecoverByNameRequestSchema = z.object({
+  name: z.string().min(1).max(120),
+  code: z.string().min(6).max(20),
+  verifier: z.string().min(16).max(256),
+  deviceName: z.string().max(60).optional(),
+});
+
+export const RecoveryNameRequestSchema = z.object({ name: z.string().min(1).max(120) });
+
+/**
+ * Issue a new recovery key while signed in, proved by an authenticator code. Distinct from recovery:
+ * that one assumes the old key may be stolen and burns every session; someone who still has access does
+ * not need that, so ending other sessions is their choice rather than a consequence.
+ */
+export const TotpRotateKeyRequestSchema = z.object({
+  code: z.string().min(6).max(20),
+  verifier: z.string().min(16).max(256),
+  revokeOthers: z.boolean().optional(),
 });
 
 /** Separator between the account id and the key in a post-recovery composite credential. Neither half
@@ -235,5 +270,10 @@ export const ErrorCode = {
   TotpAlreadyEnrolled: 'totp_already_enrolled',
   TotpNotEnrolled: 'totp_not_enrolled',
   TotpUnavailable: 'totp_unavailable',
+  /** The name is too short, too long, or nothing once normalised. */
+  RecoveryNameInvalid: 'recovery_name_invalid',
+  /** Already at the cap of accounts sharing this name. Refusing at write time is what keeps the lookup
+   *  complete — accepting and truncating on read would leave the next holder unrecoverable in silence. */
+  RecoveryNameCrowded: 'recovery_name_crowded',
 } as const;
 export type ErrorCode = (typeof ErrorCode)[keyof typeof ErrorCode];

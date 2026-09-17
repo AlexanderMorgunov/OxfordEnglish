@@ -9,6 +9,48 @@ import type { Device, DeviceStartResponse, Session } from './contract';
 
 const KEY = 'oxford-account';
 
+/**
+ * A recovery-by-name attempt whose answer was lost in transit.
+ *
+ * The server may or may not have installed `key` as the new credential, and there is no way to ask:
+ * the account id lives only in the response we did not get. Both halves of that uncertainty are
+ * resolved by sending the SAME key again with a fresh code, so the key has to survive the failure —
+ * generating a second one on retry would guarantee that at most one of them is the real credential.
+ */
+export class PendingRecovery extends Error {
+  constructor(readonly key: string) {
+    super('recovery answer lost');
+    this.name = 'PendingRecovery';
+  }
+}
+
+/**
+ * Where that key waits.
+ *
+ * It has to outlive the page, not just the component: the moment it is at risk is a dropped connection,
+ * and "the connection dropped" and "the user reloaded, or the tab was closed" are the same minute. Held
+ * only in React state it would be lost exactly when it is the sole copy of a credential the server may
+ * already have installed.
+ */
+const PENDING_KEY = 'oxford-recovery-pending';
+
+export function pendingRecoveryKey(): string | null {
+  try {
+    return localStorage.getItem(PENDING_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function stashPendingRecovery(key: string | null): void {
+  try {
+    if (key) localStorage.setItem(PENDING_KEY, key);
+    else localStorage.removeItem(PENDING_KEY);
+  } catch {
+    // ignore storage failures
+  }
+}
+
 /** Persisted across launches. Access token is deliberately NOT persisted — it lives in memory and is
  *  re-minted by a silent refresh on app open (session survives via the refresh token). */
 type Persisted = { accountId: string; deviceId: string; refreshToken: string };
@@ -80,6 +122,12 @@ type AccountState = {
   /** Recover an account whose key is lost, using the authenticator. Returns the NEW composite credential
    *  the user must save — it is the only copy, and the old key is dead the moment this resolves. */
   recoverWithTotp: (accountId: string, code: string) => Promise<string>;
+  /**
+   * Recovery addressed by name. `pendingKey` is for the retry after a lost response — see the impl.
+   */
+  recoverWithName: (name: string, code: string, pendingKey?: string) => Promise<string>;
+  /** Issue a new recovery key without signing out. Returns the credential to show, exactly once. */
+  rotateRecoveryKey: (code: string, revokeOthers: boolean) => Promise<string>;
   /** Silent refresh (single-flight across concurrent callers and, where supported, across tabs). */
   refresh: () => Promise<void>;
   /** A valid access token, refreshing first if it is missing/expired. Null when not authenticated. */
@@ -171,6 +219,68 @@ export const useAccount = create<AccountState>((set, get) => {
       }
     },
 
+    /**
+     * A new recovery key for someone who still has access.
+     *
+     * Deliberately NOT a new account id. A fresh key would derive a fresh id, and the id keys the blob
+     * prefix, the entitlement row, the payment grant bindings, TOTP, devices and sync — and
+     * `maybeSwitchWipe` would read the change as a different account and wipe local data. So the server
+     * rebinds only the verifier and the composite is built from the id we already hold.
+     */
+    rotateRecoveryKey: async (code, revokeOthers) => {
+      if (!accountsEnabled()) throw new Error('accounts disabled');
+      const accountId = get().accountId;
+      if (!accountId) throw new ApiFailure('unauthorized', 401);
+      set({ busy: true, error: null });
+      try {
+        const newKey = generateRecoveryKey();
+        const token = await get().getAccessToken();
+        if (!token) throw new ApiFailure('unauthorized', 401);
+        await api.totpRotateKey(token, { code: code.trim(), verifier: await deriveVerifier(newKey), revokeOthers });
+        return formatCompositeKey(accountId, newKey);
+      } catch (e) {
+        set({ error: e instanceof ApiFailure ? e.code : 'error' });
+        throw e;
+      } finally {
+        set({ busy: false });
+      }
+    },
+
+    /**
+     * Recover by the name the user chose, for the case the account id went with the key.
+     *
+     * Unlike `recoverWithTotp` there is no fallback for a lost response: that one logs in with
+     * `<typed id>.<new key>`, and here the id is precisely what we do not have. So the new key is
+     * handed back to the caller on a network failure instead, to be resubmitted with a FRESH code — the
+     * rebind is idempotent, and a second attempt succeeds whether or not the first one landed. Throwing
+     * a key away that the server may already have installed would close the account for good.
+     */
+    recoverWithName: async (name, code, pendingKey) => {
+      if (!accountsEnabled()) throw new Error('accounts disabled');
+      set({ busy: true, error: null });
+      const newKey = pendingKey ?? generateRecoveryKey();
+      try {
+        const session = await api.totpRecoverByName({
+          name: name.trim(),
+          code: code.trim(),
+          verifier: await deriveVerifier(newKey),
+          deviceName: deviceName(),
+        });
+        await maybeSwitchWipe(session.accountId);
+        applySession(session);
+        stashPendingRecovery(null);
+        return formatCompositeKey(session.accountId, newKey);
+      } catch (e) {
+        const failure = e instanceof ApiFailure ? e.code : 'error';
+        set({ error: failure });
+        if (failure !== 'network') throw e;
+        stashPendingRecovery(newKey);
+        throw new PendingRecovery(newKey);
+      } finally {
+        set({ busy: false });
+      }
+    },
+
     recoverWithTotp: async (accountId, code) => {
       if (!accountsEnabled()) throw new Error('accounts disabled');
       set({ busy: true, error: null });
@@ -193,6 +303,7 @@ export const useAccount = create<AccountState>((set, get) => {
         }
         await maybeSwitchWipe(session.accountId);
         applySession(session);
+        stashPendingRecovery(null);
         // The id comes from the SERVER's response, not the typed-in one: it is the id the credential must
         // carry, and echoing back what the user typed would bake a typo into their only way in.
         return formatCompositeKey(session.accountId, newKey);

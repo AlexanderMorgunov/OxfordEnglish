@@ -7,6 +7,7 @@ import { TotpEnroll, TotpRecover } from './TotpSection';
 import { QuotaNotice } from './QuotaNotice';
 import { PlanSection } from './PlanSection';
 import { avatarSrc } from './avatar';
+import { recoveryFileBody } from './recoveryFile';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { ApiFailure } from './api';
 import { accountsEnabled } from './config';
@@ -53,7 +54,7 @@ function AccountSectionBody() {
   const [keyInput, setKeyInput] = useState('');
   const [showDeviceLink, setShowDeviceLink] = useState(false);
   const [showRecover, setShowRecover] = useState(false);
-  const [keyReason, setKeyReason] = useState<'created' | 'recovered'>('created');
+  const [keyReason, setKeyReason] = useState<'created' | 'recovered' | 'rotated'>('created');
 
   const errText = error
     ? error === 'invalid_credentials'
@@ -97,7 +98,8 @@ function AccountSectionBody() {
   const copyKey = () => savedKey && void navigator.clipboard?.writeText(savedKey).catch(() => undefined);
   const downloadKey = () => {
     if (!savedKey) return;
-    const blob = new Blob([`DayEnglish recovery key\n\n${savedKey}\n`], { type: 'text/plain' });
+    const body = recoveryFileBody(savedKey, accountId, ru);
+    const blob = new Blob([body], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -115,7 +117,11 @@ function AccountSectionBody() {
       {savedKey ? (
         <Card className="border-amber-dim bg-amber-dim/15">
           <p className="mb-2 text-sm text-content">
-            {keyReason === 'recovered'
+            {keyReason === 'rotated'
+              ? ru
+                ? 'Готово — вот новый ключ. Старый больше не работает, сохраните этот вместо него. Он содержит и ваш ID, поэтому длиннее прежнего.'
+                : 'Done — here is the new key. The old one no longer works, so save this in its place. It carries your ID too, which is why it is longer.'
+              : keyReason === 'recovered'
               ? ru
                 ? 'Аккаунт восстановлен, и у него новый ключ. Старый больше не работает — сохраните этот вместо него. Он длиннее прежнего, потому что содержит и ваш ID.'
                 : 'Your account is back, with a new key. The old one no longer works — save this one in its place. It is longer than before because it also carries your ID.'
@@ -158,10 +164,11 @@ function AccountSectionBody() {
             <div>
               <p className="text-sm text-content">{ru ? 'Вы вошли.' : 'Signed in.'}</p>
               <p className="font-mono text-2xs text-muted">
-                id: {accountId?.slice(0, 10)}… · {ru ? 'это устройство' : 'this device'}: {deviceId.slice(0, 8)}
+                {ru ? 'это устройство' : 'this device'}: {deviceId.slice(0, 8)}
               </p>
             </div>
           </div>
+          {accountId && <AccountIdBlock ru={ru} accountId={accountId} />}
           <QuotaNotice />
           <SyncStatusLine ru={ru} />
           <Button size="sm" variant="ghost" className="mt-3" onClick={() => void logout()}>
@@ -169,7 +176,14 @@ function AccountSectionBody() {
           </Button>
           <PlanSection ru={ru} />
           <BookFileSyncToggle ru={ru} />
-          <TotpEnroll ru={ru} />
+          <TotpEnroll
+            ru={ru}
+            onNewKey={(composite) => {
+              setSavedKey(composite);
+              setKeyReason('rotated');
+              setConfirmedSaved(false);
+            }}
+          />
           <DeviceManager ru={ru} thisDeviceId={deviceId} />
           <DangerZone ru={ru} />
         </div>
@@ -601,5 +615,47 @@ function DeviceManager({ ru, thisDeviceId }: { ru: boolean; thisDeviceId: string
         </ul>
       )}
     </Card>
+  );
+}
+
+/**
+ * The account id, in full and copyable.
+ *
+ * It used to be truncated to ten of its twenty-two characters with no way to copy it — while the one
+ * flow that needs it, recovery after a lost key, demands all of it. The only other place a full id
+ * survived was the label inside the authenticator app, which the setup screen now actively steers
+ * people away from by offering the key for manual entry first.
+ *
+ * Safe to show: alone it grants nothing. Recovery still needs a code from the authenticator, and the
+ * failure budget a stranger can spend on it is no longer the one the owner's own operations use.
+ */
+function AccountIdBlock({ ru, accountId }: { ru: boolean; accountId: string }) {
+  const [copied, setCopied] = useState(false);
+  return (
+    <div className="mt-3 rounded-sm border border-line bg-surface-2/40 px-3 py-2.5">
+      <p className="mb-1 font-mono text-2xs uppercase tracking-[0.08em] text-muted">
+        {ru ? 'id аккаунта' : 'account id'}
+      </p>
+      <p className="mb-2 select-all break-all font-mono text-sm text-content">{accountId}</p>
+      <div className="flex flex-wrap items-center gap-2">
+        <Button
+          size="sm"
+          variant="ghost"
+          onClick={() => {
+            void navigator.clipboard
+              ?.writeText(accountId)
+              .then(() => setCopied(true))
+              .catch(() => undefined);
+          }}
+        >
+          {copied ? (ru ? 'Скопировано' : 'Copied') : ru ? 'Скопировать' : 'Copy'}
+        </Button>
+        <span className="text-2xs text-muted text-pretty">
+          {ru
+            ? 'Не секрет. Понадобится, если ключ восстановления потеряется — сохраните рядом с резервными кодами.'
+            : 'Not a secret. You need it if the recovery key is ever lost — keep it with your backup codes.'}
+        </span>
+      </div>
+    </div>
   );
 }

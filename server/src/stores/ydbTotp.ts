@@ -24,7 +24,7 @@ const str = (v: unknown): string => (typeof v === 'string' ? v : v == null ? '' 
 export class YdbTotpStore implements TotpStore {
   async get(accountId: string): Promise<TotpRow | null> {
     const [rows] = await query(
-      'DECLARE $a AS Utf8; SELECT secret_enc, confirmed_at, last_step, backup_hashes, fail_count, fail_window_start FROM totp WHERE account_id=$a;',
+      'DECLARE $a AS Utf8; SELECT secret_enc, confirmed_at, last_step, backup_hashes, fail_count, fail_window_start, anon_fail_count, anon_fail_window_start FROM totp WHERE account_id=$a;',
       { $a: T.utf8(accountId) }
     );
     const r = rows[0];
@@ -38,15 +38,18 @@ export class YdbTotpStore implements TotpStore {
       backupHashes: joined ? joined.split('\n') : [],
       failCount: num(r.fail_count),
       failWindowStart: tsMs(r.fail_window_start),
+      // NULL on rows written before the counters were split; reads as zero, which is the right default.
+      anonFailCount: r.anon_fail_count == null ? undefined : num(r.anon_fail_count),
+      anonFailWindowStart: r.anon_fail_window_start == null ? undefined : tsMs(r.anon_fail_window_start),
     };
   }
 
   async put(row: TotpRow): Promise<void> {
     await query(
       'DECLARE $a AS Utf8; DECLARE $s AS Utf8; DECLARE $c AS Timestamp?; DECLARE $l AS Uint32?; DECLARE $b AS Utf8;' +
-        'DECLARE $f AS Uint32; DECLARE $w AS Timestamp;' +
-        'UPSERT INTO totp (account_id, secret_enc, confirmed_at, last_step, backup_hashes, fail_count, fail_window_start)' +
-        ' VALUES ($a, $s, $c, $l, $b, $f, $w);',
+        'DECLARE $f AS Uint32; DECLARE $w AS Timestamp; DECLARE $af AS Uint32?; DECLARE $aw AS Timestamp?;' +
+        'UPSERT INTO totp (account_id, secret_enc, confirmed_at, last_step, backup_hashes, fail_count, fail_window_start, anon_fail_count, anon_fail_window_start)' +
+        ' VALUES ($a, $s, $c, $l, $b, $f, $w, $af, $aw);',
       {
         $a: T.utf8(row.accountId),
         $s: T.utf8(row.secretEnc),
@@ -55,6 +58,8 @@ export class YdbTotpStore implements TotpStore {
         $b: T.utf8(row.backupHashes.join('\n')),
         $f: T.uint32(row.failCount),
         $w: T.timestamp(new Date(row.failWindowStart)),
+        $af: optU32(row.anonFailCount),
+        $aw: optTs(row.anonFailWindowStart),
       }
     );
   }
@@ -68,7 +73,7 @@ export class YdbTotpStore implements TotpStore {
   async verify<R>(accountId: string, decide: (row: TotpRow | null) => { row?: TotpRow; result: R }): Promise<R> {
     return withSerializableTx(async (tx) => {
       const rows = await tx.exec(
-        'DECLARE $a AS Utf8; SELECT secret_enc, confirmed_at, last_step, backup_hashes, fail_count, fail_window_start FROM totp WHERE account_id=$a;',
+        'DECLARE $a AS Utf8; SELECT secret_enc, confirmed_at, last_step, backup_hashes, fail_count, fail_window_start, anon_fail_count, anon_fail_window_start FROM totp WHERE account_id=$a;',
         { $a: T.utf8(accountId) }
       );
       const r = rows[0]?.[0];
@@ -82,6 +87,12 @@ export class YdbTotpStore implements TotpStore {
             backupHashes: joined ? joined.split('\n') : [],
             failCount: num(r.fail_count),
             failWindowStart: tsMs(r.fail_window_start),
+            // Reading these back matters as much as writing them: miss it here and the unauthenticated
+            // counter is written on every failure and read as zero on every attempt, so `/recover` is
+            // never throttled in production — while every smoke passes, because the in-memory store
+            // keeps whole objects and never round-trips through columns.
+            anonFailCount: r.anon_fail_count == null ? undefined : num(r.anon_fail_count),
+            anonFailWindowStart: r.anon_fail_window_start == null ? undefined : tsMs(r.anon_fail_window_start),
           }
         : null;
 
@@ -89,9 +100,9 @@ export class YdbTotpStore implements TotpStore {
       await tx.exec(
         row
           ? 'DECLARE $a AS Utf8; DECLARE $s AS Utf8; DECLARE $c AS Timestamp?; DECLARE $l AS Uint32?; DECLARE $b AS Utf8;' +
-            'DECLARE $f AS Uint32; DECLARE $w AS Timestamp;' +
-            'UPSERT INTO totp (account_id, secret_enc, confirmed_at, last_step, backup_hashes, fail_count, fail_window_start)' +
-            ' VALUES ($a, $s, $c, $l, $b, $f, $w);'
+            'DECLARE $f AS Uint32; DECLARE $w AS Timestamp; DECLARE $af AS Uint32?; DECLARE $aw AS Timestamp?;' +
+            'UPSERT INTO totp (account_id, secret_enc, confirmed_at, last_step, backup_hashes, fail_count, fail_window_start, anon_fail_count, anon_fail_window_start)' +
+            ' VALUES ($a, $s, $c, $l, $b, $f, $w, $af, $aw);'
           : 'SELECT 1;', // nothing to write, but the tx still has to commit
         row
           ? {
@@ -102,6 +113,8 @@ export class YdbTotpStore implements TotpStore {
               $b: T.utf8(row.backupHashes.join('\n')),
               $f: T.uint32(row.failCount),
               $w: T.timestamp(new Date(row.failWindowStart)),
+        $af: optU32(row.anonFailCount),
+        $aw: optTs(row.anonFailWindowStart),
             }
           : {},
         true

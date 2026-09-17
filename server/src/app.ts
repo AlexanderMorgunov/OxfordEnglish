@@ -14,6 +14,7 @@ import { InMemoryBlobStore, type BlobStore } from './blobs.js';
 import { InMemoryEntitlementStore, indexKeyConfigured, useEphemeralIndexKey, type EntitlementStore } from './entitlements.js';
 import { InMemoryAiCacheStore, type AiCacheStore } from './ai.js';
 import { InMemoryTotpStore, type TotpStore } from './totp.js';
+import { InMemoryRecoveryNameStore, type RecoveryNameStore } from './recoveryName.js';
 import { ydbConfigured } from './ydb.js';
 import { YdbAuthStore } from './stores/ydbAuth.js';
 import { YdbSyncStore } from './stores/ydbSync.js';
@@ -21,6 +22,7 @@ import { YcBlobStore } from './stores/ycBlob.js';
 import { YdbEntitlementStore } from './stores/ydbEntitlement.js';
 import { YdbAiCacheStore } from './stores/ydbAiCache.js';
 import { YdbTotpStore } from './stores/ydbTotp.js';
+import { YdbRecoveryNameStore } from './stores/ydbRecoveryName.js';
 import type { Completer } from './aiProvider.js';
 import { jwks } from './tokens.js';
 import { ErrorCode } from './contract.js';
@@ -35,7 +37,8 @@ export function createApp(
   ent?: EntitlementStore,
   aiCache?: AiCacheStore,
   completer?: Completer,
-  totp?: TotpStore
+  totp?: TotpStore,
+  names?: RecoveryNameStore
 ): Hono {
   const real = ydbConfigured();
   // Without a real database there is no Lockbox either; a per-process key keeps dev and the in-process
@@ -48,6 +51,7 @@ export function createApp(
   const entStore = ent ?? (real ? new YdbEntitlementStore() : new InMemoryEntitlementStore());
   const aiCacheStore = aiCache ?? (real ? new YdbAiCacheStore() : new InMemoryAiCacheStore());
   const totpStore = totp ?? (real ? new YdbTotpStore() : new InMemoryTotpStore());
+  const nameStore = names ?? (real ? new YdbRecoveryNameStore() : new InMemoryRecoveryNameStore());
   const app = new Hono();
 
   const origins = (process.env.CORS_ORIGINS ?? 'https://dayenglish.ru,https://www.dayenglish.ru')
@@ -91,11 +95,11 @@ export function createApp(
   app.route('/', authRoutes(authStore));
   app.route('/', syncRoutes(syncStore, entStore));
   app.route('/', blobRoutes(blobStore, entStore));
-  app.route('/', accountRoutes(authStore, syncStore, blobStore, entStore, totpStore));
+  app.route('/', accountRoutes(authStore, syncStore, blobStore, entStore, totpStore, nameStore));
   app.route('/', entitlementRoutes(entStore));
   app.route('/', billingRoutes(entStore));
   app.route('/', aiRoutes(entStore, aiCacheStore, completer));
-  app.route('/', totpRoutes(authStore, totpStore));
+  app.route('/', totpRoutes(authStore, totpStore, nameStore));
 
   return app;
 }

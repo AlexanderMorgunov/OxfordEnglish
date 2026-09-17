@@ -77,6 +77,32 @@ const TABLES: Table[] = [
         .withPrimaryKey('account_id'),
   },
   {
+    name: 'recovery_names',
+    // Composite key because names are deliberately NOT unique — several accounts may answer to one, and
+    // the authenticator code picks between them. `account_id` sits here in the clear, which it must for
+    // the lookup to resolve to anything; the HMAC only keeps the NAME unreadable. No TTL: like the totp
+    // row this is a way back into a paid account and has to outlive everything.
+    describe: () =>
+      new TableDescription()
+        .withColumn(new Column('name_hash', utf8()))
+        .withColumn(new Column('account_id', utf8()))
+        .withColumn(new Column('created_at', ts()))
+        .withPrimaryKeys('name_hash', 'account_id'),
+  },
+  {
+    name: 'recovery_name_attempts',
+    // Failures are charged to the NAME, never to the accounts behind it: ten attempts with a common name
+    // would otherwise lock every holder of it out of their own recovery. TTL because a row is meaningless
+    // once its window has passed, and a day is far clear of the fifteen-minute window.
+    describe: () =>
+      new TableDescription()
+        .withColumn(new Column('name_hash', utf8()))
+        .withColumn(new Column('fail_count', u32()))
+        .withColumn(new Column('fail_window_start', ts()))
+        .withPrimaryKey('name_hash')
+        .withTtl('fail_window_start', 24 * 60 * 60),
+  },
+  {
     name: 'payment_grants',
     // No TTL, unlike every other table here: these ARE the payment records. `invoice_id` is also the
     // parent a future recurring charge is filed against, so a grant has to outlive the subscription.
@@ -166,6 +192,12 @@ const INDEXES: Array<{ table: string; name: string; columns: string[]; why: stri
     columns: ['bound_to'],
     why: 'a buyer whose device lost the grant token would otherwise need a support ticket',
   },
+  {
+    table: 'recovery_names',
+    name: 'by_account',
+    columns: ['account_id'],
+    why: 'setting a name must delete the old row, and the account purge must find them by account',
+  },
 ];
 
 /**
@@ -177,6 +209,11 @@ const COLUMNS: Array<{ table: string; name: string; type: ReturnType<typeof utf8
   { table: 'payment_grants', name: 'amount_kopecks', type: u32(), why: 'a valid signature proves who sent the callback, not what was priced' },
   { table: 'payment_grants', name: 'paid', type: bool(), why: 'a grant is minted at checkout and confirmed later; NULL reads as unpaid' },
   { table: 'payment_grants', name: 'paid_at', type: ts(), why: 'audit trail for a confirmed payment' },
+  // The failure counter used to be shared between /v1/totp/recover, which needs no session, and the
+  // owner's own routes — so a stranger who knew an account id could lock the owner out of reissuing
+  // backup codes or disabling TOTP, ten requests at a time, indefinitely.
+  { table: 'totp', name: 'anon_fail_count', type: u32(), why: 'unauthenticated attempts must not spend the owner’s budget' },
+  { table: 'totp', name: 'anon_fail_window_start', type: ts(), why: 'window for the unauthenticated counter' },
 ];
 
 async function hasColumn(table: string, column: string): Promise<boolean> {

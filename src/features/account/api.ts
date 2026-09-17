@@ -343,3 +343,47 @@ export function totpRecover(body: {
 }): Promise<Session> {
   return request(Routes.totpRecover, { method: 'POST', body: JSON.stringify(body) }, asSession);
 }
+
+/**
+ * The same rebind, addressed by the user's chosen name instead of the account id.
+ *
+ * Separate from `totpRecover` rather than one call with two shapes, because the two are throttled
+ * differently and fail differently: a name is charged per matching account and answers 429 when it runs
+ * out, where an id answers 401 so it cannot be asked whether an account has an authenticator.
+ */
+export function totpRecoverByName(body: {
+  name: string;
+  code: string;
+  verifier: string;
+  deviceName?: string;
+}): Promise<Session> {
+  return request(Routes.totpRecoverByName, { method: 'POST', body: JSON.stringify(body) }, asSession);
+}
+
+/** Set (or replace) the recovery name. One per account: this replaces whatever was there. */
+export function setRecoveryName(accessToken: string, name: string): Promise<void> {
+  return request(
+    Routes.recoveryName,
+    { method: 'POST', headers: authed(accessToken), body: JSON.stringify({ name }) },
+    () => undefined
+  );
+}
+
+export function clearRecoveryName(accessToken: string): Promise<void> {
+  return request(Routes.recoveryName, { method: 'DELETE', headers: authed(accessToken) }, () => undefined);
+}
+
+/**
+ * Issue a new recovery key while signed in, proved by an authenticator code.
+ *
+ * The verifier is derived from a key the CLIENT generates — the raw key never leaves the device, which
+ * is the same shape as registration and recovery. `revokeOthers` is the caller's choice: rotating
+ * against someone who may hold a stolen session wants it on, replacing a key you simply never had does
+ * not.
+ */
+export function totpRotateKey(
+  accessToken: string,
+  body: { code: string; verifier: string; revokeOthers: boolean }
+): Promise<void> {
+  return request(Routes.totpRotateKey, { method: 'POST', headers: authed(accessToken), body: JSON.stringify(body) }, () => undefined);
+}

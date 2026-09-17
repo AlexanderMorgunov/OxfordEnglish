@@ -136,13 +136,26 @@ check('the used code is burned (nine left)', backupBody.backupCodesLeft === 9);
 check('replaying the same backup code → 401', (await post('/v1/totp/recover', { accountId: ACC, code: freshCodes[0]!, verifier: NEW_VERIFIER })).status === 401);
 
 // --- guessing is throttled per account ---
-let sawRateLimit = false;
+// Asserted on the STORED counter, not on the status. /recover answers 401 for every failure now — a 429
+// there would tell anyone holding an account id whether it has an authenticator — and the 429s that do
+// appear come from the per-IP limiter in front of the route, which would make a status-based assertion
+// pass while proving nothing about the account throttle.
+const ownerBefore = (await totp.get(ACC))!.failCount;
 for (let i = 0; i < VERIFY_MAX_FAILURES + 2; i += 1) {
-  const r = await post('/v1/totp/recover', { accountId: ACC, code: '111111', verifier: NEW_VERIFIER });
-  if (r.status === 429) sawRateLimit = true;
+  await post('/v1/totp/recover', { accountId: ACC, code: '111111', verifier: NEW_VERIFIER });
 }
-check('repeated wrong codes hit a 429 lockout', sawRateLimit);
-check('the lockout also blocks a CORRECT code', (await post('/v1/totp/recover', { accountId: ACC, code: codeNow(), verifier: NEW_VERIFIER })).status === 429);
+const afterGuessing = (await totp.get(ACC))!;
+check('wrong codes are counted against the unauthenticated budget', (afterGuessing.anonFailCount ?? 0) > 0);
+check('the count never exceeds the cap', (afterGuessing.anonFailCount ?? 0) <= VERIFY_MAX_FAILURES);
+check("the owner's own budget is untouched by a stranger's guesses", afterGuessing.failCount === ownerBefore);
+// From a FRESH address, so the per-IP limiter is not what answers: the account's own spent budget must
+// refuse even a correct code, and refuse it with 401 rather than 429.
+const fromElsewhere = await app.request('/v1/totp/recover', {
+  method: 'POST',
+  headers: { ...H, 'x-forwarded-for': '198.51.100.9' },
+  body: JSON.stringify({ accountId: ACC, code: codeNow(), verifier: NEW_VERIFIER }),
+});
+check('a correct code is refused while the unauthenticated budget is spent', fromElsewhere.status === 401);
 
 // --- disable needs a code, not just a session ---
 const recovered = (await (await post('/v1/auth/login', { accountId: ACC, verifier: NEW_VERIFIER })).json()) as Session;
@@ -190,13 +203,23 @@ check('deleting the account purges its sealed seed', (await totp.get(ERASE)) ===
   const sec = base32Decode(en.secret);
   await post('/v1/totp/confirm', { code: codeForStep(sec, stepAt(Date.now())) }, rt.accessToken);
 
-  const statuses = await Promise.all(
-    Array.from({ length: 40 }, async () => (await post('/v1/totp/recover', { accountId: RACE, code: '111111', verifier: NEW_VERIFIER })).status)
-  );
-  const rejected = statuses.filter((s) => s === 401).length;
-  check('a parallel burst is throttled after the failure budget', rejected <= VERIFY_MAX_FAILURES);
-  check('the rest are locked out', statuses.filter((s) => s === 429).length >= 40 - VERIFY_MAX_FAILURES);
-  check('the stored counter matches the attempts it let through', (await totp.get(RACE))!.failCount === rejected);
+  // Its own client address: otherwise the per-IP limiter — already drained by everything above —
+  // rejects all forty before the account throttle sees one, and the test asserts nothing.
+  const burst = (body: unknown) =>
+    app.request('/v1/totp/recover', {
+      method: 'POST',
+      headers: { ...H, 'x-forwarded-for': '203.0.113.7' },
+      body: JSON.stringify(body),
+    });
+  await Promise.all(Array.from({ length: 40 }, () => burst({ accountId: RACE, code: '111111', verifier: NEW_VERIFIER })));
+  // The property is atomicity, and it has to be read off the row: a lost update would let the counter
+  // advance once per database round trip instead of once per attempt, turning ten-per-fifteen-minutes
+  // into however many requests fit in one. Statuses cannot show that — the per-IP limiter answers most
+  // of a 40-request burst before the account throttle ever sees it.
+  const raceRow = (await totp.get(RACE))!;
+  check('a parallel burst never drives the counter past the cap', (raceRow.anonFailCount ?? 0) <= VERIFY_MAX_FAILURES);
+  check('...and does count the attempts it let through', (raceRow.anonFailCount ?? 0) > 0);
+  check("...without spending the owner's budget", raceRow.failCount === 0);
 }
 
 // --- cancelling a setup that was never confirmed ---
@@ -218,7 +241,97 @@ const sx = base32Decode(second.secret);
 await post('/v1/totp/confirm', { code: codeForStep(sx, stepAt(Date.now())) }, tokenX);
 check('cancel against a CONFIRMED enrollment is refused', (await post('/v1/totp/cancel', {}, tokenX)).status === 409);
 check('...and the enrollment is still there', (await totp.get(ACC_X))?.confirmedAt != null);
-check('cancel without a session → 401', (await post('/v1/totp/cancel', {})).status === 401);
+
+// --- a new recovery key without signing out ---
+// Until this existed, the only route to a fresh key was the lost-key flow: signed out, and it revokes
+// every device by design. Wrong for replacing a key you think was seen, and impossible for the people
+// who joined by device approval and have never held a key at all.
+const ACC_R = 'acc-rotate0123456789';
+const V_OLD = 'verifier-rot-old-01234567';
+const V_NEW = 'verifier-rot-new-98765432';
+const regR = (await (await post('/v1/auth/register', { accountId: ACC_R, verifier: V_OLD, deviceName: 'R' })).json()) as Session;
+const enR = (await (await post('/v1/totp/enroll', {}, regR.accessToken)).json()) as { secret: string };
+const secR = base32Decode(enR.secret);
+await post('/v1/totp/confirm', { code: codeForStep(secR, stepAt(Date.now())) }, regR.accessToken);
+
+check(
+  'rotating without a session → 401',
+  (await post('/v1/totp/rotate-key', { code: '000000', verifier: V_NEW })).status === 401
+);
+check(
+  'a wrong code does not rotate anything',
+  (await post('/v1/totp/rotate-key', { code: '000000', verifier: V_NEW }, regR.accessToken)).status === 401
+);
+check('...and the old key still works', (await post('/v1/auth/login', { accountId: ACC_R, verifier: V_OLD })).status === 200);
+
+await laterStep(ACC_R);
+const rotated = await post(
+  '/v1/totp/rotate-key',
+  { code: codeForStep(secR, stepAt(Date.now())), verifier: V_NEW, revokeOthers: false },
+  regR.accessToken
+);
+check('a live code rotates the key', rotated.status === 200);
+check('the OLD key stops working', (await post('/v1/auth/login', { accountId: ACC_R, verifier: V_OLD })).status === 401);
+const newLogin = await post('/v1/auth/login', { accountId: ACC_R, verifier: V_NEW });
+check('the NEW key works', newLogin.status === 200);
+// The whole point of rotating rather than recovering: the id keys the blob prefix, the entitlement row,
+// the grant bindings, devices and sync, and the client wipes local data when it sees the id change.
+check('the account id is UNCHANGED', ((await newLogin.json()) as Session).accountId === ACC_R);
+// Unlike recovery, which burns every session because the old key may be stolen.
+// Refresh tokens rotate on use, so the result is captured: presenting the spent one again would read as
+// a replay and revoke the family — a property of the auth layer, not of rotation.
+const keptAlive = await post('/v1/auth/refresh', { refreshToken: regR.refreshToken });
+check('the rotating device keeps its session when it did not ask to sign others out', keptAlive.status === 200);
+let rotatorRefresh = ((await keptAlive.json()) as Session).refreshToken;
+check('the authenticator is still enrolled', ((await (await get('/v1/totp/status', regR.accessToken)).json()) as { enrolled: boolean }).enrolled);
+
+// Not enrolled at all: rotation needs a code, so there is nothing to prove ownership with. Said plainly
+// rather than answered with a generic failure, because it is the device-linked user's actual situation.
+const ACC_NE = 'acc-norotate01234567';
+const regNE = (await (await post('/v1/auth/register', { accountId: ACC_NE, verifier: 'verifier-ne-0123456789', deviceName: 'N' })).json()) as Session;
+check(
+  'rotating without an authenticator → 409, not a generic error',
+  (await post('/v1/totp/rotate-key', { code: '000000', verifier: V_NEW }, regNE.accessToken)).status === 409
+);
+
+
+// Signing other devices out is opt-in, and it must never sign out the device doing the rotating —
+// that would leave someone holding a key they cannot use and no session to try it from.
+const secondDevice = (await (await post('/v1/auth/login', { accountId: ACC_R, verifier: V_NEW, deviceName: 'Second' })).json()) as Session;
+check('a second device is signed in', !!secondDevice.refreshToken && secondDevice.deviceId !== regR.deviceId);
+
+await laterStep(ACC_R);
+const V_THIRD = 'verifier-rot-third-5555555';
+const withRevoke = await post(
+  '/v1/totp/rotate-key',
+  { code: codeForStep(secR, stepAt(Date.now())), verifier: V_THIRD, revokeOthers: true },
+  regR.accessToken
+);
+check('rotating with sign-out-others succeeds', withRevoke.status === 200);
+check('the OTHER device is signed out', (await post('/v1/auth/refresh', { refreshToken: secondDevice.refreshToken })).status === 401);
+check(
+  'the device that rotated is NOT signed out',
+  (await post('/v1/auth/refresh', { refreshToken: rotatorRefresh })).status === 200
+);
+
+
+// And the flag has to mean something in the other direction too: leaving it off must leave other
+// sessions alone, which is the whole case for the person who never had a key to leak.
+const third = (await (await post('/v1/auth/login', { accountId: ACC_R, verifier: V_THIRD, deviceName: 'Third' })).json()) as Session;
+await laterStep(ACC_R);
+const V_FOURTH = 'verifier-rot-fourth-7777777';
+const noRevoke = await post(
+  '/v1/totp/rotate-key',
+  { code: codeForStep(secR, stepAt(Date.now())), verifier: V_FOURTH, revokeOthers: false },
+  regR.accessToken
+);
+check('rotating without sign-out-others succeeds', noRevoke.status === 200);
+check(
+  'the other device SURVIVES when sign-out-others is off',
+  (await post('/v1/auth/refresh', { refreshToken: third.refreshToken })).status === 200
+);
 
 console.log(failures === 0 ? '\ntotp API: all checks passed' : `\ntotp API: ${failures} FAILED`);
+// Set the code and let the loop drain: forcing exit() while a wasm/grpc handle is mid-close trips a
+// libuv assertion on Windows and turns a passing run into a nonzero exit.
 process.exitCode = failures === 0 ? 0 : 1;

@@ -17,6 +17,12 @@ import {
   hashBackupCode,
   STEP_SECONDS,
   BACKUP_CODE_COUNT,
+  VERIFY_MAX_FAILURES,
+  throttled,
+  noteFailure,
+  clearFailures,
+  verifyAttempt,
+  type TotpRow,
 } from './totp.js';
 
 let failures = 0;
@@ -113,6 +119,52 @@ check('backup codes are unique', new Set(backup).size === backup.length);
 check('backup codes avoid ambiguous glyphs (0/O, 1/I/L)', backup.every((c) => !/[01OIL]/.test(c)));
 check('backup code hashing ignores the separator and case', hashBackupCode(backup[0]!) === hashBackupCode(backup[0]!.replace('-', '').toLowerCase()));
 check('different codes hash differently', hashBackupCode(backup[0]!) !== hashBackupCode(backup[1]!));
+
+
+// --- the two failure budgets, and the way out of a lockout ---
+// A stranger needs no session to post codes at /v1/totp/recover, so before the split those failures
+// spent the same budget that gates the OWNER's reissue-codes and disable. Ten requests every fifteen
+// minutes kept somebody locked out of their own account indefinitely.
+{
+  const secret = generateSecret();
+  const codes = generateBackupCodes();
+  const now = Date.now();
+  const base: TotpRow = {
+    accountId: 'acc-scope0123456789ab',
+    secretEnc: 'unused-here',
+    confirmedAt: now - 60_000,
+    backupHashes: codes.map(hashBackupCode),
+    failCount: 0,
+    failWindowStart: 0,
+  };
+
+  let row = base;
+  for (let i = 0; i < VERIFY_MAX_FAILURES; i += 1) row = noteFailure(row, now, 'anon');
+  check('a stranger fills the unauthenticated budget', throttled(row, now, 'anon'));
+  check("...and leaves the owner's alone", throttled(row, now, 'owner') === false);
+
+  let owned = base;
+  for (let i = 0; i < VERIFY_MAX_FAILURES; i += 1) owned = noteFailure(owned, now, 'owner');
+  check('the reverse holds too', throttled(owned, now, 'owner') && throttled(owned, now, 'anon') === false);
+
+  check('clearing one scope leaves the other locked', throttled(clearFailures(row, 'owner'), now, 'anon'));
+
+  // The decision this whole split rests on: a backup code passes the lock. The throttle guards a
+  // six-digit code (~333k expected guesses); a backup code is ten symbols from an alphabet of 27, so
+  // guessing one at the IP limiter's rate is out of reach — and it is the one credential a locked-out
+  // owner actually holds. Without this, anyone who knows an account id keeps it unrecoverable for good.
+  const lockedOut = verifyAttempt(row, secret, codeForStep(secret, stepAt(now)), now, 'anon');
+  check('a correct TOTP code is refused while locked out', lockedOut.ok === false && lockedOut.reason === 'throttled');
+
+  const viaBackup = verifyAttempt(row, secret, codes[0]!, now, 'anon');
+  check('a backup code gets through the lockout', viaBackup.ok === true);
+  check('...and is spent, not reusable', viaBackup.ok && viaBackup.row.backupHashes.length === BACKUP_CODE_COUNT - 1);
+  check('...and clears the lock it passed through', viaBackup.ok && !throttled(viaBackup.row, now, 'anon'));
+
+  const wrongOne = verifyAttempt(base, secret, '000000', now, 'anon');
+  check('a wrong code still counts', wrongOne.ok === false && (wrongOne.row.anonFailCount ?? 0) === 1);
+  check('...against the right budget only', wrongOne.row.failCount === 0);
+}
 
 console.log(failures === 0 ? '\ntotp: all checks passed' : `\ntotp: ${failures} FAILED`);
 // Set the code and let the loop drain: forcing exit() while a wasm/grpc handle is mid-close trips a
