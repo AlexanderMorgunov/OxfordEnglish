@@ -10,7 +10,7 @@
  * table that is never joined with this one.
  */
 
-import { randomBytes, createHash } from 'node:crypto';
+import { randomBytes, createHash, createHmac } from 'node:crypto';
 
 const DAY_MS = 86_400_000;
 
@@ -175,15 +175,63 @@ export function refundAi(row: EntitlementRow | null | undefined, cost = 1): Enti
   return { ...row, aiUsed: Math.max(0, row.aiUsed - cost) };
 }
 
-/** The raw install id is also stamped into synced rows as `updatedBy`, so storing it here would let the
- *  trial-claims table be joined against a user's content. Hash it — we only ever test equality. */
-export const installHash = (installId: string): string =>
-  createHash('sha256').update(installId).digest('base64');
+/**
+ * Key for the index hashes below. A plain hash only hides a value whose preimage nobody has — and both
+ * preimages here are obtainable: the account id is the prefix of every book's object key, so it rides in
+ * presigned URLs, and the install id is stamped into synced rows as `updatedBy`, i.e. it sits in the same
+ * database as the table it was meant to protect. Keyed, an offline dump yields neither.
+ *
+ * Absent, this must fail LOUDLY. `TOTP_ENC_KEY` can degrade to null because AES-GCM authenticates, so a
+ * wrong key refuses to open; an HMAC under the wrong key produces a perfectly valid-looking value that is
+ * merely bound to nobody — indistinguishable from "this grant is not yours", and durable.
+ */
+function indexKey(): Buffer {
+  const raw = process.env.INDEX_HMAC_KEY;
+  if (!raw) throw new Error('INDEX_HMAC_KEY is not set — refusing to compute an index hash');
+  const key = Buffer.from(raw, 'base64');
+  if (key.length < 32) throw new Error('INDEX_HMAC_KEY must be at least 32 bytes (base64)');
+  return key;
+}
+
+/** Whether the key is usable, so the routes that need it can answer 503 instead of 500. Deliberately not
+ *  a boot check: a missing key should take billing and the trial offline, not the whole API. */
+export function indexKeyConfigured(): boolean {
+  try {
+    indexKey();
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/** Dev and the in-process smokes have no Lockbox. A per-process random key keeps them honest — the code
+ *  path is identical, the values simply do not outlive the process. Never reached with a real database:
+ *  `app.ts` only calls this for the in-memory stores. */
+export function useEphemeralIndexKey(): void {
+  if (!process.env.INDEX_HMAC_KEY) process.env.INDEX_HMAC_KEY = randomBytes(32).toString('base64');
+}
+
+/** Version prefix on every stored index hash. Makes "how many rows are still in the old form" a real
+ *  query, lets the code notice an unmigrated row instead of silently answering "not yours", and makes a
+ *  future key change recognisable rather than silent. */
+export const INDEX_HASH_VERSION = 'v2:';
+
+const keyedHash = (domain: string, value: string): string =>
+  INDEX_HASH_VERSION + createHmac('sha256', indexKey()).update(`${domain}:${value}`).digest('base64');
+
+/** The pre-v2 forms, kept ONLY so the migration can find the rows it has to rewrite. Never write these. */
+export const legacyInstallHash = (installId: string): string => createHash('sha256').update(installId).digest('base64');
+export const legacyBindHash = (accountId: string): string =>
+  createHash('sha256').update(`grant:${accountId}`).digest('base64');
+
+/** Trial-claims key. `trial_claims` is TTL'd (TRIAL_CLAIM_RETENTION_MS), so the old rows age out on their
+ *  own and no migration is needed — at the cost of a retention-length window in which a deleted and
+ *  re-registered install could draw a second trial. */
+export const installHash = (installId: string): string => keyedHash('install', installId);
 
 /** Binding hash for a grant. Stored instead of the raw accountId so the grants table still cannot be
  *  read as "who paid" — it only answers "does the caller match", which is all redeem needs. */
-export const bindHash = (accountId: string): string =>
-  createHash('sha256').update(`grant:${accountId}`).digest('base64');
+export const bindHash = (accountId: string): string => keyedHash('grant', accountId);
 
 /**
  * Persistence boundary. Two disjoint record sets, deliberately never joined (design §Privacy):

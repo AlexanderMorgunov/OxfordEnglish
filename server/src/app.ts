@@ -11,7 +11,7 @@ import { totpRoutes } from './routes/totp.js';
 import { InMemoryAuthStore, type AuthStore } from './store.js';
 import { InMemorySyncStore, type SyncStore } from './sync.js';
 import { InMemoryBlobStore, type BlobStore } from './blobs.js';
-import { InMemoryEntitlementStore, type EntitlementStore } from './entitlements.js';
+import { InMemoryEntitlementStore, indexKeyConfigured, useEphemeralIndexKey, type EntitlementStore } from './entitlements.js';
 import { InMemoryAiCacheStore, type AiCacheStore } from './ai.js';
 import { InMemoryTotpStore, type TotpStore } from './totp.js';
 import { ydbConfigured } from './ydb.js';
@@ -38,6 +38,10 @@ export function createApp(
   totp?: TotpStore
 ): Hono {
   const real = ydbConfigured();
+  // Without a real database there is no Lockbox either; a per-process key keeps dev and the in-process
+  // smokes on the same code path as production instead of special-casing the hash.
+  if (!real) useEphemeralIndexKey();
+  if (real && !indexKeyConfigured()) console.warn('[entitlements] INDEX_HMAC_KEY missing — billing and the trial will answer 503');
   const authStore = store ?? (real ? new YdbAuthStore() : new InMemoryAuthStore());
   const syncStore = sync ?? (real ? new YdbSyncStore() : new InMemorySyncStore());
   const blobStore = blobs ?? (real ? new YcBlobStore() : new InMemoryBlobStore());
