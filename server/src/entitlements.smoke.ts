@@ -13,6 +13,12 @@ import {
   PRO_WINDOW_MS,
   TRIAL_AI_REQUESTS,
   PRO_AI_REQUESTS,
+  bindHash,
+  installHash,
+  legacyBindHash,
+  INDEX_HASH_VERSION,
+  indexKeyConfigured,
+  useEphemeralIndexKey,
   type EntitlementRow,
 } from './entitlements.js';
 
@@ -82,6 +88,37 @@ check('consume increments and reports the new state', (() => {
   return r.allowed && r.row.aiUsed === 3 && r.entitlement.ai.used === 3;
 })());
 check('consume cannot straddle the cap', consumeAi({ ...pro, aiUsed: PRO_AI_REQUESTS - 1 }, T0, 2).allowed === false);
+
+
+// --- keyed index hashes ---
+// The old plain hash hid nothing: an account id rides in every presigned object URL, and an install id
+// is stamped into synced rows, so both preimages were obtainable and the two tables could be joined.
+const K1 = Buffer.alloc(32, 1).toString('base64');
+const K2 = Buffer.alloc(32, 2).toString('base64');
+const HASH_ACC = 'acc-0123456789abcdef';
+
+delete process.env.INDEX_HMAC_KEY;
+check('no key at all is reported, not silently tolerated', indexKeyConfigured() === false);
+process.env.INDEX_HMAC_KEY = Buffer.alloc(8, 9).toString('base64');
+check('a too-short key is refused', indexKeyConfigured() === false);
+
+process.env.INDEX_HMAC_KEY = K1;
+const underK1 = bindHash(HASH_ACC);
+check('a binding carries the version prefix', underK1.startsWith(INDEX_HASH_VERSION));
+check('a binding is stable under the same key', bindHash(HASH_ACC) === underK1);
+check('the keyed form differs from the legacy one the migration looks for', underK1 !== legacyBindHash(HASH_ACC));
+check('domains are separated: an install marker is not a grant binding', installHash(HASH_ACC) !== underK1);
+
+// Why the migration must read its key from Lockbox rather than have it typed by hand: a wrong key does
+// not fail. It binds every grant to nobody, which reads back exactly like "this grant is not yours".
+process.env.INDEX_HMAC_KEY = K2;
+check('a different key yields a different binding, with nothing to notice', bindHash(HASH_ACC) !== underK1);
+
+useEphemeralIndexKey();
+check('an ephemeral key does not overwrite one already set', bindHash(HASH_ACC) !== underK1 && indexKeyConfigured());
+delete process.env.INDEX_HMAC_KEY;
+useEphemeralIndexKey();
+check('...but does supply one when absent, so dev runs the same code path', indexKeyConfigured());
 
 console.log(failures === 0 ? '\nentitlements: all checks passed' : `\nentitlements: ${failures} FAILED`);
 // Set the code and let the loop drain: forcing exit() while a wasm/grpc handle is mid-close trips a

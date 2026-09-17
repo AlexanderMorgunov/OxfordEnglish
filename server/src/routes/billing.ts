@@ -22,6 +22,7 @@ import {
   IP_BUCKET_REFILL_PER_SEC,
 } from '../contract.js';
 import { bearerClaims } from '../tokens.js';
+import { indexKeyConfigured } from '../entitlements.js';
 import type { EntitlementStore } from '../entitlements.js';
 import {
   PLANS,
@@ -73,6 +74,8 @@ export function billingRoutes(ent: EntitlementStore): Hono {
     if (!claims) return err(ErrorCode.Unauthorized, 401);
     const cfg = billingConfig();
     if (!cfg) return err(ErrorCode.BillingUnavailable, 503);
+    // A grant minted without the key would be bound to nobody — durable and unrepairable, so refuse.
+    if (!indexKeyConfigured()) return err(ErrorCode.BillingUnavailable, 503);
     const body = CheckoutRequestSchema.safeParse(await c.req.json().catch(() => null));
     if (!body.success || !isPlanCode(body.data.plan)) return err(ErrorCode.BadRequest, 400);
 
