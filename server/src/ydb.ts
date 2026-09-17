@@ -36,22 +36,32 @@ class MetadataAuth implements IAuthService {
   }
 }
 
+/**
+ * Every value that arrives from a shell, trimmed.
+ *
+ * `$(yc iam create-token)` on Windows returns CRLF and command substitution strips only the `\n`, so the
+ * token carries a trailing `\r` — which gRPC rejects outright as an illegal metadata character, several
+ * frames deep inside the SDK and with the token itself in the message. The same applies to a database
+ * path pasted with a stray newline.
+ */
+const env = (name: string): string | undefined => process.env[name]?.trim() || undefined;
+
 /** Local/dev: an IAM token via YDB_ACCESS_TOKEN_CREDENTIALS. Container: the SA metadata identity. */
 function authService(): IAuthService {
-  const token = process.env.YDB_ACCESS_TOKEN_CREDENTIALS;
+  const token = env('YDB_ACCESS_TOKEN_CREDENTIALS');
   return token ? new TokenAuthService(token) : new MetadataAuth();
 }
 
 /** True when a real YDB is configured; else the app falls back to the in-memory stores (local/tests). */
 export function ydbConfigured(): boolean {
-  return !!process.env.YDB_DATABASE;
+  return !!env('YDB_DATABASE');
 }
 
 let driverPromise: Promise<YdbDriver> | null = null;
 
 function initDriver(): Promise<YdbDriver> {
-  const endpoint = process.env.YDB_ENDPOINT ?? '';
-  const database = process.env.YDB_DATABASE ?? '';
+  const endpoint = env('YDB_ENDPOINT') ?? '';
+  const database = env('YDB_DATABASE') ?? '';
   const driver = new Driver({ endpoint, database, authService: authService() });
   return driver.ready(15000).then((ok) => {
     if (!ok) throw new Error('YDB driver failed to become ready');
