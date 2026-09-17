@@ -16,7 +16,7 @@ import { SELLER } from '@/shared/seller';
  * This is not legal advice; the owner should have counsel review it.
  */
 
-const { name: OWNER, inn: INN, email: EMAIL, phone: PHONE, site: SITE } = SELLER;
+const { name: OWNER, inn: INN, email: EMAIL, site: SITE } = SELLER;
 
 /** Quotas are stated in the contract, so they must come from the same constants the server enforces. */
 const BLOB_PER_BOOK_MB = Math.round(BLOB_MAX_BYTES / (1024 * 1024));
@@ -160,10 +160,6 @@ function Requisites({ ru }: { ru: boolean }) {
         <a href={`mailto:${EMAIL}`} className="text-teal hover:underline">
           {EMAIL}
         </a>
-      </p>
-      <p>
-        {ru ? 'Контактный телефон: ' : 'Contact phone: '}
-        {PHONE}
       </p>
       <p>
         {ru ? 'Сайт: ' : 'Website: '}
@@ -375,7 +371,6 @@ export function TermsPage() {
             ОГРН/ОГРНИП: не применимо — Исполнитель является физическим лицом, применяющим специальный
             налоговый режим «Налог на профессиональный доход».
           </p>
-          <p>Контактный телефон: {PHONE}</p>
           <p>Контактный e-mail: {EMAIL}</p>
         </div>
       </section>

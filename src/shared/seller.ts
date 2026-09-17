@@ -9,7 +9,9 @@ export const SELLER = {
   name: 'Моргунов Александр Сергеевич',
   /** Self-employed (НПД), deliberately not an ИП — see docs/legal-status-and-billing. */
   inn: '361302397520',
+  // The only contact channel published, by choice. The acquirer confirmed a phone number is not
+  // required, and publishing one invites calls to a line nobody answers — where the offer, the refund
+  // procedure and the support page all name the same e-mail.
   email: 'morgunowalex@gmail.com',
-  phone: '+7 995 040-35-70',
   site: 'https://dayenglish.ru',
 } as const;
