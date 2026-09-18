@@ -13,7 +13,7 @@ import { ApiFailure, syncPull, syncPush } from '@/features/account/api';
 import { syncAllBookFiles } from '@/features/reader/blobSync';
 import { syncWith, type SyncTransport } from './engine';
 import { hydrateSettings } from './settingsBridge';
-import { setSyncStatus, useSyncStatus } from './status';
+import { resetSyncStatus, setSyncStatus, useSyncStatus } from './status';
 
 const pendingCount = (): Promise<number> => db.pending.count().catch(() => 0);
 
@@ -30,16 +30,36 @@ function transport(): SyncTransport {
 }
 
 let running = false;
+let rerun = false;
 
-/** Run one sync cycle if signed in. Coalesces overlapping calls (the engine is single-flight too). */
+/**
+ * Run one sync cycle if signed in. Coalesces overlapping calls (the engine is single-flight too) — but
+ * a trigger that arrives DURING a cycle is remembered rather than dropped. Dropping it silently was
+ * already wrong for `online` and `visibilitychange`; an account switch makes it load-bearing, because
+ * the switch wipe abandons the running cycle and the trigger for the new account arrives synchronously
+ * from `applySession`, i.e. always while `running` is still true.
+ */
 export async function triggerSync(): Promise<void> {
-  if (running || !accountsEnabled()) return;
+  if (!accountsEnabled()) return;
+  if (running) {
+    rerun = true;
+    return;
+  }
   const account = useAccount.getState().accountId;
   if (useAccount.getState().status !== 'authenticated' || !account) return;
   running = true;
   setSyncStatus({ phase: 'syncing' });
   try {
-    const { pushBlocked } = await syncWith(account, transport());
+    const { pushBlocked, stale } = await syncWith(account, transport());
+    // Abandoned because the account changed under it. Nothing synced, so nothing may be stamped as
+    // synced and the backoff must not be reset — but the phase has to leave `syncing`, or the settings
+    // line sits on "syncing" until the next local write. The follow-up cycle for the account that is
+    // current NOW is already queued: the switch fired a trigger while this one was running, and the
+    // `finally` below consumes it.
+    if (stale) {
+      setSyncStatus({ phase: 'idle', pending: await pendingCount() });
+      return;
+    }
     cancelRetry(); // a cycle got through; the backoff starts from scratch next time one does not
     void sweepBookFiles();
     await hydrateSettings(); // apply any settings other devices just pushed
@@ -59,6 +79,14 @@ export async function triggerSync(): Promise<void> {
     scheduleRetry();
   } finally {
     running = false;
+    // One extra cycle at most, and only when a trigger actually arrived mid-cycle: the flag clears
+    // before the re-entry. The case to reason about is active reading, not a quiet app — `nudgeSync`
+    // fires every 3 s, so any nudge landing inside a cycle now costs a round trip that used to be
+    // dropped. Paying it is the point: the dropped one is what left a switched-to account unsynced.
+    if (rerun) {
+      rerun = false;
+      void triggerSync();
+    }
   }
 }
 
@@ -158,9 +186,16 @@ export function initSync(): void {
     if (authed && wasAuthed && state.accountId !== wasAccount) {
       useEntitlement.getState().clear();
       void useEntitlement.getState().load();
+      resetSyncStatus(); // before the trigger, which stamps `syncing` on its way in
+      // The switch wipe abandons whatever cycle was running for the old account; without this the new
+      // one waits for the next local write. Signing in from anonymous is already covered above.
+      void triggerSync();
     }
     // Signing out must drop the plan too, or the AI affordances stay visible with no token behind them.
-    if (!authed && wasAuthed) useEntitlement.getState().clear();
+    if (!authed && wasAuthed) {
+      useEntitlement.getState().clear();
+      resetSyncStatus(); // logging out and into a DIFFERENT account goes through here, not the branch above
+    }
     wasAuthed = authed;
     wasAccount = state.accountId;
   });

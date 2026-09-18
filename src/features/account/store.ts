@@ -4,7 +4,9 @@ import { deriveCredentials, deriveVerifier, formatCompositeKey, generateRecovery
 import * as api from './api';
 import { ApiFailure } from './api';
 import { db } from '@/db/db';
-import { wipeSyncedData } from '@/features/sync/engine';
+
+import { releasePreviousAccountData, wipeSyncedData } from '@/features/sync/engine';
+import { discardAllBookFiles } from '@/features/reader/storage';
 import type { Device, DeviceStartResponse, Session } from './contract';
 
 const KEY = 'oxford-account';
@@ -66,6 +68,22 @@ type Persisted = {
    * user, which belongs to nobody.
    */
   lastAccountId?: string;
+  /**
+   * Who the book files in OPFS belong to. A SEPARATE question from `lastAccountId`, which is cleared as
+   * soon as the wipe runs: the files deliberately survive a logout, because metadata syncs for everyone
+   * while uploading the file is opt-in, so for a free-tier user the local copy is the only one and
+   * signing back into the same account re-links it by id. They must go when a DIFFERENT account takes
+   * the device — and by then the book rows are long gone, so the ids cannot be recovered. This is what
+   * remembers that there is anything to release.
+   */
+  fileOwner?: string;
+  /**
+   * Who the unsynced LOCAL data belongs to — reading history, review log, and the account-scoped
+   * settings mirrored in localStorage. Same question as `fileOwner`, different answer on one path: an
+   * anonymous import releases the file marker, because deleting a book nobody can restore is worse than
+   * keeping a stranger's. It must not release this one, where leaking is the harm.
+   */
+  dataOwner?: string;
 };
 
 /** A stable, non-PII device label for the revoke list (e.g. "Chrome · Android"). Best-effort. */
@@ -117,11 +135,61 @@ async function maybeSwitchWipe(newAccountId: string): Promise<void> {
   const p = load();
   const prev = p?.accountId || p?.lastAccountId;
   if (prev && prev !== newAccountId) await wipeSyncedData().catch(() => undefined);
+  // Asked separately from the wipe, because the answers differ: a clean logout clears the wipe marker
+  // while both of these survive it. Each is claimed only once its own release actually ran, so a failure
+  // is retried at the next sign-in.
+  let fileOwner = p?.fileOwner;
+  // Falls back to `lastAccountId` for installs that predate these markers: an app boot is
+  // refresh() → applySession, so a device that is signed OUT at upgrade time never backfills, and the
+  // one record that still names the previous tenant is the wipe marker. `fileOwner` deliberately does
+  // NOT fall back — clearing it is how an anonymous import protects books that exist nowhere else, and
+  // a fallback would re-arm it and delete exactly those. The cost is that such a device keeps the
+  // previous account's books; that is the half where being wrong destroys rather than leaks.
+  let dataOwner = p?.dataOwner ?? p?.lastAccountId;
+  if (!dataOwner || dataOwner === newAccountId) dataOwner = newAccountId;
+  else if (await ran(releasePreviousAccountData)) dataOwner = newAccountId;
+  if (!fileOwner || fileOwner === newAccountId) fileOwner = newAccountId;
+  else if (await ran(discardAllBookFiles)) fileOwner = newAccountId;
+  setOwners(fileOwner, dataOwner);
+}
+
+async function ran(release: () => Promise<void>): Promise<boolean> {
+  try {
+    await release();
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Importing a book while signed OUT means this device now holds files that belong to no account, so the
+ * FILE marker must stop standing for all of them — that release is wholesale, and wholesale is only safe
+ * while every file is the previous tenant's.
+ *
+ * `dataOwner` is deliberately untouched. The reading history and the account-scoped settings are the
+ * half where leaving them behind is itself the harm, and an anonymous import says nothing about whose
+ * they are.
+ *
+ * The cost is that the previous account's books survive a later sign-in by somebody else. That is the
+ * right way round: keeping someone's book is a privacy cost, deleting the current user's only copy is
+ * data loss, and "lost my key, made a new account" is an ordinary way to arrive here as the SAME
+ * person. Per-file ownership would beat both; this is the honest version of a device-wide marker.
+ */
+export function forgetBookFileOwner(): void {
+  const p = load();
+  if (p && !p.refreshToken) save({ ...p, fileOwner: undefined });
+}
+
+function setOwners(fileOwner: string | undefined, dataOwner: string | undefined): void {
+  const p = load();
+  if (p) save({ ...p, fileOwner, dataOwner });
 }
 
 /** No SYNCED row of the previous account is left to protect the next one from. Unsynced local history
- *  (`activity`, `reviewLog`, `translations`) outlives the wipe and is out of scope here: it reaches no
- *  server, so it cannot follow the user into the next account — see queue item 10. */
+ *  outlives the wipe by design: `activity` and `reviewLog` are released at the account boundary instead
+ *  (`releasePreviousAccountData`), while `translations` and `feedbackOutbox` still survive a handover —
+ *  queue item 16. */
 function forgetLastAccount(): void {
   const p = load();
   if (p) save({ ...p, lastAccountId: undefined });
@@ -132,7 +200,7 @@ function ensureDeviceId(): string {
   const existing = load();
   if (existing?.deviceId) return existing.deviceId;
   const id = randomId();
-  save({ accountId: existing?.accountId ?? '', deviceId: id, refreshToken: existing?.refreshToken ?? '', lastAccountId: existing?.lastAccountId });
+  save({ accountId: existing?.accountId ?? '', deviceId: id, refreshToken: existing?.refreshToken ?? '', lastAccountId: existing?.lastAccountId, fileOwner: existing?.fileOwner, dataOwner: existing?.dataOwner });
   return id;
 }
 
@@ -192,7 +260,12 @@ export const useAccount = create<AccountState>((set, get) => {
   const deviceId = ensureDeviceId();
 
   const applySession = (s: Session) => {
-    save({ accountId: s.accountId, deviceId: s.deviceId, refreshToken: s.refreshToken });
+    save({ accountId: s.accountId, deviceId: s.deviceId, refreshToken: s.refreshToken,
+      // ?? on both: every install that is already signed in when this ships has neither marker, and an
+      // app boot is refresh() → applySession without passing through maybeSwitchWipe. Left unarmed they
+      // would never release anything. maybeSwitchWipe has already read the OLD values by now.
+      fileOwner: load()?.fileOwner ?? s.accountId,
+      dataOwner: load()?.dataOwner ?? s.accountId });
     set({
       status: 'authenticated',
       accountId: s.accountId,
@@ -208,7 +281,7 @@ export const useAccount = create<AccountState>((set, get) => {
     save(null);
     // Keep the deviceId so relinking reuses the same device entry, and the account id so the next
     // sign-in can tell a re-login from a switch.
-    save({ accountId: '', deviceId, refreshToken: '', lastAccountId: prev?.accountId || prev?.lastAccountId });
+    save({ accountId: '', deviceId, refreshToken: '', lastAccountId: prev?.accountId || prev?.lastAccountId, fileOwner: prev?.fileOwner, dataOwner: prev?.dataOwner });
     set({ status: 'anonymous', accountId: null, accessToken: null, accessExpiresAt: 0 });
   };
 
@@ -444,6 +517,9 @@ export const useAccount = create<AccountState>((set, get) => {
       try {
         await wipeSyncedData(); // remove the now-orphaned local copy too
         forgetLastAccount();
+        // Independently, as everywhere else: a failure in one half must not skip the other.
+        const [data, files] = await Promise.all([ran(releasePreviousAccountData), ran(discardAllBookFiles)]);
+        setOwners(files ? undefined : load()?.fileOwner, data ? undefined : load()?.dataOwner);
       } catch {
         // best-effort
       }

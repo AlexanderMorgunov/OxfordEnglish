@@ -65,7 +65,21 @@ function applyFromSync(value: unknown): void {
   if (value) void syncAllBookFiles();
 }
 
-registerSettingBridge({ key: SETTING_KEY, applyFromSync });
+registerSettingBridge({
+  key: SETTING_KEY,
+  scope: 'account',
+  applyFromSync,
+  // Deliberately not `setEnabled(false)`: that stamps, which would push "off" to the OTHER devices of
+  // the account being left — turning one person's account switch into a change to someone else's.
+  resetToDefault: () => {
+    writePref(false);
+    useBookFileSync.setState({ enabled: false });
+    // The markers say why each book on this device is not in the cloud. Those books are gone with the
+    // wipe, so the answers are about nothing.
+    useBookUploadIssues.setState({ issues: {} });
+    writeIssues({});
+  },
+});
 
 async function token(): Promise<string | null> {
   if (!accountsEnabled()) return null;

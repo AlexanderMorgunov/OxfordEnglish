@@ -78,8 +78,34 @@ function pickCardSchedule(a: Synced<SrsCard>, b: Synced<SrsCard>): Synced<SrsCar
 export type SyncedWordStatus = Synced<WordStatus> & { statusUpdatedAt: number };
 
 /**
- * wordStatus: a total, order-free merge over all four status values incl. `ignored` (F6). `status` is LWW
- * by `(statusUpdatedAt, updatedBy)`; `encounters` = max; `firstSeenAt` = min (both semilattice joins).
+ * Precedence when two devices set a DIFFERENT status at the same millisecond. Deciding it by `updatedBy`
+ * looked like a tiebreak and was not: the merged row carries the LWW winner's `updatedBy`, not the status
+ * winner's, so the next merge compared against an install that had never set the status — and the answer
+ * depended on the order the rows happened to meet.
+ *
+ * Ranking the VALUES makes it a max over a total order, which is associative and commutative and needs
+ * no new field on the wire. The string fallback keeps it TOTAL rather than a preorder: a rank alone
+ * would put every unrecognised value at the same level, and two of those would then break by argument
+ * position — which is the same order-dependence, on exactly the out-of-contract rows the surrounding
+ * fallbacks exist for.
+ *
+ * The order is "prefer what is recoverable": `unknown` is the absence of a choice, and `learning` beating
+ * `ignored` leaves a word in the queue the user can ignore again, where the reverse would quietly drop
+ * it from study.
+ */
+// A fifth value must be added to the server's copy in the same change: an old client ranks anything it
+// does not recognise at -1, i.e. BELOW `unknown`, which is the opposite of the intent above.
+const STATUS_RANK: Record<string, number> = { unknown: 0, ignored: 1, learning: 2, known: 3 };
+
+function statusAtLeast(x: unknown, y: unknown): boolean {
+  const rx = STATUS_RANK[String(x)] ?? -1;
+  const ry = STATUS_RANK[String(y)] ?? -1;
+  return rx !== ry ? rx > ry : String(x) >= String(y);
+}
+
+/**
+ * wordStatus: a total, order-free merge over all four status values incl. `ignored` (F6). `status` wins
+ * by `(statusUpdatedAt, STATUS_RANK)`; `encounters` = max; `firstSeenAt` = min (both semilattice joins).
  * wordStatus is never soft-deleted (there is no delete path for it), so no tombstone handling.
  *
  * Everything OTHER than `status` follows the ordinary LWW winner, and the row is carried by spread rather
@@ -95,14 +121,23 @@ export type SyncedWordStatus = Synced<WordStatus> & { statusUpdatedAt: number };
 export function resolveWordStatus(a: Synced<WordStatus>, b: Synced<WordStatus>): SyncedWordStatus {
   const sa = a.statusUpdatedAt ?? a.updatedAt;
   const sb = b.statusUpdatedAt ?? b.updatedAt;
-  const statusWinner = sa !== sb ? (sa > sb ? a : b) : a.updatedBy >= b.updatedBy ? a : b;
+  const statusWinner = sa !== sb ? (sa > sb ? a : b) : statusAtLeast(a.status, b.status) ? a : b;
   const meta = pickLww(a, b);
+  // Defensive against rows that predate these fields or arrive hand-edited: the types promise numbers,
+  // the wire does not. The server already made this allowance and the client did not, so a row missing
+  // `encounters` resolved to NaN here and to a number there, and the two sides then disagreed forever,
+  // each re-pushing its own answer.
+  // A row with no `firstSeenAt` is treated as first seen when it was last updated — the same assumption
+  // the v8 backfill makes. Resolving the absence AFTER the min instead (a fallback on the result) is
+  // what broke associativity: it materialised the LWW winner's `updatedAt`, which then entered the next
+  // merge as a real operand, so three such rows settled differently depending on the order they met.
+  const firstSeen = Math.min(a.firstSeenAt ?? a.updatedAt, b.firstSeenAt ?? b.updatedAt);
   return {
     ...meta,
     status: statusWinner.status,
     statusUpdatedAt: Math.max(sa, sb),
-    encounters: Math.max(a.encounters, b.encounters),
-    firstSeenAt: Math.min(a.firstSeenAt, b.firstSeenAt),
+    encounters: Math.max(a.encounters ?? 0, b.encounters ?? 0),
+    firstSeenAt: firstSeen,
     updatedAt: meta.updatedAt,
     updatedBy: meta.updatedBy,
     deletedAt: undefined,

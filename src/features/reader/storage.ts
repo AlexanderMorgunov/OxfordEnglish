@@ -49,6 +49,28 @@ export async function deleteBookFile(id: string): Promise<void> {
 }
 
 /**
+ * Drop every stored book file at once, for when the device passes to a DIFFERENT account.
+ *
+ * Whole-directory rather than per-id because the ids are exactly what is no longer knowable: the book
+ * rows are cleared on logout, long before we learn who signs in next. `booksDir` recreates it on demand.
+ */
+export async function discardAllBookFiles(): Promise<void> {
+  // A browser with no OPFS has no book files, so there is nothing to fail at. Without this the missing
+  // `navigator.storage` raises a TypeError rather than a DOMException, the caller reads it as a real
+  // failure, and the device stays pinned to the first account that ever used it.
+  if (!opfsAvailable()) return;
+  try {
+    const root = await navigator.storage.getDirectory();
+    await root.removeEntry(DIR, { recursive: true });
+  } catch (e) {
+    // "nothing stored here" is success. Anything else — a locked handle, a quota error — is a real
+    // failure and must propagate, or the caller claims the device for the next account while the
+    // previous one's books are still on it, with nothing left to retry from.
+    if (!(e instanceof DOMException) || e.name !== 'NotFoundError') throw e;
+  }
+}
+
+/**
  * Ask the browser to keep storage durable. Chrome grants it silently; Safari only makes
  * OPFS reliable once the app is installed to the home screen, so a false result here is a
  * real data-loss risk the import flow must surface to the user (§4/§12.6).

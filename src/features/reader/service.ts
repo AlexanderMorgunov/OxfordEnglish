@@ -1,4 +1,5 @@
 import { db, type BookRecord } from '@/db/db';
+import { forgetBookFileOwner } from '@/features/account/store';
 import { track } from '@/features/analytics/analytics';
 import { addBook, patchBook, softDeleteBook, isSyncing } from '@/features/sync/local';
 import { isDeleted } from '@/features/sync/resolve';
@@ -38,6 +39,7 @@ export async function importBook(file: File): Promise<ImportResult> {
   const book = await parseBook(file, format);
   const id = crypto.randomUUID();
   await saveBookFile(id, file);
+  forgetBookFileOwner(); // no-op unless signed out, where these bytes belong to no account
   const record: BookRecord = {
     id,
     title: book.title,

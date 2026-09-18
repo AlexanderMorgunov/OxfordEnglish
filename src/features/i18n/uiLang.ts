@@ -46,7 +46,7 @@ export function applyUiLangFromSync(value: unknown): void {
   useUiLang.setState({ lang });
 }
 
-registerSettingBridge({ key: SETTING_KEY, applyFromSync: applyUiLangFromSync });
+registerSettingBridge({ key: SETTING_KEY, scope: 'device', applyFromSync: applyUiLangFromSync });
 
 /** Pick a localized string for the current UI language, falling back to English. */
 export function tr(text: LocalizedText, lang: UiLang): string {

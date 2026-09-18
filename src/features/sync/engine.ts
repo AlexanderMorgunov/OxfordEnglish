@@ -10,6 +10,7 @@ import { db, EPOCH_SENTINEL, INSTALL_ROW, type SrsCard } from '@/db/db';
 import { reviveCard } from '@/features/srs/reviveCard';
 import type { SyncChange, SyncEntry, SyncPushResponse, SyncPullResponse } from '@/features/account/contract';
 import { resolveByStore, type SyncedStore } from './resolve';
+import { resetAccountSettings } from './settingsBridge';
 
 export interface SyncTransport {
   push(body: { cursorSeq: number; changes: SyncChange[]; idempotencyKey: string }): Promise<SyncPushResponse>;
@@ -17,6 +18,24 @@ export interface SyncTransport {
 }
 
 const APPEND_ONLY = new Set<SyncedStore>(['attempts', 'checkpoints']);
+
+/**
+ * A cycle must not touch the database or the network once the account it started for has stopped being
+ * the current one. Checking the account store instead would not work: `maybeSwitchWipe` runs BEFORE
+ * `applySession`, so for the whole duration of a wipe the store still names the OLD account. The
+ * invalidating event is the wipe, and `wipeSyncedData` is already called at every account boundary.
+ *
+ * `cycleEpoch` is null outside a cycle — there is nothing to invalidate then, and arming the guard with
+ * no cycle running would break every direct call to an exported internal.
+ */
+class SyncStale extends Error {}
+
+let epoch = 0;
+let cycleEpoch: number | null = null;
+
+function guard(): void {
+  if (cycleEpoch !== null && cycleEpoch !== epoch) throw new SyncStale();
+}
 
 type Row = Record<string, unknown> & { updatedAt?: number; updatedBy?: string; deletedAt?: number; statusUpdatedAt?: number };
 export type SyncedRow = Row;
@@ -118,6 +137,7 @@ function sig(store: SyncedStore, row: Row): string {
  * the next push carries it; otherwise the merge is stranded here forever.
  */
 export async function applyEntry(entry: SyncEntry): Promise<void> {
+  guard();
   const store = entry.store as SyncedStore;
   const incoming = rowFromEntry(entry);
 
@@ -180,9 +200,11 @@ export function idempotencyKey(cursorSeq: number, changes: SyncChange[]): string
 /** Push the dirty set. Clears a dirty mark only if its row is unchanged since collection (a concurrent
  *  edit re-dirties the key, which a later push carries). Applied authoritative rows are written back. */
 export async function pushOnce(transport: SyncTransport, cursorSeq: number): Promise<void> {
+  guard(); // before collectDirty, which deletes pending rows for anything already gone
   const { changes, marks } = await collectDirty();
   if (!changes.length) return;
   const res = await transport.push({ cursorSeq, changes, idempotencyKey: idempotencyKey(cursorSeq, changes) });
+  guard(); // an empty `applied` reaches the mark loop without passing through applyEntry
   for (const entry of res.applied) await applyEntry(entry);
   for (const m of marks) {
     const row = (await getLocal(m.store, m.syncId ?? m.id)) as Row | undefined;
@@ -191,7 +213,8 @@ export async function pushOnce(transport: SyncTransport, cursorSeq: number): Pro
 }
 
 async function setCursor(account: string, cursorSeq: number): Promise<void> {
-  const row = await db.syncState.get(account);
+  guard(); // a stale write here resurrects the syncState row the wipe deleted, so the next sign-in to
+  const row = await db.syncState.get(account); // that account skips reconcile and diverges silently
   await db.syncState.put({ ...row, account, cursorSeq });
 }
 
@@ -206,6 +229,7 @@ async function setCursor(account: string, cursorSeq: number): Promise<void> {
 async function snapshotLoop(transport: SyncTransport, account: string): Promise<void> {
   let at = 0;
   for (;;) {
+    guard();
     const res = await transport.pull(at, true);
     const sorted = [...res.entries].sort((a, b) => a.seq - b.seq);
     for (const e of sorted) await applyEntry(e);
@@ -225,6 +249,7 @@ export async function pullLoop(transport: SyncTransport, account: string, from: 
   if (from <= 0) return snapshotLoop(transport, account);
   let cursor = from;
   for (;;) {
+    guard();
     const res = await transport.pull(cursor);
     const sorted = [...res.entries].sort((a, b) => a.seq - b.seq);
     let advanced = cursor;
@@ -244,6 +269,7 @@ export async function pullLoop(transport: SyncTransport, account: string, from: 
 export async function reconcile(transport: SyncTransport, account: string): Promise<SyncOutcome> {
   await pullLoop(transport, account, 0); // snapshot merge → cursor = head
   for (const store of ['srsCards', 'wordStatus', 'attempts', 'checkpoints', 'books', 'bookmarks', 'settings'] as SyncedStore[]) {
+    guard(); // a wipe landing mid-sweep would otherwise rebuild the dirty queue it just cleared
     const rows = (await db.table(store).toArray()) as Row[];
     for (const row of rows) await markDirty(store, row);
   }
@@ -263,6 +289,7 @@ const isNoPlan = (e: unknown): boolean =>
  *  the rows are the user's own work and must survive until they can be sent. */
 async function drainPush(transport: SyncTransport, account: string): Promise<boolean> {
   for (let i = 0; i < 50; i += 1) {
+    guard();
     const before = await db.pending.count();
     if (!before) return false;
     try {
@@ -283,29 +310,67 @@ const SYNCED_TABLES: SyncedStore[] = ['srsCards', 'wordStatus', 'attempts', 'che
  *  login reconciles cleanly from the server. NOTE: unpushed changes made while offline are lost on an
  *  offline logout — a deliberate simplification for the skeleton. */
 export async function wipeSyncedData(): Promise<void> {
+  // FIRST, before any clear: a wipe that throws half-way still leaves the old account's rows behind, and
+  // that is precisely the case a running cycle must not carry into the next account.
+  epoch += 1;
   await Promise.all(SYNCED_TABLES.map((s) => db.table(s).clear()));
   await db.pending.clear();
   const rows = await db.syncState.toArray();
   await Promise.all(rows.filter((r) => r.account !== INSTALL_ROW).map((r) => db.syncState.delete(r.account)));
 }
 
+/**
+ * What one account leaves behind on a device that now belongs to a DIFFERENT one.
+ *
+ * Deliberately NOT part of `wipeSyncedData`, which also runs on an ordinary logout. None of this is
+ * synced, so there is no server copy to restore it from, and clearing it on a plain sign-out would
+ * delete someone's reading streak and review history for good. Handing the device to another account is
+ * the one moment where keeping them is the worse answer: `activity` rows carry book TITLES, so the
+ * previous person's library is legible to whoever signs in next.
+ *
+ * Book FILES are released separately, on their own marker. Deleting a book is unrecoverable, so that
+ * half has to be conservative; leaking a reading history or an account-wide upload setting is a harm in
+ * itself, so this half has to be aggressive. Gating both on one marker meant the concession that
+ * protects an anonymous import also handed the next account a level, a streak and an upload toggle.
+ */
+export async function releasePreviousAccountData(): Promise<void> {
+  await Promise.all([db.activity.clear(), db.reviewLog.clear()]);
+  // Account-scoped settings belong to the same boundary, and ONLY to it. Resetting them from
+  // `wipeSyncedData` looked equivalent — the wipe clears `db.settings` too — and silently was not: the
+  // wipe also runs on an ordinary logout, `hydrateSettings` skips any row this install wrote, and the
+  // install id survives the wipe. So signing back into the SAME account never re-applied them, and the
+  // level, placement and book-file choice were gone for good on the device that set them.
+  resetAccountSettings();
+}
+
 let inFlight: Promise<SyncOutcome> | null = null;
 
-/** Run one full sync cycle for an account (single-flight). Reconciles on first contact, else push→pull. */
 /** `pushBlocked` means the upload needs a plan the account does not have. The pull still ran: that is
- *  the restore path for someone whose subscription lapsed, and it is deliberately never gated. */
-export type SyncOutcome = { pushBlocked: boolean };
+ *  the restore path for someone whose subscription lapsed, and it is deliberately never gated.
+ *  `stale` means the cycle was abandoned because its account stopped being the current one — NOT a
+ *  success, so the caller must not stamp "synced just now" or reset its retry backoff over it. */
+export type SyncOutcome = { pushBlocked: boolean; stale?: boolean };
 
+/** Run one full sync cycle for an account (single-flight). Reconciles on first contact, else push→pull.
+ *  `inFlight` is deliberately NOT keyed by account: keying it would park a second cycle on the first,
+ *  and the parked one would then run with `cycleEpoch` already cleared — the guard inert for every write
+ *  it makes. Single-flight here relies on `run.ts`'s `running` flag never letting two accounts reach
+ *  this function at once. */
 export function syncWith(account: string, transport: SyncTransport): Promise<SyncOutcome> {
   if (inFlight) return inFlight;
   const run = async (): Promise<SyncOutcome> => {
+    cycleEpoch = epoch;
     try {
       const state = await db.syncState.get(account);
       if (state?.cursorSeq == null) return await reconcile(transport, account);
       const pushBlocked = await drainPush(transport, account);
       await pullLoop(transport, account, state.cursorSeq);
       return { pushBlocked };
+    } catch (e) {
+      if (!(e instanceof SyncStale)) throw e;
+      return { pushBlocked: false, stale: true };
     } finally {
+      cycleEpoch = null;
       inFlight = null;
     }
   };

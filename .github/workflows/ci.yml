@@ -15,6 +15,21 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # The server has its own package and its own checks, and nothing ran them: root `npm test` does not
+      # match `*.smoke.ts`, and `server` has no test script. One of the billing smokes had already
+      # drifted out of date against the code it covers, with the suite green the whole time.
+      - name: server typecheck and smokes
+        working-directory: server
+        run: |
+          npm ci
+          npm run typecheck
+          # tsconfig.json EXCLUDES *.smoke.ts, and tsx transpiles without checking — so running them is
+          # not the same as typechecking them, and it was a smoke that had drifted.
+          npm run typecheck:smoke
+          for f in src/*.smoke.ts src/smoke.ts; do
+            echo "== $f"
+            npx tsx "$f"
+          done
       - run: npm run lint
       - run: npm run validate:packs
       - run: npm run build

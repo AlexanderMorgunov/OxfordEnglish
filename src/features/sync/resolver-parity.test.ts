@@ -215,3 +215,94 @@ test('every store list agrees, and no store resolves to undefined', () => {
     expect(resolveByStore(store, row, row)).toBeDefined();
   }
 });
+
+/**
+ * Rows that do not satisfy the type. `encounters` and `firstSeenAt` were added after the store existed
+ * and travel as plain JSON, so "always a number" is a promise the wire cannot keep. The server allowed
+ * for that and the client did not: a row missing `encounters` resolved to NaN on one side and to a
+ * number on the other — and because `applyEntry` re-enqueues on a signature mismatch, the two would
+ * then push their own answer at each other indefinitely.
+ */
+const bare = (updatedBy: string, updatedAt: number, over: Record<string, unknown> = {}): SyncedRow =>
+  ({ word: 'apple', status: 'known', updatedAt, updatedBy, statusUpdatedAt: updatedAt, ...over }) as SyncedRow;
+
+test('both sides agree on a wordStatus row that is missing its counters', () => {
+  const merged = parity('wordStatus', bare('i1', 100), bare('i2', 200, { encounters: 3, firstSeenAt: 50 }));
+
+  expect(merged.encounters).toBe(3);
+  expect(merged.firstSeenAt).toBe(50);
+});
+
+test('with no firstSeenAt anywhere, neither side invents Infinity', () => {
+  const merged = parity('wordStatus', bare('i1', 100), bare('i2', 200));
+
+  // `Infinity` does not survive JSON: it would reach the other device as `null` and come back as
+  // missing, so the row would never settle.
+  expect(Number.isFinite(merged.firstSeenAt)).toBe(true);
+  // Each row stands in for itself with its own `updatedAt` BEFORE the min — the same assumption the v8
+  // backfill makes. Resolving the absence AFTERWARDS instead took the LWW winner's timestamp, which
+  // varies with merge order, so rows like these never converged.
+  expect(merged.firstSeenAt).toBe(100);
+  expect(merged.encounters).toBe(0);
+});
+
+test('a row with no firstSeenAt converges whatever order the merges happen in', () => {
+  const m = (x: SyncedRow, y: SyncedRow) =>
+    resolveByStore('wordStatus', x as SyncMeta, y as SyncMeta) as unknown as SyncedRow;
+  const a = bare('i1', 30);
+  const b = bare('i2', 10);
+  const c = bare('i3', 20);
+
+  const seen = [m(m(a, b), c), m(a, m(b, c)), m(m(b, c), a), m(m(c, a), b)].map((r) => r.firstSeenAt);
+
+  expect(new Set(seen).size).toBe(1);
+  expect(seen[0]).toBe(10);
+});
+
+test('two statuses outside the rank table break the tie the same way in both orders', () => {
+  const odd = (updatedBy: string, status: string): SyncedRow =>
+    ({ word: 'apple', status, updatedAt: 10, updatedBy, statusUpdatedAt: 5, encounters: 1, firstSeenAt: 1 }) as SyncedRow;
+  const m = (x: SyncedRow, y: SyncedRow) =>
+    resolveByStore('wordStatus', x as SyncMeta, y as SyncMeta) as unknown as SyncedRow;
+
+  // A rank alone put every unrecognised value at the same level, so two of those broke by argument
+  // position — order-dependence again, on exactly the rows the surrounding fallbacks exist for.
+  expect(m(odd('i1', 'bogus'), odd('i2', 'weird')).status).toBe(m(odd('i2', 'weird'), odd('i1', 'bogus')).status);
+  expect(parity('wordStatus', odd('i1', 'bogus'), odd('i2', 'weird')).status).toBe('weird');
+});
+
+/**
+ * Three versions of one row, all claiming the same `statusUpdatedAt`. Breaking that tie by `updatedBy`
+ * looked like a tiebreak and was not: the merged row carries the LWW winner's `updatedBy`, not the
+ * status winner's, so the next merge compared against an install that had never set the status. Devices
+ * that met the same three rows in a different order settled on different answers and stayed there.
+ */
+test('a three-way status tie settles the same way in every merge order', () => {
+  const at = (updatedBy: string, updatedAt: number, status: string): SyncedRow =>
+    ({ word: 'apple', status, updatedAt, updatedBy, statusUpdatedAt: 5, encounters: 1, firstSeenAt: 1 }) as SyncedRow;
+
+  const a = at('i1', 10, 'known');
+  const b = at('i3', 1, 'learning');
+  const c = at('i2', 2, 'ignored');
+
+  const merge = (x: SyncedRow, y: SyncedRow) => resolveByStore('wordStatus', x as SyncMeta, y as SyncMeta) as unknown as SyncedRow;
+  const orders = [
+    merge(merge(a, b), c),
+    merge(merge(b, c), a),
+    merge(merge(c, a), b),
+    merge(a, merge(b, c)),
+  ];
+
+  expect(new Set(orders.map((r) => r.status)).size).toBe(1);
+  expect(orders[0]!.status).toBe('known');
+});
+
+test('the tie precedence keeps a word in the queue rather than silently dropping it', () => {
+  const at = (updatedBy: string, status: string): SyncedRow =>
+    ({ word: 'apple', status, updatedAt: 10, updatedBy, statusUpdatedAt: 5, encounters: 1, firstSeenAt: 1 }) as SyncedRow;
+
+  // Losing an "ignore" is recoverable in one tap; losing a "learning" removes the word from study with
+  // nothing to notice.
+  expect(parity('wordStatus', at('i1', 'ignored'), at('i2', 'learning')).status).toBe('learning');
+  expect(parity('wordStatus', at('i9', 'unknown'), at('i1', 'ignored')).status).toBe('ignored');
+});

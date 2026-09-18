@@ -30,3 +30,13 @@ export const useSyncStatus = create<SyncStatus>(() => ({ phase: 'idle', lastSync
 export function setSyncStatus(patch: Partial<SyncStatus>): void {
   useSyncStatus.setState(patch);
 }
+
+/**
+ * Every field here describes ONE account's sync on THIS device, and none of it may outlive a switch.
+ * A carried-over `lastSyncedAt` tells the next account it synced minutes ago when it has never contacted
+ * the server; a carried-over `lastPulledAt` tells the reader a download just landed, which is the signal
+ * it uses to decide whether another device's reading position is worth offering.
+ */
+export function resetSyncStatus(): void {
+  useSyncStatus.setState({ phase: 'idle', lastSyncedAt: null, lastPulledAt: null, pending: 0 });
+}
