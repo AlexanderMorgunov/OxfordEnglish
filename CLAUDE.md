@@ -28,7 +28,7 @@ UI language**), `migration` (`.online`→`.ru` progress carry-over), plus `analy
 `pwa`/`onboarding`. Pages in `src/pages/`, routes in `router.tsx`, content schema+loader in `src/content/`.
 
 **State/data:** Zustand stores use **hand-rolled localStorage persist**, NOT the `persist` middleware
-(e.g. `ai/store.ts`, `i18n/uiLang.ts`, `ai/limits.ts`). IndexedDB via Dexie, db `oxford-english` (v6),
+(e.g. `ai/store.ts`, `i18n/uiLang.ts`, `ai/limits.ts`). IndexedDB via Dexie, db `oxford-english` (v8),
 `src/db/db.ts` — a non-indexed optional field needs no version bump. Skill tags: `src/content/skill-tags.ts`
 (add there before use).
 
