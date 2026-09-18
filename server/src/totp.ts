@@ -9,7 +9,8 @@
  * Defaults are the ones every authenticator app assumes: SHA-1, 30-second steps, 6 digits. They are NOT
  * a security choice we are free to modernise — an app that scans our QR will compute SHA-1/30/6.
  */
-import { createHmac, randomBytes, timingSafeEqual, createHash, createCipheriv, createDecipheriv } from 'node:crypto';
+import { createHmac, randomBytes, createHash, createCipheriv, createDecipheriv } from 'node:crypto';
+import { constantTimeEqual } from './secrets.js';
 
 export const STEP_SECONDS = 30;
 export const DIGITS = 6;
@@ -101,11 +102,6 @@ export function verifyCode(
   return { ok: false };
 }
 
-function constantTimeEqual(a: string, b: string): boolean {
-  const ab = Buffer.from(a);
-  const bb = Buffer.from(b);
-  return ab.length === bb.length && timingSafeEqual(ab, bb);
-}
 
 /** The URI an authenticator scans. `label` carries the accountId on purpose: after losing the recovery
  *  key that entry is the only place the user can still read their own id, and the same app already holds

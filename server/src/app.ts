@@ -8,6 +8,7 @@ import { entitlementRoutes } from './routes/entitlement.js';
 import { billingRoutes } from './routes/billing.js';
 import { aiRoutes } from './routes/ai.js';
 import { totpRoutes } from './routes/totp.js';
+import { adminRoutes, adminPage, ADMIN_TOKEN_MIN } from './routes/admin.js';
 import { InMemoryAuthStore, type AuthStore } from './store.js';
 import { InMemorySyncStore, type SyncStore } from './sync.js';
 import { InMemoryBlobStore, type BlobStore } from './blobs.js';
@@ -103,6 +104,18 @@ export function createApp(
   app.route('/', billingRoutes(entStore));
   app.route('/', aiRoutes(entStore, aiCacheStore, completer));
   app.route('/', totpRoutes(authStore, totpStore, nameStore));
+
+  // Read here, not at module scope: an import-time read would make "no token → 404" depend on import
+  // order and pass or fail by accident. Below the minimum length the surface is NOT mounted — warning
+  // and mounting anyway would leave a guessable token as the only thing in front of granting plans.
+  const adminToken = process.env.ADMIN_TOKEN ?? '';
+  if (adminToken && adminToken.length < ADMIN_TOKEN_MIN) {
+    console.warn(`[admin] ADMIN_TOKEN shorter than ${ADMIN_TOKEN_MIN} characters — admin routes not mounted`);
+  } else if (adminToken) {
+    app.route('/', adminRoutes(new Hono(), adminToken, authStore, entStore));
+    app.get('/admin', (c) => c.html(adminPage()));
+    console.log('[admin] admin routes mounted (ADMIN_TOKEN is set)');
+  }
 
   return app;
 }

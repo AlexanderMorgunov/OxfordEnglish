@@ -24,6 +24,7 @@ import {
   type RedeemResult,
 } from '../entitlements.js';
 import { query, withSerializableTx, TypedValues as T, Types, num } from '../ydb.js';
+import type { StatsRow } from '../adminStats.js';
 
 /** YDB Timestamp comes back as a Date (or micros); normalize to epoch ms. */
 function tsMs(v: unknown): number {
@@ -52,6 +53,17 @@ export class YdbEntitlementStore implements EntitlementStore {
       aiUsed: num(r.ai_used),
       windowStartedAt: tsMs(r.window_started_at),
     };
+  }
+
+  /** Reads the two dates for every row and counts in shared code, rather than counting in YQL. The
+   *  policy ("is this a trial") lives in `planOf`, and a second copy here could not be tested: the store
+   *  smokes need a live database, so CI never runs this path. Small-table convenience by design. */
+  async statsRows(): Promise<StatsRow[]> {
+    const [rows] = await query('SELECT trial_started_at, paid_until FROM entitlements;');
+    return rows.map((r) => ({
+      trialStartedAt: r.trial_started_at == null ? undefined : tsMs(r.trial_started_at),
+      paidUntil: r.paid_until == null ? undefined : tsMs(r.paid_until),
+    }));
   }
 
   async put(row: EntitlementRow): Promise<void> {

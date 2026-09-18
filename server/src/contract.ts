@@ -277,5 +277,8 @@ export const ErrorCode = {
   /** Already at the cap of accounts sharing this name. Refusing at write time is what keeps the lookup
    *  complete — accepting and truncating on read would leave the next holder unrecoverable in silence. */
   RecoveryNameCrowded: 'recovery_name_crowded',
+  /** Admin only: no account with that id. Safe to say there, where the caller already holds the owner
+   *  token — on any user-facing path this answer would be an account-id oracle (see `TotpInvalid`). */
+  NoSuchAccount: 'no_such_account',
 } as const;
 export type ErrorCode = (typeof ErrorCode)[keyof typeof ErrorCode];
