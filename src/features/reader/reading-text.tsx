@@ -1,6 +1,7 @@
-import { createContext, memo, use, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { createContext, memo, use, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Popover, usePopoverClose } from '@/shared/ui';
+import { overflowShift } from './lens-menu';
 import { cn } from '@/shared/lib/cn';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import {
@@ -364,6 +365,37 @@ const Paragraph = memo(function Paragraph({
   const navigate = useNavigate();
   // Which sentence's lens menu is open (translate / simplify / grammar), or null.
   const [menuIdx, setMenuIdx] = useState<number | null>(null);
+  const menuRef = useRef<HTMLSpanElement | null>(null);
+  const [menuShift, setMenuShift] = useState(0);
+
+  /**
+   * The menu hangs off the ⋯ button, which sits wherever its sentence ends — so near the right margin it
+   * opened straight off the screen, with the items unreadable and unreachable.
+   *
+   * Nudged back by exactly how far it overflows rather than flipped to the other side: flipping moves it
+   * away from the button that opened it even when there was room, and a partial overflow only needs a
+   * partial correction. Measured from the ANCHOR's position plus the menu's own `offsetWidth`, neither of
+   * which the shift changes — measuring the shifted box instead feeds the correction back into itself.
+   *
+   * The width comes from `documentElement.clientWidth`, NOT `window.innerWidth`. An absolutely positioned
+   * box that sticks out extends the document's scrollable area, and `innerWidth` grows with it: on a
+   * 360px screen it already read 529 by the time this ran, so the overflow measured as nothing and the
+   * menu stayed off the edge. `clientWidth` is the viewport and does not move.
+   */
+  useLayoutEffect(() => {
+    const el = menuRef.current;
+    if (!el?.parentElement) {
+      setMenuShift(0);
+      return;
+    }
+    setMenuShift(
+      overflowShift(
+        el.parentElement.getBoundingClientRect().left,
+        el.offsetWidth,
+        document.documentElement.clientWidth
+      )
+    );
+  }, [menuIdx]);
   // Changing the translate sub-mode / band invalidates shown cells (a free translation must not linger
   // after switching to AI). The lens MODE is per-sentence now, so it's not part of the key.
   useEffect(() => {
@@ -584,7 +616,9 @@ const Paragraph = memo(function Paragraph({
               {menuIdx === si && !open && (
                 <span
                   role="menu"
-                  className="absolute left-0 top-full z-10 mt-1 flex min-w-[8rem] flex-col rounded-sm border border-line bg-surface py-1 shadow-md"
+                  ref={menuRef}
+                  style={{ marginLeft: menuShift }}
+                  className="absolute left-0 top-full z-10 mt-1 flex min-w-[8rem] max-w-[calc(100vw-1rem)] flex-col rounded-sm border border-line bg-surface py-1 shadow-md"
                 >
                   {(
                     [
