@@ -48,6 +48,9 @@ export async function triggerSync(): Promise<void> {
       // and showing an error badge for a deliberate product boundary would read as a broken app.
       phase: pushBlocked ? 'paused' : 'idle',
       lastSyncedAt: pushBlocked ? useSyncStatus.getState().lastSyncedAt : Date.now(),
+      // Unconditional: `syncWith` always runs `pullLoop`, blocked push or not, so a refused upload says
+      // nothing about whether other devices' data just arrived.
+      lastPulledAt: Date.now(),
       pending: await pendingCount(),
     });
   } catch {

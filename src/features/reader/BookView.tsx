@@ -29,11 +29,16 @@ export function BookView({
   idPrefix,
   initialChapter = 0,
   onChapter,
+  remoteChapter,
 }: {
   book: ParsedBook;
   idPrefix: string;
   initialChapter?: number;
   onChapter?: (index: number) => void;
+  /** A position another device reported, if newer than what this one last wrote. Offered, never applied:
+   *  moving someone mid-read is worse than the stale chapter it fixes. Undefined on routes with no
+   *  synced row (the catalog reader). */
+  remoteChapter?: number;
 }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const { pathname } = useLocation();
@@ -52,6 +57,9 @@ export function BookView({
     null
   );
   const jumpingRef = useRef(false);
+  // The ref is for the scroll effects, which read it synchronously; render needs a state copy.
+  const [jumping, setJumping] = useState(false);
+  const [dismissedChapter, setDismissedChapter] = useState<number | null>(null);
   const nonceRef = useRef(0);
   const reduceMotion = useMemo(
     () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false,
@@ -124,9 +132,20 @@ export function BookView({
         behavior: reduceMotion ? 'auto' : 'smooth',
       });
       jumpingRef.current = false;
+      setJumping(false);
     });
     return () => cancelAnimationFrame(raf);
   }, [jump, reduceMotion]);
+
+  // Only AHEAD. A position behind means this device is further along: surfacing it would nag, and
+  // accepting it would be the rollback this whole feature exists to prevent. Clamped here because the
+  // bound is the PAGINATED length — `chapterCount` on the book row counts unpaginated chapters and can
+  // legitimately be smaller than a valid `lastChapter`.
+  const offered =
+    remoteChapter == null || jumping
+      ? null
+      : Math.min(Math.max(remoteChapter, 0), chapters.length - 1);
+  const offer = offered != null && offered > chapter && offered !== dismissedChapter ? offered : null;
 
   const ch = chapters[chapter]!;
   const paragraphs = useMemo(() => splitParas(ch.text), [ch]);
@@ -198,6 +217,7 @@ export function BookView({
   const jumpTo = (bm: Bookmark) => {
     const { page, paragraph, sentence } = locateBookmark(chapters, bm);
     jumpingRef.current = true;
+    setJumping(true);
     setJump({ paragraph, sentence, nonce: (nonceRef.current += 1) });
     go(page);
     setPanelOpen(false);
@@ -239,6 +259,23 @@ export function BookView({
   return (
     <>
       {ch.title && <h1 className="mb-6 text-2xl font-bold tracking-tight text-balance">{ch.title}</h1>}
+      {offer != null && (
+        <div className="mb-4 flex flex-wrap items-center gap-3 rounded-md border border-line bg-surface px-3 py-2">
+          {/* Full-width on a narrow screen so the buttons wrap BELOW: `flex-1` alone let the text shrink
+              to a four-line column beside them at 360px. */}
+          <p className="w-full min-w-0 font-mono text-2xs text-muted sm:w-auto sm:flex-1">
+            {ru
+              ? `На другом устройстве вы читали дальше — глава ${offer + 1}.`
+              : `You were further along on another device — chapter ${offer + 1}.`}
+          </p>
+          <Button size="sm" variant="ghost" onClick={() => go(offer)}>
+            {ru ? 'Перейти' : 'Go there'}
+          </Button>
+          <Button size="sm" variant="ghost" onClick={() => setDismissedChapter(offer)}>
+            {ru ? 'Остаться' : 'Stay'}
+          </Button>
+        </div>
+      )}
       {nav && <div className="mb-4">{nav}</div>}
 
       {bookmarks.length > 0 && (
