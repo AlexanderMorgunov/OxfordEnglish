@@ -6,6 +6,7 @@ import { useUiLang } from '@/features/i18n/uiLang';
 import { getBook, openBook, saveProgress, BookFileUnavailable } from '@/features/reader/service';
 import { opfsAvailable } from '@/features/reader/storage';
 import { useBookFileSync, type BookFileIssue } from '@/features/reader/blobSync';
+import { useSyncStatus } from '@/features/sync/status';
 import type { ParsedBook } from '@/features/reader/parse';
 import { BookView } from '@/features/reader/BookView';
 
@@ -103,6 +104,23 @@ export function BookReaderPage() {
   const [loading, setLoading] = useState(true);
   // Retry has to be able to re-run the effect, so the attempt counter is part of its deps.
   const [attempt, setAttempt] = useState(0);
+  // The record was read once at mount and never again, so a position pulled from another device a second
+  // later was invisible — and the next page turn wrote over it. This watches the DOWNLOAD half
+  // specifically: `lastSyncedAt` is frozen while pushes are refused for want of a plan, which is exactly
+  // the account whose other device holds a position it cannot push.
+  const lastPulledAt = useSyncStatus((st) => st.lastPulledAt);
+  const [remoteChapter, setRemoteChapter] = useState<number | undefined>(undefined);
+
+  useEffect(() => {
+    if (!bookId || lastPulledAt == null) return;
+    let alive = true;
+    void getBook(bookId).then((fresh) => {
+      if (alive && fresh) setRemoteChapter(fresh.lastChapter);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [bookId, lastPulledAt]);
 
   useEffect(() => {
     let alive = true;
@@ -164,6 +182,7 @@ export function BookReaderPage() {
         book={book}
         idPrefix={`reader.${record.id}`}
         initialChapter={record.lastChapter}
+        remoteChapter={remoteChapter}
         onChapter={(i) => void saveProgress(record.id, i)}
       />
     </article>

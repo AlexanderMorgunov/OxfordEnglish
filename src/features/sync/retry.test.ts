@@ -56,3 +56,29 @@ test('a cycle that worked schedules nothing', async () => {
   await vi.advanceTimersByTimeAsync(600_000);
   expect(syncWith).toHaveBeenCalledTimes(1);
 });
+
+test('a refused upload still records that the download half ran', async () => {
+  // `lastSyncedAt` is deliberately frozen while pushes are refused for want of a plan — the settings line
+  // must not claim a sync completed when nothing the user wrote is landing. But `pullLoop` runs either
+  // way, so anything asking "might another device's data have arrived?" needs its own clock. Sharing
+  // `lastSyncedAt` made the answer permanently "no" for a lapsed-Pro account, which is exactly the
+  // account whose other device holds a position it cannot push.
+  useSyncStatus.setState({ lastSyncedAt: null, lastPulledAt: null });
+
+  vi.mocked(syncWith).mockResolvedValue({ pushBlocked: true });
+  await triggerSync();
+
+  expect(useSyncStatus.getState().phase).toBe('paused');
+  expect(useSyncStatus.getState().lastSyncedAt).toBeNull();
+  expect(useSyncStatus.getState().lastPulledAt).not.toBeNull();
+});
+
+test('a failed cycle records neither clock', async () => {
+  useSyncStatus.setState({ lastSyncedAt: null, lastPulledAt: null });
+
+  vi.mocked(syncWith).mockRejectedValueOnce(new Error('offline'));
+  await triggerSync();
+
+  expect(useSyncStatus.getState().lastPulledAt).toBeNull();
+  expect(useSyncStatus.getState().lastSyncedAt).toBeNull();
+});
