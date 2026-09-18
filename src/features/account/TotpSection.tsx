@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import { Button, Card, Input } from '@/shared/ui';
 import { useAccount } from './store';
@@ -199,6 +199,9 @@ const coarsePointer = (): boolean => window.matchMedia?.('(pointer: coarse)').ma
 export function TotpEnroll({ ru, onNewKey }: { ru: boolean; onNewKey?: (composite: string) => void }) {
   const accountId = useAccount((s) => s.accountId);
   const [status, setStatus] = useState<TotpStatus | null>(null);
+  /** The status call failed, as opposed to not having answered yet. The difference is the whole section
+   *  appearing or not — see the render guard. */
+  const [statusFailed, setStatusFailed] = useState(false);
   const [stage, setStage] = useState<'idle' | 'scanning' | 'codes' | 'disabling' | 'regenerating' | 'rotating'>('idle');
   const [enrollment, setEnrollment] = useState<{ secret: string; uri: string } | null>(null);
   const [backupCodes, setBackupCodes] = useState<string[] | null>(null);
@@ -207,17 +210,85 @@ export function TotpEnroll({ ru, onNewKey }: { ru: boolean; onNewKey?: (composit
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [signOutOthers, setSignOutOthers] = useState(true);
+  /** Six digits already sent by auto-submit. A failed confirm leaves `input` untouched, so without this
+   *  the next render would send the same wrong code again — ten of those is a fifteen-minute lockout
+   *  that blocks correct codes too. */
+  const autoSent = useRef<string | null>(null);
+  /** Auto-submit gives itself up for the session once the server has said "too many attempts". */
+  const [autoOff, setAutoOff] = useState(false);
   const rotateRecoveryKey = useAccount((s) => s.rotateRecoveryKey);
 
-  useEffect(() => {
-    let alive = true;
-    void withToken(totpStatus)
-      .then((s) => alive && setStatus(s))
-      .catch(() => undefined);
-    return () => {
-      alive = false;
-    };
+  /** Answers are applied in start order, so a slow read cannot overwrite a newer one — and a response
+   *  that arrives after the component is gone lands nowhere. */
+  const statusGen = useRef(0);
+  const loadStatus = useCallback(async () => {
+    const gen = ++statusGen.current;
+    try {
+      const s = await withToken(totpStatus);
+      if (gen === statusGen.current) {
+        setStatus(s);
+        setStatusFailed(false);
+      }
+    } catch {
+      if (gen === statusGen.current) setStatusFailed(true);
+    }
   }, []);
+
+  /**
+   * Read the status on mount, and again whenever the tab comes back to the foreground.
+   *
+   * The trip to the authenticator app is exactly the case where this tab's copy goes stale: the
+   * enrollment may have been confirmed on a laptop, or cancelled in another tab, while we were away.
+   * Asking the server is the only honest way to know, and `/status` is read-only — unlike `enroll`,
+   * which MINTS a setup when none exists and so can never be used to ask this question.
+   */
+  useEffect(() => {
+    void loadStatus();
+    // Coming back to a backgrounded tab fires BOTH `visibilitychange` and `focus`, so without this one
+    // return costs two authenticated reads. Only the listener path is coalesced: the calls made after an
+    // action must still go, and they are ordered by the generation counter above.
+    let rechecking = false;
+    const recheck = () => {
+      if (document.visibilityState !== 'visible' || rechecking) return;
+      rechecking = true;
+      void loadStatus().finally(() => {
+        rechecking = false;
+      });
+    };
+    document.addEventListener('visibilitychange', recheck);
+    window.addEventListener('focus', recheck);
+    return () => {
+      document.removeEventListener('visibilitychange', recheck);
+      window.removeEventListener('focus', recheck);
+    };
+  }, [loadStatus]);
+
+  /**
+   * A scanning card on screen that the server no longer backs.
+   *
+   * Confirmed elsewhere, or cancelled elsewhere: either way the secret being shown can no longer be
+   * confirmed, and the Confirm button under it could only answer 409. Say what happened rather than
+   * letting the user discover it by failing.
+   */
+  useEffect(() => {
+    // Never while a request of our own is outstanding. A `confirm` that has already committed on the
+    // server but whose answer is still travelling would otherwise be read here as "someone else did
+    // this", tearing down the card and leaving that line under the backup codes when it resolves.
+    if (stage !== 'scanning' || !status || busy) return;
+    if (!status.enrolled && status.pending) return;
+    setStage('idle');
+    setEnrollment(null);
+    setInput('');
+    setError(
+      status.enrolled
+        ? ru
+          ? 'Приложение-аутентификатор уже подключено — подтверждение прошло, возможно на другом устройстве.'
+          : 'An authenticator is already connected — the setup was confirmed, perhaps on another device.'
+        : ru
+          ? 'Это подключение было отменено. Начните заново, когда будете готовы.'
+          : 'That setup was cancelled. Start again when you are ready.'
+    );
+  }, [status, stage, busy, ru]);
 
   const run = async (fn: () => Promise<void>) => {
     setBusy(true);
@@ -233,11 +304,34 @@ export function TotpEnroll({ ru, onNewKey }: { ru: boolean; onNewKey?: (composit
 
   const start = () =>
     run(async () => {
-      const e = await withToken(totpEnroll);
-      setEnrollment(e);
-      setStage('scanning');
-      setInput('');
-      setCopied(false);
+      try {
+        const e = await withToken(totpEnroll);
+        setEnrollment(e);
+        setStage('scanning');
+        setInput('');
+        setCopied(false);
+        autoSent.current = null;
+        // Keep our copy of the server's answer honest: the row exists now, and the reconcile effect
+        // above would otherwise read a stale `pending: false` as "cancelled elsewhere".
+        setStatus((st) => (st ? { ...st, pending: true } : st));
+      } catch (e) {
+        // 409 means it was confirmed elsewhere between reading the status and pressing the button; 503
+        // means the sealing key is gone. Retrying either can only repeat itself, and the generic
+        // "try again" sends people to do exactly that — on a screen whose only button now always fails.
+        const code = codeOf(e);
+        if (code !== 'totp_already_enrolled' && code !== 'totp_unavailable') throw e;
+        if (code === 'totp_already_enrolled') setStatus((s) => (s ? { ...s, enrolled: true, pending: false } : s));
+        void loadStatus();
+        setError(
+          code === 'totp_already_enrolled'
+            ? ru
+              ? 'Приложение-аутентификатор уже подключено — видимо, на другом устройстве.'
+              : 'An authenticator is already connected — on another device, most likely.'
+            : ru
+              ? 'Подключение временно недоступно. Попробуйте позже.'
+              : 'Connecting an app is temporarily unavailable. Try again later.'
+        );
+      }
     });
 
   /** Copies the RAW key, not the spaced-out one on screen — most apps reject a secret with spaces. */
@@ -259,34 +353,66 @@ export function TotpEnroll({ ru, onNewKey }: { ru: boolean; onNewKey?: (composit
    */
   const cancelEnrollment = () =>
     run(async () => {
-      await withToken(totpCancel).catch(() => undefined); // already confirmed elsewhere → nothing to drop
+      let confirmedElsewhere = false;
+      try {
+        await withToken(totpCancel);
+      } catch (e) {
+        // 409 means the row is CONFIRMED — someone finished this very setup on another device while it
+        // sat here. Swallowing it used to leave the screen insisting nothing was connected, offering a
+        // button that could then answer nothing but 409.
+        if (codeOf(e) !== 'totp_already_enrolled') throw e;
+        confirmedElsewhere = true;
+      }
       setStage('idle');
       setEnrollment(null);
       setInput('');
       setCopied(false);
-      setStatus((s) => (s ? { ...s, pending: false } : s));
+      // Again patched first: if only the refetch spoke, a dropped answer would leave `pending` true and
+      // the idle screen would offer to continue a setup that no longer exists — pressing it MINTS a new
+      // secret, right after telling the user they need not re-scan. Every code from their stale entry is
+      // then a failure counted against the ten.
+      setStatus((s) => (s ? { ...s, pending: false, enrolled: s.enrolled || confirmedElsewhere } : s));
+      void loadStatus();
+      if (confirmedElsewhere) {
+        setError(
+          ru
+            ? 'Отменять нечего: подключение уже подтверждено на другом устройстве.'
+            : 'Nothing to cancel: the setup was already confirmed on another device.'
+        );
+      }
     });
 
-  const confirm = () =>
+  /** `value` is explicit for the auto-submit caller: it runs from inside `onChange`, where `input`
+   *  still holds the PREVIOUS render's value — reading the state there sends five digits, which can
+   *  only fail and still costs one of the ten attempts. */
+  const confirm = (value?: string) =>
     run(async () => {
-      const code = input.trim();
+      const code = (value ?? input).trim();
       try {
         const codes = await totpConfirm(await accessToken(), code);
         setBackupCodes(codes);
         setEnrollment(null); // the secret must not linger in memory once it is live
         setStage('codes');
         setInput('');
-        setStatus((s) => (s ? { ...s, enrolled: true, backupCodesLeft: codes.length } : s));
+        setStatus((s) => (s ? { ...s, enrolled: true, pending: false, backupCodesLeft: codes.length } : s));
       } catch (e) {
         // The server turned the authenticator on and the answer was lost; the codes it minted went with
         // it, shown once and stored as hashes. So ask for a fresh set — but NOT with the code just
         // typed: `confirm` records it as spent (`lastStep`), so replaying it fails as a wrong code AND
         // burns one of the ten attempts before a fifteen-minute lockout that blocks correct codes too.
+        // A throttle means the next automatic send would be refused too, and each refusal is another
+        // fifteen minutes. Hand the decision back to the user.
+        if (codeOf(e) === 'rate_limited') setAutoOff(true);
         if (codeOf(e) !== 'totp_already_enrolled') throw e;
         setEnrollment(null);
         setInput('');
         setStage('regenerating');
-        setStatus((s) => (s ? { ...s, enrolled: true } : s));
+        // Patched first and refetched only as confirmation. This IS the "the answer was lost" path, so
+        // the next call is likely to be lost too — and leaning on it alone renders the NOT-enrolled
+        // branch, which has no code field at all: a live authenticator, no backup codes, an instruction
+        // to enter a code, and nothing to enter it into.
+        setStatus((s) => (s ? { ...s, enrolled: true, pending: false } : s));
+        void loadStatus();
         setError(
           ru
             ? 'Приложение уже подключено — похоже, ответ на подтверждение потерялся. Резервные коды показываются один раз, поэтому выпустим новые: дождитесь СЛЕДУЮЩЕГО кода в приложении и введите его.'
@@ -337,13 +463,34 @@ export function TotpEnroll({ ru, onNewKey }: { ru: boolean; onNewKey?: (composit
         }
       }
       await withToken((t) => totpDisable(t, proof));
-      setStatus({ available: true, enrolled: false, backupCodesLeft: 0 });
+      // Merged, not replaced: a literal drops `recoveryName` and `recoverFailures`, and the recovery-name
+      // field reads its initial value from the first — so replacing it here made a set name look unset.
+      setStatus((s) => (s ? { ...s, enrolled: false, pending: false, backupCodesLeft: 0 } : s));
       setStage('idle');
       setInput('');
     });
 
-  // Nothing at all while the server has no sealing key — a button that can only 503 is worse than silence.
-  if (!status?.available) return null;
+  // Silence is right for "the server has no sealing key" — a button that can only 503 is worse than
+  // nothing — and for the moment before the first answer arrives. It is NOT right for a FAILED call:
+  // the section simply vanishing is how someone returning from their authenticator app on a bad
+  // connection finds the recovery settings gone, with nothing to press and nothing to read.
+  if (!status) {
+    if (!statusFailed) return null;
+    return (
+      <div className="mt-6 border-t border-line pt-5">
+        <h3 className="mb-1 text-sm font-bold">{ru ? 'Запасной вход' : 'Backup sign-in'}</h3>
+        <p className="mb-2 text-2xs text-muted text-pretty">
+          {ru
+            ? 'Не удалось получить настройки запасного входа — похоже, нет связи. Данные на устройстве в порядке.'
+            : 'Could not load the backup sign-in settings — the connection looks down. Nothing on this device is affected.'}
+        </p>
+        <Button size="sm" variant="ghost" onClick={() => void loadStatus()}>
+          {ru ? 'Повторить' : 'Retry'}
+        </Button>
+      </div>
+    );
+  }
+  if (!status.available) return null;
 
   return (
     <div className="mt-6 border-t border-line pt-5">
@@ -385,7 +532,7 @@ export function TotpEnroll({ ru, onNewKey }: { ru: boolean; onNewKey?: (composit
             onClick={() => {
               setBackupCodes(null);
               setStage('idle');
-              setStatus({ available: true, enrolled: true, backupCodesLeft: backupCodes.length });
+              setStatus((s) => (s ? { ...s, enrolled: true, pending: false, backupCodesLeft: backupCodes.length } : s));
             }}
           >
             {ru ? 'Я сохранил(а) коды' : 'I have saved the codes'}
@@ -450,14 +597,27 @@ export function TotpEnroll({ ru, onNewKey }: { ru: boolean; onNewKey?: (composit
           <div className="flex flex-wrap items-center gap-2">
             <Input
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => {
+                // Digits only, capped at six. The field used to accept anything: an `one-time-code`
+                // autofill of the wrong thing, or a pasted label, spent one of ten attempts.
+                const v = e.target.value.replace(/\D/g, '').slice(0, 6);
+                setInput(v);
+                // Submit as soon as six digits exist — the code is held in short-term memory and the
+                // less there is to do with it, the better. Only from a real edit (typing, a paste, an
+                // autofill), never from a re-render, and never twice for the same value: a failed
+                // confirm leaves `input` alone, so resending would walk straight into the lockout.
+                if (v.length === 6 && !busy && !autoOff && autoSent.current !== v) {
+                  autoSent.current = v;
+                  void confirm(v);
+                }
+              }}
               placeholder={ru ? '6 цифр' : '6 digits'}
               inputMode="numeric"
               autoComplete="one-time-code"
               className="max-w-[9rem] font-mono"
               spellCheck={false}
             />
-            <Button size="sm" disabled={busy || input.trim().length < 6} onClick={() => void confirm()}>
+            <Button size="sm" disabled={busy || !/^\d{6}$/.test(input)} onClick={() => void confirm()}>
               {ru ? 'Подтвердить' : 'Confirm'}
             </Button>
             <Button size="sm" variant="ghost" disabled={busy} onClick={() => void cancelEnrollment()}>
