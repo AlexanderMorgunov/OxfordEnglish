@@ -80,3 +80,32 @@ test('choice does not always render the authored answer first', () => {
   }
   expect(seen.size).toBeGreaterThan(1);
 });
+
+/**
+ * A wrong answer creates a review card, which is how phrases nobody added turned up in the queue later.
+ * The card is worth keeping — meeting a missed exercise again is the point — but it has to be said out
+ * loud where it happens, or it reads as the app inventing content.
+ */
+// A fresh id per test: attempt outcomes live in a module-level store that outlives a test, so reusing
+// `ex.gap` starts this one already answered and `submit` returns before it can do anything.
+const freshGap = (id: string) => ({ ...gap, id });
+
+test('a wrong answer says that it went into the review queue', async () => {
+  const user = userEvent.setup();
+  renderR(<GapFillExercise exercise={freshGap('ex.gap.wrong')} />);
+
+  await user.type(screen.getByRole('textbox'), 'deploys');
+  await user.click(screen.getByRole('button', { name: /run check/i }));
+
+  expect(await screen.findByText(/added to your review queue/i)).toBeInTheDocument();
+});
+
+test('a right answer says nothing of the sort', async () => {
+  const user = userEvent.setup();
+  renderR(<GapFillExercise exercise={freshGap('ex.gap.right')} />);
+
+  await user.type(screen.getByRole('textbox'), 'deployed');
+  await user.click(screen.getByRole('button', { name: /run check/i }));
+
+  expect(screen.queryByText(/added to your review queue/i)).not.toBeInTheDocument();
+});

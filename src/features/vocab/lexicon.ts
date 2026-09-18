@@ -1,4 +1,5 @@
 import type { SrsCard, WordStatus, WordTranslation } from '@/db/db';
+import { isDeleted } from '@/features/sync/resolve';
 
 export type LexiconKind = 'word' | 'phrase';
 
@@ -37,7 +38,7 @@ export function buildLexicon(input: {
   const byKey = new Map<string, LexiconEntry>();
 
   for (const c of input.cards) {
-    if (c.fromError) continue;
+    if (c.fromError || isDeleted(c)) continue;
     const kind: LexiconKind = c.kind === 'phrase' ? 'phrase' : 'word';
     const key = c.front.toLowerCase();
     const backIsTranslation = Boolean(c.back) && c.back !== c.front;

@@ -119,3 +119,25 @@ test('sort: useful puts lower scores first, ties and unrated by recency', () => 
   const useful = sortLexicon(lex, 'useful', (e) => score[e.display] ?? Number.MAX_SAFE_INTEGER);
   expect(useful.map((e) => e.display)).toEqual(['basic', 'new', 'old', 'rare']);
 });
+
+/**
+ * A removed card stays in the table as a tombstone so the removal can reach the account's other
+ * devices. Listing it would put the word straight back in the user's vocabulary, where removing it
+ * again does nothing visible.
+ */
+test('a removed card is not listed in the lexicon', () => {
+  const live = card({ id: 'word:apple', front: 'apple', back: 'яблоко' });
+  const removed = card({ id: 'word:pear', front: 'pear', back: 'груша', updatedAt: 10, deletedAt: 20 });
+
+  const out = buildLexicon({ cards: [live, removed], statuses: [], translations: [] });
+
+  expect(out.map((e) => e.display)).toEqual(['apple']);
+});
+
+test('a card edited after its removal is listed again (H1)', () => {
+  const revived = card({ id: 'word:pear', front: 'pear', back: 'груша', updatedAt: 30, deletedAt: 20 });
+
+  const out = buildLexicon({ cards: [revived], statuses: [], translations: [] });
+
+  expect(out.map((e) => e.display)).toEqual(['pear']);
+});

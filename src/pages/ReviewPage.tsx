@@ -4,8 +4,8 @@ import type { SrsCard } from '@/db/db';
 import { Button, Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { canSpeak, speakWord } from '@/shared/lib/audio';
-import { translateWord } from '@/features/vocab/translate';
-import { gradeCard, getDueCards, Rating } from '@/features/srs/service';
+import { translateText, translateWord } from '@/features/vocab/translate';
+import { canPronounce, dropCard, gradeCard, getDueCards, repairCardBack, Rating } from '@/features/srs/service';
 import { BackToReader } from '@/features/reader/BackToReader';
 
 const GRADES = [
@@ -21,6 +21,7 @@ export function ReviewPage() {
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [extra, setExtra] = useState<string | null>(null);
+  const [lookedUp, setLookedUp] = useState(false);
 
   useEffect(() => {
     void getDueCards().then(setQueue);
@@ -28,11 +29,34 @@ export function ReviewPage() {
 
   const card = queue?.[index];
 
+  /**
+   * A card whose `back` equals its `front` was saved while the lookup was unavailable, so it has no
+   * translation to show. Retry it here and WRITE IT BACK: before, the answer lived in component state
+   * only, so the same card asked the network on every showing and fell back to a bare dash whenever it
+   * could not reach it. Phrases were never retried at all, so theirs was a dash for good.
+   *
+   * Skipped for mistake cards: their `front` is an exercise prompt, not a term to look up.
+   */
   const reveal = () => {
     setRevealed(true);
-    if (card && card.kind === 'word' && card.back === card.front) {
-      void translateWord(card.front).then(setExtra);
-    }
+    if (!card || card.back !== card.front || card.fromError) return;
+    const lookup = card.kind === 'word' ? translateWord : translateText;
+    void lookup(card.front).then((ru) => {
+      setExtra(ru);
+      setLookedUp(true);
+      if (ru) void repairCardBack(card.id, ru);
+    });
+  };
+
+  /** Removes for good rather than for now: a hard delete left the row on the server and the next pull
+   *  put the card straight back, so the same card was dismissed over and over. */
+  const drop = async () => {
+    if (!card) return;
+    await dropCard(card.id);
+    setRevealed(false);
+    setExtra(null);
+    setLookedUp(false);
+    setQueue((cur) => cur?.filter((c) => c.id !== card.id) ?? cur);
   };
 
   const grade = async (rating: Grade) => {
@@ -40,6 +64,7 @@ export function ReviewPage() {
     await gradeCard(card.id, rating);
     setRevealed(false);
     setExtra(null);
+    setLookedUp(false);
     setIndex((i) => i + 1);
   };
 
@@ -74,12 +99,12 @@ export function ReviewPage() {
         <div className="flex flex-col gap-4">
           <p className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
             {queue.length - index} {ru ? 'к повторению' : 'due'} ·{' '}
-            {card.fromError ? (ru ? 'ошибка' : 'mistake') : card.kind}
+            {card.fromError ? (ru ? 'из ошибки в упражнении' : 'from a missed exercise') : card.kind}
           </p>
           <Card className="min-h-40">
             <div className="flex items-center gap-2.5">
               <p className="font-mono text-2xl text-content">{card.front}</p>
-              {card.kind === 'word' && canSpeak() && (
+              {canPronounce(card) && canSpeak() && (
                 <button
                   type="button"
                   aria-label={`${ru ? 'Произнести' : 'Pronounce'} ${card.front}`}
@@ -92,10 +117,15 @@ export function ReviewPage() {
             </div>
             {revealed && (
               <div className="mt-4 border-t border-line pt-4">
-                <p className="text-lg text-content">
+                <p className={`text-lg ${card.back !== card.front || extra ? 'text-content' : 'text-muted'}`}>
                   {card.back !== card.front
                     ? card.back
-                    : (extra ?? '—')}
+                    : (extra ??
+                      (lookedUp
+                        ? ru
+                          ? 'Перевод не загрузился — попробуем в следующий раз'
+                          : 'Translation unavailable — we will try again next time'
+                        : '…'))}
                 </p>
                 {card.contextGloss && (
                   <p className="mt-1.5 text-sm text-content">
@@ -107,6 +137,17 @@ export function ReviewPage() {
                 )}
                 {card.contextSentence && (
                   <p className="mt-2 text-sm text-muted">{card.contextSentence}</p>
+                )}
+                {/* Mistake cards are the only ones with nowhere else to manage them: the lexicon skips
+                    them, so without this the queue is the one place they appear and cannot be left. */}
+                {card.fromError && (
+                  <button
+                    type="button"
+                    className="mt-3 font-mono text-2xs text-muted underline underline-offset-4 transition-colors hover:text-coral"
+                    onClick={() => void drop()}
+                  >
+                    {ru ? 'убрать из повторения' : 'remove from review'}
+                  </button>
                 )}
               </div>
             )}
