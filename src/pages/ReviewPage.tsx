@@ -4,8 +4,8 @@ import type { SrsCard } from '@/db/db';
 import { Button, Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { canSpeak, speakWord } from '@/shared/lib/audio';
-import { translateWord } from '@/features/vocab/translate';
-import { gradeCard, getDueCards, Rating } from '@/features/srs/service';
+import { translateText, translateWord } from '@/features/vocab/translate';
+import { gradeCard, getDueCards, repairCardBack, Rating } from '@/features/srs/service';
 import { BackToReader } from '@/features/reader/BackToReader';
 
 const GRADES = [
@@ -21,6 +21,7 @@ export function ReviewPage() {
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [extra, setExtra] = useState<string | null>(null);
+  const [lookedUp, setLookedUp] = useState(false);
 
   useEffect(() => {
     void getDueCards().then(setQueue);
@@ -28,11 +29,23 @@ export function ReviewPage() {
 
   const card = queue?.[index];
 
+  /**
+   * A card whose `back` equals its `front` was saved while the lookup was unavailable, so it has no
+   * translation to show. Retry it here and WRITE IT BACK: before, the answer lived in component state
+   * only, so the same card asked the network on every showing and fell back to a bare dash whenever it
+   * could not reach it. Phrases were never retried at all, so theirs was a dash for good.
+   *
+   * Skipped for mistake cards: their `front` is an exercise prompt, not a term to look up.
+   */
   const reveal = () => {
     setRevealed(true);
-    if (card && card.kind === 'word' && card.back === card.front) {
-      void translateWord(card.front).then(setExtra);
-    }
+    if (!card || card.back !== card.front || card.fromError) return;
+    const lookup = card.kind === 'word' ? translateWord : translateText;
+    void lookup(card.front).then((ru) => {
+      setExtra(ru);
+      setLookedUp(true);
+      if (ru) void repairCardBack(card.id, ru);
+    });
   };
 
   const grade = async (rating: Grade) => {
@@ -40,6 +53,7 @@ export function ReviewPage() {
     await gradeCard(card.id, rating);
     setRevealed(false);
     setExtra(null);
+    setLookedUp(false);
     setIndex((i) => i + 1);
   };
 
@@ -92,10 +106,15 @@ export function ReviewPage() {
             </div>
             {revealed && (
               <div className="mt-4 border-t border-line pt-4">
-                <p className="text-lg text-content">
+                <p className={`text-lg ${card.back !== card.front || extra ? 'text-content' : 'text-muted'}`}>
                   {card.back !== card.front
                     ? card.back
-                    : (extra ?? '—')}
+                    : (extra ??
+                      (lookedUp
+                        ? ru
+                          ? 'Перевод не загрузился — попробуем в следующий раз'
+                          : 'Translation unavailable — we will try again next time'
+                        : '…'))}
                 </p>
                 {card.contextGloss && (
                   <p className="mt-1.5 text-sm text-content">

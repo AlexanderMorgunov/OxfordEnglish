@@ -85,6 +85,29 @@ export async function addErrorCard(
   });
 }
 
+/**
+ * Fill in a translation the card was saved without.
+ *
+ * Every save path writes `back: translation ?? term`, so a lookup that was rate-limited, offline or
+ * simply missing leaves the term as its own translation — which the review then renders as a bare dash.
+ * The reveal already retried the lookup, but only into component state, so the card asked the network
+ * again on every single showing and went back to a dash the moment it could not reach it.
+ *
+ * Refuses to overwrite a translation that already exists: this repairs, it never corrects.
+ */
+export async function repairCardBack(id: string, back: string): Promise<boolean> {
+  const value = back.trim();
+  if (!value) return false;
+  try {
+    const row = await db.srsCards.get(id);
+    if (!row || row.back !== row.front || value === row.front) return false;
+    await putSrsCard({ ...row, back: value });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export async function getDueCards(now = new Date()): Promise<SrsCard[]> {
   try {
     return await db.srsCards.where('due').belowOrEqual(now).toArray();
