@@ -9,7 +9,7 @@
  */
 import { readFile } from 'node:fs/promises';
 import { test, expect } from 'vitest';
-import { overflowShift } from './reading-text';
+import { overflowShift } from './lens-menu';
 
 const VIEWPORT = 360;
 

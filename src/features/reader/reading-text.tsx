@@ -1,6 +1,7 @@
 import { createContext, memo, use, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Popover, usePopoverClose } from '@/shared/ui';
+import { overflowShift } from './lens-menu';
 import { cn } from '@/shared/lib/cn';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import {
@@ -696,13 +697,6 @@ const Paragraph = memo(function Paragraph({
 });
 
 /** Render paragraphs of reading text with word lookup and per-paragraph read-aloud. */
-/** How far left a box anchored at `anchorLeft` must move to stay inside `viewportWidth`. Zero when it
- *  already fits: a menu that has room should stay glued to the button that opened it. */
-export function overflowShift(anchorLeft: number, boxWidth: number, viewportWidth: number, margin = 8): number {
-  const over = anchorLeft + boxWidth - (viewportWidth - margin);
-  return over > 0 ? -over : 0;
-}
-
 export function ReadingText({
   paragraphs,
   glossary,
