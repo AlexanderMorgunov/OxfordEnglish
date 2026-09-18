@@ -342,7 +342,7 @@ test('append-only stores are a union by id on the server, not a last-writer over
 });
 
 test('wipeSyncedData clears every synced table, the dirty queue and the account cursors — but keeps the install id', async () => {
-  // Called on logout and on an account switch (store.ts:96, :368, :408). Untested until now, and the
+  // Called on logout, on an account switch and on account deletion. Untested until now, and the
   // consequences of each half going wrong are different: leaving rows behind bleeds account A's data into
   // account B; leaving the dirty queue behind pushes A's rows up under B's credentials; and dropping the
   // INSTALL_ROW would hand this device a new identity, breaking the LWW tiebreaker against its own history.
