@@ -169,10 +169,16 @@ function AccountSectionBody() {
               </p>
             </div>
           </div>
-          {accountId && <AccountIdBlock ru={ru} accountId={accountId} />}
-          <QuotaNotice />
-          <SyncStatusLine ru={ru} />
-          <Button size="sm" variant="ghost" className="mt-3" onClick={() => void logout()}>
+          {/* Three independent status lines stacked with nothing between them: the account id ran
+              straight into the sync state, which read as one paragraph rather than three facts.
+              `space-y` rather than margins on each, so a line that renders nothing — the quota notice
+              usually does — leaves no gap behind it. */}
+          <div className="space-y-2">
+            {accountId && <AccountIdBlock ru={ru} accountId={accountId} />}
+            <QuotaNotice />
+            <SyncStatusLine ru={ru} />
+          </div>
+          <Button size="sm" variant="ghost" className="mt-4" onClick={() => void logout()}>
             {ru ? 'Выйти' : 'Log out'}
           </Button>
           <PlanSection ru={ru} />
