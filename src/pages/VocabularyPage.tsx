@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { db } from '@/db/db';
+import { dropCard } from '@/features/srs/service';
 import { Button, Eyebrow, Input, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { canSpeak, speakWord } from '@/shared/lib/audio';
@@ -116,11 +117,9 @@ export function VocabularyPage() {
   };
   const removeCard = async (e: LexiconEntry) => {
     if (!e.cardId) return;
-    try {
-      await db.srsCards.delete(e.cardId);
-    } catch {
-      // best-effort
-    }
+    // Soft: a hard delete left the row on the server, so the next pull put the card back and the user
+    // removed the same word again and again.
+    await dropCard(e.cardId);
     await reload();
   };
   const translateOne = async (e: LexiconEntry) => {

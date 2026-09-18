@@ -5,7 +5,7 @@ import { Button, Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { canSpeak, speakWord } from '@/shared/lib/audio';
 import { translateText, translateWord } from '@/features/vocab/translate';
-import { gradeCard, getDueCards, repairCardBack, Rating } from '@/features/srs/service';
+import { dropCard, gradeCard, getDueCards, repairCardBack, Rating } from '@/features/srs/service';
 import { BackToReader } from '@/features/reader/BackToReader';
 
 const GRADES = [
@@ -48,6 +48,17 @@ export function ReviewPage() {
     });
   };
 
+  /** Removes for good rather than for now: a hard delete left the row on the server and the next pull
+   *  put the card straight back, so the same card was dismissed over and over. */
+  const drop = async () => {
+    if (!card) return;
+    await dropCard(card.id);
+    setRevealed(false);
+    setExtra(null);
+    setLookedUp(false);
+    setQueue((cur) => cur?.filter((c) => c.id !== card.id) ?? cur);
+  };
+
   const grade = async (rating: Grade) => {
     if (!card) return;
     await gradeCard(card.id, rating);
@@ -88,7 +99,7 @@ export function ReviewPage() {
         <div className="flex flex-col gap-4">
           <p className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
             {queue.length - index} {ru ? 'к повторению' : 'due'} ·{' '}
-            {card.fromError ? (ru ? 'ошибка' : 'mistake') : card.kind}
+            {card.fromError ? (ru ? 'из ошибки в упражнении' : 'from a missed exercise') : card.kind}
           </p>
           <Card className="min-h-40">
             <div className="flex items-center gap-2.5">
@@ -126,6 +137,17 @@ export function ReviewPage() {
                 )}
                 {card.contextSentence && (
                   <p className="mt-2 text-sm text-muted">{card.contextSentence}</p>
+                )}
+                {/* Mistake cards are the only ones with nowhere else to manage them: the lexicon skips
+                    them, so without this the queue is the one place they appear and cannot be left. */}
+                {card.fromError && (
+                  <button
+                    type="button"
+                    className="mt-3 font-mono text-2xs text-muted underline underline-offset-4 transition-colors hover:text-coral"
+                    onClick={() => void drop()}
+                  >
+                    {ru ? 'убрать из повторения' : 'remove from review'}
+                  </button>
                 )}
               </div>
             )}

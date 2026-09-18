@@ -178,6 +178,17 @@ export async function stampSetting(key: string, value: unknown): Promise<void> {
 /** Soft-delete a book (tombstone). Keeps the row so the delete PROPAGATES on sync; per H1 it sets
  *  `deletedAt` but does NOT bump `updatedAt`, so a later genuine re-add can still win the row back.
  *  Reads must filter these out (see reader listBooks). */
+/** Same H1 rule as `softDeleteBook`: set `deletedAt` and leave `updatedAt` alone, or the row reads as
+ *  edited-after-delete and comes back. A hard delete looked like it worked and did not — the server
+ *  still held the row, so the next pull put the card straight back in the queue. */
+export async function softDeleteSrsCard(id: string): Promise<void> {
+  const current = await db.srsCards.get(id);
+  if (!current) return;
+  const row: SrsCard = { ...current, deletedAt: Date.now(), updatedBy: await installId() };
+  await db.srsCards.put(row);
+  await dirty('srsCards', row);
+}
+
 export async function softDeleteBook(id: string): Promise<void> {
   const current = await db.books.get(id);
   if (!current) return;

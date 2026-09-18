@@ -28,6 +28,7 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
   const [attempts, setAttempts] = useState<string[]>([]);
   const [usedHint, setUsedHint] = useState(false);
   const [aiHintsUsed, setAiHintsUsed] = useState(0);
+  const [savedToReview, setSavedToReview] = useState(false);
 
   useEffect(() => {
     if (!stored) return;
@@ -62,6 +63,7 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
       setStatus('incorrect');
       if (errorCard) {
         void addErrorCard(exercise.id, errorCard.front, errorCard.back, exercise.tags);
+        setSavedToReview(true); // silent until now, so these turned up in the queue as a surprise
       }
     }
   };
@@ -74,6 +76,7 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
     aiHintsUsed,
     aiHintsLeft: AI_HINT_LIMIT - aiHintsUsed,
     noteAiHint: () => setAiHintsUsed((n) => n + 1),
+    savedToReview,
     canReveal: attemptNumber >= 2 && status !== 'correct',
     revealHint: () => setUsedHint(true),
     submit,

@@ -7,7 +7,8 @@ import {
 } from 'ts-fsrs';
 import { db, type SrsCard } from '@/db/db';
 import { logReview, recordSave } from '@/features/stats/activity';
-import { addSrsCard, putSrsCard } from '@/features/sync/local';
+import { addSrsCard, putSrsCard, softDeleteSrsCard } from '@/features/sync/local';
+import { isDeleted } from '@/features/sync/resolve';
 
 export { Rating };
 
@@ -110,9 +111,20 @@ export async function repairCardBack(id: string, back: string): Promise<boolean>
 
 export async function getDueCards(now = new Date()): Promise<SrsCard[]> {
   try {
-    return await db.srsCards.where('due').belowOrEqual(now).toArray();
+    const rows = await db.srsCards.where('due').belowOrEqual(now).toArray();
+    // Tombstones stay in the table so the removal can reach other devices; they are not due for review.
+    return rows.filter((c) => !isDeleted(c));
   } catch {
     return [];
+  }
+}
+
+/** Take a card out of the queue for good. Soft, so the removal survives the next pull. */
+export async function dropCard(id: string): Promise<void> {
+  try {
+    await softDeleteSrsCard(id);
+  } catch {
+    // best-effort
   }
 }
 
