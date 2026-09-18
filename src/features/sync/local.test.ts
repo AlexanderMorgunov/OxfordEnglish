@@ -1,7 +1,7 @@
 import 'fake-indexeddb/auto';
 import { test, expect, beforeEach } from 'vitest';
 import { db } from '@/db/db';
-import { addAttempt, putWordStatus, softDeleteBook, softDeleteBookmark, stampImported } from './local';
+import { addAttempt, patchBook, putWordStatus, softDeleteBook, softDeleteBookmark, stampImported } from './local';
 import { isDeleted } from './resolve';
 
 beforeEach(async () => {
@@ -68,4 +68,29 @@ test('stampImported preserves meta already carried by a sync-aware backup', () =
   const out = stampImported('books', [{ id: 'b1', addedAt: 5, updatedAt: 999, updatedBy: 'other' }], 'inst') as Array<{ updatedAt?: number; updatedBy?: string }>;
   expect(out[0]!.updatedBy).toBe('other');
   expect(out[0]!.updatedAt).toBe(999);
+});
+
+test('patchBook refuses a tombstoned row instead of resurrecting the book', async () => {
+  // softDeleteBook deliberately leaves updatedAt alone so a genuine re-add can win the row back, and
+  // isDeleted is `deletedAt >= updatedAt`. patchBook bumps updatedAt — so turning a page in a book another
+  // device deleted used to un-delete it here AND push the resurrection back to the device that deleted it.
+  // The `!current` guard never caught it: a tombstone is a row that is still present.
+  await db.books.put({ id: 'b1', title: 'T', format: 'epub', addedAt: 1, chapterCount: 3, lastChapter: 0, updatedAt: 100, updatedBy: 'inst' });
+  await softDeleteBook('b1');
+  const tombstone = (await db.books.get('b1'))!;
+
+  await patchBook('b1', { lastChapter: 2 });
+
+  const after = (await db.books.get('b1'))!;
+  expect(isDeleted(after)).toBe(true);
+  expect(after.lastChapter).toBe(0);
+  expect(after.updatedAt).toBe(tombstone.updatedAt);
+});
+
+test('patchBook still updates a live book', async () => {
+  await db.books.put({ id: 'b2', title: 'T', format: 'epub', addedAt: 1, chapterCount: 3, lastChapter: 0, updatedAt: 100, updatedBy: 'inst' });
+  await patchBook('b2', { lastChapter: 2 });
+  const after = (await db.books.get('b2'))!;
+  expect(after.lastChapter).toBe(2);
+  expect(after.updatedAt).toBeGreaterThan(100);
 });

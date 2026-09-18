@@ -13,7 +13,7 @@ import { accountsEnabled } from '@/features/account/config';
 import { useAccount } from '@/features/account/store';
 import { getInstallId } from './meta';
 import { markDirty, type SyncedRow } from './engine';
-import type { SyncedStore } from './resolve';
+import { isDeleted, type SyncedStore } from './resolve';
 import { nudgeSync } from './run';
 
 /** True when writes should be tracked for push (a backend is configured AND the user is signed in). */
@@ -146,7 +146,11 @@ export async function addBook(record: BookRecord): Promise<void> {
 
 export async function patchBook(id: string, patch: Partial<BookRecord>): Promise<void> {
   const current = await db.books.get(id);
-  if (!current) return;
+  // A tombstone is a row that is still PRESENT, so the `!current` guard never sees it. Patching one bumps
+  // `updatedAt` past the `deletedAt` that softDeleteBook deliberately left alone, which by H1
+  // (`deletedAt >= updatedAt`) un-deletes the book and pushes it back to the device that deleted it.
+  // Reachable by turning a page in a book another device removed while the reader held it open.
+  if (!current || isDeleted(current)) return;
   const row: BookRecord = { ...current, ...patch, updatedAt: Date.now(), updatedBy: await installId() };
   await db.books.put(row);
   await dirty('books', row);
