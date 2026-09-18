@@ -197,8 +197,10 @@ export const TotpStatusSchema = z.object({
   available: z.boolean(),
   enrolled: z.boolean(),
   backupCodesLeft: z.number(),
-  /** A setup started and never confirmed. */
-  pending: z.boolean().optional(),
+  /** A setup started and never confirmed. Required rather than optional: every constructed status has to
+   *  declare it, which is the compile-time pressure that stops an object literal from quietly dropping
+   *  it — the same class of bug as the status patches that used to be rebuilt from scratch. */
+  pending: z.boolean().default(false),
   /** Failed recovery attempts in the current window — the owner's only sign that someone is trying. */
   recoverFailures: z.number().optional(),
   /** Whether a recovery name is set. Never the name itself — it is stored as a keyed hash. */
