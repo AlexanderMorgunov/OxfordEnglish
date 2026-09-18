@@ -5,14 +5,98 @@ import { Button, Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { importBook, listBooks, removeBook } from '@/features/reader/service';
 import { opfsAvailable, requestPersistence } from '@/features/reader/storage';
+import { useBookFileSync, useBookUploadIssues, type UploadIssue } from '@/features/reader/blobSync';
+import { useAccount } from '@/features/account/store';
 import { RecommendedShelf } from '@/features/reader/RecommendedShelf';
 import { BackToReader } from '@/features/reader/BackToReader';
 import { readProgress } from '@/features/stats/useReadingTracker';
 
+/**
+ * One reason usually covers several books at once — the account has no Pro, the cloud is full, the
+ * connection is down — and repeating the same two-line explanation under each of them turns the library
+ * into wallpaper. So a reason shared by MORE THAN ONE book is explained once above the list, and those
+ * books only carry a short "which ones" marker. A reason that affects a single book stays on that book,
+ * where it reads as the fact about that file it is.
+ */
+const ISSUE_ORDER = ['no-plan', 'quota', 'signed-out', 'error', 'too-large'] as const;
+const PERMANENT: readonly UploadIssue[] = ['too-large', 'no-plan'];
+
+const perBookText = (ru: boolean): Record<UploadIssue, string> =>
+  ru
+    ? {
+        'too-large': 'Не уйдёт в облако: файл больше 20 МБ. На этом устройстве книга есть.',
+        quota: 'Не уместилось в облако — место кончилось. Освободите его, и книга уйдёт сама.',
+        'no-plan': 'Копия в облаке входит в Pro. Книга есть на этом устройстве.',
+        error: 'Пока не ушло в облако. Попробуем ещё раз автоматически.',
+        'signed-out': 'Пока не ушло в облако: не получается обновить вход.',
+      }
+    : {
+        'too-large': 'Will not go to the cloud: over 20 MB. The book is here on this device.',
+        quota: 'Did not fit in the cloud — it is full. Free some space and this goes up on its own.',
+        'no-plan': 'A cloud copy is part of Pro. The book is here on this device.',
+        error: 'Not in the cloud yet. We will try again automatically.',
+        'signed-out': 'Not in the cloud yet: cannot refresh your sign-in.',
+      };
+
+const groupText = (ru: boolean): Record<UploadIssue, string> =>
+  ru
+    ? {
+        'too-large': 'Отмеченные файлы больше 20 МБ — в облако они не уйдут. На этом устройстве книги есть.',
+        quota: 'В облаке кончилось место, поэтому отмеченные книги не загрузились. Освободите место — они уйдут сами.',
+        'no-plan': 'Копии книг в облаке входят в Pro. Отмеченные книги есть только на этом устройстве.',
+        error: 'Отмеченные книги пока не ушли в облако. Попробуем ещё раз автоматически.',
+        'signed-out': 'Не получается обновить вход, поэтому отмеченные книги пока не в облаке.',
+      }
+    : {
+        'too-large': 'The marked files are over 20 MB, so they will not go to the cloud. The books are here on this device.',
+        quota: 'The cloud is full, so the marked books did not upload. Free some space and they go up on their own.',
+        'no-plan': 'Cloud copies of books are part of Pro. The marked books are only on this device.',
+        error: 'The marked books are not in the cloud yet. We will try again automatically.',
+        'signed-out': 'Cannot refresh your sign-in, so the marked books are not in the cloud yet.',
+      };
+
+function GroupedUploadNotice({ ru, issue }: { ru: boolean; issue: UploadIssue }) {
+  return (
+    <Card className="mb-4 border-amber-dim">
+      <p className="text-sm text-muted">{groupText(ru)[issue]}</p>
+    </Card>
+  );
+}
+
+/**
+ * Why this device's copy of a book is not in the cloud. Deliberately not a button: `sweepBookFiles`
+ * already retries every ten minutes, so the honest thing to render is the reason, not a control that
+ * duplicates what is already happening. Silent when the book is fine, which is the common case.
+ */
+function UploadIssueLine({ ru, issue, grouped }: { ru: boolean; issue: UploadIssue | undefined; grouped: boolean }) {
+  if (!issue) return null;
+  const tone = PERMANENT.includes(issue) ? 'text-muted' : 'text-amber';
+  // The cause is already stated once above; here the book only has to identify itself as one of them.
+  if (grouped) return <p className={`mt-1 font-mono text-2xs ${tone}`}>{ru ? 'не в облаке' : 'not in the cloud'}</p>;
+  return <p className={`mt-1 font-mono text-2xs ${tone}`}>{perBookText(ru)[issue]}</p>;
+}
+
 export function LibraryPage() {
   const ru = useUiLang((s) => s.lang) === 'ru';
+  const issues = useBookUploadIssues((s) => s.issues);
+  // `sweepBookFiles` only runs while signed in with the toggle on. Outside that, a marker would sit there
+  // promising a retry with nothing retrying — so visibility is DERIVED rather than cleared on the way out:
+  // turning the toggle back on brings the real answers straight back, instead of a ten-minute blank.
+  const syncOn = useBookFileSync((s) => s.enabled);
+  const signedIn = useAccount((s) => s.status === 'authenticated');
+  const uploadsRunning = syncOn && signedIn;
+  const issueFor = (id: string): UploadIssue | undefined => (uploadsRunning ? issues[id] : undefined);
   const inputRef = useRef<HTMLInputElement>(null);
   const [books, setBooks] = useState<BookRecord[]>([]);
+  // EVERY reason that covers more than one book gets its own line. Explaining only the biggest group
+  // would leave the others showing a bare "not in the cloud" with the reason stated nowhere — worse than
+  // the repetition this replaces. ISSUE_ORDER keeps the lines in a stable order.
+  const counts = new Map<UploadIssue, number>();
+  for (const b of books) {
+    const i = issueFor(b.id);
+    if (i) counts.set(i, (counts.get(i) ?? 0) + 1);
+  }
+  const groupedIssues = ISSUE_ORDER.filter((i) => (counts.get(i) ?? 0) > 1);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [persisted, setPersisted] = useState(true);
@@ -116,6 +200,10 @@ export function LibraryPage() {
         </Card>
       )}
 
+      {groupedIssues.map((i) => (
+        <GroupedUploadNotice key={i} ru={ru} issue={i} />
+      ))}
+
       {books.length === 0 ? (
         <div className="text-center">
           <PixelImage src="/assets/pixel/mascot.png" alt="" className="mx-auto mb-4 h-24 w-24 opacity-90" />
@@ -131,16 +219,21 @@ export function LibraryPage() {
             const read = readProgress(`reader.${b.id}`);
             return (
               <Card key={b.id} className="flex items-center justify-between gap-3">
-                <Link to={`/library/${b.id}`} className="min-w-0 flex-1">
-                  <p className="truncate font-semibold">{b.title}</p>
-                  <p className="truncate font-mono text-2xs uppercase tracking-[0.06em] text-muted">
-                    {b.author ? `${b.author} · ` : ''}
-                    {b.format} ·{' '}
-                    {read != null
-                      ? `${ru ? 'прочитано' : 'read'} ${Math.round(read * 100)}%`
-                      : `${b.chapterCount} ${ru ? 'глав' : 'ch.'}`}
-                  </p>
-                </Link>
+                {/* The issue line sits OUTSIDE the Link: it is not part of what the link does, and inside
+                    it would be concatenated into the link's accessible name. */}
+                <div className="min-w-0 flex-1">
+                  <Link to={`/library/${b.id}`} className="block">
+                    <p className="truncate font-semibold">{b.title}</p>
+                    <p className="truncate font-mono text-2xs uppercase tracking-[0.06em] text-muted">
+                      {b.author ? `${b.author} · ` : ''}
+                      {b.format} ·{' '}
+                      {read != null
+                        ? `${ru ? 'прочитано' : 'read'} ${Math.round(read * 100)}%`
+                        : `${b.chapterCount} ${ru ? 'глав' : 'ch.'}`}
+                    </p>
+                  </Link>
+                  <UploadIssueLine ru={ru} issue={issueFor(b.id)} grouped={groupedIssues.some((i) => i === issueFor(b.id))} />
+                </div>
                 <button
                   type="button"
                   aria-label={ru ? 'Удалить' : 'Delete'}

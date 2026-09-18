@@ -81,25 +81,31 @@ export type SyncedWordStatus = Synced<WordStatus> & { statusUpdatedAt: number };
  * wordStatus: a total, order-free merge over all four status values incl. `ignored` (F6). `status` is LWW
  * by `(statusUpdatedAt, updatedBy)`; `encounters` = max; `firstSeenAt` = min (both semilattice joins).
  * wordStatus is never soft-deleted (there is no delete path for it), so no tombstone handling.
+ *
+ * Everything OTHER than `status` follows the ordinary LWW winner, and the row is carried by spread rather
+ * than rebuilt from a field list. Both of those are load-bearing, and both were wrong here once:
+ *  - a rebuild dropped any field it did not name, and `applyEntry`'s re-enqueue-on-divergence then pushed
+ *    the stripped row back, destroying that field for every device — so an older client turned a routine
+ *    field-adding migration into silent data loss;
+ *  - resolving non-status content by `statusUpdatedAt` reverts edits, because that clock is deliberately
+ *    frozen while the status value is unchanged (local.ts `putWordStatus`). One device editing such a
+ *    field twice loses the second edit and diverges from the server permanently.
+ * Mirrors server/src/sync.ts `resolveWordStatus` exactly; resolver-parity.test.ts fails if it stops.
  */
-export function resolveWordStatus(a: SyncedWordStatus, b: SyncedWordStatus): SyncedWordStatus {
-  const statusWinner =
-    a.statusUpdatedAt !== b.statusUpdatedAt
-      ? a.statusUpdatedAt > b.statusUpdatedAt
-        ? a
-        : b
-      : a.updatedBy >= b.updatedBy
-        ? a
-        : b;
+export function resolveWordStatus(a: Synced<WordStatus>, b: Synced<WordStatus>): SyncedWordStatus {
+  const sa = a.statusUpdatedAt ?? a.updatedAt;
+  const sb = b.statusUpdatedAt ?? b.updatedAt;
+  const statusWinner = sa !== sb ? (sa > sb ? a : b) : a.updatedBy >= b.updatedBy ? a : b;
   const meta = pickLww(a, b);
   return {
-    word: a.word,
+    ...meta,
     status: statusWinner.status,
-    statusUpdatedAt: Math.max(a.statusUpdatedAt, b.statusUpdatedAt),
+    statusUpdatedAt: Math.max(sa, sb),
     encounters: Math.max(a.encounters, b.encounters),
     firstSeenAt: Math.min(a.firstSeenAt, b.firstSeenAt),
     updatedAt: meta.updatedAt,
     updatedBy: meta.updatedBy,
+    deletedAt: undefined,
   };
 }
 

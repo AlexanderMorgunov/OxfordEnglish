@@ -66,7 +66,9 @@ function resolveSrsCard(a: Change, b: Change): Change {
   return withDeleted({ ...content, payload }, combineDeletedAt(a, b));
 }
 
-/** wordStatus: status LWW by (statusUpdatedAt, updatedBy); encounters=max, firstSeenAt=min (F6). */
+/** wordStatus: status LWW by (statusUpdatedAt, updatedBy); encounters=max, firstSeenAt=min (F6).
+ *  Only `status` follows the status clock — that clock is frozen while the status value is unchanged, so
+ *  resolving other content by it reverts ordinary edits. Mirrors the client's resolve.ts. */
 function resolveWordStatus(a: Change, b: Change): Change {
   const sa = a.statusUpdatedAt ?? a.updatedAt;
   const sb = b.statusUpdatedAt ?? b.updatedAt;
@@ -74,12 +76,17 @@ function resolveWordStatus(a: Change, b: Change): Change {
   const pa = (a.payload ?? {}) as { encounters?: number; firstSeenAt?: number };
   const pb = (b.payload ?? {}) as { encounters?: number; firstSeenAt?: number };
   const meta = lwwWins(a, b) ? a : b;
+  const statusUpdatedAt = Math.max(sa, sb);
   const payload = {
-    ...(statusWinner.payload as object),
+    ...(meta.payload as object),
+    status: (statusWinner.payload as { status?: unknown } | null)?.status,
+    statusUpdatedAt,
     encounters: Math.max(pa.encounters ?? 0, pb.encounters ?? 0),
     firstSeenAt: Math.min(pa.firstSeenAt ?? Infinity, pb.firstSeenAt ?? Infinity),
+    updatedAt: meta.updatedAt,
+    updatedBy: meta.updatedBy,
   };
-  return { store: 'wordStatus', id: a.id, updatedAt: meta.updatedAt, updatedBy: meta.updatedBy, statusUpdatedAt: Math.max(sa, sb), payload };
+  return { store: 'wordStatus', id: a.id, updatedAt: meta.updatedAt, updatedBy: meta.updatedBy, statusUpdatedAt, payload };
 }
 
 function resolveLww(a: Change, b: Change): Change {
