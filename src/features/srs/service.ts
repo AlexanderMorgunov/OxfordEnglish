@@ -109,6 +109,19 @@ export async function repairCardBack(id: string, back: string): Promise<boolean>
   }
 }
 
+/**
+ * Whether a card's front is English worth hearing.
+ *
+ * The button used to be limited to `kind === 'word'`, so every phrase the user saved — the ones most
+ * worth hearing, since that is where stress and linking live — was silent. It is not simply "anything
+ * with a front" either: a mistake card's front is the EXERCISE, which may be a gap-fill full of
+ * underscores or a Russian sentence to translate, and a grammar pattern is a formula, not speech.
+ */
+export function canPronounce(card: Pick<SrsCard, 'kind' | 'fromError'>): boolean {
+  if (card.fromError) return false;
+  return card.kind === 'word' || card.kind === 'phrase';
+}
+
 export async function getDueCards(now = new Date()): Promise<SrsCard[]> {
   try {
     const rows = await db.srsCards.where('due').belowOrEqual(now).toArray();

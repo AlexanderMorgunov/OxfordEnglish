@@ -9,7 +9,7 @@ import 'fake-indexeddb/auto';
 import { test, expect, beforeEach } from 'vitest';
 import { createEmptyCard } from 'ts-fsrs';
 import { db, type SrsCard } from '@/db/db';
-import { repairCardBack } from './service';
+import { canPronounce, repairCardBack } from './service';
 
 const card = (over: Partial<SrsCard> = {}): SrsCard => {
   const fsrs = createEmptyCard(new Date(0));
@@ -76,4 +76,25 @@ test('an empty answer changes nothing', async () => {
 test('a card that is gone is not resurrected', async () => {
   expect(await repairCardBack('word:vanished', 'исчез')).toBe(false);
   expect(await db.srsCards.count()).toBe(0);
+});
+
+/**
+ * The pronounce button was limited to `kind === 'word'`, so every phrase the user saved was silent —
+ * and phrases are where stress and linking live, which is the point of hearing them at all.
+ */
+test('saved words and phrases can be pronounced', () => {
+  expect(canPronounce({ kind: 'word', fromError: false })).toBe(true);
+  expect(canPronounce({ kind: 'phrase', fromError: false })).toBe(true);
+  expect(canPronounce({ kind: 'word', fromError: undefined })).toBe(true);
+});
+
+test('a mistake card is not, because its front is the exercise', () => {
+  // Gap-fills are full of underscores and translate prompts are in Russian; an English voice reading
+  // either is noise, not listening practice.
+  expect(canPronounce({ kind: 'phrase', fromError: true })).toBe(false);
+  expect(canPronounce({ kind: 'word', fromError: true })).toBe(false);
+});
+
+test('a grammar pattern is a formula, not speech', () => {
+  expect(canPronounce({ kind: 'grammar-pattern', fromError: false })).toBe(false);
 });

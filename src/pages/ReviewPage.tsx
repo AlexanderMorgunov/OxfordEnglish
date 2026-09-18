@@ -5,7 +5,7 @@ import { Button, Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { canSpeak, speakWord } from '@/shared/lib/audio';
 import { translateText, translateWord } from '@/features/vocab/translate';
-import { dropCard, gradeCard, getDueCards, repairCardBack, Rating } from '@/features/srs/service';
+import { canPronounce, dropCard, gradeCard, getDueCards, repairCardBack, Rating } from '@/features/srs/service';
 import { BackToReader } from '@/features/reader/BackToReader';
 
 const GRADES = [
@@ -104,7 +104,7 @@ export function ReviewPage() {
           <Card className="min-h-40">
             <div className="flex items-center gap-2.5">
               <p className="font-mono text-2xl text-content">{card.front}</p>
-              {card.kind === 'word' && canSpeak() && (
+              {canPronounce(card) && canSpeak() && (
                 <button
                   type="button"
                   aria-label={`${ru ? 'Произнести' : 'Pronounce'} ${card.front}`}
