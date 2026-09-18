@@ -53,7 +53,20 @@ function stashPendingRecovery(key: string | null): void {
 
 /** Persisted across launches. Access token is deliberately NOT persisted — it lives in memory and is
  *  re-minted by a silent refresh on app open (session survives via the refresh token). */
-type Persisted = { accountId: string; deviceId: string; refreshToken: string };
+type Persisted = {
+  accountId: string;
+  deviceId: string;
+  refreshToken: string;
+  /**
+   * Set while another account's rows are still on this device and the session that owned them is gone.
+   * `accountId` answers "is the account signing in now a different one?" only while signed in; it is
+   * blanked on logout, and that question is the only thing standing between account A's rows and account
+   * B (H5). It means un-wiped data, NOT "this device once held an account" — a wipe that has already run
+   * clears it, because after that the only thing left to destroy is work its owner did as an anonymous
+   * user, which belongs to nobody.
+   */
+  lastAccountId?: string;
+};
 
 /** A stable, non-PII device label for the revoke list (e.g. "Chrome · Android"). Best-effort. */
 function deviceName(): string {
@@ -89,11 +102,29 @@ function save(p: Persisted | null): void {
   }
 }
 
-/** Adopting a session for a DIFFERENT account than the one stored = an account switch. Wipe the previous
- *  account's synced rows before adopting, so A's data never merges into B on the next reconcile (H5). */
+/**
+ * Adopting a session for a DIFFERENT account than the one stored = an account switch. Wipe the previous
+ * account's synced rows before adopting, so A's data never merges into B on the next reconcile (H5).
+ *
+ * Best-effort, and deliberately so: a failed wipe leaves A's rows AND A's dirty queue in place, which is
+ * the contamination this exists to prevent. It is still the better half of the trade. Three of the five
+ * callers mint the credential they are about to hand the user — `createAccount` returns the only copy of
+ * the recovery key, and both recovery paths return a new key the server has ALREADY bound, killing the
+ * old one. Throwing here would lose that key and close the account for good, trading a rare
+ * contamination for a rare permanent account loss.
+ */
 async function maybeSwitchWipe(newAccountId: string): Promise<void> {
-  const prev = load()?.accountId;
+  const p = load();
+  const prev = p?.accountId || p?.lastAccountId;
   if (prev && prev !== newAccountId) await wipeSyncedData().catch(() => undefined);
+}
+
+/** No SYNCED row of the previous account is left to protect the next one from. Unsynced local history
+ *  (`activity`, `reviewLog`, `translations`) outlives the wipe and is out of scope here: it reaches no
+ *  server, so it cannot follow the user into the next account — see queue item 10. */
+function forgetLastAccount(): void {
+  const p = load();
+  if (p) save({ ...p, lastAccountId: undefined });
 }
 
 /** A device id is minted once and reused, so the same physical device keeps one entry in the device list. */
@@ -101,7 +132,7 @@ function ensureDeviceId(): string {
   const existing = load();
   if (existing?.deviceId) return existing.deviceId;
   const id = randomId();
-  save({ accountId: existing?.accountId ?? '', deviceId: id, refreshToken: existing?.refreshToken ?? '' });
+  save({ accountId: existing?.accountId ?? '', deviceId: id, refreshToken: existing?.refreshToken ?? '', lastAccountId: existing?.lastAccountId });
   return id;
 }
 
@@ -173,9 +204,11 @@ export const useAccount = create<AccountState>((set, get) => {
   };
 
   const clearSession = () => {
+    const prev = load();
     save(null);
-    // Keep the deviceId so relinking reuses the same device entry.
-    save({ accountId: '', deviceId, refreshToken: '' });
+    // Keep the deviceId so relinking reuses the same device entry, and the account id so the next
+    // sign-in can tell a re-login from a switch.
+    save({ accountId: '', deviceId, refreshToken: '', lastAccountId: prev?.accountId || prev?.lastAccountId });
     set({ status: 'anonymous', accountId: null, accessToken: null, accessExpiresAt: 0 });
   };
 
@@ -365,7 +398,10 @@ export const useAccount = create<AccountState>((set, get) => {
       // isn't lost (it re-syncs on the next login to the same account). Switching to a DIFFERENT account
       // is handled by maybeSwitchWipe on adopt, so contamination is covered either way (H5).
       try {
-        if ((await db.pending.count()) === 0) await wipeSyncedData();
+        if ((await db.pending.count()) === 0) {
+          await wipeSyncedData();
+          forgetLastAccount();
+        }
       } catch {
         // best-effort
       }
@@ -405,7 +441,12 @@ export const useAccount = create<AccountState>((set, get) => {
       const token = await get().getAccessToken();
       if (token) await api.deleteAccount(token);
       clearSession();
-      await wipeSyncedData().catch(() => undefined); // remove the now-orphaned local copy too
+      try {
+        await wipeSyncedData(); // remove the now-orphaned local copy too
+        forgetLastAccount();
+      } catch {
+        // best-effort
+      }
     },
   };
 });
