@@ -9,9 +9,22 @@ import { saveBookFile, getBookFile, deleteBookFile, opfsAvailable } from './stor
 
 export type ImportResult = { record: BookRecord; book: ParsedBook };
 
-// Only PDF is worth caching: its parse walks every page through pdf.js, unlike the cheap
-// EPUB/FB2/DOCX parsers. Reuses the catalogCache store (keys never collide — UUID vs slug).
+// Reuses the catalogCache store (keys never collide — UUID vs slug). The `pdf:` prefix is kept so the
+// entries written before this cached every format still hit.
 const parseCacheKey = (id: string) => `pdf:${id}`;
+
+/**
+ * Cache a parsed book when parsing it actually cost something.
+ *
+ * This used to be "PDF only", on the reasoning that pdf.js walks every page while the EPUB/FB2/DOCX
+ * parsers are cheap. Cheap on a laptop. On a phone, returning to a backgrounded tab reloads the page,
+ * the reader remounts, and a large EPUB is unzipped and re-parsed from scratch every time — which is
+ * the "loading book…" that sits there on resume.
+ *
+ * Measuring beats guessing per format: a two-page PDF does not need a cache and a 600-page EPUB does,
+ * and the threshold answers for the device in hand rather than for the one this was written on.
+ */
+const SLOW_PARSE_MS = 150;
 
 async function cacheParsed(id: string, book: ParsedBook): Promise<void> {
   try {
@@ -36,7 +49,9 @@ export async function importBook(file: File): Promise<ImportResult> {
   const format = detectFormat(file.name);
   if (!format) throw new Error('unsupported-format');
 
+  const startedAt = Date.now();
   const book = await parseBook(file, format);
+  const slow = Date.now() - startedAt >= SLOW_PARSE_MS;
   const id = crypto.randomUUID();
   await saveBookFile(id, file);
   forgetBookFileOwner(); // no-op unless signed out, where these bytes belong to no account
@@ -51,7 +66,7 @@ export async function importBook(file: File): Promise<ImportResult> {
   };
   await addBook(record);
   void uploadBookFile(id); // opt-in cloud copy (self-guards on the toggle + auth)
-  if (format === 'pdf') await cacheParsed(id, book);
+  if (slow) await cacheParsed(id, book); // the import already paid for the parse; the first open should not
   return { record, book };
 }
 
@@ -70,24 +85,23 @@ export async function getBook(id: string): Promise<BookRecord | undefined> {
 }
 
 export async function openBook(record: BookRecord): Promise<ParsedBook> {
-  if (record.format === 'pdf') {
-    try {
-      const hit = await db.catalogCache.get(parseCacheKey(record.id));
-      if (hit) {
-        void track('book_open', { source: 'imported', format: record.format });
-        return hit.book as ParsedBook;
-      }
-    } catch {
-      // cache unavailable — fall through to a fresh parse
+  try {
+    const hit = await db.catalogCache.get(parseCacheKey(record.id));
+    if (hit) {
+      void track('book_open', { source: 'imported', format: record.format });
+      return hit.book as ParsedBook;
     }
+  } catch {
+    // cache unavailable — fall through to a fresh parse
   }
   // Fetch the cloud copy on a device that only has the metadata. The reason it could not is carried out
   // rather than swallowed — on this path it is the whole explanation the reader has to offer.
   const issue = await downloadBookFileIfMissing(record.id);
   if (issue) throw new BookFileUnavailable(issue);
   const file = await getBookFile(record.id);
+  const startedAt = Date.now();
   const parsed = await parseBook(file, record.format);
-  if (record.format === 'pdf') await cacheParsed(record.id, parsed);
+  if (Date.now() - startedAt >= SLOW_PARSE_MS) await cacheParsed(record.id, parsed);
   void track('book_open', { source: 'imported', format: record.format });
   return parsed;
 }

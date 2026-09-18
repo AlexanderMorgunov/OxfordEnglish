@@ -131,9 +131,12 @@ export function BookReaderPage() {
       try {
         const rec = await getBook(bookId);
         if (!rec) throw new BookNotFound();
+        if (!alive) return;
+        // Published before the parse, not with it: the record is a cheap row read, and holding it back
+        // meant the wait had nothing to show but the word "loading".
+        setRecord(rec);
         const parsed = await openBook(rec);
         if (!alive) return;
-        setRecord(rec);
         setBook(parsed);
       } catch (e) {
         if (!alive) return;
@@ -150,7 +153,21 @@ export function BookReaderPage() {
     };
   }, [bookId, attempt]);
 
-  if (loading) return <p className="font-mono text-sm text-muted">loading book…</p>;
+  if (loading) {
+    // A bare line of English in a Russian interface, with nothing to say which book it meant. Returning
+    // to a backgrounded tab reloads the page, so this is the screen that greets someone coming back to
+    // a book they were already reading — it should at least name it and offer a way out.
+    return (
+      <PageStub eyebrow="library" title={record?.title ?? (ru ? 'Открываем книгу' : 'Opening the book')}>
+        <p className="mb-4 max-w-prose text-sm leading-relaxed text-muted">
+          {ru ? 'Готовим текст…' : 'Preparing the text…'}
+        </p>
+        <Link to="/library" className="font-mono text-teal hover:underline">
+          ← {ru ? 'к библиотеке' : 'back to library'}
+        </Link>
+      </PageStub>
+    );
+  }
   if (failure || !book || !record) {
     const { title, body, retry } = explain(failure ?? { kind: 'unreadable' }, ru, syncOn);
     return (
