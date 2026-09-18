@@ -63,8 +63,10 @@ export function toEnvelope(store: SyncedStore, row: Row): SyncChange {
   return change;
 }
 
-/** Reconstruct a local domain row from a pulled entry (meta lifted from the envelope; Dates revived). */
-function rowFromEntry(entry: SyncEntry): Row {
+/** Reconstruct a local domain row from a pulled entry (meta lifted from the envelope; Dates revived).
+ *  Exported for resolver-parity.test.ts, which needs the REAL adapter — a hand-written one in the test
+ *  would be free to normalise away the very difference being measured. */
+export function rowFromEntry(entry: SyncEntry): Row {
   const base: Row = { ...(entry.payload as object) };
   base.updatedAt = entry.updatedAt;
   base.updatedBy = entry.updatedBy;
