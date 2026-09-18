@@ -1,13 +1,22 @@
 import 'fake-indexeddb/auto';
 import { test, expect, beforeEach } from 'vitest';
 import { createEmptyCard } from 'ts-fsrs';
-import { db } from '@/db/db';
+import { db, INSTALL_ROW } from '@/db/db';
+import { SyncPushRequestSchema } from '@/features/account/contract';
 import type { SyncChange, SyncEntry, SyncPullResponse, SyncPushResponse } from '@/features/account/contract';
-import { applyEntry, pullLoop, syncWith, type SyncTransport } from './engine';
+import { applyEntry, idempotencyKey, pullLoop, syncWith, wipeSyncedData, type SyncTransport } from './engine';
+import { SYNCED_STORES, type SyncedStore } from './resolve';
+import { InMemorySyncStore, type Change } from '../../../server/src/sync';
 
 beforeEach(async () => {
   if (!db.isOpen()) await db.open();
-  await Promise.all([db.books.clear(), db.srsCards.clear(), db.attempts.clear(), db.pending.clear(), db.syncState.clear()]);
+  // All seven synced stores: `reconcile` sweeps every one of them, so a fixture left in any of them
+  // silently changes another test's expected push count.
+  await Promise.all([
+    ...SYNCED_STORES.map((s) => db.table(s).clear()),
+    db.pending.clear(),
+    db.syncState.clear(),
+  ]);
 });
 
 const bookEntry = (id: string, seq: number, title: string, updatedAt: number, updatedBy = 'other'): SyncEntry => ({
@@ -71,37 +80,39 @@ test('applyEntry does not enqueue when the incoming entry wins unchanged', async
   expect(await db.pending.count()).toBe(0);
 });
 
-/** Minimal in-memory server (LWW, contiguous log, snapshot) to drive a realistic reconcile. */
-function fakeServer(): SyncTransport & { _count: () => Promise<number> } {
-  const state = new Map<string, SyncEntry>();
-  const log: SyncEntry[] = [];
-  let seq = 0;
+/**
+ * The reference server, not a hand-rolled stand-in. This used to be a hand-rolled fake that applied plain LWW to every
+ * store, ignored the idempotency key, and never dropped a no-op — so every "end-to-end" test below ran
+ * against a server unlike production, and the per-store rules (the srsCards schedule, the wordStatus
+ * status clock, the immutable union) were exercised on the client side only.
+ *
+ * `server/src/sync.ts` imports nothing but `node:crypto`, and resolver-parity.test.ts holds the two
+ * implementations to the same rules, so wiring the actual store in here costs one adapter.
+ *
+ * Scope, stated so it is not over-read: production runs `YdbSyncStore` (app.ts picks it when YDB is
+ * configured), which re-implements push/pull/idempotency/paging and shares only `resolveServer` and
+ * `sameChange`. What follows pins the in-memory reference store and the rules both stores share.
+ */
+function realServer(): SyncTransport & { _count: () => Promise<number> } {
+  const store = new InMemorySyncStore();
+  const USER = 'test-user';
   return {
     push: async (body): Promise<SyncPushResponse> => {
+      // Contract cap, enforced by the route in production rather than by the store.
       if (body.changes.length > 500) throw new Error('batch exceeds the 500-change contract cap');
-      const applied: SyncEntry[] = [];
-      for (const ch of body.changes as SyncChange[]) {
-        const key = `${ch.store}:${ch.id}`;
-        const cur = state.get(key);
-        const wins = !cur || ch.updatedAt > cur.updatedAt || (ch.updatedAt === cur.updatedAt && ch.updatedBy >= cur.updatedBy);
-        if (!wins) continue;
-        const entry: SyncEntry = { ...ch, seq: (seq += 1) };
-        state.set(key, entry);
-        log.push(entry);
-        applied.push(entry);
-      }
-      return { head: seq, applied };
+      const r = await store.push(USER, body.cursorSeq, body.changes as Change[], body.idempotencyKey);
+      return { head: r.head, applied: r.applied as SyncEntry[] };
     },
-    pull: async (since): Promise<SyncPullResponse> => {
-      if (since <= 0) return { head: seq, entries: [...state.values()].sort((a, b) => a.seq - b.seq), snapshot: true };
-      return { head: seq, entries: log.filter((e) => e.seq > since) };
+    pull: async (since, snapshot): Promise<SyncPullResponse> => {
+      const r = await store.pull(USER, since, undefined, snapshot);
+      return { head: r.head, entries: r.entries as SyncEntry[], snapshot: r.snapshot };
     },
-    _count: async () => state.size,
+    _count: async () => (await store.pull(USER, 0, 100_000, true)).entries.length,
   };
 }
 
 test('reconcile: merges the server snapshot into local and pushes local-only rows up', async () => {
-  const server = fakeServer();
+  const server = realServer();
   // Server already has b1 (newer than local) and b2 (server-only).
   await server.push({ cursorSeq: 0, idempotencyKey: 'seed', changes: [bookEntry('b1', 0, 'server', 200), bookEntry('b2', 0, 'srv2', 150)] });
 
@@ -126,7 +137,7 @@ test('drainPush chunks a large dirty set under the 500-per-push cap', async () =
   }));
   await db.books.bulkPut(rows);
   await db.pending.bulkPut(rows.map((r) => ({ key: `books:${r.id}`, store: 'books', id: r.id }))); // seed pending directly (fast)
-  const server = fakeServer(); // throws if any single push carries > 500 changes
+  const server = realServer(); // throws if any single push carries > 500 changes
 
   await syncWith('A', server); // must chunk, not send all 520 at once
 
@@ -252,4 +263,136 @@ test('a push that fails for any other reason still throws', async () => {
   };
 
   await expect(syncWith('A', transport)).rejects.toThrow('boom');
+});
+
+// --- Things the hand-rolled fake could not catch, because it was plain LWW with no idempotency ---
+
+test('the server applies the srsCards schedule rule, not plain LWW', async () => {
+  // The fake replaced the whole row by updatedAt, so a later CONTENT edit silently rolled the schedule
+  // back — on the server, where no client-side test would ever see it.
+  const server = realServer();
+  const far = createEmptyCard(new Date(0));
+  far.reps = 7;
+  far.last_review = new Date(900);
+  const near = createEmptyCard(new Date(0));
+  near.reps = 3;
+  near.last_review = new Date(100);
+
+  const card = (reps: typeof far, updatedAt: number, updatedBy: string, back: string): SyncChange => ({
+    store: 'srsCards',
+    id: 'word:apple',
+    updatedAt,
+    updatedBy,
+    payload: { id: 'word:apple', kind: 'word', front: 'apple', back, tags: [], due: reps.due, card: reps, updatedAt, updatedBy },
+  });
+
+  await server.push({ cursorSeq: 0, idempotencyKey: 'k1', changes: [card(far, 100, 'devA', 'old')] });
+  await server.push({ cursorSeq: 0, idempotencyKey: 'k2', changes: [card(near, 200, 'devB', 'edited')] });
+
+  const stored = (await server.pull(0, true)).entries.find((e) => e.id === 'word:apple')!;
+  const payload = stored.payload as { back: string; card: { reps: number } };
+  expect(payload.back).toBe('edited'); // content follows LWW
+  expect(payload.card.reps).toBe(7); // …but the schedule keeps the further-along card
+});
+
+test('the server honours the idempotency key, so a retried push does not double-apply', async () => {
+  const server = realServer();
+  const batch = { cursorSeq: 0, idempotencyKey: 'same-key', changes: [bookEntry('b1', 0, 'one', 100) as SyncChange] };
+
+  const first = await server.push(batch);
+  const retry = await server.push(batch); // the client resends after a lost response
+
+  expect(retry.head).toBe(first.head); // no new seq burned
+  expect(retry.applied.map((e) => e.seq)).toEqual(first.applied.map((e) => e.seq));
+  expect(await server._count()).toBe(1);
+});
+
+test('the server drops a no-op push instead of appending a changelog entry', async () => {
+  const server = realServer();
+  const row = bookEntry('b1', 0, 'one', 100) as SyncChange;
+  const head1 = (await server.push({ cursorSeq: 0, idempotencyKey: 'k1', changes: [row] })).head;
+
+  // Same content, different key (an idempotency memo would not cover this — the row itself is unchanged).
+  const second = await server.push({ cursorSeq: 0, idempotencyKey: 'k2', changes: [row] });
+
+  expect(second.applied).toEqual([]);
+  expect(second.head).toBe(head1);
+});
+
+test('append-only stores are a union by id on the server, not a last-writer overwrite', async () => {
+  const server = realServer();
+  const attempt = (correct: boolean, updatedAt: number): SyncChange => ({
+    store: 'attempts',
+    id: 'devA:evt-1',
+    updatedAt,
+    updatedBy: 'devA',
+    payload: { syncId: 'devA:evt-1', exerciseId: 'e1', tags: [], correct, userAnswer: 'x', attemptNumber: 1, timestamp: updatedAt, usedHint: false, usedAI: false, updatedAt, updatedBy: 'devA' },
+  });
+
+  await server.push({ cursorSeq: 0, idempotencyKey: 'k1', changes: [attempt(true, 100)] });
+  await server.push({ cursorSeq: 0, idempotencyKey: 'k2', changes: [attempt(false, 200)] });
+
+  const stored = (await server.pull(0, true)).entries.find((e) => e.id === 'devA:evt-1')!;
+  expect((stored.payload as { correct: boolean }).correct).toBe(true); // the event is immutable
+
+  // And it must not append a changelog entry either. Keeping the row while logging a duplicate on every
+  // re-push reads as correct from current-state, and inflates every other device's pull forever.
+  const again = await server.push({ cursorSeq: 0, idempotencyKey: 'k3', changes: [attempt(false, 300)] });
+  expect(again.applied).toEqual([]);
+});
+
+test('wipeSyncedData clears every synced table, the dirty queue and the account cursors — but keeps the install id', async () => {
+  // Called on logout and on an account switch (store.ts:96, :368, :408). Untested until now, and the
+  // consequences of each half going wrong are different: leaving rows behind bleeds account A's data into
+  // account B; leaving the dirty queue behind pushes A's rows up under B's credentials; and dropping the
+  // INSTALL_ROW would hand this device a new identity, breaking the LWW tiebreaker against its own history.
+  await db.syncState.put({ account: INSTALL_ROW, installId: 'install-xyz' });
+  await db.syncState.put({ account: 'acc-A', cursorSeq: 42 });
+  // Driven off SYNCED_STORES rather than a hand-picked pair: asserting only `books` and `wordStatus`
+  // let five stores be dropped from the wipe list with the whole suite still green, and the list is
+  // hardcoded in three places with nothing pinning the copies together.
+  const seeds: Record<SyncedStore, object> = {
+    books: { id: 'b1', title: 'A private book', format: 'epub', addedAt: 1, chapterCount: 1, lastChapter: 0, updatedAt: 1, updatedBy: 'inst' },
+    wordStatus: { word: 'apple', status: 'known', firstSeenAt: 1, encounters: 1, statusUpdatedAt: 1, updatedAt: 1, updatedBy: 'inst' },
+    srsCards: { id: 'word:apple', kind: 'word', front: 'apple', back: 'яблоко', tags: [], due: new Date(0), card: createEmptyCard(new Date(0)), updatedAt: 1, updatedBy: 'inst' },
+    attempts: { syncId: 'inst:a1', exerciseId: 'e1', tags: [], correct: true, userAnswer: 'x', attemptNumber: 1, timestamp: 1, usedHint: false, usedAI: false, updatedAt: 1, updatedBy: 'inst' },
+    checkpoints: { syncId: 'inst:c1', unitId: 'u01', timestamp: 1, score: 5, total: 6, tagBreakdown: [], updatedAt: 1, updatedBy: 'inst' },
+    bookmarks: { id: 'bm1', bookKey: 'reader.x', page: 0, paragraph: 1, pageId: 'p', snippet: 's', createdAt: 1, updatedAt: 1, updatedBy: 'inst' },
+    settings: { key: 'uiLang', value: 'ru', updatedAt: 1, updatedBy: 'inst' },
+  };
+  for (const store of SYNCED_STORES) await db.table(store).put(seeds[store]);
+  await db.pending.put({ key: 'books:b1', store: 'books', id: 'b1' });
+
+  await wipeSyncedData();
+
+  for (const store of SYNCED_STORES) expect(await db.table(store).count()).toBe(0);
+  expect(await db.pending.count()).toBe(0);
+  expect(await db.syncState.get('acc-A')).toBeUndefined();
+  expect((await db.syncState.get(INSTALL_ROW))?.installId).toBe('install-xyz');
+});
+
+test('every idempotency key satisfies the contract the server validates against', async () => {
+  // The key is a pure function of (cursorSeq, changes), so a key the server rejects is not a lost push —
+  // it is a stuck one: the retry rebuilds the same rejected key and the cycle stays in `error` until some
+  // unrelated local write changes the batch. An unpadded base36 hash produced 6-character keys
+  // (`b7zr-1`) for roughly one single-change push in 2 400, against a contract minimum of 8.
+  const shape = (i: number): SyncChange => ({
+    store: 'books',
+    id: `bk-${i}`,
+    updatedAt: 1_700_000_000_000 + i,
+    updatedBy: `inst-${i % 7}`,
+    payload: { id: `bk-${i}` },
+  });
+
+  let shortest = Infinity;
+  for (let i = 0; i < 20_000; i += 1) {
+    const key = idempotencyKey(i % 900, [shape(i)]);
+    shortest = Math.min(shortest, key.length);
+    expect(SyncPushRequestSchema.shape.idempotencyKey.safeParse(key).success).toBe(true);
+  }
+  expect(shortest).toBeGreaterThanOrEqual(8);
+
+  // A batch is still keyed by its contents, or the memo would collapse unrelated pushes into one.
+  expect(idempotencyKey(0, [shape(1)])).not.toBe(idempotencyKey(0, [shape(2)]));
+  expect(idempotencyKey(0, [shape(1)])).not.toBe(idempotencyKey(1, [shape(1)]));
 });

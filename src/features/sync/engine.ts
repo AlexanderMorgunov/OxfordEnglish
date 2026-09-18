@@ -164,11 +164,17 @@ export async function collectDirty(limit = PUSH_BATCH): Promise<Collected> {
   return { changes, marks };
 }
 
-function idempotencyKey(cursorSeq: number, changes: SyncChange[]): string {
+/** Exported for the contract test: the server rejects anything under 8 characters. */
+export function idempotencyKey(cursorSeq: number, changes: SyncChange[]): string {
   const basis = JSON.stringify([cursorSeq, changes.map((c) => [c.store, c.id, c.updatedAt, c.updatedBy])]);
   let h = 0;
   for (let i = 0; i < basis.length; i += 1) h = (Math.imul(31, h) + basis.charCodeAt(i)) | 0;
-  return `b${(h >>> 0).toString(36)}-${changes.length}`;
+  // Padded to the full base36 width of a 32-bit value. Unpadded, a small hash produced a short key —
+  // `b7zr-1` is 6 characters — and the contract demands min(8), so the server answered 400 on roughly
+  // one single-change push in 2 400. Worse than a dropped push: the key is a pure function of
+  // (cursorSeq, changes), so every retry rebuilt the same rejected key and the cycle stayed in `error`
+  // until some unrelated local write changed the batch.
+  return `b${(h >>> 0).toString(36).padStart(7, '0')}-${changes.length}`;
 }
 
 /** Push the dirty set. Clears a dirty mark only if its row is unchanged since collection (a concurrent
