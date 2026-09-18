@@ -54,6 +54,7 @@ function AccountSectionBody() {
   const [keyInput, setKeyInput] = useState('');
   const [showDeviceLink, setShowDeviceLink] = useState(false);
   const [showRecover, setShowRecover] = useState(false);
+  const clearError = useAccount((s) => s.clearError);
   const [keyReason, setKeyReason] = useState<'created' | 'recovered' | 'rotated'>('created');
 
   const errText = error
@@ -201,10 +202,10 @@ function AccountSectionBody() {
             <Button size="sm" variant="ghost" disabled={busy} onClick={() => setShowLink((v) => !v)}>
               {ru ? 'У меня есть ключ' : 'I have a key'}
             </Button>
-            <Button size="sm" variant="ghost" disabled={busy} onClick={() => setShowDeviceLink((v) => !v)}>
+            <Button size="sm" variant="ghost" disabled={busy} onClick={() => { clearError(); setShowDeviceLink((v) => !v); }}>
               {ru ? 'Уже вошли на другом устройстве?' : 'Already signed in elsewhere?'}
             </Button>
-            <Button size="sm" variant="ghost" disabled={busy} onClick={() => setShowRecover((v) => !v)}>
+            <Button size="sm" variant="ghost" disabled={busy} onClick={() => { clearError(); setShowRecover((v) => !v); }}>
               {ru ? 'Потеряли ключ?' : 'Lost your key?'}
             </Button>
           </div>
@@ -245,7 +246,12 @@ function AccountSectionBody() {
         </div>
       )}
 
-      {errText && <p className="mt-3 font-mono text-2xs text-coral">{errText}</p>}
+      {/* Not while a sub-panel is open. Recovery and device linking each say something specific about
+          their own failure, and this generic line printed underneath it — "Не удалось. Попробуйте ещё
+          раз." directly below "check the name, take a fresh code" — subtracts from the advice above it. */}
+      {errText && !showRecover && !showDeviceLink && (
+        <p className="mt-3 font-mono text-2xs text-coral">{errText}</p>
+      )}
     </div>
   );
 }

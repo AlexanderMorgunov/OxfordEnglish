@@ -39,14 +39,17 @@ const withToken = async <T,>(fn: (token: string) => Promise<T>): Promise<T> => f
 
 function errorText(code: string, ru: boolean): string {
   if (code === 'bad_key') return ru ? 'Это не похоже на код или ключ восстановления. Проверьте, что скопировали ключ целиком.' : 'That is neither a code nor a recovery key. Check you copied the whole key.';
-  // `/recover` collapses a wrong ID, a wrong code and a spent budget into one answer on purpose — telling
-  // them apart would say whether an account exists and whether it has an authenticator. So the message
-  // has to name every possibility rather than pick one: it used to blame the phone's clock, sending
-  // people to debug a clock that was fine.
+  // Deliberately names every possibility rather than picking one: the server collapses "wrong code",
+  // "not enrolled" and "too many attempts" into a single answer, and an earlier version of this line
+  // blamed the phone's clock, sending people to debug a clock that was fine.
+  //
+  // It says nothing about the account id, because every caller of this function is AUTHENTICATED — on
+  // the enrollment, reissue, rotate and disable screens there is no id field to check. The signed-out
+  // routes add that themselves; see `recoverErrorText`.
   if (code === 'totp_invalid') {
     return ru
-      ? 'Не подошло. Проверьте ID аккаунта и код — код живёт 30 секунд, так что берите свежий. Если попыток было много, подождите 15 минут или используйте резервный код.'
-      : 'That did not work. Check the account id and the code — a code lives 30 seconds, so take a fresh one. After many attempts, wait 15 minutes or use a backup code.';
+      ? 'Код не подошёл. Он живёт 30 секунд, так что возьмите свежий — и проверьте, что ключ добавлен в приложение целиком. Если попыток было много, подождите 15 минут или используйте резервный код.'
+      : 'That code did not work. A code lives 30 seconds, so take a fresh one — and check the key was added to the app in full. After many attempts, wait 15 minutes or use a backup code.';
   }
   if (code === 'rate_limited') return ru ? 'Слишком много попыток. Подождите 15 минут.' : 'Too many attempts. Wait 15 minutes.';
   if (code === 'totp_unavailable') return ru ? 'Восстановление временно недоступно.' : 'Recovery is temporarily unavailable.';
@@ -64,7 +67,15 @@ const codeOf = (e: unknown): string => (e instanceof ApiFailure ? e.code : 'erro
  * it is the id route, which has its own budget and is unaffected.
  */
 function recoverErrorText(code: string, ru: boolean, byName: boolean): string {
-  if (!byName) return errorText(code, ru);
+  if (!byName) {
+    // The id route is the one place an id WAS typed, so it is the one place worth checking.
+    if (code === 'totp_invalid') {
+      return ru
+        ? 'Не подошло. Проверьте ID аккаунта и код — код живёт 30 секунд, так что берите свежий. Если попыток было много, подождите 15 минут или используйте резервный код.'
+        : 'That did not work. Check the account id and the code — a code lives 30 seconds, so take a fresh one. After many attempts, wait 15 minutes or use a backup code.';
+    }
+    return errorText(code, ru);
+  }
   if (code === 'totp_invalid') {
     return ru
       ? 'Не подошло. Проверьте имя — оно должно совпадать с тем, что вы указали в настройках, — и возьмите свежий код: он живёт 30 секунд. Резервный код тоже подойдёт.'
@@ -85,8 +96,15 @@ function recoverErrorText(code: string, ru: boolean, byName: boolean): string {
  * name is not a credential and unlocks nothing on its own — the authenticator still does all the
  * proving — which is why it can be something ordinary and memorable.
  */
-function RecoveryNameField({ ru, initial }: { ru: boolean; initial: boolean }) {
-  const [hasName, setHasName] = useState(initial);
+function RecoveryNameField({
+  ru,
+  hasName,
+  onChanged,
+}: {
+  ru: boolean;
+  hasName: boolean;
+  onChanged: (has: boolean) => void;
+}) {
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState('');
   const [busy, setBusy] = useState(false);
@@ -97,7 +115,7 @@ function RecoveryNameField({ ru, initial }: { ru: boolean; initial: boolean }) {
     setError(null);
     try {
       await withToken((t) => setRecoveryName(t, name));
-      setHasName(true);
+      onChanged(true);
       setEditing(false);
       setName('');
     } catch (e) {
@@ -123,7 +141,7 @@ function RecoveryNameField({ ru, initial }: { ru: boolean; initial: boolean }) {
     setError(null);
     try {
       await withToken(clearRecoveryName);
-      setHasName(false);
+      onChanged(false);
     } catch (e) {
       setError(errorText(codeOf(e), ru));
     } finally {
@@ -739,7 +757,11 @@ export function TotpEnroll({ ru, onNewKey }: { ru: boolean; onNewKey?: (composit
               </Button>
             </div>
           )}
-          <RecoveryNameField ru={ru} initial={status.recoveryName ?? false} />
+          <RecoveryNameField
+            ru={ru}
+            hasName={status.recoveryName ?? false}
+            onChanged={(has) => setStatus((st) => (st ? { ...st, recoveryName: has } : st))}
+          />
         </div>
       ) : (
         <div>

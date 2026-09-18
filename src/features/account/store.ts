@@ -121,6 +121,9 @@ type AccountState = {
   linkWithKey: (recoveryKey: string) => Promise<void>;
   /** Recover an account whose key is lost, using the authenticator. Returns the NEW composite credential
    *  the user must save — it is the only copy, and the old key is dead the moment this resolves. */
+  /** Drop a failure that is no longer on screen. `error` otherwise survives until the next action, so
+   *  a message from an abandoned attempt reappears beside an unrelated control. */
+  clearError: () => void;
   recoverWithTotp: (accountId: string, code: string) => Promise<string>;
   /**
    * Recovery addressed by name. `pendingKey` is for the retry after a lost response — see the impl.
@@ -255,6 +258,8 @@ export const useAccount = create<AccountState>((set, get) => {
      * rebind is idempotent, and a second attempt succeeds whether or not the first one landed. Throwing
      * a key away that the server may already have installed would close the account for good.
      */
+    clearError: () => set({ error: null }),
+
     recoverWithName: async (name, code, pendingKey) => {
       if (!accountsEnabled()) throw new Error('accounts disabled');
       set({ busy: true, error: null });
