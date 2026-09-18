@@ -66,23 +66,35 @@ function resolveSrsCard(a: Change, b: Change): Change {
   return withDeleted({ ...content, payload }, combineDeletedAt(a, b));
 }
 
-/** wordStatus: status LWW by (statusUpdatedAt, updatedBy); encounters=max, firstSeenAt=min (F6).
+/** Mirrors resolve.ts `STATUS_RANK`: a fixed precedence for a same-millisecond status clash, kept TOTAL
+ *  by the string fallback so two unrecognised values cannot break by argument position. */
+const STATUS_RANK: Record<string, number> = { unknown: 0, ignored: 1, learning: 2, known: 3 };
+
+function statusAtLeast(x: unknown, y: unknown): boolean {
+  const rx = STATUS_RANK[String(x)] ?? -1;
+  const ry = STATUS_RANK[String(y)] ?? -1;
+  return rx !== ry ? rx > ry : String(x) >= String(y);
+}
+
+/** wordStatus: status wins by (statusUpdatedAt, STATUS_RANK); encounters=max, firstSeenAt=min (F6).
  *  Only `status` follows the status clock — that clock is frozen while the status value is unchanged, so
  *  resolving other content by it reverts ordinary edits. Mirrors the client's resolve.ts. */
 function resolveWordStatus(a: Change, b: Change): Change {
   const sa = a.statusUpdatedAt ?? a.updatedAt;
   const sb = b.statusUpdatedAt ?? b.updatedAt;
-  const statusWinner = sa !== sb ? (sa > sb ? a : b) : a.updatedBy >= b.updatedBy ? a : b;
+  const statusOf = (c: Change) => (c.payload as { status?: unknown } | null)?.status;
+  const statusWinner = sa !== sb ? (sa > sb ? a : b) : statusAtLeast(statusOf(a), statusOf(b)) ? a : b;
   const pa = (a.payload ?? {}) as { encounters?: number; firstSeenAt?: number };
   const pb = (b.payload ?? {}) as { encounters?: number; firstSeenAt?: number };
   const meta = lwwWins(a, b) ? a : b;
   const statusUpdatedAt = Math.max(sa, sb);
+  const firstSeen = Math.min(pa.firstSeenAt ?? a.updatedAt, pb.firstSeenAt ?? b.updatedAt);
   const payload = {
     ...(meta.payload as object),
     status: (statusWinner.payload as { status?: unknown } | null)?.status,
     statusUpdatedAt,
     encounters: Math.max(pa.encounters ?? 0, pb.encounters ?? 0),
-    firstSeenAt: Math.min(pa.firstSeenAt ?? Infinity, pb.firstSeenAt ?? Infinity),
+    firstSeenAt: firstSeen,
     updatedAt: meta.updatedAt,
     updatedBy: meta.updatedBy,
   };

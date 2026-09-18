@@ -82,3 +82,62 @@ test('a failed cycle records neither clock', async () => {
   expect(useSyncStatus.getState().lastPulledAt).toBeNull();
   expect(useSyncStatus.getState().lastSyncedAt).toBeNull();
 });
+
+/**
+ * A cycle abandoned because the account changed under it is not a success and not a failure. Reporting
+ * it as either was the trap: on any resolved outcome `triggerSync` stamps `lastSyncedAt` and cancels the
+ * backoff, so an abandoned cycle would claim "synced just now" for an account that never synced. Leaving
+ * the phase at `syncing` was the other half — the settings line would sit there until the next local
+ * write.
+ */
+test('an abandoned cycle lands on idle without claiming a sync happened', async () => {
+  useSyncStatus.setState({ lastSyncedAt: null, lastPulledAt: null, phase: 'idle' });
+
+  vi.mocked(syncWith).mockResolvedValue({ pushBlocked: false, stale: true });
+  await triggerSync();
+
+  expect(useSyncStatus.getState().phase).toBe('idle');
+  expect(useSyncStatus.getState().lastSyncedAt).toBeNull();
+  expect(useSyncStatus.getState().lastPulledAt).toBeNull();
+});
+
+test('an abandoned cycle does not reset the backoff a failed one started', async () => {
+  // The backoff lives in module state that outlives a test, so start from a known one rather than
+  // inheriting whatever the previous test left pending.
+  vi.mocked(syncWith).mockResolvedValue({ pushBlocked: false });
+  await triggerSync();
+
+  vi.mocked(syncWith).mockRejectedValueOnce(new Error('no route to host'));
+  await triggerSync();
+  expect(useSyncStatus.getState().phase).toBe('error');
+
+  vi.mocked(syncWith).mockResolvedValue({ pushBlocked: false, stale: true });
+  await triggerSync();
+
+  // The retry the failure scheduled must still be standing: nothing about an account switch says the
+  // network came back.
+  await vi.advanceTimersByTimeAsync(15_000);
+  expect(syncWith).toHaveBeenCalledTimes(4);
+});
+
+/**
+ * A trigger arriving mid-cycle used to be dropped on the floor. That was already wrong for `online` and
+ * `visibilitychange`; the account switch makes it load-bearing, because the wipe abandons the running
+ * cycle and the trigger for the new account arrives synchronously from `applySession` — always while a
+ * cycle is still running.
+ */
+test('a trigger that arrives during a cycle is remembered, not dropped', async () => {
+  let release: (v: { pushBlocked: boolean }) => void = () => undefined;
+  vi.mocked(syncWith).mockImplementationOnce(() => new Promise((resolve) => { release = resolve; }));
+
+  void triggerSync();
+  await vi.waitFor(() => expect(syncWith).toHaveBeenCalledTimes(1));
+
+  void triggerSync(); // lands while the first is still in flight
+  expect(syncWith).toHaveBeenCalledTimes(1);
+
+  vi.mocked(syncWith).mockResolvedValue({ pushBlocked: false });
+  release({ pushBlocked: false });
+
+  await vi.waitFor(() => expect(syncWith).toHaveBeenCalledTimes(2));
+});

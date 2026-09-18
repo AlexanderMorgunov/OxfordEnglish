@@ -171,7 +171,11 @@ const redeemed = await post('/v1/entitlement/redeem', { grantToken: co.grantToke
 const pro = (await redeemed.json()) as Entitlement;
 check('after payment the token redeems to pro', redeemed.status === 200 && pro.plan === 'pro');
 check('the plan runs for the days the SERVER priced, not the client', pro.paidUntil != null && Math.round((pro.paidUntil - Date.now()) / 86_400_000) === PLANS.pro_month.days);
-check('and the token is spent', (await post('/v1/entitlement/redeem', { grantToken: co.grantToken }, token)).status === 400);
+// Idempotent, NOT an error: the grant is this account's own and its days are already on the row.
+// Answering "invalid" is what once left a buyer whose response was lost retrying a purchase they had.
+const again = await post('/v1/entitlement/redeem', { grantToken: co.grantToken }, token);
+const agained = (await again.json()) as Entitlement;
+check('redeeming the same grant again repeats the answer instead of failing', again.status === 200 && agained.plan === 'pro' && agained.paidUntil === pro.paidUntil);
 
 // A second buyer's token must be worthless to the first.
 const reg2 = await post('/v1/auth/register', { accountId: 'acc-bil20123456789ab', verifier: 'verifier-bil2-0123456789', deviceName: 'Smoke' });

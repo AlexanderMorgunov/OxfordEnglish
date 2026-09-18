@@ -77,4 +77,10 @@ export function applyLearnerFromSync(value: unknown): void {
   });
 }
 
-registerSettingBridge({ key: SETTING_KEY, applyFromSync: applyLearnerFromSync });
+// The level and placement belong to the person whose account it is, not to the device they borrowed.
+registerSettingBridge({
+  key: SETTING_KEY,
+  scope: 'account',
+  applyFromSync: applyLearnerFromSync,
+  resetToDefault: () => useLearner.getState().reset(),
+});

@@ -145,4 +145,4 @@ export function applyReaderFromSync(value: unknown): void {
   useReaderSettings.setState(patch);
 }
 
-registerSettingBridge({ key: SETTING_KEY, applyFromSync: applyReaderFromSync });
+registerSettingBridge({ key: SETTING_KEY, scope: 'device', applyFromSync: applyReaderFromSync });
