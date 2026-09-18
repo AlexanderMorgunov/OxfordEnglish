@@ -27,6 +27,9 @@ type RotateResult =
 
 export interface AuthStore {
   getAccount(accountId: string): Promise<{ verifierHash: string } | null>;
+  /** How many accounts exist right now. Delete-account removes the row, so this is not "ever
+   *  registered" — it is the number of people who could sign in today. A count, never the ids. */
+  countAccounts(): Promise<number>;
   /** Returns false when the id was already taken. INSERT, not UPSERT: register checks existence in a
    *  separate read, so an UPSERT let two concurrent registrations for the same id silently overwrite one
    *  another's verifier — the loser would hold a key that no longer opens the account. */
@@ -63,6 +66,10 @@ export interface AuthStore {
 }
 
 export class InMemoryAuthStore implements AuthStore {
+  async countAccounts(): Promise<number> {
+    return this.accounts.size;
+  }
+
   private accounts = new Map<string, { verifierHash: string }>();
   private refresh = new Map<string, RefreshRec>(); // key = hashToken(raw)
   private revokedFamilies = new Set<string>();

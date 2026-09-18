@@ -71,6 +71,12 @@ export class YdbAuthStore implements AuthStore {
     return rows[0] ? { verifierHash: str(rows[0].verifier_hash) } : null;
   }
 
+  /** A count, never the ids — the admin surface must not become a way to enumerate the user base. */
+  async countAccounts(): Promise<number> {
+    const [rows] = await query('SELECT COUNT(*) AS n FROM accounts;');
+    return rows[0] ? num(rows[0].n) : 0;
+  }
+
   async createAccount(accountId: string, verifierHash: string): Promise<boolean> {
     try {
       // INSERT fails on an existing key; UPSERT would have quietly replaced the verifier of whichever

@@ -12,6 +12,7 @@
 
 import { randomBytes, createHash } from 'node:crypto';
 import { keyedHash } from './indexHash.js';
+import type { StatsRow } from './adminStats.js';
 export { indexKeyConfigured, useEphemeralIndexKey, INDEX_HASH_VERSION } from './indexHash.js';
 
 const DAY_MS = 86_400_000;
@@ -284,9 +285,18 @@ export interface EntitlementStore {
   findUnclaimedGrant(accountId: string): Promise<string | null>;
   /** Delete-account: drop this account's entitlement. Grants are payment records, not account data. */
   purge(accountId: string): Promise<void>;
+  /**
+   * Every entitlement row, narrowed to the two dates the admin counts need — never whole rows, and never
+   * account ids. Reads the table, so it is a small-table convenience rather than a metrics endpoint.
+   */
+  statsRows(): Promise<StatsRow[]>;
 }
 
 export class InMemoryEntitlementStore implements EntitlementStore {
+  async statsRows(): Promise<StatsRow[]> {
+    return [...this.rows.values()].map((r) => ({ trialStartedAt: r.trialStartedAt, paidUntil: r.paidUntil }));
+  }
+
   private rows = new Map<string, EntitlementRow>();
   private claims = new Set<string>();
   private claimedAt = new Map<string, number>();
