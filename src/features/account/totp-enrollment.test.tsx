@@ -363,6 +363,41 @@ test('the section does not blink out while a retry is in flight', async () => {
   expect(await screen.findByText(/could not load the backup sign-in settings/i)).toBeInTheDocument();
 });
 
+test('a name set through the field survives the codes card unmounting it', async () => {
+  // Found in the browser, not here: the earlier test seeded `recoveryName: true` into the status, so it
+  // never exercised the path a user takes. Setting the name updated only the field's own state, the
+  // parent's copy stayed false, and the codes card — which unmounts this field and puts it back — read
+  // that stale copy. Someone who had just named their account was offered to name it again.
+  vi.mocked(api.totpStatus).mockResolvedValue(status({ enrolled: true, backupCodesLeft: 10, recoveryName: false }));
+  vi.mocked(api.setRecoveryName).mockResolvedValue(undefined);
+  vi.mocked(api.totpBackupCodes).mockResolvedValue(['aaaaa-bbbbb']);
+  view();
+
+  await userEvent.click(await screen.findByRole('button', { name: /set a name/i }));
+  await userEvent.type(screen.getByPlaceholderText(/for example/i), 'Alex Smith');
+  await userEvent.click(screen.getByRole('button', { name: /^save$/i }));
+  expect(await screen.findByRole('button', { name: /change the name/i })).toBeInTheDocument();
+
+  await userEvent.click(screen.getByRole('button', { name: /new backup codes/i }));
+  await userEvent.type(await screen.findByPlaceholderText(/6 digits from the app/i), '123456');
+  await userEvent.click(screen.getByRole('button', { name: /issue codes/i }));
+  await userEvent.click(await screen.findByRole('button', { name: /i have saved the codes/i }));
+
+  expect(await screen.findByRole('button', { name: /change the name/i })).toBeInTheDocument();
+});
+
+test('a wrong code on an authenticated screen does not send the user looking for an account id', async () => {
+  // There is no id field on this screen. The message used to say "check the account id and the code"
+  // because it was written for the signed-out route and then reused everywhere.
+  vi.mocked(api.totpConfirm).mockRejectedValue(new ApiFailure('totp_invalid', 401));
+  view();
+  await userEvent.click(await connect());
+  await userEvent.type(await screen.findByPlaceholderText(/^6 digits$/i), '123456');
+
+  expect(await screen.findByText(/that code did not work/i)).toBeInTheDocument();
+  expect(screen.queryByText(/account id/i)).not.toBeInTheDocument();
+});
+
 test('a server that omits `pending` reads as "nothing to resume", not as undefined', () => {
   // Pinned as a wire contract, not as a behaviour: `undefined` and `false` are falsy in the same
   // places, so nothing at runtime tells them apart. What the default buys is the TYPE — every
