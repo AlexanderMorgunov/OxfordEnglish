@@ -61,7 +61,10 @@ export function createApp(
   app.use(
     '/v1/*',
     // DELETE is here for /v1/account — without it the browser preflight for delete-account fails.
-    cors({ origin: origins, allowMethods: ['GET', 'POST', 'DELETE', 'OPTIONS'], allowHeaders: ['content-type', 'authorization'], maxAge: 86400 })
+    // PUT is for the dev stand-in upload route (/v1/blobs/data/:key): prod PUTs the presigned storage URL
+    // instead, so this is unused there, but without it book-file upload cannot be exercised in a browser
+    // against a local server at all — which is how it stayed untested end to end.
+    cors({ origin: origins, allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], allowHeaders: ['content-type', 'authorization'], maxAge: 86400 })
   );
 
   /**

@@ -2,7 +2,7 @@ import { db, type BookRecord } from '@/db/db';
 import { track } from '@/features/analytics/analytics';
 import { addBook, patchBook, softDeleteBook, isSyncing } from '@/features/sync/local';
 import { isDeleted } from '@/features/sync/resolve';
-import { deleteRemoteBookFile, downloadBookFileIfMissing, uploadBookFile, type BookFileIssue } from './blobSync';
+import { deleteRemoteBookFile, downloadBookFileIfMissing, uploadBookFile, useBookUploadIssues, type BookFileIssue } from './blobSync';
 import { detectFormat, parseBook, type ParsedBook } from './parse';
 import { saveBookFile, getBookFile, deleteBookFile, opfsAvailable } from './storage';
 
@@ -91,6 +91,7 @@ export async function openBook(record: BookRecord): Promise<ParsedBook> {
 }
 
 export async function removeBook(id: string): Promise<void> {
+  useBookUploadIssues.getState().note(id, null); // before either delete path, so both are covered
   await deleteBookFile(id);
   await deleteRemoteBookFile(id).catch(() => undefined); // release the cloud blob + its quota (no-op if not synced)
   // Tombstone only when signed in (so the delete propagates); otherwise hard-delete so anonymous users

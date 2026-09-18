@@ -261,5 +261,19 @@ check('login after delete → 401 (account purged)', loginGone.status === 401);
 const syncGone = await app.request('/v1/sync?since=0', { headers: syncAuth });
 check('sync after delete → empty snapshot', ((await syncGone.json()) as { entries: unknown[] }).entries.length === 0);
 
+// --- CORS preflight ---
+// The browser refuses a method the preflight does not list, and leaves no server-side trace at all.
+// DELETE was added to that list after delete-account failed exactly that way; PUT is the dev stand-in
+// upload route, without which book-file upload cannot be exercised in a browser against a local server.
+const pre = await app.request('/v1/blobs/data/x', {
+  method: 'OPTIONS',
+  headers: { origin: 'https://dayenglish.ru', 'access-control-request-method': 'PUT' },
+});
+const allow = pre.headers.get('access-control-allow-methods') ?? '';
+check(
+  'preflight allows every method the app actually uses',
+  ['GET', 'POST', 'PUT', 'DELETE'].every((m) => allow.includes(m))
+);
+
 console.log(failures ? `\n${failures} FAILED` : '\nALL PASS');
 process.exitCode = failures ? 1 : 0;

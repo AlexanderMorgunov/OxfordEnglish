@@ -73,24 +73,110 @@ async function token(): Promise<string | null> {
 }
 
 /** Why an upload did not happen. `skipped` used to mean all three of the middle ones at once, which made
- *  a permanent refusal (too large) indistinguishable from a passing one (no token). */
-export type UploadOutcome = 'ok' | 'sync-off' | 'signed-out' | 'too-large' | 'quota' | 'error';
+ *  a permanent refusal (too large) indistinguishable from a passing one (no token). `no-plan` is split out
+ *  of `error` because the toggle is NOT behind the paywall: any signed-in user can switch it on, and
+ *  `/v1/blobs/upload-url` answers 402 without an active plan — so "something went wrong, we'll retry"
+ *  would be the standing message for every free account, and retrying is precisely what cannot help. */
+export type UploadOutcome = 'ok' | 'sync-off' | 'signed-out' | 'no-file' | 'too-large' | 'quota' | 'no-plan' | 'error';
+
+/** The outcomes worth telling the owner of the device about. The rest are either normal (`ok`), a choice
+ *  they already made (`sync-off`), or the ordinary state of not being signed in. */
+export type UploadIssue = Extract<UploadOutcome, 'too-large' | 'quota' | 'no-plan' | 'error' | 'signed-out'>;
+
+const ISSUE_KEY = 'oxford-book-upload-issues';
+
+function loadIssues(): Record<string, UploadIssue> {
+  try {
+    const raw = localStorage.getItem(ISSUE_KEY);
+    const v: unknown = raw ? JSON.parse(raw) : null;
+    // Shape-checked, not just parsed: `JSON.parse('null')` is a successful parse, and the result would
+    // then be indexed on every Library render — taking the whole page down rather than one marker.
+    return typeof v === 'object' && v !== null && !Array.isArray(v) ? (v as Record<string, UploadIssue>) : {};
+  } catch {
+    return {};
+  }
+}
+
+/**
+ * Why each book on THIS device is not in the cloud. Per-device on purpose: it is a fact about this
+ * device's attempt, so it must not ride the `books` row — that store syncs, and whole-row LWW would both
+ * carry the flag to devices it is not true of and erase it on the next pull.
+ *
+ * A marker is not a dead end. `sweepBookFiles` re-runs `syncAllBookFiles` every ten minutes, so `error`
+ * and `signed-out` clear themselves once the cause goes away; the store exists so that until then the
+ * device that made the file can say what is wrong, instead of the silence that let a broken upload path
+ * go unnoticed.
+ */
+export const useBookUploadIssues = create<{
+  issues: Record<string, UploadIssue>;
+  note: (id: string, issue: UploadIssue | null) => void;
+  prune: (keep: Set<string>) => void;
+}>((set, get) => ({
+  issues: loadIssues(),
+  note: (id, issue) => {
+    const next = { ...get().issues };
+    if (issue) next[id] = issue;
+    else if (!(id in next)) return; // nothing to clear — do not churn storage or re-render
+    else delete next[id];
+    writeIssues(next);
+    set({ issues: next });
+  },
+  prune: (keep) => {
+    const current = get().issues;
+    const next = Object.fromEntries(Object.entries(current).filter(([id]) => keep.has(id)));
+    if (Object.keys(next).length === Object.keys(current).length) return;
+    writeIssues(next);
+    set({ issues: next });
+  },
+}));
+
+function writeIssues(v: Record<string, UploadIssue>): void {
+  try {
+    localStorage.setItem(ISSUE_KEY, JSON.stringify(v));
+  } catch {
+    // ignore storage failures
+  }
+}
+
+/** Record an outcome against a book, or clear it. `sync-off` is a choice, not a problem; `signed-out` is
+ *  the normal state of an anonymous user and only an anomaly for someone the store thinks IS signed in
+ *  (a refresh that will not complete). */
+function noteOutcome(id: string, outcome: UploadOutcome): void {
+  // `no-file` clears too: with no local bytes this device has nothing to say about the book, and any
+  // marker it recorded earlier (before an OPFS eviction, say) has stopped being true.
+  if (outcome === 'ok' || outcome === 'sync-off' || outcome === 'no-file') return useBookUploadIssues.getState().note(id, null);
+  if (outcome === 'signed-out' && useAccount.getState().status !== 'authenticated') return;
+  useBookUploadIssues.getState().note(id, outcome);
+}
 
 /** Upload one book's OPFS file. Returns an outcome (rather than throwing) so the import path can fire it
- *  and forget, while the bulk sync can stop on `quota`. Skips when the toggle is off or the file is >20 MB. */
+ *  and forget, while the bulk sync can stop on `quota`. Skips when the toggle is off or the file is >20 MB.
+ *  Recording happens HERE rather than at the call sites, so neither of them can forget to. */
 export async function uploadBookFile(id: string): Promise<UploadOutcome> {
+  const outcome = await attemptUpload(id);
+  noteOutcome(id, outcome);
+  return outcome;
+}
+
+async function attemptUpload(id: string): Promise<UploadOutcome> {
   if (!useBookFileSync.getState().enabled) return 'sync-off';
-  const t = await token();
+  const t = await token().catch(() => null); // getAccessToken can reject, not only resolve null
   if (!t) return 'signed-out';
+  // Probed OUTSIDE the try: book metadata syncs unconditionally while the bytes do not, so every book
+  // added on another device is a row here with no file. Letting that throw into the catch below reported
+  // it as `error` — "we will try again automatically" on a device that can never succeed, about a file
+  // another device owes. BookReaderPage already says the true thing for this case (`not-uploaded`).
+  const file = await getBookFile(id).catch(() => null);
+  if (!file) return 'no-file';
   try {
-    const file = await getBookFile(id);
     if (file.size > BLOB_MAX_BYTES) return 'too-large'; // permanent: every later sweep skips it too
     const target = await api.blobUploadUrl(t, id, file.size);
     await api.blobUpload(t, target, file);
     await api.blobCommit(t, id, target.key, file.size);
     return 'ok';
   } catch (e) {
-    return e instanceof ApiFailure && e.code === 'quota_exceeded' ? 'quota' : 'error';
+    if (!(e instanceof ApiFailure)) return 'error';
+    return e.code === 'quota_exceeded' ? 'quota' : e.code === 'no_plan' ? 'no-plan' : 'error';
   }
 }
 
@@ -162,8 +248,21 @@ export async function syncAllBookFiles(): Promise<void> {
     .catch(() => null);
   if (!remote) return;
   const books = await db.books.toArray();
-  for (const b of books) {
-    if (isDeleted(b) || remote.has(b.id)) continue;
-    if ((await uploadBookFile(b.id)) === 'quota') break; // account full — stop rather than hammer failures
+  useBookUploadIssues.getState().prune(new Set(books.filter((b) => !isDeleted(b)).map((b) => b.id)));
+  const live = books.filter((b) => !isDeleted(b));
+  // Already in the cloud, so nothing to upload — but a book that failed once and landed later takes this
+  // branch, and would otherwise keep its marker for the life of the install.
+  for (const b of live) if (remote.has(b.id)) useBookUploadIssues.getState().note(b.id, null);
+
+  const pending = live.filter((b) => !remote.has(b.id));
+  for (const [i, b] of pending.entries()) {
+    const outcome = await uploadBookFile(b.id);
+    // Both are answers about the ACCOUNT, not about this file, so every remaining book has the same one.
+    // Stop asking — but record it on all of them: leaving them bare would say "fine" about books that are
+    // not, and leaving a stale `error` would promise a retry that cannot help.
+    if (outcome === 'quota' || outcome === 'no-plan') {
+      for (const rest of pending.slice(i + 1)) useBookUploadIssues.getState().note(rest.id, outcome);
+      break;
+    }
   }
 }
