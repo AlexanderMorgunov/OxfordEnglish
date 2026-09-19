@@ -29,6 +29,7 @@ import {
   isPlanCode,
   billingConfig,
   billingConfigured,
+  buildReceipt,
   checkoutUrl,
   formatSum,
   newInvoiceId,
@@ -98,6 +99,7 @@ export function billingRoutes(ent: EntitlementStore): Hono {
       outSum,
       invoiceId,
       description: plan.title,
+      receipt: buildReceipt(plan),
       // Flagged as the parent of a recurring chain here or never, but opt-in: an unapproved shop's
       // reaction to the flag is unknown, and the monthly charge job that would use it is a separate
       // slice. See `BillingConfig.recurring`.

@@ -15,6 +15,7 @@ import { createApp } from './app.js';
 import { InMemoryEntitlementStore } from './entitlements.js';
 import {
   PLANS,
+  buildReceipt,
   checkoutSignature,
   checkoutUrl,
   formatSum,
@@ -49,6 +50,7 @@ const md5 = (s: string) => createHash('md5').update(s, 'utf8').digest('hex');
 check('MD5 plumbing matches the published vector for "abc"', md5('abc') === '900150983cd24fb0d6963f7d28e17f72');
 
 // --- 2. the signature strings, written out by hand from the docs ---
+const receipt = buildReceipt(PLANS.pro_month);
 const params = {
   merchantLogin: LOGIN,
   password1: PASS1,
@@ -56,13 +58,36 @@ const params = {
   outSum: '199.00',
   invoiceId: '123456789012345678',
   description: 'DayEnglish Pro — 1 месяц',
+  receipt,
   recurring: true,
   isTest: false,
 };
 check(
-  'checkout signature is MerchantLogin:OutSum:InvId:Пароль#1',
-  checkoutSignature(params) === md5(`${LOGIN}:199.00:123456789012345678:${PASS1}`)
+  'checkout signature is MerchantLogin:OutSum:InvId:Receipt:Пароль#1',
+  checkoutSignature(params) ===
+    md5(`${LOGIN}:199.00:123456789012345678:${encodeURIComponent(receipt)}:${PASS1}`)
 );
+// Position, not just presence: signing the receipt in the wrong slot hashes cleanly and fails at
+// Robokassa as "неверная подпись", which is what a wrong password looks like too.
+check(
+  'the receipt sits between InvId and the password, not anywhere else',
+  checkoutSignature(params) !==
+    md5(`${LOGIN}:199.00:${encodeURIComponent(receipt)}:123456789012345678:${PASS1}`)
+);
+
+// --- the receipt itself ---
+const parsed = JSON.parse(receipt) as { sno?: string; items: { name: string; quantity: number; sum: number; tax: string }[] };
+check('one line for the whole payment', parsed.items.length === 1);
+check('the line adds up to the amount charged', parsed.items[0]!.sum === Number(formatSum(PLANS.pro_month.priceKopecks)));
+check('sum is a number, not the OutSum string', typeof parsed.items[0]!.sum === 'number');
+// НПД is not among Robokassa's `sno` values, so the shop's own setting has to apply.
+check('no sno is claimed', parsed.sno === undefined);
+check('self-employment charges no VAT', parsed.items[0]!.tax === 'none');
+check('the receipt name carries no em dash, unlike the description', !parsed.items[0]!.name.includes('—'));
+// Raw UTF-8 survives the signature perfectly and can still reach the cheque as mojibake. Escaped, it
+// cannot — and this is the one failure no test downstream would catch.
+check('the receipt is pure ASCII on the wire', /^[\x20-\x7E]*$/.test(receipt));
+check('...and still says the Russian name once decoded', JSON.parse(receipt).items[0].name === PLANS.pro_month.receiptName);
 check(
   'result signature is OutSum:InvId:Пароль#2',
   resultSignature('199.00', '123456789012345678', PASS2, 'md5') === md5(`199.00:123456789012345678:${PASS2}`)
@@ -83,6 +108,17 @@ check('...and absent otherwise', new URL(checkoutUrl({ ...params, recurring: fal
 check('IsTest is absent outside test mode', url.searchParams.get('IsTest') === null);
 check('the sum on the link is the one that was signed', url.searchParams.get('OutSum') === '199.00');
 check('cyrillic description survives the round-trip', url.searchParams.get('Description') === 'DayEnglish Pro — 1 месяц');
+
+// THE test for this change. `searchParams.get` performs exactly the one decode Robokassa's framework
+// performs, so what it returns must be the string that went into the signature — one encode layer, not
+// two and not none. Asserting "the URL holds what we signed, byte for byte" instead would pin the bug:
+// it passes for a link that no Robokassa shop will accept.
+check(
+  'the query decodes to exactly the receipt that was signed',
+  url.searchParams.get('Receipt') === encodeURIComponent(receipt)
+);
+check('so the raw link carries it doubly encoded, as the vendor example does', url.search.includes('Receipt=%257B'));
+check('and the receipt decodes twice back to the JSON', decodeURIComponent(url.searchParams.get('Receipt')!) === receipt);
 // The PII firewall, asserted rather than asserted-about: nothing account-shaped may leave in the link.
 check('no account identifier anywhere in the link', !checkoutUrl({ ...params }).includes('acc-'));
 

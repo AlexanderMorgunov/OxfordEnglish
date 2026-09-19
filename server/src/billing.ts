@@ -41,6 +41,12 @@ export type PlanSpec = {
   priceKopecks: number;
   /** Goes to Robokassa as `Description` and shows on the payer's receipt. Max 100 chars. */
   title: string;
+  /**
+   * The line on the FISCAL receipt, which is not the same string as `title`. Max 128 chars and, per the
+   * docs, no special characters — so no em dash, which `title` has. A wrong name here is not a bug we
+   * would see: the signature still verifies and every test passes, and it only shows up in the ЛКК.
+   */
+  receiptName: string;
 };
 
 /**
@@ -51,7 +57,13 @@ export type PlanSpec = {
  * settled; nothing downstream reads a hardcoded amount.
  */
 export const PLANS: Record<PlanCode, PlanSpec> = {
-  pro_month: { code: 'pro_month', days: 30, priceKopecks: 19900, title: 'DayEnglish Pro — 1 месяц' },
+  pro_month: {
+    code: 'pro_month',
+    days: 30,
+    priceKopecks: 19900,
+    title: 'DayEnglish Pro — 1 месяц',
+    receiptName: 'DayEnglish Pro на 1 месяц',
+  },
 };
 
 export const isPlanCode = (v: string): v is PlanCode => v in PLANS;
@@ -85,6 +97,10 @@ export type CheckoutParams = {
   outSum: string;
   invoiceId: string;
   description: string;
+  /** Minimised receipt JSON from `buildReceipt`, UNENCODED. Required rather than optional: an optional
+   *  one is a way to ship with the cheque switched off after fiscalisation is switched on, which is the
+   *  one state that must not exist. */
+  receipt: string;
   /**
    * Marks the invoice as the PARENT of a recurring chain. It can only ever be set on the first payment:
    * `Merchant/Recurring` needs a `PreviousInvoiceID` that was itself flagged, and no later call can
@@ -99,8 +115,50 @@ export type CheckoutParams = {
   isTest: boolean;
 };
 
+/**
+ * The fiscal receipt: what the payer's cheque says they bought.
+ *
+ * Required from the moment Робочеки СМЗ is switched on. Without it a fiscalised shop issues a cheque
+ * whose only line is "Свободная продажа" — the wrong-номенклатура state the activation letter warns
+ * about, with the tax authority on the other end of it.
+ *
+ * `sno` is deliberately absent: the allowed values are `osn`, `usn_income`, `usn_income_outcome`, `esn`
+ * and `patent`, and НПД is none of them, so the shop's own setting applies. `tax: 'none'` because
+ * self-employment pays no VAT. `sum` is a NUMBER, not the `OutSum` string, and must add up to the
+ * payment — a cheque whose lines do not match the amount is rejected while the money is already taken.
+ *
+ * ASCII-escaped on purpose. `JSON.stringify` emits raw UTF-8, which survives the signature perfectly and
+ * can still arrive as mojibake in the cheque if anything downstream decodes with another default — a
+ * failure invisible to every test we can write, and visible to the buyer.
+ */
+export function buildReceipt(plan: PlanSpec): string {
+  const json = JSON.stringify({
+    items: [
+      {
+        name: plan.receiptName.slice(0, 128),
+        quantity: 1,
+        sum: plan.priceKopecks / 100,
+        tax: 'none',
+        payment_method: 'full_payment',
+        payment_object: 'service',
+      },
+    ],
+  });
+  return json.replace(/[^\x20-\x7E]/g, (ch) => `\\u${ch.charCodeAt(0).toString(16).padStart(4, '0')}`);
+}
+
+/**
+ * `Receipt` joins the signature in the documented position, encoded ONCE — while the query carries it
+ * encoded TWICE. That is not a quirk of ours: the vendor's own worked example pairs a URL containing
+ * `%257B` with a signature string containing `%7B`, because their framework decodes the query once and
+ * compares the result to what was signed. Encoding both the same way is the mistake that breaks every
+ * purchase, and it fails as "неверная подпись" — indistinguishable from a wrong password.
+ */
 export const checkoutSignature = (p: CheckoutParams): string =>
-  hash(p.algo, `${p.merchantLogin}:${p.outSum}:${p.invoiceId}:${p.password1}`);
+  hash(
+    p.algo,
+    `${p.merchantLogin}:${p.outSum}:${p.invoiceId}:${encodeURIComponent(p.receipt)}:${p.password1}`
+  );
 
 export function checkoutUrl(p: CheckoutParams): string {
   const q = new URLSearchParams({
@@ -108,6 +166,10 @@ export function checkoutUrl(p: CheckoutParams): string {
     OutSum: p.outSum,
     InvId: p.invoiceId,
     Description: p.description.slice(0, 100),
+    // The once-encoded receipt, handed to `URLSearchParams` — which escapes its `%` signs and so adds
+    // the second layer the wire needs. Doing it by hand is what would get this wrong: the value now
+    // holds no spaces, so there is no `+`-versus-`%20` question left to answer here.
+    Receipt: encodeURIComponent(p.receipt),
     SignatureValue: checkoutSignature(p),
     Culture: 'ru',
     Encoding: 'utf-8',
