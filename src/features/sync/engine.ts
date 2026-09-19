@@ -326,15 +326,35 @@ export async function wipeSyncedData(): Promise<void> {
  * synced, so there is no server copy to restore it from, and clearing it on a plain sign-out would
  * delete someone's reading streak and review history for good. Handing the device to another account is
  * the one moment where keeping them is the worse answer: `activity` rows carry book TITLES, so the
- * previous person's library is legible to whoever signs in next.
+ * previous person's library is legible to whoever signs in next. The unsent feedback outbox is free text
+ * they wrote themselves, and part of the translation cache is text they were reading — see
+ * `dropCachedText` above.
  *
  * Book FILES are released separately, on their own marker. Deleting a book is unrecoverable, so that
  * half has to be conservative; leaking a reading history or an account-wide upload setting is a harm in
  * itself, so this half has to be aggressive. Gating both on one marker meant the concession that
  * protects an anonymous import also handed the next account a level, a streak and an upload toggle.
  */
+/**
+ * The half of the translation cache that holds the previous reader's own text.
+ *
+ * `db.translations` is keyed by whatever was looked up, and three paths put a sentence in that key: the
+ * Simplify and grammar lenses (`lens:…:<sentence>`), the in-context AI lookup (`ai:…:<word>|@|<sentence>`)
+ * and phrase translation, which keys on the phrase itself. So a row can be a verbatim line from the book
+ * somebody was reading — stronger than the book TITLES that justify clearing `activity`.
+ *
+ * Whitespace in the key is what separates the two: a dictionary word never has any, and a phrase or a
+ * sentence always does. Clearing the whole table instead would also throw away the plain word
+ * translations, which are impersonal and expensive to refetch — MyMemory is rate-limited per IP, so the
+ * next person on the device would hit the limit sooner for nothing.
+ */
+async function dropCachedText(): Promise<void> {
+  const keys = await db.translations.toCollection().primaryKeys();
+  await db.translations.bulkDelete(keys.filter((k) => typeof k === 'string' && /\s/.test(k)));
+}
+
 export async function releasePreviousAccountData(): Promise<void> {
-  await Promise.all([db.activity.clear(), db.reviewLog.clear()]);
+  await Promise.all([db.activity.clear(), db.reviewLog.clear(), db.feedbackOutbox.clear(), dropCachedText()]);
   // Account-scoped settings belong to the same boundary, and ONLY to it. Resetting them from
   // `wipeSyncedData` looked equivalent — the wipe clears `db.settings` too — and silently was not: the
   // wipe also runs on an ordinary logout, `hydrateSettings` skips any row this install wrote, and the
