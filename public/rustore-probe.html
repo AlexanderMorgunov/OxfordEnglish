@@ -30,6 +30,7 @@
   <button id="speak">Проверить озвучку вслух</button>
   <button id="audio">Проверить перемотку аудио</button>
   <button id="pick">Проверить выбор файла</button>
+  <button id="persist">Проверить persist() нажатием</button>
   <input id="file" type="file" accept=".epub,.fb2,.docx,.pdf" hidden>
 </div>
 
@@ -43,6 +44,9 @@ const report = document.getElementById('report');
 
 function say(key, value, state) {
   lines.push(key + ': ' + value);
+  // WebView console output lands in logcat, so `adb logcat -s chromium:I` reads the whole report
+  // without attaching a debugger — including the async storage lines that arrive after load.
+  console.log('[probe] ' + key + ': ' + value);
   const cls = state === true ? 'ok' : state === false ? 'bad' : state === 'warn' ? 'warn' : 'k';
   const div = document.createElement('div');
   div.className = 'row';
@@ -121,21 +125,70 @@ document.getElementById('speak').onclick = () => {
   speechSynthesis.speak(u);
 };
 
-// A-B loop and dictation timings both depend on seeking. If `currentTime` will not move, those break.
-document.getElementById('audio').onclick = async () => {
+function once(el, ev, ms) {
+  return new Promise((res, rej) => {
+    const done = (fn) => () => { clearTimeout(t); el.removeEventListener(ev, ok); el.removeEventListener('error', bad); fn(); };
+    const ok = done(res);
+    const bad = done(() => rej(new Error('error')));
+    const t = setTimeout(done(() => rej(new Error('timeout'))), ms);
+    el.addEventListener(ev, ok, { once: true });
+    el.addEventListener('error', bad, { once: true });
+  });
+}
+
+/** Multi-second silence built at runtime. The previous inline data URI was a 44-byte WAV header with a
+ *  zero-length `data` chunk — duration 0, so every seek clamped to 0 and the check failed everywhere. */
+function silentWavUrl(seconds) {
+  const rate = 8000;
+  const n = rate * seconds;
+  const buf = new ArrayBuffer(44 + n);
+  const v = new DataView(buf);
+  const ascii = (off, s) => { for (let i = 0; i < s.length; i++) v.setUint8(off + i, s.charCodeAt(i)); };
+  ascii(0, 'RIFF'); v.setUint32(4, 36 + n, true); ascii(8, 'WAVE');
+  ascii(12, 'fmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+  v.setUint32(24, rate, true); v.setUint32(28, rate, true); v.setUint16(32, 1, true); v.setUint16(34, 8, true);
+  ascii(36, 'data'); v.setUint32(40, n, true);
+  new Uint8Array(buf, 44).fill(128); // 8-bit unsigned PCM: 128 is silence, not 0
+  return URL.createObjectURL(new Blob([buf], { type: 'audio/wav' }));
+}
+
+// A-B loop and dictation timings both depend on seeking. Two separate questions: whether the
+// `currentTime` setter works at all (local blob, fully buffered), and whether seeking a STREAMED file
+// works (network mp3 → range requests through the service worker) — which is what the player does.
+async function seekTest(label, src) {
   const a = new Audio();
-  // 3 seconds of silence, inline — no network, closest thing to a bundled asset.
-  a.src = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YQAAAAA=';
+  a.preload = 'metadata';
+  a.src = src;
   try {
-    await a.play().catch(() => {});
-    a.currentTime = 1.5;
-    await new Promise((r) => setTimeout(r, 300));
-    const moved = Math.abs(a.currentTime - 1.5) < 1.4 || a.currentTime > 0;
-    say('перемотка <audio>', 'currentTime = ' + a.currentTime.toFixed(2), moved);
-    a.pause();
-  } catch (e) {
-    say('перемотка <audio>', 'ошибка: ' + e.name, false);
+    await once(a, 'loadedmetadata', 10000);
+  } catch {
+    say(label, a.error ? 'не загрузился, media error ' + a.error.code : 'метаданные не пришли за 10 с', false);
+    return;
   }
+  if (!isFinite(a.duration) || a.duration < 2) {
+    say(label, 'длительность ' + a.duration + ' — тест непригоден', 'warn');
+    return;
+  }
+  const target = Math.min(1.5, a.duration - 0.5);
+  let blocked = false;
+  try { await a.play(); } catch { blocked = true; }
+  a.currentTime = target;
+  try {
+    await once(a, 'seeked', 5000);
+  } catch {
+    say(label, 'событие seeked не пришло, currentTime = ' + a.currentTime.toFixed(2), false);
+    a.pause();
+    return;
+  }
+  const hit = Math.abs(a.currentTime - target) < 0.5;
+  say(label, 'цель ' + target.toFixed(2) + ' с → ' + a.currentTime.toFixed(2) + ' с (длина ' +
+    a.duration.toFixed(1) + ' с)' + (blocked ? ', play() заблокирован политикой' : ''), hit);
+  a.pause();
+}
+
+document.getElementById('audio').onclick = async () => {
+  await seekTest('перемотка (локальный файл)', silentWavUrl(4));
+  await seekTest('перемотка (mp3 с сервера)', '/packs/dev-english-a2/media/audio/u00.d01.listening.mp3');
 };
 
 document.getElementById('pick').onclick = () => document.getElementById('file').click();
@@ -148,6 +201,38 @@ document.getElementById('copy').onclick = async () => {
   try { await navigator.clipboard.writeText(report.value); say('отчёт', 'скопирован', true); }
   catch { report.select(); say('отчёт', 'выделен — скопируйте вручную', 'warn'); }
 };
+
+/**
+ * `persist()` called at page load returns false in Chrome and WebView alike — no user activation, no
+ * engagement, denied by design. That is a fact about the call, not about WebView, so the load-time
+ * result below cannot answer whether book storage is evictable. This button asks again from inside a
+ * real touch event; only THAT answer is worth quoting.
+ */
+document.getElementById('persist').onclick = async () => {
+  try {
+    const granted = await navigator.storage.persist();
+    const persisted = await navigator.storage.persisted();
+    say('persist() ПОСЛЕ нажатия', 'persist=' + granted + ', persisted=' + persisted, granted === true);
+  } catch (e) {
+    say('persist() ПОСЛЕ нажатия', 'ошибка: ' + e.name, false);
+  }
+};
+
+// Run the checks without a tap. A headless emulator has nobody to press the buttons, and guessing
+// coordinates for `adb shell input tap` is a worse bet than just running them. The buttons stay live
+// for a manual re-run; speech and playback may report "заблокирован политикой" without a gesture,
+// which the report states rather than hides — seeking works on a paused element either way.
+// `persist` is deliberately NOT auto-clicked: a synthetic .click() is not user activation, so
+// auto-running it would reproduce the very false negative this button exists to avoid.
+setTimeout(() => {
+  say('автозапуск', 'проверки запущены без нажатия', 'warn');
+  document.getElementById('speak').click();
+  document.getElementById('audio').click();
+  // Device-pixel centre of the persist button, so `adb shell input tap` hits it without eyeballing.
+  const r = document.getElementById('persist').getBoundingClientRect();
+  const d = window.devicePixelRatio || 1;
+  say('tap persist', Math.round((r.left + r.width / 2) * d) + ' ' + Math.round((r.top + r.height / 2) * d));
+}, 1200);
 </script>
 </body>
 </html>
