@@ -1,3 +1,5 @@
+import { forSpeech } from './speechText';
+
 let current: HTMLAudioElement | null = null;
 
 /** Bumped on every cancel/new utterance so stale speech callbacks bail out. */
@@ -109,8 +111,10 @@ function applyVoice(u: SpeechSynthesisUtterance): void {
 /** Speak a word in American English (browser synthesis). Cancels any prior utterance. */
 export function speakWord(word: string): void {
   if (!canSpeak()) return;
+  const spoken = forSpeech(word);
+  if (!spoken) return;
   cancelSpeech();
-  const utterance = new SpeechSynthesisUtterance(word);
+  const utterance = new SpeechSynthesisUtterance(spoken);
   applyVoice(utterance);
   window.speechSynthesis.speak(utterance);
 }
@@ -222,7 +226,18 @@ export function speakPassage(
     }
     const myChunk = ci;
     ci += 1;
-    const u = new SpeechSynthesisUtterance(chunks[myChunk]!.text);
+    // Cleaned HERE, per utterance, and never before chunking: chunks carry their offset into the
+    // original text and the reader highlights by it, so rewriting the passage first would slide the
+    // highlight off the words being read.
+    const spoken = forSpeech(chunks[myChunk]!.text);
+    if (!spoken) {
+      // Nothing sayable in this chunk. Report it anyway so the highlight keeps pace, then move on —
+      // some engines never fire an end event for a punctuation-only utterance, which would stall here.
+      opts.onChunk?.(myChunk);
+      speakNext();
+      return;
+    }
+    const u = new SpeechSynthesisUtterance(spoken);
     applyVoice(u);
     u.rate = rate;
     // Report the chunk from its real `start` (not at enqueue) so a pause resumes from the right chunk.
