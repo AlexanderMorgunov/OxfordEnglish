@@ -82,3 +82,25 @@ test('ordinary text is returned untouched', () => {
   );
   expect(forSpeech('sources')).toBe('sources');
 });
+
+/**
+ * Two dots, not three. The rule asked for three, so `?..` and `!..` — ordinary Russian typography —
+ * went to the voice untouched and came back as "dot dot", which is what the owner heard in the reader.
+ * A spaced `. .` pulled apart by a line break, and a plain typo, did the same.
+ */
+test('two consecutive dots are a pause too', () => {
+  expect(forSpeech('But then .. - he said nothing.')).toBe('But then, he said nothing.');
+  expect(forSpeech('why . .')).toBe('why,');
+});
+
+test('a question or an exclamation keeps its own mark', () => {
+  // `?..` is a question that trails off: the intonation lives in the `?`, and only the dots are noise.
+  expect(forSpeech('He paused?.. Then left.')).toBe('He paused? Then left.');
+  expect(forSpeech('Stop!.. Now.')).toBe('Stop! Now.');
+});
+
+test('dots that are not consecutive are left alone', () => {
+  expect(forSpeech('Yes. Then no. Then yes.')).toBe('Yes. Then no. Then yes.');
+  expect(forSpeech('It cost 3.14 per item.')).toBe('It cost 3.14 per item.');
+  expect(forSpeech('Mr. Brown arrived.')).toBe('Mr. Brown arrived.');
+});

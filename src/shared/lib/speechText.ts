@@ -27,8 +27,14 @@ const QUOTES = /["“”„‟«»‹›〝〞「」『』]/g;
  */
 const QUOTE_APOSTROPHE = /(^|[^\p{L}\p{N}])['’‘](?=\p{L})|(?<=[\p{L}\p{N},.;:!?])['’‘](?=$|[^\p{L}\p{N}])/gu;
 
-/** Ellipsis, spelled either way. "dot dot dot" is the worst of them: it is long, and it lands mid-line. */
-const ELLIPSIS = /…|\.\s*\.\s*\.+/g;
+/**
+ * Ellipsis, however it is spelled. "dot dot dot" is the worst of them: it is long, and it lands mid-line.
+ *
+ * TWO dots count, not three. Requiring three left `?..` and `!..` — ordinary Russian typography — read
+ * out as "dot dot", and did the same to a plain typo and to a spaced `. .` that a line break had pulled
+ * apart. There is no writing in which two consecutive dots are meant to be pronounced.
+ */
+const ELLIPSIS = /…|\.(?:\s*\.)+/g;
 
 /** Dashes used as punctuation, including an ASCII hyphen standing alone. A hyphen INSIDE a word is not
  *  here on purpose: `well-known` is one word to a voice, and a comma would break it in half. */
