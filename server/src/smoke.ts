@@ -274,6 +274,34 @@ check(
   'preflight allows every method the app actually uses',
   ['GET', 'POST', 'PUT', 'DELETE'].every((m) => allow.includes(m))
 );
+check('a known origin is echoed back', pre.headers.get('access-control-allow-origin') === 'https://dayenglish.ru');
+
+// The SECOND allowed origin, not just the first. Answering everyone with `origins[0]` also silences the
+// wildcard and passes every other check here — while `www.dayenglish.ru` is told it is talking to the
+// apex, which the browser refuses.
+const wwwPre = await app.request('/v1/auth/register', {
+  method: 'OPTIONS',
+  headers: { origin: 'https://www.dayenglish.ru', 'access-control-request-method': 'POST' },
+});
+check('every allowed origin gets itself, not just the first', wwwPre.headers.get('access-control-allow-origin') === 'https://www.dayenglish.ru');
+
+/**
+ * A stranger must be ANSWERED, with an origin that is not theirs.
+ *
+ * Handed a list, Hono omits the header entirely for an unknown origin — and the API Gateway in front of
+ * production fills that silence with `*`, which approves the preflight. The browser then sends the real
+ * request and only hides the response, so the per-IP limiter on the recovery routes is spent from
+ * whatever addresses the attacker's visitors happen to have. Naming an origin the caller does not own
+ * is what makes the browser stop before any of that.
+ */
+const strangerPre = await app.request('/v1/auth/register', {
+  method: 'OPTIONS',
+  headers: { origin: 'https://evil.example', 'access-control-request-method': 'POST' },
+});
+const strangerOrigin = strangerPre.headers.get('access-control-allow-origin');
+check('an unknown origin is answered rather than left silent', strangerOrigin !== null);
+check('...with the canonical origin, never a wildcard', strangerOrigin === 'https://dayenglish.ru');
+check('...and never with the origin that asked', strangerOrigin !== 'https://evil.example');
 
 console.log(failures ? `\n${failures} FAILED` : '\nALL PASS');
 process.exitCode = failures ? 1 : 0;

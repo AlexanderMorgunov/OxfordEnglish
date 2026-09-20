@@ -59,13 +59,29 @@ export function createApp(
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean);
+  /**
+   * Answer every origin, and answer a stranger with the canonical one rather than with nothing.
+   *
+   * Handed a LIST, Hono omits `Access-Control-Allow-Origin` entirely for an origin it does not know —
+   * and the API Gateway in front of us fills that gap with `*`. Measured on the live host: a preflight
+   * from `https://dayenglish.ru` comes back with itself, one from `https://evil.example` comes back with
+   * `*`. That approves the preflight, so the browser goes on to send the real request; only the RESPONSE
+   * is then hidden from the attacker's page. The request still ran, which is the whole problem — the
+   * per-IP limiter on `/v1/totp/recover*` is meant to stop the attempt, not to hide its answer, and a
+   * page on any domain could spend it from thousands of its visitors' addresses.
+   *
+   * Naming an origin the caller does not have is what a browser rejects, so nothing downstream runs.
+   * Fixing it here rather than in the gateway spec, which lives only in the cloud and is version
+   * controlled nowhere.
+   */
+  const allowOrigin = (origin: string): string => (origins.includes(origin) ? origin : origins[0]!);
   app.use(
     '/v1/*',
     // DELETE is here for /v1/account — without it the browser preflight for delete-account fails.
     // PUT is for the dev stand-in upload route (/v1/blobs/data/:key): prod PUTs the presigned storage URL
     // instead, so this is unused there, but without it book-file upload cannot be exercised in a browser
     // against a local server at all — which is how it stayed untested end to end.
-    cors({ origin: origins, allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], allowHeaders: ['content-type', 'authorization'], maxAge: 86400 })
+    cors({ origin: allowOrigin, allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], allowHeaders: ['content-type', 'authorization'], maxAge: 86400 })
   );
 
   /**
