@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>WebView probe</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; padding: 16px; background: #12141c; color: #ece8dd;
+         font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  h1 { font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: #57c9bd; margin: 0 0 14px; }
+  .row { border-bottom: 1px solid #2a2e3e; padding: 8px 0; }
+  .k { color: #8b90a0; }
+  .ok { color: #57c9bd; }
+  .bad { color: #e8706a; }
+  .warn { color: #e9a94b; }
+  button { font: inherit; background: #1a1d29; color: inherit; border: 1px solid #2a2e3e;
+           border-radius: 4px; padding: 8px 12px; margin: 4px 4px 4px 0; }
+  textarea { width: 100%; height: 190px; margin-top: 12px; background: #1a1d29; color: inherit;
+             border: 1px solid #2a2e3e; border-radius: 4px; font: inherit; padding: 8px; }
+</style>
+</head>
+<body>
+<h1>DayEnglish · WebView probe</h1>
+
+<div id="out"></div>
+
+<div class="row">
+  <button id="speak">Проверить озвучку вслух</button>
+  <button id="audio">Проверить перемотку аудио</button>
+  <button id="pick">Проверить выбор файла</button>
+  <input id="file" type="file" accept=".epub,.fb2,.docx,.pdf" hidden>
+</div>
+
+<textarea id="report" readonly></textarea>
+<button id="copy">Скопировать отчёт</button>
+
+<script>
+const lines = [];
+const out = document.getElementById('out');
+const report = document.getElementById('report');
+
+function say(key, value, state) {
+  lines.push(key + ': ' + value);
+  const cls = state === true ? 'ok' : state === false ? 'bad' : state === 'warn' ? 'warn' : 'k';
+  const div = document.createElement('div');
+  div.className = 'row';
+  div.innerHTML = '<span class="k">' + key + '</span> — <span class="' + cls + '">' + String(value).replace(/[<&]/g, (c) => (c === '<' ? '&lt;' : '&amp;')) + '</span>';
+  out.appendChild(div);
+  report.value = lines.join('\n');
+}
+
+// --- environment -----------------------------------------------------------
+const ua = navigator.userAgent;
+say('user agent', ua);
+const m = ua.match(/Chrome\/(\d+)/);
+const chromeMajor = m ? Number(m[1]) : 0;
+// OPFS needs WebView 109+; that, not Capacitor's minSdk, is the real device floor.
+say('движок Chromium', chromeMajor || 'не определён', chromeMajor >= 109);
+say('это WebView (wv)', /\bwv\b/.test(ua) ? 'да — настоящий WebView' : 'нет, обычный браузер', /\bwv\b/.test(ua) ? true : 'warn');
+say('secure context', String(window.isSecureContext), window.isSecureContext);
+
+// --- speech ----------------------------------------------------------------
+// The whole read-aloud feature is gated on this existing. MDN records it as absent in Android WebView.
+const hasSpeech = 'speechSynthesis' in window;
+say('speechSynthesis существует', String(hasSpeech), hasSpeech);
+if (hasSpeech) {
+  const report_ = () => say('голосов доступно', String(speechSynthesis.getVoices().length), speechSynthesis.getVoices().length > 0);
+  report_();
+  speechSynthesis.onvoiceschanged = report_;
+}
+
+// --- storage ---------------------------------------------------------------
+(async () => {
+  say('OPFS (storage.getDirectory)', String(!!navigator.storage?.getDirectory), !!navigator.storage?.getDirectory);
+  if (navigator.storage?.getDirectory) {
+    try {
+      const root = await navigator.storage.getDirectory();
+      const dir = await root.getDirectoryHandle('probe', { create: true });
+      const fh = await dir.getFileHandle('t.bin', { create: true });
+      const w = await fh.createWritable();
+      await w.write(new Blob([new Uint8Array(1024 * 512)])); // 512 KB
+      await w.close();
+      const back = await (await fh.getFile()).size;
+      say('OPFS запись/чтение 512 КБ', back === 524288 ? 'работает' : 'вернулось ' + back, back === 524288);
+      await root.removeEntry('probe', { recursive: true });
+    } catch (e) {
+      say('OPFS запись/чтение', 'ошибка: ' + e.name, false);
+    }
+  }
+  // `persist()` is a no-op in WebView, which is why book files and progress would be evictable there.
+  try {
+    const persisted = navigator.storage?.persisted ? await navigator.storage.persisted() : null;
+    const granted = navigator.storage?.persist ? await navigator.storage.persist() : null;
+    say('storage.persisted()', String(persisted), persisted === true ? true : 'warn');
+    say('storage.persist() выдал разрешение', String(granted), granted === true ? true : false);
+  } catch (e) {
+    say('storage.persist()', 'ошибка: ' + e.name, false);
+  }
+  try {
+    const est = await navigator.storage.estimate();
+    say('квота', Math.round((est.quota || 0) / 1048576) + ' МБ, занято ' + Math.round((est.usage || 0) / 1048576) + ' МБ');
+  } catch { say('квота', 'недоступна', 'warn'); }
+
+  try {
+    const db = indexedDB.open('probe-db');
+    await new Promise((res, rej) => { db.onsuccess = res; db.onerror = rej; });
+    say('IndexedDB', 'открывается', true);
+    indexedDB.deleteDatabase('probe-db');
+  } catch { say('IndexedDB', 'недоступен', false); }
+})();
+
+// --- interactive checks ----------------------------------------------------
+document.getElementById('speak').onclick = () => {
+  if (!('speechSynthesis' in window)) { say('озвучка вслух', 'API отсутствует — проверять нечего', false); return; }
+  const u = new SpeechSynthesisUtterance('The gong rang twice, and then, silence.');
+  u.lang = 'en-US';
+  u.onstart = () => say('озвучка вслух', 'началась — слышно?', true);
+  u.onerror = (e) => say('озвучка вслух', 'ошибка: ' + e.error, false);
+  speechSynthesis.speak(u);
+};
+
+// A-B loop and dictation timings both depend on seeking. If `currentTime` will not move, those break.
+document.getElementById('audio').onclick = async () => {
+  const a = new Audio();
+  // 3 seconds of silence, inline — no network, closest thing to a bundled asset.
+  a.src = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YQAAAAA=';
+  try {
+    await a.play().catch(() => {});
+    a.currentTime = 1.5;
+    await new Promise((r) => setTimeout(r, 300));
+    const moved = Math.abs(a.currentTime - 1.5) < 1.4 || a.currentTime > 0;
+    say('перемотка <audio>', 'currentTime = ' + a.currentTime.toFixed(2), moved);
+    a.pause();
+  } catch (e) {
+    say('перемотка <audio>', 'ошибка: ' + e.name, false);
+  }
+};
+
+document.getElementById('pick').onclick = () => document.getElementById('file').click();
+document.getElementById('file').onchange = (e) => {
+  const f = e.target.files && e.target.files[0];
+  say('выбор файла', f ? f.name + ', ' + f.size + ' байт' : 'ничего не выбрано', !!f);
+};
+
+document.getElementById('copy').onclick = async () => {
+  try { await navigator.clipboard.writeText(report.value); say('отчёт', 'скопирован', true); }
+  catch { report.select(); say('отчёт', 'выделен — скопируйте вручную', 'warn'); }
+};
+</script>
+</body>
+</html>

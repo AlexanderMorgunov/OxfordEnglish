@@ -45,7 +45,9 @@ export default defineConfig({
         // visit, choking the initial load. Pack media is runtime-cached on demand below (and stays
         // available offline once opened).
         globPatterns: ['**/*.{js,css,html,woff2,svg,png}'],
-        globIgnores: ['**/packs/**'],
+        // `rustore-probe.html` is a throwaway diagnostic opened by hand on one phone. Precaching it
+        // would push it onto every user's device, which is how an unlinked page stops being unlinked.
+        globIgnores: ['**/packs/**', 'rustore-probe.html'],
         navigateFallback: 'index.html',
         navigateFallbackDenylist: [/^\/packs\//],
         cleanupOutdatedCaches: true,
