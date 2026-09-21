@@ -4,7 +4,8 @@ import { db } from '@/db/db';
 import { dropCard } from '@/features/srs/service';
 import { Button, Eyebrow, Input, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
-import { canSpeak, speakWord } from '@/shared/lib/audio';
+import { speakWord } from '@/shared/lib/audio';
+import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
 import { translateWord } from '@/features/vocab/translate';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import { addTerm, setTranslation } from '@/features/vocab/manage';
@@ -50,6 +51,8 @@ function Stat({ n, label }: { n: number; label: string }) {
 }
 
 export function VocabularyPage() {
+  // Hoisted: the pronounce button reads it from inside the entry `.map`, where a hook cannot go.
+  const canSpeak = useSpeechAvailable();
   const ru = useUiLang((s) => s.lang) === 'ru';
   const updateStatus = useVocabStore((s) => s.updateStatus);
   // Arrived from the reader's widget → offer a back-to-reader that pops history (restores scroll +
@@ -279,7 +282,7 @@ export function VocabularyPage() {
                 <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                   <span className="flex items-baseline gap-2">
                     <span className="text-base text-content">{e.display}</span>
-                    {canSpeak() && (
+                    {canSpeak && (
                       <button
                         type="button"
                         aria-label={`${ru ? 'Произнести' : 'Pronounce'} ${e.display}`}

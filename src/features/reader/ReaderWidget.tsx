@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { PixelImage } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import { useUiLang } from '@/features/i18n/uiLang';
-import { canSpeak } from '@/shared/lib/audio';
+import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
 import { useReaderSettings, RATE_STEPS } from './settings';
 import { withReaderReturn } from './return-to-reader';
 import { BookmarkList } from './BookmarkList';
@@ -38,6 +38,7 @@ export function ReaderWidget({
   onJump: (bm: Bookmark) => void;
   onDelete: (id: string) => void;
 }) {
+  const canSpeak = useSpeechAvailable();
   const ru = useUiLang((s) => s.lang) === 'ru';
   const rate = useReaderSettings((s) => s.rate);
   const setRate = useReaderSettings((s) => s.setRate);
@@ -149,7 +150,7 @@ export function ReaderWidget({
             <span className="w-4 shrink-0 text-center">🔖</span>
             {ru ? 'добавить закладку' : 'add bookmark'}
           </button>
-          {canSpeak() && (
+          {canSpeak && (
             <div
               role="group"
               aria-label={ru ? 'Скорость озвучки' : 'Read-aloud speed'}

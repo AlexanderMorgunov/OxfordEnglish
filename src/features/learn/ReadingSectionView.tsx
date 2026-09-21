@@ -3,7 +3,8 @@ import type { Section } from '@/content/schema';
 import { packMediaUrl } from '@/content/loader';
 import { PixelImage, SegmentedToggle } from '@/shared/ui';
 import { useVocabStore } from '@/features/vocab/vocabStore';
-import { canSpeak, resumeExclusive, speakWord } from '@/shared/lib/audio';
+import { resumeExclusive, speakWord } from '@/shared/lib/audio';
+import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
 import { translateText } from '@/features/vocab/translate';
 import { addWordCard, addPhraseCard } from '@/features/srs/service';
 import { WordToken, type Gloss } from '@/features/reader/reading-text';
@@ -13,6 +14,7 @@ import { exLabels } from '@/features/i18n/ui-strings';
 type ReadingSection = Extract<Section, { type: 'reading' }>;
 
 function GlossaryRow({ word, ipa, ru: glossRu }: { word: string; ipa?: string; ru?: string }) {
+  const canSpeak = useSpeechAvailable();
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
   const L = exLabels(lang);
@@ -20,7 +22,7 @@ function GlossaryRow({ word, ipa, ru: glossRu }: { word: string; ipa?: string; r
   return (
     <div className="flex flex-wrap items-baseline gap-2">
       <dt className="font-mono text-sm text-content">{word}</dt>
-      {canSpeak() && (
+      {canSpeak && (
         <button
           type="button"
           aria-label={ru ? `Произнести ${word}` : `Pronounce ${word}`}
@@ -152,6 +154,7 @@ const READING_RATES = { '0.75': 0.75, '1': 1, '1.25': 1.25 } as const;
 type ReadingRateKey = keyof typeof READING_RATES;
 
 export function ReadingSectionView({ section }: { section: ReadingSection }) {
+  const canSpeak = useSpeechAvailable();
   const load = useVocabStore((s) => s.load);
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [rateKey, setRateKey] = useState<ReadingRateKey>('0.75');
@@ -200,7 +203,7 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
         />
       )}
 
-      {hasAudio && canSpeak() && (
+      {hasAudio && canSpeak && (
         <div className="flex items-center gap-2.5">
           <span className="font-mono text-2xs uppercase tracking-[0.08em] text-muted">
             {ru ? 'скорость аудио' : 'audio speed'}

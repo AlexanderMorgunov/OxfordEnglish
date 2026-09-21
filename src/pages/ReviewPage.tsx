@@ -3,7 +3,8 @@ import type { Grade } from 'ts-fsrs';
 import type { SrsCard } from '@/db/db';
 import { Button, Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
-import { canSpeak, speakWord } from '@/shared/lib/audio';
+import { speakWord } from '@/shared/lib/audio';
+import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
 import { translateText, translateWord } from '@/features/vocab/translate';
 import { canPronounce, dropCard, gradeCard, getDueCards, repairCardBack, Rating } from '@/features/srs/service';
 import { BackToReader } from '@/features/reader/BackToReader';
@@ -16,6 +17,7 @@ const GRADES = [
 ] as const;
 
 export function ReviewPage() {
+  const canSpeak = useSpeechAvailable();
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [queue, setQueue] = useState<SrsCard[] | null>(null);
   const [index, setIndex] = useState(0);
@@ -104,7 +106,7 @@ export function ReviewPage() {
           <Card className="min-h-40">
             <div className="flex items-center gap-2.5">
               <p className="font-mono text-2xl text-content">{card.front}</p>
-              {canPronounce(card) && canSpeak() && (
+              {canPronounce(card) && canSpeak && (
                 <button
                   type="button"
                   aria-label={`${ru ? 'Произнести' : 'Pronounce'} ${card.front}`}
