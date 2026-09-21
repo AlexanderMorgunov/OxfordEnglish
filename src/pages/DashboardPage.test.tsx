@@ -8,5 +8,7 @@ test('dashboard renders the hero heading', () => {
       <DashboardPage />
     </MemoryRouter>
   );
-  expect(screen.getByRole('heading', { name: /english for developers/i })).toBeInTheDocument();
+  // `\s*` because the amber half sits in its own span, and the accessibility tree puts a space at that
+  // element boundary: the text reads "DayEnglish" but the accessible name is "Day English".
+  expect(screen.getByRole('heading', { name: /day\s*english/i })).toBeInTheDocument();
 });

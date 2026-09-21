@@ -40,7 +40,7 @@ export function DashboardPage() {
         <div>
           <p className="eyebrow mb-3.5">{ru ? 'сегодня' : 'today'}</p>
           <h1 className="mb-2 text-3xl font-bold tracking-tight text-balance">
-            English for <span className="text-amber">developers</span>
+            Day<span className="text-amber">English</span>
           </h1>
           <p className="max-w-prose text-lg text-muted text-pretty">
             {ru
