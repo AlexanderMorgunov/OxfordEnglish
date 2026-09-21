@@ -1,7 +1,7 @@
 import 'fake-indexeddb/auto';
 import { beforeEach, expect, test, vi } from 'vitest';
 import { db } from '@/db/db';
-import { addErrorCard, addPhraseCard, addWordCard, gradeCard, Rating } from '@/features/srs/service';
+import { addPhraseCard, addWordCard, gradeCard, Rating } from '@/features/srs/service';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import { setCurrentReading } from './activity';
 
@@ -12,11 +12,10 @@ beforeEach(async () => {
   setCurrentReading(null);
 });
 
-test('a new card counts as a save once; duplicates and error cards do not', async () => {
+test('a new card counts as a save once, a duplicate does not', async () => {
   await addWordCard('went', 'ходил');
   await addWordCard('went', 'ходил');
   await addPhraseCard('look up', 'искать');
-  await addErrorCard('ex1', 'front', 'back', []);
   expect(await today()).toMatchObject({ wordsSaved: 1, phrasesSaved: 1 });
   expect((await db.srsCards.get('word:went'))?.createdAt).toBeGreaterThan(0);
 });

@@ -34,10 +34,7 @@ export function SpotErrorExercise({ exercise, onSolved }: Props) {
     if (status === 'correct') return;
     setChosen(i);
     const original = items[i]?.original ?? -1;
-    submit(original === exercise.correctIndex, exercise.variants[original] ?? '', {
-      front: exercise.instruction.en,
-      back: exercise.variants[exercise.correctIndex] ?? '',
-    });
+    submit(original === exercise.correctIndex, exercise.variants[original] ?? '');
   };
 
   return (

@@ -5,15 +5,17 @@ import { overflowShift } from './lens-menu';
 import { cn } from '@/shared/lib/cn';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import {
-  canSpeak,
   speakWord,
   speakPassage,
   cancelSpeech,
   listEnglishVoices,
+  subscribeVoices,
   previewVoice,
   WORD_SPLIT_RE,
   WORD_TEST_RE,
 } from '@/shared/lib/audio';
+import type { Voice } from '@/shared/lib/audio';
+import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
 import { translateWord } from '@/features/vocab/translate';
 import { translateReaderText } from './translate';
 import { addWordCard, addPhraseCard } from '@/features/srs/service';
@@ -171,6 +173,7 @@ export const WordToken = memo(function WordToken({
    *  like word status). Wins over the word's own `new` status on the same token. */
   phrase?: boolean;
 }) {
+  const canSpeak = useSpeechAvailable();
   const lookup = lookupWord ?? word;
   const status = useVocabStore((s) => s.statuses.get(lookup.toLowerCase()));
   const pos = tokenId ? parsePos(tokenId) : null;
@@ -233,7 +236,7 @@ export const WordToken = memo(function WordToken({
     >
       <div className="flex items-center gap-2">
         <p className="font-mono text-sm text-content">{word}</p>
-        {canSpeak() && (
+        {canSpeak && (
           <button
             type="button"
             aria-label={`Pronounce ${word}`}
@@ -351,6 +354,9 @@ const Paragraph = memo(function Paragraph({
   onBookmark?: (paraIndex: number, sentenceIndex: number, sentence: string) => void;
   typoClass: string;
 }) {
+  // Hoisted: the sentence play button below reads it from inside `sentences.map`, where a hook
+  // cannot go.
+  const canSpeak = useSpeechAvailable();
   const sentences = useMemo(() => toSentences(text), [text]);
   // Per-sentence token indices inside a saved phrase; recomputed only when the text or the saved
   // set changes (not on unrelated re-renders like a sibling word's status flip).
@@ -513,7 +519,7 @@ const Paragraph = memo(function Paragraph({
 
   return (
     <p className={typoClass} data-para={index}>
-      {canSpeak() && (
+      {canSpeak && (
         <button
           type="button"
           aria-label={
@@ -557,7 +563,7 @@ const Paragraph = memo(function Paragraph({
             />
           );
         };
-        const playButton = canSpeak() ? (
+        const playButton = canSpeak ? (
           <button
             key="play"
             type="button"
@@ -710,6 +716,7 @@ export function ReadingText({
   bookmarkedSentences?: Set<string>;
   onBookmarkSentence?: (paraIndex: number, sentenceIndex: number, sentence: string) => void;
 }) {
+  const canSpeak = useSpeechAvailable();
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
   const level = useLearner((s) => s.level);
@@ -743,12 +750,13 @@ export function ReadingText({
   // Re-render + clear cells only when the translate sub-mode or the band changes; the lens mode is
   // now chosen per sentence via the menu.
   const lensK = `${aiTranslation ? 'ai' : 'free'}:${clampBand(level, 0)}`;
-  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>(() => listEnglishVoices());
+  const [voices, setVoices] = useState<Voice[]>(() => listEnglishVoices());
   useEffect(() => {
+    // Through the engine, not `window.speechSynthesis` directly: that object does not exist in the
+    // Android WebView, so a direct listener never fires and the picker stays empty forever.
     const sync = () => setVoices(listEnglishVoices());
     sync();
-    window.speechSynthesis?.addEventListener?.('voiceschanged', sync);
-    return () => window.speechSynthesis?.removeEventListener?.('voiceschanged', sync);
+    return subscribeVoices(sync);
   }, []);
   const chooseVoice = (uri: string | null) => {
     setVoiceURI(uri);
@@ -1099,7 +1107,7 @@ export function ReadingText({
             </span>
           </span>
         )}
-        {canSpeak() && voices.length > 0 && (
+        {canSpeak && voices.length > 0 && (
           <div className="flex items-center gap-1.5" role="group" aria-label={ru ? 'Голос озвучки' : 'Read-aloud voice'}>
             <label htmlFor="reader-voice" className="sr-only">
               {ru ? 'Голос озвучки' : 'Read-aloud voice'}
@@ -1127,7 +1135,7 @@ export function ReadingText({
             </button>
           </div>
         )}
-        {canSpeak() && (
+        {canSpeak && (
           <div className="flex items-center gap-1.5" role="group" aria-label={ru ? 'Скорость озвучки' : 'Read-aloud speed'}>
             <span className="font-mono text-2xs text-muted">{ru ? 'скорость' : 'speed'}</span>
             {RATE_STEPS.map((r) => (
@@ -1196,7 +1204,7 @@ export function ReadingText({
       {phrase && (
         <div className="sticky top-2 z-10 flex flex-wrap items-center gap-2 rounded-sm border border-teal-dim bg-surface-2 py-2 pl-3 pr-11 text-sm shadow-md">
           <span className="font-mono text-teal">{phrase}</span>
-          {canSpeak() && (
+          {canSpeak && (
             <button
               type="button"
               aria-label={ru ? `Произнести ${phrase}` : `Pronounce ${phrase}`}

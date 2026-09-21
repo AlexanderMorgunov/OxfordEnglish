@@ -1,4 +1,8 @@
 import { forSpeech } from './speechText';
+import { speechEngine } from './speech';
+import type { Voice } from './speech';
+
+export type { Voice } from './speech';
 
 let current: HTMLAudioElement | null = null;
 
@@ -13,13 +17,15 @@ function stopClip(): void {
   }
 }
 
-export const canSpeak = () =>
-  typeof window !== 'undefined' && 'speechSynthesis' in window;
+export const canSpeak = () => speechEngine().available();
 
-/** Stop any ongoing browser speech and invalidate its pending callbacks. */
+/** True while an utterance is actually sounding — the reading tracker counts that as activity. */
+export const isSpeaking = () => speechEngine().isSpeaking();
+
+/** Stop any ongoing speech and invalidate its pending callbacks. */
 export function cancelSpeech(): void {
   speechToken += 1;
-  if (canSpeak()) window.speechSynthesis.cancel();
+  speechEngine().cancel();
 }
 
 /** Play one clip at a time — stops any previous clip so repeated clicks don't overlap. */
@@ -43,80 +49,39 @@ export function resumeExclusive(el: HTMLAudioElement, rate = 1): void {
   void el.play();
 }
 
-let cachedVoice: SpeechSynthesisVoice | null | undefined;
-/** A user-chosen voice (by voiceURI) overrides the auto-pick; null = auto. */
-let preferredVoiceURI: string | null = null;
+/** English (`en-*`) voices the engine exposes, for the reader's voice picker. */
+export function listEnglishVoices(): Voice[] {
+  return speechEngine().englishVoices();
+}
 
-/** English (`en-*`) voices the browser exposes, for the reader's voice picker. */
-export function listEnglishVoices(): SpeechSynthesisVoice[] {
-  if (!canSpeak()) return [];
-  return window.speechSynthesis.getVoices().filter((v) => /^en([-_]|$)/i.test(v.lang));
+/**
+ * Subscribe to the voice list changing. Voices load asynchronously everywhere, and the web event
+ * (`voiceschanged`) has no native counterpart — a caller that listens for it directly gets an empty
+ * list forever in a WebView.
+ */
+export function subscribeVoices(onChange: () => void): () => void {
+  return speechEngine().subscribeVoices(onChange);
 }
 
 /** Set (or clear, with null) the preferred read-aloud voice; re-resolves on next utterance. */
 export function setPreferredVoiceURI(uri: string | null): void {
-  preferredVoiceURI = uri;
-  cachedVoice = undefined;
-}
-
-/**
- * Pick the best available English voice. The browser default is often the plainest one;
- * modern engines ship far better "Natural/Neural" voices we can opt into. Prefer a local
- * voice among equals so read-aloud still works offline.
- */
-function pickVoice(): SpeechSynthesisVoice | null {
-  const en = listEnglishVoices();
-  if (!en.length) return null;
-  const score = (v: SpeechSynthesisVoice) =>
-    (/natural|neural|enhanced|premium/i.test(v.name) ? 8 : 0) +
-    (/google|microsoft|siri|samantha|aria|jenny|guy/i.test(v.name) ? 4 : 0) +
-    (/en-US/i.test(v.lang) ? 2 : 0) +
-    (v.localService ? 1 : 0);
-  return [...en].sort((a, b) => score(b) - score(a))[0] ?? null;
-}
-
-function resolveVoice(): SpeechSynthesisVoice | null {
-  if (!canSpeak()) return null;
-  if (preferredVoiceURI) {
-    const chosen = window.speechSynthesis.getVoices().find((v) => v.voiceURI === preferredVoiceURI);
-    if (chosen) return chosen;
-  }
-  return pickVoice();
-}
-
-function bestVoice(): SpeechSynthesisVoice | null {
-  if (cachedVoice === undefined) cachedVoice = resolveVoice();
-  return cachedVoice ?? null;
+  speechEngine().setPreferredVoiceURI(uri);
 }
 
 /** Speak a reference line so the user can hear a specific voice before committing to it. */
 export function previewVoice(voiceURI: string | null, text: string): void {
   if (!canSpeak()) return;
   cancelSpeech();
-  const u = new SpeechSynthesisUtterance(text);
-  const v = voiceURI
-    ? window.speechSynthesis.getVoices().find((x) => x.voiceURI === voiceURI) ?? null
-    : pickVoice();
-  if (v) u.voice = v;
-  u.lang = v?.lang ?? 'en-US';
-  window.speechSynthesis.speak(u);
+  speechEngine().preview(text, voiceURI);
 }
 
-function applyVoice(u: SpeechSynthesisUtterance): void {
-  const v = bestVoice();
-  if (v) u.voice = v;
-  u.lang = 'en-US';
-}
-
-/** Speak a word in American English (browser synthesis). Cancels any prior utterance. */
+/** Speak a word in American English. Cancels any prior utterance. */
 export function speakWord(word: string): void {
   if (!canSpeak()) return;
   const spoken = forSpeech(word);
   if (!spoken) return;
   cancelSpeech();
-  const utterance = new SpeechSynthesisUtterance(spoken);
-  applyVoice(utterance);
-  window.speechSynthesis.speak(utterance);
+  speechEngine().speak(spoken, {});
 }
 
 export type WordSpan = { start: number; end: number };
@@ -237,21 +202,20 @@ export function speakPassage(
       speakNext();
       return;
     }
-    const u = new SpeechSynthesisUtterance(spoken);
-    applyVoice(u);
-    u.rate = rate;
-    // Report the chunk from its real `start` (not at enqueue) so a pause resumes from the right chunk.
-    u.onstart = () => {
-      if (alive()) opts.onChunk?.(myChunk);
-    };
     // Advance on end; on error, skip the failed chunk rather than stall the whole read.
     const advance = () => {
       if (!alive()) return;
       speakNext();
     };
-    u.onend = advance;
-    u.onerror = advance;
-    window.speechSynthesis.speak(u);
+    speechEngine().speak(spoken, {
+      rate,
+      // Report the chunk from its real start (not at enqueue) so a pause resumes from the right chunk.
+      onStart: () => {
+        if (alive()) opts.onChunk?.(myChunk);
+      },
+      onEnd: advance,
+      onError: advance,
+    });
   };
   speakNext();
 }
@@ -261,12 +225,5 @@ if (typeof document !== 'undefined') {
     if (!document.hidden) return;
     stopClip();
     cancelSpeech();
-  });
-}
-
-// Voices load asynchronously in most browsers; re-resolve once they arrive.
-if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-  window.speechSynthesis.addEventListener?.('voiceschanged', () => {
-    cachedVoice = resolveVoice();
   });
 }

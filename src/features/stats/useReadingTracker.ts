@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { countWords } from '@/features/reader/position';
+import { isSpeaking } from '@/shared/lib/audio';
 import { FLUSH_MS, POLL_MS, dwellNeededMs, isReading, pollCreditMs } from './accounting';
 import { flushPending, recordActivity, setCurrentReading, stashPending } from './activity';
 
@@ -71,7 +72,10 @@ export function useReadingTracker({
       isReading({
         visible: document.visibilityState === 'visible',
         focused: document.hasFocus(),
-        speaking: 'speechSynthesis' in window && window.speechSynthesis.speaking,
+        // Through the engine: `window.speechSynthesis` is absent in the Android WebView, where a
+        // direct read would report "not speaking" for the whole of a read-aloud session — exactly
+        // the case this flag exists to credit.
+        speaking: isSpeaking(),
         sinceInputMs: now - lastInput,
       });
     const take = () => {

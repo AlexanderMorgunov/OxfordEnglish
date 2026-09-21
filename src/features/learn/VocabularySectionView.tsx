@@ -2,7 +2,8 @@ import { useState } from 'react';
 import type { Section, VocabEntry } from '@/content/schema';
 import { packMediaUrl } from '@/content/loader';
 import { Button, SegmentedToggle } from '@/shared/ui';
-import { canSpeak, playClip, speakWord } from '@/shared/lib/audio';
+import { playClip, speakWord } from '@/shared/lib/audio';
+import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
 import { addWordCard } from '@/features/srs/service';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { exLabels } from '@/features/i18n/ui-strings';
@@ -10,6 +11,7 @@ import { exLabels } from '@/features/i18n/ui-strings';
 type VocabularySection = Extract<Section, { type: 'vocabulary' }>;
 
 function WordCard({ entry, testMode }: { entry: VocabEntry; testMode: boolean }) {
+  const canSpeak = useSpeechAvailable();
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
   const L = exLabels(lang);
@@ -24,7 +26,7 @@ function WordCard({ entry, testMode }: { entry: VocabEntry; testMode: boolean })
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-baseline gap-2">
           <span className="font-mono text-lg text-content">{entry.word}</span>
-          {canSpeak() && (
+          {canSpeak && (
             <button
               type="button"
               aria-label={ru ? `Произнести ${entry.word}` : `Pronounce ${entry.word}`}

@@ -1,8 +1,10 @@
+import 'fake-indexeddb/auto';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import type { ReactElement } from 'react';
 import type { Exercise } from '@/content/schema';
+import { db } from '@/db/db';
 import { GapFillExercise } from './GapFillExercise';
 import { ChoiceExercise } from './ChoiceExercise';
 
@@ -82,30 +84,36 @@ test('choice does not always render the authored answer first', () => {
 });
 
 /**
- * A wrong answer creates a review card, which is how phrases nobody added turned up in the queue later.
- * The card is worth keeping — meeting a missed exercise again is the point — but it has to be said out
- * loud where it happens, or it reads as the app inventing content.
+ * A wrong answer used to create a review card. It no longer does, and this is where that is pinned.
+ *
+ * The queue is what the learner chose to keep, and a gap-fill prompt lifted out of its exercise
+ * ("Give it to ___ .") cannot be answered there anyway. Mistakes are still recorded — `addAttempt`
+ * runs either way, which is where every statistic about them comes from.
  */
 // A fresh id per test: attempt outcomes live in a module-level store that outlives a test, so reusing
 // `ex.gap` starts this one already answered and `submit` returns before it can do anything.
 const freshGap = (id: string) => ({ ...gap, id });
 
-test('a wrong answer says that it went into the review queue', async () => {
+test('a wrong answer creates no review card and claims none', async () => {
   const user = userEvent.setup();
   renderR(<GapFillExercise exercise={freshGap('ex.gap.wrong')} />);
 
   await user.type(screen.getByRole('textbox'), 'deploys');
   await user.click(screen.getByRole('button', { name: /run check/i }));
 
-  expect(await screen.findByText(/added to your review queue/i)).toBeInTheDocument();
+  // Marked wrong, so the attempt was processed and this is not a test that simply did nothing.
+  expect(await screen.findByText(/try again/i)).toBeInTheDocument();
+  expect(screen.queryByText(/added to your review queue|добавлено в повторение/i)).not.toBeInTheDocument();
+  expect(await db.srsCards.count()).toBe(0);
 });
 
-test('a right answer says nothing of the sort', async () => {
+test('a right answer creates none either', async () => {
   const user = userEvent.setup();
   renderR(<GapFillExercise exercise={freshGap('ex.gap.right')} />);
 
   await user.type(screen.getByRole('textbox'), 'deployed');
   await user.click(screen.getByRole('button', { name: /run check/i }));
 
-  expect(screen.queryByText(/added to your review queue/i)).not.toBeInTheDocument();
+  expect(screen.queryByText(/added to your review queue|добавлено в повторение/i)).not.toBeInTheDocument();
+  expect(await db.srsCards.count()).toBe(0);
 });

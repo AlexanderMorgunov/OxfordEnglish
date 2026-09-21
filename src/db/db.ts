@@ -60,6 +60,9 @@ export interface SrsCard extends SyncMetaFields {
   contextGloss?: string;
   sourceDayId?: string;
   tags: string[];
+  /** Legacy: a wrong answer used to create a card automatically. Nothing sets this any more, but rows
+   *  carrying it are in people's databases and sync between their devices, so every reader of it stays
+   *  — the queue labels and removes them, the word bank skips them. */
   fromError?: boolean;
   due: Date;
   card: Card;

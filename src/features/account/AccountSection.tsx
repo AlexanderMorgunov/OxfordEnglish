@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
 import { Button, Card, Eyebrow, Input, PixelImage } from '@/shared/ui';
 import { QrScanner } from './QrScanner';
+import { useHasCamera } from '@/shared/lib/useHasCamera';
 import { TotpEnroll, TotpRecover } from './TotpSection';
 import { QuotaNotice } from './QuotaNotice';
 import { PlanSection } from './PlanSection';
@@ -482,7 +483,8 @@ function BookFileSyncToggle({ ru }: { ru: boolean }) {
 }
 
 /** Signed-in device: approve a pending code from a new device, and manage/revoke the device list. */
-function DeviceManager({ ru, thisDeviceId }: { ru: boolean; thisDeviceId: string }) {
+/** Exported for its own test: the approve flow has behaviour worth pinning without the whole page. */
+export function DeviceManager({ ru, thisDeviceId }: { ru: boolean; thisDeviceId: string }) {
   const approveDevice = useAccount((s) => s.approveDevice);
   const listDevices = useAccount((s) => s.listDevices);
   const revokeDevice = useAccount((s) => s.revokeDevice);
@@ -494,6 +496,7 @@ function DeviceManager({ ru, thisDeviceId }: { ru: boolean; thisDeviceId: string
   const [busy, setBusy] = useState(false);
   const [scanning, setScanning] = useState(false);
   const [devices, setDevices] = useState<Device[] | null>(null);
+  const hasCamera = useHasCamera();
 
   const refreshList = () => {
     void listDevices()
@@ -550,10 +553,16 @@ function DeviceManager({ ru, thisDeviceId }: { ru: boolean; thisDeviceId: string
   return (
     <Card className="mt-3">
       <p className="mb-2 text-sm font-semibold text-content">{ru ? 'Одобрить устройство' : 'Approve a device'}</p>
+      {/* The instruction has to match the buttons below it. Sending someone to scan a QR on a machine
+          with no camera is how this flow reads as broken — the typed code is the whole path there. */}
       <p className="mb-2 text-2xs text-muted text-pretty">
-        {ru
-          ? 'На новом устройстве нажмите «Уже вошли на другом устройстве?» — отсканируйте показанный QR или введите код.'
-          : 'On the new device, tap “Already signed in elsewhere?” — scan the QR it shows, or enter the code.'}
+        {hasCamera
+          ? ru
+            ? 'На новом устройстве нажмите «Уже вошли на другом устройстве?» — отсканируйте показанный QR или введите код.'
+            : 'On the new device, tap “Already signed in elsewhere?” — scan the QR it shows, or enter the code.'
+          : ru
+            ? 'На новом устройстве нажмите «Уже вошли на другом устройстве?» и введите показанный там код сюда.'
+            : 'On the new device, tap “Already signed in elsewhere?” and type the code it shows in here.'}
       </p>
       <div className="mb-1 flex flex-wrap items-center gap-2">
         <Input
@@ -567,9 +576,11 @@ function DeviceManager({ ru, thisDeviceId }: { ru: boolean; thisDeviceId: string
         <Button size="sm" disabled={busy || code.trim().length < 8} onClick={() => void onApprove()}>
           {ru ? 'Одобрить' : 'Approve'}
         </Button>
-        <Button size="sm" variant="ghost" onClick={() => setScanning((v) => !v)}>
-          {scanning ? (ru ? 'Отмена скана' : 'Cancel scan') : ru ? '📷 Сканировать QR' : '📷 Scan QR'}
-        </Button>
+        {hasCamera && (
+          <Button size="sm" variant="ghost" onClick={() => setScanning((v) => !v)}>
+            {scanning ? (ru ? 'Отмена скана' : 'Cancel scan') : ru ? '📷 Сканировать QR' : '📷 Scan QR'}
+          </Button>
+        )}
       </div>
       {scanning && (
         <QrScanner
