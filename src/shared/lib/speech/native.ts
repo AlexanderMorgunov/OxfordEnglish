@@ -1,4 +1,7 @@
 import type { SpeakHandlers, SpeechEngine, Voice } from './engine';
+import { isNativePlatform } from '../platform';
+
+export { isNativePlatform };
 
 /**
  * Android synthesis through `@capacitor-community/text-to-speech`, for the WebView where
@@ -242,10 +245,3 @@ export const nativeEngine: SpeechEngine = {
     return () => listeners.delete(onChange);
   },
 };
-
-/** True inside the Capacitor app. Read off the injected global rather than importing `@capacitor/core`,
- *  which would put the whole runtime into the web bundle to answer one boolean. */
-export function isNativePlatform(): boolean {
-  const cap = (globalThis as { Capacitor?: { isNativePlatform?: () => boolean } }).Capacitor;
-  return cap?.isNativePlatform?.() === true;
-}

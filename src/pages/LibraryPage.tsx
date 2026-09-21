@@ -5,6 +5,7 @@ import { Button, Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { importBook, listBooks, removeBook } from '@/features/reader/service';
 import { opfsAvailable, requestPersistence } from '@/features/reader/storage';
+import { isNativePlatform } from '@/shared/lib/platform';
 import { useBookFileSync, useBookUploadIssues, type UploadIssue } from '@/features/reader/blobSync';
 import { useAccount } from '@/features/account/store';
 import { RecommendedShelf } from '@/features/reader/RecommendedShelf';
@@ -101,6 +102,7 @@ export function LibraryPage() {
   const [error, setError] = useState<string | null>(null);
   const [persisted, setPersisted] = useState(true);
   const supported = opfsAvailable();
+  const native = isNativePlatform();
 
   const reload = () => void listBooks().then(setBooks);
   useEffect(reload, []);
@@ -181,15 +183,25 @@ export function LibraryPage() {
         </Card>
       )}
 
+      {/*
+        In the installed Android app `persist()` is always refused — that is what the WebView does,
+        not a sign of anything wrong — so this card would be permanent there. Worse, its advice is
+        impossible to follow: the app came from a store, and there is no "Add to Home Screen" to
+        reach for. Same warning, honest remedy.
+      */}
       {supported && !persisted && (
         <Card className="mb-4 border-amber-dim bg-amber-dim/10">
           <p className="font-mono text-2xs uppercase tracking-[0.08em] text-amber">
             {ru ? 'внимание' : 'heads up'}
           </p>
           <p className="mt-2 text-sm text-muted">
-            {ru
-              ? 'Браузер не гарантирует сохранность файлов. Чтобы книги не пропали, установи приложение на домашний экран (Поделиться → «На экран Домой»).'
-              : 'The browser will not guarantee your files survive. To keep your books, install the app to your home screen (Share → “Add to Home Screen”).'}
+            {native
+              ? ru
+                ? 'Файлы книг лежат внутри приложения. Они пропадут, если удалить приложение или очистить его данные — а при нехватке места система может вытеснить их и сама. Включите синхронизацию, чтобы книги хранились ещё и в облаке.'
+                : 'Book files live inside the app. They go if the app is uninstalled or its data cleared — and the system may evict them on its own when storage runs short. Turn on sync to keep a copy in the cloud.'
+              : ru
+                ? 'Браузер не гарантирует сохранность файлов. Чтобы книги не пропали, установи приложение на домашний экран (Поделиться → «На экран Домой»).'
+                : 'The browser will not guarantee your files survive. To keep your books, install the app to your home screen (Share → “Add to Home Screen”).'}
           </p>
         </Card>
       )}
