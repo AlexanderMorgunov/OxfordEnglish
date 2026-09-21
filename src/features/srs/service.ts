@@ -68,23 +68,17 @@ export async function addPhraseCard(
   if (added) await recordSave('phrase');
 }
 
-export async function addErrorCard(
-  exerciseId: string,
-  front: string,
-  back: string,
-  tags: string[],
-  sourceDayId?: string
-): Promise<void> {
-  await upsert({
-    id: `err:${exerciseId}`,
-    kind: 'phrase',
-    front,
-    back,
-    tags,
-    fromError: true,
-    sourceDayId,
-  });
-}
+/**
+ * Mistake cards are no longer created — `fromError` rows only exist on devices that practised before
+ * this. Everything that READS them stays: the queue labels them, offers removal, and the lexicon skips
+ * them, because those rows are still in people's databases and syncing between their devices.
+ *
+ * Getting an exercise wrong used to add one automatically. It filled the review queue with cards
+ * nobody chose — 321 on the author's own account — and the queue is meant to hold what the learner
+ * kept. The cards were second-class everywhere too: no pronunciation, no translation repair, excluded
+ * from the word bank, and their front is a gap-fill that cannot be answered away from its exercise.
+ * Mistakes are still recorded in `attempts`, which is what every statistic about them reads.
+ */
 
 /**
  * Fill in a translation the card was saved without.
@@ -143,7 +137,37 @@ export async function dropCard(id: string): Promise<void> {
 
 export async function countDue(now = new Date()): Promise<number> {
   try {
-    return await db.srsCards.where('due').belowOrEqual(now).count();
+    // Counted the same way `getDueCards` lists them: a tombstone is not waiting to be reviewed, and a
+    // count that disagrees with the queue it describes is worse than no count.
+    return (await getDueCards(now)).length;
+  } catch {
+    return 0;
+  }
+}
+
+/** Mistake cards still in the queue, tombstones excluded — the number bulk removal talks about. */
+export async function countErrorCards(): Promise<number> {
+  try {
+    const rows = await db.srsCards.filter((c) => c.fromError === true).toArray();
+    return rows.filter((c) => !isDeleted(c)).length;
+  } catch {
+    return 0;
+  }
+}
+
+/**
+ * Drop every mistake card at once.
+ *
+ * One at a time is the right granularity for a handful and unusable for three hundred, which is what a
+ * few weeks of practice produces. Soft deletes, like `dropCard`, so the removal reaches the account's
+ * other devices instead of being undone by the next pull.
+ */
+export async function dropAllErrorCards(): Promise<number> {
+  try {
+    const rows = await db.srsCards.filter((c) => c.fromError === true).toArray();
+    const live = rows.filter((c) => !isDeleted(c));
+    for (const row of live) await softDeleteSrsCard(row.id);
+    return live.length;
   } catch {
     return 0;
   }

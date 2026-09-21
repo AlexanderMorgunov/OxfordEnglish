@@ -36,10 +36,7 @@ export function ChoiceExercise({ exercise, onSolved }: Props) {
     if (status === 'correct') return;
     setChosen(i);
     const original = items[i]?.original ?? -1;
-    submit(original === exercise.correctIndex, exercise.options[original] ?? '', {
-      front: exercise.prompt,
-      back: exercise.options[exercise.correctIndex] ?? '',
-    });
+    submit(original === exercise.correctIndex, exercise.options[original] ?? '');
   };
 
   return (

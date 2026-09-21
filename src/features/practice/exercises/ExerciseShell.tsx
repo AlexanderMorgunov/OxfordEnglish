@@ -30,7 +30,7 @@ export function ExerciseShell({
   children,
   feedback,
 }: ExerciseShellProps) {
-  const { status, attempts, canReveal, aiHintsLeft, noteAiHint, revealHint, savedToReview } = attempt;
+  const { status, attempts, canReveal, aiHintsLeft, noteAiHint, revealHint } = attempt;
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
   const L = exLabels(lang);
@@ -68,14 +68,6 @@ export function ExerciseShell({
       )}
       {children}
       {feedback}
-
-      {/* A wrong answer quietly created a review card, so people met it later in the queue as something
-          they had never added. Say it once, where it happens. */}
-      {savedToReview && status !== 'correct' && (
-        <p className="mt-3 font-mono text-2xs text-muted">
-          {ru ? '→ добавлено в повторение' : '→ added to your review queue'}
-        </p>
-      )}
 
       {commonError && (
         <p className="mt-3 rounded-sm border-l-[3px] border-amber bg-amber-dim/15 px-3.5 py-2.5 text-sm leading-relaxed">

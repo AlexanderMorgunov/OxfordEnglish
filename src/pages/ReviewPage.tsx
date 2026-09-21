@@ -6,7 +6,16 @@ import { useUiLang } from '@/features/i18n/uiLang';
 import { speakWord } from '@/shared/lib/audio';
 import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
 import { translateText, translateWord } from '@/features/vocab/translate';
-import { canPronounce, dropCard, gradeCard, getDueCards, repairCardBack, Rating } from '@/features/srs/service';
+import {
+  canPronounce,
+  countErrorCards,
+  dropAllErrorCards,
+  dropCard,
+  gradeCard,
+  getDueCards,
+  repairCardBack,
+  Rating,
+} from '@/features/srs/service';
 import { BackToReader } from '@/features/reader/BackToReader';
 
 const GRADES = [
@@ -16,6 +25,13 @@ const GRADES = [
   { rating: Rating.Easy, ru: 'легко', en: 'easy' },
 ] as const;
 
+/**
+ * Below this, clearing one card at a time is still reasonable and a bulk button is mostly a way to
+ * lose work by mistake. Above it the queue has stopped being a review queue, which is the complaint
+ * this answers.
+ */
+const BULK_CLEAR_THRESHOLD = 20;
+
 export function ReviewPage() {
   const canSpeak = useSpeechAvailable();
   const ru = useUiLang((s) => s.lang) === 'ru';
@@ -24,9 +40,12 @@ export function ReviewPage() {
   const [revealed, setRevealed] = useState(false);
   const [extra, setExtra] = useState<string | null>(null);
   const [lookedUp, setLookedUp] = useState(false);
+  const [errorCount, setErrorCount] = useState(0);
+  const [confirmClear, setConfirmClear] = useState(false);
 
   useEffect(() => {
     void getDueCards().then(setQueue);
+    void countErrorCards().then(setErrorCount);
   }, []);
 
   const card = queue?.[index];
@@ -55,10 +74,23 @@ export function ReviewPage() {
   const drop = async () => {
     if (!card) return;
     await dropCard(card.id);
+    if (card.fromError) setErrorCount((n) => Math.max(0, n - 1));
     setRevealed(false);
     setExtra(null);
     setLookedUp(false);
     setQueue((cur) => cur?.filter((c) => c.id !== card.id) ?? cur);
+  };
+
+  /** Clears the pile in one go and reloads the queue, because most of what was in it is now gone. */
+  const clearErrors = async () => {
+    await dropAllErrorCards();
+    setConfirmClear(false);
+    setErrorCount(0);
+    setRevealed(false);
+    setExtra(null);
+    setLookedUp(false);
+    setIndex(0);
+    setQueue(await getDueCards());
   };
 
   const grade = async (rating: Grade) => {
@@ -103,6 +135,44 @@ export function ReviewPage() {
             {queue.length - index} {ru ? 'к повторению' : 'due'} ·{' '}
             {card.fromError ? (ru ? 'из ошибки в упражнении' : 'from a missed exercise') : card.kind}
           </p>
+
+          {/* Offered only once mistake cards have piled up past what anyone would clear one at a time.
+              Below the threshold the per-card control is the better tool and this is just a way to
+              throw away work by accident. */}
+          {errorCount >= BULK_CLEAR_THRESHOLD &&
+            (confirmClear ? (
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="text-sm text-content">
+                  {ru
+                    ? `Убрать ${errorCount} карточек из ошибок? Отменить будет нельзя.`
+                    : `Remove ${errorCount} mistake cards? This cannot be undone.`}
+                </span>
+                <button
+                  type="button"
+                  className="font-mono text-2xs text-coral underline underline-offset-4"
+                  onClick={() => void clearErrors()}
+                >
+                  {ru ? 'убрать' : 'remove'}
+                </button>
+                <button
+                  type="button"
+                  className="font-mono text-2xs text-muted underline underline-offset-4"
+                  onClick={() => setConfirmClear(false)}
+                >
+                  {ru ? 'отмена' : 'cancel'}
+                </button>
+              </div>
+            ) : (
+              <button
+                type="button"
+                className="self-start font-mono text-2xs text-muted underline underline-offset-4 transition-colors hover:text-coral"
+                onClick={() => setConfirmClear(true)}
+              >
+                {ru
+                  ? `убрать все карточки из ошибок (${errorCount})`
+                  : `remove all mistake cards (${errorCount})`}
+              </button>
+            ))}
           <Card className="min-h-40">
             <div className="flex items-center gap-2.5">
               <p className="font-mono text-2xl text-content">{card.front}</p>
@@ -140,20 +210,23 @@ export function ReviewPage() {
                 {card.contextSentence && (
                   <p className="mt-2 text-sm text-muted">{card.contextSentence}</p>
                 )}
-                {/* Mistake cards are the only ones with nowhere else to manage them: the lexicon skips
-                    them, so without this the queue is the one place they appear and cannot be left. */}
-                {card.fromError && (
-                  <button
-                    type="button"
-                    className="mt-3 font-mono text-2xs text-muted underline underline-offset-4 transition-colors hover:text-coral"
-                    onClick={() => void drop()}
-                  >
-                    {ru ? 'убрать из повторения' : 'remove from review'}
-                  </button>
-                )}
               </div>
             )}
           </Card>
+
+          {/* Mistake cards are the only ones with nowhere else to manage them: the lexicon skips them,
+              so the queue is the one place they appear and can be left. Outside the revealed block on
+              purpose — deciding you do not want a card back is not an answer to it, and making someone
+              reveal one first is asking them to work through what they are trying to drop. */}
+          {card.fromError && (
+            <button
+              type="button"
+              className="self-start font-mono text-2xs text-muted underline underline-offset-4 transition-colors hover:text-coral"
+              onClick={() => void drop()}
+            >
+              {ru ? 'убрать из повторения' : 'remove from review'}
+            </button>
+          )}
 
           {revealed ? (
             <div

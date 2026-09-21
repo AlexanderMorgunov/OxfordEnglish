@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { addAttempt } from '@/features/sync/local';
-import { addErrorCard } from '@/features/srs/service';
 import { useSessionResults } from '@/features/progress/sessionResults';
 import type { LocalizedText } from '@/content/schema';
 
@@ -28,7 +27,6 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
   const [attempts, setAttempts] = useState<string[]>([]);
   const [usedHint, setUsedHint] = useState(false);
   const [aiHintsUsed, setAiHintsUsed] = useState(0);
-  const [savedToReview, setSavedToReview] = useState(false);
 
   useEffect(() => {
     if (!stored) return;
@@ -36,11 +34,7 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
     setAttemptNumber((cur) => (cur === 0 ? stored.attempts : cur));
   }, [stored]);
 
-  const submit = (
-    correct: boolean,
-    userAnswer: string,
-    errorCard?: { front: string; back: string }
-  ) => {
+  const submit = (correct: boolean, userAnswer: string) => {
     if (status === 'correct') return;
     const n = attemptNumber + 1;
     setAttemptNumber(n);
@@ -60,11 +54,11 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
       setStatus('correct');
       onSolved?.();
     } else {
+      // A wrong answer used to create a review card here. It no longer does: the review queue is what
+      // the learner chose to keep, and a gap-fill prompt torn out of its exercise ("Give it to ___ .")
+      // cannot be answered there anyway. The attempt is still recorded above, which is where every
+      // statistic about mistakes already comes from.
       setStatus('incorrect');
-      if (errorCard) {
-        void addErrorCard(exercise.id, errorCard.front, errorCard.back, exercise.tags);
-        setSavedToReview(true); // silent until now, so these turned up in the queue as a surprise
-      }
     }
   };
 
@@ -76,7 +70,6 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
     aiHintsUsed,
     aiHintsLeft: AI_HINT_LIMIT - aiHintsUsed,
     noteAiHint: () => setAiHintsUsed((n) => n + 1),
-    savedToReview,
     canReveal: attemptNumber >= 2 && status !== 'correct',
     revealHint: () => setUsedHint(true),
     submit,
