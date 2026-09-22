@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { beginCheckout, claimPending, claimPurchase, clearPending, readPending, formatPrice } from './billing';
+import { beginCheckout, claimNote, claimPending, claimPurchase, clearPending, readPending, formatPrice } from './billing';
+import type { Entitlement } from './contract';
 import { useAccount } from './store';
 import { useEntitlement } from './entitlement';
 import { ApiFailure } from './api';
@@ -167,6 +168,91 @@ describe('claimPurchase', () => {
   it('does not declare an account empty when it could not reach the server', async () => {
     vi.mocked(api.unclaimedGrant).mockRejectedValue(new ApiFailure('network', 0));
     expect(await claimPurchase(1, 0)).toBe('unreachable');
+  });
+});
+
+// "The payment is not confirmed yet" is a verdict, and it was being handed out by code paths that had
+// not asked anyone. Without a session there is nobody to ask; a run that dies on the network learns
+// nothing either. Both used to answer "wait a couple of minutes" to someone who had just been charged.
+describe('an unasked question is not an answer', () => {
+  it('reports no session as "could not check", not as "still pending"', async () => {
+    vi.mocked(api.startCheckout).mockResolvedValue(CHECKOUT);
+    await beginCheckout('pro_month');
+    signOut();
+
+    expect(await claimPending(3, 0)).toBe('unreachable');
+    expect(api.redeemGrant).not.toHaveBeenCalled();
+  });
+
+  it('still says pending once the server itself has refused the grant', async () => {
+    vi.mocked(api.startCheckout).mockResolvedValue(CHECKOUT);
+    await beginCheckout('pro_month');
+    vi.mocked(api.redeemGrant).mockRejectedValue(invalid());
+    let calls = 0;
+    useAccount.setState({ status: 'authenticated', getAccessToken: async () => (calls++ === 0 ? 'tok' : null) } as never);
+
+    expect(await claimPending(3, 0)).toBe('pending');
+  });
+
+  it('reports silence as silence when every attempt died on the network', async () => {
+    vi.mocked(api.startCheckout).mockResolvedValue(CHECKOUT);
+    await beginCheckout('pro_month');
+    vi.mocked(api.redeemGrant).mockRejectedValue(new ApiFailure('network', 0));
+
+    expect(await claimPending(3, 0)).toBe('unreachable');
+    expect(api.redeemGrant).toHaveBeenCalledTimes(3);
+  });
+
+  it('carries that through claimPurchase instead of promising a confirmation', async () => {
+    vi.mocked(api.startCheckout).mockResolvedValue(CHECKOUT);
+    await beginCheckout('pro_month');
+    signOut();
+
+    expect(await claimPurchase(2, 0)).toBe('unreachable');
+  });
+});
+
+describe('claimNote', () => {
+  const OCT = new Date('2026-10-22T09:00:00Z').getTime();
+  const ent = (o: Partial<Entitlement> = {}): Entitlement => ({ plan: 'pro', active: true, paidUntil: OCT, ai: { used: 0, limit: 10 }, ...o });
+
+  it('tells a renewer their money landed, not that Pro exists', () => {
+    const note = claimNote('granted', ent(), true, false);
+    expect(note).toContain('now runs until 22 October');
+    expect(note).not.toContain('Pro is active');
+  });
+
+  it('tells a first-time buyer their plan is on', () => {
+    expect(claimNote('granted', ent(), false, false)).toContain('Pro is active until 22 October');
+  });
+
+  // One press claims one purchase: the server lookup stops asking after its first success, so somebody
+  // who paid twice is one press away from the month they are owed and has no way to know it.
+  it('says a second purchase needs a second press', () => {
+    expect(claimNote('granted', ent(), true, false)).toContain('press again');
+    expect(claimNote('granted', ent(), true, true)).toContain('нажмите ещё раз');
+  });
+
+  // Same words to a subscriber and to someone with no plan, and to the subscriber they read as "we have
+  // no record of your payment" — the one sentence they are most afraid of.
+  it('reads as reassurance to a subscriber and as a fact to everyone else', () => {
+    expect(claimNote('none', ent(), true, false)).toContain('Every payment is accounted for');
+    expect(claimNote('none', ent({ plan: 'free', active: false, paidUntil: undefined }), false, false)).toContain('no purchase outstanding');
+  });
+
+  it('drops the date rather than printing half a sentence without one', () => {
+    const note = claimNote('granted', ent({ paidUntil: undefined }), true, false);
+    expect(note).toContain('the subscription now runs.');
+    expect(note).not.toContain('until');
+  });
+
+  it('keeps the two unchanged verdicts apart', () => {
+    expect(claimNote('pending', ent(), true, false)).toContain('couple of minutes');
+    expect(claimNote('unreachable', ent(), true, false)).toContain('Could not reach the server');
+  });
+
+  it('answers in Russian when asked to', () => {
+    expect(claimNote('none', ent({ plan: 'free', active: false, paidUntil: undefined }), false, true)).toContain('не числится');
   });
 });
 
