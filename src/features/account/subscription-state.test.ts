@@ -6,8 +6,7 @@
  * SUBSCRIBER that their free trial had ended — wrong, and aimed at the people most worth keeping.
  */
 import { describe, it, expect } from 'vitest';
-import { subscriptionState } from './entitlement';
-import { planLine } from './PlanSection';
+import { planLine, subscriptionState } from './entitlement';
 import type { Entitlement } from './contract';
 
 const DAY = 86_400_000;

@@ -8,6 +8,7 @@ import { useUiLang, tr } from '@/features/i18n/uiLang';
 import { onboardingSeen, startTour } from '@/features/onboarding/tour';
 import { Card, LevelDivider, PixelImage } from '@/shared/ui';
 import { BackToReader } from '@/features/reader/BackToReader';
+import { ExpiryNotice } from '@/features/account/ExpiryNotice';
 import type { LoadedUnit } from '@/content/loader';
 
 const unitLevel = (unit: LoadedUnit) => unit.days.find((d) => d.level)?.level;
@@ -36,6 +37,7 @@ export function DashboardPage() {
   return (
     <section aria-label={ru ? 'Главная' : 'Dashboard'}>
       <BackToReader />
+      <ExpiryNotice ru={ru} />
       <div className="mb-8 flex items-start justify-between gap-4">
         <div>
           <p className="eyebrow mb-3.5">{ru ? 'сегодня' : 'today'}</p>

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { Button, Eyebrow } from '@/shared/ui';
 import * as api from './api';
 import { ApiFailure } from './api';
-import { subscriptionState, useEntitlement, type SubscriptionState, type TrialClaim } from './entitlement';
+import { planLine, subscriptionState, useEntitlement, type TrialClaim } from './entitlement';
 import { beginCheckout, claimNote, claimPurchase, livePending, formatPrice, type PendingPayment } from './billing';
-import type { BillingPlan, Entitlement } from './contract';
+import type { BillingPlan } from './contract';
 
 /**
  * Settings → Account → the plan, and the one place a subscription can be bought.
@@ -14,27 +14,6 @@ import type { BillingPlan, Entitlement } from './contract';
  * entirely when payments are switched off, so a build without acquirer credentials shows a plan and no
  * dead button.
  */
-
-const date = (ms: number, ru: boolean): string =>
-  new Date(ms).toLocaleDateString(ru ? 'ru-RU' : 'en-GB', { day: 'numeric', month: 'long' });
-
-export function planLine(e: Entitlement, state: SubscriptionState, ru: boolean): string {
-  const on = (ms: number | undefined): string => (ms == null ? '—' : date(ms, ru));
-  switch (state) {
-    case 'pro':
-      return ru ? `Pro — активна до ${on(e.paidUntil)}` : `Pro — active until ${on(e.paidUntil)}`;
-    case 'trial':
-      return ru ? `Пробный период — до ${on(e.trialEndsAt)}` : `Free trial — until ${on(e.trialEndsAt)}`;
-    case 'expired':
-      return ru ? `Подписка закончилась ${on(e.paidUntil)}` : `Your subscription ended on ${on(e.paidUntil)}`;
-    case 'trial-over':
-      return ru ? `Пробный период закончился ${on(e.trialEndsAt)}` : `Your free trial ended on ${on(e.trialEndsAt)}`;
-    case 'none':
-      return ru ? 'Бесплатный план' : 'Free plan';
-    case 'unknown':
-      return ru ? 'План неизвестен' : 'Plan unknown';
-  }
-}
 
 /** One sentence per outcome. This used to be a single line for every failure, which told people the
  *  trial was already used even when the request had never left the device. */
