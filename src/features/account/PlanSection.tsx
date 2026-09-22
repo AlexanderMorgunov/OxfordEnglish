@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Eyebrow } from '@/shared/ui';
 import * as api from './api';
 import { ApiFailure } from './api';
-import { useEntitlement, type TrialClaim } from './entitlement';
+import { subscriptionState, useEntitlement, type SubscriptionState, type TrialClaim } from './entitlement';
 import { beginCheckout, claimNote, claimPurchase, livePending, formatPrice, type PendingPayment } from './billing';
 import type { BillingPlan, Entitlement } from './contract';
 
@@ -18,20 +18,22 @@ import type { BillingPlan, Entitlement } from './contract';
 const date = (ms: number, ru: boolean): string =>
   new Date(ms).toLocaleDateString(ru ? 'ru-RU' : 'en-GB', { day: 'numeric', month: 'long' });
 
-function planLine(e: Entitlement, ru: boolean): string {
-  if (e.plan === 'pro') {
-    return ru
-      ? `Pro — активна до ${e.paidUntil ? date(e.paidUntil, ru) : '—'}`
-      : `Pro — active until ${e.paidUntil ? date(e.paidUntil, ru) : '—'}`;
+export function planLine(e: Entitlement, state: SubscriptionState, ru: boolean): string {
+  const on = (ms: number | undefined): string => (ms == null ? '—' : date(ms, ru));
+  switch (state) {
+    case 'pro':
+      return ru ? `Pro — активна до ${on(e.paidUntil)}` : `Pro — active until ${on(e.paidUntil)}`;
+    case 'trial':
+      return ru ? `Пробный период — до ${on(e.trialEndsAt)}` : `Free trial — until ${on(e.trialEndsAt)}`;
+    case 'expired':
+      return ru ? `Подписка закончилась ${on(e.paidUntil)}` : `Your subscription ended on ${on(e.paidUntil)}`;
+    case 'trial-over':
+      return ru ? `Пробный период закончился ${on(e.trialEndsAt)}` : `Your free trial ended on ${on(e.trialEndsAt)}`;
+    case 'none':
+      return ru ? 'Бесплатный план' : 'Free plan';
+    case 'unknown':
+      return ru ? 'План неизвестен' : 'Plan unknown';
   }
-  if (e.plan === 'trial') {
-    return ru
-      ? `Пробный период — до ${e.trialEndsAt ? date(e.trialEndsAt, ru) : '—'}`
-      : `Free trial — until ${e.trialEndsAt ? date(e.trialEndsAt, ru) : '—'}`;
-  }
-  // `trialEndsAt` on a free plan means the trial has been used and has run out (server `evaluate`).
-  if (e.trialEndsAt) return ru ? `Пробный период закончился ${date(e.trialEndsAt, ru)}` : `Your free trial ended on ${date(e.trialEndsAt, ru)}`;
-  return ru ? 'Бесплатный план' : 'Free plan';
 }
 
 /** One sentence per outcome. This used to be a single line for every failure, which told people the
@@ -102,6 +104,9 @@ export function PlanSection({ ru }: { ru: boolean }) {
 
   const monthly = plans?.plans.find((p) => p.code === 'pro_month');
   const canBuy = !!plans?.available && !!monthly;
+  const state = subscriptionState(entitlement, Date.now());
+  // Still offered to someone whose paid month ran out without ever trialing: the server grants a trial
+  // on `trialStartedAt`, which they do not have, so hiding it would withhold two weeks they are owed.
   const offerTrial = entitlement.plan === 'free' && !entitlement.trialEndsAt;
 
   const onTrial = async () => {
@@ -150,7 +155,7 @@ export function PlanSection({ ru }: { ru: boolean }) {
   return (
     <section className="mt-5 border-t border-line pt-4">
       <Eyebrow>{ru ? 'Подписка' : 'Subscription'}</Eyebrow>
-      <p className="mt-1 text-sm text-content">{planLine(entitlement, ru)}</p>
+      <p className="mt-1 text-sm text-content">{planLine(entitlement, state, ru)}</p>
 
       {entitlement.active && entitlement.ai.limit > 0 && (
         <p className="mt-1 text-2xs text-muted">
@@ -160,7 +165,7 @@ export function PlanSection({ ru }: { ru: boolean }) {
         </p>
       )}
 
-      {entitlement.plan !== 'pro' && <p className="mt-2 text-sm text-muted text-pretty">{ru ? PRO_PITCH_RU : PRO_PITCH_EN}</p>}
+      {state !== 'pro' && <p className="mt-2 text-sm text-muted text-pretty">{ru ? PRO_PITCH_RU : PRO_PITCH_EN}</p>}
 
       {pending && (
         <p role="status" className="mt-3 rounded-sm border border-line bg-surface px-3 py-2 text-sm text-muted text-pretty">
@@ -178,7 +183,7 @@ export function PlanSection({ ru }: { ru: boolean }) {
         )}
         {canBuy && (
           <Button size="sm" variant={offerTrial ? 'ghost' : 'primary'} disabled={busy} onClick={() => void onBuy()}>
-            {entitlement.plan === 'pro'
+            {state === 'pro' || state === 'expired'
               ? ru
                 ? `Продлить — ${formatPrice(monthly.priceKopecks)}`
                 : `Extend — ${formatPrice(monthly.priceKopecks)}`
@@ -204,7 +209,7 @@ export function PlanSection({ ru }: { ru: boolean }) {
         </p>
       )}
 
-      {canBuy && entitlement.plan !== 'pro' && (
+      {canBuy && state !== 'pro' && (
         <p className="mt-3 text-2xs text-muted text-pretty">
           {ru
             ? 'Подписка — единственный доход проекта: она оплачивает серверы и ключ ИИ и позволяет остальному оставаться бесплатным.'

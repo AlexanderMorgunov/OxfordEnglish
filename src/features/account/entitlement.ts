@@ -116,13 +116,39 @@ export function hasManagedAi(e: Entitlement | null): boolean {
 /** Non-hook read for module-level code (lens/translate helpers) that isn't inside a component. */
 export const managedAiAvailable = (): boolean => hasManagedAi(useEntitlement.getState().entitlement);
 
+export type SubscriptionState = 'pro' | 'trial' | 'expired' | 'trial-over' | 'none' | 'unknown';
+
+/**
+ * Which of these a person is, decided once. The plan caption, the buy button and (later) the expiry
+ * reminder all hang off this answer rather than testing the fields themselves — three separate tests of
+ * the same thing drift, which is how a heading ended up contradicting its own paragraph on the payment
+ * return page.
+ *
+ * `paidUntil` outranks `trialEndsAt` deliberately. The server stamps `trialEndsAt` on anyone who ever
+ * had a trial, so reading it first told the path trial → paid → lapsed that their FREE TRIAL had run
+ * out — said, of all people, to someone who had paid.
+ *
+ * The clock is an argument because a plan can run out while the app is open: entitlement is fetched at
+ * boot and a PWA living in a phone's memory through midnight would otherwise keep reporting Pro until
+ * the first 402. A Pro with no date at all is left alone — missing data is not an expiry.
+ */
+export function subscriptionState(e: Entitlement | null, now: number): SubscriptionState {
+  if (!e) return 'unknown';
+  if (e.plan === 'pro' && (e.paidUntil == null || e.paidUntil > now)) return 'pro';
+  if (e.plan === 'trial') return 'trial';
+  if (e.paidUntil != null) return 'expired';
+  if (e.trialEndsAt != null) return 'trial-over';
+  return 'none';
+}
+
 /**
  * Signed in, but we hold no answer about the plan — a cold start, or a request that did not land.
  * Distinct from "no plan": the server may well grant this, so the only honest move is to ask it rather
  * than to decide locally that the user cannot have the feature.
  */
 export const planUnreadable = (): boolean =>
-  useAccount.getState().status === 'authenticated' && useEntitlement.getState().entitlement === null;
+  useAccount.getState().status === 'authenticated' &&
+  subscriptionState(useEntitlement.getState().entitlement, Date.now()) === 'unknown';
 
 /** How much of the AI budget is gone. `spent` gates the managed path; `warn` is the heads-up before it. */
 export const QUOTA_WARN_AT = 0.8;

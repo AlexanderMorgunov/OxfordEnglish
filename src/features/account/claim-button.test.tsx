@@ -63,6 +63,16 @@ test('a claimed renewal is reported with the new date, not the one it replaced',
   expect(screen.queryByText(/22 October/i)).not.toBeInTheDocument();
 });
 
+// Someone whose month ran out is renewing, not discovering the product. "Get Pro — 199 ₽/mo" to a
+// former subscriber reads as an offer made to a stranger.
+test('a lapsed subscriber is asked to extend, not to sign up', async () => {
+  useEntitlement.setState({ entitlement: { plan: 'free', active: false, paidUntil: OCT - 40 * 86_400_000, ai: { used: 0, limit: 0 } } });
+  render(<PlanSection ru={false} />, { wrapper: MemoryRouter });
+
+  expect(await screen.findByRole('button', { name: /extend/i })).toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: /get pro/i })).not.toBeInTheDocument();
+});
+
 test('a subscriber owed nothing is told so as reassurance', async () => {
   claimPurchase.mockResolvedValue('none');
   render(<PlanSection ru={false} />, { wrapper: MemoryRouter });
