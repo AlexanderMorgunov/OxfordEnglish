@@ -11,7 +11,8 @@
     "format": "prettier --write .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "validate:packs": "tsx scripts/validate-packs.ts"
+    "validate:packs": "tsx scripts/validate-packs.ts",
+    "icons:android": "node scripts/android-icons.mjs"
   },
   "dependencies": {
     "@capacitor-community/text-to-speech": "^8.0.2",
@@ -41,6 +42,7 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/node": "^26.2.0",
+    "@types/pngjs": "^6.0.5",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
@@ -51,6 +53,7 @@
     "fake-indexeddb": "^6.2.5",
     "globals": "^17.9.0",
     "jsdom": "^26.1.0",
+    "pngjs": "^7.0.0",
     "prettier": "^3.5.3",
     "tailwindcss": "^4.1.4",
     "tsx": "^4.19.3",
