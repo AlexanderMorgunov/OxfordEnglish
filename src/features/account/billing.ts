@@ -2,7 +2,7 @@ import * as api from './api';
 import { ApiFailure } from './api';
 import { useAccount } from './store';
 import { useEntitlement } from './entitlement';
-import type { CheckoutResponse } from './contract';
+import type { CheckoutResponse, Entitlement } from './contract';
 
 /**
  * Buying a subscription, from this device's side.
@@ -148,9 +148,14 @@ export async function claimPending(attempts = 10, intervalMs = 3000): Promise<Cl
   const pending = readPending();
   if (!pending) return 'none';
 
+  // "Not confirmed yet" is a verdict about the payment, and only the server can reach one. Without a
+  // session there is nobody to ask, and every attempt failing on the network is the same silence —
+  // answering `pending` there told someone who had just been charged to wait a couple of minutes for
+  // a confirmation nothing had been asked for.
+  let serverAnswered = false;
   for (let i = 0; i < attempts; i += 1) {
     const token = await useAccount.getState().getAccessToken();
-    if (!token) return 'pending';
+    if (!token) return serverAnswered ? 'pending' : 'unreachable';
     try {
       await api.redeemGrant(token, pending.grantToken);
       clearPending();
@@ -160,10 +165,11 @@ export async function claimPending(attempts = 10, intervalMs = 3000): Promise<Cl
       // A network failure says nothing about the payment; only the server's own verdict does.
       const code = e instanceof ApiFailure ? e.code : 'network';
       if (code !== 'grant_invalid' && code !== 'network') return 'pending';
+      if (code === 'grant_invalid') serverAnswered = true;
     }
     if (i < attempts - 1) await wait(intervalMs);
   }
-  return 'pending';
+  return serverAnswered ? 'pending' : 'unreachable';
 }
 
 /**
@@ -203,6 +209,55 @@ export async function claimPurchase(attempts = 5, intervalMs = 2000): Promise<Cl
     if (code === 'network') return 'unreachable';
     return local === 'pending' ? 'pending' : 'none';
   }
+}
+
+const until = (e: Entitlement | null, ru: boolean): string | null =>
+  e?.paidUntil == null ? null : new Date(e.paidUntil).toLocaleDateString(ru ? 'ru-RU' : 'en-GB', { day: 'numeric', month: 'long' });
+
+/**
+ * What to say after a "check my payment". One function so the four outcomes cannot drift apart, and so
+ * the two that used to say nothing at all have an answer.
+ *
+ * `wasPro` is the plan BEFORE the claim: afterwards a renewal and a first purchase look identical, and
+ * "Pro is active" said to someone who has held Pro for a month does not tell them their money landed.
+ * `e` must be the entitlement re-read after the claim, not the one captured in render.
+ */
+export function claimNote(outcome: ClaimOutcome, e: Entitlement | null, wasPro: boolean, ru: boolean): string {
+  const date = until(e, ru);
+  if (outcome === 'granted') {
+    const done = ru
+      ? wasPro
+        ? `Готово: подписка продлена${date ? ` до ${date}` : ''}.`
+        : `Готово: Pro активна${date ? ` до ${date}` : ''}.`
+      : wasPro
+        ? `Done: the subscription now runs${date ? ` until ${date}` : ''}.`
+        : `Done: Pro is active${date ? ` until ${date}` : ''}.`;
+    // One press claims one purchase — the lookup stops asking after its first success. Said here rather
+    // than as a standing warning, because this is the only moment it is actionable.
+    return ru
+      ? `${done} Если оплат было несколько, нажмите ещё раз — за одно нажатие забирается одна.`
+      : `${done} If you paid more than once, press again — one press claims one purchase.`;
+  }
+  if (outcome === 'pending') {
+    return ru ? 'Платёж ещё не подтверждён. Обычно это занимает пару минут.' : 'The payment is not confirmed yet. This usually takes a couple of minutes.';
+  }
+  // Saying "nothing outstanding" here would be a statement about the account made without an answer
+  // from the server — the one thing that could actually say it.
+  if (outcome === 'unreachable') {
+    return ru
+      ? 'Не удалось связаться с сервером — проверить покупку сейчас нельзя. Попробуйте ещё раз, когда появится связь.'
+      : 'Could not reach the server, so the purchase cannot be checked right now. Try again once you are back online.';
+  }
+  // Nothing outstanding reads as "we have no record of your payment" to the one person most afraid of
+  // exactly that. To a subscriber it is the opposite news, and it should sound like it.
+  if (e?.plan === 'pro') {
+    return ru
+      ? `Все оплаты учтены. Pro активна${date ? ` до ${date}` : ''}.`
+      : `Every payment is accounted for. Pro is active${date ? ` until ${date}` : ''}.`;
+  }
+  return ru
+    ? 'Неоплаченных или неполученных покупок за этим аккаунтом не числится.'
+    : 'This account has no purchase outstanding.';
 }
 
 /** "199 ₽" — trailing kopecks only when there are any. */

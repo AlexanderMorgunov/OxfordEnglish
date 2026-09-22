@@ -6,7 +6,9 @@ import tseslint from 'typescript-eslint';
 import prettier from 'eslint-config-prettier';
 
 export default tseslint.config(
-  { ignores: ['dist', 'coverage', 'packs', 'tools', 'server'] },
+  // android/ is a generated Capacitor shell; its build/ dir holds a copy of the web bundle and
+  // Capacitor's own native-bridge.js, which lint has no business reading.
+  { ignores: ['dist', 'coverage', 'packs', 'tools', 'server', 'android'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],

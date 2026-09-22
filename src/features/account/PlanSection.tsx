@@ -4,7 +4,7 @@ import { Button, Eyebrow } from '@/shared/ui';
 import * as api from './api';
 import { ApiFailure } from './api';
 import { useEntitlement, type TrialClaim } from './entitlement';
-import { beginCheckout, claimPurchase, livePending, formatPrice, type PendingPayment } from './billing';
+import { beginCheckout, claimNote, claimPurchase, livePending, formatPrice, type PendingPayment } from './billing';
 import type { BillingPlan, Entitlement } from './contract';
 
 /**
@@ -137,27 +137,13 @@ export function PlanSection({ ru }: { ru: boolean }) {
   const onCheckPayment = async () => {
     setBusy(true);
     setNote(null);
+    const wasPro = entitlement.plan === 'pro';
     const outcome = await claimPurchase(3, 2000);
-    setPending(livePending(useEntitlement.getState().entitlement?.paidUntil));
-    if (outcome === 'pending') {
-      setNote(ru ? 'Платёж ещё не подтверждён. Обычно это занимает пару минут.' : 'The payment is not confirmed yet. This usually takes a couple of minutes.');
-    }
-    if (outcome === 'none') {
-      setNote(
-        ru
-          ? 'Неоплаченных или неполученных покупок за этим аккаунтом не числится.'
-          : 'This account has no purchase outstanding.'
-      );
-    }
-    // Saying "nothing outstanding" here would be a statement about the account made without an answer
-    // from the server — the one thing that could actually say it.
-    if (outcome === 'unreachable') {
-      setNote(
-        ru
-          ? 'Не удалось связаться с сервером — проверить покупку сейчас нельзя. Попробуйте ещё раз, когда появится связь.'
-          : 'Could not reach the server, so the purchase cannot be checked right now. Try again once you are back online.'
-      );
-    }
+    // Both read the entitlement as it stands AFTER the claim. Computing the note from the one captured
+    // in render is how a message ends up describing the state the press just replaced.
+    const after = useEntitlement.getState().entitlement;
+    setPending(livePending(after?.paidUntil));
+    setNote(claimNote(outcome, after, wasPro, ru));
     setBusy(false);
   };
 
@@ -201,13 +187,15 @@ export function PlanSection({ ru }: { ru: boolean }) {
                 : `Get Pro — ${formatPrice(monthly.priceKopecks)}/mo`}
           </Button>
         )}
-        {/* Not only when this device knows about a payment: the token lives in one device's storage,
-            so "I paid on my phone" is exactly the case that needs a button here. */}
-        {entitlement.plan !== 'pro' && canBuy && (
-          <Button size="sm" variant="ghost" disabled={busy} onClick={() => void onCheckPayment()}>
-            {ru ? 'Я уже оплатил(а)' : 'I already paid'}
-          </Button>
-        )}
+        {/* Shown to everyone signed in, with no condition on it at all. Not only when this device knows
+            about a payment — the token lives in one device's storage, so "I paid on my phone" is exactly
+            the case that needs this. Not only off Pro — renewing means the plan is Pro by definition, so
+            the button hid itself in the one scenario the owner actually hit: paid, grant unredeemed,
+            nothing to redeem it with. And not only when the price list loaded, because the offer promises
+            this button and `canBuy` made it disappear whenever the billing endpoint was down. */}
+        <Button size="sm" variant="ghost" disabled={busy} onClick={() => void onCheckPayment()}>
+          {ru ? 'Я уже оплатил(а)' : 'I already paid'}
+        </Button>
       </div>
 
       {note && (
