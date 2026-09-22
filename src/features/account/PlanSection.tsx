@@ -4,7 +4,7 @@ import { Button, Eyebrow } from '@/shared/ui';
 import * as api from './api';
 import { ApiFailure } from './api';
 import { useEntitlement, type TrialClaim } from './entitlement';
-import { beginCheckout, claimPurchase, readPending, formatPrice, type PendingPayment } from './billing';
+import { beginCheckout, claimPurchase, livePending, formatPrice, type PendingPayment } from './billing';
 import type { BillingPlan, Entitlement } from './contract';
 
 /**
@@ -55,9 +55,16 @@ export function PlanSection({ ru }: { ru: boolean }) {
   const entitlement = useEntitlement((s) => s.entitlement);
   const claimTrial = useEntitlement((s) => s.claimTrial);
   const [plans, setPlans] = useState<{ available: boolean; plans: BillingPlan[] } | null>(null);
-  const [pending, setPending] = useState<PendingPayment | null>(() => readPending());
+  // Re-derived from the entitlement rather than read once: a grant redeemed on another device leaves
+  // this one holding a token that is valid-looking and dead, and believing it put "a payment is being
+  // processed" under a subscription that was already live.
+  const [pending, setPending] = useState<PendingPayment | null>(null);
   const [busy, setBusy] = useState(false);
   const [note, setNote] = useState<string | null>(null);
+
+  useEffect(() => {
+    setPending(livePending(entitlement?.paidUntil));
+  }, [entitlement?.paidUntil]);
 
   useEffect(() => {
     let alive = true;
@@ -131,7 +138,7 @@ export function PlanSection({ ru }: { ru: boolean }) {
     setBusy(true);
     setNote(null);
     const outcome = await claimPurchase(3, 2000);
-    setPending(readPending());
+    setPending(livePending(useEntitlement.getState().entitlement?.paidUntil));
     if (outcome === 'pending') {
       setNote(ru ? 'Платёж ещё не подтверждён. Обычно это занимает пару минут.' : 'The payment is not confirmed yet. This usually takes a couple of minutes.');
     }
