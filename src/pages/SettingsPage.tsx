@@ -2,6 +2,7 @@ import { useEffect, useState, useSyncExternalStore } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button, Card, Eyebrow, Input, Option, PixelImage } from '@/shared/ui';
 import { checkForAppUpdate } from '@/features/pwa/update';
+import { isNativePlatform } from '@/shared/lib/platform';
 import { getKeyLimits, subscribeKeyLimits } from '@/features/ai/limits';
 import { PROVIDERS, type AiProviderId } from '@/features/ai/provider';
 import { useAiStore } from '@/features/ai/store';
@@ -91,6 +92,7 @@ export function SettingsPage() {
   };
 
   const keyLimits = useSyncExternalStore(subscribeKeyLimits, getKeyLimits, () => null);
+  const native = isNativePlatform();
   const [checking, setChecking] = useState(false);
   const [updateMsg, setUpdateMsg] = useState('');
   const doCheckUpdate = async () => {
@@ -430,25 +432,33 @@ export function SettingsPage() {
 
       <div className="mt-10 border-t border-line pt-8">
         <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          {ru ? 'обновления приложения' : 'app updates'}
+          {native ? (ru ? 'версия' : 'version') : ru ? 'обновления приложения' : 'app updates'}
         </p>
-        <p className="mb-4 text-sm text-muted text-pretty">
-          {ru
-            ? 'Приложение обновляется само при выходе новой версии. Если оно «застряло» на старой (частая ситуация с установленным PWA), проверьте и примените обновление вручную.'
-            : 'The app updates itself when a new version ships. If it seems stuck on an old one (common with an installed PWA), check and apply an update manually.'}
-        </p>
-        <div className="flex flex-wrap items-center gap-3">
-          <Button variant="ghost" onClick={() => void doCheckUpdate()} disabled={checking}>
-            {checking
-              ? ru
-                ? 'Проверяю…'
-                : 'Checking…'
-              : ru
-                ? 'Проверить обновления'
-                : 'Check for updates'}
-          </Button>
-          {updateMsg && <span className="font-mono text-2xs text-teal">{updateMsg}</span>}
-        </div>
+        {/* The whole control is a service-worker affordance. In the Android shell the update comes from
+            the store, there is no worker to ask, and the button could only ever answer "check
+            unavailable" — alarming, and about something other than the app being current. The version
+            line stays either way: it is the first thing a support conversation needs. */}
+        {!native && (
+          <>
+            <p className="mb-4 text-sm text-muted text-pretty">
+              {ru
+                ? 'Приложение обновляется само при выходе новой версии. Если оно «застряло» на старой (частая ситуация с установленным PWA), проверьте и примените обновление вручную.'
+                : 'The app updates itself when a new version ships. If it seems stuck on an old one (common with an installed PWA), check and apply an update manually.'}
+            </p>
+            <div className="flex flex-wrap items-center gap-3">
+              <Button variant="ghost" onClick={() => void doCheckUpdate()} disabled={checking}>
+                {checking
+                  ? ru
+                    ? 'Проверяю…'
+                    : 'Checking…'
+                  : ru
+                    ? 'Проверить обновления'
+                    : 'Check for updates'}
+              </Button>
+              {updateMsg && <span className="font-mono text-2xs text-teal">{updateMsg}</span>}
+            </div>
+          </>
+        )}
         <p className="mt-3 font-mono text-2xs text-faint">version: {__APP_VERSION__}</p>
       </div>
 
