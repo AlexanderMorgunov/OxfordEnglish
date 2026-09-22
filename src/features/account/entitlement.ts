@@ -141,6 +141,27 @@ export function subscriptionState(e: Entitlement | null, now: number): Subscript
   return 'none';
 }
 
+const date = (ms: number, ru: boolean): string =>
+  new Date(ms).toLocaleDateString(ru ? 'ru-RU' : 'en-GB', { day: 'numeric', month: 'long' });
+
+export function planLine(e: Entitlement, state: SubscriptionState, ru: boolean): string {
+  const on = (ms: number | undefined): string => (ms == null ? '—' : date(ms, ru));
+  switch (state) {
+    case 'pro':
+      return ru ? `Pro — активна до ${on(e.paidUntil)}` : `Pro — active until ${on(e.paidUntil)}`;
+    case 'trial':
+      return ru ? `Пробный период — до ${on(e.trialEndsAt)}` : `Free trial — until ${on(e.trialEndsAt)}`;
+    case 'expired':
+      return ru ? `Подписка закончилась ${on(e.paidUntil)}` : `Your subscription ended on ${on(e.paidUntil)}`;
+    case 'trial-over':
+      return ru ? `Пробный период закончился ${on(e.trialEndsAt)}` : `Your free trial ended on ${on(e.trialEndsAt)}`;
+    case 'none':
+      return ru ? 'Бесплатный план' : 'Free plan';
+    case 'unknown':
+      return ru ? 'План неизвестен' : 'Plan unknown';
+  }
+}
+
 /**
  * Signed in, but we hold no answer about the plan — a cold start, or a request that did not land.
  * Distinct from "no plan": the server may well grant this, so the only honest move is to ask it rather
