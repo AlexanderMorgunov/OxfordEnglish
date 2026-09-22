@@ -27,6 +27,15 @@ export type PendingPayment = {
   invoiceId: string;
   plan: string;
   startedAt: number;
+  /**
+   * How far the subscription was already paid when checkout began, so this device can tell later that
+   * the payment landed — even when some OTHER device redeemed it and this token died unspent.
+   *
+   * "Is the plan active?" cannot answer that: paying to EXTEND an active subscription is a real case,
+   * and an active plan beside a genuine payment in flight is the truth, not a contradiction. A
+   * `paidUntil` that moved forward is the one signal that means this particular purchase arrived.
+   */
+  paidUntilAtStart: number | null;
 };
 
 export function readPending(): PendingPayment | null {
@@ -54,13 +63,47 @@ export function clearPending(): void {
 }
 
 function savePending(c: CheckoutResponse): void {
-  const pending: PendingPayment = { grantToken: c.grantToken, invoiceId: c.invoiceId, plan: c.plan, startedAt: Date.now() };
+  const pending: PendingPayment = {
+    grantToken: c.grantToken,
+    invoiceId: c.invoiceId,
+    plan: c.plan,
+    startedAt: Date.now(),
+    paidUntilAtStart: useEntitlement.getState().entitlement?.paidUntil ?? null,
+  };
   try {
     localStorage.setItem(PENDING_KEY, JSON.stringify(pending));
   } catch {
     // Nothing sensible to do — the checkout still opens, and the success page will say what to do if
     // the token is gone. Failing the purchase over a storage quota would be worse.
   }
+}
+
+/**
+ * A pending payment this device still has reason to wait for — and it forgets the ones it does not.
+ *
+ * A token can die unspent: buy on the phone, open the laptop, and the laptop's lookup redeems the
+ * grant while the phone's own token stays behind, valid-looking and worthless. Nothing cleared it, so
+ * the phone kept saying a payment was being processed under a subscription that was already live, and
+ * the laptop said it too. Both of them were reading a receipt instead of asking whether the goods
+ * arrived.
+ *
+ * The entitlement settles it. `paidUntil` moving past where it stood when checkout began means this
+ * purchase landed, whoever redeemed it — which an "is the plan active?" test cannot say, because
+ * extending an active subscription is a real thing people do.
+ */
+export function livePending(paidUntil: number | null | undefined): PendingPayment | null {
+  const pending = readPending();
+  if (!pending) return null;
+  // Absent on records written before this field existed, which reads them as a first purchase. That
+  // errs towards forgetting: a banner dropped a few minutes early costs nothing — the plan arrives
+  // regardless — while a banner that never goes is what makes someone pay a second time.
+  const before = pending.paidUntilAtStart;
+  const settled = paidUntil != null && (before == null || paidUntil > before);
+  if (settled) {
+    clearPending();
+    return null;
+  }
+  return pending;
 }
 
 /** Open a checkout: returns the acquirer's payment page for the caller to navigate to. The pending
@@ -146,6 +189,11 @@ export async function claimPurchase(attempts = 5, intervalMs = 2000): Promise<Cl
     const grantToken = await api.unclaimedGrant(token);
     if (!grantToken) return local === 'pending' ? 'pending' : 'none';
     await api.redeemGrant(token, grantToken);
+    // Only when the server handed back OUR token. Clearing whatever is stored looks tidier and throws
+    // away a second, still-unconfirmed purchase: start checkout twice, pay both, and the older grant
+    // is the one the server returns first — dropping the newer token then leaves its callback with
+    // nothing to redeem it. A token that is merely stale is forgotten by `livePending` instead.
+    if (readPending()?.grantToken === grantToken) clearPending();
     await useEntitlement.getState().load();
     return 'granted';
   } catch (e) {
