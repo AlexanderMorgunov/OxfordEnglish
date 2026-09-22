@@ -1,5 +1,21 @@
 apply plugin: 'com.android.application'
 
+// Signing credentials live in android/keystore.properties, which is gitignored along with the keystore
+// itself. Absent — a fresh clone, a contributor, CI without the secret — release simply builds
+// unsigned rather than failing: an unsigned APK is obviously unusable, a build that dies at the last
+// step is a mystery. CI writes the file from its secrets before building.
+def keystorePropsFile = rootProject.file('keystore.properties')
+def keystoreProps = new Properties()
+if (keystorePropsFile.exists()) {
+    keystorePropsFile.withInputStream { keystoreProps.load(it) }
+}
+
+// One source of truth for the version: package.json. `versionCode` must strictly increase with every
+// upload to a store and is an integer, so it is derived from the semver rather than kept by hand —
+// forgetting to bump it is a rejected upload, and remembering it twice is worse.
+def pkgVersion = new groovy.json.JsonSlurper().parseText(rootProject.file('../package.json').text).version
+def semver = pkgVersion.tokenize('.').collect { it.toInteger() }
+
 android {
     namespace = "ru.dayenglish.app"
     compileSdk = rootProject.ext.compileSdkVersion
@@ -7,8 +23,8 @@ android {
         applicationId "ru.dayenglish.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode semver[0] * 10000 + semver[1] * 100 + semver[2]
+        versionName pkgVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
@@ -16,8 +32,24 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    // AGP 8 stops generating BuildConfig unless asked. MainActivity needs it to tell a debug build
+    // from a release one, which is what keeps web-contents debugging out of the store build.
+    buildFeatures {
+        buildConfig true
+    }
+    signingConfigs {
+        release {
+            if (keystorePropsFile.exists()) {
+                storeFile rootProject.file(keystoreProps['storeFile'])
+                storePassword keystoreProps['storePassword']
+                keyAlias keystoreProps['keyAlias']
+                keyPassword keystoreProps['keyPassword']
+            }
+        }
+    }
     buildTypes {
         release {
+            signingConfig keystorePropsFile.exists() ? signingConfigs.release : null
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

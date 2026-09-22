@@ -5,9 +5,10 @@ const config: CapacitorConfig = {
   appName: 'DayEnglish',
   webDir: 'dist',
   android: {
-    // The reader keeps books in OPFS and the listen player seeks mp3 by range request; both are
-    // evictable if the WebView treats storage as best-effort. Measured before relying on it.
-    webContentsDebuggingEnabled: true,
+    // Off here, and switched back on for debug builds in MainActivity. This setting cannot tell which
+    // build type it is in, so leaving it true shipped a store release whose WebView was open to
+    // anyone with a USB cable.
+    webContentsDebuggingEnabled: false,
   },
 };
 
