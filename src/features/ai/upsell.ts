@@ -1,4 +1,4 @@
-import { quotaLevel } from '@/features/account/entitlement';
+import { quotaLevel, quotaOutlivesPlan } from '@/features/account/entitlement';
 import type { Status } from '@/features/account/store';
 import type { Entitlement } from '@/features/account/contract';
 
@@ -19,6 +19,10 @@ export type UpsellTarget =
   /** Paid plan, budget spent, and it refills on a date we can name. Never quote a price at someone
    *  who has already paid for this period. */
   | 'quota-resets'
+  /** Paid plan, budget spent, and the "reset" is the day the subscription ends — a first month, where
+   *  the quota window and the paid period are the same thirty days. Naming that date as a refill is a
+   *  promise we cannot keep, so this state offers the one thing that does bring the budget back. */
+  | 'quota-until-renewal'
   /** The one-time trial budget is gone and nothing will refill it. The highest-intent person in the
    *  funnel: they tried the thing, used all of it, and want more. */
   | 'quota-final'
@@ -39,7 +43,8 @@ export function upsellTarget(status: Status, entitlement: Entitlement | null): U
     // `resetsAt` is the discriminator, not the plan name: the server sets it only for a paid window
     // (server/src/entitlements.ts), so a spent TRIAL has none — for that person the budget is simply
     // over, and pointing them at "it refills on the 3rd" would be a lie.
-    return entitlement.ai.resetsAt != null ? 'quota-resets' : 'quota-final';
+    if (entitlement.ai.resetsAt == null) return 'quota-final';
+    return quotaOutlivesPlan(entitlement) ? 'quota-until-renewal' : 'quota-resets';
   }
 
   // Active plan with budget left: the caller should not have asked, but nothing is wrong either.

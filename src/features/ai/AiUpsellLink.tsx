@@ -50,6 +50,19 @@ export function AiUpsellLink({ className = '' }: { className?: string }) {
     );
   }
 
+  // No date here on purpose: the only one we have is the day the subscription ends, and offering it
+  // as a refill date is exactly the promise this state exists to stop making.
+  if (target === 'quota-until-renewal') {
+    return (
+      <span className="inline-flex flex-wrap items-baseline gap-x-2 font-mono text-2xs text-muted">
+        <span>{ru ? 'ИИ-запросы израсходованы до продления' : 'AI budget spent until you extend'}</span>
+        <Link to={`/settings${from}`} className={cls}>
+          {ru ? 'Продлить →' : 'Extend →'}
+        </Link>
+      </span>
+    );
+  }
+
   if (target === 'quota-final') {
     return (
       <span className="inline-flex flex-wrap items-baseline gap-x-2 font-mono text-2xs text-muted">

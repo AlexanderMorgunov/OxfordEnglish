@@ -136,6 +136,22 @@ export function quotaLevel(e: Entitlement | null): QuotaLevel {
 }
 
 /**
+ * True when the quota window does not end before the paid period does — so the "reset" the app keeps
+ * promising is really the day the subscription runs out.
+ *
+ * This is the whole of a first month. `applyPayment` starts the quota window at the moment of payment
+ * and the plan runs thirty days; `PRO_WINDOW_MS` is thirty days too, so `resetsAt` and `paidUntil`
+ * are the same millisecond. Telling someone their budget "resets on 22 October" when the subscription
+ * ends on 22 October is a promise the app cannot keep, and it was made to the people who had paid.
+ *
+ * Renewing mid-period moves `paidUntil` forward and leaves the window where it was, so from the second
+ * month the reset genuinely comes first and the ordinary wording is right.
+ */
+export function quotaOutlivesPlan(e: Entitlement | null): boolean {
+  return e?.ai.resetsAt != null && e.paidUntil != null && e.ai.resetsAt >= e.paidUntil;
+}
+
+/**
  * What to tell the user about their AI budget, or null when there is nothing worth saying.
  *
  * Running out used to surface as whatever generic failure each caller happened to render, which reads as
@@ -159,6 +175,17 @@ export function quotaNotice(e: Entitlement | null, ru: boolean): { level: 'warn'
   const resets = e.ai.resetsAt
     ? new Date(e.ai.resetsAt).toLocaleDateString(ru ? 'ru-RU' : 'en-GB', { day: 'numeric', month: 'long' })
     : null;
+
+  // Nothing refills before the plan ends: say so, and point at the thing that would actually help.
+  if (quotaOutlivesPlan(e)) {
+    return {
+      level,
+      text: ru
+        ? `ИИ-запросы на этот период израсходованы и вернутся с продлением подписки. Перевод слов продолжает работать, а разборы и упрощение — сразу, если добавить свой ключ ИИ в настройках.`
+        : `This period's AI budget is spent and comes back when you extend the subscription. Word translation keeps working; explanations and simplification return right away if you add your own AI key in settings.`,
+    };
+  }
+
   return {
     level,
     text: resets

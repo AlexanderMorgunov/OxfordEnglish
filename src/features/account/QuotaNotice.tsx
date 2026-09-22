@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useUiLang } from '@/features/i18n/uiLang';
-import { useEntitlement, quotaNotice } from './entitlement';
+import { useEntitlement, quotaNotice, quotaOutlivesPlan } from './entitlement';
 
 /**
  * The AI budget, said plainly — and only when there is something to say.
@@ -30,9 +30,10 @@ export function QuotaNotice({ compact = false }: { compact?: boolean }) {
           <Link to="/settings" className="text-teal hover:underline">
             {ru ? 'Настройки' : 'Settings'}
           </Link>
-          {/* Only when nothing will refill: a paid window that resets on a date needs no plan pitch,
-              and showing one to someone who has already paid is the bug this slice removes. */}
-          {entitlement?.ai.resetsAt == null && (
+          {/* Only when nothing refills on its own. A window that genuinely rolls needs no plan pitch —
+              but a first month's "reset" IS the expiry, and hiding the link there left the one person
+              who could fix it with no way to do so. */}
+          {(entitlement?.ai.resetsAt == null || quotaOutlivesPlan(entitlement)) && (
             <>
               {' · '}
               <Link to="/pro" className="text-teal hover:underline">
