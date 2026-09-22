@@ -100,9 +100,16 @@ export function evaluate(row: EntitlementRow | null | undefined, now: number): E
   if (!row) return FREE;
   // A lapsed trial still reports WHEN it ended. Without that the paywall cannot tell "never tried" from
   // "already used it", so it offers the free trial again and answers a hopeful click with an error.
-  // Nothing is unlocked by it: `active` stays false and the AI limit stays 0.
+  // A lapsed SUBSCRIPTION reports its date for the same reason: the app cannot say "your subscription
+  // ended on the 22nd", or tell a former subscriber apart from a stranger, from a payload that omits it.
+  // Nothing is unlocked by either: `active` stays false and the AI limit stays 0.
   if (plan === 'free') {
-    return row.trialStartedAt == null ? FREE : { ...FREE, trialEndsAt: row.trialStartedAt + TRIAL_MS };
+    if (row.trialStartedAt == null && row.paidUntil == null) return FREE;
+    return {
+      ...FREE,
+      ...(row.trialStartedAt != null && { trialEndsAt: row.trialStartedAt + TRIAL_MS }),
+      ...(row.paidUntil != null && { paidUntil: row.paidUntil }),
+    };
   }
   const rolled = windowExpired(row, plan, now);
   return {

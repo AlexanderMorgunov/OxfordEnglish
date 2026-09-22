@@ -83,6 +83,29 @@ check('re-subscribing after a lapse starts a fresh window', (() => {
   return again.aiUsed === 0 && again.windowStartedAt === T0 + 86_400_000;
 })());
 
+// --- lapsed: the plan is over, the dates are not ---
+const afterBoth = T0 + TRIAL_MS;
+const neverTrialed: EntitlementRow = { accountId: ACC, paidUntil: T0, aiUsed: 100, windowStartedAt: T0 - PRO_WINDOW_MS };
+
+check('a lapsed subscription still reports WHEN it ran out', (() => {
+  const e = evaluate(neverTrialed, afterBoth);
+  return e.plan === 'free' && e.paidUntil === T0 && e.trialEndsAt === undefined;
+})());
+// The load-bearing half: a date is not an entitlement. Emitting `paidUntil` here must unlock nothing.
+check('a lapsed subscription unlocks nothing', (() => {
+  const e = evaluate(neverTrialed, afterBoth);
+  return e.active === false && e.ai.limit === 0;
+})());
+// Trial, then paid, then lapsed — the row §3's discriminator has to tell from a plain expired trial.
+check('trialed AND paid reports both dates once both are over', (() => {
+  const e = evaluate(lapsed, afterBoth);
+  return e.plan === 'free' && e.paidUntil === T0 && e.trialEndsAt === T0 + TRIAL_MS;
+})());
+check('a row with neither date reports neither', (() => {
+  const e = evaluate({ accountId: ACC, aiUsed: 0, windowStartedAt: T0 }, afterBoth);
+  return e.paidUntil === undefined && e.trialEndsAt === undefined;
+})());
+
 check('consume increments and reports the new state', (() => {
   const r = consumeAi(pro, T0, 3);
   return r.allowed && r.row.aiUsed === 3 && r.entitlement.ai.used === 3;
