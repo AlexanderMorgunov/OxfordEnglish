@@ -1,4 +1,5 @@
 import { registerSW } from 'virtual:pwa-register';
+import { isNativePlatform } from '@/shared/lib/platform';
 
 let started = false;
 let registration: ServiceWorkerRegistration | undefined;
@@ -11,6 +12,12 @@ let registration: ServiceWorkerRegistration | undefined;
 export function initAppUpdate(): void {
   if (started) return;
   started = true;
+  // Never inside the Android shell. There the bundle IS the APK, so a service worker has nothing to
+  // fetch that is not already local — it would only fill a Cache Storage the WebView is free to evict,
+  // and Workbox precaching under Capacitor has never been shown to work end to end. It also arms a
+  // trap: point `server.hostname` at the production domain one day and an installed worker starts
+  // serving the website in place of the bundle.
+  if (isNativePlatform()) return;
   registerSW({
     immediate: true,
     onRegisteredSW(_swUrl, r) {
