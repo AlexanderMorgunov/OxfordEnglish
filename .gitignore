@@ -34,3 +34,13 @@ tools/content-forge/scripts/_build_*.mjs
 # Backend API service (separate toolchain)
 /server/node_modules/
 /server/dist/
+
+# --- Kept local on purpose, not repository content ---
+# The container deploy runs from this machine with the yc CLI, not from Actions: the workflow file
+# carries folder/registry/container/secret ids, and a workflow in the repo would also invite someone
+# to run it without the credentials it needs. Ignored so it cannot be committed by an absent-minded
+# `git add`. Deploy steps live in docs/deploy-container.md.
+/.github/workflows/deploy-container.yml
+# Uploaded by hand to the redirect bucket for the retired .online mirror — it is served from there,
+# never built or shipped from this repo.
+/scripts/online-redirect-sw.js
