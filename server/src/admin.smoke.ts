@@ -10,6 +10,7 @@ import { InMemoryAuthStore } from './store.js';
 import { InMemoryEntitlementStore, applyPayment, TRIAL_MS, type Entitlement } from './entitlements.js';
 import { computeStats } from './adminStats.js';
 import { ADMIN_TOKEN_MIN } from './routes/admin.js';
+import { IP_BUCKET_CAPACITY } from './contract.js';
 
 let failures = 0;
 const check = (name: string, cond: boolean) => {
@@ -182,6 +183,38 @@ async function appWith(token: string | undefined, seed?: (a: InMemoryAuthStore, 
   const both = computeStats(1, [{ trialStartedAt: now - 1000, paidUntil: now + 1000 }], now);
   check('a trial that turned into a purchase counts as pro, not as both', both.trialsActive === 0 && both.paidActive === 1);
   check('and its trial is still counted as started', both.trialsStarted === 1);
+}
+
+// --- guessing the token is throttled ---------------------------------------------------------------
+{
+  const { app } = await appWith(TOKEN);
+  const wrong = () => app.request('/v1/admin/stats', { headers: H('b'.repeat(ADMIN_TOKEN_MIN)) });
+  let allRejected = true;
+  for (let i = 0; i < IP_BUCKET_CAPACITY; i++) if ((await wrong()).status !== 401) allRejected = false;
+  const exhausted = await wrong();
+  check(`the first ${IP_BUCKET_CAPACITY} guesses are answered 401, not 429`, allRejected);
+  // The limiter has to sit IN FRONT of the token check. Behind it a wrong guess never reaches it and
+  // the only thing throttled is the owner — the exact inverse of the point.
+  check('a flood of wrong tokens is cut off with 429', exhausted.status === 429);
+  // The right token is cut off too: the bucket is per IP, not per credential, so a flood locks the
+  // owner out as well. That is the trade — the alternative spends a store read per guess — but it is a
+  // property rather than an accident, so it is asserted instead of assumed.
+  check('and the right token is refused while the bucket is empty', (await app.request('/v1/admin/stats', { headers: H(TOKEN) })).status === 429);
+}
+
+{
+  // Its own bucket map. Sharing one with the public endpoints would let anyone knocking on /admin take
+  // sign-in down with it, and let ordinary sign-in traffic lock the owner out of granting a plan.
+  const { app } = await appWith(TOKEN, async (auth) => {
+    await auth.createAccount('acc-1', 'h');
+  });
+  for (let i = 0; i <= IP_BUCKET_CAPACITY; i++) await app.request('/v1/admin/stats', { headers: H('b'.repeat(ADMIN_TOKEN_MIN)) });
+  const login = await app.request('/v1/auth/login', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ accountId: 'acc-1', verifier: 'nope', deviceId: 'd1' }),
+  });
+  check('an exhausted admin bucket does not throttle sign-in', login.status !== 429);
 }
 
 delete process.env.ADMIN_TOKEN;
