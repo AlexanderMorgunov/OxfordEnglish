@@ -14,7 +14,8 @@ import type { AuthStore } from '../store.js';
 import { applyPayment, evaluate, type EntitlementStore } from '../entitlements.js';
 import { computeStats } from '../adminStats.js';
 import { constantTimeEqual } from '../secrets.js';
-import { ErrorCode } from '../contract.js';
+import { ErrorCode, IP_BUCKET_CAPACITY, IP_BUCKET_REFILL_PER_SEC } from '../contract.js';
+import { ipBucketLimiter } from '../rateLimit.js';
 
 /** Long enough that a shell-history token is not the only thing between the internet and a free plan. */
 export const ADMIN_TOKEN_MIN = 24;
@@ -25,6 +26,11 @@ const MAX_GRANT_DAYS = 400;
 
 export function adminRoutes(app: Hono, token: string, auth: AuthStore, ent: EntitlementStore): Hono {
   const err = (code: ErrorCode, status: 400 | 401 | 404) => Response.json({ error: code }, { status });
+
+  // In FRONT of the token check, so a rejected guess still costs a token — behind it the limiter would
+  // throttle only the owner. Its own bucket map, like every other route's: abuse of one endpoint must
+  // not starve another, and granting a plan is the one call here that must stay available.
+  app.use('/v1/admin/*', ipBucketLimiter(IP_BUCKET_CAPACITY, IP_BUCKET_REFILL_PER_SEC));
 
   app.use('/v1/admin/*', async (c, next) => {
     const header = c.req.header('authorization') ?? '';
