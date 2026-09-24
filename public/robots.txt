@@ -1,5 +1,10 @@
 User-agent: *
 Allow: /
 Disallow: /packs/
+# The grammar reference is the ONE pack file an indexable page renders from (/grammar and the 48
+# /grammar/<id> pages). Blocking it made Googlebot's renderer fail the fetch and paint "404 Статья не
+# найдена" over the prerendered article — the rendered DOM is what gets indexed. A more specific Allow
+# wins over the Disallow, so this opens one 200 KB file and leaves the 213 day files and all media shut.
+Allow: /packs/dev-english-a2/grammar.json
 
 Sitemap: https://dayenglish.ru/sitemap.xml
