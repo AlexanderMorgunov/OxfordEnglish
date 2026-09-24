@@ -9,6 +9,10 @@ import {
 
 export const PUBLIC_PACK_BASE = '/packs/dev-english-a2';
 
+/** The one pack file robots.txt lets a crawler fetch, because /grammar and /grammar/<id> are indexable
+ *  and render from it. Named here so the loader and robots.txt cannot drift apart silently. */
+export const GRAMMAR_URL = `${PUBLIC_PACK_BASE}/grammar.json`;
+
 /** Resolve a pack-relative MediaRef.src to a fetchable URL. */
 export function packMediaUrl(src: string): string {
   return `${PUBLIC_PACK_BASE}/${src.replace(/^\//, '')}`;
@@ -57,10 +61,22 @@ export async function loadPublicPack(): Promise<LoadedPack> {
   // Grammar reference is optional — the pack works without it.
   let grammar: GrammarArticle[] = [];
   try {
-    grammar = GrammarReference.parse(await fetchJson(`${PUBLIC_PACK_BASE}/grammar.json`));
+    grammar = await loadGrammarOnly();
   } catch {
     grammar = [];
   }
 
   return { manifest, course, units, days, grammar };
+}
+
+/**
+ * The grammar reference on its own — one fetch, no manifest, no course, no 213 day files.
+ *
+ * `loadPublicPack` reads every day before it reaches grammar, so one missing day used to take the whole
+ * reference down with it. That mattered far beyond offline: /grammar and its 48 topic pages are the
+ * site's indexable content, and a failed load renders them as "article not found" to whoever is looking
+ * — Googlebot included. Reading through the same URL as the pack keeps the two from drifting.
+ */
+export async function loadGrammarOnly(): Promise<GrammarArticle[]> {
+  return GrammarReference.parse(await fetchJson(GRAMMAR_URL));
 }

@@ -18,6 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history: build-seo derives each sitemap <lastmod> from the last commit that touched the
+          # source behind that URL. A shallow clone has no such commit and every URL falls back to the
+          # build date — which is the stale-signal bug this replaced.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22

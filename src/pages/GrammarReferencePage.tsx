@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
-import { useContentStore } from '@/content/store';
+import { useGrammarStore } from '@/content/grammarStore';
 import { useUiLang, tr } from '@/features/i18n/uiLang';
 import { Card, Eyebrow, LevelDivider, PageStub, PixelImage } from '@/shared/ui';
 import { LEVEL_ORDER } from '@/shared/levels';
@@ -8,14 +8,13 @@ import { BackToReader } from '@/features/reader/BackToReader';
 import type { Level } from '@/content/schema';
 
 export function GrammarIndexPage() {
-  const { status, pack, load } = useContentStore();
+  const { status, articles, load } = useGrammarStore();
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
   useEffect(() => {
     void load();
   }, [load]);
 
-  const articles = pack?.grammar ?? [];
   const byLevel = LEVEL_ORDER.map((lvl) => ({
     level: lvl as Level,
     items: articles.filter((a) => a.level === lvl),
@@ -44,6 +43,15 @@ export function GrammarIndexPage() {
       {status === 'ready' && articles.length === 0 && (
         <p className="text-sm text-muted">
           {lang === 'ru' ? 'Статьи скоро появятся.' : 'Articles are coming soon.'}
+        </p>
+      )}
+      {/* Not the same sentence as an empty reference. "Coming soon" told a reader — and a crawler —
+          that the content does not exist, when in fact the request for it failed. */}
+      {status === 'error' && (
+        <p role="status" className="text-sm text-muted">
+          {lang === 'ru'
+            ? 'Не удалось загрузить справочник. Проверьте соединение и обновите страницу.'
+            : 'The reference could not be loaded. Check your connection and reload.'}
         </p>
       )}
 
@@ -78,7 +86,7 @@ export function GrammarArticlePage() {
   const { articleId } = useParams();
   const [searchParams] = useSearchParams();
   const fromDay = searchParams.get('from');
-  const { pack, load, status } = useContentStore();
+  const { articles, load, status } = useGrammarStore();
   const lang = useUiLang((s) => s.lang);
   useEffect(() => {
     void load();
@@ -88,7 +96,22 @@ export function GrammarArticlePage() {
     return <p className="font-mono text-sm text-muted">loading…</p>;
   }
 
-  const article = pack?.grammar.find((a) => a.id === articleId);
+  // A failed load is not a missing article. Answering it with 404 is how 48 real pages told Googlebot
+  // they did not exist — and the rendered DOM is what gets indexed.
+  if (status === 'error') {
+    return (
+      <PageStub
+        eyebrow="offline"
+        title={lang === 'ru' ? 'Справочник не загрузился' : 'The reference did not load'}
+      >
+        {lang === 'ru'
+          ? 'Проверьте соединение и обновите страницу.'
+          : 'Check your connection and reload the page.'}
+      </PageStub>
+    );
+  }
+
+  const article = articles.find((a) => a.id === articleId);
   if (!article) {
     return (
       <PageStub eyebrow="404" title={lang === 'ru' ? 'Статья не найдена' : 'Article not found'}>
@@ -100,7 +123,7 @@ export function GrammarArticlePage() {
   }
 
   const seeAlso = (article.seeAlso ?? [])
-    .map((id) => pack?.grammar.find((a) => a.id === id))
+    .map((id) => articles.find((a) => a.id === id))
     .filter((a): a is NonNullable<typeof a> => Boolean(a));
 
   return (

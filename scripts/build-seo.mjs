@@ -9,15 +9,24 @@
  * The canonical origin is ALWAYS https://dayenglish.ru — that single tag self-canonicals on .ru and
  * cross-domain-canonicals .online at once, so it must never become origin-relative.
  *
- * The grammar reference is programmatic SEO: one indexable page per topic under /grammar/<id>. Because
- * robots.txt disallows /packs/, a crawler cannot fetch the pack the SPA renders from — so these pages
- * must ship the article TEXT in the static HTML, not just meta. We inject semantic HTML into
- * `<div id="root">` straight from grammar.json; main.tsx mounts with createRoot().render() (not
- * hydrateRoot), which replaces the container's children on first paint, so the injected content is a
- * crawler-visible, no-mismatch placeholder. The /grammar hub gets the full topic link list for the
- * same reason — without it the 47 pages have no crawlable internal links.
+ * The grammar reference is programmatic SEO: one indexable page per topic under /grammar/<id>. We inject
+ * semantic HTML into `<div id="root">` straight from grammar.json, and the /grammar hub gets the full
+ * topic link list so those pages have crawlable internal links.
+ *
+ * What that injected body is NOT is a safety net for Googlebot. main.tsx mounts with createRoot (not
+ * hydrateRoot), which replaces the container's children on first paint — and Googlebot runs the JS and
+ * indexes the RESULT. An earlier version of this comment claimed the opposite, and the cost was real:
+ * robots.txt disallowed /packs/, the page rendered from the pack, the fetch never happened for the
+ * crawler, and all 48 topics indexed as "article not found" (Search Console, 2026-09-24 — 9 pages
+ * indexed, 81 not).
+ *
+ * So the rule this file exists under: EVERY indexable page must render correctly from resources a
+ * crawler is allowed to fetch. The prerendered body serves no-JS clients and link previews; it does not
+ * excuse the rendered page from working. robots.txt now opens grammar.json specifically, and
+ * `loadGrammarOnly` reads it without the other 213 pack files.
  */
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, statSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -326,6 +335,36 @@ const aboutBody =
   `<p><strong>С какого уровня можно начать?</strong> С нуля: есть тир A1, дальше A2, B1 и B2.</p>` +
   `<p><a href="/">Начать учить английский бесплатно →</a></p></main>`;
 
+// Without a body of their own these two kept the shell's home <noscript>: the home <h1> and the whole
+// home pitch, word for word. Two of the six indexable flat pages had no sentence of their own.
+const privacyBody =
+  `<main><h1>Политика конфиденциальности DayEnglish</h1>` +
+  `<p>Коротко: приложение не спрашивает ни почту, ни телефон, а учиться можно вообще без аккаунта. Полный текст — ниже на этой странице.</p>` +
+  `<h2>Какие данные мы не собираем</h2>` +
+  `<ul><li>Ни адреса почты, ни номера телефона, ни имени — аккаунт состоит из одного ключа восстановления.</li>` +
+  `<li>Прогресс, словарь и закладки хранятся в браузере на вашем устройстве.</li>` +
+  `<li>Импортированные книги остаются на устройстве и никуда не загружаются, пока вы сами не включите синхронизацию.</li></ul>` +
+  `<h2>Что происходит с аккаунтом</h2>` +
+  `<p>Аккаунт нужен только для синхронизации между устройствами. Сам ключ восстановления мы не храним — на сервере лежит только его односторонний хеш. Данные хранятся в России.</p>` +
+  `<p>Анонимную статистику можно выключить в настройках, и браузерный запрет отслеживания мы уважаем.</p>` +
+  `<p><a href="/terms">Условия и публичная оферта</a> · <a href="/">Начать бесплатно</a></p></main>`;
+
+const proBody =
+  `<main><h1>DayEnglish Pro — что бесплатно и за что подписка</h1>` +
+  `<p>Курс, читалка, повторения и словарь бесплатны и останутся бесплатными. Подписка оплачивает серверы и ключ ИИ — она не запирает учёбу.</p>` +
+  `<h2>Бесплатно всегда</h2>` +
+  `<ul><li>Курс английского от A1 до B2 — учебные дни с упражнениями, грамматикой, чтением и аудированием.</li>` +
+  `<li><a href="/library">Читалка</a>: свои книги в EPUB, FB2, DOCX и PDF плюс встроенный каталог, перевод слов по клику.</li>` +
+  `<li>Интервальные повторения по алгоритму FSRS и личный словарь.</li>` +
+  `<li><a href="/grammar">Справочник грамматики</a> с объяснениями на русском.</li>` +
+  `<li>Всё это офлайн и без аккаунта.</li></ul>` +
+  `<h2>Что даёт подписка</h2>` +
+  `<ul><li>Разборы на основе ИИ без своего ключа и без VPN: перевод слова с учётом контекста, упрощение сложного предложения, объяснение грамматики.</li>` +
+  `<li>Синхронизация прогресса, словаря, закладок и позиций чтения между устройствами.</li>` +
+  `<li>Резервная копия в облаке, включая файлы загруженных книг.</li></ul>` +
+  `<p>К разборам есть и бесплатный путь — свой ключ ИИ. У синхронизации его нет: она работает на нашем сервере и в нашем хранилище.</p>` +
+  `<p><a href="/terms">Условия и публичная оферта</a> · <a href="/about">Подробнее о приложении</a></p></main>`;
+
 // /grammar hub body: h1 + the full crawlable topic link list (internal-linking is the point).
 const hubBody =
   `<main><h1>Грамматика английского языка</h1>` +
@@ -339,16 +378,15 @@ const hubBody =
 // ── Write pages ──────────────────────────────────────────────────────────────────────────────────
 for (const r of ROUTES) {
   const url = `${ORIGIN}/${r.key}`;
-  const body =
-    r.key === 'terms'
-      ? termsBody
-      : r.key === 'about'
-      ? aboutBody
-      : r.key === 'grammar' && grammar.length
-        ? hubBody
-        : r.key === 'library' && catalog.length
-          ? libraryHubBody
-          : undefined;
+  const bodies = {
+    terms: termsBody,
+    about: aboutBody,
+    privacy: privacyBody,
+    pro: proBody,
+    ...(grammar.length && { grammar: hubBody }),
+    ...(catalog.length && { library: libraryHubBody }),
+  };
+  const body = bodies[r.key];
   const out = join(DIST, `${r.key}.html`);
   mkdirSync(dirname(out), { recursive: true }); // a nested key (billing/success) has no directory yet
   writeFileSync(out, renderPage({ ...r, url, body }));
@@ -387,22 +425,58 @@ if (catalog.length) {
 }
 
 // ── Sitemap: home + indexable flat routes + every grammar topic ────────────────────────────────────
-const lastmod = new Date().toISOString().slice(0, 10);
+
+/**
+ * When the source behind a URL last changed, as a date.
+ *
+ * Was `new Date()` for all 83 URLs, so every deploy claimed every page had just changed — including the
+ * ones untouched for weeks. A sitemap that cries wolf stops being a crawl signal at all.
+ *
+ * The last commit that touched the file, not its mtime: CI clones fresh, so mtime is checkout time and
+ * would put today's date on everything again. Falls back to mtime, then to today, so a build outside a
+ * git work tree still produces a valid sitemap.
+ */
+function sourceDate(file) {
+  try {
+    const out = execFileSync('git', ['log', '-1', '--format=%cs', '--', file], {
+      cwd: join(HERE, '..'),
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(out)) return out;
+  } catch {
+    // no git, or a shallow clone with no commit touching this file
+  }
+  try {
+    return statSync(file).mtime.toISOString().slice(0, 10);
+  } catch {
+    return new Date().toISOString().slice(0, 10);
+  }
+}
+
+const SHELL_SRC = join(HERE, '..', 'index.html');
+const SELF = fileURLToPath(import.meta.url);
+// Flat pages and the home copy are authored here and in the shell, so the newer of the two is when
+// their text last changed.
+const flatDate = [sourceDate(SELF), sourceDate(SHELL_SRC)].sort().pop();
+const grammarDate = sourceDate(GRAMMAR_JSON);
+const catalogDate = sourceDate(CATALOG_JSON);
+
 const urls = [
-  { loc: `${ORIGIN}/`, priority: '1.0', changefreq: 'weekly' },
-  ...ROUTES.filter((r) => r.index).map((r) => ({ loc: `${ORIGIN}/${r.key}`, priority: '0.8', changefreq: 'monthly' })),
-  ...grammar.map((a) => ({ loc: `${ORIGIN}/grammar/${a.id}`, priority: '0.7', changefreq: 'monthly' })),
-  ...catalog.map((b) => ({ loc: `${ORIGIN}/library/catalog/${b.id}`, priority: '0.6', changefreq: 'monthly' })),
+  { loc: `${ORIGIN}/`, lastmod: flatDate, priority: '1.0', changefreq: 'weekly' },
+  ...ROUTES.filter((r) => r.index).map((r) => ({ loc: `${ORIGIN}/${r.key}`, lastmod: flatDate, priority: '0.8', changefreq: 'monthly' })),
+  ...grammar.map((a) => ({ loc: `${ORIGIN}/grammar/${a.id}`, lastmod: grammarDate, priority: '0.7', changefreq: 'monthly' })),
+  ...catalog.map((b) => ({ loc: `${ORIGIN}/library/catalog/${b.id}`, lastmod: catalogDate, priority: '0.6', changefreq: 'monthly' })),
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls
-  .map((u) => `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <priority>${u.priority}</priority>\n    <changefreq>${u.changefreq}</changefreq>\n  </url>`)
+  .map((u) => `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n    <priority>${u.priority}</priority>\n    <changefreq>${u.changefreq}</changefreq>\n  </url>`)
   .join('\n')}
 </urlset>
 `;
 writeFileSync(join(DIST, 'sitemap.xml'), sitemap);
 
 console.log(
-  `build-seo: wrote ${ROUTES.length} flat routes + ${grammar.length} grammar topics + ${catalog.length} catalog books + sitemap (${urls.length} urls, lastmod ${lastmod}).`
+  `build-seo: wrote ${ROUTES.length} flat routes + ${grammar.length} grammar topics + ${catalog.length} catalog books + sitemap (${urls.length} urls, lastmod ${grammarDate} for topics, ${catalogDate} for books, ${flatDate} for the rest).`
 );
