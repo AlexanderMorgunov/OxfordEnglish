@@ -9,6 +9,8 @@ import { useBookFileSync, type BookFileIssue } from '@/features/reader/blobSync'
 import { useSyncStatus } from '@/features/sync/status';
 import type { ParsedBook } from '@/features/reader/parse';
 import { BookView } from '@/features/reader/BookView';
+import { markBookOpened } from '@/features/reader/book-recency';
+import { captureDataScope } from '@/features/account/dataScope';
 
 /**
  * Everything that can go wrong opening a book used to arrive as one sentence. The distinction that
@@ -124,6 +126,7 @@ export function BookReaderPage() {
 
   useEffect(() => {
     let alive = true;
+    const current = captureDataScope();
     if (!bookId) return;
     setLoading(true);
     setFailure(null);
@@ -131,13 +134,14 @@ export function BookReaderPage() {
       try {
         const rec = await getBook(bookId);
         if (!rec) throw new BookNotFound();
-        if (!alive) return;
+        if (!alive || !current()) return;
         // Published before the parse, not with it: the record is a cheap row read, and holding it back
         // meant the wait had nothing to show but the word "loading".
         setRecord(rec);
         const parsed = await openBook(rec);
-        if (!alive) return;
+        if (!alive || !current()) return;
         setBook(parsed);
+        void markBookOpened(rec.id, Date.now(), () => alive && current());
       } catch (e) {
         if (!alive) return;
         if (e instanceof BookNotFound) setFailure({ kind: 'not-found' });

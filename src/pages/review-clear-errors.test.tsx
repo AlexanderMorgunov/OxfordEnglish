@@ -3,6 +3,7 @@
  * behind "Show answer", which asks someone to work through a card in order to say they do not want it;
  * the bulk one is new and deliberately hidden until the pile is past what anyone would clear by hand.
  */
+import 'fake-indexeddb/auto';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';

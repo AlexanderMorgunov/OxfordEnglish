@@ -12,9 +12,9 @@ export function PageStub({ eyebrow, title, children }: PageStubProps) {
     <section aria-label={title}>
       <p className="eyebrow mb-3.5">{eyebrow}</p>
       <h1 className="mb-3 text-2xl font-bold tracking-tight">{title}</h1>
-      <p className="max-w-prose text-muted">
+      <div className="max-w-prose text-muted">
         {children ?? 'Screen skeleton — implemented in a later milestone.'}
-      </p>
+      </div>
     </section>
   );
 }

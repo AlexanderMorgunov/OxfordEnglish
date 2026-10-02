@@ -8,6 +8,7 @@ import { db } from '@/db/db';
 import { releasePreviousAccountData, wipeSyncedData } from '@/features/sync/engine';
 import { discardAllBookFiles } from '@/features/reader/storage';
 import type { Device, DeviceStartResponse, Session } from './contract';
+import { invalidateDataScope } from './dataScope';
 
 const KEY = 'oxford-account';
 
@@ -260,6 +261,7 @@ export const useAccount = create<AccountState>((set, get) => {
   const deviceId = ensureDeviceId();
 
   const applySession = (s: Session) => {
+    if (get().accountId !== s.accountId) invalidateDataScope();
     save({ accountId: s.accountId, deviceId: s.deviceId, refreshToken: s.refreshToken,
       // ?? on both: every install that is already signed in when this ships has neither marker, and an
       // app boot is refresh() → applySession without passing through maybeSwitchWipe. Left unarmed they

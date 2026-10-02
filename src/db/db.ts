@@ -68,6 +68,7 @@ export interface SrsCard extends SyncMetaFields {
   card: Card;
   /** When the card was added (ms). Non-indexed: no version bump; absent on cards from before it existed. */
   createdAt?: number;
+  creationId?: string;
 }
 
 export interface CheckpointResult extends SyncMetaFields {

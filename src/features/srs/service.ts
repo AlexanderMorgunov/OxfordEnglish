@@ -7,8 +7,15 @@ import {
 } from 'ts-fsrs';
 import { db, type SrsCard } from '@/db/db';
 import { logReview, recordSave } from '@/features/stats/activity';
-import { addSrsCard, putSrsCard, softDeleteSrsCard } from '@/features/sync/local';
+import {
+  addSrsCard,
+  mutateSrsCard,
+  softDeleteSrsCard,
+} from '@/features/sync/local';
 import { isDeleted } from '@/features/sync/resolve';
+import { captureDataScope } from '@/features/account/dataScope';
+import { dictionaryAnswer, reviewAnswer, sameCardContent } from './answer';
+import { termCacheKey } from '@/features/vocab/translate';
 
 export { Rating };
 
@@ -16,14 +23,24 @@ const scheduler = fsrs(generatorParameters({ enable_fuzz: true }));
 
 type NewCard = Omit<SrsCard, 'due' | 'card'>;
 
-/** Create a card if one with this id doesn't already exist (never resets a live schedule).
- *  Resolves true only when a card was actually added — what the "saved" stats count. */
+/** A live existing card counts as a successful save without resetting or recounting it. */
 async function upsert(card: NewCard): Promise<boolean> {
+  const current = captureDataScope();
   try {
-    if (await db.srsCards.get(card.id)) return false;
+    const existing = await db.srsCards.get(card.id);
+    if (!current()) return false;
+    if (existing) return !isDeleted(existing);
     const fsrsCard = createEmptyCard(new Date());
-    await addSrsCard({ ...card, due: fsrsCard.due, card: fsrsCard, createdAt: Date.now() });
-    return true;
+    const added = await addSrsCard(
+      { ...card, due: fsrsCard.due, card: fsrsCard, createdAt: Date.now(), creationId: crypto.randomUUID() },
+      current
+    );
+    if (added && current() && (card.kind === 'word' || card.kind === 'phrase'))
+      await recordSave(card.kind);
+    if (!current()) return false;
+    if (added) return true;
+    const concurrent = await db.srsCards.get(card.id);
+    return Boolean(concurrent && !isDeleted(concurrent) && current());
   } catch {
     // best-effort — SRS is non-critical if IndexedDB is unavailable
     return false;
@@ -36,8 +53,8 @@ export async function addWordCard(
   context?: string,
   contextGloss?: string,
   sourceDayId?: string
-): Promise<void> {
-  const added = await upsert({
+): Promise<boolean> {
+  return upsert({
     id: `word:${word.toLowerCase()}`,
     kind: 'word',
     front: word,
@@ -47,25 +64,25 @@ export async function addWordCard(
     sourceDayId,
     tags: [],
   });
-  if (added) await recordSave('word');
 }
 
 export async function addPhraseCard(
   phrase: string,
   back: string,
   context?: string,
-  sourceDayId?: string
-): Promise<void> {
-  const added = await upsert({
+  sourceDayId?: string,
+  contextGloss?: string
+): Promise<boolean> {
+  return upsert({
     id: `phrase:${phrase.toLowerCase()}`,
     kind: 'phrase',
     front: phrase,
     back: back || phrase,
     contextSentence: context,
+    contextGloss,
     sourceDayId,
     tags: [],
   });
-  if (added) await recordSave('phrase');
 }
 
 /**
@@ -90,17 +107,87 @@ export async function addPhraseCard(
  *
  * Refuses to overwrite a translation that already exists: this repairs, it never corrects.
  */
-export async function repairCardBack(id: string, back: string): Promise<boolean> {
+export async function repairCardBack(
+  id: string,
+  back: string,
+  currentScope = captureDataScope(),
+  expected?: SrsCard
+): Promise<boolean> {
   const value = back.trim();
   if (!value) return false;
   try {
-    const row = await db.srsCards.get(id);
-    if (!row || row.back !== row.front || value === row.front) return false;
-    await putSrsCard({ ...row, back: value });
-    return true;
+    return Boolean(
+      await mutateSrsCard(
+        id,
+        async (row) => {
+          if (
+            row.back !== row.front ||
+            value.toLowerCase() === row.front.toLowerCase()
+          )
+            return;
+          if (expected && (
+            row.creationId !== expected.creationId || row.createdAt !== expected.createdAt ||
+            !sameCardContent(row, expected)
+          )) return;
+          const cached = await db.translations.get(termCacheKey(row.front));
+          if (cached?.source === 'manual' && cached.ru.trim() !== value) return;
+          return { ...row, back: value };
+        },
+        currentScope
+      )
+    );
   } catch {
     return false;
   }
+}
+
+export async function repairCardContext(
+  id: string,
+  sentence: string,
+  gloss: string,
+  currentScope = captureDataScope(),
+  backAtSave?: string
+): Promise<boolean> {
+  if (!gloss.trim()) return false;
+  return Boolean(
+    await mutateSrsCard(
+      id,
+      (row) => {
+        if (
+          row.contextSentence !== sentence ||
+          row.contextGloss !== undefined ||
+          (backAtSave !== undefined && row.back !== backAtSave) ||
+          row.fromError
+        )
+          return;
+        return { ...row, contextGloss: gloss.trim() };
+      },
+      currentScope
+    )
+  );
+}
+
+export async function repairSavedPhrase(
+  id: string,
+  sentence: string | undefined,
+  backAtSave: string,
+  result: { text: string; contextual: boolean },
+  currentScope = captureDataScope()
+): Promise<boolean> {
+  return Boolean(await mutateSrsCard(id, (row) => {
+    if (row.kind !== 'phrase' || row.contextSentence !== sentence || row.back !== backAtSave || row.contextGloss !== undefined) return;
+    const back = dictionaryAnswer(row) ? row.back : result.text;
+    return { ...row, back, contextGloss: result.contextual ? result.text : undefined };
+  }, currentScope));
+}
+
+export function reviewableCards(
+  cards: SrsCard[],
+  ignored: Set<string>
+): SrsCard[] {
+  return cards.filter(
+    (c) => !isDeleted(c) && (c.fromError || !ignored.has(c.front.toLowerCase()))
+  );
 }
 
 /**
@@ -118,9 +205,14 @@ export function canPronounce(card: Pick<SrsCard, 'kind' | 'fromError'>): boolean
 
 export async function getDueCards(now = new Date()): Promise<SrsCard[]> {
   try {
-    const rows = await db.srsCards.where('due').belowOrEqual(now).toArray();
-    // Tombstones stay in the table so the removal can reach other devices; they are not due for review.
-    return rows.filter((c) => !isDeleted(c));
+    const [rows, statuses] = await Promise.all([
+      db.srsCards.where('due').belowOrEqual(now).toArray(),
+      db.wordStatus.where('status').equals('ignored').toArray(),
+    ]);
+    return reviewableCards(
+      rows,
+      new Set(statuses.map((s) => s.word.toLowerCase()))
+    );
   } catch {
     return [];
   }
@@ -163,20 +255,47 @@ export async function countErrorCards(): Promise<number> {
  * other devices instead of being undone by the next pull.
  */
 export async function dropAllErrorCards(): Promise<number> {
+  const current = captureDataScope();
   try {
     const rows = await db.srsCards.filter((c) => c.fromError === true).toArray();
     const live = rows.filter((c) => !isDeleted(c));
-    for (const row of live) await softDeleteSrsCard(row.id);
+    for (const row of live) {
+      if (!current()) return 0;
+      await softDeleteSrsCard(row.id, current);
+    }
     return live.length;
   } catch {
     return 0;
   }
 }
 
-export async function gradeCard(id: string, rating: Grade): Promise<void> {
-  const row = await db.srsCards.get(id);
-  if (!row) return;
-  const next = scheduler.next(row.card, new Date(), rating).card;
-  await putSrsCard({ ...row, card: next, due: next.due });
-  await logReview(id, rating);
+export async function gradeCard(
+  id: string,
+  rating: Grade,
+  expectedReps?: number,
+  expectedContent?: SrsCard
+): Promise<boolean> {
+  const saved = await mutateSrsCard(
+    id,
+    async (row) => {
+      const now = new Date();
+      if (
+        row.due > now ||
+        !reviewAnswer(row) ||
+        (expectedReps !== undefined && row.card.reps !== expectedReps) ||
+        (expectedContent !== undefined && !sameCardContent(row, expectedContent))
+      )
+        return;
+      if (
+        !row.fromError &&
+        (await db.wordStatus.get(row.front.toLowerCase()))?.status === 'ignored'
+      )
+        return;
+      const next = scheduler.next(row.card, now, rating).card;
+      return { ...row, card: next, due: next.due };
+    },
+    captureDataScope(),
+    () => logReview(id, rating)
+  );
+  return Boolean(saved);
 }

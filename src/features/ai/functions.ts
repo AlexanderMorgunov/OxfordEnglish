@@ -4,6 +4,10 @@ import type { AiTaskRequest } from '@/features/account/contract';
 import { clampBand, simplifySystem, simplifyShot, SIMPLIFY_PROMPT_VERSION, type Band } from './simplify-prompts';
 import { db } from '@/db/db';
 import type { Exercise, Level } from '@/content/schema';
+import {
+  captureDataScope,
+  requireDataScope,
+} from '@/features/account/dataScope';
 
 const RU_TRANSLATOR =
   'Ты — переводчик с английского на русский. Переведи текст точно и естественно. Верни ТОЛЬКО перевод, без пояснений и без кавычек.';
@@ -24,18 +28,23 @@ export async function aiTranslate(
   text: string,
   opts: { sentence?: string; signal?: AbortSignal } = {}
 ): Promise<string> {
+  const current = captureDataScope();
   const q = text.trim();
   if (!q) return '';
   const ctx = opts.sentence?.trim();
   const inContext = ctx && ctx !== q ? ctx : undefined;
   const path = aiPathLabel(config);
-  const cacheKey = inContext ? `ai:${path}:${q}|@|${inContext}` : `ai:${path}:${q}`;
+  const cacheKey = inContext
+    ? `ai:${path}:${q}|@|${inContext}`
+    : `ai:${path}:${q}`;
   try {
     const cached = await db.translations.get(cacheKey);
+    requireDataScope(current);
     if (cached && hasCyrillic(cached.ru)) return cached.ru;
   } catch {
     // ignore cache miss
   }
+  requireDataScope(current);
   const user = inContext
     ? `Фрагмент: "${q}"\nПредложение: "${inContext}"\nПереведи ТОЛЬКО фрагмент так, как он значит в этом предложении. Верни только перевод фрагмента.`
     : q;
@@ -49,13 +58,18 @@ export async function aiTranslate(
       { temperature: 0.2, maxTokens: 300, noReasoning: true, signal: opts.signal }
     )
   );
-  const ru = raw.trim().replace(/^["'«»“”]+|["'«»“”]+$/g, '').trim();
+  const ru = raw.trim().replace(/^["'«»“”]+|["'«»“”]+$/g, '')
+    .trim();
   if (!hasCyrillic(ru)) throw new Error('ai translation is not Russian');
   try {
-    await db.translations.put({ word: cacheKey, ru, source: 'ai' });
+    await db.transaction('rw', db.translations, async () => {
+      requireDataScope(current);
+      await db.translations.put({ word: cacheKey, ru, source: 'ai' });
+    });
   } catch {
     // best-effort cache
   }
+  requireDataScope(current);
   return ru;
 }
 
@@ -235,6 +249,7 @@ async function ask(
   user: string,
   cacheKey: string
 ): Promise<string> {
+  const current = captureDataScope();
   const key = `${aiPathLabel(config)}|${cacheKey}`;
   const hit = cacheGet(key);
   if (hit) return hit;
@@ -248,6 +263,7 @@ async function ask(
       { noReasoning: true, maxTokens: 220 }
     )
   );
+  requireDataScope(current);
   cacheSet(key, out);
   return out;
 }
@@ -400,5 +416,11 @@ export function wordInContext(
     `Слово: "${word}"\nПредложение: "${sentence}"\n` +
     'Дай перевод слова ИМЕННО в этом предложении (одно-два слова). ' +
     'Затем, если у слова есть другие частые значения, добавь строкой "Ещё: …" с 1–2 из них. Кратко.';
-  return ask(config, { task: 'wordInContext', word, sentence }, RU_TUTOR, user, `wic|${word}|${sentence}`);
+  return ask(
+    config,
+    { task: 'wordInContext', word, sentence },
+    RU_TUTOR,
+    user,
+    `wic|${word}|${sentence}`
+  );
 }

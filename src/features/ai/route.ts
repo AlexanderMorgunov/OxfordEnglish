@@ -6,6 +6,10 @@ import type { AiTaskRequest } from '@/features/account/contract';
 import { isConfigured, useAiStore } from './store';
 import { upsellTarget } from './upsell';
 import type { AiConfig } from './provider';
+import {
+  captureDataScope,
+  requireDataScope,
+} from '@/features/account/dataScope';
 
 /**
  * Picks the path for one AI call: the managed proxy (our key, paid/trial plans) or BYOK (the user's own
@@ -20,18 +24,22 @@ export async function runTask(
   config: AiConfig | null,
   byok: (config: AiConfig) => Promise<string>
 ): Promise<string> {
+  const current = captureDataScope();
   // `planUnreadable` is in here deliberately: refusing locally when we simply have no answer is how a
   // subscriber on a bad connection got told to buy what they already own. Ask the proxy and let its
   // 401/402 be the refusal — it is the only party that actually knows.
   if (managedAiAvailable() || planUnreadable()) {
     try {
       const token = await useAccount.getState().getAccessToken();
+      requireDataScope(current);
       if (token) {
         const res = await api.aiComplete(token, req);
+        requireDataScope(current);
         useEntitlement.getState().applyUsage(res.ai);
         return res.content;
       }
     } catch (e) {
+      requireDataScope(current);
       // Re-read the plan so the UI stops offering a path the server just refused.
       if (e instanceof ApiFailure && (e.code === 'quota_exhausted' || e.code === 'no_plan')) {
         void useEntitlement.getState().load();
@@ -40,7 +48,9 @@ export async function runTask(
     }
   }
   if (!isConfigured(config)) throw new Error('AI is not available');
-  return byok(config);
+  const result = await byok(config);
+  requireDataScope(current);
+  return result;
 }
 
 /** Label for the LOCAL (Dexie/localStorage) cache key, standing in for the model id. The managed path

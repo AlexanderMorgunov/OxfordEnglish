@@ -17,8 +17,15 @@ import {
 import type { Voice } from '@/shared/lib/audio';
 import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
 import { translateWord } from '@/features/vocab/translate';
-import { translateReaderText } from './translate';
-import { addWordCard, addPhraseCard } from '@/features/srs/service';
+import { translateReaderResult } from './translate';
+import type { ReaderTranslation } from './translate';
+import {
+  addWordCard,
+  addPhraseCard,
+  repairSavedPhrase,
+  repairCardContext,
+} from '@/features/srs/service';
+import { captureDataScope } from '@/features/account/dataScope';
 import { useAiStore } from '@/features/ai/store';
 import { useAiEnabled, useAiUnknown } from '@/features/ai/route';
 import { wordInContext } from '@/features/ai/functions';
@@ -48,10 +55,13 @@ const VOICE_SAMPLE = 'The morning light spilled across the quiet room as she ope
 
 export type Gloss = { ru?: string; ipa?: string };
 
-
 /** Chapter-level, stable-per-render coloring inputs. Kept in context so a single word's status
  *  change re-renders only that token, not the whole chapter (thousands of WordTokens). */
-type ReaderCtx = { freq: FreqIndex | null; rankThreshold: number; coloring: boolean };
+type ReaderCtx = {
+  freq: FreqIndex | null;
+  rankThreshold: number;
+  coloring: boolean;
+};
 const ReaderContext = createContext<ReaderCtx>({ freq: null, rankThreshold: Infinity, coloring: false });
 
 /** The tapped word's meaning IN this sentence (LLM, cached by word+sentence). Rendered inside the
@@ -75,14 +85,19 @@ function ContextGloss({
 
   useEffect(() => {
     let alive = true;
+    const current = captureDataScope();
     const timer = setTimeout(() => {
+      if (!current()) return;
       void wordInContext(config, word, sentence)
         .then((res) => {
+          if (!current()) return;
+          const first = res.split('\n')[0]?.replace(/^Ещё:\s*/i, '')
+            .replace(/\*\*/g, '')
+            .trim();
+          if (first) onResolved(first);
           if (!alive) return;
           setText(res);
           setState('done');
-          const first = res.split('\n')[0]?.replace(/^Ещё:\s*/i, '').trim();
-          if (first) onResolved(first);
         })
         .catch(() => {
           if (alive) setState('error');
@@ -99,7 +114,9 @@ function ContextGloss({
       <p className="font-mono text-2xs uppercase tracking-[0.08em] text-violet">
         {ru ? 'в контексте' : 'in context'}
       </p>
-      {state === 'loading' && <p className="font-mono text-2xs text-faint">…</p>}
+      {state === 'loading' && (
+        <p className="font-mono text-2xs text-faint">…</p>
+      )}
       {state === 'error' && (
         <p className="font-mono text-2xs text-faint">{ru ? 'недоступно' : 'unavailable'}</p>
       )}
@@ -114,7 +131,9 @@ function ContextGloss({
 function PopoverForms({ word }: { word: string }) {
   const lemma = useLemma();
   const forms = useMemo(() => irregularForms(word, lemma), [word, lemma]);
-  return <FormsLine word={word} forms={forms} className="mt-1 font-mono text-2xs" />;
+  return (
+    <FormsLine word={word} forms={forms} className="mt-1 font-mono text-2xs" />
+  );
 }
 
 /** CEFR usefulness chip for the tapped word (lazy CEFR list, loaded on first open). */
@@ -177,7 +196,9 @@ export const WordToken = memo(function WordToken({
   const lookup = lookupWord ?? word;
   const status = useVocabStore((s) => s.statuses.get(lookup.toLowerCase()));
   const pos = tokenId ? parsePos(tokenId) : null;
-  const selected = usePhraseSelect((s) => (pos ? inPhraseRange(pos, s.anchor, s.end) : false));
+  const selected = usePhraseSelect((s) =>
+    pos ? inPhraseRange(pos, s.anchor, s.end) : false
+  );
   const setStatus = useVocabStore((s) => s.setStatus);
   const lang = useUiLang((s) => s.lang);
   const { freq, rankThreshold, coloring } = use(ReaderContext);
@@ -190,6 +211,31 @@ export const WordToken = memo(function WordToken({
   const aiUnknown = useAiUnknown();
   // The in-context meaning shown (AI); its first line is what we save to the word's vocab card.
   const [wicGloss, setWicGloss] = useState<string | null>(null);
+  const savedWord = useRef<{
+    done: Promise<boolean>;
+    current: () => boolean;
+    back: string;
+  } | null>(null);
+  const onGlossResolved = useCallback(
+    (meaning: string) => {
+      setWicGloss(meaning);
+      const save = savedWord.current;
+      if (save)
+        void save.done
+          .then((saved) => {
+            if (saved && save.current())
+              return repairCardContext(
+                `word:${lookup.toLowerCase()}`,
+                sentence,
+                meaning,
+                save.current,
+                save.back
+              );
+          })
+          .catch(() => undefined);
+    },
+    [lookup, sentence]
+  );
 
   const openLookup = () => {
     if (gloss?.ru || done) return;
@@ -207,7 +253,7 @@ export const WordToken = memo(function WordToken({
   // Gate the status underline on the coloring setting too — with coloring OFF a saved-"learning" word
   // must not stay underlined (the classify fallback used to leak through when `freq`/classify was null).
   const raw = coloring
-    ? classified ?? (status === 'learning' ? 'learning' : status === 'unknown' ? 'new' : undefined)
+    ? (classified ?? (status === 'learning' ? 'learning' : status === 'unknown' ? 'new' : undefined))
     : undefined;
   const visible = raw === 'learning' || raw === 'new' ? raw : undefined;
   // A saved-phrase token underlines as learning (also gated on coloring); it wins over `new`.
@@ -248,10 +294,16 @@ export const WordToken = memo(function WordToken({
         )}
         <PopoverLevel word={lookup} />
       </div>
-      {gloss?.ipa && <p className="font-mono text-xs text-muted">{gloss.ipa}</p>}
-      {translation && <p className="mt-1 text-sm text-content">{translation}</p>}
+      {gloss?.ipa && (
+        <p className="font-mono text-xs text-muted">{gloss.ipa}</p>
+      )}
+      {translation && (
+        <p className="mt-1 text-sm text-content">{translation}</p>
+      )}
       <PopoverForms word={lookup} />
-      {loading && <p className="mt-1 font-mono text-2xs text-faint">translating…</p>}
+      {loading && (
+        <p className="mt-1 font-mono text-2xs text-faint">translating…</p>
+      )}
       {failed && !translation && (
         <p className="mt-1 font-mono text-2xs text-faint">
           {lang === 'ru'
@@ -260,8 +312,13 @@ export const WordToken = memo(function WordToken({
         </p>
       )}
       {(aiReady || aiUnknown) && enableContextFetch && sentence.includes(' ') && (
-        <ContextGloss word={word} sentence={sentence} config={config} onResolved={setWicGloss} />
-      )}
+          <ContextGloss
+            word={word}
+            sentence={sentence}
+            config={config}
+            onResolved={onGlossResolved}
+          />
+        )}
       {tokenId && (
         <div className="mt-2">
           <SelectPhraseButton tokenId={tokenId} />
@@ -273,7 +330,11 @@ export const WordToken = memo(function WordToken({
           variant="ghost"
           onClick={() => {
             void setStatus(lookup, 'learning');
-            void addWordCard(lookup, translation ?? lookup, sentence, wicGloss ?? undefined);
+            savedWord.current = {
+              done: addWordCard(lookup, translation ?? lookup, sentence, wicGloss ?? undefined),
+              current: captureDataScope(),
+              back: translation ?? lookup,
+            };
           }}
         >
           learning
@@ -367,7 +428,10 @@ const Paragraph = memo(function Paragraph({
   const { freq } = use(ReaderContext);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [out, setOut] = useState<Record<number, LensCell>>({});
-  const [loading, setLoading] = useState<{ idx: number; mode: LensMode } | null>(null);
+  const [loading, setLoading] = useState<{
+    idx: number;
+    mode: LensMode;
+  } | null>(null);
   const navigate = useNavigate();
   // Which sentence's lens menu is open (translate / simplify / grammar), or null.
   const [menuIdx, setMenuIdx] = useState<number | null>(null);
@@ -488,7 +552,8 @@ const Paragraph = memo(function Paragraph({
     if (cell.kind === 'grammar') {
       return (
         <span role="status" aria-live="polite" className="text-base text-muted">
-          <span className="text-amber">{r ? 'гр' : 'gr'}</span> {cell.text} {ruAction(si, sentence)}{' '}
+          <span className="text-amber">{r ? 'гр' : 'gr'}</span> {cell.text}{' '}
+          {ruAction(si, sentence)}{' '}
         </span>
       );
     }
@@ -608,7 +673,13 @@ const Paragraph = memo(function Paragraph({
                 data-lens-trigger
                 aria-haspopup="menu"
                 aria-expanded={menuIdx === si}
-                aria-label={open ? (lang === 'ru' ? 'Свернуть' : 'Close') : lang === 'ru' ? 'линза по предложению' : 'sentence lens'}
+                aria-label={
+                  open
+                    ? lang === 'ru'
+                      ? 'Свернуть'
+                      : 'Close'
+                    : lang === 'ru' ? 'линза по предложению' : 'sentence lens'
+                }
                 onClick={() => {
                   if (open) {
                     setOpenIdx(null);
@@ -650,7 +721,9 @@ const Paragraph = memo(function Paragraph({
                     >
                       <span className="w-6 text-teal">{mark}</span>
                       {label}
-                      {needsAi && !aiReady && !aiUnknown && <span className="ml-auto pl-2 text-faint">🔒</span>}
+                      {needsAi && !aiReady && !aiUnknown && (
+                        <span className="ml-auto pl-2 text-faint">🔒</span>
+                      )}
                     </button>
                   ))}
                   {/* One explanation for both locked rows, not a repeated hint per row — and it names
@@ -694,7 +767,9 @@ const Paragraph = memo(function Paragraph({
             </span>{' '}
             {/* Marked so the phrase picker can tell the lens OUTPUT from the source text. Without it,
                 selecting words inside a Russian translation offered to translate them — into Russian. */}
-            {open && <span {...{ [LENS_OUT_ATTR]: true }}>{renderOut(si, sentence)}</span>}
+            {open && (
+              <span {...{ [LENS_OUT_ATTR]: true }}>{renderOut(si, sentence)}</span>
+            )}
           </span>
         );
       })}
@@ -791,6 +866,21 @@ export function ReadingText({
   const [phraseSentence, setPhraseSentence] = useState<string | null>(null);
   const [phraseLoading, setPhraseLoading] = useState(false);
   const [phraseSaved, setPhraseSaved] = useState(false);
+  const [phraseError, setPhraseError] = useState(false);
+  const phraseRequest = useRef<{
+    text: string;
+    sentence?: string;
+    current: () => boolean;
+    result: ReaderTranslation | null;
+    backAtSave: string;
+    saved: Promise<boolean> | null;
+  } | null>(null);
+  useEffect(
+    () => () => {
+      phraseRequest.current = null;
+    },
+    []
+  );
   const pickAnchor = usePhraseSelect((s) => s.anchor);
   const clearPick = usePhraseSelect((s) => s.clear);
   const savedPhrases = useSavedPhrases((s) => s.phrases);
@@ -811,18 +901,51 @@ export function ReadingText({
   );
 
   const setPhraseText = (text: string, sentence?: string) => {
+    const request = {
+      text,
+      sentence,
+      current: captureDataScope(),
+      result: null as ReaderTranslation | null,
+      backAtSave: text,
+      saved: null as Promise<boolean> | null,
+    };
+    phraseRequest.current = request;
     setPhrase(text);
     setPhraseSentence(sentence ?? null);
     setPhraseRu(null);
+    setPhraseError(false);
     // Already in the word bank → show it as saved instead of offering "+ save" again.
     setPhraseSaved(useSavedPhrases.getState().has(text));
     setPhraseLoading(true);
     // Pass the phrase's sentence so the AI translates it IN context ("fowling pieces" → "охотничьи
     // ружья", not a literal "кусочки"); the free path ignores the context.
-    void translateReaderText(text, { ...translateArgs.current, sentence }).then((tr) => {
-      setPhraseRu(tr);
-      setPhraseLoading(false);
-    });
+    void translateReaderResult(text, { ...translateArgs.current, sentence })
+      .then(async (result) => {
+        request.result = result;
+        if (!request.current()) return;
+        if (phraseRequest.current === request) {
+          setPhraseRu(result?.text ?? null);
+          setPhraseLoading(false);
+        }
+        if (
+          result &&
+          request.saved &&
+          (await request.saved) &&
+          request.current()
+        ) {
+          await repairSavedPhrase(
+            `phrase:${text.toLowerCase()}`,
+            sentence,
+            request.backAtSave,
+            result,
+            request.current
+          );
+        }
+      })
+      .catch(() => {
+        if (phraseRequest.current === request && request.current())
+          setPhraseLoading(false);
+      });
   };
 
   // A multi-word selection becomes a savable phrase ("took a train"); single-word taps stay on the
@@ -892,16 +1015,38 @@ export function ReadingText({
   };
 
   const cancelPick = () => {
+    phraseRequest.current = null;
     clearPick();
     setPhrase(null);
   };
 
   const savePhrase = () => {
-    if (!phrase) return;
-    setPhraseSaved(true);
+    const request = phraseRequest.current;
+    if (!phrase || !request || request.saved || !request.current()) return;
+    request.backAtSave = phraseRu ?? phrase;
     clearPick();
-    useSavedPhrases.getState().add(phrase);
-    void addPhraseCard(phrase, phraseRu ?? phrase, phraseSentence ?? undefined);
+    request.saved = addPhraseCard(
+      phrase,
+      phraseRu ?? phrase,
+      phraseSentence ?? undefined,
+      undefined,
+      request.result?.contextual ? request.result.text : undefined
+    );
+    void request.saved
+      .then((saved) => {
+        if (!request.current()) return;
+        if (saved) useSavedPhrases.getState().add(request.text);
+        if (phraseRequest.current === request) {
+          setPhraseSaved(saved);
+          setPhraseError(!saved);
+        }
+        if (!saved) request.saved = null;
+      })
+      .catch(() => {
+        request.saved = null;
+        if (phraseRequest.current === request && request.current())
+          setPhraseError(true);
+      });
   };
 
   // Per-paragraph bookmarked-sentence sets. Memoized so a non-bookmarked paragraph gets a stable
@@ -1204,6 +1349,11 @@ export function ReadingText({
       {phrase && (
         <div className="sticky top-2 z-10 flex flex-wrap items-center gap-2 rounded-sm border border-teal-dim bg-surface-2 py-2 pl-3 pr-11 text-sm shadow-md">
           <span className="font-mono text-teal">{phrase}</span>
+          {phraseError && (
+            <span role="alert" className="text-coral">
+              {ru ? 'Не удалось сохранить' : 'Could not save'}
+            </span>
+          )}
           {canSpeak && (
             <button
               type="button"
@@ -1231,7 +1381,13 @@ export function ReadingText({
             className="ml-auto font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline disabled:text-faint disabled:no-underline"
             onClick={savePhrase}
           >
-            {phraseSaved ? (ru ? '✓ сохранено' : '✓ saved') : ru ? '+ в словарь' : '+ save'}
+            {phraseSaved
+              ? ru
+                ? '✓ сохранено'
+                : '✓ saved'
+              : ru
+                ? '+ в словарь'
+                : '+ save'}
           </button>
           <button
             type="button"

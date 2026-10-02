@@ -6,6 +6,7 @@
  * "Add to Home Screen" that an installed app does not have. The warning is right; only its remedy
  * has to change with the platform.
  */
+import 'fake-indexeddb/auto';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, expect, test, vi } from 'vitest';

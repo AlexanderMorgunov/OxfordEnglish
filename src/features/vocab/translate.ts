@@ -1,5 +1,6 @@
 import { db } from '@/db/db';
 import { toSentences } from '@/features/reader/parse/text';
+import { captureDataScope } from '@/features/account/dataScope';
 
 type MyMemoryResponse = { responseData?: { translatedText?: string } };
 
@@ -8,19 +9,58 @@ const MM_LIMIT = 480; // MyMemory anonymous per-request character cap
 /** A real en→ru translation is Cyrillic; a Latin result means MyMemory echoed the source. */
 const hasCyrillic = (s: string) => /[а-яё]/i.test(s);
 
-async function mymemory(text: string): Promise<string | null> {
+export const termCacheKey = (term: string): string => term.trim().toLowerCase();
+
+async function cacheAutomatic(
+  key: string,
+  ru: string,
+  current: () => boolean
+): Promise<string | null> {
+  if (!current()) return null;
+  try {
+    return await db.transaction('rw', db.translations, async () => {
+      const existing = await db.translations.get(key);
+      if (!current()) return null;
+      if (existing?.source === 'manual') return existing.ru || null;
+      await db.translations.put({ word: key, ru, source: 'mymemory' });
+      return ru;
+    });
+  } catch {
+    return current() ? ru : null;
+  }
+}
+
+async function mymemory(text: string, signal: AbortSignal): Promise<string | null> {
   try {
     const res = await fetch(
-      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|ru`
+      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|ru`,
+      { signal }
     );
     if (!res.ok) return null;
     const data = (await res.json()) as MyMemoryResponse;
     const ru = data.responseData?.translatedText?.trim();
     // Reject the daily-limit warning, the length-limit note, and any non-Russian echo.
-    if (!ru || /MYMEMORY WARNING|QUERY LENGTH LIMIT/i.test(ru) || !hasCyrillic(ru)) return null;
+    if (signal.aborted || !ru || /MYMEMORY WARNING|QUERY LENGTH LIMIT/i.test(ru) || !hasCyrillic(ru)) return null;
     return ru;
   } catch {
     return null;
+  }
+}
+
+async function translateParts(parts: string[], key: string, current: () => boolean): Promise<string | null> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  try {
+    const out: string[] = [];
+    for (const part of parts) {
+      if (!current() || controller.signal.aborted) return null;
+      const ru = await mymemory(part, controller.signal);
+      if (ru === null || !current()) return null;
+      out.push(ru);
+    }
+    return cacheAutomatic(key, out.join(' '), current);
+  } finally {
+    clearTimeout(timeout);
   }
 }
 
@@ -50,28 +90,21 @@ function chunk(text: string): string[] {
  * so the caller can show a plain "unavailable" state (offline-first, degrade visibly).
  */
 export async function translateText(text: string): Promise<string | null> {
-  const key = text.trim();
-  if (!key) return null;
+  const source = text.trim();
+  const key = termCacheKey(source);
+  const current = captureDataScope();
+  if (!source) return null;
   try {
-    const cached = await db.translations.get(key);
-    if (cached && hasCyrillic(cached.ru)) return cached.ru; // skip stale bad caches
+    const cached =
+      (await db.translations.get(key)) ?? (await db.translations.get(source));
+    if (!current()) return null;
+    if (cached?.source === 'manual') return cached.ru || null;
+    if (cached && hasCyrillic(cached.ru)) return cached.ru;
   } catch {
     // ignore cache miss
   }
-  const parts = chunk(key);
-  const out: string[] = [];
-  for (const part of parts) {
-    const ru = await mymemory(part);
-    if (ru === null) return null;
-    out.push(ru);
-  }
-  const ru = out.join(' ');
-  try {
-    await db.translations.put({ word: key, ru, source: 'mymemory' });
-  } catch {
-    // best-effort cache
-  }
-  return ru;
+  if (!current()) return null;
+  return translateParts(chunk(source), key, current);
 }
 
 /**
@@ -80,19 +113,17 @@ export async function translateText(text: string): Promise<string | null> {
  * curated glossary translations stay the offline-first path.
  */
 export async function translateWord(word: string): Promise<string | null> {
-  const w = word.toLowerCase();
+  const w = termCacheKey(word);
+  const current = captureDataScope();
+  if (!w) return null;
   try {
     const cached = await db.translations.get(w);
-    if (cached && hasCyrillic(cached.ru)) return cached.ru; // skip stale bad caches (source echoes, warnings)
+    if (!current()) return null;
+    if (cached?.source === 'manual') return cached.ru || null;
+    if (cached && hasCyrillic(cached.ru)) return cached.ru;
   } catch {
     // ignore cache miss
   }
-  const ru = await mymemory(w);
-  if (ru === null) return null; // offline, daily limit, or a non-Russian echo — degrade visibly
-  try {
-    await db.translations.put({ word: w, ru, source: 'mymemory' });
-  } catch {
-    // best-effort cache
-  }
-  return ru;
+  if (!current()) return null;
+  return translateParts([w], w, current);
 }

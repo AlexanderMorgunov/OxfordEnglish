@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { liveQuery } from 'dexie';
 import { Link } from 'react-router-dom';
 import type { BookRecord } from '@/db/db';
 import { Button, Card, Eyebrow, PixelImage } from '@/shared/ui';
@@ -11,6 +12,7 @@ import { useAccount } from '@/features/account/store';
 import { RecommendedShelf } from '@/features/reader/RecommendedShelf';
 import { BackToReader } from '@/features/reader/BackToReader';
 import { readProgress } from '@/features/stats/useReadingTracker';
+import { captureDataScope, subscribeDataScope } from '@/features/account/dataScope';
 
 /**
  * One reason usually covers several books at once — the account has no Pro, the cloud is full, the
@@ -89,6 +91,7 @@ export function LibraryPage() {
   const issueFor = (id: string): UploadIssue | undefined => (uploadsRunning ? issues[id] : undefined);
   const inputRef = useRef<HTMLInputElement>(null);
   const [books, setBooks] = useState<BookRecord[]>([]);
+  const [scope, setScope] = useState(0);
   // EVERY reason that covers more than one book gets its own line. Explaining only the biggest group
   // would leave the others showing a bare "not in the cloud" with the reason stated nowhere — worse than
   // the repetition this replaces. ISSUE_ORDER keeps the lines in a stable order.
@@ -104,8 +107,21 @@ export function LibraryPage() {
   const supported = opfsAvailable();
   const native = isNativePlatform();
 
-  const reload = () => void listBooks().then(setBooks);
-  useEffect(reload, []);
+  const reload = () => {
+    const current = captureDataScope();
+    void listBooks().then((rows) => { if (current()) setBooks(rows); });
+  };
+  useEffect(() => subscribeDataScope(() => {
+    setBooks([]);
+    setScope((value) => value + 1);
+  }), []);
+  useEffect(() => {
+    const current = captureDataScope();
+    const subscription = liveQuery(listBooks).subscribe((rows) => {
+      if (current()) setBooks(rows);
+    });
+    return () => subscription.unsubscribe();
+  }, [scope]);
   useEffect(() => {
     if (supported) void navigator.storage.persisted?.().then((p) => setPersisted(p ?? true));
   }, [supported]);
@@ -145,8 +161,6 @@ export function LibraryPage() {
     <section aria-label={ru ? 'Библиотека' : 'Library'}>
       <BackToReader />
       <Eyebrow className="mb-3.5">{ru ? 'библиотека' : 'library'}</Eyebrow>
-
-      <RecommendedShelf />
 
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
@@ -263,6 +277,7 @@ export function LibraryPage() {
           })}
         </div>
       )}
+      <div className="mt-10"><RecommendedShelf /></div>
     </section>
   );
 }
