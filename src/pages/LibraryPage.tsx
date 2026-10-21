@@ -5,7 +5,7 @@ import type { BookRecord } from '@/db/db';
 import { Button, Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { importBook, listBooks, removeBook } from '@/features/reader/service';
-import { opfsAvailable, requestPersistence } from '@/features/reader/storage';
+import { opfsAvailable, requestPersistence, storagePersisted } from '@/features/reader/storage';
 import { isNativePlatform } from '@/shared/lib/platform';
 import { useBookFileSync, useBookUploadIssues, type UploadIssue } from '@/features/reader/blobSync';
 import { useAccount } from '@/features/account/store';
@@ -123,7 +123,9 @@ export function LibraryPage() {
     return () => subscription.unsubscribe();
   }, [scope]);
   useEffect(() => {
-    if (supported) void navigator.storage.persisted?.().then((p) => setPersisted(p ?? true));
+    let active = true;
+    if (supported) void storagePersisted().then((value) => { if (active) setPersisted(value); });
+    return () => { active = false; };
   }, [supported]);
 
   const onFile = async (file: File) => {
@@ -244,15 +246,17 @@ export function LibraryPage() {
           {books.map((b) => {
             const read = readProgress(`reader.${b.id}`);
             return (
-              <Card key={b.id} className="flex items-center justify-between gap-3">
+              <Card key={b.id} className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
                 {/* The issue line sits OUTSIDE the Link: it is not part of what the link does, and inside
                     it would be concatenated into the link's accessible name. */}
-                <div className="min-w-0 flex-1">
+                <div className="min-w-0 flex-1 basis-full sm:basis-0">
                   <Link to={`/library/${b.id}`} className="block">
                     <p className="truncate font-semibold">{b.title}</p>
                     <p className="truncate font-mono text-2xs uppercase tracking-[0.06em] text-muted">
                       {b.author ? `${b.author} · ` : ''}
-                      {b.format} ·{' '}
+                      {b.format}
+                    </p>
+                    <p className="mt-1 font-mono text-2xs text-muted tabular-nums">
                       {read != null
                         ? `${ru ? 'прочитано' : 'read'} ${Math.round(read * 100)}%`
                         : `${b.chapterCount} ${ru ? 'глав' : 'ch.'}`}
@@ -263,7 +267,7 @@ export function LibraryPage() {
                 <button
                   type="button"
                   aria-label={ru ? 'Удалить' : 'Delete'}
-                  className="shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-muted hover:text-coral"
+                  className="ml-auto min-h-11 min-w-11 shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-muted hover:text-coral"
                   onClick={() => {
                     if (confirm(ru ? `Удалить «${b.title}»?` : `Delete “${b.title}”?`)) {
                       void removeBook(b.id).then(reload);

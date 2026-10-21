@@ -1,10 +1,11 @@
 import { translateText } from '@/features/vocab/translate';
 import { aiTranslate } from '@/features/ai/functions';
-import { aiAvailable } from '@/features/ai/route';
+import { captureAiScope, type AiPath } from '@/features/ai/route';
 import type { AiConfig } from '@/features/ai/provider';
 import { captureDataScope } from '@/features/account/dataScope';
+import { abortReason } from '@/shared/lib/deadline';
 
-export type ReaderTranslation = { text: string; contextual: boolean };
+export type ReaderTranslation = { text: string; contextual: boolean; source?: AiPath | 'free' };
 
 /**
  * Translate a reader sentence/phrase EN→RU. Uses available AI when enabled,
@@ -13,23 +14,31 @@ export type ReaderTranslation = { text: string; contextual: boolean };
  */
 export async function translateReaderText(
   text: string,
-  opts: { ai: boolean; config: AiConfig | null; sentence?: string }
+  opts: { ai: boolean; config: AiConfig | null; sentence?: string; signal?: AbortSignal }
 ): Promise<string | null> {
   return (await translateReaderResult(text, opts))?.text ?? null;
 }
 
 export async function translateReaderResult(
   text: string,
-  opts: { ai: boolean; config: AiConfig | null; sentence?: string }
+  opts: { ai: boolean; config: AiConfig | null; sentence?: string; signal?: AbortSignal }
 ): Promise<ReaderTranslation | null> {
   const current = captureDataScope();
-  if (opts.ai && aiAvailable(opts.config)) {
+  const aiActive = captureAiScope(opts.signal);
+  const requireActive = () => {
+    if (opts.ai) aiActive();
+    else if (opts.signal?.aborted) throw abortReason(opts.signal);
+  };
+  requireActive();
+  if (opts.ai) {
     try {
-      const ru = await aiTranslate(opts.config, text, { sentence: opts.sentence });
+      let source: AiPath | undefined;
+      const ru = await aiTranslate(opts.config, text, { sentence: opts.sentence, signal: opts.signal, onSource: path => { source = path; } });
+      requireActive();
       if (!current()) return null;
       if (ru)
         return {
-          text: ru,
+          text: ru, source,
           contextual: Boolean(
             opts.sentence?.trim() && opts.sentence.trim() !== text.trim()
           ),
@@ -39,6 +48,8 @@ export async function translateReaderResult(
     }
   }
   if (!current()) return null;
-  const ru = await translateText(text);
-  return ru && current() ? { text: ru, contextual: false } : null;
+  requireActive();
+  const ru = await translateText(text, { signal: opts.signal });
+  requireActive();
+  return ru && current() ? { text: ru, contextual: false, source: 'free' } : null;
 }

@@ -1,4 +1,5 @@
 import type { ActivityDay, BookActivity } from '@/db/db';
+import { counter, validDay, validTimestamp } from '@/features/progress/validation';
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
@@ -51,7 +52,7 @@ const maxBook = (a: BookActivity, b: BookActivity): BookActivity => ({
 export function mergeActivity(local: ActivityDay | undefined, incoming: ActivityDay): ActivityDay {
   if (!local) return incoming;
   const out: ActivityDay = { ...local, books: { ...local.books } };
-  for (const k of COUNTERS) out[k] = Math.max(local[k], incoming[k] ?? 0);
+  for (const k of COUNTERS) out[k] = Math.max(counter(local[k]), counter(incoming[k]));
   for (const [key, b] of Object.entries(incoming.books ?? {})) {
     const mine = out.books[key];
     out.books[key] = mine ? maxBook(mine, b) : b;
@@ -127,11 +128,14 @@ export function summarize(
   const books = new Map<string, BookActivity>();
   const s: Summary = { readSec: 0, readWords: 0, wordsSaved: 0, phrasesSaved: 0, learned: 0, reviews: 0, recalled: 0, bars: [], books: [] };
   for (const r of rows) {
-    if (!inRange(r.day)) continue;
-    for (const k of COUNTERS) s[k] += r[k];
+    if (!r || !validDay(r.day) || !inRange(r.day)) continue;
+    for (const k of COUNTERS) s[k] += counter(r[k]);
     const b = bucketOf(r.day);
-    if (bars.has(b)) bars.set(b, bars.get(b)! + r.readSec);
-    for (const [key, v] of Object.entries(r.books)) {
+    if (bars.has(b)) bars.set(b, bars.get(b)! + counter(r.readSec));
+    const source = r.books && typeof r.books === 'object' && !Array.isArray(r.books) ? r.books : {};
+    for (const [key, entry] of Object.entries(source)) {
+      if (!entry || typeof entry !== 'object' || typeof entry.title !== 'string') continue;
+      const v = { title: entry.title, sec: counter(entry.sec), words: counter(entry.words), saved: counter(entry.saved) };
       const acc = books.get(key);
       books.set(
         key,
@@ -142,7 +146,7 @@ export function summarize(
     }
   }
   for (const rv of reviews) {
-    if (!inRange(localDayKey(rv.ts))) continue;
+    if (!rv || !validTimestamp(rv.ts) || !inRange(localDayKey(rv.ts)) || !Number.isInteger(rv.rating) || rv.rating < 1 || rv.rating > 4) continue;
     s.reviews += 1;
     if (rv.rating >= 3) s.recalled += 1;
   }

@@ -1,16 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/shared/ui';
 import { AiUpsellLink } from './AiUpsellLink';
 import { useAiStore } from './store';
-import { useAiEnabled, useAiUnknown } from './route';
+import { captureAiScope, useAiEnabled, useAiUnknown } from './route';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { ApiFailure } from '@/features/account/api';
+import { useAccount } from '@/features/account/store';
 import type { AiConfig } from './provider';
 
 type Props = {
   label: string;
-  run: (config: AiConfig | null) => Promise<string>;
-  onRun?: () => void;
+  run: (config: AiConfig | null, signal: AbortSignal) => Promise<string>;
+  onDelivered?: () => void;
+  canRun?: boolean;
 };
 
 
@@ -24,32 +26,49 @@ function aiErrorText(e: unknown, ru: boolean): string {
   return ru ? 'ИИ не ответил. Попробуйте ещё раз.' : 'The AI did not answer. Try again.';
 }
 
-export function AiAction({ label, run, onRun }: Props) {
+export function AiAction({ label, run, onDelivered, canRun = true }: Props) {
   const config = useAiStore((s) => s.config);
+  const sessionRevision = useAccount((s) => s.sessionRevision);
   const enabled = useAiEnabled();
   const unknown = useAiUnknown();
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const pending = useRef<AbortController | null>(null);
+  useEffect(() => {
+    setLoading(false);
+    setText(null);
+    setError(null);
+    return () => { pending.current?.abort(); pending.current = null; };
+  }, [config, sessionRevision]);
 
-  //  means we could not read the plan, not that there is none — let the request go and the
-  // server answer. Refusing here is how a subscriber got shown an upsell for what they already own.
+  // Unknown entitlement is not a denial; allow an explicit request to check access.
   if (!enabled && !unknown) {
     return <AiUpsellLink />;
   }
 
   const go = async () => {
+    if (pending.current || !canRun) return;
+    const controller = new AbortController();
+    pending.current = controller;
+    const requireActive = captureAiScope(controller.signal);
     setLoading(true);
     setError(null);
-    onRun?.();
     try {
-      setText(await run(config));
+      const result = await run(config, controller.signal);
+      requireActive();
+      if (!result.trim()) throw new Error('Empty AI answer');
+      setText(result);
+      onDelivered?.();
     } catch (e) {
-      // Raw messages leaked internal codes and an English literal into a Russian UI.
+      if (controller.signal.aborted || (e instanceof Error && e.name === 'AbortError')) return;
       setError(aiErrorText(e, ru));
     } finally {
-      setLoading(false);
+      if (pending.current === controller) {
+        pending.current = null;
+        setLoading(false);
+      }
     }
   };
 
@@ -61,20 +80,25 @@ export function AiAction({ label, run, onRun }: Props) {
           variant="ghost"
           className="border-violet-dim text-violet"
           onClick={() => void go()}
-          disabled={loading}
+          disabled={loading || !canRun}
         >
           {loading ? '…' : label}
         </Button>
       )}
+      {loading && <Button size="sm" variant="ghost" onClick={() => {
+        pending.current?.abort();
+        pending.current = null;
+        setLoading(false);
+      }}>{ru ? 'Отменить' : 'Cancel'}</Button>}
       {text !== null && (
-        <div className="mt-2 rounded-sm border-l-[3px] border-violet bg-violet-dim/20 px-3.5 py-2.5 text-sm leading-relaxed">
+        <div role="status" className="mt-2 rounded-sm border-l-[3px] border-violet bg-violet-dim/20 px-3.5 py-2.5 text-sm leading-relaxed">
           <span className="mr-2 font-mono text-2xs uppercase tracking-[0.08em] text-violet">
             ai
           </span>
           {text}
         </div>
       )}
-      {error && <p className="mt-1 font-mono text-2xs text-coral">{error}</p>}
+      {error && <p role="alert" className="mt-1 font-mono text-2xs text-coral">{error}</p>}
     </div>
   );
 }

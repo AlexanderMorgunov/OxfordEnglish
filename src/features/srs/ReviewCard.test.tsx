@@ -19,7 +19,8 @@ vi.mock('./service', async () => {
     Rating,
     canPronounce: () => false,
     repairCardBack: mocks.repair,
-    gradeCard: mocks.grade,
+    gradeCardWithReceipt: mocks.grade,
+    replaceReviewRating: mocks.grade,
   };
 });
 vi.mock('@/features/vocab/translate', () => ({
@@ -39,6 +40,7 @@ vi.mock('@/features/vocab/cefr', () => ({
   useCefr: () => new Map(),
   cefrOf: () => null,
 }));
+vi.mock('@/features/vocab/usePartOfSpeech', () => ({ usePartOfSpeech: () => new Map() }));
 vi.mock('@/features/ai/route', () => ({
   useAiEnabled: () => mocks.enabled,
   useAiUnknown: () => false,

@@ -1,7 +1,19 @@
 const DIR = 'books';
 
 export function opfsAvailable(): boolean {
-  return typeof navigator !== 'undefined' && !!navigator.storage?.getDirectory;
+  try {
+    return typeof navigator !== 'undefined' && typeof navigator.storage?.getDirectory === 'function';
+  } catch {
+    return false;
+  }
+}
+
+export async function storagePersisted(): Promise<boolean> {
+  try {
+    return (await navigator.storage?.persisted?.()) ?? false;
+  } catch {
+    return false;
+  }
 }
 
 async function booksDir(): Promise<FileSystemDirectoryHandle> {

@@ -1,4 +1,5 @@
 import type { ExerciseAttempt } from '@/db/db';
+import { validTimestamp } from './validation';
 
 export type TagStat = { tag: string; correct: number; total: number; accuracy: number };
 
@@ -8,6 +9,8 @@ const dayKey = (ts: number) => new Date(ts).toISOString().slice(0, 10);
 function firstAttempts(attempts: ExerciseAttempt[]): ExerciseAttempt[] {
   const first = new Map<string, ExerciseAttempt>();
   for (const a of attempts) {
+    if (!a || typeof a.exerciseId !== 'string' || !Array.isArray(a.tags) ||
+        typeof a.correct !== 'boolean' || !Number.isInteger(a.attemptNumber) || a.attemptNumber < 1) continue;
     const cur = first.get(a.exerciseId);
     if (!cur || a.attemptNumber < cur.attemptNumber) first.set(a.exerciseId, a);
   }
@@ -19,6 +22,7 @@ export function skillMap(attempts: ExerciseAttempt[]): TagStat[] {
   const stats = new Map<string, { correct: number; total: number }>();
   for (const a of firstAttempts(attempts)) {
     for (const tag of a.tags) {
+      if (typeof tag !== 'string' || !tag) continue;
       const s = stats.get(tag) ?? { correct: 0, total: 0 };
       s.total += 1;
       if (a.correct) s.correct += 1;
@@ -31,7 +35,7 @@ export function skillMap(attempts: ExerciseAttempt[]): TagStat[] {
 }
 
 export function activeDays(attempts: ExerciseAttempt[]): Set<string> {
-  return new Set(attempts.map((a) => dayKey(a.timestamp)));
+  return new Set(attempts.flatMap((a) => a && validTimestamp(a.timestamp) ? [dayKey(a.timestamp)] : []));
 }
 
 /** Consecutive days with activity ending today or yesterday. */

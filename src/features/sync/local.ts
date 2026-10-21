@@ -15,7 +15,7 @@ import { getInstallId } from './meta';
 import { markDirty, type SyncedRow } from './engine';
 import { isDeleted, type SyncedStore } from './resolve';
 import { nudgeSync } from './run';
-import { captureDataScope } from '@/features/account/dataScope';
+import { captureDataScope, requireDataScope } from '@/features/account/dataScope';
 
 /** True when writes should be tracked for push (a backend is configured AND the user is signed in). */
 export function isSyncing(): boolean {
@@ -181,18 +181,23 @@ export async function mutateSrsCard(
 }
 
 /** Put a word status. `statusUpdatedAt` bumps only when the status value actually changes (F6). */
-export async function putWordStatus(row: WordStatus): Promise<void> {
-  const existing = await db.wordStatus.get(row.word);
-  const now = Date.now();
-  const statusChanged = existing?.status !== row.status;
-  const full: WordStatus = {
-    ...row,
-    updatedAt: now,
-    updatedBy: await installId(),
-    statusUpdatedAt: statusChanged ? now : (existing?.statusUpdatedAt ?? now),
-  };
-  await db.wordStatus.put(full);
-  await dirty('wordStatus', full);
+export async function putWordStatus(row: WordStatus, current = captureDataScope()): Promise<void> {
+  const writer = await installId();
+  const syncing = syncActive();
+  await db.transaction('rw', [db.wordStatus, db.pending], async () => {
+    requireDataScope(current);
+    const existing = await db.wordStatus.get(row.word);
+    requireDataScope(current);
+    const now = Math.max(Date.now(), (existing?.updatedAt ?? 0) + 1);
+    const full: WordStatus = {
+      ...row, updatedAt: now, updatedBy: writer,
+      statusUpdatedAt: existing?.status !== row.status ? now : (existing?.statusUpdatedAt ?? now),
+    };
+    await db.wordStatus.put(full);
+    if (syncing) await markDirty('wordStatus', { ...full });
+    requireDataScope(current);
+  });
+  if (syncing && current()) nudgeSync();
 }
 
 export async function addBook(record: BookRecord): Promise<void> {

@@ -40,6 +40,8 @@ export interface SpeechEngine {
   /** Speak with one specific voice, ignoring the stored preference — for auditioning a voice. */
   preview(text: string, voiceURI: string | null): void;
   cancel(): void;
+  /** Microphone acquisition waits for native output to acknowledge its stop. */
+  cancelForInput?(): Promise<void>;
   isSpeaking(): boolean;
   /** Voices arrive asynchronously on every platform; returns an unsubscribe. */
   subscribeVoices(onChange: () => void): () => void;

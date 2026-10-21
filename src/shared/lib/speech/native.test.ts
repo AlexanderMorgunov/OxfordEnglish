@@ -177,3 +177,42 @@ test('voices present but no en-US data means unavailable, not ready', async () =
   expect(engine.available()).toBe(false);
   expect(spoken).toEqual([]);
 });
+
+
+test('microphone barrier waits for active native output stop, including a previous ordinary cancel', async () => {
+  const engine = await freshEngine(); engine.speak('Active output', {});
+  await vi.waitUntil(() => spoken.length === 1);
+  let acknowledge!: () => void;
+  const stop = vi.spyOn(plugin, 'stop').mockReturnValueOnce(new Promise(resolve => { acknowledge = resolve; }));
+  try {
+    engine.cancel(); let ready = false;
+    const pending = engine.cancelForInput!().then(() => { ready = true; });
+    await Promise.resolve(); expect(ready).toBe(false);
+    acknowledge(); await pending; expect(ready).toBe(true);
+  } finally { stop.mockRestore(); }
+});
+
+test('no submitted TTS does not block dictation on an uninitialized or unavailable output engine', async () => {
+  vi.resetModules(); const { nativeEngine: engine } = await import('./native');
+  const stop = vi.spyOn(plugin, 'stop').mockRejectedValue(new Error('Not yet initialized'));
+  try { await engine.cancelForInput!(); expect(stop).not.toHaveBeenCalled(); }
+  finally { stop.mockRestore(); }
+});
+
+test('canceling queued speech for microphone never lets a delayed load stop a newer utterance', async () => {
+  vi.resetModules(); const { nativeEngine: engine } = await import('./native');
+  engine.speak('Old queued speech', {});
+  await engine.cancelForInput!(); engine.speak('New output after canceled microphone', {});
+  await vi.waitUntil(() => spoken.length > 0);
+  expect(spoken.map(call => call.text)).toEqual(['New output after canceled microphone']); expect(stopped).toBe(0);
+  engine.cancel();
+});
+
+test('a failed stop remains unsafe but an explicit microphone retry can obtain a fresh stop acknowledgment', async () => {
+  const engine=await freshEngine();engine.speak('Active',{});await vi.waitUntil(()=>spoken.length===1);
+  const stop=vi.spyOn(plugin,'stop').mockRejectedValueOnce(new Error('Provider temporarily failed')).mockResolvedValueOnce();
+  try {
+    await expect(engine.cancelForInput!()).rejects.toThrow('Provider temporarily failed');
+    await expect(engine.cancelForInput!()).resolves.toBeUndefined();expect(stop).toHaveBeenCalledTimes(2);
+  } finally {stop.mockRestore();}
+});

@@ -23,8 +23,8 @@ function WordCard({ entry, testMode }: { entry: VocabEntry; testMode: boolean })
 
   return (
     <div className="rounded-md border border-line bg-surface p-4">
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex items-baseline gap-2">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div className="flex min-w-0 flex-wrap items-baseline gap-2">
           <span className="font-mono text-lg text-content">{entry.word}</span>
           {canSpeak && (
             <button
@@ -41,7 +41,7 @@ function WordCard({ entry, testMode }: { entry: VocabEntry; testMode: boolean })
         <button
           type="button"
           disabled={added}
-          className="shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline disabled:text-faint disabled:no-underline"
+          className="min-h-11 max-w-full font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline disabled:text-faint disabled:no-underline"
           onClick={() => {
             void addWordCard(entry.word, entry.ru, entry.example);
             setAdded(true);

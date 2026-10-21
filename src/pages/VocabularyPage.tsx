@@ -4,14 +4,14 @@ import { liveQuery } from 'dexie';
 import { db } from '@/db/db';
 import {
   dropCard,
-  repairCardBack,
   reviewableCards,
 } from '@/features/srs/service';
-import { Button, Eyebrow, Input, PixelImage } from '@/shared/ui';
+import { Button, Input, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { speakWord } from '@/shared/lib/audio';
 import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
-import { translateText, translateWord } from '@/features/vocab/translate';
+import { TermTranslationLookup } from '@/features/vocab/TermTranslationLookup';
+import type { PartOfSpeech } from '@/features/vocab/grammar-metadata';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import { addTerm, setTranslation, translateAddedTerm } from '@/features/vocab/manage';
 import {
@@ -30,6 +30,13 @@ import { cefrOf, useCefr } from '@/features/vocab/cefr';
 import { CefrChip } from '@/features/vocab/CefrChip';
 import { ContextSentence } from '@/features/vocab/ContextSentence';
 import { BackToReader } from '@/features/reader/BackToReader';
+import { VocabularyNav } from '@/features/vocab/VocabularyNav';
+import { DictationInput } from '@/features/vocab/DictationInput';
+import { WordSensesInput } from '@/features/vocab/WordSensesInput';
+import { addSenseTerm } from '@/features/vocab/add-sense-term';
+import { RussianTermInput } from '@/features/vocab/RussianTermInput';
+import { EnglishDraftSchema, RussianAnswerSchema } from '@/features/vocab/russian-entry';
+import { cancelAudioInput } from '@/shared/lib/audio-input';
 import { isDeleted } from '@/features/sync/resolve';
 import {
   captureDataScope,
@@ -54,7 +61,7 @@ const SORTS: { id: LexiconSort; ru: string; en: string }[] = [
 
 function Stat({ n, label }: { n: number; label: string }) {
   return (
-    <div className="rounded-md border border-line bg-surface px-4 py-3">
+    <div className="px-3 py-1">
       <p className="font-mono text-xl tabular-nums text-content">{n}</p>
       <p className="font-mono text-2xs uppercase tracking-[0.08em] text-muted">{label}</p>
     </div>
@@ -81,8 +88,20 @@ export function VocabularyPage() {
 
   const [adding, setAdding] = useState(false);
   const [newTerm, setNewTerm] = useState('');
+  const [termRevision, setTermRevision] = useState(0);
+  const termInput = useRef<HTMLInputElement>(null);
+  const translationInput = useRef<HTMLInputElement>(null);
+  const addOpener = useRef<HTMLButtonElement>(null);
+  const agreementInput = useRef<HTMLInputElement>(null);
+  const [invalidField, setInvalidField] = useState<'term' | 'translation' | 'context' | null>(null);
   const [newTr, setNewTr] = useState('');
   const [newCtx, setNewCtx] = useState('');
+  const [senseDraft, setSenseDraft] = useState(false);
+  const [sensePos, setSensePos] = useState<PartOfSpeech | undefined>();
+  const [inputLanguage, setInputLanguage] = useState<'en' | 'ru'>('en');
+  const [reverseDraft, setReverseDraft] = useState(false);
+  const [contextAgreed, setContextAgreed] = useState(false);
+  const translationRequired = senseDraft || reverseDraft;
   const [saving, setSaving] = useState(false);
   const [addError, setAddError] = useState('');
   const [savedTerm, setSavedTerm] = useState('');
@@ -96,6 +115,11 @@ export function VocabularyPage() {
   }, []);
   const [editKey, setEditKey] = useState<string | null>(null);
   const [draft, setDraft] = useState('');
+  const [editRevision, setEditRevision] = useState(0);
+  const [savingEntries, setSavingEntries] = useState<Set<string>>(new Set());
+  const editSaves = useRef(new Map<string, symbol>());
+  const editor = useRef({ key: editKey, revision: editRevision });
+  editor.current = { key: editKey, revision: editRevision };
   const [editError, setEditError] = useState('');
   // Lazy word data (base forms, CEFR levels); empty until loaded, so rows render immediately.
   const lemma = useLemma();
@@ -139,11 +163,15 @@ export function VocabularyPage() {
       setEntries(null);
       setStats({ marked: 0, cards: 0, due: 0 });
       setEditKey(null);
+      editSaves.current.clear(); setSavingEntries(new Set()); setEditError('');
       setAdding(false);
       setNewTerm('');
       setNewTr('');
       setNewCtx('');
+      setSenseDraft(false); setSensePos(undefined); setContextAgreed(false);
+      setInputLanguage('en'); setReverseDraft(false);
       setAddError('');
+      setInvalidField(null);
       setSavedTerm('');
       setSaving(false);
       saveLock.current = false;
@@ -177,44 +205,72 @@ export function VocabularyPage() {
     await dropCard(e.cardId);
     await reload();
   };
-  const translateOne = async (e: LexiconEntry) => {
-    const current = captureDataScope();
-    const ruText = await (e.kind === 'phrase' ? translateText : translateWord)(
-      e.display
-    );
-    if (!current()) return;
-    if (ruText && e.cardId) await repairCardBack(e.cardId, ruText, current);
-    await reload();
-  };
   const startEdit = (e: LexiconEntry) => {
     setEditError('');
     setEditKey(e.key);
     setDraft(e.translation ?? '');
+    setEditRevision(value => value + 1);
   };
   const saveEdit = async (e: LexiconEntry) => {
+    if (editSaves.current.has(e.key) || editor.current.key !== e.key) return;
+    const current = captureDataScope();
+    const version = editor.current.revision;
+    const request = Symbol();
+    editSaves.current.set(e.key, request);
+    setSavingEntries(value => new Set(value).add(e.key));
+    const ownsEditor = () => alive.current && current() && editSaves.current.get(e.key) === request &&
+      editor.current.key === e.key && editor.current.revision === version;
     try {
       if (!(await setTranslation(e, draft))) throw new Error('Card changed');
-      setEditKey(null);
+      if (!alive.current || !current()) return;
+      if (ownsEditor()) setEditKey(null);
       await reload();
     } catch {
+      if (!ownsEditor()) return;
       setEditError(
         ru
           ? 'Не удалось сохранить перевод. Обновите карточку и попробуйте ещё раз.'
           : 'Could not save the translation. Refresh the entry and try again.'
       );
+    } finally {
+      if (editSaves.current.get(e.key) === request) {
+        editSaves.current.delete(e.key);
+        if (alive.current && current()) setSavingEntries(value => { const next = new Set(value); next.delete(e.key); return next; });
+      }
     }
   };
   const addNew = async () => {
     if (!newTerm.trim() || saveLock.current) return;
+    if (reverseDraft && (!EnglishDraftSchema.safeParse(newTerm).success || !RussianAnswerSchema.safeParse(newTr).success)) {
+      const invalidTerm = !EnglishDraftSchema.safeParse(newTerm).success;
+      setInvalidField(invalidTerm ? 'term' : 'translation');
+      (invalidTerm ? termInput : translationInput).current?.focus();
+      setAddError(ru ? 'Проверьте английское слово или фразу (до 80 символов) и заполните русский перевод (до 120 символов).' : 'Check the English word or phrase (up to 80 characters) and enter its Russian translation (up to 120 characters).');
+      return;
+    }
+    if ((senseDraft || reverseDraft) && (!newTr.trim() || (newCtx.trim() && !contextAgreed))) {
+      setInvalidField(!newTr.trim() ? 'translation' : 'context');
+      if (!newTr.trim()) translationInput.current?.focus();
+      else agreementInput.current?.focus();
+      setAddError(ru ? 'Проверьте перевод и подтвердите, что пример соответствует выбранному значению.' : 'Check the translation and confirm that the example matches the chosen meaning.');
+      return;
+    }
+    cancelAudioInput(); setTermRevision(value => value + 1);
     const current = captureDataScope();
     const active = () => alive.current && current();
     const automatic = !newTr.trim();
     saveLock.current = true;
     setSaving(true);
     setAddError('');
+    setInvalidField(null);
     try {
-      const saved = await addTerm(newTerm, newTr, newCtx);
+      const senseSave = senseDraft || reverseDraft ? await addSenseTerm(newTerm, newTr, newCtx, sensePos) : null;
+      const saved = senseSave ? senseSave.state === 'saved' ? senseSave.card : null : await addTerm(newTerm, newTr, newCtx);
       if (!active()) return;
+      if (senseSave?.state === 'existing' || senseSave?.state === 'deleted') {
+        setAddError(ru ? 'У этого слова уже есть карточка или отметка удаления. Отдельное значение пока сохранить нельзя. Изменить существующую карточку можно в словаре ниже.' : 'This term already has a card or a deletion record. A separate meaning cannot be saved yet. You can edit an existing card in the vocabulary below.');
+        return;
+      }
       if (!saved) {
         setAddError(ru ? 'Не удалось сохранить. Попробуйте ещё раз.' : 'Could not save. Please try again.');
         return;
@@ -222,7 +278,10 @@ export function VocabularyPage() {
       setNewTerm('');
       setNewTr('');
       setNewCtx('');
+      setSenseDraft(false); setSensePos(undefined); setContextAgreed(false);
+      setInputLanguage('en'); setReverseDraft(false);
       setAdding(false);
+      requestAnimationFrame(() => { if (active() && addOpener.current?.isConnected) addOpener.current.focus(); });
       setSavedTerm(saved.front);
       if (automatic) {
         const request = Symbol();
@@ -249,21 +308,21 @@ export function VocabularyPage() {
   return (
     <section aria-label={ru ? 'Словарь' : 'Vocabulary'}>
       <BackToReader />
-      <Eyebrow className="mb-3.5">lexicon</Eyebrow>
+      <VocabularyNav />
       {editError && (
         <p role="alert" className="mb-3 text-sm text-coral">
           {editError}
         </p>
       )}
-      <div className="mb-6 flex items-center gap-3">
+      <div className="mb-4 flex items-center gap-3">
         <PixelImage src="/assets/pixel/nav/vocab.png" alt="" className="h-7 w-7 shrink-0" />
         <h1 className="text-2xl font-bold tracking-tight">{ru ? 'Мой словарь' : 'My vocabulary'}</h1>
       </div>
 
-      <div className="mb-6 flex flex-wrap items-stretch gap-2.5">
+      <div className="mb-4 flex flex-wrap items-stretch gap-2.5">
         <Stat n={stats.marked} label={ru ? 'отмечено слов' : 'marked words'} />
         <Stat n={stats.cards} label={ru ? 'карточек' : 'cards'} />
-        <Link to="/review" className="rounded-md border border-teal-dim bg-teal-dim/10 px-4 py-3 transition-colors hover:border-teal">
+        <Link to="/review" className="rounded-sm px-3 py-1 text-teal transition-colors hover:bg-surface-2">
           <p className="font-mono text-xl tabular-nums text-teal">{stats.due}</p>
           <p className="font-mono text-2xs uppercase tracking-[0.08em] text-teal">
             {ru ? 'к повторению →' : 'due → review'}
@@ -273,53 +332,115 @@ export function VocabularyPage() {
 
       <div className="mb-6">
         {adding ? (
-          <form className="flex flex-col gap-2.5 rounded-lg border border-line bg-surface p-4" onSubmit={(e) => { e.preventDefault(); void addNew(); }}>
+          <form className="flex flex-col gap-2.5 rounded-md border border-line bg-surface p-4" onSubmit={(e) => { e.preventDefault(); void addNew(); }}>
+            <h2 className="text-lg font-semibold">{ru ? 'Новое слово' : 'New term'}</h2>
+            <fieldset disabled={saving} className="min-w-0">
+              <legend className="mb-2 text-sm text-muted">{ru ? 'Как добавить слово' : 'How to add a term'}</legend>
+              <div className="flex flex-wrap gap-2">
+                {(['en', 'ru'] as const).map(language => <Button key={language} variant={inputLanguage === language ? 'primary' : 'ghost'} className="min-h-11" aria-pressed={inputLanguage === language} onClick={() => {
+                  if (language === inputLanguage) return;
+                  cancelAudioInput(); setTermRevision(value => value + 1); setSensePos(undefined); setInputLanguage(language); setAddError(''); setInvalidField(null);
+                  if (language === 'ru') setReverseDraft(true);
+                }}>{language === 'en' ? ru ? 'На английском' : 'In English' : ru ? 'С русского' : 'From Russian'}</Button>)}
+              </div>
+            </fieldset>
+            {reverseDraft && <p className="text-xs text-muted">{ru ? 'В карточке сохраняются английское слово и русский перевод. При переключении введённые поля остаются; для обычного добавления с автопереводом очистите черновик.' : 'The card stores an English term and Russian answer. Switching preserves your draft; start over to return to ordinary automatic translation.'}</p>}
+            {inputLanguage === 'ru' && <RussianTermInput disabled={saving} draftRevision={termRevision} onChoose={proposal => {
+              cancelAudioInput(); setTermRevision(value => value + 1);
+              setNewTerm(proposal.english); setSensePos(undefined); setNewTr(proposal.russian); setContextAgreed(false); setAddError(''); setInvalidField(null);
+              const current = captureDataScope();
+              requestAnimationFrame(() => { if (current() && termInput.current?.isConnected) termInput.current.focus(); });
+            }} />}
             <label htmlFor="new-term" className="text-sm text-muted">{ru ? 'Слово или фраза на английском' : 'English word or phrase'}</label>
             <Input
               id="new-term"
+              lang="en"
+              aria-invalid={invalidField === 'term'}
+              aria-describedby={invalidField === 'term' ? 'new-term-error' : undefined}
+              ref={termInput}
               disabled={saving}
               placeholder={ru ? 'слово или фраза (англ.)' : 'word or phrase (English)'}
               value={newTerm}
-              onChange={(e) => setNewTerm(e.target.value)}
+              onChange={(e) => { cancelAudioInput(); setTermRevision(value => value + 1); setNewTerm(e.target.value); setSensePos(undefined); setContextAgreed(false); setInvalidField(null); setAddError(''); }}
               autoFocus
             />
+            <TermTranslationLookup term={newTerm} draftRevision={termRevision} disabled={saving} onApply={translation => {
+              cancelAudioInput(); setTermRevision(value => value + 1); setNewTr(translation); setSensePos(undefined); setContextAgreed(false); setInvalidField(null); setAddError('');
+              requestAnimationFrame(() => translationInput.current?.focus());
+            }} />
             <label htmlFor="new-translation" className="text-sm text-muted">{ru ? 'Перевод' : 'Translation'}</label>
             <Input
               id="new-translation"
+              lang="ru"
+              aria-required={translationRequired}
+              aria-invalid={invalidField === 'translation'}
+              aria-describedby={`new-translation-help${invalidField === 'translation' ? ' new-term-error' : ''}`}
+              ref={translationInput}
               disabled={saving}
-              placeholder={ru ? 'перевод (необязательно)' : 'translation (optional)'}
+              placeholder={translationRequired ? ru ? 'русский перевод (обязательно)' : 'Russian translation (required)' : ru ? 'перевод (необязательно)' : 'translation (optional)'}
               value={newTr}
-              onChange={(e) => setNewTr(e.target.value)}
+              onChange={(e) => { cancelAudioInput(); setTermRevision(value => value + 1); setNewTr(e.target.value); setSensePos(undefined); setContextAgreed(false); setInvalidField(null); setAddError(''); }}
             />
-            <p className="text-sm text-muted">{ru ? 'Оставьте пустым — найдём перевод после добавления. Его можно исправить.' : 'Leave blank for automatic translation after adding. You can edit it.'}</p>
+            <p id="new-translation-help" className="text-sm text-muted">{translationRequired ? ru ? 'Русский перевод обязателен. Проверьте, что он соответствует нужному значению.' : 'A Russian translation is required. Check that it matches the intended meaning.' : ru ? 'Можно перевести сейчас или сохранить без перевода. Пустой ответ попробуем заполнить после добавления.' : 'Translate now or save without an answer. We will try automatic lookup after adding a blank translation.'}</p>
             <label htmlFor="new-context" className="text-sm text-muted">{ru ? 'Пример или контекст' : 'Example or context'}</label>
             <Input
               id="new-context"
+              lang="en"
               disabled={saving}
               placeholder={ru ? 'пример/контекст (необязательно)' : 'example/context (optional)'}
               value={newCtx}
-              onChange={(e) => setNewCtx(e.target.value)}
+              onChange={(e) => { cancelAudioInput(); setTermRevision(value => value + 1); setNewCtx(e.target.value); setSensePos(undefined); setContextAgreed(false); setInvalidField(null); setAddError(''); }}
             />
-            {addError && <p role="alert" className="text-sm text-coral">{addError}</p>}
+            {(senseDraft || reverseDraft) && newCtx.trim() && <label className="flex min-h-11 items-center gap-2 text-sm text-content">
+              <input ref={agreementInput} type="checkbox" aria-invalid={invalidField === 'context'} aria-describedby={invalidField === 'context' ? 'new-term-error' : undefined} checked={contextAgreed} disabled={saving} onChange={e => { setContextAgreed(e.target.checked); setInvalidField(null); setAddError(''); }} />
+              {ru ? 'Мой пример соответствует выбранному значению' : 'My example matches the chosen meaning'}
+            </label>}
+            {!saving && <DictationInput key={termRevision} draft={newTerm} onAccept={text => {
+              setTermRevision(value => value + 1); setNewTerm(text); setSensePos(undefined); setAddError(''); setContextAgreed(false); setInvalidField(null);
+              requestAnimationFrame(() => termInput.current?.focus());
+            }} />}
+            <WordSensesInput key={`${inputLanguage}:${newTerm}`} term={newTerm} context={newCtx} draftRevision={termRevision} disabled={saving} onChoose={(sense, useExample) => {
+              cancelAudioInput(); setTermRevision(value => value + 1);
+              setNewTr(sense.translation);
+              setSensePos(sense.partOfSpeech);
+              if (useExample) setNewCtx(sense.example);
+              setSenseDraft(true); setContextAgreed(true); setAddError(''); setInvalidField(null);
+              const current = captureDataScope();
+              requestAnimationFrame(() => {
+                if (current() && translationInput.current?.isConnected) translationInput.current.focus();
+              });
+            }} />
+            {addError && <p id="new-term-error" role="alert" className="text-sm text-coral">{addError}</p>}
             <div className="flex items-center gap-3">
-              <Button type="submit" disabled={!newTerm.trim() || saving}>
+              <Button type="submit" className="min-h-11" disabled={!newTerm.trim() || saving}>
                 {saving ? ru ? 'Сохраняем…' : 'Saving…' : ru ? 'Добавить' : 'Add'}
               </Button>
-              <button
-                type="button"
+              <Button
+                variant="ghost"
                 disabled={saving}
-                onClick={() => { setAdding(false); setAddError(''); }}
-                className="font-mono text-2xs uppercase tracking-[0.08em] text-muted hover:text-content"
+                onClick={() => {
+                  setAdding(false); setAddError(''); setInvalidField(null);
+                  const current = captureDataScope();
+                  requestAnimationFrame(() => { if (alive.current && current() && addOpener.current?.isConnected) addOpener.current.focus(); });
+                }}
+                className="min-h-11"
               >
                 {ru ? 'отмена' : 'cancel'}
-              </button>
+              </Button>
             </div>
+            {(reverseDraft || senseDraft) && <Button variant="ghost" className="min-h-11 self-start" disabled={saving} onClick={() => {
+              cancelAudioInput(); setTermRevision(value => value + 1); setNewTerm(''); setNewTr(''); setNewCtx('');
+              setSenseDraft(false); setSensePos(undefined); setReverseDraft(false); setContextAgreed(false); setInputLanguage('en'); setAddError(''); setInvalidField(null);
+              const current = captureDataScope();
+              requestAnimationFrame(() => { if (current() && termInput.current?.isConnected) termInput.current.focus(); });
+            }}>{ru ? 'Очистить черновик' : 'Start over'}</Button>}
           </form>
         ) : (
           <button
+            ref={addOpener}
             type="button"
             onClick={() => { setAdding(true); setSavedTerm(''); }}
-            className="rounded-sm border border-line px-3 py-2 font-mono text-2xs uppercase tracking-[0.08em] text-teal transition-colors hover:border-teal-dim"
+            className="min-h-11 rounded-sm border border-line px-3 py-2 font-mono text-2xs uppercase tracking-[0.08em] text-teal transition-colors hover:border-teal-dim"
           >
             {ru ? '＋ добавить слово или фразу' : '＋ add a word or phrase'}
           </button>
@@ -346,6 +467,7 @@ export function VocabularyPage() {
           <div className="mb-4 flex flex-col gap-3">
             <input
               type="search"
+              aria-label={ru ? 'Поиск в словаре' : 'Search vocabulary'}
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder={ru ? 'поиск по слову или переводу…' : 'search word or translation…'}
@@ -359,7 +481,7 @@ export function VocabularyPage() {
                   aria-pressed={filter === f.id}
                   onClick={() => setFilter(f.id)}
                   className={[
-                    'rounded-sm px-2.5 py-1 font-mono text-2xs uppercase tracking-[0.06em] transition-colors',
+                    'min-h-11 rounded-sm px-2.5 py-1 font-mono text-2xs uppercase tracking-[0.06em] transition-colors',
                     filter === f.id ? 'bg-surface-2 text-teal' : 'text-muted hover:text-content',
                   ].join(' ')}
                 >
@@ -374,7 +496,7 @@ export function VocabularyPage() {
                     aria-pressed={sort === s.id}
                     onClick={() => setSort(s.id)}
                     className={[
-                      'rounded-sm px-2 py-1 font-mono text-2xs transition-colors',
+                      'min-h-11 rounded-sm px-2 py-1 font-mono text-2xs transition-colors',
                       sort === s.id ? 'text-teal underline' : 'text-muted hover:text-content',
                     ].join(' ')}
                   >
@@ -396,10 +518,10 @@ export function VocabularyPage() {
               const rated = cefrOf(e.display, cefr, lemma);
               const showLevel = rated !== null;
               return (
-                <li key={e.key} className="rounded-md border border-line bg-surface px-4 py-3">
+                <li key={e.key} className="min-w-0 border-b border-line py-3">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-                    <span className="flex items-baseline gap-2">
-                      <span className="text-base text-content">{e.display}</span>
+                    <span className="flex min-w-0 flex-wrap items-baseline gap-2">
+                      <span className="break-words text-base text-content">{e.display}</span>
                       {canSpeak && (
                         <button
                           type="button"
@@ -438,63 +560,27 @@ export function VocabularyPage() {
                         </span>
                       )}
                     </span>
-                    {editKey === e.key ? (
-                    <span className="flex items-center gap-1.5">
-                      <input
-                        value={draft}
-                        onChange={(ev) => setDraft(ev.target.value)}
-                        onKeyDown={(ev) => {
-                          if (ev.key === 'Enter') void saveEdit(e);
-                          if (ev.key === 'Escape') setEditKey(null);
-                        }}
-                        autoFocus
-                        aria-label={ru ? 'Перевод' : 'Translation'}
-                        className="w-40 rounded-sm border border-teal-dim bg-ink px-2 py-1 text-sm text-content focus:border-teal"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => void saveEdit(e)}
-                        className="font-mono text-2xs text-teal hover:underline"
-                      >
-                        {ru ? 'ок' : 'ok'}
-                      </button>
-                    </span>
-                  ) : (
-                    <span className="flex items-center gap-1.5 text-sm text-muted">
-                      {e.translation ? (
-                        <>
-                          {e.translation}
-                          <button
-                            type="button"
-                            aria-label={ru ? 'Изменить перевод' : 'Edit translation'}
-                            onClick={() => startEdit(e)}
-                            className="text-2xs text-muted transition-colors hover:text-teal"
-                          >
-                            ✎
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <button
-                            type="button"
-                            onClick={() => void translateOne(e)}
-                            className="font-mono text-2xs text-teal hover:underline"
-                          >
-                            {ru ? '— перевести' : '— translate'}
-                          </button>
-                          <button
-                            type="button"
-                            aria-label={ru ? 'Ввести перевод' : 'Enter translation'}
-                            onClick={() => startEdit(e)}
-                            className="text-2xs text-muted transition-colors hover:text-teal"
-                          >
-                            ✎
-                          </button>
-                        </>
-                      )}
-                    </span>
-                  )}
+                    <Button variant="ghost" size="sm" className="min-h-11" aria-expanded={editKey === e.key}
+                      aria-label={`${ru ? 'Изменить / перевести' : 'Edit / translate'} ${e.display}`}
+                      onClick={() => editKey === e.key ? setEditKey(null) : startEdit(e)}>
+                      {ru ? 'Изменить / перевести' : 'Edit / translate'}
+                    </Button>
                   </div>
+                  {e.translation && <p lang="ru" className="mt-1 break-words text-sm text-content">{e.translation}</p>}
+                  {editKey === e.key && <div className="mt-3 min-w-0 space-y-2 border-l-2 border-teal-dim pl-3">
+                    <label htmlFor={`translation-${encodeURIComponent(e.key)}`} className="block text-sm text-muted">{ru ? 'Перевод' : 'Translation'}</label>
+                    <Input id={`translation-${encodeURIComponent(e.key)}`} lang="ru" value={draft} disabled={savingEntries.has(e.key)}
+                      onChange={event => { setDraft(event.target.value); setEditRevision(value => value + 1); setEditError(''); }}
+                      onKeyDown={event => {
+                        if (event.key === 'Enter') { event.preventDefault(); void saveEdit(e); }
+                        if (event.key === 'Escape') setEditKey(null);
+                      }} autoFocus />
+                    <TermTranslationLookup term={e.display} draftRevision={editRevision} disabled={savingEntries.has(e.key)} onApply={translation => { setDraft(translation); setEditRevision(value => value + 1); }} />
+                    <div className="flex flex-wrap gap-2">
+                      <Button size="sm" className="min-h-11" disabled={savingEntries.has(e.key)} onClick={() => void saveEdit(e)}>{savingEntries.has(e.key) ? ru ? 'Сохраняем…' : 'Saving…' : ru ? 'Сохранить перевод' : 'Save translation'}</Button>
+                      <Button variant="ghost" size="sm" className="min-h-11" onClick={() => setEditKey(null)}>{ru ? 'Отмена' : 'Cancel edit'}</Button>
+                    </div>
+                  </div>}
 
                   <FormsLine word={e.display} forms={forms} className="mt-1 font-mono text-2xs" />
                   {e.cardId && !e.translation && lookups[e.cardId] && (
@@ -531,7 +617,7 @@ export function VocabularyPage() {
                       type="button"
                       disabled={e.status === st}
                       onClick={() => void changeStatus(e, st)}
-                      className="rounded-sm border border-line px-2 py-0.5 font-mono text-2xs text-muted transition-colors hover:border-teal-dim hover:text-content disabled:border-teal-dim disabled:text-teal"
+                      className="min-h-11 rounded-sm border border-line px-2 py-0.5 font-mono text-2xs text-muted transition-colors hover:border-teal-dim hover:text-content disabled:border-teal-dim disabled:text-teal"
                     >
                         {st === 'learning'
                           ? ru
@@ -550,7 +636,7 @@ export function VocabularyPage() {
                     <button
                       type="button"
                       onClick={() => void removeCard(e)}
-                      className="ml-auto rounded-sm px-2 py-0.5 font-mono text-2xs text-muted transition-colors hover:text-coral"
+                      className="ml-auto min-h-11 rounded-sm px-2 py-0.5 font-mono text-2xs text-muted transition-colors hover:text-coral"
                     >
                       {ru ? '× из повторения' : '× remove'}
                     </button>

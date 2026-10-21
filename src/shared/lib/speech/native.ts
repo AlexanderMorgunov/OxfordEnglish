@@ -65,6 +65,16 @@ let indexByURI = new Map<string, number>();
 
 let preferredVoiceURI: string | null = null;
 let speaking = false;
+let outputSubmitted = false;
+let outputUncertain = false;
+let stopPending: Promise<void> | null = null;
+function rememberStop(work: Promise<void>): void {
+  outputUncertain = true;
+  stopPending = work;
+  void work.then(() => {
+    if (stopPending === work) { stopPending = null; outputUncertain = false; }
+  }, () => { if (stopPending === work) stopPending = null; });
+}
 /** Bumped by cancel; every await re-checks it before touching the plugin. */
 let generation = 0;
 let usable = true;
@@ -180,16 +190,22 @@ function run(text: string, uri: string | null, h: SpeakHandlers): void {
     const index = uri === null ? voiceIndex() : indexByURI.get(uri);
     speaking = true;
     h.onStart?.();
+    if (mine !== generation) return;
+    outputSubmitted = true;
     try {
       // Resolves when the utterance FINISHES. A cancelled one never settles — the plugin's `stop()`
       // clears its request map without invoking callbacks — so the generation check above is what
       // keeps a stale chunk from ever reaching this point, not a rejection.
       await loaded.api.speak({ text, lang: LANG, rate: h.rate ?? 1, ...(index === undefined ? {} : { voice: index }) });
       if (mine !== generation) return;
+      outputSubmitted = false;
+      outputUncertain = false;
+      stopPending = null;
       speaking = false;
       h.onEnd?.();
     } catch {
       if (mine !== generation) return;
+      outputSubmitted = false;
       speaking = false;
       h.onError?.();
     }
@@ -223,6 +239,9 @@ export const nativeEngine: SpeechEngine = {
 
   cancel() {
     generation += 1;
+    const mine = generation;
+    const submitted = outputSubmitted;
+    outputSubmitted = false;
     speaking = false;
     // Straight to the plugin when it is already there, rather than through `load()`. The extra
     // promise hop costs nothing in the foreground and matters when the app is being backgrounded:
@@ -231,13 +250,25 @@ export const nativeEngine: SpeechEngine = {
     // `.catch` on both paths: `stop()` rejects during the plugin's init window, and `cancelSpeech()`
     // runs on every vocabulary clip, so an unhandled rejection here would ride an ordinary tap.
     if (plugin) {
-      void plugin.stop().catch(() => undefined);
+      const stopped = plugin.stop();
+      if (submitted) rememberStop(stopped);
+      void stopped.catch(() => undefined);
       return;
     }
-    void load().then((loaded) => loaded?.api.stop().catch(() => undefined));
+    void load().then((loaded) => { if (mine === generation) return loaded?.api.stop().catch(() => undefined); });
   },
 
   isSpeaking: () => speaking,
+
+  async cancelForInput() {
+    generation += 1;
+    speaking = false;
+    const submitted = outputSubmitted;
+    outputSubmitted = false;
+    if (submitted && plugin) rememberStop(plugin.stop());
+    else if (outputUncertain && !stopPending && plugin) rememberStop(plugin.stop());
+    if (stopPending) await stopPending;
+  },
 
   subscribeVoices(onChange) {
     listeners.add(onChange);

@@ -1,7 +1,7 @@
 import 'fake-indexeddb/auto';
 import { beforeEach, afterEach, expect, test, vi } from 'vitest';
 import { db } from '@/db/db';
-import { translateText, translateWord } from './translate';
+import { translateText, translateWord, translateTermProposal } from './translate';
 
 beforeEach(async () => {
   await db.open();
@@ -50,4 +50,21 @@ test('a phrase lookup uses the same case-insensitive key as the vocabulary edito
   });
   expect(await translateText('Sneaking suspicion')).toBe('смутное подозрение');
   expect(fetch).not.toHaveBeenCalled();
+});
+
+test.each(['', 'ручной перевод'])('an explicit proposal bypasses the manual cache %s without modifying it', async (manual) => {
+  await db.translations.put({ word: 'bank', ru: manual, source: 'manual' });
+  vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ responseData: { translatedText: 'берег' } }))));
+  expect(await translateTermProposal('bank')).toBe('берег');
+  expect(fetch).toHaveBeenCalledOnce();
+  expect(await db.translations.get('bank')).toMatchObject({ ru: manual, source: 'manual' });
+});
+
+test('an explicit proposal can use an automatic cached answer offline; fresh lookup is separate', async () => {
+  await db.translations.put({ word: 'bank', ru: 'банк', source: 'mymemory' });
+  vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ responseData: { translatedText: 'берег' } }))));
+  expect(await translateTermProposal('bank')).toBe('банк');
+  expect(fetch).not.toHaveBeenCalled();
+  expect(await translateTermProposal('bank', { fresh: true })).toBe('берег');
+  expect(await db.translations.get('bank')).toMatchObject({ ru: 'банк', source: 'mymemory' });
 });

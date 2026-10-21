@@ -38,7 +38,9 @@ vi.mock('@/features/srs/service', () => ({
   countErrorCards: async () => errorCount,
   dropAllErrorCards: () => dropAll(),
   dropCard: vi.fn(async () => undefined),
-  gradeCard: vi.fn(async () => undefined),
+  gradeCardWithReceipt: vi.fn(async () => undefined),
+  replaceReviewRating: vi.fn(async () => undefined),
+  reviewCorrectionCard: vi.fn(async () => null),
   repairCardBack: vi.fn(async () => false),
 }));
 vi.mock('@/features/vocab/translate', () => ({ translateText: async () => null, translateWord: async () => null }));

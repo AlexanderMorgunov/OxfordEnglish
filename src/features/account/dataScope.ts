@@ -11,6 +11,10 @@ export function captureDataScope(): () => boolean {
   return () => captured === generation;
 }
 
+export function getDataScopeRevision(): number {
+  return generation;
+}
+
 export function subscribeDataScope(listener: () => void): () => void {
   listeners.add(listener);
   return () => listeners.delete(listener);

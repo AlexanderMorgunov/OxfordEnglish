@@ -1,6 +1,7 @@
 import { forSpeech } from './speechText';
 import { speechEngine } from './speech';
 import type { Voice } from './speech';
+import { cancelAudioInput } from './audio-input';
 
 export type { Voice } from './speech';
 
@@ -9,7 +10,7 @@ let current: HTMLAudioElement | null = null;
 /** Bumped on every cancel/new utterance so stale speech callbacks bail out. */
 let speechToken = 0;
 
-function stopClip(): void {
+export function stopClip(): void {
   if (current) {
     current.pause();
     current.currentTime = 0;
@@ -28,8 +29,17 @@ export function cancelSpeech(): void {
   speechEngine().cancel();
 }
 
+export async function prepareAudioInput(): Promise<void> {
+  stopClip();
+  speechToken += 1;
+  const engine = speechEngine();
+  if (engine.cancelForInput) await engine.cancelForInput();
+  else engine.cancel();
+}
+
 /** Play one clip at a time — stops any previous clip so repeated clicks don't overlap. */
 export function playClip(url: string, rate = 1): void {
+  cancelAudioInput();
   stopClip();
   cancelSpeech();
   const audio = new Audio(url);
@@ -42,6 +52,7 @@ export function playClip(url: string, rate = 1): void {
  *  speech first). Unlike playClip it does NOT reset the element, so a paused paragraph resumes from
  *  where it stopped — the caller pauses with `el.pause()` and drives its own play/pause button. */
 export function resumeExclusive(el: HTMLAudioElement, rate = 1): void {
+  cancelAudioInput();
   if (current && current !== el) stopClip();
   cancelSpeech();
   el.playbackRate = rate;
@@ -71,6 +82,8 @@ export function setPreferredVoiceURI(uri: string | null): void {
 /** Speak a reference line so the user can hear a specific voice before committing to it. */
 export function previewVoice(voiceURI: string | null, text: string): void {
   if (!canSpeak()) return;
+  cancelAudioInput();
+  stopClip();
   cancelSpeech();
   speechEngine().preview(text, voiceURI);
 }
@@ -80,6 +93,8 @@ export function speakWord(word: string): void {
   if (!canSpeak()) return;
   const spoken = forSpeech(word);
   if (!spoken) return;
+  cancelAudioInput();
+  stopClip();
   cancelSpeech();
   speechEngine().speak(spoken, {});
 }
@@ -176,6 +191,7 @@ export function speakPassage(
     done(chunks.length);
     return;
   }
+  cancelAudioInput();
   stopClip();
   cancelSpeech();
   const myToken = speechToken;

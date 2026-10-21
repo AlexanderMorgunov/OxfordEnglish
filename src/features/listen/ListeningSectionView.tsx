@@ -5,6 +5,7 @@ import { Button, Console, Input, SegmentedToggle } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import { ExerciseView } from '@/features/practice/exercises/ExerciseView';
 import { useUiLang } from '@/features/i18n/uiLang';
+import { resumeExclusive } from '@/shared/lib/audio';
 import { exLabels } from '@/features/i18n/ui-strings';
 import { activeCueIndex, diffWords, dictationCorrect } from './cues';
 
@@ -49,7 +50,7 @@ function DictationRow({
       </div>
       <div className="flex flex-wrap items-center gap-2.5">
         <Input
-          className="min-w-64 flex-1"
+          className="min-w-0 flex-1 basis-64"
           placeholder={ru ? 'наберите фразу…' : 'type the phrase…'}
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -140,7 +141,7 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
     if (!el) return;
     el.currentTime = start;
     loop.current = { a: start, b: end ?? null, once };
-    void el.play();
+    resumeExclusive(el, RATES[rate]);
     startWatch();
   };
   const setRateKey = (k: RateKey) => {
@@ -180,7 +181,7 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
             const el = audio();
             if (!el) return;
             if (playing) el.pause();
-            else void el.play();
+            else resumeExclusive(el, RATES[rate]);
           }}
         >
           {playing ? (ru ? '❚❚ пауза' : '❚❚ pause') : ru ? '▶ слушать' : '▶ play'}

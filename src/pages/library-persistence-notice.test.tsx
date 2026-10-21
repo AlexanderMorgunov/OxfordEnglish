@@ -19,7 +19,7 @@ const accountStore = create<{ status: 'anonymous' }>(() => ({ status: 'anonymous
 vi.mock('@/features/reader/blobSync', () => ({ useBookUploadIssues: issueStore, useBookFileSync: syncStore }));
 vi.mock('@/features/account/store', () => ({ useAccount: accountStore }));
 vi.mock('@/features/reader/service', () => ({ listBooks: async () => [], importBook: vi.fn(), removeBook: vi.fn() }));
-vi.mock('@/features/reader/storage', () => ({ opfsAvailable: () => true, requestPersistence: async () => false }));
+vi.mock('@/features/reader/storage', () => ({ opfsAvailable: () => true, requestPersistence: async () => false, storagePersisted: async () => false }));
 vi.mock('@/features/reader/RecommendedShelf', () => ({ RecommendedShelf: () => null }));
 vi.mock('@/features/reader/BackToReader', () => ({ BackToReader: () => null }));
 vi.mock('@/features/stats/useReadingTracker', () => ({ readProgress: () => null }));

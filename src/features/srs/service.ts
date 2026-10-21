@@ -5,15 +5,15 @@ import {
   Rating,
   type Grade,
 } from 'ts-fsrs';
-import { db, type SrsCard } from '@/db/db';
-import { logReview, recordSave } from '@/features/stats/activity';
+import { db, type ReviewLogEntry, type SrsCard } from '@/db/db';
+import { logReviewStrict, recordSave } from '@/features/stats/activity';
 import {
   addSrsCard,
   mutateSrsCard,
   softDeleteSrsCard,
 } from '@/features/sync/local';
 import { isDeleted } from '@/features/sync/resolve';
-import { captureDataScope } from '@/features/account/dataScope';
+import { captureDataScope, requireDataScope } from '@/features/account/dataScope';
 import { dictionaryAnswer, reviewAnswer, sameCardContent } from './answer';
 import { termCacheKey } from '@/features/vocab/translate';
 
@@ -275,6 +275,44 @@ export async function gradeCard(
   expectedReps?: number,
   expectedContent?: SrsCard
 ): Promise<boolean> {
+  return Boolean(await gradeCardWithReceipt(id, rating, expectedReps, expectedContent));
+}
+
+export type ReviewReceipt = {
+  before: SrsCard;
+  after: SrsCard;
+  review: ReviewLogEntry;
+  currentScope: () => boolean;
+};
+
+function sameIncarnation(a: SrsCard, b: SrsCard): boolean {
+  return a.id === b.id && a.creationId === b.creationId && a.createdAt === b.createdAt;
+}
+
+export function sameReviewSchedule(a: SrsCard, b: SrsCard): boolean {
+  const signature = (row: SrsCard) => JSON.stringify([
+    row.due.getTime(),
+    Object.entries(row.card).sort(([a], [b]) => a.localeCompare(b)),
+  ]);
+  return signature(a) === signature(b);
+}
+
+function sameReviewEvent(a: ReviewLogEntry, b: ReviewLogEntry): boolean {
+  const version = (row: ReviewLogEntry) => row.modifiedAt ?? row.ts;
+  return a.id === b.id && a.cardId === b.cardId && a.ts === b.ts && a.rating === b.rating
+    && Number.isFinite(version(a)) && Number.isFinite(version(b)) && version(a) === version(b);
+}
+
+export async function gradeCardWithReceipt(
+  id: string,
+  rating: Grade,
+  expectedReps?: number,
+  expectedContent?: SrsCard,
+  currentScope = captureDataScope()
+): Promise<ReviewReceipt | null> {
+  let before: SrsCard | undefined;
+  let review: ReviewLogEntry | undefined;
+  let reviewedAt = 0;
   const saved = await mutateSrsCard(
     id,
     async (row) => {
@@ -283,7 +321,8 @@ export async function gradeCard(
         row.due > now ||
         !reviewAnswer(row) ||
         (expectedReps !== undefined && row.card.reps !== expectedReps) ||
-        (expectedContent !== undefined && !sameCardContent(row, expectedContent))
+        (expectedContent !== undefined && (!sameCardContent(row, expectedContent) || !sameIncarnation(row, expectedContent)
+          || row.partOfSpeech !== expectedContent.partOfSpeech))
       )
         return;
       if (
@@ -291,11 +330,65 @@ export async function gradeCard(
         (await db.wordStatus.get(row.front.toLowerCase()))?.status === 'ignored'
       )
         return;
+      requireDataScope(currentScope);
+      before = structuredClone(row);
+      reviewedAt = now.getTime();
       const next = scheduler.next(row.card, now, rating).card;
       return { ...row, card: next, due: next.due };
     },
-    captureDataScope(),
-    () => logReview(id, rating)
+    currentScope,
+    async () => {
+      requireDataScope(currentScope);
+      review = await logReviewStrict(id, rating, reviewedAt);
+      requireDataScope(currentScope);
+    }
   );
-  return Boolean(saved);
+  return saved && before && review && currentScope()
+    ? { before, after: structuredClone(saved), review: structuredClone(review), currentScope } : null;
+}
+
+export async function reviewCorrectionCard(receipt: ReviewReceipt): Promise<SrsCard | null> {
+  if (!receipt.currentScope()) return null;
+  const row = await db.srsCards.get(receipt.after.id);
+  if (!row || isDeleted(row) || !sameIncarnation(row, receipt.after)
+    || !sameReviewSchedule(row, receipt.after) || !reviewAnswer(row)) return null;
+  const [event, status] = await Promise.all([
+    db.reviewLog.get(receipt.review.id), db.wordStatus.get(row.front.toLowerCase()),
+  ]);
+  return receipt.currentScope() && event && sameReviewEvent(event, receipt.review)
+    && (row.fromError || status?.status !== 'ignored') ? row : null;
+}
+
+export async function replaceReviewRating(
+  receipt: ReviewReceipt,
+  rating: Grade,
+  shownContent: SrsCard
+): Promise<ReviewReceipt | null> {
+  if (!receipt.currentScope()) return null;
+  let review: ReviewLogEntry | undefined;
+  const saved = await mutateSrsCard(receipt.after.id, async row => {
+    if (!sameIncarnation(row, receipt.after) || !sameIncarnation(row, shownContent)
+      || !sameReviewSchedule(row, receipt.after) || !sameCardContent(row, shownContent)
+      || row.partOfSpeech !== shownContent.partOfSpeech
+      || !reviewAnswer(row)) return;
+    const [event, status] = await Promise.all([
+      db.reviewLog.get(receipt.review.id), db.wordStatus.get(row.front.toLowerCase()),
+    ]);
+    requireDataScope(receipt.currentScope);
+    if (!event || !sameReviewEvent(event, receipt.review)
+      || (!row.fromError && status?.status === 'ignored')) return;
+    const card = scheduler.next(receipt.before.card, new Date(receipt.review.ts), rating).card;
+    review = {
+      ...event, rating,
+      modifiedAt: Math.max(Date.now(), (event.modifiedAt ?? event.ts) + 1),
+    };
+    return { ...row, card, due: card.due };
+  }, receipt.currentScope, async () => {
+    requireDataScope(receipt.currentScope);
+    if (!review) throw new Error('Missing review correction');
+    await db.reviewLog.put(review);
+    requireDataScope(receipt.currentScope);
+  });
+  return saved && review && receipt.currentScope()
+    ? { ...receipt, after: structuredClone(saved), review: structuredClone(review) } : null;
 }

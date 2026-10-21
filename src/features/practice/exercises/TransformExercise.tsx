@@ -51,7 +51,7 @@ export function TransformExercise({ exercise, onSolved }: Props) {
       </p>
       <div className="flex flex-wrap items-center gap-2.5">
         <Input
-          className="min-w-64 flex-1"
+          className="min-w-0 flex-1 basis-64"
           placeholder={ru ? 'перепишите предложение…' : 'rewrite the sentence…'}
           value={value}
           disabled={status === 'correct'}

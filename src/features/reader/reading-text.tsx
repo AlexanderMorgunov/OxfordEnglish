@@ -1,6 +1,6 @@
-import { createContext, memo, use, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { createContext, memo, use, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Popover, usePopoverClose } from '@/shared/ui';
+import { Button, Popover, PopoverGroup, usePopoverClose } from '@/shared/ui';
 import { overflowShift } from './lens-menu';
 import { cn } from '@/shared/lib/cn';
 import { useVocabStore } from '@/features/vocab/vocabStore';
@@ -25,15 +25,17 @@ import {
   repairSavedPhrase,
   repairCardContext,
 } from '@/features/srs/service';
-import { captureDataScope } from '@/features/account/dataScope';
+import { captureDataScope, subscribeDataScope, getDataScopeRevision } from '@/features/account/dataScope';
 import { useAiStore } from '@/features/ai/store';
-import { useAiEnabled, useAiUnknown } from '@/features/ai/route';
+import { captureAiScope, useAiEnabled, useAiUnknown } from '@/features/ai/route';
 import { wordInContext } from '@/features/ai/functions';
 import type { AiConfig } from '@/features/ai/provider';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { useLearner } from '@/features/learner/store';
 import { classifyWord, estimateCoverage, loadFreq, rankThresholdFor, type FreqIndex, type WordMark } from './difficulty';
-import { useReaderSettings, FONT_CLASSES, LEADING_CLASSES, RATE_STEPS } from './settings';
+import { useReaderSettings, DEFAULT_FONT_STEP, FONT_CLASSES, LEADING_CLASSES, RATE_STEPS } from './settings';
+import { ReaderTextSize } from './ReaderTextSize';
+import { keepReadingAnchor } from './reading-anchor';
 import { runLens, type LensArgs, type LensMode } from './lens';
 import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
 import { clampBand } from '@/features/ai/simplify-prompts';
@@ -49,6 +51,9 @@ import { irregularForms } from '@/features/vocab/irregular';
 import { FormsLine } from '@/features/vocab/FormsLine';
 import { cefrOf, useCefr } from '@/features/vocab/cefr';
 import { CefrChip } from '@/features/vocab/CefrChip';
+import { saveReaderTerm, type BookSource } from './chapter-vocabulary';
+import type { SrsCard } from '@/db/db';
+import { readSavedWord, savedWordMeaning, useSavedWordCards } from './saved-word-meanings';
 
 /** Reference line for auditioning a read-aloud voice — natural prose so prosody is audible. */
 const VOICE_SAMPLE = 'The morning light spilled across the quiet room as she opened the book.';
@@ -61,6 +66,9 @@ type ReaderCtx = {
   freq: FreqIndex | null;
   rankThreshold: number;
   coloring: boolean;
+  source?: BookSource;
+  ownerRevision?: number;
+  wordCards?: ReadonlyMap<string, SrsCard>;
 };
 const ReaderContext = createContext<ReaderCtx>({ freq: null, rankThreshold: Infinity, coloring: false });
 
@@ -73,11 +81,13 @@ function ContextGloss({
   sentence,
   config,
   onResolved,
+  shouldFinishSaved,
 }: {
   word: string;
   sentence: string;
   config: AiConfig | null;
   onResolved: (firstLine: string) => void;
+  shouldFinishSaved: () => boolean;
 }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [text, setText] = useState<string | null>(null);
@@ -85,12 +95,15 @@ function ContextGloss({
 
   useEffect(() => {
     let alive = true;
+    const controller = new AbortController();
+    setText(null);
+    setState('loading');
     const current = captureDataScope();
     const timer = setTimeout(() => {
       if (!current()) return;
-      void wordInContext(config, word, sentence)
+      void wordInContext(config, word, sentence, controller.signal)
         .then((res) => {
-          if (!current()) return;
+          if (!current() || controller.signal.aborted) return;
           const first = res.split('\n')[0]?.replace(/^Ещё:\s*/i, '')
             .replace(/\*\*/g, '')
             .trim();
@@ -105,9 +118,10 @@ function ContextGloss({
     }, 400);
     return () => {
       alive = false;
+      if (!shouldFinishSaved()) controller.abort();
       clearTimeout(timer);
     };
-  }, [word, sentence, config, onResolved]);
+  }, [word, sentence, config, onResolved, shouldFinishSaved]);
 
   return (
     <div className="mt-2">
@@ -201,11 +215,27 @@ export const WordToken = memo(function WordToken({
   );
   const setStatus = useVocabStore((s) => s.setStatus);
   const lang = useUiLang((s) => s.lang);
-  const { freq, rankThreshold, coloring } = use(ReaderContext);
+  const { freq, rankThreshold, coloring, source, wordCards } = use(ReaderContext);
+  const savingWord = useRef(false);
+  const [wordSave, setWordSave] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [fetched, setFetched] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
   const [done, setDone] = useState(false);
+  const [savedLookup, setSavedLookup] = useState<{ card: SrsCard; current: () => boolean } | null>(null);
+  const lookupEpoch = useRef(0);
+  useEffect(() => () => { lookupEpoch.current += 1; }, []);
+  useEffect(() => {
+    if (!savedLookup && !fetched && !done) return;
+    return subscribeDataScope(() => {
+      lookupEpoch.current += 1;
+      setSavedLookup(null);
+      setFetched(null);
+      setDone(false);
+      setLoading(false);
+      setFailed(false);
+    });
+  }, [savedLookup, fetched, done]);
   const config = useAiStore((s) => s.config);
   const aiReady = useAiEnabled();
   const aiUnknown = useAiUnknown();
@@ -216,6 +246,16 @@ export const WordToken = memo(function WordToken({
     current: () => boolean;
     back: string;
   } | null>(null);
+  const shouldFinishSaved = useCallback(() => savedWord.current !== null, []);
+  const visibleWordSave = savedWord.current && !savedWord.current.current() ? 'idle' : wordSave;
+  useEffect(() => {
+    if (!savedWord.current) return;
+    return subscribeDataScope(() => {
+      savedWord.current = null;
+      savingWord.current = false;
+      setWordSave('idle');
+    });
+  }, [wordSave]);
   const onGlossResolved = useCallback(
     (meaning: string) => {
       setWicGloss(meaning);
@@ -238,16 +278,32 @@ export const WordToken = memo(function WordToken({
   );
 
   const openLookup = () => {
-    if (gloss?.ru || done) return;
+    if (savedWordMeaning(wordCards?.get(lookup.toLowerCase()), sentence) || gloss?.ru || done) return;
     setDone(true);
     setLoading(true);
-    void translateWord(lookup).then((ru) => {
-      setFetched(ru);
-      setFailed(ru === null);
+    const current = captureDataScope();
+    const epoch = ++lookupEpoch.current;
+    const valid = () => current() && epoch === lookupEpoch.current;
+    void (async () => {
+      const card = await readSavedWord(lookup);
+      if (!valid()) return;
+      if (card && savedWordMeaning(card, sentence)) {
+        setSavedLookup({ card, current });
+        setLoading(false);
+        return;
+      }
+      const result = await translateWord(lookup);
+      if (!valid()) return;
+      setFetched(result);
+      setFailed(result === null);
       setLoading(false);
+    })().catch(() => {
+      if (valid()) { setFailed(true); setLoading(false); }
     });
   };
-  const translation = gloss?.ru ?? fetched ?? undefined;
+  const savedMeaning = savedWordMeaning(wordCards?.get(lookup.toLowerCase()), sentence)
+    ?? (wordCards === undefined && savedLookup?.current() ? savedWordMeaning(savedLookup.card, sentence) : undefined);
+  const translation = savedMeaning ?? gloss?.ru ?? fetched ?? undefined;
   const classified: WordMark | undefined =
     coloring && freq ? classifyWord(lookup, { status, freq, rankThreshold }) : undefined;
   // Gate the status underline on the coloring setting too — with coloring OFF a saved-"learning" word
@@ -263,13 +319,16 @@ export const WordToken = memo(function WordToken({
     <Popover
       label={word}
       showClose
+      anchorClassName="min-w-0 max-w-full self-baseline"
+      className="max-h-[calc(100dvh-1rem)] max-w-[min(16rem,calc(100vw-1rem))] overflow-y-auto [overflow-wrap:anywhere]"
       trigger={
         <button
           type="button"
           data-widx={tokenId}
+          lang="en"
           onClick={openLookup}
           className={cn(
-            'cursor-pointer rounded-[2px]',
+            'max-w-full cursor-pointer rounded-[2px] text-left whitespace-normal [overflow-wrap:anywhere]',
             deco ? 'underline decoration-2 underline-offset-4' : 'hover:bg-surface-2',
             deco === 'learning' && '[text-decoration-color:var(--color-word-learning)]',
             deco === 'new' && '[text-decoration-color:var(--color-word-unknown)]',
@@ -280,8 +339,8 @@ export const WordToken = memo(function WordToken({
         </button>
       }
     >
-      <div className="flex items-center gap-2">
-        <p className="font-mono text-sm text-content">{word}</p>
+      <div className="flex flex-wrap items-center gap-2">
+        <p lang="en" className="max-w-full font-mono text-sm text-content">{word}</p>
         {canSpeak && (
           <button
             type="button"
@@ -298,8 +357,9 @@ export const WordToken = memo(function WordToken({
         <p className="font-mono text-xs text-muted">{gloss.ipa}</p>
       )}
       {translation && (
-        <p className="mt-1 text-sm text-content">{translation}</p>
+        <p lang="ru" className="mt-1 text-sm text-content">{translation}</p>
       )}
+      {savedMeaning && <p className="text-xs text-muted">{lang === 'ru' ? 'Из вашего словаря' : 'From your vocabulary'}</p>}
       <PopoverForms word={lookup} />
       {loading && (
         <p className="mt-1 font-mono text-2xs text-faint">translating…</p>
@@ -317,6 +377,7 @@ export const WordToken = memo(function WordToken({
             sentence={sentence}
             config={config}
             onResolved={onGlossResolved}
+            shouldFinishSaved={shouldFinishSaved}
           />
         )}
       {tokenId && (
@@ -328,13 +389,26 @@ export const WordToken = memo(function WordToken({
         <Button
           size="sm"
           variant="ghost"
+          disabled={visibleWordSave === 'saving'}
           onClick={() => {
+            if (savingWord.current && savedWord.current?.current()) return;
+            const current = captureDataScope();
+            savingWord.current = true;
+            setWordSave('saving');
             void setStatus(lookup, 'learning');
-            savedWord.current = {
+            const save = {
               done: addWordCard(lookup, translation ?? lookup, sentence, wicGloss ?? undefined),
-              current: captureDataScope(),
+              current,
               back: translation ?? lookup,
             };
+            savedWord.current = save;
+            void save.done.then(async (saved) => {
+              if (!saved || !current()) return false;
+              return source ? saveReaderTerm(source, `word:${lookup.toLowerCase()}`, sentence, current) : true;
+            }).then((saved) => {
+              if (current()) setWordSave(saved ? 'saved' : 'error');
+            }).catch(() => { if (current()) setWordSave('error'); })
+              .finally(() => { if (savedWord.current === save) savingWord.current = false; });
           }}
         >
           learning
@@ -351,6 +425,12 @@ export const WordToken = memo(function WordToken({
           {lang === 'ru' ? 'игнор' : 'ignore'}
         </Button>
       </div>
+      {visibleWordSave !== 'idle' && <p role={visibleWordSave === 'error' ? 'alert' : 'status'} className="mt-2 text-xs text-muted">
+        {visibleWordSave === 'saving' ? lang === 'ru' ? 'Сохраняю…' : 'Saving…'
+          : visibleWordSave === 'saved' ? lang === 'ru' ? '✓ сохранено' : '✓ saved'
+          : source ? lang === 'ru' ? 'Не удалось добавить в главу. Нажмите learning ещё раз.' : 'Could not add to chapter. Press learning again.'
+          : lang === 'ru' ? 'Не удалось сохранить. Попробуйте ещё раз.' : 'Could not save. Try again.'}
+      </p>}
     </Popover>
   );
 });
@@ -364,6 +444,10 @@ type LensCell =
   | { kind: 'fail' };
 
 const NO_KNOWN: Set<string> = new Set();
+const translationSourceLabel = (source: ReaderTranslation['source'], ru: boolean) =>
+  source === 'free' ? ru ? 'бесплатный перевод' : 'free translation'
+    : source === 'byok' ? ru ? 'свой AI-ключ' : 'your AI key'
+      : source === 'managed' ? 'DayEnglish AI' : '';
 
 const Paragraph = memo(function Paragraph({
   index,
@@ -408,7 +492,7 @@ const Paragraph = memo(function Paragraph({
   lensK: string;
   level: Level | null;
   /** Run a lens on a sentence (translate / simplify / grammar / step-down simplify); null = unavailable. */
-  onLens: (mode: LensMode, text: string, stepDown?: number) => Promise<string | null>;
+  onLens: (mode: LensMode, text: string, stepDown?: number, signal?: AbortSignal, onSource?: (source: ReaderTranslation['source']) => void) => Promise<string | null>;
   /** Book reader only: sentence indices in THIS paragraph that are bookmarked (drives the menu
    *  item's заложить/убрать label), and a toggle that anchors a bookmark to a sentence. */
   bookmarkedSents?: Set<number>;
@@ -427,7 +511,9 @@ const Paragraph = memo(function Paragraph({
   );
   const { freq } = use(ReaderContext);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const pendingLens = useRef<AbortController | null>(null);
   const [out, setOut] = useState<Record<number, LensCell>>({});
+  const [sources, setSources] = useState<Record<number, ReaderTranslation['source']>>({});
   const [loading, setLoading] = useState<{
     idx: number;
     mode: LensMode;
@@ -470,10 +556,12 @@ const Paragraph = memo(function Paragraph({
   // after switching to AI). The lens MODE is per-sentence now, so it's not part of the key.
   useEffect(() => {
     setOut({});
+    setSources({});
     setOpenIdx(null);
     setLoading(null);
     setMenuIdx(null);
-  }, [lensK]);
+    return () => { pendingLens.current?.abort(); pendingLens.current = null; };
+  }, [lensK, text]);
   // Close an open menu on an outside click. Ignore the trigger and the menu itself: React 19 flushes
   // the listener-adding effect synchronously, so the very click that opened the menu would otherwise
   // bubble to document and close it again (menu opened-then-closed in one gesture).
@@ -489,11 +577,26 @@ const Paragraph = memo(function Paragraph({
   }, [menuIdx]);
 
   const runAt = async (si: number, sentence: string, mode: LensMode, stepDown = 0) => {
+    pendingLens.current?.abort();
+    const controller = new AbortController();
+    pendingLens.current = controller;
+    const requireActive = captureAiScope(controller.signal);
     setOpenIdx(si); // one open at a time — keeps the reading unit small
     setLoading({ idx: si, mode });
     if (mode === 'simplify') void track('simplify_used', { band: clampBand(level, stepDown), step: stepDown });
     else if (mode === 'grammar') void track('grammar_used', { band: clampBand(level, 0) });
-    const res = await onLens(mode, sentence, stepDown);
+    let res: string | null;
+    let answerSource: ReaderTranslation['source'];
+    try {
+      res = await onLens(mode, sentence, stepDown, controller.signal, source => { answerSource = source; });
+      requireActive();
+    } catch {
+      if (pendingLens.current === controller) {
+        pendingLens.current = null;
+        setLoading(null);
+      }
+      return;
+    }
     let cell: LensCell;
     if (res == null) cell = { kind: 'fail' };
     else if (mode === 'translate') cell = { kind: 'translate', text: res };
@@ -507,6 +610,8 @@ const Paragraph = memo(function Paragraph({
       cell = atBand ? { kind: 'echo' } : { kind: 'fail' };
     } else cell = { kind: 'simplify', text: res, stepDown };
     setOut((o) => ({ ...o, [si]: cell }));
+    setSources(value => ({ ...value, [si]: answerSource }));
+    pendingLens.current = null;
     setLoading(null);
   };
 
@@ -612,9 +717,9 @@ const Paragraph = memo(function Paragraph({
         const firstWordAt = toks.findIndex((t) => WORD_TEST_RE.test(t));
         const marks = phraseMarks[si]!;
         const renderTok = (tok: string, i: number) => {
-          if (!WORD_TEST_RE.test(tok)) return <span key={i}>{tok}</span>;
+          if (!WORD_TEST_RE.test(tok)) return <span lang="en" key={i}>{tok}</span>;
           const key = tok.replace(/^'+|'+$/g, '');
-          if (!key) return <span key={i}>{tok}</span>;
+          if (!key) return <span lang="en" key={i}>{tok}</span>;
           return (
             <WordToken
               key={i}
@@ -643,7 +748,7 @@ const Paragraph = memo(function Paragraph({
             }
             aria-pressed={sentencePlaying}
             onClick={() => onReadSentence(index, si, sentence)}
-            className="mr-1 align-baseline font-mono text-[0.78em] text-teal opacity-60 transition-opacity hover:opacity-100"
+            className="mr-1 shrink-0 align-baseline font-mono text-[0.78em] text-teal opacity-60 transition-opacity hover:opacity-100"
           >
             {sentencePlaying ? '❚❚' : '▶'}
           </button>
@@ -660,7 +765,7 @@ const Paragraph = memo(function Paragraph({
               // Keep the ▶ glued to its sentence's first word (through any leading dash/number/ellipsis
               // token + its space), so a line-wrap never leaves the button dangling a line above.
               <>
-                <span className="whitespace-nowrap">
+                <span className="inline-flex max-w-full items-start whitespace-break-spaces">
                   {playButton}
                   {toks.slice(0, firstWordAt + 1).map(renderTok)}
                 </span>
@@ -682,6 +787,9 @@ const Paragraph = memo(function Paragraph({
                 }
                 onClick={() => {
                   if (open) {
+                    pendingLens.current?.abort();
+                    pendingLens.current = null;
+                    setLoading(null);
                     setOpenIdx(null);
                     setMenuIdx(null);
                   } else setMenuIdx(menuIdx === si ? null : si);
@@ -704,26 +812,19 @@ const Paragraph = memo(function Paragraph({
                       ['grammar', lang === 'ru' ? 'грамматика' : 'grammar', 'гр', true],
                     ] as const
                   ).map(([m, label, mark, needsAi]) => (
-                    // A locked item stays REACHABLE and says why. It used to be `disabled`: greyed out,
-                    // no tooltip, no way forward — and a disabled `role="menuitem"` is also skipped by
-                    // screen readers (§8.5). This is the best moment in the app to explain the plan:
-                    // the reader has just reached for the thing themselves.
                     <button
                       key={m}
                       type="button"
                       role="menuitem"
                       onClick={() => {
                         setMenuIdx(null);
-                        if (needsAi && !aiReady && !aiUnknown) navigate(`/pro?from=reader`);
-                        else void runAt(si, sentence, m, 0);
+                        void runAt(si, sentence, m, 0);
                       }}
                       className="flex items-center gap-2 whitespace-nowrap px-2.5 py-1 font-mono text-2xs text-muted hover:bg-surface-2 hover:text-content"
                     >
                       <span className="w-6 text-teal">{mark}</span>
                       {label}
-                      {needsAi && !aiReady && !aiUnknown && (
-                        <span className="ml-auto pl-2 text-faint">🔒</span>
-                      )}
+                      {needsAi && !aiReady && !aiUnknown && <span className="ml-auto pl-2 text-faint">{lang === 'ru' ? 'кеш' : 'cache'}</span>}
                     </button>
                   ))}
                   {/* One explanation for both locked rows, not a repeated hint per row — and it names
@@ -768,7 +869,9 @@ const Paragraph = memo(function Paragraph({
             {/* Marked so the phrase picker can tell the lens OUTPUT from the source text. Without it,
                 selecting words inside a Russian translation offered to translate them — into Russian. */}
             {open && (
-              <span {...{ [LENS_OUT_ATTR]: true }}>{renderOut(si, sentence)}</span>
+              <span {...{ [LENS_OUT_ATTR]: true }}>{renderOut(si, sentence)}
+                {loading?.idx !== si && out[si]?.kind !== 'fail' && sources[si] && <span className="ml-1 text-xs text-muted">· {translationSourceLabel(sources[si], lang === 'ru')}</span>}
+              </span>
             )}
           </span>
         );
@@ -783,9 +886,11 @@ export function ReadingText({
   glossary,
   bookmarkedSentences,
   onBookmarkSentence,
+  source,
 }: {
   paragraphs: string[];
   glossary?: Map<string, Gloss>;
+  source?: BookSource;
   /** Book reader only: keys `${para}:${sentence}` bookmarked on this page, and a sentence-level toggle
    *  (invoked from the per-sentence lens menu's "заложить" item). */
   bookmarkedSentences?: Set<string>;
@@ -793,6 +898,8 @@ export function ReadingText({
 }) {
   const canSpeak = useSpeechAvailable();
   const lang = useUiLang((s) => s.lang);
+  const ownerRevision = useSyncExternalStore(subscribeDataScope, getDataScopeRevision);
+  const wordCards = useSavedWordCards(paragraphs, ownerRevision);
   const ru = lang === 'ru';
   const level = useLearner((s) => s.level);
   const loadVocab = useVocabStore((s) => s.load);
@@ -800,7 +907,6 @@ export function ReadingText({
   const toggleColoring = useReaderSettings((s) => s.toggleColoring);
   const fontStep = useReaderSettings((s) => s.fontStep);
   const lineStep = useReaderSettings((s) => s.lineStep);
-  const setFontStep = useReaderSettings((s) => s.setFontStep);
   const setLineStep = useReaderSettings((s) => s.setLineStep);
   const voiceURI = useReaderSettings((s) => s.voiceURI);
   const setVoiceURI = useReaderSettings((s) => s.setVoiceURI);
@@ -819,7 +925,7 @@ export function ReadingText({
   const lensArgs = useRef<LensArgs>({ ai: aiTranslation, config: aiConfig, level });
   lensArgs.current = { ai: aiTranslation, config: aiConfig, level };
   const onLens = useCallback(
-    (mode: LensMode, text: string, stepDown?: number) => runLens(mode, text, lensArgs.current, stepDown),
+    (mode: LensMode, text: string, stepDown?: number, signal?: AbortSignal, onSource?: (source: ReaderTranslation['source']) => void) => runLens(mode, text, lensArgs.current, stepDown, signal, onSource),
     []
   );
   // Re-render + clear cells only when the translate sub-mode or the band changes; the lens mode is
@@ -837,7 +943,7 @@ export function ReadingText({
     setVoiceURI(uri);
     previewVoice(uri, VOICE_SAMPLE);
   };
-  const typoClass = `${FONT_CLASSES[fontStep] ?? FONT_CLASSES[1]} ${LEADING_CLASSES[lineStep] ?? LEADING_CLASSES[0]}`;
+  const typoClass = `${FONT_CLASSES[fontStep] ?? FONT_CLASSES[DEFAULT_FONT_STEP]} ${LEADING_CLASSES[lineStep] ?? LEADING_CLASSES[0]}`;
   const [freq, setFreq] = useState<FreqIndex | null>(null);
   const [speakingIdx, setSpeakingIdx] = useState(-1);
   // `speakingActive` = an utterance is in flight (drives the ❚❚ glyph); `playingRef` = a read
@@ -863,10 +969,12 @@ export function ReadingText({
   const textRef = useRef<HTMLDivElement>(null);
   const [phrase, setPhrase] = useState<string | null>(null);
   const [phraseRu, setPhraseRu] = useState<string | null>(null);
+  const [phraseTranslationSource, setPhraseTranslationSource] = useState<ReaderTranslation['source']>();
   const [phraseSentence, setPhraseSentence] = useState<string | null>(null);
   const [phraseLoading, setPhraseLoading] = useState(false);
   const [phraseSaved, setPhraseSaved] = useState(false);
   const [phraseError, setPhraseError] = useState(false);
+  const [phraseSaving, setPhraseSaving] = useState(false);
   const phraseRequest = useRef<{
     text: string;
     sentence?: string;
@@ -874,9 +982,13 @@ export function ReadingText({
     result: ReaderTranslation | null;
     backAtSave: string;
     saved: Promise<boolean> | null;
+    linking: boolean;
+    source?: BookSource;
+    controller: AbortController;
   } | null>(null);
   useEffect(
     () => () => {
+      if (!phraseRequest.current?.saved) phraseRequest.current?.controller.abort();
       phraseRequest.current = null;
     },
     []
@@ -884,6 +996,15 @@ export function ReadingText({
   const pickAnchor = usePhraseSelect((s) => s.anchor);
   const clearPick = usePhraseSelect((s) => s.clear);
   const savedPhrases = useSavedPhrases((s) => s.phrases);
+  useEffect(() => subscribeDataScope(() => {
+    phraseRequest.current?.controller.abort();
+    phraseRequest.current = null;
+    clearPick();
+    setPhrase(null);
+    setPhraseSaved(false);
+    setPhraseSaving(false);
+    setPhraseError(false);
+  }), [clearPick]);
 
   useEffect(() => {
     void loadVocab();
@@ -901,6 +1022,7 @@ export function ReadingText({
   );
 
   const setPhraseText = (text: string, sentence?: string) => {
+    if (!phraseRequest.current?.saved) phraseRequest.current?.controller.abort();
     const request = {
       text,
       sentence,
@@ -908,23 +1030,29 @@ export function ReadingText({
       result: null as ReaderTranslation | null,
       backAtSave: text,
       saved: null as Promise<boolean> | null,
+      linking: false,
+      source,
+      controller: new AbortController(),
     };
     phraseRequest.current = request;
     setPhrase(text);
     setPhraseSentence(sentence ?? null);
     setPhraseRu(null);
+    setPhraseTranslationSource(undefined);
     setPhraseError(false);
     // Already in the word bank → show it as saved instead of offering "+ save" again.
-    setPhraseSaved(useSavedPhrases.getState().has(text));
+    setPhraseSaved(!source && useSavedPhrases.getState().has(text));
+    setPhraseSaving(false);
     setPhraseLoading(true);
     // Pass the phrase's sentence so the AI translates it IN context ("fowling pieces" → "охотничьи
     // ружья", not a literal "кусочки"); the free path ignores the context.
-    void translateReaderResult(text, { ...translateArgs.current, sentence })
+    void translateReaderResult(text, { ...translateArgs.current, sentence, signal: request.controller.signal })
       .then(async (result) => {
         request.result = result;
         if (!request.current()) return;
         if (phraseRequest.current === request) {
           setPhraseRu(result?.text ?? null);
+          setPhraseTranslationSource(result?.source);
           setPhraseLoading(false);
         }
         if (
@@ -961,14 +1089,14 @@ export function ReadingText({
     const sel = window.getSelection();
     const inside = sel?.anchorNode ? (textRef.current?.contains(sel.anchorNode) ?? false) : false;
     if (!sel || !inside) {
-      if (!pickAnchor) setPhrase(null);
+      if (!pickAnchor) cancelPick();
       return;
     }
     // Selecting inside a translation used to fall through to the raw-text branch below and offer to
     // translate Russian into Russian. Nothing here is a word of the book, so there is nothing to look
     // up, save or translate.
     if (inLensOutput(sel.anchorNode) || inLensOutput(sel.focusNode)) {
-      if (!pickAnchor) setPhrase(null);
+      if (!pickAnchor) cancelPick();
       return;
     }
     // Prefer deriving the phrase from the two endpoint word tokens: this keeps button glyphs (▶, ru)
@@ -984,7 +1112,7 @@ export function ReadingText({
     }
     const text = sel.toString().trim().replace(/\s+/g, ' ');
     if (text.includes(' ') && text.length <= 80) setPhraseText(text);
-    else if (!pickAnchor) setPhrase(null);
+    else if (!pickAnchor) cancelPick();
   };
 
   const phraseFromRange = (a: WordPos, b: WordPos, sentence: string): string => {
@@ -1015,6 +1143,7 @@ export function ReadingText({
   };
 
   const cancelPick = () => {
+    if (!phraseRequest.current?.saved) phraseRequest.current?.controller.abort();
     phraseRequest.current = null;
     clearPick();
     setPhrase(null);
@@ -1022,10 +1151,13 @@ export function ReadingText({
 
   const savePhrase = () => {
     const request = phraseRequest.current;
-    if (!phrase || !request || request.saved || !request.current()) return;
+    if (!phrase || !request || request.linking || !request.current()) return;
+    request.linking = true;
+    setPhraseSaving(true);
+    setPhraseError(false);
     request.backAtSave = phraseRu ?? phrase;
     clearPick();
-    request.saved = addPhraseCard(
+    request.saved ??= addPhraseCard(
       phrase,
       phraseRu ?? phrase,
       phraseSentence ?? undefined,
@@ -1033,12 +1165,14 @@ export function ReadingText({
       request.result?.contextual ? request.result.text : undefined
     );
     void request.saved
-      .then((saved) => {
+      .then(async (saved) => {
         if (!request.current()) return;
         if (saved) useSavedPhrases.getState().add(request.text);
+        const linked = saved && (!request.source || await saveReaderTerm(request.source, `phrase:${request.text.toLowerCase()}`, request.sentence, request.current));
+        if (!request.current()) return;
         if (phraseRequest.current === request) {
-          setPhraseSaved(saved);
-          setPhraseError(!saved);
+          setPhraseSaved(linked);
+          setPhraseError(!linked);
         }
         if (!saved) request.saved = null;
       })
@@ -1046,6 +1180,9 @@ export function ReadingText({
         request.saved = null;
         if (phraseRequest.current === request && request.current())
           setPhraseError(true);
+      }).finally(() => {
+        request.linking = false;
+        if (phraseRequest.current === request && request.current()) setPhraseSaving(false);
       });
   };
 
@@ -1065,8 +1202,8 @@ export function ReadingText({
 
   const rankThreshold = rankThresholdFor(level);
   const readerCtx = useMemo<ReaderCtx>(
-    () => ({ freq, rankThreshold, coloring }),
-    [freq, rankThreshold, coloring]
+    () => ({ freq, rankThreshold, coloring, source, ownerRevision, wordCards }),
+    [freq, rankThreshold, coloring, source, ownerRevision, wordCards]
   );
 
   // Continuous read-aloud: after each paragraph ends, advance to the next and scroll it into
@@ -1178,6 +1315,7 @@ export function ReadingText({
   // on hide anyway, and without this the React state would stay stuck on "speaking".
   const stopRef = useRef(stopReading);
   stopRef.current = stopReading;
+  useEffect(() => () => stopRef.current(), [ownerRevision]);
   useEffect(() => {
     const onHide = () => {
       if (document.hidden) stopRef.current();
@@ -1185,47 +1323,28 @@ export function ReadingText({
     document.addEventListener('visibilitychange', onHide);
     return () => document.removeEventListener('visibilitychange', onHide);
   }, []);
-  // A chapter change swaps `paragraphs` without remounting this component, so reset playback —
-  // otherwise a resume/highlight position from the old chapter is applied to the new one.
+  // Reset playback when a caller replaces the passage without remounting.
   useEffect(() => {
     stopRef.current();
   }, [paragraphs]);
 
   return (
     <div className="flex flex-col gap-4">
-      <details>
-        <summary className="inline-flex cursor-pointer list-none items-center gap-1 font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline [&::-webkit-details-marker]:hidden">
-          ⚙ {ru ? 'настройки чтения' : 'reader settings'}
+      <details className="group">
+        <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-semibold text-teal [overflow-wrap:anywhere] [&::-webkit-details-marker]:hidden">
+          <span aria-hidden="true" className="transition-transform group-open:rotate-90">▸</span>
+          {ru ? 'Настройки чтения' : 'Reader settings'}
         </summary>
+        <div className="max-w-sm py-2"><ReaderTextSize /></div>
         <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5">
-        <div className="flex items-center gap-1.5" role="group" aria-label={ru ? 'Размер текста' : 'Text size'}>
-          <button
-            type="button"
-            aria-label={ru ? 'Меньше' : 'Smaller'}
-            disabled={fontStep === 0}
-            onClick={() => setFontStep(fontStep - 1)}
-            className="font-mono text-2xs text-teal hover:underline disabled:text-faint disabled:no-underline"
-          >
-            A−
-          </button>
-          <button
-            type="button"
-            aria-label={ru ? 'Больше' : 'Larger'}
-            disabled={fontStep === FONT_CLASSES.length - 1}
-            onClick={() => setFontStep(fontStep + 1)}
-            className="font-mono text-2xs text-teal hover:underline disabled:text-faint disabled:no-underline"
-          >
-            A+
-          </button>
-          <button
-            type="button"
-            aria-label={ru ? 'Межстрочный интервал' : 'Line spacing'}
-            aria-pressed={lineStep === 1}
-            onClick={() => setLineStep(lineStep === 1 ? 0 : 1)}
-            className="font-mono text-2xs text-teal hover:underline"
-          >
-            ↕
-          </button>
+        <div className="flex items-center gap-1.5" role="group" aria-label={ru ? 'Межстрочный интервал' : 'Line spacing'}>
+          <label className="flex flex-wrap items-center gap-2 text-sm text-muted">
+            {ru ? 'Межстрочный интервал' : 'Line spacing'}
+            <select value={lineStep} onChange={e => keepReadingAnchor(() => setLineStep(Number(e.target.value)))} className="min-h-11 rounded-sm border border-line bg-surface px-2 text-content">
+              <option value={0}>{ru ? 'Обычный' : 'Normal'}</option>
+              <option value={1}>{ru ? 'Свободный' : 'Spacious'}</option>
+            </select>
+          </label>
         </div>
         <button
           type="button"
@@ -1299,26 +1418,25 @@ export function ReadingText({
         <button
           type="button"
           onClick={toggleAiTranslation}
-          disabled={!aiConfigured}
-          aria-pressed={aiTranslation && aiConfigured}
+          aria-pressed={aiTranslation}
           title={
             aiConfigured
               ? ru
                 ? 'Переводить предложения и фразы через ИИ (текст уходит вашему AI-провайдеру)'
                 : 'Translate sentences and phrases with the AI (text is sent to your AI provider)'
               : ru
-                ? 'Сначала включите ИИ в настройках'
-                : 'Enable AI in settings first'
+                ? 'Сохранённые AI-переводы доступны. Для новых нужен trial/Pro или свой ключ.'
+                : 'Cached AI translations are available. New translations need trial/Pro or your key.'
           }
           className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline disabled:text-faint disabled:no-underline"
         >
-          {aiTranslation && aiConfigured
+          {aiTranslation
             ? ru
-              ? 'перевод: ИИ'
-              : 'translate: AI'
+              ? 'фразы и предложения: ИИ'
+              : 'phrases and sentences: AI'
             : ru
-              ? 'перевод: бесплатный'
-              : 'translate: free'}
+              ? 'фразы и предложения: бесплатный'
+              : 'phrases and sentences: free'}
         </button>
         </div>
         {!aiConfigured && !aiUnknown && (
@@ -1351,7 +1469,7 @@ export function ReadingText({
           <span className="font-mono text-teal">{phrase}</span>
           {phraseError && (
             <span role="alert" className="text-coral">
-              {ru ? 'Не удалось сохранить' : 'Could not save'}
+              {source ? ru ? 'Не удалось добавить в главу. Попробуйте ещё раз.' : 'Could not add to chapter. Try again.' : ru ? 'Не удалось сохранить' : 'Could not save'}
             </span>
           )}
           {canSpeak && (
@@ -1375,13 +1493,14 @@ export function ReadingText({
                   ? '— перевод недоступен'
                   : '— translation unavailable'}
           </span>
+          {!phraseLoading && phraseRu && phraseTranslationSource && <span className="text-xs text-muted">{translationSourceLabel(phraseTranslationSource, ru)}</span>}
           <button
             type="button"
-            disabled={phraseSaved}
+            disabled={phraseSaved || phraseSaving}
             className="ml-auto font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline disabled:text-faint disabled:no-underline"
             onClick={savePhrase}
           >
-            {phraseSaved
+            {phraseSaving ? ru ? 'сохраняю…' : 'saving…' : phraseSaved
               ? ru
                 ? '✓ сохранено'
                 : '✓ saved'
@@ -1400,40 +1519,43 @@ export function ReadingText({
         </div>
       )}
       <ReaderContext.Provider value={readerCtx}>
-        <div
-          ref={textRef}
-          className="flex flex-col gap-4 [@media(pointer:coarse)]:select-none [@media(pointer:coarse)]:[-webkit-touch-callout:none]"
-          onMouseUp={onSelect}
-          onTouchEnd={onSelect}
-          onClickCapture={onPickTap}
-        >
-          {paragraphs.map((p, i) => (
-            <Paragraph
-              key={i}
-              index={i}
-              text={p}
-              glossary={glossary}
-              savedPhrases={savedPhrases}
-              lang={lang}
-              // The paragraph ▶/❚❚ reflects only continuous (whole-paragraph) playback, never a
-              // one-shot sentence play — those are separate controls.
-              active={speakingActive && speakingIdx === i && speakingSentence === null}
-              activeSentence={
-                speakingActive && speakingIdx === i && speakingSentence !== null ? speakingSentence : null
-              }
-              onRead={onRead}
-              onReadSentence={onReadSentence}
-              aiReady={aiConfigured}
-              aiUnknown={aiUnknown}
-              lensK={lensK}
-              level={level}
-              onLens={onLens}
-              bookmarkedSents={bmByPara.get(i)}
-              onBookmark={onBookmarkSentence ? onBookmark : undefined}
-              typoClass={typoClass}
-            />
-          ))}
-        </div>
+        <PopoverGroup key={ownerRevision}>
+          <div
+            ref={textRef}
+            data-reader-text
+            className="flex flex-col gap-4 [@media(pointer:coarse)]:select-none [@media(pointer:coarse)]:[-webkit-touch-callout:none]"
+            onMouseUp={onSelect}
+            onTouchEnd={onSelect}
+            onClickCapture={onPickTap}
+          >
+            {paragraphs.map((p, i) => (
+              <Paragraph
+                key={i}
+                index={i}
+                text={p}
+                glossary={glossary}
+                savedPhrases={savedPhrases}
+                lang={lang}
+                // The paragraph ▶/❚❚ reflects only continuous (whole-paragraph) playback, never a
+                // one-shot sentence play — those are separate controls.
+                active={speakingActive && speakingIdx === i && speakingSentence === null}
+                activeSentence={
+                  speakingActive && speakingIdx === i && speakingSentence !== null ? speakingSentence : null
+                }
+                onRead={onRead}
+                onReadSentence={onReadSentence}
+                aiReady={aiConfigured}
+                aiUnknown={aiUnknown}
+                lensK={lensK}
+                level={level}
+                onLens={onLens}
+                bookmarkedSents={bmByPara.get(i)}
+                onBookmark={onBookmarkSentence ? onBookmark : undefined}
+                typoClass={typoClass}
+              />
+            ))}
+          </div>
+        </PopoverGroup>
       </ReaderContext.Provider>
     </div>
   );

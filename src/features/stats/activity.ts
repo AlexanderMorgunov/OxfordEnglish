@@ -37,10 +37,16 @@ export function recordSave(kind: 'word' | 'phrase'): Promise<void> {
 
 export async function logReview(cardId: string, rating: number): Promise<void> {
   try {
-    await db.reviewLog.add({ id: crypto.randomUUID(), cardId, rating, ts: Date.now() });
+    await logReviewStrict(cardId, rating);
   } catch {
     // best-effort
   }
+}
+
+export async function logReviewStrict(cardId: string, rating: number, ts = Date.now()): Promise<ReviewLogEntry> {
+  const event: ReviewLogEntry = { id: crypto.randomUUID(), cardId, rating, ts, modifiedAt: ts };
+  await db.reviewLog.add(event);
+  return event;
 }
 
 const PENDING_KEY = 'oxford-stats-pending';

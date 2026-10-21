@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { captureDataScope } from './dataScope';
 import { useAccount } from './store';
 import { getInstallId } from '@/features/sync/meta';
 import * as api from './api';
@@ -45,9 +46,47 @@ function acceptsUsage(current: Entitlement['ai'], next: Entitlement['ai']): bool
   // longer on. The next load() carries the authoritative figures.
   if (current.limit !== next.limit) return false;
   // A new window legitimately resets the counter, so it is the one case where `used` may fall.
-  if (current.resetsAt !== next.resetsAt) return true;
+  if (current.resetsAt !== next.resetsAt) {
+    return next.resetsAt != null && (current.resetsAt == null || next.resetsAt > current.resetsAt);
+  }
   // Same window: two calls in flight can resolve out of order, and usage only ever grows.
   return next.used >= current.used;
+}
+
+const METADATA_DEADLINE_MS = 15_000;
+let revision = 0;
+let usageRevision = 0;
+let planRevision = 0;
+let loadFlight: { current: () => boolean; promise: Promise<void> } | null = null;
+const pending = new Set<AbortController>();
+
+function operation() {
+  const account = useAccount.getState();
+  const capturedRevision = revision;
+  const scope = captureDataScope();
+  const controller = new AbortController();
+  pending.add(controller);
+  const timer = setTimeout(() => controller.abort(), METADATA_DEADLINE_MS);
+  const owned = () => {
+    const next = useAccount.getState();
+    return capturedRevision === revision && scope() &&
+      account.accountId === next.accountId && account.sessionRevision === next.sessionRevision &&
+      account.status === next.status;
+  };
+  const current = () => owned() && !controller.signal.aborted;
+  const wait = <T,>(promise: Promise<T>): Promise<T> => new Promise((resolve, reject) => {
+    const abort = () => reject(new DOMException('Aborted', 'AbortError'));
+    controller.signal.addEventListener('abort', abort, { once: true });
+    if (!current()) abort();
+    promise.then(value => {
+      if (current()) resolve(value);
+      else abort();
+    }, reject).finally(() => controller.signal.removeEventListener('abort', abort));
+  });
+  return { current, owned, wait, signal: controller.signal, finish: () => {
+    clearTimeout(timer);
+    pending.delete(controller);
+  } };
 }
 
 export const useEntitlement = create<EntitlementState>((set, get) => ({
@@ -55,38 +94,61 @@ export const useEntitlement = create<EntitlementState>((set, get) => ({
   loading: false,
   error: null,
 
-  load: async () => {
-    const token = await useAccount.getState().getAccessToken();
-    // No token is not "no plan": `getAccessToken` returns null whenever a refresh fails, which on a bad
-    // connection it does silently. Nulling here downgraded a paying subscriber mid-session — the very
-    // thing the catch below refuses to do. Signing out clears this explicitly (features/sync/run.ts).
-    if (!token) return;
+  load: () => {
+    if (loadFlight?.current()) return loadFlight.promise;
+    const op = operation();
+    const startedUsage = usageRevision;
+    const startedPlan = planRevision;
     set({ loading: true });
-    try {
-      set({ entitlement: await api.getEntitlement(token), error: null });
-    } catch {
-      // Offline or a server hiccup: keep whatever we had rather than downgrading the user mid-session.
-    } finally {
-      set({ loading: false });
-    }
+    const flight = { current: op.current, promise: Promise.resolve() };
+    loadFlight = flight;
+    flight.promise = (async () => {
+      try {
+        const token = await op.wait(useAccount.getState().getAccessToken());
+        if (!token || !op.current()) return;
+        const loaded = await op.wait(api.getEntitlement(token, op.signal));
+        if (!op.current() || startedPlan !== planRevision || loadFlight !== flight) return;
+        const held = get().entitlement;
+        let entitlement = loaded;
+        if (held && startedUsage !== usageRevision && held.plan === loaded.plan && held.ai.limit === loaded.ai.limit &&
+          !acceptsUsage(held.ai, loaded.ai)) entitlement = { ...loaded, ai: held.ai };
+        set({ entitlement, error: null });
+      } catch {
+        // A transient failure must not downgrade a known subscription.
+      } finally {
+        op.finish();
+        if (loadFlight === flight) loadFlight = null;
+        if (op.owned()) set({ loading: pending.size > 0 });
+      }
+    })();
+    return flight.promise;
   },
 
   claimTrial: async () => {
-    const token = await useAccount.getState().getAccessToken();
-    // Nothing was sent, and re-checking would ask the same question of the same failed refresh.
-    if (!token) {
-      set({ error: 'network' });
-      return 'network';
-    }
+    const op = operation();
+    const claimRevision = ++planRevision;
+    const current = () => op.current() && claimRevision === planRevision;
     set({ loading: true, error: null });
     try {
-      set({ entitlement: await api.claimTrial(token, await getInstallId()) });
+      const token = await op.wait(useAccount.getState().getAccessToken());
+      if (!token) {
+        if (current()) set({ error: 'network' });
+        return 'network';
+      }
+      const installId = await op.wait(getInstallId());
+      if (!current()) return 'failed';
+      const entitlement = await op.wait(api.claimTrial(token, installId, op.signal));
+      if (!current()) return 'failed';
+      planRevision += 1;
+      set({ entitlement, error: null });
       return 'ok';
     } catch (e) {
+      if (!op.owned() || claimRevision !== planRevision) return 'failed';
       const code = e instanceof ApiFailure ? e.code : 'network';
-      // The grant may well have landed with only the answer lost — on a flaky link that is the likeliest
-      // reading. Ask the server what it holds before telling someone their trial failed.
+      // A lost response can hide a successful grant; reconcile through a fresh read.
+      loadFlight = null;
       await get().load();
+      if (!op.owned() || claimRevision !== planRevision) return 'failed';
       if (get().entitlement?.active) {
         set({ error: null });
         return 'ok';
@@ -95,15 +157,25 @@ export const useEntitlement = create<EntitlementState>((set, get) => ({
       if (code === 'trial_already_claimed') return 'already-claimed';
       return code === 'network' ? 'network' : 'failed';
     } finally {
-      set({ loading: false });
+      const ownerCurrent = op.owned();
+      op.finish();
+      if (ownerCurrent) set({ loading: pending.size > 0 });
     }
   },
 
-  clear: () => set({ entitlement: null, error: null }),
+  clear: () => {
+    revision += 1;
+    planRevision += 1;
+    loadFlight = null;
+    for (const controller of pending) controller.abort();
+    pending.clear();
+    set({ entitlement: null, error: null, loading: false });
+  },
 
   applyUsage: (ai) => {
     const current = get().entitlement;
     if (!current || !acceptsUsage(current.ai, ai)) return;
+    usageRevision += 1;
     set({ entitlement: { ...current, ai } });
   },
 }));

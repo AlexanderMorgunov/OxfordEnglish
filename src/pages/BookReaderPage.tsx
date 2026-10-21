@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import type { BookRecord } from '@/db/db';
 import { Button, Eyebrow, PageStub } from '@/shared/ui';
@@ -10,7 +10,7 @@ import { useSyncStatus } from '@/features/sync/status';
 import type { ParsedBook } from '@/features/reader/parse';
 import { BookView } from '@/features/reader/BookView';
 import { markBookOpened } from '@/features/reader/book-recency';
-import { captureDataScope } from '@/features/account/dataScope';
+import { captureDataScope, subscribeDataScope, getDataScopeRevision } from '@/features/account/dataScope';
 
 /**
  * Everything that can go wrong opening a book used to arrive as one sentence. The distinction that
@@ -97,6 +97,11 @@ function explain(f: Failure, ru: boolean, syncOn: boolean): { title: string; bod
 }
 
 export function BookReaderPage() {
+  const revision = useSyncExternalStore(subscribeDataScope, getDataScopeRevision);
+  return <OwnedBookReaderPage key={revision} />;
+}
+
+function OwnedBookReaderPage() {
   const { bookId } = useParams();
   const ru = useUiLang((s) => s.lang) === 'ru';
   const syncOn = useBookFileSync((s) => s.enabled);
@@ -193,9 +198,9 @@ export function BookReaderPage() {
 
   return (
     <article>
-      <div className="mb-3.5 flex items-center justify-between gap-3">
+      <div className="mb-3.5 flex flex-wrap items-center justify-between gap-3 [overflow-wrap:anywhere]">
         <Eyebrow>{book.title}</Eyebrow>
-        <Link to="/library" className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">
+        <Link to="/library" className="min-w-0 max-w-full font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">
           ← {ru ? 'библиотека' : 'library'}
         </Link>
       </div>

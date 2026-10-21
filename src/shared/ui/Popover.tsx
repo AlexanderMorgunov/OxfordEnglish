@@ -6,19 +6,22 @@ import {
   useLayoutEffect,
   useRef,
   useState,
+  use,
   type ReactElement,
   type ReactNode,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { cn } from '@/shared/lib/cn';
 import { PopoverCloseContext } from './popover-close';
+import { PopoverGroupContext } from './popover-group';
 
 type PopoverProps = {
   trigger: ReactElement<{
     onClick?: (e: React.MouseEvent) => void;
     'aria-expanded'?: boolean;
-    'aria-haspopup'?: boolean;
+    'aria-haspopup'?: 'dialog';
     'aria-controls'?: string;
+    'data-popover-trigger'?: boolean;
   }>;
   children: ReactNode;
   /** Accessible name for the popover dialog (e.g. the word being looked up). */
@@ -26,6 +29,7 @@ type PopoverProps = {
   /** Render an explicit × close button in the panel corner. */
   showClose?: boolean;
   className?: string;
+  anchorClassName?: string;
 };
 
 const MARGIN = 8;
@@ -33,11 +37,12 @@ const MARGIN = 8;
 /** Anchored popover for word/example look-ups (DESIGN_DOC §5.2). The panel is portaled to
  *  document.body and positioned `fixed`, clamped to the viewport — so a word near the right edge
  *  can never open it off-screen or widen the document (which produced a horizontal scrollbar). */
-export function Popover({ trigger, children, label, showClose, className }: PopoverProps) {
+export function Popover({ trigger, children, label, showClose, className, anchorClassName }: PopoverProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLSpanElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const panelId = useId();
+  const group = use(PopoverGroupContext);
 
   // Restore focus to the trigger so a keyboard user who Tabbed into the panel (or hit ×/Escape)
   // isn't dropped onto <body>. Skip it for outside-click dismissal, which moves focus elsewhere.
@@ -45,6 +50,10 @@ export function Popover({ trigger, children, label, showClose, className }: Popo
     setOpen(false);
     if (restoreFocus) (rootRef.current?.firstElementChild as HTMLElement | null)?.focus();
   }, []);
+
+  useLayoutEffect(() => {
+    if (open) return group?.activate(() => close(false));
+  }, [open, group, close]);
 
   const reposition = () => {
     const anchor = rootRef.current;
@@ -62,6 +71,7 @@ export function Popover({ trigger, children, label, showClose, className }: Popo
       const above = a.top - 6 - ph;
       top = above >= MARGIN ? above : Math.max(MARGIN, vh - ph - MARGIN);
     }
+    top = Math.max(MARGIN, Math.min(top, vh - ph - MARGIN));
     panel.style.left = `${Math.round(left)}px`;
     panel.style.top = `${Math.round(top)}px`;
   };
@@ -106,12 +116,13 @@ export function Popover({ trigger, children, label, showClose, className }: Popo
       setOpen((v) => !v);
     },
     'aria-expanded': open,
-    'aria-haspopup': true,
+    'aria-haspopup': 'dialog',
     'aria-controls': panelId,
+    'data-popover-trigger': true,
   });
 
   return (
-    <span ref={rootRef} className="relative inline-block">
+    <span ref={rootRef} className={cn('relative inline-block', anchorClassName)}>
       {triggerEl}
       {open &&
         createPortal(

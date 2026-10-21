@@ -51,8 +51,17 @@ test.each(['unmount', 'owner change'])('a late parse after %s never records an o
   const view = reader();
   await waitFor(() => expect(mocks.openBook).toHaveBeenCalledOnce());
   if (reason === 'unmount') view.unmount();
-  else invalidateDataScope();
+  else await act(async () => { await db.books.clear(); invalidateDataScope(); });
   await act(async () => { complete(parsed); await Promise.resolve(); });
   expect(await db.settings.get('book-open:sample')).toBeUndefined();
   expect(screen.queryByText('Book text ready')).not.toBeInTheDocument();
+});
+
+test('completed private book state is discarded when the data owner changes', async () => {
+  mocks.openBook.mockResolvedValue(parsed);
+  reader();
+  expect(await screen.findByText('Book text ready')).toBeInTheDocument();
+  await act(async () => { await db.books.clear(); invalidateDataScope(); });
+  expect(screen.queryByText('Book text ready')).not.toBeInTheDocument();
+  expect(await screen.findByRole('heading', { name: 'Book not found' })).toBeInTheDocument();
 });

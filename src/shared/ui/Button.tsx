@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes, Ref } from 'react';
 import { cn } from '@/shared/lib/cn';
 
 type ButtonVariant = 'primary' | 'ghost';
@@ -15,6 +15,7 @@ const SIZE: Record<ButtonSize, string> = {
 } as const;
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  ref?: Ref<HTMLButtonElement>;
   variant?: ButtonVariant;
   size?: ButtonSize;
 };
@@ -30,7 +31,7 @@ export function Button({
     <button
       type={type}
       className={cn(
-        'inline-flex items-center justify-center gap-2 rounded-sm font-mono tracking-[0.02em]',
+        'inline-flex min-w-0 max-w-full items-center justify-center gap-2 whitespace-normal rounded-sm font-mono tracking-[0.02em] [overflow-wrap:anywhere]',
         'cursor-pointer transition-[opacity,border-color,scale] duration-150 active:scale-[0.96]',
         'disabled:cursor-default disabled:opacity-40 disabled:active:scale-100',
         VARIANT[variant],

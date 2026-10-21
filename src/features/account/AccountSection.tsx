@@ -12,8 +12,9 @@ import { recoveryFileBody } from './recoveryFile';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { ApiFailure } from './api';
 import { accountsEnabled } from './config';
-import { useAccount } from './store';
+import { captureAccountSessionOwner, useAccount } from './store';
 import { blobList } from './api';
+import { sessionRejectionReason } from './session-diagnostics';
 import { useBookFileSync } from '@/features/reader/blobSync';
 import { useSyncStatus } from '@/features/sync/status';
 import type { Device, DeviceStartResponse } from './contract';
@@ -42,6 +43,7 @@ function AccountSectionBody() {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const status = useAccount((s) => s.status);
   const accountId = useAccount((s) => s.accountId);
+  const sessionRevision = useAccount((s) => s.sessionRevision);
   const deviceId = useAccount((s) => s.deviceId);
   const busy = useAccount((s) => s.busy);
   const error = useAccount((s) => s.error);
@@ -50,6 +52,7 @@ function AccountSectionBody() {
   const logout = useAccount((s) => s.logout);
 
   const [savedKey, setSavedKey] = useState<string | null>(null);
+  const savedKeyOwner = useRef<(() => boolean) | null>(null);
   const [confirmedSaved, setConfirmedSaved] = useState(false);
   const [showLink, setShowLink] = useState(false);
   const [keyInput, setKeyInput] = useState('');
@@ -57,6 +60,25 @@ function AccountSectionBody() {
   const [showRecover, setShowRecover] = useState(false);
   const clearError = useAccount((s) => s.clearError);
   const [keyReason, setKeyReason] = useState<'created' | 'recovered' | 'rotated'>('created');
+  const visibleKey = savedKey && savedKeyOwner.current?.() ? savedKey : null;
+
+  useEffect(() => {
+    const clearForeignKey = () => {
+      if (!savedKeyOwner.current || savedKeyOwner.current()) return;
+      savedKeyOwner.current = null; setSavedKey(null); setConfirmedSaved(false);
+    };
+    clearForeignKey();
+    const storageChanged = (event: StorageEvent) => { if (event.key === 'oxford-account' || event.key === null) clearForeignKey(); };
+    window.addEventListener('storage', storageChanged);
+    return () => window.removeEventListener('storage', storageChanged);
+  }, [accountId, status, sessionRevision]);
+
+  const showSavedKey = (key: string, reason: 'created' | 'recovered' | 'rotated') => {
+    const currentAccount = useAccount.getState().accountId;
+    if (reason !== 'created' && (!currentAccount || !key.startsWith(`${currentAccount}.`))) return;
+    savedKeyOwner.current = captureAccountSessionOwner();
+    setSavedKey(key); setKeyReason(reason); setConfirmedSaved(false);
+  };
 
   const errText = error
     ? error === 'invalid_credentials'
@@ -79,9 +101,7 @@ function AccountSectionBody() {
   const onCreate = async () => {
     try {
       const key = await createAccount();
-      setSavedKey(key);
-      setKeyReason('created');
-      setConfirmedSaved(false);
+      showSavedKey(key, 'created');
     } catch {
       // error surfaced via store.error
     }
@@ -97,9 +117,9 @@ function AccountSectionBody() {
     }
   };
 
-  const copyKey = () => savedKey && void navigator.clipboard?.writeText(savedKey).catch(() => undefined);
+  const copyKey = () => savedKey && savedKeyOwner.current?.() && void navigator.clipboard?.writeText(savedKey).catch(() => undefined);
   const downloadKey = () => {
-    if (!savedKey) return;
+    if (!savedKey || !savedKeyOwner.current?.()) return;
     const body = recoveryFileBody(savedKey, accountId, ru);
     const blob = new Blob([body], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
@@ -116,7 +136,7 @@ function AccountSectionBody() {
       <h2 className="mb-2 text-2xl font-bold tracking-tight">{ru ? 'Аккаунт' : 'Account'}</h2>
 
       {/* Save-your-key screen: after creating an account, and again after a recovery mints a new key. */}
-      {savedKey ? (
+      {visibleKey ? (
         <Card className="border-amber-dim bg-amber-dim/15">
           <p className="mb-2 text-sm text-content">
             {keyReason === 'rotated'
@@ -132,7 +152,7 @@ function AccountSectionBody() {
                 : 'This is your recovery key. Save it — it is the only way back to your cloud copy, and we do not store it.'}
           </p>
           <p className="mb-3 select-all break-all rounded-sm bg-surface px-3 py-2 font-mono text-base text-teal">
-            {savedKey}
+            {visibleKey}
           </p>
           <div className="mb-3 flex flex-wrap gap-2">
             <Button size="sm" variant="ghost" onClick={copyKey}>
@@ -185,18 +205,24 @@ function AccountSectionBody() {
           <PlanSection ru={ru} />
           <BookFileSyncToggle ru={ru} />
           <TotpEnroll
+            key={sessionRevision}
             ru={ru}
             onNewKey={(composite) => {
-              setSavedKey(composite);
-              setKeyReason('rotated');
-              setConfirmedSaved(false);
+              const current = useAccount.getState();
+              if (current.accountId !== accountId || current.sessionRevision !== sessionRevision) return;
+              showSavedKey(composite, 'rotated');
             }}
           />
-          <DeviceManager ru={ru} thisDeviceId={deviceId} />
+          <div className="mt-4">
+            <DeviceManager ru={ru} thisDeviceId={deviceId} />
+          </div>
           <DangerZone ru={ru} />
         </div>
       ) : (
         <div>
+          {sessionRejectionReason() && <p role="status" className="mb-3 rounded-sm border border-amber-dim bg-amber-dim/10 p-3 text-sm text-content">
+            {ru ? 'Нужно снова войти. Используйте сохранённый ключ или подтвердите вход с другого устройства. Потеря входа не удаляет локальный прогресс и книги.' : 'Sign in again with your saved key or approve sign-in from another device. Losing sign-in does not delete local progress or books.'}
+          </p>}
           <p className="mb-3 text-sm text-muted text-pretty">
             {ru
               ? 'Вход не обязателен — всё работает и хранится на этом устройстве. Аккаунт нужен, чтобы заниматься на нескольких устройствах: синхронизация прогресса, словаря и книг входит в подписку Pro, и её можно попробовать 14 дней бесплатно. Без email — только ключ восстановления.'
@@ -237,9 +263,7 @@ function AccountSectionBody() {
               ru={ru}
               onRecovered={(composite) => {
                 setShowRecover(false);
-                setSavedKey(composite);
-                setKeyReason('recovered');
-                setConfirmedSaved(false);
+                showSavedKey(composite, 'recovered');
               }}
             />
           )}
@@ -544,7 +568,7 @@ export function DeviceManager({ ru, thisDeviceId }: { ru: boolean; thisDeviceId:
 
   if (!open) {
     return (
-      <Button size="sm" variant="ghost" className="ml-2" onClick={() => setOpen(true)}>
+      <Button size="sm" variant="ghost" onClick={() => setOpen(true)}>
         {ru ? 'Устройства' : 'Devices'}
       </Button>
     );

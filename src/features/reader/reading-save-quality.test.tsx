@@ -226,3 +226,44 @@ test('a late saved phrase cannot replace the next active selection', async () =>
   await screen.findByText('— явное доказательство');
   expect(await db.srsCards.get('phrase:clear evidence')).toBeUndefined();
 });
+
+test('closing an unsaved phrase aborts AI before a late answer can start fallback', async () => {
+  const pending = await startPhraseLookup();
+  const signal = mocks.complete.mock.calls[0]?.[2]?.signal as AbortSignal | undefined;
+  await userEvent.click(screen.getByRole('button', { name: 'Dismiss' }));
+  expect(signal?.aborted).toBe(true);
+  await act(async () => { pending.resolve('Поздний перевод'); await pending.finish().catch(() => undefined); });
+  expect(screen.queryByText(/Поздний перевод/)).not.toBeInTheDocument();
+  expect(await db.srsCards.count()).toBe(0);
+});
+
+
+test('closing an unsaved word aborts its context request', async () => {
+  const pending = await startWordLookup();
+  const signal = mocks.complete.mock.calls[0]?.[2]?.signal as AbortSignal | undefined;
+  await userEvent.click(screen.getByRole('button', { name: 'Close' }));
+  expect(signal?.aborted).toBe(true);
+  await act(async () => { pending.resolve('Поздний контекст'); await pending.finish(); });
+  expect(await db.srsCards.count()).toBe(0);
+});
+
+test('reader preserves selected AI while showing the actual free fallback source', async () => {
+  vi.spyOn(readerTranslate, 'translateReaderResult').mockResolvedValue({ text: 'Бесплатный ответ', contextual: false, source: 'free' });
+  render(<ReadingText paragraphs={[phraseSentence]} />, { wrapper: MemoryRouter });
+  await userEvent.click(screen.getByRole('button', { name: 'sentence lens' }));
+  await userEvent.click(screen.getByRole('menuitem', { name: /translate/ }));
+  expect(await screen.findByText(/Бесплатный ответ/)).toBeInTheDocument();
+  expect(screen.getByText('· free translation')).toBeInTheDocument();
+  expect(useReaderSettings.getState().aiTranslation).toBe(true);
+});
+
+test('AI mode can be enabled for cached answers without a current plan or key', async () => {
+  useAiStore.setState({ config: null });
+  useReaderSettings.setState({ aiTranslation: false });
+  render(<ReadingText paragraphs={[phraseSentence]} />, { wrapper: MemoryRouter });
+  await userEvent.click(screen.getByText('Reader settings'));
+  const button = screen.getByRole('button', { name: 'phrases and sentences: free' });
+  expect(button).toBeEnabled();
+  await userEvent.click(button);
+  expect(useReaderSettings.getState().aiTranslation).toBe(true);
+});

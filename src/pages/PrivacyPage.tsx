@@ -26,7 +26,7 @@ function Ru() {
       <Eyebrow className="mb-3.5">политика конфиденциальности</Eyebrow>
       <h1 className="text-2xl font-bold tracking-tight text-balance">Политика обработки персональных данных</h1>
       <p className="mt-3 text-sm leading-relaxed text-pretty text-muted">
-        Коротко: приложением можно пользоваться без регистрации — тогда все данные остаются только на вашем
+        Коротко: приложением можно пользоваться без регистрации — тогда учебный прогресс хранится на вашем
         устройстве. Мы не собираем email, имя, телефон и другие персональные данные. Аккаунт (по желанию)
         нужен лишь для синхронизации прогресса между устройствами.
       </p>
@@ -67,6 +67,11 @@ function Ru() {
         <p>Данные аккаунта хранятся на серверах в Российской Федерации (Yandex Cloud, ru-central1) — пока аккаунт активен.</p>
       </Section>
 
+      <Section title="Английская диктовка">
+        <p>Микрофон включается только по нажатию «Начать», для одного короткого фрагмента. Приложение не сохраняет аудио, не отправляет его на свой сервер и не синхронизирует. Распознанный текст сначала доступен для проверки; вставка, перевод и сохранение в словарь выполняются отдельно.</p>
+        <p>В режиме «На устройстве» аудио обрабатывается локально; нужна доступная английская модель. Автоматического перехода к сетевому распознаванию нет. Если вы явно выбираете «Системный сервис», аудио может передаваться поставщику службы распознавания браузера или Android по его правилам; может потребоваться интернет. Загрузка модели управляется браузером или системой и может продолжаться после закрытия ввода.</p>
+      </Section>
+
       <Section title="Третьи лица">
         <p>Мы не продаём данные и не используем их для рекламы. Для работы сервиса привлекаются:</p>
         <ul className="list-disc space-y-1 pl-5">
@@ -97,6 +102,7 @@ function Ru() {
           Для работы входа и синхронизации используется локальное хранилище устройства (в т. ч. токен сессии).
           Его отключение сделает вход невозможным, но не помешает пользоваться приложением без аккаунта.
         </p>
+        <p>На устройстве хранится короткая диагностика входа: тип события, дата и версия приложения. В ней нет ключей, токенов или идентификаторов аккаунта; она не отправляется автоматически.</p>
       </Section>
 
       <Section title="Оператор и изменения">
@@ -119,7 +125,7 @@ function En() {
       <Eyebrow className="mb-3.5">privacy policy</Eyebrow>
       <h1 className="text-2xl font-bold tracking-tight text-balance">Privacy</h1>
       <p className="mt-3 text-sm leading-relaxed text-pretty text-muted">
-        In short: you can use the app without an account — then all data stays on your device. We collect no
+        In short: you can use the app without an account — then learning progress stays on your device. We collect no
         email, name, phone, or other personal data. An optional account only syncs your progress across devices.
       </p>
 
@@ -151,6 +157,11 @@ function En() {
         <p>Account data is stored on servers in the Russian Federation (Yandex Cloud, ru-central1) while the account is active.</p>
       </Section>
 
+      <Section title="English dictation">
+        <p>The microphone starts only when you press Start, for one short utterance. The app does not store audio, send it to its server or sync it. Recognized text is first available for review; applying, translating and saving it to vocabulary are separate actions.</p>
+        <p>On device mode processes audio locally and requires an available English model. There is no automatic switch to network recognition. If you explicitly select System service, audio may be sent to the browser or Android recognition provider under its policies and connectivity may be required. Browser or system model downloads may continue after closing input.</p>
+      </Section>
+
       <Section title="Third parties">
         <p>We do not sell data or use it for advertising. Processors used to run the service:</p>
         <ul className="list-disc space-y-1 pl-5">
@@ -175,6 +186,7 @@ function En() {
 
       <Section title="Local storage">
         <p>Sign-in and sync use your device's local storage (including the session token). Disabling it makes signing in impossible but does not affect using the app without an account.</p>
+        <p>A short sign-in diagnostic stays on your device: event type, time and app version. It contains no keys, tokens or account identifiers and is not sent automatically.</p>
       </Section>
 
       <Section title="Operator and changes">

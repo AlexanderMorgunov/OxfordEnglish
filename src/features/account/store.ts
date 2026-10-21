@@ -9,6 +9,7 @@ import { releasePreviousAccountData, wipeSyncedData } from '@/features/sync/engi
 import { discardAllBookFiles } from '@/features/reader/storage';
 import type { Device, DeviceStartResponse, Session } from './contract';
 import { invalidateDataScope } from './dataScope';
+import { recordSessionEvent } from './session-diagnostics';
 
 const KEY = 'oxford-account';
 
@@ -60,6 +61,8 @@ type Persisted = {
   accountId: string;
   deviceId: string;
   refreshToken: string;
+  /** Local session identity: adoption changes it, ordinary refresh rotation does not. */
+  incarnation?: string;
   /**
    * Set while another account's rows are still on this device and the session that owned them is gone.
    * `accountId` answers "is the account signing in now a different one?" only while signed in; it is
@@ -106,8 +109,19 @@ function randomId(): string {
 function load(): Persisted | null {
   try {
     const raw = localStorage.getItem(KEY);
-    return raw ? (JSON.parse(raw) as Persisted) : null;
+    if (!raw) return null;
+    const parsed: unknown = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object' || !('accountId' in parsed) ||
+      !('refreshToken' in parsed) || typeof parsed.accountId !== 'string' ||
+      typeof parsed.refreshToken !== 'string' ||
+      ('deviceId' in parsed && typeof parsed.deviceId !== 'string')) {
+      recordSessionEvent('storage_invalid');
+      return null;
+    }
+    return { ...parsed, deviceId: 'deviceId' in parsed ? parsed.deviceId : '',
+      incarnation: 'incarnation' in parsed && typeof parsed.incarnation === 'string' ? parsed.incarnation : undefined } as Persisted;
   } catch {
+    recordSessionEvent('storage_read_failed');
     return null;
   }
 }
@@ -117,8 +131,36 @@ function save(p: Persisted | null): void {
     if (p) localStorage.setItem(KEY, JSON.stringify(p));
     else localStorage.removeItem(KEY);
   } catch {
-    // ignore storage failures
+    recordSessionEvent('storage_write_failed');
   }
+}
+
+function sameSession(a: Persisted | null, b: Persisted | null): boolean {
+  return a?.accountId === b?.accountId && a?.deviceId === b?.deviceId && a?.refreshToken === b?.refreshToken;
+}
+
+function sameLogicalSession(a: Persisted | null, b: Persisted | null): boolean {
+  return a?.accountId === b?.accountId && a?.deviceId === b?.deviceId && a?.incarnation === b?.incarnation;
+}
+
+let authGeneration = 0;
+let ownershipQueue = Promise.resolve();
+
+/** Boolean ownership only; credential values and the local incarnation are never exposed. */
+export function captureAccountSessionOwner(): () => boolean {
+  const generation = authGeneration;
+  const session = load();
+  return () => generation === authGeneration && sameLogicalSession(session, load());
+}
+
+function withSessionOwnership<T>(run: () => Promise<T> | T): Promise<T> {
+  const execute = () => {
+    const locks = typeof navigator !== 'undefined' ? navigator.locks : undefined;
+    return locks ? locks.request('account-session', run) : run();
+  };
+  const next = ownershipQueue.then(execute, execute);
+  ownershipQueue = next.then(() => undefined, () => undefined);
+  return next;
 }
 
 /**
@@ -201,7 +243,7 @@ function ensureDeviceId(): string {
   const existing = load();
   if (existing?.deviceId) return existing.deviceId;
   const id = randomId();
-  save({ accountId: existing?.accountId ?? '', deviceId: id, refreshToken: existing?.refreshToken ?? '', lastAccountId: existing?.lastAccountId, fileOwner: existing?.fileOwner, dataOwner: existing?.dataOwner });
+  save({ accountId: existing?.accountId ?? '', deviceId: id, refreshToken: existing?.refreshToken ?? '', incarnation: existing?.incarnation, lastAccountId: existing?.lastAccountId, fileOwner: existing?.fileOwner, dataOwner: existing?.dataOwner });
   return id;
 }
 
@@ -210,6 +252,7 @@ export type Status = 'anonymous' | 'authenticated';
 type AccountState = {
   status: Status;
   accountId: string | null;
+  sessionRevision: number;
   deviceId: string;
   accessToken: string | null;
   accessExpiresAt: number;
@@ -254,15 +297,18 @@ type AccountState = {
 
 /** Shared across all concurrent refresh callers in this tab, so a burst never sends the refresh token
  *  twice (which reuse-detection would read as theft and revoke the family — see design H4). */
-let refreshInFlight: Promise<void> | null = null;
+let refreshInFlight: { generation: number; session: Persisted; promise: Promise<void> } | null = null;
 
 export const useAccount = create<AccountState>((set, get) => {
   const persisted = load();
   const deviceId = ensureDeviceId();
+  recordSessionEvent(persisted?.refreshToken ? 'session_present' : 'session_absent');
 
-  const applySession = (s: Session) => {
+  const applySession = (s: Session, refreshed = false) => {
+    if (!refreshed) authGeneration += 1;
     if (get().accountId !== s.accountId) invalidateDataScope();
     save({ accountId: s.accountId, deviceId: s.deviceId, refreshToken: s.refreshToken,
+      incarnation: refreshed ? load()?.incarnation : randomId(),
       // ?? on both: every install that is already signed in when this ships has neither marker, and an
       // app boot is refresh() → applySession without passing through maybeSwitchWipe. Left unarmed they
       // would never release anything. maybeSwitchWipe has already read the OLD values by now.
@@ -271,25 +317,58 @@ export const useAccount = create<AccountState>((set, get) => {
     set({
       status: 'authenticated',
       accountId: s.accountId,
+      sessionRevision: authGeneration,
       deviceId: s.deviceId,
       accessToken: s.accessToken,
       accessExpiresAt: s.accessExpiresAt,
+      busy: refreshed ? get().busy : false,
       error: null,
+    });
+    recordSessionEvent('authenticated');
+  };
+
+  const adoptSession = (s: Session) => withSessionOwnership(async () => {
+    await maybeSwitchWipe(s.accountId);
+    applySession(s);
+  });
+
+  const captureCredentialOwner = () => {
+    const generation = authGeneration;
+    const session = load();
+    return () => generation === authGeneration && sameSession(session, load());
+  };
+
+  const captureLogicalSessionOwner = captureAccountSessionOwner;
+
+  const prepareLogicalSessionOwner = () => {
+    const generation = authGeneration;
+    const invoking = load();
+    return withSessionOwnership(() => {
+      if (generation !== authGeneration || !sameLogicalSession(invoking, load())) return null;
+      const existing = load();
+      if (existing && !existing.incarnation) save({ ...existing, incarnation: randomId() });
+      const session = load();
+      return {
+        current: captureLogicalSessionOwner(),
+        refreshToken: session?.refreshToken,
+      };
     });
   };
 
   const clearSession = () => {
+    authGeneration += 1;
     const prev = load();
     save(null);
     // Keep the deviceId so relinking reuses the same device entry, and the account id so the next
     // sign-in can tell a re-login from a switch.
-    save({ accountId: '', deviceId, refreshToken: '', lastAccountId: prev?.accountId || prev?.lastAccountId, fileOwner: prev?.fileOwner, dataOwner: prev?.dataOwner });
-    set({ status: 'anonymous', accountId: null, accessToken: null, accessExpiresAt: 0 });
+    save({ accountId: '', deviceId, refreshToken: '', incarnation: randomId(), lastAccountId: prev?.accountId || prev?.lastAccountId, fileOwner: prev?.fileOwner, dataOwner: prev?.dataOwner });
+    set({ status: 'anonymous', accountId: null, sessionRevision: authGeneration, accessToken: null, accessExpiresAt: 0, busy: false });
   };
 
   return {
     status: persisted?.refreshToken ? 'authenticated' : 'anonymous',
     accountId: persisted?.accountId || null,
+    sessionRevision: authGeneration,
     deviceId,
     accessToken: null,
     accessExpiresAt: 0,
@@ -303,8 +382,7 @@ export const useAccount = create<AccountState>((set, get) => {
         const recoveryKey = generateRecoveryKey();
         const creds = await deriveCredentials(recoveryKey);
         const session = await api.register({ ...creds, deviceName: deviceName(), deviceId: get().deviceId });
-        await maybeSwitchWipe(session.accountId);
-        applySession(session);
+        await adoptSession(session);
         return recoveryKey;
       } catch (e) {
         set({ error: e instanceof ApiFailure ? e.code : 'error' });
@@ -320,8 +398,7 @@ export const useAccount = create<AccountState>((set, get) => {
       try {
         const creds = await deriveCredentials(recoveryKey.trim());
         const session = await api.login({ ...creds, deviceName: deviceName(), deviceId: get().deviceId });
-        await maybeSwitchWipe(session.accountId);
-        applySession(session);
+        await adoptSession(session);
       } catch (e) {
         set({ error: e instanceof ApiFailure ? e.code : 'error' });
         throw e;
@@ -340,20 +417,26 @@ export const useAccount = create<AccountState>((set, get) => {
      */
     rotateRecoveryKey: async (code, revokeOthers) => {
       if (!accountsEnabled()) throw new Error('accounts disabled');
+      const generation = authGeneration;
       const accountId = get().accountId;
+      const incarnation = load()?.incarnation;
       if (!accountId) throw new ApiFailure('unauthorized', 401);
+      const ownsOperation = () => generation === authGeneration && get().accountId === accountId && incarnation === load()?.incarnation;
       set({ busy: true, error: null });
       try {
         const newKey = generateRecoveryKey();
         const token = await get().getAccessToken();
-        if (!token) throw new ApiFailure('unauthorized', 401);
-        await api.totpRotateKey(token, { code: code.trim(), verifier: await deriveVerifier(newKey), revokeOthers });
+        if (!token || generation !== authGeneration || incarnation !== load()?.incarnation) throw new ApiFailure('unauthorized', 401);
+        const verifier = await deriveVerifier(newKey);
+        if (generation !== authGeneration || get().accountId !== accountId || incarnation !== load()?.incarnation) throw new ApiFailure('unauthorized', 401);
+        await api.totpRotateKey(token, { code: code.trim(), verifier, revokeOthers });
+        if (!ownsOperation()) throw new ApiFailure('unauthorized', 401);
         return formatCompositeKey(accountId, newKey);
       } catch (e) {
-        set({ error: e instanceof ApiFailure ? e.code : 'error' });
+        if (ownsOperation()) set({ error: e instanceof ApiFailure ? e.code : 'error' });
         throw e;
       } finally {
-        set({ busy: false });
+        if (ownsOperation()) set({ busy: false });
       }
     },
 
@@ -379,8 +462,7 @@ export const useAccount = create<AccountState>((set, get) => {
           verifier: await deriveVerifier(newKey),
           deviceName: deviceName(),
         });
-        await maybeSwitchWipe(session.accountId);
-        applySession(session);
+        await adoptSession(session);
         stashPendingRecovery(null);
         return formatCompositeKey(session.accountId, newKey);
       } catch (e) {
@@ -414,8 +496,7 @@ export const useAccount = create<AccountState>((set, get) => {
             deviceId: get().deviceId,
           });
         }
-        await maybeSwitchWipe(session.accountId);
-        applySession(session);
+        await adoptSession(session);
         stashPendingRecovery(null);
         // The id comes from the SERVER's response, not the typed-in one: it is the id the credential must
         // carry, and echoing back what the user typed would bake a typo into their only way in.
@@ -429,57 +510,83 @@ export const useAccount = create<AccountState>((set, get) => {
     },
 
     refresh: async () => {
-      if (!load()?.refreshToken) return;
-      if (refreshInFlight) return refreshInFlight;
+      const stored = load();
+      if (!stored?.refreshToken) return;
+      const generation = authGeneration;
+      if (refreshInFlight?.generation === generation && sameSession(refreshInFlight.session, stored)) return refreshInFlight.promise;
       const run = async () => {
+        if (generation !== authGeneration) return;
+        const current = load();
+        if (current?.accountId !== stored.accountId || current.deviceId !== stored.deviceId || !current.refreshToken) return;
+        const ownsSession = captureCredentialOwner();
         try {
           // Read INSIDE the lock. Read outside it and a tab that queues behind another tab's rotation
           // sends the token that rotation just retired; the server reads a replayed token as theft and
           // revokes the whole family, dropping every tab to anonymous — with nothing actually stolen.
-          const token = load()?.refreshToken;
-          if (!token) return;
-          const session = await api.refresh(token);
-          applySession(session);
+          const session = await api.refresh(current.refreshToken);
+          await withSessionOwnership(() => {
+            if (ownsSession()) applySession(session, true);
+          });
         } catch (e) {
-          // A reused/invalid refresh means the family is gone — drop to anonymous (local data stays).
-          if (e instanceof ApiFailure && (e.code === 'refresh_reused' || e.code === 'refresh_invalid')) {
-            clearSession();
-          }
-          // Network errors: keep the session; a later refresh retries.
-        } finally {
-          refreshInFlight = null;
+          await withSessionOwnership(() => {
+            if (!ownsSession()) return;
+            // A rejected credential still signs out, while local learning data stays.
+            if (e instanceof ApiFailure && e.status === 401 && (e.code === 'refresh_reused' || e.code === 'refresh_invalid')) {
+              recordSessionEvent(e.code);
+              clearSession();
+            } else recordSessionEvent(e instanceof ApiFailure && e.code === 'network' ? 'refresh_network' : 'refresh_failed');
+          });
         }
       };
       const locks = typeof navigator !== 'undefined' ? navigator.locks : undefined;
-      refreshInFlight = locks
+      const promise = locks
         ? locks.request('account-refresh', run).then(() => undefined)
         : run();
-      return refreshInFlight;
+      const flight = { generation, session: stored, promise };
+      refreshInFlight = flight;
+      try {
+        await promise;
+      } finally {
+        if (refreshInFlight === flight) refreshInFlight = null;
+      }
     },
 
     getAccessToken: async () => {
       if (get().status !== 'authenticated') return null;
+      const generation = authGeneration;
+      const accountId = get().accountId;
+      const persisted = load();
+      if (persisted?.accountId !== accountId) return null;
+      const incarnation = persisted.incarnation;
       const { accessToken, accessExpiresAt } = get();
       if (accessToken && Date.now() < accessExpiresAt - 30_000) return accessToken;
       await get().refresh();
-      return get().accessToken;
+      const state = get();
+      return generation === authGeneration && accountId === state.accountId && incarnation === load()?.incarnation && Date.now() < state.accessExpiresAt ? state.accessToken : null;
     },
 
     logout: async () => {
-      const token = load()?.refreshToken;
-      if (token) await api.logout(token).catch(() => undefined);
-      clearSession();
-      // Wipe only when nothing is unsynced — an OFFLINE logout keeps local data so unpushed progress
-      // isn't lost (it re-syncs on the next login to the same account). Switching to a DIFFERENT account
-      // is handled by maybeSwitchWipe on adopt, so contamination is covered either way (H5).
-      try {
-        if ((await db.pending.count()) === 0) {
-          await wipeSyncedData();
-          forgetLastAccount();
+      const generation = authGeneration;
+      const owner = await prepareLogicalSessionOwner();
+      if (generation !== authGeneration || !owner?.current()) return;
+      const token = owner.refreshToken;
+      const revoked = token ? api.logout(token).catch(() => undefined) : Promise.resolve();
+      await withSessionOwnership(async () => {
+        if (!owner.current()) return;
+        clearSession();
+        recordSessionEvent('signed_out');
+        const ownsCleanup = captureLogicalSessionOwner();
+        // Unpushed progress survives sign-out; adoption cannot race the cleanup of a clean session.
+        try {
+          if ((await db.pending.count()) === 0 && ownsCleanup()) {
+            await wipeSyncedData();
+            if (ownsCleanup()) forgetLastAccount();
+          }
+        } catch {
+          // best-effort
         }
-      } catch {
-        // best-effort
-      }
+      });
+      await revoked;
     },
 
     startDeviceLink: () => api.deviceStart(deviceName()),
@@ -487,8 +594,7 @@ export const useAccount = create<AccountState>((set, get) => {
     pollDeviceLink: async (requestId) => {
       const res = await api.devicePoll(requestId);
       if (res.status === 'approved' && res.session) {
-        await maybeSwitchWipe(res.session.accountId);
-        applySession(res.session);
+        await adoptSession(res.session);
       }
       return res.status;
     },
@@ -513,18 +619,32 @@ export const useAccount = create<AccountState>((set, get) => {
     },
 
     deleteAccount: async () => {
+      const generation = authGeneration;
+      const owner = await prepareLogicalSessionOwner();
+      if (generation !== authGeneration || !owner?.current()) throw new ApiFailure('unauthorized', 401);
       const token = await get().getAccessToken();
-      if (token) await api.deleteAccount(token);
-      clearSession();
-      try {
-        await wipeSyncedData(); // remove the now-orphaned local copy too
-        forgetLastAccount();
-        // Independently, as everywhere else: a failure in one half must not skip the other.
-        const [data, files] = await Promise.all([ran(releasePreviousAccountData), ran(discardAllBookFiles)]);
-        setOwners(files ? undefined : load()?.fileOwner, data ? undefined : load()?.dataOwner);
-      } catch {
-        // best-effort
+      if (generation !== authGeneration || !owner.current()) throw new ApiFailure('unauthorized', 401);
+      if (!token) {
+        const authenticated = get().status === 'authenticated';
+        throw new ApiFailure(authenticated ? 'network' : 'unauthorized', authenticated ? 0 : 401);
       }
+      await api.deleteAccount(token);
+      await withSessionOwnership(async () => {
+        if (!owner.current()) throw new ApiFailure('unauthorized', 401);
+        clearSession();
+        recordSessionEvent('signed_out');
+        const ownsCleanup = captureLogicalSessionOwner();
+        try {
+          await wipeSyncedData(); // remove the now-orphaned local copy too
+          if (!ownsCleanup()) return;
+          forgetLastAccount();
+          // Independently, as everywhere else: a failure in one half must not skip the other.
+          const [data, files] = await Promise.all([ran(releasePreviousAccountData), ran(discardAllBookFiles)]);
+          if (ownsCleanup()) setOwners(files ? undefined : load()?.fileOwner, data ? undefined : load()?.dataOwner);
+        } catch {
+          // best-effort
+        }
+      });
     },
   };
 });

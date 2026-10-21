@@ -15,7 +15,10 @@ import { captureDataScope } from '@/features/account/dataScope';
 import { useAiStore } from '@/features/ai/store';
 import { useAiEnabled, useAiUnknown } from '@/features/ai/route';
 import { aiTranslate } from '@/features/ai/functions';
-import { canPronounce, gradeCard, repairCardBack, Rating } from './service';
+import { canPronounce, gradeCardWithReceipt, replaceReviewRating, repairCardBack, Rating } from './service';
+import type { ReviewReceipt } from './service';
+import { grammarMetadata, partOfSpeechLabel } from '@/features/vocab/grammar-metadata';
+import { usePartOfSpeech } from '@/features/vocab/usePartOfSpeech';
 import { dictionaryAnswer, reviewAnswer } from './answer';
 
 const GRADES = [
@@ -29,15 +32,22 @@ export function ReviewCard({
   card,
   onAdvance,
   onSkip,
+  correction,
+  onBusyChange,
+  disabled = false,
 }: {
   card: SrsCard;
-  onAdvance: () => void;
+  onAdvance: (receipt: ReviewReceipt) => void;
   onSkip: () => void;
+  correction?: ReviewReceipt;
+  onBusyChange?: (busy: boolean) => void;
+  disabled?: boolean;
 }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const canSpeak = useSpeechAvailable();
   const lemma = useLemma();
   const cefr = useCefr();
+  const partsOfSpeech = usePartOfSpeech();
   const config = useAiStore((s) => s.config);
   const aiReady = useAiEnabled();
   const aiUnknown = useAiUnknown();
@@ -55,7 +65,8 @@ export function ReviewCard({
   const [editing, setEditing] = useState<SrsCard | null>(null);
   const [translation, setTranslation] = useState('');
   const [contextGloss, setContextGloss] = useState('');
-  const [busy, setBusy] = useState(false);
+  const [working, setBusy] = useState(false);
+  const busy = working || disabled;
   const [error, setError] = useState('');
   const [aiBusy, setAiBusy] = useState(false);
   const [proposal, setProposal] = useState<{
@@ -76,6 +87,11 @@ export function ReviewCard({
   const general = dictionaryAnswer(card);
   const base = card.kind === 'word' ? baseForm(card.front, lemma) : null;
   const rated = cefrOf(card.front, cefr, lemma);
+  const grammar = grammarMetadata(card, lemma, partsOfSpeech);
+  useEffect(() => {
+    onBusyChange?.(busy || aiBusy || Boolean(editing) || lookup === 'loading');
+    return () => { onBusyChange?.(false); };
+  }, [busy, aiBusy, editing, lookup, onBusyChange]);
 
   const lookupAnswer = async () => {
     if (lookingUp.current || !active()) return;
@@ -111,7 +127,7 @@ export function ReviewCard({
     setError('');
   };
   const save = async () => {
-    if (!editing || locked.current || !active()) return;
+    if (!editing || locked.current || disabled || !active()) return;
     locked.current = true;
     setBusy(true);
     try {
@@ -170,7 +186,7 @@ export function ReviewCard({
     }
   };
   const accept = async () => {
-    if (!proposal || locked.current || !active()) return;
+    if (!proposal || locked.current || disabled || !active()) return;
     locked.current = true;
     setBusy(true);
     try {
@@ -201,19 +217,21 @@ export function ReviewCard({
     }
   };
   const grade = async (rating: Grade) => {
-    if (locked.current || editing || !answer || !active()) return;
+    if (locked.current || disabled || editing || !answer || !active()) return;
     locked.current = true;
+    onBusyChange?.(true);
     setBusy(true);
     try {
-      const graded = await gradeCard(card.id, rating, card.card.reps, card);
-      if (active()) {
-        if (graded) onAdvance();
-        else
-          setError(
-            ru
-              ? 'Карточка изменилась. Обновите очередь.'
-              : 'The card changed. Refresh the queue.'
-          );
+      const graded = correction
+        ? await replaceReviewRating(correction, rating, card)
+        : await gradeCardWithReceipt(card.id, rating, card.card.reps, card, currentScope);
+      if (graded && currentScope()) onAdvance(graded);
+      else if (active()) {
+        setError(
+          ru
+            ? 'Карточка изменилась. Обновите очередь.'
+            : 'The card changed. Refresh the queue.'
+        );
       }
     } catch {
       if (active())
@@ -246,6 +264,14 @@ export function ReviewCard({
             </button>
           )}
         </div>
+        {grammar.partsOfSpeech.length > 0 && (
+          <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-muted">
+            <span className="rounded-sm border border-line px-2 py-1">
+              {grammar.partsOfSpeech.map(pos => partOfSpeechLabel(pos, ru ? 'ru' : 'en')).join(' / ')}
+            </span>
+            {grammar.infinitive && <span lang="en">{grammar.infinitive}</span>}
+          </div>
+        )}
         {card.contextSentence && (
           <ContextSentence
             text={card.contextSentence}
@@ -429,12 +455,12 @@ export function ReviewCard({
               {ru ? g.ru : g.en}
             </Button>
           ))}
-          <Button variant="ghost" disabled={busy} onClick={onSkip}>
+          {!correction && <Button variant="ghost" disabled={busy} onClick={onSkip}>
             {ru ? 'Пропустить' : 'Skip'}
-          </Button>
+          </Button>}
         </div>
       ) : (
-        <Button className="self-start" onClick={reveal}>
+        <Button className="self-start" disabled={disabled} onClick={reveal}>
           {ru ? 'Показать ответ' : 'Show answer'}
         </Button>
       )}

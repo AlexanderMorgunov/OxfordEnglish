@@ -132,6 +132,7 @@ const ROUTES = [
   { key: 'review', index: false, title: 'Повторение слов | DayEnglish' },
   { key: 'progress', index: false, title: 'Мой прогресс | DayEnglish' },
   { key: 'vocabulary', index: false, title: 'Мой словарь | DayEnglish' },
+  { key: 'vocabulary/text', index: false, title: 'Перевод текста | DayEnglish' },
   { key: 'settings', index: false, title: 'Настройки | DayEnglish' },
   // Where the acquirer returns the payer. Static hosting answers a missing key with a soft-404, and a
   // 404 is not what someone should meet straight after being charged — so these get real 200 objects

@@ -4,7 +4,7 @@ import { db } from '@/db/db';
 import Dexie from 'dexie';
 import { invalidateDataScope } from '@/features/account/dataScope';
 const run = vi.hoisted(() => vi.fn());
-vi.mock('./route', () => ({ runTask: run, aiPathLabel: () => 'managed' }));
+vi.mock('./route', async original => ({ ...(await original<object>()), runTaskResult: run }));
 const { aiTranslate } = await import('./functions');
 
 beforeEach(async () => { vi.restoreAllMocks(); run.mockReset(); await db.open(); await db.translations.clear(); });
@@ -13,6 +13,7 @@ test('ownership change during cache lookup cannot send previous-reader text unde
   let resolve!: () => void;
   vi.spyOn(db.translations, 'get').mockImplementationOnce(() => new Dexie.Promise<undefined>((done) => { resolve = () => done(undefined); }));
   const request = aiTranslate(null, 'sneaking suspicion', { sentence: 'I had a sneaking suspicion.' });
+  await vi.waitFor(() => expect(resolve).toBeTypeOf('function'));
   invalidateDataScope();
   resolve();
   await expect(request).rejects.toThrow('Data owner changed');

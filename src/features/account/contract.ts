@@ -4,6 +4,7 @@
  * (see keys.ts) and opaque tokens. See docs/backend-v1-design.md.
  */
 import { z } from 'zod';
+import { SenseTermSchema } from '@/features/ai/word-senses';
 
 /** Credentials the client derives from the recovery key (never the raw key). */
 export const CredentialsSchema = z.object({
@@ -161,6 +162,7 @@ export type Entitlement = z.infer<typeof EntitlementSchema>;
 /** Mirrors the server's discriminated union. The proxy takes a NAMED TASK, never raw messages: prompts
  *  are assembled server-side, so model/temperature/token-ceiling are not client inputs. */
 export const AiTaskRequestSchema = z.discriminatedUnion('task', [
+  z.object({ task: z.literal('wordSenses'), term: SenseTermSchema }),
   z.object({ task: z.literal('translate'), text: z.string().min(1), sentence: z.string().optional() }),
   z.object({ task: z.literal('simplify'), sentence: z.string().min(1), level: z.string().optional(), stepDown: z.number().int().min(0).max(3).optional() }),
   z.object({ task: z.literal('grammar'), sentence: z.string().min(1), level: z.string().optional() }),

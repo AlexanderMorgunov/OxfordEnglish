@@ -53,7 +53,7 @@ export function TranslateExercise({ exercise, onSolved }: Props) {
       </p>
       <div className="flex flex-wrap items-center gap-2.5">
         <Input
-          className="min-w-64 flex-1"
+          className="min-w-0 flex-1 basis-64"
           placeholder={ru ? 'ваш перевод…' : 'your translation…'}
           value={value}
           disabled={status === 'correct'}

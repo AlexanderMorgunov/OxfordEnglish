@@ -1,7 +1,8 @@
-import { render, screen, within } from '@testing-library/react';
+import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { AppLayout } from './AppLayout';
+import { useUiLang } from '@/features/i18n/uiLang';
 
 /** AppLayout renders <ScrollRestoration>, which only works inside a data router. */
 const renderLayout = (path = '/') => {
@@ -48,15 +49,26 @@ test('a section open from inside "more" still marks the trigger as active', () =
 
 // The acquirer's moderation reads the site, and a buyer deciding whether to pay should not have to
 // hunt through Settings for who is selling and how to reach them.
-test('every page carries the seller, the contacts and the legal pages', () => {
+test('every page carries seller details and explicit links to contacts and legal pages', () => {
   renderLayout();
   const footer = within(screen.getByRole('contentinfo'));
-  expect(footer.getByRole('link', { name: /terms|условия/i })).toHaveAttribute('href', '/terms');
+  expect(footer.getByRole('link', { name: /offer and contacts|оферта и контакты/i })).toHaveAttribute('href', '/terms');
   expect(footer.getByRole('link', { name: /privacy|конфиден/i })).toHaveAttribute('href', '/privacy');
   expect(footer.getByText(/Моргунов Александр Сергеевич/)).toBeInTheDocument();
   expect(footer.getByText(/361302397520/)).toBeInTheDocument();
-  expect(footer.getByRole('link', { name: /morgunowalex@gmail\.com/ })).toHaveAttribute(
-    'href',
-    'mailto:morgunowalex@gmail.com'
-  );
+  expect(footer.queryByRole('link', { name: /morgunowalex@gmail\.com/ })).not.toBeInTheDocument();
+});
+
+test('changing the UI language also changes the document language for assistive technology', () => {
+  const previous = document.documentElement.lang;
+  try {
+    renderLayout();
+    expect(document.documentElement.lang).toBe('en');
+    act(() => useUiLang.setState({ lang: 'ru' }));
+    expect(document.documentElement.lang).toBe('ru');
+    expect(within(screen.getByRole('banner')).getByRole('link', { name: /повторение/i })).toBeInTheDocument();
+  } finally {
+    act(() => useUiLang.setState({ lang: 'en' }));
+    document.documentElement.lang = previous;
+  }
 });

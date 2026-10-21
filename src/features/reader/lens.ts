@@ -2,7 +2,7 @@ import type { AiConfig } from '@/features/ai/provider';
 import type { Level } from '@/content/schema';
 import { aiSimplify, aiGrammar } from '@/features/ai/functions';
 import { clampBand } from '@/features/ai/simplify-prompts';
-import { translateReaderText } from './translate';
+import { translateReaderResult, type ReaderTranslation } from './translate';
 
 /**
  * A per-sentence reader "lens": one AI-or-service call on a sentence, rendered inline. Translate (EN→RU),
@@ -38,12 +38,16 @@ export function lensKey(lens: LensMode, a: LensArgs): string {
  * no key of their own. Gating here meant the lens menu — shown on `useAiEnabled`, which counts the
  * subscription — offered buttons that silently did nothing for exactly the people who paid.
  */
-export async function runLens(mode: LensMode, text: string, a: LensArgs, stepDown = 0): Promise<string | null> {
-  if (mode === 'translate') return translateReaderText(text, { ai: a.ai, config: a.config });
+export async function runLens(mode: LensMode, text: string, a: LensArgs, stepDown = 0, signal?: AbortSignal, onSource?: (source: ReaderTranslation['source']) => void): Promise<string | null> {
+  if (mode === 'translate') {
+    const result = await translateReaderResult(text, { ai: a.ai, config: a.config, signal });
+    onSource?.(result?.source);
+    return result?.text ?? null;
+  }
   try {
     return mode === 'grammar'
-      ? await aiGrammar(a.config, text, { level: a.level })
-      : await aiSimplify(a.config, text, { level: a.level, stepDown });
+      ? await aiGrammar(a.config, text, { level: a.level, signal, onSource })
+      : await aiSimplify(a.config, text, { level: a.level, stepDown, signal, onSource });
   } catch {
     return null;
   }

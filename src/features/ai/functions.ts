@@ -1,13 +1,10 @@
 import { complete, type AiConfig } from './provider';
-import { runTask, aiPathLabel } from './route';
+import { runTask, runTaskResult, captureAiScope, type AiPath } from './route';
+import { cachePaths } from './cache';
 import type { AiTaskRequest } from '@/features/account/contract';
 import { clampBand, simplifySystem, simplifyShot, SIMPLIFY_PROMPT_VERSION, type Band } from './simplify-prompts';
 import { db } from '@/db/db';
 import type { Exercise, Level } from '@/content/schema';
-import {
-  captureDataScope,
-  requireDataScope,
-} from '@/features/account/dataScope';
 
 const RU_TRANSLATOR =
   'Ты — переводчик с английского на русский. Переведи текст точно и естественно. Верни ТОЛЬКО перевод, без пояснений и без кавычек.';
@@ -26,50 +23,68 @@ const hasCyrillic = (s: string) => /[а-яё]/i.test(s);
 export async function aiTranslate(
   config: AiConfig | null,
   text: string,
-  opts: { sentence?: string; signal?: AbortSignal } = {}
+  opts: { sentence?: string; signal?: AbortSignal; path?: AiPath; cachePrefix?: string; onSource?: (path: AiPath, cached: boolean) => void } = {}
 ): Promise<string> {
-  const current = captureDataScope();
+  const requireActive = captureAiScope(opts.signal);
+  requireActive();
   const q = text.trim();
   if (!q) return '';
   const ctx = opts.sentence?.trim();
   const inContext = ctx && ctx !== q ? ctx : undefined;
-  const path = aiPathLabel(config);
-  const cacheKey = inContext
-    ? `ai:${path}:${q}|@|${inContext}`
-    : `ai:${path}:${q}`;
-  try {
-    const cached = await db.translations.get(cacheKey);
-    requireDataScope(current);
-    if (cached && hasCyrillic(cached.ru)) return cached.ru;
-  } catch {
-    // ignore cache miss
+  const paths = await cachePaths(config);
+  requireActive();
+  const prefix = opts.cachePrefix ?? 'ai';
+  const key = (label: string) => inContext ? `${prefix}:${label}:${q}|@|${inContext}` : `${prefix}:${label}:${q}`;
+  for (const candidate of paths) {
+    try {
+      const cached = await db.translations.get(key(candidate.label));
+      requireActive();
+      if (cached?.source === 'ai' && hasCyrillic(cached.ru)) {
+        opts.onSource?.(candidate.path, true);
+        return cached.ru;
+      }
+    } catch { requireActive(); }
   }
-  requireDataScope(current);
+  if (!opts.cachePrefix) {
+    try {
+      const legacyKey = inContext ? `ai:managed:${q}|@|${inContext}` : `ai:managed:${q}`;
+      const cached = await db.translations.get(legacyKey);
+      requireActive();
+      // Older managed-labelled rows may actually contain BYOK output; reuse without claiming a provider.
+      if (cached?.source === 'ai' && hasCyrillic(cached.ru)) return cached.ru;
+    } catch { requireActive(); }
+  }
+  requireActive();
   const user = inContext
     ? `Фрагмент: "${q}"\nПредложение: "${inContext}"\nПереведи ТОЛЬКО фрагмент так, как он значит в этом предложении. Верни только перевод фрагмента.`
     : q;
-  const raw = await runTask({ task: 'translate', text: q, sentence: inContext }, config, (c) =>
+  const result = await runTaskResult({ task: 'translate', text: q, sentence: inContext }, config, (c, signal) =>
     complete(
       c,
       [
         { role: 'system', content: RU_TRANSLATOR },
         { role: 'user', content: user },
       ],
-      { temperature: 0.2, maxTokens: 300, noReasoning: true, signal: opts.signal }
-    )
+      { temperature: 0.2, maxTokens: 300, noReasoning: true, signal }
+    ),
+    { signal: opts.signal, path: opts.path }
   );
-  const ru = raw.trim().replace(/^["'«»“”]+|["'«»“”]+$/g, '')
+  requireActive();
+  const cacheKey = key(paths.find(candidate => candidate.path === result.path)!.label);
+  const ru = result.content.trim().replace(/^["'«»“”]+|["'«»“”]+$/g, '')
     .trim();
   if (!hasCyrillic(ru)) throw new Error('ai translation is not Russian');
   try {
     await db.transaction('rw', db.translations, async () => {
-      requireDataScope(current);
+      requireActive();
       await db.translations.put({ word: cacheKey, ru, source: 'ai' });
+      requireActive();
     });
   } catch {
     // best-effort cache
   }
-  requireDataScope(current);
+  requireActive();
+  opts.onSource?.(result.path, false);
   return ru;
 }
 
@@ -100,23 +115,33 @@ const countLatin = (s: string): number => (s.match(/[a-z]/gi) ?? []).length;
 export async function aiSimplify(
   config: AiConfig | null,
   sentence: string,
-  opts: { level?: Level | null; stepDown?: number; signal?: AbortSignal } = {}
+  opts: { level?: Level | null; stepDown?: number; signal?: AbortSignal; onSource?: (path: AiPath, cached: boolean) => void } = {}
 ): Promise<string> {
+  const requireActive = captureAiScope(opts.signal);
+  requireActive();
   const q = sentence.trim();
   if (!q) return '';
   const band = clampBand(opts.level, opts.stepDown);
-  const cacheKey = `lens:simplify:${SIMPLIFY_PROMPT_VERSION}:${band}:${aiPathLabel(config)}:${q}`;
-  try {
-    const cached = await db.translations.get(cacheKey);
-    if (cached?.en) return cached.en;
-  } catch {
-    // ignore cache miss
+  const paths = await cachePaths(config);
+  requireActive();
+  const key = (label: string) => `lens:simplify:${SIMPLIFY_PROMPT_VERSION}:${band}:${label}:${q}`;
+  for (const candidate of paths) {
+    try {
+      const cached = await db.translations.get(key(candidate.label));
+      requireActive();
+      if (cached?.source === 'lens-simplify' && cached.en) { opts.onSource?.(candidate.path, true); return cached.en; }
+    } catch { requireActive(); }
   }
+  try {
+    const cached = await db.translations.get(`lens:simplify:${SIMPLIFY_PROMPT_VERSION}:${band}:managed:${q}`);
+    requireActive();
+    if (cached?.source === 'lens-simplify' && cached.en) return cached.en;
+  } catch { requireActive(); }
   const shot = simplifyShot(band);
-  const raw = await runTask(
+  const result = await runTaskResult(
     { task: 'simplify', sentence: q, level: opts.level ?? undefined, stepDown: opts.stepDown },
     config,
-    (c) =>
+    (c, signal) =>
       complete(
         c,
         [
@@ -129,19 +154,28 @@ export async function aiSimplify(
         // to 'low' — it can't turn off). The cap must therefore leave room for any residual reasoning PLUS
         // the answer, or `content` comes back empty; 512 covers groq's low-effort reasoning and is a
         // harmless ceiling for deepseek (which stops naturally at ~50). Kills the 48k runaway either way.
-        { temperature: 0.2, maxTokens: 512, noReasoning: true, signal: opts.signal }
-      )
+        { temperature: 0.2, maxTokens: 512, noReasoning: true, signal }
+      ),
+    { signal: opts.signal }
   );
-  const out = cleanRewrite(raw);
+  requireActive();
+  const cacheKey = key(paths.find(candidate => candidate.path === result.path)!.label);
+  const out = cleanRewrite(result.content);
   // Reject empty, runaway, or a straight RU translation (model ignored "English only").
   if (!out || out.length > Math.max(140, q.length * 5) || countCyrillic(out) > countLatin(out)) {
     throw new Error('ai simplification unavailable');
   }
   try {
-    await db.translations.put({ word: cacheKey, ru: '', en: out, source: 'lens-simplify' });
+    await db.transaction('rw', db.translations, async () => {
+      requireActive();
+      await db.translations.put({ word: cacheKey, ru: '', en: out, source: 'lens-simplify' });
+      requireActive();
+    });
   } catch {
     // best-effort cache
   }
+  requireActive();
+  opts.onSource?.(result.path, false);
   return out;
 }
 
@@ -189,19 +223,29 @@ function grammarSystem(band: Band): string {
 export async function aiGrammar(
   config: AiConfig | null,
   sentence: string,
-  opts: { level?: Level | null; signal?: AbortSignal } = {}
+  opts: { level?: Level | null; signal?: AbortSignal; onSource?: (path: AiPath, cached: boolean) => void } = {}
 ): Promise<string> {
+  const requireActive = captureAiScope(opts.signal);
+  requireActive();
   const q = sentence.trim();
   if (!q) return '';
   const band = clampBand(opts.level, 0);
-  const cacheKey = `lens:grammar:${GRAMMAR_VERSION}:${band}:${aiPathLabel(config)}:${q}`;
-  try {
-    const cached = await db.translations.get(cacheKey);
-    if (cached?.ru) return cached.ru;
-  } catch {
-    // ignore cache miss
+  const paths = await cachePaths(config);
+  requireActive();
+  const key = (label: string) => `lens:grammar:${GRAMMAR_VERSION}:${band}:${label}:${q}`;
+  for (const candidate of paths) {
+    try {
+      const cached = await db.translations.get(key(candidate.label));
+      requireActive();
+      if (cached?.source === 'lens-grammar' && cached.ru) { opts.onSource?.(candidate.path, true); return cached.ru; }
+    } catch { requireActive(); }
   }
-  const raw = await runTask({ task: 'grammar', sentence: q, level: opts.level ?? undefined }, config, (c) =>
+  try {
+    const cached = await db.translations.get(`lens:grammar:${GRAMMAR_VERSION}:${band}:managed:${q}`);
+    requireActive();
+    if (cached?.source === 'lens-grammar' && cached.ru) return cached.ru;
+  } catch { requireActive(); }
+  const result = await runTaskResult({ task: 'grammar', sentence: q, level: opts.level ?? undefined }, config, (c, signal) =>
     complete(
       c,
       [
@@ -214,16 +258,25 @@ export async function aiGrammar(
       ],
       // 700, not 512: the answer target went from ~40 to ~70 words, and on groq's gpt-oss reasoning
       // cannot be turned off and eats the same budget — the old cap left no headroom on that path.
-      { temperature: 0.3, maxTokens: 700, noReasoning: true, signal: opts.signal }
-    )
+      { temperature: 0.3, maxTokens: 700, noReasoning: true, signal }
+    ),
+    { signal: opts.signal }
   );
-  const out = cleanRewrite(raw);
+  requireActive();
+  const cacheKey = key(paths.find(candidate => candidate.path === result.path)!.label);
+  const out = cleanRewrite(result.content);
   if (!out || !hasCyrillic(out)) throw new Error('ai grammar unavailable'); // empty or answered in English
   try {
-    await db.translations.put({ word: cacheKey, ru: out, source: 'lens-grammar' });
+    await db.transaction('rw', db.translations, async () => {
+      requireActive();
+      await db.translations.put({ word: cacheKey, ru: out, source: 'lens-grammar' });
+      requireActive();
+    });
   } catch {
     // best-effort cache
   }
+  requireActive();
+  opts.onSource?.(result.path, false);
   return out;
 }
 
@@ -247,25 +300,32 @@ async function ask(
   req: AiTaskRequest,
   system: string,
   user: string,
-  cacheKey: string
+  cacheKey: string,
+  signal?: AbortSignal
 ): Promise<string> {
-  const current = captureDataScope();
-  const key = `${aiPathLabel(config)}|${cacheKey}`;
-  const hit = cacheGet(key);
-  if (hit) return hit;
-  const out = await runTask(req, config, (c) =>
+  const requireActive = captureAiScope(signal);
+  const paths = await cachePaths(config);
+  requireActive();
+  for (const candidate of paths) {
+    const hit = cacheGet(`${candidate.label}|${cacheKey}`);
+    if (hit) return hit;
+  }
+  const legacy = cacheGet(`managed|${cacheKey}`);
+  if (legacy) return legacy;
+  const result = await runTaskResult(req, config, (c, signal) =>
     complete(
       c,
       [
         { role: 'system', content: system },
         { role: 'user', content: user },
       ],
-      { noReasoning: true, maxTokens: 220 }
-    )
+      { noReasoning: true, maxTokens: 220, signal }
+    ),
+    { signal }
   );
-  requireDataScope(current);
-  cacheSet(key, out);
-  return out;
+  requireActive();
+  cacheSet(`${paths.find(candidate => candidate.path === result.path)!.label}|${cacheKey}`, result.content);
+  return result.content;
 }
 
 const RU_TUTOR =
@@ -279,6 +339,7 @@ export function explainError(
     correct: string;
     topic: string;
     attempts?: string[];
+    signal?: AbortSignal;
   }
 ): Promise<string> {
   const history =
@@ -306,13 +367,14 @@ export function explainError(
     },
     RU_TUTOR,
     user,
-    `explain|${ctx.prompt}|${ctx.attempts?.join('|') ?? ctx.userAnswer}`
+    `explain|${ctx.prompt}|${ctx.attempts?.join('|') ?? ctx.userAnswer}`,
+    ctx.signal
   );
 }
 
 export function hint(
   config: AiConfig | null,
-  ctx: { prompt: string; topic: string; userAnswer?: string; attempt?: number }
+  ctx: { prompt: string; topic: string; userAnswer?: string; attempt?: number; signal?: AbortSignal }
 ): Promise<string> {
   const system = `${RU_TUTOR} Дай наводящую подсказку, но НИКОГДА не давай готовый ответ.`;
   const answerLine = ctx.userAnswer?.trim()
@@ -325,15 +387,16 @@ export function hint(
     'Одна короткая подсказка, которая направляет к исправлению, но НЕ раскрывает готовый ответ.';
   // No cache: a hint must react to the current answer, and re-requesting after a
   // change must return a fresh hint, not a stale cached one.
-  return runTask({ task: 'hint', prompt: ctx.prompt, topic: ctx.topic, userAnswer: ctx.userAnswer }, config, (c) =>
+  return runTask({ task: 'hint', prompt: ctx.prompt, topic: ctx.topic, userAnswer: ctx.userAnswer }, config, (c, signal) =>
     complete(
       c,
       [
         { role: 'system', content: system },
         { role: 'user', content: user },
       ],
-      { noReasoning: true, maxTokens: 160 }
-    )
+      { noReasoning: true, maxTokens: 160, signal }
+    ),
+    { signal: ctx.signal }
   );
 }
 
@@ -378,7 +441,7 @@ export function coerceExercises(raw: string, idPrefix: string): Exercise[] {
 /** Generate vocabulary exercises from a chapter with the AI (the "both" option alongside deterministic). */
 export async function generateReaderExercises(
   config: AiConfig | null,
-  ctx: { text: string; targets: string[]; idPrefix: string; count?: number }
+  ctx: { text: string; targets: string[]; idPrefix: string; count?: number; signal?: AbortSignal }
 ): Promise<Exercise[]> {
   const n = ctx.count ?? 6;
   const targetLine = ctx.targets.length
@@ -394,15 +457,16 @@ export async function generateReaderExercises(
     'замени одно содержательное слово на ___ и дай 4 варианта: один верный (исходное слово) и три ' +
     'правдоподобных неверных той же части речи. Формат каждого элемента: ' +
     '{"q":"предложение с ___","options":["w1","w2","w3","w4"],"answer":"верное"}. Только JSON-массив.';
-  const raw = await runTask({ task: 'exercises', text: ctx.text, targets: ctx.targets, count: n }, config, (c) =>
+  const raw = await runTask({ task: 'exercises', text: ctx.text, targets: ctx.targets, count: n }, config, (c, signal) =>
     complete(
       c,
       [
         { role: 'system', content: system },
         { role: 'user', content: user },
       ],
-      { noReasoning: true, maxTokens: 700 }
-    )
+      { noReasoning: true, maxTokens: 700, signal }
+    ),
+    { signal: ctx.signal }
   );
   return coerceExercises(raw, ctx.idPrefix);
 }
@@ -410,7 +474,8 @@ export async function generateReaderExercises(
 export function wordInContext(
   config: AiConfig | null,
   word: string,
-  sentence: string
+  sentence: string,
+  signal?: AbortSignal
 ): Promise<string> {
   const user =
     `Слово: "${word}"\nПредложение: "${sentence}"\n` +
@@ -421,6 +486,7 @@ export function wordInContext(
     { task: 'wordInContext', word, sentence },
     RU_TUTOR,
     user,
-    `wic|${word}|${sentence}`
+    `wic|${word}|${sentence}`,
+    signal
   );
 }

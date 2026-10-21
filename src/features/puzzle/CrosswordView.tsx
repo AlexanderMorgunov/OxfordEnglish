@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Button, Input } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import type { Crossword, Placed } from './generate';
+import { useUiLang } from '@/features/i18n/uiLang';
 
 const key = (r: number, c: number) => `${r},${c}`;
 
@@ -19,6 +20,7 @@ function cellsOf(p: Placed): string[] {
 }
 
 export function CrosswordView({ crossword }: { crossword: Crossword }) {
+  const ru = useUiLang(s => s.lang) === 'ru';
   const [solved, setSolved] = useState<Set<number>>(new Set());
   const [inputs, setInputs] = useState<Record<number, string>>({});
   const [wrong, setWrong] = useState<Set<number>>(new Set());
@@ -93,7 +95,8 @@ export function CrosswordView({ crossword }: { crossword: Crossword }) {
   return (
     <div className="flex flex-col gap-4">
       <div
-        className="grid w-fit gap-0.5"
+        className="grid w-fit max-w-full gap-0.5 overflow-x-auto"
+        tabIndex={0} role="region" aria-label={ru ? 'Сетка кроссворда' : 'Crossword grid'}
         style={{ gridTemplateColumns: `repeat(${crossword.cols}, 1.75rem)` }}
       >
         {crossword.grid.map((row, r) =>

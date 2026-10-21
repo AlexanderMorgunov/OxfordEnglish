@@ -159,15 +159,33 @@ export function initSync(): void {
   // tab, the callback lands a minute later, and nothing would ever redeem the token. One quiet attempt
   // per boot picks that up; with nothing pending it does not even touch the network.
   void claimPending(1);
-  if (typeof window !== 'undefined') window.addEventListener('online', () => void triggerSync());
+  let recoveryQueued = false;
+  let recovering = false;
+  const recover = async () => {
+    if (useAccount.getState().status !== 'authenticated') return;
+    if (recovering) { recoveryQueued = true; return; }
+    recovering = true;
+    try {
+      do {
+        recoveryQueued = false;
+        await useEntitlement.getState().load();
+      } while (recoveryQueued && useAccount.getState().status === 'authenticated');
+    } finally {
+      recovering = false;
+    }
+  };
+  const reconnect = () => {
+    cancelRetry();
+    void triggerSync();
+    void recover();
+  };
+  if (typeof window !== 'undefined') window.addEventListener('online', reconnect);
   // Coming back to the tab is the most reliable "the network is probably fine now" signal there is — and
   // unlike `online`, it fires on a VPN, where the browser never thought anything was wrong.
   if (typeof document !== 'undefined') {
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState !== 'visible') return;
-      cancelRetry();
-      void triggerSync();
-      if (useSyncStatus.getState().phase === 'error') void useEntitlement.getState().load();
+      reconnect();
     });
   }
   let wasAuthed = useAccount.getState().status === 'authenticated';

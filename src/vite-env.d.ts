@@ -5,6 +5,7 @@ declare module '*.css';
 
 /** App version, injected from package.json at build time (see vite.config.ts `define`). */
 declare const __APP_VERSION__: string;
+declare const __APP_BUILD__: string;
 
 /** Build-time env (from a gitignored `.env`, or the host's build settings). Never committed. */
 interface ImportMetaEnv {

@@ -23,7 +23,7 @@ vi.mock('@/features/reader/service', () => ({
   importBook: vi.fn(),
   removeBook: vi.fn(),
 }));
-vi.mock('@/features/reader/storage', () => ({ opfsAvailable: () => true, requestPersistence: async () => true }));
+vi.mock('@/features/reader/storage', () => ({ opfsAvailable: () => true, requestPersistence: async () => true, storagePersisted: async () => true }));
 vi.mock('@/features/reader/RecommendedShelf', () => ({ RecommendedShelf: () => null }));
 vi.mock('@/features/reader/BackToReader', () => ({ BackToReader: () => null }));
 vi.mock('@/features/stats/useReadingTracker', () => ({ readProgress: () => null }));
