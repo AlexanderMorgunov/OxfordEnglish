@@ -43,11 +43,20 @@ if (header.slice(0, 3).join() !== 'headword,pos,CEFR') throw new Error(`unexpect
 
 // A headword listed under several parts of speech keeps its easiest level.
 const level = new Map();
-for (const [headword = '', , cefr = ''] of rows) {
+const partsOfSpeech = new Map();
+const POS = new Set(['noun', 'verb', 'adjective', 'adverb', 'pronoun', 'preposition', 'conjunction', 'interjection', 'determiner']);
+const VERB_POS = new Set(['be-verb', 'do-verb', 'have-verb', 'modal auxiliary']);
+for (const [headword = '', rawPos = '', cefr = ''] of rows) {
   const lvl = LEVELS.indexOf(cefr.trim());
   if (lvl < 0) continue;
   for (const h of headword.split('/').map((s) => s.trim().toLowerCase()).filter(Boolean)) {
     level.set(h, Math.min(level.get(h) ?? lvl, lvl));
+    const pos = VERB_POS.has(rawPos.trim()) ? 'verb' : rawPos.trim();
+    if (POS.has(pos)) {
+      const readings = partsOfSpeech.get(h) ?? new Set();
+      readings.add(pos);
+      partsOfSpeech.set(h, readings);
+    }
   }
 }
 
@@ -74,4 +83,8 @@ const out = {
   levels,
 };
 writeFileSync('public/reader/en-cefr.json', JSON.stringify(out));
+writeFileSync('public/reader/en-pos.json', JSON.stringify({
+  meta: { source: out.meta.source, citation: CITATION, format: 'partsOfSpeech[headword] = all attested A1–B2 grammatical readings' },
+  partsOfSpeech: Object.fromEntries([...partsOfSpeech].sort(([a], [b]) => a.localeCompare(b)).map(([word, readings]) => [word, [...readings].sort()])),
+}));
 console.log(LEVELS.map((l, i) => `${l} ${levels[i].length}`).join(' · '), `· total ${level.size}`);

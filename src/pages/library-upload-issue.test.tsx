@@ -3,6 +3,7 @@
  * the same bug in a new place. Also pins WHICH reason is shown, because the four read very differently:
  * two are permanent facts about the file or the account, two resolve themselves on the next sweep.
  */
+import 'fake-indexeddb/auto';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
@@ -22,7 +23,7 @@ vi.mock('@/features/reader/service', () => ({
   importBook: vi.fn(),
   removeBook: vi.fn(),
 }));
-vi.mock('@/features/reader/storage', () => ({ opfsAvailable: () => true, requestPersistence: async () => true }));
+vi.mock('@/features/reader/storage', () => ({ opfsAvailable: () => true, requestPersistence: async () => true, storagePersisted: async () => true }));
 vi.mock('@/features/reader/RecommendedShelf', () => ({ RecommendedShelf: () => null }));
 vi.mock('@/features/reader/BackToReader', () => ({ BackToReader: () => null }));
 vi.mock('@/features/stats/useReadingTracker', () => ({ readProgress: () => null }));

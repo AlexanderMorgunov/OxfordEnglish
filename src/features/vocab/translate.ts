@@ -1,47 +1,100 @@
 import { db } from '@/db/db';
-import { toSentences } from '@/features/reader/parse/text';
+import { captureDataScope, requireDataScope } from '@/features/account/dataScope';
+import { translationChunks } from './translation-chunks';
 
 type MyMemoryResponse = { responseData?: { translatedText?: string } };
-
-const MM_LIMIT = 480; // MyMemory anonymous per-request character cap
 
 /** A real en→ru translation is Cyrillic; a Latin result means MyMemory echoed the source. */
 const hasCyrillic = (s: string) => /[а-яё]/i.test(s);
 
-async function mymemory(text: string): Promise<string | null> {
+export const termCacheKey = (term: string): string => term.trim().toLowerCase();
+
+async function cacheAutomatic(
+  key: string,
+  ru: string,
+  current: () => boolean,
+  signal: AbortSignal
+): Promise<string | null> {
+  if (!current() || signal.aborted) return null;
+  try {
+    return await db.transaction('rw', db.translations, async () => {
+      const existing = await db.translations.get(key);
+      if (!current() || signal.aborted) return null;
+      if (existing?.source === 'manual') return existing.ru || null;
+      await db.translations.put({ word: key, ru, source: 'mymemory' });
+      requireDataScope(current);
+      if (signal.aborted) throw new DOMException('Aborted', 'AbortError');
+      return ru;
+    });
+  } catch {
+    return current() && !signal.aborted ? ru : null;
+  }
+}
+
+async function mymemory(text: string, signal: AbortSignal): Promise<string | null> {
   try {
     const res = await fetch(
-      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|ru`
+      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|ru`,
+      { signal }
     );
     if (!res.ok) return null;
     const data = (await res.json()) as MyMemoryResponse;
     const ru = data.responseData?.translatedText?.trim();
     // Reject the daily-limit warning, the length-limit note, and any non-Russian echo.
-    if (!ru || /MYMEMORY WARNING|QUERY LENGTH LIMIT/i.test(ru) || !hasCyrillic(ru)) return null;
+    if (signal.aborted || !ru || /MYMEMORY WARNING|QUERY LENGTH LIMIT/i.test(ru) || !hasCyrillic(ru)) return null;
     return ru;
   } catch {
     return null;
   }
 }
 
-/** Group sentences into chunks that fit MyMemory's per-request limit. */
-function chunk(text: string): string[] {
-  if (text.length <= MM_LIMIT) return [text];
-  const chunks: string[] = [];
-  let buf = '';
-  for (const s of toSentences(text)) {
-    if (buf && buf.length + s.length + 1 > MM_LIMIT) {
-      chunks.push(buf);
-      buf = '';
+type TranslationPart = { text: string; separator: string };
+export type TranslationProgress = { completed: number; total: number };
+type PassageProgressOptions = {
+  onProgress?: (text: string, progress: TranslationProgress) => void;
+  resume?: Map<string, string>;
+};
+
+async function translateParts(parts: TranslationPart[], key: string, current: () => boolean, signal?: AbortSignal, cache = true, progress: PassageProgressOptions = {}): Promise<string | null> {
+  const controller = new AbortController();
+  const abort = () => controller.abort();
+  signal?.addEventListener('abort', abort, { once: true });
+  if (signal?.aborted) controller.abort();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  try {
+    const out: string[] = [];
+    for (const [index, part] of parts.entries()) {
+      if (!current() || controller.signal.aborted) return null;
+      const ru = progress.resume?.get(part.text) ?? await mymemory(part.text, controller.signal);
+      if (ru === null || !current() || controller.signal.aborted) return null;
+      out.push(part.separator + ru);
+      progress.resume?.set(part.text, ru);
+      progress.onProgress?.(out.join(''), { completed: index + 1, total: parts.length });
     }
-    buf = buf ? `${buf} ${s}` : s;
-    if (buf.length > MM_LIMIT) {
-      chunks.push(buf.slice(0, MM_LIMIT));
-      buf = buf.slice(MM_LIMIT);
+    if (!current() || controller.signal.aborted) return null;
+    return cache ? await cacheAutomatic(key, out.join(''), current, controller.signal) : out.join('');
+  } finally {
+    clearTimeout(timeout);
+    signal?.removeEventListener('abort', abort);
+  }
+}
+
+/** A proposal is deliberately separate from the user's saved/manual answer. */
+export async function translateTermProposal(term: string, opts: { signal?: AbortSignal; fresh?: boolean } = {}): Promise<string | null> {
+  const source = term.trim();
+  const key = termCacheKey(source);
+  const current = captureDataScope();
+  if (!source || opts.signal?.aborted) return null;
+  if (!opts.fresh) {
+    try {
+      const cached = await db.translations.get(key);
+      if (!current() || opts.signal?.aborted) return null;
+      if (cached?.source !== 'manual' && cached?.ru && hasCyrillic(cached.ru)) return cached.ru;
+    } catch {
+      // A failed local read does not prevent an explicit provider lookup.
     }
   }
-  if (buf) chunks.push(buf);
-  return chunks;
+  return translateParts(translationChunks(source).map((text, i) => ({ text, separator: i ? ' ' : '' })), key, current, opts.signal, false);
 }
 
 /**
@@ -49,29 +102,32 @@ function chunk(text: string): string[] {
  * in IndexedDB. Long text is split by sentence to fit the request limit. Null on failure
  * so the caller can show a plain "unavailable" state (offline-first, degrade visibly).
  */
-export async function translateText(text: string): Promise<string | null> {
-  const key = text.trim();
-  if (!key) return null;
+export async function translateText(text: string, opts: { signal?: AbortSignal; mode?: 'term' | 'passage' } & PassageProgressOptions = {}): Promise<string | null> {
+  const source = text.trim();
+  const passage = opts.mode === 'passage';
+  const key = passage ? `text-workbench:free: ${source}` : termCacheKey(source);
+  const current = captureDataScope();
+  if (!source || opts.signal?.aborted) return null;
+  const paragraphs = passage ? source.split(/\n{2,}/).filter(Boolean) : [source];
+  const parts = paragraphs.flatMap((paragraph, p) => translationChunks(paragraph).map((part, i) => ({
+    text: part, separator: i ? ' ' : p ? '\n\n' : '',
+  })));
+  opts.onProgress?.('', { completed: 0, total: parts.length });
+  const cachedResult = (ru: string | null) => {
+    if (ru) opts.onProgress?.(ru, { completed: parts.length, total: parts.length });
+    return current() && !opts.signal?.aborted ? ru : null;
+  };
   try {
-    const cached = await db.translations.get(key);
-    if (cached && hasCyrillic(cached.ru)) return cached.ru; // skip stale bad caches
+    const cached =
+      (await db.translations.get(key)) ?? (passage ? undefined : await db.translations.get(source));
+    if (!current() || opts.signal?.aborted) return null;
+    if (cached?.source === 'manual') return cachedResult(cached.ru || null);
+    if (cached && hasCyrillic(cached.ru)) return cachedResult(cached.ru);
   } catch {
     // ignore cache miss
   }
-  const parts = chunk(key);
-  const out: string[] = [];
-  for (const part of parts) {
-    const ru = await mymemory(part);
-    if (ru === null) return null;
-    out.push(ru);
-  }
-  const ru = out.join(' ');
-  try {
-    await db.translations.put({ word: key, ru, source: 'mymemory' });
-  } catch {
-    // best-effort cache
-  }
-  return ru;
+  if (!current() || opts.signal?.aborted) return null;
+  return translateParts(parts, key, current, opts.signal, true, opts);
 }
 
 /**
@@ -80,19 +136,17 @@ export async function translateText(text: string): Promise<string | null> {
  * curated glossary translations stay the offline-first path.
  */
 export async function translateWord(word: string): Promise<string | null> {
-  const w = word.toLowerCase();
+  const w = termCacheKey(word);
+  const current = captureDataScope();
+  if (!w) return null;
   try {
     const cached = await db.translations.get(w);
-    if (cached && hasCyrillic(cached.ru)) return cached.ru; // skip stale bad caches (source echoes, warnings)
+    if (!current()) return null;
+    if (cached?.source === 'manual') return cached.ru || null;
+    if (cached && hasCyrillic(cached.ru)) return cached.ru;
   } catch {
     // ignore cache miss
   }
-  const ru = await mymemory(w);
-  if (ru === null) return null; // offline, daily limit, or a non-Russian echo — degrade visibly
-  try {
-    await db.translations.put({ word: w, ru, source: 'mymemory' });
-  } catch {
-    // best-effort cache
-  }
-  return ru;
+  if (!current()) return null;
+  return translateParts(translationChunks(w).map((text, i) => ({ text, separator: i ? ' ' : '' })), w, current);
 }

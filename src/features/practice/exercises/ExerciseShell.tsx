@@ -102,15 +102,17 @@ export function ExerciseShell({
         status !== 'correct' &&
         (aiConfigured ? (
           <div className="mt-3 flex flex-col gap-2">
-            {aiHintsLeft > 0 && (
               <AiAction
+                key={`hint:${exercise.id}:${attempts.length}:${ai.userAnswer}`}
+                canRun={aiHintsLeft > 0}
                 label={
                   (ru ? 'подсказка (AI)' : 'hint (AI)') +
                   (status === 'idle' ? '' : ` · ${aiHintsLeft}`)
                 }
-                onRun={noteAiHint}
-                run={(config) =>
+                onDelivered={noteAiHint}
+                run={(config, signal) =>
                   aiHint(config, {
+                    signal,
                     prompt: ai.prompt,
                     topic,
                     userAnswer: status === 'incorrect' ? ai.userAnswer : undefined,
@@ -118,12 +120,13 @@ export function ExerciseShell({
                   })
                 }
               />
-            )}
             {status === 'incorrect' && (
               <AiAction
+                key={`explain:${exercise.id}:${attempts.length}:${ai.userAnswer}`}
                 label={ru ? 'почему неверно? (AI)' : 'why is it wrong? (AI)'}
-                run={(config) =>
+                run={(config, signal) =>
                   explainError(config, {
+                    signal,
                     prompt: ai.prompt,
                     userAnswer: ai.userAnswer,
                     correct: ai.correct,

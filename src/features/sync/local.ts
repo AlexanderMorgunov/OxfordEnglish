@@ -15,6 +15,7 @@ import { getInstallId } from './meta';
 import { markDirty, type SyncedRow } from './engine';
 import { isDeleted, type SyncedStore } from './resolve';
 import { nudgeSync } from './run';
+import { captureDataScope, requireDataScope } from '@/features/account/dataScope';
 
 /** True when writes should be tracked for push (a backend is configured AND the user is signed in). */
 export function isSyncing(): boolean {
@@ -104,11 +105,29 @@ export async function addCheckpoint(result: Omit<CheckpointResult, 'id' | 'syncI
 }
 
 /** Add a new SRS card (skips if it exists — never resets a live schedule), stamped + marked dirty. */
-export async function addSrsCard(card: SrsCard): Promise<void> {
-  if (await db.srsCards.get(card.id)) return;
-  const row: SrsCard = { ...card, updatedAt: Date.now(), updatedBy: await installId() };
-  await db.srsCards.add(row);
-  await dirty('srsCards', row);
+export async function addSrsCard(
+  card: SrsCard,
+  currentScope = captureDataScope()
+): Promise<boolean> {
+  const writer = await installId();
+  const syncing = syncActive();
+  const added = await db.transaction(
+    'rw',
+    [db.srsCards, db.pending],
+    async () => {
+      if (!currentScope() || (await db.srsCards.get(card.id))) return false;
+      const row: SrsCard = {
+        ...card,
+        updatedAt: Date.now(),
+        updatedBy: writer,
+      };
+      await db.srsCards.add(row);
+      if (syncing) await markDirty('srsCards', row as unknown as SyncedRow);
+      return true;
+    }
+  );
+  if (added && syncing && currentScope()) nudgeSync();
+  return added;
 }
 
 export async function putSrsCard(card: SrsCard): Promise<void> {
@@ -117,25 +136,68 @@ export async function putSrsCard(card: SrsCard): Promise<void> {
   await dirty('srsCards', row);
 }
 
-export async function patchSrsCard(id: string, patch: Partial<SrsCard>): Promise<void> {
-  const current = await db.srsCards.get(id);
-  if (!current) return;
-  await putSrsCard({ ...current, ...patch });
+export async function patchSrsCard(
+  id: string,
+  patch: Partial<SrsCard>
+): Promise<void> {
+  await mutateSrsCard(id, (current) => ({ ...current, ...patch }));
+}
+
+/** Serialize content, scheduling and deletion against the latest row, including dirty tracking. */
+export async function mutateSrsCard(
+  id: string,
+  update: (
+    current: SrsCard
+  ) => SrsCard | undefined | Promise<SrsCard | undefined>,
+  currentScope = captureDataScope(),
+  after?: (row: SrsCard) => Promise<void>
+): Promise<SrsCard | undefined> {
+  const writer = await installId();
+  const syncing = syncActive();
+  const saved = await db.transaction(
+    'rw',
+    [db.srsCards, db.pending, db.wordStatus, db.reviewLog, db.translations],
+    async () => {
+      if (!currentScope()) return;
+      const current = await db.srsCards.get(id);
+      if (!current || isDeleted(current)) return;
+      const next = await update(current);
+      if (!next || !currentScope()) return;
+      const row = {
+        ...next,
+        updatedAt: isDeleted(next)
+          ? current.updatedAt
+          : Math.max(Date.now(), (current.updatedAt ?? 0) + 1),
+        updatedBy: writer,
+      };
+      await db.srsCards.put(row);
+      if (syncing) await markDirty('srsCards', row as unknown as SyncedRow);
+      if (after) await after(row);
+      return row;
+    }
+  );
+  if (saved && syncing && currentScope()) nudgeSync();
+  return saved;
 }
 
 /** Put a word status. `statusUpdatedAt` bumps only when the status value actually changes (F6). */
-export async function putWordStatus(row: WordStatus): Promise<void> {
-  const existing = await db.wordStatus.get(row.word);
-  const now = Date.now();
-  const statusChanged = existing?.status !== row.status;
-  const full: WordStatus = {
-    ...row,
-    updatedAt: now,
-    updatedBy: await installId(),
-    statusUpdatedAt: statusChanged ? now : (existing?.statusUpdatedAt ?? now),
-  };
-  await db.wordStatus.put(full);
-  await dirty('wordStatus', full);
+export async function putWordStatus(row: WordStatus, current = captureDataScope()): Promise<void> {
+  const writer = await installId();
+  const syncing = syncActive();
+  await db.transaction('rw', [db.wordStatus, db.pending], async () => {
+    requireDataScope(current);
+    const existing = await db.wordStatus.get(row.word);
+    requireDataScope(current);
+    const now = Math.max(Date.now(), (existing?.updatedAt ?? 0) + 1);
+    const full: WordStatus = {
+      ...row, updatedAt: now, updatedBy: writer,
+      statusUpdatedAt: existing?.status !== row.status ? now : (existing?.statusUpdatedAt ?? now),
+    };
+    await db.wordStatus.put(full);
+    if (syncing) await markDirty('wordStatus', { ...full });
+    requireDataScope(current);
+  });
+  if (syncing && current()) nudgeSync();
 }
 
 export async function addBook(record: BookRecord): Promise<void> {
@@ -181,12 +243,11 @@ export async function stampSetting(key: string, value: unknown): Promise<void> {
 /** Same H1 rule as `softDeleteBook`: set `deletedAt` and leave `updatedAt` alone, or the row reads as
  *  edited-after-delete and comes back. A hard delete looked like it worked and did not — the server
  *  still held the row, so the next pull put the card straight back in the queue. */
-export async function softDeleteSrsCard(id: string): Promise<void> {
-  const current = await db.srsCards.get(id);
-  if (!current) return;
-  const row: SrsCard = { ...current, deletedAt: Date.now(), updatedBy: await installId() };
-  await db.srsCards.put(row);
-  await dirty('srsCards', row);
+export async function softDeleteSrsCard(id: string, currentScope = captureDataScope()): Promise<void> {
+  await mutateSrsCard(id, (current) => ({
+    ...current,
+    deletedAt: Math.max(Date.now(), current.updatedAt ?? 0) + 1,
+  }), currentScope);
 }
 
 export async function softDeleteBook(id: string): Promise<void> {

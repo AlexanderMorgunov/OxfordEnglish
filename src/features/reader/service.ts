@@ -6,6 +6,7 @@ import { isDeleted } from '@/features/sync/resolve';
 import { deleteRemoteBookFile, downloadBookFileIfMissing, uploadBookFile, useBookUploadIssues, type BookFileIssue } from './blobSync';
 import { detectFormat, parseBook, type ParsedBook } from './parse';
 import { saveBookFile, getBookFile, deleteBookFile, opfsAvailable } from './storage';
+import { BOOK_OPEN_PREFIX, openedAt } from './book-recency';
 
 export type ImportResult = { record: BookRecord; book: ParsedBook };
 
@@ -72,8 +73,15 @@ export async function importBook(file: File): Promise<ImportResult> {
 
 export async function listBooks(): Promise<BookRecord[]> {
   try {
-    const all = await db.books.orderBy('addedAt').reverse().toArray();
-    return all.filter((b) => !isDeleted(b)); // hide tombstones (soft-deleted, kept for sync propagation)
+    const [all, opens] = await Promise.all([
+      db.books.toArray(),
+      db.settings.where('key').startsWith(BOOK_OPEN_PREFIX).toArray(),
+    ]);
+    const recent = new Map(opens.filter((r) => !isDeleted(r)).map((r) => [r.key.slice(BOOK_OPEN_PREFIX.length), openedAt(r.value)]));
+    return all.filter((b) => !isDeleted(b)).sort((a, b) =>
+      (recent.get(b.id) ?? 0) - (recent.get(a.id) ?? 0) ||
+      b.addedAt - a.addedAt || a.id.localeCompare(b.id)
+    );
   } catch {
     return [];
   }

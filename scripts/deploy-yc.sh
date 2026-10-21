@@ -73,7 +73,7 @@ put "rustore-probe.html" "text/html; charset=utf-8"
 echo "3b/3 SPA route aliases (200, per-route canonical/title, not soft-404)…"
 # billing/* are nested keys (same shape as grammar/<id> below): the acquirer's SuccessURL/FailURL must
 # answer 200, not the soft-404 a missing key produces — nobody should meet a 404 right after paying.
-for route in about privacy terms pro grammar library support credits feedback review progress vocabulary settings billing/success billing/fail; do
+for route in about privacy terms pro grammar library support credits feedback review progress vocabulary vocabulary/text settings billing/success billing/fail; do
   src="$DIST/$route.html"
   [ -f "$src" ] || src="$DIST/index.html" # fall back to the shell if build-seo didn't run
   "${S3[@]}" cp "$src" "s3://$YC_BUCKET/$route" \

@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
+import { liveQuery } from 'dexie';
 import { Link } from 'react-router-dom';
 import type { BookRecord } from '@/db/db';
 import { Button, Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { importBook, listBooks, removeBook } from '@/features/reader/service';
-import { opfsAvailable, requestPersistence } from '@/features/reader/storage';
+import { opfsAvailable, requestPersistence, storagePersisted } from '@/features/reader/storage';
 import { isNativePlatform } from '@/shared/lib/platform';
 import { useBookFileSync, useBookUploadIssues, type UploadIssue } from '@/features/reader/blobSync';
 import { useAccount } from '@/features/account/store';
 import { RecommendedShelf } from '@/features/reader/RecommendedShelf';
 import { BackToReader } from '@/features/reader/BackToReader';
 import { readProgress } from '@/features/stats/useReadingTracker';
+import { captureDataScope, subscribeDataScope } from '@/features/account/dataScope';
 
 /**
  * One reason usually covers several books at once — the account has no Pro, the cloud is full, the
@@ -89,6 +91,7 @@ export function LibraryPage() {
   const issueFor = (id: string): UploadIssue | undefined => (uploadsRunning ? issues[id] : undefined);
   const inputRef = useRef<HTMLInputElement>(null);
   const [books, setBooks] = useState<BookRecord[]>([]);
+  const [scope, setScope] = useState(0);
   // EVERY reason that covers more than one book gets its own line. Explaining only the biggest group
   // would leave the others showing a bare "not in the cloud" with the reason stated nowhere — worse than
   // the repetition this replaces. ISSUE_ORDER keeps the lines in a stable order.
@@ -104,10 +107,25 @@ export function LibraryPage() {
   const supported = opfsAvailable();
   const native = isNativePlatform();
 
-  const reload = () => void listBooks().then(setBooks);
-  useEffect(reload, []);
+  const reload = () => {
+    const current = captureDataScope();
+    void listBooks().then((rows) => { if (current()) setBooks(rows); });
+  };
+  useEffect(() => subscribeDataScope(() => {
+    setBooks([]);
+    setScope((value) => value + 1);
+  }), []);
   useEffect(() => {
-    if (supported) void navigator.storage.persisted?.().then((p) => setPersisted(p ?? true));
+    const current = captureDataScope();
+    const subscription = liveQuery(listBooks).subscribe((rows) => {
+      if (current()) setBooks(rows);
+    });
+    return () => subscription.unsubscribe();
+  }, [scope]);
+  useEffect(() => {
+    let active = true;
+    if (supported) void storagePersisted().then((value) => { if (active) setPersisted(value); });
+    return () => { active = false; };
   }, [supported]);
 
   const onFile = async (file: File) => {
@@ -145,8 +163,6 @@ export function LibraryPage() {
     <section aria-label={ru ? 'Библиотека' : 'Library'}>
       <BackToReader />
       <Eyebrow className="mb-3.5">{ru ? 'библиотека' : 'library'}</Eyebrow>
-
-      <RecommendedShelf />
 
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
@@ -230,15 +246,17 @@ export function LibraryPage() {
           {books.map((b) => {
             const read = readProgress(`reader.${b.id}`);
             return (
-              <Card key={b.id} className="flex items-center justify-between gap-3">
+              <Card key={b.id} className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
                 {/* The issue line sits OUTSIDE the Link: it is not part of what the link does, and inside
                     it would be concatenated into the link's accessible name. */}
-                <div className="min-w-0 flex-1">
+                <div className="min-w-0 flex-1 basis-full sm:basis-0">
                   <Link to={`/library/${b.id}`} className="block">
                     <p className="truncate font-semibold">{b.title}</p>
                     <p className="truncate font-mono text-2xs uppercase tracking-[0.06em] text-muted">
                       {b.author ? `${b.author} · ` : ''}
-                      {b.format} ·{' '}
+                      {b.format}
+                    </p>
+                    <p className="mt-1 font-mono text-2xs text-muted tabular-nums">
                       {read != null
                         ? `${ru ? 'прочитано' : 'read'} ${Math.round(read * 100)}%`
                         : `${b.chapterCount} ${ru ? 'глав' : 'ch.'}`}
@@ -249,7 +267,7 @@ export function LibraryPage() {
                 <button
                   type="button"
                   aria-label={ru ? 'Удалить' : 'Delete'}
-                  className="shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-muted hover:text-coral"
+                  className="ml-auto min-h-11 min-w-11 shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-muted hover:text-coral"
                   onClick={() => {
                     if (confirm(ru ? `Удалить «${b.title}»?` : `Delete “${b.title}”?`)) {
                       void removeBook(b.id).then(reload);
@@ -263,6 +281,7 @@ export function LibraryPage() {
           })}
         </div>
       )}
+      <div className="mt-10"><RecommendedShelf /></div>
     </section>
   );
 }

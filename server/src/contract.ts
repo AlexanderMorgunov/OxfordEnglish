@@ -4,6 +4,7 @@
  * deliberate mirror (keep the two in sync on any change). See ../../docs/backend-v1-design.md.
  */
 import { z } from 'zod';
+import { SenseTermSchema } from './wordSenses.js';
 
 export const CredentialsSchema = z.object({
   // Upper bounds as well as lower: unbounded strings on an unauthenticated route are a free way to make
@@ -154,6 +155,7 @@ export type Entitlement = z.infer<typeof EntitlementSchema>;
  *  stays a product feature instead of a general-purpose LLM gateway billed to us. The model, temperature,
  *  token ceiling and reasoning-off flag are pinned per task on the server and are not client inputs. */
 export const AiTaskRequestSchema = z.discriminatedUnion('task', [
+  z.object({ task: z.literal('wordSenses'), term: SenseTermSchema }),
   z.object({ task: z.literal('translate'), text: z.string().min(1), sentence: z.string().optional() }),
   z.object({ task: z.literal('simplify'), sentence: z.string().min(1), level: z.string().optional(), stepDown: z.number().int().min(0).max(3).optional() }),
   z.object({ task: z.literal('grammar'), sentence: z.string().min(1), level: z.string().optional() }),

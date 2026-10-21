@@ -49,9 +49,14 @@ export function htmlToText(html: string): string {
 
 /** Split reading text into sentences, keeping abbreviations mostly intact. */
 export function toSentences(text: string): string[] {
-  return text
-    .replace(/\s+/g, ' ')
-    .split(SENTENCE_BOUNDARY)
-    .map((s) => s.trim())
-    .filter((s) => s.length > 0);
+  const normalized = text.replace(/\s+/g, ' ');
+  const sentences: string[] = [];
+  let start = 0;
+  for (const boundary of normalized.matchAll(new RegExp(SENTENCE_BOUNDARY, 'g'))) {
+    const end = boundary.index + boundary[0].trimEnd().length;
+    sentences.push(normalized.slice(start, end).trim());
+    start = boundary.index + boundary[0].length;
+  }
+  sentences.push(normalized.slice(start).trim());
+  return sentences.filter(Boolean);
 }

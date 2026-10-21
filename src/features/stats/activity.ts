@@ -1,15 +1,18 @@
 import { db, type ActivityDay, type ReviewLogEntry } from '@/db/db';
 import { applyDelta, emptyDay, localDayKey, type ActivityDelta } from './accounting';
 import { installId } from './device';
+import { captureDataScope } from '@/features/account/dataScope';
 
 /** Add to this device's row for today inside one rw transaction (get → merge → put), so a reading tick
  *  and a save landing together — or two reader tabs — never lose an update. Best-effort. */
 export async function recordActivity(delta: ActivityDelta, now = Date.now()): Promise<void> {
+  const current = captureDataScope();
   const day = localDayKey(now);
   const id = `${day}:${installId()}`;
   try {
     await db.transaction('rw', db.activity, async () => {
       const row = (await db.activity.get(id)) ?? emptyDay(id, day);
+      if (!current()) return;
       await db.activity.put(applyDelta(row, delta));
     });
   } catch {
@@ -34,10 +37,16 @@ export function recordSave(kind: 'word' | 'phrase'): Promise<void> {
 
 export async function logReview(cardId: string, rating: number): Promise<void> {
   try {
-    await db.reviewLog.add({ id: crypto.randomUUID(), cardId, rating, ts: Date.now() });
+    await logReviewStrict(cardId, rating);
   } catch {
     // best-effort
   }
+}
+
+export async function logReviewStrict(cardId: string, rating: number, ts = Date.now()): Promise<ReviewLogEntry> {
+  const event: ReviewLogEntry = { id: crypto.randomUUID(), cardId, rating, ts, modifiedAt: ts };
+  await db.reviewLog.add(event);
+  return event;
 }
 
 const PENDING_KEY = 'oxford-stats-pending';

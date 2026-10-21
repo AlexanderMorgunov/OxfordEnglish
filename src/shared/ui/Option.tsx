@@ -1,9 +1,10 @@
-import type { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes, Ref } from 'react';
 import { cn } from '@/shared/lib/cn';
 
 type OptionState = 'default' | 'chosen' | 'correct' | 'wrong';
 
 type OptionProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  ref?: Ref<HTMLButtonElement>;
   state?: OptionState;
 };
 

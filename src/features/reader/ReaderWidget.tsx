@@ -7,6 +7,7 @@ import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
 import { useReaderSettings, RATE_STEPS } from './settings';
 import { withReaderReturn } from './return-to-reader';
 import { BookmarkList } from './BookmarkList';
+import { ReaderAppearance } from './ReaderAppearance';
 import type { Bookmark } from './bookmarks';
 
 /** Where a reader jumps from mid-book. Icon-only so the whole row fits one line of the panel; the
@@ -43,10 +44,38 @@ export function ReaderWidget({
   const rate = useReaderSettings((s) => s.rate);
   const setRate = useReaderSettings((s) => s.setRate);
   const [open, setOpen] = useState(false);
+  const [appearanceOpen, setAppearanceOpen] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
   const [dim, setDim] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const footer = document.querySelector('[data-app-footer]');
+    if (!footer) return;
+    const position = () => setFooterVisible(footer.getBoundingClientRect().top < window.innerHeight);
+    position();
+    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(position);
+    observer?.observe(footer);
+    const main = document.querySelector('main');
+    if (main) observer?.observe(main);
+    window.addEventListener('scroll', position, { passive: true });
+    window.addEventListener('resize', position);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener('scroll', position);
+      window.removeEventListener('resize', position);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!footerVisible) return;
+    setOpen(false);
+    if (rootRef.current?.contains(document.activeElement)) {
+      document.querySelector<HTMLElement>('main')?.focus({ preventScroll: true });
+    }
+  }, [footerVisible]);
 
   // Fade the collapsed button while the reader scrolls, back to full on pause. Skipped while open.
   useEffect(() => {
@@ -103,12 +132,14 @@ export function ReaderWidget({
   };
 
   return (
+    <>
     <div
       ref={rootRef}
       className="fixed z-30 flex flex-col items-end gap-2"
       style={{
         bottom: 'calc(1rem + env(safe-area-inset-bottom))',
         right: 'calc(1rem + env(safe-area-inset-right))',
+        visibility: footerVisible ? 'hidden' : undefined,
       }}
     >
       {toast && (
@@ -122,11 +153,11 @@ export function ReaderWidget({
       {open && (
         <div
           id="reader-widget-panel"
-          className="flex w-64 max-w-[80vw] flex-col items-stretch gap-1 rounded-md border border-line bg-surface p-1.5 shadow-lg"
+          className="flex max-h-[70dvh] w-64 max-w-[80vw] flex-col items-stretch gap-1 overflow-y-auto rounded-md border border-line bg-surface p-1.5 shadow-lg"
         >
           <nav
             aria-label={ru ? 'Разделы' : 'Sections'}
-            className="flex items-center justify-between gap-0.5 px-1 pb-0.5"
+            className="flex flex-wrap items-center justify-between gap-0.5 px-1 pb-0.5"
           >
             {NAV.map((item) => (
               <Link
@@ -142,6 +173,11 @@ export function ReaderWidget({
               </Link>
             ))}
           </nav>
+          <button type="button" aria-haspopup="dialog" onClick={() => { setOpen(false); setAppearanceOpen(true); }}
+            className="flex min-h-11 items-center gap-2 rounded-sm px-3 py-2 text-left text-sm text-content hover:bg-surface-2">
+            <span aria-hidden="true" className="font-semibold">Aa</span>
+            {ru ? 'Вид текста' : 'Text appearance'}
+          </button>
           <button
             type="button"
             onClick={() => void bookmarkHere()}
@@ -154,7 +190,7 @@ export function ReaderWidget({
             <div
               role="group"
               aria-label={ru ? 'Скорость озвучки' : 'Read-aloud speed'}
-              className="flex items-center gap-0.5 px-3 py-1"
+              className="flex flex-wrap items-center gap-0.5 px-3 py-1"
             >
               <span className="mr-auto font-mono text-2xs text-muted">{ru ? 'скорость' : 'speed'}</span>
               {RATE_STEPS.map((r) => (
@@ -212,5 +248,7 @@ export function ReaderWidget({
         )}
       </button>
     </div>
+    <ReaderAppearance open={appearanceOpen} onClose={() => setAppearanceOpen(false)} returnFocus={() => footerVisible ? document.querySelector<HTMLElement>('main') : btnRef.current} />
+    </>
   );
 }

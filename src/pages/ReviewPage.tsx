@@ -1,105 +1,167 @@
-import { useEffect, useState } from 'react';
-import type { Grade } from 'ts-fsrs';
+﻿import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { liveQuery } from 'dexie';
 import type { SrsCard } from '@/db/db';
 import { Button, Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
-import { speakWord } from '@/shared/lib/audio';
-import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
-import { translateText, translateWord } from '@/features/vocab/translate';
 import {
-  canPronounce,
   countErrorCards,
   dropAllErrorCards,
   dropCard,
-  gradeCard,
   getDueCards,
-  repairCardBack,
-  Rating,
+  reviewCorrectionCard,
 } from '@/features/srs/service';
+import type { ReviewReceipt } from '@/features/srs/service';
+import { ReviewCard } from '@/features/srs/ReviewCard';
+import {
+  captureDataScope,
+  subscribeDataScope,
+} from '@/features/account/dataScope';
 import { BackToReader } from '@/features/reader/BackToReader';
 
-const GRADES = [
-  { rating: Rating.Again, ru: 'снова', en: 'again' },
-  { rating: Rating.Hard, ru: 'трудно', en: 'hard' },
-  { rating: Rating.Good, ru: 'хорошо', en: 'good' },
-  { rating: Rating.Easy, ru: 'легко', en: 'easy' },
-] as const;
-
-/**
- * Below this, clearing one card at a time is still reasonable and a bulk button is mostly a way to
- * lose work by mistake. Above it the queue has stopped being a review queue, which is the complaint
- * this answers.
- */
 const BULK_CLEAR_THRESHOLD = 20;
+const RATING_LABELS = { ru: ['снова', 'трудно', 'хорошо', 'легко'], en: ['again', 'hard', 'good', 'easy'] };
 
 export function ReviewPage() {
-  const canSpeak = useSpeechAvailable();
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [queue, setQueue] = useState<SrsCard[] | null>(null);
-  const [index, setIndex] = useState(0);
-  const [revealed, setRevealed] = useState(false);
-  const [extra, setExtra] = useState<string | null>(null);
-  const [lookedUp, setLookedUp] = useState(false);
+  const [finished, setFinished] = useState<Set<string>>(new Set());
+  const [skipped, setSkipped] = useState<Set<string>>(new Set());
   const [errorCount, setErrorCount] = useState(0);
   const [confirmClear, setConfirmClear] = useState(false);
-
+  const [scope, setScope] = useState(0);
+  const [error, setError] = useState('');
+  const [lastReview, setLastReview] = useState<ReviewReceipt | null>(null);
+  const [correction, setCorrection] = useState<{ receipt: ReviewReceipt; card: SrsCard } | null>(null);
+  const [opening, setOpening] = useState(false);
+  const [cardBusy, setCardBusy] = useState(false);
+  const operation = useRef(false);
+  const alive = useRef(true);
   useEffect(() => {
-    void getDueCards().then(setQueue);
-    void countErrorCards().then(setErrorCount);
+    alive.current = true;
+    return () => { alive.current = false; };
   }, []);
+  const cardBusyRef = useRef(false);
+  const handleBusyChange = useCallback((busy: boolean) => { cardBusyRef.current = busy; setCardBusy(busy); }, []);
+  const cardRegion = useRef<HTMLDivElement>(null);
+  const [focusRevision, setFocusRevision] = useState(0);
+  const focusCard = () => setFocusRevision(value => value + 1);
+  useLayoutEffect(() => { if (focusRevision) cardRegion.current?.focus(); }, [focusRevision]);
 
-  const card = queue?.[index];
-
-  /**
-   * A card whose `back` equals its `front` was saved while the lookup was unavailable, so it has no
-   * translation to show. Retry it here and WRITE IT BACK: before, the answer lived in component state
-   * only, so the same card asked the network on every showing and fell back to a bare dash whenever it
-   * could not reach it. Phrases were never retried at all, so theirs was a dash for good.
-   *
-   * Skipped for mistake cards: their `front` is an exercise prompt, not a term to look up.
-   */
-  const reveal = () => {
-    setRevealed(true);
-    if (!card || card.back !== card.front || card.fromError) return;
-    const lookup = card.kind === 'word' ? translateWord : translateText;
-    void lookup(card.front).then((ru) => {
-      setExtra(ru);
-      setLookedUp(true);
-      if (ru) void repairCardBack(card.id, ru);
+  useEffect(
+    () =>
+      subscribeDataScope(() => {
+        setQueue(null);
+        setFinished(new Set());
+        setSkipped(new Set());
+        setConfirmClear(false);
+        setLastReview(null);
+        setCorrection(null);
+        setOpening(false);
+        setCardBusy(false);
+        cardBusyRef.current = false;
+        operation.current = false;
+        setError('');
+        setScope((value) => value + 1);
+      }),
+    []
+  );
+  useEffect(() => {
+    const current = captureDataScope();
+    let members: Set<string> | null = null;
+    const subscription = liveQuery(async () => ({
+      cards: await getDueCards(),
+      errors: await countErrorCards(),
+    })).subscribe({
+      next: ({ cards, errors }) => {
+        if (!current()) return;
+        const sessionMembers = (members ??= new Set(cards.map((c) => c.id)));
+        setQueue(cards.filter((c) => sessionMembers.has(c.id)));
+        setErrorCount(errors);
+      },
+      error: () => {
+        if (current())
+          setError(
+            ru ? 'Не удалось загрузить очередь.' : 'Could not load the queue.'
+          );
+      },
     });
-  };
+    return () => subscription.unsubscribe();
+  }, [scope, ru]);
 
-  /** Removes for good rather than for now: a hard delete left the row on the server and the next pull
-   *  put the card straight back, so the same card was dismissed over and over. */
+  const correctingReceipt = correction?.receipt;
+  useEffect(() => {
+    if (!correctingReceipt || cardBusy) return;
+    const current = captureDataScope();
+    const subscription = liveQuery(() => reviewCorrectionCard(correctingReceipt)).subscribe({
+      next: row => {
+        if (!current() || cardBusyRef.current) return;
+        if (row) setCorrection(previous => previous?.receipt === correctingReceipt ? { ...previous, card: row } : previous);
+        else {
+          setCorrection(null);
+          setLastReview(null);
+          setError(ru ? 'Предыдущая карточка изменилась. Оценку изменить нельзя.' : 'The previous card changed. Its rating cannot be changed.');
+        }
+      },
+      error: () => { if (current()) setError(ru ? 'Не удалось открыть карточку.' : 'Could not open the card.'); },
+    });
+    return () => subscription.unsubscribe();
+  }, [correctingReceipt, cardBusy, ru]);
+
+  const remaining = queue?.filter(
+    (c) => !finished.has(c.id) && !skipped.has(c.id)
+  );
+  const skippedCount = queue?.filter((c) => skipped.has(c.id)).length ?? 0;
+  const card = correction?.card ?? remaining?.[0];
+  const advance = (id: string) =>
+    setFinished((current) => new Set(current).add(id));
+  const skip = (id: string) =>
+    setSkipped((current) => new Set(current).add(id));
+  const changeLastRating = async () => {
+    if (!lastReview || operation.current || cardBusyRef.current) return;
+    operation.current = true;
+    setOpening(true);
+    setError('');
+    const current = captureDataScope();
+    try {
+      const previous = await reviewCorrectionCard(lastReview);
+      if (!current() || !alive.current) return;
+      if (previous) {
+        setCorrection({ receipt: lastReview, card: previous });
+        focusCard();
+      } else {
+        setLastReview(null);
+        setError(ru ? 'Предыдущая карточка изменилась. Оценку изменить нельзя.' : 'The previous card changed. Its rating cannot be changed.');
+      }
+    } catch {
+      if (current() && alive.current) setError(ru ? 'Не удалось открыть карточку. Попробуйте ещё раз.' : 'Could not open the card. Please try again.');
+    } finally {
+      if (current() && alive.current) { operation.current = false; setOpening(false); }
+    }
+  };
+  const continueReview = () => { setCorrection(null); setError(''); focusCard(); };
+  const graded = (receipt: ReviewReceipt) => {
+    if (!alive.current || !receipt.currentScope()) return;
+    setLastReview(receipt);
+    if (correction) setCorrection(null);
+    else advance(receipt.after.id);
+    setError('');
+    focusCard();
+  };
   const drop = async () => {
     if (!card) return;
+    const current = captureDataScope();
     await dropCard(card.id);
-    if (card.fromError) setErrorCount((n) => Math.max(0, n - 1));
-    setRevealed(false);
-    setExtra(null);
-    setLookedUp(false);
-    setQueue((cur) => cur?.filter((c) => c.id !== card.id) ?? cur);
+    if (!current()) return;
+    advance(card.id);
+    setErrorCount(await countErrorCards());
   };
-
-  /** Clears the pile in one go and reloads the queue, because most of what was in it is now gone. */
   const clearErrors = async () => {
+    const current = captureDataScope();
     await dropAllErrorCards();
+    if (!current()) return;
     setConfirmClear(false);
-    setErrorCount(0);
-    setRevealed(false);
-    setExtra(null);
-    setLookedUp(false);
-    setIndex(0);
+    setErrorCount(await countErrorCards());
     setQueue(await getDueCards());
-  };
-
-  const grade = async (rating: Grade) => {
-    if (!card) return;
-    await gradeCard(card.id, rating);
-    setRevealed(false);
-    setExtra(null);
-    setLookedUp(false);
-    setIndex((i) => i + 1);
   };
 
   return (
@@ -107,39 +169,83 @@ export function ReviewPage() {
       <BackToReader />
       <Eyebrow className="mb-3.5">srs · review</Eyebrow>
       <div className="mb-8 flex items-center gap-3">
-        <PixelImage src="/assets/pixel/nav/review.png" alt="" className="h-7 w-7 shrink-0" />
+        <PixelImage
+          src="/assets/pixel/nav/review.png"
+          alt=""
+          className="h-7 w-7 shrink-0"
+        />
         <h1 className="text-2xl font-bold tracking-tight">
           {ru ? 'Очередь повторения' : 'Review queue'}
         </h1>
       </div>
-
-      {queue === null && <p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading…'}</p>}
-
+      {error && (
+        <p role="alert" className="text-sm text-coral">
+          {error}
+        </p>
+      )}
+      {queue === null && (
+        <p className="font-mono text-sm text-muted">
+          {ru ? 'загрузка…' : 'loading…'}
+        </p>
+      )}
+      {lastReview && !correction && (
+        <Button className="mb-4 min-h-11" variant="ghost" disabled={opening || cardBusy} onClick={() => void changeLastRating()}>
+          {opening ? ru ? 'Открываем карточку…' : 'Opening card…' : ru ? 'Изменить последнюю оценку' : 'Change last rating'}
+        </Button>
+      )}
       {queue !== null && !card && (
-        <Card>
-          <PixelImage src="/assets/pixel/ui/complete.png" alt="" className="mb-3 h-8 w-8" />
+        <div ref={cardRegion} tabIndex={-1} className="focus-visible:outline-2 focus-visible:outline-teal" aria-label={ru ? 'Сессия завершена' : 'Session finished'}><Card>
+          <PixelImage
+            src="/assets/pixel/ui/complete.png"
+            alt=""
+            className="mb-3 h-8 w-8"
+          />
           <p className="font-mono text-sm text-teal">
-            {ru ? '✓ всё повторено — ничего не ждёт' : "✓ nothing due — you're clear"}
+            {skippedCount
+              ? ru
+                ? `Сессия завершена · пропущено: ${skippedCount}`
+                : `Session finished · skipped: ${skippedCount}`
+              : ru
+                ? '✓ сессия завершена'
+                : '✓ session finished'}
           </p>
           <p className="mt-2 text-sm text-muted">
-            {ru
-              ? 'Карточки появляются здесь, когда вы отмечаете слова для повторения и ошибаетесь в упражнениях. Возвращайтесь, когда они будут назначены.'
-              : "Cards appear here as you mark words for review and make mistakes in practice. Come back when they're scheduled."}
+            {skippedCount
+              ? ru
+                ? 'Пропущенные карточки остаются в очереди. Их расписание не изменилось.'
+                : 'Skipped cards remain due. Their schedules have not changed.'
+              : ru
+                ? 'Откройте повторение снова, чтобы начать следующую сессию.'
+                : 'Open review again to start the next session.'}
           </p>
-        </Card>
+          {skippedCount > 0 && (
+            <Button
+              className="mt-3"
+              variant="ghost"
+              onClick={() => setSkipped(new Set())}
+            >
+              {ru ? 'Вернуться к пропущенным' : 'Return to skipped cards'}
+            </Button>
+          )}
+        </Card></div>
       )}
-
       {card && (
-        <div className="flex flex-col gap-4">
+        <div ref={cardRegion} tabIndex={-1} className="flex flex-col gap-4 focus-visible:outline-2 focus-visible:outline-teal" aria-label={ru ? 'Текущая карточка' : 'Current card'}>
+          {correction && <div className="rounded-md border border-line bg-surface px-4 py-3">
+            <p className="text-sm text-content">{ru ? 'Изменение последней оценки' : 'Changing the last rating'}</p>
+            <p className="mt-1 text-sm text-muted">{ru ? 'Предыдущая оценка' : 'Previous rating'}: {RATING_LABELS[ru ? 'ru' : 'en'][correction.receipt.review.rating - 1]}</p>
+            <p className="mt-1 text-sm text-muted">{ru ? 'Выберите новую оценку. До этого прежняя оценка остаётся в силе.' : 'Choose a replacement rating. The previous rating remains until then.'}</p>
+            <Button className="mt-2 min-h-11" variant="ghost" disabled={cardBusy} onClick={continueReview}>{ru ? 'Продолжить без изменения' : 'Continue without changes'}</Button>
+          </div>}
           <p className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-            {queue.length - index} {ru ? 'к повторению' : 'due'} ·{' '}
-            {card.fromError ? (ru ? 'из ошибки в упражнении' : 'from a missed exercise') : card.kind}
+            {correction ? ru ? 'предыдущая карточка' : 'previous card' : `${remaining?.length} ${ru ? 'к повторению' : 'due'}`} ·{' '}
+            {card.fromError
+              ? ru
+                ? 'из ошибки в упражнении'
+                : 'from a missed exercise'
+              : card.kind}
           </p>
-
-          {/* Offered only once mistake cards have piled up past what anyone would clear one at a time.
-              Below the threshold the per-card control is the better tool and this is just a way to
-              throw away work by accident. */}
-          {errorCount >= BULK_CLEAR_THRESHOLD &&
+          {!correction && errorCount >= BULK_CLEAR_THRESHOLD &&
             (confirmClear ? (
               <div className="flex flex-wrap items-center gap-3">
                 <span className="text-sm text-content">
@@ -173,52 +279,16 @@ export function ReviewPage() {
                   : `remove all mistake cards (${errorCount})`}
               </button>
             ))}
-          <Card className="min-h-40">
-            <div className="flex items-center gap-2.5">
-              <p className="font-mono text-2xl text-content">{card.front}</p>
-              {canPronounce(card) && canSpeak && (
-                <button
-                  type="button"
-                  aria-label={`${ru ? 'Произнести' : 'Pronounce'} ${card.front}`}
-                  className="text-xl text-teal transition-opacity hover:opacity-80"
-                  onClick={() => speakWord(card.front)}
-                >
-                  🔊
-                </button>
-              )}
-            </div>
-            {revealed && (
-              <div className="mt-4 border-t border-line pt-4">
-                <p className={`text-lg ${card.back !== card.front || extra ? 'text-content' : 'text-muted'}`}>
-                  {card.back !== card.front
-                    ? card.back
-                    : (extra ??
-                      (lookedUp
-                        ? ru
-                          ? 'Перевод не загрузился — попробуем в следующий раз'
-                          : 'Translation unavailable — we will try again next time'
-                        : '…'))}
-                </p>
-                {card.contextGloss && (
-                  <p className="mt-1.5 text-sm text-content">
-                    <span className="mr-1.5 font-mono text-2xs uppercase tracking-[0.08em] text-violet">
-                      {ru ? 'в контексте' : 'in context'}
-                    </span>
-                    {card.contextGloss}
-                  </p>
-                )}
-                {card.contextSentence && (
-                  <p className="mt-2 text-sm text-muted">{card.contextSentence}</p>
-                )}
-              </div>
-            )}
-          </Card>
-
-          {/* Mistake cards are the only ones with nowhere else to manage them: the lexicon skips them,
-              so the queue is the one place they appear and can be left. Outside the revealed block on
-              purpose — deciding you do not want a card back is not an answer to it, and making someone
-              reveal one first is asking them to work through what they are trying to drop. */}
-          {card.fromError && (
+          <ReviewCard
+            key={`${scope}:${correction ? 'correction' : 'ordinary'}:${card.id}`}
+            card={card}
+            correction={correction?.receipt}
+            disabled={opening}
+            onAdvance={graded}
+            onSkip={correction ? continueReview : () => skip(card.id)}
+            onBusyChange={handleBusyChange}
+          />
+          {!correction && card.fromError && (
             <button
               type="button"
               className="self-start font-mono text-2xs text-muted underline underline-offset-4 transition-colors hover:text-coral"
@@ -226,22 +296,6 @@ export function ReviewPage() {
             >
               {ru ? 'убрать из повторения' : 'remove from review'}
             </button>
-          )}
-
-          {revealed ? (
-            <div
-              className="flex flex-wrap gap-2"
-              role="group"
-              aria-label={ru ? 'Оцените карточку' : 'Grade the card'}
-            >
-              {GRADES.map((g) => (
-                <Button key={g.en} variant="ghost" onClick={() => void grade(g.rating)}>
-                  {ru ? g.ru : g.en}
-                </Button>
-              ))}
-            </div>
-          ) : (
-            <Button onClick={reveal}>{ru ? 'Показать ответ' : 'Show answer'}</Button>
           )}
         </div>
       )}

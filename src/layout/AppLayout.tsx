@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useRef } from 'react';
 import { NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import { useLearner } from '@/features/learner/store';
 import { useUiLang } from '@/features/i18n/uiLang';
@@ -8,6 +8,8 @@ import { MigrationNotice } from '@/features/migration/MigrationNotice';
 import { ErrorBoundary, PixelImage } from '@/shared/ui';
 import { SELLER } from '@/shared/seller';
 import { NavMore } from './NavMore';
+import { BackToTop } from './BackToTop';
+import '@/features/appearance/store';
 
 /** `icon` defaults to the nav sprite named after `label.en`; set it when no such sprite exists. */
 type NavItem = {
@@ -27,7 +29,7 @@ const NAV: NavItem[] = [
   { to: '/review', label: { en: 'review', ru: 'повторение' }, end: false, devOnly: false, tour: 'nav-review' },
   { to: '/vocabulary', label: { en: 'vocab', ru: 'словарь' }, end: false, devOnly: false, tour: undefined },
   { to: '/library', label: { en: 'library', ru: 'библиотека' }, end: false, devOnly: false, tour: 'nav-library' },
-  { to: '/kitchen-sink', label: { en: 'kit', ru: 'kit' }, end: false, devOnly: true, tour: undefined },
+  { to: '/kitchen-sink', label: { en: 'kit', ru: 'kit' }, end: false, devOnly: true, tour: undefined, icon: '/assets/pixel/nav/settings.png' },
 ];
 
 const MORE: NavItem[] = [
@@ -40,16 +42,20 @@ const MORE: NavItem[] = [
 
 export function AppLayout() {
   const level = useLearner((s) => s.level);
-  const ru = useUiLang((s) => s.lang) === 'ru';
+  const lang = useUiLang((s) => s.lang);
+  const ru = lang === 'ru';
   const location = useLocation();
+  const frameWidth = location.pathname.replace(/\/+$/, '') === '/vocabulary/text' ? 'max-w-6xl' : 'max-w-3xl';
+  const mainRef = useRef<HTMLElement>(null);
+  useEffect(() => { document.documentElement.lang = lang; }, [lang]);
   useEffect(() => {
     metricaHit(location.pathname);
   }, [location.pathname]);
   return (
     <div className="min-h-screen">
       <header className="border-b border-line bg-surface/60 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 py-3">
-          <NavLink to="/" className="flex shrink-0 items-baseline gap-2 whitespace-nowrap">
+        <div className={`mx-auto flex ${frameWidth} flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 py-3`}>
+          <NavLink to="/" className="flex min-w-0 max-w-full flex-wrap items-baseline gap-2 [overflow-wrap:anywhere]">
             <span className="eyebrow">en/dev</span>
             <span
               className="rounded-sm bg-surface-2 px-1.5 py-0.5 font-mono text-2xs text-teal"
@@ -66,7 +72,7 @@ export function AppLayout() {
               {level ?? 'A1–A2'}
             </span>
           </NavLink>
-          <nav className="relative flex flex-wrap items-center gap-1">
+          <nav className="relative flex min-w-0 max-w-full flex-wrap items-center gap-1">
             {NAV.filter((item) => !item.devOnly || import.meta.env.DEV).map((item) => (
               <NavLink
                 key={item.to}
@@ -75,7 +81,7 @@ export function AppLayout() {
                 data-tour={item.tour}
                 className={({ isActive }) =>
                   [
-                    'font-mono text-xs rounded-sm px-2.5 py-1.5 transition-colors',
+                    'min-w-0 max-w-full font-mono text-xs rounded-sm px-2.5 py-1.5 transition-colors',
                     item.devOnly ? 'hidden sm:inline-block' : '',
                     isActive
                       ? 'bg-surface-2 text-teal'
@@ -83,7 +89,7 @@ export function AppLayout() {
                   ].join(' ')
                 }
               >
-                <span className="flex items-center gap-1.5">
+                <span className="flex min-w-0 items-center gap-1.5 [overflow-wrap:anywhere]">
                   <PixelImage
                     src={item.icon ?? `/assets/pixel/nav/${item.label.en}.png`}
                     alt=""
@@ -108,14 +114,15 @@ export function AppLayout() {
       <MigrationNotice />
       <InstallPrompt />
 
-      <main className="mx-auto max-w-3xl px-5 py-8 pb-20">
+      <main ref={mainRef} tabIndex={-1} className={`mx-auto ${frameWidth} px-5 py-8 pb-20 [overflow-wrap:anywhere]`}>
         <ErrorBoundary resetKey={location.pathname}>
           <Suspense fallback={<p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading…'}</p>}>
             <Outlet />
           </Suspense>
         </ErrorBoundary>
       </main>
-      <SiteFooter ru={ru} />
+      <SiteFooter ru={ru} frameWidth={frameWidth} />
+      <BackToTop key={location.pathname} pathname={location.pathname} mainRef={mainRef} />
       {/* New paths open at the top; returning to a seen path restores its scroll. */}
       <ScrollRestoration getKey={(location) => location.pathname} />
     </div>
@@ -129,32 +136,27 @@ export function AppLayout() {
  * privacy policy and the seller's details were reachable only from Settings and the paywall, which is
  * a poor place to look for them and, for a buyer deciding whether to pay, the wrong one.
  */
-function SiteFooter({ ru }: { ru: boolean }) {
+function SiteFooter({ ru, frameWidth }: { ru: boolean; frameWidth: 'max-w-3xl' | 'max-w-6xl' }) {
   const links = [
-    { to: '/terms', ru: 'Условия и оферта', en: 'Terms and offer' },
+    { to: '/terms', ru: 'Оферта и контакты', en: 'Offer and contacts' },
     { to: '/privacy', ru: 'Конфиденциальность', en: 'Privacy' },
     { to: '/pro', ru: 'Подписка и цена', en: 'Subscription and price' },
     { to: '/support', ru: 'Поддержка', en: 'Support' },
   ];
   return (
-    <footer className="mt-4 border-t border-line">
-      <div className="mx-auto max-w-3xl px-5 py-6 font-mono text-2xs leading-relaxed text-muted">
-        <nav className="mb-3 flex flex-wrap gap-x-4 gap-y-1.5">
+    <footer data-app-footer className="mt-4 border-t border-line">
+      <div className={`mx-auto ${frameWidth} px-5 py-4 text-xs leading-relaxed text-muted [overflow-wrap:anywhere]`}>
+        <nav className="mb-2 flex flex-wrap gap-x-4 gap-y-1">
           {links.map((l) => (
             <NavLink key={l.to} to={l.to} className="hover:text-teal hover:underline">
               {ru ? l.ru : l.en}
             </NavLink>
           ))}
         </nav>
-        <p>
+        <p className="text-2xs">
           {SELLER.name}
           {ru ? ', самозанятый · ИНН ' : ', self-employed · INN '}
           {SELLER.inn}
-        </p>
-        <p className="mt-1">
-          <a href={`mailto:${SELLER.email}`} className="hover:text-teal hover:underline">
-            {SELLER.email}
-          </a>
         </p>
       </div>
     </footer>

@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { cn } from '@/shared/lib/cn';
 import type { Filword } from './generate';
+import { useUiLang } from '@/features/i18n/uiLang';
 
 const key = (r: number, c: number) => `${r},${c}`;
 const sign = (n: number) => (n > 0 ? 1 : n < 0 ? -1 : 0);
@@ -17,6 +18,7 @@ function lineCells(r0: number, c0: number, r1: number, c1: number): [number, num
 }
 
 export function FilwordView({ filword }: { filword: Filword }) {
+  const ru = useUiLang(s => s.lang) === 'ru';
   const [found, setFound] = useState<Set<string>>(new Set());
   const [start, setStart] = useState<[number, number] | null>(null);
 
@@ -50,7 +52,8 @@ export function FilwordView({ filword }: { filword: Filword }) {
         Найди слова: тапни первую букву, затем последнюю.
       </p>
       <div
-        className="grid w-fit gap-0.5"
+        className="grid w-fit max-w-full gap-0.5 overflow-x-auto"
+        tabIndex={0} role="region" aria-label={ru ? 'Сетка поиска слов' : 'Word search grid'}
         style={{ gridTemplateColumns: `repeat(${filword.size}, 1.75rem)` }}
       >
         {filword.grid.map((row, r) =>

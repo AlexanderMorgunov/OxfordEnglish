@@ -9,6 +9,7 @@ export { Option } from './Option';
 export { PageStub } from './PageStub';
 export { PixelImage } from './PixelImage';
 export { Popover } from './Popover';
+export { PopoverGroup } from './PopoverGroup';
 export { usePopoverClose } from './popover-close';
 export { ProgressBar } from './ProgressBar';
 export { SegmentedToggle } from './SegmentedToggle';

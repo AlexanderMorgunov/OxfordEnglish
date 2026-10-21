@@ -1,4 +1,5 @@
 import { API_BASE } from './config';
+import { withDeadline } from '@/shared/lib/deadline';
 import {
   Routes,
   SessionSchema,
@@ -85,12 +86,20 @@ export function login(body: AuthRequest): Promise<Session> {
   return request(Routes.login, { method: 'POST', body: JSON.stringify(body) }, asSession);
 }
 
-export function refresh(refreshToken: string): Promise<Session> {
-  return request(
-    Routes.refresh,
-    { method: 'POST', body: JSON.stringify({ refreshToken }) },
-    asSession
-  );
+export async function refresh(refreshToken: string): Promise<Session> {
+  try {
+    // This deadline belongs to the shared refresh, never to an individual AI caller.
+    return await withDeadline(30_000, undefined, signal => request(
+      Routes.refresh,
+      { method: 'POST', body: JSON.stringify({ refreshToken }), signal },
+      asSession
+    ));
+  } catch (error) {
+    if ((error instanceof Error || error instanceof DOMException) && error.name === 'TimeoutError') {
+      throw new ApiFailure('network', 0, 'refresh timed out');
+    }
+    throw error;
+  }
 }
 
 export function logout(refreshToken: string): Promise<void> {
@@ -221,16 +230,16 @@ const authed = (accessToken: string) => ({ authorization: `Bearer ${accessToken}
 
 /** Current plan + AI quota. Always fetched, never read off the access token: entitlement can lapse
  *  mid-token (refund, expiry, quota) and an hour-long JWT cannot be revoked. */
-export function getEntitlement(accessToken: string): Promise<Entitlement> {
-  return request(Routes.entitlement, { method: 'GET', headers: authed(accessToken) }, (j) => EntitlementSchema.parse(j));
+export function getEntitlement(accessToken: string, signal?: AbortSignal): Promise<Entitlement> {
+  return request(Routes.entitlement, { method: 'GET', headers: authed(accessToken), signal }, (j) => EntitlementSchema.parse(j));
 }
 
 /** Start the free trial. `installId` lets the server refuse a second trial from the same install
  *  (throws ApiFailure `trial_already_claimed`). */
-export function claimTrial(accessToken: string, installId: string): Promise<Entitlement> {
+export function claimTrial(accessToken: string, installId: string, signal?: AbortSignal): Promise<Entitlement> {
   return request(
     Routes.entitlementTrial,
-    { method: 'POST', headers: authed(accessToken), body: JSON.stringify({ installId }) },
+    { method: 'POST', headers: authed(accessToken), body: JSON.stringify({ installId }), signal },
     (j) => EntitlementSchema.parse(j)
   );
 }
@@ -269,10 +278,10 @@ export function redeemGrant(accessToken: string, grantToken: string): Promise<En
 /** Managed-AI call: the server holds the key, assembles the prompt, and charges the account's quota.
  *  Throws ApiFailure with `no_plan` / `quota_exhausted` / `ai_unavailable` — all recoverable by falling
  *  back to BYOK or to the free path, so callers should catch rather than surface a raw error. */
-export function aiComplete(accessToken: string, req: AiTaskRequest): Promise<AiCompleteResponse> {
+export function aiComplete(accessToken: string, req: AiTaskRequest, signal?: AbortSignal): Promise<AiCompleteResponse> {
   return request(
     Routes.ai,
-    { method: 'POST', headers: authed(accessToken), body: JSON.stringify(req) },
+    { method: 'POST', headers: authed(accessToken), body: JSON.stringify(req), signal },
     (j) => AiCompleteResponseSchema.parse(j)
   );
 }

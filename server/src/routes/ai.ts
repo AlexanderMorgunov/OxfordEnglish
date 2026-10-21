@@ -5,6 +5,7 @@ import { consumeAi, refundAi, evaluate, type EntitlementStore } from '../entitle
 import { TASKS, aiCost, buildMessages, cacheKey, inputSize, type AiCacheStore } from '../ai.js';
 import { deepseekCompleter, aiConfigured, AI_MODEL, type Completer } from '../aiProvider.js';
 import { ipBucketLimiter } from '../rateLimit.js';
+import { parseWordSenses } from '../wordSenses.js';
 
 const err = (code: string, status: 400 | 401 | 402 | 413 | 429 | 503) =>
   Response.json({ error: { code } }, { status });
@@ -50,9 +51,40 @@ export function aiRoutes(ent: EntitlementStore, cache: AiCacheStore, completer: 
 
     const spec = TASKS[req.task];
     const key = spec.cacheable ? cacheKey(req, AI_MODEL) : null;
+    if (req.task === 'wordSenses') {
+      if (key) {
+        try {
+          const hit = await cache.get(key);
+          if (hit) {
+            parseWordSenses(hit, req.term);
+            return c.json({ content: hit, cached: true, ai: charge.entitlement.ai });
+          }
+        } catch {
+          // A corrupt or unavailable cache must not become a charged failure.
+        }
+      }
+      let content: string;
+      try {
+        content = await completer(buildMessages(req), {
+          temperature: spec.temperature, maxTokens: spec.maxTokens, task: req.task,
+        });
+        content = JSON.stringify({ senses: parseWordSenses(content, req.term) });
+      } catch {
+        await ent.mutate(claims.sub, row => ({ row: refundAi(row, cost) ?? undefined, result: undefined }));
+        return err(ErrorCode.AiUnavailable, 503);
+      }
+      if (key) {
+        try { await cache.put(key, req.task, content); } catch { /* Best-effort shared cache. */ }
+      }
+      return c.json({ content, cached: false, ai: evaluate(charge.row, now).ai });
+    }
     if (key) {
-      const hit = await cache.get(key);
-      if (hit) return c.json({ content: hit, cached: true, ai: charge.entitlement.ai });
+      try {
+        const hit = await cache.get(key);
+        if (hit) return c.json({ content: hit, cached: true, ai: charge.entitlement.ai });
+      } catch {
+        // Cache availability must not turn a charged request into a failure.
+      }
     }
 
     let content: string;
@@ -74,7 +106,9 @@ export function aiRoutes(ent: EntitlementStore, cache: AiCacheStore, completer: 
       return err(ErrorCode.AiUnavailable, 503);
     }
 
-    if (key) await cache.put(key, req.task, content);
+    if (key) {
+      try { await cache.put(key, req.task, content); } catch { /* Best-effort shared cache. */ }
+    }
     return c.json({ content, cached: false, ai: evaluate(charge.row, now).ai });
   });
 

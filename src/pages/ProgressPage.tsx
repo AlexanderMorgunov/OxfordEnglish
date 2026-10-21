@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { CheckpointResult, ExerciseAttempt } from '@/db/db';
 import { useContentStore } from '@/content/store';
+import { ContentLoadError } from '@/content/ContentLoadError';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { Card, Eyebrow, PixelImage } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
@@ -79,7 +80,7 @@ export function ProgressPage() {
   const [attempts, setAttempts] = useState<ExerciseAttempt[] | null>(null);
   const [vocab, setVocab] = useState(0);
   const [history, setHistory] = useState<CheckpointResult[]>([]);
-  const { pack, load } = useContentStore();
+  const { status, pack, load } = useContentStore();
 
   useEffect(() => {
     void load();
@@ -147,6 +148,7 @@ export function ProgressPage() {
       </div>
 
       <div>
+        {status === 'error' && <div className="mb-4"><ContentLoadError /></div>}
         <div className="mb-3 flex items-center justify-between">
           <p className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
             {ru ? 'контрольные' : 'checkpoints'}

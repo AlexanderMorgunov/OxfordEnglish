@@ -17,6 +17,7 @@ import { metricaConfigured, initMetrica } from '@/features/analytics/metrica';
 import { useLearner } from '@/features/learner/store';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { AccountSection } from '@/features/account/AccountSection';
+import { ApplicationTextSize } from '@/features/appearance/ApplicationTextSize';
 import type { Level } from '@/content/schema';
 
 const PROVIDER_IDS = Object.keys(PROVIDERS) as AiProviderId[];
@@ -162,7 +163,7 @@ export function SettingsPage() {
           Язык инструкций, подсказок и объяснений. Английский учебный текст не
           меняется. / Language of instructions, hints and explanations.
         </p>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {(['ru', 'en'] as const).map((l) => (
             <Option
               key={l}
@@ -176,6 +177,8 @@ export function SettingsPage() {
       </div>
 
       <AccountSection />
+
+      <ApplicationTextSize />
 
       <div id="ai-section" className="scroll-mt-6" aria-hidden="true" />
       <Eyebrow className="mb-3.5">config · ai (byok)</Eyebrow>

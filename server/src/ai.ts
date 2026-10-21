@@ -7,6 +7,7 @@
  */
 import { createHash } from 'node:crypto';
 import type { AiTaskRequest, AiTaskName } from './contract.js';
+import { wordSensesMessages, SENSES_VERSION, SENSES_COST, SENSES_MAX_TOKENS } from './wordSenses.js';
 import {
   clampBand,
   translateMessages,
@@ -45,6 +46,7 @@ type TaskSpec = {
 };
 
 export const TASKS: Record<AiTaskName, TaskSpec> = {
+  wordSenses: { version: SENSES_VERSION, temperature: 0.2, maxTokens: SENSES_MAX_TOKENS, cacheable: true, cost: SENSES_COST },
   translate: { version: 'v1', temperature: 0.2, maxTokens: 300, cacheable: true, cost: 1 },
   wordInContext: { version: 'v1', temperature: 0.4, maxTokens: 220, cacheable: true, cost: 1 },
   simplify: { version: 'v1', temperature: 0.2, maxTokens: 512, cacheable: true, cost: 1 },
@@ -65,6 +67,8 @@ export const aiCost = (task: AiTaskName): number => TASKS[task].cost;
 
 export function buildMessages(req: AiTaskRequest): ChatMessage[] {
   switch (req.task) {
+    case 'wordSenses':
+      return wordSensesMessages(req.term);
     case 'translate':
       return translateMessages(req.text.trim(), req.sentence?.trim());
     case 'simplify':

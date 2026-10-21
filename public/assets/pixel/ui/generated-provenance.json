@@ -1,0 +1,43 @@
+{
+  "provider": "PixelLab",
+  "tool": "create_image_pixflux",
+  "generatedAt": "2026-10-03",
+  "purpose": "DayEnglish vocabulary and text input UI",
+  "dimensions": {
+    "width": 32,
+    "height": 32
+  },
+  "transparent": true,
+  "generationsPerImage": 1,
+  "paletteReference": [
+    "#57c9bd",
+    "#e9a94b",
+    "#e8706a",
+    "#12141c",
+    "#1a1d29",
+    "#ece8dd"
+  ],
+  "assets": [
+    {
+      "file": "mic.png",
+      "jobId": "db3d3c28-21cc-437e-9143-9d078c87377e",
+      "assetId": "1686060f-469b-572f-8b72-4299b51bb55b",
+      "sha256": "d54c2c1fe0f8ee01147fc43ad4208bd22b0743325ffb74cc1807fd6e6ffeabc4",
+      "prompt": "A single compact microphone icon for a dark pixel art English learning app. Retro 16-bit crisp pixel sprite: teal microphone capsule on a cream short stand, one small amber sound accent. Strong readable silhouette, front view, centered, generous transparent margin. Palette teal #57c9bd cream #ece8dd amber #e9a94b dark ink #12141c. No text, letters, face, scene, border or UI frame."
+    },
+    {
+      "file": "scan.png",
+      "jobId": "dbe591ed-0a7e-4af5-a792-b4892732479f",
+      "assetId": "d3e985b9-b26e-5f5b-a6b2-2a37c13e5610",
+      "sha256": "34f3d073cd5fd6dd9a9be735e5fc557b99866acbe4a18e0a1900394c091c36ad",
+      "prompt": "A single compact document scan icon for a dark pixel art English learning app. Retro 16-bit crisp pixel sprite: small cream paper with three dark text strokes, four teal scanning corner brackets, tiny amber corner fold. Strong readable silhouette, front view, centered, generous transparent margin. Palette teal #57c9bd cream #ece8dd amber #e9a94b dark ink #12141c. No real letters, words, camera, face, scene, border or UI frame."
+    },
+    {
+      "file": "translate.png",
+      "jobId": "4543fec3-f1c9-4b5c-9f2f-329fbd27a423",
+      "assetId": "6760a275-be1e-52ad-a096-eafd977a10f1",
+      "sha256": "9ac55a22224f74a0118ae225fa6d6697073a2dc1d5f080498458b7f7a7e50c6d",
+      "prompt": "A single compact translation icon for a dark pixel art English learning app. Retro 16-bit crisp pixel sprite: two offset cream and teal speech cards with a pair of small amber arrows between them, abstract dark line glyphs only. Strong readable silhouette, front view, centered, generous transparent margin. Palette teal #57c9bd cream #ece8dd amber #e9a94b dark ink #12141c. No real letters, words, flags, face, scene, border or UI frame."
+    }
+  ]
+}

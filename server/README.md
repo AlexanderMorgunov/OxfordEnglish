@@ -1,83 +1,92 @@
-# DayEnglish API (backend v1)
+# DayEnglish API
 
-Hono service for **accounts + cross-device sync**, deployed to **Yandex Serverless Containers**. Full
-design: `../docs/backend-v1-design.md`. **Slice 1 = auth only** (no sync yet). No PII — accounts are a
-random recovery key; the client derives `accountId` + `verifier` (see `../src/features/account/keys.ts`).
+Separate **Hono/Node** service for recovery-key accounts, cross-device sync,
+book-file storage, trial/Pro entitlements, Robokassa checkout, managed AI,
+TOTP/backup-code recovery, and the owner's admin surface. Production architecture:
+Yandex Serverless Containers + API Gateway, YDB, Object Storage, and Lockbox.
+This is no longer the original auth-only skeleton.
 
-## Run locally
-```
-npm install
-npm run dev          # tsx watch, listens on PORT (default 8080)
+Project conventions and invariants: [../AGENTS.md](../AGENTS.md) and
+[AGENTS.md](AGENTS.md). Detailed design/deployment plans are local and ignored:
+`../docs/backend-v1-design.md`, `../docs/deploy-container.md`,
+`../docs/yc-backend-setup.md`, `../docs/billing-robokassa.md`.
+
+## Run and verify locally
+
+```powershell
+npm ci
+npm run dev                 # tsx watch; PORT defaults to 8080
 npm run typecheck
-npx tsx src/smoke.ts # in-process auth flow test (register/refresh/reuse/devices/login) — ALL PASS
-```
-`src/smoke.ts` exercises the app via Hono's `app.request()` in-process, which is the reliable way to test
-the logic. (A network `serve()` on Windows/Node24 was observed to accept TCP but hang on HTTP — an adapter
-quirk of that env, not the app; verify `serve()` on the Alpine container at deploy.)
-
-## Layout
-- `src/app.ts` — `createApp(store?)` builds the Hono app (CORS, health, JWKS, auth routes). Storage is
-  injectable → tests/YDB swap it.
-- `src/index.ts` — starts the HTTP server (`serve`), reads `PORT`/`HOST`.
-- `src/routes/auth.ts` — `/v1/auth/register|login|refresh|logout|devices`.
-- `src/store.ts` — `AuthStore` interface + `InMemoryAuthStore` (skeleton). Verifier scrypt-hashed
-  (prod: argon2id); refresh tokens stored by SHA-256 hash; rotation + reuse-detection revokes the family.
-  **Replace with a YDB implementation of `AuthStore`** (slice 2 infra).
-- `src/tokens.ts` — Ed25519 (EdDSA) access JWTs + `/v1/.well-known/jwks.json`. Verify via JWKS (SSO seam).
-- `src/contract.ts` — wire schemas; MUST mirror `../src/features/account/contract.ts` (later: shared pkg).
-
-## Endpoints (`/v1`)
-`POST /v1/auth/register` · `POST /v1/auth/login` · `POST /v1/auth/refresh` · `POST /v1/auth/logout` ·
-`GET /v1/auth/devices` (Bearer) · `GET /v1/.well-known/jwks.json` · `GET /health`.
-
-## Env
-- `PORT` (default 8080), `HOST` (optional bind, local only).
-- `CORS_ORIGINS` — csv of allowed SPA origins (default `https://dayenglish.ru,https://www.dayenglish.ru`;
-  add the Vercel preview origin for staging).
-- `JWT_PRIVATE_JWK` — Ed25519 private JWK (JSON) from **Lockbox** in prod; unset → ephemeral dev key.
-- `JWT_KID`, `JWT_ISS` (default `https://api.dayenglish.ru`), `JWT_AUD` (default `dayenglish`),
-  `ACCESS_TTL_S` (default 3600).
-- `ADMIN_TOKEN` — **local only, never set in production.** Mounts the admin surface below; must be at
-  least 24 characters or nothing is mounted. A CI deploy replaces the container's whole environment, so
-  one added by hand in the console does not survive the next deploy.
-
-## Admin (owner only, never deployed)
-
-Counts of accounts/trials/subscriptions, and granting Pro by account id.
-
-**It is not part of the deployed API.** The routes and the page are mounted only when `ADMIN_TOKEN` is
-set, and production does not set it — so there is nothing to reach there, and a mistake in the auth check
-cannot expose a surface that was never mounted. The page is served by this process rather than built into
-the web app: a lazy route in the client bundle still ships the chunk, and the service worker would
-precache it onto every user's device.
-
-The numbers you want are production numbers, so run this against the production database exactly the way
-`migrate.ts` and `inspectGrants.ts` already do. Started with no `YDB_DATABASE` it answers 0 for
-everything, truthfully and uselessly.
-
-```bash
-MSYS_NO_PATHCONV=1 \
-  YDB_ENDPOINT=… YDB_DATABASE=… \
-  YDB_ACCESS_TOKEN_CREDENTIALS=$(yc iam create-token) \
-  ADMIN_TOKEN=$(openssl rand -hex 24) PORT=8799 \
-  npx tsx src/index.ts
+npm run typecheck:smoke
+npx --no-install tsx src/smoke.ts
 ```
 
-Then open <http://localhost:8799/admin> and paste the token (kept in `sessionStorage`, so it does not
-outlive the tab). A token shorter than 24 characters mounts nothing and says so in the log.
+Without `YDB_DATABASE`, the app uses in-memory stores and local ephemeral keys.
+Do not set production storage credentials for ordinary local checks. The root
+frontend needs `VITE_API_BASE` set to the local API address to show account UI;
+configure `CORS_ORIGINS` for that frontend origin.
 
-- `GET /v1/admin/stats` — accounts that exist NOW (delete-account purges the row, so this is not "ever
-  registered"), trials started/active, subscriptions ever/active.
-- `GET /v1/admin/accounts/:id` — one account's plan.
-- `POST /v1/admin/grant` `{ accountId, days }` — adds days through the same `applyPayment` a purchase
-  uses, so a grant and a later payment stack rather than truncate each other. **There is no undo**, and
-  the only record is the entitlement row plus a line in this process's log.
+Top-level `src/*.smoke.ts` use injected stores and Hono's in-process `app.request()`;
+CI installs this package, typechecks production **and smoke** code, then runs those
+smokes plus `src/smoke.ts`. Root Vitest does not cover them. Store smokes under
+`src/stores/` require configured infrastructure and may mutate data; run them only
+for an explicitly scoped integration test. `npm run migrate` also mutates storage.
 
-Reads every entitlement row to count, on purpose: the "is this a trial" rule lives in `planOf`, and a
-second copy in YQL could not be tested (the store smokes need a live database, so CI never runs them).
-That makes this a small-table convenience, not a metrics endpoint.
+## Layout and boundaries
 
-## Deploy (later, with infra)
-`docker build` (see `Dockerfile`) → push to Yandex Container Registry → Yandex Serverless Containers.
-Domain `api.dayenglish.ru`; secrets via Lockbox + service account; swap `InMemoryAuthStore` for YDB.
-Prod on `main`, a separate staging instance for `dev`.
+- `src/app.ts`: builds the app, CORS/limits, routes, and injectable stores; chooses
+  YDB/Object Storage adapters when configured. `src/index.ts` serves HTTP.
+- `src/routes/`: auth/device linking, sync, blobs, account deletion, entitlements,
+  billing, AI, TOTP/recovery, and admin routes. Health is `/health`; API paths
+  start with `/v1`, including `/v1/.well-known/jwks.json`.
+- `src/contract.ts`: wire schemas mirrored in
+  `../src/features/account/contract.ts`; `src/sync.ts` resolves conflicts in parity
+  with `../src/features/sync/resolve.ts`.
+- `src/store.ts`, `sync.ts`, `blobs.ts`, `entitlements.ts`, `ai.ts`, `totp.ts`,
+  `recoveryName.ts`: cores, store contracts, and in-memory implementations.
+  `src/stores/` contains production adapters.
+- `src/password.ts`: argon2id verifier hashing; `src/tokens.ts`: Ed25519 access
+  JWTs/JWKS. The server never needs the user's raw recovery key. Recovery keeps
+  the account id while rotating credentials.
+- `src/entitlements.ts`: trial/Pro state, quota units, serialized mutations,
+  and payment grants. Sync writes/uploads require trial/Pro; reads are ungated.
+- `src/ai.ts`, `aiPrompts.ts`, `aiProvider.ts`: named task registry, built-prompt
+  cache keys, quota accounting, bounded upstream calls. The managed key stays
+  server-side; BYOK remains a separate frontend path.
+- `wordSenses.ts` mirrors the frontend's `features/ai/word-senses.ts`: bounded request/output schema
+  and prompt for the `wordSenses` named task (four quota units, 700 output tokens). Malformed fresh
+  output is refunded and never cached; cache I/O failures are best-effort for this task. The API must
+  support the task before shipping managed vocabulary suggestions in production clients.
+- `src/billing.ts` and `routes/billing.ts`: callback signature validation,
+  idempotent payment confirmation, account-bound grant lookup/redemption. A browser
+  return URL never confirms payment. Recurring billing is a separate planned feature.
+
+## Configuration and deployment
+
+`PORT`/optional `HOST` control serving. `CORS_ORIGINS` is a comma-separated allowlist
+(default `.ru` and `www.ru`; local/Capacitor origins must be explicitly supported).
+Storage, JWT, AI, billing, and recovery secrets are provided through the local
+runbook/Lockbox, not tracked `.env` values. The frontend's `VITE_API_BASE` is public
+build-time configuration; if absent, the entire account surface is disabled.
+
+API deployment is **manual and separate from the web deployment**. The local
+`.github/workflows/deploy-container.yml` is ignored and is not an active Actions
+workflow. Container revisions pin a Lockbox version and do not inherit omitted
+secret/env bindings; inspect current revision metadata before an authorized deploy.
+In Git Bash, slash-leading `yc` values require `MSYS_NO_PATHCONV=1`.
+
+Do not casually rotate `TOTP_ENC_KEY` or `INDEX_HMAC_KEY`: existing encrypted or
+indexed records depend on them. Never put secret values into command output or docs.
+
+## Owner admin
+
+The API mounts `/admin` and `/v1/admin/*` only when `ADMIN_TOKEN` meets the minimum
+length in `src/routes/admin.ts`. Rate limiting precedes the token check. The latest
+local operations record says it was enabled on production on September 23, 2026;
+the old “never deployed” statement was obsolete. Confirm live state separately.
+
+Scope: counts, lookup of one account's plan, and an additive Pro grant. It is served
+by the API, outside the SPA bundle and precache. The grant shares transactional
+entitlement mutation with payment/quota paths. Payment identity is deliberately
+separated from entitlement data; adding payment history/refunds would require
+revisiting access rights and the audit design. An admin grant is not an ordinary test.

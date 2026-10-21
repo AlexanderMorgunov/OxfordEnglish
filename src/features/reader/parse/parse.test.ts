@@ -41,6 +41,12 @@ test('toSentences splits on terminal punctuation', () => {
   ]);
 });
 
+test('toSentences keeps closing punctuation and abbreviations in their original sentences', () => {
+  expect(toSentences('Mr. Smith said "Hello." Next (sentence.) Last [sentence.] Done.')).toEqual([
+    'Mr. Smith said "Hello."', 'Next (sentence.)', 'Last [sentence.]', 'Done.',
+  ]);
+});
+
 test('parseEpub reads title, author and spine order', () => {
   const opf = `<?xml version="1.0"?>
     <package xmlns="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/">

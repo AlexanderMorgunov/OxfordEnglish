@@ -54,7 +54,7 @@ export function DictationExercise({ exercise, onSolved }: Props) {
       />
       <div className="flex flex-wrap items-center gap-2.5">
         <Input
-          className="min-w-64 flex-1"
+          className="min-w-0 flex-1 basis-64"
           placeholder={ru ? 'наберите, что слышите…' : 'type what you hear…'}
           value={value}
           disabled={status === 'correct'}

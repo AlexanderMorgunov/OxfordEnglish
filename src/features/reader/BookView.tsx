@@ -6,6 +6,7 @@ import type { ParsedBook } from './parse';
 import { paginateChapters } from './paginate';
 import { ReadingText } from './reading-text';
 import { ChapterStudy } from './ChapterStudy';
+import { ChapterVocabulary } from './ChapterVocabulary';
 import { QuotaNotice } from '@/features/account/QuotaNotice';
 import { ReaderWidget } from './ReaderWidget';
 import { BookmarkList } from './BookmarkList';
@@ -13,6 +14,7 @@ import { toSentences } from './parse/text';
 import { buildBookIndex, positionOf, splitParas } from './position';
 import { rememberReader } from './return-to-reader';
 import { saveProgress, useReadingTracker } from '@/features/stats/useReadingTracker';
+import { useReadingPosition } from './useReadingPosition';
 import {
   listBookmarks,
   toggleBookmark,
@@ -57,6 +59,7 @@ export function BookView({
     null
   );
   const jumpingRef = useRef(false);
+  const rootRef = useRef<HTMLDivElement>(null);
   // The ref is for the scroll effects, which read it synchronously; render needs a state copy.
   const [jumping, setJumping] = useState(false);
   const [dismissedChapter, setDismissedChapter] = useState<number | null>(null);
@@ -77,46 +80,7 @@ export function BookView({
     onChapter?.(next);
   };
 
-  // Persist and restore the scroll position per chapter, so a reader resumes exactly where
-  // they left off (not just at the chapter top).
-  useEffect(() => {
-    const key = `${idPrefix}.pos.${chapter}`;
-    const restore = !jumpingRef.current; // a pending bookmark jump owns the scroll instead
-    let saved = 0;
-    try {
-      saved = Number(localStorage.getItem(key)) || 0;
-    } catch {
-      // ignore
-    }
-    // Ignore scroll writes until the initial restore has run, and once the reading text has left the
-    // DOM (navigating away): otherwise the window's snap to 0 — RR scrolling the next, shorter page to
-    // top while this listener is still attached — clobbers the saved position with 0.
-    let restored = !restore;
-    const raf = restore
-      ? requestAnimationFrame(() => {
-          window.scrollTo(0, saved);
-          restored = true;
-        })
-      : 0;
-    let writeRaf = 0;
-    const onScroll = () => {
-      if (!restored || !document.querySelector('[data-para]')) return;
-      cancelAnimationFrame(writeRaf);
-      writeRaf = requestAnimationFrame(() => {
-        try {
-          localStorage.setItem(key, String(Math.round(window.scrollY)));
-        } catch {
-          // best-effort
-        }
-      });
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => {
-      cancelAnimationFrame(raf);
-      cancelAnimationFrame(writeRaf);
-      window.removeEventListener('scroll', onScroll);
-    };
-  }, [idPrefix, chapter]);
+  const cancelRestore = useReadingPosition({ rootRef, jumpingRef, storageKey: `${idPrefix}.pos.${chapter}`, pageId: chapters[chapter]!.id });
 
   // Scroll to a bookmarked paragraph after navigation (or in-place). Runs on the jump nonce so a
   // same-page jump still fires; clears jumpingRef once the scroll is scheduled.
@@ -148,6 +112,7 @@ export function BookView({
   const offer = offered != null && offered > chapter && offered !== dismissedChapter ? offered : null;
 
   const ch = chapters[chapter]!;
+  const source = useMemo(() => ({ bookKey: idPrefix, chapterId: ch.id }), [idPrefix, ch.id]);
   const paragraphs = useMemo(() => splitParas(ch.text), [ch]);
   const multi = chapters.length > 1;
 
@@ -215,6 +180,7 @@ export function BookView({
   };
 
   const jumpTo = (bm: Bookmark) => {
+    cancelRestore();
     const { page, paragraph, sentence } = locateBookmark(chapters, bm);
     jumpingRef.current = true;
     setJumping(true);
@@ -257,8 +223,8 @@ export function BookView({
   ) : null;
 
   return (
-    <>
-      {ch.title && <h1 className="mb-6 text-2xl font-bold tracking-tight text-balance">{ch.title}</h1>}
+    <div ref={rootRef}>
+      {ch.title && <h1 className="mb-6 text-2xl font-bold tracking-tight text-balance [overflow-wrap:anywhere]">{ch.title}</h1>}
       {offer != null && (
         <div className="mb-4 flex flex-wrap items-center gap-3 rounded-md border border-line bg-surface px-3 py-2">
           {/* Full-width on a narrow screen so the buttons wrap BELOW: `flex-1` alone let the text shrink
@@ -303,11 +269,14 @@ export function BookView({
 
       <QuotaNotice compact />
       <ReadingText
+        key={`${idPrefix}:${chapter}:${ch.id}`}
         paragraphs={paragraphs}
+        source={source}
         bookmarkedSentences={bookmarkedSentences}
         onBookmarkSentence={(p, si, s) => void toggleSentenceBookmark(p, si, s)}
       />
       <ChapterStudy text={ch.text} idPrefix={`${idPrefix}.${chapter}`} />
+      <ChapterVocabulary key={`${idPrefix}:${ch.id}`} source={source} />
       {nav && <div className="mt-8 border-t border-line pt-5">{nav}</div>}
       <ReaderWidget
         onBookmarkHere={toggleHere}
@@ -316,6 +285,6 @@ export function BookView({
         onJump={jumpTo}
         onDelete={(id) => void deleteBookmark(id)}
       />
-    </>
+    </div>
   );
 }

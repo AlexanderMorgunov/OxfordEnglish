@@ -1,5 +1,6 @@
 import Dexie, { type EntityTable } from 'dexie';
 import type { Card } from 'ts-fsrs';
+import type { PartOfSpeech } from '@/features/vocab/grammar-metadata';
 
 /** Sync metadata (slice 2). Optional until the write-through layer (slice 2d) stamps every new write;
  *  the v7 migration backfills existing rows from their natural creation time (never `now()` — F11).
@@ -58,6 +59,7 @@ export interface SrsCard extends SyncMetaFields {
   /** The word's meaning in its source sentence (from the AI in-context lookup), when saved from the
    *  reader — distinct from `back` (the general dictionary translation). Non-indexed: no version bump. */
   contextGloss?: string;
+  partOfSpeech?: PartOfSpeech;
   sourceDayId?: string;
   tags: string[];
   /** Legacy: a wrong answer used to create a card automatically. Nothing sets this any more, but rows
@@ -68,6 +70,7 @@ export interface SrsCard extends SyncMetaFields {
   card: Card;
   /** When the card was added (ms). Non-indexed: no version bump; absent on cards from before it existed. */
   createdAt?: number;
+  creationId?: string;
 }
 
 export interface CheckpointResult extends SyncMetaFields {
@@ -133,12 +136,13 @@ export interface ActivityDay {
   books: Record<string, BookActivity>;
 }
 
-/** Append-only history of review grades (ts-fsrs Rating) — review stats are derived from it. */
+/** Review events; a last-rating correction changes its rating without adding another event. */
 export interface ReviewLogEntry {
   id: string;
   cardId: string;
   rating: number;
   ts: number;
+  modifiedAt?: number;
 }
 
 /** A remote catalog book fetched once and kept for offline rereading. `book` is a ParsedBook. */

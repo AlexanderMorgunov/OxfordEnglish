@@ -11,6 +11,7 @@ import { reviveCard } from '@/features/srs/reviveCard';
 import type { SyncChange, SyncEntry, SyncPushResponse, SyncPullResponse } from '@/features/account/contract';
 import { resolveByStore, type SyncedStore } from './resolve';
 import { resetAccountSettings } from './settingsBridge';
+import { captureDataScope, invalidateDataScope } from '@/features/account/dataScope';
 
 export interface SyncTransport {
   push(body: { cursorSeq: number; changes: SyncChange[]; idempotencyKey: string }): Promise<SyncPushResponse>;
@@ -140,6 +141,21 @@ export async function applyEntry(entry: SyncEntry): Promise<void> {
   guard();
   const store = entry.store as SyncedStore;
   const incoming = rowFromEntry(entry);
+
+  if (store === 'srsCards' || store === 'settings') {
+    const current = captureDataScope();
+    await db.transaction('rw', [db.table(store), db.pending], async () => {
+      guard();
+      if (!current()) throw new SyncStale();
+      const local = await getLocal(store, entry.id);
+      guard();
+      if (!current()) throw new SyncStale();
+      const winner = local ? resolveByStore(store, local as never, incoming as never) as unknown as Row : incoming;
+      await putLocal(store, winner);
+      if (sig(store, winner) !== sig(store, incoming)) await markDirty(store, winner);
+    });
+    return;
+  }
 
   if (APPEND_ONLY.has(store)) {
     const exists = await getLocal(store, entry.id);
@@ -313,6 +329,7 @@ export async function wipeSyncedData(): Promise<void> {
   // FIRST, before any clear: a wipe that throws half-way still leaves the old account's rows behind, and
   // that is precisely the case a running cycle must not carry into the next account.
   epoch += 1;
+  invalidateDataScope();
   await Promise.all(SYNCED_TABLES.map((s) => db.table(s).clear()));
   await db.pending.clear();
   const rows = await db.syncState.toArray();
@@ -354,6 +371,7 @@ async function dropCachedText(): Promise<void> {
 }
 
 export async function releasePreviousAccountData(): Promise<void> {
+  invalidateDataScope();
   await Promise.all([db.activity.clear(), db.reviewLog.clear(), db.feedbackOutbox.clear(), dropCachedText()]);
   // Account-scoped settings belong to the same boundary, and ONLY to it. Resetting them from
   // `wipeSyncedData` looked equivalent — the wipe clears `db.settings` too — and silently was not: the

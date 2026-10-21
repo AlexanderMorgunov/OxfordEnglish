@@ -58,6 +58,12 @@ const visible = async () => {
 beforeEach(() => {
   vi.clearAllMocks();
   // A live session with an unexpired token, so `getAccessToken` answers without touching the network.
+  localStorage.setItem('oxford-account', JSON.stringify({
+    accountId: 'acc-test-0123456789ab',
+    deviceId: useAccount.getState().deviceId,
+    refreshToken: 'synthetic-totp-refresh',
+    incarnation: 'synthetic-totp-session',
+  }));
   useAccount.setState({
     status: 'authenticated',
     accountId: 'acc-test-0123456789ab',

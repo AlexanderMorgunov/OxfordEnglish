@@ -6,69 +6,95 @@ import type { AiTaskRequest } from '@/features/account/contract';
 import { isConfigured, useAiStore } from './store';
 import { upsellTarget } from './upsell';
 import type { AiConfig } from './provider';
+import { captureDataScope, requireDataScope, subscribeDataScope } from '@/features/account/dataScope';
+import { abortReason, withDeadline } from '@/shared/lib/deadline';
 
-/**
- * Picks the path for one AI call: the managed proxy (our key, paid/trial plans) or BYOK (the user's own
- * key, straight from the browser).
- *
- * Managed is preferred when available because it is the thing the subscription pays for. A managed
- * failure that the user could still route around — quota gone, proxy down, offline — falls back to BYOK
- * rather than surfacing, so a paying user with their own key never ends up worse off than a free one.
- */
-export async function runTask(
-  req: AiTaskRequest,
-  config: AiConfig | null,
-  byok: (config: AiConfig) => Promise<string>
-): Promise<string> {
-  // `planUnreadable` is in here deliberately: refusing locally when we simply have no answer is how a
-  // subscriber on a bad connection got told to buy what they already own. Ask the proxy and let its
-  // 401/402 be the refusal — it is the only party that actually knows.
-  if (managedAiAvailable() || planUnreadable()) {
-    try {
-      const token = await useAccount.getState().getAccessToken();
-      if (token) {
-        const res = await api.aiComplete(token, req);
-        useEntitlement.getState().applyUsage(res.ai);
-        return res.content;
-      }
-    } catch (e) {
-      // Re-read the plan so the UI stops offering a path the server just refused.
-      if (e instanceof ApiFailure && (e.code === 'quota_exhausted' || e.code === 'no_plan')) {
-        void useEntitlement.getState().load();
-      }
-      if (!isConfigured(config)) throw e;
+export type AiPath = 'managed' | 'byok';
+export type AiResult = { content: string; path: AiPath };
+export const AI_AUTH_TIMEOUT = 8000;
+export const AI_ATTEMPT_TIMEOUT = 25000;
+export const AI_REQUEST_TIMEOUT = AI_AUTH_TIMEOUT + 2 * AI_ATTEMPT_TIMEOUT;
+type Options = { signal?: AbortSignal; path?: AiPath };
+type Byok = (config: AiConfig, signal: AbortSignal) => Promise<string>;
+
+export function captureAiScope(signal?: AbortSignal): () => void {
+  const current = captureDataScope();
+  const initial = useAiStore.getState().config;
+  const account = useAccount.getState();
+  return () => {
+    requireDataScope(current);
+    const now = useAccount.getState();
+    if (initial !== useAiStore.getState().config || account.sessionRevision !== now.sessionRevision || account.accountId !== now.accountId || account.status !== now.status) {
+      throw new DOMException('AI settings or account changed', 'AbortError');
     }
+    if (signal?.aborted) throw abortReason(signal);
+  };
+}
+
+function canFallback(error: unknown): boolean {
+  if (error instanceof ApiFailure) {
+    return error.status === 0 || error.status >= 500 || [401, 402, 429].includes(error.status);
   }
-  if (!isConfigured(config)) throw new Error('AI is not available');
-  return byok(config);
+  return error instanceof TypeError || ((error instanceof Error || error instanceof DOMException) && error.name === 'TimeoutError');
 }
 
-/** Label for the LOCAL (Dexie/localStorage) cache key, standing in for the model id. The managed path
- *  pins its model server-side, so the client has no id to key on; 'managed' keeps its entries from
- *  colliding with a BYOK model's. Switching paths just costs one cache miss. */
+export async function runTaskResult(req: AiTaskRequest, config: AiConfig | null, byok: Byok, opts: Options = {}): Promise<AiResult> {
+  const requireActive = captureAiScope(opts.signal);
+  const controller = new AbortController();
+  const abort = () => controller.abort(opts.signal?.reason);
+  const changed = () => {
+    try { requireActive(); } catch (error) { controller.abort(error); }
+  };
+  const cleanup = [subscribeDataScope(changed), useAiStore.subscribe(changed), useAccount.subscribe(changed)];
+  opts.signal?.addEventListener('abort', abort, { once: true });
+  try {
+    requireActive();
+    if (opts.path === 'managed' || (!opts.path && (managedAiAvailable() || planUnreadable()))) {
+      try {
+        // Stop waiting without aborting the shared, rotating authentication refresh.
+        const token = await withDeadline(AI_AUTH_TIMEOUT, controller.signal, () => useAccount.getState().getAccessToken());
+        requireActive();
+        if (!token) throw new ApiFailure('network', 0);
+        const res = await withDeadline(AI_ATTEMPT_TIMEOUT, controller.signal, signal => api.aiComplete(token, req, signal));
+        requireActive();
+        useEntitlement.getState().applyUsage(res.ai);
+        return { content: res.content, path: 'managed' };
+      } catch (error) {
+        requireActive();
+        if (error instanceof ApiFailure && ['quota_exhausted', 'no_plan'].includes(error.code)) void useEntitlement.getState().load();
+        if (!isConfigured(config) || !canFallback(error)) throw error;
+      }
+    }
+    if (!isConfigured(config)) throw new Error('AI is not available');
+    requireActive();
+    const content = await withDeadline(AI_ATTEMPT_TIMEOUT, controller.signal, signal => byok(config, signal));
+    requireActive();
+    return { content, path: 'byok' };
+  } finally {
+    opts.signal?.removeEventListener('abort', abort);
+    cleanup.forEach(unsubscribe => unsubscribe());
+  }
+}
+
+export async function runTask(req: AiTaskRequest, config: AiConfig | null, byok: Byok, opts: Options = {}): Promise<string> {
+  return (await runTaskResult(req, config, byok, opts)).content;
+}
+
 export const aiPathLabel = (config: AiConfig | null): string =>
-  managedAiAvailable() ? 'managed' : (config?.model ?? 'none');
+  managedAiAvailable() || planUnreadable() ? 'managed' : (config?.model ?? 'none');
 
-/** Whether any AI path is usable — BYOK configured, or an active plan with quota. Components gate on
- *  this instead of on a BYOK key alone, or subscribers would see no AI at all. */
-export const aiAvailable = (config: AiConfig | null): boolean => isConfigured(config) || managedAiAvailable();
+export const aiAvailable = (config: AiConfig | null): boolean => isConfigured(config) || managedAiAvailable() || planUnreadable();
 
-/** Reactive form for components: re-renders when either the BYOK key or the plan changes, so the AI
- *  affordances appear the moment a trial is claimed and disappear when the quota runs out. */
 export function useAiEnabled(): boolean {
-  const config = useAiStore((s) => s.config);
-  const entitlement = useEntitlement((s) => s.entitlement);
-  return isConfigured(config) || hasManagedAi(entitlement);
+  const config = useAiStore(s => s.config);
+  const entitlement = useEntitlement(s => s.entitlement);
+  const status = useAccount(s => s.status);
+  return isConfigured(config) || hasManagedAi(entitlement) || (status === 'authenticated' && entitlement === null);
 }
 
-/**
- * Reactive "we cannot tell": no key of their own, signed in, and no answer about the plan. A surface
- * that locks on `!useAiEnabled()` must check this too — the lock is a statement about the user's plan,
- * and this is exactly the state where we have no right to make one.
- */
 export function useAiUnknown(): boolean {
-  const config = useAiStore((s) => s.config);
-  const status = useAccount((s) => s.status);
-  const entitlement = useEntitlement((s) => s.entitlement);
+  const config = useAiStore(s => s.config);
+  const status = useAccount(s => s.status);
+  const entitlement = useEntitlement(s => s.entitlement);
   return !isConfigured(config) && upsellTarget(status, entitlement) === 'unknown';
 }

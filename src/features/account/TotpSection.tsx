@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import { Button, Card, Input } from '@/shared/ui';
-import { useAccount } from './store';
+import { captureAccountSessionOwner, useAccount } from './store';
 import {
   ApiFailure,
   totpStatus,
@@ -449,7 +449,9 @@ export function TotpEnroll({ ru, onNewKey }: { ru: boolean; onNewKey?: (composit
    */
   const rotate = () =>
     run(async () => {
+      const current = captureAccountSessionOwner();
       const composite = await rotateRecoveryKey(input.trim(), signOutOthers);
+      if (!current()) return;
       setStage('idle');
       setInput('');
       onNewKey?.(composite);

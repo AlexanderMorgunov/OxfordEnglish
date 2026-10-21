@@ -1,4 +1,5 @@
 import { recordKeyLimits } from './limits';
+import { withDeadline, abortReason } from '@/shared/lib/deadline';
 
 export type AiProviderId =
   | 'vsegpt'
@@ -108,7 +109,14 @@ export const PROVIDERS: Record<AiProviderId, Preset> = {
 
 export type ChatMessage = { role: 'system' | 'user' | 'assistant'; content: string };
 
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+function sleep(ms: number, signal?: AbortSignal): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const abort = () => { clearTimeout(timer); signal?.removeEventListener('abort', abort); reject(new DOMException('Aborted', 'AbortError')); };
+    const timer = setTimeout(() => { signal?.removeEventListener('abort', abort); resolve(); }, ms);
+    signal?.addEventListener('abort', abort, { once: true });
+    if (signal?.aborted) abort();
+  });
+}
 
 /** Provider-specific body params that turn OFF a model's chain-of-thought. Our reader micro-tasks (a
  *  one-sentence rewrite/translate) never want reasoning: it's slow and bills thousands of tokens per tap
@@ -141,10 +149,19 @@ export async function complete(
   messages: ChatMessage[],
   opts: { temperature?: number; maxTokens?: number; noReasoning?: boolean; signal?: AbortSignal } = {}
 ): Promise<string> {
+  return withDeadline(25000, opts.signal, signal => completeAttempt(config, messages, { ...opts, signal }));
+}
+
+async function completeAttempt(
+  config: AiConfig,
+  messages: ChatMessage[],
+  opts: { temperature?: number; maxTokens?: number; noReasoning?: boolean; signal: AbortSignal }
+): Promise<string> {
   const baseUrl = (config.baseUrl || PROVIDERS[config.provider].baseUrl).replace(/\/$/, '');
   if (!baseUrl) throw new Error('No base URL configured for the AI provider.');
 
   for (let attempt = 0; attempt < 4; attempt++) {
+    if (opts.signal.aborted) throw abortReason(opts.signal);
     const res = await fetch(`${baseUrl}/chat/completions`, {
       method: 'POST',
       headers: {
@@ -161,19 +178,23 @@ export async function complete(
       signal: opts.signal,
     });
 
+    if (opts.signal?.aborted) throw new DOMException('Aborted', 'AbortError');
     recordKeyLimits(res.headers, config.provider);
 
     if (res.status === 429 || res.status >= 500) {
-      await sleep(2 ** attempt * 1200);
+      if (attempt === 3) break;
+      await sleep(2 ** attempt * 1200, opts.signal);
       continue;
     }
     if (!res.ok) {
-      throw new Error(`AI request failed (${res.status}): ${(await res.text()).slice(0, 200)}`);
+      throw new Error(`AI request failed (${res.status})`);
     }
     const data = (await res.json()) as {
-      choices?: { message?: { content?: string } }[];
+      choices?: { message?: { content?: string }; finish_reason?: string }[];
     };
     const content = data.choices?.[0]?.message?.content?.trim();
+    if (opts.signal?.aborted) throw new DOMException('Aborted', 'AbortError');
+    if (data.choices?.[0]?.finish_reason === 'length') throw new Error('AI response truncated');
     if (!content) throw new Error('Empty AI response.');
     return content;
   }

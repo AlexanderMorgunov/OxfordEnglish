@@ -1,0 +1,27 @@
+import { expect, test, vi } from 'vitest';
+const load = vi.hoisted(() => vi.fn(async () => undefined));
+vi.mock('@/db/db', () => ({ db: { pending: { count: async () => 0 } } }));
+vi.mock('@/features/account/config', () => ({ accountsEnabled: () => true }));
+vi.mock('@/features/account/store', () => ({ useAccount: { getState: () => ({ status: 'authenticated', accountId: 'synthetic-a', getAccessToken: async () => 'synthetic-token' }), subscribe: () => () => undefined } }));
+vi.mock('@/features/account/entitlement', () => ({ useEntitlement: { getState: () => ({ load, clear: () => undefined }) } }));
+vi.mock('@/features/account/billing', () => ({ claimPending: async () => undefined }));
+vi.mock('@/features/account/api', () => ({ ApiFailure: class extends Error {}, syncPush: vi.fn(), syncPull: vi.fn() }));
+vi.mock('@/features/reader/blobSync', () => ({ syncAllBookFiles: async () => undefined }));
+vi.mock('@/features/sync/engine', () => ({ syncWith: async () => ({ pushBlocked: false, stale: false }) }));
+vi.mock('@/features/sync/settingsBridge', () => ({ hydrateSettings: async () => undefined }));
+import { initSync } from '@/features/sync/run';
+import { useSyncStatus, setSyncStatus } from '@/features/sync/status';
+const flush = async () => { for (let i = 0; i < 12; i++) await Promise.resolve(); };
+test('reconnect and foreground recover entitlement regardless of synchronous sync status', async () => {
+  initSync(); await flush(); expect(load).toHaveBeenCalledOnce(); load.mockClear();
+  window.dispatchEvent(new Event('online')); await flush();
+  expect(load).toHaveBeenCalledOnce(); load.mockClear();
+  setSyncStatus({ phase: 'error' });
+  const descriptor = Object.getOwnPropertyDescriptor(document, 'visibilityState');
+  Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'visible' });
+  document.dispatchEvent(new Event('visibilitychange'));
+  expect(useSyncStatus.getState().phase).toBe('syncing');
+  await flush(); expect(load).toHaveBeenCalledOnce(); load.mockClear();
+  if (descriptor) Object.defineProperty(document, 'visibilityState', descriptor);
+  else Reflect.deleteProperty(document, 'visibilityState');
+});

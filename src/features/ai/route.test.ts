@@ -34,6 +34,26 @@ beforeEach(() => {
 });
 
 describe('runTask', () => {
+  it('allows fallback when a full-text operation prefers the managed path', async () => {
+    setPlan(PLAN()); signIn();
+    vi.mocked(api.aiComplete).mockRejectedValue(new ApiFailure('ai_unavailable', 503));
+    const byok = vi.fn(async () => 'byok');
+    await expect(runTask({ task: 'translate', text: 'x' }, BYOK, byok, { path: 'managed' })).resolves.toBe('byok');
+    expect(byok).toHaveBeenCalledOnce();
+  });
+  it('keeps a pinned BYOK operation on its original path even after a plan becomes active', async () => {
+    setPlan(PLAN()); signIn();
+    expect(await runTask({ task: 'translate', text: 'x' }, BYOK, async () => 'byok', { path: 'byok' })).toBe('byok');
+    expect(api.aiComplete).not.toHaveBeenCalled();
+  });
+  it('cancellation of a managed request cannot initiate fallback', async () => {
+    setPlan(PLAN()); signIn();
+    const controller = new AbortController();
+    vi.mocked(api.aiComplete).mockImplementation(async () => { controller.abort(); throw new ApiFailure('ai_unavailable', 503); });
+    const byok = vi.fn();
+    await expect(runTask({ task: 'translate', text: 'x' }, BYOK, byok, { signal: controller.signal })).rejects.toMatchObject({ name: 'AbortError' });
+    expect(byok).not.toHaveBeenCalled();
+  });
   it('uses the managed path when a plan has quota, without touching BYOK', async () => {
     setPlan(PLAN());
     signIn();

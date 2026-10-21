@@ -44,3 +44,7 @@ tools/content-forge/scripts/_build_*.mjs
 # Uploaded by hand to the redirect bucket for the retired .online mirror — it is served from there,
 # never built or shipped from this repo.
 /scripts/online-redirect-sw.js
+
+# Codex machine-local paths and overrides; shared rules/skills stay tracked.
+/.codex/config.toml
+/.codex/config.local.toml

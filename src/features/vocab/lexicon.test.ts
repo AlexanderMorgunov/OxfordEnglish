@@ -1,7 +1,7 @@
 import { test, expect } from 'vitest';
 import { createEmptyCard } from 'ts-fsrs';
 import type { SrsCard, WordStatus, WordTranslation } from '@/db/db';
-import { buildLexicon, matchesFilter, sortLexicon } from './lexicon';
+import { buildLexicon, matchesFilter, searchLexicon, sortLexicon } from './lexicon';
 
 const card = (over: Partial<SrsCard>): SrsCard => {
   const c = createEmptyCard(new Date(1_700_000_000_000));
@@ -22,6 +22,15 @@ const status = (over: Partial<WordStatus>): WordStatus => ({
   firstSeenAt: 1,
   encounters: 1,
   ...over,
+});
+
+test('exact term search precedes substring matches while retaining their sort order', () => {
+  const entries = buildLexicon({ statuses: [], translations: [], cards: [
+    card({ id: 'word:legally', front: 'legally' }),
+    card({ id: 'word:all', front: 'all' }),
+    card({ id: 'word:small', front: 'small' }),
+  ] });
+  expect(searchLexicon(entries, 'All').map((e) => e.display)).toEqual(['all', 'legally', 'small']);
 });
 
 test('a learning word merges its status row and card into one entry', () => {

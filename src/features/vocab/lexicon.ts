@@ -44,7 +44,7 @@ export function buildLexicon(input: {
     const backIsTranslation = Boolean(c.back) && c.back !== c.front;
     const translation = backIsTranslation
       ? c.back
-      : tr.get(kind === 'phrase' ? c.front : key);
+      : (tr.get(key) ?? tr.get(c.front));
     const dueMs = (c.due instanceof Date ? c.due : new Date(c.due)).getTime();
     byKey.set(key, {
       key,
@@ -105,6 +105,24 @@ export function matchesFilter(e: LexiconEntry, f: LexiconFilter): boolean {
 }
 
 export type LexiconSort = 'recent' | 'alpha' | 'due' | 'useful';
+
+export function searchLexicon(
+  entries: LexiconEntry[],
+  query: string
+): LexiconEntry[] {
+  const needle = query.trim().toLowerCase();
+  if (!needle) return entries;
+  const matches = entries.filter(
+    (e) =>
+      e.display.toLowerCase().includes(needle) ||
+      e.translation?.toLowerCase().includes(needle)
+  );
+  return matches.sort(
+    (a, b) =>
+      Number(b.display.toLowerCase() === needle) -
+      Number(a.display.toLowerCase() === needle)
+  );
+}
 
 /** `usefulness` (lower = more useful) drives the `useful` sort; ties and unrated terms fall back to recency. */
 export function sortLexicon(

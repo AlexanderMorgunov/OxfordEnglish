@@ -1,10 +1,12 @@
-import { vi, test, expect, beforeEach } from 'vitest';
+import { vi, test, expect, beforeEach, afterEach } from 'vitest';
 import type { Entitlement } from './contract';
 
 let token: string | null = 'access-1';
+let sessionRevision = 1;
+let tokenWait: Promise<string | null> | null = null;
 
 vi.mock('./store', () => ({
-  useAccount: { getState: () => ({ getAccessToken: async () => token, status: 'authenticated' }) },
+  useAccount: { getState: () => ({ getAccessToken: async () => tokenWait ?? token, status: 'authenticated', accountId: 'a', sessionRevision }) },
 }));
 vi.mock('@/features/sync/meta', () => ({ getInstallId: async () => 'install-1' }));
 vi.mock('./api', () => ({
@@ -32,6 +34,9 @@ const fail = (code: string, status = 0) => new ApiFailure(code, status);
 
 beforeEach(() => {
   token = 'access-1';
+  tokenWait = null;
+  sessionRevision = 1;
+  useEntitlement.getState().clear();
   vi.mocked(api.getEntitlement).mockReset();
   vi.mocked(api.claimTrial).mockReset();
   useEntitlement.setState({ entitlement: null, error: null, loading: false });
@@ -106,4 +111,128 @@ test('an ordinary usage update still applies', () => {
   useEntitlement.setState({ entitlement: PRO });
   useEntitlement.getState().applyUsage({ used: 12, limit: 10000, resetsAt: 5_000 });
   expect(useEntitlement.getState().entitlement?.ai.used).toBe(12);
+});
+
+
+afterEach(() => { useEntitlement.getState().clear(); vi.useRealTimers(); });
+
+const deferred = <T,>() => {
+  let resolve!: (value: T) => void;
+  const promise = new Promise<T>(done => { resolve = done; });
+  return { promise, resolve };
+};
+const flush = async () => { for (let i = 0; i < 8; i++) await Promise.resolve(); };
+
+test('clear prevents a late entitlement response from restoring the previous account', async () => {
+  const reply = deferred<Entitlement>();
+  vi.mocked(api.getEntitlement).mockReturnValue(reply.promise);
+  const loading = useEntitlement.getState().load();
+  await flush();
+  useEntitlement.getState().clear();
+  reply.resolve(PRO);
+  await loading;
+  expect(useEntitlement.getState()).toMatchObject({ entitlement: null, loading: false });
+});
+
+test('same-account session replacement rejects the previous session response', async () => {
+  const reply = deferred<Entitlement>();
+  vi.mocked(api.getEntitlement).mockReturnValue(reply.promise);
+  const loading = useEntitlement.getState().load();
+  await flush();
+  sessionRevision += 1;
+  reply.resolve(PRO);
+  await loading;
+  expect(useEntitlement.getState().entitlement).toBeNull();
+});
+
+test('parallel metadata readers share one request', async () => {
+  const reply = deferred<Entitlement>();
+  vi.mocked(api.getEntitlement).mockReturnValue(reply.promise);
+  const first = useEntitlement.getState().load();
+  const second = useEntitlement.getState().load();
+  await flush();
+  expect(api.getEntitlement).toHaveBeenCalledTimes(1);
+  reply.resolve(PRO);
+  await Promise.all([first, second]);
+  expect(useEntitlement.getState().entitlement).toEqual(PRO);
+});
+
+test('a hanging token wait is bounded and a subsequent metadata load may recover', async () => {
+  vi.useFakeTimers();
+  tokenWait = new Promise(() => undefined);
+  const loading = useEntitlement.getState().load();
+  await vi.advanceTimersByTimeAsync(15_001);
+  await loading;
+  expect(useEntitlement.getState().loading).toBe(false);
+  tokenWait = null;
+  vi.mocked(api.getEntitlement).mockResolvedValue(PRO);
+  await useEntitlement.getState().load();
+  expect(useEntitlement.getState().entitlement).toEqual(PRO);
+});
+
+test('a hanging response body times out and its late answer is ignored', async () => {
+  vi.useFakeTimers();
+  const reply = deferred<Entitlement>();
+  vi.mocked(api.getEntitlement).mockReturnValue(reply.promise);
+  const loading = useEntitlement.getState().load();
+  await flush();
+  await vi.advanceTimersByTimeAsync(15_001);
+  await loading;
+  expect(vi.mocked(api.getEntitlement).mock.calls[0]?.[1]?.aborted).toBe(true);
+  reply.resolve(PRO);
+  await flush();
+  expect(useEntitlement.getState().entitlement).toBeNull();
+});
+
+test('metadata started before an AI answer cannot undo its newer usage', async () => {
+  useEntitlement.setState({ entitlement: PRO });
+  const reply = deferred<Entitlement>();
+  vi.mocked(api.getEntitlement).mockReturnValue(reply.promise);
+  const loading = useEntitlement.getState().load();
+  await flush();
+  useEntitlement.getState().applyUsage({ ...PRO.ai, used: 20 });
+  reply.resolve({ ...PRO, ai: { ...PRO.ai, used: 10 } });
+  await loading;
+  expect(useEntitlement.getState().entitlement?.ai.used).toBe(20);
+});
+
+test('a late answer cannot move quota back to an older billing window', () => {
+  useEntitlement.setState({ entitlement: { ...PRO, ai: { ...PRO.ai, resetsAt: 9000 } } });
+  useEntitlement.getState().applyUsage({ ...PRO.ai, used: 9999, resetsAt: 5000 });
+  expect(useEntitlement.getState().entitlement?.ai.resetsAt).toBe(9000);
+});
+
+test('a trial response after clear cannot restore entitlement or error', async () => {
+  const reply = deferred<Entitlement>();
+  vi.mocked(api.claimTrial).mockReturnValue(reply.promise);
+  const claiming = useEntitlement.getState().claimTrial();
+  await flush();
+  useEntitlement.getState().clear();
+  reply.resolve(TRIAL);
+  expect(await claiming).toBe('failed');
+  expect(useEntitlement.getState()).toMatchObject({ entitlement: null, error: null, loading: false });
+});
+
+
+test('a timed-out trial can reconcile a successful grant and clears its spinner', async () => {
+  vi.useFakeTimers();
+  vi.mocked(api.claimTrial).mockReturnValue(new Promise(() => undefined));
+  vi.mocked(api.getEntitlement).mockResolvedValue(TRIAL);
+  const claiming = useEntitlement.getState().claimTrial();
+  await flush();
+  await vi.advanceTimersByTimeAsync(15_001);
+  expect(await claiming).toBe('ok');
+  expect(useEntitlement.getState()).toMatchObject({ entitlement: TRIAL, loading: false });
+});
+
+test('metadata from before a trial claim cannot overwrite the granted plan', async () => {
+  const reply = deferred<Entitlement>();
+  vi.mocked(api.getEntitlement).mockReturnValue(reply.promise);
+  const loading = useEntitlement.getState().load();
+  await flush();
+  vi.mocked(api.claimTrial).mockResolvedValue(TRIAL);
+  expect(await useEntitlement.getState().claimTrial()).toBe('ok');
+  reply.resolve(FREE);
+  await loading;
+  expect(useEntitlement.getState().entitlement).toEqual(TRIAL);
 });

@@ -6,9 +6,10 @@ import { useVocabStore } from '@/features/vocab/vocabStore';
 import { useLearner } from '@/features/learner/store';
 import { ExerciseView } from '@/features/practice/exercises/ExerciseView';
 import { useAiStore } from '@/features/ai/store';
-import { useAiEnabled, useAiUnknown, aiAvailable } from '@/features/ai/route';
+import { captureAiScope, useAiEnabled, useAiUnknown, aiAvailable } from '@/features/ai/route';
 import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
 import { generateReaderExercises } from '@/features/ai/functions';
+import { useAccount } from '@/features/account/store';
 import { estimateCoverage, loadFreq, rankThresholdFor, type FreqIndex } from './difficulty';
 import { generateExercises } from './exercises';
 
@@ -18,12 +19,14 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
   const statuses = useVocabStore((s) => s.statuses);
   const loadVocab = useVocabStore((s) => s.load);
   const aiConfig = useAiStore((s) => s.config);
+  const sessionRevision = useAccount((s) => s.sessionRevision);
   const aiReady = useAiEnabled();
   // Offer the button when the plan is merely unreadable; the server is the one that can refuse.
   const aiUnknown = useAiUnknown();
   const [freq, setFreq] = useState<FreqIndex | null>(null);
   const [exercises, setExercises] = useState<Exercise[] | null>(null);
   const [aiState, setAiState] = useState<'idle' | 'loading' | 'error'>('idle');
+  const pending = useRef<AbortController | null>(null);
 
   useEffect(() => {
     void loadVocab();
@@ -52,7 +55,8 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
   useEffect(() => {
     setExercises(null);
     setAiState('idle');
-  }, [text]);
+    return () => { pending.current?.abort(); pending.current = null; };
+  }, [text, idPrefix, aiConfig, sessionRevision]);
 
   // Hide the panel rather than show a misleading "0%" if the frequency list failed to load.
   if (!coverage || coverage.total < 20 || (freq && freq.size === 0)) return null;
@@ -73,26 +77,39 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
 
   const generate = () => {
     if (!freq) return;
+    pending.current?.abort();
+    pending.current = null;
+    setAiState('idle');
     setExercises(
       generateExercises(text, { freq, known, rankThreshold, idPrefix, count: 8 })
     );
   };
 
   const generateAi = async () => {
-    if (!coverage || !aiAvailable(aiConfig)) return;
+    if (!coverage || !aiAvailable(aiConfig) || pending.current) return;
+    const controller = new AbortController();
+    pending.current = controller;
+    const requireActive = captureAiScope(controller.signal);
     setAiState('loading');
     try {
       const targets = [...coverage.unknown.keys()];
-      const made = await generateReaderExercises(aiConfig, { text, targets, idPrefix });
-      setExercises(made);
+      const made = await generateReaderExercises(aiConfig, { text, targets, idPrefix, signal: controller.signal });
+      requireActive();
+      setExercises(made.length ? made : null);
       setAiState(made.length ? 'idle' : 'error');
-    } catch {
+    } catch (error) {
+      if (controller.signal.aborted || (error instanceof Error && error.name === 'AbortError')) return;
       setAiState('error');
+    } finally {
+      if (pending.current === controller) {
+        pending.current = null;
+        setAiState(state => state === 'loading' ? 'idle' : state);
+      }
     }
   };
 
   return (
-    <Card className="mt-8 border-line">
+    <Card className="mt-8 border-line [overflow-wrap:anywhere]">
       <p className="font-mono text-2xs uppercase tracking-[0.08em] text-muted">
         {ru ? 'сложность главы' : 'chapter difficulty'}
       </p>
@@ -125,10 +142,15 @@ export function ChapterStudy({ text, idPrefix }: { text: string; idPrefix: strin
                   : 'AI exercises'}
             </Button>
           )}
-          {!aiReady && <AiUpsellLink className="self-center" />}
+          {aiState === 'loading' && <Button variant="ghost" onClick={() => {
+            pending.current?.abort();
+            pending.current = null;
+            setAiState('idle');
+          }}>{ru ? 'Отменить' : 'Cancel'}</Button>}
+          {!aiReady && !aiUnknown && <AiUpsellLink className="self-center" />}
           {aiState === 'error' && (
-            <span className="font-mono text-2xs text-coral">
-              {ru ? 'AI не справился — попробуй детерминированные' : 'AI failed — try the deterministic set'}
+            <span role="alert" className="font-mono text-2xs text-coral">
+              {ru ? 'AI не ответил. Попробуйте ещё раз или выберите упражнения из главы.' : 'AI did not answer. Try again or choose exercises from the chapter.'}
             </span>
           )}
         </div>
