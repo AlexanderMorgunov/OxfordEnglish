@@ -45,7 +45,6 @@ export function AppLayout() {
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
   const location = useLocation();
-  const frameWidth = location.pathname.replace(/\/+$/, '') === '/vocabulary/text' ? 'max-w-6xl' : 'max-w-3xl';
   const mainRef = useRef<HTMLElement>(null);
   useEffect(() => { document.documentElement.lang = lang; }, [lang]);
   useEffect(() => {
@@ -54,7 +53,7 @@ export function AppLayout() {
   return (
     <div className="min-h-screen">
       <header className="border-b border-line bg-surface/60 backdrop-blur">
-        <div className={`mx-auto flex ${frameWidth} flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 py-3`}>
+        <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 py-3">
           <NavLink to="/" className="flex min-w-0 max-w-full flex-wrap items-baseline gap-2 [overflow-wrap:anywhere]">
             <span className="eyebrow">en/dev</span>
             <span
@@ -114,14 +113,14 @@ export function AppLayout() {
       <MigrationNotice />
       <InstallPrompt />
 
-      <main ref={mainRef} tabIndex={-1} className={`mx-auto ${frameWidth} px-5 py-8 pb-20 [overflow-wrap:anywhere]`}>
+      <main ref={mainRef} tabIndex={-1} className="mx-auto max-w-3xl px-5 py-8 pb-20 [overflow-wrap:anywhere]">
         <ErrorBoundary resetKey={location.pathname}>
           <Suspense fallback={<p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading…'}</p>}>
             <Outlet />
           </Suspense>
         </ErrorBoundary>
       </main>
-      <SiteFooter ru={ru} frameWidth={frameWidth} />
+      <SiteFooter ru={ru} />
       <BackToTop key={location.pathname} pathname={location.pathname} mainRef={mainRef} />
       {/* New paths open at the top; returning to a seen path restores its scroll. */}
       <ScrollRestoration getKey={(location) => location.pathname} />
@@ -136,7 +135,7 @@ export function AppLayout() {
  * privacy policy and the seller's details were reachable only from Settings and the paywall, which is
  * a poor place to look for them and, for a buyer deciding whether to pay, the wrong one.
  */
-function SiteFooter({ ru, frameWidth }: { ru: boolean; frameWidth: 'max-w-3xl' | 'max-w-6xl' }) {
+function SiteFooter({ ru }: { ru: boolean }) {
   const links = [
     { to: '/terms', ru: 'Оферта и контакты', en: 'Offer and contacts' },
     { to: '/privacy', ru: 'Конфиденциальность', en: 'Privacy' },
@@ -145,7 +144,7 @@ function SiteFooter({ ru, frameWidth }: { ru: boolean; frameWidth: 'max-w-3xl' |
   ];
   return (
     <footer data-app-footer className="mt-4 border-t border-line">
-      <div className={`mx-auto ${frameWidth} px-5 py-4 text-xs leading-relaxed text-muted [overflow-wrap:anywhere]`}>
+      <div className="mx-auto max-w-3xl px-5 py-4 text-xs leading-relaxed text-muted [overflow-wrap:anywhere]">
         <nav className="mb-2 flex flex-wrap gap-x-4 gap-y-1">
           {links.map((l) => (
             <NavLink key={l.to} to={l.to} className="hover:text-teal hover:underline">
