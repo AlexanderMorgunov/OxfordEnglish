@@ -1,6 +1,7 @@
 import { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useContentStore } from '@/content/store';
+import { ContentLoadError } from '@/content/ContentLoadError';
 import { useSolvedExercises } from '@/features/progress/useCompletion';
 import { dayProgress, unitProgress } from '@/features/progress/completion';
 import { useLearner } from '@/features/learner/store';
@@ -14,7 +15,7 @@ import type { LoadedUnit } from '@/content/loader';
 const unitLevel = (unit: LoadedUnit) => unit.days.find((d) => d.level)?.level;
 
 export function DashboardPage() {
-  const { status, pack, error, load } = useContentStore();
+  const { status, pack, load } = useContentStore();
   const solved = useSolvedExercises();
   const { level, recommendedUnitId, placementDone } = useLearner();
   const lang = useUiLang((s) => s.lang);
@@ -59,18 +60,11 @@ export function DashboardPage() {
         />
       </div>
 
-      {status === 'loading' && (
-        <p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading pack…'}</p>
+      {(status === 'idle' || status === 'loading') && (
+        <p role="status" className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading pack…'}</p>
       )}
 
-      {status === 'error' && (
-        <Card className="border-coral">
-          <p className="font-mono text-sm text-coral">
-            {ru ? '✕ не удалось загрузить контент' : '✕ failed to load content pack'}
-          </p>
-          <p className="mt-2 text-sm text-muted">{error}</p>
-        </Card>
-      )}
+      {status === 'error' && <ContentLoadError />}
 
       {status === 'ready' && pack && (
         <>

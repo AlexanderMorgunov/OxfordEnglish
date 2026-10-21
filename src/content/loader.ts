@@ -1,3 +1,4 @@
+import { abortReason, withDeadline } from '@/shared/lib/deadline';
 import {
   CourseIndex,
   Day,
@@ -28,26 +29,89 @@ export type LoadedPack = {
   grammar: GrammarArticle[];
 };
 
-async function fetchJson(path: string): Promise<unknown> {
-  const res = await fetch(path);
-  if (!res.ok) throw new Error(`Failed to fetch ${path}: ${res.status}`);
-  return res.json();
+const DAY_CONCURRENCY = 6;
+const REQUEST_TIMEOUT_MS = 12_000;
+const RETRY_DELAYS_MS = [400, 800];
+
+class PackHttpError extends Error {
+  constructor(path: string, readonly status: number) {
+    super(`Failed to fetch ${path}: ${status}`);
+  }
 }
 
-export async function loadPublicPack(): Promise<LoadedPack> {
+function isTransient(error: unknown): boolean {
+  if (error instanceof PackHttpError) return [408, 500, 502, 503, 504].includes(error.status);
+  return error instanceof TypeError
+    || ((error instanceof Error || error instanceof DOMException) && error.name === 'TimeoutError');
+}
+
+function waitToRetry(milliseconds: number, signal?: AbortSignal): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (signal?.aborted) {
+      reject(abortReason(signal));
+      return;
+    }
+    const cleanup = () => signal?.removeEventListener('abort', abort);
+    const timer = setTimeout(() => {
+      cleanup();
+      resolve();
+    }, milliseconds);
+    const abort = () => {
+      clearTimeout(timer);
+      cleanup();
+      if (signal) reject(abortReason(signal));
+    };
+    signal?.addEventListener('abort', abort, { once: true });
+  });
+}
+
+async function fetchJson(path: string, signal?: AbortSignal): Promise<unknown> {
+  for (let attempt = 0; ; attempt += 1) {
+    try {
+      return await withDeadline(REQUEST_TIMEOUT_MS, signal, async (requestSignal) => {
+        const res = await fetch(path, { signal: requestSignal });
+        if (!res.ok) throw new PackHttpError(path, res.status);
+        return res.json();
+      });
+    } catch (error) {
+      const delay = RETRY_DELAYS_MS[attempt];
+      if (signal?.aborted || delay === undefined || !isTransient(error)) throw error;
+      await waitToRetry(delay, signal);
+    }
+  }
+}
+
+async function loadDays(dayIds: string[], controller: AbortController): Promise<Day[]> {
+  const parsed = new Array<Day>(dayIds.length);
+  let next = 0;
+  const worker = async () => {
+    while (!controller.signal.aborted && next < dayIds.length) {
+      const index = next++;
+      try {
+        parsed[index] = Day.parse(await fetchJson(
+          `${PUBLIC_PACK_BASE}/days/${dayIds[index]}.json`, controller.signal
+        ));
+      } catch (error) {
+        // Drain aborted workers before a manual retry can start another batch.
+        controller.abort(error);
+      }
+    }
+  };
+  await Promise.all(Array.from({ length: Math.min(DAY_CONCURRENCY, dayIds.length) }, worker));
+  if (controller.signal.aborted) throw abortReason(controller.signal);
+  return parsed;
+}
+
+async function loadPack(controller: AbortController): Promise<LoadedPack> {
   const [manifestRaw, courseRaw] = await Promise.all([
-    fetchJson(`${PUBLIC_PACK_BASE}/manifest.json`),
-    fetchJson(`${PUBLIC_PACK_BASE}/course.json`),
+    fetchJson(`${PUBLIC_PACK_BASE}/manifest.json`, controller.signal),
+    fetchJson(`${PUBLIC_PACK_BASE}/course.json`, controller.signal),
   ]);
   const manifest = PackManifest.parse(manifestRaw);
   const course = CourseIndex.parse(courseRaw);
 
   const dayIds = course.units.flatMap((u) => u.dayIds);
-  const parsed = await Promise.all(
-    dayIds.map(async (id) =>
-      Day.parse(await fetchJson(`${PUBLIC_PACK_BASE}/days/${id}.json`))
-    )
-  );
+  const parsed = await loadDays(dayIds, controller);
   const days = new Map(parsed.map((d) => [d.id, d]));
 
   const units: LoadedUnit[] = course.units.map((u) => ({
@@ -67,6 +131,15 @@ export async function loadPublicPack(): Promise<LoadedPack> {
   }
 
   return { manifest, course, units, days, grammar };
+}
+
+export async function loadPublicPack(): Promise<LoadedPack> {
+  const controller = new AbortController();
+  try {
+    return await loadPack(controller);
+  } finally {
+    controller.abort();
+  }
 }
 
 /**

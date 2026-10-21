@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import type { Exercise } from '@/content/schema';
 import { useContentStore } from '@/content/store';
+import { ContentLoadError } from '@/content/ContentLoadError';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { Button, Card, Eyebrow, PageStub, PixelImage } from '@/shared/ui';
 import { ExerciseView } from '@/features/practice/exercises/ExerciseView';
@@ -77,8 +78,9 @@ export function CheckpointPage() {
   );
 
   if (status === 'idle' || status === 'loading') {
-    return <p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading…'}</p>;
+    return <p role="status" className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading…'}</p>;
   }
+  if (status === 'error') return <ContentLoadError />;
   if (!exercises || exercises.length === 0) {
     return <PageStub eyebrow="checkpoint" title={ru ? 'Пока нечего проверять' : 'Nothing to test yet'} />;
   }

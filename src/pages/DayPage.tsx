@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useContentStore } from '@/content/store';
+import { ContentLoadError } from '@/content/ContentLoadError';
 import { PracticeSectionView } from '@/features/practice/PracticeSectionView';
 import { GrammarSectionView } from '@/features/learn/GrammarSectionView';
 import { ReadingSectionView } from '@/features/learn/ReadingSectionView';
@@ -70,8 +71,9 @@ export function DayPage() {
   }, [hydrate]);
 
   if (status === 'idle' || status === 'loading') {
-    return <p className="font-mono text-sm text-muted">{ru ? 'загрузка дня…' : 'loading day…'}</p>;
+    return <p role="status" className="font-mono text-sm text-muted">{ru ? 'загрузка дня…' : 'loading day…'}</p>;
   }
+  if (status === 'error') return <ContentLoadError />;
 
   const day = dayId ? pack?.days.get(dayId) : undefined;
   if (!day) {
