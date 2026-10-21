@@ -60,14 +60,20 @@ curl -sL -o vendor/voices/en_US-lessac-medium.onnx.json https://huggingface.co/r
 
 Paths default to those locations; override with `PIPER_BIN` / `PIPER_VOICE`.
 
-Registered in the repo-root `.mcp.json` as `content-forge`; run `/mcp` in Claude
-Code to connect after importing the data above.
+Claude Code uses repo-root `.mcp.json`. Codex uses the generated project
+`.codex/config.toml`: run `& ./.codex/setup-mcp.ps1` from the repository root,
+then restart Codex and check `codex mcp list`. See `../../CODEX_SETUP.md`.
 
 ## Notes
 
-- Uses Node's built-in `node:sqlite` (Node ≥ 22) — no native module to compile.
+- Uses Node's built-in `node:sqlite` (Node ≥ 22.13) — no native module to compile.
 - Data/cache (`data/*.sqlite`, `data/wordlists.json`, `.cache/`) are gitignored.
 - `pack_write_day` reuses the app's `src/content/schema.ts` (`Day.parse`) so the
   SkillTag registry and media-license checks are the single source of truth.
-- Not yet wired (see plan P4): ASR/forced alignment (faster-whisper) to auto-time
-  transcripts. Until then, TTS audio uses hand-authored cue timings.
+- No ASR/forced-alignment MCP is configured. Ship MP3 and measure cue timings
+  against actual audio (`../../scripts/retime-listening-cues.mjs`); guessed timings
+  previously clipped dictation. Check the relevant local authoring plan before
+  retiming existing content.
+- `npm run smoke` writes a learning day and course index. To check connectivity
+  without authoring content, initialize MCP, list tools, and call a read-only probe
+  such as `ngsl_rank` instead.

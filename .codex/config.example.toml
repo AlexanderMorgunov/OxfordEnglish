@@ -1,0 +1,21 @@
+# Template only. Replace checkout and executable paths for your machine.
+# On this Windows workspace, setup-mcp.ps1 generates config.toml automatically.
+
+[mcp_servers.content-forge]
+command = "node"
+args = ["C:/path/to/OxfordEnglish/tools/content-forge/node_modules/tsx/dist/cli.mjs", "C:/path/to/OxfordEnglish/tools/content-forge/src/server.ts"]
+cwd = "C:/path/to/OxfordEnglish"
+startup_timeout_sec = 30
+tool_timeout_sec = 120
+
+# Optional: import the existing local Claude PixelLab credential via setup-mcp.ps1
+# -ImportClaudePixelLab. It goes only into ignored config.toml, never this template.
+# [mcp_servers.pixellab]
+# url = "https://api.pixellab.ai/mcp"
+
+[mcp_servers.chrome-devtools]
+command = "npx.cmd"
+args = ["-y", "chrome-devtools-mcp@latest"]
+cwd = "C:/path/to/OxfordEnglish"
+startup_timeout_sec = 60
+tool_timeout_sec = 120

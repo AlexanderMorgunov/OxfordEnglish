@@ -2,7 +2,7 @@
   "name": "dayenglish-api",
   "private": true,
   "type": "module",
-  "description": "DayEnglish backend v1 — accounts + cross-device sync (Hono on Yandex Serverless Containers). Skeleton: auth only (slice 1). See ../docs/backend-v1-design.md.",
+  "description": "DayEnglish API — accounts, sync, book files, subscriptions, managed AI and recovery (Hono on Yandex Serverless Containers).",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc -p tsconfig.json",
