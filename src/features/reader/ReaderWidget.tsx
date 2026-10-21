@@ -153,11 +153,11 @@ export function ReaderWidget({
       {open && (
         <div
           id="reader-widget-panel"
-          className="flex max-h-[70dvh] w-64 max-w-[80vw] flex-col items-stretch gap-1 overflow-y-auto rounded-md border border-line bg-surface p-1.5 shadow-lg"
+          className="flex max-h-[70dvh] w-64 max-w-[80vw] flex-col items-stretch gap-1 overflow-y-auto rounded-md border border-line bg-surface p-1.5 shadow-lg [scrollbar-gutter:stable]"
         >
           <nav
             aria-label={ru ? 'Разделы' : 'Sections'}
-            className="flex flex-wrap items-center justify-between gap-0.5 px-1 pb-0.5"
+            className="grid grid-cols-5 pb-0.5"
           >
             {NAV.map((item) => (
               <Link
@@ -167,7 +167,7 @@ export function ReaderWidget({
                 aria-label={ru ? item.ru : item.en}
                 title={ru ? item.ru : item.en}
                 // Icon-only, so the label lives in aria-label/title; 44px keeps the tap target usable.
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+                className="flex h-11 min-w-11 items-center justify-center rounded-sm hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
               >
                 <PixelImage src={item.icon} alt="" className="h-5 w-5" />
               </Link>
@@ -181,7 +181,7 @@ export function ReaderWidget({
           <button
             type="button"
             onClick={() => void bookmarkHere()}
-            className="flex items-center gap-2 rounded-sm px-3 py-2 text-left font-mono text-xs text-content hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+            className="flex min-h-11 items-center gap-2 rounded-sm px-3 py-2 text-left font-mono text-xs text-content hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
           >
             <span className="w-4 shrink-0 text-center">🔖</span>
             {ru ? 'добавить закладку' : 'add bookmark'}
@@ -190,9 +190,10 @@ export function ReaderWidget({
             <div
               role="group"
               aria-label={ru ? 'Скорость озвучки' : 'Read-aloud speed'}
-              className="flex flex-wrap items-center gap-0.5 px-3 py-1"
+              className="grid gap-1 px-3 py-1"
+              style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, calc(2.75rem * var(--app-text-scale, 1))), 1fr))' }}
             >
-              <span className="mr-auto font-mono text-2xs text-muted">{ru ? 'скорость' : 'speed'}</span>
+              <span className="col-span-full font-mono text-2xs text-muted">{ru ? 'скорость' : 'speed'}</span>
               {RATE_STEPS.map((r) => (
                 <button
                   key={r}
@@ -200,7 +201,7 @@ export function ReaderWidget({
                   aria-pressed={rate === r}
                   onClick={() => setRate(r)}
                   className={cn(
-                    'min-w-9 rounded-sm px-1.5 py-1.5 font-mono text-2xs hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal',
+                    'min-h-11 min-w-0 rounded-sm px-1 py-1.5 font-mono text-2xs hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal',
                     rate === r ? 'bg-surface-2 text-teal' : 'text-muted'
                   )}
                 >
@@ -222,9 +223,7 @@ export function ReaderWidget({
                   setOpen(false);
                 }}
                 onDelete={onDelete}
-                className="max-h-[45vh] overflow-y-auto"
               />
-
             </div>
           )}
         </div>

@@ -197,6 +197,7 @@ export function TextWorkbenchPage() {
   const loading = result?.state === 'loading';
   const partial = !!result && result.state !== 'done';
   const showReading = view !== 'compose' && (view === 'source' || wide);
+  const showTranslation = !!result && (view === 'result' || (wide && (view !== 'source' || readingSource === result.source)));
   const invalid = issue ?? (draft.length > WORKBENCH_LIMIT ? 'too-long' : null);
   const hasKey = isConfigured(config);
   const hasManaged = hasManagedAi(entitlement);
@@ -218,7 +219,7 @@ export function TextWorkbenchPage() {
       <h1 className="flex items-center gap-2 text-xl font-semibold tracking-tight"><PixelImage src="/assets/pixel/ui/translate.png" alt="" aria-hidden="true" width={24} height={24} className="h-6 w-6 shrink-0" />{ru ? 'Перевод текста' : 'Translate text'}</h1>
       <p aria-label={ru ? 'С английского на русский' : 'English to Russian'} className="shrink-0 text-xs text-muted">EN → RU</p>
     </div>
-    <div className="grid min-w-0 gap-7 min-[900px]:grid-cols-2 min-[900px]:gap-10">
+    <div className={`grid min-w-0 gap-7${showTranslation ? ' min-[900px]:grid-cols-2 min-[900px]:gap-10' : ''}`}>
       {(view !== 'result' || wide) && <section aria-label={ru ? 'Оригинал' : 'Source'} className="min-w-0">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           <h2 ref={sourceHeading} tabIndex={-1} className="text-lg font-semibold">{ru ? 'Оригинал' : 'Source'} <span className="ml-1 text-xs font-normal text-muted">EN</span></h2>
@@ -278,7 +279,7 @@ export function TextWorkbenchPage() {
           </details>}
         </div>}
       </section>}
-      {result && (view === 'result' || (wide && (view !== 'source' || readingSource === result.source))) && <section aria-label={ru ? 'Перевод' : 'Translation'} className="min-w-0 space-y-4">
+      {result && showTranslation && <section aria-label={ru ? 'Перевод' : 'Translation'} className="min-w-0 space-y-4">
         <div className="border-b border-line pb-3 min-[900px]:hidden">
           <p lang="en" className="truncate text-sm text-muted">{result.source.split('\n')[0]}</p>
           <div className="mt-1 flex flex-wrap gap-1">
