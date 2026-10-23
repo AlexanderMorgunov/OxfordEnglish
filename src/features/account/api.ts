@@ -246,8 +246,8 @@ export function claimTrial(accessToken: string, installId: string, signal?: Abor
 
 /** The plan catalog and whether payments are switched on at all. Public — the paywall has to name a
  *  price before anyone signs in, and the price is the server's to state. */
-export function billingPlans(): Promise<BillingPlans> {
-  return request(Routes.billingPlans, { method: 'GET' }, (j) => BillingPlansSchema.parse(j));
+export function billingPlans(signal?: AbortSignal): Promise<BillingPlans> {
+  return withDeadline(10_000, signal, bounded => request(Routes.billingPlans, { method: 'GET', signal: bounded }, (j) => BillingPlansSchema.parse(j)));
 }
 
 /** Open a checkout. The server prices the plan, mints an unpaid grant bound to this account, and

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Eyebrow } from '@/shared/ui';
+import { Button, Eyebrow } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { accountsEnabled } from '@/features/account/config';
 import { billingPlans } from '@/features/account/api';
@@ -8,6 +8,8 @@ import { formatPrice } from '@/features/account/billing';
 import { track } from '@/features/analytics/analytics';
 import { BackToReader } from '@/features/reader/BackToReader';
 import type { BillingPlan } from '@/features/account/contract';
+
+type Catalog = { status: 'loading' | 'error' } | { status: 'ready'; available: boolean; plans: BillingPlan[] };
 
 /**
  * `/pro` — the one public explanation of the paid plan, reachable WITHOUT an account.
@@ -77,26 +79,32 @@ const Bullets = ({ items }: { items: string[] }) => (
 
 export function ProPage() {
   const ru = useUiLang((s) => s.lang) === 'ru';
-  const [plans, setPlans] = useState<{ available: boolean; plans: BillingPlan[] } | null>(null);
+  const [catalog, setCatalog] = useState<Catalog>({ status: 'loading' });
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     void track('pro_page_view');
+  }, []);
+
+  useEffect(() => {
     if (!accountsEnabled()) {
-      setPlans({ available: false, plans: [] });
+      setCatalog({ status: 'ready', available: false, plans: [] });
       return;
     }
     let alive = true;
-    billingPlans()
-      .then((p) => alive && setPlans(p))
-      // Offline or the API is down: the page still explains everything, it just cannot quote a price.
-      .catch(() => alive && setPlans({ available: false, plans: [] }));
+    const controller = new AbortController();
+    setCatalog({ status: 'loading' });
+    billingPlans(controller.signal)
+      .then((p) => { if (alive) setCatalog({ status: 'ready', ...p }); })
+      .catch(() => { if (alive) setCatalog({ status: 'error' }); });
     return () => {
       alive = false;
+      controller.abort();
     };
-  }, []);
+  }, [attempt]);
 
-  const monthly = plans?.plans.find((p) => p.code === 'pro_month');
-  const canBuy = !!plans?.available && !!monthly;
+  const monthly = catalog.status === 'ready' ? catalog.plans.find((p) => p.code === 'pro_month') : undefined;
+  const canBuy = catalog.status === 'ready' && catalog.available && !!monthly;
   const price = monthly ? formatPrice(monthly.priceKopecks) : null;
 
   return (
@@ -132,7 +140,7 @@ export function ProPage() {
         <Bullets items={ru ? ACCOUNT_RU : ACCOUNT_EN} />
         <p>
           <b className="text-content">{ru ? '2. Разборы на основе ИИ.' : '2. The AI explanations.'}</b>{' '}
-          {ru ? 'Ровно три:' : 'Exactly three:'}
+          {ru ? 'Возможности:' : 'Features:'}
         </p>
         <Bullets items={ru ? AI_RU : AI_EN} />
         <p>
@@ -178,11 +186,17 @@ export function ProPage() {
               : `${price} for ${monthly.days} days. The subscription does not renew automatically: when the period ends the explanations simply switch off until you pay for the next one.`}
           </p>
         )}
-        {!canBuy && (
+        {canBuy && <p><Link to="/settings" className="text-teal hover:underline">{ru ? 'Подключить Pro в настройках' : 'Get Pro in settings'}</Link></p>}
+        {catalog.status === 'loading' && <p role="status">{ru ? 'Проверяем стоимость и доступность оплаты…' : 'Checking the price and payment availability…'}</p>}
+        {catalog.status === 'error' && <div role="status">
+          <p>{ru ? 'Не удалось проверить стоимость и доступность оплаты. Проверьте соединение и попробуйте ещё раз.' : 'Could not check the price and payment availability. Check your connection and try again.'}</p>
+          <Button className="mt-2" size="sm" variant="ghost" onClick={() => setAttempt(n => n + 1)}>{ru ? 'Повторить' : 'Try again'}</Button>
+        </div>}
+        {catalog.status === 'ready' && !canBuy && (
           <p className="text-content">
             {ru
-              ? 'Оплата скоро появится. Пока её нет, разборы доступны со своим ключом — это тот же результат, и он бесплатный.'
-              : 'Payment is not open yet. Until it is, the explanations are available with your own key — the same result, at no cost.'}
+              ? 'Оформление подписки сейчас недоступно. Проверьте доступность позже в настройках аккаунта. AI-функции можно попробовать в пробном периоде или использовать со своим ключом.'
+              : 'Subscription checkout is currently unavailable. Check again later in account settings. You can try the AI features during the free trial or use your own key.'}
           </p>
         )}
       </Section>
@@ -193,6 +207,7 @@ export function ProPage() {
             ? 'Pro можно попробовать 14 дней бесплатно, карта не нужна. Пробный период даёт ограниченный запас запросов и выдаётся один раз.'
             : 'You can try Pro free for 14 days, no card required. The trial comes with a limited budget of requests and is granted once.'}
         </p>
+        <p><Link to="/settings" className="text-teal hover:underline">{ru ? 'Перейти к аккаунту и пробному периоду' : 'Go to account and free trial'}</Link></p>
         <p>
           {/* Said in the same breath on purpose: a trial button that silently fails for an anonymous
               user is worse than no trial button. */}
