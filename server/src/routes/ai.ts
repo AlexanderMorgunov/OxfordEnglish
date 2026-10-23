@@ -5,7 +5,7 @@ import { consumeAi, refundAi, evaluate, type EntitlementStore } from '../entitle
 import { TASKS, aiCost, buildMessages, cacheKey, inputSize, type AiCacheStore } from '../ai.js';
 import { deepseekCompleter, aiConfigured, AI_MODEL, type Completer } from '../aiProvider.js';
 import { ipBucketLimiter } from '../rateLimit.js';
-import { parseWordSenses } from '../wordSenses.js';
+import { completeWordSenses, parseWordSenses, WordSensesValidationError } from '../wordSenses.js';
 
 const err = (code: string, status: 400 | 401 | 402 | 413 | 429 | 503) =>
   Response.json({ error: { code } }, { status });
@@ -65,11 +65,14 @@ export function aiRoutes(ent: EntitlementStore, cache: AiCacheStore, completer: 
       }
       let content: string;
       try {
-        content = await completer(buildMessages(req), {
-          temperature: spec.temperature, maxTokens: spec.maxTokens, task: req.task,
-        });
-        content = JSON.stringify({ senses: parseWordSenses(content, req.term) });
-      } catch {
+        content = await completeWordSenses(req.term, (messages, signal) => completer(messages, {
+          temperature: spec.temperature, maxTokens: spec.maxTokens, task: req.task, signal,
+        }));
+      } catch (error) {
+        const reason = error instanceof WordSensesValidationError ? 'invalid_output'
+          : error instanceof Error && ['TimeoutError', 'AbortError'].includes(error.name) ? 'timeout' : 'upstream';
+        // eslint-disable-next-line no-console
+        console.error(`[ai] wordSenses failed reason=${reason}`);
         await ent.mutate(claims.sub, row => ({ row: refundAi(row, cost) ?? undefined, result: undefined }));
         return err(ErrorCode.AiUnavailable, 503);
       }

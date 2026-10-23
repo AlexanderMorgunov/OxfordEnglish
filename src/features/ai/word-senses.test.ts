@@ -1,8 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { expect, test } from 'vitest';
+import { expect, test, vi } from 'vitest';
 import { AiTaskRequestSchema } from '@/features/account/contract';
-import { SenseTermSchema, exampleContainsTerm, parseWordSenses, wordSensesMessages } from './word-senses';
+import { completeWordSenses, SenseTermSchema, exampleContainsTerm, parseWordSenses, wordSensesMessages } from './word-senses';
 
 const sense = { partOfSpeech: 'noun', translation: 'берег', distinction: 'Край реки', example: 'We sat on the river bank.' };
 test('client and server request, result, prompts and budgets remain exact mirrors', () => {
@@ -50,4 +50,60 @@ test('examples require exact whole targets with agreed apostrophe and whitespace
   expect(exampleContainsTerm('Use bank123.', 'bank')).toBe(false);
   expect(exampleContainsTerm('Use _bank_.', 'bank')).toBe(false);
   expect(exampleContainsTerm('Use ébank.', 'bank')).toBe(false);
+});
+
+test('repairs the observed shelter inflection once without weakening result validation', async () => {
+  const base = { partOfSpeech: 'verb', translation: 'укрываться', distinction: 'Защищаться от непогоды' };
+  const invalid = JSON.stringify({ senses: [{ ...base, example: 'They sheltered in a doorway.' }] });
+  const valid = JSON.stringify({ senses: [{ ...base, example: 'They shelter in a doorway.' }] });
+  const generate = vi.fn().mockResolvedValueOnce(invalid).mockResolvedValueOnce(valid);
+  expect(await completeWordSenses('shelter', generate)).toBe(valid);
+  expect(generate).toHaveBeenCalledTimes(2);
+  expect(generate.mock.calls[1]?.[0].at(-1).content).toContain('Do not conjugate');
+  expect(generate.mock.calls[0]?.[1]).toBe(generate.mock.calls[1]?.[1]);
+  expect(() => parseWordSenses(invalid, 'shelter')).toThrow('Invalid word senses');
+});
+
+test('does not retry provider failure and caps invalid-output repair at one attempt', async () => {
+  const offline = vi.fn().mockRejectedValue(new TypeError('offline'));
+  await expect(completeWordSenses('bank', offline)).rejects.toThrow('offline');
+  expect(offline).toHaveBeenCalledOnce();
+  const malformed = vi.fn().mockResolvedValue('not json');
+  await expect(completeWordSenses('bank', malformed)).rejects.toThrow('Invalid word senses');
+  expect(malformed).toHaveBeenCalledTimes(2);
+});
+
+test('cancellation prevents a repair or a successful late result', async () => {
+  const controller = new AbortController();
+  const generate = vi.fn(async () => { controller.abort(); return JSON.stringify({ senses: [sense] }); });
+  await expect(completeWordSenses('bank', generate, controller.signal)).rejects.toMatchObject({ name: 'AbortError' });
+  expect(generate).toHaveBeenCalledOnce();
+});
+
+test('supports WebViews without static AbortSignal methods or throwIfAborted', async () => {
+  const unavailable = () => { throw new Error('Unavailable in older WebViews'); };
+  const any = vi.spyOn(AbortSignal, 'any').mockImplementation(unavailable);
+  const timeout = vi.spyOn(AbortSignal, 'timeout').mockImplementation(unavailable);
+  const check = vi.spyOn(AbortSignal.prototype, 'throwIfAborted').mockImplementation(unavailable);
+  try {
+    const result = JSON.stringify({ senses: [sense] });
+    expect(await completeWordSenses('bank', async () => result)).toBe(result);
+  } finally {
+    any.mockRestore(); timeout.mockRestore(); check.mockRestore();
+  }
+});
+
+test('the shared deadline bounds even a provider that ignores cancellation and clears its timer', async () => {
+  vi.useFakeTimers();
+  try {
+    const generate = vi.fn(() => new Promise<string>(() => undefined));
+    const result = completeWordSenses('bank', generate);
+    const timedOut = expect(result).rejects.toMatchObject({ name: 'TimeoutError' });
+    await vi.advanceTimersByTimeAsync(20_000);
+    await timedOut;
+    expect(generate).toHaveBeenCalledOnce();
+    expect(vi.getTimerCount()).toBe(0);
+  } finally {
+    vi.useRealTimers();
+  }
 });
