@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useId, useMemo, useState } from 'react';
 import { Button, Input } from '@/shared/ui';
 import { cn } from '@/shared/lib/cn';
 import type { Crossword, Placed } from './generate';
@@ -21,6 +21,7 @@ function cellsOf(p: Placed): string[] {
 
 export function CrosswordView({ crossword }: { crossword: Crossword }) {
   const ru = useUiLang(s => s.lang) === 'ru';
+  const id = useId();
   const [solved, setSolved] = useState<Set<number>>(new Set());
   const [inputs, setInputs] = useState<Record<number, string>>({});
   const [wrong, setWrong] = useState<Set<number>>(new Set());
@@ -64,25 +65,27 @@ export function CrosswordView({ crossword }: { crossword: Crossword }) {
         <p className="font-mono text-2xs uppercase tracking-[0.08em] text-muted">{title}</p>
         {list.map((p) => (
           <div key={p.number} className="flex flex-wrap items-center gap-2">
-            <span className="font-mono text-2xs tabular-nums text-teal">{p.number}.</span>
-            <span className="text-sm">{p.clue}</span>
+            <label htmlFor={`${id}-${p.number}`} className="text-sm">
+              <span className="font-mono text-2xs tabular-nums text-teal">{p.number}.</span>{' '}{p.clue}
+            </label>
             {solved.has(p.number) ? (
-              <span className="font-mono text-2xs text-teal">✓ {p.word.toLowerCase()}</span>
+              <span role="status" className="font-mono text-2xs text-teal">✓ {p.word.toLowerCase()}</span>
             ) : (
               <span className="flex items-center gap-1.5">
                 <Input
+                  id={`${id}-${p.number}`}
                   className={cn('w-32', wrong.has(p.number) && 'border-coral text-coral')}
                   aria-invalid={wrong.has(p.number)}
                   value={inputs[p.number] ?? ''}
                   onChange={(e) => editClue(p.number, e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && check(p)}
                 />
-                <Button size="sm" variant="ghost" onClick={() => check(p)}>
+                <Button size="sm" variant="ghost" aria-label={`${ru ? 'Проверить' : 'Check'} ${p.number}: ${p.clue}`} onClick={() => check(p)}>
                   ✓
                 </Button>
                 {wrong.has(p.number) && (
                   <span className="font-mono text-2xs text-coral" role="status">
-                    ✕ {p.word.length}
+                    {ru ? 'Попробуйте ещё раз' : 'Try again'} · {p.word.length} {ru ? 'букв' : 'letters'}
                   </span>
                 )}
               </span>
@@ -121,11 +124,11 @@ export function CrosswordView({ crossword }: { crossword: Crossword }) {
         )}
       </div>
 
-      {allDone && <p className="text-sm text-teal">Готово — все слова! ✓</p>}
+      {allDone && <p role="status" className="text-sm text-teal">{ru ? 'Готово — все слова! ✓' : 'Done — all words! ✓'}</p>}
 
       <div className="flex flex-col gap-3">
-        {clueList('across', across)}
-        {clueList('down', down)}
+        {clueList(ru ? 'по горизонтали' : 'across', across)}
+        {clueList(ru ? 'по вертикали' : 'down', down)}
       </div>
     </div>
   );
