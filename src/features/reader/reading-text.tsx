@@ -319,6 +319,7 @@ export const WordToken = memo(function WordToken({
     <Popover
       label={word}
       showClose
+      closeLabel={lang === 'ru' ? 'Закрыть' : 'Close'}
       anchorClassName="min-w-0 max-w-full self-baseline"
       className="max-h-[calc(100dvh-1rem)] max-w-[min(16rem,calc(100vw-1rem))] overflow-y-auto [overflow-wrap:anywhere]"
       trigger={
@@ -344,7 +345,7 @@ export const WordToken = memo(function WordToken({
         {canSpeak && (
           <button
             type="button"
-            aria-label={`Pronounce ${word}`}
+            aria-label={lang === 'ru' ? `Произнести ${word}` : `Pronounce ${word}`}
             className="text-teal transition-opacity hover:opacity-80"
             onClick={() => speakWord(lookup)}
           >
@@ -362,13 +363,13 @@ export const WordToken = memo(function WordToken({
       {savedMeaning && <p className="text-xs text-muted">{lang === 'ru' ? 'Из вашего словаря' : 'From your vocabulary'}</p>}
       <PopoverForms word={lookup} />
       {loading && (
-        <p className="mt-1 font-mono text-2xs text-faint">translating…</p>
+        <p role="status" className="mt-1 font-mono text-2xs text-faint">{lang === 'ru' ? 'перевод…' : 'translating…'}</p>
       )}
       {failed && !translation && (
-        <p className="mt-1 font-mono text-2xs text-faint">
+        <p className="mt-1 font-mono text-2xs text-muted">
           {lang === 'ru'
-            ? 'перевод недоступен — нет сети или дневной лимит словаря'
-            : 'unavailable — offline or the free dictionary’s daily limit'}
+            ? 'Надёжный перевод не найден. Можно указать свой в словаре.'
+            : 'No reliable translation found. You can enter your own in vocabulary.'}
         </p>
       )}
       {(aiReady || aiUnknown) && enableContextFetch && sentence.includes(' ') && (
@@ -411,10 +412,10 @@ export const WordToken = memo(function WordToken({
               .finally(() => { if (savedWord.current === save) savingWord.current = false; });
           }}
         >
-          learning
+          {lang === 'ru' ? 'учу' : 'learning'}
         </Button>
         <Button size="sm" variant="ghost" onClick={() => void setStatus(lookup, 'known')}>
-          known
+          {lang === 'ru' ? 'знаю' : 'known'}
         </Button>
         <Button
           size="sm"
@@ -428,7 +429,7 @@ export const WordToken = memo(function WordToken({
       {visibleWordSave !== 'idle' && <p role={visibleWordSave === 'error' ? 'alert' : 'status'} className="mt-2 text-xs text-muted">
         {visibleWordSave === 'saving' ? lang === 'ru' ? 'Сохраняю…' : 'Saving…'
           : visibleWordSave === 'saved' ? lang === 'ru' ? '✓ сохранено' : '✓ saved'
-          : source ? lang === 'ru' ? 'Не удалось добавить в главу. Нажмите learning ещё раз.' : 'Could not add to chapter. Press learning again.'
+          : source ? lang === 'ru' ? 'Не удалось добавить в главу. Нажмите «учу» ещё раз.' : 'Could not add to chapter. Press learning again.'
           : lang === 'ru' ? 'Не удалось сохранить. Попробуйте ещё раз.' : 'Could not save. Try again.'}
       </p>}
     </Popover>

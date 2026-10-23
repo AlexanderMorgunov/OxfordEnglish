@@ -28,6 +28,7 @@ type PopoverProps = {
   label?: string;
   /** Render an explicit × close button in the panel corner. */
   showClose?: boolean;
+  closeLabel?: string;
   className?: string;
   anchorClassName?: string;
 };
@@ -37,7 +38,7 @@ const MARGIN = 8;
 /** Anchored popover for word/example look-ups (DESIGN_DOC §5.2). The panel is portaled to
  *  document.body and positioned `fixed`, clamped to the viewport — so a word near the right edge
  *  can never open it off-screen or widen the document (which produced a horizontal scrollbar). */
-export function Popover({ trigger, children, label, showClose, className, anchorClassName }: PopoverProps) {
+export function Popover({ trigger, children, label, showClose, closeLabel = 'Close', className, anchorClassName }: PopoverProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLSpanElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -142,7 +143,7 @@ export function Popover({ trigger, children, label, showClose, className, anchor
             {showClose && (
               <button
                 type="button"
-                aria-label="Close"
+                aria-label={closeLabel}
                 onClick={() => close()}
                 className="absolute right-0 top-0 flex h-9 w-9 items-center justify-center font-mono text-xl leading-none text-muted hover:text-content"
               >

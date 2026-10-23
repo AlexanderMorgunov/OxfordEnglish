@@ -2,10 +2,16 @@ import { db } from '@/db/db';
 import { captureDataScope, requireDataScope } from '@/features/account/dataScope';
 import { translationChunks } from './translation-chunks';
 
-type MyMemoryResponse = { responseData?: { translatedText?: string } };
+type MyMemoryResponse = {
+  responseData?: { translatedText?: string; match?: number };
+  matches?: { segment?: string; translation?: string; match?: number; source?: string; target?: string }[];
+};
 
 /** A real en→ru translation is Cyrillic; a Latin result means MyMemory echoed the source. */
 const hasCyrillic = (s: string) => /[а-яё]/i.test(s);
+const isWord = (s: string) => /^[a-z]+(?:['’-][a-z]+)*$/i.test(s);
+const usableAutomatic = (text: string, ru: string) => hasCyrillic(ru)
+  && !(isWord(text) && /(^|\s)[а-яё]{1,2}\.(?=\s|$)/i.test(ru));
 
 export const termCacheKey = (term: string): string => term.trim().toLowerCase();
 
@@ -39,9 +45,15 @@ async function mymemory(text: string, signal: AbortSignal): Promise<string | nul
     );
     if (!res.ok) return null;
     const data = (await res.json()) as MyMemoryResponse;
-    const ru = data.responseData?.translatedText?.trim();
+    let ru = data.responseData?.translatedText?.trim();
+    if (isWord(text) && ((data.responseData?.match != null && data.responseData.match < 1) || (ru && !usableAutomatic(text, ru)))) {
+      // A fuzzy translation-memory segment can be unrelated to a standalone vocabulary word.
+      ru = data.matches?.find(m => m.match === 1 && m.segment?.trim().toLowerCase() === text.toLowerCase()
+        && /^en(?:-|$)/i.test(m.source ?? '') && /^ru(?:-|$)/i.test(m.target ?? '')
+        && !!m.translation && usableAutomatic(text, m.translation))?.translation?.trim();
+    }
     // Reject the daily-limit warning, the length-limit note, and any non-Russian echo.
-    if (signal.aborted || !ru || /MYMEMORY WARNING|QUERY LENGTH LIMIT/i.test(ru) || !hasCyrillic(ru)) return null;
+    if (signal.aborted || !ru || /MYMEMORY WARNING|QUERY LENGTH LIMIT/i.test(ru) || !usableAutomatic(text, ru)) return null;
     return ru;
   } catch {
     return null;
@@ -89,7 +101,7 @@ export async function translateTermProposal(term: string, opts: { signal?: Abort
     try {
       const cached = await db.translations.get(key);
       if (!current() || opts.signal?.aborted) return null;
-      if (cached?.source !== 'manual' && cached?.ru && hasCyrillic(cached.ru)) return cached.ru;
+      if (cached?.source !== 'manual' && cached?.ru && usableAutomatic(source, cached.ru)) return cached.ru;
     } catch {
       // A failed local read does not prevent an explicit provider lookup.
     }
@@ -122,7 +134,7 @@ export async function translateText(text: string, opts: { signal?: AbortSignal; 
       (await db.translations.get(key)) ?? (passage ? undefined : await db.translations.get(source));
     if (!current() || opts.signal?.aborted) return null;
     if (cached?.source === 'manual') return cachedResult(cached.ru || null);
-    if (cached && hasCyrillic(cached.ru)) return cachedResult(cached.ru);
+    if (cached && usableAutomatic(source, cached.ru)) return cachedResult(cached.ru);
   } catch {
     // ignore cache miss
   }
@@ -143,7 +155,7 @@ export async function translateWord(word: string): Promise<string | null> {
     const cached = await db.translations.get(w);
     if (!current()) return null;
     if (cached?.source === 'manual') return cached.ru || null;
-    if (cached && hasCyrillic(cached.ru)) return cached.ru;
+    if (cached && usableAutomatic(w, cached.ru)) return cached.ru;
   } catch {
     // ignore cache miss
   }
