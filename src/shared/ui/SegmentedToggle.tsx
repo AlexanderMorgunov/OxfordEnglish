@@ -37,7 +37,7 @@ export function SegmentedToggle<T extends string>({
       role="radiogroup"
       aria-label={ariaLabel}
       className={cn(
-        'inline-flex gap-0.5 rounded-sm border border-line bg-ink p-0.5',
+        'inline-flex max-w-full flex-wrap gap-0.5 rounded-sm border border-line bg-ink p-0.5',
         className
       )}
       onKeyDown={(e) => {
@@ -61,7 +61,7 @@ export function SegmentedToggle<T extends string>({
             tabIndex={active ? 0 : -1}
             onClick={() => onChange(seg.value)}
             className={cn(
-              'rounded-[6px] font-mono uppercase tracking-[0.08em] transition-colors duration-150',
+              'max-w-full shrink-0 rounded-[6px] font-mono uppercase tracking-[0.08em] [overflow-wrap:break-word] transition-colors duration-150',
               SIZE[size],
               active
                 ? 'bg-surface-2 text-teal'

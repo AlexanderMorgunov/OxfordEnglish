@@ -198,9 +198,9 @@ function OwnedBookReaderPage() {
 
   return (
     <article>
-      <div className="mb-3.5 flex flex-wrap items-center justify-between gap-3 [overflow-wrap:anywhere]">
-        <Eyebrow>{book.title}</Eyebrow>
-        <Link to="/library" className="min-w-0 max-w-full font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">
+      <div className="mb-3.5 flex flex-wrap items-center justify-between gap-3">
+        <Eyebrow className="min-w-0 max-w-full">{book.title}</Eyebrow>
+        <Link to="/library" className="max-w-full shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">
           ← {ru ? 'библиотека' : 'library'}
         </Link>
       </div>

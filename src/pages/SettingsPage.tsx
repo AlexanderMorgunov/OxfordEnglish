@@ -201,7 +201,7 @@ export function SettingsPage() {
             <>
               На бесплатных тарифах запросы часто идут в обучение моделей провайдера — для учебных фраз
               обычно ок, но знайте. <b className="text-content">Из России без VPN:</b>{' '}
-              Groq/OpenRouter/Cerebras/Gemini/OpenAI гео-блокируют РФ (нужен VPN). Без VPN работает{' '}
+              Groq, OpenRouter, Cerebras, Gemini и OpenAI гео-блокируют РФ (нужен VPN). Без VPN работает{' '}
               <b className="text-content">VseGPT</b> — RU-прокси (OpenAI-совместимый, 120+ моделей):
               платный по рублёвой карте, но с небольшим бесплатным кредитом на старте (без карты) — можно
               попробовать. Не хочется возиться с ключом —{' '}
@@ -214,7 +214,7 @@ export function SettingsPage() {
             <>
               Free tiers usually mean your requests may train the provider's models — fine for learning
               sentences, but know it. <b className="text-content">From Russia without a VPN:</b>{' '}
-              Groq/OpenRouter/Cerebras/Gemini/OpenAI geo-block RU (need a VPN). Without a VPN,{' '}
+              Groq, OpenRouter, Cerebras, Gemini and OpenAI geo-block RU (need a VPN). Without a VPN,{' '}
               <b className="text-content">VseGPT</b> works — a RU proxy (OpenAI-compatible, 120+ models):
               paid by ruble card, but with a small no-card starter credit to try. Rather not deal with a
               key —{' '}

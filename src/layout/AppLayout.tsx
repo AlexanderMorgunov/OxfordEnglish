@@ -113,7 +113,7 @@ export function AppLayout() {
       <MigrationNotice />
       <InstallPrompt />
 
-      <main ref={mainRef} tabIndex={-1} className="mx-auto max-w-3xl px-5 py-8 pb-20 [overflow-wrap:anywhere]">
+      <main ref={mainRef} tabIndex={-1} className="mx-auto max-w-3xl px-5 py-8 pb-20 [overflow-wrap:break-word]">
         <ErrorBoundary resetKey={location.pathname}>
           <Suspense fallback={<p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading…'}</p>}>
             <Outlet />

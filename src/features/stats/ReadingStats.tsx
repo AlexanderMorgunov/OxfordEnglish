@@ -84,7 +84,7 @@ export function ReadingStats() {
       </div>
 
       {s && (
-        <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
+        <div className="mb-4 grid grid-cols-[repeat(auto-fit,minmax(min(100%,calc(9rem*var(--app-text-scale,1))),1fr))] gap-2 sm:grid-cols-3">
           <Tile label={ru ? 'время чтения' : 'reading time'} value={duration(s.readSec, ru)} />
           <Tile label={ru ? 'прочитано слов' : 'words read'} value={s.readWords} />
           <Tile label={ru ? 'добавлено слов' : 'words saved'} value={s.wordsSaved} />

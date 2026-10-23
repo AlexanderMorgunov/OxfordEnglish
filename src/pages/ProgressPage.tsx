@@ -29,9 +29,9 @@ function barColor(accuracy: number): string {
 
 function Stat({ label, value }: { label: string; value: string | number }) {
   return (
-    <Card className="flex-1">
+    <Card className="min-w-0 flex-[1_1_12rem]">
       <p className="font-mono text-2xs uppercase tracking-[0.08em] text-muted">{label}</p>
-      <p className="mt-1 text-2xl font-bold tabular-nums">{value}</p>
+      <p className="mt-1 text-2xl font-bold whitespace-nowrap tabular-nums">{value}</p>
     </Card>
   );
 }
@@ -111,7 +111,7 @@ export function ProgressPage() {
       </div>
 
       <div className="mb-8 flex flex-wrap gap-3">
-        <Stat label={ru ? 'серия' : 'streak'} value={`${streak}${ru ? 'дн' : 'd'}`} />
+        <Stat label={ru ? 'серия' : 'streak'} value={`${streak} ${ru ? 'дн' : 'd'}`} />
         <Stat label={ru ? 'словарь' : 'vocabulary'} value={vocab} />
         <Stat label={ru ? 'дней с занятиями' : 'days active'} value={days.size} />
       </div>
