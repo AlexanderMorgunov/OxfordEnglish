@@ -82,9 +82,13 @@ in Russian. Code identifiers, comments, and commit subjects are English.
 
 - For substantial changes: research → concrete plan → implementation → relevant
   tests and browser verification → review. Use the `dayenglish-workflow` skill.
-  For new or reworked UI flows, first use `ux-audit`, `product-ux`,
-  `frontend-design`, and relevant `web-accessibility` guidance. Create and inspect
-  a prototype in the installed Open Design before product UI implementation.
+  For new or reworked UI flows, use `ux-ui-design` for task evidence, real reference
+  flows, synthesis and a UX walkthrough before UI styling. Use `ux-audit` for
+  existing flows, `product-ux`, `frontend-design`, and relevant `web-accessibility`
+  guidance. Create and inspect an HTML
+  prototype in the selected design tool before product UI implementation; use
+  explicitly requested research tools in practice. Open Design is available but
+  does not replace a requested external provider or UX validation.
   Keep its simulation separate from real provider/runtime evidence, and verify
   the implemented screens with Chrome DevTools, including narrow/large-text,
   keyboard, offline/error and recovery states. A generated prototype is not
@@ -146,4 +150,6 @@ in Russian. Code identifiers, comments, and commit subjects are English.
 Read only the skill needed by the task in `.agents/skills/`:
 `react-best-practices`, `composition-patterns`, `web-design-guidelines`,
 `make-interfaces-feel-better`, `asset-pipeline`, `exercise-logic-review`,
-`dayenglish-workflow`. Project conventions override generic upstream examples.
+`dayenglish-workflow`, `ux-ui-design`. Project conventions override generic
+upstream examples. Use `ux-ui-design` for research, separate UX/UI decisions and
+a reviewable HTML prototype before substantial new or reworked UI flows.

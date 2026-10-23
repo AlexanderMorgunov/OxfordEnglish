@@ -31,9 +31,13 @@ the limitation when it matters. Routine docs/setup edits do not need delegation.
 
 ## Implementation and debugging
 
-For UI flow creation/rework, use the owner's Open Design-first workflow:
-evidence-based audit → task/interaction plan → actual Open Design prototype →
-rendered critique/refinement → product implementation → DevTools verification.
+For new or substantially reworked UI flows, use `ux-ui-design`: task/current-flow
+evidence → real reference flows → evidence synthesis → UX/walkthrough → UI →
+interactive HTML → browser verification and owner review. New features and redesign
+have different starting evidence; do not invent demand or skip the current path.
+Use requested research tools for their intended role; a generator does not replace
+research or user observation. Continue
+to product implementation and DevTools verification within the authorized scope.
 Use available `ux-audit`, `product-ux`, `frontend-design`, and `web-accessibility`
 skills as appropriate. Existing palette, fonts and navigation take precedence
 over generic visual examples. Prototype generation/testing and product browser
