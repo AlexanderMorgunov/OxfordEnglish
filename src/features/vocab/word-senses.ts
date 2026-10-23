@@ -7,7 +7,7 @@ import type { AiConfig } from '@/features/ai/provider';
 import { runTaskResult, captureAiScope } from '@/features/ai/route';
 import type { AiPath } from '@/features/ai/route';
 import { isConfigured } from '@/features/ai/store';
-import { SenseTermSchema, SENSES_VERSION, SENSES_MAX_TOKENS, parseWordSenses, wordSensesMessages } from '@/features/ai/word-senses';
+import { SenseTermSchema, SENSES_VERSION, SENSES_MAX_TOKENS, completeWordSenses, parseWordSenses } from '@/features/ai/word-senses';
 import type { WordSense } from '@/features/ai/word-senses';
 
 export const SENSE_CACHE_PREFIX = `lens:senses:${SENSES_VERSION} `;
@@ -80,9 +80,9 @@ export async function requestWordSenses(term: string, config: AiConfig | null, s
   if (preferred === 'byok' && !isConfigured(config)) throw new Error('AI unavailable');
   const names = await keys(query, config, current, signal);
   guard(current, signal);
-  const result = await runTaskResult({ task: 'wordSenses', term: query }, config, (c, signal) => complete(c, wordSensesMessages(query), {
-    temperature: 0.2, maxTokens: SENSES_MAX_TOKENS, noReasoning: true, signal,
-  }), { path: preferred, signal });
+  const result = await runTaskResult({ task: 'wordSenses', term: query }, config, (c, signal) => completeWordSenses(query, (messages, bounded) => complete(c, messages, {
+    temperature: 0.2, maxTokens: SENSES_MAX_TOKENS, noReasoning: true, signal: bounded,
+  }), signal), { path: preferred, signal });
   guard(current, signal);
   const { path, content } = result;
   const senses = parseWordSenses(content, query);

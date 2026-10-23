@@ -31,7 +31,7 @@ export function Button({
     <button
       type={type}
       className={cn(
-        'inline-flex min-w-0 max-w-full items-center justify-center gap-2 whitespace-normal rounded-sm font-mono tracking-[0.02em] [overflow-wrap:anywhere]',
+        'inline-flex min-w-0 max-w-full items-center justify-center gap-2 whitespace-normal rounded-sm font-mono tracking-[0.02em] [overflow-wrap:break-word]',
         'cursor-pointer transition-[opacity,border-color,scale] duration-150 active:scale-[0.96]',
         'disabled:cursor-default disabled:opacity-40 disabled:active:scale-100',
         VARIANT[variant],

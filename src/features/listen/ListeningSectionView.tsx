@@ -196,7 +196,7 @@ export function ListeningSectionView({ section }: { section: ListeningSection })
             { value: '1.25', label: '1.25×' },
           ]}
         />
-        <div className="flex items-center gap-1.5">
+        <div className="flex max-w-full flex-wrap items-center gap-1.5">
           <Button
             size="sm"
             variant="ghost"

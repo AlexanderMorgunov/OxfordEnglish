@@ -204,7 +204,7 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
       )}
 
       {hasAudio && canSpeak && (
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2.5">
           <span className="font-mono text-2xs uppercase tracking-[0.08em] text-muted">
             {ru ? 'скорость аудио' : 'audio speed'}
           </span>

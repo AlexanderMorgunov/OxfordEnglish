@@ -40,10 +40,10 @@ export function DashboardPage() {
       <BackToReader />
       <ExpiryNotice ru={ru} />
       <div className="mb-8 flex items-start justify-between gap-4">
-        <div>
+        <div className="min-w-0 flex-1">
           <p className="eyebrow mb-3.5">{ru ? 'сегодня' : 'today'}</p>
           <h1 className="mb-2 text-3xl font-bold tracking-tight text-balance">
-            Day<span className="text-amber">English</span>
+            Day<wbr /><span className="text-amber">English</span>
           </h1>
           <p className="max-w-prose text-lg text-muted text-pretty">
             {ru
@@ -163,15 +163,15 @@ export function DashboardPage() {
                         key={day.id}
                         to={`/course/${unit.id}/day/${day.id}`}
                         className={[
-                          'group flex items-center justify-between rounded-md border bg-surface px-4 py-3.5 transition-colors hover:border-teal-dim',
+                          'group flex flex-wrap items-center justify-between gap-x-4 gap-y-2 rounded-md border bg-surface px-4 py-3.5 transition-colors hover:border-teal-dim',
                           done ? 'border-teal-dim/60' : 'border-line',
                         ].join(' ')}
                       >
-                        <span className="flex items-baseline gap-3">
+                        <span className="grid min-w-0 flex-[1_1_20rem] grid-cols-[1rem_minmax(0,1fr)] items-baseline gap-x-3 gap-y-1 sm:flex sm:flex-wrap sm:gap-3">
                           <span
                             aria-hidden
                             className={[
-                              'w-4 shrink-0 self-center text-center font-mono text-xs',
+                              'row-span-2 w-4 shrink-0 self-center text-center font-mono text-xs',
                               done
                                 ? 'text-teal'
                                 : inProgress
@@ -182,7 +182,7 @@ export function DashboardPage() {
                             {done ? '✓' : inProgress ? '◐' : '○'}
                           </span>
                           <span className="font-mono text-xs text-teal">{day.id}</span>
-                          <span className={done ? 'text-base text-muted' : 'text-base'}>
+                          <span className={`col-start-2 min-w-0 flex-1 text-base ${done ? 'text-muted' : ''}`}>
                             {tr(day.title, lang)}
                           </span>
                           {(done || inProgress) && (
@@ -191,7 +191,7 @@ export function DashboardPage() {
                             </span>
                           )}
                         </span>
-                        <span className="font-mono text-2xs tabular-nums text-muted">
+                        <span className="max-w-full pl-7 font-mono text-2xs tabular-nums text-muted sm:pl-0">
                           ~{day.estimatedMinutes} {ru ? 'мин' : 'min'} · {day.sections.length}{' '}
                           {ru ? 'разделов' : 'sections'}
                         </span>

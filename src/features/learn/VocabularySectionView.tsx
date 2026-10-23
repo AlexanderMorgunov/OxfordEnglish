@@ -84,7 +84,7 @@ export function VocabularySectionView({ section }: { section: VocabularySection 
         <span className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
           {section.words.length} {ru ? 'слов' : 'words'}
         </span>
-        <div className="flex items-center gap-2.5">
+        <div className="flex max-w-full flex-wrap items-center gap-2.5">
           <SegmentedToggle
             ariaLabel={ru ? 'Режим лексики' : 'Vocabulary mode'}
             value={mode}

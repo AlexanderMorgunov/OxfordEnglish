@@ -7,6 +7,7 @@ import { useEntitlement } from '@/features/account/entitlement';
 import { releasePreviousAccountData } from '@/features/sync/engine';
 import * as AccountApi from '@/features/account/api';
 import { cachedWordSenses, requestWordSenses, SENSE_CACHE_PREFIX, SENSE_CACHE_TTL } from './word-senses';
+import { SENSES_VERSION } from '@/features/ai/word-senses';
 
 const config = { provider: 'custom' as const, apiKey: 'test-only', model: 'test-only', baseUrl: 'https://a.invalid' };
 const senses = [{ partOfSpeech: 'noun', translation: 'берег', distinction: 'Край реки', example: 'We sat on the bank.' }];
@@ -30,13 +31,13 @@ test('BYOK cached proposals do not mix endpoints/models; local hit makes no paid
   expect((await db.translations.toCollection().primaryKeys()).every(key => /\s/.test(String(key)))).toBe(true);
 });
 test('expired trial with no BYOK can discover managed cache offline without runTask', async () => {
-  await db.translations.put({ word: `${SENSE_CACHE_PREFIX}managed:bank`, source: 'lens-word-senses', ru: JSON.stringify({ version: 'v1', at: Date.now(), path: 'managed', content }) });
+  await db.translations.put({ word: `${SENSE_CACHE_PREFIX}managed:bank`, source: 'lens-word-senses', ru: JSON.stringify({ version: SENSES_VERSION, at: Date.now(), path: 'managed', content }) });
   expect(await cachedWordSenses('bank', null, signal())).toEqual({ senses, path: 'managed', cached: true });
   expect((await requestWordSenses('bank', null, signal())).cached).toBe(true);
   expect(fetch).not.toHaveBeenCalled();
 });
 test.each(['expired', 'future', 'malformed', 'wrong-version', 'wrong-target'] as const)('invalid %s cache never triggers a request without eligibility', async reason => {
-  const value = { version: reason === 'wrong-version' ? 'v0' : 'v1', at: Date.now() - (reason === 'expired' ? SENSE_CACHE_TTL : reason === 'future' ? -60000 : 0), path: 'managed', content: reason === 'wrong-target' ? content.replace('bank.', 'river.') : content };
+  const value = { version: reason === 'wrong-version' ? 'v0' : SENSES_VERSION, at: Date.now() - (reason === 'expired' ? SENSE_CACHE_TTL : reason === 'future' ? -60000 : 0), path: 'managed', content: reason === 'wrong-target' ? content.replace('bank.', 'river.') : content };
   await db.translations.put({ word: `${SENSE_CACHE_PREFIX}managed:bank`, source: 'lens-word-senses', ru: reason === 'malformed' ? 'invalid' : JSON.stringify(value) });
   expect(await cachedWordSenses('bank', null, signal())).toBeNull();
   await expect(requestWordSenses('bank', null, signal())).rejects.toThrow('AI unavailable');
@@ -63,7 +64,8 @@ test('storage failure returns validated proposals; malformed/truncated provider 
   vi.spyOn(db.translations, 'put').mockRejectedValueOnce(new Error('Storage unavailable'));
   expect((await requestWordSenses('bank', config, signal())).senses).toEqual(senses);
   expect(await db.translations.count()).toBe(0);
-  vi.mocked(fetch).mockResolvedValueOnce(new Response(JSON.stringify({ choices: [{ message: { content: 'bad json' } }] })));
+  const malformed = () => new Response(JSON.stringify({ choices: [{ message: { content: 'bad json' } }] }));
+  vi.mocked(fetch).mockResolvedValueOnce(malformed()).mockResolvedValueOnce(malformed());
   await expect(requestWordSenses('bank', config, signal())).rejects.toThrow('Invalid word senses');
   vi.mocked(fetch).mockResolvedValueOnce(new Response(JSON.stringify({ choices: [{ finish_reason: 'length', message: { content } }] })));
   await expect(requestWordSenses('bank', config, signal())).rejects.toThrow('truncated');
@@ -76,7 +78,7 @@ test('handover clears one-word sense cache while preserving ordinary manual tran
   expect(await db.translations.toArray()).toEqual([{ word: 'bank', ru: 'банк', source: 'manual' }]);
 });
 test('cache maintenance only evicts this namespace and keeps its count bounded', async () => {
-  await db.translations.bulkPut(Array.from({ length: 100 }, (_, index) => ({ word: `${SENSE_CACHE_PREFIX}managed:word${index}`, source: 'lens-word-senses', ru: JSON.stringify({ version: 'v1', at: Date.now() - 1000 - index, path: 'managed', content }) })));
+  await db.translations.bulkPut(Array.from({ length: 100 }, (_, index) => ({ word: `${SENSE_CACHE_PREFIX}managed:word${index}`, source: 'lens-word-senses', ru: JSON.stringify({ version: SENSES_VERSION, at: Date.now() - 1000 - index, path: 'managed', content }) })));
   await db.translations.put({ word: 'bank', ru: 'ручной', source: 'manual' });
   await requestWordSenses('bank', config, signal());
   expect(await db.translations.where('word').startsWith(SENSE_CACHE_PREFIX).count()).toBe(100);
@@ -114,4 +116,15 @@ test('manual prefix collisions are preserved during cache writing and eviction',
   expect((await db.translations.get(key))?.ru).toBe('ручной ответ');
   await requestWordSenses('bank', { ...config, model: 'other' }, signal());
   expect((await db.translations.get(`${SENSE_CACHE_PREFIX}manual-collision`))?.ru).toBe('ещё ручной');
+});
+
+test('BYOK repairs an inflected example before caching the validated result', async () => {
+  const verb = { partOfSpeech: 'verb', translation: 'укрываться', distinction: 'Защищаться от непогоды' };
+  const answer = (example: string) => new Response(JSON.stringify({ choices: [{ finish_reason: 'stop', message: { content: JSON.stringify({ senses: [{ ...verb, example }] }) } }] }));
+  vi.mocked(fetch).mockResolvedValueOnce(answer('They sheltered in a doorway.')).mockResolvedValueOnce(answer('They shelter in a doorway.'));
+  const result = await requestWordSenses('shelter', config, signal());
+  expect(result.senses[0]?.example).toBe('They shelter in a doorway.');
+  expect(fetch).toHaveBeenCalledTimes(2);
+  expect((await requestWordSenses('shelter', config, signal())).cached).toBe(true);
+  expect(fetch).toHaveBeenCalledTimes(2);
 });

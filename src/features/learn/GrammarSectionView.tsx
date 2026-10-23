@@ -18,7 +18,7 @@ export function GrammarSectionView({ section }: Props) {
   return (
     <div className="flex flex-col gap-4">
       <div className="rounded-lg border border-line bg-surface p-5">
-        <div className="mb-3 flex items-center justify-between gap-3">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
           <span className="font-mono text-2xs uppercase tracking-[0.08em] text-muted">
             {uiLang === 'ru' ? 'правило' : 'rule'}
           </span>
@@ -42,7 +42,7 @@ export function GrammarSectionView({ section }: Props) {
       <div className="overflow-hidden rounded-lg border border-line bg-surface">
         {section.patterns.map((pattern, i) => (
           <div key={i} className="border-b border-line p-5 last:border-b-0">
-            <div className="mb-2 flex items-center justify-between gap-3">
+            <div className="mb-2 flex flex-wrap items-center justify-between gap-3">
               <p className="font-mono text-2xs uppercase tracking-[0.08em] text-muted">
                 {showRu ? pattern.label.ru ?? pattern.label.en : pattern.label.en}
               </p>

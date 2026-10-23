@@ -109,16 +109,18 @@ export function DayPage() {
       <div className="flex flex-col gap-12">
         {day.sections.map((section) => (
           <section key={`${section.id}.${runKey}`} aria-label={tr(section.title, lang)}>
-            <div className="mb-4 flex items-center gap-2.5 border-b border-line pb-2">
-              <PixelImage
-                src={`/assets/pixel/sections/${section.type}.png`}
-                alt=""
-                className="h-6 w-6 shrink-0"
-              />
-              <span className="font-mono text-sm text-amber">
-                {SECTION_LABEL[section.type]?.[ru ? 'ru' : 'en'] ?? section.type}
-              </span>
-              <h2 className="text-xl font-semibold tracking-tight">
+            <div className="mb-4 flex flex-wrap items-center gap-x-2.5 gap-y-1 border-b border-line pb-2">
+              <div className="flex max-w-full items-center gap-2.5">
+                <PixelImage
+                  src={`/assets/pixel/sections/${section.type}.png`}
+                  alt=""
+                  className="h-6 w-6 shrink-0"
+                />
+                <span className="font-mono text-sm text-amber">
+                  {SECTION_LABEL[section.type]?.[ru ? 'ru' : 'en'] ?? section.type}
+                </span>
+              </div>
+              <h2 className="min-w-0 flex-[1_1_14rem] text-xl font-semibold tracking-tight">
                 {tr(section.title, lang)}
               </h2>
             </div>

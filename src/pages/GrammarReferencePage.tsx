@@ -68,10 +68,10 @@ export function GrammarIndexPage() {
             <Link
               key={a.id}
               to={`/grammar/${a.id}`}
-              className="group flex items-center justify-between rounded-md border border-line bg-surface px-4 py-3.5 transition-colors hover:border-teal-dim"
+              className="group flex flex-col items-start gap-1 rounded-md border border-line bg-surface px-4 py-3.5 transition-colors hover:border-teal-dim sm:flex-row sm:items-center sm:justify-between sm:gap-4"
             >
-              <span className="text-base">{tr(a.title, lang)}</span>
-              <span className="max-w-[45%] truncate font-mono text-2xs text-muted">
+              <span className="min-w-0 text-base sm:flex-1">{tr(a.title, lang)}</span>
+              <span className="max-w-full font-mono text-2xs text-muted sm:w-[45%] sm:truncate">
                 {tr(a.summary, lang)}
               </span>
             </Link>

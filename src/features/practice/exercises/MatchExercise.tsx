@@ -69,6 +69,7 @@ export function MatchExercise({ exercise, onSolved }: Props) {
           {exercise.pairs.map((pair, i) => (
             <Option
               key={pair.left}
+              className="px-2 sm:px-3.5"
               state={selectedLeft === i ? 'chosen' : 'default'}
               disabled={status === 'correct'}
               onClick={() => setSelectedLeft(i)}
@@ -87,7 +88,7 @@ export function MatchExercise({ exercise, onSolved }: Props) {
             <Option
               key={exercise.pairs[rightIdx]?.right}
               disabled={usedRight.has(rightIdx) || status === 'correct'}
-              className={usedRight.has(rightIdx) ? 'opacity-40' : undefined}
+              className={`px-2 sm:px-3.5 ${usedRight.has(rightIdx) ? 'opacity-40' : ''}`}
               onClick={() => assignRight(rightIdx)}
             >
               {exercise.pairs[rightIdx]?.right}

@@ -195,15 +195,23 @@ export function BookView({
   };
 
   const nav = multi ? (
-    <div className="flex items-center justify-between gap-3">
-      <Button variant="ghost" size="sm" disabled={chapter === 0} onClick={() => go(chapter - 1)}>
-        ← {ru ? 'назад' : 'prev'}
+    <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3">
+      <Button
+        className="min-h-11 min-w-11 whitespace-nowrap"
+        aria-label={ru ? 'Предыдущая глава' : 'Previous chapter'}
+        variant="ghost"
+        size="sm"
+        disabled={chapter === 0}
+        onClick={() => go(chapter - 1)}
+      >
+        <span aria-hidden="true">←</span>
+        <span className="hidden sm:inline">{ru ? 'назад' : 'prev'}</span>
       </Button>
       <select
         aria-label={ru ? 'Глава' : 'Chapter'}
         value={chapter}
         onChange={(e) => go(Number(e.target.value))}
-        className="max-w-[55%] truncate rounded-sm border border-line bg-surface px-2 py-1 font-mono text-xs text-muted"
+        className="min-h-11 w-full min-w-0 truncate rounded-sm border border-line bg-surface px-2 py-1 font-mono text-xs text-muted"
       >
         {chapters.map((c, i) => (
           <option key={c.id} value={i}>
@@ -212,12 +220,15 @@ export function BookView({
         ))}
       </select>
       <Button
+        className="min-h-11 min-w-11 whitespace-nowrap"
+        aria-label={ru ? 'Следующая глава' : 'Next chapter'}
         variant="ghost"
         size="sm"
         disabled={chapter >= chapters.length - 1}
         onClick={() => go(chapter + 1)}
       >
-        {ru ? 'далее' : 'next'} →
+        <span className="hidden sm:inline">{ru ? 'далее' : 'next'}</span>
+        <span aria-hidden="true">→</span>
       </Button>
     </div>
   ) : null;

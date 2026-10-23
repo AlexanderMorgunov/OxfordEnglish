@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { cn } from '@/shared/lib/cn';
 import { PixelImage } from '@/shared/ui';
@@ -21,9 +21,38 @@ export function NavMore({
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const panelId = useId();
   const { pathname } = useLocation();
   const holdsCurrent = items.some((i) => pathname === i.to || pathname.startsWith(`${i.to}/`));
+
+  useLayoutEffect(() => {
+    if (!open) return;
+    const root = rootRef.current;
+    const button = btnRef.current;
+    const panel = panelRef.current;
+    if (!root || !button || !panel) return;
+    const position = () => {
+      const anchor = button.getBoundingClientRect();
+      // Available height can add or remove a scrollbar and change the panel width.
+      panel.style.maxHeight = `${Math.max(0, window.innerHeight - anchor.bottom - 12)}px`;
+      const width = document.documentElement.clientWidth || window.innerWidth;
+      const left = Math.max(8, Math.min(anchor.left, width - panel.offsetWidth - 8));
+      panel.style.left = `${Math.round(left - root.getBoundingClientRect().left)}px`;
+    };
+    position();
+    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(position);
+    observer?.observe(panel);
+    observer?.observe(root);
+    if (root.parentElement) observer?.observe(root.parentElement);
+    window.addEventListener('resize', position);
+    window.addEventListener('scroll', position, { passive: true, capture: true });
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener('resize', position);
+      window.removeEventListener('scroll', position, true);
+    };
+  }, [open, items, label]);
 
   useEffect(() => {
     if (!open) return;
@@ -44,7 +73,7 @@ export function NavMore({
   }, [open]);
 
   return (
-    <div ref={rootRef}>
+    <div ref={rootRef} className="relative">
       <button
         ref={btnRef}
         type="button"
@@ -65,11 +94,10 @@ export function NavMore({
       </button>
 
       {open && (
-        // Anchored to the nav container, not to the trigger: the trigger can wrap to the start of a
-        // row, and a panel hung off it would then run past the left edge of the screen.
         <div
+          ref={panelRef}
           id={panelId}
-          className="absolute right-0 top-full z-40 mt-1 flex min-w-40 flex-col rounded-md border border-line bg-surface p-1 shadow-lg"
+          className="absolute left-0 top-full z-40 mt-1 flex w-max min-w-40 max-w-[calc(100vw-1rem)] flex-col overflow-y-auto rounded-md border border-line bg-surface p-1 shadow-lg"
         >
           {items.map((item) => (
             <NavLink

@@ -70,11 +70,11 @@ export function CatalogReaderPage() {
 
   return (
     <article>
-      <div className="mb-3.5 flex items-center justify-between gap-3">
-        <Eyebrow>
+      <div className="mb-3.5 flex flex-wrap items-center justify-between gap-3">
+        <Eyebrow className="min-w-0 max-w-full">
           {entry.level} · {book.title}
         </Eyebrow>
-        <Link to="/library" className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">
+        <Link to="/library" className="max-w-full shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">
           ← {ru ? 'библиотека' : 'library'}
         </Link>
       </div>

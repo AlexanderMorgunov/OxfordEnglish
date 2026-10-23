@@ -14,10 +14,12 @@ let getFails = false;
 let putFails = false;
 let corruptHit = false;
 let calls = 0;
+let repairPending = false;
 const completer: Completer = async (_messages, opts) => {
   calls += 1;
   if (opts.task !== 'wordSenses' || opts.maxTokens !== 700) throw new Error('Wrong pinned task');
   if (answer === 'upstream-failure') throw new Error('Upstream unavailable');
+  if (repairPending) { repairPending = false; return valid.replace('bank.', 'banker.'); }
   return answer;
 };
 const app = createApp(undefined, undefined, undefined, ent, {
@@ -52,6 +54,10 @@ getFails = true; putFails = true;
 check('cache I/O failures preserve valid completion', (await ask()).status === 200 && await used() === 12 && calls === 2);
 getFails = false; putFails = false; corruptHit = true;
 check('corrupt hit regenerates under one charge', (await ask()).status === 200 && await used() === 16 && calls === 3);
+repairPending = true;
+const beforeRepair = await used();
+const callsBeforeRepair = calls;
+check('one invalid example is repaired under the original four-unit charge', (await ask()).status === 200 && await used() === beforeRepair + 4 && calls === callsBeforeRepair + 2);
 for (const invalid of ['not-json', 'upstream-failure', JSON.stringify({ senses: [{ partOfSpeech: 'noun', translation: 'берег', distinction: 'Край реки', example: 'A banker is here.' }] })]) {
   const before = await used(); answer = invalid;
   check('invalid fresh/upstream output refunds one charge', (await ask()).status === 503 && await used() === before);
@@ -60,8 +66,12 @@ answer = JSON.stringify({ senses: [] });
 check('honest empty suggestions are supported', (await ask()).status === 200);
 const beforeRace = await used();
 let ordinal = 0;
-const racingApp = createApp(undefined, undefined, undefined, ent, { get: async () => null, put: async () => {} }, async () => {
-  const own = ordinal++; await new Promise(resolve => setTimeout(resolve, own ? 0 : 20));
+const requests = new WeakMap<AbortSignal, number>();
+const racingApp = createApp(undefined, undefined, undefined, ent, { get: async () => null, put: async () => {} }, async (_messages, opts) => {
+  if (!opts.signal) throw new Error('Missing bounded signal');
+  if (!requests.has(opts.signal)) requests.set(opts.signal, ordinal++);
+  const own = requests.get(opts.signal);
+  await new Promise(resolve => setTimeout(resolve, own ? 0 : 20));
   return own ? valid : 'invalid';
 });
 const statuses = await Promise.all([0, 1].map(async index => (await racingApp.request('/v1/ai', { method: 'POST', headers: {
