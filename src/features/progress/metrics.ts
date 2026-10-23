@@ -2,12 +2,13 @@ import type { ExerciseAttempt } from '@/db/db';
 import { validTimestamp } from './validation';
 
 export type TagStat = { tag: string; correct: number; total: number; accuracy: number };
+type ScoredAttempt = Pick<ExerciseAttempt, 'exerciseId' | 'tags' | 'correct' | 'attemptNumber'>;
 
 const dayKey = (ts: number) => new Date(ts).toISOString().slice(0, 10);
 
 /** First attempt per exercise — the honest "did you know it" signal. */
-function firstAttempts(attempts: ExerciseAttempt[]): ExerciseAttempt[] {
-  const first = new Map<string, ExerciseAttempt>();
+function firstAttempts(attempts: ScoredAttempt[]): ScoredAttempt[] {
+  const first = new Map<string, ScoredAttempt>();
   for (const a of attempts) {
     if (!a || typeof a.exerciseId !== 'string' || !Array.isArray(a.tags) ||
         typeof a.correct !== 'boolean' || !Number.isInteger(a.attemptNumber) || a.attemptNumber < 1) continue;
@@ -18,7 +19,7 @@ function firstAttempts(attempts: ExerciseAttempt[]): ExerciseAttempt[] {
 }
 
 /** Accuracy per SkillTag from first attempts, weakest first (DESIGN_DOC §5.7). */
-export function skillMap(attempts: ExerciseAttempt[]): TagStat[] {
+export function skillMap(attempts: ScoredAttempt[]): TagStat[] {
   const stats = new Map<string, { correct: number; total: number }>();
   for (const a of firstAttempts(attempts)) {
     for (const tag of a.tags) {

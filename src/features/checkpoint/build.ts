@@ -19,11 +19,14 @@ export function buildCheckpoint(
   unitId: string,
   count = 12
 ): Exercise[] {
+  const unitIndex = pack.units.findIndex(u => u.id === unitId);
+  if (unitIndex < 0 || count <= 0) return [];
+  const earlier = new Set(pack.units.slice(0, unitIndex).map(u => u.id));
   const own = shuffle(exercisesOf(pack, (id) => id === unitId));
-  const others = shuffle(exercisesOf(pack, (id) => id !== unitId));
+  const others = shuffle(exercisesOf(pack, (id) => earlier.has(id)));
   const interleave = Math.min(others.length, Math.floor(count / 4));
   const picked = own.slice(0, Math.max(0, count - interleave));
-  return shuffle([...picked, ...others.slice(0, interleave)]);
+  return shuffle([...picked, ...others.slice(0, count - picked.length)]);
 }
 
 /**
@@ -60,10 +63,12 @@ export function buildLevelExit(
 /** For each weak tag, which days teach it — the personal review plan (§5.6). */
 export function reviewPlan(
   pack: LoadedPack,
-  weakTags: string[]
+  weakTags: string[],
+  upToUnitId?: string,
 ): { tag: string; dayIds: string[] }[] {
+  const units = upToUnitId === undefined ? pack.units : pack.units.slice(0, pack.units.findIndex(u => u.id === upToUnitId) + 1);
   return weakTags.map((tag) => {
-    const dayIds = pack.units
+    const dayIds = units
       .flatMap((u) => u.days)
       .filter((d) =>
         d.sections.some(

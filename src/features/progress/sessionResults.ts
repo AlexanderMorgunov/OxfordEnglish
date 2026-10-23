@@ -21,7 +21,7 @@ type SessionResultsState = {
  * as answers land. `firstCorrect` is fixed by the first attempt (the honest
  * "did you know it" signal); later attempts only bump the count.
  */
-export const useSessionResults = create<SessionResultsState>((set) => ({
+export const createSessionResults = () => create<SessionResultsState>((set) => ({
   results: {},
   record: (id, correct, tags) =>
     set((state) => {
@@ -54,3 +54,5 @@ export const useSessionResults = create<SessionResultsState>((set) => ({
       return { results: next };
     }),
 }));
+
+export const useSessionResults = createSessionResults();

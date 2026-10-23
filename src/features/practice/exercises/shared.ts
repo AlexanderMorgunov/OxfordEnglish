@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
+import { useStore } from 'zustand';
 import { addAttempt } from '@/features/sync/local';
-import { useSessionResults } from '@/features/progress/sessionResults';
 import type { LocalizedText } from '@/content/schema';
+import { ExerciseSessionContext } from './session';
 
 export type ExerciseStatus = 'idle' | 'correct' | 'incorrect';
 
@@ -21,7 +22,8 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
   // Restore a prior outcome from the session results (which outlive an in-app remount, e.g. a trip
   // to Settings and back) so the day's progress isn't visually reset. `stored` is a live slice, so
   // a late IndexedDB hydrate after mount restores too.
-  const stored = useSessionResults((s) => s.results[exercise.id]);
+  const results = use(ExerciseSessionContext);
+  const stored = useStore(results, (s) => s.results[exercise.id]);
   const [status, setStatus] = useState<ExerciseStatus>(() => outcomeOf(stored));
   const [attemptNumber, setAttemptNumber] = useState(() => stored?.attempts ?? 0);
   const [attempts, setAttempts] = useState<string[]>([]);
@@ -39,7 +41,7 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
     const n = attemptNumber + 1;
     setAttemptNumber(n);
     setAttempts((prev) => [...prev, userAnswer]);
-    useSessionResults.getState().record(exercise.id, correct, exercise.tags);
+    results.getState().record(exercise.id, correct, exercise.tags);
     void addAttempt({
       exerciseId: exercise.id,
       tags: exercise.tags,

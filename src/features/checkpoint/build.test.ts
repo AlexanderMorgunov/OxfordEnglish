@@ -1,6 +1,6 @@
 import { test, expect } from 'vitest';
 import type { LoadedPack } from '@/content/loader';
-import { buildLevelExit } from './build';
+import { buildCheckpoint, buildLevelExit, reviewPlan } from './build';
 
 function ex(id: string) {
   return { type: 'gap-fill', id, instruction: { en: '', ru: '' }, tags: ['t'], prompt: '_', answers: ['x'] };
@@ -37,4 +37,28 @@ test('buildLevelExit spreads across units and caps at the pool size', () => {
 
 test('buildLevelExit returns empty for a level with no days', () => {
   expect(buildLevelExit(pack, 'C1', 12)).toEqual([]);
+});
+
+test('the first checkpoint contains only its own unit and never future material', () => {
+  const out = buildCheckpoint(pack, 'u01');
+  expect(out).toHaveLength(8);
+  expect(out.every(e => e.id.startsWith('u01.'))).toBe(true);
+});
+
+test('checkpoint interleaving follows course order rather than unit names', () => {
+  const ordered = { ...pack, units: [...pack.units.slice(2), ...pack.units.slice(0, 2)] };
+  const out = buildCheckpoint(ordered, 'u01', 8);
+  expect(out).toHaveLength(8);
+  expect(out.filter(e => e.id.startsWith('u16.'))).toHaveLength(2);
+  expect(out.some(e => e.id.startsWith('u15.'))).toBe(false);
+  expect(new Set(out.map(e => e.id)).size).toBe(out.length);
+});
+
+test('an unknown checkpoint does not become a test drawn from the whole course', () => {
+  expect(buildCheckpoint(pack, 'missing')).toEqual([]);
+});
+
+test('checkpoint review recommendations do not send beginners to future units', () => {
+  expect(reviewPlan(pack, ['t'], 'u01')).toEqual([{ tag: 't', dayIds: ['u01.d1'] }]);
+  expect(reviewPlan(pack, ['t'], 'missing')).toEqual([{ tag: 't', dayIds: [] }]);
 });

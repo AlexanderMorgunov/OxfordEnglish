@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import type { Exercise } from '@/content/schema';
 import { useContentStore } from '@/content/store';
@@ -6,9 +6,12 @@ import { ContentLoadError } from '@/content/ContentLoadError';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { Button, Card, Eyebrow, PageStub, PixelImage } from '@/shared/ui';
 import { ExerciseView } from '@/features/practice/exercises/ExerciseView';
+import { ExerciseSessionContext } from '@/features/practice/exercises/session';
 import { buildCheckpoint, buildLevelExit, reviewPlan } from '@/features/checkpoint/build';
 import { skillMap, type TagStat } from '@/features/progress/metrics';
-import { loadAttempts, saveCheckpoint } from '@/features/progress/queries';
+import { saveCheckpoint } from '@/features/progress/queries';
+import { createSessionResults } from '@/features/progress/sessionResults';
+import { getDataScopeRevision, subscribeDataScope } from '@/features/account/dataScope';
 
 type Result = {
   score: number;
@@ -24,12 +27,17 @@ const EXIT_PASS = 0.8;
 const NEXT_LEVEL: Record<string, string> = { A2: 'B1', B1: 'B2', B2: 'C1' };
 
 export function CheckpointPage() {
-  const ru = useUiLang((s) => s.lang) === 'ru';
   const { unitId } = useParams();
+  const owner = useSyncExternalStore(subscribeDataScope, getDataScopeRevision, getDataScopeRevision);
+  return <CheckpointRun key={`${unitId}:${owner}`} unitId={unitId} />;
+}
+
+function CheckpointRun({ unitId }: { unitId: string | undefined }) {
+  const ru = useUiLang((s) => s.lang) === 'ru';
   const exitLevel = unitId?.startsWith('exit-') ? unitId.slice(5).toUpperCase() : null;
   const exitLabel = (lvl: string) => (ru ? `итоговый тест ${lvl}` : `${lvl} exit test`);
   const { status, pack, load } = useContentStore();
-  const sessionStart = useRef(Date.now());
+  const [session] = useState(createSessionResults);
   const [exercises, setExercises] = useState<Exercise[] | null>(null);
   const [result, setResult] = useState<Result | null>(null);
 
@@ -46,20 +54,17 @@ export function CheckpointPage() {
   const finish = useMemo(
     () => async () => {
       if (!pack || !unitId || !exercises) return;
-      const since = (await loadAttempts()).filter(
-        (a) => a.timestamp >= sessionStart.current
-      );
-      const firstCorrect = new Map<string, boolean>();
-      for (const a of since) {
-        if (!firstCorrect.has(a.exerciseId) || a.attemptNumber === 1) {
-          firstCorrect.set(a.exerciseId, a.correct);
-        }
-      }
-      const score = exercises.filter((e) => firstCorrect.get(e.id)).length;
-      const breakdown = skillMap(since);
+      const results = session.getState().results;
+      const attempts = exercises.flatMap(e => {
+        const r = results[e.id];
+        return r ? [{ exerciseId: e.id, tags: e.tags, correct: r.firstCorrect, attemptNumber: 1 }] : [];
+      });
+      const score = attempts.filter(a => a.correct).length;
+      const breakdown = skillMap(attempts);
       const plan = reviewPlan(
         pack,
-        breakdown.filter((b) => b.accuracy < 0.6).map((b) => b.tag)
+        breakdown.filter((b) => b.accuracy < 0.6).map((b) => b.tag),
+        exitLevel ? pack.units.filter(u => u.days.some(d => d.level === exitLevel)).at(-1)?.id : unitId,
       );
       await saveCheckpoint({
         unitId,
@@ -74,7 +79,7 @@ export function CheckpointPage() {
       });
       setResult({ score, total: exercises.length, breakdown, plan });
     },
-    [pack, unitId, exercises]
+    [pack, unitId, exercises, session, exitLevel]
   );
 
   if (status === 'idle' || status === 'loading') {
@@ -197,11 +202,13 @@ export function CheckpointPage() {
             : `${exercises.length} mixed questions, interleaved. Answer them, then finish for a per-tag report.`}
       </p>
 
-      <div className="flex flex-col gap-3.5">
-        {exercises.map((exercise, i) => (
-          <ExerciseView key={`${exercise.id}.${i}`} exercise={exercise} />
-        ))}
-      </div>
+      <ExerciseSessionContext value={session}>
+        <div className="flex flex-col gap-3.5">
+          {exercises.map((exercise, i) => (
+            <ExerciseView key={`${exercise.id}.${i}`} exercise={exercise} />
+          ))}
+        </div>
+      </ExerciseSessionContext>
 
       <Button className="mt-6" onClick={() => void finish()}>
         {exitLevel ? (ru ? 'Завершить тест' : 'Finish test') : ru ? 'Завершить контрольную' : 'Finish checkpoint'}
