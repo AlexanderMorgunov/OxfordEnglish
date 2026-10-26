@@ -18,6 +18,10 @@ const errors: Record<DictationError['code'], [string, string]> = {
   canceled: ['', ''],
 };
 
+function canUseMode(capability: DictationCapability | null, mode: DictationMode | null): boolean {
+  return !!capability && (mode === 'local' ? capability.local === 'ready' || capability.local === 'unknown' : mode === 'system' && capability.system);
+}
+
 export function DictationInput({ draft, onAccept, onOpen, separator = ' ', limit, children, className }: {
   draft: string; onAccept: (text: string) => void; onOpen?: () => void; separator?: string; limit?: number;
   children?: ReactNode; className?: string;
@@ -25,7 +29,7 @@ export function DictationInput({ draft, onAccept, onOpen, separator = ' ', limit
   const ru = useUiLang(s => s.lang) === 'ru';
   const id = useId();
   const [opened, setOpened] = useState(false);
-  const [mode, setMode] = useState<DictationMode>('local');
+  const [mode, setMode] = useState<DictationMode | null>(null);
   const [capability, setCapability] = useState<DictationCapability | null>(null);
   const [operation, setOperation] = useState<'checking' | 'installing' | null>(null);
   const [phase, setPhase] = useState<DictationPhase | null>(null);
@@ -78,11 +82,17 @@ export function DictationInput({ draft, onAccept, onOpen, separator = ' ', limit
     };
   }, [draft]);
   const valid = (version: number) => generation.current === version && owner.current === getDataScopeRevision() && base.current === draftValue.current;
-  const check = async () => {
+  const check = async (preferred = mode) => {
     cancel(); owner.current = getDataScopeRevision(); base.current = draft;
     const version = generation.current; const work = new AbortController(); controller.current = work;
-    setCapability(null); setOperation('checking');
-    try { const result = await probeDictation(work.signal); if (valid(version)) setCapability(result); }
+    setCapability(null); setMode(null); setOperation('checking');
+    try {
+      const result = await probeDictation(work.signal);
+      if (valid(version)) {
+        setCapability(result);
+        setMode(canUseMode(result, preferred) ? preferred : canUseMode(result, 'local') ? 'local' : result.system ? 'system' : null);
+      }
+    }
     catch (failure) { if (valid(version)) setError(dictationError(failure).code); }
     finally { if (valid(version)) { controller.current = null; setOperation(null); } }
   };
@@ -94,7 +104,7 @@ export function DictationInput({ draft, onAccept, onOpen, separator = ' ', limit
     finally { if (valid(version)) { controller.current = null; setOperation(null); } }
   };
   const start = async () => {
-    if (session.current || operation || !capability) return;
+    if (session.current || operation || !mode || !canUseMode(capability, mode)) return;
     cancel(); owner.current = getDataScopeRevision(); base.current = draft;
     const version = generation.current; setPhase('starting');
     const work = startDictation(mode, update => {
@@ -110,19 +120,21 @@ export function DictationInput({ draft, onAccept, onOpen, separator = ' ', limit
     } catch (failure) { if (valid(version)) { focusNext.current = 'start'; setPreview(''); setError(dictationError(failure).code); } }
     finally { if (valid(version)) { session.current = null; setPhase(null); } }
   };
-  const close = () => { cancel(); setOpened(false); setMode('local'); opener.current?.focus(); };
+  const close = () => { cancel(); setOpened(false); setMode(null); opener.current?.focus(); };
   const accept = (append: boolean) => {
     if (!valid(generation.current) || candidate === null) return;
     const text = candidate.trim(); const next = append && draft.trim() ? draft.trimEnd() + separator + text : text;
     if (!text || (limit !== undefined && next.length > limit)) return;
-    cancel(); setOpened(false); setMode('local'); onAccept(next);
+    cancel(); setOpened(false); setMode(null); onAccept(next);
   };
-  const canStart = !operation && capability && (mode === 'system' ? capability.system : ['ready', 'unknown'].includes(capability.local));
+  const localAvailable = canUseMode(capability, 'local');
+  const systemAvailable = canUseMode(capability, 'system');
+  const canStart = !operation && canUseMode(capability, mode);
   const tooLong = limit !== undefined && (candidate?.trim().length ?? 0) > limit;
   const appendLength = draft.trim() ? draft.trimEnd().length + separator.length + (candidate?.trim().length ?? 0) : candidate?.trim().length ?? 0;
   return <div className={className ?? 'mt-3'} onKeyDown={event => { if (opened && event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); close(); } }}>
     <Button ref={opener} variant="ghost" size="sm" className="min-h-11" aria-label={ru ? 'Диктовать на английском' : 'Dictate in English'} aria-expanded={opened} aria-controls={`${id}-panel`}
-      onClick={() => { if (opened) { close(); return; } onOpen?.(); setOpened(true); setMode('local'); void check(); }}>
+      onClick={() => { if (opened) { close(); return; } onOpen?.(); setOpened(true); void check(null); }}>
       {children ?? <><PixelImage src="/assets/pixel/ui/mic.png" alt="" aria-hidden="true" width={24} height={24} className="h-6 w-6 shrink-0" />
       {ru ? 'Диктовать на английском' : 'Dictate in English'}</>}
     </Button>
@@ -130,25 +142,31 @@ export function DictationInput({ draft, onAccept, onOpen, separator = ' ', limit
       <h2 ref={heading} id={`${id}-heading`} tabIndex={-1} className="text-base font-semibold">{ru ? 'Английская диктовка' : 'English dictation'}</h2>
       <p className="text-sm text-muted">{ru ? 'Говорите короткое слово, фразу или предложение на английском (en-US). До 30 секунд, затем проверьте результат.' : 'Speak a short English word, phrase or sentence (en-US). Up to 30 seconds, then check the result.'}</p>
       <label htmlFor={`${id}-mode`} className="block text-sm">{ru ? 'Распознавание' : 'Recognition mode'}</label>
-      <select id={`${id}-mode`} value={mode} disabled={!!operation} aria-describedby={`${id}-privacy`}
+      <select id={`${id}-mode`} value={mode ?? ''} disabled={!!operation || (!localAvailable && !systemAvailable)} aria-describedby={`${id}-privacy`}
         className="min-h-11 w-full rounded-sm border border-line bg-ink px-2 text-sm text-content"
-        onChange={event => { cancel(); setMode(event.target.value as DictationMode); }}>
-        <option value="local">{ru ? 'На устройстве' : 'On device'}</option>
-        <option value="system" disabled={!capability?.system}>{ru ? 'Системный сервис' : 'System service'}</option>
+        onChange={event => {
+          const next = event.target.value;
+          if ((next === 'local' || next === 'system') && canUseMode(capability, next)) { cancel(); setMode(next); }
+        }}>
+        {!mode && <option value="" disabled>{operation === 'checking' ? ru ? 'Проверяем…' : 'Checking…' : ru ? 'Недоступно' : 'Unavailable'}</option>}
+        <option value="local" disabled={!localAvailable}>{ru ? 'На устройстве' : 'On device'}</option>
+        <option value="system" disabled={!systemAvailable}>{ru ? 'Системный сервис' : 'System service'}</option>
       </select>
       <p id={`${id}-privacy`} className="text-xs text-muted">{mode === 'local'
         ? ru ? 'Аудио обрабатывается на устройстве. Нужна поддержка английского языка; автоматического перехода к системному сервису нет.' : 'Audio is processed on device. English support is required; there is no automatic switch to the system service.'
-        : ru ? 'Аудио может отправляться сервису распознавания браузера или Android. Может потребоваться сеть. Нажимая «Начать», вы выбираете этот режим.' : 'Audio may be sent to the browser or Android recognition service. Connectivity may be required. Pressing Start selects this mode.'}</p>
-      {mode === 'local' && capability && capability.local !== 'ready' && <p className="text-sm text-muted">{capability.local === 'unknown'
+        : mode === 'system' ? ru ? 'Аудио может отправляться сервису распознавания браузера или Android. Может потребоваться сеть. Нажимая «Начать», вы выбираете этот режим.' : 'Audio may be sent to the browser or Android recognition service. Connectivity may be required. Pressing Start selects this mode.'
+          : ru ? 'Диктовка начнётся только после нажатия «Начать».' : 'Dictation starts only after you press Start.'}</p>
+      {capability && !localAvailable && !systemAvailable && <p className="text-sm text-muted">{ru ? 'Диктовка сейчас недоступна. Введите текст или используйте микрофон клавиатуры.' : 'Dictation is unavailable here. Type or use your keyboard microphone.'}</p>}
+      {capability && capability.local !== 'ready' && (mode === 'local' || !localAvailable) && <p className="text-sm text-muted">{capability.local === 'unknown'
         ? ru ? 'Локальный движок найден, но готовность английского не подтверждена. Можно попробовать без передачи аудио в сеть.' : 'Local engine found, but English readiness is unverified. You can try without sending audio over the network.'
         : capability.local === 'downloadable' ? ru ? 'Нужна английская модель. На Android проверьте языки распознавания в настройках устройства.' : 'An English model is needed. On Android, check speech languages in device settings.'
         : capability.local === 'downloading' ? ru ? 'Модель скачивается. Повторите проверку после завершения.' : 'Model downloading. Recheck when finished.'
-        : ru ? 'Локальная английская диктовка недоступна. Можно отдельно выбрать системный сервис, ввести текст или использовать микрофон клавиатуры.' : 'Local English dictation is unavailable. You can separately choose system service, type or use your keyboard microphone.'}</p>}
+        : ru ? 'Локальная английская диктовка здесь недоступна.' : 'Local English dictation is unavailable here.'}</p>}
       {capability?.native && !capability.system && capability.local === 'unavailable' && <p className="text-xs text-muted">{ru ? 'Проверьте наличие службы распознавания и актуальной версии APK.' : 'Check that a recognition service and an up-to-date APK are installed.'}</p>}
       {!phase && <div className="flex flex-wrap gap-2">
         <Button ref={startButton} className="min-h-11" disabled={!canStart} onClick={() => void start()}>{ru ? 'Начать' : 'Start'}</Button>
         <Button variant="ghost" className="min-h-11" disabled={!!operation} onClick={() => void check()}>{ru ? 'Проверить снова' : 'Recheck'}</Button>
-        {mode === 'local' && capability?.local === 'downloadable' && capability.install && !installed && <Button variant="ghost" className="min-h-11" disabled={!!operation} onClick={() => void install()}>{ru ? 'Скачать английскую модель' : 'Download English model'}</Button>}
+        {capability?.local === 'downloadable' && capability.install && !installed && <Button variant="ghost" className="min-h-11" disabled={!!operation} onClick={() => void install()}>{ru ? 'Скачать английскую модель' : 'Download English model'}</Button>}
       </div>}
       {(operation === 'installing' || installed) && <p className="text-xs text-muted">{ru ? 'Загрузка управляется браузером и может продолжаться после закрытия. После завершения нажмите «Проверить снова». Запись сама не начнётся.' : 'The browser owns this download and may continue after closing. Recheck when finished. Recording will not start automatically.'}</p>}
       <p role="status" aria-live="polite" aria-atomic="true" className="text-sm text-muted">{phase === 'starting' ? ru ? 'Подготавливаю микрофон… Разрешите доступ, если появится запрос.' : 'Preparing microphone… Allow access if prompted.'

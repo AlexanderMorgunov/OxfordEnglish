@@ -4,6 +4,7 @@ import { useAccount } from '@/features/account/store';
 import { ApiFailure } from '@/features/account/api';
 import { captureAiScope, type AiPath } from '@/features/ai/route';
 import { useAiStore } from '@/features/ai/store';
+import { AiCacheMiss } from '@/features/ai/cache';
 import { track } from '@/features/analytics/analytics';
 import { passageTextParts, translatePassage, type PassageResume, type TextMode } from './text-workbench';
 
@@ -17,7 +18,7 @@ export type PassageResult = {
   completed: number;
   total: number;
   edited: boolean;
-  error?: 'quota' | 'plan' | 'network' | 'timeout' | 'unavailable';
+  error?: 'quota' | 'plan' | 'cache' | 'network' | 'timeout' | 'unavailable';
   resume: PassageResume;
   owned: () => boolean;
 };
@@ -79,10 +80,11 @@ export function usePassageTranslation() {
     }
   }, [sessionRevision]);
 
-  const start = async (source: string, mode: TextMode, continuing = false) => {
+  const start = async (source: string, mode: TextMode, continuing = false, options: { cacheOnly?: boolean } = {}) => {
     if (!mounted.current || !renderOwned() || active.current) return;
     const previous = currentResult.current;
-    const resume: PassageResume = continuing && previous?.source === source && previous.mode === mode ? previous.resume : new Map();
+    const resuming = continuing && previous?.source === source && previous.mode === mode;
+    const resume: PassageResume = resuming ? previous.resume : new Map();
     const id = ++sequence.current;
     const controller = new AbortController();
     const currentConfig = useAiStore.getState().config;
@@ -95,13 +97,13 @@ export function usePassageTranslation() {
       if (mode === 'ai') { try { guardAi(); } catch { return false; } }
       return true;
     };
-    publish({ id, source, mode, state: 'loading', text: continuing ? previous?.text ?? '' : '',
-      paths: continuing ? previous?.paths ?? [] : [], completed: continuing ? previous?.completed ?? 0 : 0, total: passageTextParts(source, mode), edited: false, resume, owned });
+    publish({ id, source, mode, state: 'loading', text: resuming ? previous.text : '',
+      paths: resuming ? previous.paths : [], completed: resuming ? previous.completed : 0, total: passageTextParts(source, mode), edited: false, resume, owned });
     try {
-      const text = await translatePassage(source, { mode, config: currentConfig, signal: controller.signal, resume,
+      const text = await translatePassage(source, { mode, config: currentConfig, signal: controller.signal, resume, cacheOnly: options.cacheOnly,
         onProgress: (partial, paths, progress) => {
           const held = currentResult.current;
-          if (continuing && progress && progress.completed < (previous?.completed ?? 0)) return;
+          if (resuming && progress && progress.completed < previous.completed) return;
           if (valid() && held?.id === id) publish({ ...held, text: partial, paths,
             completed: progress?.completed ?? held.completed, total: progress?.total ?? held.total });
         },
@@ -113,7 +115,7 @@ export function usePassageTranslation() {
       }
     } catch (error) {
       const held = currentResult.current;
-      const reason = error instanceof ApiFailure
+      const reason = error instanceof AiCacheMiss ? 'cache' : error instanceof ApiFailure
         ? error.code === 'quota_exhausted' ? 'quota' : error.code === 'no_plan' ? 'plan' : error.code === 'network' ? 'network' : 'unavailable'
         : error instanceof Error && error.message === 'AI is not available' ? 'plan'
           : (error instanceof Error || error instanceof DOMException) && error.name === 'TimeoutError' ? 'timeout' : 'unavailable';

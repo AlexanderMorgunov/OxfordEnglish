@@ -1,6 +1,6 @@
 import { complete, type AiConfig } from './provider';
 import { runTask, runTaskResult, captureAiScope, type AiPath } from './route';
-import { cachePaths } from './cache';
+import { AiCacheMiss, cachePaths } from './cache';
 import type { AiTaskRequest } from '@/features/account/contract';
 import { clampBand, simplifySystem, simplifyShot, SIMPLIFY_PROMPT_VERSION, type Band } from './simplify-prompts';
 import { db } from '@/db/db';
@@ -23,7 +23,7 @@ const hasCyrillic = (s: string) => /[а-яё]/i.test(s);
 export async function aiTranslate(
   config: AiConfig | null,
   text: string,
-  opts: { sentence?: string; signal?: AbortSignal; path?: AiPath; cachePrefix?: string; onSource?: (path: AiPath, cached: boolean) => void } = {}
+  opts: { sentence?: string; signal?: AbortSignal; path?: AiPath; cachePrefix?: string; cacheOnly?: boolean; onSource?: (path: AiPath, cached: boolean) => void } = {}
 ): Promise<string> {
   const requireActive = captureAiScope(opts.signal);
   requireActive();
@@ -55,6 +55,7 @@ export async function aiTranslate(
     } catch { requireActive(); }
   }
   requireActive();
+  if (opts.cacheOnly) throw new AiCacheMiss();
   const user = inContext
     ? `Фрагмент: "${q}"\nПредложение: "${inContext}"\nПереведи ТОЛЬКО фрагмент так, как он значит в этом предложении. Верни только перевод фрагмента.`
     : q;

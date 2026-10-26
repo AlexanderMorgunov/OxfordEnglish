@@ -32,6 +32,7 @@ export const passageTextParts = (text: string, mode: TextMode): number =>
 
 export async function translatePassage(text: string, opts: {
   mode: TextMode; config: AiConfig | null; signal: AbortSignal;
+  cacheOnly?: boolean;
   onProgress?: (text: string, paths: AiPath[], progress: PassageProgress) => void;
   resume?: PassageResume;
 }): Promise<string> {
@@ -84,7 +85,7 @@ export async function translatePassage(text: string, opts: {
         } else {
           let actual: AiPath | undefined;
           const translated = await aiTranslate(opts.config, part, {
-            signal: controller.signal, path, cachePrefix,
+            signal: controller.signal, path, cachePrefix, cacheOnly: opts.cacheOnly,
             onSource: (source, cached) => {
               actual = source;
               sources.add(source);

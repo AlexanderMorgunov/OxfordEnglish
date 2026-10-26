@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import type { ReactNode } from 'react';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { useAccount } from '@/features/account/store';
 import { useEntitlement } from '@/features/account/entitlement';
@@ -15,7 +16,7 @@ import { upsellTarget } from './upsell';
  * so a subscriber offline or on a cold start lands there, and guessing out loud would repeat the very
  * bug above.
  */
-export function AiUpsellLink({ className = '' }: { className?: string }) {
+export function AiUpsellLink({ className = '', children }: { className?: string; children?: ReactNode }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const { pathname } = useLocation();
   const status = useAccount((s) => s.status);
@@ -76,7 +77,7 @@ export function AiUpsellLink({ className = '' }: { className?: string }) {
 
   return (
     <Link to={`/pro${from}`} className={cls}>
-      {ru ? 'Разборы на основе ИИ →' : 'AI explanations →'}
+      {children ?? (ru ? 'Разборы на основе ИИ →' : 'AI explanations →')}
     </Link>
   );
 }

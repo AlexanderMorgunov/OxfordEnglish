@@ -72,10 +72,16 @@ list of dictionary senses. Applying the proposal collapses the helper; reopening
 retains the source without another request. Switching input language or closing
 the form preserves the draft and its validation rules; Start over clears it.
 
-In `/vocabulary/text`, Open text starts reading and word saving; whole-text
-translation requires a separate Translate action. Keyboard focus moves to the
-visible source. Dictation results require deliberate acceptance. Translate is
-available next to the initial English input; reading is a separate action.
+In `/vocabulary/text`, Translate sits beside the initial English input. The
+result workspace pairs a readable, tappable source with its Russian translation;
+mobile users switch between Source and words and Translation. More input options
+include reading without translation and dictation with explicit acceptance.
+Source changes can be cancelled, a cleared field can be restored, and manual
+translation edits require confirmation before replacement. Failed or cancelled
+requests retain completed parts for an explicit retry or continuation. Retry uses
+the selected mode; changing it restarts the full source without mixing results.
+AI without an available plan/key shows the shared access guidance and offers a
+cache-only lookup; a cache miss never starts a remote AI request.
 
 Yandex Metrica receives named milestones for first exercise answers, resolved book
 opens, newly saved words/phrases, review sessions with persisted answers, completed
