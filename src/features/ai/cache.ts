@@ -4,6 +4,10 @@ import { isConfigured } from './store';
 import { managedAiAvailable, planUnreadable } from '@/features/account/entitlement';
 import type { AiPath } from './route';
 
+export class AiCacheMiss extends Error {
+  constructor() { super('No saved AI translation'); this.name = 'AiCacheMiss'; }
+}
+
 export async function cachePaths(config: AiConfig | null): Promise<{ path: AiPath; label: string }[]> {
   const managed = { path: 'managed' as const, label: 'v2 managed' };
   if (!isConfigured(config)) return [managed];
