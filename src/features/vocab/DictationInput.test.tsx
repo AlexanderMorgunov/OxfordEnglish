@@ -36,6 +36,74 @@ test('opening panel only checks capability; explicit recording/final/edit/apply 
   fireEvent.change(screen.getByLabelText('Check dictated text'), { target: { value: 'Take care near the bank.' } });
   await userEvent.click(screen.getByRole('button', { name: 'Append to text' })); expect(onAccept).toHaveBeenCalledWith('Old field.\n\nTake care near the bank.');
 });
+
+test('opening chooses the available system service and disables unavailable local recognition', async () => {
+  vi.mocked(probeDictation).mockResolvedValue({ local: 'unavailable', system: true, install: false, native: false });
+  await open();
+  expect(screen.getByLabelText('Recognition mode')).toHaveValue('system');
+  expect(screen.getByRole('option', { name: 'On device' })).toBeDisabled();
+  expect(screen.getByText(/Audio may be sent/)).toBeVisible();
+  expect(startDictation).not.toHaveBeenCalled();
+  await userEvent.click(screen.getByRole('button', { name: 'Start' }));
+  expect(startDictation).toHaveBeenCalledWith('system', expect.anything());
+});
+
+test('with no available recognizer neither unavailable option is selected or startable', async () => {
+  vi.mocked(probeDictation).mockResolvedValue({ local: 'unavailable', system: false, install: false, native: false });
+  render(<DictationInput draft="" onAccept={vi.fn()} />);
+  await userEvent.click(screen.getByRole('button', { name: 'Dictate in English' }));
+  await waitFor(() => expect(screen.queryByText('Checking availability…')).toBeNull());
+  expect(screen.getByLabelText('Recognition mode')).toHaveValue('');
+  expect(screen.getByLabelText('Recognition mode')).toBeDisabled();
+  expect(screen.getByRole('option', { name: 'On device' })).toBeDisabled();
+  expect(screen.getByRole('option', { name: 'System service' })).toBeDisabled();
+  expect(screen.getByRole('button', { name: 'Start' })).toBeDisabled();
+  expect(startDictation).not.toHaveBeenCalled();
+});
+
+test.each(['ready', 'unknown'] as const)('a usable %s local recognizer stays selected and the absent system service is disabled', async local => {
+  vi.mocked(probeDictation).mockResolvedValue({ local, system: false, install: false, native: true });
+  await open();
+  expect(screen.getByLabelText('Recognition mode')).toHaveValue('local');
+  expect(screen.getByRole('option', { name: 'On device' })).toBeEnabled();
+  expect(screen.getByRole('option', { name: 'System service' })).toBeDisabled();
+  expect(startDictation).not.toHaveBeenCalled();
+});
+
+test('recheck preserves an available choice and replaces it only when it becomes unavailable', async () => {
+  await open();
+  expect(screen.getByLabelText('Recognition mode')).toHaveValue('local');
+  await userEvent.selectOptions(screen.getByLabelText('Recognition mode'), 'system');
+  await userEvent.click(screen.getByRole('button', { name: 'Recheck' }));
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Start' })).toBeEnabled());
+  expect(screen.getByLabelText('Recognition mode')).toHaveValue('system');
+  vi.mocked(probeDictation).mockResolvedValue({ local: 'ready', system: false, install: false, native: false });
+  await userEvent.click(screen.getByRole('button', { name: 'Recheck' }));
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Start' })).toBeEnabled());
+  expect(screen.getByLabelText('Recognition mode')).toHaveValue('local');
+  expect(screen.getByRole('option', { name: 'System service' })).toBeDisabled();
+  vi.mocked(probeDictation).mockResolvedValue({ local: 'unavailable', system: true, install: false, native: false });
+  await userEvent.click(screen.getByRole('button', { name: 'Recheck' }));
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Start' })).toBeEnabled());
+  expect(screen.getByLabelText('Recognition mode')).toHaveValue('system');
+  expect(startDictation).not.toHaveBeenCalled();
+});
+
+test('a downloadable model remains installable without a system service and becomes selectable after recheck', async () => {
+  vi.mocked(probeDictation).mockResolvedValue({ local: 'downloadable', system: false, install: true, native: false });
+  render(<DictationInput draft="" onAccept={vi.fn()} />);
+  await userEvent.click(screen.getByRole('button', { name: 'Dictate in English' }));
+  await userEvent.click(await screen.findByRole('button', { name: 'Download English model' }));
+  await screen.findByText(/browser owns this download/);
+  expect(screen.getByLabelText('Recognition mode')).toHaveValue('');
+  expect(screen.getByRole('button', { name: 'Start' })).toBeDisabled();
+  vi.mocked(probeDictation).mockResolvedValue({ local: 'ready', system: false, install: true, native: false });
+  await userEvent.click(screen.getByRole('button', { name: 'Recheck' }));
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Start' })).toBeEnabled());
+  expect(screen.getByLabelText('Recognition mode')).toHaveValue('local');
+  expect(installDictation).toHaveBeenCalledOnce();
+  expect(startDictation).not.toHaveBeenCalled();
+});
 test.each(['cancel', 'close', 'escape', 'mode', 'owner', 'background', 'unmount'])('%s invalidates pending recognition and ignores late text', async action => {
   const { onAccept, unmount } = await open(); await userEvent.click(screen.getByRole('button', { name: 'Start' }));
   if (action === 'cancel') await userEvent.click(screen.getByRole('button', { name: 'Cancel recording' }));
@@ -48,10 +116,13 @@ test.each(['cancel', 'close', 'escape', 'mode', 'owner', 'background', 'unmount'
   expect(cancel).toHaveBeenCalled(); await act(async () => finish('Old private transcript'));
   expect(screen.queryByLabelText('Check dictated text')).toBeNull(); expect(onAccept).not.toHaveBeenCalled();
 });
-test('local unavailable stays local until explicitly selected; no automatic installation or activation on recheck', async () => {
+test('a missing local model stays installable while the available system service is selected', async () => {
   vi.mocked(probeDictation).mockResolvedValue({ local: 'downloadable', system: true, install: true, native: false });
   render(<DictationInput draft="" onAccept={vi.fn()} />); await userEvent.click(screen.getByRole('button', { name: 'Dictate in English' }));
-  const download = await screen.findByRole('button', { name: 'Download English model' }); expect(screen.getByRole('button', { name: 'Start' })).toBeDisabled();
+  const download = await screen.findByRole('button', { name: 'Download English model' });
+  expect(screen.getByLabelText('Recognition mode')).toHaveValue('system');
+  expect(screen.getByRole('option', { name: 'On device' })).toBeDisabled();
+  expect(screen.getByRole('button', { name: 'Start' })).toBeEnabled();
   await userEvent.click(download); await screen.findByText(/browser owns this download/);
   expect(installDictation).toHaveBeenCalledOnce(); expect(startDictation).not.toHaveBeenCalled();
   await userEvent.click(screen.getByRole('button', { name: 'Recheck' })); expect(startDictation).not.toHaveBeenCalled();
