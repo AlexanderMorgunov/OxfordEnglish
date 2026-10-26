@@ -48,3 +48,6 @@ tools/content-forge/scripts/_build_*.mjs
 # Codex machine-local paths and overrides; shared rules/skills stay tracked.
 /.codex/config.toml
 /.codex/config.local.toml
+
+# Private infrastructure experiments and local recovery archives.
+/.local-only/
