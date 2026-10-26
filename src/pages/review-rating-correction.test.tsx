@@ -8,6 +8,8 @@ import { db, type SrsCard } from '@/db/db';
 import { invalidateDataScope } from '@/features/account/dataScope';
 import * as service from '@/features/srs/service';
 import { ReviewPage } from './ReviewPage';
+import { track } from '@/features/analytics/analytics';
+vi.mock('@/features/analytics/analytics', () => ({ track: vi.fn() }));
 
 vi.mock('@/shared/lib/useSpeechAvailable', () => ({ useSpeechAvailable: () => false }));
 vi.mock('@/features/reader/BackToReader', () => ({ BackToReader: () => null }));
@@ -29,6 +31,7 @@ const grade = async (rating: 'easy' | 'again' | 'good') => {
   await waitFor(async () => expect(JSON.stringify(await db.reviewLog.toArray())).not.toBe(previous));
 };
 beforeEach(async () => {
+  vi.mocked(track).mockClear();
   await db.open();
   await Promise.all([db.srsCards.clear(), db.reviewLog.clear(), db.wordStatus.clear(), db.pending.clear()]);
   await seed('go');
@@ -63,6 +66,19 @@ test('next-card and completion entry replace the original rating without another
   expect(await screen.findByText('✓ session finished')).toBeInTheDocument();
   expect(await db.reviewLog.count()).toBe(2);
   expect((await db.srsCards.get('word:stay'))?.card.reps).toBe(1);
+  expect(vi.mocked(track).mock.calls.filter(([event]) => event === 'review_session_completed')).toEqual([['review_session_completed']]);
+});
+
+test('an empty or all-skipped queue emits no review completion', async () => {
+  const view = render(<ReviewPage />, { wrapper: MemoryRouter });
+  await userEvent.click(await screen.findByRole('button', { name: 'Show answer' }));
+  await userEvent.click(await screen.findByRole('button', { name: 'Skip' }));
+  await screen.findByText('Session finished · skipped: 1');
+  expect(track).not.toHaveBeenCalled();
+  view.unmount(); await db.srsCards.clear();
+  render(<ReviewPage />, { wrapper: MemoryRouter });
+  await screen.findByText('✓ session finished');
+  expect(track).not.toHaveBeenCalled();
 });
 
 test('cancelling correction resumes ordinary review and leaves the old grade committed', async () => {

@@ -3,8 +3,7 @@ import { ANALYTICS_ENDPOINT } from './config';
 import { metricaGoal } from './metrica';
 import { getAttribution } from './attribution';
 
-/** Conversion milestones mirrored to Metrica as goals (roughly once-per-user). Kept off high-frequency
- *  events (e.g. book_open) so they don't inflate goal counts and poison per-source comparison. */
+/** Named milestones only. Goal visitors measure reach; repeated events are not distinct people. */
 const METRICA_GOALS = new Set([
   'placement_done',
   'onboarding_end',
@@ -12,6 +11,16 @@ const METRICA_GOALS = new Set([
   'pwa_installed',
   'landing_cta',
   'pro_page_view',
+  'onboarding_completed',
+  'onboarding_skipped',
+  'practice_answered',
+  'book_open',
+  'word_saved',
+  'phrase_saved',
+  'review_session_completed',
+  'text_translate_free_success',
+  'text_translate_ai_success',
+  'trial_started',
 ]);
 
 const ANON_KEY = 'analytics.anonId';

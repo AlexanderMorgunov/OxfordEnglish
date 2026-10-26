@@ -4,6 +4,7 @@ import { useAccount } from '@/features/account/store';
 import { ApiFailure } from '@/features/account/api';
 import { captureAiScope, type AiPath } from '@/features/ai/route';
 import { useAiStore } from '@/features/ai/store';
+import { track } from '@/features/analytics/analytics';
 import { passageTextParts, translatePassage, type PassageResume, type TextMode } from './text-workbench';
 
 export type PassageResult = {
@@ -106,7 +107,10 @@ export function usePassageTranslation() {
         },
       });
       const held = currentResult.current;
-      if (valid() && held?.id === id) publish({ ...held, state: 'done', text, completed: held.total });
+      if (valid() && held?.id === id) {
+        publish({ ...held, state: 'done', text, completed: held.total });
+        void track(mode === 'free' ? 'text_translate_free_success' : 'text_translate_ai_success');
+      }
     } catch (error) {
       const held = currentResult.current;
       const reason = error instanceof ApiFailure

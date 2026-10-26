@@ -25,6 +25,8 @@ vi.mock('./api', () => ({
 import * as api from './api';
 import { ApiFailure } from './api';
 import { useEntitlement } from './entitlement';
+import { track } from '@/features/analytics/analytics';
+vi.mock('@/features/analytics/analytics', () => ({ track: vi.fn() }));
 
 const PRO: Entitlement = { plan: 'pro', active: true, ai: { used: 10, limit: 10000, resetsAt: 5_000 } };
 const TRIAL: Entitlement = { plan: 'trial', active: true, ai: { used: 0, limit: 50 } };
@@ -33,6 +35,7 @@ const FREE: Entitlement = { plan: 'free', active: false, ai: { used: 0, limit: 0
 const fail = (code: string, status = 0) => new ApiFailure(code, status);
 
 beforeEach(() => {
+  vi.mocked(track).mockClear();
   token = 'access-1';
   tokenWait = null;
   sessionRevision = 1;
@@ -57,6 +60,7 @@ test('the trial the server did grant is found even though the answer was lost', 
   expect(await useEntitlement.getState().claimTrial()).toBe('ok');
   expect(useEntitlement.getState().entitlement?.active).toBe(true);
   expect(useEntitlement.getState().error).toBeNull();
+  expect(track).not.toHaveBeenCalled();
 });
 
 // The retry that used to make things worse: the server answers 409 because the account already holds
@@ -65,6 +69,33 @@ test('a repeat claim rejected as already-claimed still ends up unlocked', async 
   vi.mocked(api.claimTrial).mockRejectedValue(fail('trial_already_claimed', 409));
   vi.mocked(api.getEntitlement).mockResolvedValue(TRIAL);
   expect(await useEntitlement.getState().claimTrial()).toBe('ok');
+  expect(track).not.toHaveBeenCalled();
+});
+
+test('only a successful active-trial response emits trial_started', async () => {
+  useEntitlement.setState({ entitlement: FREE });
+  vi.mocked(api.claimTrial).mockResolvedValue(TRIAL);
+  expect(await useEntitlement.getState().claimTrial()).toBe('ok');
+  expect(track).toHaveBeenCalledExactlyOnceWith('trial_started');
+});
+
+test('an idempotent successful claim of an existing trial does not recount it', async () => {
+  useEntitlement.setState({ entitlement: TRIAL });
+  vi.mocked(api.claimTrial).mockResolvedValue(TRIAL);
+  expect(await useEntitlement.getState().claimTrial()).toBe('ok');
+  expect(track).not.toHaveBeenCalled();
+});
+
+test('an unknown prior plan is not claimed as a new trial conversion', async () => {
+  vi.mocked(api.claimTrial).mockResolvedValue(TRIAL);
+  expect(await useEntitlement.getState().claimTrial()).toBe('ok');
+  expect(track).not.toHaveBeenCalled();
+});
+
+test('loading an existing trial does not count as starting it', async () => {
+  vi.mocked(api.getEntitlement).mockResolvedValue(TRIAL);
+  await useEntitlement.getState().load();
+  expect(track).not.toHaveBeenCalled();
 });
 
 test('already-claimed is only reported when the account really has no trial', async () => {

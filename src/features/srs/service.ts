@@ -16,6 +16,7 @@ import { isDeleted } from '@/features/sync/resolve';
 import { captureDataScope, requireDataScope } from '@/features/account/dataScope';
 import { dictionaryAnswer, reviewAnswer, sameCardContent } from './answer';
 import { termCacheKey } from '@/features/vocab/translate';
+import { track } from '@/features/analytics/analytics';
 
 export { Rating };
 
@@ -35,8 +36,10 @@ async function upsert(card: NewCard): Promise<boolean> {
       { ...card, due: fsrsCard.due, card: fsrsCard, createdAt: Date.now(), creationId: crypto.randomUUID() },
       current
     );
-    if (added && current() && (card.kind === 'word' || card.kind === 'phrase'))
+    if (added && current() && (card.kind === 'word' || card.kind === 'phrase')) {
+      void track(card.kind === 'word' ? 'word_saved' : 'phrase_saved');
       await recordSave(card.kind);
+    }
     if (!current()) return false;
     if (added) return true;
     const concurrent = await db.srsCards.get(card.id);

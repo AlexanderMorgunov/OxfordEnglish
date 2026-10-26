@@ -68,7 +68,14 @@ export function startTour(lang: UiLang): void {
   void track('onboarding_start');
 
   const last = steps.length - 1;
-  let reachedLast = false;
+  let completed = false;
+  let ended = false;
+  const finish = () => {
+    if (ended) return;
+    ended = true;
+    void track('onboarding_end', { completed });
+    void track(completed ? 'onboarding_completed' : 'onboarding_skipped');
+  };
   try {
     const d = driver({
       animate: !reduce,
@@ -79,12 +86,12 @@ export function startTour(lang: UiLang): void {
       prevBtnText: ru ? 'Назад' : 'Back',
       doneBtnText: ru ? 'Готово' : 'Done',
       steps,
-      onHighlighted: () => {
-        if (d.getActiveIndex() === last) reachedLast = true;
+      onNextClick: () => {
+        if (d.getActiveIndex() === last) { completed = true; finish(); d.destroy(); }
+        else d.moveNext();
       },
-      onDestroyed: () => {
-        void track('onboarding_end', { completed: reachedLast });
-      },
+      onDestroyStarted: () => { finish(); d.destroy(); },
+      onDestroyed: finish,
     });
     d.drive();
   } catch {

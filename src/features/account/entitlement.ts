@@ -5,6 +5,7 @@ import { getInstallId } from '@/features/sync/meta';
 import * as api from './api';
 import { ApiFailure } from './api';
 import type { Entitlement } from './contract';
+import { track } from '@/features/analytics/analytics';
 
 /**
  * Client-side view of the account's plan and AI quota. Server truth, so it is fetched rather than
@@ -125,6 +126,8 @@ export const useEntitlement = create<EntitlementState>((set, get) => ({
   },
 
   claimTrial: async () => {
+    const before = get().entitlement;
+    const unusedFree = before?.plan === 'free' && before.trialEndsAt == null;
     const op = operation();
     const claimRevision = ++planRevision;
     const current = () => op.current() && claimRevision === planRevision;
@@ -141,6 +144,7 @@ export const useEntitlement = create<EntitlementState>((set, get) => ({
       if (!current()) return 'failed';
       planRevision += 1;
       set({ entitlement, error: null });
+      if (unusedFree && entitlement.plan === 'trial' && entitlement.active) void track('trial_started');
       return 'ok';
     } catch (e) {
       if (!op.owned() || claimRevision !== planRevision) return 'failed';
