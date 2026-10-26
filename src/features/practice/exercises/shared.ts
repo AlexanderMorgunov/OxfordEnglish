@@ -3,6 +3,8 @@ import { useStore } from 'zustand';
 import { addAttempt } from '@/features/sync/local';
 import type { LocalizedText } from '@/content/schema';
 import { ExerciseSessionContext } from './session';
+import { track } from '@/features/analytics/analytics';
+import { captureDataScope } from '@/features/account/dataScope';
 
 export type ExerciseStatus = 'idle' | 'correct' | 'incorrect';
 
@@ -19,6 +21,7 @@ const outcomeOf = (r: { solved: boolean } | undefined): ExerciseStatus =>
   r ? (r.solved ? 'correct' : 'incorrect') : 'idle';
 
 export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void) {
+  const owned = captureDataScope();
   // Restore a prior outcome from the session results (which outlive an in-app remount, e.g. a trip
   // to Settings and back) so the day's progress isn't visually reset. `stored` is a live slice, so
   // a late IndexedDB hydrate after mount restores too.
@@ -38,6 +41,7 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
 
   const submit = (correct: boolean, userAnswer: string) => {
     if (status === 'correct') return;
+    if (owned() && !results.getState().results[exercise.id]) void track('practice_answered');
     const n = attemptNumber + 1;
     setAttemptNumber(n);
     setAttempts((prev) => [...prev, userAnswer]);

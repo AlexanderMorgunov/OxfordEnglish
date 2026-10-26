@@ -77,6 +77,14 @@ translation requires a separate Translate action. Keyboard focus moves to the
 visible source. Dictation results require deliberate acceptance. Translate is
 available next to the initial English input; reading is a separate action.
 
+Yandex Metrica receives named milestones for first exercise answers, resolved book
+opens, newly saved words/phrases, review sessions with persisted answers, completed
+free/AI passage translations and server-confirmed trial starts. Tour completion
+requires the final Done action; dismissal is tracked separately. Milestone payloads
+contain event names, not terms, text, book titles or account identifiers. Counts
+include cached translation success and do not measure paid AI consumption. Existing
+analytics opt-out and Do Not Track apply. New Android events require an APK update.
+
 The reader's **Words from this chapter** lists explicitly saved terms with their
 source sentence beside chapter exercises. Optional matching practice requires
 at least two distinct translations and does not grade cards or change FSRS.

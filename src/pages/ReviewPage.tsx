@@ -17,6 +17,7 @@ import {
   subscribeDataScope,
 } from '@/features/account/dataScope';
 import { BackToReader } from '@/features/reader/BackToReader';
+import { track } from '@/features/analytics/analytics';
 
 const BULK_CLEAR_THRESHOLD = 20;
 const RATING_LABELS = { ru: ['снова', 'трудно', 'хорошо', 'легко'], en: ['again', 'hard', 'good', 'easy'] };
@@ -35,6 +36,8 @@ export function ReviewPage() {
   const [opening, setOpening] = useState(false);
   const [cardBusy, setCardBusy] = useState(false);
   const operation = useRef(false);
+  const reviewed = useRef(false);
+  const completionTracked = useRef(false);
   const alive = useRef(true);
   useEffect(() => {
     alive.current = true;
@@ -50,6 +53,8 @@ export function ReviewPage() {
   useEffect(
     () =>
       subscribeDataScope(() => {
+        reviewed.current = false;
+        completionTracked.current = false;
         setQueue(null);
         setFinished(new Set());
         setSkipped(new Set());
@@ -112,6 +117,11 @@ export function ReviewPage() {
   );
   const skippedCount = queue?.filter((c) => skipped.has(c.id)).length ?? 0;
   const card = correction?.card ?? remaining?.[0];
+  useEffect(() => {
+    if (queue === null || card || correction || !reviewed.current || completionTracked.current || !lastReview?.currentScope()) return;
+    completionTracked.current = true;
+    void track('review_session_completed');
+  }, [queue, card, correction, lastReview]);
   const advance = (id: string) =>
     setFinished((current) => new Set(current).add(id));
   const skip = (id: string) =>
@@ -143,7 +153,7 @@ export function ReviewPage() {
     if (!alive.current || !receipt.currentScope()) return;
     setLastReview(receipt);
     if (correction) setCorrection(null);
-    else advance(receipt.after.id);
+    else { reviewed.current = true; advance(receipt.after.id); }
     setError('');
     focusCard();
   };

@@ -57,7 +57,11 @@ export function initMetrica(): void {
  *  (identifier = `name`) to appear in reports; an unconfigured id is a harmless no-op. */
 export function metricaGoal(name: string): void {
   if (!metricaActive() || !window.ym) return;
-  window.ym(Number(METRICA_ID), 'reachGoal', name);
+  try {
+    window.ym(Number(METRICA_ID), 'reachGoal', name);
+  } catch {
+    // Third-party analytics must not affect the action being measured.
+  }
 }
 
 let lastHitPath: string | null = null;
