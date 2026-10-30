@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useExerciseState } from './useExerciseState';
 import type { Exercise } from '@/content/schema';
 import { Button, Console, Option } from '@/shared/ui';
 import { shuffle } from '../shuffle';
@@ -18,8 +18,8 @@ const arrayEq = (a: number[], b: number[]) =>
 export function OrderWordsExercise({ exercise, onSolved }: Props) {
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
-  const [display] = useState(() => shuffle(exercise.tokens.map((_, i) => i)));
-  const [picked, setPicked] = useState<number[]>([]);
+  const [display] = useExerciseState(exercise.id, 'order', () => shuffle(exercise.tokens.map((_, i) => i)));
+  const [picked, setPicked] = useExerciseState(exercise.id, 'picked', []);
   const attempt = useExerciseAttempt(exercise, onSolved);
   const { status, submit } = attempt;
 

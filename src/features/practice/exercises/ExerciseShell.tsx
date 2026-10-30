@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { Exercise } from '@/content/schema';
 import { AiAction } from '@/features/ai/AiAction';
 import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
@@ -8,6 +8,8 @@ import { useUiLang, tr } from '@/features/i18n/uiLang';
 import { exLabels } from '@/features/i18n/ui-strings';
 import { matchCommonError } from '../normalize';
 import type { ExerciseAttempt } from './shared';
+import { useExerciseState } from './useExerciseState';
+import { PixelImage } from '@/shared/ui';
 
 /** Types with a free-text/ordered answer, where a typical-error bank and a
  * reveal button make sense (unlike choice/spot-error/minimal-pairs). */
@@ -35,8 +37,8 @@ export function ExerciseShell({
   const ru = lang === 'ru';
   const L = exLabels(lang);
   const aiConfigured = useAiEnabled();
-  const [showHint, setShowHint] = useState(false);
-  const [showAnswer, setShowAnswer] = useState(false);
+  const [showHint, setShowHint] = useExerciseState(exercise.id, 'showHint', false);
+  const [showAnswer, setShowAnswer] = useExerciseState(exercise.id, 'showAnswer', false);
 
   const freeInput = FREE_INPUT.has(exercise.type);
   const caseSensitive = exercise.type === 'gap-fill' ? exercise.caseSensitive : undefined;
@@ -137,10 +139,17 @@ export function ExerciseShell({
               />
             )}
           </div>
-        ) : (
-          <div className="mt-3">
-            <AiUpsellLink />
+        ) : status === 'incorrect' ? (
+          <div className="mt-4 rounded-md border border-violet-dim bg-violet-dim/10 p-4">
+            <div className="mb-2 flex items-center gap-3">
+              <PixelImage src="/assets/pixel/ui/ai.png" alt="" className="h-7 w-7 shrink-0" />
+              <p className="text-sm font-semibold">{ru ? 'Почему ответ не подходит?' : 'Why does this answer not fit?'}</p>
+            </div>
+            <p className="mb-2 text-sm leading-relaxed text-muted">{ru ? 'Разберём правило на этом примере. Ваш ответ останется на месте.' : 'Understand the rule in this example. Your answer stays in place.'}</p>
+            <AiUpsellLink task={{ source: 'lesson', excerpt: ai.prompt, answer: ai.userAnswer }} className="min-h-11 rounded-sm border border-violet-dim bg-surface-2 px-3 py-2 text-sm">{ru ? 'Объяснить с AI' : 'Explain with AI'}</AiUpsellLink>
           </div>
+        ) : (
+          <div className="mt-3"><AiUpsellLink task={{ source: 'lesson', excerpt: ai.prompt }} className="min-h-11">{ru ? 'Подсказка с AI' : 'AI hint'}</AiUpsellLink></div>
         ))}
     </div>
   );

@@ -113,7 +113,10 @@ export const useEntitlement = create<EntitlementState>((set, get) => ({
         let entitlement = loaded;
         if (held && startedUsage !== usageRevision && held.plan === loaded.plan && held.ai.limit === loaded.ai.limit &&
           !acceptsUsage(held.ai, loaded.ai)) entitlement = { ...loaded, ai: held.ai };
-        set({ entitlement, error: null });
+        // The plan read has no installation-level trial eligibility; it cannot undo a known denial.
+        const error = loaded.plan === 'free' && !loaded.trialEndsAt && get().error === 'trial_already_claimed'
+          ? 'trial_already_claimed' : null;
+        set({ entitlement, error });
       } catch {
         // A transient failure must not downgrade a known subscription.
       } finally {
@@ -211,7 +214,7 @@ export type SubscriptionState = 'pro' | 'trial' | 'expired' | 'trial-over' | 'no
 export function subscriptionState(e: Entitlement | null, now: number): SubscriptionState {
   if (!e) return 'unknown';
   if (e.plan === 'pro' && (e.paidUntil == null || e.paidUntil > now)) return 'pro';
-  if (e.plan === 'trial') return 'trial';
+  if (e.plan === 'trial' && (e.trialEndsAt == null || e.trialEndsAt > now)) return 'trial';
   if (e.paidUntil != null) return 'expired';
   if (e.trialEndsAt != null) return 'trial-over';
   return 'none';
@@ -304,8 +307,8 @@ export function quotaNotice(e: Entitlement | null, ru: boolean): { level: 'warn'
     return {
       level,
       text: ru
-        ? `ИИ-запросы на этот период израсходованы и вернутся с продлением подписки. Перевод слов продолжает работать, а разборы и упрощение — сразу, если добавить свой ключ ИИ в настройках.`
-        : `This period's AI budget is spent and comes back when you extend the subscription. Word translation keeps working; explanations and simplification return right away if you add your own AI key in settings.`,
+        ? 'Лимит AI на этот период закончился. Он восстановится после продления Pro. Бесплатный перевод слов работает.'
+        : 'The AI limit for this period is reached. It renews when you extend Pro. Free word translation still works.',
     };
   }
 
@@ -313,10 +316,10 @@ export function quotaNotice(e: Entitlement | null, ru: boolean): { level: 'warn'
     level,
     text: resets
       ? ru
-        ? `ИИ-запросы на этот период израсходованы. Обновятся ${resets}. Перевод слов продолжает работать, а разборы и упрощение вернутся после обновления — или сразу, если добавить свой ключ ИИ в настройках.`
-        : `This period's AI budget is spent. It resets on ${resets}. Word translation keeps working; explanations and simplification return after the reset — or right away if you add your own AI key in settings.`
+        ? `Лимит AI закончился. Он восстановится ${resets}. Бесплатный перевод слов работает.`
+        : `The AI limit is reached. It resets on ${resets}. Free word translation still works.`
       : ru
-        ? `ИИ-запросы пробного периода израсходованы — он даёт ${e.ai.limit} единиц один раз. Перевод слов продолжает работать; для разборов и упрощения оформите подписку или добавьте свой ключ ИИ в настройках.`
-        : `The trial's AI budget is spent — it grants ${e.ai.limit} units once. Word translation keeps working; for explanations and simplification, subscribe or add your own AI key in settings.`,
+        ? 'Вы использовали весь лимит AI в пробном периоде. Подключите Pro, чтобы продолжить. Бесплатный перевод слов работает.'
+        : 'You have used the trial AI limit. Get Pro to continue. Free word translation still works.',
   };
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useExerciseState } from './useExerciseState';
 import type { Exercise } from '@/content/schema';
 import { Button, Console, Input } from '@/shared/ui';
 import { checkAnswer } from '../normalize';
@@ -15,7 +15,7 @@ type Props = {
 export function TranslateExercise({ exercise, onSolved }: Props) {
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
-  const [value, setValue] = useState('');
+  const [value, setValue] = useExerciseState(exercise.id, 'answer', '');
   const attempt = useExerciseAttempt(exercise, onSolved);
   const { status, submit } = attempt;
 

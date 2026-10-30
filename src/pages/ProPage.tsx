@@ -1,255 +1,91 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Eyebrow } from '@/shared/ui';
+import { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Button, Eyebrow, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
+import { useProActivation } from '@/features/account/proActivation';
+import { useAccount } from '@/features/account/store';
 import { accountsEnabled } from '@/features/account/config';
-import { billingPlans } from '@/features/account/api';
+import { useEntitlement, planLine, subscriptionState } from '@/features/account/entitlement';
+import { useBillingCatalog } from '@/features/account/useBillingCatalog';
 import { formatPrice } from '@/features/account/billing';
+import { ProDemo } from '@/features/account/ProDemo';
+import type { ProDemoKind } from '@/features/account/ProDemo';
+import { ProConditions } from '@/features/account/ProConditions';
+import { PurchaseActions } from '@/features/account/PurchaseActions';
 import { track } from '@/features/analytics/analytics';
 import { BackToReader } from '@/features/reader/BackToReader';
-import type { BillingPlan } from '@/features/account/contract';
-
-type Catalog = { status: 'loading' | 'error' } | { status: 'ready'; available: boolean; plans: BillingPlan[] };
-
-/**
- * `/pro` — the one public explanation of the paid plan, reachable WITHOUT an account.
- *
- * Order of the blocks is the argument, not decoration: what is free comes first, then the free
- * bring-your-own-key path, and only then Pro. The plan is a convenience — it is not the only way to
- * the AI features and must never be presented as one.
- *
- * The price is never hardcoded; it comes from the server (`/v1/billing/plans`), the same source
- * `PlanSection` reads. When billing is switched off the page still explains the product and says so
- * plainly instead of advertising a purchase that cannot be made.
- */
-
-const FREE_RU = [
-  'Курс от A1 до B2 — учебные дни с упражнениями, грамматикой, чтением и аудированием',
-  'Читалка: свои книги (EPUB, FB2, DOCX, PDF) и встроенный каталог, перевод слов по клику',
-  'Интервальные повторения по алгоритму FSRS и личный словарь',
-  'Справочник грамматики с объяснениями на русском',
-  'Всё работает офлайн и без регистрации',
-];
-const FREE_EN = [
-  'The A1 → B2 course — learning days with exercises, grammar, reading and listening',
-  'The reader: your own books (EPUB, FB2, DOCX, PDF) and a built-in catalog, tap-to-translate',
-  'Spaced repetition on the FSRS algorithm, and a personal vocabulary',
-  'A grammar reference explained in plain language',
-  'All of it offline, with no account needed',
-];
-
-const ACCOUNT_RU = [
-  'Прогресс, словарь, закладки и позиции чтения на всех ваших устройствах',
-  'Резервная копия в облаке — устройство можно потерять, прогресс нет',
-  'Синхронизация файлов загруженных книг',
-];
-const ACCOUNT_EN = [
-  'Progress, vocabulary, bookmarks and reading positions on all your devices',
-  'A cloud backup — you can lose a device without losing your progress',
-  'Syncing of imported book files',
-];
-
-const AI_RU = [
-  'Разбор грамматики предложения',
-  'Упрощение текста до вашего уровня',
-  'Перевод слова с учётом контекста предложения',
-];
-const AI_EN = [
-  'A grammar explanation of a sentence',
-  'Simplification of a text to your level',
-  'Word translation that accounts for the sentence around it',
-];
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <section className="mt-8 border-t border-line pt-6">
-      <h2 className="mb-2 text-lg font-bold tracking-tight">{title}</h2>
-      <div className="space-y-2 text-sm leading-relaxed text-pretty text-muted">{children}</div>
-    </section>
-  );
-}
-
-const Bullets = ({ items }: { items: string[] }) => (
-  <ul className="list-disc space-y-1 pl-5">
-    {items.map((i) => (
-      <li key={i}>{i}</li>
-    ))}
-  </ul>
-);
 
 export function ProPage() {
-  const ru = useUiLang((s) => s.lang) === 'ru';
-  const [catalog, setCatalog] = useState<Catalog>({ status: 'loading' });
-  const [attempt, setAttempt] = useState(0);
-
-  useEffect(() => {
-    void track('pro_page_view');
-  }, []);
-
-  useEffect(() => {
-    if (!accountsEnabled()) {
-      setCatalog({ status: 'ready', available: false, plans: [] });
-      return;
-    }
-    let alive = true;
-    const controller = new AbortController();
-    setCatalog({ status: 'loading' });
-    billingPlans(controller.signal)
-      .then((p) => { if (alive) setCatalog({ status: 'ready', ...p }); })
-      .catch(() => { if (alive) setCatalog({ status: 'error' }); });
-    return () => {
-      alive = false;
-      controller.abort();
-    };
-  }, [attempt]);
-
-  const monthly = catalog.status === 'ready' ? catalog.plans.find((p) => p.code === 'pro_month') : undefined;
-  const canBuy = catalog.status === 'ready' && catalog.available && !!monthly;
-  const price = monthly ? formatPrice(monthly.priceKopecks) : null;
-
-  return (
-    <article className="max-w-prose">
-      <BackToReader />
-      <Eyebrow className="mb-3.5">{ru ? 'подписка' : 'subscription'}</Eyebrow>
-      <h1 className="text-2xl font-bold tracking-tight text-balance">
-        {ru ? 'DayEnglish Pro' : 'DayEnglish Pro'}
-      </h1>
-      <p className="mt-3 text-sm leading-relaxed text-pretty text-muted">
-        {ru
-          ? 'Коротко: учиться в DayEnglish можно бесплатно и без аккаунта — это не урезанная версия. Pro нужен, если вы занимаетесь на нескольких устройствах или хотите разборы на основе ИИ без возни со своим ключом.'
-          : 'In short: learning with DayEnglish is free and needs no account — this is not a stripped-down version. Pro is for studying on more than one device, or for getting the AI explanations without setting up a key of your own.'}
-      </p>
-
-      <Section title={ru ? 'Что бесплатно всегда' : 'What is always free'}>
-        <Bullets items={ru ? FREE_RU : FREE_EN} />
-        <p>
-          {ru
-            ? 'Ничего из этого не станет платным. Бесплатный доступ к учёбе — смысл проекта, а не приманка.'
-            : 'None of this will become paid. Free access to the learning is the point of the project, not bait.'}
-        </p>
-      </Section>
-
-      <Section title={ru ? 'Что добавляет Pro' : 'What Pro adds'}>
-        <p className="text-content">{ru ? 'Две вещи.' : 'Two things.'}</p>
-        <p>
-          <b className="text-content">{ru ? '1. Несколько устройств.' : '1. More than one device.'}</b>{' '}
-          {ru
-            ? 'Прогресс, словарь, закладки и позиции чтения переносятся между устройствами, а в облаке лежит резервная копия. Сюда же — файлы загруженных книг.'
-            : 'Progress, vocabulary, bookmarks and reading positions move between your devices, with a backup in the cloud. Imported book files too.'}
-        </p>
-        <Bullets items={ru ? ACCOUNT_RU : ACCOUNT_EN} />
-        <p>
-          <b className="text-content">{ru ? '2. Разборы на основе ИИ.' : '2. The AI explanations.'}</b>{' '}
-          {ru ? 'Возможности:' : 'Features:'}
-        </p>
-        <Bullets items={ru ? AI_RU : AI_EN} />
-        <p>
-          {ru
-            ? 'К разборам есть и бесплатный путь — свой ключ ИИ. К синхронизации его нет: она работает на нашем сервере и нашем хранилище.'
-            : 'The explanations also have a free path — your own AI key. Syncing does not: it runs on our server and our storage.'}
-        </p>
-      </Section>
-
-      <Section title={ru ? 'Разборы можно получить и бесплатно — своим ключом' : 'The explanations are also free with your own key'}>
-        <p>
-          {ru
-            ? 'Добавьте ключ любого совместимого провайдера в настройках — и разборы работают без всякой подписки, сколько угодно. Запросы идут из вашего браузера напрямую к провайдеру, мимо нашего сервера, а ключ хранится только на устройстве.'
-            : 'Add a key from any compatible provider in settings and the explanations work with no subscription at all, as much as you like. Requests go straight from your browser to the provider, bypassing our server, and the key never leaves your device.'}
-        </p>
-        <p>
-          <Link to="/settings" className="text-teal hover:underline">
-            {ru ? 'Добавить свой ключ в настройках' : 'Add your own key in settings'}
-          </Link>
-        </p>
-      </Section>
-
-      <Section title={ru ? 'Почему Pro всё-таки берут' : 'Why people take Pro anyway'}>
-        {/* The honest reason the plan exists. The same fact is already stated in the BYOK card in
-            Settings, so saying it here is consistency, not a sales pitch. */}
-        <p>
-          {ru
-            ? 'Свой ключ достать может не каждый: Groq, OpenRouter, Cerebras, Gemini и OpenAI блокируют доступ из России — нужен VPN. Из доступного без VPN остаётся немногое, и оно тоже платное.'
-            : 'Getting your own key is not equally easy for everyone: Groq, OpenRouter, Cerebras, Gemini and OpenAI block access from Russia, so a VPN is required. What is left without one is limited, and also paid.'}
-        </p>
-        <p>
-          {ru
-            ? 'Pro решает именно это: те же разборы работают на нашем ключе, сразу, без VPN и без настройки. Вы платите не за функции — они есть и бесплатно, — а за то, что они работают.'
-            : 'That is what Pro is for: the same explanations, on our key, immediately, with no VPN and no setup. You are not paying for the features — those are free too — but for them working.'}
-        </p>
-        {/* The price is stated whether or not the button works. It is what this page is for, it is what
-            the footer link promises, and hiding it while payments are switched off leaves the one page
-            named "subscription and price" with no price on it. */}
-        {price && monthly && (
-          <p className="text-content">
-            {ru
-              ? `${price} за ${monthly.days} дней. Подписка не продлевается автоматически: когда период закончится, доступ к разборам просто прекратится, пока вы не оплатите следующий.`
-              : `${price} for ${monthly.days} days. The subscription does not renew automatically: when the period ends the explanations simply switch off until you pay for the next one.`}
-          </p>
-        )}
-        {canBuy && <p><Link to="/settings" className="text-teal hover:underline">{ru ? 'Подключить Pro в настройках' : 'Get Pro in settings'}</Link></p>}
-        {catalog.status === 'loading' && <p role="status">{ru ? 'Проверяем стоимость и доступность оплаты…' : 'Checking the price and payment availability…'}</p>}
-        {catalog.status === 'error' && <div role="status">
-          <p>{ru ? 'Не удалось проверить стоимость и доступность оплаты. Проверьте соединение и попробуйте ещё раз.' : 'Could not check the price and payment availability. Check your connection and try again.'}</p>
-          <Button className="mt-2" size="sm" variant="ghost" onClick={() => setAttempt(n => n + 1)}>{ru ? 'Повторить' : 'Try again'}</Button>
-        </div>}
-        {catalog.status === 'ready' && !canBuy && (
-          <p className="text-content">
-            {ru
-              ? 'Оформление подписки сейчас недоступно. Проверьте доступность позже в настройках аккаунта. AI-функции можно попробовать в пробном периоде или использовать со своим ключом.'
-              : 'Subscription checkout is currently unavailable. Check again later in account settings. You can try the AI features during the free trial or use your own key.'}
-          </p>
-        )}
-      </Section>
-
-      <Section title={ru ? 'Пробный период' : 'The free trial'}>
-        <p>
-          {ru
-            ? 'Pro можно попробовать 14 дней бесплатно, карта не нужна. Пробный период даёт ограниченный запас запросов и выдаётся один раз.'
-            : 'You can try Pro free for 14 days, no card required. The trial comes with a limited budget of requests and is granted once.'}
-        </p>
-        <p><Link to="/settings" className="text-teal hover:underline">{ru ? 'Перейти к аккаунту и пробному периоду' : 'Go to account and free trial'}</Link></p>
-        <p>
-          {/* Said in the same breath on purpose: a trial button that silently fails for an anonymous
-              user is worse than no trial button. */}
-          {ru
-            ? 'Для пробного периода нужен аккаунт — без email, только ключ восстановления, который вы сохраняете сами. Создать его можно в настройках за минуту.'
-            : 'The trial needs an account — no email, just a recovery key that you keep yourself. You can create one in settings in a minute.'}
-        </p>
-        <p>
-          {ru
-            ? 'Когда пробный период или оплаченный месяц закончится: разборы вернутся к вашему ключу, а выгрузка в облако остановится. Ничего при этом не пропадает — облачная копия сохраняется, её по-прежнему можно загрузить на устройство, а новые изменения продолжают копиться локально и уйдут наверх, как только подписка снова активна. Курс, читалка, повторения и словарь не меняются вообще.'
-            : 'When the trial or a paid month ends: the explanations go back to needing your own key, and uploading to the cloud stops. Nothing is lost — the cloud copy is kept and can still be downloaded to a device, and new changes keep accumulating locally and go up as soon as a plan is active again. The course, the reader, reviews and the vocabulary do not change at all.'}
-        </p>
-      </Section>
-
-      {/* Kept as the LAST argument, never the first: the buyer is paying for a service with an offer,
-          a refund policy and consumer-protection law behind it. Funding the project is a true and
-          welcome consequence of that purchase, not what the purchase is. */}
-      <Section title={ru ? 'Куда идут деньги' : 'Where the money goes'}>
-        <p>
-          {ru
-            ? 'Приложение делает один человек в свободное время. Здесь нет рекламы, инвесторов и продажи данных — подписка это единственный доход проекта. Она оплачивает серверы, хранилище и ключ ИИ, и она же позволяет курсу, читалке и повторениям оставаться бесплатными для всех остальных.'
-            : 'This app is built by one person in their spare time. There are no ads, no investors and no data sales — the subscription is the project\'s only income. It pays for the servers, the storage and the AI key, and it is what lets the course, the reader and the reviews stay free for everyone else.'}
-        </p>
-        <p>
-          {ru
-            ? 'Если Pro вам не нужен, а поддержать проект хочется — для этого есть отдельная страница, и она ничего не открывает.'
-            : 'If you do not need Pro but would like to support the project anyway, there is a separate page for that — and it unlocks nothing.'}{' '}
-          <Link to="/support" className="text-teal hover:underline">
-            {ru ? 'Поддержать проект' : 'Support the project'}
-          </Link>
-        </p>
-      </Section>
-
-      <p className="mt-8 border-t border-line pt-6 text-2xs text-muted">
-        <Link to="/terms" className="text-teal hover:underline">
-          {ru ? 'Условия и публичная оферта' : 'Terms and public offer'}
-        </Link>
-        {' · '}
-        <Link to="/privacy" className="text-teal hover:underline">
-          {ru ? 'Конфиденциальность' : 'Privacy'}
-        </Link>
-      </p>
-    </article>
-  );
+  const ru = useUiLang(s => s.lang) === 'ru';
+  const { pathname } = useLocation();
+  const status = useAccount(s => s.status);
+  const entitlement = useEntitlement(s => s.entitlement);
+  const loading = useEntitlement(s => s.loading);
+  const trialError = useEntitlement(s => s.error);
+  const state = subscriptionState(entitlement, Date.now());
+  const unknown = status === 'authenticated' && state === 'unknown';
+  const ended = state === 'expired' || state === 'trial-over';
+  const trialAvailable = status === 'anonymous' || state === 'none' && trialError !== 'trial_already_claimed';
+  const accessLabel = trialAvailable ? ru ? '14 дней бесплатно ↓' : '14 days free ↓'
+    : state === 'expired' ? ru ? 'Продлить Pro ↓' : 'Renew Pro ↓'
+      : state === 'trial-over' || state === 'none' ? ru ? 'Оформить Pro ↓' : 'Get Pro ↓'
+        : unknown ? ru ? 'Проверить подписку ↓' : 'Check subscription ↓'
+          : ru ? 'Моя подписка ↓' : 'My subscription ↓';
+  const { catalog, monthly, canBuy, retry } = useBillingCatalog(trialAvailable);
+  useEffect(() => { void track('pro_page_view'); }, []);
+  const features: { kind: ProDemoKind; icon: string; title: string; text: string }[] = [
+    { kind: 'lesson', icon: 'ui/ai', title: ru ? 'Разобраться в ошибке' : 'Understand your mistake', text: ru ? 'Понятное объяснение прямо в задании.' : 'A clear explanation right in your exercise.' },
+    { kind: 'text', icon: 'ui/translate', title: ru ? 'AI-перевод с учётом контекста' : 'AI translation with context', text: ru ? 'AI учитывает смысл фраз и контекст — в книгах и при переводе вашего текста.' : 'AI takes phrases and context into account, in books and your own text.' },
+    { kind: 'reader', icon: 'nav/library', title: ru ? 'Понять предложение в книге' : 'Understand a sentence in your book', text: ru ? 'Разбор грамматики и упрощение сложных предложений прямо в читалке.' : 'Grammar explanations and simpler wording, right in the reader.' },
+    { kind: 'sync', icon: 'nav/progress', title: ru ? 'Продолжить на другом устройстве' : 'Continue on another device', text: ru ? 'Книги, словарь и прогресс — с собой.' : 'Take your books, vocabulary and progress with you.' },
+  ];
+  return <article className="mx-auto w-full max-w-prose">
+    <BackToReader />
+    <Eyebrow className="mb-3">DayEnglish Pro</Eyebrow>
+    <h1 className="mb-4 text-2xl font-bold leading-tight tracking-tight sm:text-3xl">{ru ? 'Помощь там, где трудно' : 'Help when you get stuck'}</h1>
+    <p className="mb-3 text-base leading-relaxed text-muted">{ru ? 'Учитесь бесплатно. Подключайте Pro, когда нужны объяснения AI и занятия на нескольких устройствах.' : 'Learn for free. Add Pro when you need AI explanations and learning across devices.'}</p>
+    <a href="#pro-access" className="mb-6 inline-flex min-h-11 items-center text-sm text-teal underline">{accessLabel}</a>
+    <div className="mb-7 space-y-4">
+      {features.map(f => <section key={f.kind} className="space-y-4 rounded-lg border border-line bg-surface p-4 sm:p-5">
+        <div className="flex items-start gap-4">
+          <PixelImage src={`/assets/pixel/${f.icon}.png`} alt="" className="mt-1 h-8 w-8 shrink-0" />
+          <div className="min-w-0"><h2 className="mb-1 text-base font-semibold">{f.title}</h2><p className="text-sm leading-relaxed text-muted">{f.text}</p></div>
+        </div>
+        <ProDemo kind={f.kind} ru={ru} />
+      </section>)}
+    </div>
+    <section id="pro-access" className="scroll-mt-5 space-y-4 rounded-xl border border-violet-dim bg-violet-dim/10 p-5 sm:p-6" aria-label={ru ? 'Подключение Pro' : 'Get Pro'}>
+      {trialAvailable ? <>
+        <div><h2 className="text-2xl font-semibold">{ru ? '14 дней бесплатно' : '14 days free'}</h2><p className="mt-1 text-sm text-muted">{ru ? 'Без карты и автоматических списаний' : 'No card or automatic charges'}</p></div>
+        {canBuy && monthly && <p className="text-sm text-muted">{ru ? `Затем — ${formatPrice(monthly.priceKopecks)} за ${monthly.days} дней, если захотите продолжить.` : `Then ${formatPrice(monthly.priceKopecks)} for ${monthly.days} days, if you choose to continue.`}</p>}
+        {catalog.state === 'loading' && <p role="status" className="text-sm text-muted">{ru ? 'Проверяем актуальную цену…' : 'Checking the current price…'}</p>}
+        {catalog.state === 'error' && <div className="space-y-2 text-sm text-muted"><p role="status">{ru ? 'Цена не загрузилась. Проверьте соединение и повторите.' : 'The price did not load. Check your connection and retry.'}</p><Button variant="ghost" onClick={retry}>{ru ? 'Повторить загрузку цены' : 'Retry price'}</Button></div>}
+        {catalog.state === 'ready' && !canBuy && <p className="text-sm text-muted">{ru ? 'Оплата пока недоступна.' : 'Payments are currently unavailable.'}</p>}
+        {accountsEnabled() && <Button className="min-h-12 w-full" onClick={e => useProActivation.getState().open({ source: 'pro' }, pathname, e.currentTarget)}>{ru ? 'Попробовать 14 дней' : 'Try 14 days'}</Button>}
+        <ProConditions ru={ru} />
+      </> : <>
+        {unknown ? <>
+          <p role="status" className="text-sm text-muted">{loading ? ru ? 'Проверяем подписку…' : 'Checking your subscription…' : ru ? 'Не удалось проверить подписку. Попробуйте ещё раз.' : 'Could not check your subscription. Please retry.'}</p>
+          <Button variant="ghost" disabled={loading} onClick={() => void useEntitlement.getState().load()}>{ru ? 'Проверить подписку' : 'Check subscription'}</Button>
+        </> : entitlement && <>
+          <h2 className="text-lg font-semibold">{planLine(entitlement, state, ru)}</h2>
+          {ended && <p className="text-sm text-muted">{ru ? 'Книги, слова и прогресс сохранены. Подключите Pro, чтобы снова пользоваться AI и синхронизацией.' : 'Your books, words and progress are saved. Get Pro to use AI and sync again.'}</p>}
+          {state === 'pro' && <p className="text-sm text-muted">{ru ? 'Продлить можно заранее. Оплаченные дни добавятся к текущему сроку.' : 'You can renew early. The paid days are added to your current period.'}</p>}
+        </>}
+        <PurchaseActions />
+      </>}
+    </section>
+    <section className="mt-8 space-y-3">
+      <h2 className="text-xl font-semibold">{ru ? 'Бесплатная учёба остаётся' : 'Free learning stays free'}</h2>
+      <p className="text-sm leading-relaxed text-muted">{ru ? 'Курс, грамматика, чтение своих книг, перевод слов, словарь и интервальные повторения доступны без подписки и регистрации.' : 'The course, grammar, your own books, word lookup, vocabulary and spaced repetition remain available without a subscription or registration.'}</p>
+      <details className="border-t border-line py-3 text-sm leading-relaxed text-muted">
+        <summary className="min-h-11 cursor-pointer text-content">{ru ? 'Что будет, когда Pro закончится' : 'What happens when Pro ends'}</summary>
+        <p>{ru ? 'Книги и прогресс останутся на устройстве. Сохранённую облачную копию можно загрузить. Новые изменения снова начнут отправляться в облако после продления Pro.' : 'Your books and progress stay on your device. You can still download the saved cloud copy. New changes will sync to the cloud again after you renew Pro.'}</p>
+      </details>
+    </section>
+    <p className="mt-6 border-t border-line pt-5 text-xs leading-relaxed text-muted">
+      <Link to="/terms" className="text-teal underline">{ru ? 'Условия и публичная оферта' : 'Terms and public offer'}</Link>{' · '}
+      <Link to="/privacy" className="text-teal underline">{ru ? 'Конфиденциальность' : 'Privacy'}</Link>
+    </p>
+  </article>;
 }

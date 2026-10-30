@@ -1,9 +1,12 @@
 let generation = 0;
-const listeners = new Set<() => void>();
+let ownerGeneration = 0;
+export type DataScopeChange = 'reset' | 'adopt-anonymous';
+const listeners = new Set<(change: DataScopeChange) => void>();
 
-export function invalidateDataScope(): void {
+export function invalidateDataScope(change: DataScopeChange = 'reset'): void {
   generation += 1;
-  for (const listener of listeners) listener();
+  if (change === 'reset') ownerGeneration += 1;
+  for (const listener of listeners) listener(change);
 }
 
 export function captureDataScope(): () => boolean {
@@ -15,7 +18,11 @@ export function getDataScopeRevision(): number {
   return generation;
 }
 
-export function subscribeDataScope(listener: () => void): () => void {
+export function getDataOwnerRevision(): number {
+  return ownerGeneration;
+}
+
+export function subscribeDataScope(listener: (change: DataScopeChange) => void): () => void {
   listeners.add(listener);
   return () => listeners.delete(listener);
 }
