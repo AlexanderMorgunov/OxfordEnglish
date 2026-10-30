@@ -1,6 +1,6 @@
 import * as api from './api';
 import { ApiFailure } from './api';
-import { useAccount } from './store';
+import { captureAccountSessionOwner, useAccount } from './store';
 import { useEntitlement } from './entitlement';
 import type { CheckoutResponse, Entitlement } from './contract';
 
@@ -109,9 +109,12 @@ export function livePending(paidUntil: number | null | undefined): PendingPaymen
 /** Open a checkout: returns the acquirer's payment page for the caller to navigate to. The pending
  *  token is written BEFORE anyone navigates, so a fast payment can never outrun our own bookkeeping. */
 export async function beginCheckout(plan: string): Promise<string> {
+  const owns = captureAccountSessionOwner();
   const token = await useAccount.getState().getAccessToken();
+  if (!owns()) throw new DOMException('Account changed', 'AbortError');
   if (!token) throw new ApiFailure('unauthorized', 401);
   const checkout = await api.startCheckout(token, plan);
+  if (!owns()) throw new DOMException('Account changed', 'AbortError');
   savePending(checkout);
   return checkout.paymentUrl;
 }

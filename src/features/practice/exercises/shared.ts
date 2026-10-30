@@ -1,10 +1,11 @@
-import { use, useEffect, useState } from 'react';
+import { use } from 'react';
 import { useStore } from 'zustand';
 import { addAttempt } from '@/features/sync/local';
 import type { LocalizedText } from '@/content/schema';
 import { ExerciseSessionContext } from './session';
 import { track } from '@/features/analytics/analytics';
-import { captureDataScope } from '@/features/account/dataScope';
+import { captureDataScope, getDataOwnerRevision } from '@/features/account/dataScope';
+import { useExerciseState } from './useExerciseState';
 
 export type ExerciseStatus = 'idle' | 'correct' | 'incorrect';
 
@@ -26,24 +27,18 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
   // to Settings and back) so the day's progress isn't visually reset. `stored` is a live slice, so
   // a late IndexedDB hydrate after mount restores too.
   const results = use(ExerciseSessionContext);
-  const stored = useStore(results, (s) => s.results[exercise.id]);
-  const [status, setStatus] = useState<ExerciseStatus>(() => outcomeOf(stored));
-  const [attemptNumber, setAttemptNumber] = useState(() => stored?.attempts ?? 0);
-  const [attempts, setAttempts] = useState<string[]>([]);
-  const [usedHint, setUsedHint] = useState(false);
-  const [aiHintsUsed, setAiHintsUsed] = useState(0);
-
-  useEffect(() => {
-    if (!stored) return;
-    setStatus((cur) => (cur === 'idle' ? outcomeOf(stored) : cur));
-    setAttemptNumber((cur) => (cur === 0 ? stored.attempts : cur));
-  }, [stored]);
+  const stored = useStore(results, s => s.scopeRevision === getDataOwnerRevision() ? s.results[exercise.id] : undefined);
+  const status = outcomeOf(stored);
+  const attemptNumber = stored?.attempts ?? 0;
+  const [attempts, setAttempts] = useExerciseState(exercise.id, 'attempts', []);
+  const [usedHint, setUsedHint] = useExerciseState(exercise.id, 'usedHint', false);
+  const [aiHintsUsed, setAiHintsUsed] = useExerciseState(exercise.id, 'aiHintsUsed', 0);
 
   const submit = (correct: boolean, userAnswer: string) => {
-    if (status === 'correct') return;
+    if (!owned() || status === 'correct') return;
+    results.getState().syncScope();
     if (owned() && !results.getState().results[exercise.id]) void track('practice_answered');
     const n = attemptNumber + 1;
-    setAttemptNumber(n);
     setAttempts((prev) => [...prev, userAnswer]);
     results.getState().record(exercise.id, correct, exercise.tags);
     void addAttempt({
@@ -57,14 +52,7 @@ export function useExerciseAttempt(exercise: ExerciseMeta, onSolved?: () => void
       usedAI: false,
     }).catch(() => undefined);
     if (correct) {
-      setStatus('correct');
       onSolved?.();
-    } else {
-      // A wrong answer used to create a review card here. It no longer does: the review queue is what
-      // the learner chose to keep, and a gap-fill prompt torn out of its exercise ("Give it to ___ .")
-      // cannot be answered there anyway. The attempt is still recorded above, which is where every
-      // statistic about mistakes already comes from.
-      setStatus('incorrect');
     }
   };
 

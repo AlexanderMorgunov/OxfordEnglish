@@ -10,6 +10,7 @@ import { SELLER } from '@/shared/seller';
 import { NavMore } from './NavMore';
 import { BackToTop } from './BackToTop';
 import '@/features/appearance/store';
+import { ProActivationDialog } from '@/features/account/ProActivationDialog';
 
 /** `icon` defaults to the nav sprite named after `label.en`; set it when no such sprite exists. */
 type NavItem = {
@@ -21,8 +22,7 @@ type NavItem = {
   icon?: string;
 };
 
-/** The daily loop — always visible. Secondary destinations live behind "more" (NavMore), which keeps
- *  the header at two rows on a phone instead of four. */
+/** The daily loop stays visible; secondary destinations live behind "more". */
 const NAV: NavItem[] = [
   { to: '/', label: { en: 'today', ru: 'сегодня' }, end: true, devOnly: false, tour: undefined },
   { to: '/grammar', label: { en: 'grammar', ru: 'грамматика' }, end: false, devOnly: false, tour: undefined },
@@ -33,6 +33,7 @@ const NAV: NavItem[] = [
 ];
 
 const MORE: NavItem[] = [
+  { to: '/pro', label: { en: 'Pro', ru: 'Pro' }, end: false, devOnly: false, icon: '/assets/pixel/ui/ai.png' },
   { to: '/progress', label: { en: 'progress', ru: 'прогресс' }, end: false, devOnly: false },
   { to: '/settings', label: { en: 'settings', ru: 'настройки' }, end: false, devOnly: false },
   { to: '/feedback', label: { en: 'feedback', ru: 'обратная связь' }, end: false, devOnly: false },
@@ -121,6 +122,7 @@ export function AppLayout() {
         </ErrorBoundary>
       </main>
       <SiteFooter ru={ru} />
+      <ProActivationDialog />
       <BackToTop key={location.pathname} pathname={location.pathname} mainRef={mainRef} />
       {/* New paths open at the top; returning to a seen path restores its scroll. */}
       <ScrollRestoration getKey={(location) => location.pathname} />

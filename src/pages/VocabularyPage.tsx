@@ -488,7 +488,7 @@ export function VocabularyPage() {
                   {ru ? f.ru : f.en}
                 </button>
               ))}
-              <span className="ml-auto flex items-center gap-1.5">
+              <span className="ml-auto flex max-w-full flex-wrap items-center gap-1.5">
                 {SORTS.map((s) => (
                   <button
                     key={s.id}

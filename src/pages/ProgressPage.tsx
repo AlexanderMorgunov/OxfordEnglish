@@ -39,8 +39,8 @@ function Stat({ label, value }: { label: string; value: string | number }) {
 function SkillRow({ stat }: { stat: TagStat }) {
   return (
     <div>
-      <div className="mb-1 flex items-baseline justify-between gap-3">
-        <span className="font-mono text-sm text-content">{stat.tag}</span>
+      <div className="mb-1 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+        <span className="min-w-0 max-w-full font-mono text-sm text-content [overflow-wrap:anywhere]">{stat.tag}</span>
         <span className="font-mono text-2xs tabular-nums text-muted">
           {pct(stat.accuracy)} · {stat.correct}/{stat.total}
         </span>
@@ -149,7 +149,7 @@ export function ProgressPage() {
 
       <div>
         {status === 'error' && <div className="mb-4"><ContentLoadError /></div>}
-        <div className="mb-3 flex items-center justify-between">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
           <p className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
             {ru ? 'контрольные' : 'checkpoints'}
           </p>

@@ -18,7 +18,7 @@ export function SupportPage() {
       <Eyebrow className="mb-3.5">{ru ? 'поддержать' : 'support'}</Eyebrow>
       <div className="mb-4 flex items-center gap-3">
         <PixelImage src="/assets/pixel/nav/support.png" alt="" className="h-7 w-7 shrink-0" />
-        <h1 className="text-2xl font-bold tracking-tight text-balance">
+        <h1 className="min-w-0 text-2xl font-bold tracking-tight text-balance">
           {ru ? 'Поддержать проект' : 'Support the project'}
         </h1>
       </div>

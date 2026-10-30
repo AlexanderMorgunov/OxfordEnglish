@@ -45,22 +45,22 @@ test('a spent Pro budget names the reset date', () => {
   const n = quotaNotice(ent({ used: 10000, limit: 10000, resetsAt }), true);
   expect(n?.level).toBe('spent');
   expect(n?.text).toMatch(/октябр/); // "обновятся 14 октября"
-  expect(n?.text).toContain('свой ключ');
+  expect(n?.text).not.toContain('свой ключ');
 });
 
-test('a spent trial says one-time instead of inventing a reset', () => {
+test('a spent trial offers Pro without inventing a reset', () => {
   // The trial budget never rolls over — promising a reset date would be a lie.
   const n = quotaNotice({ plan: 'trial', active: true, ai: { used: 1000, limit: 1000 } }, true);
-  expect(n?.text).toContain('один раз');
-  expect(n?.text).not.toMatch(/Обновятся/);
+  expect(n?.text).toContain('Подключите Pro');
+  expect(n?.text).not.toMatch(/обнов|восстанов/iu);
 });
 
 test('both notices promise that word translation survives', () => {
   // It does: the reader falls back to the free MyMemory path, so the page stays usable.
   const pro = quotaNotice(ent({ used: 10000, limit: 10000, resetsAt: Date.now() }), true);
   const trial = quotaNotice({ plan: 'trial', active: true, ai: { used: 1000, limit: 1000 } }, true);
-  expect(pro?.text).toContain('Перевод слов продолжает работать');
-  expect(trial?.text).toContain('Перевод слов продолжает работать');
+  expect(pro?.text).toContain('Бесплатный перевод слов работает');
+  expect(trial?.text).toContain('Бесплатный перевод слов работает');
 });
 
 test('a spent budget also closes the managed AI path', () => {
@@ -73,5 +73,6 @@ test('English is offered too, for both shapes', () => {
   const pro = quotaNotice(ent({ used: 10000, limit: 10000, resetsAt: Date.UTC(2026, 9, 14) }), false);
   expect(pro?.text).toContain('resets on');
   const trial = quotaNotice({ plan: 'trial', active: true, ai: { used: 1000, limit: 1000 } }, false);
-  expect(trial?.text).toContain('grants 1000 units once');
+  expect(trial?.text).toContain('Get Pro to continue');
+  expect(trial?.text).not.toContain('resets');
 });

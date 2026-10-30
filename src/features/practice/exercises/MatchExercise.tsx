@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useExerciseState } from './useExerciseState';
 import type { Exercise } from '@/content/schema';
 import { Button, Console, Option } from '@/shared/ui';
 import { shuffle } from '../shuffle';
@@ -15,9 +15,9 @@ type Props = {
 export function MatchExercise({ exercise, onSolved }: Props) {
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
-  const [rightOrder] = useState(() => shuffle(exercise.pairs.map((_, i) => i)));
-  const [selectedLeft, setSelectedLeft] = useState<number | null>(null);
-  const [assign, setAssign] = useState<Record<number, number>>({});
+  const [rightOrder] = useExerciseState(exercise.id, 'order', () => shuffle(exercise.pairs.map((_, i) => i)));
+  const [selectedLeft, setSelectedLeft] = useExerciseState(exercise.id, 'selectedLeft', null);
+  const [assign, setAssign] = useExerciseState(exercise.id, 'pairs', {});
   const attempt = useExerciseAttempt(exercise, onSolved);
   const { status, submit } = attempt;
 

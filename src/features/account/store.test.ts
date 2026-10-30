@@ -23,6 +23,9 @@ vi.mock('./api', () => ({
 import * as api from './api';
 import { useAccount } from './store';
 import { splitCredential, deriveVerifier } from './keys';
+import { captureDataScope, invalidateDataScope } from './dataScope';
+import { useWorkbenchDraft } from '@/features/vocab/workbench-draft';
+import { useSessionResults } from '@/features/progress/sessionResults';
 
 const session = (over: Partial<Session> = {}): Session => ({
   accountId: 'acc-1',
@@ -34,9 +37,98 @@ const session = (over: Partial<Session> = {}): Session => ({
 });
 
 beforeEach(() => {
+  invalidateDataScope();
   localStorage.clear();
+  sessionStorage.clear();
+  useAccount.getState().confirmRecoveryKey();
   vi.clearAllMocks();
   useAccount.setState({ status: 'anonymous', accountId: null, accessToken: null, accessExpiresAt: 0, error: null });
+});
+
+test('an uncertain registration retries the same credentials and recovers an existing account', async () => {
+  vi.mocked(api.register).mockRejectedValueOnce(new api.ApiFailure('network', 0));
+  await expect(useAccount.getState().createAccount()).rejects.toThrow();
+  vi.mocked(api.register).mockRejectedValueOnce(new api.ApiFailure('account_exists', 409));
+  vi.mocked(api.login).mockResolvedValueOnce(session());
+  const key = await useAccount.getState().createAccount();
+  expect(api.register).toHaveBeenCalledTimes(2);
+  expect(JSON.stringify(vi.mocked(api.register).mock.calls[1]?.[0]) === JSON.stringify(vi.mocked(api.register).mock.calls[0]?.[0])).toBe(true);
+  expect(api.login).toHaveBeenCalledWith(vi.mocked(api.register).mock.calls[0]?.[0]);
+  expect(useAccount.getState().pendingRecoveryKey === key).toBe(true);
+  useAccount.getState().confirmRecoveryKey();
+  expect(useAccount.getState().pendingRecoveryKey).toBeNull();
+  expect(sessionStorage.getItem('dayenglish.registration-draft')).toBeNull();
+});
+
+test('concurrent registration creates one account and retains its unconfirmed recovery key', async () => {
+  vi.mocked(api.register).mockResolvedValue(session());
+  const [one, two] = await Promise.all([useAccount.getState().createAccount(), useAccount.getState().createAccount()]);
+  expect(one === two).toBe(true);
+  expect(api.register).toHaveBeenCalledTimes(1);
+  expect(useAccount.getState().pendingRecoveryKey === one).toBe(true);
+  expect(sessionStorage.getItem('dayenglish.registration-draft')).not.toBeNull();
+});
+
+test('a late registration response cannot replace a different login or expose its key', async () => {
+  let finish: (value: Session) => void = () => undefined;
+  vi.mocked(api.register).mockImplementation(() => new Promise(resolve => { finish = resolve; }));
+  const registration = useAccount.getState().createAccount();
+  const rejected = expect(registration).rejects.toMatchObject({ name: 'AbortError' });
+  await vi.waitFor(() => expect(api.register).toHaveBeenCalledOnce());
+  vi.mocked(api.login).mockResolvedValue(session({ accountId: 'other-account' }));
+  await useAccount.getState().linkWithKey('0000-0000-0000-0000-0000-0000-00');
+  finish(session());
+  await rejected;
+  expect(useAccount.getState().accountId).toBe('other-account');
+  expect(useAccount.getState().pendingRecoveryKey).toBeNull();
+  expect(sessionStorage.getItem('dayenglish.registration-draft')).toBeNull();
+});
+
+test('a cross-tab account change removes the unfinished registration key', async () => {
+  vi.mocked(api.register).mockResolvedValue(session());
+  await useAccount.getState().createAccount();
+  expect(useAccount.getState().pendingRecoveryKey).not.toBeNull();
+  localStorage.setItem('oxford-account', JSON.stringify({ ...session({ accountId: 'other-account' }), incarnation: 'another-login' }));
+  window.dispatchEvent(new StorageEvent('storage', { key: 'oxford-account' }));
+  expect(useAccount.getState().pendingRecoveryKey).toBeNull();
+  expect(sessionStorage.getItem('dayenglish.registration-draft')).toBeNull();
+});
+
+test('first signup adopts drafts but invalidates in-flight work from the anonymous scope', async () => {
+  const owned = captureDataScope();
+  useWorkbenchDraft.getState().setDraft({ text: 'My unfinished translation.', owned });
+  useWorkbenchDraft.getState().setMode('ai', owned);
+  useSessionResults.getState().setDraft('signup.exercise', 'answer', 'Was');
+  useSessionResults.getState().record('signup.exercise', false, []);
+  vi.mocked(api.register).mockResolvedValue(session({ created: true }));
+  await useAccount.getState().createAccount();
+  expect(owned()).toBe(false);
+  expect(useWorkbenchDraft.getState().draft.text).toBe('My unfinished translation.');
+  expect(useWorkbenchDraft.getState().draft.owned()).toBe(true);
+  expect(useWorkbenchDraft.getState().mode).toBe('ai');
+  expect(useSessionResults.getState().drafts['signup.exercise']?.answer).toBe('Was');
+  expect(useSessionResults.getState().results['signup.exercise']?.attempts).toBe(1);
+  useWorkbenchDraft.getState().setDraft({ text: 'Late old callback', owned });
+  expect(useWorkbenchDraft.getState().draft.text).toBe('My unfinished translation.');
+});
+
+test('signup after another owner signed out does not adopt their navigation drafts', async () => {
+  localStorage.setItem('oxford-account', JSON.stringify({
+    accountId: '', deviceId: 'd', refreshToken: '', dataOwner: 'previous-owner', fileOwner: 'previous-owner',
+  }));
+  useWorkbenchDraft.getState().setDraft({ text: 'Previous private text', owned: captureDataScope() });
+  useSessionResults.getState().setDraft('signup.exercise', 'answer', 'Previous private answer');
+  vi.mocked(api.register).mockResolvedValue(session({ created: true }));
+  await useAccount.getState().createAccount();
+  expect(useWorkbenchDraft.getState().draft.text).toBe('');
+  expect(useSessionResults.getState().drafts).toEqual({});
+});
+
+test('linking an existing account does not adopt anonymous navigation drafts', async () => {
+  useWorkbenchDraft.getState().setDraft({ text: 'Local draft', owned: captureDataScope() });
+  vi.mocked(api.devicePoll).mockResolvedValue({ status: 'approved', session: session() });
+  await useAccount.getState().pollDeviceLink('fixture-request');
+  expect(useWorkbenchDraft.getState().draft.text).toBe('');
 });
 
 test('createAccount registers with derived credentials, returns the key, and persists the session', async () => {

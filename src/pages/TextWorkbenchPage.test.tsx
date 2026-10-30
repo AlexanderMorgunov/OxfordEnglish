@@ -79,6 +79,26 @@ async function selectMode(mode: 'free' | 'ai') {
   await userEvent.selectOptions(select, mode);
 }
 
+test('keeps the source and selected mode across an in-app detour', async () => {
+  const page = await compose('Keep this unfinished translation.');
+  await selectMode('ai');
+  page.unmount();
+  render(<TextWorkbenchPage />, { wrapper: MemoryRouter });
+  expect(screen.getByRole('textbox', { name: 'English text' })).toHaveValue('Keep this unfinished translation.');
+  expect(screen.getByLabelText('Translation mode')).toHaveValue('ai');
+  expect(translatePassage).not.toHaveBeenCalled();
+});
+
+test('an unmounted workbench cannot restore the previous data owner draft', async () => {
+  const page = await compose('Previous account text.');
+  await selectMode('ai');
+  page.unmount();
+  invalidateDataScope();
+  render(<TextWorkbenchPage />, { wrapper: MemoryRouter });
+  expect(screen.getByRole('textbox', { name: 'English text' })).toHaveValue('');
+  expect(screen.getByLabelText('Translation mode')).toHaveValue('free');
+});
+
 test('the production workbench has no example filler or redundant vocabulary link', async () => {
   await compose();
   expect(screen.queryByRole('button', { name: 'Example' })).toBeNull();
@@ -146,11 +166,11 @@ test('changing mode on a partial retry restarts instead of mixing AI and free fr
   expect(screen.getByText('Новый полный перевод')).toBeVisible();
 });
 
-test('AI without a plan or key is visibly locked and offers Pro or key setup before a request', async () => {
+test('AI without a plan or key is visibly locked and offers Pro before a request', async () => {
   vi.mocked(translatePassage).mockResolvedValue('Сохранённый перевод');
   await compose(); await selectMode('ai');
-  expect(screen.getByRole('link', { name: 'AI in Pro →' })).toHaveAttribute('href', '/pro');
-  expect(screen.getByRole('link', { name: 'Set up your own AI key →' })).toHaveAttribute('href', '/settings?from=%2Fvocabulary%2Ftext#ai-section');
+  expect(screen.getByRole('button', { name: 'AI in Pro →' })).toBeVisible();
+  expect(screen.queryByRole('link', { name: 'Set up your own AI key →' })).toBeNull();
   expect(screen.getByRole('option', { name: /🔒 AI translation/ })).toBeInTheDocument();
   expect(translatePassage).not.toHaveBeenCalled();
   await userEvent.click(screen.getByRole('button', { name: 'Check saved AI translation' }));
@@ -162,7 +182,7 @@ test('an unavailable saved AI answer explains a cache miss and offers the free p
   vi.mocked(translatePassage).mockRejectedValue(new AiCacheMiss());
   await compose(); await selectMode('ai'); await translate();
   expect(await screen.findByRole('alert')).toHaveTextContent('The full AI translation is not saved on this device');
-  expect(screen.getByRole('link', { name: 'AI in Pro →' })).toBeVisible();
+  expect(screen.getByRole('button', { name: 'AI in Pro →' })).toBeVisible();
   expect(screen.queryByText(/Translation unavailable. Check connectivity/)).toBeNull();
   await userEvent.click(screen.getByRole('button', { name: 'Choose free translation' }));
   expect(screen.getByRole('textbox', { name: 'English text' })).toHaveValue(sentence);
@@ -177,7 +197,7 @@ test.each(['pro', 'trial'] as const)('active %s without a key can request a new 
   await compose(); await translate();
   expect(await screen.findByText('Ответ по подписке')).toBeVisible();
   expect(translatePassage).toHaveBeenCalledWith(sentence, expect.objectContaining({ mode: 'ai', config: null, cacheOnly: false }));
-  expect(screen.queryByRole('link', { name: 'AI in Pro →' })).toBeNull();
+  expect(screen.queryByRole('button', { name: 'AI in Pro →' })).toBeNull();
 });
 
 test('spent paid quota reuses the reset hint instead of asking the subscriber to buy Pro', async () => {
@@ -186,7 +206,7 @@ test('spent paid quota reuses the reset hint instead of asking the subscriber to
   useEntitlement.setState({ entitlement: { plan: 'pro', active: true, paidUntil: now + 60 * 86400000, ai: { used: 100, limit: 100, resetsAt: now + 30 * 86400000 } } });
   await compose(); await selectMode('ai');
   expect(screen.getByText(/AI budget spent, resets on/)).toBeVisible();
-  expect(screen.queryByRole('link', { name: 'AI in Pro →' })).toBeNull();
+  expect(screen.queryByRole('button', { name: 'AI in Pro →' })).toBeNull();
   expect(screen.getByRole('button', { name: 'Check saved AI translation' })).toBeVisible();
 });
 

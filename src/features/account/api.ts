@@ -79,11 +79,11 @@ async function request<T>(path: string, init: RequestInit, parse: (j: unknown) =
 const asSession = (j: unknown): Session => SessionSchema.parse(j);
 
 export function register(body: AuthRequest): Promise<Session> {
-  return request(Routes.register, { method: 'POST', body: JSON.stringify(body) }, asSession);
+  return withDeadline(15_000, undefined, signal => request(Routes.register, { method: 'POST', body: JSON.stringify(body), signal }, asSession));
 }
 
 export function login(body: AuthRequest): Promise<Session> {
-  return request(Routes.login, { method: 'POST', body: JSON.stringify(body) }, asSession);
+  return withDeadline(15_000, undefined, signal => request(Routes.login, { method: 'POST', body: JSON.stringify(body), signal }, asSession));
 }
 
 export async function refresh(refreshToken: string): Promise<Session> {

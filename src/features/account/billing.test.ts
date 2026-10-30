@@ -35,6 +35,18 @@ beforeEach(() => {
 });
 
 describe('beginCheckout', () => {
+  it('does not store a late checkout response after an account change', async () => {
+    let finish: (value: typeof CHECKOUT) => void = () => undefined;
+    vi.mocked(api.startCheckout).mockImplementation(() => new Promise(resolve => { finish = resolve; }));
+    const checkout = beginCheckout('pro_month');
+    const rejected = expect(checkout).rejects.toMatchObject({ name: 'AbortError' });
+    await vi.waitFor(() => expect(api.startCheckout).toHaveBeenCalledOnce());
+    localStorage.setItem('oxford-account', JSON.stringify({ accountId: 'another-account', deviceId: 'another-device', refreshToken: 'fixture-refresh' }));
+    finish(CHECKOUT);
+    await rejected;
+    expect(readPending()).toBeNull();
+  });
+
   it('records the pending payment before handing back the payment URL', async () => {
     vi.mocked(api.startCheckout).mockResolvedValue(CHECKOUT);
     const url = await beginCheckout('pro_month');

@@ -1,11 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Button, PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { useAiStore, isConfigured } from '@/features/ai/store';
 import { aiAvailable, useAiEnabled } from '@/features/ai/route';
 import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
-import { upsellTarget } from '@/features/ai/upsell';
 import { useEntitlement, hasManagedAi } from '@/features/account/entitlement';
 import { captureDataScope, subscribeDataScope } from '@/features/account/dataScope';
 import { useAccount } from '@/features/account/store';
@@ -16,6 +14,7 @@ import { VocabularyNav } from '@/features/vocab/VocabularyNav';
 import { WorkbenchDisclosure } from '@/features/vocab/WorkbenchDisclosure';
 import { ReplaceTranslationDialog } from '@/features/vocab/ReplaceTranslationDialog';
 import { usePassageTranslation } from '@/features/vocab/usePassageTranslation';
+import { useWorkbenchDraft } from '@/features/vocab/workbench-draft';
 import { prepareText, WORKBENCH_LIMIT, type TextIssue, type TextMode } from '@/features/vocab/text-workbench';
 
 const ACTION = 'inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-sm px-2 text-sm text-content hover:bg-surface-2 disabled:cursor-default disabled:opacity-40';
@@ -39,14 +38,17 @@ export function TextWorkbenchPage() {
   const config = useAiStore(s => s.config);
   const sessionRevision = useAccount(s => s.sessionRevision);
   const canAi = useAiEnabled();
-  const accountStatus = useAccount(s => s.status);
   const entitlement = useEntitlement(s => s.entitlement);
   const { result: storedResult, start, cancel, editResult, getResult } = usePassageTranslation();
   const result = storedResult?.owned() ? storedResult : null;
   // Ownership and text reset together even when an external store renders first.
-  const [draftState, setDraftState] = useState(() => ({ text: '', owned: captureDataScope() }));
+  const draftState = useWorkbenchDraft(s => s.draft);
+  const setDraftState = useWorkbenchDraft(s => s.setDraft);
   const draft = draftState.owned() ? draftState.text : '';
-  const [mode, setMode] = useState<TextMode>(() => aiAvailable(config) ? 'ai' : 'free');
+  const savedMode = useWorkbenchDraft(s => s.mode);
+  const [initialMode] = useState<TextMode>(() => aiAvailable(config) ? 'ai' : 'free');
+  const mode = savedMode ?? initialMode;
+  const setMode = (next: TextMode) => useWorkbenchDraft.getState().setMode(next, draftState.owned);
   const [view, setView] = useState<View>('compose');
   const [sourceSnapshot, setSourceSnapshot] = useState(() => ({ text: '', owned: captureDataScope() }));
   const [issue, setIssue] = useState<TextIssue | null>(null);
@@ -80,9 +82,10 @@ export function TextWorkbenchPage() {
   }, []);
   useEffect(() => {
     mounted.current = true;
-    const unsubscribe = subscribeDataScope(() => {
+    const unsubscribe = subscribeDataScope(change => {
       revision.current += 1;
-      setDraftState({ text: '', owned: captureDataScope() }); setMode('free'); setView('compose'); setSourceSnapshot({ text: '', owned: captureDataScope() });
+      if (change === 'reset') useWorkbenchDraft.getState().setMode('free', captureDataScope());
+      setView('compose'); setSourceSnapshot({ text: '', owned: captureDataScope() });
       setEditing(null); setReplacement(null); setClipboard(null); setIssue(null);
       setSourceEdit(null); setClearedText(null); setEditNotice(false);
       setInputRevision(value => value + 1);
@@ -223,7 +226,6 @@ export function TextWorkbenchPage() {
   const hasKey = isConfigured(config);
   const hasManaged = hasManagedAi(entitlement);
   const aiLocked = mode === 'ai' && !canAi;
-  const accessTarget = upsellTarget(accountStatus, entitlement);
   const modeChanged = !!result && result.mode !== mode;
   const failure = result?.error === 'quota' ? ru ? 'Лимит AI-запросов исчерпан. Можно выбрать бесплатный перевод или настроить свой AI-ключ.' : 'The AI budget is spent. You can choose free translation or configure your own AI key.'
     : result?.error === 'cache' ? ru ? 'Полный AI-перевод не сохранён на этом устройстве. Можно перевести текст бесплатно.' : 'The full AI translation is not saved on this device. You can translate for free.'
@@ -254,8 +256,7 @@ export function TextWorkbenchPage() {
   const aiAccessNotice = aiLocked && <div className="mt-3 space-y-2 rounded-sm border border-line bg-ink/40 p-3 text-xs leading-relaxed text-muted">
     <p>{ru ? '🔒 Новые AI-переводы сейчас недоступны. Ранее полученный перевод можно открыть из кеша.' : '🔒 New AI translations are unavailable. You can check for a previously saved translation.'}</p>
     <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-      <AiUpsellLink className="min-h-11">{ru ? 'Доступ к AI в Pro →' : 'AI in Pro →'}</AiUpsellLink>
-      {['plans', 'quota-final', 'quota-until-renewal'].includes(accessTarget) && <Link to="/settings?from=%2Fvocabulary%2Ftext#ai-section" className="inline-flex min-h-11 items-center text-teal hover:underline">{ru ? 'Настроить свой AI-ключ →' : 'Set up your own AI key →'}</Link>}
+      <AiUpsellLink task={{ source: 'text', excerpt: draft }} className="min-h-11">{ru ? 'Доступ к AI в Pro →' : 'AI in Pro →'}</AiUpsellLink>
     </div>
   </div>;
   const settings = <details className="min-w-0 flex-1" onKeyDown={event => {

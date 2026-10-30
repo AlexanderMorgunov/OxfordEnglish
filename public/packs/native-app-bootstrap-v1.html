@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>DayEnglish</title>
+<style>html{background:#12141c;color:#eeeee8;font:16px sans-serif}body{margin:0}</style>
+</head>
+<body>
+<script>
+window.__dayEnglishNativeBoot = 'pending';
+(async () => {
+  if (typeof window.androidBridge?.postMessage !== 'function') {
+    window.__dayEnglishNativeBoot = 'failed';
+    return;
+  }
+  if ('serviceWorker' in navigator) {
+    const registrations = await navigator.serviceWorker.getRegistrations();
+    await Promise.all(registrations.map(registration => registration.unregister()));
+  }
+  window.__dayEnglishNativeBoot = 'ready';
+})().catch(() => { window.__dayEnglishNativeBoot = 'failed'; });
+</script>
+</body>
+</html>

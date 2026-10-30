@@ -21,6 +21,7 @@ describe('subscriptionState', () => {
     ['nothing at all', ent({}), 'none'],
     ['a trial running', ent({ plan: 'trial', active: true, trialEndsAt: NOW + 3 * DAY }), 'trial'],
     ['a trial used up, never paid', ent({ trialEndsAt: AUG }), 'trial-over'],
+    ['a trial that expired while the app stayed open', ent({ plan: 'trial', active: true, trialEndsAt: NOW }), 'trial-over'],
     ['Pro running', ent({ plan: 'pro', active: true, paidUntil: OCT }), 'pro'],
     ['Pro running, with a trial in its past', ent({ plan: 'pro', active: true, paidUntil: OCT, trialEndsAt: AUG }), 'pro'],
     // The whole point of the ordering: both dates are in the past and only one of them is the truth.

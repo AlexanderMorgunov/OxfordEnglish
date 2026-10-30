@@ -48,6 +48,7 @@ function AccountSectionBody() {
   const busy = useAccount((s) => s.busy);
   const error = useAccount((s) => s.error);
   const createAccount = useAccount((s) => s.createAccount);
+  const pendingRecoveryKey = useAccount((s) => s.pendingRecoveryKey);
   const linkWithKey = useAccount((s) => s.linkWithKey);
   const logout = useAccount((s) => s.logout);
 
@@ -60,7 +61,9 @@ function AccountSectionBody() {
   const [showRecover, setShowRecover] = useState(false);
   const clearError = useAccount((s) => s.clearError);
   const [keyReason, setKeyReason] = useState<'created' | 'recovered' | 'rotated'>('created');
-  const visibleKey = savedKey && savedKeyOwner.current?.() ? savedKey : null;
+  const visibleKey = savedKey && savedKeyOwner.current?.() ? savedKey : pendingRecoveryKey;
+  const visibleKeyReason = savedKey && savedKeyOwner.current?.() ? keyReason : 'created';
+  useEffect(() => { setConfirmedSaved(false); }, [pendingRecoveryKey]);
 
   useEffect(() => {
     const clearForeignKey = () => {
@@ -100,8 +103,7 @@ function AccountSectionBody() {
 
   const onCreate = async () => {
     try {
-      const key = await createAccount();
-      showSavedKey(key, 'created');
+      await createAccount();
     } catch {
       // error surfaced via store.error
     }
@@ -117,10 +119,15 @@ function AccountSectionBody() {
     }
   };
 
-  const copyKey = () => savedKey && savedKeyOwner.current?.() && void navigator.clipboard?.writeText(savedKey).catch(() => undefined);
+  const currentKey = () => savedKey && savedKeyOwner.current?.() ? savedKey : useAccount.getState().pendingRecoveryKey;
+  const copyKey = () => {
+    const key = currentKey();
+    if (key) void navigator.clipboard?.writeText(key).catch(() => undefined);
+  };
   const downloadKey = () => {
-    if (!savedKey || !savedKeyOwner.current?.()) return;
-    const body = recoveryFileBody(savedKey, accountId, ru);
+    const key = currentKey();
+    if (!key) return;
+    const body = recoveryFileBody(key, useAccount.getState().accountId, ru);
     const blob = new Blob([body], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -139,11 +146,11 @@ function AccountSectionBody() {
       {visibleKey ? (
         <Card className="border-amber-dim bg-amber-dim/15">
           <p className="mb-2 text-sm text-content">
-            {keyReason === 'rotated'
+            {visibleKeyReason === 'rotated'
               ? ru
                 ? 'Готово — вот новый ключ. Старый больше не работает, сохраните этот вместо него. Он содержит и ваш ID, поэтому длиннее прежнего.'
                 : 'Done — here is the new key. The old one no longer works, so save this in its place. It carries your ID too, which is why it is longer.'
-              : keyReason === 'recovered'
+              : visibleKeyReason === 'recovered'
               ? ru
                 ? 'Аккаунт восстановлен, и у него новый ключ. Старый больше не работает — сохраните этот вместо него. Он длиннее прежнего, потому что содержит и ваш ID.'
                 : 'Your account is back, with a new key. The old one no longer works — save this one in its place. It is longer than before because it also carries your ID.'
@@ -166,7 +173,7 @@ function AccountSectionBody() {
             <input type="checkbox" checked={confirmedSaved} onChange={(e) => setConfirmedSaved(e.target.checked)} />
             {ru ? 'Я сохранил(а) ключ в надёжном месте' : 'I have saved the key somewhere safe'}
           </label>
-          <Button size="sm" disabled={!confirmedSaved} onClick={() => setSavedKey(null)}>
+          <Button size="sm" disabled={!confirmedSaved} onClick={() => { if (currentKey() !== visibleKey) return; setSavedKey(null); useAccount.getState().confirmRecoveryKey(); }}>
             {ru ? 'Готово' : 'Done'}
           </Button>
         </Card>
