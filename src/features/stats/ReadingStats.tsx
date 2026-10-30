@@ -65,7 +65,7 @@ export function ReadingStats() {
         <p className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
           {ru ? 'чтение и слова' : 'reading & words'}
         </p>
-        <div role="group" aria-label={ru ? 'Период' : 'Period'} className="flex gap-1">
+        <div role="group" aria-label={ru ? 'Период' : 'Period'} className="flex flex-wrap gap-1">
           {PERIODS.map((p) => (
             <button
               key={p.id}

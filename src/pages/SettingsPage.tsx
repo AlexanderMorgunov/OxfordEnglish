@@ -184,7 +184,7 @@ export function SettingsPage() {
       <Eyebrow className="mb-3.5">config · ai (byok)</Eyebrow>
       <div className="mb-2 flex items-center gap-3">
         <PixelImage src="/assets/pixel/ui/ai.png" alt="" className="h-7 w-7 shrink-0" />
-        <h1 className="text-2xl font-bold tracking-tight">{ru ? 'AI-помощник' : 'AI assistant'}</h1>
+        <h1 className="min-w-0 text-2xl font-bold tracking-tight">{ru ? 'AI-помощник' : 'AI assistant'}</h1>
       </div>
       <p className="mb-8 text-muted text-pretty">
         {ru
