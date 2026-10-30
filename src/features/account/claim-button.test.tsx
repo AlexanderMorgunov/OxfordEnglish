@@ -9,7 +9,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
-import { beforeEach, expect, test, vi } from 'vitest';
+import { afterEach, beforeEach, expect, test, vi } from 'vitest';
 import type { Entitlement } from './contract';
 import type * as BillingModule from './billing';
 import type * as AccountApi from './api';
@@ -19,6 +19,7 @@ const billingPlans = vi.fn();
 
 vi.mock('./billing', async (orig) => ({ ...(await orig<typeof BillingModule>()), claimPurchase, beginCheckout: vi.fn() }));
 vi.mock('./api', async (orig) => ({ ...(await orig<typeof AccountApi>()), billingPlans }));
+vi.mock('./config', () => ({ API_BASE: 'https://api.test', accountsEnabled: () => true }));
 
 const { useEntitlement } = await import('./entitlement');
 const { PlanSection } = await import('./PlanSection');
@@ -30,11 +31,14 @@ const pro = (paidUntil: number): Entitlement => ({ plan: 'pro', active: true, pa
 const CLAIM = /i already paid/i;
 
 beforeEach(() => {
+  vi.spyOn(Date, 'now').mockReturnValue(new Date('2026-10-01T09:00:00Z').getTime());
   localStorage.clear();
   claimPurchase.mockReset();
-  billingPlans.mockReset().mockResolvedValue({ available: true, plans: [{ code: 'pro_month', priceKopecks: 19900 }] });
+  billingPlans.mockReset().mockResolvedValue({ available: true, plans: [{ code: 'pro_month', days: 30, title: 'Pro 30 days', priceKopecks: 19900 }] });
   useEntitlement.setState({ entitlement: pro(OCT) });
 });
+
+afterEach(() => vi.restoreAllMocks());
 
 test('the button is there while Pro is active', async () => {
   render(<PlanSection ru={false} />, { wrapper: MemoryRouter });
