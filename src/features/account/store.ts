@@ -10,6 +10,7 @@ import { discardAllBookFiles } from '@/features/reader/storage';
 import type { Device, DeviceStartResponse, Session } from './contract';
 import { invalidateDataScope } from './dataScope';
 import { recordSessionEvent } from './session-diagnostics';
+import { readRegistrationDraft, writeRegistrationDraft } from './registrationDraft';
 
 const KEY = 'oxford-account';
 
@@ -143,6 +144,11 @@ function sameLogicalSession(a: Persisted | null, b: Persisted | null): boolean {
   return a?.accountId === b?.accountId && a?.deviceId === b?.deviceId && a?.incarnation === b?.incarnation;
 }
 
+function registrationOwner(): string {
+  const session = load();
+  return JSON.stringify([session?.accountId ?? '', session?.deviceId ?? '', session?.incarnation ?? '']);
+}
+
 let authGeneration = 0;
 let ownershipQueue = Promise.resolve();
 
@@ -258,6 +264,8 @@ type AccountState = {
   accessExpiresAt: number;
   busy: boolean;
   error: string | null;
+  pendingRecoveryKey: string | null;
+  confirmRecoveryKey: () => void;
   /** Create a brand-new account; returns the recovery key to show on the save-your-key screen. */
   createAccount: () => Promise<string>;
   /** Link this device to an existing account by its recovery key (either shape — see keys.ts). */
@@ -298,15 +306,17 @@ type AccountState = {
 /** Shared across all concurrent refresh callers in this tab, so a burst never sends the refresh token
  *  twice (which reuse-detection would read as theft and revoke the family — see design H4). */
 let refreshInFlight: { generation: number; session: Persisted; promise: Promise<void> } | null = null;
+let creationInFlight: Promise<string> | null = null;
 
 export const useAccount = create<AccountState>((set, get) => {
   const persisted = load();
   const deviceId = ensureDeviceId();
   recordSessionEvent(persisted?.refreshToken ? 'session_present' : 'session_absent');
 
-  const applySession = (s: Session, refreshed = false) => {
+  const applySession = (s: Session, refreshed = false, adoptAnonymous = false) => {
     if (!refreshed) authGeneration += 1;
-    if (get().accountId !== s.accountId) invalidateDataScope();
+    if (!refreshed) writeRegistrationDraft(null);
+    if (get().accountId !== s.accountId) invalidateDataScope(adoptAnonymous ? 'adopt-anonymous' : 'reset');
     save({ accountId: s.accountId, deviceId: s.deviceId, refreshToken: s.refreshToken,
       incarnation: refreshed ? load()?.incarnation : randomId(),
       // ?? on both: every install that is already signed in when this ships has neither marker, and an
@@ -323,13 +333,20 @@ export const useAccount = create<AccountState>((set, get) => {
       accessExpiresAt: s.accessExpiresAt,
       busy: refreshed ? get().busy : false,
       error: null,
+      pendingRecoveryKey: refreshed ? readRegistrationDraft(registrationOwner())?.key ?? null : null,
     });
     recordSessionEvent('authenticated');
   };
 
-  const adoptSession = (s: Session) => withSessionOwnership(async () => {
+  const adoptSession = (s: Session, creating = false, ownsOperation?: () => boolean) => withSessionOwnership(async () => {
+    if (ownsOperation && !ownsOperation()) throw new DOMException('Account changed', 'AbortError');
+    const previous = load();
+    // Only first-time signup may keep anonymous drafts; a logged-out owner's data is not anonymous.
+    const adoptAnonymous = creating && !get().accountId && !previous?.accountId &&
+      !previous?.dataOwner && !previous?.lastAccountId && !previous?.fileOwner;
     await maybeSwitchWipe(s.accountId);
-    applySession(s);
+    applySession(s, false, adoptAnonymous);
+    return captureAccountSessionOwner();
   });
 
   const captureCredentialOwner = () => {
@@ -357,12 +374,13 @@ export const useAccount = create<AccountState>((set, get) => {
 
   const clearSession = () => {
     authGeneration += 1;
+    writeRegistrationDraft(null);
     const prev = load();
     save(null);
     // Keep the deviceId so relinking reuses the same device entry, and the account id so the next
     // sign-in can tell a re-login from a switch.
     save({ accountId: '', deviceId, refreshToken: '', incarnation: randomId(), lastAccountId: prev?.accountId || prev?.lastAccountId, fileOwner: prev?.fileOwner, dataOwner: prev?.dataOwner });
-    set({ status: 'anonymous', accountId: null, sessionRevision: authGeneration, accessToken: null, accessExpiresAt: 0, busy: false });
+    set({ status: 'anonymous', accountId: null, sessionRevision: authGeneration, accessToken: null, accessExpiresAt: 0, busy: false, pendingRecoveryKey: null });
   };
 
   return {
@@ -374,36 +392,57 @@ export const useAccount = create<AccountState>((set, get) => {
     accessExpiresAt: 0,
     busy: false,
     error: null,
+    pendingRecoveryKey: persisted?.accountId ? readRegistrationDraft(registrationOwner())?.key ?? null : null,
+    confirmRecoveryKey: () => { writeRegistrationDraft(null); set({ pendingRecoveryKey: null }); },
 
-    createAccount: async () => {
-      if (!accountsEnabled()) throw new Error('accounts disabled');
+    createAccount: () => {
+      if (creationInFlight) return creationInFlight;
+      if (!accountsEnabled()) return Promise.reject(new Error('accounts disabled'));
+      const pendingKey = get().pendingRecoveryKey;
+      if (get().status === 'authenticated' && pendingKey) return Promise.resolve(pendingKey);
+      if (get().status === 'authenticated') return Promise.reject(new Error('Already signed in'));
+      let ownsOperation = captureLogicalSessionOwner();
       set({ busy: true, error: null });
-      try {
-        const recoveryKey = generateRecoveryKey();
-        const creds = await deriveCredentials(recoveryKey);
-        const session = await api.register({ ...creds, deviceName: deviceName(), deviceId: get().deviceId });
-        await adoptSession(session);
-        return recoveryKey;
-      } catch (e) {
-        set({ error: e instanceof ApiFailure ? e.code : 'error' });
-        throw e;
-      } finally {
-        set({ busy: false });
-      }
+      const run = async () => {
+        try {
+          const recoveryKey = readRegistrationDraft(registrationOwner())?.key ?? generateRecoveryKey();
+          const creds = await deriveCredentials(recoveryKey);
+          if (!ownsOperation()) throw new DOMException('Account changed', 'AbortError');
+          writeRegistrationDraft({ key: recoveryKey, accountId: creds.accountId, owner: registrationOwner() });
+          const request = { ...creds, deviceName: deviceName(), deviceId: get().deviceId };
+          const session = await api.register(request).catch(e => {
+            if (e instanceof ApiFailure && e.code === 'account_exists') return api.login(request);
+            throw e;
+          });
+          ownsOperation = await adoptSession(session, true, ownsOperation);
+          if (!ownsOperation()) throw new DOMException('Account changed', 'AbortError');
+          writeRegistrationDraft({ key: recoveryKey, accountId: session.accountId, owner: registrationOwner() });
+          set({ pendingRecoveryKey: recoveryKey });
+          return recoveryKey;
+        } catch (e) {
+          if (ownsOperation()) set({ error: e instanceof ApiFailure ? e.code : 'error' });
+          throw e;
+        } finally {
+          if (ownsOperation()) set({ busy: false });
+        }
+      };
+      creationInFlight = run().finally(() => { creationInFlight = null; });
+      return creationInFlight;
     },
 
     linkWithKey: async (recoveryKey) => {
       if (!accountsEnabled()) throw new Error('accounts disabled');
+      const ownsOperation = captureLogicalSessionOwner();
       set({ busy: true, error: null });
       try {
         const creds = await deriveCredentials(recoveryKey.trim());
         const session = await api.login({ ...creds, deviceName: deviceName(), deviceId: get().deviceId });
-        await adoptSession(session);
+        await adoptSession(session, false, ownsOperation);
       } catch (e) {
-        set({ error: e instanceof ApiFailure ? e.code : 'error' });
+        if (ownsOperation()) set({ error: e instanceof ApiFailure ? e.code : 'error' });
         throw e;
       } finally {
-        set({ busy: false });
+        if (ownsOperation()) set({ busy: false });
       }
     },
 
@@ -647,4 +686,11 @@ export const useAccount = create<AccountState>((set, get) => {
       });
     },
   };
+});
+
+if (typeof window !== 'undefined') window.addEventListener('storage', event => {
+  if (event.key !== KEY && event.key !== null) return;
+  const draft = readRegistrationDraft(registrationOwner());
+  if (!draft) writeRegistrationDraft(null);
+  useAccount.setState({ pendingRecoveryKey: load()?.accountId ? draft?.key ?? null : null });
 });

@@ -1,7 +1,7 @@
 /// <reference types="vitest/config" />
 import { fileURLToPath, URL } from 'node:url';
 import { readFileSync } from 'node:fs';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
@@ -10,7 +10,19 @@ const pkg = JSON.parse(
   readFileSync(new URL('./package.json', import.meta.url), 'utf8')
 ) as { version: string };
 
-export default defineConfig({
+export default defineConfig(({ mode }) => {
+  const apiBase = process.env.VITE_API_BASE ?? loadEnv(mode, process.cwd(), 'VITE_API_BASE').VITE_API_BASE;
+  const proxyPrefix = `/__dayenglish_api/${encodeURIComponent(apiBase?.replace(/\/$/, '') ?? '')}`;
+  const proxy = apiBase && /^https?:\/\//.test(apiBase) ? {
+    [proxyPrefix]: {
+      target: apiBase.replace(/\/$/, ''),
+      changeOrigin: true,
+      rewrite: (path: string) => path.slice(proxyPrefix.length),
+    },
+  } : undefined;
+  return {
+  server: { proxy },
+  preview: { proxy },
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
     __APP_BUILD__: JSON.stringify(new Date().toISOString()),
@@ -114,4 +126,5 @@ export default defineConfig({
     setupFiles: './src/test/setup.ts',
     css: true,
   },
+  };
 });

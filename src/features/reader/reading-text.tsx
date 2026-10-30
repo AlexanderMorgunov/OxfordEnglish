@@ -1,5 +1,5 @@
 import { createContext, memo, use, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Button, Popover, PopoverGroup, usePopoverClose } from '@/shared/ui';
 import { overflowShift } from './lens-menu';
 import { cn } from '@/shared/lib/cn';
@@ -38,6 +38,7 @@ import { ReaderTextSize } from './ReaderTextSize';
 import { keepReadingAnchor } from './reading-anchor';
 import { runLens, type LensArgs, type LensMode } from './lens';
 import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
+import { useProActivation } from '@/features/account/proActivation';
 import { clampBand } from '@/features/ai/simplify-prompts';
 import { track } from '@/features/analytics/analytics';
 import type { Level } from '@/content/schema';
@@ -519,7 +520,7 @@ const Paragraph = memo(function Paragraph({
     idx: number;
     mode: LensMode;
   } | null>(null);
-  const navigate = useNavigate();
+  const { pathname } = useLocation();
   // Which sentence's lens menu is open (translate / simplify / grammar), or null.
   const [menuIdx, setMenuIdx] = useState<number | null>(null);
   const menuRef = useRef<HTMLSpanElement | null>(null);
@@ -835,9 +836,9 @@ const Paragraph = memo(function Paragraph({
                     <button
                       type="button"
                       role="menuitem"
-                      onClick={() => {
+                      onClick={event => {
                         setMenuIdx(null);
-                        navigate('/pro?from=reader');
+                        useProActivation.getState().open({ source: 'reader', excerpt: sentence }, pathname, event.currentTarget);
                       }}
                       className="whitespace-nowrap px-2.5 pb-1 pt-0.5 text-left font-mono text-2xs text-violet hover:underline"
                     >
@@ -1444,8 +1445,8 @@ export function ReadingText({
           <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 font-mono text-2xs text-muted">
             <span>
               {ru
-                ? 'AI-перевод, упрощение и грамматика предложений требуют ключ ИИ (перевод слов и озвучка работают и без него).'
-                : 'AI translate, simplify and grammar need an AI key (word lookup and read-aloud work without one).'}
+                ? 'Для AI-перевода, упрощения и разбора грамматики нужен Pro или свой ключ. Перевод слов и озвучка работают бесплатно.'
+                : 'AI translation, simplification and grammar need Pro or your own key. Word lookup and read-aloud are free.'}
             </span>
             <AiUpsellLink />
           </p>

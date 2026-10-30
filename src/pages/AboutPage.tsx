@@ -193,7 +193,7 @@ export function AboutPage() {
       <section data-reveal>
         <p className="eyebrow mb-3.5">{t('что это', 'what this is')}</p>
         <div className="flex items-start justify-between gap-4">
-          <div>
+          <div className="min-w-0">
             <h1 className="mb-3 text-3xl font-bold tracking-tight text-balance">
               {t('Английский по одному дню за раз', 'English, one day at a time')}
             </h1>

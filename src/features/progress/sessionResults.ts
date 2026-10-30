@@ -1,4 +1,19 @@
 import { create } from 'zustand';
+import { getDataOwnerRevision, subscribeDataScope } from '@/features/account/dataScope';
+
+export type ExerciseDraft = {
+  answer: string;
+  chosen: number | null;
+  order: number[];
+  picked: number[];
+  pairs: Record<number, number>;
+  selectedLeft: number | null;
+  attempts: string[];
+  usedHint: boolean;
+  aiHintsUsed: number;
+  showHint: boolean;
+  showAnswer: boolean;
+};
 
 export type ExerciseResult = {
   firstCorrect: boolean;
@@ -10,7 +25,11 @@ export type ExerciseResult = {
 };
 
 type SessionResultsState = {
+  scopeRevision: number;
+  syncScope: () => void;
   results: Record<string, ExerciseResult>;
+  drafts: Record<string, Partial<ExerciseDraft>>;
+  setDraft: <K extends keyof ExerciseDraft>(id: string, key: K, value: ExerciseDraft[K]) => void;
   record: (id: string, correct: boolean, tags: string[]) => void;
   hydrate: (entries: { id: string; result: ExerciseResult }[]) => void;
   reset: (ids: string[]) => void;
@@ -22,7 +41,14 @@ type SessionResultsState = {
  * "did you know it" signal); later attempts only bump the count.
  */
 export const createSessionResults = () => create<SessionResultsState>((set) => ({
+  scopeRevision: getDataOwnerRevision(),
+  syncScope: () => set(state => state.scopeRevision === getDataOwnerRevision() ? state
+    : { scopeRevision: getDataOwnerRevision(), results: {}, drafts: {} }),
   results: {},
+  drafts: {},
+  setDraft: (id, key, value) => set(state => ({
+    drafts: { ...state.drafts, [id]: { ...state.drafts[id], [key]: value } },
+  })),
   record: (id, correct, tags) =>
     set((state) => {
       const prev = state.results[id];
@@ -50,9 +76,16 @@ export const createSessionResults = () => create<SessionResultsState>((set) => (
   reset: (ids) =>
     set((state) => {
       const next = { ...state.results };
-      for (const id of ids) delete next[id];
-      return { results: next };
+      const drafts = { ...state.drafts };
+      for (const id of ids) { delete next[id]; delete drafts[id]; }
+      return { results: next, drafts };
     }),
 }));
 
 export const useSessionResults = createSessionResults();
+
+subscribeDataScope(change => {
+  useSessionResults.setState(change === 'adopt-anonymous'
+    ? { scopeRevision: getDataOwnerRevision() }
+    : { scopeRevision: getDataOwnerRevision(), results: {}, drafts: {} });
+});

@@ -11,7 +11,7 @@ import { buildCheckpoint, buildLevelExit, reviewPlan } from '@/features/checkpoi
 import { skillMap, type TagStat } from '@/features/progress/metrics';
 import { saveCheckpoint } from '@/features/progress/queries';
 import { createSessionResults } from '@/features/progress/sessionResults';
-import { getDataScopeRevision, subscribeDataScope } from '@/features/account/dataScope';
+import { getDataOwnerRevision, subscribeDataScope } from '@/features/account/dataScope';
 
 type Result = {
   score: number;
@@ -28,7 +28,7 @@ const NEXT_LEVEL: Record<string, string> = { A2: 'B1', B1: 'B2', B2: 'C1' };
 
 export function CheckpointPage() {
   const { unitId } = useParams();
-  const owner = useSyncExternalStore(subscribeDataScope, getDataScopeRevision, getDataScopeRevision);
+  const owner = useSyncExternalStore(subscribeDataScope, getDataOwnerRevision, getDataOwnerRevision);
   return <CheckpointRun key={`${unitId}:${owner}`} unitId={unitId} />;
 }
 
@@ -101,7 +101,7 @@ function CheckpointRun({ unitId }: { unitId: string | undefined }) {
         </Eyebrow>
         <div className="mb-2 flex items-center gap-3">
           <PixelImage src="/assets/pixel/ui/checkpoint.png" alt="" className="h-7 w-7 shrink-0" />
-          <h1 className="text-3xl font-bold tracking-tight tabular-nums">
+          <h1 className="min-w-0 text-3xl font-bold tracking-tight tabular-nums">
             {pct(ratio)}
           </h1>
         </div>
@@ -188,7 +188,7 @@ function CheckpointRun({ unitId }: { unitId: string | undefined }) {
       </Eyebrow>
       <div className="mb-2 flex items-center gap-3">
         <PixelImage src="/assets/pixel/ui/checkpoint.png" alt="" className="h-7 w-7 shrink-0" />
-        <h1 className="text-2xl font-bold tracking-tight">
+        <h1 className="min-w-0 text-2xl font-bold tracking-tight">
           {exitLevel ? exitLabel(exitLevel) : ru ? 'Контрольная по юниту' : 'Unit checkpoint'}
         </h1>
       </div>

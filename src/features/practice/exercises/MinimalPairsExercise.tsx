@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useExerciseState } from './useExerciseState';
 import type { Exercise } from '@/content/schema';
 import { packMediaUrl } from '@/content/loader';
 import { playClip } from '@/shared/lib/audio';
@@ -26,11 +26,11 @@ function optionState(
 
 export function MinimalPairsExercise({ exercise, onSolved }: Props) {
   const ru = useUiLang((s) => s.lang) === 'ru';
-  const [chosen, setChosen] = useState<number | null>(null);
+  const [chosen, setChosen] = useExerciseState(exercise.id, 'chosen', null);
   const attempt = useExerciseAttempt(exercise, onSolved);
   const { status, submit } = attempt;
   // `chosen`/`correctAt` are on-screen positions; `original` maps back to the authored options.
-  const { items, correctAt } = useShuffledOptions(exercise.options, exercise.correctIndex);
+  const { items, correctAt } = useShuffledOptions(exercise.id, exercise.options, exercise.correctIndex);
 
   const pick = (i: number) => {
     if (status === 'correct') return;

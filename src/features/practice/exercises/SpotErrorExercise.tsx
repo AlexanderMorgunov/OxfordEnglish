@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useExerciseState } from './useExerciseState';
 import type { Exercise } from '@/content/schema';
 import { Console, Option } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
@@ -24,11 +24,11 @@ function optionState(
 
 export function SpotErrorExercise({ exercise, onSolved }: Props) {
   const ru = useUiLang((s) => s.lang) === 'ru';
-  const [chosen, setChosen] = useState<number | null>(null);
+  const [chosen, setChosen] = useExerciseState(exercise.id, 'chosen', null);
   const attempt = useExerciseAttempt(exercise, onSolved);
   const { status, submit } = attempt;
   // `chosen`/`correctAt` are on-screen positions; `original` maps back to the authored variants.
-  const { items, correctAt } = useShuffledOptions(exercise.variants, exercise.correctIndex);
+  const { items, correctAt } = useShuffledOptions(exercise.id, exercise.variants, exercise.correctIndex);
 
   const pick = (i: number) => {
     if (status === 'correct') return;

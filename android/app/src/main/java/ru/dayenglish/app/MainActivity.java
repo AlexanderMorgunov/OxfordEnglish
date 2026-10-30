@@ -1,11 +1,13 @@
 package ru.dayenglish.app;
 
 import android.os.Bundle;
+import android.net.Uri;
 import android.webkit.WebView;
 
 import com.getcapacitor.BridgeActivity;
 
 public class MainActivity extends BridgeActivity {
+    private BundledAppLoader bundledAppLoader;
 
     /**
      * Web contents debugging, in debug builds only.
@@ -21,5 +23,18 @@ public class MainActivity extends BridgeActivity {
         if (BuildConfig.DEBUG) {
             WebView.setWebContentsDebuggingEnabled(true);
         }
+        if (bridge != null && bridge.getServerUrl() == null) {
+            Uri url = Uri.parse(bridge.getAppUrl());
+            if ("https".equals(url.getScheme()) || "http".equals(url.getScheme())) {
+                bundledAppLoader = new BundledAppLoader(bridge.getWebView(), bridge.getAppUrl());
+                bundledAppLoader.start(url.getScheme() + "://" + url.getAuthority());
+            }
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (bundledAppLoader != null) bundledAppLoader.cancel();
+        super.onDestroy();
     }
 }

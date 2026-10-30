@@ -49,12 +49,12 @@ export function ExpiryNotice({ ru }: { ru: boolean }) {
     >
       <p className="text-pretty">{text}</p>
       <span className="flex shrink-0 items-center gap-3">
-        <Link to="/settings" className="text-teal hover:underline">
+        <Link to="/pro#pro-access" className="inline-flex min-h-11 items-center text-teal hover:underline">
           {ru ? 'Продлить' : 'Renew'}
         </Link>
         <button
           type="button"
-          className="text-2xs text-faint hover:text-muted"
+          className="min-h-11 px-1 text-xs text-muted hover:text-content"
           onClick={() => {
             dismissReminder(accountId, reminder.paidUntil);
             setDismissed(reminder.paidUntil);

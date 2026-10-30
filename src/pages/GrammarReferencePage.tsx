@@ -27,7 +27,7 @@ export function GrammarIndexPage() {
       <Eyebrow className="mb-3.5">reference</Eyebrow>
       <div className="mb-2 flex items-center gap-3">
         <PixelImage src="/assets/pixel/nav/grammar.png" alt="" className="h-7 w-7 shrink-0" />
-        <h1 className="text-2xl font-bold tracking-tight">
+        <h1 className="min-w-0 text-2xl font-bold tracking-tight">
           {lang === 'ru' ? 'Справочник по грамматике' : 'Grammar reference'}
         </h1>
       </div>

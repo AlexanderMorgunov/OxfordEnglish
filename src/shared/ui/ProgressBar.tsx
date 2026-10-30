@@ -19,7 +19,7 @@ export function ProgressBar({
   return (
     <div
       className={cn(
-        'flex items-center gap-4 rounded-md border border-line bg-surface p-4',
+        'flex flex-wrap items-center gap-4 rounded-md border border-line bg-surface p-4',
         className
       )}
     >
@@ -29,7 +29,7 @@ export function ProgressBar({
         aria-valuemin={0}
         aria-valuemax={max}
         aria-label={label}
-        className="h-2 flex-1 overflow-hidden rounded-full bg-surface-2"
+        className="h-2 min-w-0 flex-[1_1_8rem] overflow-hidden rounded-full bg-surface-2"
       >
         <div
           className="h-full rounded-full bg-gradient-to-r from-teal-dim to-teal transition-[width] duration-500 ease-[var(--ease-out-soft)]"
@@ -37,7 +37,7 @@ export function ProgressBar({
         />
       </div>
       {showScore && (
-        <span className="whitespace-nowrap font-mono text-sm tabular-nums text-muted">
+        <span className="min-w-0 max-w-full font-mono text-sm tabular-nums text-muted">
           <b className="text-teal">{value}</b> / {max} {label}
         </span>
       )}

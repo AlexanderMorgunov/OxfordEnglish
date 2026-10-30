@@ -26,7 +26,7 @@ beforeEach(() => {
 test('names the date and points at the one place a plan is bought', async () => {
   show();
   expect(await screen.findByText(ENDING)).toBeInTheDocument();
-  expect(screen.getByRole('link', { name: /renew/i })).toHaveAttribute('href', '/settings');
+  expect(screen.getByRole('link', { name: /renew/i })).toHaveAttribute('href', '/pro#pro-access');
 });
 
 test('says nothing to a subscriber with a month still to run', () => {

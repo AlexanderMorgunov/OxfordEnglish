@@ -272,6 +272,13 @@ npm run build && bash scripts/deploy-yc.sh
 
 ## Configuration (env vars)
 
+For local web development and `vite preview`, an absolute `VITE_API_BASE` is
+proxied through `/__dayenglish_api` on localhost with a port. This avoids production
+CORS restrictions without changing the API's allowed origins. Restart Vite after
+changing its config or env. Production web and Capacitor keep the configured API
+URL; leaving it empty still disables account features. The proxy talks to the
+configured backend, so use test accounts for local flows that write data.
+
 Only `VITE_`-prefixed vars reach the client, and **anything the client uses ships in the built JS** —
 these are config, not secrets. Set them in a gitignored `.env` (see `.env.example`) or in CI secrets.
 
@@ -339,6 +346,9 @@ these are config, not secrets. Set them in a gitignored `.env` (see `.env.exampl
   in Settings.
 - **Android:** Capacitor uses the packaged web bundle and native text-to-speech;
   `initAppUpdate` deliberately skips service-worker registration on native platforms.
+  Native startup retires historical workers before opening the app bundle, without
+  clearing learning data or caches. The internal `/packs/native-app-bootstrap-v1.html`
+  path bypasses historical SPA navigation fallbacks and must remain bundled.
 - **i18n:** UI is RU by default (`useUiLang`); `tr()` for bilingual content, `exLabels()` for repeated
   labels. English _course content_ stays English by design.
 
