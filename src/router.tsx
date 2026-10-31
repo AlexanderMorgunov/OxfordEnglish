@@ -46,6 +46,7 @@ const routes: RouteObject[] = [
   { path: '/vocabulary', element: <VocabularyPage /> },
   { path: '/vocabulary/text', element: <TextWorkbenchPage /> },
   { path: '/library', element: <LibraryPage /> },
+  { path: '/library/catalog', element: <LibraryPage /> },
   { path: '/library/catalog/:catalogId', element: <CatalogReaderPage /> },
   { path: '/library/:bookId', element: <BookReaderPage /> },
   { path: '/settings/:section?', element: <SettingsPage /> },

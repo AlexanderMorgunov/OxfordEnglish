@@ -15,6 +15,7 @@ import { isDeleted } from '@/features/sync/resolve';
 import { stampSetting } from '@/features/sync/local';
 import { registerSettingBridge } from '@/features/sync/settingsBridge';
 import { getBookFile, saveBookFile } from './storage';
+import { captureDataScope } from '@/features/account/dataScope';
 
 const PREF_KEY = 'oxford-sync-book-files';
 const SETTING_KEY = 'bookFileSync';
@@ -167,25 +168,29 @@ function noteOutcome(id: string, outcome: UploadOutcome): void {
  *  and forget, while the bulk sync can stop on `quota`. Skips when the toggle is off or the file is >20 MB.
  *  Recording happens HERE rather than at the call sites, so neither of them can forget to. */
 export async function uploadBookFile(id: string): Promise<UploadOutcome> {
-  const outcome = await attemptUpload(id);
-  noteOutcome(id, outcome);
+  const current = captureDataScope();
+  const outcome = await attemptUpload(id, current);
+  if (current()) noteOutcome(id, outcome);
   return outcome;
 }
 
-async function attemptUpload(id: string): Promise<UploadOutcome> {
+async function attemptUpload(id: string, current: () => boolean): Promise<UploadOutcome> {
   if (!useBookFileSync.getState().enabled) return 'sync-off';
   const t = await token().catch(() => null); // getAccessToken can reject, not only resolve null
-  if (!t) return 'signed-out';
+  if (!t || !current()) return 'signed-out';
   // Probed OUTSIDE the try: book metadata syncs unconditionally while the bytes do not, so every book
   // added on another device is a row here with no file. Letting that throw into the catch below reported
   // it as `error` — "we will try again automatically" on a device that can never succeed, about a file
   // another device owes. BookReaderPage already says the true thing for this case (`not-uploaded`).
   const file = await getBookFile(id).catch(() => null);
   if (!file) return 'no-file';
+  if (!current()) return 'signed-out';
   try {
     if (file.size > BLOB_MAX_BYTES) return 'too-large'; // permanent: every later sweep skips it too
     const target = await api.blobUploadUrl(t, id, file.size);
+    if (!current()) return 'signed-out';
     await api.blobUpload(t, target, file);
+    if (!current()) return 'signed-out';
     await api.blobCommit(t, id, target.key, file.size);
     return 'ok';
   } catch (e) {
@@ -213,6 +218,7 @@ export type BookFileIssue =
 
 /** Fetch the cloud copy if this device lacks the file. Returns null once a readable file is present. */
 export async function downloadBookFileIfMissing(id: string): Promise<BookFileIssue | null> {
+  const current = captureDataScope();
   try {
     await getBookFile(id);
     return null; // already local
@@ -220,10 +226,11 @@ export async function downloadBookFileIfMissing(id: string): Promise<BookFileIss
     // not local — try the cloud copy
   }
   const t = await token();
-  if (!t) return 'signed-out';
+  if (!t || !current()) return 'signed-out';
   let blob: Blob;
   try {
     const url = await api.blobDownloadUrl(t, id);
+    if (!current()) return 'signed-out';
     blob = await api.blobDownload(t, url);
   } catch (e) {
     if (!(e instanceof ApiFailure)) return 'download-failed';
@@ -234,6 +241,7 @@ export async function downloadBookFileIfMissing(id: string): Promise<BookFileIss
     return e.code === 'blob_not_found' ? 'not-uploaded' : 'download-failed';
   }
   try {
+    if (!current()) return 'signed-out';
     await saveBookFile(id, blob);
     return null;
   } catch {
@@ -242,9 +250,9 @@ export async function downloadBookFileIfMissing(id: string): Promise<BookFileIss
 }
 
 /** Delete a book's cloud blob (releasing its quota). Runs on removal regardless of the toggle. */
-export async function deleteRemoteBookFile(id: string): Promise<void> {
+export async function deleteRemoteBookFile(id: string, current = () => true): Promise<void> {
   const t = await token();
-  if (!t) return;
+  if (!t || !current()) return;
   await api.blobDelete(t, id).catch(() => undefined);
 }
 

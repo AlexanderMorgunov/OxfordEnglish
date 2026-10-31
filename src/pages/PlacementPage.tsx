@@ -74,7 +74,7 @@ export function PlacementPage() {
     const unit = pack?.units.find((u) => u.id === outcome.recommendedUnitId);
     const firstDay = unit?.days[0];
     return (
-      <section aria-label={ru ? 'Результат теста' : 'Placement result'} className="max-w-prose">
+      <section aria-label={ru ? 'Результат теста' : 'Placement result'} className="reading-column">
         <Eyebrow className="mb-3.5">placement · result</Eyebrow>
         <div className="mb-2 flex items-center gap-3">
           <PixelImage src="/assets/pixel/ui/placement.png" alt="" className="h-7 w-7 shrink-0" />
@@ -127,11 +127,11 @@ export function PlacementPage() {
   }
 
   return (
-    <section aria-label={ru ? 'Тест на уровень' : 'Placement test'} className="max-w-prose">
+    <section aria-label={ru ? 'Тест на уровень' : 'Placement test'} className="reading-column">
       <Eyebrow className="mb-3.5">placement · {answered}/{items.length}</Eyebrow>
       <div className="mb-2 flex items-center gap-3">
         <PixelImage src="/assets/pixel/ui/placement.png" alt="" className="h-7 w-7 shrink-0" />
-        <h1 className="text-2xl font-bold tracking-tight">
+        <h1 className="min-w-0 text-2xl font-bold tracking-tight">
           {ru ? 'С чего вам начать?' : 'Where should you start?'}
         </h1>
       </div>

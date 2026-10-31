@@ -39,7 +39,7 @@ export function MigrationNotice() {
   return (
     <div
       role="status"
-      className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 px-5 py-2.5"
+      className="app-container flex flex-wrap items-center justify-between gap-3 py-2.5"
     >
       <div className="flex flex-wrap items-center gap-2 rounded-md border border-teal-dim bg-teal-dim/10 px-3.5 py-2 text-sm">
         <span className="font-mono text-2xs uppercase tracking-[0.08em] text-teal">

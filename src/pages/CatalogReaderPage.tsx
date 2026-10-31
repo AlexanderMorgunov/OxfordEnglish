@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import { Eyebrow, PageStub } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import type { ParsedBook } from '@/features/reader/parse';
@@ -26,6 +26,8 @@ function saveCatalogChapter(id: string, i: number) {
 }
 
 export function CatalogReaderPage() {
+  const location = useLocation();
+  const libraryReturn = location.state?.libraryReturn === '/library' ? '/library' : '/library/catalog';
   const { catalogId } = useParams();
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [entry, setEntry] = useState<CatalogEntry | null>(null);
@@ -61,7 +63,7 @@ export function CatalogReaderPage() {
         <p className="mb-3 text-sm text-muted">
           {ru ? 'Возможно, нужна сеть для загрузки этой книги.' : 'This book may need a connection to download.'}
         </p>
-        <Link to="/library" className="font-mono text-teal hover:underline">
+        <Link to={libraryReturn} className="font-mono text-teal hover:underline">
           ← {ru ? 'к библиотеке' : 'back to library'}
         </Link>
       </PageStub>
@@ -69,12 +71,12 @@ export function CatalogReaderPage() {
   }
 
   return (
-    <article>
+    <article className="reading-column">
       <div className="mb-3.5 flex flex-wrap items-center justify-between gap-3">
         <Eyebrow className="min-w-0 max-w-full">
           {entry.level} · {book.title}
         </Eyebrow>
-        <Link to="/library" className="max-w-full shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">
+        <Link to={libraryReturn} className="max-w-full shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">
           ← {ru ? 'библиотека' : 'library'}
         </Link>
       </div>

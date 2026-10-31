@@ -7,11 +7,11 @@ export function FeedbackPage() {
   const ru = useUiLang((s) => s.lang) === 'ru';
 
   return (
-    <section aria-label={ru ? 'Обратная связь' : 'Feedback'} className="max-w-prose">
+    <section aria-label={ru ? 'Обратная связь' : 'Feedback'} className="reading-column">
       <Eyebrow className="mb-3.5">{ru ? 'обратная связь' : 'feedback'}</Eyebrow>
       <div className="mb-3 flex items-center gap-3">
         <PixelImage src="/assets/pixel/nav/feedback.png" alt="" className="h-7 w-7 shrink-0" />
-        <h1 className="text-2xl font-bold tracking-tight text-balance">
+        <h1 className="min-w-0 text-2xl font-bold tracking-tight text-balance">
           {ru ? 'Нашли проблему или есть идея?' : 'Found a problem or have an idea?'}
         </h1>
       </div>

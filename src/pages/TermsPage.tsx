@@ -327,7 +327,7 @@ function Refund({ ru }: { ru: boolean }) {
 export function TermsPage() {
   const ru = useUiLang((s) => s.lang) === 'ru';
   return (
-    <article className="max-w-prose">
+    <article className="reading-column">
       <Eyebrow className="mb-3.5">{ru ? 'условия и оферта' : 'terms and offer'}</Eyebrow>
       <h1 className="text-2xl font-bold tracking-tight text-balance">
         {ru ? 'Условия оказания услуг' : 'Terms of service'}

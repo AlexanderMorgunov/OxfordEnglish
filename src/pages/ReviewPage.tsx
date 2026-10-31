@@ -175,7 +175,7 @@ export function ReviewPage() {
   };
 
   return (
-    <section aria-label={ru ? 'Повторение' : 'Review'}>
+    <section className="reading-column" aria-label={ru ? 'Повторение' : 'Review'}>
       <BackToReader />
       <Eyebrow className="mb-3.5">srs · review</Eyebrow>
       <div className="mb-8 flex items-center gap-3">
@@ -184,7 +184,7 @@ export function ReviewPage() {
           alt=""
           className="h-7 w-7 shrink-0"
         />
-        <h1 className="text-2xl font-bold tracking-tight">
+        <h1 className="min-w-0 text-2xl font-bold tracking-tight">
           {ru ? 'Очередь повторения' : 'Review queue'}
         </h1>
       </div>

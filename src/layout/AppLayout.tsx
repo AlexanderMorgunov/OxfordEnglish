@@ -1,49 +1,18 @@
 import { Suspense, useEffect, useRef } from 'react';
 import { NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
-import { useLearner } from '@/features/learner/store';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { InstallPrompt } from '@/features/pwa/InstallPrompt';
 import { metricaHit } from '@/features/analytics/metrica';
 import { MigrationNotice } from '@/features/migration/MigrationNotice';
-import { ErrorBoundary, PixelImage } from '@/shared/ui';
+import { ErrorBoundary } from '@/shared/ui';
 import { SELLER } from '@/shared/seller';
-import { NavMore } from './NavMore';
+import { AppHeader } from './AppHeader';
 import { BackToTop } from './BackToTop';
 import '@/features/appearance/store';
 import '@/features/appearance/themes';
 import { ProActivationDialog } from '@/features/account/ProActivationDialog';
 
-/** `icon` defaults to the nav sprite named after `label.en`; set it when no such sprite exists. */
-type NavItem = {
-  to: string;
-  label: { en: string; ru: string };
-  end: boolean;
-  devOnly: boolean;
-  tour?: string;
-  icon?: string;
-};
-
-/** The daily loop stays visible; secondary destinations live behind "more". */
-const NAV: NavItem[] = [
-  { to: '/', label: { en: 'today', ru: 'сегодня' }, end: true, devOnly: false, tour: undefined },
-  { to: '/grammar', label: { en: 'grammar', ru: 'грамматика' }, end: false, devOnly: false, tour: undefined },
-  { to: '/review', label: { en: 'review', ru: 'повторение' }, end: false, devOnly: false, tour: 'nav-review' },
-  { to: '/vocabulary', label: { en: 'vocab', ru: 'словарь' }, end: false, devOnly: false, tour: undefined },
-  { to: '/library', label: { en: 'library', ru: 'библиотека' }, end: false, devOnly: false, tour: 'nav-library' },
-  { to: '/kitchen-sink', label: { en: 'kit', ru: 'kit' }, end: false, devOnly: true, tour: undefined, icon: '/assets/pixel/nav/settings.png' },
-];
-
-const MORE: NavItem[] = [
-  { to: '/pro', label: { en: 'Pro', ru: 'Pro' }, end: false, devOnly: false, icon: '/assets/pixel/ui/ai.png' },
-  { to: '/progress', label: { en: 'progress', ru: 'прогресс' }, end: false, devOnly: false },
-  { to: '/settings', label: { en: 'settings', ru: 'настройки' }, end: false, devOnly: false },
-  { to: '/feedback', label: { en: 'feedback', ru: 'обратная связь' }, end: false, devOnly: false },
-  { to: '/support', label: { en: 'support', ru: 'поддержка' }, end: false, devOnly: false },
-  { to: '/about', label: { en: 'about', ru: 'о нас' }, end: false, devOnly: false, icon: '/assets/pixel/mascot.png' },
-];
-
 export function AppLayout() {
-  const level = useLearner((s) => s.level);
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
   const location = useLocation();
@@ -54,68 +23,12 @@ export function AppLayout() {
   }, [location.pathname]);
   return (
     <div className="min-h-screen">
-      <header className="border-b border-line bg-surface/60 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 py-3">
-          <NavLink to="/" className="flex min-w-0 max-w-full flex-wrap items-baseline gap-2 [overflow-wrap:anywhere]">
-            <span className="eyebrow">en/dev</span>
-            <span
-              className="rounded-sm bg-surface-2 px-1.5 py-0.5 font-mono text-2xs text-teal"
-              title={
-                level
-                  ? ru
-                    ? 'ваш уровень (по тесту)'
-                    : 'your level (from placement)'
-                  : ru
-                    ? 'диапазон курса'
-                    : 'course range'
-              }
-            >
-              {level ?? 'A1–B2'}
-            </span>
-          </NavLink>
-          <nav className="relative flex min-w-0 max-w-full flex-wrap items-center gap-1">
-            {NAV.filter((item) => !item.devOnly || import.meta.env.DEV).map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                end={item.end}
-                data-tour={item.tour}
-                className={({ isActive }) =>
-                  [
-                    'min-w-0 max-w-full font-mono text-xs rounded-sm px-2.5 py-1.5 transition-colors',
-                    item.devOnly ? 'hidden sm:inline-block' : '',
-                    isActive
-                      ? 'bg-surface-2 text-teal'
-                      : 'text-muted hover:text-content',
-                  ].join(' ')
-                }
-              >
-                <span className="flex min-w-0 items-center gap-1.5 [overflow-wrap:anywhere]">
-                  <PixelImage
-                    src={item.icon ?? `/assets/pixel/nav/${item.label.en}.png`}
-                    alt=""
-                    className="h-4 w-4 shrink-0"
-                  />
-                  {ru ? item.label.ru : item.label.en}
-                </span>
-              </NavLink>
-            ))}
-            <NavMore
-              label={ru ? 'ещё' : 'more'}
-              items={MORE.map((item) => ({
-                to: item.to,
-                label: ru ? item.label.ru : item.label.en,
-                icon: item.icon ?? `/assets/pixel/nav/${item.label.en}.png`,
-              }))}
-            />
-          </nav>
-        </div>
-      </header>
+      <AppHeader />
 
       <MigrationNotice />
       <InstallPrompt />
 
-      <main ref={mainRef} tabIndex={-1} className={`mx-auto px-5 py-8 pb-20 [overflow-wrap:break-word] ${location.pathname === '/' || location.pathname === '/syllabus' || location.pathname === '/settings' || location.pathname.startsWith('/settings/') ? 'max-w-[1160px]' : 'max-w-3xl'}`}>
+      <main ref={mainRef} tabIndex={-1} className="app-container py-8 pb-20 [overflow-wrap:break-word]">
         <ErrorBoundary resetKey={location.pathname}>
           <Suspense fallback={<p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading…'}</p>}>
             <Outlet />
@@ -126,7 +39,7 @@ export function AppLayout() {
       <ProActivationDialog />
       <BackToTop key={location.pathname} pathname={location.pathname} mainRef={mainRef} />
       {/* New paths open at the top; returning to a seen path restores its scroll. */}
-      <ScrollRestoration getKey={(location) => location.pathname === '/' || location.pathname === '/syllabus' ? location.pathname + location.search : location.pathname} />
+      <ScrollRestoration getKey={(location) => location.pathname === '/' || location.pathname === '/syllabus' ? location.pathname + location.search : location.pathname.startsWith('/grammar') || location.pathname === '/progress' ? location.key : location.pathname} />
     </div>
   );
 }
@@ -147,7 +60,7 @@ function SiteFooter({ ru }: { ru: boolean }) {
   ];
   return (
     <footer data-app-footer className="mt-4 border-t border-line">
-      <div className="mx-auto max-w-3xl px-5 py-4 text-xs leading-relaxed text-muted [overflow-wrap:anywhere]">
+      <div className="app-container py-4 text-xs leading-relaxed text-muted [overflow-wrap:anywhere]">
         <nav className="mb-2 flex flex-wrap gap-x-4 gap-y-1">
           {links.map((l) => (
             <NavLink key={l.to} to={l.to} className="hover:text-teal hover:underline">

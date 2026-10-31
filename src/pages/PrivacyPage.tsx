@@ -22,7 +22,7 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
 
 function Ru() {
   return (
-    <article className="max-w-prose">
+    <article className="reading-column">
       <Eyebrow className="mb-3.5">политика конфиденциальности</Eyebrow>
       <h1 className="text-2xl font-bold tracking-tight text-balance">Политика обработки персональных данных</h1>
       <p className="mt-3 text-sm leading-relaxed text-pretty text-muted">
@@ -121,7 +121,7 @@ function Ru() {
 
 function En() {
   return (
-    <article className="max-w-prose">
+    <article className="reading-column">
       <Eyebrow className="mb-3.5">privacy policy</Eyebrow>
       <h1 className="text-2xl font-bold tracking-tight text-balance">Privacy</h1>
       <p className="mt-3 text-sm leading-relaxed text-pretty text-muted">

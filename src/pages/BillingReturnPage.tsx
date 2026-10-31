@@ -104,7 +104,7 @@ export function BillingSuccessPage() {
   const canAskForHelp = view === 'pending' || view === 'none' || view === 'offline';
 
   return (
-    <section aria-label={ru ? 'Оплата' : 'Payment'}>
+    <section className="reading-column" aria-label={ru ? 'Оплата' : 'Payment'}>
       <Eyebrow>{ru ? 'Оплата' : 'Payment'}</Eyebrow>
       <h1 className="mb-3 mt-1 text-2xl font-bold tracking-tight">{heading[view]}</h1>
 
@@ -147,7 +147,7 @@ export function BillingFailPage() {
   }, [entitlement?.paidUntil]);
 
   return (
-    <section aria-label={ru ? 'Оплата не прошла' : 'Payment not completed'}>
+    <section className="reading-column" aria-label={ru ? 'Оплата не прошла' : 'Payment not completed'}>
       <Eyebrow>{ru ? 'Оплата' : 'Payment'}</Eyebrow>
       <h1 className="mb-3 mt-1 text-2xl font-bold tracking-tight">{ru ? 'Оплата не прошла' : 'Payment not completed'}</h1>
       <p className="mb-4 max-w-prose text-muted text-pretty">

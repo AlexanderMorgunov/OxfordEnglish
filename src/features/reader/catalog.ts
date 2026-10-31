@@ -15,17 +15,39 @@ export type CatalogEntry = {
 };
 
 let catalogPromise: Promise<CatalogEntry[]> | null = null;
+const MANIFEST_CACHE = '__library_manifest__';
 
 /** Load the curated free-license reading catalog once. */
-export function loadCatalog(): Promise<CatalogEntry[]> {
+export function loadCatalog({
+  strict = false,
+}: { strict?: boolean } = {}): Promise<CatalogEntry[]> {
   if (!catalogPromise) {
     const url = `${import.meta.env.BASE_URL}reader/catalog.json`;
     catalogPromise = fetch(url)
-      .then((r) => r.json())
-      .then((data: { books: CatalogEntry[] }) => data.books)
-      .catch(() => []);
+      .then((r) => {
+        if (!r.ok) throw new Error('catalog-unavailable');
+        return r.json();
+      })
+      .then(async (data: { books: CatalogEntry[] }) => {
+        if (!Array.isArray(data.books)) throw new Error('catalog-invalid');
+        await db.catalogCache
+          .put({ id: MANIFEST_CACHE, book: data.books, cachedAt: Date.now() })
+          .catch(() => undefined);
+        return data.books;
+      })
+      .catch(async (error) => {
+        const cached = await db.catalogCache
+          .get(MANIFEST_CACHE)
+          .catch(() => undefined);
+        if (cached && Array.isArray(cached.book))
+          return cached.book as CatalogEntry[];
+        throw error;
+      });
+    void catalogPromise.catch(() => {
+      catalogPromise = null;
+    });
   }
-  return catalogPromise;
+  return strict ? catalogPromise : catalogPromise.catch(() => []);
 }
 
 export function getCatalogEntry(id: string): Promise<CatalogEntry | undefined> {
@@ -33,16 +55,29 @@ export function getCatalogEntry(id: string): Promise<CatalogEntry | undefined> {
 }
 
 /** Resolve a catalog entry to a readable book: shipped JSON for bundled, live fetch for remote. */
-export async function openCatalogBook(entry: CatalogEntry): Promise<ParsedBook> {
+export async function openCatalogBook(
+  entry: CatalogEntry
+): Promise<ParsedBook> {
   const book = await resolveCatalogBook(entry);
   void track('book_open', { source: 'catalog', level: entry.level });
   return book;
 }
 
 async function resolveCatalogBook(entry: CatalogEntry): Promise<ParsedBook> {
+  try {
+    const hit = await db.catalogCache.get(entry.id);
+    if (hit) return hit.book as ParsedBook;
+  } catch {
+    // Reading still works online when the cache is unavailable.
+  }
   if (entry.kind === 'bundled' && entry.path) {
     const res = await fetch(`${import.meta.env.BASE_URL}${entry.path}`);
-    return res.json();
+    if (!res.ok) throw new Error('catalog-book-unavailable');
+    const book = (await res.json()) as ParsedBook;
+    await db.catalogCache
+      .put({ id: entry.id, book, cachedAt: Date.now() })
+      .catch(() => undefined);
+    return book;
   }
   if (entry.kind === 'remote' && entry.mdUrl) {
     try {
@@ -51,7 +86,9 @@ async function resolveCatalogBook(entry: CatalogEntry): Promise<ParsedBook> {
     } catch {
       // cache unavailable — fall through to network
     }
-    const md = await (await fetch(entry.mdUrl)).text();
+    const res = await fetch(entry.mdUrl);
+    if (!res.ok) throw new Error('catalog-book-unavailable');
+    const md = await res.text();
     const book = parseStorybookMd(md, entry.title);
     try {
       await db.catalogCache.put({ id: entry.id, book, cachedAt: Date.now() });
@@ -77,7 +114,8 @@ export function relatedCatalog(
   return entries
     .filter((e) => e.id !== current.id)
     .map((e) => {
-      const sameAuthor = author && e.author?.trim().toLowerCase() === author ? 1 : 0;
+      const sameAuthor =
+        author && e.author?.trim().toLowerCase() === author ? 1 : 0;
       const levelGap = Math.abs(LEVEL_ORDER.indexOf(e.level) - lvl);
       return { e, sameAuthor, levelGap };
     })

@@ -65,6 +65,7 @@ export function stashPending(p: Pending): void {
 }
 
 export async function flushPending(): Promise<void> {
+  const current = captureDataScope();
   let list: Pending[] = [];
   try {
     list = JSON.parse(localStorage.getItem(PENDING_KEY) ?? '[]') as Pending[];
@@ -73,6 +74,7 @@ export async function flushPending(): Promise<void> {
     return;
   }
   for (const p of list) {
+    if (!current()) return;
     const words = p.words ?? 0;
     await recordActivity(
       { readSec: p.sec, readWords: words, ...(p.book ? { book: { ...p.book, sec: p.sec, words } } : {}) },
@@ -82,7 +84,7 @@ export async function flushPending(): Promise<void> {
 }
 
 /** Activity rows and review log since a local day (inclusive), after folding in any stashed time. */
-export async function loadActivity(from: string): Promise<{ rows: ActivityDay[]; reviews: ReviewLogEntry[] }> {
+export async function loadActivity(from: string, options: { strict?: boolean } = {}): Promise<{ rows: ActivityDay[]; reviews: ReviewLogEntry[] }> {
   await flushPending();
   try {
     const [rows, reviews] = await Promise.all([
@@ -90,18 +92,20 @@ export async function loadActivity(from: string): Promise<{ rows: ActivityDay[];
       db.reviewLog.where('ts').aboveOrEqual(new Date(`${from}T00:00:00`).getTime()).toArray(),
     ]);
     return { rows, reviews };
-  } catch {
+  } catch (error) {
+    if (options.strict) throw error;
     return { rows: [], reviews: [] };
   }
 }
 
 /** The first local day anything was recorded, for the «collecting since» note; null when nothing yet. */
-export async function statsSince(): Promise<string | null> {
+export async function statsSince(options: { strict?: boolean } = {}): Promise<string | null> {
   try {
     const [first, firstReview] = await Promise.all([db.activity.orderBy('day').first(), db.reviewLog.orderBy('ts').first()]);
     const days = [first?.day, firstReview ? localDayKey(firstReview.ts) : undefined].filter(Boolean) as string[];
     return days.sort()[0] ?? null;
-  } catch {
+  } catch (error) {
+    if (options.strict) throw error;
     return null;
   }
 }

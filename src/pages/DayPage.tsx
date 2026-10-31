@@ -107,7 +107,7 @@ export function DayPage() {
   const canPuzzle = puzzleWords(puzzleEntries).length >= 3;
 
   return (
-    <article>
+    <article className="reading-column">
       <Link to={`/?unit=${encodeURIComponent(unitId ?? '')}${fromReader ? '&from=reader' : ''}`} className="mb-4 inline-flex min-h-11 items-center text-sm text-teal underline">← {ru ? 'К дням темы' : 'Back to topic days'}</Link>
       <Eyebrow className="mb-3.5">{ru ? 'учебный день' : 'learning day'} · {day.id}</Eyebrow>
       <h1 className="mb-10 text-2xl font-bold tracking-tight text-balance">

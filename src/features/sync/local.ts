@@ -200,10 +200,16 @@ export async function putWordStatus(row: WordStatus, current = captureDataScope(
   if (syncing && current()) nudgeSync();
 }
 
-export async function addBook(record: BookRecord): Promise<void> {
+export async function addBook(record: BookRecord, current = captureDataScope()): Promise<void> {
   const row: BookRecord = { ...record, updatedAt: Date.now(), updatedBy: await installId() };
-  await db.books.add(row);
-  await dirty('books', row);
+  const syncing = syncActive();
+  await db.transaction('rw', [db.books, db.pending], async () => {
+    requireDataScope(current);
+    await db.books.add(row);
+    if (syncing) await markDirty('books', { ...row });
+    requireDataScope(current);
+  });
+  if (syncing && current()) nudgeSync();
 }
 
 export async function patchBook(id: string, patch: Partial<BookRecord>): Promise<void> {
@@ -250,12 +256,19 @@ export async function softDeleteSrsCard(id: string, currentScope = captureDataSc
   }), currentScope);
 }
 
-export async function softDeleteBook(id: string): Promise<void> {
-  const current = await db.books.get(id);
-  if (!current) return;
-  const row: BookRecord = { ...current, deletedAt: Date.now(), updatedBy: await installId() };
-  await db.books.put(row);
-  await dirty('books', row);
+export async function softDeleteBook(id: string, owner = captureDataScope()): Promise<void> {
+  const writer = await installId();
+  const syncing = syncActive();
+  await db.transaction('rw', [db.books, db.pending], async () => {
+    requireDataScope(owner);
+    const current = await db.books.get(id);
+    if (!current) return;
+    const row: BookRecord = { ...current, deletedAt: Math.max(Date.now(), current.updatedAt ?? 0), updatedBy: writer };
+    await db.books.put(row);
+    if (syncing) await markDirty('books', { ...row });
+    requireDataScope(owner);
+  });
+  if (syncing && owner()) nudgeSync();
 }
 
 /** Soft-delete a bookmark (tombstone) — same H1 semantics as softDeleteBook. Reads filter these out. */

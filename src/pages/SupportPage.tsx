@@ -14,7 +14,7 @@ export function SupportPage() {
   const ru = lang === 'ru';
 
   return (
-    <section aria-label={ru ? 'Поддержать проект' : 'Support the project'}>
+    <section className="reading-column" aria-label={ru ? 'Поддержать проект' : 'Support the project'}>
       <Eyebrow className="mb-3.5">{ru ? 'поддержать' : 'support'}</Eyebrow>
       <div className="mb-4 flex items-center gap-3">
         <PixelImage src="/assets/pixel/nav/support.png" alt="" className="h-7 w-7 shrink-0" />

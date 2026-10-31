@@ -197,7 +197,7 @@ function OwnedBookReaderPage() {
   }
 
   return (
-    <article>
+    <article className="reading-column">
       <div className="mb-3.5 flex flex-wrap items-center justify-between gap-3">
         <Eyebrow className="min-w-0 max-w-full">{book.title}</Eyebrow>
         <Link to="/library" className="max-w-full shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">

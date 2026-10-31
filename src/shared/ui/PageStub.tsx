@@ -9,7 +9,7 @@ type PageStubProps = {
 /** Milestone-M0 placeholder screen. Replaced per-screen in later milestones. */
 export function PageStub({ eyebrow, title, children }: PageStubProps) {
   return (
-    <section aria-label={title}>
+    <section className="reading-column" aria-label={title}>
       <p className="eyebrow mb-3.5">{eyebrow}</p>
       <h1 className="mb-3 text-2xl font-bold tracking-tight">{title}</h1>
       <div className="max-w-prose text-muted">

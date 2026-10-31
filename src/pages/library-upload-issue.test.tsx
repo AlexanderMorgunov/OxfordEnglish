@@ -44,7 +44,7 @@ beforeEach(() => {
 
 test('a book with nothing wrong says nothing about the cloud', async () => {
   view();
-  expect(await screen.findByText('Dracula')).toBeInTheDocument();
+  expect(await screen.findByRole('heading', { name: 'Dracula' })).toBeInTheDocument();
   expect(screen.queryByText(/cloud/i)).not.toBeInTheDocument();
 });
 
@@ -71,7 +71,7 @@ test('a transient failure promises the retry that actually exists', async () => 
 test('the marker is keyed to the book it belongs to', async () => {
   issueStore.setState({ issues: { someOtherBook: 'quota' } });
   view();
-  expect(await screen.findByText('Dracula')).toBeInTheDocument();
+  expect(await screen.findByRole('heading', { name: 'Dracula' })).toBeInTheDocument();
   expect(screen.queryByText(/cloud/i)).not.toBeInTheDocument();
 });
 
@@ -121,7 +121,7 @@ describe('a marker is only shown while the thing that would fix it is running', 
     issueStore.setState({ issues: { b1: 'error' } });
     syncStore.setState({ enabled: false });
     view();
-    expect(await screen.findByText('Dracula')).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'Dracula' })).toBeInTheDocument();
     expect(screen.queryByText(/cloud/i)).not.toBeInTheDocument();
   });
 
@@ -129,7 +129,7 @@ describe('a marker is only shown while the thing that would fix it is running', 
     issueStore.setState({ issues: { b1: 'error' } });
     accountStore.setState({ status: 'anonymous' });
     view();
-    expect(await screen.findByText('Dracula')).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'Dracula' })).toBeInTheDocument();
     expect(screen.queryByText(/cloud/i)).not.toBeInTheDocument();
   });
 

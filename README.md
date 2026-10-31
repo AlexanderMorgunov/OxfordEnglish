@@ -55,6 +55,16 @@ Open `/kitchen-sink` (dev only) to see the full design system.
 | `npm test`               | Vitest run (**run before pushing — CI gates on it**) |
 | `npm run validate:packs` | Content-pack validator (structural + logical checks) |
 
+## Page layout and navigation
+
+Header, page shell, footer and app notices share the 1160px `.app-container`.
+Overview grids adapt to available space and the interface text size; books,
+exercises and long-form pages use a centered `.reading-column`.
+The five study destinations stay visible. Progress and Settings join them when
+their measured labels fit beside the brand; otherwise they remain in More.
+Pro stays in More. Resizing, language changes and larger text recalculate capacity
+without duplicating links or losing keyboard focus.
+
 ## Today and the course overview
 
 `/` shows a single topic's day path, with a desktop preview or a mobile dialog.
@@ -71,6 +81,60 @@ Without a valid working day, continuation uses started days, then the placement
 recommendation and remaining course order. Progress-read failures offer retry while
 keeping lessons accessible. Working-day persistence is device-local; synced answers
 still contribute to continuation suggestions on other devices.
+
+## Grammar reference
+
+`/grammar` loads its own reference JSON independently of the full course. Search
+matches both languages, topic aliases, headings and examples; CEFR and category
+filters retain their session state. Cards show real levels and examples. Unknown
+future topic IDs remain visible under Other topics.
+
+Articles retain all original blocks, examples, translations, pitfalls and related
+topics. The table of contents follows the actual blocks, with a desktop sidebar
+and a mobile disclosure. Returning preserves the original filtered card and focus.
+Fresh header navigation opens the reference at the top; article/list and browser
+returns restore their context. The header disclosure stays above page artwork.
+Lesson/reader context survives related topics and list navigation; a lesson return
+is validated using only the course index (reusing it when already loaded).
+Loading, cancellation, failure, empty reference and missing article are separate
+states; late cancelled requests cannot replace a retry. Reading a rule does not
+change exercise completion or SRS progress.
+
+## Progress
+
+`/progress` separates lifetime exercise/vocabulary figures from local-date
+reading periods (today, 7/30 days and 12 months). Exercise streaks and the 14-day
+calendar retain UTC semantics. Skill accuracy uses the first attempt per unique
+exercise; small samples are labelled and do not imply mastery or a CEFR level.
+
+Reading shows actual time, word/save/review events and book totals. Zero days have
+zero-height bars; a date selector and table provide the same values without
+requiring precise pointer input. Vocabulary counts learning/known entries;
+reviews count answers, and known marks count actions rather than learned words.
+
+Independent local reads distinguish loading, cancelled, empty and unavailable
+data, with retry and stale-result guards. Account changes reset data and browsing
+context. Local data remains usable offline even when course loading fails.
+Skill/checkpoint dialogs lead to available rules/tests and preserve return focus;
+opening a checkpoint does not save a result. Legacy malformed checkpoint data
+shows unavailable history without modifying or deleting its records. No new
+database schema, AI evaluation or server contract is introduced.
+
+## Library
+
+`/library` shows imported books and a continuation card. `/library/catalog` has
+the free-license catalog with its actual CEFR levels. Each shelf retains separate
+search, sort and filters during navigation; reading returns to a visible card.
+Desktop uses decorative fallback covers and mobile uses compact rows. Details
+contain reading actions and an explicit deletion confirmation.
+
+Import supports cancellation before the metadata commit, scoped to the current
+data owner. Errors, empty lists and loading are distinct. Device availability is
+checked against OPFS or a parsed-book cache; browser catalog books become available
+offline after opening and caching them. Native bundled stories ship in the APK.
+The catalog manifest is cached for offline browsing. Upload issues remain separate
+from local availability; download failures use the existing reader recovery flow.
+“Mark as read” is device-local and preserves the actual reading position.
 
 ## Vocabulary entry and chapter words
 

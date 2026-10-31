@@ -316,7 +316,7 @@ export function VocabularyPage() {
       )}
       <div className="mb-4 flex items-center gap-3">
         <PixelImage src="/assets/pixel/nav/vocab.png" alt="" className="h-7 w-7 shrink-0" />
-        <h1 className="text-2xl font-bold tracking-tight">{ru ? 'Мой словарь' : 'My vocabulary'}</h1>
+        <h1 className="min-w-0 text-2xl font-bold tracking-tight">{ru ? 'Мой словарь' : 'My vocabulary'}</h1>
       </div>
 
       <div className="mb-4 flex flex-wrap items-stretch gap-2.5">
@@ -511,7 +511,7 @@ export function VocabularyPage() {
             {view.length} {ru ? 'слов и фраз' : 'words & phrases'}
           </p>
 
-          <ul className="flex flex-col gap-2" role="group" aria-label={ru ? 'Словарь' : 'Vocabulary list'}>
+          <ul className="overview-grid gap-x-6" role="group" aria-label={ru ? 'Словарь' : 'Vocabulary list'}>
             {view.slice(0, limit).map((e) => {
               const forms = e.kind === 'word' ? irregularForms(e.display, lemma) : [];
               const base = e.kind === 'word' && !forms.length ? baseForm(e.display, lemma) : null;
@@ -521,7 +521,7 @@ export function VocabularyPage() {
                 <li key={e.key} className="min-w-0 border-b border-line py-3">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                     <span className="flex min-w-0 flex-wrap items-baseline gap-2">
-                      <span className="break-words text-base text-content">{e.display}</span>
+                      <span className="min-w-0 max-w-full break-words text-base text-content">{e.display}</span>
                       {canSpeak && (
                         <button
                           type="button"
