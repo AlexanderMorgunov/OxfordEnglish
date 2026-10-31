@@ -109,7 +109,7 @@ export function PlacementPage() {
             </p>
             <Link
               to={`/course/${unit.id}/day/${firstDay.id}`}
-              className="inline-flex items-center gap-2 rounded-sm bg-teal px-4 py-2.5 text-sm font-mono font-semibold text-ink transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-sm bg-teal px-4 py-2.5 text-sm font-mono font-semibold text-on-accent transition-opacity hover:opacity-90"
             >
               {ru ? 'Начать отсюда →' : 'Start here →'}
             </Link>

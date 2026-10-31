@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './features/appearance/palettes.css';
 
 /* ================================================================
    Design tokens — DESIGN_DOC §8.2. Semantic names (--color-ink, not
@@ -25,6 +26,10 @@
   --color-coral-dim: #4a2b2c;
   --color-violet: #9b8cf0;
   --color-violet-dim: #33305c;
+  --color-action: #e9a94b;
+  --color-on-action: #201c15;
+  --color-on-accent: #12141c;
+  --color-control: #8992ab;
 
   /* ---------- word status (LingQ mechanic) ---------- */
   --color-word-unknown: #e9a94b;
@@ -84,7 +89,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-teal);
+  outline: 2px solid var(--color-focus, var(--color-teal));
   outline-offset: 2px;
 }
 
@@ -92,7 +97,7 @@ body {
   *,
   *::before,
   *::after {
-    transition-duration: 0.01ms !important;
+    transition-duration: 0s !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }

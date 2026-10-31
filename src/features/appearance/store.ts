@@ -15,12 +15,14 @@ const apply = (step: number) => document.documentElement.style.setProperty('--ap
 const initial = load();
 if (typeof document !== 'undefined') apply(initial);
 
-export const useAppearance = create<{ textStep: number; setTextStep: (step: number) => void }>((set) => ({
+export const useAppearance = create<{ textStep: number; storageError: boolean; setTextStep: (step: number) => void }>((set) => ({
   textStep: initial,
+  storageError: false,
   setTextStep: step => {
     const next = normalize(step);
-    try { localStorage.setItem(KEY, JSON.stringify(next)); } catch { /* Keep this session usable if storage is full. */ }
+    let storageError = false;
+    try { localStorage.setItem(KEY, JSON.stringify(next)); } catch { storageError = true; }
     apply(next);
-    set({ textStep: next });
+    set({ textStep: next, storageError });
   },
 }));

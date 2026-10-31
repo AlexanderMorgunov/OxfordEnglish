@@ -125,7 +125,7 @@ function ActivationFlow() {
     const result = await useEntitlement.getState().claimTrial();
     if (mounted.current && owns() && result !== 'ok') setNote(trialNote(result, ru));
   };
-  const settings = `/settings?from=${encodeURIComponent(entry?.pathname ?? '/pro')}`;
+  const settings = `/settings/account?from=${encodeURIComponent(entry?.pathname ?? '/pro')}`;
   const returnLabel = source === 'lesson' ? ru ? 'Вернуться к заданию' : 'Back to your exercise'
     : source === 'reader' ? ru ? 'Вернуться к чтению' : 'Back to reading'
       : source === 'text' ? ru ? 'Вернуться к тексту' : 'Back to your text'

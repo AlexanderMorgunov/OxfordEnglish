@@ -26,7 +26,7 @@ function Cta({
       onClick={() => void track('landing_cta', { to, from })}
       className={
         primary
-          ? 'inline-flex items-center gap-2 rounded-sm bg-teal px-5 py-3 font-mono text-sm font-semibold text-ink transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal'
+          ? 'inline-flex items-center gap-2 rounded-sm bg-teal px-5 py-3 font-mono text-sm font-semibold text-on-accent transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal'
           : 'inline-flex items-center gap-2 rounded-sm border border-line px-5 py-3 font-mono text-sm text-content transition-colors hover:border-teal-dim focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal'
       }
     >

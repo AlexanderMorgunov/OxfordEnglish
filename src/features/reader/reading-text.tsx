@@ -750,7 +750,7 @@ const Paragraph = memo(function Paragraph({
             }
             aria-pressed={sentencePlaying}
             onClick={() => onReadSentence(index, si, sentence)}
-            className="mr-1 shrink-0 align-baseline font-mono text-[0.78em] text-teal opacity-60 transition-opacity hover:opacity-100"
+            className="mr-1 shrink-0 align-baseline font-mono text-[0.78em] text-teal transition-opacity hover:opacity-80"
           >
             {sentencePlaying ? '❚❚' : '▶'}
           </button>

@@ -6,7 +6,7 @@ import { SECURITY_EMAIL } from '@/features/community/config';
 
 const linkClass =
   'inline-flex items-center justify-center gap-2 rounded-sm px-5 py-3 text-sm font-mono ' +
-  'tracking-[0.02em] bg-teal text-ink font-semibold transition-[opacity,scale] duration-150 ' +
+  'tracking-[0.02em] bg-teal text-on-accent font-semibold transition-[opacity,scale] duration-150 ' +
   'hover:opacity-90 active:scale-[0.96] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal';
 
 export function SupportPage() {

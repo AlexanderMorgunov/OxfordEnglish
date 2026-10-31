@@ -10,6 +10,7 @@ import { SELLER } from '@/shared/seller';
 import { NavMore } from './NavMore';
 import { BackToTop } from './BackToTop';
 import '@/features/appearance/store';
+import '@/features/appearance/themes';
 import { ProActivationDialog } from '@/features/account/ProActivationDialog';
 
 /** `icon` defaults to the nav sprite named after `label.en`; set it when no such sprite exists. */
@@ -69,7 +70,7 @@ export function AppLayout() {
                     : 'course range'
               }
             >
-              {level ?? 'A1–A2'}
+              {level ?? 'A1–B2'}
             </span>
           </NavLink>
           <nav className="relative flex min-w-0 max-w-full flex-wrap items-center gap-1">
@@ -114,7 +115,7 @@ export function AppLayout() {
       <MigrationNotice />
       <InstallPrompt />
 
-      <main ref={mainRef} tabIndex={-1} className="mx-auto max-w-3xl px-5 py-8 pb-20 [overflow-wrap:break-word]">
+      <main ref={mainRef} tabIndex={-1} className={`mx-auto px-5 py-8 pb-20 [overflow-wrap:break-word] ${location.pathname === '/' || location.pathname === '/syllabus' || location.pathname === '/settings' || location.pathname.startsWith('/settings/') ? 'max-w-[1160px]' : 'max-w-3xl'}`}>
         <ErrorBoundary resetKey={location.pathname}>
           <Suspense fallback={<p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading…'}</p>}>
             <Outlet />
@@ -125,7 +126,7 @@ export function AppLayout() {
       <ProActivationDialog />
       <BackToTop key={location.pathname} pathname={location.pathname} mainRef={mainRef} />
       {/* New paths open at the top; returning to a seen path restores its scroll. */}
-      <ScrollRestoration getKey={(location) => location.pathname} />
+      <ScrollRestoration getKey={(location) => location.pathname === '/' || location.pathname === '/syllabus' ? location.pathname + location.search : location.pathname} />
     </div>
   );
 }

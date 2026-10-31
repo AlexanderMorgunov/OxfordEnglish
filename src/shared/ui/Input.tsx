@@ -9,7 +9,7 @@ export function Input({ className, spellCheck = false, ...props }: InputProps) {
       spellCheck={spellCheck}
       autoComplete="off"
       className={cn(
-        'w-full rounded-sm border border-line bg-ink px-3 py-2.5 font-mono text-base text-content',
+        'w-full rounded-sm border border-control bg-ink px-3 py-2.5 font-mono text-base text-content',
         'transition-colors duration-150 placeholder:text-faint focus:border-teal',
         className
       )}

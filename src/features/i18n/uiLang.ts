@@ -18,19 +18,21 @@ function load(): UiLang {
 
 type UiLangState = {
   lang: UiLang;
-  setLang: (lang: UiLang) => void;
+  setLang: (lang: UiLang) => boolean;
 };
 
 export const useUiLang = create<UiLangState>((set) => ({
   lang: load(),
   setLang: (lang) => {
+    let saved = true;
     try {
       localStorage.setItem(KEY, lang);
     } catch {
-      // ignore storage failures
+      saved = false;
     }
     set({ lang });
     void stampSetting(SETTING_KEY, { lang });
+    return saved;
   },
 }));
 

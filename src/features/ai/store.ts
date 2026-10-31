@@ -12,9 +12,11 @@ function loadConfig(): AiConfig | null {
   try {
     const raw = localStorage.getItem(KEY);
     if (!raw) return null;
-    const parsed = JSON.parse(raw) as AiConfig;
+    const parsed = JSON.parse(raw) as Partial<AiConfig> | null;
     // Drop a config that points at a provider we no longer ship, so nothing reads PROVIDERS[undefined].
-    return parsed.provider in PROVIDERS ? parsed : null;
+    return parsed && typeof parsed.provider === 'string' && Object.hasOwn(PROVIDERS, parsed.provider) &&
+      typeof parsed.apiKey === 'string' && typeof parsed.model === 'string' &&
+      (parsed.baseUrl === undefined || typeof parsed.baseUrl === 'string') ? parsed as AiConfig : null;
   } catch {
     return null;
   }
@@ -23,7 +25,16 @@ function loadConfig(): AiConfig | null {
 function loadKeys(config: AiConfig | null): KeyMap {
   try {
     const raw = localStorage.getItem(KEYS);
-    if (raw) return JSON.parse(raw) as KeyMap;
+    if (raw) {
+      const parsed: unknown = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+        return Object.fromEntries(Object.entries(parsed).filter(([id, value]) =>
+          Object.hasOwn(PROVIDERS, id) && value && typeof value === 'object' &&
+          typeof value.apiKey === 'string' && typeof value.model === 'string' &&
+          (value.baseUrl === undefined || typeof value.baseUrl === 'string')
+        ));
+      }
+    }
   } catch {
     // ignore
   }
@@ -36,22 +47,33 @@ function loadKeys(config: AiConfig | null): KeyMap {
   return {};
 }
 
-function persist(config: AiConfig | null, keys: KeyMap): void {
+function persist(config: AiConfig | null, keys: KeyMap): boolean {
+  let previousKeys: string | null = null;
+  let keysWritten = false;
   try {
+    previousKeys = localStorage.getItem(KEYS);
+    localStorage.setItem(KEYS, JSON.stringify(keys));
+    keysWritten = true;
     if (config) localStorage.setItem(KEY, JSON.stringify(config));
     else localStorage.removeItem(KEY);
-    localStorage.setItem(KEYS, JSON.stringify(keys));
+    return true;
   } catch {
-    // ignore storage failures
+    if (keysWritten) {
+      try {
+        if (previousKeys === null) localStorage.removeItem(KEYS);
+        else localStorage.setItem(KEYS, previousKeys);
+      } catch { /* The caller keeps the draft and reports that persistence failed. */ }
+    }
+    return false;
   }
 }
 
 type AiState = {
   config: AiConfig | null;
   keys: KeyMap;
-  setConfig: (config: AiConfig | null) => void;
+  setConfig: (config: AiConfig | null) => boolean;
   /** Forget a provider's remembered key; deactivates it if it was the active config. */
-  forgetKey: (provider: AiProviderId) => void;
+  forgetKey: (provider: AiProviderId) => boolean;
 };
 
 export const useAiStore = create<AiState>((set, get) => {
@@ -68,15 +90,17 @@ export const useAiStore = create<AiState>((set, get) => {
           baseUrl: config.baseUrl,
         };
       }
-      persist(config, keys);
+      if (!persist(config, keys)) return false;
       set({ config, keys });
+      return true;
     },
     forgetKey: (provider) => {
       const keys = { ...get().keys };
       delete keys[provider];
       const next = get().config?.provider === provider ? null : get().config;
-      persist(next, keys);
+      if (!persist(next, keys)) return false;
       set({ config: next, keys });
+      return true;
     },
   };
 });

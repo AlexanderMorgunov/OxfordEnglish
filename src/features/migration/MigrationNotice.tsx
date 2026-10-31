@@ -53,7 +53,7 @@ export function MigrationNotice() {
         <button
           type="button"
           onClick={dismiss}
-          className="ml-1 rounded-sm bg-teal px-2.5 py-1 font-mono text-2xs font-semibold text-ink transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+          className="ml-1 rounded-sm bg-teal px-2.5 py-1 font-mono text-2xs font-semibold text-on-accent transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
         >
           {ru ? 'Понятно' : 'Got it'}
         </button>

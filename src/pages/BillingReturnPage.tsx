@@ -162,7 +162,7 @@ export function BillingFailPage() {
             ? ' Если деньги всё же списались, нажмите «Я уже оплатил(а)» в настройках аккаунта.'
             : ' If you were charged after all, use “I have already paid” in account settings.')}
       </p>
-      <Link to="/settings" className="text-sm text-teal hover:underline">
+      <Link to="/settings/account" className="text-sm text-teal hover:underline">
         {ru ? 'Настройки аккаунта' : 'Account settings'}
       </Link>
     </section>

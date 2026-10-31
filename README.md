@@ -55,6 +55,23 @@ Open `/kitchen-sink` (dev only) to see the full design system.
 | `npm test`               | Vitest run (**run before pushing — CI gates on it**) |
 | `npm run validate:packs` | Content-pack validator (structural + logical checks) |
 
+## Today and the course overview
+
+`/` shows a single topic's day path, with a desktop preview or a mobile dialog.
+On desktop, the selected day card links directly to its lesson; selecting another
+card previews it first. Mobile cards open the day overview with its lesson link.
+`/syllabus` lists levels as independent disclosures; topics link back to
+`/?unit=<id>`. Browsing topics or previewing a day does not change the working day.
+Opening a lesson records that day locally. Returning preserves browsing selections,
+expanded levels, scroll and focus; account data resets clear this context.
+
+Completion counts come from saved practice/listening answers. Wrong-only attempts
+mark a day as started; a day with no scored exercises is never completed by 0/0.
+Without a valid working day, continuation uses started days, then the placement
+recommendation and remaining course order. Progress-read failures offer retry while
+keeping lessons accessible. Working-day persistence is device-local; synced answers
+still contribute to continuation suggestions on other devices.
+
 ## Vocabulary entry and chapter words
 
 `/vocabulary` keeps the English term, Russian answer and optional context together.
@@ -107,6 +124,21 @@ tokens are larger by2nominalpx; book15–34px choices remain independent, and
 both support browser/root text scaling. Saved word-card answers remain available
 in reader lookup without a translation-cache/provider dependency; exact matching
 source sentences prefer their saved contextual meaning.
+
+Settings use six deep-linked sections under `/settings`: appearance, learning,
+AI, account, data and privacy. Desktop has a side menu; mobile starts with a
+section index. Legacy `#ai-section` links still open AI settings. Optional provider
+credentials stay in a disclosure; unsaved provider drafts survive section changes
+but are cleared on account handover. A failed local save is reported without
+activating an unsaved key. Account recovery and billing still use the real API.
+
+Five device-local palettes (Daylight, Lime, Peony, Lagoon and Studio) apply through
+semantic colour tokens throughout the app. Theme selection previews immediately;
+Apply persists it, while Cancel, Escape, Back or navigation discard the preview.
+Without a saved choice, Studio preserves the familiar dark appearance. Today has
+a dismissible invitation, and the picker remains available in Settings. Reader
+text size stays independent; the current reader uses the app palette. Theme
+preferences are not account data or a separate book-page colour setting.
 
 New translation, microphone and scan sprites were generated with PixelLab;
 [asset provenance](public/assets/pixel/ui/generated-provenance.json) records the
