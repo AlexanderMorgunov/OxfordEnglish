@@ -2,6 +2,7 @@ import 'fake-indexeddb/auto';
 import { afterEach, beforeEach, expect, test, vi } from 'vitest';
 import {
   cleanup,
+  act,
   fireEvent,
   render,
   screen,
@@ -39,6 +40,44 @@ function page(path = '/settings/ai') {
     </MemoryRouter>
   );
 }
+
+test('responsive settings changes preserve focus in the global navigation', () => {
+  let matches = true;
+  const events = new EventTarget();
+  const media: MediaQueryList = {
+    get matches() {
+      return matches;
+    },
+    media: '(min-width: 900px)',
+    onchange: null,
+    addListener: () => {},
+    removeListener: () => {},
+    addEventListener: events.addEventListener.bind(events),
+    removeEventListener: events.removeEventListener.bind(events),
+    dispatchEvent: events.dispatchEvent.bind(events),
+  };
+  const original = window.matchMedia;
+  vi.spyOn(window, 'matchMedia').mockImplementation((query) =>
+    query === media.media ? media : original(query)
+  );
+  render(
+    <MemoryRouter initialEntries={['/settings']}>
+      <header className="app-header">
+        <button>Global navigation</button>
+      </header>
+      <Routes>
+        <Route path="/settings" element={<SettingsPage />} />
+      </Routes>
+    </MemoryRouter>
+  );
+  const navigation = screen.getByRole('button', { name: 'Global navigation' });
+  act(() => navigation.focus());
+  act(() => {
+    matches = false;
+    events.dispatchEvent(new Event('change'));
+  });
+  expect(navigation).toHaveFocus();
+});
 
 test('provider drafts survive provider changes and internal section navigation', async () => {
   const user = userEvent.setup();

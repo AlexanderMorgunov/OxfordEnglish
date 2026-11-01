@@ -458,9 +458,9 @@
   display: none;
   align-self: start;
   position: sticky;
-  top: 24px;
+  top: calc(var(--app-nav-top, 0px) + 24px);
   padding: 20px 4px 4px;
-  max-height: calc(100dvh - 48px);
+  max-height: calc(100dvh - var(--app-nav-top, 0px) - var(--app-nav-bottom, 0px) - 48px);
   overflow: auto;
 }
 .grammar-desktop-toc > p {

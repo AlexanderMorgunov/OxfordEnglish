@@ -34,6 +34,14 @@ const STEPS: TourStep[] = [
     ],
   },
   {
+    el: '[data-tour="nav-sections"]',
+    title: ['Все разделы рядом', 'All sections in one place'],
+    body: [
+      'Откройте «Разделы», чтобы перейти к курсу, грамматике, повторению слов или библиотеке. Здесь же находятся настройки и ваш прогресс.',
+      'Open Sections to reach the course, grammar, word review or library. Settings and your progress are here too.',
+    ],
+  },
+  {
     el: '[data-tour="nav-review"]',
     title: ['Повторение', 'Review'],
     body: [

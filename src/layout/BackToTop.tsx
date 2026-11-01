@@ -87,8 +87,8 @@ export function BackToTop({ pathname, mainRef }: {
   }, [allowed, pathname, mainRef]);
 
   if (!allowed) return null;
-  return <div ref={rootRef} className="pointer-events-none fixed z-20 h-12 w-12" style={{
-    bottom: 'calc(1rem + env(safe-area-inset-bottom, 0px))',
+  return <div ref={rootRef} data-app-back-to-top className="pointer-events-none fixed z-20 h-12 w-12" style={{
+    bottom: 'calc(1rem + max(var(--app-nav-bottom, 0px), env(safe-area-inset-bottom, 0px)))',
     right: 'max(calc(0.5rem + env(safe-area-inset-right, 0px)), calc((100vw - 48rem) / 2 - 4rem))',
   }}>
     {visible && <button type="button" aria-label={ru ? 'Наверх' : 'Back to top'} title={ru ? 'Наверх' : 'Back to top'}

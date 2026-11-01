@@ -14,6 +14,16 @@ beforeEach(() => {
 });
 afterEach(() => { document.body.innerHTML = ''; });
 
+test('stacked navigation keeps a useful tour target when primary links are in the closed disclosure', () => {
+  document.body.innerHTML = '<button data-tour="nav-sections">Sections</button>';
+  startTour('en');
+  expect(state.options?.steps).toEqual([
+    expect.objectContaining({ element: '[data-tour="nav-sections"]' }),
+  ]);
+  state.options?.onNextClick();
+  expect(track).toHaveBeenCalledWith('onboarding_completed');
+});
+
 test('reaching the last step and dismissing is a skip, not completion', () => {
   startTour('en');
   state.index = 2; state.options?.onDestroyed();

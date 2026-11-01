@@ -7,6 +7,7 @@ import { MigrationNotice } from '@/features/migration/MigrationNotice';
 import { ErrorBoundary } from '@/shared/ui';
 import { SELLER } from '@/shared/seller';
 import { AppHeader } from './AppHeader';
+import { NavigationFocus } from './NavigationFocus';
 import { BackToTop } from './BackToTop';
 import '@/features/appearance/store';
 import '@/features/appearance/themes';
@@ -22,13 +23,30 @@ export function AppLayout() {
     metricaHit(location.pathname);
   }, [location.pathname]);
   return (
-    <div className="min-h-screen">
+    <div className="app-shell min-h-screen">
+      <a
+        href="#app-main"
+        className="app-skip-link"
+        onClick={(event) => {
+          event.preventDefault();
+          mainRef.current?.focus({ preventScroll: true });
+          mainRef.current?.scrollIntoView({ block: 'start' });
+        }}
+      >
+        {ru ? 'К содержимому' : 'Skip to content'}
+      </a>
       <AppHeader />
+      <NavigationFocus />
 
       <MigrationNotice />
       <InstallPrompt />
 
-      <main ref={mainRef} tabIndex={-1} className="app-container py-8 pb-20 [overflow-wrap:break-word]">
+      <main
+        id="app-main"
+        ref={mainRef}
+        tabIndex={-1}
+        className="app-main app-container py-8 pb-20 [overflow-wrap:break-word]"
+      >
         <ErrorBoundary resetKey={location.pathname}>
           <Suspense fallback={<p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading…'}</p>}>
             <Outlet />
@@ -39,7 +57,7 @@ export function AppLayout() {
       <ProActivationDialog />
       <BackToTop key={location.pathname} pathname={location.pathname} mainRef={mainRef} />
       {/* New paths open at the top; returning to a seen path restores its scroll. */}
-      <ScrollRestoration getKey={(location) => location.pathname === '/' || location.pathname === '/syllabus' ? location.pathname + location.search : location.pathname.startsWith('/grammar') || location.pathname === '/progress' ? location.key : location.pathname} />
+      <ScrollRestoration getKey={(location) => location.pathname === '/' || location.pathname === '/syllabus' ? location.pathname + location.search : location.pathname.startsWith('/grammar') || location.pathname === '/progress' || location.pathname === '/about' ? location.key : location.pathname} />
     </div>
   );
 }

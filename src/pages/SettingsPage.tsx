@@ -127,6 +127,7 @@ function SettingsContent() {
   const index = compact && !explicit;
   const heading = useRef<HTMLHeadingElement>(null);
   const title = useRef<HTMLHeadingElement>(null);
+  const focusRoute = useRef<string | null>(null);
   const params = new URLSearchParams(location.search);
   const from = safeSettingsReturn(params.get('from'));
   const work = useCourseNavigation((s) => s.work);
@@ -146,9 +147,16 @@ function SettingsContent() {
     return () => media.removeEventListener('change', change);
   }, []);
   useLayoutEffect(() => {
+    const entering = focusRoute.current !== location.key;
+    focusRoute.current = location.key;
     if (document.querySelector('.app-dialog[open]')) return;
+    if (
+      !entering &&
+      document.activeElement?.closest('.app-header,.app-nav-bottom')
+    )
+      return;
     (index ? title : heading).current?.focus({ preventScroll: true });
-  }, [section, index]);
+  }, [section, index, location.key]);
 
   return (
     <section
