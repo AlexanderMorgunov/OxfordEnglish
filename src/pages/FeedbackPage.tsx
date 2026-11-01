@@ -1,36 +1,105 @@
-import { Eyebrow, PixelImage } from '@/shared/ui';
+import { Link } from 'react-router-dom';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { FeedbackForm } from '@/features/feedback/FeedbackForm';
 import { FEEDBACK_EMAIL } from '@/features/feedback/config';
+import { AppIcon } from '@/shared/ui/AppIcon';
+import '@/features/feedback/feedback.css';
 
 export function FeedbackPage() {
-  const ru = useUiLang((s) => s.lang) === 'ru';
-
+  const ru = useUiLang((s) => s.lang) === 'ru',
+    t = (rus: string, en: string) => (ru ? rus : en);
   return (
-    <section aria-label={ru ? 'Обратная связь' : 'Feedback'} className="reading-column">
-      <Eyebrow className="mb-3.5">{ru ? 'обратная связь' : 'feedback'}</Eyebrow>
-      <div className="mb-3 flex items-center gap-3">
-        <PixelImage src="/assets/pixel/nav/feedback.png" alt="" className="h-7 w-7 shrink-0" />
-        <h1 className="min-w-0 text-2xl font-bold tracking-tight text-balance">
-          {ru ? 'Нашли проблему или есть идея?' : 'Found a problem or have an idea?'}
-        </h1>
+    <div className="fb-page">
+      <nav
+        className="fb-page-kicker"
+        aria-label={t('Путь к странице', 'Breadcrumb')}
+      >
+        <Link to="/about">{t('О приложении', 'About')}</Link>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{t('Обратная связь', 'Feedback')}</span>
+      </nav>
+      <div className="fb-feedback-layout">
+        <section className="fb-intro" aria-labelledby="feedback-title">
+          <div className="fb-letter-mark">
+            <AppIcon name="feedback" />
+            <i>
+              <AppIcon name="today" />
+            </i>
+          </div>
+          <h1 id="feedback-title">
+            {t(
+              'Давайте сделаем DayEnglish лучше',
+              'Let’s make DayEnglish better'
+            )}
+          </h1>
+          <p className="fb-intro-lede">
+            {t(
+              'Заметили ошибку? Не хватает удобной функции? Расскажите — ваши идеи помогают приложению расти.',
+              'Found a mistake? Missing a useful feature? Tell us: your ideas help the app grow.'
+            )}
+          </p>
+          <p className="fb-no-account">
+            <span aria-hidden="true">✓</span>
+            {t(
+              'Без аккаунта. Почта — по желанию.',
+              'No account needed. Email is optional.'
+            )}
+          </p>
+        </section>
+        <FeedbackForm />
+        <aside className="fb-writing-help" aria-labelledby="feedback-help">
+          <h2 id="feedback-help">
+            {t(
+              'Чуть больше деталей — проще разобраться',
+              'A little more detail makes it easier to help'
+            )}
+          </h2>
+          <p>
+            {t(
+              'Если что-то пошло не так, попробуйте рассказать:',
+              'If something went wrong, try to describe:'
+            )}
+          </p>
+          <ul>
+            <li>
+              <span>{t('Где?', 'Where?')}</span>
+              {t('В каком разделе или уроке.', 'Which section or lesson.')}
+            </li>
+            <li>
+              <span>{t('Что сделали?', 'What did you do?')}</span>
+              {t('На что нажали или что ввели.', 'What you tapped or typed.')}
+            </li>
+            <li>
+              <span>{t('Что получилось?', 'What happened?')}</span>
+              {t(
+                'И чего ожидали вместо этого.',
+                'And what you expected instead.'
+              )}
+            </li>
+          </ul>
+          <div className="fb-author-note">
+            <AppIcon name="today" />
+            <p>
+              {t(
+                'DayEnglish делает один человек. Ответить получается не всегда, но обратная связь помогает выбирать, что улучшать дальше.',
+                'DayEnglish is made by one person. I cannot always reply, but your feedback helps decide what to improve next.'
+              )}
+            </p>
+          </div>
+        </aside>
       </div>
-      <p className="mb-8 text-base leading-relaxed text-pretty text-muted">
-        {ru
-          ? 'Расскажите про ошибку в уроке, что-то сломалось или что хочется добавить. Не нужен аккаунт, ничего личного не собираем.'
-          : "Tell us about a mistake in a lesson, something that broke, or what you'd like added. No account needed, nothing personal collected."}
-      </p>
-
-      <FeedbackForm />
-
-      {FEEDBACK_EMAIL && (
-        <p className="mt-8 border-t border-line pt-5 text-xs leading-relaxed text-muted">
-          {ru ? 'Или напишите напрямую: ' : 'Or email directly: '}
-          <a href={`mailto:${FEEDBACK_EMAIL}`} className="text-teal hover:underline">
-            {FEEDBACK_EMAIL}
+      <footer className="fb-feedback-footer">
+        <Link to="/">
+          <span aria-hidden="true">←</span>
+          {t('Вернуться к учёбе', 'Back to studying')}
+        </Link>
+        <Link to="/privacy">{t('Конфиденциальность', 'Privacy')}</Link>
+        {FEEDBACK_EMAIL && (
+          <a href={`mailto:${FEEDBACK_EMAIL}`}>
+            {t('Написать на почту', 'Email us')}
           </a>
-        </p>
-      )}
-    </section>
+        )}
+      </footer>
+    </div>
   );
 }

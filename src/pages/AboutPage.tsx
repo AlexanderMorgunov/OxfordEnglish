@@ -1,348 +1,530 @@
+import { Fragment, useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
-import { PixelImage } from '@/shared/ui';
+import { Link, useLocation } from 'react-router-dom';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { track } from '@/features/analytics/analytics';
-import { useReveal } from '@/features/landing/reveal';
-import { WordTapDemo } from '@/features/landing/WordTapDemo';
-import { PhraseDemo } from '@/features/landing/PhraseDemo';
-import { ReviewDemo } from '@/features/landing/ReviewDemo';
+import { AboutDemo } from '@/features/landing/AboutDemo';
+import { AppIcon } from '@/shared/ui/AppIcon';
+import type { AppIconName } from '@/shared/ui/AppIcon';
+import '@/features/landing/about.css';
 
 function Cta({
   to,
   from,
   children,
-  primary,
+  className = 'ab-feature-link',
 }: {
   to: string;
-  /** Which block the click came from — the landing's only conversion signal. */
   from: string;
   children: ReactNode;
-  primary?: boolean;
+  className?: string;
 }) {
   return (
     <Link
       to={to}
-      onClick={() => void track('landing_cta', { to, from })}
-      className={
-        primary
-          ? 'inline-flex items-center gap-2 rounded-sm bg-teal px-5 py-3 font-mono text-sm font-semibold text-on-accent transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal'
-          : 'inline-flex items-center gap-2 rounded-sm border border-line px-5 py-3 font-mono text-sm text-content transition-colors hover:border-teal-dim focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal'
-      }
+      className={className}
+      onClick={() => {
+        if (!to.startsWith('#')) void track('landing_cta', { to, from });
+      }}
     >
       {children}
     </Link>
   );
 }
 
-function Section({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <section data-reveal className="mt-14">
-      <h2 className="mb-4 text-xl font-bold tracking-tight text-balance">{title}</h2>
-      {children}
-    </section>
-  );
-}
-
 export function AboutPage() {
-  const ru = useUiLang((s) => s.lang) === 'ru';
-  const t = (rus: string, eng: string) => (ru ? rus : eng);
-  const root = useReveal<HTMLDivElement>();
-
-  const steps = [
-    {
-      n: '1',
-      title: t('Короткий тест уровня', 'A short placement test'),
-      text: t(
-        'Пять минут — и понятно, с какого дня начинать: от полного нуля (A1) до уверенного B1.',
-        'Five minutes and you know where to start: from zero (A1) to confident B1.'
-      ),
-    },
-    {
-      n: '2',
-      title: t('Учебный день по 15 минут', 'A 15-minute learning day'),
-      text: t(
-        'Новые слова, грамматика, чтение и аудирование — одним маршрутом, без выбора «что бы поучить».',
-        'New words, grammar, reading and listening in one route — no “what should I study today”.'
-      ),
-    },
-    {
-      n: '3',
-      title: t('Своя книга в читалке', 'Your own book in the reader'),
-      text: t(
-        'Читаете то, что интересно вам. Слова из книги попадают в повторения и возвращаются вовремя.',
-        'Read what you actually like. Words from the book go into review and come back on time.'
-      ),
-    },
-  ];
-
-  const features = [
-    {
-      icon: '/assets/pixel/nav/today.png',
-      title: t('Курс A1 → B2', 'A1 → B2 course'),
-      text: t(
-        'Готовые учебные дни с упражнениями девяти типов и контрольными в конце юнитов.',
-        'Ready learning days with nine exercise types and unit checkpoints.'
-      ),
-    },
-    {
-      icon: '/assets/pixel/nav/grammar.png',
-      title: t('Справочник грамматики', 'Grammar reference'),
-      text: t(
-        'Десятки тем с объяснениями на русском, примерами и разбором частых ошибок.',
-        'Dozens of topics explained in plain language, with examples and common mistakes.'
-      ),
-    },
-    {
-      icon: '/assets/pixel/nav/library.png',
-      title: t('Читалка книг', 'Book reader'),
-      text: t(
-        'EPUB, FB2, DOCX и PDF плюс встроенная библиотека. Перевод по клику, озвучка, закладки.',
-        'EPUB, FB2, DOCX and PDF plus a built-in library. Tap-to-translate, read-aloud, bookmarks.'
-      ),
-    },
-    {
-      icon: '/assets/pixel/nav/review.png',
-      title: t('Интервальные повторения', 'Spaced repetition'),
-      text: t(
-        'Алгоритм FSRS — тот же, что в современных Anki-сборках: слово возвращается перед тем, как забудется.',
-        'The FSRS algorithm: a word returns right before you would forget it.'
-      ),
-    },
-    {
-      icon: '/assets/pixel/nav/vocab.png',
-      title: t('Словарь с уровнями', 'Vocabulary with levels'),
-      text: t(
-        'У каждого слова уровень по шкале CEFR и формы неправильных глаголов: go — went — gone.',
-        'Every word carries a CEFR level and irregular forms: go — went — gone.'
-      ),
-    },
-    {
-      icon: '/assets/pixel/nav/progress.png',
-      title: t('Честная статистика', 'Honest statistics'),
-      text: t(
-        'Время чтения считается только когда вы действительно читаете, а не когда вкладка висит открытой.',
-        'Reading time counts only while you actually read — not while a tab sits open.'
-      ),
-    },
-    {
-      icon: '/assets/pixel/sections/listening.png',
-      title: t('Аудирование и озвучка', 'Listening and read-aloud'),
-      text: t(
-        'Диктанты, разбор на слух и чтение вслух любого абзаца книги.',
-        'Dictation, listening practice and read-aloud for any paragraph.'
-      ),
-    },
-    {
-      icon: '/assets/pixel/ui/ai.png',
-      title: t('ИИ на вашем ключе', 'AI on your own key'),
-      text: t(
-        'Подсказки, объяснение ошибок и смысл слова в контексте — по желанию, на вашем ключе. Ключ не покидает браузер.',
-        'Hints, “why is this wrong?” and in-context meaning — optional, on your key. The key never leaves your browser.'
-      ),
-    },
-  ];
-
+  const ru = useUiLang((s) => s.lang) === 'ru',
+    t = (rus: string, eng: string) => (ru ? rus : eng);
+  const root = useRef<HTMLDivElement>(null),
+    location = useLocation();
+  const previousHash = useRef(location.hash);
+  useEffect(() => {
+    const previous = previousHash.current;
+    previousHash.current = location.hash;
+    if (!location.hash) {
+      if (previous)
+        root.current?.querySelector('h1')?.focus({ preventScroll: true });
+      return;
+    }
+    const id = location.hash.slice(1);
+    const target = document.getElementById(id);
+    if (target && root.current?.contains(target)) {
+      target.focus({ preventScroll: true });
+      target.scrollIntoView({ block: 'start' });
+    }
+  }, [location.hash, location.key]);
   const faq = [
+    [
+      t('Нужно ли создавать аккаунт?', 'Do I need an account?'),
+      t(
+        'Нет. Курс, локальные книги, словарь и повторения можно использовать без аккаунта. Аккаунт нужен для возможностей, связанных с синхронизацией между устройствами.',
+        'No. Use the course, local books, vocabulary and reviews without an account. An account is needed for cross-device sync features.'
+      ),
+    ],
+    [
+      t('С какого уровня можно начать?', 'Which level can I start from?'),
+      t(
+        'В курсе есть уровни A1, A2, B1 и B2. Если вы начинаете с нуля, подойдёт A1; стартовый тест поможет выбрать точку входа. Справочник и читалка доступны отдельно от маршрута.',
+        'The course includes A1, A2, B1 and B2. Start at A1 if you are a beginner; the placement test can suggest a starting point. The reference and reader are also available separately.'
+      ),
+    ],
+    [
+      t('Что работает без интернета?', 'What works offline?'),
+      t(
+        'Заранее загруженные материалы, локальные книги и повторения доступны без сети. Для нового перевода через внешние сервисы, AI и синхронизации нужно соединение. Доступная озвучка зависит от голосов на устройстве.',
+        'Previously downloaded materials, local books and reviews work offline. New external translations, AI requests and sync require a connection. Read-aloud availability depends on device voices.'
+      ),
+    ],
+    [
+      t('Книги куда-то отправляются?', 'Are my books uploaded?'),
+      t(
+        'Обычный импорт сохраняет книгу на устройстве. Если вы отдельно включите синхронизацию файлов книг, они загрузятся в облачное хранилище. Для перевода и AI выбранный текст может передаваться сервису обработки.',
+        'Normal import keeps a book on your device. Enabling book-file sync uploads files to cloud storage. Selected text may be sent to a processing service for translation or AI.'
+      ),
+    ],
+    [
+      t('Нужна ли подписка для учёбы?', 'Do I need a subscription to study?'),
+      t(
+        'Основные учебные возможности бесплатны. Pro добавляет AI и возможности работы на нескольких устройствах. Текущие условия и доступность пробного периода указаны в разделе Pro.',
+        'Core study features are free. Pro adds AI and cross-device features. Current terms and trial availability are shown in Pro.'
+      ),
+    ],
+    [
+      t(
+        'Можно пользоваться с телефона и компьютера?',
+        'Can I use a phone and a computer?'
+      ),
+      t(
+        'Да, приложение работает в браузере; есть и Android-приложение. На телефоне сайт можно добавить на домашний экран. Локальный прогресс относится к конкретному устройству; синхронизация подключается отдельно.',
+        'Yes. Use the browser or the Android app; the website can also be added to your phone’s home screen. Local progress belongs to each device, with sync available separately.'
+      ),
+    ],
+  ];
+  const quiet: {
+    to: string;
+    icon: AppIconName;
+    title: string;
+    text: string;
+  }[] = [
     {
-      q: t('Сколько это стоит?', 'How much does it cost?'),
-      a: t(
-        'Курс, читалка, повторения и словарь — бесплатно, без рекламы и платных уровней. Отдельно есть необязательная подписка Pro: она включает разборы на основе ИИ на нашем ключе. Те же функции доступны и со своим ключом ИИ.',
-        'The course, the reader, reviews and the vocabulary are free — no ads, no paid tiers. There is a separate, optional Pro subscription that adds AI explanations on our key; the same features also work with your own AI key.'
+      to: '/grammar',
+      icon: 'grammar',
+      title: t('Грамматика под рукой', 'Grammar at hand'),
+      text: t(
+        'Объяснения на русском и примеры',
+        'Clear explanations and examples'
       ),
     },
     {
-      q: t('Нужна ли регистрация?', 'Do I need an account?'),
-      a: t(
-        'Нет. Прогресс хранится в вашем браузере, его можно выгрузить файлом и перенести на другое устройство.',
-        'No. Progress lives in your browser and can be exported to a file and moved to another device.'
-      ),
+      to: '/vocabulary',
+      icon: 'vocabulary',
+      title: t('Ваш личный словарь', 'Your own vocabulary'),
+      text: t('Слова и фразы с контекстом', 'Words and phrases in context'),
     },
     {
-      q: t('Работает ли без интернета?', 'Does it work offline?'),
-      a: t(
-        'Да. После первой загрузки уроки, повторения и книги открываются без сети.',
-        'Yes. After the first load, lessons, reviews and books open without a connection.'
-      ),
-    },
-    {
-      q: t('Мои книги куда-то загружаются?', 'Are my books uploaded anywhere?'),
-      a: t(
-        'Нет. Импортированные книги остаются в хранилище браузера на вашем устройстве и никуда не отправляются.',
-        'No. Imported books stay in your browser storage on your device and are never sent anywhere.'
-      ),
-    },
-    {
-      q: t('С какого уровня можно начать?', 'Which level can I start from?'),
-      a: t(
-        'С нуля. Есть тир A1 для начинающих, дальше A2, B1 и B2 — тест в начале подскажет точку старта.',
-        'From zero. There is an A1 tier for beginners, then A2, B1 and B2 — the placement test finds your start.'
-      ),
-    },
-    {
-      q: t('Это приложение или сайт?', 'Is it an app or a website?'),
-      a: t(
-        'И то и другое: открывается в браузере и ставится на домашний экран как обычное приложение.',
-        'Both: it opens in the browser and installs to your home screen like a normal app.'
+      to: '/review',
+      icon: 'review',
+      title: t('Повторения по ответам', 'Reviews that follow your answers'),
+      text: t(
+        'Вернуться к тому, что запоминаете',
+        'Return to what you are learning'
       ),
     },
   ];
-
   return (
-    <div ref={root}>
-      <section data-reveal>
-        <p className="eyebrow mb-3.5">{t('что это', 'what this is')}</p>
-        <div className="flex items-start justify-between gap-4">
-          <div className="min-w-0">
-            <h1 className="mb-3 text-3xl font-bold tracking-tight text-balance">
-              {t('Английский по одному дню за раз', 'English, one day at a time')}
-            </h1>
-            <p className="max-w-prose text-lg text-muted text-pretty">
+    <div className="ab-page" ref={root} id="about-top" tabIndex={-1}>
+      <div className="ab-about-heading">
+        <p>{t('О DayEnglish', 'About DayEnglish')}</p>
+        <nav aria-label={t('На этой странице', 'On this page')}>
+          <Link to="#features">{t('Возможности', 'Features')}</Link>
+          <Link to="#access">{t('Бесплатно и Pro', 'Free and Pro')}</Link>
+          <Link to="#faq">{t('Вопросы', 'Questions')}</Link>
+        </nav>
+      </div>
+      <section className="ab-hero" aria-labelledby="about-hero-title">
+        <div className="ab-hero-copy">
+          <div className="ab-day-mark">
+            <AppIcon name="today" />
+          </div>
+          <h1 id="about-hero-title" tabIndex={-1}>
+            {t('Учите английский. Читайте в оригинале.', 'Learn English. Read books in English.')}
+          </h1>
+          <p className="ab-hero-lede">
+            {t(
+              'Понятный маршрут учёбы, книги в оригинале и слова, которые хочется запомнить. Всё рядом, в вашем темпе.',
+              'A clear learning path, books in English and words you want to remember. All together, at your own pace.'
+            )}
+          </p>
+          <div className="ab-hero-actions">
+            <Cta to="/" from="hero" className="ab-btn ab-primary">
+              {t('Открыть учебный путь', 'Open the learning path')} →
+            </Cta>
+            <Link className="ab-try-link" to="#live-demo">
+              {t('Попробовать на примере', 'Try an example')}
+            </Link>
+          </div>
+          <p className="ab-hero-note">
+            {t(
+              'Курс A1–B2. Можно начать без аккаунта.',
+              'A1–B2 course. Start without an account.'
+            )}
+          </p>
+        </div>
+        <AboutDemo />
+      </section>
+      <section
+        id="features"
+        tabIndex={-1}
+        className="ab-feature-section ab-section-space"
+        aria-labelledby="about-features-title"
+      >
+        <div className="ab-section-heading">
+          <h2 id="about-features-title">
+            {t(
+              'От первого правила до своей книги',
+              'From your first rule to your own book'
+            )}
+          </h2>
+          <p>
+            {t(
+              'Учитесь по маршруту — и встречайте знакомое в том, что вам интересно.',
+              'Follow a learning path and meet familiar English in things you enjoy.'
+            )}
+          </p>
+        </div>
+        <div className="ab-feature-layout">
+          <article className="ab-course-feature">
+            <div className="ab-feature-icon">
+              <AppIcon name="today" />
+            </div>
+            <h3>
               {t(
-                'Бесплатный курс от A1 до B2 и читалка книг в одном приложении: слова, которые встретились вам в тексте, сами попадают в повторения и возвращаются, пока не запомнятся.',
-                'A free A1 → B2 course and a book reader in one app: words you meet in a text go into spaced repetition and keep coming back until they stick.'
+                'Не нужно решать, что учить сегодня',
+                'No need to decide what to study today'
+              )}
+            </h3>
+            <p>
+              {t(
+                'В учебном пути уже собраны слова, грамматика, чтение и аудирование. Возвращайтесь к следующему шагу, когда удобно.',
+                'Vocabulary, grammar, reading and listening are already arranged along your path. Come back to the next step when it suits you.'
               )}
             </p>
-          </div>
-          <PixelImage
-            src="/assets/pixel/mascot.png"
-            alt=""
-            width={96}
-            height={96}
-            className="hidden h-24 w-24 shrink-0 sm:block"
-          />
+            <div
+              className="ab-level-track"
+              aria-label={t('Уровни курса', 'Course levels')}
+            >
+              {['A1', 'A2', 'B1', 'B2'].map((level, index) => (
+                <Fragment key={level}>
+                  {index > 0 && <i aria-hidden="true" />}
+                  <span>{level}</span>
+                </Fragment>
+              ))}
+            </div>
+            <Cta to="/" from="course">
+              {t('Посмотреть учебный путь', 'Explore the learning path')} →
+            </Cta>
+          </article>
+          <article className="ab-reading-feature">
+            <div className="ab-feature-icon">
+              <AppIcon name="library" />
+            </div>
+            <h3>{t('Читайте то, что нравится вам', 'Read what you enjoy')}</h3>
+            <p>
+              {t(
+                'Выберите книгу в библиотеке или добавьте свою: EPUB, FB2, DOCX или PDF. Значение слова можно посмотреть прямо в тексте.',
+                'Choose a library book or import your own EPUB, FB2, DOCX or PDF. Look up words directly in the text.'
+              )}
+            </p>
+            <Cta to="/library" from="reader">
+              {t('Выбрать книгу', 'Choose a book')} →
+            </Cta>
+            <div className="ab-book-lines" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+              <b>
+                A good book.
+                <br />A new word.
+                <br />A small step.
+              </b>
+            </div>
+          </article>
         </div>
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Cta to="/" from="hero" primary>
-            {t('Начать бесплатно →', 'Start for free →')}
-          </Cta>
-          <Cta to="/library" from="hero">
-            {t('Полистать библиотеку', 'Browse the library')}
-          </Cta>
-        </div>
-        <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 font-mono text-2xs uppercase tracking-[0.08em] text-muted">
-          <span>{t('бесплатно', 'free')}</span>
-          <span>{t('без регистрации', 'no account')}</span>
-          <span>{t('работает офлайн', 'works offline')}</span>
-          <span>{t('без рекламы', 'no ads')}</span>
-        </p>
-      </section>
-
-      <Section title={t('Как это работает', 'How it works')}>
-        <ol className="flex flex-col gap-3">
-          {steps.map((s) => (
-            <li key={s.n} className="flex gap-3.5 rounded-md border border-line bg-surface px-4 py-3.5">
-              <span aria-hidden className="font-mono text-lg text-teal">
-                {s.n}
-              </span>
+        <div className="ab-quiet-features">
+          {quiet.map((item) => (
+            <Cta to={item.to} from="features" key={item.to}>
+              <AppIcon name={item.icon} />
               <span>
-                <span className="block text-base text-content">{s.title}</span>
-                <span className="mt-0.5 block text-sm text-muted text-pretty">{s.text}</span>
+                <strong>{item.title}</strong>
+                <small>{item.text}</small>
               </span>
+              <span aria-hidden="true">→</span>
+            </Cta>
+          ))}
+        </div>
+      </section>
+      <section
+        className="ab-connection ab-section-space"
+        aria-labelledby="about-connection-title"
+      >
+        <div>
+          <h2 id="about-connection-title">
+            {t(
+              'Встреченное в книге остаётся с вами',
+              'Keep what you encounter in books'
+            )}
+          </h2>
+          <p>
+            {t(
+              'Посмотрите значение. Сохраните нужное слово или фразу. Затем вернитесь к ним в повторениях — вместе с контекстом.',
+              'Check the meaning. Save a word or phrase you need. Return to it in reviews, together with its context.'
+            )}
+          </p>
+          <Link className="ab-try-link" to="#live-demo">
+            {t(
+              'Пройти этот путь на примере',
+              'Try this journey in the example'
+            )}
+          </Link>
+        </div>
+        <ol className="ab-connection-steps">
+          {[
+            [
+              t('Прочитали', 'Read'),
+              t(
+                'Значение рядом с исходным текстом',
+                'Meaning beside the original text'
+              ),
+            ],
+            [
+              t('Сохранили', 'Save'),
+              t(
+                'Добавили именно то, что хотите учить',
+                'Keep what you want to learn'
+              ),
+            ],
+            [
+              t('Вспомнили', 'Recall'),
+              t(
+                'Открыли ответ и оценили себя',
+                'Reveal the answer and rate your recall'
+              ),
+            ],
+          ].map(([title, text], index) => (
+            <li key={index}>
+              <span>{index + 1}</span>
+              <div>
+                <strong>{title}</strong>
+                <p>{text}</p>
+              </div>
             </li>
           ))}
         </ol>
-      </Section>
-
-      <Section title={t('Слово из книги — в один тап', 'A word from a book in one tap')}>
-        <p className="mb-4 max-w-prose text-base text-muted text-pretty">
-          {t(
-            'В читалке не нужно выходить в словарь: нажмите слово — и увидите перевод, насколько оно частотное по шкале CEFR и формы, если глагол неправильный. Попробуйте прямо здесь.',
-            'In the reader you never leave for a dictionary: tap a word to see its translation, how common it is on the CEFR scale, and its forms if the verb is irregular. Try it right here.'
-          )}
-        </p>
-        <WordTapDemo />
-      </Section>
-
-      <Section title={t('Фразы, а не только слова', 'Phrases, not just words')}>
-        <p className="mb-4 max-w-prose text-base text-muted text-pretty">
-          {t(
-            'Идиому бесполезно учить по одному слову. Отметьте первое и последнее слово — приложение сохранит фразу целиком, с переводом, и будет возвращать её в повторениях.',
-            'An idiom is useless word by word. Mark the first and the last word — the app saves the whole phrase with its translation and brings it back in review.'
-          )}
-        </p>
-        <PhraseDemo />
-      </Section>
-
-      <Section title={t('Слова возвращаются вовремя', 'Words come back on time')}>
-        <p className="mb-4 max-w-prose text-base text-muted text-pretty">
-          {t(
-            'Сохранённое слово попадает в очередь повторений. Интервал подбирается по вашим ответам: то, что даётся тяжело, возвращается чаще.',
-            'A saved word joins the review queue. The interval follows your answers: what is hard comes back more often.'
-          )}
-        </p>
-        <ReviewDemo />
-      </Section>
-
-      <Section title={t('Что внутри', 'What is inside')}>
-        <div className="grid gap-2.5 sm:grid-cols-2">
-          {features.map((f) => (
-            <div key={f.title} className="rounded-md border border-line bg-surface px-4 py-3.5">
-              <p className="flex items-center gap-2.5 text-base text-content">
-                <PixelImage src={f.icon} alt="" width={20} height={20} className="h-5 w-5 shrink-0" />
-                {f.title}
-              </p>
-              <p className="mt-1 text-sm text-muted text-pretty">{f.text}</p>
-            </div>
-          ))}
+      </section>
+      <section
+        id="access"
+        tabIndex={-1}
+        className="ab-access-section ab-section-space"
+        aria-labelledby="about-access-title"
+      >
+        <div className="ab-section-heading">
+          <h2 id="about-access-title">
+            {t(
+              'Начните с того, что уже доступно',
+              'Start with what is already available'
+            )}
+          </h2>
+          <p>
+            {t(
+              'Основное для учёбы — бесплатно. Дополнительные возможности можно подключить отдельно.',
+              'Core study features are free. Add extra capabilities when you need them.'
+            )}
+          </p>
         </div>
-      </Section>
-
-      <Section title={t('Ваши данные остаются вашими', 'Your data stays yours')}>
-        <ul className="flex flex-col gap-2 text-base text-pretty">
-          <li>
+        <div className="ab-access-grid">
+          <article className="ab-access-free">
+            <p className="ab-access-label">{t('Бесплатно', 'Free')}</p>
+            <h3>{t('Для английского каждый день', 'For everyday English')}</h3>
+            <ul>
+              {[
+                t(
+                  'Учебный курс и справочник грамматики',
+                  'The course and grammar reference'
+                ),
+                t('Читалка и локальные книги', 'Reader and local books'),
+                t(
+                  'Личный словарь и повторения',
+                  'Personal vocabulary and reviews'
+                ),
+                t('Прогресс на вашем устройстве', 'Progress on your device'),
+              ].map((text) => (
+                <li key={text}>{text}</li>
+              ))}
+            </ul>
+            <Cta to="/" from="free" className="ab-btn ab-primary">
+              {t('Перейти к учёбе', 'Start learning')}
+            </Cta>
+          </article>
+          <article className="ab-access-pro">
+            <p className="ab-access-label">
+              {t('DayEnglish Pro · по желанию', 'DayEnglish Pro · optional')}
+            </p>
+            <h3>
+              {t(
+                'Когда нужна дополнительная помощь',
+                'When you need some extra help'
+              )}
+            </h3>
+            <ul>
+              {[
+                t('Объяснения и разборы с AI', 'AI explanations and feedback'),
+                t(
+                  'Перевод с учётом контекста',
+                  'Translation that considers context'
+                ),
+                t(
+                  'Продолжение на другом устройстве',
+                  'Continue on another device'
+                ),
+              ].map((text) => (
+                <li key={text}>{text}</li>
+              ))}
+            </ul>
+            <p className="ab-access-caption">
+              {t(
+                'Актуальные условия и доступ к пробному периоду — в разделе Pro. Для части AI-функций можно использовать свой API-ключ в настройках.',
+                'See Pro for current terms and trial availability. Some AI features also support your own API key in Settings.'
+              )}
+            </p>
+            <Cta to="/pro" from="pro">
+              {t('Узнать о Pro', 'Explore Pro')} →
+            </Cta>
+          </article>
+        </div>
+      </section>
+      <section
+        className="ab-data-section ab-section-space"
+        aria-labelledby="about-data-title"
+      >
+        <div className="ab-data-symbol">
+          <AppIcon name="settings" />
+        </div>
+        <div>
+          <h2 id="about-data-title">
+            {t('Начать можно на своём устройстве', 'Start on your own device')}
+          </h2>
+          <p>
             {t(
-              'Прогресс, словарь и книги хранятся в браузере на вашем устройстве.',
-              'Progress, vocabulary and books are stored in your browser, on your device.'
+              'Книги и учебные данные сохраняются локально. Аккаунт и синхронизация подключаются отдельно; если включить облачное хранение книг, их файлы загрузятся в облако.',
+              'Books and learning data are stored locally. Account and sync features are optional; enabling book-file sync uploads files to the cloud.'
             )}
-          </li>
-          <li>{t('Аккаунт не нужен — значит, и терять нечего.', 'No account is needed — so there is nothing to lose.')}</li>
-          <li>
+          </p>
+          <div className="ab-data-links">
+            <Cta to="/settings/data" from="data">
+              {t('Управление данными в настройках', 'Manage data in Settings')}
+            </Cta>
+            <Cta to="/privacy" from="privacy">
+              {t('Конфиденциальность', 'Privacy')}
+            </Cta>
+          </div>
+        </div>
+      </section>
+      <section
+        id="faq"
+        tabIndex={-1}
+        className="ab-faq-section ab-section-space"
+        aria-labelledby="about-faq-title"
+      >
+        <div className="ab-section-heading">
+          <h2 id="about-faq-title">
+            {t('Остались вопросы?', 'Any questions?')}
+          </h2>
+          <p>
             {t(
-              'Анонимную статистику можно выключить одной галочкой в настройках.',
-              'Anonymous usage stats can be switched off with one checkbox in settings.'
+              'Коротко о том, как начать и что понадобится.',
+              'A quick guide to getting started and what you need.'
             )}
-          </li>
-          <li>
-            {t(
-              'Прогресс выгружается в файл и переносится на другое устройство.',
-              'Progress exports to a file and moves to another device.'
-            )}
-          </li>
-        </ul>
-      </Section>
-
-      <Section title={t('Частые вопросы', 'Frequently asked questions')}>
-        <div className="flex flex-col gap-2">
-          {faq.map((item) => (
-            <details key={item.q} className="rounded-md border border-line bg-surface px-4 py-3">
-              <summary className="cursor-pointer text-base text-content marker:text-teal">{item.q}</summary>
-              <p className="mt-2 text-sm text-muted text-pretty">{item.a}</p>
+          </p>
+        </div>
+        <div className="ab-faq-list">
+          {faq.map(([question, answer], index) => (
+            <details key={index}>
+              <summary>{question}</summary>
+              <p>{answer}</p>
             </details>
           ))}
         </div>
-      </Section>
-
-      <section data-reveal className="mt-14 rounded-lg border border-teal-dim bg-teal-dim/10 px-5 py-6 text-center">
-        <h2 className="mb-2 text-xl font-bold tracking-tight text-balance">
-          {t('Начните с сегодняшнего дня', 'Start with today')}
-        </h2>
-        <p className="mx-auto mb-5 max-w-prose text-base text-muted text-pretty">
+      </section>
+      <section
+        className="ab-project-section ab-section-space"
+        aria-labelledby="about-project-title"
+      >
+        <div>
+          <h2 id="about-project-title">
+            {t(
+              'DayEnglish становится лучше вместе с вами',
+              'Help DayEnglish get better'
+            )}
+          </h2>
+          <p>
+            {t(
+              'Нашли ошибку в задании или придумали, как сделать учёбу удобнее? Расскажите об этом через обратную связь.',
+              'Found a mistake in an exercise or have an idea for better learning? Tell us through Feedback.'
+            )}
+          </p>
+        </div>
+        <Cta to="/feedback" from="feedback" className="ab-btn">
+          {t('Обратная связь', 'Feedback')} →
+        </Cta>
+      </section>
+      <section
+        className="ab-closing ab-section-space"
+        aria-labelledby="about-closing-title"
+      >
+        <div className="ab-closing-mark">
+          <AppIcon name="today" />
+        </div>
+        <h2 id="about-closing-title">
           {t(
-            'Ничего не нужно устанавливать: приложение откроется в браузере, а потом его можно добавить на домашний экран.',
-            'Nothing to install: the app opens in your browser, and you can add it to your home screen afterwards.'
+            'Продолжим с одного небольшого шага?',
+            'Shall we take one small step?'
+          )}
+        </h2>
+        <p>
+          {t(
+            'Откройте учебный путь или выберите книгу. Остальное найдётся по дороге.',
+            'Open the learning path or choose a book. Discover the rest along the way.'
           )}
         </p>
-        <div className="flex flex-wrap justify-center gap-3">
-          <Cta to="/" from="footer" primary>
-            {t('Открыть приложение →', 'Open the app →')}
+        <div className="ab-closing-actions">
+          <Cta to="/" from="footer" className="ab-btn ab-primary">
+            {t('К учебному пути', 'Open the learning path')} →
           </Cta>
-          <Cta to="/grammar" from="footer">
-            {t('Справочник грамматики', 'Grammar reference')}
+          <Cta to="/library" from="footer" className="ab-try-link">
+            {t('Открыть библиотеку', 'Open the library')}
           </Cta>
         </div>
       </section>
+      <nav
+        className="ab-about-footer"
+        aria-label={t('Информация о приложении', 'App information')}
+      >
+        <Link className="ab-feature-link" to="#about-top">
+          {t('К началу страницы', 'Back to top')} ↑
+        </Link>
+        <Cta to="/support" from="support">
+          {t('Поддержать проект', 'Support the project')}
+        </Cta>
+        <Cta to="/credits" from="credits">
+          {t('Благодарности и лицензии', 'Credits and licences')}
+        </Cta>
+        <Cta to="/privacy" from="privacy">
+          {t('Конфиденциальность', 'Privacy')}
+        </Cta>
+        <Cta to="/terms" from="terms">
+          {t('Условия использования', 'Terms of use')}
+        </Cta>
+      </nav>
     </div>
   );
 }

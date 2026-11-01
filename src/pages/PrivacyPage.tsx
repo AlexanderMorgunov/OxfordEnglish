@@ -27,14 +27,14 @@ function Ru() {
       <h1 className="text-2xl font-bold tracking-tight text-balance">Политика обработки персональных данных</h1>
       <p className="mt-3 text-sm leading-relaxed text-pretty text-muted">
         Коротко: приложением можно пользоваться без регистрации — тогда учебный прогресс хранится на вашем
-        устройстве. Мы не собираем email, имя, телефон и другие персональные данные. Аккаунт (по желанию)
+        устройстве. Для создания аккаунта не требуются email, имя или телефон. Аккаунт (по желанию)
         нужен лишь для синхронизации прогресса между устройствами.
       </p>
 
       <Section title="Без аккаунта">
         <p>
           Регистрация не обязательна. В этом режиме весь учебный прогресс хранится только на вашем устройстве
-          и никуда не передаётся. Никакие данные оператору не поступают.
+          и никуда не передаётся при обычной локальной учёбе. Обращения через форму обратной связи отправляются отдельно, по вашему действию.
         </p>
       </Section>
 
@@ -82,11 +82,27 @@ function Ru() {
         </ul>
       </Section>
 
+      <Section title="Обратная связь">
+        <p>
+          При отправке обращения передаются выбранная тема, текст, добровольно
+          указанный адрес почты и технические данные, показанные в форме: версия
+          приложения, страница, язык, уровень, браузер, состояние сети и номер
+          сообщения. Для доставки может использоваться Web3Forms или настроенный
+          оператором сервис. Почта используется для ответа и уточнения деталей
+          обращения.
+        </p>
+        <p>
+          Перед отправкой сообщение сохраняется в локальную очередь. При сбое
+          оно остаётся на устройстве; приложение повторяет доставку при запуске
+          или восстановлении сети. Неотправленный черновик хранится только в
+          памяти приложения. Не указывайте пароли и ключи доступа.
+        </p>
+      </Section>
+
       <Section title="Удаление данных">
         <p>
           Удаление аккаунта и связанных данных (учебные данные и загруженные книги) выполняется по обращению
-          на контакт ниже; кнопка удаления прямо в настройках появится позднее. Поскольку персональные данные
-          не собираются, аккаунт можно также просто перестать использовать.
+          на контакт ниже; кнопка удаления прямо в настройках появится позднее. Если просто перестать пользоваться аккаунтом, это само по себе не удаляет серверные данные.
         </p>
       </Section>
 
@@ -125,12 +141,12 @@ function En() {
       <Eyebrow className="mb-3.5">privacy policy</Eyebrow>
       <h1 className="text-2xl font-bold tracking-tight text-balance">Privacy</h1>
       <p className="mt-3 text-sm leading-relaxed text-pretty text-muted">
-        In short: you can use the app without an account — then learning progress stays on your device. We collect no
-        email, name, phone, or other personal data. An optional account only syncs your progress across devices.
+        In short: you can use the app without an account — then learning progress stays on your device. No email,
+        name or phone is required to create an account. An optional account syncs your progress across devices.
       </p>
 
       <Section title="Without an account">
-        <p>Registration is optional. In this mode all learning progress stays on your device and is never sent anywhere.</p>
+        <p>Registration is optional. During ordinary local study, learning progress stays on your device. Feedback messages are sent separately, when you submit them.</p>
       </Section>
 
       <Section title="An account with no personal data">
@@ -172,11 +188,26 @@ function En() {
         </ul>
       </Section>
 
+      <Section title="Feedback">
+        <p>
+          When you submit feedback, the topic, message, optional reply email and
+          the technical details shown in the form are sent: app version, page,
+          language, level, browser, network state and submission ID. Delivery
+          may use Web3Forms or the operator’s configured service. The email is
+          used to reply and clarify your report.
+        </p>
+        <p>
+          The message is saved to a local queue before delivery. Failed attempts
+          remain on your device and are retried when the app starts or
+          reconnects. Unsubmitted drafts stay only in the app’s memory. Do not
+          include passwords or access keys.
+        </p>
+      </Section>
+
       <Section title="Deleting your data">
         <p>
           Deleting your account and its data (learning data and uploaded books) is available via the contact
-          below; an in-app delete button will follow. Since no personal data is collected, you can also simply
-          stop using the account.
+          below; an in-app delete button will follow. Simply stopping use of the account does not delete server data.
         </p>
       </Section>
 
