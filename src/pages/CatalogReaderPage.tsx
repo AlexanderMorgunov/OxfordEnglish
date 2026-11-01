@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams, useLocation } from 'react-router-dom';
-import { Eyebrow, PageStub } from '@/shared/ui';
+import { PageStub } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import type { ParsedBook } from '@/features/reader/parse';
-import { getCatalogEntry, openCatalogBook, type CatalogEntry } from '@/features/reader/catalog';
+import {
+  getCatalogEntry,
+  openCatalogBook,
+  type CatalogEntry,
+} from '@/features/reader/catalog';
 import { BookView } from '@/features/reader/BookView';
 import { RelatedShelf } from '@/features/reader/RelatedShelf';
 
@@ -18,16 +22,15 @@ function readCatalogChapter(id: string): number {
   }
 }
 function saveCatalogChapter(id: string, i: number) {
-  try {
-    localStorage.setItem(chapterKey(id), String(i));
-  } catch {
-    // best-effort
-  }
+  localStorage.setItem(chapterKey(id), String(i));
 }
 
 export function CatalogReaderPage() {
   const location = useLocation();
-  const libraryReturn = location.state?.libraryReturn === '/library' ? '/library' : '/library/catalog';
+  const libraryReturn =
+    location.state?.libraryReturn === '/library'
+      ? '/library'
+      : '/library/catalog';
   const { catalogId } = useParams();
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [entry, setEntry] = useState<CatalogEntry | null>(null);
@@ -56,14 +59,27 @@ export function CatalogReaderPage() {
     };
   }, [catalogId]);
 
-  if (state === 'loading') return <p className="font-mono text-sm text-muted">loading book…</p>;
+  if (state === 'loading')
+    return (
+      <p role="status" className="font-mono text-sm text-muted">
+        {ru ? 'Открываем книгу…' : 'Opening the book…'}
+      </p>
+    );
   if (state === 'error' || !book || !entry) {
     return (
-      <PageStub eyebrow="library" title={ru ? 'Книга не открылась' : 'Could not open the book'}>
+      <PageStub
+        eyebrow="library"
+        title={ru ? 'Книга не открылась' : 'Could not open the book'}
+      >
         <p className="mb-3 text-sm text-muted">
-          {ru ? 'Возможно, нужна сеть для загрузки этой книги.' : 'This book may need a connection to download.'}
+          {ru
+            ? 'Возможно, нужна сеть для загрузки этой книги.'
+            : 'This book may need a connection to download.'}
         </p>
-        <Link to={libraryReturn} className="font-mono text-teal hover:underline">
+        <Link
+          to={libraryReturn}
+          className="font-mono text-teal hover:underline"
+        >
           ← {ru ? 'к библиотеке' : 'back to library'}
         </Link>
       </PageStub>
@@ -71,37 +87,32 @@ export function CatalogReaderPage() {
   }
 
   return (
-    <article className="reading-column">
-      <div className="mb-3.5 flex flex-wrap items-center justify-between gap-3">
-        <Eyebrow className="min-w-0 max-w-full">
-          {entry.level} · {book.title}
-        </Eyebrow>
-        <Link to={libraryReturn} className="max-w-full shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">
-          ← {ru ? 'библиотека' : 'library'}
-        </Link>
-      </div>
-
+    <article className="rd-book-page">
       <BookView
         book={book}
         idPrefix={`reader.catalog.${entry.id}`}
         initialChapter={readCatalogChapter(entry.id)}
         onChapter={(i) => saveCatalogChapter(entry.id, i)}
+        libraryReturn={libraryReturn}
+        level={entry.level}
       />
 
-      <p className="mt-8 border-t border-line pt-5 text-xs leading-relaxed text-muted">
-        {ru ? 'Свободная лицензия: ' : 'Free license: '}
-        {entry.license.attribution} ·{' '}
-        <a
-          href={entry.license.sourceUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-teal hover:underline"
-        >
-          {ru ? 'источник' : 'source'}
-        </a>
-      </p>
+      <div className="rd-catalog-meta">
+        <p className="border-t border-line pt-5 text-xs leading-relaxed text-muted">
+          {ru ? 'Свободная лицензия: ' : 'Free license: '}
+          {entry.license.attribution} ·{' '}
+          <a
+            href={entry.license.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-teal hover:underline"
+          >
+            {ru ? 'источник' : 'source'}
+          </a>
+        </p>
 
-      <RelatedShelf current={entry} />
+        <RelatedShelf current={entry} />
+      </div>
     </article>
   );
 }

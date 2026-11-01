@@ -1,7 +1,7 @@
 import { afterEach, expect, test, vi } from 'vitest';
 import { captureReadingPosition, readReadingPosition, restoreReadingPosition } from './reading-position';
 
-afterEach(() => { document.querySelectorAll('[data-position-test]').forEach(el => el.remove()); vi.restoreAllMocks(); });
+afterEach(() => { document.querySelectorAll('[data-position-test]').forEach(el => el.remove()); vi.restoreAllMocks(); document.documentElement.style.removeProperty('--app-nav-top'); document.documentElement.style.removeProperty('--app-nav-bottom'); });
 
 function passage(top = -5, height = 20) {
   const root = document.createElement('div');
@@ -14,6 +14,28 @@ function passage(top = -5, height = 20) {
   vi.spyOn(word, 'getBoundingClientRect').mockReturnValue(new DOMRect(0, top, 40, height));
   return { root, word };
 }
+
+test('the saved visible word is relative to the sticky navigation, including a changed header height', () => {
+  Object.defineProperty(window, 'scrollY', { configurable: true, value: 1000 });
+  document.documentElement.style.setProperty('--app-nav-top','100px');
+  const {root,word}=passage(110);
+  const saved=captureReadingPosition(root,'chapter-one');
+  expect(saved).toMatchObject({word:'0:1:7',lineOffset:.5});
+  document.documentElement.style.setProperty('--app-nav-top','80px');
+  vi.mocked(word.getBoundingClientRect).mockReturnValue(new DOMRect(0,900,40,20));
+  const scroll=vi.spyOn(window,'scrollTo').mockImplementation(()=>{});
+  restoreReadingPosition(root,saved);
+  expect(scroll).toHaveBeenCalledWith({top:1810,behavior:'instant'});
+});
+
+test('words behind the top and bottom navigation are not reading position anchors',()=>{
+  const {root,word}=passage(20);
+  document.documentElement.style.setProperty('--app-nav-top','100px');
+  expect(captureReadingPosition(root,'chapter-one').word).toBeUndefined();
+  document.documentElement.style.setProperty('--app-nav-bottom','90px');
+  vi.mocked(word.getBoundingClientRect).mockReturnValue(new DOMRect(0,window.innerHeight-50,40,20));
+  expect(captureReadingPosition(root,'chapter-one').word).toBeUndefined();
+});
 
 test('resume follows the same word after font, line spacing and wrapping change its document position', () => {
   Object.defineProperty(window, 'scrollY', { configurable: true, value: 1000 });

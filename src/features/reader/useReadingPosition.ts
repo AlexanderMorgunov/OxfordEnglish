@@ -1,10 +1,23 @@
 import { useLayoutEffect, useRef } from 'react';
 import type { RefObject } from 'react';
-import { captureDataScope, subscribeDataScope } from '@/features/account/dataScope';
-import { captureReadingPosition, readReadingPosition, restoreReadingPosition } from './reading-position';
+import {
+  captureDataScope,
+  subscribeDataScope,
+} from '@/features/account/dataScope';
+import {
+  captureReadingPosition,
+  readReadingPosition,
+  restoreReadingPosition,
+} from './reading-position';
 import type { ReadingPosition } from './reading-position';
+import { NAVIGATION_INSETS_EVENT } from '@/shared/lib/navigation-insets';
 
-export function useReadingPosition({ rootRef, jumpingRef, storageKey, pageId }: {
+export function useReadingPosition({
+  rootRef,
+  jumpingRef,
+  storageKey,
+  pageId,
+}: {
   rootRef: RefObject<HTMLElement | null>;
   jumpingRef: RefObject<boolean>;
   storageKey: string;
@@ -12,7 +25,8 @@ export function useReadingPosition({ rootRef, jumpingRef, storageKey, pageId }: 
 }) {
   const cancelRestoreRef = useRef<() => void>(() => {});
   useLayoutEffect(() => {
-    const root = rootRef.current?.querySelector<HTMLElement>('[data-reader-text]');
+    const root =
+      rootRef.current?.querySelector<HTMLElement>('[data-reader-text]');
     if (!root) return;
     const owned = captureDataScope();
     let alive = true;
@@ -23,11 +37,19 @@ export function useReadingPosition({ rootRef, jumpingRef, storageKey, pageId }: 
     let latest: ReadingPosition | null = null;
     let saved: ReadingPosition | null = null;
     const startupUntil = Date.now() + 5000;
-    try { saved = readReadingPosition(localStorage.getItem(storageKey), pageId); } catch { /* Storage can be unavailable. */ }
+    try {
+      saved = readReadingPosition(localStorage.getItem(storageKey), pageId);
+    } catch {
+      /* Storage can be unavailable. */
+    }
     const valid = () => alive && owned() && root.isConnected;
     const write = () => {
       if (!alive || !owned() || !latest) return;
-      try { localStorage.setItem(storageKey, JSON.stringify(latest)); } catch { /* Best effort. */ }
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(latest));
+      } catch {
+        /* Best effort. */
+      }
     };
     const capture = () => {
       if (restored && valid()) latest = captureReadingPosition(root, pageId);
@@ -64,11 +86,19 @@ export function useReadingPosition({ rootRef, jumpingRef, storageKey, pageId }: 
       if (!interrupted && Date.now() < startupUntil) scheduleRestore();
       else onScroll();
     };
-    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(onLayout);
+    const observer =
+      typeof ResizeObserver === 'undefined'
+        ? null
+        : new ResizeObserver(onLayout);
     if (rootRef.current) observer?.observe(rootRef.current);
     observer?.observe(root);
-    const hide = () => { capture(); write(); };
-    const onVisibility = () => { if (document.visibilityState === 'hidden') hide(); };
+    const hide = () => {
+      capture();
+      write();
+    };
+    const onVisibility = () => {
+      if (document.visibilityState === 'hidden') hide();
+    };
     const unsubscribe = subscribeDataScope(() => {
       interrupt();
       latest = null;
@@ -81,6 +111,7 @@ export function useReadingPosition({ rootRef, jumpingRef, storageKey, pageId }: 
     window.addEventListener('pointerdown', interrupt, { passive: true });
     window.addEventListener('keydown', interrupt);
     window.addEventListener('pagehide', hide);
+    window.addEventListener(NAVIGATION_INSETS_EVENT, onLayout);
     document.addEventListener('visibilitychange', onVisibility);
     scheduleRestore();
     void document.fonts?.ready.then(scheduleRestore);
@@ -99,6 +130,7 @@ export function useReadingPosition({ rootRef, jumpingRef, storageKey, pageId }: 
       window.removeEventListener('pointerdown', interrupt);
       window.removeEventListener('keydown', interrupt);
       window.removeEventListener('pagehide', hide);
+      window.removeEventListener(NAVIGATION_INSETS_EVENT, onLayout);
       document.removeEventListener('visibilitychange', onVisibility);
     };
   }, [rootRef, jumpingRef, storageKey, pageId]);

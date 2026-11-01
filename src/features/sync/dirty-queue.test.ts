@@ -33,7 +33,7 @@ test('adding a book queues it under its own id and asks for a push', async () =>
 test('a review, a word and a bookmark each queue under their own key', async () => {
   await putSrsCard({ id: 'w:cat', kind: 'word', ref: 'cat', due: 0, stability: 0, difficulty: 0, reps: 0, lapses: 0, state: 0, lastReview: 0 } as never);
   await putWordStatus({ word: 'cat', status: 'learning', encounters: 1, firstSeenAt: 1 } as never);
-  await addBookmark({ id: 'bm-1', bookId: 'bk-1', chapter: 0, createdAt: 1 } as never);
+  await addBookmark({ id: 'bm-1', bookKey: 'reader.bk-1', page: 0, paragraph: 0, pageId: 'one', snippet: 'A bookmark.', createdAt: 1 });
   expect(await keys()).toEqual(['bookmarks:bm-1', 'srsCards:w:cat', 'wordStatus:cat']);
 });
 

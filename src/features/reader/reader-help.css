@@ -1,0 +1,206 @@
+.rdh-panel,
+.rdh-sheet {
+  box-sizing: border-box;
+  min-width: 0;
+  color: var(--color-content);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+.rdh-panel {
+  width: 100%;
+  max-height: inherit;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.rdh-topline {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+}
+.rdh-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  min-height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 0.6rem;
+  font-size: 1.5rem;
+}
+.rdh-close:hover {
+  background: var(--color-surface-2);
+  color: var(--color-content);
+}
+.rdh-body {
+  padding: 1rem;
+}
+.rdh-body h2,
+.rdh-word {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  line-height: 1.25;
+  font-weight: 600;
+}
+.rdh-body button {
+  min-height: 2.75rem;
+}
+.rdh-label {
+  display: block;
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+  margin: 0.8rem 0 0.3rem;
+}
+.rdh-quote {
+  border-left: 2px solid var(--color-teal);
+  margin: 1rem 0 0.25rem;
+  padding: 0.25rem 0 0.25rem 0.7rem;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+.rdh-context {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.6rem;
+  background: var(--color-surface-2);
+}
+.rdh-editor {
+  display: grid;
+  gap: 0.35rem;
+  margin: 1rem 0;
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+.rdh-editor input {
+  width: 100%;
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0.65rem;
+  background: var(--color-ink);
+  border: 1px solid var(--color-control);
+  border-radius: 0.5rem;
+  color: var(--color-content);
+  font-size: var(--text-sm);
+}
+.rdh-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.8rem;
+}
+.rdh-action {
+  display: inline-flex;
+  gap: 0.4rem;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color-control);
+  border-radius: 0.55rem;
+  padding: 0.45rem 0.75rem;
+  font-size: var(--text-xs);
+  color: var(--color-content);
+}
+.rdh-action[aria-pressed='true'] {
+  background: var(--color-teal-dim);
+  border-color: var(--color-teal);
+}
+.rdh-action:disabled {
+  opacity: 0.65;
+}
+.rdh-primary {
+  background: var(--color-action);
+  border-color: var(--color-action);
+  color: var(--color-on-action);
+  font-weight: 600;
+}
+.rdh-note {
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+  margin-top: 0.5rem;
+}
+.rdh-status {
+  margin: 0.5rem 0;
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+.rdh-idle {
+  color: var(--color-muted);
+  border: 1px dashed var(--color-line);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  font-size: var(--text-sm);
+}
+.rdh-idle p {
+  color: var(--color-content);
+  margin-bottom: 0.5rem;
+}
+.rdh-idle small {
+  display: block;
+  margin-top: 1rem;
+  font-size: var(--text-xs);
+}
+.rdh-panel ~ .rdh-idle,
+.rdh-idle:has(~ .rdh-panel) {
+  display: none;
+}
+.rdh-sheet {
+  position: fixed;
+  inset: auto 0 0;
+  margin: 0 auto;
+  width: min(100%, 36rem);
+  max-width: 100%;
+  max-height: 88dvh;
+  padding: 0;
+  border-radius: 1.1rem 1.1rem 0 0;
+  overscroll-behavior: contain;
+  overflow: auto;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.rdh-sheet::backdrop {
+  background: rgb(0 0 0 / 50%);
+}
+html:has(.rdh-sheet[open]) {
+  overflow: hidden;
+}
+.rdh-sentence-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: 1.8em;
+  min-height: 1.8em;
+  margin: 0 0.25em;
+  border-radius: 0.4em;
+  color: var(--color-teal);
+}
+.rdh-sentence-trigger:hover {
+  background: var(--color-surface-2);
+}
+.rdh-body svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+.rdh-result {
+  margin-top: 0.85rem;
+  padding: 0.8rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.6rem;
+}
+.rdh-result p {
+  white-space: pre-line;
+}

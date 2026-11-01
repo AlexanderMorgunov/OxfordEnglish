@@ -1,6 +1,13 @@
 import { createContext, memo, use, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Button, Popover, PopoverGroup, usePopoverClose } from '@/shared/ui';
+import { Button, PopoverGroup, usePopoverClose } from '@/shared/ui';
+import { ReaderHelp, ReaderHelpEnvironment, ReaderHelpIdle } from './ReaderHelp';
+import { ReaderSentenceHelp } from './ReaderSentenceHelp';
+import { ReaderIcon } from './ReaderIcon';
+import type { ReaderAudioControls } from './ReaderWidget';
+import { db } from '@/db/db';
+import { isDeleted } from '@/features/sync/resolve';
+import { editCardAnswer } from '@/features/vocab/manage';
 import { overflowShift } from './lens-menu';
 import { cn } from '@/shared/lib/cn';
 import { useVocabStore } from '@/features/vocab/vocabStore';
@@ -11,6 +18,7 @@ import {
   listEnglishVoices,
   subscribeVoices,
   previewVoice,
+  chunkPassage,
   WORD_SPLIT_RE,
   WORD_TEST_RE,
 } from '@/shared/lib/audio';
@@ -33,9 +41,10 @@ import type { AiConfig } from '@/features/ai/provider';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { useLearner } from '@/features/learner/store';
 import { classifyWord, estimateCoverage, loadFreq, rankThresholdFor, type FreqIndex, type WordMark } from './difficulty';
-import { useReaderSettings, DEFAULT_FONT_STEP, FONT_CLASSES, LEADING_CLASSES, RATE_STEPS } from './settings';
+import { useReaderSettings, DEFAULT_FONT_STEP, FONT_CLASSES, LEADING_CLASSES, RATE_STEPS, READER_FONT_FAMILIES, effectiveReaderFontStep } from './settings';
 import { ReaderTextSize } from './ReaderTextSize';
 import { keepReadingAnchor } from './reading-anchor';
+import { currentReadingLocation } from './reader-location';
 import { runLens, type LensArgs, type LensMode } from './lens';
 import { AiUpsellLink } from '@/features/ai/AiUpsellLink';
 import { useProActivation } from '@/features/account/proActivation';
@@ -70,6 +79,7 @@ type ReaderCtx = {
   source?: BookSource;
   ownerRevision?: number;
   wordCards?: ReadonlyMap<string, SrsCard>;
+  helpTargetId?: string;
 };
 const ReaderContext = createContext<ReaderCtx>({ freq: null, rankThreshold: Infinity, coloring: false });
 
@@ -83,20 +93,27 @@ function ContextGloss({
   config,
   onResolved,
   shouldFinishSaved,
+  explicit = false,
 }: {
   word: string;
   sentence: string;
   config: AiConfig | null;
   onResolved: (firstLine: string) => void;
   shouldFinishSaved: () => boolean;
+  explicit?: boolean;
 }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [text, setText] = useState<string | null>(null);
   const [state, setState] = useState<'loading' | 'done' | 'error'>('loading');
+  const [requested, setRequested] = useState(!explicit);
+  const [attempt, setAttempt] = useState(0);
+  const activeRequest = useRef<AbortController | null>(null);
 
   useEffect(() => {
+    if (!requested) return;
     let alive = true;
     const controller = new AbortController();
+    activeRequest.current = controller;
     setText(null);
     setState('loading');
     const current = captureDataScope();
@@ -122,22 +139,24 @@ function ContextGloss({
       if (!shouldFinishSaved()) controller.abort();
       clearTimeout(timer);
     };
-  }, [word, sentence, config, onResolved, shouldFinishSaved]);
+  }, [word, sentence, config, onResolved, shouldFinishSaved, requested, attempt]);
 
   return (
-    <div className="mt-2">
+    <div className={explicit ? 'rdh-context' : 'mt-2'}>
       <p className="font-mono text-2xs uppercase tracking-[0.08em] text-violet">
-        {ru ? 'в контексте' : 'in context'}
+        {ru ? 'в этом предложении · AI' : 'in this sentence · AI'}
       </p>
-      {state === 'loading' && (
-        <p className="font-mono text-2xs text-faint">…</p>
+      {!requested && <button type="button" className="text-sm text-violet hover:underline" onClick={() => setRequested(true)}>{ru ? 'Уточнить значение' : 'Refine meaning'}</button>}
+      {requested && state === 'loading' && (
+        <><p role="status" className="font-mono text-2xs text-muted">{ru ? 'Уточняю значение…' : 'Refining meaning…'}</p>{explicit && <button type="button" className="text-sm text-violet hover:underline" onClick={() => { activeRequest.current?.abort(); setRequested(false); }}>{ru ? 'Отменить запрос' : 'Cancel request'}</button>}</>
       )}
-      {state === 'error' && (
-        <p className="font-mono text-2xs text-faint">{ru ? 'недоступно' : 'unavailable'}</p>
+      {requested && state === 'error' && (
+        <><p role="alert" className="font-mono text-2xs text-muted">{ru ? 'недоступно' : 'unavailable'}</p>{explicit && <button type="button" className="text-violet hover:underline" onClick={() => setAttempt(value => value + 1)}>{ru ? 'Повторить запрос' : 'Retry request'}</button>}</>
       )}
       {state === 'done' && text && (
-        <p className="whitespace-pre-line text-sm leading-relaxed text-content">{text}</p>
+        <p role="status" className="whitespace-pre-line text-sm leading-relaxed text-content">{text}</p>
       )}
+      {explicit && <p className="rdh-note">{ru ? 'Trial/Pro или свой ключ. Сохранённый ответ не требует нового запроса.' : 'Trial/Pro or your own key. Saved answers need no new request.'}</p>}
     </div>
   );
 }
@@ -162,7 +181,7 @@ function PopoverLevel({ word }: { word: string }) {
 /** Rendered inside the word popover (book reader only): starts a phrase selection anchored at this
  *  word and dismisses the popover, so the next tapped word sets the phrase end. It's a child of the
  *  panel so usePopoverClose() reads Popover's provider (a hook in WordToken's body would not). */
-function SelectPhraseButton({ tokenId }: { tokenId: string }) {
+function SelectPhraseButton({ tokenId, modern = false }: { tokenId: string; modern?: boolean }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const begin = usePhraseSelect((s) => s.begin);
   const close = usePopoverClose();
@@ -175,7 +194,7 @@ function SelectPhraseButton({ tokenId }: { tokenId: string }) {
       }}
       className="font-mono text-2xs text-violet hover:underline"
     >
-      {ru ? 'выделить фразу →' : 'select phrase →'}
+      {modern ? ru ? 'Выделить фразу с этого слова' : 'Select a phrase from this word' : ru ? 'выделить фразу →' : 'select phrase →'}
     </button>
   );
 }
@@ -216,7 +235,9 @@ export const WordToken = memo(function WordToken({
   );
   const setStatus = useVocabStore((s) => s.setStatus);
   const lang = useUiLang((s) => s.lang);
-  const { freq, rankThreshold, coloring, source, wordCards } = use(ReaderContext);
+  const { freq, rankThreshold, coloring, source, wordCards, helpTargetId } = use(ReaderContext);
+  const [meaningDraft, setMeaningDraft] = useState<string | null>(null);
+  const modern = Boolean(helpTargetId);
   const savingWord = useRef(false);
   const [wordSave, setWordSave] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [fetched, setFetched] = useState<string | null>(null);
@@ -235,6 +256,7 @@ export const WordToken = memo(function WordToken({
       setDone(false);
       setLoading(false);
       setFailed(false);
+      setMeaningDraft(null);
     });
   }, [savedLookup, fetched, done]);
   const config = useAiStore((s) => s.config);
@@ -278,10 +300,11 @@ export const WordToken = memo(function WordToken({
     [lookup, sentence]
   );
 
-  const openLookup = () => {
-    if (savedWordMeaning(wordCards?.get(lookup.toLowerCase()), sentence) || gloss?.ru || done) return;
+  const openLookup = (force = false) => {
+    if (savedWordMeaning(wordCards?.get(lookup.toLowerCase()), sentence) || gloss?.ru || done && !force) return;
     setDone(true);
     setLoading(true);
+    setFailed(false);
     const current = captureDataScope();
     const epoch = ++lookupEpoch.current;
     const valid = () => current() && epoch === lookupEpoch.current;
@@ -317,7 +340,8 @@ export const WordToken = memo(function WordToken({
   const deco: 'learning' | 'new' | undefined = phrase && coloring ? 'learning' : visible;
 
   return (
-    <Popover
+    <ReaderHelp
+      targetId={helpTargetId}
       label={word}
       showClose
       closeLabel={lang === 'ru' ? 'Закрыть' : 'Close'}
@@ -328,9 +352,10 @@ export const WordToken = memo(function WordToken({
           type="button"
           data-widx={tokenId}
           lang="en"
-          onClick={openLookup}
+          onClick={() => openLookup()}
           className={cn(
             'max-w-full cursor-pointer rounded-[2px] text-left whitespace-normal [overflow-wrap:anywhere]',
+            modern && '[@media(pointer:fine)]:select-text',
             deco ? 'underline decoration-2 underline-offset-4' : 'hover:bg-surface-2',
             deco === 'learning' && '[text-decoration-color:var(--color-word-learning)]',
             deco === 'new' && '[text-decoration-color:var(--color-word-unknown)]',
@@ -342,7 +367,7 @@ export const WordToken = memo(function WordToken({
       }
     >
       <div className="flex flex-wrap items-center gap-2">
-        <p lang="en" className="max-w-full font-mono text-sm text-content">{word}</p>
+        <p lang="en" className={modern ? 'rdh-word' : 'max-w-full font-mono text-sm text-content'}>{word}</p>
         {canSpeak && (
           <button
             type="button"
@@ -350,7 +375,7 @@ export const WordToken = memo(function WordToken({
             className="text-teal transition-opacity hover:opacity-80"
             onClick={() => speakWord(lookup)}
           >
-            🔊
+            {modern ? <ReaderIcon name="volume" /> : '🔊'}
           </button>
         )}
         <PopoverLevel word={lookup} />
@@ -358,6 +383,7 @@ export const WordToken = memo(function WordToken({
       {gloss?.ipa && (
         <p className="font-mono text-xs text-muted">{gloss.ipa}</p>
       )}
+      {modern && <span className="rdh-label">{savedMeaning ? lang === 'ru' ? 'Ваше сохранённое значение' : 'Your saved meaning' : lang === 'ru' ? 'Общее значение' : 'General meaning'}</span>}
       {translation && (
         <p lang="ru" className="mt-1 text-sm text-content">{translation}</p>
       )}
@@ -367,12 +393,13 @@ export const WordToken = memo(function WordToken({
         <p role="status" className="mt-1 font-mono text-2xs text-faint">{lang === 'ru' ? 'перевод…' : 'translating…'}</p>
       )}
       {failed && !translation && (
-        <p className="mt-1 font-mono text-2xs text-muted">
+        <><p className="mt-1 font-mono text-2xs text-muted">
           {lang === 'ru'
-            ? 'Надёжный перевод не найден. Можно указать свой в словаре.'
-            : 'No reliable translation found. You can enter your own in vocabulary.'}
-        </p>
+            ? modern ? 'Надёжный перевод не найден. Можно ввести своё значение ниже.' : 'Надёжный перевод не найден. Можно указать свой в словаре.'
+            : modern ? 'No reliable translation found. Enter your own meaning below.' : 'No reliable translation found. You can enter your own in vocabulary.'}
+        </p>{modern && <button type="button" className="rdh-action" onClick={() => openLookup(true)}>{lang === 'ru' ? 'Повторить перевод' : 'Retry translation'}</button>}</>
       )}
+      {modern && <><blockquote className="rdh-quote" lang="en">{sentence}</blockquote><p className="rdh-note">{lang === 'ru' ? 'Исходное предложение' : 'Original sentence'}</p></>}
       {(aiReady || aiUnknown) && enableContextFetch && sentence.includes(' ') && (
           <ContextGloss
             word={word}
@@ -380,17 +407,20 @@ export const WordToken = memo(function WordToken({
             config={config}
             onResolved={onGlossResolved}
             shouldFinishSaved={shouldFinishSaved}
+            explicit={modern}
           />
         )}
       {tokenId && (
         <div className="mt-2">
-          <SelectPhraseButton tokenId={tokenId} />
+          <SelectPhraseButton tokenId={tokenId} modern={modern} />
         </div>
       )}
+      {modern && <label className="rdh-editor">{lang === 'ru' ? 'Своё значение для сохранения' : 'Your meaning to save'}<input value={meaningDraft ?? wicGloss ?? translation ?? ''} onChange={event => { setMeaningDraft(event.target.value); setWordSave('idle'); }} placeholder={lang === 'ru' ? 'Можно оставить без перевода' : 'You can save without a translation'} disabled={visibleWordSave === 'saving'} /></label>}
       <div className="mt-2.5 flex flex-wrap gap-1.5">
         <Button
           size="sm"
           variant="ghost"
+          className={modern ? 'rdh-action rdh-primary' : undefined}
           disabled={visibleWordSave === 'saving'}
           onClick={() => {
             if (savingWord.current && savedWord.current?.current()) return;
@@ -398,10 +428,19 @@ export const WordToken = memo(function WordToken({
             savingWord.current = true;
             setWordSave('saving');
             void setStatus(lookup, 'learning');
+            const manual = modern && meaningDraft !== null;
+            const back = manual ? meaningDraft.trim() || lookup : translation ?? lookup;
             const save = {
-              done: addWordCard(lookup, translation ?? lookup, sentence, wicGloss ?? undefined),
+              done: (async () => {
+                const expected = manual ? await db.srsCards.get(`word:${lookup.toLowerCase()}`) : undefined;
+                if (!current()) return false;
+                const saved = await addWordCard(lookup, back, sentence, manual ? back : wicGloss ?? undefined);
+                if (!saved || !current()) return false;
+                if (manual && expected && !await editCardAnswer(expected, back, expected.contextSentence === sentence ? back : expected.contextGloss ?? '', current)) return false;
+                return current();
+              })(),
               current,
-              back: translation ?? lookup,
+              back,
             };
             savedWord.current = save;
             void save.done.then(async (saved) => {
@@ -413,27 +452,29 @@ export const WordToken = memo(function WordToken({
               .finally(() => { if (savedWord.current === save) savingWord.current = false; });
           }}
         >
-          {lang === 'ru' ? 'учу' : 'learning'}
+          {modern ? visibleWordSave === 'saving' ? lang === 'ru' ? 'Сохраняю…' : 'Saving…' : lang === 'ru' ? 'Учу · сохранить' : 'Learn · save' : lang === 'ru' ? 'учу' : 'learning'}
         </Button>
-        <Button size="sm" variant="ghost" onClick={() => void setStatus(lookup, 'known')}>
+        <Button size="sm" variant="ghost" aria-pressed={status === 'known'} onClick={() => void setStatus(lookup, 'known')}>
           {lang === 'ru' ? 'знаю' : 'known'}
         </Button>
         <Button
           size="sm"
           variant="ghost"
+          aria-pressed={status === 'ignored'}
           onClick={() => void setStatus(lookup, 'ignored')}
           title={lang === 'ru' ? 'не считать словом (имя, и т. п.)' : 'not a vocabulary word (a name, etc.)'}
         >
           {lang === 'ru' ? 'игнор' : 'ignore'}
         </Button>
       </div>
+      {modern && <p className="rdh-note">{lang === 'ru' ? 'Просмотр не сохраняет карточку. «Знаю» и «Игнор» не удаляют её и не оценивают повторение.' : 'Lookup does not save a card. Known and Ignore keep the card and do not grade a review.'}</p>}
       {visibleWordSave !== 'idle' && <p role={visibleWordSave === 'error' ? 'alert' : 'status'} className="mt-2 text-xs text-muted">
         {visibleWordSave === 'saving' ? lang === 'ru' ? 'Сохраняю…' : 'Saving…'
           : visibleWordSave === 'saved' ? lang === 'ru' ? '✓ сохранено' : '✓ saved'
           : source ? lang === 'ru' ? 'Не удалось добавить в главу. Нажмите «учу» ещё раз.' : 'Could not add to chapter. Press learning again.'
           : lang === 'ru' ? 'Не удалось сохранить. Попробуйте ещё раз.' : 'Could not save. Try again.'}
       </p>}
-    </Popover>
+    </ReaderHelp>
   );
 });
 
@@ -511,7 +552,7 @@ const Paragraph = memo(function Paragraph({
     () => sentences.map((s) => phraseMarkedTokens(s, savedPhrases)),
     [sentences, savedPhrases]
   );
-  const { freq } = use(ReaderContext);
+  const { freq, helpTargetId } = use(ReaderContext);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const pendingLens = useRef<AbortController | null>(null);
   const [out, setOut] = useState<Record<number, LensCell>>({});
@@ -707,7 +748,7 @@ const Paragraph = memo(function Paragraph({
           className="mr-1.5 align-middle text-teal transition-opacity hover:opacity-80"
           onClick={() => onRead(index)}
         >
-          {active ? '❚❚' : '▶'}
+          {helpTargetId ? <ReaderIcon name={active ? 'pause' : 'play'} /> : active ? '❚❚' : '▶'}
         </button>
       )}
       {sentences.map((sentence, si) => {
@@ -735,7 +776,7 @@ const Paragraph = memo(function Paragraph({
             />
           );
         };
-        const playButton = canSpeak ? (
+        const playButton = canSpeak && !helpTargetId ? (
           <button
             key="play"
             type="button"
@@ -774,7 +815,13 @@ const Paragraph = memo(function Paragraph({
                 {toks.slice(firstWordAt + 1).map((tok, j) => renderTok(tok, firstWordAt + 1 + j))}
               </>
             )}
-            <span className="relative mx-1.5 inline-flex align-middle">
+            {helpTargetId ? <ReaderHelp
+              targetId={helpTargetId}
+              label={lang === 'ru' ? 'Разобрать предложение' : 'Sentence help'}
+              trigger={<button type="button" className="rdh-sentence-trigger" aria-label={lang === 'ru' ? 'Действия с предложением' : 'Sentence actions'}><ReaderIcon name="sentence" /></button>}
+            >
+              <ReaderSentenceHelp key={lensK} sentence={sentence} level={level} freq={freq} canSpeak={canSpeak} playing={sentencePlaying} onSpeak={() => onReadSentence(index, si, sentence)} bookmarked={bookmarkedSents?.has(si) ?? false} onBookmark={onBookmark ? () => onBookmark(index, si, sentence) : undefined} onLens={onLens} />
+            </ReaderHelp> : <span className="relative mx-1.5 inline-flex align-middle">
               <button
                 type="button"
                 data-lens-trigger
@@ -867,7 +914,7 @@ const Paragraph = memo(function Paragraph({
                   )}
                 </span>
               )}
-            </span>{' '}
+            </span>}{' '}
             {/* Marked so the phrase picker can tell the lens OUTPUT from the source text. Without it,
                 selecting words inside a Russian translation offered to translate them — into Russian. */}
             {open && (
@@ -889,10 +936,14 @@ export function ReadingText({
   bookmarkedSentences,
   onBookmarkSentence,
   source,
+  helpTargetId,
+  onAudioControlsChange,
 }: {
   paragraphs: string[];
   glossary?: Map<string, Gloss>;
   source?: BookSource;
+  helpTargetId?: string;
+  onAudioControlsChange?: (controls: ReaderAudioControls | null) => void;
   /** Book reader only: keys `${para}:${sentence}` bookmarked on this page, and a sentence-level toggle
    *  (invoked from the per-sentence lens menu's "заложить" item). */
   bookmarkedSentences?: Set<string>;
@@ -908,6 +959,8 @@ export function ReadingText({
   const coloring = useReaderSettings((s) => s.coloring);
   const toggleColoring = useReaderSettings((s) => s.toggleColoring);
   const fontStep = useReaderSettings((s) => s.fontStep);
+  const fontStepExplicit = useReaderSettings((s) => s.fontStepExplicit);
+  const fontFamily = useReaderSettings((s) => s.fontFamily);
   const lineStep = useReaderSettings((s) => s.lineStep);
   const setLineStep = useReaderSettings((s) => s.setLineStep);
   const voiceURI = useReaderSettings((s) => s.voiceURI);
@@ -945,7 +998,8 @@ export function ReadingText({
     setVoiceURI(uri);
     previewVoice(uri, VOICE_SAMPLE);
   };
-  const typoClass = `${FONT_CLASSES[fontStep] ?? FONT_CLASSES[DEFAULT_FONT_STEP]} ${LEADING_CLASSES[lineStep] ?? LEADING_CLASSES[0]}`;
+  const effectiveFontStep = effectiveReaderFontStep(fontStep, fontStepExplicit, Boolean(helpTargetId));
+  const typoClass = `${FONT_CLASSES[effectiveFontStep] ?? FONT_CLASSES[DEFAULT_FONT_STEP]} ${LEADING_CLASSES[lineStep] ?? LEADING_CLASSES[0]}`;
   const [freq, setFreq] = useState<FreqIndex | null>(null);
   const [speakingIdx, setSpeakingIdx] = useState(-1);
   // `speakingActive` = an utterance is in flight (drives the ❚❚ glyph); `playingRef` = a read
@@ -972,11 +1026,14 @@ export function ReadingText({
   const [phrase, setPhrase] = useState<string | null>(null);
   const [phraseRu, setPhraseRu] = useState<string | null>(null);
   const [phraseTranslationSource, setPhraseTranslationSource] = useState<ReaderTranslation['source']>();
+  const [phraseFromSaved, setPhraseFromSaved] = useState(false);
   const [phraseSentence, setPhraseSentence] = useState<string | null>(null);
   const [phraseLoading, setPhraseLoading] = useState(false);
   const [phraseSaved, setPhraseSaved] = useState(false);
   const [phraseError, setPhraseError] = useState(false);
   const [phraseSaving, setPhraseSaving] = useState(false);
+  const [phraseDraft, setPhraseDraft] = useState<string | null>(null);
+  const phraseFocus = useRef<HTMLElement | null>(null);
   const phraseRequest = useRef<{
     text: string;
     sentence?: string;
@@ -1006,6 +1063,7 @@ export function ReadingText({
     setPhraseSaved(false);
     setPhraseSaving(false);
     setPhraseError(false);
+    setPhraseDraft(null);
   }), [clearPick]);
 
   useEffect(() => {
@@ -1023,7 +1081,7 @@ export function ReadingText({
     []
   );
 
-  const setPhraseText = (text: string, sentence?: string) => {
+  const setPhraseText = (text: string, sentence?: string, ai?: boolean) => {
     if (!phraseRequest.current?.saved) phraseRequest.current?.controller.abort();
     const request = {
       text,
@@ -1037,9 +1095,12 @@ export function ReadingText({
       controller: new AbortController(),
     };
     phraseRequest.current = request;
+    if (phrase !== text) phraseFocus.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     setPhrase(text);
+    setPhraseDraft(null);
     setPhraseSentence(sentence ?? null);
     setPhraseRu(null);
+    setPhraseFromSaved(false);
     setPhraseTranslationSource(undefined);
     setPhraseError(false);
     // Already in the word bank → show it as saved instead of offering "+ save" again.
@@ -1048,13 +1109,29 @@ export function ReadingText({
     setPhraseLoading(true);
     // Pass the phrase's sentence so the AI translates it IN context ("fowling pieces" → "охотничьи
     // ружья", not a literal "кусочки"); the free path ignores the context.
-    void translateReaderResult(text, { ...translateArgs.current, sentence, signal: request.controller.signal })
+    let fromSaved = false;
+    void (async (): Promise<ReaderTranslation | null> => {
+      if (helpTargetId && ai === undefined) {
+        const card = await db.srsCards.get(`phrase:${text.toLowerCase()}`).catch(() => undefined);
+        if (!request.current() || request.controller.signal.aborted) return null;
+        if (card?.kind === 'phrase' && !card.fromError && !isDeleted(card)) {
+          const contextual = Boolean(sentence && card.contextSentence === sentence && card.contextGloss?.trim());
+          const meaning = contextual ? card.contextGloss!.trim() : card.back.trim();
+          if (meaning && meaning.toLowerCase() !== text.toLowerCase()) {
+            fromSaved = true;
+            return { text: meaning, contextual };
+          }
+        }
+      }
+      return translateReaderResult(text, { ...translateArgs.current, ai: ai ?? translateArgs.current.ai, sentence, signal: request.controller.signal });
+    })()
       .then(async (result) => {
         request.result = result;
         if (!request.current()) return;
         if (phraseRequest.current === request) {
           setPhraseRu(result?.text ?? null);
           setPhraseTranslationSource(result?.source);
+          setPhraseFromSaved(fromSaved);
           setPhraseLoading(false);
         }
         if (
@@ -1107,6 +1184,14 @@ export function ReadingText({
     // endpoint isn't a word token.
     const a = tokenPosAt(sel.anchorNode);
     const b = tokenPosAt(sel.focusNode);
+    if (helpTargetId) {
+      const sentenceAt = (node: Node | null) => (node?.nodeType === Node.TEXT_NODE ? node.parentElement : node as HTMLElement | null)?.closest('[data-sent]');
+      const anchorSentence = sentenceAt(sel.anchorNode);
+      if (!anchorSentence || anchorSentence !== sentenceAt(sel.focusNode)) {
+        if (!pickAnchor) cancelPick();
+        return;
+      }
+    }
     if (a && b && a.p === b.p && a.s === b.s && a.t !== b.t) {
       const sentence = toSentences(paragraphs[a.p] ?? '')[a.s] ?? '';
       setPhraseText(phraseFromRange(a, b, sentence), sentence);
@@ -1157,15 +1242,18 @@ export function ReadingText({
     request.linking = true;
     setPhraseSaving(true);
     setPhraseError(false);
-    request.backAtSave = phraseRu ?? phrase;
+    const manual = Boolean(helpTargetId) && phraseDraft !== null;
+    const back = manual ? phraseDraft.trim() || phrase : phraseRu ?? phrase;
+    request.backAtSave = back;
+    if (manual) request.saved = null;
     clearPick();
-    request.saved ??= addPhraseCard(
-      phrase,
-      phraseRu ?? phrase,
-      phraseSentence ?? undefined,
-      undefined,
-      request.result?.contextual ? request.result.text : undefined
-    );
+    request.saved ??= (async () => {
+      const expected = manual ? await db.srsCards.get(`phrase:${request.text.toLowerCase()}`) : undefined;
+      if (!request.current()) return false;
+      const saved = await addPhraseCard(request.text, back, request.sentence, undefined, manual ? back : request.result?.contextual ? request.result.text : undefined);
+      if (!saved || !request.current()) return false;
+      return manual && expected ? editCardAnswer(expected, back, expected.contextSentence === request.sentence ? back : expected.contextGloss ?? '', request.current) : true;
+    })();
     void request.saved
       .then(async (saved) => {
         if (!request.current()) return;
@@ -1204,8 +1292,8 @@ export function ReadingText({
 
   const rankThreshold = rankThresholdFor(level);
   const readerCtx = useMemo<ReaderCtx>(
-    () => ({ freq, rankThreshold, coloring, source, ownerRevision, wordCards }),
-    [freq, rankThreshold, coloring, source, ownerRevision, wordCards]
+    () => ({ freq, rankThreshold, coloring, source, ownerRevision, wordCards, helpTargetId }),
+    [freq, rankThreshold, coloring, source, ownerRevision, wordCards, helpTargetId]
   );
 
   // Continuous read-aloud: after each paragraph ends, advance to the next and scroll it into
@@ -1227,6 +1315,7 @@ export function ReadingText({
     activeRef.current = true;
     setSpeakingActive(true);
     scrollToPara(i);
+    resumeChunkRef.current = startChunk;
     const spoken = toSentences(paragraphs[i]!).join(' ');
     speakPassage(spoken, {
       rate: rateRef.current,
@@ -1284,19 +1373,24 @@ export function ReadingText({
 
   // Play exactly one sentence, on demand and replayable. Speaks the sentence text standalone; clicking
   // the sentence that's already playing stops it.
-  const readSentence = (paraIdx: number, sIdx: number, sentence: string) => {
-    const wasThis = speakingIdx === paraIdx && speakingSentence === sIdx;
-    stopReading();
-    if (wasThis) return;
+  const speakSentenceFrom = (paraIdx: number, sIdx: number, sentence: string, startChunk = 0) => {
     playingRef.current = true;
     activeRef.current = true;
     setSpeakingActive(true);
     setSpeakingIdx(paraIdx);
     setSpeakingSentence(sIdx);
+    resumeChunkRef.current = startChunk;
     speakPassage(sentence, {
       rate: rateRef.current,
+      startChunk,
+      onChunk: chunk => { resumeChunkRef.current = chunk; },
       onEnd: () => stopReading(),
     });
+  };
+  const readSentence = (paraIdx: number, sIdx: number, sentence: string) => {
+    const wasThis = speakingIdx === paraIdx && speakingSentence === sIdx;
+    stopReading();
+    if (!wasThis) speakSentenceFrom(paraIdx, sIdx, sentence);
   };
   const readSentenceRef = useRef(readSentence);
   readSentenceRef.current = readSentence;
@@ -1330,9 +1424,69 @@ export function ReadingText({
     stopRef.current();
   }, [paragraphs]);
 
+  const audioActions = useRef({ toggle: () => {}, next: () => {} });
+  audioActions.current = {
+    toggle: () => {
+      if (playingRef.current && speakingIdx >= 0 && speakingSentence !== null) {
+        if (activeRef.current) {
+          activeRef.current = false;
+          setSpeakingActive(false);
+          cancelSpeech();
+        } else speakSentenceFrom(speakingIdx, speakingSentence, toSentences(paragraphs[speakingIdx] ?? '')[speakingSentence] ?? '', resumeChunkRef.current);
+        return;
+      }
+      if (playingRef.current && speakingIdx >= 0) { read(speakingIdx); return; }
+      const location = textRef.current ? currentReadingLocation(textRef.current, paragraphs) : null;
+      const paragraph = location?.paragraph ?? 0;
+      const sentences = toSentences(paragraphs[paragraph] ?? '');
+      const offset = sentences.slice(0, location?.sentence ?? 0).reduce((total, text) => total + text.length + 1, 0);
+      const chunk = chunkPassage(sentences.join(' ')).findIndex(part => part.offset >= offset);
+      stopReading();
+      playingRef.current = true;
+      speakFrom(paragraph, Math.max(0, chunk));
+    },
+    next: () => {
+      let paragraph = Math.max(0, speakingIdx);
+      const sentences = toSentences(paragraphs[paragraph] ?? '');
+      const chunks = chunkPassage(sentences.join(' '));
+      const offset = chunks[resumeChunkRef.current]?.offset ?? 0;
+      let currentSentence = 0;
+      let sentenceStart = 0;
+      for (let index = 0; index < sentences.length; index += 1) {
+        if (sentenceStart > offset) break;
+        currentSentence = index;
+        sentenceStart += sentences[index]!.length + 1;
+      }
+      let sentence = speakingSentence !== null ? speakingSentence + 1 : currentSentence + 1;
+      if (speakingIdx < 0) sentence = 0;
+      if (sentence >= sentences.length) { paragraph += 1; sentence = 0; }
+      const nextSentences = toSentences(paragraphs[paragraph] ?? '');
+      const nextOffset = nextSentences.slice(0, sentence).reduce((total, text) => total + text.length + 1, 0);
+      const nextChunk = chunkPassage(nextSentences.join(' ')).findIndex(chunk => chunk.offset >= nextOffset);
+      stopReading();
+      if (paragraph < paragraphs.length) { playingRef.current = true; speakFrom(paragraph, Math.max(0, nextChunk)); }
+    },
+  };
+  const toggleAudio = useCallback(() => audioActions.current.toggle(), []);
+  const nextAudio = useCallback(() => audioActions.current.next(), []);
+  const stopAudio = useCallback(() => stopRef.current(), []);
+  const audioControls = useMemo<ReaderAudioControls>(() => ({
+    available: canSpeak,
+    active: speakingActive,
+    engaged: speakingIdx >= 0,
+    onToggle: toggleAudio,
+    onStop: stopAudio,
+    onNext: nextAudio,
+    paragraphIndex: speakingIdx >= 0 ? speakingIdx : undefined,
+    sentenceIndex: speakingSentence ?? undefined,
+  }), [canSpeak, speakingActive, speakingIdx, speakingSentence, toggleAudio, stopAudio, nextAudio]);
+  useEffect(() => { onAudioControlsChange?.(audioControls); }, [onAudioControlsChange, audioControls]);
+  useEffect(() => () => onAudioControlsChange?.(null), [onAudioControlsChange]);
+
   return (
-    <div className="flex flex-col gap-4">
-      <details className="group">
+    <ReaderHelpEnvironment targetId={helpTargetId}><div className="flex flex-col gap-4">
+      {helpTargetId && <ReaderHelpIdle />}
+      {!helpTargetId && <details className="group">
         <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-semibold text-teal [overflow-wrap:anywhere] [&::-webkit-details-marker]:hidden">
           <span aria-hidden="true" className="transition-transform group-open:rotate-90">▸</span>
           {ru ? 'Настройки чтения' : 'Reader settings'}
@@ -1451,7 +1605,7 @@ export function ReadingText({
             <AiUpsellLink />
           </p>
         )}
-      </details>
+      </details>}
       {pickAnchor && (
         <div className="sticky top-2 z-10 mb-2 flex items-center gap-3 rounded-sm border border-violet-dim bg-surface-2 px-3 py-2 text-sm shadow-md">
           <span className="text-content">
@@ -1466,7 +1620,21 @@ export function ReadingText({
           </button>
         </div>
       )}
-      {phrase && (
+      {phrase && helpTargetId && <ReaderHelp key={phrase} targetId={helpTargetId} initiallyOpen onDismiss={cancelPick} returnFocus={phraseFocus.current} label={phrase} trigger={<button type="button" hidden>{phrase}</button>}>
+        <div className="flex flex-wrap items-center gap-2"><h2 lang="en">{phrase}</h2>{canSpeak && <button type="button" aria-label={ru ? `Произнести ${phrase}` : `Pronounce ${phrase}`} onClick={() => speakWord(phrase)}><ReaderIcon name="volume" /></button>}</div>
+        <blockquote className="rdh-quote" lang="en">{phraseSentence ?? phrase}</blockquote>
+        <p className="rdh-note">{ru ? 'Исходный фрагмент' : 'Original passage'}</p>
+        <span className="rdh-label">{phraseFromSaved ? ru ? 'Ваше сохранённое значение' : 'Your saved meaning' : ru ? 'Перевод фразы' : 'Phrase translation'}</span>
+        {phraseLoading ? <p role="status">{ru ? 'Перевожу…' : 'Translating…'}</p> : phraseRu ? <p lang="ru">{phraseRu}</p> : <><p className="rdh-note">{ru ? 'Перевод недоступен. Можно ввести своё значение.' : 'Translation unavailable. Enter your own meaning.'}</p><button type="button" className="rdh-action" onClick={() => { const draft = phraseDraft; setPhraseText(phrase, phraseSentence ?? undefined); setPhraseDraft(draft); }}>{ru ? 'Повторить перевод' : 'Retry translation'}</button></>}
+        {phraseTranslationSource && <p className="rdh-note">{translationSourceLabel(phraseTranslationSource, ru)}</p>}
+        <div className="rdh-actions">{([false, true] as const).map(ai => <button type="button" key={String(ai)} className="rdh-action" disabled={phraseLoading} onClick={() => { const draft = phraseDraft; setPhraseText(phrase, phraseSentence ?? undefined, ai); setPhraseDraft(draft); }}>{ai ? 'AI' : ru ? 'Бесплатный перевод' : 'Free translation'}</button>)}{phraseLoading && <button type="button" className="rdh-action" onClick={() => { phraseRequest.current?.controller.abort(); setPhraseLoading(false); }}>{ru ? 'Отменить запрос' : 'Cancel request'}</button>}</div>
+        <label className="rdh-editor">{ru ? 'Своё значение для сохранения' : 'Your meaning to save'}<input value={phraseDraft ?? phraseRu ?? ''} onChange={event => { setPhraseDraft(event.target.value); setPhraseSaved(false); }} disabled={phraseSaving} placeholder={ru ? 'Можно оставить без перевода' : 'You can save without a translation'} /></label>
+        <button type="button" className="rdh-action rdh-primary" disabled={phraseSaving} onClick={savePhrase}>{phraseSaving ? ru ? 'Сохраняю…' : 'Saving…' : ru ? 'Учу · сохранить' : 'Learn · save'}</button>
+        {phraseSaved && <p role="status" className="rdh-status">{source ? ru ? 'В словаре и в словах этой главы' : 'Saved in vocabulary and this chapter' : ru ? 'Сохранено в словарь' : 'Saved in vocabulary'}</p>}
+        {phraseError && <p role="alert" className="rdh-status">{ru ? 'Не удалось сохранить. Черновик сохранён, попробуйте ещё раз.' : 'Could not save. Your draft is kept; try again.'}</p>}
+        <p className="rdh-note">{ru ? 'Просмотр ничего не сохраняет. Сохранение не оценивает повторение.' : 'Lookup saves nothing. Saving does not grade a review.'}</p>
+      </ReaderHelp>}
+      {phrase && !helpTargetId && (
         <div className="sticky top-2 z-10 flex flex-wrap items-center gap-2 rounded-sm border border-teal-dim bg-surface-2 py-2 pl-3 pr-11 text-sm shadow-md">
           <span className="font-mono text-teal">{phrase}</span>
           {phraseError && (
@@ -1526,6 +1694,7 @@ export function ReadingText({
             ref={textRef}
             data-reader-text
             className="flex flex-col gap-4 [@media(pointer:coarse)]:select-none [@media(pointer:coarse)]:[-webkit-touch-callout:none]"
+            style={{ fontFamily: READER_FONT_FAMILIES[fontFamily ?? (helpTargetId ? 'serif' : 'sans')] }}
             onMouseUp={onSelect}
             onTouchEnd={onSelect}
             onClickCapture={onPickTap}
@@ -1559,6 +1728,6 @@ export function ReadingText({
           </div>
         </PopoverGroup>
       </ReaderContext.Provider>
-    </div>
+    </div></ReaderHelpEnvironment>
   );
 }

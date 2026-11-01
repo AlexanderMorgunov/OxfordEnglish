@@ -176,10 +176,15 @@ export async function removeBook(id: string): Promise<void> {
   }
 }
 
-export async function saveProgress(id: string, chapter: number): Promise<void> {
+export async function saveProgress(
+  id: string,
+  chapter: number,
+  { strict = false }: { strict?: boolean } = {}
+): Promise<void> {
   try {
     await patchBook(id, { lastChapter: chapter });
-  } catch {
+  } catch (error) {
+    if (strict) throw error;
     // progress is best-effort
   }
 }
