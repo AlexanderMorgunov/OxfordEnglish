@@ -1,31 +1,69 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { Grade } from 'ts-fsrs';
 import type { SrsCard } from '@/db/db';
-import { Button, Card, Input } from '@/shared/ui';
+import { Button } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
-import { speakWord } from '@/shared/lib/audio';
+import { cancelSpeech, speakWord } from '@/shared/lib/audio';
 import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
+import { navigationInsets } from '@/shared/lib/navigation-insets';
 import { translateText, translateWord } from '@/features/vocab/translate';
 import { baseForm, useLemma } from '@/features/vocab/lemma';
 import { cefrOf, useCefr } from '@/features/vocab/cefr';
-import { CefrChip } from '@/features/vocab/CefrChip';
+import { VocabularyRating } from '@/features/vocab/VocabularyRating';
+import { VocabularyIcon } from '@/features/vocab/VocabularySpeech';
 import { ContextSentence } from '@/features/vocab/ContextSentence';
-import { editCardAnswer, sameCardContent } from '@/features/vocab/manage';
 import { captureDataScope } from '@/features/account/dataScope';
-import { useAiStore } from '@/features/ai/store';
-import { useAiEnabled, useAiUnknown } from '@/features/ai/route';
-import { aiTranslate } from '@/features/ai/functions';
-import { canPronounce, gradeCardWithReceipt, replaceReviewRating, repairCardBack, Rating } from './service';
-import type { ReviewReceipt } from './service';
-import { grammarMetadata, partOfSpeechLabel } from '@/features/vocab/grammar-metadata';
+import {
+  grammarMetadata,
+  partOfSpeechLabel,
+} from '@/features/vocab/grammar-metadata';
 import { usePartOfSpeech } from '@/features/vocab/usePartOfSpeech';
-import { dictionaryAnswer, reviewAnswer } from './answer';
+import {
+  canPronounce,
+  gradeCardWithReceipt,
+  replaceReviewRating,
+  repairCardBack,
+  Rating,
+} from './service';
+import type { ReviewReceipt } from './service';
+import { dictionaryAnswer, reviewAnswer, sameCardContent } from './answer';
+import { ReviewAnswerEditor } from './ReviewAnswerEditor';
+import { ReviewIcon } from './ReviewIcon';
+import './review.css';
 
 const GRADES = [
-  { rating: Rating.Again, ru: 'снова', en: 'again' },
-  { rating: Rating.Hard, ru: 'трудно', en: 'hard' },
-  { rating: Rating.Good, ru: 'хорошо', en: 'good' },
-  { rating: Rating.Easy, ru: 'легко', en: 'easy' },
+  {
+    rating: Rating.Again,
+    icon: 'again',
+    ru: 'Снова',
+    en: 'Again',
+    hintRu: 'Не вспомнил',
+    hintEn: 'Did not recall',
+  },
+  {
+    rating: Rating.Hard,
+    icon: 'hard',
+    ru: 'Трудно',
+    en: 'Hard',
+    hintRu: 'Вспомнил с трудом',
+    hintEn: 'Recalled with effort',
+  },
+  {
+    rating: Rating.Good,
+    icon: 'good',
+    ru: 'Хорошо',
+    en: 'Good',
+    hintRu: 'Вспомнил',
+    hintEn: 'Recalled',
+  },
+  {
+    rating: Rating.Easy,
+    icon: 'easy',
+    ru: 'Легко',
+    en: 'Easy',
+    hintRu: 'Вспомнил сразу',
+    hintEn: 'Recalled immediately',
+  },
 ] as const;
 
 export function ReviewCard({
@@ -35,6 +73,8 @@ export function ReviewCard({
   correction,
   onBusyChange,
   disabled = false,
+  initialRevealed = false,
+  onReveal,
 }: {
   card: SrsCard;
   onAdvance: (receipt: ReviewReceipt) => void;
@@ -42,197 +82,161 @@ export function ReviewCard({
   correction?: ReviewReceipt;
   onBusyChange?: (busy: boolean) => void;
   disabled?: boolean;
+  initialRevealed?: boolean;
+  onReveal?: () => void;
 }) {
-  const ru = useUiLang((s) => s.lang) === 'ru';
-  const canSpeak = useSpeechAvailable();
-  const lemma = useLemma();
-  const cefr = useCefr();
-  const partsOfSpeech = usePartOfSpeech();
-  const config = useAiStore((s) => s.config);
-  const aiReady = useAiEnabled();
-  const aiUnknown = useAiUnknown();
+  const ru = useUiLang((s) => s.lang) === 'ru',
+    canSpeak = useSpeechAvailable();
+  const lemma = useLemma(),
+    cefr = useCefr(),
+    partsOfSpeech = usePartOfSpeech();
   const [currentScope] = useState(captureDataScope);
-  const alive = useRef(true);
+  const alive = useRef(false),
+    locked = useRef(false),
+    lookupGeneration = useRef(0);
   const latest = useRef(card);
   latest.current = card;
-  const locked = useRef(false);
-  const lookingUp = useRef(false);
-  const [revealed, setRevealed] = useState(false);
-  const [lookup, setLookup] = useState<'idle' | 'loading' | 'unavailable'>(
-    'idle'
-  );
-  const [extra, setExtra] = useState<string>();
-  const [editing, setEditing] = useState<SrsCard | null>(null);
-  const [translation, setTranslation] = useState('');
-  const [contextGloss, setContextGloss] = useState('');
-  const [working, setBusy] = useState(false);
-  const busy = working || disabled;
-  const [error, setError] = useState('');
-  const [aiBusy, setAiBusy] = useState(false);
-  const [proposal, setProposal] = useState<{
-    text: string;
+  const [revealed, setRevealed] = useState(initialRevealed),
+    [lookup, setLookup] = useState<'idle' | 'loading' | 'unavailable'>('idle');
+  const [repaired, setRepaired] = useState<{
     source: SrsCard;
+    text: string;
   } | null>(null);
+  const [editing, setEditing] = useState<SrsCard | null>(null),
+    [working, setWorking] = useState(false);
+  const [error, setError] = useState(''),
+    [attempt, setAttempt] = useState<Grade | null>(null);
+  const [speaking, setSpeaking] = useState(false),
+    [speechError, setSpeechError] = useState('');
+  const speechOwned = useRef(false),
+    speechGeneration = useRef(0),
+    speechTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const region = useRef<HTMLElement>(null),
+    ratings = useRef<HTMLDivElement>(null),
+    editorButton = useRef<HTMLButtonElement>(null);
+  const shown =
+    repaired && sameCardContent(card, repaired.source)
+      ? { ...card, back: repaired.text }
+      : card;
+  const answer = reviewAnswer(shown),
+    general = dictionaryAnswer(shown);
+  const base = card.kind === 'word' ? baseForm(card.front, lemma) : null;
+  const rated =
+    !card.fromError && canPronounce(card)
+      ? cefrOf(card.front, cefr, lemma)
+      : null;
+  const grammar = grammarMetadata(card, lemma, partsOfSpeech);
+  const busy = working || disabled,
+    frozen = busy || Boolean(editing) || lookup === 'loading';
+  const stopSpeech = () => {
+    speechGeneration.current++;
+    if (speechTimer.current) clearTimeout(speechTimer.current);
+    if (speechOwned.current) cancelSpeech();
+    speechOwned.current = false;
+    setSpeaking(false);
+  };
   useEffect(() => {
     alive.current = true;
     return () => {
       alive.current = false;
+      lookupGeneration.current = lookupGeneration.current + 1;
+      speechGeneration.current = speechGeneration.current + 1;
+      if (speechOwned.current) cancelSpeech();
+      if (speechTimer.current) clearTimeout(speechTimer.current);
     };
   }, []);
   useEffect(() => {
-    setExtra(undefined);
-  }, [card.back, card.contextGloss]);
-  const active = () => alive.current && currentScope();
-  const answer = reviewAnswer(card) ?? extra;
-  const general = dictionaryAnswer(card);
-  const base = card.kind === 'word' ? baseForm(card.front, lemma) : null;
-  const rated = cefrOf(card.front, cefr, lemma);
-  const grammar = grammarMetadata(card, lemma, partsOfSpeech);
+    onBusyChange?.(frozen);
+    return () => onBusyChange?.(false);
+  }, [frozen, onBusyChange]);
   useEffect(() => {
-    onBusyChange?.(busy || aiBusy || Boolean(editing) || lookup === 'loading');
-    return () => { onBusyChange?.(false); };
-  }, [busy, aiBusy, editing, lookup, onBusyChange]);
-
+    lookupGeneration.current++;
+    setLookup('idle');
+  }, [card.front, card.back, card.contextGloss, card.contextSentence]);
+  const active = () => alive.current && currentScope();
   const lookupAnswer = async () => {
-    if (lookingUp.current || !active()) return;
-    lookingUp.current = true;
+    if (lookup === 'loading' || !active() || busy) return;
+    const generation = ++lookupGeneration.current,
+      source = latest.current;
+    const valid = () =>
+      active() &&
+      lookupGeneration.current === generation &&
+      sameCardContent(source, latest.current);
     setLookup('loading');
-    const source = latest.current;
+    setError('');
+    const timer = setTimeout(() => {
+      if (valid()) {
+        lookupGeneration.current++;
+        setLookup('unavailable');
+      }
+    }, 25000);
     try {
       const text = await (
         source.kind === 'word' ? translateWord : translateText
       )(source.front);
-      if (!active() || !sameCardContent(source, latest.current)) return;
-      if (text) {
-        await repairCardBack(source.id, text, currentScope, source);
-        if (active() && sameCardContent(source, latest.current)) setExtra(text);
-      }
-      if (active()) setLookup(text ? 'idle' : 'unavailable');
+      if (!valid()) return;
+      const saved =
+        text && (await repairCardBack(source.id, text, valid, source));
+      if (!valid()) return;
+      if (saved && text) setRepaired({ source, text });
+      setLookup(saved ? 'idle' : 'unavailable');
     } catch {
-      if (active()) setLookup('unavailable');
+      if (valid()) setLookup('unavailable');
     } finally {
-      lookingUp.current = false;
-      if (active() && !sameCardContent(source, latest.current))
-        setLookup('idle');
+      clearTimeout(timer);
     }
   };
   const reveal = () => {
+    if (disabled || revealed || !active()) return;
     setRevealed(true);
+    onReveal?.();
     if (!reviewAnswer(card) && !card.fromError) void lookupAnswer();
   };
-  const startEdit = () => {
-    setEditing(card);
-    setTranslation(general ?? extra ?? '');
-    setContextGloss(card.contextGloss ?? '');
-    setError('');
-  };
-  const save = async () => {
-    if (!editing || locked.current || disabled || !active()) return;
-    locked.current = true;
-    setBusy(true);
-    try {
-      const saved = await editCardAnswer(
-        editing,
-        translation,
-        contextGloss,
-        currentScope
-      );
-      if (!active()) return;
-      if (!saved)
-        setError(
-          ru
-            ? 'Карточка изменилась. Отмените правку и откройте её заново.'
-            : 'The card changed. Cancel and reopen the editor.'
-        );
-      else {
-        setExtra(undefined);
-        setEditing(null);
-        setProposal(null);
-        setError('');
+  useLayoutEffect(() => {
+    if (!revealed) return;
+    const frame = requestAnimationFrame(() => {
+      if (!region.current || document.querySelector('dialog[open]')) return;
+      region.current.focus({ preventScroll: true });
+      const box = ratings.current?.getBoundingClientRect(),
+        insets = navigationInsets();
+      if (box && box.bottom > innerHeight - insets.bottom - 16) {
+        const available = innerHeight - insets.top - insets.bottom - 32;
+        window.scrollBy({
+          top:
+            box.height < available
+              ? box.bottom - (innerHeight - insets.bottom - 16)
+              : box.top - insets.top - 16,
+          behavior: 'instant',
+        });
       }
-    } catch {
-      if (active())
-        setError(
-          ru
-            ? 'Не удалось сохранить. Попробуйте ещё раз.'
-            : 'Could not save. Please try again.'
-        );
-    } finally {
-      locked.current = false;
-      if (active()) setBusy(false);
-    }
-  };
-  const suggest = async () => {
-    if (aiBusy || !card.contextSentence || !active()) return;
-    const source = card;
-    setAiBusy(true);
-    setError('');
-    setProposal(null);
-    try {
-      const text = await aiTranslate(config, source.front, {
-        sentence: source.contextSentence,
-      });
-      if (active() && sameCardContent(source, latest.current))
-        setProposal({ text, source });
-    } catch {
-      if (active())
-        setError(
-          ru
-            ? 'Контекстный перевод недоступен. Можно исправить ответ вручную.'
-            : 'Context translation unavailable. You can edit the answer manually.'
-        );
-    } finally {
-      if (active()) setAiBusy(false);
-    }
-  };
-  const accept = async () => {
-    if (!proposal || locked.current || disabled || !active()) return;
-    locked.current = true;
-    setBusy(true);
-    try {
-      const saved = await editCardAnswer(
-        proposal.source,
-        dictionaryAnswer(proposal.source) ?? '',
-        proposal.text,
-        currentScope
-      );
-      if (!active()) return;
-      if (!saved)
-        setError(
-          ru
-            ? 'Карточка изменилась. Запросите перевод заново.'
-            : 'The card changed. Request a new translation.'
-        );
-      setProposal(null);
-    } catch {
-      if (active())
-        setError(
-          ru
-            ? 'Не удалось сохранить перевод.'
-            : 'Could not save the translation.'
-        );
-    } finally {
-      locked.current = false;
-      if (active()) setBusy(false);
-    }
-  };
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [revealed]);
   const grade = async (rating: Grade) => {
-    if (locked.current || disabled || editing || !answer || !active()) return;
+    if (locked.current || !revealed || frozen || !answer || !active()) return;
     locked.current = true;
     onBusyChange?.(true);
-    setBusy(true);
+    setWorking(true);
+    setError('');
+    setAttempt(rating);
+    stopSpeech();
     try {
-      const graded = correction
-        ? await replaceReviewRating(correction, rating, card)
-        : await gradeCardWithReceipt(card.id, rating, card.card.reps, card, currentScope);
-      if (graded && currentScope()) onAdvance(graded);
-      else if (active()) {
+      const receipt = correction
+        ? await replaceReviewRating(correction, rating, shown)
+        : await gradeCardWithReceipt(
+            card.id,
+            rating,
+            card.card.reps,
+            shown,
+            currentScope
+          );
+      if (receipt && currentScope()) onAdvance(receipt);
+      else if (active())
         setError(
           ru
-            ? 'Карточка изменилась. Обновите очередь.'
-            : 'The card changed. Refresh the queue.'
+            ? 'Карточка изменилась. Вернитесь к обзору и обновите очередь.'
+            : 'The card changed. Return to the overview and refresh the queue.'
         );
-      }
     } catch {
       if (active())
         setError(
@@ -242,35 +246,150 @@ export function ReviewCard({
         );
     } finally {
       locked.current = false;
-      if (active()) setBusy(false);
+      if (active()) setWorking(false);
     }
   };
-
+  useEffect(() => {
+    const key = (event: KeyboardEvent) => {
+      if (
+        event.defaultPrevented ||
+        event.repeat ||
+        event.isComposing ||
+        event.ctrlKey ||
+        event.altKey ||
+        event.metaKey ||
+        document.querySelector('dialog[open]')
+      )
+        return;
+      if (
+        event.target instanceof Element &&
+        event.target.closest(
+          'button,a,input,textarea,select,summary,[contenteditable="true"],[role="button"]'
+        )
+      )
+        return;
+      if (disabled || frozen) return;
+      if (event.code === 'Space' && !revealed) {
+        event.preventDefault();
+        reveal();
+      } else if (revealed && /^[1-4]$/.test(event.key) && answer) {
+        event.preventDefault();
+        void grade(Number(event.key) as Grade);
+      }
+    };
+    window.addEventListener('keydown', key);
+    return () => window.removeEventListener('keydown', key);
+  });
+  const speak = () => {
+    const was = speaking;
+    stopSpeech();
+    setSpeechError('');
+    if (was) return;
+    const generation = speechGeneration.current;
+    speechOwned.current = true;
+    setSpeaking(true);
+    const finish = (failed = false) => {
+      if (!active() || generation !== speechGeneration.current) return;
+      speechOwned.current = false;
+      setSpeaking(false);
+      if (speechTimer.current) clearTimeout(speechTimer.current);
+      if (failed)
+        setSpeechError(
+          ru
+            ? 'Озвучка недоступна. Проверьте английский голос в настройках.'
+            : 'Speech unavailable. Check the English voice in Settings.'
+        );
+    };
+    speechTimer.current = setTimeout(() => {
+      if (generation === speechGeneration.current) {
+        cancelSpeech();
+        finish(true);
+      }
+    }, 30000);
+    try {
+      speakWord(card.front, {
+        onEnd: () => finish(),
+        onError: () => finish(true),
+      });
+    } catch {
+      finish(true);
+    }
+  };
   return (
     <>
-      <Card className="min-h-40 break-words">
-        <div className="flex items-center gap-2.5">
-          <p className="min-w-0 font-mono text-2xl text-content">
-            {card.front}
-          </p>
+      <section
+        ref={region}
+        tabIndex={-1}
+        className="rv-study-card"
+        aria-label={ru ? 'Текущая карточка' : 'Current card'}
+      >
+        <div className="rv-study-meta">
+          <div>
+            <span className="rv-chip">
+              {card.fromError
+                ? ru
+                  ? 'Из ошибки'
+                  : 'From a mistake'
+                : card.kind === 'phrase'
+                  ? ru
+                    ? 'Фраза'
+                    : 'Phrase'
+                  : card.kind === 'grammar-pattern'
+                    ? ru
+                      ? 'Грамматика'
+                      : 'Grammar'
+                    : ru
+                      ? 'Слово'
+                      : 'Word'}
+            </span>
+            <span>
+              {card.fromError
+                ? ru
+                  ? 'Прежнее упражнение'
+                  : 'Previous exercise'
+                : card.kind === 'grammar-pattern'
+                  ? ru
+                    ? 'Учебная карточка'
+                    : 'Course card'
+                  : ru
+                    ? 'Мой словарь'
+                    : 'My vocabulary'}
+            </span>
+          </div>
+          {!card.fromError && card.kind !== 'grammar-pattern' && (
+            <div className="rv-cefr">
+              <span>{ru ? 'Полезность' : 'Usefulness'}</span>
+              <VocabularyRating hit={rated} />
+            </div>
+          )}
+        </div>
+        <div className="rv-front-line">
+          <h2 lang="en">{card.front}</h2>
           {canPronounce(card) && canSpeak && (
             <button
               type="button"
-              aria-label={`${ru ? 'Произнести' : 'Pronounce'} ${card.front}`}
-              className="shrink-0 px-2 py-2 text-xl text-teal hover:opacity-80"
-              onClick={() => speakWord(card.front)}
+              className="rv-speaker"
+              disabled={disabled}
+              aria-pressed={speaking}
+              aria-label={`${speaking ? (ru ? 'Остановить' : 'Stop') : ru ? 'Произнести' : 'Pronounce'} ${card.front}`}
+              onClick={speak}
             >
-              🔊
+              <VocabularyIcon name="speaker" />
             </button>
           )}
         </div>
         {grammar.partsOfSpeech.length > 0 && (
-          <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-muted">
-            <span className="rounded-sm border border-line px-2 py-1">
-              {grammar.partsOfSpeech.map(pos => partOfSpeechLabel(pos, ru ? 'ru' : 'en')).join(' / ')}
-            </span>
-            {grammar.infinitive && <span lang="en">{grammar.infinitive}</span>}
-          </div>
+          <p className="rv-grammar">
+            {grammar.partsOfSpeech
+              .map((pos) => partOfSpeechLabel(pos, ru ? 'ru' : 'en'))
+              .join(' / ')}
+            {grammar.infinitive && (
+              <>
+                {' '}
+                · <span lang="en">{grammar.infinitive}</span>
+              </>
+            )}
+          </p>
         )}
         {card.contextSentence && (
           <ContextSentence
@@ -278,31 +397,28 @@ export function ReviewCard({
             term={card.front}
             isPhrase={card.kind === 'phrase'}
             data={lemma}
-            className="mt-3 border-l-2 border-line pl-3 text-sm text-muted text-pretty"
+            className="rv-context"
           />
         )}
-        {revealed && (
-          <div className="mt-4 border-t border-line pt-4">
-            {!card.fromError && (
-              <div className="mb-3 flex flex-wrap items-center gap-3">
-                {rated && <CefrChip level={rated.level} />}
-                {base && (
-                  <span className="font-mono text-2xs text-muted">
-                    {ru ? 'база' : 'base'}:{' '}
-                    <span className="text-content">{base}</span>
-                  </span>
-                )}
-              </div>
-            )}
+        {!revealed ? (
+          <p className="rv-recall">
+            {ru
+              ? 'Вспомните значение, затем сверьтесь с ответом.'
+              : 'Recall the meaning, then check the answer.'}
+          </p>
+        ) : (
+          <div className="rv-answer">
             <div role="status" aria-live="polite">
-              {card.contextGloss && (
-                <p className="mb-1 font-mono text-2xs uppercase tracking-[0.08em] text-violet">
-                  {ru ? 'в контексте' : 'in context'}
-                </p>
-              )}
-              <p
-                className={`text-lg ${answer ? 'text-content' : 'text-muted'}`}
-              >
+              <p className="rv-help">
+                {card.contextGloss?.trim()
+                  ? ru
+                    ? 'В этом контексте'
+                    : 'In this context'
+                  : ru
+                    ? 'Ответ'
+                    : 'Answer'}
+              </p>
+              <p className="rv-answer-value">
                 {answer ??
                   (lookup === 'loading'
                     ? ru
@@ -312,157 +428,161 @@ export function ReviewCard({
                       ? 'Перевод недоступен. Введите ответ или пропустите карточку.'
                       : 'Translation unavailable. Enter an answer or skip this card.')}
               </p>
-              {card.contextGloss &&
+              {card.contextGloss?.trim() &&
                 general &&
                 general !== card.contextGloss && (
-                  <p className="mt-2 text-sm text-muted">
+                  <p className="rv-help">
                     {ru ? 'Общий перевод' : 'General translation'}: {general}
                   </p>
                 )}
             </div>
-            {!card.fromError &&
-              (editing ? (
-                <form
-                  className="mt-4 flex flex-col gap-3"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    void save();
-                  }}
-                >
-                  <label className="text-sm text-muted">
-                    {ru ? 'Общий перевод' : 'General translation'}
-                    <Input
-                      autoFocus
-                      value={translation}
-                      onChange={(e) => setTranslation(e.target.value)}
-                      className="mt-1 w-full"
-                    />
-                  </label>
-                  {card.contextSentence && (
-                    <label className="text-sm text-muted">
-                      {ru ? 'Значение в контексте' : 'Meaning in context'}
-                      <Input
-                        value={contextGloss}
-                        onChange={(e) => setContextGloss(e.target.value)}
-                        className="mt-1 w-full"
-                      />
-                    </label>
-                  )}
-                  <div className="flex flex-wrap gap-2">
-                    <Button type="submit" size="sm" disabled={busy}>
-                      {ru ? 'Сохранить' : 'Save'}
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      disabled={busy}
-                      onClick={() => {
-                        setEditing(null);
-                        setError('');
-                      }}
-                    >
-                      {ru ? 'Отмена' : 'Cancel'}
-                    </Button>
-                  </div>
-                </form>
-              ) : (
-                <div className="mt-3 flex flex-wrap gap-2">
+            {lookup === 'loading' && (
+              <Button
+                variant="ghost"
+                onClick={() => {
+                  lookupGeneration.current++;
+                  setLookup('unavailable');
+                }}
+              >
+                {ru ? 'Отменить поиск' : 'Cancel lookup'}
+              </Button>
+            )}
+            {!card.fromError && (
+              <details className="rv-answer-tools">
+                <summary>
+                  {ru ? 'Об ответе и карточке' : 'About this answer and card'}
+                </summary>
+                {base && (
+                  <p>
+                    {ru ? 'Базовая форма' : 'Base form'}:{' '}
+                    <span lang="en">{base}</span>
+                  </p>
+                )}
+                <p className="rv-help">
+                  {ru
+                    ? 'Полезность — условная шкала по CEFR, не частотность и не оценка ваших знаний.'
+                    : 'Usefulness is an approximate CEFR guide, not frequency or a measure of your knowledge.'}
+                </p>
+                <div className="rv-actions">
                   <Button
-                    size="sm"
+                    ref={editorButton}
                     variant="ghost"
                     disabled={busy}
-                    onClick={startEdit}
+                    onClick={() => {
+                      lookupGeneration.current++;
+                      setLookup('idle');
+                      setEditing(shown);
+                    }}
                   >
                     {ru ? 'Исправить ответ' : 'Edit answer'}
                   </Button>
                   {!answer && (
                     <Button
-                      size="sm"
                       variant="ghost"
-                      disabled={lookup === 'loading'}
+                      disabled={busy || lookup === 'loading'}
                       onClick={() => void lookupAnswer()}
                     >
                       {ru ? 'Повторить поиск' : 'Retry lookup'}
                     </Button>
                   )}
-                  {card.contextSentence && (aiReady || aiUnknown) && (
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      disabled={busy || aiBusy}
-                      onClick={() => void suggest()}
-                    >
-                      {aiBusy
-                        ? ru
-                          ? 'Получаем значение…'
-                          : 'Getting meaning…'
-                        : ru
-                          ? 'Уточнить в контексте · AI'
-                          : 'Translate in context · AI'}
-                    </Button>
-                  )}
                 </div>
-              ))}
-            {proposal && !editing && (
-              <div className="mt-3 rounded-sm border border-violet-dim p-3">
-                <p className="text-sm text-muted">
-                  {ru
-                    ? 'Предложение AI — проверьте перед сохранением'
-                    : 'AI suggestion — check before saving'}
-                </p>
-                <p className="my-2 text-content">{proposal.text}</p>
-                <div className="flex flex-wrap gap-2">
-                  <Button
-                    size="sm"
-                    disabled={busy}
-                    onClick={() => void accept()}
-                  >
-                    {ru ? 'Использовать значение' : 'Use this meaning'}
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    onClick={() => setProposal(null)}
-                  >
-                    {ru ? 'Отклонить' : 'Dismiss'}
-                  </Button>
-                </div>
-              </div>
+              </details>
             )}
           </div>
         )}
-      </Card>
-      {error && (
-        <p role="alert" className="text-sm text-coral">
-          {error}
+        <p role="status" className="rv-help">
+          {speechError}
         </p>
-      )}
-      {revealed ? (
-        <div
-          className="flex flex-wrap gap-2"
-          role="group"
-          aria-label={ru ? 'Оцените карточку' : 'Grade the card'}
-        >
-          {GRADES.map((g) => (
-            <Button
-              key={g.en}
-              variant="ghost"
-              disabled={
-                !answer || busy || Boolean(editing) || lookup === 'loading'
-              }
-              onClick={() => void grade(g.rating)}
+      </section>
+      <div className="rv-study-action">
+        {revealed ? (
+          <>
+            <h2 className="rv-rating-title">
+              {ru ? 'Как удалось вспомнить?' : 'How well did you recall?'}
+            </h2>
+            <div
+              ref={ratings}
+              className="rv-ratings"
+              role="group"
+              aria-label={ru ? 'Оцените карточку' : 'Grade the card'}
             >
-              {ru ? g.ru : g.en}
+              {GRADES.map((item, index) => (
+                <button
+                  key={item.rating}
+                  type="button"
+                  className="rv-rate"
+                  data-rating={item.rating}
+                  aria-label={`${ru ? item.ru : item.en}: ${ru ? item.hintRu : item.hintEn}`}
+                  disabled={!answer || frozen}
+                  onClick={() => void grade(item.rating)}
+                >
+                  <span className="rv-rate-top">
+                    <ReviewIcon name={item.icon} />
+                    <kbd aria-hidden="true">{index + 1}</kbd>
+                  </span>
+                  <b>{ru ? item.ru : item.en}</b>
+                  <small>{ru ? item.hintRu : item.hintEn}</small>
+                </button>
+              ))}
+            </div>
+            <p className="rv-shortcuts">
+              {ru
+                ? 'Клавиши 1–4 — выбрать оценку'
+                : 'Keys 1–4 — choose a rating'}
+            </p>
+          </>
+        ) : (
+          <>
+            <Button className="rv-reveal" disabled={disabled} onClick={reveal}>
+              {ru ? 'Показать ответ' : 'Show answer'}
             </Button>
-          ))}
-          {!correction && <Button variant="ghost" disabled={busy} onClick={onSkip}>
-            {ru ? 'Пропустить' : 'Skip'}
-          </Button>}
+            <p className="rv-shortcuts">
+              <kbd>{ru ? 'Пробел' : 'Space'}</kbd>
+              {ru ? ' — открыть ответ' : ' — show answer'}
+            </p>
+          </>
+        )}
+      </div>
+      {error && (
+        <div className="rv-recovery">
+          <p role="alert" className="rv-error">
+            {error}
+          </p>
+          {attempt && (
+            <Button
+              variant="ghost"
+              disabled={frozen}
+              onClick={() => void grade(attempt)}
+            >
+              {ru ? 'Повторить запись оценки' : 'Retry saving rating'}
+            </Button>
+          )}
         </div>
-      ) : (
-        <Button className="self-start" disabled={disabled} onClick={reveal}>
-          {ru ? 'Показать ответ' : 'Show answer'}
-        </Button>
+      )}
+      <p role="status" className="rv-pending">
+        {working ? (ru ? 'Сохраняем…' : 'Saving…') : ''}
+      </p>
+      {!correction && (
+        <div className="rv-session-foot">
+          <button
+            type="button"
+            className="rv-text-button"
+            disabled={frozen}
+            onClick={onSkip}
+          >
+            {ru ? 'Пропустить без оценки' : 'Skip without rating'}
+          </button>
+        </div>
+      )}
+      {editing && (
+        <ReviewAnswerEditor
+          source={editing}
+          latest={shown}
+          onClose={() => {
+            setEditing(null);
+            requestAnimationFrame(() => editorButton.current?.focus());
+          }}
+        />
       )}
     </>
   );

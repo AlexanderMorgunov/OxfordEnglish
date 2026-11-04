@@ -11,7 +11,7 @@ const TECH: { name: string; use: string }[] = [
   { name: 'ts-fsrs', use: 'spaced-repetition scheduling' },
   { name: 'Zod · Zustand', use: 'validation & state' },
   { name: 'pdf.js', use: 'PDF reading' },
-  { name: 'driver.js', use: 'the first-run tour' },
+  { name: 'driver.js', use: 'contextual in-app help' },
   { name: 'Piper TTS', use: 'course audio (self-hosted, offline)' },
   { name: 'Space Grotesk · JetBrains Mono', use: 'fonts (self-hosted via Fontsource)' },
 ];
@@ -58,7 +58,7 @@ export function CreditsPage() {
   const pd = useMemo(() => books.some((b) => b.license.type === 'public-domain'), [books]);
 
   return (
-    <section aria-label={ru ? 'Благодарности' : 'Credits'} className="max-w-prose">
+    <section aria-label={ru ? 'Благодарности' : 'Credits'} className="reading-column">
       <Eyebrow className="mb-3.5">{ru ? 'благодарности' : 'credits'}</Eyebrow>
       <h1 className="mb-3 text-2xl font-bold tracking-tight text-balance">
         {ru ? 'Благодарности и лицензии' : 'Credits & licenses'}

@@ -1,0 +1,396 @@
+.settings-shell {
+  margin: 10px auto 48px;
+}
+.settings-top {
+  padding: 0 0 32px;
+}
+.settings-top h1 {
+  font-size: calc(2.35rem * var(--app-text-scale, 1));
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  margin: 10px 0;
+}
+.settings-top h1:focus,
+.settings-panel-header h2:focus {
+  outline: none;
+}
+.settings-top p,
+.settings-panel-header p {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+.settings-back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+.settings-back:hover {
+  color: var(--color-content);
+  text-decoration: underline;
+}
+.settings-frame {
+  display: grid;
+  grid-template-columns: 238px minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+.settings-menu {
+  position: sticky;
+  top: calc(var(--app-nav-top, 0px) + 20px);
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+.settings-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 12px;
+  border-radius: 12px;
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--color-muted);
+  min-width: 0;
+}
+.settings-link > span {
+  min-width: 0;
+}
+.settings-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.settings-link[aria-current='page'] {
+  background: var(--color-selection);
+  color: var(--color-action);
+}
+.settings-link:hover {
+  background: var(--color-surface-2);
+  color: var(--color-content);
+}
+.settings-link-summary,
+.settings-link-arrow {
+  display: none;
+}
+.settings-menu-note {
+  border-top: 1px solid var(--color-line);
+  margin: 20px 10px 0;
+  padding-top: 18px;
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+  line-height: 1.65;
+}
+.settings-panel {
+  min-width: 0;
+  container-type: inline-size;
+}
+.settings-panel [hidden] {
+  display: none !important;
+}
+.settings-panel-header {
+  margin: 2px 0 24px;
+}
+.settings-panel-header h2 {
+  font-size: var(--text-xl);
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+.settings-mobile-back {
+  display: none;
+}
+.settings-group {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 18px;
+  margin-bottom: 24px;
+  min-width: 0;
+}
+.settings-group-title {
+  font-size: var(--text-base);
+  font-weight: 700;
+  padding: 24px 26px 0;
+}
+.settings-pad {
+  padding: 24px 26px;
+}
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 26px;
+  min-width: 0;
+}
+.settings-row + .settings-row,
+.settings-pad + .settings-row {
+  border-top: 1px solid var(--color-line);
+}
+.settings-row > div {
+  flex: 1;
+  min-width: 0;
+}
+.settings-row h3,
+.settings-row label:not(:has(input)),
+.settings-ai-access h3 {
+  display: block;
+  font-size: var(--text-base);
+  font-weight: 650;
+  margin-bottom: 7px;
+}
+.settings-row p,
+.settings-help,
+.settings-ai-access p {
+  color: var(--color-muted);
+  line-height: 1.6;
+  font-size: var(--text-sm);
+}
+.settings-row > button {
+  flex-shrink: 0;
+}
+.settings-control {
+  font-size: var(--text-sm);
+  color: var(--color-content);
+  border: 1px solid var(--color-control);
+  border-radius: 9px;
+  padding: 10px 12px;
+  background: var(--color-surface);
+  min-height: 44px;
+  max-width: 100%;
+  min-width: 0;
+}
+.settings-row select {
+  min-width: 140px;
+}
+.settings-text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-action);
+  font-size: var(--text-sm);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.settings-row > .settings-text-link {
+  max-width: 42%;
+}
+.settings-ai-access {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 24px 26px;
+}
+.settings-ai-access > div {
+  min-width: 0;
+}
+.settings-tag {
+  display: inline-block;
+  font-size: var(--text-xs);
+  margin-top: 12px;
+}
+.settings-disclosure summary {
+  padding: 24px 26px;
+  cursor: pointer;
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+.settings-disclosure summary span {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  font-weight: 400;
+  margin-top: 6px;
+}
+.settings-disclosure[open] summary {
+  border-bottom: 1px solid var(--color-line);
+}
+.settings-form {
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+.settings-form label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+.settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+.settings-field input {
+  border-color: var(--color-control);
+}
+.settings-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.settings-actions > button {
+  min-height: 44px;
+}
+.settings-confirm {
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-control);
+  font-size: var(--text-sm);
+}
+.settings-feedback {
+  color: var(--color-teal);
+  font-size: var(--text-sm);
+  margin-top: 10px;
+}
+.settings-error,
+.settings-danger {
+  color: var(--color-coral);
+  font-size: var(--text-sm);
+}
+.settings-switch {
+  appearance: none;
+  flex-shrink: 0;
+  width: 48px;
+  height: 28px;
+  border-radius: 24px;
+  border: 2px solid var(--color-control);
+  background: var(--color-surface-2);
+  cursor: pointer;
+  position: relative;
+}
+.settings-switch::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  left: 3px;
+  top: 3px;
+  background: var(--color-content);
+}
+.settings-switch:checked {
+  background: var(--color-action);
+  border-color: var(--color-action);
+}
+.settings-switch:checked::before {
+  left: 23px;
+  background: var(--color-on-action);
+}
+.settings-switch:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+.settings-account-content {
+  min-width: 0;
+}
+.settings-account-content button,
+.settings-account-content a {
+  min-height: 44px;
+}
+.settings-pad .application-text-size {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.settings-pad .application-text-size > p:last-child {
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--color-surface-2);
+}
+@container (max-width: 34rem) {
+  .settings-row {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .settings-row > button,
+  .settings-row > select {
+    align-self: flex-start;
+  }
+  .settings-row > .settings-text-link {
+    max-width: 100%;
+  }
+}
+@media (max-width: 1100px) and (min-width: 900px) {
+  .settings-frame {
+    grid-template-columns: 215px minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+@media (max-width: 899px) {
+  .settings-frame {
+    display: block;
+  }
+  .settings-top {
+    padding-bottom: 24px;
+  }
+  .settings-top h1 {
+    font-size: calc(1.9rem * var(--app-text-scale, 1));
+  }
+  .settings-menu {
+    position: static;
+    gap: 12px;
+  }
+  .settings-link {
+    padding: 18px 16px;
+    border: 1px solid var(--color-line);
+    background: var(--color-surface);
+  }
+  .settings-link > span:not(.settings-link-arrow) {
+    flex: 1;
+  }
+  .settings-link-summary {
+    display: block;
+    font-size: var(--text-xs);
+    font-weight: 400;
+    margin-top: 5px;
+    color: var(--color-muted);
+  }
+  .settings-link-arrow {
+    display: block;
+    flex-shrink: 0;
+  }
+  .settings-menu-note {
+    display: none;
+  }
+  .settings-mobile-index .settings-panel,
+  .settings-mobile-detail .settings-menu {
+    display: none;
+  }
+  .settings-mobile-detail .settings-top {
+    display: none;
+  }
+  .settings-mobile-back {
+    display: inline-flex;
+    margin-bottom: 16px;
+  }
+  .settings-row,
+  .settings-pad,
+  .settings-form,
+  .settings-ai-access,
+  .settings-disclosure summary {
+    padding: 20px;
+  }
+  .settings-group-title {
+    padding: 20px 20px 0;
+  }
+}
+@media (forced-colors: active) {
+  .settings-link[aria-current='page'] {
+    outline: 2px solid Highlight;
+  }
+  .settings-switch:checked {
+    background: Highlight;
+  }
+  .settings-switch:checked::before {
+    background: HighlightText;
+  }
+}

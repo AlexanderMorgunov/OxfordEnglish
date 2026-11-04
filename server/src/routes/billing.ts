@@ -38,6 +38,7 @@ import {
   verifyResultSignature,
 } from '../billing.js';
 import { ipBucketLimiter } from '../rateLimit.js';
+import { catalogAt, type BillingCatalogStore } from '../billingCatalog.js';
 
 const err = (code: string, status: 400 | 401 | 503) => Response.json({ error: { code } }, { status });
 
@@ -57,18 +58,16 @@ async function callbackFields(c: Context): Promise<Record<string, string>> {
   return out;
 }
 
-export function billingRoutes(ent: EntitlementStore): Hono {
+export function billingRoutes(ent: EntitlementStore, catalog: BillingCatalogStore): Hono {
   const app = new Hono();
   const checkoutLimiter = ipBucketLimiter(IP_BUCKET_CAPACITY, IP_BUCKET_REFILL_PER_SEC);
 
   /** Public: the paywall has to show a price before anyone signs in, and the price is the server's to
    *  state — nothing downstream reads a hardcoded amount. */
-  app.get('/v1/billing/plans', (c) =>
-    c.json({
-      available: billingConfigured(),
-      plans: Object.values(PLANS).map((p) => ({ code: p.code, days: p.days, priceKopecks: p.priceKopecks, title: p.title })),
-    })
-  );
+  app.get('/v1/billing/plans', async (c) => {
+    c.header('Cache-Control', 'no-store');
+    return c.json(catalogAt(await catalog.get(), Date.now(), billingConfigured() && indexKeyConfigured()));
+  });
 
   app.post('/v1/billing/checkout', checkoutLimiter, async (c) => {
     const claims = await bearerClaims(c);
@@ -80,7 +79,12 @@ export function billingRoutes(ent: EntitlementStore): Hono {
     const body = CheckoutRequestSchema.safeParse(await c.req.json().catch(() => null));
     if (!body.success || !isPlanCode(body.data.plan)) return err(ErrorCode.BadRequest, 400);
 
-    const plan = PLANS[body.data.plan];
+    const current = catalogAt(await catalog.get(), Date.now(), true);
+    const priced = current.plans.find(p => p.code === body.data.plan)!;
+    if (body.data.expectedAmountKopecks != null && body.data.expectedAmountKopecks !== priced.priceKopecks) {
+      return c.json({ error: { code: 'billing_price_changed' } }, 409);
+    }
+    const plan = { ...PLANS[body.data.plan], priceKopecks: priced.priceKopecks };
     const invoiceId = newInvoiceId();
     const outSum = formatSum(plan.priceKopecks);
     // Written BEFORE the link exists: a payment we cannot recognise is far worse than an abandoned row.

@@ -444,21 +444,35 @@ export async function generateReaderExercises(
   config: AiConfig | null,
   ctx: { text: string; targets: string[]; idPrefix: string; count?: number; signal?: AbortSignal }
 ): Promise<Exercise[]> {
-  const n = ctx.count ?? 6;
-  const targetLine = ctx.targets.length
-    ? `По возможности проверяй эти слова: ${ctx.targets.slice(0, 12).join(', ')}.\n`
+  const text = ctx.text.trim().slice(0, 1500);
+  if (!text) return [];
+  const words = new Set(text.toLowerCase().match(/[a-z]+(?:['’][a-z]+)*/g));
+  const seen = new Set<string>();
+  const targets: string[] = [];
+  for (const candidate of ctx.targets) {
+    const word = candidate.trim();
+    const normalized = word.toLowerCase();
+    if (word.length > 80 || !words.has(normalized) || seen.has(normalized)) continue;
+    targets.push(word);
+    seen.add(normalized);
+    if (targets.length === 12) break;
+  }
+  const requested = ctx.count ?? 6;
+  const n = Number.isFinite(requested) ? Math.min(12, Math.max(1, Math.trunc(requested))) : 6;
+  const targetLine = targets.length
+    ? `По возможности проверяй эти слова: ${targets.join(', ')}.\n`
     : '';
   const system =
     'Ты — преподаватель английского. Составляешь задания на понимание слов по тексту. ' +
     'Отвечай СТРОГО одним JSON-массивом, без пояснений и markdown.';
   const user =
-    `Фрагмент главы:\n"""${ctx.text.slice(0, 1500)}"""\n` +
+    `Фрагмент главы:\n"""${text}"""\n` +
     targetLine +
     `Составь ${n} заданий «выбери пропущенное слово». Для каждого возьми предложение ИЗ текста, ` +
     'замени одно содержательное слово на ___ и дай 4 варианта: один верный (исходное слово) и три ' +
     'правдоподобных неверных той же части речи. Формат каждого элемента: ' +
     '{"q":"предложение с ___","options":["w1","w2","w3","w4"],"answer":"верное"}. Только JSON-массив.';
-  const raw = await runTask({ task: 'exercises', text: ctx.text, targets: ctx.targets, count: n }, config, (c, signal) =>
+  const raw = await runTask({ task: 'exercises', text, targets, count: n }, config, (c, signal) =>
     complete(
       c,
       [

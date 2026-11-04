@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import type { Exercise } from '@/content/schema';
 import { useContentStore } from '@/content/store';
 import { ContentLoadError } from '@/content/ContentLoadError';
@@ -28,8 +28,10 @@ const NEXT_LEVEL: Record<string, string> = { A2: 'B1', B1: 'B2', B2: 'C1' };
 
 export function CheckpointPage() {
   const { unitId } = useParams();
+  const fromProgress = useSearchParams()[0].get('from') === 'progress';
+  const ru = useUiLang(s => s.lang) === 'ru';
   const owner = useSyncExternalStore(subscribeDataScope, getDataOwnerRevision, getDataOwnerRevision);
-  return <CheckpointRun key={`${unitId}:${owner}`} unitId={unitId} />;
+  return <>{fromProgress && <Link to="/progress" state={{progressReturn:true}} className="mb-4 inline-flex min-h-11 items-center text-sm text-teal">← {ru ? 'К прогрессу' : 'Back to progress'}</Link>}<CheckpointRun key={`${unitId}:${owner}`} unitId={unitId} /></>;
 }
 
 function CheckpointRun({ unitId }: { unitId: string | undefined }) {
@@ -95,7 +97,7 @@ function CheckpointRun({ unitId }: { unitId: string | undefined }) {
     const passed = ratio >= EXIT_PASS;
     const nextLevel = exitLevel ? NEXT_LEVEL[exitLevel] : null;
     return (
-      <section aria-label={ru ? 'Результат контрольной' : 'Checkpoint result'}>
+      <section className="reading-column" aria-label={ru ? 'Результат контрольной' : 'Checkpoint result'}>
         <Eyebrow className="mb-3.5">
           {exitLevel ? exitLabel(exitLevel) : unitId} · result
         </Eyebrow>
@@ -182,7 +184,7 @@ function CheckpointRun({ unitId }: { unitId: string | undefined }) {
   }
 
   return (
-    <section aria-label={ru ? 'Контрольная' : 'Checkpoint'}>
+    <section className="reading-column" aria-label={ru ? 'Контрольная' : 'Checkpoint'}>
       <Eyebrow className="mb-3.5">
         {exitLevel ? exitLabel(exitLevel) : `${unitId} · checkpoint`}
       </Eyebrow>

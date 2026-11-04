@@ -21,7 +21,10 @@ export default defineConfig(({ mode }) => {
     },
   } : undefined;
   return {
-  server: { proxy },
+  server: {
+    proxy,
+    watch: { awaitWriteFinish: { stabilityThreshold: 200, pollInterval: 20 } },
+  },
   preview: { proxy },
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
@@ -60,12 +63,22 @@ export default defineConfig(({ mode }) => {
         globPatterns: ['**/*.{js,css,html,woff2,svg,png}'],
         // `rustore-probe.html` is a throwaway diagnostic opened by hand on one phone. Precaching it
         // would push it onto every user's device, which is how an unlinked page stops being unlinked.
-        globIgnores: ['**/packs/**', 'rustore-probe.html'],
+        globIgnores: ['**/packs/**', '**/onboarding/**', 'rustore-probe.html'],
         navigateFallback: 'index.html',
         navigateFallbackDenylist: [/^\/packs\//],
         cleanupOutdatedCaches: true,
         maximumFileSizeToCacheInBytes: 3_000_000,
         runtimeCaching: [
+          {
+            urlPattern: /\/onboarding\/2026-11-02\/.*\.(?:gif|png)(?:\?.*)?$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'onboarding-media-v1',
+              matchOptions: { ignoreSearch: true },
+              expiration: { maxEntries: 88, maxAgeSeconds: 60 * 60 * 24 * 90, purgeOnQuotaError: true },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
           {
             // Reader word lists (frequency, lemma, CEFR): lazy, rarely rebuilt — instant from cache and
             // offline, refreshed in the background. Deliberately not precached (size).

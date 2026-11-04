@@ -320,6 +320,10 @@ export function verifyUncounted(
 }
 
 export class InMemoryTotpStore implements TotpStore {
+  checkpoint(): () => void {
+    const rows = structuredClone(this.rows);
+    return () => { this.rows = rows; };
+  }
   private rows = new Map<string, TotpRow>();
   async get(accountId: string) {
     return this.rows.get(accountId) ?? null;

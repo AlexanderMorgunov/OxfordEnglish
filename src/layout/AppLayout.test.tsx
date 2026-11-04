@@ -1,13 +1,33 @@
-import { act, render, screen, within } from '@testing-library/react';
+import { act, cleanup, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { AppLayout } from './AppLayout';
 import { useUiLang } from '@/features/i18n/uiLang';
+import { beforeEach, afterEach, vi } from 'vitest';
+
+beforeEach(() => {
+  vi.spyOn(window, 'scrollTo').mockImplementation(() => {});
+  vi.spyOn(window, 'scrollBy').mockImplementation(() => {});
+});
+afterEach(() => {
+  cleanup();
+  vi.restoreAllMocks();
+  document.documentElement.style.removeProperty('--app-nav-top');
+  document.documentElement.style.removeProperty('--app-nav-bottom');
+});
 
 /** AppLayout renders <ScrollRestoration>, which only works inside a data router. */
 const renderLayout = (path = '/') => {
   const router = createMemoryRouter(
-    [{ element: <AppLayout />, children: [{ path: '/', element: <p>home</p> }, { path: '/settings', element: <p>settings</p> }] }],
+    [
+      {
+        element: <AppLayout />,
+        children: [
+          { path: '/', element: <p>home</p> },
+          { path: '/settings', element: <p>settings</p> },
+        ],
+      },
+    ],
     { initialEntries: [path] }
   );
   return render(<RouterProvider router={router} />);
@@ -18,12 +38,24 @@ const renderLayout = (path = '/') => {
 test('primary destinations stay visible, secondary ones hide behind "more"', () => {
   renderLayout();
   const screen2 = within(screen.getByRole('banner'));
-  expect(screen2.getByRole('link', { name: /review/i })).toBeInTheDocument();
-  expect(screen2.getByRole('link', { name: /library/i })).toBeInTheDocument();
-  expect(screen2.queryByRole('link', { name: /settings/i })).not.toBeInTheDocument();
-  expect(screen2.queryByRole('link', { name: /about/i })).not.toBeInTheDocument();
-  expect(screen2.queryByRole('link', { name: /support/i })).not.toBeInTheDocument();
-  expect(screen2.getByRole('button', { name: /more/i })).toHaveAttribute('aria-expanded', 'false');
+  const primary = within(
+    screen.getByRole('navigation', { name: 'Main navigation' })
+  );
+  expect(primary.getByRole('link', { name: /review/i })).toBeInTheDocument();
+  expect(primary.getByRole('link', { name: /library/i })).toBeInTheDocument();
+  expect(
+    screen2.queryByRole('link', { name: /settings/i })
+  ).not.toBeInTheDocument();
+  expect(
+    screen2.queryByRole('link', { name: /about/i })
+  ).not.toBeInTheDocument();
+  expect(
+    screen2.queryByRole('link', { name: /support/i })
+  ).not.toBeInTheDocument();
+  expect(screen2.getByRole('button', { name: /more/i })).toHaveAttribute(
+    'aria-expanded',
+    'false'
+  );
 });
 
 test('"more" opens the secondary links and Escape closes it', async () => {
@@ -38,13 +70,19 @@ test('"more" opens the secondary links and Escape closes it', async () => {
 
   await userEvent.keyboard('{Escape}');
   expect(trigger).toHaveAttribute('aria-expanded', 'false');
-  expect(header.queryByRole('link', { name: /settings/i })).not.toBeInTheDocument();
+  expect(
+    header.queryByRole('link', { name: /settings/i })
+  ).not.toBeInTheDocument();
   expect(trigger).toHaveFocus();
 });
 
 test('a section open from inside "more" still marks the trigger as active', () => {
   renderLayout('/settings');
-  expect(within(screen.getByRole('banner')).getByRole('button', { name: /more/i }).className).toContain('text-teal');
+  const trigger = within(screen.getByRole('banner')).getByRole('button', {
+    name: /more/i,
+  });
+  expect(trigger).toHaveAccessibleName('More · Settings');
+  expect(trigger).toHaveTextContent('Settings');
 });
 
 // The acquirer's moderation reads the site, and a buyer deciding whether to pay should not have to
@@ -52,11 +90,17 @@ test('a section open from inside "more" still marks the trigger as active', () =
 test('every page carries seller details and explicit links to contacts and legal pages', () => {
   renderLayout();
   const footer = within(screen.getByRole('contentinfo'));
-  expect(footer.getByRole('link', { name: /offer and contacts|оферта и контакты/i })).toHaveAttribute('href', '/terms');
-  expect(footer.getByRole('link', { name: /privacy|конфиден/i })).toHaveAttribute('href', '/privacy');
+  expect(
+    footer.getByRole('link', { name: /offer and contacts|оферта и контакты/i })
+  ).toHaveAttribute('href', '/terms');
+  expect(
+    footer.getByRole('link', { name: /privacy|конфиден/i })
+  ).toHaveAttribute('href', '/privacy');
   expect(footer.getByText(/Моргунов Александр Сергеевич/)).toBeInTheDocument();
   expect(footer.getByText(/361302397520/)).toBeInTheDocument();
-  expect(footer.queryByRole('link', { name: /morgunowalex@gmail\.com/ })).not.toBeInTheDocument();
+  expect(
+    footer.queryByRole('link', { name: /morgunowalex@gmail\.com/ })
+  ).not.toBeInTheDocument();
 });
 
 test('changing the UI language also changes the document language for assistive technology', () => {
@@ -66,7 +110,11 @@ test('changing the UI language also changes the document language for assistive 
     expect(document.documentElement.lang).toBe('en');
     act(() => useUiLang.setState({ lang: 'ru' }));
     expect(document.documentElement.lang).toBe('ru');
-    expect(within(screen.getByRole('banner')).getByRole('link', { name: /повторение/i })).toBeInTheDocument();
+    expect(
+      within(
+        screen.getByRole('navigation', { name: 'Основная навигация' })
+      ).getByRole('link', { name: /повторение/i })
+    ).toBeInTheDocument();
   } finally {
     act(() => useUiLang.setState({ lang: 'en' }));
     document.documentElement.lang = previous;

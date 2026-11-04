@@ -1,0 +1,10 @@
+.reader-icon {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.reader-icon-down {
+  transform: rotate(-90deg);
+}

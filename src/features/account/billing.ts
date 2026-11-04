@@ -23,6 +23,9 @@ const PENDING_KEY = 'dayenglish.billing.pending';
 const PENDING_TTL_MS = 3 * 86_400_000;
 
 export type PendingPayment = {
+  accountId?: string;
+  paymentUrl?: string;
+  amountKopecks?: number;
   grantToken: string;
   invoiceId: string;
   plan: string;
@@ -38,12 +41,22 @@ export type PendingPayment = {
   paidUntilAtStart: number | null;
 };
 
+export function pendingJournalUnreadable(): boolean {
+  try {
+    const raw = localStorage.getItem(PENDING_KEY);
+    if (raw == null) return false;
+    const value: unknown = JSON.parse(raw);
+    return !value || typeof value !== 'object' || typeof Reflect.get(value, 'grantToken') !== 'string' || !Number.isFinite(Reflect.get(value, 'startedAt'));
+  } catch { return true; }
+}
+
 export function readPending(): PendingPayment | null {
   try {
     const raw = localStorage.getItem(PENDING_KEY);
     if (!raw) return null;
     const p = JSON.parse(raw) as PendingPayment;
     if (typeof p?.grantToken !== 'string' || typeof p.startedAt !== 'number') return null;
+    if (p.accountId && p.accountId !== useAccount.getState().accountId) return null;
     if (Date.now() - p.startedAt > PENDING_TTL_MS) {
       clearPending();
       return null;
@@ -64,6 +77,9 @@ export function clearPending(): void {
 
 function savePending(c: CheckoutResponse): void {
   const pending: PendingPayment = {
+    accountId: useAccount.getState().accountId ?? undefined,
+    paymentUrl: c.paymentUrl,
+    amountKopecks: c.amountKopecks,
     grantToken: c.grantToken,
     invoiceId: c.invoiceId,
     plan: c.plan,
@@ -73,8 +89,7 @@ function savePending(c: CheckoutResponse): void {
   try {
     localStorage.setItem(PENDING_KEY, JSON.stringify(pending));
   } catch {
-    // Nothing sensible to do — the checkout still opens, and the success page will say what to do if
-    // the token is gone. Failing the purchase over a storage quota would be worse.
+    throw new ApiFailure('billing_storage_unavailable', 0);
   }
 }
 
@@ -108,12 +123,13 @@ export function livePending(paidUntil: number | null | undefined): PendingPaymen
 
 /** Open a checkout: returns the acquirer's payment page for the caller to navigate to. The pending
  *  token is written BEFORE anyone navigates, so a fast payment can never outrun our own bookkeeping. */
-export async function beginCheckout(plan: string): Promise<string> {
+export async function beginCheckout(plan: string, expectedAmountKopecks?: number): Promise<string> {
+  if (pendingJournalUnreadable()) throw new ApiFailure('billing_journal_unavailable', 0);
   const owns = captureAccountSessionOwner();
   const token = await useAccount.getState().getAccessToken();
   if (!owns()) throw new DOMException('Account changed', 'AbortError');
   if (!token) throw new ApiFailure('unauthorized', 401);
-  const checkout = await api.startCheckout(token, plan);
+  const checkout = await api.startCheckout(token, plan, expectedAmountKopecks);
   if (!owns()) throw new DOMException('Account changed', 'AbortError');
   savePending(checkout);
   return checkout.paymentUrl;
@@ -148,6 +164,7 @@ const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
  * the pending record is older than the window a callback could plausibly still be in flight.
  */
 export async function claimPending(attempts = 10, intervalMs = 3000): Promise<ClaimOutcome> {
+  const owns = captureAccountSessionOwner();
   const pending = readPending();
   if (!pending) return 'none';
 
@@ -158,9 +175,11 @@ export async function claimPending(attempts = 10, intervalMs = 3000): Promise<Cl
   let serverAnswered = false;
   for (let i = 0; i < attempts; i += 1) {
     const token = await useAccount.getState().getAccessToken();
+    if (!owns()) return 'unreachable';
     if (!token) return serverAnswered ? 'pending' : 'unreachable';
     try {
       await api.redeemGrant(token, pending.grantToken);
+      if (!owns()) return 'unreachable';
       clearPending();
       await useEntitlement.getState().load();
       return 'granted';
@@ -185,7 +204,9 @@ export async function claimPending(attempts = 10, intervalMs = 3000): Promise<Cl
  * not spend a request on this for every signed-in user.
  */
 export async function claimPurchase(attempts = 5, intervalMs = 2000): Promise<ClaimOutcome> {
+  const owns = captureAccountSessionOwner();
   const local = await claimPending(attempts, intervalMs);
+  if (!owns()) return 'unreachable';
   if (local === 'granted') return local;
   // Anything short of granted must still ask the server. Returning `pending` here short-circuited the
   // lookup in exactly the two cases it was built for: a token overwritten by a second checkout, and a
@@ -193,11 +214,14 @@ export async function claimPurchase(attempts = 5, intervalMs = 2000): Promise<Cl
   // while the server held the answer all along.
 
   const token = await useAccount.getState().getAccessToken();
+  if (!owns()) return 'unreachable';
   if (!token) return local === 'pending' ? 'pending' : 'unreachable';
   try {
     const grantToken = await api.unclaimedGrant(token);
+    if (!owns()) return 'unreachable';
     if (!grantToken) return local === 'pending' ? 'pending' : 'none';
     await api.redeemGrant(token, grantToken);
+    if (!owns()) return 'unreachable';
     // Only when the server handed back OUR token. Clearing whatever is stored looks tidier and throws
     // away a second, still-unconfirmed purchase: start checkout twice, pay both, and the older grant
     // is the one the server returns first — dropping the newer token then leaves its callback with

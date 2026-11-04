@@ -18,6 +18,7 @@ vi.mock('@/features/stats/ReadingStats', () => ({ ReadingStats: () => <p>Local r
 
 const { useContentStore } = await import('@/content/store');
 const { DashboardPage } = await import('./DashboardPage');
+const { CourseOverviewPage } = await import('./CourseOverviewPage');
 const { DayPage } = await import('./DayPage');
 const { CheckpointPage } = await import('./CheckpointPage');
 const { PlacementPage } = await import('./PlacementPage');
@@ -44,6 +45,7 @@ beforeEach(() => {
 
 const pages = [
   ['/', '/', DashboardPage],
+  ['/syllabus', '/syllabus', CourseOverviewPage],
   ['/course/unit/day/unit.d1', '/course/:unitId/day/:dayId', DayPage],
   ['/checkpoint/unit', '/checkpoint/:unitId', CheckpointPage],
   ['/placement', '/placement', PlacementPage],

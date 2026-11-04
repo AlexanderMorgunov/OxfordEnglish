@@ -1,62 +1,171 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { PixelImage } from '@/shared/ui';
-import { cn } from '@/shared/lib/cn';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
+import { NAVIGATION_INSETS_EVENT } from '@/shared/lib/navigation-insets';
 import { useReaderSettings, RATE_STEPS } from './settings';
 import { withReaderReturn } from './return-to-reader';
 import { BookmarkList } from './BookmarkList';
 import { ReaderAppearance } from './ReaderAppearance';
+import { ReaderIcon } from './ReaderIcon';
 import type { Bookmark } from './bookmarks';
+import './reader-controls.css';
 
-/** Where a reader jumps from mid-book. Icon-only so the whole row fits one line of the panel; the
- *  same sprites as the header nav, so the icons are already familiar. Vocabulary keeps `from=reader`,
- *  which is what puts a "back to reading" link on that page. */
+export type ReaderAudioControls = {
+  available: boolean;
+  active: boolean;
+  engaged: boolean;
+  onToggle: () => void;
+  onStop: () => void;
+  onNext: () => void;
+  paragraphIndex?: number;
+  sentenceIndex?: number;
+};
+
 const NAV = [
-  { to: withReaderReturn('/vocabulary'), icon: '/assets/pixel/nav/vocab.png', ru: 'Словарь', en: 'Vocabulary' },
-  { to: withReaderReturn('/'), icon: '/assets/pixel/nav/today.png', ru: 'Сегодня', en: 'Today' },
-  { to: withReaderReturn('/grammar'), icon: '/assets/pixel/nav/grammar.png', ru: 'Грамматика', en: 'Grammar' },
-  { to: withReaderReturn('/review'), icon: '/assets/pixel/nav/review.png', ru: 'Повторение', en: 'Review' },
-  { to: withReaderReturn('/library'), icon: '/assets/pixel/nav/library.png', ru: 'Библиотека', en: 'Library' },
+  {
+    to: withReaderReturn('/vocabulary'),
+    icon: 'cards',
+    ru: 'Словарь',
+    en: 'Vocabulary',
+  },
+  { to: withReaderReturn('/'), icon: 'grid', ru: 'Сегодня', en: 'Today' },
+  {
+    to: withReaderReturn('/grammar'),
+    icon: 'sentence',
+    ru: 'Грамматика',
+    en: 'Grammar',
+  },
+  {
+    to: withReaderReturn('/review'),
+    icon: 'check',
+    ru: 'Повторение',
+    en: 'Review',
+  },
+  {
+    to: withReaderReturn('/library'),
+    icon: 'contents',
+    ru: 'Библиотека',
+    en: 'Library',
+  },
 ] as const;
 
-/** Floating quick-access widget for the reader: section nav, one-tap bookmark of the current
- *  spot, and the bookmark list (jump / delete). A disclosure (not a menu), pinned to the bottom-right
- *  corner and dimmed while scrolling so it never fights the prose underneath. */
 export function ReaderWidget({
   onBookmarkHere,
   bookmarks,
   progress,
   onJump,
   onDelete,
+  audio,
+  chapterLabel,
+  bookProgress,
+  onPreviousChapter,
+  onNextChapter,
+  onOpenContents,
+  appearanceOpen: controlledAppearanceOpen,
+  onAppearanceChange,
+  appearanceReturnFocus,
 }: {
-  /** Bookmark (or un-bookmark) the top-of-screen sentence. Returns whether it was added, for the toast. */
   onBookmarkHere: () => Promise<{ added: boolean }>;
   bookmarks: Bookmark[];
-  /** Position of each bookmark in the book (0–1), by id. */
   progress: Map<string, number>;
   onJump: (bm: Bookmark) => void;
   onDelete: (id: string) => void;
+  audio?: ReaderAudioControls | null;
+  chapterLabel?: string;
+  bookProgress?: number;
+  onPreviousChapter?: () => void;
+  onNextChapter?: () => void;
+  onOpenContents?: () => void;
+  appearanceOpen?: boolean;
+  onAppearanceChange?: (open: boolean) => void;
+  appearanceReturnFocus?: () => HTMLElement | null;
 }) {
-  const canSpeak = useSpeechAvailable();
+  const speechAvailable = useSpeechAvailable();
   const ru = useUiLang((s) => s.lang) === 'ru';
   const rate = useReaderSettings((s) => s.rate);
   const setRate = useReaderSettings((s) => s.setRate);
+  const storageError = useReaderSettings((s) => s.storageError);
   const [open, setOpen] = useState(false);
-  const [appearanceOpen, setAppearanceOpen] = useState(false);
+  const [ownAppearanceOpen, setOwnAppearanceOpen] = useState(false);
+  const appearanceOpen = controlledAppearanceOpen ?? ownAppearanceOpen;
   const [footerVisible, setFooterVisible] = useState(false);
-  const [dim, setDim] = useState(false);
-  const [toast, setToast] = useState<string | null>(null);
+  const [toast, setToast] = useState<{ text: string; error: boolean } | null>(
+    null
+  );
+  const [bookmarkBusy, setBookmarkBusy] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const dockRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
+  const appearanceBtnRef = useRef<HTMLButtonElement>(null);
+  const toastTimer = useRef(0);
+  const alive = useRef(true);
+  const bookmarkPending = useRef(false);
+  const panelId = useId();
+  const canSpeak = audio?.available ?? speechAvailable;
+  const playbackAvailable = Boolean(audio && canSpeak);
+  const percentage =
+    typeof bookProgress === 'number' && Number.isFinite(bookProgress)
+      ? Math.round(Math.max(0, Math.min(1, bookProgress)) * 100)
+      : null;
+
+  const setAppearanceOpen = (next: boolean) => {
+    setOwnAppearanceOpen(next);
+    onAppearanceChange?.(next);
+  };
+
+  useEffect(() => {
+    alive.current = true;
+    return () => {
+      alive.current = false;
+      window.clearTimeout(toastTimer.current);
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    const dock = dockRef.current;
+    if (!dock) return;
+    const root = document.documentElement;
+    const previous = root.style.getPropertyValue('--reader-dock-height');
+    const publish = (height: string) => {
+      if (root.style.getPropertyValue('--reader-dock-height') === height)
+        return;
+      if (height) root.style.setProperty('--reader-dock-height', height);
+      else root.style.removeProperty('--reader-dock-height');
+      window.dispatchEvent(new Event(NAVIGATION_INSETS_EVENT));
+    };
+    const update = () => {
+      const rect = dock.getBoundingClientRect();
+      const occupied =
+        rect.height > 0
+          ? Math.max(rect.height, window.innerHeight - rect.top)
+          : 0;
+      publish(`${footerVisible ? 0 : Math.ceil(occupied)}px`);
+    };
+    update();
+    const observer =
+      typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(update);
+    observer?.observe(dock);
+    window.addEventListener('resize', update);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener('resize', update);
+      publish(previous);
+    };
+  }, [footerVisible]);
 
   useEffect(() => {
     const footer = document.querySelector('[data-app-footer]');
     if (!footer) return;
-    const position = () => setFooterVisible(footer.getBoundingClientRect().top < window.innerHeight);
+    const position = () => {
+      const rect = footer.getBoundingClientRect();
+      setFooterVisible(rect.height > 0 && rect.top < window.innerHeight);
+    };
     position();
-    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(position);
+    const observer =
+      typeof ResizeObserver === 'undefined'
+        ? null
+        : new ResizeObserver(position);
     observer?.observe(footer);
     const main = document.querySelector('main');
     if (main) observer?.observe(main);
@@ -73,30 +182,12 @@ export function ReaderWidget({
     if (!footerVisible) return;
     setOpen(false);
     if (rootRef.current?.contains(document.activeElement)) {
-      document.querySelector<HTMLElement>('main')?.focus({ preventScroll: true });
+      document
+        .querySelector<HTMLElement>('main')
+        ?.focus({ preventScroll: true });
     }
   }, [footerVisible]);
 
-  // Fade the collapsed button while the reader scrolls, back to full on pause. Skipped while open.
-  useEffect(() => {
-    if (open) {
-      setDim(false);
-      return;
-    }
-    let t = 0;
-    const onScroll = () => {
-      setDim(true);
-      clearTimeout(t);
-      t = window.setTimeout(() => setDim(false), 700);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      clearTimeout(t);
-    };
-  }, [open]);
-
-  // Disclosure close contract: outside-click and Esc (Esc returns focus to the trigger).
   useEffect(() => {
     if (!open) return;
     const onDown = (e: MouseEvent) => {
@@ -117,137 +208,310 @@ export function ReaderWidget({
   }, [open]);
 
   const bookmarkHere = async () => {
-    const { added } = await onBookmarkHere();
-    setOpen(false);
-    setToast(
-      added
-        ? ru
-          ? '🔖 закладка добавлена'
-          : '🔖 bookmarked'
-        : ru
-          ? 'закладка убрана'
-          : 'bookmark removed'
-    );
-    window.setTimeout(() => setToast(null), 1800);
+    if (bookmarkPending.current) return;
+    bookmarkPending.current = true;
+    setBookmarkBusy(true);
+    window.clearTimeout(toastTimer.current);
+    try {
+      const { added } = await onBookmarkHere();
+      if (!alive.current) return;
+      setOpen(false);
+      setToast({
+        text: added
+          ? ru
+            ? 'Закладка добавлена'
+            : 'Bookmarked'
+          : ru
+            ? 'Закладка убрана'
+            : 'Bookmark removed',
+        error: false,
+      });
+    } catch {
+      if (!alive.current) return;
+      setToast({
+        text: ru
+          ? 'Не удалось сохранить закладку. Повторите попытку.'
+          : 'Could not save the bookmark. Please try again.',
+        error: true,
+      });
+    } finally {
+      bookmarkPending.current = false;
+      if (alive.current) {
+        setBookmarkBusy(false);
+        toastTimer.current = window.setTimeout(() => setToast(null), 5000);
+      }
+    }
   };
 
   return (
     <>
-    <div
-      ref={rootRef}
-      className="fixed z-30 flex flex-col items-end gap-2"
-      style={{
-        bottom: 'calc(1rem + env(safe-area-inset-bottom))',
-        right: 'calc(1rem + env(safe-area-inset-right))',
-        visibility: footerVisible ? 'hidden' : undefined,
-      }}
-    >
-      {toast && (
-        <div
-          role="status"
-          className="rounded-sm border border-line bg-surface px-3 py-1.5 font-mono text-2xs text-content shadow-md"
-        >
-          {toast}
-        </div>
-      )}
-      {open && (
-        <div
-          id="reader-widget-panel"
-          className="flex max-h-[70dvh] w-64 max-w-[80vw] flex-col items-stretch gap-1 overflow-y-auto rounded-md border border-line bg-surface p-1.5 shadow-lg [scrollbar-gutter:stable]"
-        >
-          <nav
-            aria-label={ru ? 'Разделы' : 'Sections'}
-            className="grid grid-cols-5 pb-0.5"
+      <div
+        ref={rootRef}
+        className="rdc-widget"
+        style={{ visibility: footerVisible ? 'hidden' : undefined }}
+      >
+        {toast && (
+          <p
+            className={`rdc-toast${toast.error ? ' rdc-error' : ''}`}
+            role={toast.error ? 'alert' : 'status'}
           >
-            {NAV.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                onClick={() => setOpen(false)}
-                aria-label={ru ? item.ru : item.en}
-                title={ru ? item.ru : item.en}
-                // Icon-only, so the label lives in aria-label/title; 44px keeps the tap target usable.
-                className="flex h-11 min-w-11 items-center justify-center rounded-sm hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
-              >
-                <PixelImage src={item.icon} alt="" className="h-5 w-5" />
-              </Link>
-            ))}
-          </nav>
-          <button type="button" aria-haspopup="dialog" onClick={() => { setOpen(false); setAppearanceOpen(true); }}
-            className="flex min-h-11 items-center gap-2 rounded-sm px-3 py-2 text-left text-sm text-content hover:bg-surface-2">
-            <span aria-hidden="true" className="font-semibold">Aa</span>
-            {ru ? 'Вид текста' : 'Text appearance'}
-          </button>
-          <button
-            type="button"
-            onClick={() => void bookmarkHere()}
-            className="flex min-h-11 items-center gap-2 rounded-sm px-3 py-2 text-left font-mono text-xs text-content hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
-          >
-            <span className="w-4 shrink-0 text-center">🔖</span>
-            {ru ? 'добавить закладку' : 'add bookmark'}
-          </button>
-          {canSpeak && (
-            <div
-              role="group"
-              aria-label={ru ? 'Скорость озвучки' : 'Read-aloud speed'}
-              className="grid gap-1 px-3 py-1"
-              style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, calc(2.75rem * var(--app-text-scale, 1))), 1fr))' }}
+            {toast.text}
+          </p>
+        )}
+        {open && (
+          <div id={panelId} className="rdc-actions-panel">
+            <nav
+              aria-label={ru ? 'Разделы' : 'Sections'}
+              className="rdc-sections"
             >
-              <span className="col-span-full font-mono text-2xs text-muted">{ru ? 'скорость' : 'speed'}</span>
-              {RATE_STEPS.map((r) => (
-                <button
-                  key={r}
-                  type="button"
-                  aria-pressed={rate === r}
-                  onClick={() => setRate(r)}
-                  className={cn(
-                    'min-h-11 min-w-0 rounded-sm px-1 py-1.5 font-mono text-2xs hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal',
-                    rate === r ? 'bg-surface-2 text-teal' : 'text-muted'
-                  )}
-                >
-                  {r}×
-                </button>
+              {NAV.map((item) => (
+                <Link key={item.to} to={item.to} onClick={() => setOpen(false)}>
+                  <ReaderIcon name={item.icon} />
+                  <span>{ru ? item.ru : item.en}</span>
+                </Link>
               ))}
+            </nav>
+            <button
+              type="button"
+              className="rdc-panel-action"
+              disabled={bookmarkBusy}
+              onClick={() => void bookmarkHere()}
+            >
+              <ReaderIcon name="bookmark" />
+              {ru ? 'Добавить закладку' : 'Add bookmark'}
+            </button>
+            <button
+              type="button"
+              className="rdc-panel-action"
+              aria-haspopup="dialog"
+              onClick={() => {
+                setOpen(false);
+                setAppearanceOpen(true);
+              }}
+            >
+              <ReaderIcon name="type" />
+              {ru ? 'Вид текста' : 'Text appearance'}
+            </button>
+            {bookmarks.length > 0 && (
+              <div className="rdc-bookmarks">
+                <h2>
+                  {ru ? 'Закладки' : 'Bookmarks'} ({bookmarks.length})
+                </h2>
+                <BookmarkList
+                  bookmarks={bookmarks}
+                  progress={progress}
+                  onJump={(bm) => {
+                    onJump(bm);
+                    setOpen(false);
+                  }}
+                  onDelete={onDelete}
+                />
+              </div>
+            )}
+          </div>
+        )}
+        <div
+          ref={dockRef}
+          className="rdc-dock"
+          role="region"
+          aria-label={
+            ru ? 'Озвучка и место в книге' : 'Read-aloud and book position'
+          }
+        >
+          <div className="rdc-play-group">
+            <button
+              type="button"
+              className="rdc-play-button"
+              disabled={!playbackAvailable}
+              onClick={() => audio?.onToggle()}
+              aria-label={
+                audio?.active
+                  ? ru
+                    ? 'Пауза'
+                    : 'Pause reading'
+                  : audio?.engaged
+                    ? ru
+                      ? 'Продолжить озвучку'
+                      : 'Resume reading'
+                    : ru
+                      ? 'Слушать главу'
+                      : 'Read chapter aloud'
+              }
+            >
+              <ReaderIcon name={audio?.active ? 'pause' : 'play'} />
+            </button>
+            <div className="rdc-play-caption">
+              <strong>
+                {audio?.active
+                  ? ru
+                    ? 'Читаем вслух'
+                    : 'Reading aloud'
+                  : audio?.engaged
+                    ? ru
+                      ? 'На паузе'
+                      : 'Paused'
+                    : ru
+                      ? 'Слушать главу'
+                      : 'Listen to this chapter'}
+              </strong>
+              <span>
+                {!canSpeak
+                  ? ru
+                    ? 'Озвучка недоступна'
+                    : 'Speech unavailable'
+                  : (chapterLabel ??
+                    (ru ? 'С текущего места' : 'From your current position'))}
+              </span>
             </div>
-          )}
-          {bookmarks.length > 0 && (
-            <div className="mt-1 border-t border-line pt-1">
-              <p className="px-3 py-1 font-mono text-2xs uppercase tracking-[0.08em] text-muted">
-                {ru ? 'закладки' : 'bookmarks'} ({bookmarks.length})
-              </p>
-              <BookmarkList
-                bookmarks={bookmarks}
-                progress={progress}
-                onJump={(bm) => {
-                  onJump(bm);
-                  setOpen(false);
-                }}
-                onDelete={onDelete}
+          </div>
+          <div className="rdc-audio-controls">
+            <button
+              type="button"
+              className="rdc-icon-button"
+              disabled={!playbackAvailable || !audio?.engaged}
+              onClick={() => audio?.onNext()}
+              aria-label={ru ? 'Следующее предложение' : 'Next sentence'}
+              title={ru ? 'Следующее предложение' : 'Next sentence'}
+            >
+              <ReaderIcon name="skip" />
+            </button>
+            <button
+              type="button"
+              className="rdc-icon-button"
+              disabled={!playbackAvailable || !audio?.engaged}
+              onClick={() => audio?.onStop()}
+              aria-label={ru ? 'Остановить озвучку' : 'Stop reading'}
+              title={ru ? 'Остановить озвучку' : 'Stop reading'}
+            >
+              <ReaderIcon name="stop" />
+            </button>
+            <label className="rdc-speed">
+              <span className="sr-only">
+                {ru ? 'Скорость озвучки' : 'Read-aloud speed'}
+              </span>
+              <select
+                aria-label={ru ? 'Скорость озвучки' : 'Read-aloud speed'}
+                disabled={!canSpeak}
+                value={rate}
+                onChange={(e) => setRate(Number(e.target.value))}
+              >
+                {RATE_STEPS.map((value) => (
+                  <option key={value} value={value}>
+                    {value}×
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+          {percentage !== null && (
+            <div className="rdc-location">
+              <span>
+                {ru ? 'Место в книге' : 'Book position'} · {percentage}%
+              </span>
+              <progress
+                aria-label={ru ? 'Место в книге' : 'Book position'}
+                max={100}
+                value={percentage}
               />
             </div>
           )}
+          {(onPreviousChapter || onNextChapter) && (
+            <div className="rdc-chapter-controls">
+              <button
+                type="button"
+                className="rdc-icon-button"
+                disabled={!onPreviousChapter}
+                onClick={onPreviousChapter}
+                aria-label={ru ? 'Предыдущая глава' : 'Previous chapter'}
+              >
+                <ReaderIcon name="chevron-left" />
+              </button>
+              <button
+                type="button"
+                className="rdc-icon-button"
+                disabled={!onNextChapter}
+                onClick={onNextChapter}
+                aria-label={ru ? 'Следующая глава' : 'Next chapter'}
+              >
+                <ReaderIcon name="chevron-right" />
+              </button>
+            </div>
+          )}
+          {onOpenContents && (
+            <button
+              type="button"
+              className="rdc-icon-button rdc-contents"
+              onClick={onOpenContents}
+              aria-label={ru ? 'Содержание' : 'Contents'}
+            >
+              <ReaderIcon name="contents" />
+            </button>
+          )}
+          <button
+            type="button"
+            className="rdc-icon-button rdc-quick-bookmark"
+            disabled={bookmarkBusy}
+            onClick={() => void bookmarkHere()}
+            aria-label={
+              ru ? 'Закладка на текущем месте' : 'Bookmark current position'
+            }
+            title={
+              ru ? 'Закладка на текущем месте' : 'Bookmark current position'
+            }
+          >
+            <ReaderIcon name="bookmark" />
+          </button>
+          <button
+            ref={appearanceBtnRef}
+            type="button"
+            className="rdc-icon-button"
+            aria-label={ru ? 'Вид текста' : 'Text appearance'}
+            title={ru ? 'Вид текста' : 'Text appearance'}
+            aria-haspopup="dialog"
+            onClick={() => setAppearanceOpen(true)}
+          >
+            <ReaderIcon name="type" />
+          </button>
+          <button
+            ref={btnRef}
+            type="button"
+            className="rdc-icon-button"
+            aria-expanded={open}
+            aria-controls={panelId}
+            aria-label={ru ? 'Быстрые действия' : 'Quick actions'}
+            title={ru ? 'Быстрые действия' : 'Quick actions'}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <ReaderIcon name={open ? 'close' : 'grid'} />
+          </button>
+          {storageError && !appearanceOpen && (
+            <p className="rdc-storage-warning" role="status">
+              {ru
+                ? 'Настройки не сохранены в браузере.'
+                : 'Preferences were not saved in this browser.'}
+            </p>
+          )}
+          {!canSpeak && (
+            <p className="rdc-unavailable">
+              {ru
+                ? 'Озвучка недоступна на этом устройстве.'
+                : 'Read-aloud is unavailable on this device.'}
+            </p>
+          )}
         </div>
-      )}
-      <button
-        ref={btnRef}
-        type="button"
-        aria-expanded={open}
-        aria-controls="reader-widget-panel"
-        aria-label={ru ? 'Быстрые действия' : 'Quick actions'}
-        onClick={() => setOpen((v) => !v)}
-        className={cn(
-          'flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface shadow-lg transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal',
-          dim && !open ? 'opacity-35 hover:opacity-100' : 'opacity-100'
-        )}
-      >
-        {open ? (
-          <span className="text-lg text-muted">×</span>
-        ) : (
-          <PixelImage src="/assets/pixel/reader-widget.png" alt="" className="h-6 w-6" />
-        )}
-      </button>
-    </div>
-    <ReaderAppearance open={appearanceOpen} onClose={() => setAppearanceOpen(false)} returnFocus={() => footerVisible ? document.querySelector<HTMLElement>('main') : btnRef.current} />
+      </div>
+      <ReaderAppearance
+        open={appearanceOpen}
+        onClose={() => setAppearanceOpen(false)}
+        onBeforeVoicePreview={() => audio?.onStop()}
+        returnFocus={() =>
+          footerVisible
+            ? document.querySelector<HTMLElement>('main')
+            : (appearanceReturnFocus?.() ??
+              appearanceBtnRef.current ??
+              btnRef.current)
+        }
+      />
     </>
   );
 }

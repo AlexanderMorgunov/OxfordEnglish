@@ -97,6 +97,7 @@ export function VocabularySectionView({ section }: { section: VocabularySection 
           <Button
             size="sm"
             variant="ghost"
+            data-onboarding="lesson-add-words"
             onClick={() =>
               section.words.forEach((w) => void addWordCard(w.word, w.ru, w.example))
             }

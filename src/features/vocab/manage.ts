@@ -18,7 +18,7 @@ export async function editCardAnswer(
     await mutateSrsCard(
       expected.id,
       (row) => {
-        if (!sameCardContent(row, expected)) return;
+        if (!sameCardContent(row, expected) || row.creationId !== expected.creationId || row.createdAt !== expected.createdAt) return;
         return { ...row, back, contextGloss: contextGloss.trim() };
       },
       currentScope,
@@ -40,17 +40,19 @@ export async function editCardAnswer(
  *  overwritten by an auto-fetch, including an explicitly cleared answer. */
 export async function setTranslation(
   entry: LexiconEntry,
-  ru: string
+  ru: string,
+  current = captureDataScope()
 ): Promise<boolean> {
   const value = ru.trim();
-  const current = captureDataScope();
   if (entry.cardId) {
     return Boolean(
       await mutateSrsCard(
         entry.cardId,
-        (row) => {
+        async (row) => {
+          if (entry.cardBack !== undefined && (row.back !== entry.cardBack || row.creationId !== entry.cardCreationId)) return;
           const answer = dictionaryAnswer(row);
-          if (answer && answer !== entry.translation) return;
+          const cached = await db.translations.get(termCacheKey(entry.display));
+          if (entry.cardBack !== undefined ? (answer ?? (cached?.ru || undefined)) !== entry.translation : answer && answer !== entry.translation) return;
           return { ...row, back: value || entry.display };
         },
         current,

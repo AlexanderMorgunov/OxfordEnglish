@@ -150,3 +150,8 @@ test('a card edited after its removal is listed again (H1)', () => {
 
   expect(out.map((e) => e.display)).toEqual(['pear']);
 });
+
+test('a case-only placeholder is not mistaken for a translation', () => {
+  const out = buildLexicon({ cards: [card({ front: 'Quiet', back: 'quiet' })], statuses: [], translations: [{ word: 'quiet', ru: 'тихий', source: 'manual' }] });
+  expect(out[0]?.translation).toBe('тихий');
+});

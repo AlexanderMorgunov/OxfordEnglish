@@ -41,11 +41,11 @@ function signing(): Promise<Signing> {
 }
 
 /** Sign a short-lived access token; returns the JWT + its expiry (epoch ms) for the client to refresh by. */
-export async function signAccess(sub: string, deviceId: string): Promise<{ token: string; expiresAt: number }> {
+export async function signAccess(sub: string, deviceId: string, authVersion = 0): Promise<{ token: string; expiresAt: number }> {
   const { privateKey, kid } = await signing();
   const now = Math.floor(Date.now() / 1000);
   const exp = now + ACCESS_TTL_S;
-  const token = await new SignJWT({ deviceId })
+  const token = await new SignJWT({ deviceId, ...(authVersion ? { authVersion } : {}) })
     .setProtectedHeader({ alg: 'EdDSA', kid })
     .setIssuer(ISS)
     .setAudience(AUD)
@@ -57,21 +57,31 @@ export async function signAccess(sub: string, deviceId: string): Promise<{ token
 }
 
 /** Verify an access token; returns its claims or throws. */
-export async function verifyAccess(token: string): Promise<{ sub: string; deviceId: string }> {
+export type AccessClaims = { sub: string; deviceId: string; authVersion?: number };
+const accessValidators = new WeakMap<object, (claims: AccessClaims) => Promise<boolean>>();
+export function bindAccessValidator(request: object, validate: (claims: AccessClaims) => Promise<boolean>): void {
+  accessValidators.set(request, validate);
+}
+
+export async function verifyAccess(token: string): Promise<AccessClaims> {
   const { publicKey } = await signing();
   const { payload } = await jwtVerify(token, publicKey, { issuer: ISS, audience: AUD });
-  return { sub: String(payload.sub), deviceId: String((payload as { deviceId?: unknown }).deviceId ?? '') };
+  if (payload.authVersion != null && (!Number.isSafeInteger(payload.authVersion) || Number(payload.authVersion) < 0)) throw new Error('Invalid credential generation');
+  return { sub: String(payload.sub), deviceId: String(payload.deviceId ?? ''), ...(payload.authVersion == null ? {} : { authVersion: Number(payload.authVersion) }) };
 }
 
 /** Extract + verify Bearer claims from a request; null on missing/invalid token. Shared by authed routes. */
-export async function bearerClaims(c: { req: { header(name: string): string | undefined } }): Promise<{ sub: string; deviceId: string } | null> {
+export async function bearerClaims(c: { req: { header(name: string): string | undefined } }): Promise<AccessClaims | null> {
   const auth = c.req.header('authorization') ?? '';
   const token = auth.startsWith('Bearer ') ? auth.slice(7) : '';
+  let claims: AccessClaims;
   try {
-    return await verifyAccess(token);
+    claims = await verifyAccess(token);
   } catch {
     return null;
   }
+  const validate = accessValidators.get(c.req);
+  return !validate || await validate(claims) ? claims : null;
 }
 
 /** Public JWKS document for token verification by this and future services. */

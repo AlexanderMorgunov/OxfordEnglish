@@ -66,6 +66,15 @@ export interface AuthStore {
 }
 
 export class InMemoryAuthStore implements AuthStore {
+  checkpoint(): () => void {
+    const snapshot = structuredClone({ accounts: this.accounts, refresh: this.refresh, revokedFamilies: this.revokedFamilies, devices: this.devices, deviceFamilies: this.deviceFamilies, links: this.links, registerHits: this.registerHits });
+    return () => {
+      this.accounts = snapshot.accounts; this.refresh = snapshot.refresh;
+      this.revokedFamilies = snapshot.revokedFamilies; this.devices = snapshot.devices;
+      this.deviceFamilies = snapshot.deviceFamilies; this.links = snapshot.links;
+      this.registerHits = snapshot.registerHits;
+    };
+  }
   async countAccounts(): Promise<number> {
     return this.accounts.size;
   }

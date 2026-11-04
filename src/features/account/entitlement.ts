@@ -27,7 +27,7 @@ type EntitlementState = {
   loading: boolean;
   /** Last error code from a claim attempt, for the UI to explain (e.g. `trial_already_claimed`). */
   error: string | null;
-  load: () => Promise<void>;
+  load: () => Promise<Entitlement | null>;
   claimTrial: () => Promise<TrialClaim>;
   clear: () => void;
   /** Apply the quota figures the AI proxy returns, so the counter moves without an extra round-trip. */
@@ -58,7 +58,7 @@ const METADATA_DEADLINE_MS = 15_000;
 let revision = 0;
 let usageRevision = 0;
 let planRevision = 0;
-let loadFlight: { current: () => boolean; promise: Promise<void> } | null = null;
+let loadFlight: { current: () => boolean; promise: Promise<Entitlement | null> } | null = null;
 const pending = new Set<AbortController>();
 
 function operation() {
@@ -101,14 +101,14 @@ export const useEntitlement = create<EntitlementState>((set, get) => ({
     const startedUsage = usageRevision;
     const startedPlan = planRevision;
     set({ loading: true });
-    const flight = { current: op.current, promise: Promise.resolve() };
+    const flight = { current: op.current, promise: Promise.resolve<Entitlement | null>(null) };
     loadFlight = flight;
     flight.promise = (async () => {
       try {
         const token = await op.wait(useAccount.getState().getAccessToken());
-        if (!token || !op.current()) return;
+        if (!token || !op.current()) return null;
         const loaded = await op.wait(api.getEntitlement(token, op.signal));
-        if (!op.current() || startedPlan !== planRevision || loadFlight !== flight) return;
+        if (!op.current() || startedPlan !== planRevision || loadFlight !== flight) return null;
         const held = get().entitlement;
         let entitlement = loaded;
         if (held && startedUsage !== usageRevision && held.plan === loaded.plan && held.ai.limit === loaded.ai.limit &&
@@ -117,8 +117,10 @@ export const useEntitlement = create<EntitlementState>((set, get) => ({
         const error = loaded.plan === 'free' && !loaded.trialEndsAt && get().error === 'trial_already_claimed'
           ? 'trial_already_claimed' : null;
         set({ entitlement, error });
+        return entitlement;
       } catch {
         // A transient failure must not downgrade a known subscription.
+        return null;
       } finally {
         op.finish();
         if (loadFlight === flight) loadFlight = null;

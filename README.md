@@ -29,10 +29,64 @@ Vite 6 · React 19 (no `forwardRef`, StrictMode) · TypeScript (strict) · Tailw
 no config file) · React Router 7 · Zustand (hand-rolled persist) · Dexie / IndexedDB · Zod · ts-fsrs ·
 pdf.js + fflate (reader) · driver.js (onboarding tour) · Vitest + Testing Library · vite-plugin-pwa.
 Core study works locally without an account. The optional **Hono API** (`server/`)
-provides recovery-key accounts, TOTP/recovery, cross-device sync, Robokassa subscriptions,
+provides username/password accounts, legacy-key compatibility, TOTP/recovery, cross-device sync, Robokassa subscriptions,
 and managed AI. It uses YDB, Object Storage, and Lockbox on Yandex Cloud.
 **Android** uses Capacitor 8, native TTS and English dictation. Sync, managed AI, feedback, and analytics
 make network requests when enabled; user-imported books stay local unless book-file sync is enabled.
+
+### Account access
+
+The account flow at `/account/register` and `/account/login` uses a unique username
+(4–24 ASCII letters, digits or underscores; starts with a letter) and a password
+(15–128 NFC Unicode code points, including spaces). No email, phone or security
+question is collected. Ordinary signup offers an unchecked free-trial option.
+Signup from a Pro invitation has an explicit **Create account and try Pro** action
+and a separate free-account action. Login and legacy-key upgrades never start a
+trial. Registration and activation use separate API operations: partial failure
+keeps the account and retries activation only; lost replies are reconciled before
+retrying. Confirmed Pro access returns to the original task with its actual expiry.
+Optional recovery uses an authenticator and eight one-use backup codes. Recovery
+keeps the account id, subscription and synced data, and revokes previous sessions
+and the legacy key. An ordinary password change keeps the current device signed
+in, signs other sessions out and preserves a legacy key if one exists.
+
+Existing key accounts can attach a username to the same identity; their old recovery
+names remain separate, nonunique locators. The UI checks `/v1/access/capabilities`
+and keeps the legacy settings flow when the API has not been upgraded. Production
+rollout requires the additive `account_access` YDB table and its `by_account` index
+before the separate API deployment; see [server/README.md](server/README.md).
+Source integration alone does not deploy the API or update the shipped Android APK.
+
+### Contextual help
+
+A two-step welcome opens automatically on first app entry until dismissed or completed:
+product overview, then five theme previews, interface text size and an optional
+14-day Pro trial. Its own completion marker is independent of old onboarding,
+progress and settings. Closing or continuing completes it; interruption before
+that allows another automatic attempt. Daylight is only the new-install default;
+saved appearance and old history preserve the previous look. Appearance preview
+is reversible until saved. Storage failure supports
+retry or an explicitly temporary session-only choice.
+
+The trial checkbox starts selected where potentially eligible, with an explicit
+trial action and a separate free path. Account creation uses the existing access
+flow; signing in requires a separate trial decision. Existing/expired access and
+device refusals never grant another trial. A pending activation is remembered by
+owner and can be checked after reload without repeating the mutation. The welcome
+opens automatically; **?** remains page help.
+
+The header's **?** opens help for the current page and always starts at its first
+step. The reader has its own help button. Only the first lesson and reader visit
+show a short three-step introduction automatically; dismissal and completion are
+remembered separately for each local data owner. Manual help remains available
+when storage is unavailable. Historical `onboarding.seen` data is unchanged.
+
+Optional recorded examples load only after **Show example**. They support stop,
+replay, reduced motion, small screens and missing-file recovery. Versioned media
+under `public/onboarding/` is excluded from the PWA app-shell precache and cached
+only when requested. Its manifest records synthetic-fixture provenance and hashes.
+Tours suspend reading statistics and position writes, restore the reading place
+and focus, and never submit exercises, save words or make paid AI requests.
 
 ## Quick start
 
@@ -55,9 +109,190 @@ Open `/kitchen-sink` (dev only) to see the full design system.
 | `npm test`               | Vitest run (**run before pushing — CI gates on it**) |
 | `npm run validate:packs` | Content-pack validator (structural + logical checks) |
 
+## Page layout and navigation
+
+Header, page shell, footer and app notices share the 1160px `.app-container`.
+Overview grids adapt to available space and the interface text size; books,
+exercises and long-form pages use a centered `.reading-column`.
+Navigation uses the supplied DayEnglish book/sun mark and local SVG icons in
+`src/assets/brand/`. Wide screens show five study destinations, a Settings link
+and More; Progress is also visible when space permits and otherwise moves into
+More. Compact screens move the five labelled study links to a bottom bar.
+If large text cannot fit those labels, or the viewport is short, a non-sticky
+Sections disclosure contains all destinations. Pro stays in More/Sections.
+
+Actual font and viewport measurements choose the layout. Each destination has one
+accessible link; resizing preserves navigation focus. More names the current
+secondary section, supports keyboard/outside dismissal, and stays inside the
+visible viewport. Nested lessons, articles, readers, translator, settings and
+subscription returns retain their parent navigation context.
+
+Measured top/bottom insets keep anchors, keyboard focus, sticky controls, floating
+reader controls and footer links clear of the bars, including safe areas. Reader
+position and visible-paragraph accounting use the same insets. A skip link moves
+keyboard users directly to the main content.
+
+## About DayEnglish
+
+`/about` introduces the learning path, reader, vocabulary and reviews with the
+shared brand/icons and theme tokens. Its connected reading → save → recall demo
+uses labelled prepared meanings and memory-only records. Looking up does not save;
+partial phrase ranges remain unavailable, reverse selection works, and replacing
+a demo rating does not create an extra entry. The example never writes real
+vocabulary, schedules, exercise history or learning milestones. Pronunciation uses
+the existing app engine with stop, page/route cleanup and unavailable feedback.
+
+Native FAQ disclosures work independently. Page anchors support keyboard focus
+and separate browser history scroll restoration; Pro, data, feedback and legal
+links stay within the app. Copy and the static search fallback distinguish local
+storage from optional cloud book sync, cached offline materials from network
+requests, and free study from optional Pro without inventing prices/eligibility.
+
+## Today and the course overview
+
+`/` shows a single topic's day path, with a desktop preview or a mobile dialog.
+On desktop, the selected day card links directly to its lesson; selecting another
+card previews it first. Mobile cards open the day overview with its lesson link.
+`/syllabus` lists levels as independent disclosures; topics link back to
+`/?unit=<id>`. Browsing topics or previewing a day does not change the working day.
+Opening a lesson records that day locally. Returning preserves browsing selections,
+expanded levels, scroll and focus; account data resets clear this context.
+
+Completion counts come from saved practice/listening answers. Wrong-only attempts
+mark a day as started; a day with no scored exercises is never completed by 0/0.
+Without a valid working day, continuation uses started days, then the placement
+recommendation and remaining course order. Progress-read failures offer retry while
+keeping lessons accessible. Working-day persistence is device-local; synced answers
+still contribute to continuation suggestions on other devices.
+
+## Grammar reference
+
+`/grammar` loads its own reference JSON independently of the full course. Search
+matches both languages, topic aliases, headings and examples; CEFR and category
+filters retain their session state. Cards show real levels and examples. Unknown
+future topic IDs remain visible under Other topics.
+
+Articles retain all original blocks, examples, translations, pitfalls and related
+topics. The table of contents follows the actual blocks, with a desktop sidebar
+and a mobile disclosure. Returning preserves the original filtered card and focus.
+Fresh header navigation opens the reference at the top; article/list and browser
+returns restore their context. The header disclosure stays above page artwork.
+Lesson/reader context survives related topics and list navigation; a lesson return
+is validated using only the course index (reusing it when already loaded).
+Loading, cancellation, failure, empty reference and missing article are separate
+states; late cancelled requests cannot replace a retry. Reading a rule does not
+change exercise completion or SRS progress.
+
+## Progress
+
+`/progress` separates lifetime exercise/vocabulary figures from local-date
+reading periods (today, 7/30 days and 12 months). Exercise streaks and the 14-day
+calendar retain UTC semantics. Skill accuracy uses the first attempt per unique
+exercise; small samples are labelled and do not imply mastery or a CEFR level.
+
+Reading shows actual time, word/save/review events and book totals. Zero days have
+zero-height bars; a date selector and table provide the same values without
+requiring precise pointer input. Vocabulary counts learning/known entries;
+reviews count answers, and known marks count actions rather than learned words.
+
+Independent local reads distinguish loading, cancelled, empty and unavailable
+data, with retry and stale-result guards. Account changes reset data and browsing
+context. Local data remains usable offline even when course loading fails.
+Skill/checkpoint dialogs lead to available rules/tests and preserve return focus;
+opening a checkpoint does not save a result. Legacy malformed checkpoint data
+shows unavailable history without modifying or deleting its records. No new
+database schema, AI evaluation or server contract is introduced.
+
+## Library
+
+The imported and catalog book readers use a dedicated reading header, chapter
+contents, a reserved desktop help rail and native mobile help sheets. A single
+bottom dock controls the existing speech session and actual book position.
+Word/phrase lookup is separate from saving; sentence translation, simplification,
+grammar and exact bookmarks retain their real provider, entitlement and storage
+paths. Chapter words, matching and exercises open from explicit reading actions.
+Practice does not grade FSRS implicitly.
+
+Active Pro/trial book help starts the cached contextual word meaning automatically
+after a short dismissal debounce, without requiring a personal key or another
+tap. Cancel/retry remain explicit; free lookup remains available on AI failure.
+Unknown plans and BYOK-only book help keep an explicit context action. Cached
+answers remain readable when quota is spent; new managed calls retain the existing
+quota checks. Saving uses the displayed meaning unless the user edits it.
+
+Reading appearance previews font, size, spacing, highlights, five themes and actual
+device voices before Save/Cancel. Fresh books use 22px serif text; existing saved
+sizes and the 17px course default are preserved. Logical word anchors account for
+the measured reader header and occupied dock area. Bookmark and chapter writes
+are atomic with sync markers and fenced against late owner changes.
+
+`/library` shows imported books and a continuation card. `/library/catalog` has
+the free-license catalog with its actual CEFR levels. Each shelf retains separate
+search, sort and filters during navigation; reading returns to a visible card.
+Desktop uses decorative fallback covers and mobile uses compact rows. Details
+contain reading actions and an explicit deletion confirmation.
+
+Import supports cancellation before the metadata commit, scoped to the current
+data owner. Errors, empty lists and loading are distinct. Device availability is
+checked against OPFS or a parsed-book cache; browser catalog books become available
+offline after opening and caching them. Native bundled stories ship in the APK.
+The catalog manifest is cached for offline browsing. Upload issues remain separate
+from local availability; download failures use the existing reader recovery flow.
+“Mark as read” is device-local and preserves the actual reading position.
+
+## Review sessions
+
+`/review` shows the actual due queue, a preview and separate first-use, nothing-due,
+loading, cancelled and retryable read-error states. Start opens `/review/session`;
+its membership is fixed until a new session. Words, phrases, grammar patterns and
+legacy mistake cards retain their existing FSRS behavior. Usefulness/CEFR remains
+visible before and after reveal; unknown levels receive no invented score.
+
+Pause and route changes retain the current card, revealed answer, skips and grade
+receipts in memory. Restart/reload begins a new session; committed schedules and
+review history remain in IndexedDB. Skipping does not grade or reschedule. The
+summary counts persisted ratings separately from skipped/removed/unavailable
+cards; correcting the last rating replaces its history event without another
+repetition. Failed writes keep the current position and offer retry. Account
+handover clears private session state and fences late requests.
+
+Space reveals and 1–4 rate only outside interactive controls, after a usable answer
+is shown. Missing translations cannot be graded; lookup can be cancelled, retried
+or replaced by a manual answer. The native answer editor separates general and
+contextual meanings. AI uses the existing plan/key routing and proposes a draft
+field value; an explicit Save commits it. Manual editing works offline. Real
+browser/native speech supports stop and route cleanup; prototype clips are absent.
+Legacy removals require confirmation, and bulk cleanup at 20+ cards is atomic and
+does not remove vocabulary, exercise history or course progress.
+
 ## Vocabulary entry and chapter words
 
-`/vocabulary` keeps the English term, Russian answer and optional context together.
+`/vocabulary` shows aligned term/translation rows with separate pronunciation
+buttons, counted overlapping filters, search, sorting and eight-row disclosure.
+CEFR dots are an approximate level-based usefulness guide; unrated words and
+phrases are not assigned an invented rarity. Search, filters, order, visible limit
+and the originating row's focus survive detail/Back navigation. Detail URLs use
+opaque device-local identifiers, keeping saved terms out of page URLs.
+
+Details keep the original example, contextual gloss and word forms separate from
+the dictionary answer. Known status and a review card are independent; hiding a
+word excludes it from All and review. Removing a card requires confirmation:
+status-only words remain, card-only words leave the list, and tombstones are not
+silently recreated. Translation edits guard against concurrent card changes.
+Loading/read failures show unknown counts and explicit retry/cancel, rather than
+an invented empty dictionary; a transient read failure retains an open editor.
+
+Adding uses a native dialog with live preview, explicit save confirmation,
+Add another/View/Done, preserved cancelled/failed drafts and duplicate detection
+without overwriting an existing answer or schedule. The card is saved atomically
+before optional translation; late lookups enrich only their own unchanged record.
+From Russian and English dictation remain under More ways to add.
+AI examples reuse the existing meanings service: choosing an example fills an
+empty answer with that meaning and preserves a manually entered answer. Subsequent
+edits require checking the example/meaning agreement. Manual examples remain free.
+Pronunciation uses the existing browser/native engine, with stop/switch, route
+cleanup and explicit failure feedback; prototype audio clips are not shipped.
+
 **AI meanings** is a separate expandable tool: opening/reopening it or typing does
 not request AI. An explicit request proposes up to four meanings and examples;
 choosing one edits the draft. A custom context requires an explicit keep/replace
@@ -107,6 +342,21 @@ tokens are larger by2nominalpx; book15–34px choices remain independent, and
 both support browser/root text scaling. Saved word-card answers remain available
 in reader lookup without a translation-cache/provider dependency; exact matching
 source sentences prefer their saved contextual meaning.
+
+Settings use six deep-linked sections under `/settings`: appearance, learning,
+AI, account, data and privacy. Desktop has a side menu; mobile starts with a
+section index. Legacy `#ai-section` links still open AI settings. Optional provider
+credentials stay in a disclosure; unsaved provider drafts survive section changes
+but are cleared on account handover. A failed local save is reported without
+activating an unsaved key. Account recovery and billing still use the real API.
+
+Five device-local palettes (Daylight, Lime, Peony, Lagoon and Studio) apply through
+semantic colour tokens throughout the app. Theme selection previews immediately;
+Apply persists it, while Cancel, Escape, Back or navigation discard the preview.
+Without a saved choice, Studio preserves the familiar dark appearance. Today has
+a dismissible invitation, and the picker remains available in Settings. Reader
+text size stays independent; the current reader uses the app palette. Theme
+preferences are not account data or a separate book-page colour setting.
 
 New translation, microphone and scan sprites were generated with PixelLab;
 [asset provenance](public/assets/pixel/ui/generated-provenance.json) records the
@@ -304,9 +554,15 @@ these are config, not secrets. Set them in a gitignored `.env` (see `.env.exampl
 
 ## Feedback & analytics
 
-- **Feedback** (`/feedback`) transport priority (`src/features/feedback/`): our own endpoint
-  (`VITE_FEEDBACK_ENDPOINT`) → **Web3Forms** (`VITE_WEB3FORMS_ACCESS_KEY`, no backend) → `mailto`
-  fallback. Submissions are queued (`feedbackOutbox`) so an offline submit survives.
+- **Feedback** (`/feedback`, `src/features/feedback/`) uses the configured endpoint
+  (`VITE_FEEDBACK_ENDPOINT`) or, otherwise, **Web3Forms** (`VITE_WEB3FORMS_ACCESS_KEY`, no backend).
+  An optional `VITE_FEEDBACK_EMAIL` link opens the mail client. The responsive form validates optional email, explains its diagnostic payload,
+  and distinguishes confirmed delivery from a durable local queue (`feedbackOutbox`). Offline and
+  failed requests keep the same submission ID for retries; database leases coordinate foreground,
+  startup/online and other-tab attempts. Web3Forms must acknowledge `success: true`. A timeout or
+  stopped attempt cannot recall a message already accepted by the provider, so delivery after a
+  lost acknowledgement is not guaranteed exactly once. Unsubmitted drafts remain in memory across
+  navigation; queued messages survive a restart. Device handover clears both; ordinary logout does not.
 - **Analytics:** **Yandex Metrica** (`VITE_YANDEX_METRICA_ID`), anonymous, off when unset. No Google
   Analytics (privacy positioning).
 
@@ -329,6 +585,12 @@ these are config, not secrets. Set them in a gitignored `.env` (see `.env.exampl
   optional offline matching rounds. Matching does not grade SRS or change review history; legacy
   cards need an explicit save from the chapter to gain a source association.
   Books live in OPFS; optional account-wide book-file sync uploads them to Object Storage.
+- **Reading help in lessons and books:** contextual word meanings, sentence AI translation,
+  simplification/grammar, and phrase translation share the same engine. Confirmed Trial/Pro
+  words resolve automatically; BYOK offers an explicit word action without requiring a plan.
+  Select AI for sentence/phrase translation; free translation remains available. Course recordings,
+  authored translations and glossary are preserved. Phrase selection stays within its reading block;
+  manual edits are protected and a card is created only by an explicit save.
 - **Translate text** (`/vocabulary/text`): type or paste an English passage of up to 2000 characters,
   translate immediately or separately read with word/phrase saving and read-aloud.
   Free translation and optional trial/Pro/BYOK AI keep paragraphs and offer cancellation. Translation

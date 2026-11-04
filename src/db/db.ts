@@ -165,6 +165,10 @@ export interface FeedbackOutboxItem {
   id?: number;
   body: Record<string, string | number | boolean>;
   createdAt: number;
+  submissionId?: string;
+  leaseOwner?: string;
+  leaseUntil?: number;
+  deliveryConfirmed?: boolean;
 }
 
 /** The synced "settings" tier — the learner level/placement + reader/AI/i18n prefs that today live in

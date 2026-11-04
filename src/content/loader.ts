@@ -32,6 +32,7 @@ export type LoadedPack = {
 const DAY_CONCURRENCY = 6;
 const REQUEST_TIMEOUT_MS = 12_000;
 const RETRY_DELAYS_MS = [400, 800];
+let courseSnapshot: ReturnType<typeof CourseIndex.parse> | null = null;
 
 class PackHttpError extends Error {
   constructor(path: string, readonly status: number) {
@@ -109,6 +110,7 @@ async function loadPack(controller: AbortController): Promise<LoadedPack> {
   ]);
   const manifest = PackManifest.parse(manifestRaw);
   const course = CourseIndex.parse(courseRaw);
+  courseSnapshot = course;
 
   const dayIds = course.units.flatMap((u) => u.dayIds);
   const parsed = await loadDays(dayIds, controller);
@@ -150,6 +152,11 @@ export async function loadPublicPack(): Promise<LoadedPack> {
  * site's indexable content, and a failed load renders them as "article not found" to whoever is looking
  * — Googlebot included. Reading through the same URL as the pack keeps the two from drifting.
  */
-export async function loadGrammarOnly(): Promise<GrammarArticle[]> {
-  return GrammarReference.parse(await fetchJson(GRAMMAR_URL));
+export async function loadGrammarOnly(signal?: AbortSignal): Promise<GrammarArticle[]> {
+  return GrammarReference.parse(await fetchJson(GRAMMAR_URL, signal));
+}
+
+export async function loadCourseIndexOnly() {
+  courseSnapshot ??= CourseIndex.parse(await fetchJson(`${PUBLIC_PACK_BASE}/course.json`));
+  return courseSnapshot;
 }

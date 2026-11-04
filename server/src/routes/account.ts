@@ -7,6 +7,7 @@ import type { BlobStore } from '../blobs.js';
 import type { EntitlementStore } from '../entitlements.js';
 import type { TotpStore } from '../totp.js';
 import type { RecoveryNameStore } from '../recoveryName.js';
+import type { AccessStore } from '../accessStore.js';
 
 const err = (code: string, status: 401) => Response.json({ error: { code } }, { status });
 
@@ -17,7 +18,8 @@ export function accountRoutes(
   blobs: BlobStore,
   ent: EntitlementStore,
   totp: TotpStore,
-  names: RecoveryNameStore
+  names: RecoveryNameStore,
+  access?: AccessStore
 ): Hono {
   const app = new Hono();
 
@@ -36,6 +38,7 @@ export function accountRoutes(
     // to go with the account. The name's shared attempt counter deliberately stays: it belongs to
     // everyone else who picked that name.
     await names.purge(userId);
+    if (access && await access.available()) await access.purge(userId);
     return c.json({ ok: true });
   });
 

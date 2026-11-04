@@ -4,6 +4,17 @@ import { Button, Eyebrow } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { useEntitlement } from '@/features/account/entitlement';
 import { claimPurchase, livePending, type ClaimOutcome } from '@/features/account/billing';
+import { useAccount } from '@/features/account/store';
+import { currentWordReturn, readyWordReturn, restoreWordCheckout, useWordReturn } from '@/features/reader/word-return';
+
+function ReturnToReaderWord() {
+  const ru = useUiLang(s => s.lang) === 'ru';
+  const accountId = useAccount(s => s.accountId);
+  const entry = useWordReturn(s => s.entry);
+  useEffect(() => { restoreWordCheckout(); }, [accountId]);
+  const valid = entry && entry.phase !== 'offer' && currentWordReturn()?.id === entry.id;
+  return valid ? <Link to={entry.pathname} onClick={() => readyWordReturn(entry.id)} className="inline-flex min-h-11 items-center rounded-sm border border-teal px-3 py-2 text-sm text-teal">{entry.kind === 'lesson' ? ru ? 'Вернуться к слову в уроке' : 'Back to the word in your lesson' : ru ? 'Вернуться к слову в книге' : 'Back to the word in your book'}</Link> : null;
+}
 
 /**
  * Where the acquirer sends the payer back to.
@@ -104,7 +115,7 @@ export function BillingSuccessPage() {
   const canAskForHelp = view === 'pending' || view === 'none' || view === 'offline';
 
   return (
-    <section aria-label={ru ? 'Оплата' : 'Payment'}>
+    <section className="reading-column" aria-label={ru ? 'Оплата' : 'Payment'}>
       <Eyebrow>{ru ? 'Оплата' : 'Payment'}</Eyebrow>
       <h1 className="mb-3 mt-1 text-2xl font-bold tracking-tight">{heading[view]}</h1>
 
@@ -113,6 +124,7 @@ export function BillingSuccessPage() {
       </p>
 
       <div className="flex flex-wrap gap-2">
+        <ReturnToReaderWord />
         <Link
           to="/"
           className="inline-flex items-center rounded-sm border border-teal-dim bg-teal-dim/10 px-3 py-2 font-mono text-xs tracking-[0.02em] transition-colors hover:border-teal"
@@ -147,7 +159,7 @@ export function BillingFailPage() {
   }, [entitlement?.paidUntil]);
 
   return (
-    <section aria-label={ru ? 'Оплата не прошла' : 'Payment not completed'}>
+    <section className="reading-column" aria-label={ru ? 'Оплата не прошла' : 'Payment not completed'}>
       <Eyebrow>{ru ? 'Оплата' : 'Payment'}</Eyebrow>
       <h1 className="mb-3 mt-1 text-2xl font-bold tracking-tight">{ru ? 'Оплата не прошла' : 'Payment not completed'}</h1>
       <p className="mb-4 max-w-prose text-muted text-pretty">
@@ -162,9 +174,10 @@ export function BillingFailPage() {
             ? ' Если деньги всё же списались, нажмите «Я уже оплатил(а)» в настройках аккаунта.'
             : ' If you were charged after all, use “I have already paid” in account settings.')}
       </p>
-      <Link to="/settings" className="text-sm text-teal hover:underline">
+      <Link to="/settings/account" className="text-sm text-teal hover:underline">
         {ru ? 'Настройки аккаунта' : 'Account settings'}
       </Link>
+      <div className="mt-4"><ReturnToReaderWord /></div>
     </section>
   );
 }

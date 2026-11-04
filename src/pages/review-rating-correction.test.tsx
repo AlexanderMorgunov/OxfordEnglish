@@ -1,3 +1,5 @@
+import { installDialogMock } from '@/test/dialog';
+import { useReviewSession } from '@/features/srs/review-session';
 import 'fake-indexeddb/auto';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -11,45 +13,90 @@ import { ReviewPage } from './ReviewPage';
 import { track } from '@/features/analytics/analytics';
 vi.mock('@/features/analytics/analytics', () => ({ track: vi.fn() }));
 
-vi.mock('@/shared/lib/useSpeechAvailable', () => ({ useSpeechAvailable: () => false }));
+vi.mock('@/shared/lib/useSpeechAvailable', () => ({
+  useSpeechAvailable: () => false,
+}));
 vi.mock('@/features/reader/BackToReader', () => ({ BackToReader: () => null }));
-vi.mock('@/features/vocab/lemma', () => ({ useLemma: () => ({ byForm: new Map(), lemmas: new Set(['go']) }), baseForm: () => null, isFormOf: (word: string, term: string) => word === term }));
-vi.mock('@/features/vocab/cefr', () => ({ useCefr: () => new Map(), cefrOf: () => null }));
-vi.mock('@/features/vocab/usePartOfSpeech', () => ({ usePartOfSpeech: () => new Map([['go', ['verb']]]) }));
-vi.mock('@/features/ai/route', () => ({ useAiEnabled: () => false, useAiUnknown: () => false }));
+vi.mock('@/features/vocab/lemma', () => ({
+  useLemma: () => ({ byForm: new Map(), lemmas: new Set(['go']) }),
+  baseForm: () => null,
+  isFormOf: (word: string, term: string) => word === term,
+}));
+vi.mock('@/features/vocab/cefr', () => ({
+  useCefr: () => new Map(),
+  cefrOf: () => null,
+}));
+vi.mock('@/features/vocab/usePartOfSpeech', () => ({
+  usePartOfSpeech: () => new Map([['go', ['verb']]]),
+}));
+vi.mock('@/features/ai/route', () => ({
+  useAiEnabled: () => false,
+  useAiUnknown: () => false,
+}));
 
 const seed = async (front: string): Promise<SrsCard> => {
   const schedule = createEmptyCard(new Date(0));
-  const row: SrsCard = { id: `word:${front}`, kind: 'word', front, back: front === 'go' ? 'идти' : 'оставаться', tags: [], due: schedule.due, card: schedule, createdAt: 1, creationId: front };
+  const row: SrsCard = {
+    id: `word:${front}`,
+    kind: 'word',
+    front,
+    back: front === 'go' ? 'идти' : 'оставаться',
+    tags: [],
+    due: schedule.due,
+    card: schedule,
+    createdAt: 1,
+    creationId: front,
+  };
   await db.srsCards.put(row);
   return row;
 };
 const grade = async (rating: 'easy' | 'again' | 'good') => {
-  await userEvent.click(await screen.findByRole('button', { name: 'Show answer' }));
+  if (screen.queryByRole('button', { name: 'Show answer' }))
+    await userEvent.click(screen.getByRole('button', { name: 'Show answer' }));
   const previous = JSON.stringify(await db.reviewLog.toArray());
-  await userEvent.click(screen.getByRole('button', { name: rating }));
-  await waitFor(async () => expect(JSON.stringify(await db.reviewLog.toArray())).not.toBe(previous));
+  await userEvent.click(
+    screen.getByRole('button', { name: new RegExp('^' + rating + ':', 'i') })
+  );
+  await waitFor(async () =>
+    expect(JSON.stringify(await db.reviewLog.toArray())).not.toBe(previous)
+  );
 };
 beforeEach(async () => {
+  installDialogMock();
+  useReviewSession.setState({ session: null });
   vi.mocked(track).mockClear();
   await db.open();
-  await Promise.all([db.srsCards.clear(), db.reviewLog.clear(), db.wordStatus.clear(), db.pending.clear()]);
+  await Promise.all([
+    db.srsCards.clear(),
+    db.reviewLog.clear(),
+    db.wordStatus.clear(),
+    db.pending.clear(),
+  ]);
   await seed('go');
 });
-afterEach(() => { vi.restoreAllMocks(); });
+afterEach(() => {
+  vi.restoreAllMocks();
+});
 
 test('next-card and completion entry replace the original rating without another repetition', async () => {
   await seed('stay');
   render(<ReviewPage />, { wrapper: MemoryRouter });
-  expect(await screen.findByText('verb')).toBeInTheDocument();
-  expect(screen.getByText('to go')).toBeInTheDocument();
+  if (await db.srsCards.count())
+    await userEvent.click(
+      await screen.findByRole('button', { name: 'Start review' })
+    );
+  expect(await screen.findByText(/verb ·/)).toHaveTextContent('to go');
   await grade('easy');
   expect(await screen.findByText('stay')).toBeInTheDocument();
   const before = await db.srsCards.get('word:go');
   const previousEvent = (await db.reviewLog.toArray())[0];
-  await userEvent.click(await screen.findByRole('button', { name: 'Change last rating' }));
-  expect(await screen.findByText('Changing the last rating')).toBeInTheDocument();
-  expect(screen.getByText('Previous rating: easy')).toBeInTheDocument();
+  await userEvent.click(
+    await screen.findByRole('button', { name: 'Change last rating' })
+  );
+  expect(
+    await screen.findByText('Changing the last rating')
+  ).toBeInTheDocument();
+  expect(screen.getByText('Previous rating: Easy')).toBeInTheDocument();
   expect(await db.srsCards.get('word:go')).toEqual(before);
   await grade('again');
   expect(await screen.findByText('stay')).toBeInTheDocument();
@@ -57,38 +104,74 @@ test('next-card and completion entry replace the original rating without another
   expect(screen.queryByRole('alert')).toBeNull();
   expect((await db.srsCards.get('word:go'))?.card.reps).toBe(1);
   expect(await db.reviewLog.toArray()).toHaveLength(1);
-  expect((await db.reviewLog.toArray())[0]).toMatchObject({ id: previousEvent?.id, ts: previousEvent?.ts, rating: 1 });
+  expect((await db.reviewLog.toArray())[0]).toMatchObject({
+    id: previousEvent?.id,
+    ts: previousEvent?.ts,
+    rating: 1,
+  });
   await grade('good');
-  expect(await screen.findByText('✓ session finished')).toBeInTheDocument();
-  await userEvent.click(screen.getByRole('button', { name: 'Change last rating' }));
+  expect(
+    await screen.findByRole('heading', { name: 'Session finished' })
+  ).toBeInTheDocument();
+  await userEvent.click(
+    screen.getByRole('button', { name: 'Change last rating' })
+  );
+  await screen.findByText('Changing the last rating');
   expect(await screen.findByText('stay')).toBeInTheDocument();
   await grade('again');
-  expect(await screen.findByText('✓ session finished')).toBeInTheDocument();
+  expect(
+    await screen.findByRole('heading', { name: 'Session finished' })
+  ).toBeInTheDocument();
   expect(await db.reviewLog.count()).toBe(2);
   expect((await db.srsCards.get('word:stay'))?.card.reps).toBe(1);
-  expect(vi.mocked(track).mock.calls.filter(([event]) => event === 'review_session_completed')).toEqual([['review_session_completed']]);
+  expect(
+    vi
+      .mocked(track)
+      .mock.calls.filter(([event]) => event === 'review_session_completed')
+  ).toEqual([['review_session_completed']]);
 });
 
 test('an empty or all-skipped queue emits no review completion', async () => {
   const view = render(<ReviewPage />, { wrapper: MemoryRouter });
-  await userEvent.click(await screen.findByRole('button', { name: 'Show answer' }));
-  await userEvent.click(await screen.findByRole('button', { name: 'Skip' }));
-  await screen.findByText('Session finished · skipped: 1');
+  if (await db.srsCards.count())
+    await userEvent.click(
+      await screen.findByRole('button', { name: 'Start review' })
+    );
+  await userEvent.click(
+    await screen.findByRole('button', { name: 'Show answer' })
+  );
+  await userEvent.click(
+    await screen.findByRole('button', { name: 'Skip without rating' })
+  );
+  await screen.findByRole('heading', { name: 'Session finished' });
   expect(track).not.toHaveBeenCalled();
-  view.unmount(); await db.srsCards.clear();
+  view.unmount();
+  await db.srsCards.clear();
   render(<ReviewPage />, { wrapper: MemoryRouter });
-  await screen.findByText('✓ session finished');
+  if (await db.srsCards.count())
+    await userEvent.click(
+      await screen.findByRole('button', { name: 'Start review' })
+    );
+  await screen.findByText('Your words will appear here');
   expect(track).not.toHaveBeenCalled();
 });
 
 test('cancelling correction resumes ordinary review and leaves the old grade committed', async () => {
   await seed('stay');
   render(<ReviewPage />, { wrapper: MemoryRouter });
+  if (await db.srsCards.count())
+    await userEvent.click(
+      await screen.findByRole('button', { name: 'Start review' })
+    );
   await grade('easy');
   const schedule = await db.srsCards.get('word:go');
   const log = await db.reviewLog.toArray();
-  await userEvent.click(await screen.findByRole('button', { name: 'Change last rating' }));
-  await userEvent.click(await screen.findByRole('button', { name: 'Continue without changes' }));
+  await userEvent.click(
+    await screen.findByRole('button', { name: 'Change last rating' })
+  );
+  await userEvent.click(
+    await screen.findByRole('button', { name: 'Continue without changes' })
+  );
   expect(await screen.findByText('stay')).toBeInTheDocument();
   expect(await db.srsCards.get('word:go')).toEqual(schedule);
   expect(await db.reviewLog.toArray()).toEqual(log);
@@ -96,21 +179,46 @@ test('cancelling correction resumes ordinary review and leaves the old grade com
 
 test('owner handover clears the receipt and correction prompt', async () => {
   render(<ReviewPage />, { wrapper: MemoryRouter });
+  if (await db.srsCards.count())
+    await userEvent.click(
+      await screen.findByRole('button', { name: 'Start review' })
+    );
   await grade('easy');
-  await userEvent.click(await screen.findByRole('button', { name: 'Change last rating' }));
+  await userEvent.click(
+    await screen.findByRole('button', { name: 'Change last rating' })
+  );
   await screen.findByText('Changing the last rating');
-  await act(async () => { invalidateDataScope(); await db.srsCards.clear(); await seed('stay'); });
+  await act(async () => {
+    invalidateDataScope();
+    await db.srsCards.clear();
+    await seed('stay');
+  });
+  await userEvent.click(
+    await screen.findByRole('button', { name: 'Start review' })
+  );
   expect(await screen.findByText('stay')).toBeInTheDocument();
-  expect(screen.queryByRole('button', { name: 'Change last rating' })).toBeNull();
+  expect(
+    screen.queryByRole('button', { name: 'Change last rating' })
+  ).toBeNull();
   expect(screen.queryByText('Changing the last rating')).toBeNull();
 });
 
 test('a changed or removed last card is never revived by the recovery control', async () => {
   render(<ReviewPage />, { wrapper: MemoryRouter });
+  if (await db.srsCards.count())
+    await userEvent.click(
+      await screen.findByRole('button', { name: 'Start review' })
+    );
   await grade('easy');
-  await act(async () => { await db.srsCards.update('word:go', { deletedAt: Date.now() + 1000 }); });
-  await userEvent.click(await screen.findByRole('button', { name: 'Change last rating' }));
-  expect(await screen.findByRole('alert')).toHaveTextContent('The previous card changed');
+  await act(async () => {
+    await db.srsCards.update('word:go', { deletedAt: Date.now() + 1000 });
+  });
+  await userEvent.click(
+    await screen.findByRole('button', { name: 'Change last rating' })
+  );
+  expect(await screen.findByRole('alert')).toHaveTextContent(
+    'The previous card changed'
+  );
   expect(screen.queryByText('Changing the last rating')).toBeNull();
   expect(await db.reviewLog.count()).toBe(1);
 });
@@ -118,31 +226,67 @@ test('a changed or removed last card is never revived by the recovery control', 
 test('ordinary grading is disabled while the previous card is being opened', async () => {
   await seed('stay');
   render(<ReviewPage />, { wrapper: MemoryRouter });
+  if (await db.srsCards.count())
+    await userEvent.click(
+      await screen.findByRole('button', { name: 'Start review' })
+    );
   await grade('easy');
-  await userEvent.click(await screen.findByRole('button', { name: 'Show answer' }));
+  await userEvent.click(
+    await screen.findByRole('button', { name: 'Show answer' })
+  );
   let finish!: (value: SrsCard | null) => void;
-  const gate = new Promise<SrsCard | null>(resolve => { finish = resolve; });
+  const gate = new Promise<SrsCard | null>((resolve) => {
+    finish = resolve;
+  });
   vi.spyOn(service, 'reviewCorrectionCard').mockImplementationOnce(() => gate);
-  await userEvent.click(screen.getByRole('button', { name: 'Change last rating' }));
-  expect(screen.getByRole('button', { name: 'good' })).toBeDisabled();
+  await userEvent.click(
+    screen.getByRole('button', { name: 'Change last rating' })
+  );
+  expect(screen.getByRole('button', { name: /^Good:/ })).toBeDisabled();
   expect(await db.reviewLog.count()).toBe(1);
-  await act(async () => { finish((await db.srsCards.get('word:go'))!); });
-  expect(await screen.findByText('Changing the last rating')).toBeInTheDocument();
+  await act(async () => {
+    finish((await db.srsCards.get('word:go'))!);
+  });
+  expect(
+    await screen.findByText('Changing the last rating')
+  ).toBeInTheDocument();
 });
 
 test('correction follows an edited answer and keyboard activation keeps a valid focus target', async () => {
   render(<ReviewPage />, { wrapper: MemoryRouter });
+  if (await db.srsCards.count())
+    await userEvent.click(
+      await screen.findByRole('button', { name: 'Start review' })
+    );
   await grade('easy');
-  const button = await screen.findByRole('button', { name: 'Change last rating' });
-  await waitFor(() => expect(document.activeElement).toHaveAttribute('aria-label', 'Session finished'));
+  const button = await screen.findByRole('button', {
+    name: 'Change last rating',
+  });
+  await waitFor(() =>
+    expect(document.activeElement).toHaveAttribute(
+      'aria-label',
+      'Session finished'
+    )
+  );
   button.focus();
   await userEvent.keyboard('{Enter}');
   await screen.findByText('Changing the last rating');
-  await waitFor(() => expect(document.activeElement).toHaveAttribute('aria-label', 'Current card'));
-  await act(async () => { await db.srsCards.update('word:go', { back: 'двигаться' }); });
-  await userEvent.click(await screen.findByRole('button', { name: 'Show answer' }));
+  await waitFor(() =>
+    expect(document.activeElement).toHaveAttribute('aria-label', 'Current card')
+  );
+  await act(async () => {
+    await db.srsCards.update('word:go', { back: 'двигаться' });
+  });
+  await userEvent.click(
+    await screen.findByRole('button', { name: 'Show answer' })
+  );
   expect(await screen.findByText('двигаться')).toBeInTheDocument();
-  await userEvent.click(screen.getByRole('button', { name: 'again' }));
-  await screen.findByText('✓ session finished');
-  await waitFor(() => expect(document.activeElement).toHaveAttribute('aria-label', 'Session finished'));
+  await userEvent.click(screen.getByRole('button', { name: /^Again:/ }));
+  await screen.findByRole('heading', { name: 'Session finished' });
+  await waitFor(() =>
+    expect(document.activeElement).toHaveAttribute(
+      'aria-label',
+      'Session finished'
+    )
+  );
 });

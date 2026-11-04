@@ -1,8 +1,27 @@
 import { useEffect, useRef } from 'react';
 import { countWords } from '@/features/reader/position';
 import { isSpeaking } from '@/shared/lib/audio';
-import { FLUSH_MS, POLL_MS, dwellNeededMs, isReading, pollCreditMs } from './accounting';
-import { flushPending, recordActivity, setCurrentReading, stashPending } from './activity';
+import {
+  readingSuspended,
+  subscribeReadingSuspension,
+} from '@/shared/lib/reading-suspension';
+import {
+  FLUSH_MS,
+  POLL_MS,
+  dwellNeededMs,
+  isReading,
+  pollCreditMs,
+} from './accounting';
+import {
+  flushPending,
+  recordActivity,
+  setCurrentReading,
+  stashPending,
+} from './activity';
+import {
+  NAVIGATION_INSETS_EVENT,
+  navigationInsets,
+} from '@/shared/lib/navigation-insets';
 
 const THRESHOLDS = Array.from({ length: 11 }, (_, i) => i / 10);
 
@@ -44,19 +63,39 @@ export function useReadingTracker({
     if (typeof IntersectionObserver === 'undefined') return;
     // "On screen" = at least half the paragraph visible, or it fills half the viewport (a paragraph
     // taller than the screen never reaches a 50 % ratio).
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          const p = Number((e.target as HTMLElement).dataset.para);
-          const fills = e.rootBounds ? e.intersectionRect.height >= e.rootBounds.height / 2 : false;
-          if (e.isIntersecting && (e.intersectionRatio >= 0.5 || fills)) visibleRef.current.add(p);
-          else visibleRef.current.delete(p);
+    let io: IntersectionObserver | null = null;
+    const observe = () => {
+      io?.disconnect();
+      visibleRef.current.clear();
+      const insets = navigationInsets();
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            const p = Number((e.target as HTMLElement).dataset.para);
+            const fills = e.rootBounds
+              ? e.intersectionRect.height >= e.rootBounds.height / 2
+              : false;
+            if (e.isIntersecting && (e.intersectionRatio >= 0.5 || fills))
+              visibleRef.current.add(p);
+            else visibleRef.current.delete(p);
+          }
+        },
+        {
+          threshold: THRESHOLDS,
+          rootMargin: `-${insets.top}px 0px -${insets.bottom}px 0px`,
         }
-      },
-      { threshold: THRESHOLDS }
-    );
-    document.querySelectorAll('[data-para]').forEach((el) => io.observe(el));
-    return () => io.disconnect();
+      );
+      io = observer;
+      document
+        .querySelectorAll('[data-para]')
+        .forEach((el) => observer.observe(el));
+    };
+    observe();
+    window.addEventListener(NAVIGATION_INSETS_EVENT, observe);
+    return () => {
+      io?.disconnect();
+      window.removeEventListener(NAVIGATION_INSETS_EVENT, observe);
+    };
   }, [pageKey, paragraphs]);
 
   useEffect(() => {
@@ -69,6 +108,7 @@ export function useReadingTracker({
     let pendingWords = 0;
 
     const reading = (now: number) =>
+      !readingSuspended() &&
       isReading({
         visible: document.visibilityState === 'visible',
         focused: document.hasFocus(),
@@ -87,7 +127,12 @@ export function useReadingTracker({
     };
     const write = () => {
       const { sec, words } = take();
-      if (sec || words) void recordActivity({ readSec: sec, readWords: words, book: { ...book, sec, words } });
+      if (sec || words)
+        void recordActivity({
+          readSec: sec,
+          readWords: words,
+          book: { ...book, sec, words },
+        });
     };
     // Can't await IndexedDB here (pagehide / unmount racing the next page's read) — stash
     // synchronously; `flushPending` folds it in before anything reads the stats.
@@ -122,8 +167,13 @@ export function useReadingTracker({
     };
 
     const onInput = () => {
+      if (readingSuspended()) return;
       lastInput = Date.now();
     };
+    const unsubscribeSuspension = subscribeReadingSuspension(() => {
+      lastPoll = Date.now();
+      if (!readingSuspended()) lastInput = Date.now();
+    });
     const onVisibility = () => {
       if (document.visibilityState === 'visible') lastPoll = Date.now();
       else stash();
@@ -141,6 +191,7 @@ export function useReadingTracker({
     window.addEventListener('pagehide', onPageHide);
     return () => {
       window.clearInterval(timer);
+      unsubscribeSuspension();
       window.removeEventListener('scroll', onInput);
       window.removeEventListener('pointerdown', onInput);
       window.removeEventListener('keydown', onInput);

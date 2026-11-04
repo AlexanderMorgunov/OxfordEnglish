@@ -129,8 +129,8 @@ test('changing the actual book chapter clears old lookup state before its first 
   const changed = vi.fn();
   const view = render(<BookView book={book} idPrefix="reader.touch-qa" onChapter={changed} />, { wrapper: MemoryRouter });
   await tap(screen.getByRole('button', { name: 'Alpha' }));
-  fireEvent.change(screen.getAllByRole('combobox', { name: 'Chapter' })[0]!, { target: { value: '1' } });
-  expect(changed).toHaveBeenCalledWith(1);
+  await userEvent.click(screen.getByRole('button', { name: '2 Chapter 2' }));
+  await waitFor(() => expect(changed).toHaveBeenCalledWith(1));
   expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   await tap(screen.getByRole('button', { name: 'Omega' }));
   expect(screen.getByRole('dialog', { name: 'Omega' })).toHaveTextContent('translation of Omega');

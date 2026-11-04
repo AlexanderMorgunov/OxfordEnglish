@@ -30,6 +30,23 @@ type Table = { name: string; describe: () => InstanceType<typeof TableDescriptio
 
 const TABLES: Table[] = [
   {
+    name: 'billing_catalog',
+    describe: () => new TableDescription()
+      .withColumn(new Column('catalog_key', utf8()))
+      .withColumn(new Column('payload', utf8()))
+      .withPrimaryKey('catalog_key'),
+  },
+  {
+    name: 'account_access',
+    describe: () => new TableDescription()
+      .withColumn(new Column('record_key', utf8()))
+      .withColumn(new Column('payload', utf8()))
+      .withColumn(new Column('account_id', utf8()))
+      .withColumn(new Column('expires_at', ts()))
+      .withPrimaryKey('record_key')
+      .withTtl('expires_at', 0),
+  },
+  {
     name: 'entitlements',
     describe: () =>
       new TableDescription()
@@ -174,6 +191,10 @@ const TTLS: Array<{ table: string; column: string; seconds: number; why: string 
  * index online; re-running would fail on an index that already exists, so each is probed first.
  */
 const INDEXES: Array<{ table: string; name: string; columns: string[]; why: string }> = [
+  {
+    table: 'account_access', name: 'by_account', columns: ['account_id'],
+    why: 'erase credential indexes, grants and receipts with their owning account',
+  },
   {
     table: 'refresh_tokens',
     name: 'by_account',

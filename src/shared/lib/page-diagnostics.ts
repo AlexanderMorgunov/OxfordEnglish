@@ -47,6 +47,7 @@ function routeTemplate(path: string): PageDiagnostic['route'] {
   const plain = path.split(/[?#]/, 1)[0]?.replace(/\/+$/, '') || '/';
   const exact = ROUTES.find((route) => !route.includes(':') && route === plain);
   if (exact) return exact;
+  if (/^\/settings\/(interface|learning|ai|account|data|privacy)$/.test(plain)) return '/settings';
   if (/^\/course\/[^/]+\/day\/[^/]+$/.test(plain)) return '/course/:unitId/day/:dayId';
   if (/^\/grammar\/[^/]+$/.test(plain)) return '/grammar/:articleId';
   if (/^\/checkpoint\/[^/]+$/.test(plain)) return '/checkpoint/:unitId';

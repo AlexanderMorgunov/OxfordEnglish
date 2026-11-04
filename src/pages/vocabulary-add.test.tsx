@@ -1,4 +1,6 @@
 import 'fake-indexeddb/auto';
+import { installDialogMock } from '@/test/dialog';
+import { useVocabularyView } from '@/features/vocab/navigation';
 import Dexie from 'dexie';
 import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -7,7 +9,7 @@ import { afterEach, beforeEach, expect, test, vi } from 'vitest';
 import { createEmptyCard } from 'ts-fsrs';
 import { db } from '@/db/db';
 import { VocabularyPage } from './VocabularyPage';
-import * as Manage from '@/features/vocab/manage';
+import * as Mutations from '@/features/vocab/vocabulary-mutations';
 import { probeDictation, startDictation } from '@/features/vocab/dictation';
 import { requestWordSenses } from '@/features/vocab/word-senses';
 import { AI_REQUEST_TIMEOUT } from '@/features/ai/route';
@@ -21,6 +23,7 @@ vi.mock('@/features/vocab/lemma', () => ({ useLemma: () => ({ byForm: new Map(),
 vi.mock('@/features/vocab/cefr', () => ({ useCefr: () => new Map(), cefrOf: () => null }));
 
 beforeEach(async () => {
+  installDialogMock(); useVocabularyView.getState().reset();
   vi.restoreAllMocks();
   vi.mocked(probeDictation).mockReset().mockResolvedValue({ local: 'ready', system: true, install: false, native: false });
   vi.mocked(startDictation).mockReset();
@@ -37,14 +40,17 @@ afterEach(() => vi.unstubAllGlobals());
 
 async function fill(term = 'reliable', translation = '') {
   render(<VocabularyPage />, { wrapper: MemoryRouter });
+  await waitFor(() => expect(screen.getByRole('button', { name: /add a word or phrase/i })).toBeEnabled());
   await userEvent.click(screen.getByRole('button', { name: /add a word or phrase/i }));
+  await userEvent.click(screen.getByText('More ways to add'));
+  await userEvent.click(screen.getByText('Add example'));
   await userEvent.type(screen.getByPlaceholderText('word or phrase (English)'), term);
   if (translation) await userEvent.type(screen.getByPlaceholderText('translation (optional)'), translation);
 }
 
 test('adding without a translation automatically fills the saved answer', async () => {
   await fill();
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   await waitFor(async () => expect((await db.srsCards.get('word:reliable'))?.back).toBe('надёжный'));
   expect(fetch).toHaveBeenCalledOnce();
   expect((await db.translations.get('reliable'))?.source).toBe('mymemory');
@@ -52,7 +58,7 @@ test('adding without a translation automatically fills the saved answer', async 
 
 test('a supplied translation is saved directly without automatic lookup', async () => {
   await fill('reliable', 'мой перевод');
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   await waitFor(async () => expect((await db.srsCards.get('word:reliable'))?.back).toBe('мой перевод'));
   expect(fetch).not.toHaveBeenCalled();
 });
@@ -61,8 +67,8 @@ test('a refused save retains input, reports failure and never starts lookup', as
   const card = createEmptyCard(new Date(0));
   await db.srsCards.put({ id: 'word:reliable', kind: 'word', front: 'reliable', back: 'reliable', tags: [], card, due: card.due, updatedAt: 1, deletedAt: 2 });
   await fill();
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
-  expect(await screen.findByRole('alert')).toHaveTextContent('Could not save');
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
+  expect(await screen.findByRole('alert')).toHaveTextContent('removed from review');
   expect(screen.getByPlaceholderText('word or phrase (English)')).toHaveValue('reliable');
   expect(fetch).not.toHaveBeenCalled();
 });
@@ -79,11 +85,11 @@ test('Enter saves offline and a failed lookup leaves the new word available', as
 test('a final transaction failure retains the draft and permits retry', async () => {
   const write = vi.spyOn(db.translations, 'put').mockRejectedValueOnce(new Error('Storage failure'));
   await fill('reliable', 'мой перевод');
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   expect(await screen.findByRole('alert')).toHaveTextContent('Could not save');
   expect(screen.getByPlaceholderText('translation (optional)')).toHaveValue('мой перевод');
   write.mockRestore();
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   await waitFor(() => expect(screen.queryByPlaceholderText('word or phrase (English)')).not.toBeInTheDocument());
   expect((await db.translations.get('reliable'))?.source).toBe('manual');
   expect(fetch).not.toHaveBeenCalled();
@@ -92,16 +98,16 @@ test('a final transaction failure retains the draft and permits retry', async ()
 test('a saved word is announced even when the current search hides its row', async () => {
   await fill('reliable', 'мой перевод');
   await userEvent.type(screen.getByRole('searchbox'), 'unrelated');
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   expect(await screen.findByText('Saved in vocabulary: “reliable”.')).toHaveAttribute('role', 'status');
   expect(screen.getByRole('searchbox')).toHaveValue('unrelated');
   expect(screen.queryByRole('button', { name: 'Edit translation' })).not.toBeInTheDocument();
 });
 
 test('two immediate submissions start only one save and lookup', async () => {
-  const save = vi.spyOn(Manage, 'addTerm');
+  const save = vi.spyOn(Mutations, 'createVocabularyEntry');
   await fill();
-  const form = screen.getByRole('button', { name: 'Add' }).closest('form');
+  const form = screen.getByRole('button', { name: 'Save in vocabulary' }).closest('form');
   if (!form) throw new Error('Missing add form');
   fireEvent.submit(form);
   fireEvent.submit(form);
@@ -119,7 +125,7 @@ test('dictated phrase is editable input only; explicit Add alone persists it and
   expect(await db.srsCards.count()).toBe(0); expect(fetch).not.toHaveBeenCalled();
   await userEvent.click(screen.getByRole('button', { name: 'Replace text' }));
   expect(screen.getByLabelText('English word or phrase')).toHaveValue('Take care'); expect(await db.srsCards.count()).toBe(0); expect(fetch).not.toHaveBeenCalled();
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   await waitFor(async () => expect((await db.srsCards.get('phrase:take care'))?.back).toBe('надёжный')); expect(fetch).toHaveBeenCalledOnce();
 });
 
@@ -128,7 +134,7 @@ test.each(['term','translation','context','submit'])('%s edit or submit invalida
   vi.mocked(startDictation).mockReturnValue({ result: new Promise(resolve => { finish = resolve; }), cancel, stop: vi.fn() });
   await userEvent.click(screen.getByRole('button', { name: 'Dictate in English' }));
   await waitFor(() => expect(screen.getByRole('button', { name: 'Start' })).toBeEnabled()); await userEvent.click(screen.getByRole('button', { name: 'Start' }));
-  if(target==='submit') await userEvent.click(screen.getByRole('button',{name:'Add'}));
+  if(target==='submit') await userEvent.click(screen.getByRole('button',{name:'Save in vocabulary'}));
   else fireEvent.change(screen.getByLabelText(target==='term'?'English word or phrase':target==='translation'?'Translation':'Example or context'),{target:{value:'Edited'}});
   expect(cancel).toHaveBeenCalled(); await act(async()=>finish('Late phrase')); expect(screen.queryByLabelText('Check dictated text')).toBeNull();
   expect(await db.srsCards.get('phrase:late phrase')).toBeUndefined(); expect(fetch).not.toHaveBeenCalled();
@@ -149,7 +155,7 @@ test('AI meanings require an explicit request and selection is only an editable 
   expect(screen.getByText('AI meanings').closest('details')).not.toHaveAttribute('open');
   expect(screen.getByLabelText('Example or context')).toHaveValue('We sat on the bank.');
   expect(await db.srsCards.count()).toBe(0); expect(await db.activity.count()).toBe(0); expect(fetch).not.toHaveBeenCalled();
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   await waitFor(async () => expect((await db.srsCards.get('word:bank'))?.back).toBe('берег'));
   expect((await db.srsCards.get('word:bank'))?.contextSentence).toBe('We sat on the bank.');
   expect((await db.srsCards.get('word:bank'))?.partOfSpeech).toBe('noun');
@@ -169,12 +175,12 @@ test('custom context needs an explicit keep/use choice; later edits need agreeme
   await waitFor(() => expect(screen.getByLabelText('Translation')).toHaveValue('берег'));
   expect(screen.getByLabelText('Example or context')).toHaveValue('We walked by the bank.');
   fireEvent.change(screen.getByLabelText('Translation'), { target: { value: 'берег реки' } });
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   expect(await screen.findByRole('alert')).toHaveTextContent('confirm');
   expect(screen.getByRole('checkbox', { name: 'My example matches the chosen meaning' })).toHaveFocus();
   expect(await db.srsCards.count()).toBe(0);
   await userEvent.click(screen.getByRole('checkbox', { name: 'My example matches the chosen meaning' }));
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   await waitFor(async () => expect((await db.srsCards.get('word:bank'))?.back).toBe('берег реки'));
 });
 test('an existing word rejects sense selection before changing either draft field', async () => {
@@ -199,8 +205,8 @@ test('editing an AI-derived draft cannot bypass atomic concurrent-duplicate prot
   const before = await db.srsCards.get('word:bank');
   fireEvent.change(screen.getByLabelText('Translation'), { target: { value: 'новый берег' } });
   await userEvent.click(screen.getByRole('checkbox', { name: 'My example matches the chosen meaning' }));
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
-  expect(await screen.findByRole('alert')).toHaveTextContent('already has a card');
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
+  expect(await screen.findByText(/This term is already in your vocabulary/)).toBeVisible();
   expect(await db.srsCards.get('word:bank')).toEqual(before);
   expect(await db.translations.get('bank')).toBeUndefined();
   expect(await db.activity.count()).toBe(0);
@@ -217,7 +223,7 @@ test.each(['term', 'cancel', 'owner', 'close'] as const)('late AI proposals cann
   if (action === 'term') fireEvent.change(screen.getByLabelText('English word or phrase'), { target: { value: 'river' } });
   else if (action === 'cancel') await userEvent.click(screen.getByRole('button', { name: 'Cancel request' }));
   else if (action === 'owner') act(() => invalidateDataScope());
-  else await userEvent.click(screen.getByRole('button', { name: 'cancel' }));
+  else await userEvent.click(screen.getByRole('button', { name: 'Cancel' }));
   expect(requestSignal?.aborted).toBe(true);
   await act(async () => finish({ path: 'managed', cached: false, senses: [{ partOfSpeech: 'noun', translation: 'берег', distinction: 'Край реки', example: 'The bank.' }] }));
   expect(screen.queryByRole('button', { name: 'Choose meaning 1' })).not.toBeInTheDocument();
@@ -284,7 +290,7 @@ test('an AI draft requires a translation and focuses the field when it is cleare
   const answer = screen.getByLabelText('Translation');
   await waitFor(() => expect(answer).toHaveValue('берег'));
   fireEvent.change(answer, { target: { value: '' } });
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   expect(await screen.findByRole('alert')).toHaveTextContent('Check the translation');
   expect(answer).toHaveAttribute('aria-required', 'true');
   expect(answer).toHaveAttribute('aria-invalid', 'true');
@@ -294,12 +300,14 @@ test('an AI draft requires a translation and focuses the field when it is cleare
 
 test('cancel keeps the draft and restores the opener; saving restores it again', async () => {
   await fill('bank', 'берег');
-  await userEvent.click(screen.getByRole('button', { name: 'cancel' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Cancel' }));
   const opener = screen.getByRole('button', { name: /add a word or phrase/i });
   await waitFor(() => expect(opener).toHaveFocus());
   await userEvent.click(opener);
   expect(screen.getByLabelText('Translation')).toHaveValue('берег');
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
+  await screen.findByRole('button', { name: 'Add another' });
+  await userEvent.click(screen.getByRole('button', { name: 'Done' }));
   await waitFor(() => expect(screen.getByRole('button', { name: /add a word or phrase/i })).toHaveFocus());
   expect(fetch).not.toHaveBeenCalled();
 });

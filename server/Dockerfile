@@ -13,6 +13,7 @@ ENV NODE_ENV=production
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 COPY package.json ./
+COPY third-party ./third-party
 # Serverless Containers inject PORT; the app reads it (default 8080).
 EXPOSE 8080
 CMD ["node", "dist/index.js"]

@@ -25,7 +25,7 @@ in Russian. Code identifiers, comments, and commit subjects are English.
 - `src/features/practice`, `learn`, `listen`, `srs`, `vocab`: learning engine.
   `reader`: EPUB/PDF/DOCX/FB2 import, OPFS book files, dictionary, sentence AI lenses,
   bookmarks, speech. `shared/lib/audio.ts` handles browser/native TTS.
-- `src/features/account`, `sync`, `ai`: recovery-key accounts, TOTP/recovery,
+- `src/features/account`, `sync`, `ai`: username/password accounts, legacy keys, TOTP/backup recovery,
   cross-device sync, subscriptions, managed AI with BYOK fallback.
 - `server/`: separate npm package, Hono API; YDB, Object Storage, Lockbox in production,
   injected in-memory stores for local smokes. `server/src/app.ts` builds the app.
@@ -72,6 +72,9 @@ in Russian. Code identifiers, comments, and commit subjects are English.
 - Payment success is confirmed by the server callback and grant redemption, not
   the checkout return URL. Keep replay/idempotency and concurrent quota/payment
   mutations intact. Recovery rotates credentials while preserving account identity.
+- Unique logins and historical nonunique recovery names are separate. Attaching a
+  login preserves identity and the legacy key; password recovery revokes old keys
+  and session generations. Keep access/refresh/device-approval checks aligned.
 - Never expose keys, recovery credentials, signing passwords, or tokens in logs,
   docs, or chat. `VITE_*` values ship to the browser and are not secrets.
   `TOTP_ENC_KEY` and `INDEX_HMAC_KEY` cannot be casually rotated: they protect

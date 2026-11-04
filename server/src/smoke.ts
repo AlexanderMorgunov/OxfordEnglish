@@ -6,8 +6,10 @@
 import { createApp } from './app.js';
 import { InMemoryBlobStore } from './blobs.js';
 import { REGISTER_MAX_PER_IP, IP_BUCKET_CAPACITY } from './contract.js';
+import { InMemorySyncStore } from './sync.js';
 
-const app = createApp();
+const syncStore = new InMemorySyncStore();
+const app = createApp(undefined, syncStore);
 const H = { 'content-type': 'application/json' };
 let failures = 0;
 const check = (name: string, cond: boolean) => {
@@ -259,7 +261,8 @@ check('delete account → ok', delAcc.status === 200);
 const loginGone = await post('/v1/auth/login', { accountId: ACC, verifier: VER });
 check('login after delete → 401 (account purged)', loginGone.status === 401);
 const syncGone = await app.request('/v1/sync?since=0', { headers: syncAuth });
-check('sync after delete → empty snapshot', ((await syncGone.json()) as { entries: unknown[] }).entries.length === 0);
+check('sync after delete → revoked account access', syncGone.status === 401);
+check('deleted account snapshot is purged', (await syncStore.pull(ACC, 0)).entries.length === 0);
 
 // --- CORS preflight ---
 // The browser refuses a method the preflight does not list, and leaves no server-side trace at all.

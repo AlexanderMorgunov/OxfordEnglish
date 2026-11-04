@@ -36,11 +36,11 @@ export function RecommendedShelf() {
         {ru ? 'Рекомендуем почитать' : 'Recommended reading'}
         {level ? ` · ${level}` : ''}
       </p>
-      <div className="flex flex-col gap-2">
+      <div className="overview-grid">
         {shown.map((b) => (
-          <Card key={b.id} className="flex items-center justify-between gap-3">
+          <Card key={b.id} className="flex min-w-0 items-center justify-between gap-3">
             <Link to={`/library/catalog/${b.id}`} className="min-w-0 flex-1">
-              <p className="truncate font-semibold">{b.title}</p>
+              <p className="break-words font-semibold">{b.title}</p>
               <p className="truncate font-mono text-2xs uppercase tracking-[0.06em] text-muted">
                 {b.author ? `${b.author} · ` : ''}
                 {b.license.type}

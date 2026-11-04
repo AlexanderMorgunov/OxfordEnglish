@@ -27,7 +27,7 @@ export function QuotaNotice({ compact = false }: { compact?: boolean }) {
       {spent && (
         <>
           {' '}
-          <Link to="/settings" className="text-teal hover:underline">
+          <Link to="/settings/ai" className="text-teal hover:underline">
             {ru ? 'Настройки' : 'Settings'}
           </Link>
           {/* Only when nothing refills on its own. A window that genuinely rolls needs no plan pitch —

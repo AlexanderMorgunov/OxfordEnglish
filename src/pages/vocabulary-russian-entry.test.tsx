@@ -1,4 +1,6 @@
 import 'fake-indexeddb/auto';
+import { installDialogMock } from '@/test/dialog';
+import { useVocabularyView } from '@/features/vocab/navigation';
 import Dexie from 'dexie';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -20,6 +22,7 @@ vi.mock('@/features/vocab/russian-entry', async importOriginal => ({ ...await im
 vi.mock('@/features/vocab/lemma', () => ({ useLemma: () => ({ byForm: new Map(), lemmas: new Set() }), baseForm: () => null, isFormOf: (word: string, term: string) => word === term }));
 vi.mock('@/features/vocab/cefr', () => ({ useCefr: () => new Map(), cefrOf: () => null }));
 beforeEach(async () => {
+  installDialogMock(); useVocabularyView.getState().reset();
   vi.restoreAllMocks(); vi.mocked(translateRussianTerm).mockReset().mockResolvedValue({ russian: 'замок', english: 'lock', cached: false });
   await db.open(); await Promise.all([db.srsCards.clear(), db.wordStatus.clear(), db.pending.clear(), db.translations.clear(), db.activity.clear(), db.reviewLog.clear()]);
   vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ responseData: { translatedText: 'надёжный' } }))));
@@ -27,7 +30,10 @@ beforeEach(async () => {
 afterEach(() => vi.unstubAllGlobals());
 async function form() {
   render(<VocabularyPage />, { wrapper: MemoryRouter });
+  await waitFor(() => expect(screen.getByRole('button', { name: /add a word or phrase/i })).toBeEnabled());
   await userEvent.click(screen.getByRole('button', { name: /add a word or phrase/i }));
+  await userEvent.click(screen.getByText('More ways to add'));
+  await userEvent.click(screen.getByText('Add example'));
   await userEvent.click(screen.getByRole('button', { name: 'From Russian' }));
 }
 async function proposal() {
@@ -47,42 +53,42 @@ test('lookup and selection only edit draft, explicit Add saves English front/Rus
   await userEvent.click(screen.getByRole('button', { name: 'Use translation in the fields below' }));
   await waitFor(() => expect(term()).toHaveValue('lock')); expect(answer()).toHaveValue('замок');
   await waitFor(() => expect(term()).toHaveFocus()); expect(await db.srsCards.count()).toBe(0); expect(await db.activity.count()).toBe(0);
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   await waitFor(async () => expect((await db.srsCards.get('word:lock'))?.back).toBe('замок'));
   expect((await db.srsCards.get('word:lock'))?.card.reps).toBe(0); expect(await db.reviewLog.count()).toBe(0);
   expect(await db.srsCards.get('word:замок')).toBeUndefined(); expect(fetch).not.toHaveBeenCalled();
 });
 test('manual reverse fallback supports a phrase and checks English/Russian scripts', async () => {
   await form(); fireEvent.change(term(), { target: { value: 'доброе утро' } }); fireEvent.change(answer(), { target: { value: 'доброе утро' } });
-  await userEvent.click(screen.getByRole('button', { name: 'Add' })); expect(await screen.findByRole('alert')).toHaveTextContent('English word');
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' })); expect(await screen.findByRole('alert')).toHaveTextContent('English word');
   fireEvent.change(term(), { target: { value: 'Good morning' } }); fireEvent.change(answer(), { target: { value: 'Good morning' } });
-  await userEvent.click(screen.getByRole('button', { name: 'Add' })); expect(await screen.findByRole('alert')).toHaveTextContent('Russian translation');
-  fireEvent.change(answer(), { target: { value: 'доброе утро' } }); await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' })); expect(await screen.findByRole('alert')).toHaveTextContent('Russian translation');
+  fireEvent.change(answer(), { target: { value: 'доброе утро' } }); await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   await waitFor(async () => expect((await db.srsCards.get('phrase:good morning'))?.back).toBe('доброе утро')); expect(translateRussianTerm).not.toHaveBeenCalled();
 });
 test('retained context needs confirmation, selection never overwrites it', async () => {
   await form(); fireEvent.change(screen.getByLabelText('Example or context'), { target: { value: 'We opened the lock.' } });
   await proposal(); await userEvent.click(screen.getByRole('button', { name: 'Use translation in the fields below' })); await waitFor(() => expect(term()).toHaveValue('lock'));
   expect(screen.getByLabelText('Example or context')).toHaveValue('We opened the lock.');
-  await userEvent.click(screen.getByRole('button', { name: 'Add' })); expect(await screen.findByRole('alert')).toHaveTextContent('confirm');
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' })); expect(await screen.findByRole('alert')).toHaveTextContent('confirm');
   await userEvent.click(screen.getByRole('checkbox')); fireEvent.change(answer(), { target: { value: 'дверной замок' } }); expect(screen.getByRole('checkbox')).not.toBeChecked();
-  await userEvent.click(screen.getByRole('checkbox')); await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('checkbox')); await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   await waitFor(async () => expect((await db.srsCards.get('word:lock'))?.contextSentence).toBe('We opened the lock.'));
 });
 test('manual RU origin remains protected after switching English and reopening', async () => {
   await form(); fireEvent.change(term(), { target: { value: 'lock' } }); fireEvent.change(answer(), { target: { value: 'новый замок' } });
   await userEvent.click(screen.getByRole('button', { name: 'In English' }));
-  await userEvent.click(screen.getByRole('button', { name: 'cancel' })); await userEvent.click(screen.getByRole('button', { name: /add a word or phrase/i }));
+  await userEvent.click(screen.getByRole('button', { name: 'Cancel' })); await userEvent.click(screen.getByRole('button', { name: /add a word or phrase/i }));
   const card = createEmptyCard(new Date(0)); card.reps = 7;
   await act(async () => db.srsCards.put({ id: 'word:lock', kind: 'word', front: 'lock', back: 'старый', contextGloss: 'старый смысл', tags: [], card, due: card.due }));
   const old = await db.srsCards.get('word:lock');
-  await userEvent.click(screen.getByRole('button', { name: 'Add' })); expect(await screen.findByRole('alert')).toHaveTextContent('already has a card');
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' })); expect(await screen.findByText(/This term is already in your vocabulary/)).toBeVisible();
   expect(await db.srsCards.get('word:lock')).toEqual(old); expect(await db.translations.get('lock')).toBeUndefined(); expect(await db.activity.count()).toBe(0);
 });
 test('mode switch cannot bypass English-front and nonempty Russian-back checks', async () => {
   await form(); await userEvent.click(screen.getByRole('button', { name: 'In English' })); fireEvent.change(term(), { target: { value: 'лук' } });
-  await userEvent.click(screen.getByRole('button', { name: 'Add' })); expect(await screen.findByRole('alert')).toHaveTextContent('English word');
-  fireEvent.change(term(), { target: { value: 'onion' } }); await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' })); expect(await screen.findByRole('alert')).toHaveTextContent('English word');
+  fireEvent.change(term(), { target: { value: 'onion' } }); await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   expect(await screen.findByRole('alert')).toHaveTextContent('Russian translation'); expect(await db.srsCards.count()).toBe(0); expect(fetch).not.toHaveBeenCalled();
 });
 test('Start over cancels and clears whole draft/provenance, restoring ordinary blank-answer Add', async () => {
@@ -91,7 +97,7 @@ test('Start over cancels and clears whole draft/provenance, restoring ordinary b
   await userEvent.click(screen.getByRole('button', { name: 'Start over' })); expect(term()).toHaveValue(''); expect(answer()).toHaveValue('');
   expect(screen.getByLabelText('Example or context')).toHaveValue(''); expect(screen.queryByLabelText('Russian source word or phrase')).not.toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'In English' })).toHaveAttribute('aria-pressed', 'true');
-  fireEvent.change(term(), { target: { value: 'reliable' } }); await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  fireEvent.change(term(), { target: { value: 'reliable' } }); await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   await waitFor(async () => expect((await db.srsCards.get('word:reliable'))?.back).toBe('надёжный')); expect(fetch).toHaveBeenCalledOnce();
 });
 test.each(['cancel', 'source', 'draft', 'mode', 'close', 'owner', 'reset', 'collapse'] as const)('late reverse result ignored after %s, double request locked', async action => {
@@ -104,7 +110,7 @@ test.each(['cancel', 'source', 'draft', 'mode', 'close', 'owner', 'reset', 'coll
   else if (action === 'source') fireEvent.change(screen.getByLabelText('Russian source word or phrase'), { target: { value: 'дом' } });
   else if (action === 'draft') fireEvent.change(answer(), { target: { value: 'вручную' } });
   else if (action === 'mode') await userEvent.click(screen.getByRole('button', { name: 'In English' }));
-  else if (action === 'close') await userEvent.click(screen.getByRole('button', { name: 'cancel' }));
+  else if (action === 'close') await userEvent.click(screen.getByRole('button', { name: 'Cancel' }));
   else if (action === 'reset') await userEvent.click(screen.getByRole('button', { name: 'Start over' }));
   else act(() => invalidateDataScope());
   expect(signal?.aborted).toBe(true); await act(async () => finish({ russian: 'замок', english: 'lock', cached: false }));
@@ -130,7 +136,7 @@ test('recoverable lookup failure keeps manual reverse Add usable', async () => {
   fireEvent.change(screen.getByLabelText('Russian source word or phrase'), { target: { value: 'дом' } }); await userEvent.click(screen.getByRole('button', { name: 'Translate to English' }));
   expect(await screen.findByRole('alert')).toHaveTextContent('Translation unavailable');
   fireEvent.change(term(), { target: { value: 'house' } }); fireEvent.change(answer(), { target: { value: 'дом' } });
-  await userEvent.click(screen.getByRole('button', { name: 'Add' })); await waitFor(async () => expect((await db.srsCards.get('word:house'))?.back).toBe('дом'));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' })); await waitFor(async () => expect((await db.srsCards.get('word:house'))?.back).toBe('дом'));
 });
 
 test('Enter in Russian acquisition field translates new source and never submits an older valid draft', async () => {

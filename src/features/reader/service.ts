@@ -1,12 +1,29 @@
 import { db, type BookRecord } from '@/db/db';
 import { forgetBookFileOwner } from '@/features/account/store';
 import { track } from '@/features/analytics/analytics';
-import { addBook, patchBook, softDeleteBook, isSyncing } from '@/features/sync/local';
+import {
+  addBook,
+  patchBook,
+  softDeleteBook,
+  isSyncing,
+} from '@/features/sync/local';
 import { isDeleted } from '@/features/sync/resolve';
-import { deleteRemoteBookFile, downloadBookFileIfMissing, uploadBookFile, useBookUploadIssues, type BookFileIssue } from './blobSync';
+import {
+  deleteRemoteBookFile,
+  downloadBookFileIfMissing,
+  uploadBookFile,
+  useBookUploadIssues,
+  type BookFileIssue,
+} from './blobSync';
 import { detectFormat, parseBook, type ParsedBook } from './parse';
-import { saveBookFile, getBookFile, deleteBookFile, opfsAvailable } from './storage';
+import {
+  saveBookFile,
+  getBookFile,
+  deleteBookFile,
+  opfsAvailable,
+} from './storage';
 import { BOOK_OPEN_PREFIX, openedAt } from './book-recency';
+import { captureDataScope } from '@/features/account/dataScope';
 
 export type ImportResult = { record: BookRecord; book: ParsedBook };
 
@@ -29,12 +46,15 @@ const SLOW_PARSE_MS = 150;
 
 async function cacheParsed(id: string, book: ParsedBook): Promise<void> {
   try {
-    await db.catalogCache.put({ id: parseCacheKey(id), book, cachedAt: Date.now() });
+    await db.catalogCache.put({
+      id: parseCacheKey(id),
+      book,
+      cachedAt: Date.now(),
+    });
   } catch {
     // best-effort cache
   }
 }
-
 
 /** Thrown by openBook when the device has no readable file and says WHY. A bare throw here is what the
  *  reader turned into one blanket stub for five unrelated situations. */
@@ -45,17 +65,25 @@ export class BookFileUnavailable extends Error {
   }
 }
 
-export async function importBook(file: File): Promise<ImportResult> {
+export async function importBook(
+  file: File,
+  options: { signal?: AbortSignal; onCommit?: () => void } = {}
+): Promise<ImportResult> {
+  const owner = captureDataScope();
+  const current = () => owner() && !options.signal?.aborted;
+  const check = () => {
+    if (!current()) throw new DOMException('Import cancelled', 'AbortError');
+  };
+  check();
   if (!opfsAvailable()) throw new Error('offline-storage-unavailable');
   const format = detectFormat(file.name);
   if (!format) throw new Error('unsupported-format');
 
   const startedAt = Date.now();
   const book = await parseBook(file, format);
+  check();
   const slow = Date.now() - startedAt >= SLOW_PARSE_MS;
   const id = crypto.randomUUID();
-  await saveBookFile(id, file);
-  forgetBookFileOwner(); // no-op unless signed out, where these bytes belong to no account
   const record: BookRecord = {
     id,
     title: book.title,
@@ -65,26 +93,41 @@ export async function importBook(file: File): Promise<ImportResult> {
     chapterCount: book.chapters.length,
     lastChapter: 0,
   };
-  await addBook(record);
-  void uploadBookFile(id); // opt-in cloud copy (self-guards on the toggle + auth)
-  if (slow) await cacheParsed(id, book); // the import already paid for the parse; the first open should not
+  try {
+    await saveBookFile(id, file);
+    check();
+    if (slow) await cacheParsed(id, book);
+    check();
+    options.onCommit?.();
+    await addBook(record, current);
+  } catch (error) {
+    await deleteBookFile(id);
+    await db.catalogCache.delete(parseCacheKey(id)).catch(() => undefined);
+    throw error;
+  }
+  forgetBookFileOwner();
+  if (owner()) void uploadBookFile(id);
   return { record, book };
 }
 
 export async function listBooks(): Promise<BookRecord[]> {
-  try {
-    const [all, opens] = await Promise.all([
-      db.books.toArray(),
-      db.settings.where('key').startsWith(BOOK_OPEN_PREFIX).toArray(),
-    ]);
-    const recent = new Map(opens.filter((r) => !isDeleted(r)).map((r) => [r.key.slice(BOOK_OPEN_PREFIX.length), openedAt(r.value)]));
-    return all.filter((b) => !isDeleted(b)).sort((a, b) =>
-      (recent.get(b.id) ?? 0) - (recent.get(a.id) ?? 0) ||
-      b.addedAt - a.addedAt || a.id.localeCompare(b.id)
+  const [all, opens] = await Promise.all([
+    db.books.toArray(),
+    db.settings.where('key').startsWith(BOOK_OPEN_PREFIX).toArray(),
+  ]);
+  const recent = new Map(
+    opens
+      .filter((r) => !isDeleted(r))
+      .map((r) => [r.key.slice(BOOK_OPEN_PREFIX.length), openedAt(r.value)])
+  );
+  return all
+    .filter((b) => !isDeleted(b))
+    .sort(
+      (a, b) =>
+        (recent.get(b.id) ?? 0) - (recent.get(a.id) ?? 0) ||
+        b.addedAt - a.addedAt ||
+        a.id.localeCompare(b.id)
     );
-  } catch {
-    return [];
-  }
 }
 
 export async function getBook(id: string): Promise<BookRecord | undefined> {
@@ -109,18 +152,22 @@ export async function openBook(record: BookRecord): Promise<ParsedBook> {
   const file = await getBookFile(record.id);
   const startedAt = Date.now();
   const parsed = await parseBook(file, record.format);
-  if (Date.now() - startedAt >= SLOW_PARSE_MS) await cacheParsed(record.id, parsed);
+  if (Date.now() - startedAt >= SLOW_PARSE_MS)
+    await cacheParsed(record.id, parsed);
   void track('book_open', { source: 'imported', format: record.format });
   return parsed;
 }
 
 export async function removeBook(id: string): Promise<void> {
+  const current = captureDataScope();
   useBookUploadIssues.getState().note(id, null); // before either delete path, so both are covered
   await deleteBookFile(id);
-  await deleteRemoteBookFile(id).catch(() => undefined); // release the cloud blob + its quota (no-op if not synced)
+  if (!current()) return;
+  await deleteRemoteBookFile(id, current).catch(() => undefined);
+  if (!current()) return;
   // Tombstone only when signed in (so the delete propagates); otherwise hard-delete so anonymous users
   // don't accumulate garbage rows that never sync.
-  if (isSyncing()) await softDeleteBook(id);
+  if (isSyncing()) await softDeleteBook(id, current);
   else await db.books.delete(id);
   try {
     await db.catalogCache.delete(parseCacheKey(id));
@@ -129,10 +176,15 @@ export async function removeBook(id: string): Promise<void> {
   }
 }
 
-export async function saveProgress(id: string, chapter: number): Promise<void> {
+export async function saveProgress(
+  id: string,
+  chapter: number,
+  { strict = false }: { strict?: boolean } = {}
+): Promise<void> {
   try {
     await patchBook(id, { lastChapter: chapter });
-  } catch {
+  } catch (error) {
+    if (strict) throw error;
     // progress is best-effort
   }
 }

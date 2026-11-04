@@ -252,10 +252,10 @@ export function billingPlans(signal?: AbortSignal): Promise<BillingPlans> {
 
 /** Open a checkout. The server prices the plan, mints an unpaid grant bound to this account, and
  *  returns both the acquirer's payment page and the token to redeem once the money lands. */
-export function startCheckout(accessToken: string, plan: string): Promise<CheckoutResponse> {
+export function startCheckout(accessToken: string, plan: string, expectedAmountKopecks?: number): Promise<CheckoutResponse> {
   return request(
     Routes.billingCheckout,
-    { method: 'POST', headers: authed(accessToken), body: JSON.stringify({ plan }) },
+    { method: 'POST', headers: authed(accessToken), body: JSON.stringify({ plan, expectedAmountKopecks }) },
     (j) => CheckoutResponseSchema.parse(j)
   );
 }

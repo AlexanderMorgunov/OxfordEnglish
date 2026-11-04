@@ -31,6 +31,9 @@ type PopoverProps = {
   closeLabel?: string;
   className?: string;
   anchorClassName?: string;
+  initiallyOpen?: boolean;
+  onDismiss?: () => void;
+  returnFocus?: HTMLElement | null;
 };
 
 const MARGIN = 8;
@@ -38,8 +41,8 @@ const MARGIN = 8;
 /** Anchored popover for word/example look-ups (DESIGN_DOC §5.2). The panel is portaled to
  *  document.body and positioned `fixed`, clamped to the viewport — so a word near the right edge
  *  can never open it off-screen or widen the document (which produced a horizontal scrollbar). */
-export function Popover({ trigger, children, label, showClose, closeLabel = 'Close', className, anchorClassName }: PopoverProps) {
-  const [open, setOpen] = useState(false);
+export function Popover({ trigger, children, label, showClose, closeLabel = 'Close', className, anchorClassName, initiallyOpen, onDismiss, returnFocus }: PopoverProps) {
+  const [open, setOpen] = useState(Boolean(initiallyOpen));
   const rootRef = useRef<HTMLSpanElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const panelId = useId();
@@ -49,8 +52,9 @@ export function Popover({ trigger, children, label, showClose, closeLabel = 'Clo
   // isn't dropped onto <body>. Skip it for outside-click dismissal, which moves focus elsewhere.
   const close = useCallback((restoreFocus = true) => {
     setOpen(false);
-    if (restoreFocus) (rootRef.current?.firstElementChild as HTMLElement | null)?.focus();
-  }, []);
+    onDismiss?.();
+    if (restoreFocus) (returnFocus ?? rootRef.current?.firstElementChild as HTMLElement | null)?.focus({ preventScroll: true });
+  }, [onDismiss, returnFocus]);
 
   useLayoutEffect(() => {
     if (open) return group?.activate(() => close(false));
@@ -61,8 +65,9 @@ export function Popover({ trigger, children, label, showClose, closeLabel = 'Clo
     const panel = panelRef.current;
     if (!anchor || !panel) return;
     const a = anchor.getBoundingClientRect();
-    const vw = window.visualViewport?.width ?? window.innerWidth;
+    const vw = Math.min(window.visualViewport?.width ?? window.innerWidth, document.documentElement.offsetWidth || document.documentElement.clientWidth || window.innerWidth);
     const vh = window.visualViewport?.height ?? window.innerHeight;
+    panel.style.setProperty('--popover-available-width', `${Math.max(0, vw - MARGIN * 2)}px`);
     const pw = panel.offsetWidth;
     const ph = panel.offsetHeight;
     let left = Math.min(a.left, vw - pw - MARGIN);
@@ -101,7 +106,7 @@ export function Popover({ trigger, children, label, showClose, closeLabel = 'Clo
       if (!rootRef.current?.contains(t) && !panelRef.current?.contains(t)) close(false);
     };
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') close();
+      if (e.key === 'Escape' && !(e.target instanceof Element && e.target.closest('dialog[open]'))) close();
     };
     document.addEventListener('pointerdown', onPointerDown);
     document.addEventListener('keydown', onKeyDown);

@@ -6,6 +6,7 @@ import { afterEach, beforeEach, expect, test, vi } from 'vitest';
 import type { Session } from './contract';
 
 vi.mock('./config', () => ({ API_BASE: 'https://api.test', accountsEnabled: () => true }));
+vi.mock('./access-api', () => ({ accessCapabilities: async () => ({ enabled: false, passwordMin: 15, passwordMax: 128 }) }));
 vi.mock('./api', async original => ({ ...await original<object>(),
   devicePoll: vi.fn(), totpStatus: vi.fn(async () => ({ available: true, enrolled: true, backupCodesLeft: 4, pending: false, recoverFailures: 0, recoveryName: false })),
 }));

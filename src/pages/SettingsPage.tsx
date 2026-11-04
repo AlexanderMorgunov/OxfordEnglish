@@ -1,477 +1,371 @@
-import { useEffect, useState, useSyncExternalStore } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Button, Card, Eyebrow, Input, Option, PixelImage } from '@/shared/ui';
-import { checkForAppUpdate } from '@/features/pwa/update';
-import { isNativePlatform } from '@/shared/lib/platform';
-import { getKeyLimits, subscribeKeyLimits } from '@/features/ai/limits';
-import { PROVIDERS, type AiProviderId } from '@/features/ai/provider';
-import { useAiStore } from '@/features/ai/store';
-import { exportData, importData } from '@/features/progress/backup';
-import { applySnapshot, type Snapshot } from '@/features/migration/snapshot';
 import {
-  analyticsConfigured,
-  isAnalyticsEnabled,
-  setAnalyticsEnabled,
-} from '@/features/analytics/analytics';
-import { metricaConfigured, initMetrica } from '@/features/analytics/metrica';
-import { useLearner } from '@/features/learner/store';
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { PixelImage } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
-import { AccountSection } from '@/features/account/AccountSection';
+import { useLearner } from '@/features/learner/store';
 import { ApplicationTextSize } from '@/features/appearance/ApplicationTextSize';
+import { AppearanceThemes } from '@/features/appearance/ThemePicker';
+import { AccountSection } from '@/features/account/AccountSection';
+import { accountsEnabled } from '@/features/account/config';
+import { useAccount } from '@/features/account/store';
+import {
+  getDataOwnerRevision,
+  subscribeDataScope,
+} from '@/features/account/dataScope';
+import { safeSettingsReturn } from '@/features/settings/navigation';
+import { useCourseNavigation } from '@/features/course/navigation';
+import { AiSettings } from '@/features/settings/AiSettings';
+import { DataSettings } from '@/features/settings/DataSettings';
+import { PrivacySettings } from '@/features/settings/PrivacySettings';
 import type { Level } from '@/content/schema';
+import '@/features/settings/settings.css';
 
-const PROVIDER_IDS = Object.keys(PROVIDERS) as AiProviderId[];
-
-const LEVEL_START: Record<Level, string> = {
+const SECTIONS = [
+  {
+    id: 'interface',
+    ru: 'Интерфейс',
+    en: 'Appearance',
+    noteRu: 'Тема, размер текста и язык',
+    noteEn: 'Theme, text size and language',
+    descriptionRu: 'Сделайте DayEnglish удобным именно для вас.',
+    descriptionEn: 'Make DayEnglish comfortable for you.',
+    icon: '/assets/pixel/nav/settings.png',
+  },
+  {
+    id: 'learning',
+    ru: 'Обучение',
+    en: 'Learning',
+    noteRu: 'Уровень и точка старта',
+    noteEn: 'Level and starting point',
+    descriptionRu: 'Выберите, откуда продолжить знакомство с языком.',
+    descriptionEn: 'Choose where to continue learning.',
+    icon: '/assets/pixel/nav/grammar.png',
+  },
+  {
+    id: 'ai',
+    ru: 'AI-помощник',
+    en: 'AI assistant',
+    noteRu: 'Доступ и свой провайдер',
+    noteEn: 'Access and your own provider',
+    descriptionRu: 'Перевод и объяснения — когда нужна помощь.',
+    descriptionEn: 'Translations and explanations when you need help.',
+    icon: '/assets/pixel/ui/ai.png',
+  },
+  {
+    id: 'account',
+    ru: 'Аккаунт и подписка',
+    en: 'Account and plan',
+    noteRu: 'Pro, вход и устройства',
+    noteEn: 'Pro, sign-in and devices',
+    descriptionRu: 'Ваш доступ к DayEnglish на всех устройствах.',
+    descriptionEn: 'Your access to DayEnglish on every device.',
+    icon: '/assets/pixel/avatars/a01.png',
+  },
+  {
+    id: 'data',
+    ru: 'Данные и синхронизация',
+    en: 'Data and sync',
+    noteRu: 'Облачная и резервная копия',
+    noteEn: 'Cloud sync and backups',
+    descriptionRu: 'Держите прогресс под рукой, а резервную копию — у себя.',
+    descriptionEn: 'Keep your progress close and a backup of your own.',
+    icon: '/assets/pixel/nav/library.png',
+  },
+  {
+    id: 'privacy',
+    ru: 'Приватность и приложение',
+    en: 'Privacy and app',
+    noteRu: 'Статистика, версия и документы',
+    noteEn: 'Analytics, version and documents',
+    descriptionRu: 'Что приложение отправляет и как его обновлять.',
+    descriptionEn: 'What the app sends and how to keep it up to date.',
+    icon: '/assets/pixel/nav/support.png',
+  },
+] as const;
+type SectionId = (typeof SECTIONS)[number]['id'];
+const isSection = (value: unknown): value is SectionId =>
+  SECTIONS.some((s) => s.id === value);
+const LEVEL_START: Partial<Record<Level, string>> = {
   A1: 'u00',
   A2: 'u01',
   B1: 'u15',
-  B2: 'u15',
-  C1: 'u15',
-  C2: 'u15',
 };
-const LEVELS: Level[] = ['A1', 'A2', 'B1'];
 
 export function SettingsPage() {
-  const { config, setConfig, forgetKey } = useAiStore();
-  const [provider, setProvider] = useState<AiProviderId>(config?.provider ?? 'groq');
-  const [apiKey, setApiKey] = useState(config?.apiKey ?? '');
-  const [model, setModel] = useState(config?.model ?? PROVIDERS.groq.model);
-  const [baseUrl, setBaseUrl] = useState(config?.baseUrl ?? '');
-  const [saved, setSaved] = useState(false);
+  const revision = useSyncExternalStore(
+    subscribeDataScope,
+    getDataOwnerRevision
+  );
+  return <SettingsContent key={revision} />;
+}
 
-  const { hash, search } = useLocation();
-  // Where the user came from (e.g. a lesson that sent them here to add an AI key) — offer a way back.
-  const from = new URLSearchParams(search).get('from');
-  useEffect(() => {
-    if (hash !== '#ai-section') return;
-    const el = document.getElementById('ai-section');
-    if (!el) return;
-    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-    requestAnimationFrame(() =>
-      el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
-    );
-  }, [hash]);
-
-  const pick = (p: AiProviderId) => {
-    const stored = useAiStore.getState().keys[p];
-    setProvider(p);
-    setApiKey(stored?.apiKey ?? '');
-    setModel(stored?.model ?? PROVIDERS[p].model);
-    setBaseUrl(stored?.baseUrl ?? '');
-    setSaved(false);
-  };
-
-  const save = () => {
-    setConfig({
-      provider,
-      apiKey: apiKey.trim(),
-      model: model.trim(),
-      baseUrl: baseUrl.trim() || undefined,
-    });
-    setSaved(true);
-  };
-
-  const clear = () => {
-    forgetKey(provider);
-    setApiKey('');
-    setSaved(false);
-  };
-
-  const { level, placementDone, setLevel } = useLearner();
+function SettingsContent() {
   const { lang, setLang } = useUiLang();
   const ru = lang === 'ru';
-
-  const [analytics, setAnalytics] = useState(isAnalyticsEnabled());
-  const toggleAnalytics = () => {
-    const next = !analytics;
-    setAnalyticsEnabled(next);
-    setAnalytics(next);
-    // Enabling loads Metrica now; disabling reloads so the already-loaded tag/cookies fully unload.
-    if (next) initMetrica();
-    else window.location.reload();
-  };
-
-  const keyLimits = useSyncExternalStore(subscribeKeyLimits, getKeyLimits, () => null);
-  const native = isNativePlatform();
-  const [checking, setChecking] = useState(false);
-  const [updateMsg, setUpdateMsg] = useState('');
-  const doCheckUpdate = async () => {
-    setChecking(true);
-    setUpdateMsg('');
-    const result = await checkForAppUpdate();
-    setChecking(false);
-    if (result === 'unavailable') {
-      setUpdateMsg(
-        ru ? '⚠ проверка недоступна (офлайн или SW не готов)' : '⚠ check unavailable (offline or SW not ready)'
-      );
+  const { level, placementDone, setLevel } = useLearner();
+  const session = useAccount((s) => s.sessionRevision);
+  const location = useLocation();
+  const { section: routeSection } = useParams();
+  const legacy =
+    location.hash === '#ai-section'
+      ? 'ai'
+      : location.hash === '#account'
+        ? 'account'
+        : null;
+  const explicit = isSection(routeSection) ? routeSection : legacy;
+  const section = explicit ?? 'interface';
+  const meta = SECTIONS.find((s) => s.id === section)!;
+  const [compact, setCompact] = useState(
+    () => !window.matchMedia('(min-width: 900px)').matches
+  );
+  const index = compact && !explicit;
+  const heading = useRef<HTMLHeadingElement>(null);
+  const title = useRef<HTMLHeadingElement>(null);
+  const focusRoute = useRef<string | null>(null);
+  const params = new URLSearchParams(location.search);
+  const from = safeSettingsReturn(params.get('from'));
+  const work = useCourseNavigation((s) => s.work);
+  const workUnit = work?.dayId.match(/^(u\d+)\./)?.[1];
+  const returnTo =
+    from ??
+    (work && workUnit
+      ? `/course/${workUnit}/day/${encodeURIComponent(work.dayId)}`
+      : '/');
+  const href = (id?: SectionId) =>
+    `/settings${id ? `/${id}` : ''}${from ? `?from=${encodeURIComponent(from)}` : ''}`;
+  const [languageError, setLanguageError] = useState(false);
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 900px)');
+    const change = () => setCompact(!media.matches);
+    media.addEventListener('change', change);
+    return () => media.removeEventListener('change', change);
+  }, []);
+  useLayoutEffect(() => {
+    const entering = focusRoute.current !== location.key;
+    focusRoute.current = location.key;
+    if (document.querySelector('.app-dialog[open]')) return;
+    if (
+      !entering &&
+      document.activeElement?.closest('.app-header,.app-nav-bottom')
+    )
       return;
-    }
-    // A newly-found SW auto-activates and reloads the page; if we're still here, we're up to date.
-    setUpdateMsg(ru ? '✓ установлена последняя версия' : '✓ you have the latest version');
-  };
-
-  const [dataMsg, setDataMsg] = useState('');
-  const doExport = async () => {
-    const blob = new Blob([await exportData()], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'oxford-progress.json';
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-  const doImport = async (file: File) => {
-    try {
-      const text = await file.text();
-      // A migration snapshot (from the .online → .ru file fallback) carries the full envelope incl.
-      // settings; the legacy backup is a flat table dump. Route each to its importer.
-      const parsed = JSON.parse(text) as { snapshotVersion?: number };
-      if (typeof parsed.snapshotVersion === 'number') await applySnapshot(parsed as Snapshot);
-      else await importData(text);
-      setDataMsg(lang === 'ru' ? '✓ импортировано — перезагрузите страницу' : '✓ imported — reload to see it');
-    } catch {
-      setDataMsg(
-        lang === 'ru'
-          ? '✕ не удалось прочитать файл — выберите файл резервной копии (.json)'
-          : '✕ could not read the file — pick a backup (.json) file'
-      );
-    }
-  };
+    (index ? title : heading).current?.focus({ preventScroll: true });
+  }, [section, index, location.key]);
 
   return (
-    <section aria-label="Settings" className="max-w-prose">
-      {from && (
-        <Link
-          to={from}
-          className="mb-6 inline-flex items-center font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
-        >
-          {from.includes('/course/')
-            ? lang === 'ru'
-              ? '← вернуться к уроку'
-              : '← back to the lesson'
-            : lang === 'ru'
-              ? '← назад'
-              : '← back'}
+    <section
+      className={`settings-shell ${index ? 'settings-mobile-index' : 'settings-mobile-detail'}`}
+      aria-label={ru ? 'Настройки' : 'Settings'}
+    >
+      <header className="settings-top">
+        <Link className="settings-back" to={returnTo}>
+          ←{' '}
+          {from && !from.includes('/course/')
+            ? ru
+              ? 'Назад'
+              : 'Back'
+            : ru
+              ? 'Вернуться к занятию'
+              : 'Back to learning'}
         </Link>
-      )}
-      <div className="mb-10 border-b border-line pb-8">
-        <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          язык интерфейса · interface language
+        <h1 ref={title} tabIndex={-1}>
+          {ru ? 'Настройки' : 'Settings'}
+        </h1>
+        <p>
+          {ru ? 'Меньше лишнего. Больше вашего.' : 'Less clutter. More you.'}
         </p>
-        <p className="mb-3 text-sm text-muted text-pretty">
-          Язык инструкций, подсказок и объяснений. Английский учебный текст не
-          меняется. / Language of instructions, hints and explanations.
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {(['ru', 'en'] as const).map((l) => (
-            <Option
-              key={l}
-              state={lang === l ? 'chosen' : 'default'}
-              onClick={() => setLang(l)}
+      </header>
+      <div className="settings-frame">
+        <nav
+          className="settings-menu"
+          aria-label={ru ? 'Разделы настроек' : 'Settings sections'}
+        >
+          {SECTIONS.map((s) => (
+            <Link
+              key={s.id}
+              to={href(s.id)}
+              className="settings-link"
+              aria-current={!index && section === s.id ? 'page' : undefined}
             >
-              {l === 'ru' ? 'Русский' : 'English'}
-            </Option>
+              <PixelImage src={s.icon} alt="" className="settings-icon" />
+              <span>
+                {s[ru ? 'ru' : 'en']}
+                <span className="settings-link-summary">
+                  {s[ru ? 'noteRu' : 'noteEn']}
+                </span>
+              </span>
+              <span className="settings-link-arrow" aria-hidden="true">
+                ›
+              </span>
+            </Link>
           ))}
-        </div>
-      </div>
-
-      <AccountSection />
-
-      <ApplicationTextSize />
-
-      <div id="ai-section" className="scroll-mt-6" aria-hidden="true" />
-      <Eyebrow className="mb-3.5">config · ai (byok)</Eyebrow>
-      <div className="mb-2 flex items-center gap-3">
-        <PixelImage src="/assets/pixel/ui/ai.png" alt="" className="h-7 w-7 shrink-0" />
-        <h1 className="min-w-0 text-2xl font-bold tracking-tight">{ru ? 'AI-помощник' : 'AI assistant'}</h1>
-      </div>
-      <p className="mb-8 text-muted text-pretty">
-        {ru
-          ? 'Опционально. Приложение полностью работает и без него. Ключ хранится только в этом браузере, запросы идут напрямую к провайдеру — без нашего сервера.'
-          : 'Optional. The app works fully without it. Your key is stored only in this browser and requests go straight to the provider — no server of ours.'}
-      </p>
-
-      <Card className="mb-4 border-violet-dim bg-violet-dim/15">
-        <p className="mb-1 font-mono text-2xs uppercase tracking-[0.08em] text-violet">
-          {ru ? 'перед тем как добавить ключ' : 'before you add a key'}
-        </p>
-        <p className="text-sm leading-relaxed text-pretty">
-          {ru ? (
-            <>
-              На бесплатных тарифах запросы часто идут в обучение моделей провайдера — для учебных фраз
-              обычно ок, но знайте. <b className="text-content">Из России без VPN:</b>{' '}
-              Groq, OpenRouter, Cerebras, Gemini и OpenAI гео-блокируют РФ (нужен VPN). Без VPN работает{' '}
-              <b className="text-content">VseGPT</b> — RU-прокси (OpenAI-совместимый, 120+ моделей):
-              платный по рублёвой карте, но с небольшим бесплатным кредитом на старте (без карты) — можно
-              попробовать. Не хочется возиться с ключом —{' '}
-              <Link to="/pro" className="text-teal hover:underline">
-                есть подписка Pro
-              </Link>
-              : тот же ИИ на нашем ключе, без VPN и без настройки.
-            </>
-          ) : (
-            <>
-              Free tiers usually mean your requests may train the provider's models — fine for learning
-              sentences, but know it. <b className="text-content">From Russia without a VPN:</b>{' '}
-              Groq, OpenRouter, Cerebras, Gemini and OpenAI geo-block RU (need a VPN). Without a VPN,{' '}
-              <b className="text-content">VseGPT</b> works — a RU proxy (OpenAI-compatible, 120+ models):
-              paid by ruble card, but with a small no-card starter credit to try. Rather not deal with a
-              key —{' '}
-              <Link to="/pro" className="text-teal hover:underline">
-                there is a Pro subscription
-              </Link>
-              : the same AI on our key, no VPN and nothing to set up.
-            </>
-          )}
-        </p>
-      </Card>
-
-      <div className="mb-4">
-        <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          {ru ? 'провайдер' : 'provider'}
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {PROVIDER_IDS.map((id) => (
-            <Option
-              key={id}
-              state={provider === id ? 'chosen' : 'default'}
-              onClick={() => pick(id)}
-            >
-              {PROVIDERS[id].label}
-              {PROVIDERS[id].noCard && id !== 'custom' && (
-                <span className="ml-2 text-2xs text-teal">{ru ? 'без карты' : 'no card'}</span>
-              )}
-              {PROVIDERS[id].needsVpn && id !== 'custom' && (
-                <span className="ml-2 text-2xs text-amber">{ru ? 'нужен VPN' : 'VPN'}</span>
-              )}
-            </Option>
-          ))}
-        </div>
-        {PROVIDERS[provider].keyUrl && (
-          <a
-            href={PROVIDERS[provider].keyUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-2 inline-block font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
-          >
-            {ru ? 'получить бесплатный ключ →' : 'get a free key →'}
-          </a>
-        )}
-      </div>
-
-      <div className="mb-4 flex flex-col gap-3">
-        <label className="flex flex-col gap-1.5">
-          <span className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-            {ru ? 'api-ключ' : 'api key'}
-          </span>
-          <Input
-            type="password"
-            placeholder="sk-…"
-            value={apiKey}
-            onChange={(e) => setApiKey(e.target.value)}
-          />
-        </label>
-        <label className="flex flex-col gap-1.5">
-          <span className="flex items-center justify-between font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-            {ru ? 'модель' : 'model'}
-            {model !== PROVIDERS[provider].model && PROVIDERS[provider].model && (
-              <button
-                type="button"
-                className="text-teal hover:underline"
-                onClick={() => setModel(PROVIDERS[provider].model)}
-              >
-                {ru ? 'сбросить на' : 'reset to'} {PROVIDERS[provider].model}
-              </button>
-            )}
-          </span>
-          <Input value={model} onChange={(e) => setModel(e.target.value)} />
-        </label>
-        {provider === 'custom' && (
-          <label className="flex flex-col gap-1.5">
-            <span className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-              base url
-            </span>
-            <Input
-              placeholder="https://…/v1"
-              value={baseUrl}
-              onChange={(e) => setBaseUrl(e.target.value)}
-            />
-          </label>
-        )}
-      </div>
-
-      <div className="flex items-center gap-3">
-        <Button onClick={save} disabled={!apiKey.trim() || !model.trim()}>
-          {ru ? 'Сохранить ключ' : 'Save key'}
-        </Button>
-        {apiKey.trim() !== '' && (
-          <Button variant="ghost" onClick={clear}>
-            {ru ? 'Удалить ключ' : 'Remove key'}
-          </Button>
-        )}
-        {saved && <span className="font-mono text-2xs text-teal">{ru ? '✓ сохранено' : '✓ saved'}</span>}
-      </div>
-
-      {keyLimits && (
-        <div className="mt-4 rounded-sm border border-line bg-surface-2/50 p-3">
-          <p className="mb-1.5 font-mono text-2xs uppercase tracking-[0.08em] text-muted">
-            {ru ? 'лимиты ключа · по последнему запросу' : 'key limits · from the last request'}
-          </p>
-          <ul className="space-y-0.5 font-mono text-2xs text-content">
-            {keyLimits.remainingRequests !== undefined && (
-              <li>
-                {ru ? 'запросов' : 'requests'}: {keyLimits.remainingRequests}
-                {keyLimits.limitRequests !== undefined ? ` / ${keyLimits.limitRequests}` : ''}
-                {keyLimits.resetRequests ? ` · ${ru ? 'сброс' : 'reset'} ${keyLimits.resetRequests}` : ''}
-              </li>
-            )}
-            {keyLimits.remainingTokens !== undefined && (
-              <li>
-                {ru ? 'токенов' : 'tokens'}: {keyLimits.remainingTokens}
-                {keyLimits.limitTokens !== undefined ? ` / ${keyLimits.limitTokens}` : ''}
-                {keyLimits.resetTokens ? ` · ${ru ? 'сброс' : 'reset'} ${keyLimits.resetTokens}` : ''}
-              </li>
-            )}
-          </ul>
-          <p className="mt-1.5 text-2xs text-faint text-pretty">
+          <p className="settings-menu-note">
             {ru
-              ? 'Лимиты общие для всего ключа (перевод, объяснения и т. п.) и обновляются после каждого AI-запроса.'
-              : 'Limits are shared across the whole key (translation, explanations, etc.) and refresh after each AI request.'}
+              ? 'Учебный путь остаётся на месте. Можно вернуться к своему дню в любой момент.'
+              : 'Your learning path stays in place. Return to your day whenever you like.'}
           </p>
-        </div>
-      )}
-
-      <div className="mt-10 border-t border-line pt-8">
-        <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          {ru ? 'ваш уровень' : 'your level'}
-        </p>
-        <p className="mb-4 text-sm text-muted text-pretty">
-          {placementDone
-            ? ru
-              ? 'Задан тестом на уровень. Измените здесь или пройдите тест заново.'
-              : 'Set by the placement test. Change it here or retake the test.'
-            : ru
-              ? 'Ещё не задан. Пройдите тест на уровень или выберите, с какого начать.'
-              : 'Not set yet. Take the placement test, or choose a level to start from.'}
-        </p>
-        <div className="mb-3 flex flex-wrap gap-2">
-          {LEVELS.map((lv) => (
-            <Option
-              key={lv}
-              state={level === lv ? 'chosen' : 'default'}
-              onClick={() => setLevel(lv, LEVEL_START[lv])}
-            >
-              {lv}
-            </Option>
-          ))}
-        </div>
-        <Link
-          to="/placement"
-          className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline"
+        </nav>
+        <section
+          className="settings-panel"
+          aria-labelledby="settings-section-title"
         >
-          {placementDone
-            ? ru
-              ? 'пройти тест заново →'
-              : 'retake placement test →'
-            : ru
-              ? 'пройти тест на уровень →'
-              : 'take placement test →'}
-        </Link>
-      </div>
-
-      <div className="mt-10 border-t border-line pt-8">
-        <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          {ru ? 'ваши данные' : 'your data'}
-        </p>
-        <p className="mb-4 text-sm text-muted text-pretty">
-          {ru
-            ? 'Прогресс, карточки повторения и статусы слов живут только в этом браузере. Сделайте резервную копию или перенесите на другое устройство.'
-            : 'Progress, SRS cards and word status live only in this browser. Export a backup or move it to another device.'}
-        </p>
-        <div className="flex flex-wrap items-center gap-3">
-          <Button variant="ghost" onClick={() => void doExport()}>
-            {ru ? 'Экспорт JSON' : 'Export JSON'}
-          </Button>
-          <label className="cursor-pointer rounded-sm border border-line bg-ink px-4 py-2.5 font-mono text-sm text-content transition-colors hover:border-teal-dim">
-            {ru ? 'Импорт JSON' : 'Import JSON'}
-            <input
-              type="file"
-              accept="application/json"
-              className="hidden"
-              onChange={(e) => {
-                const file = e.target.files?.[0];
-                if (file) void doImport(file);
-              }}
-            />
-          </label>
-          {dataMsg && <span className="font-mono text-2xs text-teal">{dataMsg}</span>}
-        </div>
-      </div>
-
-      <div className="mt-10 border-t border-line pt-8">
-        <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          анонимная статистика · anonymous usage
-        </p>
-        {analyticsConfigured() || metricaConfigured() ? (
-          <>
-            <p className="mb-4 text-sm text-muted text-pretty">
-              Собираем обезличенную статистику посещений через Яндекс Метрику (какие
-              экраны открывают, устройства, регионы) — чтобы понимать, помогает ли
-              приложение учиться. Метрика ставит cookies и использует IP-адрес.
-              Содержимое ваших занятий не передаётся. Можно выключить в любой момент.
-            </p>
-            <Option state={analytics ? 'chosen' : 'default'} onClick={toggleAnalytics}>
-              {analytics ? 'Включена' : 'Выключена'}
-            </Option>
-          </>
-        ) : (
-          <p className="text-sm text-muted text-pretty">
-            Сейчас ничего не собирается и не отправляется — сервер статистики не
-            подключён. Приложение работает полностью локально.
-          </p>
-        )}
-      </div>
-
-      <div className="mt-10 border-t border-line pt-8">
-        <p className="mb-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          {native ? (ru ? 'версия' : 'version') : ru ? 'обновления приложения' : 'app updates'}
-        </p>
-        {/* The whole control is a service-worker affordance. In the Android shell the update comes from
-            the store, there is no worker to ask, and the button could only ever answer "check
-            unavailable" — alarming, and about something other than the app being current. The version
-            line stays either way: it is the first thing a support conversation needs. */}
-        {!native && (
-          <>
-            <p className="mb-4 text-sm text-muted text-pretty">
-              {ru
-                ? 'Приложение обновляется само при выходе новой версии. Если оно «застряло» на старой (частая ситуация с установленным PWA), проверьте и примените обновление вручную.'
-                : 'The app updates itself when a new version ships. If it seems stuck on an old one (common with an installed PWA), check and apply an update manually.'}
-            </p>
-            <div className="flex flex-wrap items-center gap-3">
-              <Button variant="ghost" onClick={() => void doCheckUpdate()} disabled={checking}>
-                {checking
-                  ? ru
-                    ? 'Проверяю…'
-                    : 'Checking…'
-                  : ru
-                    ? 'Проверить обновления'
-                    : 'Check for updates'}
-              </Button>
-              {updateMsg && <span className="font-mono text-2xs text-teal">{updateMsg}</span>}
+          <Link className="settings-back settings-mobile-back" to={href()}>
+            ← {ru ? 'Все настройки' : 'All settings'}
+          </Link>
+          <header className="settings-panel-header">
+            <h2 id="settings-section-title" tabIndex={-1} ref={heading}>
+              {meta[ru ? 'ru' : 'en']}
+            </h2>
+            <p>{meta[ru ? 'descriptionRu' : 'descriptionEn']}</p>
+          </header>
+          <div hidden={section !== 'interface'}>
+            {section === 'interface' && !index && (
+              <AppearanceThemes placement="settings" />
+            )}
+            <div className="settings-group">
+              <div className="settings-pad">
+                <ApplicationTextSize />
+              </div>
+              <div className="settings-row">
+                <div>
+                  <label htmlFor="settings-language">
+                    {ru ? 'Язык интерфейса' : 'Interface language'}
+                  </label>
+                  <p>
+                    {ru
+                      ? 'Подсказки и инструкции. Учебные материалы останутся на английском.'
+                      : 'Hints and instructions. Course material stays in English.'}
+                  </p>
+                </div>
+                <select
+                  id="settings-language"
+                  className="settings-control"
+                  value={lang}
+                  onChange={(e) => {
+                    setLanguageError(
+                      !setLang(e.target.value === 'en' ? 'en' : 'ru')
+                    );
+                  }}
+                >
+                  <option value="ru">Русский</option>
+                  <option value="en">English</option>
+                </select>
+              </div>
             </div>
-          </>
-        )}
-        <p className="mt-3 font-mono text-2xs text-faint">version: {__APP_VERSION__}</p>
-      </div>
-
-      <div className="mt-10 flex flex-wrap gap-x-6 gap-y-2 border-t border-line pt-6">
-        <Link to="/privacy" className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">
-          {ru ? 'политика конфиденциальности →' : 'privacy policy →'}
-        </Link>
-        <Link to="/terms" className="font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">
-          {ru ? 'условия и оферта →' : 'terms and offer →'}
-        </Link>
+            {languageError && (
+              <p role="status" className="settings-error">
+                {ru
+                  ? 'Язык изменён для этого сеанса, но сохранить его не удалось.'
+                  : 'Language changed for this session, but could not be saved.'}
+              </p>
+            )}
+          </div>
+          <div hidden={section !== 'learning'}>
+            <div className="settings-group">
+              <div className="settings-row">
+                <div>
+                  <label htmlFor="settings-level">
+                    {ru ? 'Мой уровень' : 'My level'}
+                  </label>
+                  <p>
+                    {ru
+                      ? 'Задаёт рекомендуемую точку старта. Пройденные дни и результаты сохраняются.'
+                      : 'Sets your recommended starting point. Completed days and results are kept.'}
+                  </p>
+                </div>
+                <select
+                  id="settings-level"
+                  className="settings-control"
+                  value={level ?? ''}
+                  onChange={(e) => {
+                    const value = e.target.value as Level;
+                    const start = LEVEL_START[value];
+                    if (start) setLevel(value, start);
+                  }}
+                >
+                  <option value="" disabled>
+                    {ru ? 'Не выбран' : 'Not selected'}
+                  </option>
+                  {level && !LEVEL_START[level] && (
+                    <option value={level}>{level}</option>
+                  )}
+                  {(['A1', 'A2', 'B1'] as const).map((l) => (
+                    <option key={l}>{l}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="settings-row">
+                <div>
+                  <h3>
+                    {ru ? 'Не уверены в уровне?' : 'Not sure about your level?'}
+                  </h3>
+                  <p>
+                    {ru
+                      ? 'Короткий тест поможет выбрать подходящую точку старта.'
+                      : 'A short test helps you find a starting point.'}
+                  </p>
+                </div>
+                <Link className="settings-text-link" to="/placement">
+                  {placementDone
+                    ? ru
+                      ? 'Пройти тест заново →'
+                      : 'Retake the test →'
+                    : ru
+                      ? 'Определить уровень →'
+                      : 'Find my level →'}
+                </Link>
+              </div>
+            </div>
+            <div className="settings-group">
+              <div className="settings-row">
+                <div>
+                  <h3>{ru ? 'Ваш текущий день' : 'Your current day'}</h3>
+                  <p>
+                    {ru
+                      ? 'Настройки не начинают день заново. Вернитесь к своему занятию.'
+                      : 'Settings do not restart your day. Return to your lesson.'}
+                  </p>
+                </div>
+                <Link className="settings-text-link" to={returnTo}>
+                  {ru ? 'Вернуться к занятию →' : 'Back to learning →'}
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div hidden={section !== 'ai'}>
+            <AiSettings key={session} />
+          </div>
+          <div
+            hidden={section !== 'account'}
+            className="settings-group settings-pad"
+          >
+            {accountsEnabled() ? (
+              <AccountSection />
+            ) : (
+              <p className="settings-help">
+                {ru
+                  ? 'Аккаунты недоступны в этой сборке. Локальные занятия и резервные копии продолжают работать.'
+                  : 'Accounts are unavailable in this build. Local learning and backups still work.'}
+              </p>
+            )}
+          </div>
+          <div hidden={section !== 'data'}>
+            <DataSettings
+              key={session}
+              accountHref={href('account')}
+              active={section === 'data' && !index}
+            />
+          </div>
+          <div hidden={section !== 'privacy'}>
+            <PrivacySettings />
+          </div>
+        </section>
       </div>
     </section>
   );

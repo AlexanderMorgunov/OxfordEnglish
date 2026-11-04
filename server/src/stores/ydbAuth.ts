@@ -9,6 +9,7 @@ import { randomBytes, createHash } from 'node:crypto';
 import type { AuthStore } from '../store.js';
 import type { Device } from '../contract.js';
 import { query, withSerializableTx, TypedValues as T, Types, num, type Tx } from '../ydb.js';
+import { isAbortedTransaction } from '../ydbRetry.js';
 
 const newRefreshToken = (): string => randomBytes(32).toString('base64url');
 const hashToken = (t: string): string => createHash('sha256').update(t).digest('base64');
@@ -86,7 +87,8 @@ export class YdbAuthStore implements AuthStore {
         { $id: T.utf8(accountId), $vh: T.utf8(verifierHash), $ts: T.timestamp(new Date()) }
       );
       return true;
-    } catch {
+    } catch (error) {
+      if (isAbortedTransaction(error)) throw error;
       return false;
     }
   }

@@ -1,6 +1,6 @@
 import { forSpeech } from './speechText';
 import { speechEngine } from './speech';
-import type { Voice } from './speech';
+import type { SpeakHandlers, Voice } from './speech';
 import { cancelAudioInput } from './audio-input';
 
 export type { Voice } from './speech';
@@ -89,14 +89,14 @@ export function previewVoice(voiceURI: string | null, text: string): void {
 }
 
 /** Speak a word in American English. Cancels any prior utterance. */
-export function speakWord(word: string): void {
+export function speakWord(word: string, handlers: SpeakHandlers = {}): void {
   if (!canSpeak()) return;
   const spoken = forSpeech(word);
   if (!spoken) return;
   cancelAudioInput();
   stopClip();
   cancelSpeech();
-  speechEngine().speak(spoken, {});
+  speechEngine().speak(spoken, handlers);
 }
 
 export type WordSpan = { start: number; end: number };

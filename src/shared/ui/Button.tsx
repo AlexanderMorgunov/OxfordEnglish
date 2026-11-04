@@ -5,7 +5,7 @@ type ButtonVariant = 'primary' | 'ghost';
 type ButtonSize = 'sm' | 'md';
 
 const VARIANT: Record<ButtonVariant, string> = {
-  primary: 'bg-teal text-ink font-semibold hover:opacity-90',
+  primary: 'bg-action text-on-action font-semibold hover:opacity-90',
   ghost: 'bg-ink text-content border border-line hover:border-teal-dim',
 } as const;
 
