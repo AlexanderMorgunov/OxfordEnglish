@@ -17,6 +17,7 @@ import { PopoverCloseContext } from '@/shared/ui/popover-close';
 import { PopoverGroupContext } from '@/shared/ui/popover-group';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { NAVIGATION_INSETS_EVENT } from '@/shared/lib/navigation-insets';
+import { hasSeenSheetSwipeHint, markSheetSwipeHintSeen, useSheetDismiss } from './useSheetDismiss';
 import './reader-help.css';
 
 type HelpTrigger = ReactElement<{
@@ -106,13 +107,32 @@ export function ReaderHelp(props: HelpProps) {
   );
 }
 
-function HelpContent({ children, footer }: Pick<HelpProps, 'children' | 'footer'>) {
+function SheetHeading() {
+  const ru = useUiLang(s => s.lang) === 'ru';
+  const grip = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    if (!window.matchMedia?.('(any-pointer: coarse)').matches || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches || hasSeenSheetSwipeHint()) return;
+    grip.current?.setAttribute('data-swipe-teach', '');
+    const timer = window.setTimeout(() => {
+      grip.current?.removeAttribute('data-swipe-teach');
+      markSheetSwipeHintSeen();
+    }, 2500);
+    return () => window.clearTimeout(timer);
+  }, []);
+  return <>
+    <span ref={grip} className="rdh-grab" aria-hidden="true"><span /></span>
+    <span>{ru ? 'Помощь с чтением' : 'Reading help'}</span>
+    <span className="rdh-swipe-note">{ru ? 'Потяните вниз, чтобы закрыть' : 'Pull down to close'}</span>
+  </>;
+}
+
+function HelpContent({ children, footer, heading }: Pick<HelpProps, 'children' | 'footer'> & { heading?: ReactNode }) {
   const ru = useUiLang(s => s.lang) === 'ru';
   const close = usePopoverClose();
   const body = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => { body.current?.focus({ preventScroll: true }); }, []);
   return <>
-    <div className="rdh-topline"><span>{ru ? 'Помощь с чтением' : 'Reading help'}</span><button type="button" className="rdh-close" aria-label={ru ? 'Закрыть' : 'Close'} onClick={close}>×</button></div>
+    <div className="rdh-topline"><div>{heading ?? (ru ? 'Помощь с чтением' : 'Reading help')}</div><button type="button" className="rdh-close" aria-label={ru ? 'Закрыть' : 'Close'} onClick={close}>×</button></div>
     <div ref={body} tabIndex={-1} className="rdh-body outline-none">{children}</div>
     {footer && <footer className="rdh-footer">{footer}</footer>}
   </>;
@@ -148,6 +168,7 @@ function BookHelp({
     },
     [onDismiss, returnFocus]
   );
+  useSheetDismiss(dialog, open && (!wide || !target), close);
 
   useLayoutEffect(() => {
     if (open) return group?.activate(() => close(false));
@@ -191,7 +212,7 @@ function BookHelp({
 
   const content = (
     <PopoverCloseContext value={() => close()}>
-      <HelpContent footer={footer}>{children}</HelpContent>
+      <HelpContent footer={footer} heading={!wide || !target ? <SheetHeading /> : undefined}>{children}</HelpContent>
     </PopoverCloseContext>
   );
   return (

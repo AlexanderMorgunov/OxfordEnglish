@@ -83,6 +83,7 @@ export function FirstEntryWelcome() {
   const openNow = step !== null;
 
   const close = (returnToTask = true) => {
+    if (!current.current) return;
     restore.current = returnToTask;
     current.current = null;
     setStep(null);
@@ -233,6 +234,7 @@ export function FirstEntryWelcome() {
   }, [pathname, search]);
   useEffect(
     () => () => {
+      if (!current.current) return;
       useTheme.getState().cancel();
       previewUiTextSize(useAppearance.getState().textStep);
     },

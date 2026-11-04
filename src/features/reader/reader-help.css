@@ -210,6 +210,44 @@
   background: rgb(0 0 0 / 50%);
 }
 .rdh-sheet[open] { display: flex; flex-direction: column; overflow: hidden; padding-bottom: 0; }
+.rdh-sheet {
+  transform: translateY(var(--sheet-drag-y, 0px));
+  transition: transform 180ms var(--ease-out-soft);
+}
+.rdh-sheet[data-dragging] { transition: none; }
+.rdh-grab,
+.rdh-swipe-note { display: none; }
+@media (any-pointer: coarse) {
+  .rdh-sheet .rdh-topline { padding-top: 1rem; touch-action: pan-x pinch-zoom; }
+  .rdh-grab {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 25%;
+    width: 50%;
+    height: 1.25rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .rdh-grab > span {
+    width: 2.5rem;
+    height: 0.25rem;
+    border-radius: 1rem;
+    background: var(--color-muted);
+  }
+  .rdh-grab[data-swipe-teach] > span { animation: rdh-swipe-nudge 900ms 500ms 2; }
+  .rdh-swipe-note {
+    display: block;
+    font-size: var(--text-2xs);
+    line-height: 1.4;
+    margin-top: 0.15rem;
+  }
+}
+@keyframes rdh-swipe-nudge { 50% { transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) {
+  .rdh-sheet { transition: none; }
+  .rdh-grab[data-swipe-teach] > span { animation: none; }
+}
 html:has(.rdh-sheet[open]) {
   overflow: hidden;
 }
