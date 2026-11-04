@@ -1,6 +1,6 @@
 import 'fake-indexeddb/auto';
 import { readFileSync } from 'node:fs';
-import { act, cleanup, render, screen, waitFor, within } from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, expect, test, vi } from 'vitest';
@@ -18,6 +18,7 @@ import { beginLessonWordReturn, currentWordReturn, readyWordReturn } from '@/fea
 import { useReaderSettings } from '@/features/reader/settings';
 import { usePhraseSelect } from '@/features/reader/phrase-select';
 import * as provider from '@/features/ai/provider';
+import * as difficulty from '@/features/reader/difficulty';
 import { ReadingSectionView } from './ReadingSectionView';
 
 const mocks = vi.hoisted(() => ({ translate: vi.fn(), passage: vi.fn(), byok: vi.fn(), speech: false }));
@@ -256,4 +257,66 @@ test('lesson recording, speed, pause and authored Russian translation remain ind
   await user.click(screen.getAllByRole('button', { name: 'show translation' })[0]!);
   expect(screen.getByText(section!.blocks[0]!.ru!)).toBeInTheDocument();
   expect(api.aiComplete).not.toHaveBeenCalled(); expect(mocks.byok).not.toHaveBeenCalled();
+});
+
+test.each(['byok', 'trial', 'pro'] as const)('%s lesson simplification recognizes an already-simple answer', async mode => {
+  const simple = 'She is young and she is not married.';
+  vi.spyOn(difficulty, 'loadFreq').mockResolvedValue(new Map(simple.toLowerCase().match(/[a-z]+/g)!.map(word => [word, 1])));
+  mocks.byok.mockResolvedValue(simple);
+  vi.mocked(api.aiComplete).mockResolvedValue({ content: simple, ai: { used: 1, limit: 10 }, cached: false });
+  access(mode); showLesson();
+  const origin = screen.getByRole('button', { name: 'young' }).closest('[data-sent]')!;
+  await user.click(within(origin as HTMLElement).getByRole('button', { name: 'Sentence actions' }));
+  const help = screen.getByRole('dialog', { name: 'Sentence help' });
+  await user.click(within(help).getByRole('button', { name: 'Simplify' }));
+  await within(help).findByText('Already simple enough for this level.');
+  expect(within(help).queryByRole('alert')).toBeNull();
+  expect(difficulty.loadFreq).toHaveBeenCalled();
+  expect(await db.srsCards.count()).toBe(0);
+});
+
+test('saved lesson phrase reopens offline with its manual meaning and unchanged schedule', async () => {
+  access('byok'); await open();
+  await user.click(within(panel()).getByRole('button', { name: 'Select a phrase from this word' }));
+  await user.click(screen.getByRole('button', { name: 'hair' }));
+  let help = await screen.findByRole('dialog', { name: 'short hair' });
+  await within(help).findByText('бесплатный перевод');
+  await user.clear(within(help).getByLabelText('Your meaning to save'));
+  await user.type(within(help).getByLabelText('Your meaning to save'), 'моё значение');
+  await user.click(within(help).getByRole('button', { name: 'Learn · save' }));
+  await waitFor(async () => expect(await db.srsCards.get('phrase:short hair')).toMatchObject({ back: 'моё значение' }));
+  const card = await db.srsCards.get('phrase:short hair');
+  await user.click(within(help).getByRole('button', { name: 'Close' }));
+  mocks.passage.mockReset().mockRejectedValue(new Error('offline'));
+  mocks.byok.mockReset().mockRejectedValue(new Error('offline'));
+  await user.click(screen.getByRole('button', { name: 'short' }));
+  await user.click(within(panel()).getByRole('button', { name: 'Select a phrase from this word' }));
+  await user.click(screen.getByRole('button', { name: 'hair' }));
+  help = await screen.findByRole('dialog', { name: 'short hair' });
+  await waitFor(() => expect(within(help).getByLabelText('Your meaning to save')).toHaveValue('моё значение'));
+  expect(mocks.passage).not.toHaveBeenCalled(); expect(mocks.byok).not.toHaveBeenCalled();
+  expect(await db.srsCards.get('phrase:short hair')).toEqual(card);
+});
+
+test('native lesson phrase selection cannot cross a sentence or a reading block', async () => {
+  showLesson();
+  const short = screen.getByRole('button', { name: 'short' });
+  const hair = screen.getByRole('button', { name: 'hair' });
+  const select = (start: HTMLElement, end: HTMLElement) => {
+    const selection = window.getSelection()!, range = document.createRange();
+    range.setStart(start.firstChild!, 0); range.setEnd(end.firstChild!, end.textContent!.length);
+    selection.removeAllRanges(); selection.addRange(range);
+    fireEvent.mouseUp(end.closest('[data-reader-text]')!);
+  };
+  select(short, hair);
+  const help = await screen.findByRole('dialog', { name: 'short hair' });
+  expect(within(help).getByText(sentence)).toBeInTheDocument();
+  await user.click(within(help).getByRole('button', { name: 'Close' }));
+  mocks.passage.mockClear(); mocks.byok.mockClear();
+  select(short, screen.getByRole('button', { name: 'young' }));
+  expect(screen.queryByRole('dialog')).toBeNull();
+  select(screen.getByRole('button', { name: 'colleague' }), short);
+  expect(screen.queryByRole('dialog')).toBeNull();
+  expect(mocks.passage).not.toHaveBeenCalled(); expect(mocks.byok).not.toHaveBeenCalled();
+  window.getSelection()?.removeAllRanges();
 });

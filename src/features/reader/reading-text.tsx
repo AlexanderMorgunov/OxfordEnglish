@@ -1123,10 +1123,8 @@ export function ReadingText({
   }), [clearPick]);
 
   useEffect(() => {
-    if (!lessonReading) {
-      void loadVocab();
-      void loadFreq().then(setFreq);
-    }
+    if (!lessonReading) void loadVocab();
+    void loadFreq().then(setFreq);
     void useSavedPhrases.getState().load();
     clearPick();
     return clearPick;
