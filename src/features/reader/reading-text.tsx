@@ -1,4 +1,4 @@
-import { createContext, memo, use, useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
+import { createContext, Fragment, memo, use, useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Button, PopoverGroup, usePopoverClose } from '@/shared/ui';
 import { ReaderHelp, ReaderHelpEnvironment, ReaderHelpIdle } from './ReaderHelp';
@@ -74,6 +74,7 @@ const VOICE_SAMPLE = 'The morning light spilled across the quiet room as she ope
 
 export type Gloss = { ru?: string; ipa?: string };
 type LessonReadingSource = { sectionId: string; blockIds: readonly string[]; recording?: ReactNode };
+const LESSON_WORD_SPLIT_RE = /(\b[a-zA-Z']+\b)/;
 
 /** Chapter-level, stable-per-render coloring inputs. Kept in context so a single word's status
  *  change re-renders only that token, not the whole chapter (thousands of WordTokens). */
@@ -584,18 +585,20 @@ const Paragraph = memo(function Paragraph({
   // cannot go.
   const speechAvailable = useSpeechAvailable();
   const sentences = useMemo(() => toSentences(text), [text]);
+  const { freq, helpTargetId, lesson } = use(ReaderContext);
+  const lessonReading = Boolean(lesson);
+  const wordSplit = lessonReading ? LESSON_WORD_SPLIT_RE : WORD_SPLIT_RE;
   // Per-sentence token indices inside a saved phrase; recomputed only when the text or the saved
   // set changes (not on unrelated re-renders like a sibling word's status flip).
   const phraseMarks = useMemo(
-    () => sentences.map((s) => phraseMarkedTokens(s, savedPhrases)),
-    [sentences, savedPhrases]
+    () => sentences.map((s) => lessonReading ? new Set<number>() : phraseMarkedTokens(s, savedPhrases)),
+    [sentences, savedPhrases, lessonReading]
   );
-  const { freq, helpTargetId, lesson } = use(ReaderContext);
   const canSpeak = speechAvailable && !lesson;
   const lessonOffsets = useMemo(() => {
     let offset = 0;
-    return sentences.map(sentence => { const start = offset; offset += sentence.split(WORD_SPLIT_RE).length + 1; return start; });
-  }, [sentences]);
+    return sentences.map(sentence => { const start = offset; offset += sentence.split(wordSplit).length + 1; return start; });
+  }, [sentences, wordSplit]);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const pendingLens = useRef<AbortController | null>(null);
   const [out, setOut] = useState<Record<number, LensCell>>({});
@@ -799,7 +802,7 @@ const Paragraph = memo(function Paragraph({
         const sentencePlaying = activeSentence === si;
         // Split on the SAME pattern the phrase selector uses so a token's index means the same array
         // slot; keep each token's ORIGINAL index `i` as its key/tokenId (`phraseFromRange` re-derives it).
-        const toks = sentence.split(WORD_SPLIT_RE);
+        const toks = sentence.split(wordSplit);
         const firstWordAt = toks.findIndex((t) => WORD_TEST_RE.test(t));
         const marks = phraseMarks[si]!;
         const renderTok = (tok: string, i: number) => {
@@ -1259,7 +1262,7 @@ export function ReadingText({
 
   const phraseFromRange = (a: WordPos, b: WordPos, sentence: string): string => {
     // Same split as the render (WORD_SPLIT_RE) so a token's `.t` index means the same array slot.
-    const parts = sentence.split(WORD_SPLIT_RE);
+    const parts = sentence.split(lesson ? LESSON_WORD_SPLIT_RE : WORD_SPLIT_RE);
     return parts
       .slice(Math.min(a.t, b.t), Math.max(a.t, b.t) + 1)
       .join('')
@@ -1539,6 +1542,7 @@ export function ReadingText({
   useEffect(() => { onAudioControlsChange?.(audioControls); }, [onAudioControlsChange, audioControls]);
   useEffect(() => () => onAudioControlsChange?.(null), [onAudioControlsChange]);
 
+  const ReadingGroup = lesson ? Fragment : PopoverGroup;
   return (
     <ReaderHelpEnvironment targetId={helpTargetId}><div className="flex flex-col gap-4">
       {helpTargetId && <ReaderHelpIdle />}
@@ -1745,7 +1749,7 @@ export function ReadingText({
         </div>
       )}
       <ReaderContext.Provider value={readerCtx}>
-        <PopoverGroup key={ownerRevision}>
+        <ReadingGroup key={ownerRevision}>
           <div
             ref={textRef}
             data-reader-text
@@ -1782,7 +1786,7 @@ export function ReadingText({
               />
             ))}
           </div>
-        </PopoverGroup>
+        </ReadingGroup>
       </ReaderContext.Provider>
     </div></ReaderHelpEnvironment>
   );
