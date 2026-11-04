@@ -129,6 +129,10 @@ export interface RecoveryNameStore {
 }
 
 export class InMemoryRecoveryNameStore implements RecoveryNameStore {
+  checkpoint(): () => void {
+    const snapshot = structuredClone({ byAccount: this.byAccount, attempts: this.attempts });
+    return () => { this.byAccount = snapshot.byAccount; this.attempts = snapshot.attempts; };
+  }
   private byAccount = new Map<string, string>();
   private attempts = new Map<string, NameAttempts>();
 

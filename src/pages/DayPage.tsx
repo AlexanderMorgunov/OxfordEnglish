@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { useContentStore } from '@/content/store';
 import { ContentLoadError } from '@/content/ContentLoadError';
 import { PracticeSectionView } from '@/features/practice/PracticeSectionView';
@@ -16,6 +16,7 @@ import { useSessionResults } from '@/features/progress/sessionResults';
 import { Eyebrow, PageStub, PixelImage } from '@/shared/ui';
 import { useUiLang, tr } from '@/features/i18n/uiLang';
 import type { LoadedPack } from '@/content/loader';
+import { useCourseNavigation } from '@/features/course/navigation';
 
 function nextDayOf(pack: LoadedPack, dayId: string): NextDay | null {
   const ordered = pack.units.flatMap((u) => u.days.map((d) => ({ unitId: u.id, day: d })));
@@ -54,13 +55,16 @@ const SECTION_LABEL: Record<string, { en: string; ru: string }> = {
 };
 
 export function DayPage() {
-  const { dayId } = useParams();
+  const { dayId, unitId } = useParams();
+  const fromReader = useSearchParams()[0].get('from') === 'reader';
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
   const { status, pack, load } = useContentStore();
   const hydrate = useSessionResults((s) => s.hydrate);
   const resetResults = useSessionResults((s) => s.reset);
   const [runKey, setRunKey] = useState(0);
+  const unit = pack?.units.find(unit => unit.id === unitId);
+  const day = unit?.days.find(day => day.id === dayId);
 
   useEffect(() => {
     void load();
@@ -70,12 +74,15 @@ export function DayPage() {
     void loadAttempts().then((attempts) => hydrate(resultsFromAttempts(attempts)));
   }, [hydrate]);
 
+  useEffect(() => {
+    if (status === 'ready' && pack && unit && day) useCourseNavigation.getState().openDay(pack.manifest.id, unit.id, day.id);
+  }, [status, pack, unit, day]);
+
   if (status === 'idle' || status === 'loading') {
     return <p role="status" className="font-mono text-sm text-muted">{ru ? 'загрузка дня…' : 'loading day…'}</p>;
   }
   if (status === 'error') return <ContentLoadError />;
 
-  const day = dayId ? pack?.days.get(dayId) : undefined;
   if (!day) {
     return (
       <PageStub eyebrow="404" title={ru ? 'День не найден' : 'Day not found'}>
@@ -100,7 +107,8 @@ export function DayPage() {
   const canPuzzle = puzzleWords(puzzleEntries).length >= 3;
 
   return (
-    <article>
+    <article className="reading-column">
+      <Link to={`/?unit=${encodeURIComponent(unitId ?? '')}${fromReader ? '&from=reader' : ''}`} className="mb-4 inline-flex min-h-11 items-center text-sm text-teal underline">← {ru ? 'К дням темы' : 'Back to topic days'}</Link>
       <Eyebrow className="mb-3.5">{ru ? 'учебный день' : 'learning day'} · {day.id}</Eyebrow>
       <h1 className="mb-10 text-2xl font-bold tracking-tight text-balance">
         {tr(day.title, lang)}
@@ -108,7 +116,7 @@ export function DayPage() {
 
       <div className="flex flex-col gap-12">
         {day.sections.map((section) => (
-          <section key={`${section.id}.${runKey}`} aria-label={tr(section.title, lang)}>
+          <section key={`${section.id}.${runKey}`} aria-label={tr(section.title, lang)} data-onboarding={`lesson-${section.type}`}>
             <div className="mb-4 flex flex-wrap items-center gap-x-2.5 gap-y-1 border-b border-line pb-2">
               <div className="flex max-w-full items-center gap-2.5">
                 <PixelImage

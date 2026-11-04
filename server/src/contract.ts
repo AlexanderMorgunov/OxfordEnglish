@@ -145,7 +145,7 @@ export const TrialClaimRequestSchema = z.object({ installId: z.string().min(8).m
 export const RedeemRequestSchema = z.object({ grantToken: z.string().min(16).max(200) });
 /** Start a checkout. The plan code is validated against the server-side catalog (billing.ts PLANS) —
  *  the amount is never taken from the client. */
-export const CheckoutRequestSchema = z.object({ plan: z.string().min(1).max(40) });
+export const CheckoutRequestSchema = z.object({ plan: z.string().min(1).max(40), expectedAmountKopecks: z.number().int().positive().optional() });
 
 export type Plan = z.infer<typeof PlanSchema>;
 export type Entitlement = z.infer<typeof EntitlementSchema>;

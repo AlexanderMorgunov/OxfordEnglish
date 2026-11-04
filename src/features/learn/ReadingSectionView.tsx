@@ -1,15 +1,17 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
+import { useLocation } from 'react-router-dom';
 import type { Section } from '@/content/schema';
 import { packMediaUrl } from '@/content/loader';
-import { PixelImage, SegmentedToggle } from '@/shared/ui';
+import { PixelImage, PopoverGroup, SegmentedToggle } from '@/shared/ui';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import { resumeExclusive, speakWord } from '@/shared/lib/audio';
 import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
-import { translateText } from '@/features/vocab/translate';
-import { addWordCard, addPhraseCard } from '@/features/srs/service';
-import { WordToken, type Gloss } from '@/features/reader/reading-text';
+import { addWordCard } from '@/features/srs/service';
+import { ReadingText, type Gloss } from '@/features/reader/reading-text';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { exLabels } from '@/features/i18n/ui-strings';
+import { getDataScopeRevision, subscribeDataScope } from '@/features/account/dataScope';
+import { consumeLessonWordReturn, currentWordReturn, discardWordReturn, lessonWordKey, useWordReturn } from '@/features/reader/word-return';
 
 type ReadingSection = Extract<Section, { type: 'reading' }>;
 
@@ -57,6 +59,8 @@ function ReadingBlock({
   imageAlt,
   rate,
   glossary,
+  sectionId,
+  blockId,
 }: {
   en: string;
   ru?: string;
@@ -65,10 +69,12 @@ function ReadingBlock({
   imageAlt?: string;
   rate: number;
   glossary: Map<string, Gloss>;
+  sectionId: string;
+  blockId: string;
 }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [showRu, setShowRu] = useState(false);
-  const tokens = useMemo(() => en.split(/(\b[a-zA-Z']+\b)/), [en]);
+  const paragraphs = useMemo(() => [en], [en]);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   useEffect(() => {
@@ -95,8 +101,7 @@ function ReadingBlock({
           onEnded={() => setPlaying(false)}
         />
       )}
-      <p className="text-lg leading-relaxed">
-        {audioUrl && (
+      <ReadingText paragraphs={paragraphs} glossary={glossary} lesson={{ sectionId, blockIds: [blockId], recording: audioUrl ? (
           <button
             type="button"
             aria-label={
@@ -118,19 +123,7 @@ function ReadingBlock({
           >
             {playing ? '❚❚' : '▶'}
           </button>
-        )}
-        {tokens.map((tok, i) => {
-          if (!/^[a-zA-Z']+$/.test(tok)) return <span key={i}>{tok}</span>;
-          return (
-            <WordToken
-              key={i}
-              word={tok}
-              gloss={glossary.get(tok.toLowerCase())}
-              sentence={en}
-            />
-          );
-        })}
-      </p>
+      ) : null }} />
       {blockRu && (
         <div className="mt-2">
           {showRu ? (
@@ -154,38 +147,38 @@ const READING_RATES = { '0.75': 0.75, '1': 1, '1.25': 1.25 } as const;
 type ReadingRateKey = keyof typeof READING_RATES;
 
 export function ReadingSectionView({ section }: { section: ReadingSection }) {
+  const revision = useSyncExternalStore(subscribeDataScope, getDataScopeRevision);
+  return <PopoverGroup key={`${section.id}:${revision}`}><ReadingSession section={section} /></PopoverGroup>;
+}
+
+function ReadingSession({ section }: { section: ReadingSection }) {
   const canSpeak = useSpeechAvailable();
   const load = useVocabStore((s) => s.load);
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [rateKey, setRateKey] = useState<ReadingRateKey>('0.75');
   const textRef = useRef<HTMLDivElement>(null);
-  const [phrase, setPhrase] = useState<string | null>(null);
-  const [phraseSaved, setPhraseSaved] = useState(false);
+  const { pathname } = useLocation();
+  const wordReturn = useWordReturn(s => s.entry);
   useEffect(() => {
     void load();
   }, [load]);
+  useEffect(() => {
+    const entry = currentWordReturn();
+    if (entry?.kind !== 'lesson' || entry.phase !== 'ready' || entry.pathname !== pathname || entry.sectionId !== section.id) return;
+    const frame = requestAnimationFrame(() => {
+      if (currentWordReturn()?.id !== entry.id) return;
+      const token = [...(textRef.current?.querySelectorAll<HTMLButtonElement>('[data-lesson-word]') ?? [])]
+        .find(el => el.dataset.lessonWord === lessonWordKey(entry) && el.textContent === entry.word);
+      if (!token) { discardWordReturn(); return; }
+      token.scrollIntoView({ block: 'center' });
+      if (token.getAttribute('aria-expanded') === 'true') consumeLessonWordReturn(entry, entry.word);
+      else token.click();
+      document.getElementById(token.getAttribute('aria-controls') ?? '')?.focus({ preventScroll: true });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [wordReturn, pathname, section.id]);
 
   const rate = READING_RATES[rateKey];
-
-  // A multi-word selection inside the reading text becomes a savable phrase
-  // ("took a train") — the single-word path is the WordToken popover.
-  const onSelect = () => {
-    const sel = window.getSelection();
-    const text = sel?.toString().trim().replace(/\s+/g, ' ') ?? '';
-    const inside = sel?.anchorNode && textRef.current?.contains(sel.anchorNode);
-    if (inside && text.includes(' ') && text.length <= 60) {
-      setPhrase(text);
-      setPhraseSaved(false);
-    } else {
-      setPhrase(null);
-    }
-  };
-
-  const savePhrase = () => {
-    if (!phrase) return;
-    setPhraseSaved(true);
-    void translateText(phrase).then((ru) => addPhraseCard(phrase, ru ?? phrase, undefined));
-  };
 
   const glossary = useMemo(
     () => new Map(section.glossary.map((g) => [g.word.toLowerCase(), { ru: g.ru, ipa: g.ipa }])),
@@ -221,30 +214,15 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
         </div>
       )}
 
-      {phrase && (
-        <div className="sticky top-2 z-10 flex flex-wrap items-center gap-2 rounded-sm border border-teal-dim bg-surface-2 px-3 py-2 text-sm shadow-md">
-          <span className="text-muted">{ru ? 'Фраза:' : 'Phrase:'}</span>
-          <span className="font-mono text-teal">{phrase}</span>
-          <button
-            type="button"
-            disabled={phraseSaved}
-            className="ml-auto font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline disabled:text-faint disabled:no-underline"
-            onClick={savePhrase}
-          >
-            {phraseSaved ? (ru ? '✓ сохранено' : '✓ saved') : ru ? '+ в словарь' : '+ save'}
-          </button>
-        </div>
-      )}
-
       <div
         ref={textRef}
         className="flex flex-col gap-4"
-        onMouseUp={onSelect}
-        onTouchEnd={onSelect}
       >
         {section.blocks.map((block) => (
           <ReadingBlock
             key={block.id}
+            sectionId={section.id}
+            blockId={block.id}
             en={block.en}
             ru={block.ru}
             audioUrl={block.audio ? packMediaUrl(block.audio.src) : undefined}

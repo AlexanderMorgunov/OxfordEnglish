@@ -1,4 +1,6 @@
 import 'fake-indexeddb/auto';
+import { installDialogMock } from '@/test/dialog';
+import { useVocabularyView } from '@/features/vocab/navigation';
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
@@ -14,6 +16,7 @@ vi.mock('@/features/vocab/lemma', () => ({ useLemma: () => ({ byForm: new Map(),
 vi.mock('@/features/vocab/cefr', () => ({ useCefr: () => new Map(), cefrOf: () => null }));
 
 beforeEach(async () => {
+  installDialogMock(); useVocabularyView.getState().reset();
   invalidateDataScope();
   await db.open();
   await Promise.all([db.srsCards, db.wordStatus, db.translations, db.pending, db.activity].map(table => table.clear()));
@@ -23,10 +26,18 @@ afterEach(() => { cleanup(); vi.restoreAllMocks(); vi.unstubAllGlobals(); });
 
 async function draft(answer = '') {
   const view = render(<VocabularyPage />, { wrapper: MemoryRouter });
+  await waitFor(() => expect(screen.getByRole('button', { name: /add a word or phrase/i })).toBeEnabled());
   await userEvent.click(screen.getByRole('button', { name: /add a word or phrase/i }));
+  await userEvent.click(screen.getByText('More ways to add'));
+  await userEvent.click(screen.getByText('Add example'));
   fireEvent.change(screen.getByLabelText('English word or phrase'), { target: { value: 'reliable' } });
   if (answer) fireEvent.change(screen.getByLabelText('Translation'), { target: { value: answer } });
   return view;
+}
+
+async function edit(term: string) {
+  await userEvent.click(await screen.findByRole('link', { name: new RegExp('^' + term + ' —') }));
+  await userEvent.click(await screen.findByRole('button', { name: 'Edit translation' }));
 }
 
 test('ordinary English draft has a free translation action before Add and never saves a proposal implicitly', async () => {
@@ -37,7 +48,7 @@ test('ordinary English draft has a free translation action before Add and never 
   expect(await db.srsCards.count()).toBe(0);
   await userEvent.click(screen.getByRole('button', { name: 'Use translation' }));
   expect(screen.getByLabelText('Translation')).toHaveValue('надёжный');
-  await userEvent.click(screen.getByRole('button', { name: 'Add' }));
+  await userEvent.click(screen.getByRole('button', { name: 'Save in vocabulary' }));
   await waitFor(async () => expect(await db.srsCards.get('word:reliable')).toMatchObject({ back: 'надёжный' }));
 });
 
@@ -84,7 +95,7 @@ test('existing answered entry has a discoverable lookup and proposal cannot over
   await addTerm('reliable', 'ручной перевод', 'A reliable source.');
   const original = await db.srsCards.get('word:reliable');
   render(<VocabularyPage />, { wrapper: MemoryRouter });
-  await userEvent.click(await screen.findByRole('button', { name: 'Edit / translate reliable' }));
+  await edit('reliable');
   await userEvent.click(screen.getByRole('button', { name: 'Translate · free' }));
   await screen.findByDisplayValue('надёжный');
   expect(await db.srsCards.get('word:reliable')).toEqual(original);
@@ -124,23 +135,24 @@ test('a stalled proposal has a deadline and its late completion cannot replace r
   expect(screen.getByLabelText('Translation')).toHaveValue('ручной перевод');
 });
 
-test('late save for another row preserves the active editor and its newer draft', async () => {
+test('leaving a pending editor cancels its write and preserves the next entry draft', async () => {
   await addTerm('Alpha', 'альфа', 'Alpha.');
   await addTerm('beta', 'бета', 'beta.');
   const original = Manage.setTranslation;
   let release!: () => void;
   const blocked = new Promise<void>(resolve => { release = resolve; });
-  vi.spyOn(Manage, 'setTranslation').mockImplementation((entry, translation) => blocked.then(() => original(entry, translation)));
+  vi.spyOn(Manage, 'setTranslation').mockImplementation((entry, translation, current) => blocked.then(() => original(entry, translation, current)));
   render(<VocabularyPage />, { wrapper: MemoryRouter });
-  await userEvent.click(await screen.findByRole('button', { name: 'Edit / translate Alpha' }));
+  await edit('Alpha');
   fireEvent.change(screen.getByLabelText('Translation'), { target: { value: 'новая альфа' } });
   await userEvent.click(screen.getByRole('button', { name: 'Save translation' }));
-  await userEvent.click(screen.getByRole('button', { name: 'Edit / translate beta' }));
+  await userEvent.click(screen.getByRole('button', { name: '← My vocabulary' }));
+  await edit('beta');
   fireEvent.change(screen.getByLabelText('Translation'), { target: { value: 'новый черновик бета' } });
   await act(async () => { release(); await vi.mocked(Manage.setTranslation).mock.results[0]?.value; });
   expect(screen.getByLabelText('Translation')).toHaveValue('новый черновик бета');
-  expect(screen.getByRole('button', { name: 'Edit / translate beta' })).toHaveAttribute('aria-expanded', 'true');
-  expect(await db.srsCards.get('word:alpha')).toMatchObject({ back: 'новая альфа' });
+  expect(screen.getByRole('button', { name: 'Edit translation' })).toHaveAttribute('aria-expanded', 'true');
+  expect(await db.srsCards.get('word:alpha')).toMatchObject({ back: 'альфа' });
   expect(await db.srsCards.get('word:beta')).toMatchObject({ back: 'бета' });
 });
 
@@ -149,9 +161,9 @@ test('repeated Save during the same row operation starts one write and no false 
   const original = Manage.setTranslation;
   let release!: () => void;
   const blocked = new Promise<void>(resolve => { release = resolve; });
-  vi.spyOn(Manage, 'setTranslation').mockImplementation((entry, translation) => blocked.then(() => original(entry, translation)));
+  vi.spyOn(Manage, 'setTranslation').mockImplementation((entry, translation, current) => blocked.then(() => original(entry, translation, current)));
   render(<VocabularyPage />, { wrapper: MemoryRouter });
-  await userEvent.click(await screen.findByRole('button', { name: 'Edit / translate Alpha' }));
+  await edit('Alpha');
   fireEvent.change(screen.getByLabelText('Translation'), { target: { value: 'новая альфа' } });
   const save = screen.getByRole('button', { name: 'Save translation' });
   fireEvent.click(save); fireEvent.click(save);

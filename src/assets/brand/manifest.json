@@ -1,0 +1,93 @@
+{
+  "origin": "Original SVG artwork authored for this prototype",
+  "icon_view_box": "0 0 24 24",
+  "icon_stroke": 1.8,
+  "wordmark_fonts": "Segoe UI / Arial / sans-serif; live text, not outlines",
+  "assets": [
+    {
+      "file": "assets/dayenglish-mark.svg",
+      "kind": "original_mark",
+      "sha256": "722e95755deef0a6cafeb6249c296dfde734666e9e2613207c9699f7c4361243"
+    },
+    {
+      "file": "assets/dayenglish-logo-light.svg",
+      "kind": "original_lockup",
+      "sha256": "19fad10324bbc46f98aee3c5de569cb6160ebe5aea0908dfb3ca7e5f6041db93"
+    },
+    {
+      "file": "assets/dayenglish-logo-dark.svg",
+      "kind": "original_lockup",
+      "sha256": "850fa4520b0118d91556de989372a1e652e62efe5e7b4857e15099629e981e3e"
+    },
+    {
+      "file": "assets/icons/today.svg",
+      "kind": "original_navigation_icon",
+      "sha256": "69fcaab007ef5be34daf791b577c911cccd4bd9e51f0441ec3d4edee041c0b03"
+    },
+    {
+      "file": "assets/icons/grammar.svg",
+      "kind": "original_navigation_icon",
+      "sha256": "86f198a17fefa9925a765055218f4e835cc075ce9026f0bb915f0e550155224f"
+    },
+    {
+      "file": "assets/icons/review.svg",
+      "kind": "original_navigation_icon",
+      "sha256": "19eaa4a50e0433607eaa5a1a1a53a4c503314e2c5d2b61e4d8d08bd8a1592ca0"
+    },
+    {
+      "file": "assets/icons/vocabulary.svg",
+      "kind": "original_navigation_icon",
+      "sha256": "03c7ae18874b86f5b0db3ec1f592c9c0b7c35dafb99b0c8f06bed971055e129f"
+    },
+    {
+      "file": "assets/icons/library.svg",
+      "kind": "original_navigation_icon",
+      "sha256": "b690821ec4e975d512d1f4bfe80bc517afb32b42fe61390e64c5f34419908262"
+    },
+    {
+      "file": "assets/icons/progress.svg",
+      "kind": "original_navigation_icon",
+      "sha256": "b4f71db876a08c18ad44dd757d7c32ac68bc9d8ac12e6d2e07efcde19b99876a"
+    },
+    {
+      "file": "assets/icons/settings.svg",
+      "kind": "original_navigation_icon",
+      "sha256": "97ca1117c0ee6064c45ad5f102ccf846493de4acd2d7b3e260b761eadefd031a"
+    },
+    {
+      "file": "assets/icons/more.svg",
+      "kind": "original_navigation_icon",
+      "sha256": "e4a54199670c871db17579d4bffc3f0713a3914835d036a70604141cc3013761"
+    },
+    {
+      "file": "assets/icons/sections.svg",
+      "kind": "original_navigation_icon",
+      "sha256": "a0d5dd0f4e533dfaeb8adb9084d9930841213e8fdcac46c0a3ee958e40be9d1b"
+    },
+    {
+      "file": "assets/icons/pro.svg",
+      "kind": "original_navigation_icon",
+      "sha256": "f5cb140483f69b35cd1166c5a30067de398a6d346847db5b89917418c47a7229"
+    },
+    {
+      "file": "assets/icons/feedback.svg",
+      "kind": "original_navigation_icon",
+      "sha256": "57c140a69051b8f611741e01e416a7897404b4c5350b0cd9352572d733010d48"
+    },
+    {
+      "file": "assets/icons/support.svg",
+      "kind": "original_navigation_icon",
+      "sha256": "a06013bd730d4e4ca5579c6a3720e5cc7753d3b5b204f37c298a4609ac60fcc9"
+    },
+    {
+      "file": "assets/icons/about.svg",
+      "kind": "original_navigation_icon",
+      "sha256": "bf0de23d35c4200d8e9c1ec30784f0427126bfb3db1b3ebe519f6f7bc4cc84dd"
+    },
+    {
+      "file": "assets/icons/close.svg",
+      "kind": "original_navigation_icon",
+      "sha256": "306c1d615aca7f36548cc6b58addc85fe36865286ce38294c1179231a8ca88e3"
+    }
+  ]
+}

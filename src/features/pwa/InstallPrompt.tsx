@@ -44,7 +44,7 @@ export function InstallPrompt() {
 
   return (
     <div className="border-b border-teal-dim/50 bg-teal-dim/10">
-      <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 py-2.5">
+      <div className="app-container flex flex-wrap items-center justify-between gap-x-4 gap-y-2 py-2.5">
         <p className="text-sm text-pretty">
           <span aria-hidden className="mr-2">📲</span>
           {installable

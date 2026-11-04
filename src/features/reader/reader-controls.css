@@ -1,0 +1,475 @@
+.rdc-widget {
+  position: fixed;
+  z-index: 35;
+  inset-inline: 0;
+  bottom: max(var(--app-nav-bottom, 0px), env(safe-area-inset-bottom, 0px));
+  color: var(--color-content);
+}
+.rdc-dock {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem 0.75rem;
+  min-width: 0;
+  padding: 0.75rem max(1rem, env(safe-area-inset-right)) 0.75rem
+    max(1rem, env(safe-area-inset-left));
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  box-shadow: 0 -8px 28px rgb(0 0 0 / 0.06);
+}
+.rdc-icon-button,
+.rdc-play-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.6rem;
+  border-radius: 0.45rem;
+  color: var(--color-content);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color 150ms,
+    color 150ms,
+    transform 150ms;
+}
+.rdc-icon-button:hover:not(:disabled),
+.rdc-button:hover:not(:disabled),
+.rdc-text-button:hover {
+  background: var(--color-surface-2);
+}
+.rdc-play-button {
+  background: var(--color-action);
+  color: var(--color-on-action);
+}
+.rdc-play-button:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+.rdc-widget button:disabled,
+.rdc-widget select:disabled,
+.rdc-appearance button:disabled,
+.rdc-appearance select:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.rdc-widget button:active:not(:disabled),
+.rdc-appearance button:active:not(:disabled) {
+  transform: scale(0.96);
+}
+.rdc-play-group {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  min-width: 0;
+}
+.rdc-play-caption {
+  max-width: 15rem;
+  overflow-wrap: anywhere;
+  font-size: 0.72em;
+}
+.rdc-play-caption strong,
+.rdc-play-caption span {
+  display: block;
+}
+.rdc-play-caption span {
+  margin-top: 0.2rem;
+  font-size: 0.9em;
+  color: var(--color-muted);
+}
+.rdc-audio-controls,
+.rdc-chapter-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.rdc-speed select {
+  min-height: 2.75rem;
+  max-width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: 0.4rem;
+  background: var(--color-surface);
+  color: var(--color-content);
+  font: inherit;
+  font-size: 0.72em;
+  font-variant-numeric: tabular-nums;
+  padding: 0.35rem;
+}
+.rdc-location {
+  width: 11rem;
+  max-width: 100%;
+  padding-inline: 1.25rem 0.25rem;
+  border-left: 1px solid var(--color-line);
+  font-size: 0.65em;
+  font-variant-numeric: tabular-nums;
+}
+.rdc-location progress {
+  display: block;
+  width: 100%;
+  height: 0.25rem;
+  margin-top: 0.5rem;
+  border: 0;
+  border-radius: 1rem;
+  background: var(--color-line);
+  accent-color: var(--color-action);
+}
+.rdc-location progress::-webkit-progress-bar {
+  background: var(--color-line);
+  border-radius: 1rem;
+}
+.rdc-location progress::-webkit-progress-value {
+  background: var(--color-action);
+  border-radius: 1rem;
+}
+.rdc-location progress::-moz-progress-bar {
+  background: var(--color-action);
+  border-radius: 1rem;
+}
+.rdc-unavailable,
+.rdc-storage-warning {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 0.7em;
+  overflow-wrap: anywhere;
+  color: var(--color-muted);
+}
+.rdc-storage-warning {
+  color: var(--color-coral);
+}
+.rdc-toast {
+  position: absolute;
+  inset-inline: 1rem;
+  bottom: calc(100% + 0.75rem);
+  width: fit-content;
+  max-width: calc(100% - 2rem);
+  margin: 0 auto;
+  border: 1px solid var(--color-line);
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  color: var(--color-content);
+  padding: 0.75rem 1rem;
+  font-size: 0.8em;
+  overflow-wrap: anywhere;
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.12);
+}
+.rdc-actions-panel {
+  position: absolute;
+  inset-inline-end: max(1rem, env(safe-area-inset-right));
+  bottom: calc(100% + 0.5rem);
+  width: 23rem;
+  max-width: calc(100vw - 2rem);
+  max-height: calc(
+    100dvh - var(--reader-dock-height, 6rem) - var(--app-nav-bottom, 0px) - 2rem
+  );
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  padding: 0.65rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.75rem;
+  background: var(--color-surface);
+  box-shadow: 0 12px 36px rgb(0 0 0 / 0.18);
+}
+.rdc-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
+  gap: 0.25rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid var(--color-line);
+}
+.rdc-sections a,
+.rdc-panel-action {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  padding: 0.65rem;
+  color: var(--color-content);
+  border-radius: 0.4rem;
+  font-size: 0.76em;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+.rdc-sections a:hover,
+.rdc-panel-action:hover {
+  background: var(--color-surface-2);
+}
+.rdc-panel-action {
+  width: 100%;
+  cursor: pointer;
+}
+.rdc-bookmarks {
+  border-top: 1px solid var(--color-line);
+  padding-top: 0.6rem;
+  margin-top: 0.5rem;
+}
+.rdc-bookmarks h2 {
+  font-size: 0.8em;
+  margin: 0 0 0.5rem;
+  padding-inline: 0.65rem;
+}
+.rdc-appearance {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: 38rem;
+  max-width: calc(100vw - 1.5rem);
+  max-height: calc(100dvh - 1.5rem);
+  padding: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  border: 1px solid var(--color-line);
+  border-radius: 0.85rem;
+  color: var(--color-content);
+  background: var(--color-surface);
+  box-shadow: 0 24px 80px rgb(0 0 0 / 0.3);
+  font-size: 0.9em;
+}
+.rdc-appearance::backdrop {
+  background: rgb(0 0 0 / 0.55);
+}
+.rdc-dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.3rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--color-line);
+}
+.rdc-dialog-header > div {
+  min-width: 0;
+}
+.rdc-dialog-header h2 {
+  margin: 0.3rem 0 0;
+  font-size: 1.4em;
+  font-weight: 600;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.rdc-eyebrow {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.75em;
+}
+.rdc-dialog-body {
+  padding: 1rem 1.5rem 1.5rem;
+}
+.rdc-hint {
+  margin: 0 0 0.75rem;
+  color: var(--color-muted);
+  font-size: 0.8em;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.rdc-preference-group {
+  min-width: 0;
+  padding: 1rem 0 1.1rem;
+  border: 0;
+  border-bottom: 1px solid var(--color-line);
+  margin: 0 0 0.85rem;
+}
+.rdc-preference-group legend {
+  font-weight: 600;
+  font-size: 0.9em;
+  padding: 0;
+}
+.rdc-preference-group label {
+  font-size: 0.85em;
+}
+.rdc-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+.rdc-fields label {
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.rdc-appearance select {
+  min-width: 0;
+  max-width: 100%;
+  min-height: 2.75rem;
+  padding: 0.6rem 0.5rem;
+  border: 1px solid var(--color-control);
+  border-radius: 0.4rem;
+  color: var(--color-content);
+  background: var(--color-surface);
+  font: inherit;
+  font-size: 0.9em;
+}
+.rdc-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-top: 1rem;
+  min-height: 2.75rem;
+  cursor: pointer;
+}
+.rdc-checkbox input {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  accent-color: var(--color-teal);
+}
+.rdc-checkbox span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.rdc-themes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 5rem), 1fr));
+  gap: 0.6rem;
+}
+.rdc-theme {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.45rem;
+  padding: 0.35rem;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.72em;
+}
+.rdc-theme span:last-child {
+  overflow-wrap: anywhere;
+}
+.rdc-theme[aria-pressed='true'] {
+  border-color: var(--color-teal);
+}
+.rdc-theme-swatch {
+  display: grid;
+  place-items: center;
+  min-height: 3rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgb(0 0 0 / 0.15);
+  font:
+    1.35rem Georgia,
+    serif;
+}
+.rdc-theme-paper .rdc-theme-swatch {
+  background: #f6f3ed;
+  color: #282d39;
+}
+.rdc-theme-lime .rdc-theme-swatch {
+  background: #f6f8ee;
+  color: #2d3243;
+}
+.rdc-theme-bloom .rdc-theme-swatch {
+  background: #fcf4f6;
+  color: #432e39;
+}
+.rdc-theme-lagoon .rdc-theme-swatch {
+  background: #eff7f5;
+  color: #243c36;
+}
+.rdc-theme-studio .rdc-theme-swatch {
+  background: #12141c;
+  color: #ece8dd;
+}
+.rdc-voice-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.rdc-voice-row select {
+  flex: 1 1 15rem;
+  width: 0;
+}
+.rdc-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--color-control);
+  border-radius: 0.4rem;
+  background: var(--color-surface);
+  color: var(--color-content);
+  cursor: pointer;
+  font-size: 0.85em;
+  overflow-wrap: anywhere;
+}
+.rdc-primary {
+  background: var(--color-action);
+  border-color: var(--color-action);
+  color: var(--color-on-action);
+  font-weight: 600;
+}
+.rdc-primary:hover:not(:disabled) {
+  background: var(--color-action);
+  filter: brightness(1.08);
+}
+.rdc-dialog-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+.rdc-text-button {
+  min-height: 2.75rem;
+  padding: 0.5rem;
+  color: var(--color-teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+.rdc-error {
+  color: var(--color-coral);
+  font-size: 0.8em;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 800px) {
+  .rdc-dock {
+    gap: 0.3rem;
+    padding-inline: 0.75rem;
+  }
+  .rdc-play-caption,
+  .rdc-location,
+  .rdc-chapter-controls,
+  .rdc-contents {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .rdc-quick-bookmark {
+    display: none;
+  }
+  .rdc-dock {
+    gap: 0.2rem;
+  }
+  .rdc-dialog-header {
+    padding: 1rem;
+  }
+  .rdc-dialog-body {
+    padding: 1rem;
+  }
+  .rdc-themes {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 4rem), 1fr));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rdc-widget button,
+  .rdc-appearance button {
+    transition: none;
+  }
+  .rdc-widget button:active:not(:disabled),
+  .rdc-appearance button:active:not(:disabled) {
+    transform: none;
+  }
+}

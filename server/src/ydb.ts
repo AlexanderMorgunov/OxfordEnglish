@@ -9,6 +9,10 @@
 import ydbSdk from 'ydb-sdk';
 import type { Driver as YdbDriver, IAuthService } from 'ydb-sdk';
 import { Metadata } from '@grpc/grpc-js';
+import { AsyncLocalStorage } from 'node:async_hooks';
+import { retryAbortedTransaction } from './ydbRetry.js';
+
+const ambientTransaction = new AsyncLocalStorage<Tx>();
 
 // ydb-sdk is CommonJS; Node's ESM interop doesn't expose its named exports, so pull them off the default.
 const { Driver, TokenAuthService, TypedData, TypedValues, Types } = ydbSdk;
@@ -84,11 +88,12 @@ type Rows = Record<string, unknown>[];
 /**
  * Run a single YQL statement, returning each result set as plain JS objects.
  *
- * withSessionRetry, not withSession: the latter passes maxRetries=0, so a transient BadSession,
- * Overloaded, or transaction-locks-invalidated surfaced as a 500 to the caller instead of being retried
- * in a fresh session.
+ * withSessionRetry recreates bad/busy sessions. Transaction conflicts must instead replay the whole
+ * transaction, which withSerializableTx handles explicitly.
  */
 export async function query(yql: string, params: Record<string, unknown> = {}): Promise<Rows[]> {
+  const current = ambientTransaction.getStore();
+  if (current) return current.exec(yql, params);
   const d = await driver();
   return d.tableClient.withSessionRetry(async (session) => {
     const res = await session.executeQuery(yql, params as never);
@@ -104,11 +109,11 @@ export interface Tx {
 /** Run an interactive serializable transaction. The first exec begins it; a later exec with `commit=true`
  *  commits. Any throw rolls back (the session is returned to the pool without a commit). */
 export async function withSerializableTx<T>(fn: (tx: Tx) => Promise<T>): Promise<T> {
+  const current = ambientTransaction.getStore();
+  if (current) return fn(current);
   const d = await driver();
-  // A retry re-runs `fn` from the start in a fresh session with `txId` reset — which is exactly what a
-  // serializable conflict calls for. Safe because every `fn` here touches nothing but YDB, and the commit
-  // is atomic on the final exec, so a retried attempt never re-applies half-written state.
-  return d.tableClient.withSessionRetry(async (session) => {
+  // The SDK pool retries bad/busy sessions only. ABORTED requires replay with a fresh transaction id.
+  return retryAbortedTransaction(() => d.tableClient.withSessionRetry(async (session) => {
     let txId: string | undefined;
     const exec = async (yql: string, params: Record<string, unknown> = {}, commit = false): Promise<Rows[]> => {
       const txControl = txId
@@ -119,7 +124,21 @@ export async function withSerializableTx<T>(fn: (tx: Tx) => Promise<T>): Promise
       return res.resultSets.map((rs) => TypedData.createNativeObjects(rs) as Rows);
     };
     return fn({ exec });
+  }));
+}
+
+export async function atomicQuery<T>(fn: () => Promise<T>): Promise<T> {
+  if (ambientTransaction.getStore()) return fn();
+  return withSerializableTx(async (tx) => {
+    const result = await joinAtomicQueries(tx, fn);
+    await tx.exec('SELECT 1;', {}, true);
+    return result;
   });
+}
+
+export function joinAtomicQueries<T>(tx: Tx, fn: () => Promise<T>): Promise<T> {
+  const joined: Tx = { exec: (yql, params = {}) => tx.exec(yql, params, false) };
+  return ambientTransaction.run(joined, fn);
 }
 
 /** Coerce a YDB numeric (may come back as a Long) to a JS number — safe for our small counters/sizes. */

@@ -51,6 +51,8 @@ import { indexKeyConfigured } from '../indexHash.js';
 import { hashVerifier, verifyVerifier } from '../password.js';
 import { signAccess, bearerClaims } from '../tokens.js';
 import { ipBucketLimiter } from '../rateLimit.js';
+import { accessHandler } from '../accessHandler.js';
+import type { AccessSecurity } from '../accessSecurity.js';
 
 const err = (code: string, status: 400 | 401 | 403 | 409 | 429 | 503) =>
   Response.json({ error: { code } }, { status });
@@ -110,21 +112,35 @@ const freshRow = (accountId: string, secretEnc: string): TotpRow => ({
   failWindowStart: 0,
 });
 
-export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNameStore): Hono {
+export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNameStore, security?: AccessSecurity): Hono {
   const app = new Hono();
+  const atomic = accessHandler(security);
+  const transaction: ReturnType<typeof accessHandler> = (handle) => atomic(async (c) => {
+    const publicRecovery = c.req.path === '/v1/totp/recover' || c.req.path === '/v1/totp/recover-by-name';
+    if (security && c.req.method !== 'GET' && !publicRecovery && await security.rows.available()) {
+      const claims = await bearerClaims(c);
+      if (claims && (await security.account(claims.sub)).login) return err('account_access_upgrade_required', 503);
+    }
+    return handle(c);
+  });
   const recoverLimiter = ipBucketLimiter(IP_BUCKET_CAPACITY, IP_BUCKET_REFILL_PER_SEC);
 
   /**
    * Everything that happens once a recovery attempt has proved ownership, shared by both recovery
    * routes so the two cannot drift apart on the part that hands out access.
    *
-   * The old key may have been stolen rather than lost, so every refresh family dies with it. Access
-   * tokens are NOT revoked here — `verifyAccess` checks only the signature, iss/aud and exp, with no
-   * revocation lookup — so a thief keeps API access until their current one expires (ACCESS_TTL_S,
-   * 1 hour). Bounded and rare, but real: closing it means either a much shorter access TTL or a
-   * per-account revocation epoch read on every authed request.
+   * The old key may have been stolen rather than lost. With the access schema available, advancing
+   * the account generation revokes access JWTs as well as refresh families and pending approvals.
    */
   async function grantRecovery(accountId: string, verifier: string, deviceName?: string): Promise<Session> {
+    if (security && await security.rows.available()) {
+      const state = await security.account(accountId);
+      if (state.login) throw new Error('Password accounts require the new recovery protocol');
+      await store.setVerifier(accountId, await hashVerifier(verifier));
+      await security.save(accountId, { ...state, generation: state.generation + 1 });
+      for (const device of await store.listDevices(accountId)) await store.revokeDevice(accountId, device.deviceId);
+      return security.session(accountId, deviceName);
+    }
     await store.setVerifier(accountId, await hashVerifier(verifier));
     for (const d of await store.listDevices(accountId)) await store.revokeDevice(accountId, d.deviceId);
     const deviceId = randomUUID();
@@ -134,7 +150,7 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
     return { accountId, deviceId, accessToken: access.token, refreshToken, accessExpiresAt: access.expiresAt };
   }
 
-  app.get('/v1/totp/status', async (c) => {
+  app.get('/v1/totp/status', transaction(async (c) => {
     const claims = await bearerClaims(c);
     if (!claims) return err(ErrorCode.Unauthorized, 401);
     const row = await totp.get(claims.sub);
@@ -159,9 +175,9 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
       // a deploy that lands before its migration must not take the screen down with it.
       recoveryName: await names.hasName(claims.sub).catch(() => false),
     });
-  });
+  }));
 
-  app.post('/v1/totp/enroll', async (c) => {
+  app.post('/v1/totp/enroll', transaction(async (c) => {
     const claims = await bearerClaims(c);
     if (!claims) return err(ErrorCode.Unauthorized, 401);
     const key = sealingKey();
@@ -179,7 +195,7 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
     const secret = generateSecret();
     await totp.put(freshRow(claims.sub, sealSecret(secret, key)));
     return c.json({ secret: base32Encode(secret), uri: otpauthUri(claims.sub, secret) });
-  });
+  }));
 
   /**
    * A fresh set of backup codes, replacing whatever is on the row.
@@ -191,7 +207,7 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
    *
    * Proof required is a live code — the same bar as disabling, and the person must have the app in hand.
    */
-  app.post('/v1/totp/backup-codes', async (c) => {
+  app.post('/v1/totp/backup-codes', transaction(async (c) => {
     const claims = await bearerClaims(c);
     if (!claims) return err(ErrorCode.Unauthorized, 401);
     const key = sealingKey();
@@ -213,7 +229,7 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
       result: undefined,
     }));
     return c.json({ backupCodes: codes });
-  });
+  }));
 
   /**
    * Abandon a setup that was never confirmed.
@@ -226,15 +242,15 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
    * Scoped to the caller's own account, and refuses a CONFIRMED row: taking away a live second factor
    * is what /v1/totp/disable is for, and that deliberately demands a code or the recovery key.
    */
-  app.post('/v1/totp/cancel', async (c) => {
+  app.post('/v1/totp/cancel', transaction(async (c) => {
     const claims = await bearerClaims(c);
     if (!claims) return err(ErrorCode.Unauthorized, 401);
     const removed = await totp.removeIfUnconfirmed(claims.sub);
     if (!removed) return err(ErrorCode.TotpAlreadyEnrolled, 409);
     return c.json({ ok: true });
-  });
+  }));
 
-  app.post('/v1/totp/confirm', async (c) => {
+  app.post('/v1/totp/confirm', transaction(async (c) => {
     const claims = await bearerClaims(c);
     if (!claims) return err(ErrorCode.Unauthorized, 401);
     const key = sealingKey();
@@ -266,13 +282,13 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
       backupHashes: codes.map(hashBackupCode),
     });
     return c.json({ backupCodes: codes });
-  });
+  }));
 
   // Disabling needs more than a session: a stolen session grants nothing new on its own, but stripping
   // the second factor would leave the real owner unable to ever recover. Either proof is accepted — a
   // live code, or the recovery key itself. Without the second door, someone who still has their key but
   // lost both the phone and the backup codes could never replace a dead enrollment.
-  app.post('/v1/totp/disable', async (c) => {
+  app.post('/v1/totp/disable', transaction(async (c) => {
     const claims = await bearerClaims(c);
     if (!claims) return err(ErrorCode.Unauthorized, 401);
     const key = sealingKey();
@@ -310,7 +326,7 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
     }
     await totp.remove(claims.sub);
     return c.json({ ok: true });
-  });
+  }));
 
   /**
    * A new recovery key without signing out first.
@@ -323,7 +339,7 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
    * bindings, TOTP, devices and sync, and the client wipes local data when it sees the id change. Only
    * the verifier moves, exactly as recovery already does.
    */
-  app.post('/v1/totp/rotate-key', async (c) => {
+  app.post('/v1/totp/rotate-key', transaction(async (c) => {
     const claims = await bearerClaims(c);
     if (!claims) return err(ErrorCode.Unauthorized, 401);
     const key = sealingKey();
@@ -354,14 +370,15 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
       }
     }
     return c.json({ ok: true, usedBackupCode: res.usedBackup });
-  });
+  }));
 
-  app.post('/v1/totp/recover', recoverLimiter, async (c) => {
+  app.post('/v1/totp/recover', recoverLimiter, transaction(async (c) => {
     const key = sealingKey();
     if (!key) return err(ErrorCode.TotpUnavailable, 503);
     const body = TotpRecoverRequestSchema.safeParse(await c.req.json().catch(() => null));
     if (!body.success) return err(ErrorCode.BadRequest, 400);
     const { accountId, code, verifier, deviceName } = body.data;
+    if (security && await security.rows.available() && (await security.account(accountId)).login) return err('account_access_upgrade_required', 503);
 
     // Every failure below answers `totp_invalid`: telling "no such account" apart from "wrong code"
     // would make this endpoint an oracle for guessing account ids.
@@ -378,7 +395,7 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
 
     const session = await grantRecovery(accountId, verifier, deviceName);
     return c.json({ ...session, usedBackupCode: res.usedBackup, backupCodesLeft: res.row.backupHashes.length });
-  });
+  }));
 
   /**
    * Recovery addressed by a NAME instead of the account id.
@@ -392,7 +409,7 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
    * candidate, which keeps the chance of a code matching the WRONG account no higher than the
    * single-account `/recover` above already accepts.
    */
-  app.post('/v1/totp/recover-by-name', recoverLimiter, async (c) => {
+  app.post('/v1/totp/recover-by-name', recoverLimiter, transaction(async (c) => {
     const key = sealingKey();
     if (!key) return err(ErrorCode.TotpUnavailable, 503);
     // The name index is keyed under the Lockbox HMAC key. Without it we cannot compute the lookup at
@@ -421,6 +438,7 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
 
     let winner: { accountId: string; usedBackup: boolean; codesLeft: number } | null = null;
     for (const accountId of ids) {
+      if (security && await security.rows.available() && (await security.account(accountId)).login) continue;
       // Inside `verify`, one candidate at a time: the single-use `lastStep` and the spending of a backup
       // code have to be written in the same transaction that read them, or a replay slips through.
       const hit = await totp.verify<{ ok: boolean; usedBackup: boolean; codesLeft: number }>(accountId, (row) => {
@@ -450,7 +468,7 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
     await names.bumpAttempts(hash, (a) => ({ row: refundNameAttempt(a, hash, now, ids.length), result: undefined }));
     const session = await grantRecovery(winner.accountId, verifier, deviceName);
     return c.json({ ...session, usedBackupCode: winner.usedBackup, backupCodesLeft: winner.codesLeft });
-  });
+  }));
 
   /**
    * Choose the name. Here rather than in `routes/account.ts` because it is only ever useful with an
@@ -459,7 +477,7 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
    * A session is proof enough: the name unlocks nothing on its own, so someone holding a stolen session
    * gains nothing by setting one — they already hold the access it would eventually lead to.
    */
-  app.post('/v1/recovery-name', async (c) => {
+  app.post('/v1/recovery-name', transaction(async (c) => {
     const claims = await bearerClaims(c);
     if (!claims) return err(ErrorCode.Unauthorized, 401);
     if (!indexKeyConfigured()) return err(ErrorCode.TotpUnavailable, 503);
@@ -469,14 +487,14 @@ export function totpRoutes(store: AuthStore, totp: TotpStore, names: RecoveryNam
     const res = await names.setName(claims.sub, nameHash(body.data.name), Date.now());
     if (res === 'crowded') return err(ErrorCode.RecoveryNameCrowded, 409);
     return c.json({ ok: true });
-  });
+  }));
 
-  app.delete('/v1/recovery-name', async (c) => {
+  app.delete('/v1/recovery-name', transaction(async (c) => {
     const claims = await bearerClaims(c);
     if (!claims) return err(ErrorCode.Unauthorized, 401);
     await names.clearName(claims.sub);
     return c.json({ ok: true });
-  });
+  }));
 
   return app;
 }

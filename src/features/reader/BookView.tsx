@@ -1,300 +1,727 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Button } from '@/shared/ui';
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useUiLang } from '@/features/i18n/uiLang';
+import {
+  captureDataScope,
+  getDataScopeRevision,
+  subscribeDataScope,
+} from '@/features/account/dataScope';
+import { QuotaNotice } from '@/features/account/QuotaNotice';
+import { Dialog } from '@/shared/ui/Dialog';
+import { AppIcon } from '@/shared/ui/AppIcon';
+import {
+  saveProgress,
+  useReadingTracker,
+} from '@/features/stats/useReadingTracker';
 import type { ParsedBook } from './parse';
 import { paginateChapters } from './paginate';
 import { ReadingText } from './reading-text';
 import { ChapterStudy } from './ChapterStudy';
 import { ChapterVocabulary } from './ChapterVocabulary';
-import { QuotaNotice } from '@/features/account/QuotaNotice';
+import { ReaderHeader } from './ReaderHeader';
+import { ReaderIcon } from './ReaderIcon';
 import { ReaderWidget } from './ReaderWidget';
+import type { ReaderAudioControls } from './ReaderWidget';
 import { BookmarkList } from './BookmarkList';
-import { toSentences } from './parse/text';
 import { buildBookIndex, positionOf, splitParas } from './position';
-import { rememberReader } from './return-to-reader';
-import { saveProgress, useReadingTracker } from '@/features/stats/useReadingTracker';
+import { rememberReader, withReaderReturn } from './return-to-reader';
 import { useReadingPosition } from './useReadingPosition';
 import {
   listBookmarks,
   toggleBookmark,
   removeBookmark,
   snippetOf,
-  topVisibleParagraph,
   locateBookmark,
-  type Bookmark,
 } from './bookmarks';
+import type { Bookmark } from './bookmarks';
+import { currentReadingLocation } from './reader-location';
+import { consumeWordReturn, currentWordReturn, discardWordReturn, useWordReturn } from './word-return';
+import './reader.css';
 
-/** Shared reader view: chapter navigation, reading text, bookmarks, and the chapter study panel. */
-export function BookView({
+type BookViewProps = {
+  book: ParsedBook;
+  idPrefix: string;
+  initialChapter?: number;
+  onChapter?: (index: number) => void | Promise<void>;
+  remoteChapter?: number;
+  libraryReturn?: string;
+  level?: string;
+};
+const chapterAt = (value: number | undefined, count: number) =>
+  Math.max(
+    0,
+    Math.min(Number.isFinite(value) ? Math.trunc(value!) : 0, count - 1)
+  );
+type Panel = 'contents' | 'bookmarks' | 'words' | 'exercises' | 'sections';
+
+export function BookView(props: BookViewProps) {
+  const revision = useSyncExternalStore(
+    subscribeDataScope,
+    getDataScopeRevision
+  );
+  const ru = useUiLang((s) => s.lang) === 'ru';
+  if (!props.book.chapters.length)
+    return (
+      <section className="rd-empty">
+        <h1>{ru ? 'В книге пока нет текста' : 'This book has no text'}</h1>
+        <p>
+          {ru
+            ? 'Попробуйте добавить другой файл или вернитесь в библиотеку.'
+            : 'Try another file or return to the library.'}
+        </p>
+        <Link to={props.libraryReturn ?? '/library'}>
+          {ru ? 'К библиотеке' : 'Back to library'}
+        </Link>
+      </section>
+    );
+  return <BookSession key={`${props.idPrefix}:${revision}`} {...props} />;
+}
+
+function BookSession({
   book,
   idPrefix,
   initialChapter = 0,
   onChapter,
   remoteChapter,
-}: {
-  book: ParsedBook;
-  idPrefix: string;
-  initialChapter?: number;
-  onChapter?: (index: number) => void;
-  /** A position another device reported, if newer than what this one last wrote. Offered, never applied:
-   *  moving someone mid-read is worse than the stale chapter it fixes. Undefined on routes with no
-   *  synced row (the catalog reader). */
-  remoteChapter?: number;
-}) {
-  const ru = useUiLang((s) => s.lang) === 'ru';
+  libraryReturn = '/library',
+  level,
+}: BookViewProps) {
+  const ru = useUiLang((s) => s.lang) === 'ru',
+    t = (rus: string, en: string) => (ru ? rus : en);
   const { pathname } = useLocation();
-  // Where "back to reading" returns to, from anywhere the widget links out to.
-  useEffect(() => rememberReader(pathname), [pathname]);
-  // Long chapters are paginated so one render never mounts tens of thousands of word tokens.
   const chapters = useMemo(() => paginateChapters(book.chapters), [book]);
-  const [chapter, setChapter] = useState(Math.min(Math.max(initialChapter, 0), chapters.length - 1));
-
-  const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
-  const [panelOpen, setPanelOpen] = useState(false);
-  // A jump carries a nonce so a bookmark on the *current* page (no chapter change) still scrolls:
-  // an effect keyed on `chapter` would bail out. `jumpingRef` tells the scroll-restore effect to
-  // yield so the two don't fight over the scroll position.
-  const [jump, setJump] = useState<{ paragraph: number; sentence: number | null; nonce: number } | null>(
-    null
+  const [chapter, setChapter] = useState(
+    chapterAt(initialChapter, chapters.length)
   );
-  const jumpingRef = useRef(false);
-  const rootRef = useRef<HTMLDivElement>(null);
-  // The ref is for the scroll effects, which read it synchronously; render needs a state copy.
-  const [jumping, setJumping] = useState(false);
-  const [dismissedChapter, setDismissedChapter] = useState<number | null>(null);
-  const nonceRef = useRef(0);
-  const reduceMotion = useMemo(
-    () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false,
-    []
-  );
-
-  const reloadBookmarks = () => void listBookmarks(idPrefix).then(setBookmarks);
-  useEffect(() => {
-    void listBookmarks(idPrefix).then(setBookmarks);
-  }, [idPrefix]);
-
-  const go = (idx: number) => {
-    const next = Math.max(0, Math.min(idx, chapters.length - 1));
-    setChapter(next);
-    onChapter?.(next);
-  };
-
-  const cancelRestore = useReadingPosition({ rootRef, jumpingRef, storageKey: `${idPrefix}.pos.${chapter}`, pageId: chapters[chapter]!.id });
-
-  // Scroll to a bookmarked paragraph after navigation (or in-place). Runs on the jump nonce so a
-  // same-page jump still fires; clears jumpingRef once the scroll is scheduled.
-  useEffect(() => {
-    if (!jump) return;
-    const raf = requestAnimationFrame(() => {
-      const sent =
-        jump.sentence != null
-          ? document.querySelector(`[data-sent="${jump.paragraph}:${jump.sentence}"]`)
-          : null;
-      (sent ?? document.querySelector(`[data-para="${jump.paragraph}"]`))?.scrollIntoView({
-        block: 'start',
-        behavior: reduceMotion ? 'auto' : 'smooth',
-      });
-      jumpingRef.current = false;
-      setJumping(false);
-    });
-    return () => cancelAnimationFrame(raf);
-  }, [jump, reduceMotion]);
-
-  // Only AHEAD. A position behind means this device is further along: surfacing it would nag, and
-  // accepting it would be the rollback this whole feature exists to prevent. Clamped here because the
-  // bound is the PAGINATED length — `chapterCount` on the book row counts unpaginated chapters and can
-  // legitimately be smaller than a valid `lastChapter`.
-  const offered =
-    remoteChapter == null || jumping
-      ? null
-      : Math.min(Math.max(remoteChapter, 0), chapters.length - 1);
-  const offer = offered != null && offered > chapter && offered !== dismissedChapter ? offered : null;
-
+  const [bookmarks, setBookmarks] = useState<Bookmark[]>([]),
+    [bookmarksState, setBookmarksState] = useState<
+      'loading' | 'ready' | 'error'
+    >('loading');
+  const [panel, setPanel] = useState<Panel | null>(null),
+    [appearanceOpen, setAppearanceOpen] = useState(false);
+  const [bookmarkError, setBookmarkError] = useState(''),
+    [chapterError, setChapterError] = useState('');
+  const [audio, setAudio] = useState<ReaderAudioControls | null>(null),
+    [bookProgress, setBookProgress] = useState(0);
+  const [jump, setJump] = useState<{
+    paragraph: number;
+    sentence: number | null;
+    nonce: number;
+  } | null>(null);
+  const [jumping, setJumping] = useState(false),
+    [dismissedChapter, setDismissedChapter] = useState<number | null>(null);
+  const rootRef = useRef<HTMLDivElement>(null),
+    appearanceInvoker = useRef<HTMLElement | null>(null);
+  const jumpingRef = useRef(false),
+    active = useRef(true),
+    bookmarkRead = useRef(0),
+    nonceRef = useRef(0),
+    chapterWrite = useRef(0);
+  const writeQueue = useRef(Promise.resolve());
+  const helpTargetId = useId();
+  const wordReturn = useWordReturn(s => s.entry);
   const ch = chapters[chapter]!;
-  const source = useMemo(() => ({ bookKey: idPrefix, chapterId: ch.id }), [idPrefix, ch.id]);
+  const source = useMemo(
+    () => ({ bookKey: idPrefix, chapterId: ch.id }),
+    [idPrefix, ch.id]
+  );
   const paragraphs = useMemo(() => splitParas(ch.text), [ch]);
-  const multi = chapters.length > 1;
-
   const bookIndex = useMemo(() => buildBookIndex(chapters), [chapters]);
+  const cancelRestore = useReadingPosition({
+    rootRef,
+    jumpingRef,
+    storageKey: `${idPrefix}.pos.${chapter}`,
+    pageId: ch.id,
+  });
+  useEffect(() => {
+    rememberReader(pathname);
+  }, [pathname]);
+  useEffect(() => {
+    active.current = true;
+    return () => {
+      active.current = false;
+    };
+  }, []);
+  const reloadBookmarks = useCallback(async () => {
+    const read = ++bookmarkRead.current,
+      current = captureDataScope();
+    try {
+      const rows = await listBookmarks(idPrefix, { strict: true });
+      if (active.current && current() && bookmarkRead.current === read) {
+        setBookmarks(rows);
+        setBookmarksState('ready');
+      }
+    } catch {
+      if (active.current && current() && bookmarkRead.current === read)
+        setBookmarksState('error');
+    }
+  }, [idPrefix]);
+  useEffect(() => {
+    void reloadBookmarks();
+  }, [reloadBookmarks]);
+  const persistChapter = useCallback(
+    (next: number) => {
+      const write = ++chapterWrite.current,
+        current = captureDataScope();
+      writeQueue.current = writeQueue.current
+        .catch(() => {})
+        .then(async () => {
+          if (!active.current || !current() || write !== chapterWrite.current)
+            return;
+          try {
+            await onChapter?.(next);
+            if (active.current && current() && write === chapterWrite.current)
+              setChapterError('');
+          } catch {
+            if (active.current && current() && write === chapterWrite.current)
+              setChapterError(
+                ru
+                  ? 'Не удалось сохранить главу. Попробуйте ещё раз.'
+                  : 'The chapter could not be saved. Try again.'
+              );
+          }
+        });
+    },
+    [onChapter, ru]
+  );
+  const go = (index: number) => {
+    const next = chapterAt(index, chapters.length);
+    if (next === chapter) {
+      setPanel(null);
+      return;
+    }
+    audio?.onStop();
+    setAudio(null);
+    setChapter(next);
+    setPanel(null);
+    persistChapter(next);
+  };
+  useEffect(() => {
+    const entry = currentWordReturn();
+    if (!entry || entry.kind !== 'book' || entry.phase !== 'ready' || entry.pathname !== pathname || entry.bookKey !== idPrefix) return;
+    const index = chapters.findIndex(item => item.id === entry.chapterId);
+    if (index < 0) { discardWordReturn(); return; }
+    if (index !== chapter) {
+      setChapter(index);
+      persistChapter(index);
+      return;
+    }
+    const frame = requestAnimationFrame(() => {
+      if (currentWordReturn()?.id !== entry.id) return;
+      const token = [...(rootRef.current?.querySelectorAll<HTMLButtonElement>('[data-reader-text] [data-widx]') ?? [])]
+        .find(el => el.dataset.widx === entry.tokenId && el.textContent === entry.word);
+      if (!token) { discardWordReturn(); return; }
+      cancelRestore();
+      token.scrollIntoView({ block: 'center' });
+      if (token.getAttribute('aria-expanded') === 'true') consumeWordReturn(idPrefix, entry.chapterId, entry.tokenId, entry.word);
+      else token.click();
+      document.getElementById(token.getAttribute('aria-controls') ?? '')?.focus({ preventScroll: true });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [wordReturn, pathname, idPrefix, chapters, chapter, persistChapter, cancelRestore]);
+  useEffect(() => {
+    setBookProgress(positionOf(bookIndex, chapter, 0));
+  }, [bookIndex, chapter]);
   useReadingTracker({
     bookKey: idPrefix,
     title: book.title,
     pageKey: ch.id,
     paragraphs,
-    onPosition: (p) => saveProgress(idPrefix, positionOf(bookIndex, chapter, p)),
+    onPosition: (p) => {
+      const position = positionOf(bookIndex, chapter, p);
+      saveProgress(idPrefix, position);
+      setBookProgress(position);
+    },
   });
-  const progress = useMemo(() => {
-    const at = new Map<string, number>();
-    for (const bm of bookmarks) {
-      const loc = locateBookmark(chapters, bm);
-      at.set(bm.id, positionOf(bookIndex, loc.page, loc.paragraph, loc.wordsIn));
+  useEffect(() => {
+    if (!jump) return;
+    const frame = requestAnimationFrame(() => {
+      const text = rootRef.current?.querySelector('[data-reader-text]');
+      const target =
+        (jump.sentence != null
+          ? text?.querySelector<HTMLElement>(
+              `[data-sent="${jump.paragraph}:${jump.sentence}"]`
+            )
+          : null) ??
+        text?.querySelector<HTMLElement>(`[data-para="${jump.paragraph}"]`);
+      target?.scrollIntoView({
+        block: 'start',
+        behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)')
+          .matches
+          ? 'auto'
+          : 'smooth',
+      });
+      if (target) {
+        target.tabIndex = -1;
+        target.focus({ preventScroll: true });
+      }
+      jumpingRef.current = false;
+      setJumping(false);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [jump]);
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (
+        event.defaultPrevented ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.altKey ||
+        document.querySelector('dialog[open]')
+      )
+        return;
+      const target = event.target instanceof Element ? event.target : null;
+      if (
+        target?.closest(
+          'button,a,input,textarea,select,summary,[contenteditable="true"]'
+        ) ||
+        window.getSelection()?.toString()
+      )
+        return;
+      if (event.key === 'ArrowLeft' && chapter > 0) {
+        event.preventDefault();
+        go(chapter - 1);
+      } else if (event.key === 'ArrowRight' && chapter < chapters.length - 1) {
+        event.preventDefault();
+        go(chapter + 1);
+      } else if (event.code === 'Space' && audio?.available) {
+        event.preventDefault();
+        audio.onToggle();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  });
+  const offered =
+    remoteChapter == null || !Number.isFinite(remoteChapter) || jumping
+      ? null
+      : chapterAt(remoteChapter, chapters.length);
+  const offer =
+    offered != null && offered > chapter && offered !== dismissedChapter
+      ? offered
+      : null;
+  const progress = useMemo(
+    () =>
+      new Map(
+        bookmarks.map((bm) => {
+          const loc = locateBookmark(chapters, bm);
+          return [
+            bm.id,
+            positionOf(bookIndex, loc.page, loc.paragraph, loc.wordsIn),
+          ];
+        })
+      ),
+    [bookmarks, chapters, bookIndex]
+  );
+  const bookmarkedSentences = useMemo(
+    () =>
+      new Set(
+        bookmarks
+          .filter((bm) => bm.pageId === ch.id && bm.sentence != null)
+          .map((bm) => `${bm.paragraph}:${bm.sentence}`)
+      ),
+    [bookmarks, ch.id]
+  );
+  const toggleSentenceBookmark = async (
+    p: number,
+    si: number,
+    sentence: string
+  ) => {
+    const current = captureDataScope();
+    setBookmarkError('');
+    try {
+      const result = await toggleBookmark(
+        {
+          bookKey: idPrefix,
+          page: chapter,
+          paragraph: p,
+          sentence: si,
+          pageId: ch.id,
+          snippet: snippetOf(sentence),
+          chapterTitle: ch.title,
+          scrollY: Math.round(window.scrollY),
+        },
+        current
+      );
+      if (active.current && current()) await reloadBookmarks();
+      return result;
+    } catch (error) {
+      if (active.current && current())
+        setBookmarkError(
+          t(
+            'Не удалось изменить закладку. Попробуйте ещё раз.',
+            'The bookmark could not be changed. Try again.'
+          )
+        );
+      throw error;
     }
-    return at;
-  }, [bookmarks, chapters, bookIndex]);
-
-  // Which sentences on the current page are bookmarked (keys `${para}:${sentence}`) — drives the
-  // lens-menu заложить/убрать label. Matched on the stable pageId (like the jump path).
-  const bookmarkedSentences = useMemo(() => {
-    const s = new Set<string>();
-    for (const bm of bookmarks) if (bm.pageId === ch.id && bm.sentence != null) s.add(`${bm.paragraph}:${bm.sentence}`);
-    return s;
-  }, [bookmarks, ch.id]);
-
-  // Precise: anchor a bookmark to a specific sentence (from the per-sentence lens menu).
-  const toggleSentenceBookmark = async (p: number, si: number, sentence: string) => {
-    await toggleBookmark({
-      bookKey: idPrefix,
-      page: chapter,
-      paragraph: p,
-      sentence: si,
-      pageId: ch.id,
-      snippet: snippetOf(sentence),
-      chapterTitle: ch.title,
-      scrollY: Math.round(window.scrollY),
-    });
-    reloadBookmarks();
   };
-
-  // Quick: bookmark the current spot — the first sentence of the top-visible paragraph (widget).
   const toggleHere = async () => {
-    const rects = Array.from(document.querySelectorAll<HTMLElement>('[data-para]')).map((el) => ({
-      index: Number(el.dataset.para),
-      top: el.getBoundingClientRect().top,
-    }));
-    const p = topVisibleParagraph(rects);
-    if (p == null) return { added: false };
-    const firstSentence = toSentences(paragraphs[p] ?? '')[0] ?? paragraphs[p] ?? '';
-    const res = await toggleBookmark({
-      bookKey: idPrefix,
-      page: chapter,
-      paragraph: p,
-      sentence: 0,
-      pageId: ch.id,
-      snippet: snippetOf(firstSentence),
-      chapterTitle: ch.title,
-      scrollY: Math.round(window.scrollY),
-    });
-    reloadBookmarks();
-    return res;
+    const text =
+      rootRef.current?.querySelector<HTMLElement>('[data-reader-text]');
+    const location = text ? currentReadingLocation(text, paragraphs) : null;
+    if (!location) throw new Error('No reading position');
+    return toggleSentenceBookmark(
+      location.paragraph,
+      location.sentence,
+      location.text
+    );
   };
-
   const jumpTo = (bm: Bookmark) => {
+    audio?.onStop();
     cancelRestore();
     const { page, paragraph, sentence } = locateBookmark(chapters, bm);
     jumpingRef.current = true;
     setJumping(true);
-    setJump({ paragraph, sentence, nonce: (nonceRef.current += 1) });
+    setJump({ paragraph, sentence, nonce: ++nonceRef.current });
     go(page);
-    setPanelOpen(false);
+    setPanel(null);
   };
-
   const deleteBookmark = async (id: string) => {
-    await removeBookmark(id);
-    reloadBookmarks();
+    const current = captureDataScope();
+    await removeBookmark(id, current);
+    if (active.current && current()) await reloadBookmarks();
   };
-
-  const nav = multi ? (
-    <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3">
-      <Button
-        className="min-h-11 min-w-11 whitespace-nowrap"
-        aria-label={ru ? 'Предыдущая глава' : 'Previous chapter'}
-        variant="ghost"
-        size="sm"
-        disabled={chapter === 0}
-        onClick={() => go(chapter - 1)}
-      >
-        <span aria-hidden="true">←</span>
-        <span className="hidden sm:inline">{ru ? 'назад' : 'prev'}</span>
-      </Button>
-      <select
-        aria-label={ru ? 'Глава' : 'Chapter'}
-        value={chapter}
-        onChange={(e) => go(Number(e.target.value))}
-        className="min-h-11 w-full min-w-0 truncate rounded-sm border border-line bg-surface px-2 py-1 font-mono text-xs text-muted"
-      >
-        {chapters.map((c, i) => (
-          <option key={c.id} value={i}>
-            {i + 1}. {c.title ?? (ru ? 'Глава' : 'Chapter') + ' ' + (i + 1)}
-          </option>
-        ))}
-      </select>
-      <Button
-        className="min-h-11 min-w-11 whitespace-nowrap"
-        aria-label={ru ? 'Следующая глава' : 'Next chapter'}
-        variant="ghost"
-        size="sm"
-        disabled={chapter >= chapters.length - 1}
-        onClick={() => go(chapter + 1)}
-      >
-        <span className="hidden sm:inline">{ru ? 'далее' : 'next'}</span>
-        <span aria-hidden="true">→</span>
-      </Button>
-    </div>
-  ) : null;
-
+  const appearance = (open: boolean) => {
+    if (open)
+      appearanceInvoker.current =
+        document.activeElement instanceof HTMLElement
+          ? document.activeElement
+          : null;
+    setAppearanceOpen(open);
+  };
+  const chapterTitle =
+    ch.title ?? t(`Глава ${chapter + 1}`, `Chapter ${chapter + 1}`);
+  const contents = (
+    <nav
+      className="rd-chapter-list"
+      aria-label={t('Главы книги', 'Book chapters')}
+    >
+      {chapters.map((item, index) => (
+        <button
+          type="button"
+          key={item.id}
+          aria-current={chapter === index ? 'page' : undefined}
+          onClick={() => go(index)}
+        >
+          <small>{index + 1}</small>
+          <span>
+            {item.title ?? t(`Глава ${index + 1}`, `Chapter ${index + 1}`)}
+          </span>
+        </button>
+      ))}
+    </nav>
+  );
+  const titles = {
+    contents: t('Содержание', 'Contents'),
+    bookmarks: t('Закладки', 'Bookmarks'),
+    words: t('Слова и практика', 'Words and practice'),
+    exercises: t('Упражнения по главе', 'Chapter exercises'),
+    sections: t('Разделы', 'Sections'),
+  };
+  const sections = [
+    ['/', t('Сегодня', 'Today')],
+    ['/grammar', t('Грамматика', 'Grammar')],
+    ['/review', t('Повторение', 'Review')],
+    ['/vocabulary', t('Словарь', 'Vocabulary')],
+    ['/library', t('Библиотека', 'Library')],
+    ['/progress', t('Прогресс', 'Progress')],
+    ['/settings', t('Настройки', 'Settings')],
+    ['/pro', 'Pro'],
+    ['/feedback', t('Обратная связь', 'Feedback')],
+    ['/about', t('О приложении', 'About')],
+  ];
   return (
-    <div ref={rootRef}>
-      {ch.title && <h1 className="mb-6 text-2xl font-bold tracking-tight text-balance [overflow-wrap:anywhere]">{ch.title}</h1>}
-      {offer != null && (
-        <div className="mb-4 flex flex-wrap items-center gap-3 rounded-md border border-line bg-surface px-3 py-2">
-          {/* Full-width on a narrow screen so the buttons wrap BELOW: `flex-1` alone let the text shrink
-              to a four-line column beside them at 360px. */}
-          <p className="w-full min-w-0 font-mono text-2xs text-muted sm:w-auto sm:flex-1">
-            {ru
-              ? `На другом устройстве вы читали дальше — глава ${offer + 1}.`
-              : `You were further along on another device — chapter ${offer + 1}.`}
-          </p>
-          <Button size="sm" variant="ghost" onClick={() => go(offer)}>
-            {ru ? 'Перейти' : 'Go there'}
-          </Button>
-          <Button size="sm" variant="ghost" onClick={() => setDismissedChapter(offer)}>
-            {ru ? 'Остаться' : 'Stay'}
-          </Button>
-        </div>
-      )}
-      {nav && <div className="mb-4">{nav}</div>}
-
-      {bookmarks.length > 0 && (
-        <div className="mb-6 flex flex-wrap items-center gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            aria-expanded={panelOpen}
-            onClick={() => setPanelOpen((v) => !v)}
-          >
-            🔖 {ru ? 'Закладки' : 'Bookmarks'} ({bookmarks.length})
-          </Button>
-        </div>
-      )}
-
-      {panelOpen && bookmarks.length > 0 && (
-        <BookmarkList
-          bookmarks={bookmarks}
-          progress={progress}
-          onJump={jumpTo}
-          onDelete={(id) => void deleteBookmark(id)}
-          className="mb-6 rounded-md border border-line bg-surface p-2"
-        />
-      )}
-
-      <QuotaNotice compact />
-      <ReadingText
-        key={`${idPrefix}:${chapter}:${ch.id}`}
-        paragraphs={paragraphs}
-        source={source}
-        bookmarkedSentences={bookmarkedSentences}
-        onBookmarkSentence={(p, si, s) => void toggleSentenceBookmark(p, si, s)}
+    <div className="rd-book-view" ref={rootRef}>
+      <ReaderHeader
+        title={book.title}
+        chapter={chapter}
+        total={chapters.length}
+        libraryReturn={libraryReturn}
+        bookmarkCount={bookmarksState === 'ready' ? bookmarks.length : null}
+        onContents={() => setPanel('contents')}
+        onBookmarks={() => setPanel('bookmarks')}
+        onAppearance={() => appearance(true)}
+        onSections={() => setPanel('sections')}
       />
-      <ChapterStudy text={ch.text} idPrefix={`${idPrefix}.${chapter}`} />
-      <ChapterVocabulary key={`${idPrefix}:${ch.id}`} source={source} />
-      {nav && <div className="mt-8 border-t border-line pt-5">{nav}</div>}
+      <div className="rd-reading-grid">
+        <aside
+          className="rd-book-rail"
+          aria-label={t('Книга и содержание', 'Book and contents')}
+        >
+          <div className="rd-book-cover" aria-hidden="true">
+            <AppIcon name="today" />
+            <p>{book.title}</p>
+            {book.author && <small>{book.author}</small>}
+          </div>
+          {level && (
+            <p className="rd-rail-caption">
+              {t('Уровень', 'Level')} {level}
+            </p>
+          )}
+          {contents}
+          <button
+            type="button"
+            className="rd-rail-practice"
+            onClick={() => setPanel('words')}
+          >
+            <ReaderIcon name="cards" />
+            {t('Слова этой главы', 'Words from this chapter')}
+          </button>
+          <p className="rd-rail-note">
+            {t(
+              'В своём темпе. По одной истории за раз.',
+              'At your own pace. One story at a time.'
+            )}
+          </p>
+        </aside>
+        <section
+          className="rd-reading-main"
+          aria-label={t('Текст книги', 'Book text')}
+        >
+          {offer != null && (
+            <div className="rd-remote-offer" role="status">
+              <p>
+                {t(
+                  `На другом устройстве вы читали дальше — глава ${offer + 1}.`,
+                  `You were further along on another device — chapter ${offer + 1}.`
+                )}
+              </p>
+              <div className="rd-actions">
+                <button
+                  type="button"
+                  className="rd-btn rd-primary"
+                  onClick={() => go(offer)}
+                >
+                  {t('Перейти', 'Go there')}
+                </button>
+                <button
+                  type="button"
+                  className="rd-btn"
+                  onClick={() => setDismissedChapter(offer)}
+                >
+                  {t('Остаться', 'Stay')}
+                </button>
+              </div>
+            </div>
+          )}
+          {chapterError && (
+            <div className="rd-error" role="alert">
+              <p>{chapterError}</p>
+              <button
+                type="button"
+                className="rd-text-button"
+                onClick={() => persistChapter(chapter)}
+              >
+                {t('Повторить', 'Retry')}
+              </button>
+            </div>
+          )}
+          {bookmarkError && (
+            <p className="rd-error" role="alert">
+              {bookmarkError}
+            </p>
+          )}
+          <div className="rd-reading-surface">
+            <p className="rd-chapter-kicker">
+              {t(
+                `Глава ${chapter + 1} из ${chapters.length}`,
+                `Chapter ${chapter + 1} of ${chapters.length}`
+              )}
+            </p>
+            <h1 tabIndex={-1}>{chapterTitle}</h1>
+            <p className="rd-reading-hint">
+              {t(
+                'Нажмите слово, чтобы посмотреть значение. Значок рядом с предложением открывает перевод и разбор.',
+                'Tap a word for its meaning. The icon beside a sentence opens translation and explanation.'
+              )}
+            </p>
+            <QuotaNotice compact />
+            {ch.text.trim() ? (
+              <ReadingText
+                key={`${idPrefix}:${chapter}:${ch.id}`}
+                paragraphs={paragraphs}
+                source={source}
+                helpTargetId={helpTargetId}
+                onAudioControlsChange={setAudio}
+                bookmarkedSentences={bookmarkedSentences}
+                onBookmarkSentence={(p, si, text) => {
+                  void toggleSentenceBookmark(p, si, text).catch(() => {});
+                }}
+              />
+            ) : (
+              <p className="rd-empty-chapter">
+                {t(
+                  'В этой главе нет текста. Выберите другую главу.',
+                  'This chapter has no text. Choose another chapter.'
+                )}
+              </p>
+            )}
+          </div>
+          <section className="rd-chapter-finish">
+            <div>
+              <h2>{t('Остановиться на минуту?', 'Take a moment?')}</h2>
+              <p>
+                {t(
+                  'Закрепите слова, которые встретились в этой главе.',
+                  'Practise the words you met in this chapter.'
+                )}
+              </p>
+            </div>
+            <div className="rd-actions">
+              <button
+                type="button"
+                className="rd-btn"
+                onClick={() => setPanel('words')}
+              >
+                <ReaderIcon name="cards" />
+                {t('Слова и практика', 'Words and practice')}
+              </button>
+              <button
+                type="button"
+                className="rd-text-button"
+                disabled={!ch.text.trim()}
+                onClick={() => setPanel('exercises')}
+              >
+                {t('Упражнения по главе', 'Chapter exercises')}
+              </button>
+            </div>
+          </section>
+          <nav
+            className="rd-chapter-paging"
+            aria-label={t('Переход по главам', 'Chapter navigation')}
+          >
+            <button
+              type="button"
+              className="rd-btn"
+              disabled={chapter === 0}
+              onClick={() => go(chapter - 1)}
+            >
+              <ReaderIcon name="back" />
+              {t('Предыдущая', 'Previous')}
+            </button>
+            <span>
+              {chapter + 1} / {chapters.length}
+            </span>
+            <button
+              type="button"
+              className="rd-btn"
+              disabled={chapter >= chapters.length - 1}
+              onClick={() => go(chapter + 1)}
+            >
+              {t('Следующая глава', 'Next chapter')}
+              <ReaderIcon name="arrow" />
+            </button>
+          </nav>
+        </section>
+        <aside
+          id={helpTargetId}
+          className="rd-assist-rail"
+          aria-label={t('Помощь с чтением', 'Reading help')}
+        />
+      </div>
+      {panel && (
+        <Dialog
+          title={titles[panel]}
+          onClose={() => setPanel(null)}
+          size={
+            panel === 'words' || panel === 'exercises' ? 'wide' : 'standard'
+          }
+        >
+          {panel === 'contents' && (
+            <>
+              <p className="rd-dialog-book-title">{book.title}</p>
+              {contents}
+            </>
+          )}
+          {panel === 'bookmarks' && (
+            <>
+              {bookmarksState === 'loading' && (
+                <p role="status">
+                  {t('Загружаем закладки…', 'Loading bookmarks…')}
+                </p>
+              )}
+              {bookmarksState === 'error' && (
+                <p role="alert">
+                  {t(
+                    'Не удалось загрузить закладки.',
+                    'Bookmarks could not be loaded.'
+                  )}{' '}
+                  <button
+                    type="button"
+                    className="rd-text-button"
+                    onClick={() => void reloadBookmarks()}
+                  >
+                    {t('Повторить', 'Retry')}
+                  </button>
+                </p>
+              )}
+              {bookmarksState === 'ready' && (
+                <BookmarkList
+                  bookmarks={bookmarks}
+                  progress={progress}
+                  onJump={jumpTo}
+                  onDelete={deleteBookmark}
+                />
+              )}
+            </>
+          )}
+          {panel === 'words' && (
+            <ChapterVocabulary
+              key={`${idPrefix}:${ch.id}`}
+              source={source}
+              embedded
+            />
+          )}
+          {panel === 'exercises' && (
+            <ChapterStudy
+              text={ch.text}
+              idPrefix={`${idPrefix}.${chapter}`}
+              embedded
+            />
+          )}
+          {panel === 'sections' && (
+            <nav
+              className="rd-sections"
+              aria-label={t('Разделы приложения', 'App sections')}
+            >
+              {sections.map(([path, label]) => (
+                <Link key={path} to={withReaderReturn(path!)}>
+                  {label}
+                </Link>
+              ))}
+            </nav>
+          )}
+        </Dialog>
+      )}
       <ReaderWidget
         onBookmarkHere={toggleHere}
         bookmarks={bookmarks}
         progress={progress}
         onJump={jumpTo}
-        onDelete={(id) => void deleteBookmark(id)}
+        onDelete={deleteBookmark}
+        audio={audio}
+        chapterLabel={t(
+          `Глава ${chapter + 1} из ${chapters.length}`,
+          `Chapter ${chapter + 1} of ${chapters.length}`
+        )}
+        bookProgress={bookProgress}
+        onPreviousChapter={chapter > 0 ? () => go(chapter - 1) : undefined}
+        onNextChapter={
+          chapter < chapters.length - 1 ? () => go(chapter + 1) : undefined
+        }
+        onOpenContents={() => setPanel('contents')}
+        appearanceOpen={appearanceOpen}
+        onAppearanceChange={appearance}
+        appearanceReturnFocus={() => appearanceInvoker.current}
       />
     </div>
   );

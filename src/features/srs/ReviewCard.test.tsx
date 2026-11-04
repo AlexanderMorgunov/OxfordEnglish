@@ -1,3 +1,5 @@
+import { MemoryRouter } from 'react-router-dom';
+import { installDialogMock } from '@/test/dialog';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, expect, test, vi } from 'vitest';
@@ -40,8 +42,11 @@ vi.mock('@/features/vocab/cefr', () => ({
   useCefr: () => new Map(),
   cefrOf: () => null,
 }));
-vi.mock('@/features/vocab/usePartOfSpeech', () => ({ usePartOfSpeech: () => new Map() }));
+vi.mock('@/features/vocab/usePartOfSpeech', () => ({
+  usePartOfSpeech: () => new Map(),
+}));
 vi.mock('@/features/ai/route', () => ({
+  AI_REQUEST_TIMEOUT: 30000,
   useAiEnabled: () => mocks.enabled,
   useAiUnknown: () => false,
 }));
@@ -68,6 +73,7 @@ const advance = vi.fn();
 const skip = vi.fn();
 
 beforeEach(() => {
+  installDialogMock();
   vi.clearAllMocks();
   mocks.enabled = false;
   mocks.translate.mockResolvedValue(null);
@@ -85,7 +91,8 @@ test('context-only answer is usable without a dictionary request, with the Engli
       })}
       onAdvance={advance}
       onSkip={skip}
-    />
+    />,
+    { wrapper: MemoryRouter }
   );
   expect(screen.getByText(/An/)).toHaveTextContent('An armigerous family.');
   expect(
@@ -96,20 +103,25 @@ test('context-only answer is usable without a dictionary request, with the Engli
   await userEvent.click(screen.getByRole('button', { name: 'Show answer' }));
   expect(screen.getByText('имеющий герб')).toBeInTheDocument();
   expect(mocks.translate).not.toHaveBeenCalled();
-  await userEvent.click(screen.getByRole('button', { name: 'good' }));
+  await userEvent.click(screen.getByRole('button', { name: /^Good:/ }));
   expect(mocks.grade).toHaveBeenCalledOnce();
 });
 
 test('an unanswered card can be skipped without a grade and edited manually', async () => {
-  render(<ReviewCard card={saved()} onAdvance={advance} onSkip={skip} />);
+  render(<ReviewCard card={saved()} onAdvance={advance} onSkip={skip} />, {
+    wrapper: MemoryRouter,
+  });
   await userEvent.click(screen.getByRole('button', { name: 'Show answer' }));
   expect(
     await screen.findByText(/Translation unavailable/)
   ).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'good' })).toBeDisabled();
-  await userEvent.click(screen.getByRole('button', { name: 'Skip' }));
+  expect(screen.getByRole('button', { name: /^Good:/ })).toBeDisabled();
+  await userEvent.click(
+    screen.getByRole('button', { name: 'Skip without rating' })
+  );
   expect(skip).toHaveBeenCalledOnce();
   expect(mocks.grade).not.toHaveBeenCalled();
+  await userEvent.click(screen.getByText('About this answer and card'));
   await userEvent.click(screen.getByRole('button', { name: 'Edit answer' }));
   await userEvent.type(
     screen.getByRole('textbox', { name: 'General translation' }),
@@ -168,9 +180,12 @@ test('AI proposals require acceptance and a stale proposal cannot overwrite a re
     contextSentence: 'I had a sneaking suspicion.',
   });
   const { rerender } = render(
-    <ReviewCard card={original} onAdvance={advance} onSkip={skip} />
+    <ReviewCard card={original} onAdvance={advance} onSkip={skip} />,
+    { wrapper: MemoryRouter }
   );
   await userEvent.click(screen.getByRole('button', { name: 'Show answer' }));
+  await userEvent.click(screen.getByText('About this answer and card'));
+  await userEvent.click(screen.getByRole('button', { name: 'Edit answer' }));
   await userEvent.click(
     screen.getByRole('button', { name: 'Translate in context · AI' })
   );
@@ -187,9 +202,7 @@ test('AI proposals require acceptance and a stale proposal cannot overwrite a re
   await userEvent.click(
     screen.getByRole('button', { name: 'Use this meaning' })
   );
-  expect(mocks.edit.mock.calls[0]?.[0]?.back).toBe(
-    'подкрадываться к подозрениям'
-  );
+  expect(mocks.edit).not.toHaveBeenCalled();
   expect(await screen.findByRole('alert')).toHaveTextContent(
     'The card changed'
   );
@@ -202,9 +215,11 @@ test('a failed manual save keeps the editor and its input', async () => {
       card={saved({ back: 'гербовый' })}
       onAdvance={advance}
       onSkip={skip}
-    />
+    />,
+    { wrapper: MemoryRouter }
   );
   await userEvent.click(screen.getByRole('button', { name: 'Show answer' }));
+  await userEvent.click(screen.getByText('About this answer and card'));
   await userEvent.click(screen.getByRole('button', { name: 'Edit answer' }));
   await userEvent.click(screen.getByRole('button', { name: 'Save' }));
   expect(await screen.findByRole('alert')).toHaveTextContent('Could not save');

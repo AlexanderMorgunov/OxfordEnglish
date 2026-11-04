@@ -14,10 +14,14 @@ import type { GrammarArticle } from './schema';
  * load render as "article not found", which is the answer to a different question.
  */
 type GrammarState = {
-  status: 'idle' | 'loading' | 'ready' | 'error';
+  status: 'idle' | 'loading' | 'ready' | 'error' | 'cancelled';
   articles: GrammarArticle[];
   load: () => Promise<void>;
+  cancel: () => void;
 };
+
+let request = 0;
+let controller: AbortController | null = null;
 
 export const useGrammarStore = create<GrammarState>((set, get) => ({
   status: 'idle',
@@ -25,11 +29,19 @@ export const useGrammarStore = create<GrammarState>((set, get) => ({
   load: async () => {
     const { status } = get();
     if (status === 'loading' || status === 'ready') return;
+    const id = ++request;
+    controller = new AbortController();
     set({ status: 'loading' });
     try {
-      set({ status: 'ready', articles: await loadGrammarOnly() });
+      const articles = await loadGrammarOnly(controller.signal);
+      if (request === id) set({ status: 'ready', articles });
     } catch {
-      set({ status: 'error', articles: [] });
+      if (request === id) set({ status: 'error', articles: [] });
     }
+  },
+  cancel: () => {
+    request++;
+    controller?.abort();
+    set({ status: 'cancelled' });
   },
 }));

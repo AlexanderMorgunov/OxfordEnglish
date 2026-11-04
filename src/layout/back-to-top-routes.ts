@@ -2,7 +2,7 @@ import { matchPath } from 'react-router-dom';
 
 const ROUTES = [
   '/', '/grammar', '/grammar/:articleId', '/course/:unitId/day/:dayId',
-  '/vocabulary', '/library', '/settings', '/about', '/progress',
+  '/vocabulary', '/library', '/settings/:section?', '/about', '/progress',
   '/terms', '/privacy', '/credits', '/support', '/pro', '/feedback',
 ];
 

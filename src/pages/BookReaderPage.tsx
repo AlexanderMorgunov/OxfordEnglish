@@ -1,16 +1,28 @@
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import type { BookRecord } from '@/db/db';
-import { Button, Eyebrow, PageStub } from '@/shared/ui';
+import { Button, PageStub } from '@/shared/ui';
 import { useUiLang } from '@/features/i18n/uiLang';
-import { getBook, openBook, saveProgress, BookFileUnavailable } from '@/features/reader/service';
+import {
+  getBook,
+  openBook,
+  saveProgress,
+  BookFileUnavailable,
+} from '@/features/reader/service';
 import { opfsAvailable } from '@/features/reader/storage';
-import { useBookFileSync, type BookFileIssue } from '@/features/reader/blobSync';
+import {
+  useBookFileSync,
+  type BookFileIssue,
+} from '@/features/reader/blobSync';
 import { useSyncStatus } from '@/features/sync/status';
 import type { ParsedBook } from '@/features/reader/parse';
 import { BookView } from '@/features/reader/BookView';
 import { markBookOpened } from '@/features/reader/book-recency';
-import { captureDataScope, subscribeDataScope, getDataScopeRevision } from '@/features/account/dataScope';
+import {
+  captureDataScope,
+  subscribeDataScope,
+  getDataScopeRevision,
+} from '@/features/account/dataScope';
 
 /**
  * Everything that can go wrong opening a book used to arrive as one sentence. The distinction that
@@ -23,17 +35,25 @@ type Failure =
   | { kind: 'unreadable' }
   | { kind: 'file'; issue: BookFileIssue };
 
-function explain(f: Failure, ru: boolean, syncOn: boolean): { title: string; body: string; retry: boolean } {
+function explain(
+  f: Failure,
+  ru: boolean,
+  syncOn: boolean
+): { title: string; body: string; retry: boolean } {
   if (f.kind === 'not-found') {
     return {
       title: ru ? 'Книга не найдена' : 'Book not found',
-      body: ru ? 'Возможно, её удалили на другом устройстве.' : 'It may have been removed on another device.',
+      body: ru
+        ? 'Возможно, её удалили на другом устройстве.'
+        : 'It may have been removed on another device.',
       retry: false,
     };
   }
   if (f.kind === 'no-storage') {
     return {
-      title: ru ? 'Браузер не даёт хранить книги' : 'This browser cannot store books',
+      title: ru
+        ? 'Браузер не даёт хранить книги'
+        : 'This browser cannot store books',
       body: ru
         ? 'Установите приложение на домашний экран — тогда файлы книг будут храниться надёжно.'
         : 'Install the app to your home screen and book files will be stored reliably.',
@@ -49,7 +69,10 @@ function explain(f: Failure, ru: boolean, syncOn: boolean): { title: string; bod
       retry: false,
     };
   }
-  const byIssue: Record<BookFileIssue, { title: string; body: string; retry: boolean }> = {
+  const byIssue: Record<
+    BookFileIssue,
+    { title: string; body: string; retry: boolean }
+  > = {
     'signed-out': {
       title: ru ? 'Нужен вход в аккаунт' : 'Sign in required',
       body: ru
@@ -61,7 +84,9 @@ function explain(f: Failure, ru: boolean, syncOn: boolean): { title: string; bod
     // and until that device uploads them, nothing here can succeed. Saying otherwise sends people to
     // tap a button that cannot work.
     'not-uploaded': {
-      title: ru ? 'Файл книги сюда ещё не приехал' : 'This book’s file is not here yet',
+      title: ru
+        ? 'Файл книги сюда ещё не приехал'
+        : 'This book’s file is not here yet',
       // The advice differs by which half of the problem the user is in, and getting it wrong sends
       // someone to flip a setting that is already on.
       body: syncOn
@@ -82,7 +107,9 @@ function explain(f: Failure, ru: boolean, syncOn: boolean): { title: string; bod
     },
     'download-failed': {
       title: ru ? 'Не удалось скачать файл' : 'The download failed',
-      body: ru ? 'Попробуйте ещё раз — ссылка на загрузку могла устареть.' : 'Try again — the download link may have expired.',
+      body: ru
+        ? 'Попробуйте ещё раз — ссылка на загрузку могла устареть.'
+        : 'Try again — the download link may have expired.',
       retry: true,
     },
     'no-space': {
@@ -97,7 +124,10 @@ function explain(f: Failure, ru: boolean, syncOn: boolean): { title: string; bod
 }
 
 export function BookReaderPage() {
-  const revision = useSyncExternalStore(subscribeDataScope, getDataScopeRevision);
+  const revision = useSyncExternalStore(
+    subscribeDataScope,
+    getDataScopeRevision
+  );
   return <OwnedBookReaderPage key={revision} />;
 }
 
@@ -116,7 +146,9 @@ function OwnedBookReaderPage() {
   // specifically: `lastSyncedAt` is frozen while pushes are refused for want of a plan, which is exactly
   // the account whose other device holds a position it cannot push.
   const lastPulledAt = useSyncStatus((st) => st.lastPulledAt);
-  const [remoteChapter, setRemoteChapter] = useState<number | undefined>(undefined);
+  const [remoteChapter, setRemoteChapter] = useState<number | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     if (!bookId || lastPulledAt == null) return;
@@ -150,7 +182,8 @@ function OwnedBookReaderPage() {
       } catch (e) {
         if (!alive) return;
         if (e instanceof BookNotFound) setFailure({ kind: 'not-found' });
-        else if (e instanceof BookFileUnavailable) setFailure({ kind: 'file', issue: e.issue });
+        else if (e instanceof BookFileUnavailable)
+          setFailure({ kind: 'file', issue: e.issue });
         else if (!opfsAvailable()) setFailure({ kind: 'no-storage' });
         else setFailure({ kind: 'unreadable' });
       } finally {
@@ -167,7 +200,10 @@ function OwnedBookReaderPage() {
     // to a backgrounded tab reloads the page, so this is the screen that greets someone coming back to
     // a book they were already reading — it should at least name it and offer a way out.
     return (
-      <PageStub eyebrow="library" title={record?.title ?? (ru ? 'Открываем книгу' : 'Opening the book')}>
+      <PageStub
+        eyebrow="library"
+        title={record?.title ?? (ru ? 'Открываем книгу' : 'Opening the book')}
+      >
         <p className="mb-4 max-w-prose text-sm leading-relaxed text-muted">
           {ru ? 'Готовим текст…' : 'Preparing the text…'}
         </p>
@@ -178,10 +214,16 @@ function OwnedBookReaderPage() {
     );
   }
   if (failure || !book || !record) {
-    const { title, body, retry } = explain(failure ?? { kind: 'unreadable' }, ru, syncOn);
+    const { title, body, retry } = explain(
+      failure ?? { kind: 'unreadable' },
+      ru,
+      syncOn
+    );
     return (
       <PageStub eyebrow="library" title={title}>
-        <p className="mb-4 max-w-prose text-sm leading-relaxed text-pretty text-muted">{body}</p>
+        <p className="mb-4 max-w-prose text-sm leading-relaxed text-pretty text-muted">
+          {body}
+        </p>
         <div className="flex flex-wrap items-center gap-3">
           {retry && (
             <Button size="sm" onClick={() => setAttempt((n) => n + 1)}>
@@ -197,19 +239,13 @@ function OwnedBookReaderPage() {
   }
 
   return (
-    <article>
-      <div className="mb-3.5 flex flex-wrap items-center justify-between gap-3">
-        <Eyebrow className="min-w-0 max-w-full">{book.title}</Eyebrow>
-        <Link to="/library" className="max-w-full shrink-0 font-mono text-2xs uppercase tracking-[0.08em] text-teal hover:underline">
-          ← {ru ? 'библиотека' : 'library'}
-        </Link>
-      </div>
+    <article className="rd-book-page">
       <BookView
         book={book}
         idPrefix={`reader.${record.id}`}
         initialChapter={record.lastChapter}
         remoteChapter={remoteChapter}
-        onChapter={(i) => void saveProgress(record.id, i)}
+        onChapter={(i) => saveProgress(record.id, i, { strict: true })}
       />
     </article>
   );

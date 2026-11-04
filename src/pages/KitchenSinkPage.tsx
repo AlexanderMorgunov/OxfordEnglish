@@ -16,7 +16,7 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
     <section className="mb-12">
       <div className="mb-4 flex items-baseline gap-3 border-b border-line pb-2">
         <span className="font-mono text-sm text-amber">§</span>
-        <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
+        <h2 className="min-w-0 text-xl font-semibold tracking-tight">{title}</h2>
       </div>
       <div className="flex flex-col gap-4">{children}</div>
     </section>

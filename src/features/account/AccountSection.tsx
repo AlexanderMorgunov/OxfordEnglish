@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
-import { Button, Card, Eyebrow, Input, PixelImage } from '@/shared/ui';
+import { Button, Card, Input, PixelImage } from '@/shared/ui';
 import { QrScanner } from './QrScanner';
 import { useHasCamera } from '@/shared/lib/useHasCamera';
 import { TotpEnroll, TotpRecover } from './TotpSection';
@@ -18,6 +18,9 @@ import { sessionRejectionReason } from './session-diagnostics';
 import { useBookFileSync } from '@/features/reader/blobSync';
 import { useSyncStatus } from '@/features/sync/status';
 import type { Device, DeviceStartResponse } from './contract';
+import { AccessFlow } from './AccessFlow';
+import { accessCapabilities } from './access-api';
+import { SaveRecoveryKey } from './SaveRecoveryKey';
 
 const mb = (bytes: number): string => (bytes / (1024 * 1024)).toFixed(bytes < 10 * 1024 * 1024 ? 1 : 0);
 
@@ -31,12 +34,49 @@ function ago(ts: number, ru: boolean): string {
   return ru ? `${Math.round(h / 24)} дн назад` : `${Math.round(h / 24)} d ago`;
 }
 
-/** Settings → Account. Absent entirely when no backend is configured (`accountsEnabled()` false), so
- *  prod/staging without an API is clean. Slice 1: create / save recovery key / link by key / link a
- *  second device by approval / per-device revoke / status / logout. TOTP recovery arrives later. */
+/** Keep the legacy account surface until the server advertises the new access protocol. */
 export function AccountSection() {
   if (!accountsEnabled()) return null;
-  return <AccountSectionBody />;
+  return <AccountAccessEntry />;
+}
+
+function AccountAccessEntry() {
+  const ru = useUiLang(s => s.lang) === 'ru';
+  const status = useAccount(s => s.status);
+  const session = useAccount(s => s.sessionRevision);
+  const deviceId = useAccount(s => s.deviceId);
+  const pendingKey = useAccount(s => s.pendingRecoveryKey);
+  const accountId = useAccount(s => s.accountId);
+  const [ready, setReady] = useState<'loading' | 'new' | 'legacy' | 'error'>('loading');
+  const [attempt, setAttempt] = useState(0);
+  const [confirmLogout, setConfirmLogout] = useState(false);
+  const [linkDevice, setLinkDevice] = useState(false);
+  useEffect(() => {
+    const abort = new AbortController();
+    setReady('loading');
+    void accessCapabilities(abort.signal).then(value => { if (!abort.signal.aborted) setReady(value.enabled ? 'new' : 'legacy'); })
+      .catch(error => { if (!abort.signal.aborted) setReady(error instanceof ApiFailure && error.status === 404 ? 'legacy' : 'error'); });
+    return () => abort.abort();
+  }, [attempt]);
+  useEffect(() => { setConfirmLogout(false); setLinkDevice(false); }, [session]);
+  if (ready === 'legacy') return <AccountSectionBody />;
+  if (ready !== 'new') return <div><p role="status" className="text-sm text-muted">{ready === 'loading' ? ru ? 'Проверяем доступ…' : 'Checking access…' : ru ? 'Не удалось связаться с сервером.' : 'Could not reach the server.'}</p>{ready === 'error' && <Button onClick={() => setAttempt(v => v + 1)}>{ru ? 'Повторить' : 'Retry'}</Button>}</div>;
+  return <div className="settings-account-content">
+    {status === 'authenticated' ? <>
+      {pendingKey ? <SaveRecoveryKey recoveryKey={pendingKey} accountId={accountId} continueLabel={ru ? 'Готово' : 'Done'} onContinue={() => useAccount.getState().confirmRecoveryKey()} /> : <AccessFlow key={session} initial="manage" />}
+      <QuotaNotice /><PlanSection ru={ru} />
+      <div className="mt-5"><DeviceManager ru={ru} thisDeviceId={deviceId} /></div>
+      <Button className="mt-5" variant="ghost" onClick={() => setConfirmLogout(true)}>{ru ? 'Выйти на этом устройстве' : 'Sign out on this device'}</Button>
+      {confirmLogout && <div className="settings-confirm mt-3"><p className="text-sm">{ru ? 'Книги, слова и прогресс останутся здесь. Для повторного входа понадобятся логин и пароль, прежний ключ или другое подключённое устройство.' : 'Books, words and progress stay here. Sign in again with your username and password, legacy key or another linked device.'}</p><div className="mt-3 flex flex-wrap gap-2"><Button variant="ghost" onClick={() => setConfirmLogout(false)}>{ru ? 'Отмена' : 'Cancel'}</Button><Button onClick={() => void useAccount.getState().logout()}>{ru ? 'Выйти' : 'Sign out'}</Button></div></div>}
+      <DangerZone ru={ru} />
+    </> : <>
+      {sessionRejectionReason() && <p role="status" className="access-notice">{ru ? 'Нужно снова войти. Локальные книги и прогресс сохранены.' : 'Sign in again. Local books and progress are kept.'}</p>}
+      <p className="text-sm text-muted">{ru ? 'Заниматься можно без аккаунта. Войдите, чтобы подключить Pro и синхронизацию.' : 'You can learn without an account. Sign in to connect Pro and sync.'}</p>
+      <div className="mt-4 flex flex-wrap gap-3"><Link className="inline-flex min-h-12 items-center justify-center rounded-sm bg-action px-4 py-2 text-sm font-semibold text-on-action" to="/account/register">{ru ? 'Создать аккаунт' : 'Create account'}</Link><Link className="inline-flex min-h-12 items-center justify-center rounded-sm border border-line px-4 py-2 text-sm text-content" to="/account/login">{ru ? 'Войти' : 'Sign in'}</Link></div>
+      <button type="button" className="access-text-button" onClick={() => setLinkDevice(v => !v)}>{ru ? 'Уже вошли на другом устройстве?' : 'Already signed in elsewhere?'}</button>
+      {linkDevice && <DeviceLinkNew ru={ru} />}
+    </>}
+  </div>;
 }
 
 function AccountSectionBody() {
@@ -51,6 +91,7 @@ function AccountSectionBody() {
   const pendingRecoveryKey = useAccount((s) => s.pendingRecoveryKey);
   const linkWithKey = useAccount((s) => s.linkWithKey);
   const logout = useAccount((s) => s.logout);
+  const [confirmLogout, setConfirmLogout] = useState(false);
 
   const [savedKey, setSavedKey] = useState<string | null>(null);
   const savedKeyOwner = useRef<(() => boolean) | null>(null);
@@ -138,9 +179,7 @@ function AccountSectionBody() {
   };
 
   return (
-    <div className="mb-10 border-b border-line pb-8">
-      <Eyebrow className="mb-3.5">config · account</Eyebrow>
-      <h2 className="mb-2 text-2xl font-bold tracking-tight">{ru ? 'Аккаунт' : 'Account'}</h2>
+    <div className="settings-account-content">
 
       {/* Save-your-key screen: after creating an account, and again after a recovery mints a new key. */}
       {visibleKey ? (
@@ -204,13 +243,15 @@ function AccountSectionBody() {
           <div className="space-y-2">
             {accountId && <AccountIdBlock ru={ru} accountId={accountId} />}
             <QuotaNotice />
-            <SyncStatusLine ru={ru} />
           </div>
-          <Button size="sm" variant="ghost" className="mt-4" onClick={() => void logout()}>
+          <Button size="sm" variant="ghost" className="mt-4" onClick={() => setConfirmLogout(true)}>
             {ru ? 'Выйти' : 'Log out'}
           </Button>
+          {confirmLogout && <div className="settings-confirm mt-3">
+            <p className="text-sm">{ru ? 'Выйти на этом устройстве? Книги, слова и прогресс останутся здесь. Для повторного входа понадобится ключ или другое подключённое устройство.' : 'Log out on this device? Books, words and progress will stay here. You will need your key or another linked device to sign in again.'}</p>
+            <div className="mt-3 flex flex-wrap gap-2"><Button size="sm" variant="ghost" disabled={busy} onClick={() => setConfirmLogout(false)}>{ru ? 'Отмена' : 'Cancel'}</Button><Button size="sm" disabled={busy} onClick={() => { setConfirmLogout(false); void logout(); }}>{ru ? 'Подтвердить выход' : 'Confirm logout'}</Button></div>
+          </div>}
           <PlanSection ru={ru} />
-          <BookFileSyncToggle ru={ru} />
           <TotpEnroll
             key={sessionRevision}
             ru={ru}
@@ -417,7 +458,7 @@ function DangerZone({ ru }: { ru: boolean }) {
               type="button"
               disabled={busy}
               onClick={() => void onDelete()}
-              className="rounded-sm bg-coral px-3 py-1.5 font-mono text-2xs font-semibold text-ink transition-opacity hover:opacity-90 disabled:opacity-50"
+              className="rounded-sm bg-coral px-3 py-1.5 font-mono text-2xs font-semibold text-on-accent transition-opacity hover:opacity-90 disabled:opacity-50"
             >
               {busy ? (ru ? 'Удаляю…' : 'Deleting…') : ru ? 'Удалить навсегда' : 'Delete forever'}
             </button>
@@ -430,7 +471,7 @@ function DangerZone({ ru }: { ru: boolean }) {
 }
 
 /** One-line sync state: syncing / synced-N-ago / offline (with the local unsynced count) / error. */
-function SyncStatusLine({ ru }: { ru: boolean }) {
+export function SyncStatusLine({ ru }: { ru: boolean }) {
   const phase = useSyncStatus((s) => s.phase);
   const lastSyncedAt = useSyncStatus((s) => s.lastSyncedAt);
   const pending = useSyncStatus((s) => s.pending);
@@ -460,13 +501,14 @@ function SyncStatusLine({ ru }: { ru: boolean }) {
         : 'Ready to sync';
     tone = 'text-teal';
   }
-  return <p className={`font-mono text-2xs ${tone}`}>{text}</p>;
+  return <p role="status" className={`font-mono text-2xs ${tone}`}>{text}</p>;
 }
 
 /** Opt-in to upload this device's imported book files to the cloud (position/meta already sync). */
-function BookFileSyncToggle({ ru }: { ru: boolean }) {
+export function BookFileSyncToggle({ ru }: { ru: boolean }) {
   const enabled = useBookFileSync((s) => s.enabled);
   const setEnabled = useBookFileSync((s) => s.setEnabled);
+  const session = useAccount(s => s.sessionRevision);
   const [quota, setQuota] = useState<{ used: number; limit: number } | null>(null);
 
   useEffect(() => {
@@ -475,12 +517,14 @@ function BookFileSyncToggle({ ru }: { ru: boolean }) {
       return;
     }
     let cancelled = false;
+    setQuota(null);
+    const owns = captureAccountSessionOwner();
     void (async () => {
       const token = await useAccount.getState().getAccessToken();
-      if (!token) return;
+      if (!token || cancelled || !owns()) return;
       try {
         const r = await blobList(token);
-        if (!cancelled) setQuota({ used: r.usedBytes, limit: r.limitBytes });
+        if (!cancelled && owns()) setQuota({ used: r.usedBytes, limit: r.limitBytes });
       } catch {
         // best-effort — quota display is non-essential
       }
@@ -488,7 +532,7 @@ function BookFileSyncToggle({ ru }: { ru: boolean }) {
     return () => {
       cancelled = true;
     };
-  }, [enabled]);
+  }, [enabled, session]);
 
   return (
     <label className="mt-3 flex items-start gap-2 text-sm text-muted">

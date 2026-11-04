@@ -266,10 +266,12 @@ type AccountState = {
   error: string | null;
   pendingRecoveryKey: string | null;
   confirmRecoveryKey: () => void;
+  acceptAccessSession: (session: Session, creating: boolean, ownsOperation: () => boolean) => Promise<() => boolean>;
+  forgetAccessSession: (ownsOperation: () => boolean) => Promise<void>;
   /** Create a brand-new account; returns the recovery key to show on the save-your-key screen. */
   createAccount: () => Promise<string>;
   /** Link this device to an existing account by its recovery key (either shape — see keys.ts). */
-  linkWithKey: (recoveryKey: string) => Promise<void>;
+  linkWithKey: (recoveryKey: string, ownsCaller?: () => boolean) => Promise<void>;
   /** Recover an account whose key is lost, using the authenticator. Returns the NEW composite credential
    *  the user must save — it is the only copy, and the old key is dead the moment this resolves. */
   /** Drop a failure that is no longer on screen. `error` otherwise survives until the next action, so
@@ -345,6 +347,7 @@ export const useAccount = create<AccountState>((set, get) => {
     const adoptAnonymous = creating && !get().accountId && !previous?.accountId &&
       !previous?.dataOwner && !previous?.lastAccountId && !previous?.fileOwner;
     await maybeSwitchWipe(s.accountId);
+    if (ownsOperation && !ownsOperation()) throw new DOMException('Account changed', 'AbortError');
     applySession(s, false, adoptAnonymous);
     return captureAccountSessionOwner();
   });
@@ -394,6 +397,8 @@ export const useAccount = create<AccountState>((set, get) => {
     error: null,
     pendingRecoveryKey: persisted?.accountId ? readRegistrationDraft(registrationOwner())?.key ?? null : null,
     confirmRecoveryKey: () => { writeRegistrationDraft(null); set({ pendingRecoveryKey: null }); },
+    acceptAccessSession: (session, creating, ownsOperation) => adoptSession(session, creating, ownsOperation),
+    forgetAccessSession: ownsOperation => withSessionOwnership(() => { if (ownsOperation()) clearSession(); }),
 
     createAccount: () => {
       if (creationInFlight) return creationInFlight;
@@ -430,9 +435,10 @@ export const useAccount = create<AccountState>((set, get) => {
       return creationInFlight;
     },
 
-    linkWithKey: async (recoveryKey) => {
+    linkWithKey: async (recoveryKey, ownsCaller) => {
       if (!accountsEnabled()) throw new Error('accounts disabled');
-      const ownsOperation = captureLogicalSessionOwner();
+      const ownsSession = captureLogicalSessionOwner();
+      const ownsOperation = () => ownsSession() && (ownsCaller?.() ?? true);
       set({ busy: true, error: null });
       try {
         const creds = await deriveCredentials(recoveryKey.trim());

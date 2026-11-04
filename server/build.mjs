@@ -44,7 +44,7 @@ console.log(`bundle: ${(result.metafile.outputs['dist/bundle.mjs'].bytes / 1024 
 if (process.argv.includes('--with-smoke')) {
   await build({
     ...common,
-    entryPoints: ['src/smoke.ts', 'src/entitlementApi.smoke.ts', 'src/aiApi.smoke.ts'],
+    entryPoints: ['src/smoke.ts', 'src/entitlementApi.smoke.ts', 'src/aiApi.smoke.ts', 'src/accountAccess.smoke.ts'],
     outdir: 'dist/bundled-smoke',
     outExtension: { '.js': '.mjs' },
   });

@@ -4,8 +4,8 @@ import { useUiLang } from '@/features/i18n/uiLang';
 import { recoveryFileBody } from './recoveryFile';
 import { captureAccountSessionOwner, useAccount } from './store';
 
-export function SaveRecoveryKey({ recoveryKey, accountId, onContinue }: {
-  recoveryKey: string; accountId: string | null; onContinue: () => void;
+export function SaveRecoveryKey({ recoveryKey, accountId, onContinue, continueLabel }: {
+  recoveryKey: string; accountId: string | null; onContinue: () => void; continueLabel?: string;
 }) {
   const ru = useUiLang(s => s.lang) === 'ru';
   const [saved, setSaved] = useState(false);
@@ -44,6 +44,6 @@ export function SaveRecoveryKey({ recoveryKey, accountId, onContinue }: {
       <input className="mt-1.5 h-5 w-5 shrink-0 accent-teal" type="checkbox" checked={saved} onChange={e => setSaved(e.target.checked)} />
       {ru ? 'Я сохранил(а) ключ в надёжном месте' : 'I have saved the key somewhere safe'}
     </label>
-    <Button className="min-h-12 w-full" disabled={!saved} onClick={() => { if (current()) onContinue(); }}>{ru ? 'К пробному периоду' : 'Continue to trial'}</Button>
+    <Button className="min-h-12 w-full" disabled={!saved} onClick={() => { if (current()) onContinue(); }}>{continueLabel ?? (ru ? 'К пробному периоду' : 'Continue to trial')}</Button>
   </div>;
 }

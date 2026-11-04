@@ -22,6 +22,7 @@ vi.mock('./api', async (orig) => ({ ...(await orig<typeof AccountApi>()), billin
 vi.mock('./config', () => ({ API_BASE: 'https://api.test', accountsEnabled: () => true }));
 
 const { useEntitlement } = await import('./entitlement');
+const { useAccount } = await import('./store');
 const { PlanSection } = await import('./PlanSection');
 
 const OCT = new Date('2026-10-22T09:00:00Z').getTime();
@@ -33,6 +34,7 @@ const CLAIM = /i already paid/i;
 beforeEach(() => {
   vi.spyOn(Date, 'now').mockReturnValue(new Date('2026-10-01T09:00:00Z').getTime());
   localStorage.clear();
+  useAccount.setState({ status: 'authenticated', accountId: 'fixture-claim-account' });
   claimPurchase.mockReset();
   billingPlans.mockReset().mockResolvedValue({ available: true, plans: [{ code: 'pro_month', days: 30, title: 'Pro 30 days', priceKopecks: 19900 }] });
   useEntitlement.setState({ entitlement: pro(OCT) });

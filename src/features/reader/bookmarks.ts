@@ -2,8 +2,17 @@ import { db, type Bookmark } from '@/db/db';
 import { toSentences } from './parse/text';
 import { countWords, splitParas } from './position';
 import type { BookmarkSort } from './settings';
-import { addBookmark as addBookmarkSynced, softDeleteBookmark, isSyncing } from '@/features/sync/local';
+import {
+  addBookmark as addBookmarkSynced,
+  toggleBookmark as toggleBookmarkSynced,
+  softDeleteBookmark,
+  isSyncing,
+} from '@/features/sync/local';
 import { isDeleted } from '@/features/sync/resolve';
+import {
+  captureDataScope,
+  requireDataScope,
+} from '@/features/account/dataScope';
 
 export type { Bookmark };
 export type NewBookmark = Omit<Bookmark, 'id' | 'createdAt'>;
@@ -55,8 +64,11 @@ export function resolveParagraphIndex(
   const clamp = (n: number) => Math.max(0, Math.min(n, paragraphs.length - 1));
   const key = snippet.replace(/…$/, '').slice(0, 24);
   if (key) {
-    if (paragraphs[paragraph]?.replace(/\s+/g, ' ').trimStart().startsWith(key)) return clamp(paragraph);
-    const i = paragraphs.findIndex((p) => p.replace(/\s+/g, ' ').trimStart().startsWith(key));
+    if (paragraphs[paragraph]?.replace(/\s+/g, ' ').trimStart().startsWith(key))
+      return clamp(paragraph);
+    const i = paragraphs.findIndex((p) =>
+      p.replace(/\s+/g, ' ').trimStart().startsWith(key)
+    );
     if (i >= 0) return i;
   }
   return clamp(paragraph);
@@ -74,8 +86,11 @@ export function resolveSentenceIndex(
   const clamp = (n: number) => Math.max(0, Math.min(n, sentences.length - 1));
   const key = snippet.replace(/…$/, '').slice(0, 24);
   if (key) {
-    if (sentences[sentence]?.replace(/\s+/g, ' ').trim().startsWith(key)) return clamp(sentence);
-    const i = sentences.findIndex((s) => s.replace(/\s+/g, ' ').trim().startsWith(key));
+    if (sentences[sentence]?.replace(/\s+/g, ' ').trim().startsWith(key))
+      return clamp(sentence);
+    const i = sentences.findIndex((s) =>
+      s.replace(/\s+/g, ' ').trim().startsWith(key)
+    );
     if (i >= 0) return i;
   }
   return clamp(sentence);
@@ -83,32 +98,50 @@ export function resolveSentenceIndex(
 
 /** Where a bookmark points in the current pagination (self-healing via pageId + snippet), plus how
  *  many words into its paragraph the bookmarked sentence starts. */
-export function locateBookmark(pages: { id: string; text: string }[], bm: Bookmark) {
+export function locateBookmark(
+  pages: { id: string; text: string }[],
+  bm: Bookmark
+) {
   const page = resolvePageIndex(pages, bm.pageId, bm.page);
   const paras = splitParas(pages[page]?.text ?? '');
   const paragraph = resolveParagraphIndex(paras, bm.paragraph, bm.snippet);
   const sentences = toSentences(paras[paragraph] ?? '');
   const sentence = resolveSentenceIndex(sentences, bm.sentence, bm.snippet);
-  const wordsIn = sentence ? countWords(sentences.slice(0, sentence).join(' ')) : 0;
+  const wordsIn = sentence
+    ? countWords(sentences.slice(0, sentence).join(' '))
+    : 0;
   return { page, paragraph, sentence, wordsIn };
 }
 
-export function sortBookmarks(list: Bookmark[], mode: BookmarkSort): Bookmark[] {
+export function sortBookmarks(
+  list: Bookmark[],
+  mode: BookmarkSort
+): Bookmark[] {
   const out = [...list];
   return mode === 'recent'
     ? out.sort((a, b) => b.createdAt - a.createdAt)
     : out.sort(
-        (a, b) => a.page - b.page || a.paragraph - b.paragraph || (a.sentence ?? -1) - (b.sentence ?? -1)
+        (a, b) =>
+          a.page - b.page ||
+          a.paragraph - b.paragraph ||
+          (a.sentence ?? -1) - (b.sentence ?? -1)
       );
 }
 
 const dayStart = (t: number) => new Date(t).setHours(0, 0, 0, 0);
 
 /** «сегодня 14:32» / «вчера 14:32» / «12 сент., 14:32» (year added when it differs). */
-export function formatBookmarkTime(ts: number, ru: boolean, now = Date.now()): string {
+export function formatBookmarkTime(
+  ts: number,
+  ru: boolean,
+  now = Date.now()
+): string {
   const locale = ru ? 'ru-RU' : 'en-GB';
   const d = new Date(ts);
-  const time = d.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
+  const time = d.toLocaleTimeString(locale, {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
   // Rounded, not floored: a DST day is 23 or 25 hours long.
   const days = Math.round((dayStart(now) - dayStart(ts)) / 86_400_000);
   if (days === 0) return `${ru ? 'сегодня' : 'today'} ${time}`;
@@ -122,15 +155,22 @@ export function formatBookmarkTime(ts: number, ru: boolean, now = Date.now()): s
   return `${date}, ${time}`;
 }
 
-export async function listBookmarks(bookKey: string): Promise<Bookmark[]> {
+export async function listBookmarks(
+  bookKey: string,
+  options: { strict?: boolean } = {}
+): Promise<Bookmark[]> {
   try {
     const rows = await db.bookmarks.where('bookKey').equals(bookKey).toArray();
     return rows
       .filter((b) => !isDeleted(b))
       .sort(
-        (a, b) => a.page - b.page || a.paragraph - b.paragraph || (a.sentence ?? -1) - (b.sentence ?? -1)
+        (a, b) =>
+          a.page - b.page ||
+          a.paragraph - b.paragraph ||
+          (a.sentence ?? -1) - (b.sentence ?? -1)
       );
-  } catch {
+  } catch (error) {
+    if (options.strict) throw error;
     return [];
   }
 }
@@ -148,31 +188,45 @@ export async function findBookmark(
     .where('[bookKey+page+paragraph]')
     .equals([bookKey, page, paragraph])
     .toArray();
-  return rows.find((b) => !isDeleted(b) && (b.sentence ?? null) === (sentence ?? null));
+  return rows.find(
+    (b) => !isDeleted(b) && (b.sentence ?? null) === (sentence ?? null)
+  );
 }
 
 /** Add unless an identical (bookKey, page, paragraph, sentence) bookmark already exists (dedupe). */
-export async function addBookmark(input: NewBookmark): Promise<Bookmark> {
-  const existing = await findBookmark(input.bookKey, input.page, input.paragraph, input.sentence);
-  if (existing) return existing;
-  const bookmark: Bookmark = { ...input, id: crypto.randomUUID(), createdAt: Date.now() };
-  await addBookmarkSynced(bookmark);
-  return bookmark;
+export async function addBookmark(
+  input: NewBookmark,
+  current = captureDataScope()
+): Promise<Bookmark> {
+  const bookmark: Bookmark = {
+    ...input,
+    id: crypto.randomUUID(),
+    createdAt: Date.now(),
+  };
+  return addBookmarkSynced(bookmark, current);
 }
 
-export async function removeBookmark(id: string): Promise<void> {
+export async function removeBookmark(
+  id: string,
+  current = captureDataScope()
+): Promise<void> {
   // Tombstone when signed in (so the delete propagates), else hard-delete (anonymous → no garbage rows).
-  if (isSyncing()) await softDeleteBookmark(id);
-  else await db.bookmarks.delete(id);
+  if (isSyncing()) await softDeleteBookmark(id, current);
+  else
+    await db.transaction('rw', db.bookmarks, async () => {
+      requireDataScope(current);
+      await db.bookmarks.delete(id);
+      requireDataScope(current);
+    });
 }
 
 /** Add the bookmark, or remove the existing one at the same spot. Returns whether it was added. */
-export async function toggleBookmark(input: NewBookmark): Promise<{ added: boolean }> {
-  const existing = await findBookmark(input.bookKey, input.page, input.paragraph, input.sentence);
-  if (existing) {
-    await removeBookmark(existing.id);
-    return { added: false };
-  }
-  await addBookmark(input);
-  return { added: true };
+export async function toggleBookmark(
+  input: NewBookmark,
+  current = captureDataScope()
+): Promise<{ added: boolean }> {
+  return toggleBookmarkSynced(
+    { ...input, id: crypto.randomUUID(), createdAt: Date.now() },
+    current
+  );
 }

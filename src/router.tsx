@@ -7,6 +7,7 @@ import { DashboardPage } from '@/pages/DashboardPage';
 // Everything past the dashboard is lazy so the first paint doesn't parse the reader, grammar,
 // settings, vocabulary, etc. Named exports are mapped to the default a lazy chunk expects.
 const PlacementPage = lazyPage(() => import('@/pages/PlacementPage').then((m) => ({ default: m.PlacementPage })));
+const CourseOverviewPage = lazyPage(() => import('@/pages/CourseOverviewPage').then((m) => ({ default: m.CourseOverviewPage })));
 const DayPage = lazyPage(() => import('@/pages/DayPage').then((m) => ({ default: m.DayPage })));
 const GrammarIndexPage = lazyPage(() => import('@/pages/GrammarReferencePage').then((m) => ({ default: m.GrammarIndexPage })));
 const GrammarArticlePage = lazyPage(() => import('@/pages/GrammarReferencePage').then((m) => ({ default: m.GrammarArticlePage })));
@@ -16,6 +17,7 @@ const ProgressPage = lazyPage(() => import('@/pages/ProgressPage').then((m) => (
 const VocabularyPage = lazyPage(() => import('@/pages/VocabularyPage').then((m) => ({ default: m.VocabularyPage })));
 const TextWorkbenchPage = lazyPage(() => import('@/pages/TextWorkbenchPage').then((m) => ({ default: m.TextWorkbenchPage })));
 const SettingsPage = lazyPage(() => import('@/pages/SettingsPage').then((m) => ({ default: m.SettingsPage })));
+const AccountAccessPage = lazyPage(() => import('@/pages/AccountAccessPage').then((m) => ({ default: m.AccountAccessPage })));
 const SupportPage = lazyPage(() => import('@/pages/SupportPage').then((m) => ({ default: m.SupportPage })));
 const CreditsPage = lazyPage(() => import('@/pages/CreditsPage').then((m) => ({ default: m.CreditsPage })));
 const FeedbackPage = lazyPage(() => import('@/pages/FeedbackPage').then((m) => ({ default: m.FeedbackPage })));
@@ -33,20 +35,26 @@ const KitchenSinkPage = lazyPage(() => import('@/pages/KitchenSinkPage').then((m
 
 const routes: RouteObject[] = [
   { path: '/', element: <DashboardPage /> },
+  { path: '/syllabus', element: <CourseOverviewPage /> },
   { path: '/about', element: <AboutPage /> },
   { path: '/placement', element: <PlacementPage /> },
   { path: '/course/:unitId/day/:dayId', element: <DayPage /> },
   { path: '/grammar', element: <GrammarIndexPage /> },
   { path: '/grammar/:articleId', element: <GrammarArticlePage /> },
   { path: '/review', element: <ReviewPage /> },
+  { path: '/review/session', element: <ReviewPage /> },
+  { path: '/review/summary', element: <ReviewPage /> },
   { path: '/checkpoint/:unitId', element: <CheckpointPage /> },
   { path: '/progress', element: <ProgressPage /> },
   { path: '/vocabulary', element: <VocabularyPage /> },
+  { path: '/vocabulary/entry/:entryId', element: <VocabularyPage /> },
   { path: '/vocabulary/text', element: <TextWorkbenchPage /> },
+  { path: '/account/:mode?', element: <AccountAccessPage /> },
   { path: '/library', element: <LibraryPage /> },
+  { path: '/library/catalog', element: <LibraryPage /> },
   { path: '/library/catalog/:catalogId', element: <CatalogReaderPage /> },
   { path: '/library/:bookId', element: <BookReaderPage /> },
-  { path: '/settings', element: <SettingsPage /> },
+  { path: '/settings/:section?', element: <SettingsPage /> },
   { path: '/support', element: <SupportPage /> },
   { path: '/credits', element: <CreditsPage /> },
   { path: '/feedback', element: <FeedbackPage /> },

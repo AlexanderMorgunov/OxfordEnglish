@@ -35,6 +35,21 @@ beforeEach(() => {
 });
 
 describe('beginCheckout', () => {
+  it('preserves an unreadable order journal without issuing another invoice', async () => {
+    localStorage.setItem('dayenglish.billing.pending', '{unreadable');
+    await expect(beginCheckout('pro_year', 99000)).rejects.toMatchObject({ code: 'billing_journal_unavailable' });
+    expect(api.startCheckout).not.toHaveBeenCalled();
+    expect(localStorage.getItem('dayenglish.billing.pending')).toBe('{unreadable');
+  });
+  it('checks the displayed amount and refuses external checkout when the journal cannot be saved', async () => {
+    vi.mocked(api.startCheckout).mockResolvedValue(CHECKOUT);
+    const storage = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('storage unavailable'); });
+    try {
+      await expect(beginCheckout('pro_month', 19900)).rejects.toMatchObject({ code: 'billing_storage_unavailable' });
+      expect(api.startCheckout).toHaveBeenCalledWith('tok', 'pro_month', 19900);
+    } finally { storage.mockRestore(); }
+    expect(readPending()).toBeNull();
+  });
   it('does not store a late checkout response after an account change', async () => {
     let finish: (value: typeof CHECKOUT) => void = () => undefined;
     vi.mocked(api.startCheckout).mockImplementation(() => new Promise(resolve => { finish = resolve; }));
@@ -68,6 +83,21 @@ describe('beginCheckout', () => {
 });
 
 describe('claimPending', () => {
+  it('does not clear a replacement account order when an old redemption finishes late', async () => {
+    vi.mocked(api.startCheckout).mockResolvedValue(CHECKOUT);
+    await beginCheckout('pro_month');
+    let finish!: () => void;
+    vi.mocked(api.redeemGrant).mockImplementation(() => new Promise(resolve => { finish = () => resolve({ plan: 'pro', active: true, ai: { used: 0, limit: 10000 } }); }));
+    const request = claimPending(1, 0);
+    await vi.waitFor(() => expect(api.redeemGrant).toHaveBeenCalledOnce());
+    useAccount.setState({ accountId: 'replacement-sale-account' });
+    localStorage.setItem('oxford-account', JSON.stringify({ accountId: 'replacement-sale-account', deviceId: 'fixture-device', refreshToken: 'fixture-refresh' }));
+    localStorage.setItem('dayenglish.billing.pending', JSON.stringify({ accountId: 'replacement-sale-account', grantToken: 'replacement-grant', invoiceId: '2', plan: 'pro_year', startedAt: Date.now(), paidUntilAtStart: null }));
+    finish();
+    expect(await request).toBe('unreachable');
+    expect(readPending()?.grantToken).toBe('replacement-grant');
+    expect(api.getEntitlement).not.toHaveBeenCalled();
+  });
   it('does nothing at all when no payment is in flight', async () => {
     expect(await claimPending()).toBe('none');
     expect(api.redeemGrant).not.toHaveBeenCalled();

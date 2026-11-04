@@ -1,151 +1,318 @@
-import { useEffect, useMemo, useState } from 'react';
-import { cn } from '@/shared/lib/cn';
+import { useCallback, useId } from 'react';
+import { Link } from 'react-router-dom';
+import type { CSSProperties } from 'react';
 import { useUiLang } from '@/features/i18n/uiLang';
-import type { ActivityDay, ReviewLogEntry } from '@/db/db';
+import { PixelImage } from '@/shared/ui';
+import { ProgressStatus } from '@/features/progress/ProgressStatus';
+import { useProgressResource } from '@/features/progress/useProgressResource';
+import { useProgressView } from '@/features/progress/view';
+import {
+  displayDate,
+  duration,
+  percentage,
+} from '@/features/progress/presentation';
+import { validDay } from '@/features/progress/validation';
 import { periodRange, summarize, type Period } from './accounting';
 import { loadActivity, statsSince } from './activity';
 
 const PERIODS: { id: Period; ru: string; en: string }[] = [
-  { id: 'day', ru: 'день', en: 'day' },
-  { id: 'week', ru: 'неделя', en: 'week' },
-  { id: 'month', ru: 'месяц', en: 'month' },
-  { id: 'year', ru: 'год', en: 'year' },
+  { id: 'day', ru: 'Сегодня', en: 'Today' },
+  { id: 'week', ru: '7 дней', en: '7 days' },
+  { id: 'month', ru: '30 дней', en: '30 days' },
+  { id: 'year', ru: '12 месяцев', en: '12 months' },
 ];
 
-function duration(sec: number, ru: boolean): string {
-  const min = Math.round(sec / 60);
-  const h = Math.floor(min / 60);
-  const m = min % 60;
-  if (!h) return ru ? `${m} мин` : `${m}m`;
-  return ru ? `${h} ч ${m} мин` : `${h}h ${m}m`;
-}
-
-function Tile({ label, value, note }: { label: string; value: string | number; note?: string }) {
-  return (
-    <div className="rounded-md border border-line bg-surface px-3 py-2.5">
-      <p className="font-mono text-xl tabular-nums text-content">{value}</p>
-      <p className="font-mono text-2xs uppercase tracking-[0.08em] text-muted">{label}</p>
-      {note && <p className="mt-0.5 font-mono text-2xs text-teal">{note}</p>}
-    </div>
-  );
-}
-
-/** «Чтение и слова»: active reading time, words read/saved, reviews and words marked known, per period. */
-export function ReadingStats() {
+export function ReadingStats({ now = Date.now() }: { now?: number }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
-  const [period, setPeriod] = useState<Period>('week');
-  const [data, setData] = useState<{ rows: ActivityDay[]; reviews: ReviewLogEntry[] } | null>(null);
-  const [since, setSince] = useState<string | null>(null);
-
-  useEffect(() => {
-    let alive = true;
-    void loadActivity(periodRange('year', Date.now()).from).then(async (d) => {
-      const first = await statsSince();
-      if (!alive) return;
-      setData(d);
-      setSince(first);
-    });
-    return () => {
-      alive = false;
-    };
-  }, []);
-
-  const s = useMemo(() => (data ? summarize(data.rows, data.reviews, period, Date.now()) : null), [data, period]);
-  const locale = ru ? 'ru-RU' : 'en-US';
-  const maxBar = s ? Math.max(1, ...s.bars.map((b) => b.sec)) : 1;
-  const barLabel = (key: string) =>
-    period === 'year'
-      ? new Date(`${key}-01T00:00:00`).toLocaleDateString(locale, { month: 'short' })
-      : new Date(`${key}T00:00:00`).toLocaleDateString(locale, { day: 'numeric', month: 'short' });
-  const empty = !s || (s.readSec === 0 && s.readWords === 0 && s.wordsSaved === 0 && s.phrasesSaved === 0 && s.reviews === 0 && s.learned === 0);
-
+  const view = useProgressView();
+  const from = periodRange('year', now).from;
+  const load = useCallback(async () => {
+    const [data, since] = await Promise.all([
+      loadActivity(from, { strict: true }),
+      statsSince({ strict: true }),
+    ]);
+    return { ...data, since };
+  }, [from]);
+  const resource = useProgressResource(load);
+  const s = resource.data
+    ? summarize(resource.data.rows, resource.data.reviews, view.period, now)
+    : null;
+  const range = periodRange(view.period, now);
+  const empty =
+    s &&
+    ![
+      s.readSec,
+      s.readWords,
+      s.wordsSaved,
+      s.phrasesSaved,
+      s.reviews,
+      s.learned,
+    ].some(Boolean);
+  const first = resource.data?.since;
+  const number = (n: number) => n.toLocaleString(ru ? 'ru-RU' : 'en-US');
+  const selected = s?.bars.find((b) => b.key === view.bar);
+  const max = Math.max(1, ...(s?.bars.map((b) => b.sec) ?? []));
+  const pickerId = useId();
   return (
-    <div className="mb-8">
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <p className="font-mono text-2xs uppercase tracking-[0.14em] text-muted">
-          {ru ? 'чтение и слова' : 'reading & words'}
-        </p>
-        <div role="group" aria-label={ru ? 'Период' : 'Period'} className="flex flex-wrap gap-1">
+    <section className="pr-reading" aria-labelledby="pr-reading-title">
+      <div className="pr-section-head">
+        <div>
+          <h2 id="pr-reading-title">
+            {ru ? 'Чтение и слова' : 'Reading and words'}
+          </h2>
+          <p>
+            {ru
+              ? 'Счётчики за период · местные даты'
+              : 'Period totals · local dates'}
+          </p>
+        </div>
+        <div
+          className="pr-period"
+          role="group"
+          aria-label={ru ? 'Период чтения' : 'Reading period'}
+        >
           {PERIODS.map((p) => (
             <button
-              key={p.id}
               type="button"
-              aria-pressed={period === p.id}
-              onClick={() => setPeriod(p.id)}
-              className={cn(
-                'rounded-sm px-2 py-1 font-mono text-2xs hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal',
-                period === p.id ? 'bg-surface-2 text-teal' : 'text-muted'
-              )}
+              key={p.id}
+              aria-pressed={p.id === view.period}
+              onClick={() => view.update({ period: p.id, bar: '' })}
             >
               {ru ? p.ru : p.en}
             </button>
           ))}
         </div>
       </div>
-
-      {s && (
-        <div className="mb-4 grid grid-cols-[repeat(auto-fit,minmax(min(100%,calc(9rem*var(--app-text-scale,1))),1fr))] gap-2 sm:grid-cols-3">
-          <Tile label={ru ? 'время чтения' : 'reading time'} value={duration(s.readSec, ru)} />
-          <Tile label={ru ? 'прочитано слов' : 'words read'} value={s.readWords} />
-          <Tile label={ru ? 'добавлено слов' : 'words saved'} value={s.wordsSaved} />
-          <Tile label={ru ? 'добавлено фраз' : 'phrases saved'} value={s.phrasesSaved} />
-          <Tile
-            label={ru ? 'повторений' : 'reviews'}
-            value={s.reviews}
-            note={s.reviews ? `${ru ? 'помню' : 'recalled'} ${Math.round((s.recalled / s.reviews) * 100)}%` : undefined}
+      <p className="pr-date-range">
+        {displayDate(range.from, ru, true)} — {displayDate(range.to, ru, true)}
+      </p>
+      {resource.status !== 'ready' ? (
+        <ProgressStatus
+          resource={resource}
+          label={ru ? 'чтение и слова' : 'reading and words'}
+          ru={ru}
+        />
+      ) : empty ? (
+        <div className="pr-empty-period">
+          <PixelImage
+            src="/assets/pixel/nav/library.png"
+            alt=""
+            className="mx-auto mb-5 h-12 w-12"
           />
-          <Tile label={ru ? 'отмечено «знаю»' : 'marked known'} value={s.learned} />
-        </div>
-      )}
-
-      {s && period !== 'day' && s.readSec > 0 && (
-        <div className="mb-4">
-          <div
-            role="img"
-            aria-label={ru ? 'Минуты чтения по периодам' : 'Reading minutes over the period'}
-            className="flex h-20 items-end gap-0.5"
-          >
-            {s.bars.map((b) => (
-              <div
-                key={b.key}
-                title={`${barLabel(b.key)}: ${duration(b.sec, ru)}`}
-                className={cn('min-h-px flex-1 rounded-t-sm', b.sec ? 'bg-teal' : 'bg-surface-2')}
-                style={{ height: `${Math.max(4, (b.sec / maxBar) * 100)}%` }}
-              />
-            ))}
+          <h3>
+            {first
+              ? ru
+                ? 'В этом периоде пока пусто'
+                : 'Nothing in this period yet'
+              : ru
+                ? 'Ваша история начинается здесь'
+                : 'Your story starts here'}
+          </h3>
+          <p>
+            {first && validDay(first)
+              ? ru
+                ? `Статистика собирается с ${displayDate(first, ru, true)}. Выберите другой период или вернитесь к чтению.`
+                : `Stats are collected since ${displayDate(first, ru, true)}. Try another period or read a book.`
+              : ru
+                ? 'Почитайте книгу или повторите слова — здесь появятся первые результаты.'
+                : 'Read a book or review words to see your first results here.'}
+          </p>
+          <div className="pr-actions">
+            {first && view.period !== 'year' && (
+              <button
+                type="button"
+                className="pr-button"
+                onClick={() => view.update({ period: 'year', bar: '' })}
+              >
+                {ru ? 'Посмотреть 12 месяцев' : 'View 12 months'}
+              </button>
+            )}
+            <Link to="/library" className="pr-button">
+              {ru ? 'Открыть библиотеку' : 'Open library'}
+            </Link>
           </div>
-          <div className="mt-1 flex justify-between font-mono text-2xs text-muted">
-            <span>{barLabel(s.bars[0]!.key)}</span>
-            <span>{barLabel(s.bars.at(-1)!.key)}</span>
-          </div>
         </div>
+      ) : (
+        s && (
+          <>
+            <div className="pr-reading-layout">
+              <div className="pr-chart-side">
+                <p className="pr-big-number" data-reading-total>
+                  {duration(s.readSec, ru)}
+                </p>
+                <p className="pr-small">
+                  {ru ? 'Активное время чтения' : 'Active reading time'}
+                </p>
+                <div
+                  className="pr-chart"
+                  role="group"
+                  aria-label={
+                    ru ? 'Время чтения по датам' : 'Reading time by date'
+                  }
+                >
+                  {s.bars.map((b) => (
+                    <button
+                      type="button"
+                      key={b.key}
+                      className="pr-bar"
+                      data-bar-key={b.key}
+                      data-seconds={b.sec}
+                      aria-label={`${displayDate(b.key, ru, true)}: ${duration(b.sec, ru)}`}
+                      aria-pressed={view.bar === b.key}
+                      onClick={() => view.update({ bar: b.key })}
+                      style={
+                        {
+                          '--bar-height': `${(b.sec / max) * 100}%`,
+                        } as CSSProperties
+                      }
+                    >
+                      <span className="pr-bar-line" aria-hidden="true" />
+                      <span className="pr-bar-label" aria-hidden="true">
+                        {s.bars.length <= 7
+                          ? b.key.slice(-2)
+                          : view.period === 'year'
+                            ? displayDate(b.key, ru)
+                            : ''}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+                <label className="pr-date-picker" htmlFor={pickerId}>
+                  {view.period === 'year'
+                    ? ru
+                      ? 'Посмотреть месяц'
+                      : 'View month'
+                    : ru
+                      ? 'Посмотреть день'
+                      : 'View day'}
+                  <select
+                    id={pickerId}
+                    value={selected?.key ?? ''}
+                    onChange={(e) => view.update({ bar: e.target.value })}
+                  >
+                    <option value="" disabled>
+                      {ru ? 'Выберите дату' : 'Choose a date'}
+                    </option>
+                    {s.bars.map((b) => (
+                      <option key={b.key} value={b.key}>
+                        {displayDate(b.key, ru, true)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <p className="pr-bar-detail" role="status">
+                  {selected
+                    ? `${displayDate(selected.key, ru, true)}: ${duration(selected.sec, ru)}`
+                    : ru
+                      ? 'Нажмите на столбец или выберите дату, чтобы посмотреть значение.'
+                      : 'Select a bar or date to see the value.'}
+                </p>
+                <details className="pr-table-disclosure">
+                  <summary>
+                    {ru ? 'Все значения в таблице' : 'All values in a table'}
+                  </summary>
+                  <div className="pr-table-wrap">
+                    <table>
+                      <caption>
+                        {ru ? 'Активное чтение' : 'Active reading'}:{' '}
+                        {displayDate(range.from, ru)} —{' '}
+                        {displayDate(range.to, ru)}
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th scope="col">{ru ? 'Дата' : 'Date'}</th>
+                          <th scope="col">{ru ? 'Время' : 'Time'}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {s.bars.map((b) => (
+                          <tr key={b.key}>
+                            <th scope="row">{displayDate(b.key, ru, true)}</th>
+                            <td>{duration(b.sec, ru)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </details>
+              </div>
+              <dl className="pr-reading-numbers">
+                {[
+                  [ru ? 'Слов прочитано' : 'Words read', s.readWords],
+                  [ru ? 'Добавлено слов' : 'Words saved', s.wordsSaved],
+                  [ru ? 'Добавлено фраз' : 'Phrases saved', s.phrasesSaved],
+                ].map(([label, n]) => (
+                  <div key={label}>
+                    <dt>{label}</dt>
+                    <dd>{number(Number(n))}</dd>
+                  </div>
+                ))}
+                <div>
+                  <dt>{ru ? 'Повторений карточек' : 'Card reviews'}</dt>
+                  <dd>
+                    {number(s.reviews)}
+                    <span>
+                      {s.reviews
+                        ? ru
+                          ? `Ответ «помню»: ${percentage(s.recalled, s.reviews)} · ${number(s.recalled)} из ${number(s.reviews)}`
+                          : `Recalled: ${percentage(s.recalled, s.reviews)} · ${number(s.recalled)} of ${number(s.reviews)}`
+                        : ru
+                          ? 'Ещё нет ответов'
+                          : 'No answers yet'}
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt>{ru ? 'Отмечено «знаю»' : 'Marked known'}</dt>
+                  <dd>{number(s.learned)}</dd>
+                </div>
+              </dl>
+            </div>
+            {!!s.books.length && (
+              <div className="pr-books">
+                <h3>{ru ? 'Что вы читали' : 'What you read'}</h3>
+                {s.books.map((book) => (
+                  <div className="pr-book-row" key={book.key}>
+                    <PixelImage
+                      src="/assets/pixel/nav/library.png"
+                      alt=""
+                      className="h-8 w-8 shrink-0"
+                    />
+                    <div className="pr-book-name">
+                      <strong>{book.title}</strong>
+                      <span>
+                        {ru
+                          ? `${number(book.words)} слов прочитано · ${number(book.saved)} добавлений`
+                          : `${number(book.words)} words read · ${number(book.saved)} saves`}
+                      </span>
+                    </div>
+                    <span className="pr-book-time">
+                      {duration(book.sec, ru)}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+            <details className="pr-method">
+              <summary>
+                {ru
+                  ? 'Что входит в эти числа?'
+                  : 'What do these numbers include?'}
+              </summary>
+              <p>
+                {ru
+                  ? 'Чтение учитывается, пока читалка видна и активна: недавнее взаимодействие или озвучка. Количество прочитанных слов — оценка по показанным абзацам; понимание текста не измеряется.'
+                  : 'Reading time counts while the reader is visible and active, with recent interaction or read-aloud. Words read are estimated from displayed paragraphs; comprehension is not measured.'}
+              </p>
+              <p>
+                {ru
+                  ? 'Добавления для книги включают слова и фразы. Повторения — ответы на карточки: одно слово может встретиться несколько раз. «Помню» означает Good или Easy. «Отмечено знаю» — число таких действий за период, а не проверка долговременной памяти.'
+                  : 'Book saves include words and phrases. Reviews count card answers; one word may appear several times. Recalled means Good or Easy. Marked known counts those actions during the period, not a test of long-term memory.'}
+              </p>
+            </details>
+          </>
+        )
       )}
-
-      {s && s.books.length > 0 && (
-        <ul className="flex flex-col gap-1.5" aria-label={ru ? 'Книги за период' : 'Books this period'}>
-          {s.books.map((b) => (
-            <li key={b.key} className="flex flex-wrap items-baseline justify-between gap-x-3 text-sm">
-              <span className="min-w-0 truncate text-content">{b.title}</span>
-              <span className="font-mono text-2xs tabular-nums text-muted">
-                {duration(b.sec, ru)} · {b.words} {ru ? 'сл.' : 'words'}
-                {b.saved > 0 && ` · +${b.saved}`}
-              </span>
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {empty && (
-        <p className="text-sm text-pretty text-muted">
-          {since
-            ? ru
-              ? `За этот период пусто. Статистика собирается с ${new Date(`${since}T00:00:00`).toLocaleDateString(locale, { day: 'numeric', month: 'long' })}.`
-              : `Nothing in this period. Stats are collected since ${new Date(`${since}T00:00:00`).toLocaleDateString(locale, { day: 'numeric', month: 'long' })}.`
-            : ru
-              ? 'Статистика появится, когда вы почитаете книгу или повторите слова.'
-              : 'Stats appear once you read a book or review words.'}
-        </p>
-      )}
-    </div>
+    </section>
   );
 }

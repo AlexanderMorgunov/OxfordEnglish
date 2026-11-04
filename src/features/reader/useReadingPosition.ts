@@ -1,10 +1,27 @@
 import { useLayoutEffect, useRef } from 'react';
 import type { RefObject } from 'react';
-import { captureDataScope, subscribeDataScope } from '@/features/account/dataScope';
-import { captureReadingPosition, readReadingPosition, restoreReadingPosition } from './reading-position';
+import {
+  captureDataScope,
+  subscribeDataScope,
+} from '@/features/account/dataScope';
+import {
+  captureReadingPosition,
+  readReadingPosition,
+  restoreReadingPosition,
+} from './reading-position';
 import type { ReadingPosition } from './reading-position';
+import { NAVIGATION_INSETS_EVENT } from '@/shared/lib/navigation-insets';
+import {
+  readingSuspended,
+  subscribeReadingSuspension,
+} from '@/shared/lib/reading-suspension';
 
-export function useReadingPosition({ rootRef, jumpingRef, storageKey, pageId }: {
+export function useReadingPosition({
+  rootRef,
+  jumpingRef,
+  storageKey,
+  pageId,
+}: {
   rootRef: RefObject<HTMLElement | null>;
   jumpingRef: RefObject<boolean>;
   storageKey: string;
@@ -12,7 +29,8 @@ export function useReadingPosition({ rootRef, jumpingRef, storageKey, pageId }: 
 }) {
   const cancelRestoreRef = useRef<() => void>(() => {});
   useLayoutEffect(() => {
-    const root = rootRef.current?.querySelector<HTMLElement>('[data-reader-text]');
+    const root =
+      rootRef.current?.querySelector<HTMLElement>('[data-reader-text]');
     if (!root) return;
     const owned = captureDataScope();
     let alive = true;
@@ -23,17 +41,27 @@ export function useReadingPosition({ rootRef, jumpingRef, storageKey, pageId }: 
     let latest: ReadingPosition | null = null;
     let saved: ReadingPosition | null = null;
     const startupUntil = Date.now() + 5000;
-    try { saved = readReadingPosition(localStorage.getItem(storageKey), pageId); } catch { /* Storage can be unavailable. */ }
+    try {
+      saved = readReadingPosition(localStorage.getItem(storageKey), pageId);
+    } catch {
+      /* Storage can be unavailable. */
+    }
     const valid = () => alive && owned() && root.isConnected;
     const write = () => {
       if (!alive || !owned() || !latest) return;
-      try { localStorage.setItem(storageKey, JSON.stringify(latest)); } catch { /* Best effort. */ }
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(latest));
+      } catch {
+        /* Best effort. */
+      }
     };
     const capture = () => {
-      if (restored && valid()) latest = captureReadingPosition(root, pageId);
+      if (restored && valid() && !readingSuspended())
+        latest = captureReadingPosition(root, pageId);
     };
     const restore = () => {
       restoreFrame = 0;
+      if (readingSuspended()) return;
       if (jumpingRef.current) interrupt();
       if (!valid() || interrupted) return;
       restoreReadingPosition(root, saved ?? { version: 1, pageId, scrollY: 0 });
@@ -48,12 +76,14 @@ export function useReadingPosition({ rootRef, jumpingRef, storageKey, pageId }: 
       restoreFrame = requestAnimationFrame(restore);
     };
     const onScroll = () => {
+      if (readingSuspended()) return;
       capture();
       if (!valid() || !restored) return;
       cancelAnimationFrame(writeFrame);
       writeFrame = requestAnimationFrame(write);
     };
     const interrupt = () => {
+      if (readingSuspended()) return;
       interrupted = true;
       restored = true;
       cancelAnimationFrame(restoreFrame);
@@ -64,16 +94,45 @@ export function useReadingPosition({ rootRef, jumpingRef, storageKey, pageId }: 
       if (!interrupted && Date.now() < startupUntil) scheduleRestore();
       else onScroll();
     };
-    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(onLayout);
+    const observer =
+      typeof ResizeObserver === 'undefined'
+        ? null
+        : new ResizeObserver(onLayout);
     if (rootRef.current) observer?.observe(rootRef.current);
     observer?.observe(root);
-    const hide = () => { capture(); write(); };
-    const onVisibility = () => { if (document.visibilityState === 'hidden') hide(); };
+    const hide = () => {
+      capture();
+      write();
+    };
+    const onVisibility = () => {
+      if (document.visibilityState === 'hidden') hide();
+    };
     const unsubscribe = subscribeDataScope(() => {
       interrupt();
       latest = null;
       cancelAnimationFrame(writeFrame);
       observer?.disconnect();
+    });
+    let suspended = readingSuspended();
+    let heldPosition = suspended ? saved : null;
+    const unsubscribeSuspension = subscribeReadingSuspension(() => {
+      const next = readingSuspended();
+      if (next === suspended) return;
+      suspended = next;
+      if (suspended) {
+        heldPosition =
+          restored && valid() ? captureReadingPosition(root, pageId) : saved;
+        cancelAnimationFrame(restoreFrame);
+        cancelAnimationFrame(writeFrame);
+      } else {
+        if (heldPosition && valid()) {
+          restoreReadingPosition(root, heldPosition);
+          restored = true;
+        }
+        heldPosition = null;
+        if (!restored) scheduleRestore();
+        else onScroll();
+      }
     });
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('wheel', interrupt, { passive: true });
@@ -81,6 +140,7 @@ export function useReadingPosition({ rootRef, jumpingRef, storageKey, pageId }: 
     window.addEventListener('pointerdown', interrupt, { passive: true });
     window.addEventListener('keydown', interrupt);
     window.addEventListener('pagehide', hide);
+    window.addEventListener(NAVIGATION_INSETS_EVENT, onLayout);
     document.addEventListener('visibilitychange', onVisibility);
     scheduleRestore();
     void document.fonts?.ready.then(scheduleRestore);
@@ -93,12 +153,14 @@ export function useReadingPosition({ rootRef, jumpingRef, storageKey, pageId }: 
       cancelAnimationFrame(writeFrame);
       observer?.disconnect();
       unsubscribe();
+      unsubscribeSuspension();
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('wheel', interrupt);
       window.removeEventListener('touchstart', interrupt);
       window.removeEventListener('pointerdown', interrupt);
       window.removeEventListener('keydown', interrupt);
       window.removeEventListener('pagehide', hide);
+      window.removeEventListener(NAVIGATION_INSETS_EVENT, onLayout);
       document.removeEventListener('visibilitychange', onVisibility);
     };
   }, [rootRef, jumpingRef, storageKey, pageId]);

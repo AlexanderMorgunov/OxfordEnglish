@@ -4,9 +4,11 @@ import { InMemoryAiCacheStore, aiCost, buildMessages } from './ai.js';
 import { AiTaskRequestSchema } from './contract.js';
 import { parseWordSenses, wordSensesMessages } from './wordSenses.js';
 import type { Completer } from './aiProvider.js';
+import { InMemoryAuthStore } from './store.js';
 
 process.env.DEEPSEEK_API_KEY = 'stub-key-for-smoke';
 const ent = new InMemoryEntitlementStore();
+const auth = new InMemoryAuthStore();
 const cache = new InMemoryAiCacheStore();
 const valid = JSON.stringify({ senses: [{ partOfSpeech: 'noun', translation: 'берег', distinction: 'Край реки', example: 'We sat on the bank.' }] });
 let answer = valid;
@@ -22,7 +24,7 @@ const completer: Completer = async (_messages, opts) => {
   if (repairPending) { repairPending = false; return valid.replace('bank.', 'banker.'); }
   return answer;
 };
-const app = createApp(undefined, undefined, undefined, ent, {
+const app = createApp(auth, undefined, undefined, ent, {
   get: async key => { if (getFails) throw new Error('Read failure'); return corruptHit ? 'corrupt' : cache.get(key); },
   put: async (...args) => { if (putFails) throw new Error('Write failure'); await cache.put(...args); },
 }, completer);
@@ -67,7 +69,7 @@ check('honest empty suggestions are supported', (await ask()).status === 200);
 const beforeRace = await used();
 let ordinal = 0;
 const requests = new WeakMap<AbortSignal, number>();
-const racingApp = createApp(undefined, undefined, undefined, ent, { get: async () => null, put: async () => {} }, async (_messages, opts) => {
+const racingApp = createApp(auth, undefined, undefined, ent, { get: async () => null, put: async () => {} }, async (_messages, opts) => {
   if (!opts.signal) throw new Error('Missing bounded signal');
   if (!requests.has(opts.signal)) requests.set(opts.signal, ordinal++);
   const own = requests.get(opts.signal);

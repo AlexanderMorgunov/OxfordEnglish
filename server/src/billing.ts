@@ -32,7 +32,7 @@ export type HashAlgo = 'md5' | 'sha1' | 'sha256' | 'sha384' | 'sha512';
 const ALGOS: readonly HashAlgo[] = ['md5', 'sha1', 'sha256', 'sha384', 'sha512'];
 export const isHashAlgo = (v: string): v is HashAlgo => (ALGOS as readonly string[]).includes(v);
 
-export type PlanCode = 'pro_month';
+export type PlanCode = 'pro_month' | 'pro_quarter' | 'pro_year';
 
 export type PlanSpec = {
   code: PlanCode;
@@ -64,9 +64,17 @@ export const PLANS: Record<PlanCode, PlanSpec> = {
     title: 'DayEnglish Pro — 1 месяц',
     receiptName: 'DayEnglish Pro на 1 месяц',
   },
+  pro_quarter: {
+    code: 'pro_quarter', days: 90, priceKopecks: 49900,
+    title: 'DayEnglish Pro — 3 месяца', receiptName: 'DayEnglish Pro на 3 месяца',
+  },
+  pro_year: {
+    code: 'pro_year', days: 365, priceKopecks: 149900,
+    title: 'DayEnglish Pro — 1 год', receiptName: 'DayEnglish Pro на 1 год',
+  },
 };
 
-export const isPlanCode = (v: string): v is PlanCode => v in PLANS;
+export const isPlanCode = (v: string): v is PlanCode => Object.hasOwn(PLANS, v);
 
 /** Robokassa wants a plain decimal with a dot, two places: "199.00". */
 export const formatSum = (kopecks: number): string => (kopecks / 100).toFixed(2);

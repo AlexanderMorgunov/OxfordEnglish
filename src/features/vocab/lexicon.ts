@@ -1,5 +1,6 @@
 import type { SrsCard, WordStatus, WordTranslation } from '@/db/db';
 import { isDeleted } from '@/features/sync/resolve';
+import { dictionaryAnswer } from '@/features/srs/answer';
 
 export type LexiconKind = 'word' | 'phrase';
 
@@ -12,6 +13,8 @@ export type LexiconEntry = {
   status?: 'learning' | 'known' | 'ignored';
   /** SRS card id, when this term is in review (enables remove-from-review). */
   cardId?: string;
+  cardBack?: string;
+  cardCreationId?: string;
   hasCard: boolean;
   /** Next review time (ms), only when a card exists. */
   due?: number;
@@ -38,25 +41,24 @@ export function buildLexicon(input: {
   const byKey = new Map<string, LexiconEntry>();
 
   for (const c of input.cards) {
-    if (c.fromError || isDeleted(c)) continue;
+    if (c.fromError || isDeleted(c) || (c.kind !== 'word' && c.kind !== 'phrase')) continue;
     const kind: LexiconKind = c.kind === 'phrase' ? 'phrase' : 'word';
     const key = c.front.toLowerCase();
-    const backIsTranslation = Boolean(c.back) && c.back !== c.front;
-    const translation = backIsTranslation
-      ? c.back
-      : (tr.get(key) ?? tr.get(c.front));
+    const translation = dictionaryAnswer(c) ?? (tr.get(key) ?? tr.get(c.front));
     const dueMs = (c.due instanceof Date ? c.due : new Date(c.due)).getTime();
     byKey.set(key, {
       key,
       display: c.front,
       kind,
       cardId: c.id,
+      cardBack: c.back,
+      cardCreationId: c.creationId,
       hasCard: true,
       due: dueMs,
       context: c.contextSentence || undefined,
       translation: translation || undefined,
       contextGloss: c.contextGloss || undefined,
-      sortAt: dueMs, // a never-reviewed card's due == its add time; degrades after first grade
+      sortAt: c.createdAt ?? dueMs,
     });
   }
 
@@ -72,7 +74,7 @@ export function buildLexicon(input: {
       byKey.set(key, {
         key,
         display: s.word,
-        kind: 'word',
+        kind: /\s/.test(s.word) ? 'phrase' : 'word',
         status: s.status,
         hasCard: false,
         translation: tr.get(key) || undefined,

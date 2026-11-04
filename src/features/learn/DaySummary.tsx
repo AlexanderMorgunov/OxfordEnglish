@@ -6,6 +6,7 @@ import { dayExercises } from '@/features/progress/completion';
 import { track } from '@/features/analytics/analytics';
 import { useUiLang, tr } from '@/features/i18n/uiLang';
 import { Card, PixelImage, ProgressBar } from '@/shared/ui';
+import { queueSaleAfterLesson } from '@/features/sale/memory';
 
 export type NextDay = { unitId: string; dayId: string; title: LocalizedText };
 
@@ -22,7 +23,7 @@ type Props = {
 
 const nextClass =
   'inline-flex items-center justify-center gap-2 rounded-sm px-4 py-2.5 text-sm font-mono ' +
-  'tracking-[0.02em] bg-teal text-ink font-semibold transition-[opacity,scale] duration-150 ' +
+  'tracking-[0.02em] bg-teal text-on-accent font-semibold transition-[opacity,scale] duration-150 ' +
   'hover:opacity-90 active:scale-[0.96] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal';
 
 export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }: Props) {
@@ -40,6 +41,7 @@ export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }:
   useEffect(() => {
     if (done && !tracked.has(day.id)) {
       tracked.add(day.id);
+      queueSaleAfterLesson();
       void track('day_complete', { dayId: day.id, firstTry, total });
     }
   }, [done, day.id, firstTry, total]);

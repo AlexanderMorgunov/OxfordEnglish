@@ -19,7 +19,7 @@ export function Option({
     <button
       type={type}
       className={cn(
-        'opt text-left transition-[border-color,background-color] duration-150',
+        'opt min-w-0 max-w-full break-words text-left transition-[border-color,background-color] duration-150',
         'active:scale-[0.98] disabled:cursor-default disabled:active:scale-100',
         state === 'chosen' && 'opt--chosen',
         state === 'correct' && 'opt--correct',

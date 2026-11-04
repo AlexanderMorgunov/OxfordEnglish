@@ -1,120 +1,200 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { cn } from '@/shared/lib/cn';
-import { PixelImage } from '@/shared/ui';
+import { useLocation } from 'react-router-dom';
+import { AppIcon } from '@/shared/ui/AppIcon';
+import { NavigationLink } from './NavigationLink';
+import { focusNavigationControl } from './navigation-focus';
+import type { NavDestination, NavigationLayout } from './navigation';
 
-export type NavMoreItem = { to: string; label: string; icon: string };
-
-/**
- * Secondary destinations behind a disclosure, so the header keeps only the primary ones. A plain
- * disclosure over a link list (not `role="menu"`, which would promise arrow-key menu semantics) —
- * same close contract as the reader widget: outside pointer, Escape, and focus back on the trigger.
- */
 export function NavMore({
   items,
-  label,
+  primary,
+  layout,
+  current,
+  ru,
 }: {
-  items: NavMoreItem[];
-  /** Visible trigger text ("more"). */
-  label: string;
+  items: NavDestination[];
+  primary: NavDestination[];
+  layout: NavigationLayout;
+  current: string | null;
+  ru: boolean;
 }) {
   const [open, setOpen] = useState(false);
-  const rootRef = useRef<HTMLDivElement>(null);
-  const btnRef = useRef<HTMLButtonElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
+  const root = useRef<HTMLDivElement>(null),
+    button = useRef<HTMLButtonElement>(null),
+    panel = useRef<HTMLDivElement>(null);
   const panelId = useId();
-  const { pathname } = useLocation();
-  const holdsCurrent = items.some((i) => pathname === i.to || pathname.startsWith(`${i.to}/`));
-
+  const location = useLocation();
+  const active = [...primary, ...items].find((item) => item.to === current);
+  const label =
+    layout === 'stacked' ? (ru ? 'Разделы' : 'Sections') : ru ? 'Ещё' : 'More';
+  const subtitle = active ? (ru ? active.ru : active.en) : '';
+  const close = (restore = false) => {
+    setOpen(false);
+    if (restore) focusNavigationControl(button.current);
+  };
+  useLayoutEffect(() => {
+    if (panel.current?.contains(document.activeElement))
+      focusNavigationControl(button.current);
+    setOpen(false);
+  }, [location.key]);
   useLayoutEffect(() => {
     if (!open) return;
-    const root = rootRef.current;
-    const button = btnRef.current;
-    const panel = panelRef.current;
-    if (!root || !button || !panel) return;
+    const trigger = button.current,
+      box = panel.current;
+    if (!trigger || !box) return;
     const position = () => {
-      const anchor = button.getBoundingClientRect();
-      // Available height can add or remove a scrollbar and change the panel width.
-      panel.style.maxHeight = `${Math.max(0, window.innerHeight - anchor.bottom - 12)}px`;
-      const width = document.documentElement.clientWidth || window.innerWidth;
-      const left = Math.max(8, Math.min(anchor.left, width - panel.offsetWidth - 8));
-      panel.style.left = `${Math.round(left - root.getBoundingClientRect().left)}px`;
+      const bounds = trigger.getBoundingClientRect(),
+        vp = window.visualViewport;
+      const left = vp?.offsetLeft ?? 0,
+        top = vp?.offsetTop ?? 0,
+        width =
+          vp?.width ?? (document.documentElement.clientWidth || innerWidth),
+        height = vp?.height ?? innerHeight;
+      const bottom =
+        document.querySelector('.app-nav-bottom')?.getBoundingClientRect()
+          .height ?? 0;
+      box.style.maxWidth = `${Math.max(0, width - 16)}px`;
+      const y = Math.max(
+        top + 8,
+        Math.min(bounds.bottom + 8, top + height - 88 - bottom)
+      );
+      box.style.top = `${Math.round(y)}px`;
+      box.style.maxHeight = `${Math.max(0, top + height - y - 8 - bottom)}px`;
+      const x = Math.max(
+        left + 8,
+        Math.min(
+          bounds.right - box.offsetWidth,
+          left + width - box.offsetWidth - 8
+        )
+      );
+      box.style.left = `${Math.round(x)}px`;
     };
     position();
-    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(position);
-    observer?.observe(panel);
-    observer?.observe(root);
-    if (root.parentElement) observer?.observe(root.parentElement);
+    const observer =
+      typeof ResizeObserver === 'undefined'
+        ? null
+        : new ResizeObserver(position);
+    observer?.observe(box);
+    if (root.current) observer?.observe(root.current);
     window.addEventListener('resize', position);
-    window.addEventListener('scroll', position, { passive: true, capture: true });
+    window.addEventListener('scroll', position, {
+      passive: true,
+      capture: true,
+    });
+    window.visualViewport?.addEventListener('resize', position);
+    window.visualViewport?.addEventListener('scroll', position);
     return () => {
       observer?.disconnect();
       window.removeEventListener('resize', position);
       window.removeEventListener('scroll', position, true);
+      window.visualViewport?.removeEventListener('resize', position);
+      window.visualViewport?.removeEventListener('scroll', position);
     };
-  }, [open, items, label]);
-
+  }, [open, layout, subtitle]);
   useEffect(() => {
     if (!open) return;
-    const onDown = (e: PointerEvent) => {
-      if (!rootRef.current?.contains(e.target as Node)) setOpen(false);
+    const outside = (e: PointerEvent) => {
+      if (!root.current?.contains(e.target as Node)) setOpen(false);
     };
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Escape') return;
-      setOpen(false);
-      btnRef.current?.focus();
+    const escape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setOpen(false);
+        focusNavigationControl(button.current);
+      }
     };
-    document.addEventListener('pointerdown', onDown);
-    document.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', outside);
+    document.addEventListener('keydown', escape);
     return () => {
-      document.removeEventListener('pointerdown', onDown);
-      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('pointerdown', outside);
+      document.removeEventListener('keydown', escape);
     };
   }, [open]);
-
   return (
-    <div ref={rootRef} className="relative">
+    <div
+      ref={root}
+      className="app-nav-more-root"
+      onBlur={(event) => {
+        if (
+          event.relatedTarget &&
+          !event.currentTarget.contains(event.relatedTarget)
+        )
+          setOpen(false);
+      }}
+    >
       <button
-        ref={btnRef}
+        ref={button}
         type="button"
+        data-nav-trigger
+        data-tour={layout === 'stacked' ? 'nav-sections' : undefined}
         aria-expanded={open}
         aria-controls={panelId}
+        aria-label={`${label}${subtitle ? ' · ' + subtitle : ''}`}
+        className={`app-nav-more${active ? ' is-current' : ''}`}
         onClick={() => setOpen((v) => !v)}
-        className={cn(
-          'flex items-center gap-1.5 rounded-sm px-2.5 py-1.5 font-mono text-xs transition-colors',
-          // A section open from inside the panel still marks the trigger, so the user is never
-          // left without an active item in the header.
-          open || holdsCurrent ? 'bg-surface-2 text-teal' : 'text-muted hover:text-content'
-        )}
       >
-        <span aria-hidden className="w-4 shrink-0 text-center">
-          ≡
+        <AppIcon name={layout === 'stacked' ? 'sections' : 'more'} />
+        <span>
+          {label}
+          {subtitle && <small>{subtitle}</small>}
         </span>
-        {label}
+        {active && <i className="app-nav-context-dot" aria-hidden="true" />}
       </button>
-
       {open && (
-        <div
-          ref={panelRef}
-          id={panelId}
-          className="absolute left-0 top-full z-40 mt-1 flex w-max min-w-40 max-w-[calc(100vw-1rem)] flex-col overflow-y-auto rounded-md border border-line bg-surface p-1 shadow-lg"
-        >
-          {items.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              onClick={() => setOpen(false)}
-              className={({ isActive }) =>
-                cn(
-                  'flex items-center gap-2 rounded-sm px-3 py-2 font-mono text-xs transition-colors',
-                  isActive ? 'bg-surface-2 text-teal' : 'text-muted hover:text-content'
-                )
-              }
+        <div ref={panel} id={panelId} className="app-nav-panel">
+          <div className="app-nav-panel-head">
+            <h2>
+              {layout === 'stacked'
+                ? ru
+                  ? 'Разделы DayEnglish'
+                  : 'DayEnglish sections'
+                : ru
+                  ? 'Ещё в DayEnglish'
+                  : 'More in DayEnglish'}
+            </h2>
+            <button
+              type="button"
+              onClick={() => close(true)}
+              aria-label={ru ? 'Закрыть навигацию' : 'Close navigation'}
             >
-              <PixelImage src={item.icon} alt="" className="h-4 w-4 shrink-0" />
-              {item.label}
-            </NavLink>
-          ))}
+              <AppIcon name="close" />
+            </button>
+          </div>
+          {!!primary.length && (
+            <nav
+              className="app-nav-panel-links"
+              aria-label={ru ? 'Основная навигация' : 'Main navigation'}
+            >
+              {primary.map((item) => (
+                <NavigationLink
+                  key={item.to}
+                  item={item}
+                  ru={ru}
+                  current={current}
+                  onClick={() => close()}
+                />
+              ))}
+            </nav>
+          )}
+          <nav
+            className="app-nav-panel-links"
+            aria-label={ru ? 'Дополнительные разделы' : 'Additional sections'}
+          >
+            {items.map((item) => (
+              <NavigationLink
+                key={item.to}
+                item={item}
+                ru={ru}
+                current={current}
+                onClick={() => close()}
+              />
+            ))}
+          </nav>
+          <p className="app-nav-panel-note">
+            {ru
+              ? 'Английский день за днём · курс A1–B2'
+              : 'English, day by day · A1–B2 course'}
+          </p>
         </div>
       )}
     </div>
