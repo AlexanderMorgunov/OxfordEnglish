@@ -6,7 +6,6 @@ import { tr } from '@/features/i18n/uiLang';
 import { BackToReader } from '@/features/reader/BackToReader';
 import { ExpiryNotice } from '@/features/account/ExpiryNotice';
 import { AppearanceThemes } from '@/features/appearance/ThemePicker';
-import { onboardingSeen, startTour } from '@/features/onboarding/tour';
 import { CourseResume } from './CourseResume';
 import { CourseDialog } from './CourseDialog';
 import { DayPreview } from './DayPreview';
@@ -63,11 +62,6 @@ export function CourseToday() {
   useEffect(() => {
     if (ready && unit) useCourseNavigation.getState().viewUnit(unit.id);
   }, [ready, unit]);
-  useEffect(() => {
-    if (!ready || onboardingSeen()) return;
-    const timer = window.setTimeout(() => startTour(lang), 400);
-    return () => window.clearTimeout(timer);
-  }, [ready, lang]);
   const preview = previewId ? model?.byId.get(previewId) : null;
   const unitIndex = unit && pack ? pack.units.indexOf(unit) : -1;
   const nextUnit = pack?.units[unitIndex + 1];
@@ -76,6 +70,7 @@ export function CourseToday() {
     <section
       ref={root}
       className="course-page"
+      data-onboarding-ready={ready}
       aria-label={ru ? 'Сегодня' : 'Today'}
       onClickCapture={capture}
     >

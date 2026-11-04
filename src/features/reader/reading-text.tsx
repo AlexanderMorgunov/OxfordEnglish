@@ -34,6 +34,7 @@ import {
   repairCardContext,
 } from '@/features/srs/service';
 import { captureDataScope, subscribeDataScope, getDataScopeRevision } from '@/features/account/dataScope';
+import { quotaNotice, useEntitlement } from '@/features/account/entitlement';
 import { useAiStore } from '@/features/ai/store';
 import { captureAiScope, useAiEnabled, useAiUnknown } from '@/features/ai/route';
 import { wordInContext } from '@/features/ai/functions';
@@ -64,6 +65,8 @@ import { CefrChip } from '@/features/vocab/CefrChip';
 import { saveReaderTerm, type BookSource } from './chapter-vocabulary';
 import type { SrsCard } from '@/db/db';
 import { readSavedWord, savedWordMeaning, useSavedWordCards } from './saved-word-meanings';
+import { ReaderWordOffer } from './ReaderWordOffer';
+import { consumeLessonWordReturn, consumeWordReturn, lessonWordKey, type LessonWordTarget } from './word-return';
 
 /** Reference line for auditioning a read-aloud voice — natural prose so prosody is audible. */
 const VOICE_SAMPLE = 'The morning light spilled across the quiet room as she opened the book.';
@@ -93,19 +96,25 @@ function ContextGloss({
   config,
   onResolved,
   shouldFinishSaved,
-  explicit = false,
+  presentation = 'inline',
+  activation = 'automatic',
 }: {
   word: string;
   sentence: string;
   config: AiConfig | null;
-  onResolved: (firstLine: string) => void;
+  onResolved: (firstLine: string, fullText: string) => void;
   shouldFinishSaved: () => boolean;
-  explicit?: boolean;
+  presentation?: 'inline' | 'book';
+  activation?: 'automatic' | 'manual';
 }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [text, setText] = useState<string | null>(null);
   const [state, setState] = useState<'loading' | 'done' | 'error'>('loading');
-  const [requested, setRequested] = useState(!explicit);
+  const [intent, setIntent] = useState<'idle' | 'requested' | 'cancelled'>('idle');
+  const requested = intent === 'requested' || activation === 'automatic' && intent !== 'cancelled';
+  const book = presentation === 'book';
+  const entitlement = useEntitlement(s => s.entitlement);
+  const quota = quotaNotice(entitlement, ru);
   const [attempt, setAttempt] = useState(0);
   const activeRequest = useRef<AbortController | null>(null);
 
@@ -125,7 +134,7 @@ function ContextGloss({
           const first = res.split('\n')[0]?.replace(/^Ещё:\s*/i, '')
             .replace(/\*\*/g, '')
             .trim();
-          if (first) onResolved(first);
+          if (first) onResolved(first, res);
           if (!alive) return;
           setText(res);
           setState('done');
@@ -142,21 +151,22 @@ function ContextGloss({
   }, [word, sentence, config, onResolved, shouldFinishSaved, requested, attempt]);
 
   return (
-    <div className={explicit ? 'rdh-context' : 'mt-2'}>
+    <div className={book ? 'rdh-context' : 'mt-2'}>
       <p className="font-mono text-2xs uppercase tracking-[0.08em] text-violet">
         {ru ? 'в этом предложении · AI' : 'in this sentence · AI'}
       </p>
-      {!requested && <button type="button" className="text-sm text-violet hover:underline" onClick={() => setRequested(true)}>{ru ? 'Уточнить значение' : 'Refine meaning'}</button>}
+      {!requested && <button type="button" className="text-sm text-violet hover:underline" onClick={() => setIntent('requested')}>{ru ? 'Уточнить значение' : 'Refine meaning'}</button>}
       {requested && state === 'loading' && (
-        <><p role="status" className="font-mono text-2xs text-muted">{ru ? 'Уточняю значение…' : 'Refining meaning…'}</p>{explicit && <button type="button" className="text-sm text-violet hover:underline" onClick={() => { activeRequest.current?.abort(); setRequested(false); }}>{ru ? 'Отменить запрос' : 'Cancel request'}</button>}</>
+        <><p role="status" className="font-mono text-2xs text-muted">{ru ? 'Уточняю значение…' : 'Refining meaning…'}</p>{book && <button type="button" className="text-sm text-violet hover:underline" onClick={() => { activeRequest.current?.abort(); setIntent('cancelled'); }}>{ru ? 'Отменить запрос' : 'Cancel request'}</button>}</>
       )}
       {requested && state === 'error' && (
-        <><p role="alert" className="font-mono text-2xs text-muted">{ru ? 'недоступно' : 'unavailable'}</p>{explicit && <button type="button" className="text-violet hover:underline" onClick={() => setAttempt(value => value + 1)}>{ru ? 'Повторить запрос' : 'Retry request'}</button>}</>
+        book && quota?.level === 'spent' ? <div role="alert"><AiUpsellLink task={{ source: 'reader', excerpt: sentence }} /></div>
+          : <><p role="alert" className="font-mono text-2xs text-muted">{book ? ru ? 'Не удалось получить перевод с ИИ. Проверьте соединение и повторите. Своё значение можно сохранить ниже.' : 'AI translation unavailable. Check your connection and retry. You can save your own meaning below.' : ru ? 'недоступно' : 'unavailable'}</p>{book && <button type="button" className="text-violet hover:underline" onClick={() => setAttempt(value => value + 1)}>{ru ? 'Повторить запрос' : 'Retry request'}</button>}</>
       )}
       {state === 'done' && text && (
         <p role="status" className="whitespace-pre-line text-sm leading-relaxed text-content">{text}</p>
       )}
-      {explicit && <p className="rdh-note">{ru ? 'Trial/Pro или свой ключ. Сохранённый ответ не требует нового запроса.' : 'Trial/Pro or your own key. Saved answers need no new request.'}</p>}
+      {book && activation === 'manual' && <p className="rdh-note">{ru ? 'Trial/Pro или свой ключ. Сохранённый ответ не требует нового запроса.' : 'Trial/Pro or your own key. Saved answers need no new request.'}</p>}
     </div>
   );
 }
@@ -208,6 +218,7 @@ export const WordToken = memo(function WordToken({
   gloss,
   sentence,
   enableContextFetch,
+  lessonTarget,
   tokenId,
   phrase,
 }: {
@@ -217,9 +228,9 @@ export const WordToken = memo(function WordToken({
   lookupWord?: string;
   gloss?: Gloss;
   sentence: string;
-  /** Book reader only: `sentence` is a real sentence, so offer a lazy "in context" translation.
-   *  Learn sections pass a whole block here and already have a curated translation, so they omit it. */
+  /** Reading text supplies a real sentence for contextual AI; curated-gloss-only callers may omit it. */
   enableContextFetch?: boolean;
+  lessonTarget?: LessonWordTarget;
   /** `${paraIndex}:${sentenceIndex}:${tokenIndex}` — enables phrase selection (book reader only). */
   tokenId?: string;
   /** This token is inside a saved phrase → underline it as *learning* (gated on the coloring setting,
@@ -237,7 +248,7 @@ export const WordToken = memo(function WordToken({
   const lang = useUiLang((s) => s.lang);
   const { freq, rankThreshold, coloring, source, wordCards, helpTargetId } = use(ReaderContext);
   const [meaningDraft, setMeaningDraft] = useState<string | null>(null);
-  const modern = Boolean(helpTargetId);
+  const modern = Boolean(helpTargetId || lessonTarget);
   const savingWord = useRef(false);
   const [wordSave, setWordSave] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [fetched, setFetched] = useState<string | null>(null);
@@ -262,8 +273,11 @@ export const WordToken = memo(function WordToken({
   const config = useAiStore((s) => s.config);
   const aiReady = useAiEnabled();
   const aiUnknown = useAiUnknown();
+  const automaticContext = useEntitlement((s) => Boolean(s.entitlement?.active && (s.entitlement.plan === 'pro' || s.entitlement.plan === 'trial')));
+  const contextEnabled = Boolean(enableContextFetch && (sentence.includes(' ') || modern && sentence.trim()));
   // The in-context meaning shown (AI); its first line is what we save to the word's vocab card.
   const [wicGloss, setWicGloss] = useState<string | null>(null);
+  const [wicAnswer, setWicAnswer] = useState<string | null>(null);
   const savedWord = useRef<{
     done: Promise<boolean>;
     current: () => boolean;
@@ -280,8 +294,9 @@ export const WordToken = memo(function WordToken({
     });
   }, [wordSave]);
   const onGlossResolved = useCallback(
-    (meaning: string) => {
+    (meaning: string, fullText: string) => {
       setWicGloss(meaning);
+      setWicAnswer(fullText);
       const save = savedWord.current;
       if (save)
         void save.done
@@ -339,10 +354,72 @@ export const WordToken = memo(function WordToken({
   // A saved-phrase token underlines as learning (also gated on coloring); it wins over `new`.
   const deco: 'learning' | 'new' | undefined = phrase && coloring ? 'learning' : visible;
 
+  const saveActions = <>
+      <div className="mt-2.5 flex flex-wrap gap-1.5">
+        <Button
+          size="sm"
+          variant="ghost"
+          className={modern ? 'rdh-action rdh-primary' : undefined}
+          disabled={visibleWordSave === 'saving'}
+          onClick={() => {
+            if (savingWord.current && savedWord.current?.current()) return;
+            const current = captureDataScope();
+            savingWord.current = true;
+            setWordSave('saving');
+            void setStatus(lookup, 'learning');
+            const manual = modern && meaningDraft !== null;
+            const back = manual ? meaningDraft.trim() || lookup : (modern ? wicGloss : null) ?? translation ?? lookup;
+            const save = {
+              done: (async () => {
+                const expected = manual ? await db.srsCards.get(`word:${lookup.toLowerCase()}`) : undefined;
+                if (!current()) return false;
+                const saved = await addWordCard(lookup, back, sentence, manual ? back : wicGloss ?? undefined);
+                if (!saved || !current()) return false;
+                if (manual && expected && !await editCardAnswer(expected, back, expected.contextSentence === sentence ? back : expected.contextGloss ?? '', current)) return false;
+                return current();
+              })(),
+              current,
+              back,
+            };
+            savedWord.current = save;
+            void save.done.then(async (saved) => {
+              if (!saved || !current()) return false;
+              return source ? saveReaderTerm(source, `word:${lookup.toLowerCase()}`, sentence, current) : true;
+            }).then((saved) => {
+              if (current()) setWordSave(saved ? 'saved' : 'error');
+            }).catch(() => { if (current()) setWordSave('error'); })
+              .finally(() => { if (savedWord.current === save) savingWord.current = false; });
+          }}
+        >
+          {modern ? visibleWordSave === 'saving' ? lang === 'ru' ? 'Сохраняю…' : 'Saving…' : lang === 'ru' ? 'Учу · сохранить' : 'Learn · save' : lang === 'ru' ? 'учу' : 'learning'}
+        </Button>
+        <Button size="sm" variant="ghost" aria-pressed={status === 'known'} onClick={() => void setStatus(lookup, 'known')}>
+          {lang === 'ru' ? 'знаю' : 'known'}
+        </Button>
+        <Button
+          size="sm"
+          variant="ghost"
+          aria-pressed={status === 'ignored'}
+          onClick={() => void setStatus(lookup, 'ignored')}
+          title={lang === 'ru' ? 'не считать словом (имя, и т. п.)' : 'not a vocabulary word (a name, etc.)'}
+        >
+          {lang === 'ru' ? 'игнор' : 'ignore'}
+        </Button>
+      </div>
+      {visibleWordSave !== 'idle' && <p role={visibleWordSave === 'error' ? 'alert' : 'status'} className="mt-2 text-xs text-muted">
+        {visibleWordSave === 'saving' ? lang === 'ru' ? 'Сохраняю…' : 'Saving…'
+          : visibleWordSave === 'saved' ? lang === 'ru' ? '✓ сохранено' : '✓ saved'
+          : source ? lang === 'ru' ? 'Не удалось добавить в главу. Нажмите «учу» ещё раз.' : 'Could not add to chapter. Press learning again.'
+          : lang === 'ru' ? 'Не удалось сохранить. Попробуйте ещё раз.' : 'Could not save. Try again.'}
+      </p>}
+  </>;
+
   return (
     <ReaderHelp
       targetId={helpTargetId}
+      variant={modern ? 'word' : 'default'}
       label={word}
+      footer={modern ? saveActions : undefined}
       showClose
       closeLabel={lang === 'ru' ? 'Закрыть' : 'Close'}
       anchorClassName="min-w-0 max-w-full self-baseline"
@@ -351,8 +428,13 @@ export const WordToken = memo(function WordToken({
         <button
           type="button"
           data-widx={tokenId}
+          data-lesson-word={lessonTarget ? lessonWordKey(lessonTarget) : undefined}
           lang="en"
-          onClick={() => openLookup()}
+          onClick={() => {
+            const returning = lessonTarget ? consumeLessonWordReturn(lessonTarget, word) : source && tokenId ? consumeWordReturn(source.bookKey, source.chapterId, tokenId, word) : null;
+            if (returning) setMeaningDraft(returning.manualDraft);
+            openLookup();
+          }}
           className={cn(
             'max-w-full cursor-pointer rounded-[2px] text-left whitespace-normal [overflow-wrap:anywhere]',
             modern && '[@media(pointer:fine)]:select-text',
@@ -392,7 +474,7 @@ export const WordToken = memo(function WordToken({
       {loading && (
         <p role="status" className="mt-1 font-mono text-2xs text-faint">{lang === 'ru' ? 'перевод…' : 'translating…'}</p>
       )}
-      {failed && !translation && (
+      {failed && !translation && !wicGloss && !(modern && automaticContext && contextEnabled) && (
         <><p className="mt-1 font-mono text-2xs text-muted">
           {lang === 'ru'
             ? modern ? 'Надёжный перевод не найден. Можно ввести своё значение ниже.' : 'Надёжный перевод не найден. Можно указать свой в словаре.'
@@ -400,80 +482,31 @@ export const WordToken = memo(function WordToken({
         </p>{modern && <button type="button" className="rdh-action" onClick={() => openLookup(true)}>{lang === 'ru' ? 'Повторить перевод' : 'Retry translation'}</button>}</>
       )}
       {modern && <><blockquote className="rdh-quote" lang="en">{sentence}</blockquote><p className="rdh-note">{lang === 'ru' ? 'Исходное предложение' : 'Original sentence'}</p></>}
-      {(aiReady || aiUnknown) && enableContextFetch && sentence.includes(' ') && (
+      {modern && wicAnswer ? <div className="rdh-context">
+        <p className="rdh-offer-heading">{lang === 'ru' ? 'ИИ-перевод · по контексту' : 'AI translation · in context'}</p>
+        <p role="status" className="whitespace-pre-line text-sm">{wicAnswer}</p>
+        <p className="rdh-note">{lang === 'ru' ? 'ИИ может ошибаться. Проверьте значение перед сохранением.' : 'AI can make mistakes. Check the meaning before saving.'}</p>
+        {meaningDraft !== null && meaningDraft !== wicGloss && <button type="button" className="rdh-action" disabled={visibleWordSave === 'saving'} onClick={() => { setMeaningDraft(wicGloss); setWordSave('idle'); }}>{lang === 'ru' ? 'Применить перевод' : 'Apply translation'}</button>}
+      </div> : (aiReady || aiUnknown || automaticContext) && contextEnabled && !(modern && aiUnknown && failed && !translation) && (
           <ContextGloss
             word={word}
             sentence={sentence}
             config={config}
             onResolved={onGlossResolved}
             shouldFinishSaved={shouldFinishSaved}
-            explicit={modern}
+            presentation={modern ? 'book' : 'inline'}
+            activation={modern && !automaticContext ? 'manual' : 'automatic'}
           />
         )}
+      {modern && !wicAnswer && (!aiReady || aiUnknown) && contextEnabled && failed && !translation && !automaticContext && <ReaderWordOffer word={word} sentence={sentence} source={source} tokenId={tokenId} lessonTarget={lessonTarget} manualDraft={meaningDraft} />}
       {tokenId && (
         <div className="mt-2">
           <SelectPhraseButton tokenId={tokenId} modern={modern} />
         </div>
       )}
-      {modern && <label className="rdh-editor">{lang === 'ru' ? 'Своё значение для сохранения' : 'Your meaning to save'}<input value={meaningDraft ?? wicGloss ?? translation ?? ''} onChange={event => { setMeaningDraft(event.target.value); setWordSave('idle'); }} placeholder={lang === 'ru' ? 'Можно оставить без перевода' : 'You can save without a translation'} disabled={visibleWordSave === 'saving'} /></label>}
-      <div className="mt-2.5 flex flex-wrap gap-1.5">
-        <Button
-          size="sm"
-          variant="ghost"
-          className={modern ? 'rdh-action rdh-primary' : undefined}
-          disabled={visibleWordSave === 'saving'}
-          onClick={() => {
-            if (savingWord.current && savedWord.current?.current()) return;
-            const current = captureDataScope();
-            savingWord.current = true;
-            setWordSave('saving');
-            void setStatus(lookup, 'learning');
-            const manual = modern && meaningDraft !== null;
-            const back = manual ? meaningDraft.trim() || lookup : translation ?? lookup;
-            const save = {
-              done: (async () => {
-                const expected = manual ? await db.srsCards.get(`word:${lookup.toLowerCase()}`) : undefined;
-                if (!current()) return false;
-                const saved = await addWordCard(lookup, back, sentence, manual ? back : wicGloss ?? undefined);
-                if (!saved || !current()) return false;
-                if (manual && expected && !await editCardAnswer(expected, back, expected.contextSentence === sentence ? back : expected.contextGloss ?? '', current)) return false;
-                return current();
-              })(),
-              current,
-              back,
-            };
-            savedWord.current = save;
-            void save.done.then(async (saved) => {
-              if (!saved || !current()) return false;
-              return source ? saveReaderTerm(source, `word:${lookup.toLowerCase()}`, sentence, current) : true;
-            }).then((saved) => {
-              if (current()) setWordSave(saved ? 'saved' : 'error');
-            }).catch(() => { if (current()) setWordSave('error'); })
-              .finally(() => { if (savedWord.current === save) savingWord.current = false; });
-          }}
-        >
-          {modern ? visibleWordSave === 'saving' ? lang === 'ru' ? 'Сохраняю…' : 'Saving…' : lang === 'ru' ? 'Учу · сохранить' : 'Learn · save' : lang === 'ru' ? 'учу' : 'learning'}
-        </Button>
-        <Button size="sm" variant="ghost" aria-pressed={status === 'known'} onClick={() => void setStatus(lookup, 'known')}>
-          {lang === 'ru' ? 'знаю' : 'known'}
-        </Button>
-        <Button
-          size="sm"
-          variant="ghost"
-          aria-pressed={status === 'ignored'}
-          onClick={() => void setStatus(lookup, 'ignored')}
-          title={lang === 'ru' ? 'не считать словом (имя, и т. п.)' : 'not a vocabulary word (a name, etc.)'}
-        >
-          {lang === 'ru' ? 'игнор' : 'ignore'}
-        </Button>
-      </div>
-      {modern && <p className="rdh-note">{lang === 'ru' ? 'Просмотр не сохраняет карточку. «Знаю» и «Игнор» не удаляют её и не оценивают повторение.' : 'Lookup does not save a card. Known and Ignore keep the card and do not grade a review.'}</p>}
-      {visibleWordSave !== 'idle' && <p role={visibleWordSave === 'error' ? 'alert' : 'status'} className="mt-2 text-xs text-muted">
-        {visibleWordSave === 'saving' ? lang === 'ru' ? 'Сохраняю…' : 'Saving…'
-          : visibleWordSave === 'saved' ? lang === 'ru' ? '✓ сохранено' : '✓ saved'
-          : source ? lang === 'ru' ? 'Не удалось добавить в главу. Нажмите «учу» ещё раз.' : 'Could not add to chapter. Press learning again.'
-          : lang === 'ru' ? 'Не удалось сохранить. Попробуйте ещё раз.' : 'Could not save. Try again.'}
-      </p>}
+      {modern && <><p className="rdh-note">{lang === 'ru' ? 'Своё значение — бесплатно. Можно сохранить и без перевода.' : 'Your own meaning is free. You can also save without a translation.'}</p><label className="rdh-editor">{lang === 'ru' ? 'Своё значение для сохранения' : 'Your meaning to save'}<input value={meaningDraft ?? wicGloss ?? translation ?? ''} onChange={event => { setMeaningDraft(event.target.value); setWordSave('idle'); }} placeholder={lang === 'ru' ? 'Можно оставить без перевода' : 'You can save without a translation'} disabled={visibleWordSave === 'saving'} /></label></>}
+      {modern && <p className="rdh-note">{lang === 'ru' ? 'Просмотр ничего не сохраняет. Чтобы добавить карточку, нажмите «Учу · сохранить».' : 'Looking up saves nothing. Choose Learn · save to add a card.'}</p>}
+      {!modern && saveActions}
     </ReaderHelp>
   );
 });

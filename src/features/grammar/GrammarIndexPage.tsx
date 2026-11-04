@@ -78,6 +78,7 @@ export function GrammarIndexPage() {
     <section
       ref={root}
       className="grammar-page"
+      data-onboarding-ready={status === 'ready'}
       aria-label={ru ? 'Справочник по грамматике' : 'Grammar reference'}
     >
       <BackToReader />

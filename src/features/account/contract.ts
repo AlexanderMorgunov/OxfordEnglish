@@ -131,14 +131,18 @@ export const EntitlementSchema = z.object({
 });
 export const TrialClaimRequestSchema = z.object({ installId: z.string().min(8).max(200) });
 
-/** Plan catalog. Prices are the SERVER's — the client never states an amount, it only renders one. */
+/** The expected checkout amount is a consent check; the server still determines the charge. */
 export const BillingPlanSchema = z.object({
   code: z.string(),
   days: z.number(),
   priceKopecks: z.number(),
   title: z.string(),
+  regularPriceKopecks: z.number().int().positive().optional(),
 });
-export const BillingPlansSchema = z.object({ available: z.boolean(), plans: z.array(BillingPlanSchema) });
+export const BillingPlansSchema = z.object({ available: z.boolean(), plans: z.array(BillingPlanSchema),
+  serverTime: z.number().optional(), validUntil: z.number().nullable().optional(),
+  campaign: z.object({ id: z.string(), title: z.string(), endsAt: z.number() }).nullable().optional(),
+});
 /** A grant this account paid for and has not redeemed, for a device that lost its own copy. */
 export const UnclaimedGrantSchema = z.object({ grantToken: z.string().nullable() });
 /** What checkout hands back: where to pay, and the token that will later be worth the plan. The token

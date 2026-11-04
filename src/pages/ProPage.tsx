@@ -31,7 +31,8 @@ export function ProPage() {
       : state === 'trial-over' || state === 'none' ? ru ? 'Оформить Pro ↓' : 'Get Pro ↓'
         : unknown ? ru ? 'Проверить подписку ↓' : 'Check subscription ↓'
           : ru ? 'Моя подписка ↓' : 'My subscription ↓';
-  const { catalog, monthly, canBuy, retry } = useBillingCatalog(trialAvailable);
+  const catalogSource = useBillingCatalog();
+  const { monthly, canBuy } = catalogSource;
   useEffect(() => { void track('pro_page_view'); }, []);
   const features: { kind: ProDemoKind; icon: string; title: string; text: string }[] = [
     { kind: 'lesson', icon: 'ui/ai', title: ru ? 'Разобраться в ошибке' : 'Understand your mistake', text: ru ? 'Понятное объяснение прямо в задании.' : 'A clear explanation right in your exercise.' },
@@ -55,13 +56,10 @@ export function ProPage() {
       </section>)}
     </div>
     <div className="reading-column">
-      <section id="pro-access" className="scroll-mt-5 space-y-4 rounded-xl border border-violet-dim bg-violet-dim/10 p-5 sm:p-6" aria-label={ru ? 'Подключение Pro' : 'Get Pro'}>
+      <section id="pro-access" data-onboarding="pro-subscription" className="scroll-mt-5 space-y-4 rounded-xl border border-violet-dim bg-violet-dim/10 p-5 sm:p-6" aria-label={ru ? 'Подключение Pro' : 'Get Pro'}>
         {trialAvailable ? <>
           <div><h2 className="text-2xl font-semibold">{ru ? '14 дней бесплатно' : '14 days free'}</h2><p className="mt-1 text-sm text-muted">{ru ? 'Без карты и автоматических списаний' : 'No card or automatic charges'}</p></div>
-          {canBuy && monthly && <p className="text-sm text-muted">{ru ? `Затем — ${formatPrice(monthly.priceKopecks)} за ${monthly.days} дней, если захотите продолжить.` : `Then ${formatPrice(monthly.priceKopecks)} for ${monthly.days} days, if you choose to continue.`}</p>}
-          {catalog.state === 'loading' && <p role="status" className="text-sm text-muted">{ru ? 'Проверяем актуальную цену…' : 'Checking the current price…'}</p>}
-          {catalog.state === 'error' && <div className="space-y-2 text-sm text-muted"><p role="status">{ru ? 'Цена не загрузилась. Проверьте соединение и повторите.' : 'The price did not load. Check your connection and retry.'}</p><Button variant="ghost" onClick={retry}>{ru ? 'Повторить загрузку цены' : 'Retry price'}</Button></div>}
-          {catalog.state === 'ready' && !canBuy && <p className="text-sm text-muted">{ru ? 'Оплата пока недоступна.' : 'Payments are currently unavailable.'}</p>}
+          {canBuy && monthly && <p className="text-sm text-muted">{ru ? `Сейчас Pro стоит ${formatPrice(monthly.priceKopecks)} за ${monthly.days} дней. После пробного периода — по действующим на тот момент ценам.` : `Pro currently costs ${formatPrice(monthly.priceKopecks)} for ${monthly.days} days. After the trial, the prices in effect at that time apply.`}</p>}
           {accountsEnabled() && <Button className="min-h-12 w-full" onClick={e => useProActivation.getState().open({ source: 'pro' }, pathname, e.currentTarget)}>{ru ? 'Попробовать 14 дней' : 'Try 14 days'}</Button>}
           <ProConditions ru={ru} />
         </> : <>
@@ -73,8 +71,8 @@ export function ProPage() {
             {ended && <p className="text-sm text-muted">{ru ? 'Книги, слова и прогресс сохранены. Подключите Pro, чтобы снова пользоваться AI и синхронизацией.' : 'Your books, words and progress are saved. Get Pro to use AI and sync again.'}</p>}
             {state === 'pro' && <p className="text-sm text-muted">{ru ? 'Продлить можно заранее. Оплаченные дни добавятся к текущему сроку.' : 'You can renew early. The paid days are added to your current period.'}</p>}
           </>}
-          <PurchaseActions />
         </>}
+        <PurchaseActions catalogSource={catalogSource} />
       </section>
       <section className="mt-8 space-y-3">
         <h2 className="text-xl font-semibold">{ru ? 'Бесплатная учёба остаётся' : 'Free learning stays free'}</h2>

@@ -29,10 +29,64 @@ Vite 6 · React 19 (no `forwardRef`, StrictMode) · TypeScript (strict) · Tailw
 no config file) · React Router 7 · Zustand (hand-rolled persist) · Dexie / IndexedDB · Zod · ts-fsrs ·
 pdf.js + fflate (reader) · driver.js (onboarding tour) · Vitest + Testing Library · vite-plugin-pwa.
 Core study works locally without an account. The optional **Hono API** (`server/`)
-provides recovery-key accounts, TOTP/recovery, cross-device sync, Robokassa subscriptions,
+provides username/password accounts, legacy-key compatibility, TOTP/recovery, cross-device sync, Robokassa subscriptions,
 and managed AI. It uses YDB, Object Storage, and Lockbox on Yandex Cloud.
 **Android** uses Capacitor 8, native TTS and English dictation. Sync, managed AI, feedback, and analytics
 make network requests when enabled; user-imported books stay local unless book-file sync is enabled.
+
+### Account access
+
+The account flow at `/account/register` and `/account/login` uses a unique username
+(4–24 ASCII letters, digits or underscores; starts with a letter) and a password
+(15–128 NFC Unicode code points, including spaces). No email, phone or security
+question is collected. Ordinary signup offers an unchecked free-trial option.
+Signup from a Pro invitation has an explicit **Create account and try Pro** action
+and a separate free-account action. Login and legacy-key upgrades never start a
+trial. Registration and activation use separate API operations: partial failure
+keeps the account and retries activation only; lost replies are reconciled before
+retrying. Confirmed Pro access returns to the original task with its actual expiry.
+Optional recovery uses an authenticator and eight one-use backup codes. Recovery
+keeps the account id, subscription and synced data, and revokes previous sessions
+and the legacy key. An ordinary password change keeps the current device signed
+in, signs other sessions out and preserves a legacy key if one exists.
+
+Existing key accounts can attach a username to the same identity; their old recovery
+names remain separate, nonunique locators. The UI checks `/v1/access/capabilities`
+and keeps the legacy settings flow when the API has not been upgraded. Production
+rollout requires the additive `account_access` YDB table and its `by_account` index
+before the separate API deployment; see [server/README.md](server/README.md).
+Source integration alone does not deploy the API or update the shipped Android APK.
+
+### Contextual help
+
+A two-step welcome opens automatically on first app entry until dismissed or completed:
+product overview, then five theme previews, interface text size and an optional
+14-day Pro trial. Its own completion marker is independent of old onboarding,
+progress and settings. Closing or continuing completes it; interruption before
+that allows another automatic attempt. Daylight is only the new-install default;
+saved appearance and old history preserve the previous look. Appearance preview
+is reversible until saved. Storage failure supports
+retry or an explicitly temporary session-only choice.
+
+The trial checkbox starts selected where potentially eligible, with an explicit
+trial action and a separate free path. Account creation uses the existing access
+flow; signing in requires a separate trial decision. Existing/expired access and
+device refusals never grant another trial. A pending activation is remembered by
+owner and can be checked after reload without repeating the mutation. The welcome
+opens automatically; **?** remains page help.
+
+The header's **?** opens help for the current page and always starts at its first
+step. The reader has its own help button. Only the first lesson and reader visit
+show a short three-step introduction automatically; dismissal and completion are
+remembered separately for each local data owner. Manual help remains available
+when storage is unavailable. Historical `onboarding.seen` data is unchanged.
+
+Optional recorded examples load only after **Show example**. They support stop,
+replay, reduced motion, small screens and missing-file recovery. Versioned media
+under `public/onboarding/` is excluded from the PWA app-shell precache and cached
+only when requested. Its manifest records synthetic-fixture provenance and hashes.
+Tours suspend reading statistics and position writes, restore the reading place
+and focus, and never submit exercises, save words or make paid AI requests.
 
 ## Quick start
 
@@ -61,8 +115,9 @@ Header, page shell, footer and app notices share the 1160px `.app-container`.
 Overview grids adapt to available space and the interface text size; books,
 exercises and long-form pages use a centered `.reading-column`.
 Navigation uses the supplied DayEnglish book/sun mark and local SVG icons in
-`src/assets/brand/`. Wide screens show five study destinations, Progress, a Settings
-link and More. Compact screens move the five labelled study links to a bottom bar.
+`src/assets/brand/`. Wide screens show five study destinations, a Settings link
+and More; Progress is also visible when space permits and otherwise moves into
+More. Compact screens move the five labelled study links to a bottom bar.
 If large text cannot fit those labels, or the viewport is short, a non-sticky
 Sections disclosure contains all destinations. Pro stays in More/Sections.
 
@@ -157,6 +212,13 @@ Word/phrase lookup is separate from saving; sentence translation, simplification
 grammar and exact bookmarks retain their real provider, entitlement and storage
 paths. Chapter words, matching and exercises open from explicit reading actions.
 Practice does not grade FSRS implicitly.
+
+Active Pro/trial book help starts the cached contextual word meaning automatically
+after a short dismissal debounce, without requiring a personal key or another
+tap. Cancel/retry remain explicit; free lookup remains available on AI failure.
+Unknown plans and BYOK-only book help keep an explicit context action. Cached
+answers remain readable when quota is spent; new managed calls retain the existing
+quota checks. Saving uses the displayed meaning unless the user edits it.
 
 Reading appearance previews font, size, spacing, highlights, five themes and actual
 device voices before Save/Cancel. Fresh books use 22px serif text; existing saved

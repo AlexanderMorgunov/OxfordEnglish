@@ -47,8 +47,8 @@ async function mymemory(text: string, signal: AbortSignal): Promise<string | nul
     const data = (await res.json()) as MyMemoryResponse;
     let ru = data.responseData?.translatedText?.trim();
     if (isWord(text) && ((data.responseData?.match != null && data.responseData.match < 1) || (ru && !usableAutomatic(text, ru)))) {
-      // A fuzzy translation-memory segment can be unrelated to a standalone vocabulary word.
-      ru = data.matches?.find(m => m.match === 1 && m.segment?.trim().toLowerCase() === text.toLowerCase()
+      // Exact regional segments can score 0.99; fuzzy segments must still be rejected.
+      ru = data.matches?.find(m => (m.match ?? 0) >= 0.99 && m.segment?.trim().toLowerCase() === text.toLowerCase()
         && /^en(?:-|$)/i.test(m.source ?? '') && /^ru(?:-|$)/i.test(m.target ?? '')
         && !!m.translation && usableAutomatic(text, m.translation))?.translation?.trim();
     }

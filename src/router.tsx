@@ -17,6 +17,7 @@ const ProgressPage = lazyPage(() => import('@/pages/ProgressPage').then((m) => (
 const VocabularyPage = lazyPage(() => import('@/pages/VocabularyPage').then((m) => ({ default: m.VocabularyPage })));
 const TextWorkbenchPage = lazyPage(() => import('@/pages/TextWorkbenchPage').then((m) => ({ default: m.TextWorkbenchPage })));
 const SettingsPage = lazyPage(() => import('@/pages/SettingsPage').then((m) => ({ default: m.SettingsPage })));
+const AccountAccessPage = lazyPage(() => import('@/pages/AccountAccessPage').then((m) => ({ default: m.AccountAccessPage })));
 const SupportPage = lazyPage(() => import('@/pages/SupportPage').then((m) => ({ default: m.SupportPage })));
 const CreditsPage = lazyPage(() => import('@/pages/CreditsPage').then((m) => ({ default: m.CreditsPage })));
 const FeedbackPage = lazyPage(() => import('@/pages/FeedbackPage').then((m) => ({ default: m.FeedbackPage })));
@@ -48,6 +49,7 @@ const routes: RouteObject[] = [
   { path: '/vocabulary', element: <VocabularyPage /> },
   { path: '/vocabulary/entry/:entryId', element: <VocabularyPage /> },
   { path: '/vocabulary/text', element: <TextWorkbenchPage /> },
+  { path: '/account/:mode?', element: <AccountAccessPage /> },
   { path: '/library', element: <LibraryPage /> },
   { path: '/library/catalog', element: <LibraryPage /> },
   { path: '/library/catalog/:catalogId', element: <CatalogReaderPage /> },

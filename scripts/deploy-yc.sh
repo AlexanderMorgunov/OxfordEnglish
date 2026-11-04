@@ -49,6 +49,10 @@ syncfull "packs/*.json" "application/json" "$NOCACHE"
 sync "packs/*.png"  "image/png"        "$PACK"
 sync "packs/*.jpg"  "image/jpeg"       "$PACK"
 sync "packs/*.svg"  "image/svg+xml"    "$PACK"
+# Publish versioned examples before the new shell can request them.
+syncfull "onboarding/*.gif"  "image/gif"        "$NOCACHE"
+syncfull "onboarding/*.png"  "image/png"        "$NOCACHE"
+syncfull "onboarding/*.json" "application/json" "$NOCACHE"
 # Reader catalog/wordlist assets, if present.
 "${S3[@]}" sync "$DIST/reader" "s3://$YC_BUCKET/reader" --size-only --cache-control "$PACK" --no-progress 2>/dev/null || true
 

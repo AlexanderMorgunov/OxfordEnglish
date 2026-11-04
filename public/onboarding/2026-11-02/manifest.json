@@ -1,0 +1,428 @@
+{
+  "origin": "Browser screenshots of the pinned actual DayEnglish source; not a canvas UI or a recording of production",
+  "sourceHead": "d4e77dd9ee29522b14b6c3adbbbbc108f3738b77",
+  "sourceSnapshotSha256": "728175926228bcd61d5b16ebf95b1304514c17e4ed66b6ca22860061d75278c1",
+  "content": "DayEnglish-owned UI and course content; synthetic book/provider/audio fixtures, no customer data",
+  "entries": [
+    {
+      "topic": "reader-context",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "reader-context-desktop.gif",
+      "poster": "reader-context-desktop.png",
+      "sha256": "7c177a8e6b383524a30ad8301aa6516edf1c0bf49891e58905a344c44b5fbc7b",
+      "posterSha256": "74cb436f94f1f16d8502bd714f5159e42f07443f96edc6e31bd11befd347d8b5"
+    },
+    {
+      "topic": "reader-save",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "reader-save-desktop.gif",
+      "poster": "reader-save-desktop.png",
+      "sha256": "4d3770de13255124ea552393d582ff1553f77537961354708e33a705577ad991",
+      "posterSha256": "8850e5c9fe50b5321646ba84b88b5044360e374530401b8a786bf47e1ac2ae53"
+    },
+    {
+      "topic": "reader-translate",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "reader-translate-desktop.gif",
+      "poster": "reader-translate-desktop.png",
+      "sha256": "25a0a56e1116cbff4ea851cf1da52d718d078f2a912be4bf10a8b0c43a232645",
+      "posterSha256": "484023cceded840ef4d81a068a654c3ec9707b516c3c6950edcaa8f67002dfbf"
+    },
+    {
+      "topic": "reader-grammar",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "reader-grammar-desktop.gif",
+      "poster": "reader-grammar-desktop.png",
+      "sha256": "f257e9bfba6646e971713414dc9b46353c3982deb632fd395c2f62dfe5f824ae",
+      "posterSha256": "747684f60616a80f492826088d5d2e678eaf1376698cdadf6eb7e962c6baf01d"
+    },
+    {
+      "topic": "unit-reading",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "unit-reading-desktop.gif",
+      "poster": "unit-reading-desktop.png",
+      "sha256": "c6067a902dd02a7c791e3ab8a9aed66dda2981413883fed9bbf511540f7f97b6",
+      "posterSha256": "13f1f0c31288691e2527faec792ed5f5e15ff800a6c95519fdfe97fa63c7d1e2"
+    },
+    {
+      "topic": "unit-practice",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "unit-practice-desktop.gif",
+      "poster": "unit-practice-desktop.png",
+      "sha256": "43cf8d83264f3c656450d78e0371e14811efec94db225908236e9bd8d696410c",
+      "posterSha256": "ed556572eacdc9683cc3d3335dffd368565ec7dd8acd9ee94b5ae32865c099e7"
+    },
+    {
+      "topic": "vocab-find",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "vocab-find-desktop.gif",
+      "poster": "vocab-find-desktop.png",
+      "sha256": "266f2ef42021a985b6beceed93f397bcdb05ef25c814433ebc49e9b982a0cbf3",
+      "posterSha256": "422235d43cf6012008d2839c1c1c2f1458b1e38bdc297a611e23bbaf776cd51b"
+    },
+    {
+      "topic": "vocab-add",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "vocab-add-desktop.gif",
+      "poster": "vocab-add-desktop.png",
+      "sha256": "3e24ee2b65b9f73d9323a54c48930cb7a90d6cd38c9deb5cc1cdc165a5eed249",
+      "posterSha256": "7a69c88eec6706ad1a643c4b9c517e470529f0b89ebea3dd04781b303c812d98"
+    },
+    {
+      "topic": "grammar-find",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "grammar-find-desktop.gif",
+      "poster": "grammar-find-desktop.png",
+      "sha256": "3cfe0d980f4a69880a803c0bf70e162b1764087d29092fc149672e43e4fe58d5",
+      "posterSha256": "a1013fa258ce48424b0a94dcf9a0c96b3b949bc02781e43fd12366a09ba9a1ec"
+    },
+    {
+      "topic": "review-answer",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "review-answer-desktop.gif",
+      "poster": "review-answer-desktop.png",
+      "sha256": "0035c299ee579d7b0a2de8c81794234d2d94d917a8059dc7ccbea1458e1fbc0b",
+      "posterSha256": "a3ada374c2596f65b274a984922a2fe2eca0777faec42b29aaad340d22ed6998"
+    },
+    {
+      "topic": "library-open",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "library-open-desktop.gif",
+      "poster": "library-open-desktop.png",
+      "sha256": "3a78f1c6ca9b3b28cf361204d3fdcaed4118c59ceab10049741b10a7d9fb2d40",
+      "posterSha256": "c89c4e77457c7f4f2798cabe39c7aa86c0d28525ff9d4745fe57ae6a805d1555"
+    },
+    {
+      "topic": "library-import",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "library-import-desktop.gif",
+      "poster": "library-import-desktop.png",
+      "sha256": "589c3a20dc58130f51a9dd0db896623df90faa02b3c7b9711d08fb49d355284f",
+      "posterSha256": "bb38d1f1b427205f356597a36eea09833b5a8cc34a73856e28ef4e4abc0c58aa"
+    },
+    {
+      "topic": "today-continue",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "today-continue-desktop.gif",
+      "poster": "today-continue-desktop.png",
+      "sha256": "7ef7f14f402833fdb711ff588a465269658a1ea304bfaca0a606a05f13982f1b",
+      "posterSha256": "4e57b14138ff88780716b520541381c9b47b285b7395122ca7ee3ae887799ca4"
+    },
+    {
+      "topic": "reader-context",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "reader-context-mobile.gif",
+      "poster": "reader-context-mobile.png",
+      "sha256": "c2005f5a91df6ae4eb9fd689220f7471f41ade406ba7e233655d425864f37808",
+      "posterSha256": "38d47a5cc5460a39616bb2852faa52d520f091cf20592eb56d1f41d8d04ccd97"
+    },
+    {
+      "topic": "reader-save",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "reader-save-mobile.gif",
+      "poster": "reader-save-mobile.png",
+      "sha256": "420a1cecb242298efd4ec1fa6c37372e8a296be9ff4544e823d34a912ae92df1",
+      "posterSha256": "cc7fdd3e20de54e9d0762b83204927a717013c6813a7f33c5120d4acc52dbbff"
+    },
+    {
+      "topic": "reader-translate",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "reader-translate-mobile.gif",
+      "poster": "reader-translate-mobile.png",
+      "sha256": "bf29e82879ac8294f58d2b0f1d607a05b59fa159ff653978305c218d6bf92ae4",
+      "posterSha256": "3e7276257584708611506f4dca2e6b84c3302f1ad5d7175b93795b61868b3848"
+    },
+    {
+      "topic": "reader-grammar",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "reader-grammar-mobile.gif",
+      "poster": "reader-grammar-mobile.png",
+      "sha256": "fdce5803533543b6b22253e22491b590bc3e01408ac422962b85c86b8ee8029b",
+      "posterSha256": "ce7aa1e3d3fae17f0011c4d0b5d29b00d46126e3d2eba650f6fcde17ae065ea9"
+    },
+    {
+      "topic": "unit-reading",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "unit-reading-mobile.gif",
+      "poster": "unit-reading-mobile.png",
+      "sha256": "b9d86bd853d54c3c1edcc666a184025dcdf99472b8fc973713c2aab967de2eee",
+      "posterSha256": "4c3ba346c981e924d360f804f18f75b44152feb4a87fe03088957e5aa382220b"
+    },
+    {
+      "topic": "unit-practice",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "unit-practice-mobile.gif",
+      "poster": "unit-practice-mobile.png",
+      "sha256": "1574cf0e27a4e3fc7c731263716d5f080cca8178c77650af916f4555130eac02",
+      "posterSha256": "c9480c6f0a5867bac453dae414bdff98717c7237d9de4d2b04b23e32f29687aa"
+    },
+    {
+      "topic": "vocab-find",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "vocab-find-mobile.gif",
+      "poster": "vocab-find-mobile.png",
+      "sha256": "3ed14f7e862aa1dee16afbc4f0122e97130a7413b6adeab5d9652fec53010472",
+      "posterSha256": "9fbea70d00444dc864875f81ce7ecac8f435678414e8b5dded081fd80859a8ac"
+    },
+    {
+      "topic": "vocab-add",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "vocab-add-mobile.gif",
+      "poster": "vocab-add-mobile.png",
+      "sha256": "873748d2c33a967c9f45e048a74d18bc0074e38797041b8703eeadb6c8bde55e",
+      "posterSha256": "2ec7fb000ea6a176c61aa4c79a8a853fbab55f63145f2336d4260fa968e46172"
+    },
+    {
+      "topic": "grammar-find",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "grammar-find-mobile.gif",
+      "poster": "grammar-find-mobile.png",
+      "sha256": "7d8eb270f6174f740be520856a196d0f9e38d4565e0e430d5a99d9a2cf1a64b1",
+      "posterSha256": "4456a68f1a516edc1a80c332b9d6123882722df82e621623d43faa7e8d5bc2f7"
+    },
+    {
+      "topic": "review-answer",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "review-answer-mobile.gif",
+      "poster": "review-answer-mobile.png",
+      "sha256": "ba58ab1fe406eb68c3aea80d694896e0481f1244bf4a61d06ad62179b77d4386",
+      "posterSha256": "2dea2f4c04a64355214a1f8bb9c5289d25dfbcca88f18aae6e3e4d3141a7e0e3"
+    },
+    {
+      "topic": "library-open",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "library-open-mobile.gif",
+      "poster": "library-open-mobile.png",
+      "sha256": "0d4ed885f2a0fd2517485793c0ff67421169df8dd98bcdae21385c10eac215c9",
+      "posterSha256": "d758d3ddf6f52a7463d7aab75935bec5be86457628b823a797ced1f6c0a5b2bd"
+    },
+    {
+      "topic": "library-import",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "library-import-mobile.gif",
+      "poster": "library-import-mobile.png",
+      "sha256": "f2f8371fa505b85c99c98b465598ac07ee6147293c16803f0d2ba10705d71b87",
+      "posterSha256": "204e763bdd87c55dff4040e187df2831851bc1452147826faab42ce3cacb7da7"
+    },
+    {
+      "topic": "today-continue",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "today-continue-mobile.gif",
+      "poster": "today-continue-mobile.png",
+      "sha256": "c0ab0fd5732627716f35860eab1bcf38e36d94cf77559a0c81182078903fafdd",
+      "posterSha256": "6d041e1e858c2f600a328599abbb88bb34b3bcee7c3e9b80bc9d86936540ea58"
+    },
+    {
+      "topic": "reader-simplify",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "reader-simplify-desktop.gif",
+      "poster": "reader-simplify-desktop.png",
+      "sha256": "79302295f3870d7a5be524e8eb0b50153386032e80d7f361b0071b7d4ac83694",
+      "posterSha256": "a44efda654b8a6638a6a74b62ff1f03298d49a549fe4339b0a49bae644a0408e"
+    },
+    {
+      "topic": "reader-practice",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "reader-practice-desktop.gif",
+      "poster": "reader-practice-desktop.png",
+      "sha256": "674c67ed93c83f482336bf3c6e6d3ec9c92e82310b7e161e4565739c8909ca74",
+      "posterSha256": "3cecbcc3c79907142c26eda86e3912eb347e79d4418ae7e01de544e5c99b178b"
+    },
+    {
+      "topic": "review-return",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "review-return-desktop.gif",
+      "poster": "review-return-desktop.png",
+      "sha256": "c6201d88fac3b9801f607e2d56083681bff854474de96ca4dd49e8bbaafefe2f",
+      "posterSha256": "9f2e17d64e44ee96b56962def3de05e348004e725b82cb67f709506e915192c5"
+    },
+    {
+      "topic": "settings-theme",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "settings-theme-desktop.gif",
+      "poster": "settings-theme-desktop.png",
+      "sha256": "7add0ef416ff045d6f51d12a8a8bd65ca1652228547626983c1a980fbc82d5cb",
+      "posterSha256": "3d10e64b42b17a687978c6ba3d744fcdebedfb84f174c3e8edb6c6fe86e16681"
+    },
+    {
+      "topic": "reader-simplify",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "reader-simplify-mobile.gif",
+      "poster": "reader-simplify-mobile.png",
+      "sha256": "9ed428059803afad9b8b5a308fa09f2c5b0c1c31903171af27a8ded3fe51a467",
+      "posterSha256": "b1839bf743ebdfb00f0ff73735d633973ae5c9d70deca83ffb26462ccaa807bc"
+    },
+    {
+      "topic": "reader-practice",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "reader-practice-mobile.gif",
+      "poster": "reader-practice-mobile.png",
+      "sha256": "8d4a666685074ffd42b6ad8549aa1ba88b85387814b417b06ca5f46f2e2db53b",
+      "posterSha256": "b3831f46980cd3fd416955b4c3804f32bbda7e32387e1d463b71002e6d892957"
+    },
+    {
+      "topic": "review-return",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "review-return-mobile.gif",
+      "poster": "review-return-mobile.png",
+      "sha256": "8a4ede171c886f97085926aacadd4e6ec96201aaa7028f9f7532ac89b106d5aa",
+      "posterSha256": "ee61c11847fb87528482f5f8d69c1fb0c637c0183aaf9ba5755033fd02757e93"
+    },
+    {
+      "topic": "settings-theme",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "settings-theme-mobile.gif",
+      "poster": "settings-theme-mobile.png",
+      "sha256": "df0978195bc5a375398562ec5c07ef471fa21b643caa26e60ab5abaab18adc87",
+      "posterSha256": "47595c0a635456275b0ef96fda1d83d5a508c952dc64c35a6971d9f9e162ae49"
+    },
+    {
+      "topic": "unit-vocabulary",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "unit-vocabulary-desktop.gif",
+      "poster": "unit-vocabulary-desktop.png",
+      "sha256": "5119c546f80ab54810d4b248a98c2245cd47a2c30bcbea7c3c2c1270148356cc",
+      "posterSha256": "c828ca652a0c7b8a0094bdc368dcb1c9fe6547ac0216c9f571ea8944022d56f6"
+    },
+    {
+      "topic": "unit-vocabulary",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "unit-vocabulary-mobile.gif",
+      "poster": "unit-vocabulary-mobile.png",
+      "sha256": "3824de1d42e8142dac1710f2e6e31f2a266e812b0383a7fb037f8ad3d0ae97ae",
+      "posterSha256": "e5dc670809d7c0423237c06fdbc920d705c1858d7641bc07aac45dce5c8fd9e6"
+    },
+    {
+      "topic": "reader-tools",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "reader-tools-desktop.gif",
+      "poster": "reader-tools-desktop.png",
+      "sha256": "7834cfcbc8af74009f5eb49e1bf859c76612625a24e12bc075514e9b5b2e4e5e",
+      "posterSha256": "c0e749a59b47993b522c876b59b22b572b1d54df1271cd812971cf8625b106d5"
+    },
+    {
+      "topic": "reader-tools",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "reader-tools-mobile.gif",
+      "poster": "reader-tools-mobile.png",
+      "sha256": "d2b25a9fa841baf05c6ed178edea87e20ddc1bfa3c91931e086175708d7f9a08",
+      "posterSha256": "f60b5fe2004ca7bfd45f9c4c6daec084ec9821ea49d4460c26e8457b85e2f554"
+    },
+    {
+      "topic": "reader-word",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "reader-word-desktop.gif",
+      "poster": "reader-word-desktop.png",
+      "sha256": "3eb32a24a1281986b59308d0668817019cf02d6711ae5e1c24e63b51c3ea3318",
+      "posterSha256": "522a6cf44fb6ca341e7c909e7530e89f6e4f6271eaf102bad7e976f8f16c22e2"
+    },
+    {
+      "topic": "reader-word",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "reader-word-mobile.gif",
+      "poster": "reader-word-mobile.png",
+      "sha256": "aa29f78d0d173584d980ef4ded8a6efc458beb6a92231a9111ca85d62c0f92ab",
+      "posterSha256": "f76f5f5a2d52bb60ec2fe9fcf6f92a02576edf58d35aded72625fbcdfda9ee03"
+    },
+    {
+      "topic": "progress-read",
+      "variant": "desktop",
+      "width": 1280,
+      "height": 800,
+      "gif": "progress-read-desktop.gif",
+      "poster": "progress-read-desktop.png",
+      "sha256": "c6e2b95fd1fe79ed96f1ce502656bb2e632dab10daa35b230f7ab07229397336",
+      "posterSha256": "0522e4886a135ea0784eb23d17c479d7ee77a74f91320e812eacd60507c56e17"
+    },
+    {
+      "topic": "progress-read",
+      "variant": "mobile",
+      "width": 390,
+      "height": 844,
+      "gif": "progress-read-mobile.gif",
+      "poster": "progress-read-mobile.png",
+      "sha256": "e76a1226dcae0d25bf237a282168fc3da38b84765fe44497fb320fa506ef04fd",
+      "posterSha256": "c46680183bdc9ea5d669075a5740f867e68598a788addfebde000b79f7aaae32"
+    }
+  ]
+}

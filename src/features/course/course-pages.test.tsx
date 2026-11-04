@@ -25,10 +25,6 @@ import { useCourseNavigation } from './navigation';
 import { useCourseProgress } from './useCourseProgress';
 
 vi.mock('./useCourseProgress', () => ({ useCourseProgress: vi.fn() }));
-vi.mock('@/features/onboarding/tour', () => ({
-  onboardingSeen: () => true,
-  startTour: vi.fn(),
-}));
 
 const pack = coursePack();
 const read = vi.mocked(useCourseProgress);

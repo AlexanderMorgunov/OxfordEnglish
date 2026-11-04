@@ -1,6 +1,7 @@
 import { useId, useLayoutEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
 import { Button } from '@/shared/ui';
+import { lockBodyScroll } from '@/shared/lib/scroll-lock';
 
 export function CourseDialog({
   title,
@@ -19,13 +20,12 @@ export function CourseDialog({
   useLayoutEffect(() => {
     const dialog = ref.current;
     const invoker = document.activeElement;
-    const overflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    const releaseScroll = lockBodyScroll();
     dialog?.showModal();
     heading.current?.focus({ preventScroll: true });
     return () => {
       dialog?.close();
-      document.body.style.overflow = overflow;
+      releaseScroll();
       if (invoker instanceof HTMLElement && invoker.isConnected)
         invoker.focus({ preventScroll: true });
     };

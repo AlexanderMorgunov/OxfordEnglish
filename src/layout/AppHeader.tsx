@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { AppIcon } from '@/shared/ui/AppIcon';
+import { OnboardingHelp } from '@/features/onboarding/OnboardingHelp';
 import mark from '@/assets/brand/dayenglish-mark.svg';
 import { NAVIGATION_INSETS_EVENT } from '@/shared/lib/navigation-insets';
 import { NavMore } from './NavMore';
@@ -34,6 +35,8 @@ export function AppHeader() {
   const location = useLocation();
   const current = navigationContext(location.pathname, location.search);
   const [layout, setLayout] = useState<NavigationLayout>('stacked');
+  const [wideProgress, setWideProgress] = useState(true);
+  const progressRef = useRef(true);
   const layoutRef = useRef(layout);
   const header = useRef<HTMLElement>(null);
   const bar = useRef<HTMLDivElement>(null);
@@ -81,14 +84,21 @@ export function AppHeader() {
         probes.children,
         (e) => e.getBoundingClientRect().width
       );
+      const allRequired =
+        (sizes[0] ?? 0) + (sizes[1] ?? 0) + (sizes[2] ?? 0) + 48;
+      const progressProbe = probes.children[1]?.lastElementChild;
+      const progressWidth =
+        (progressProbe?.getBoundingClientRect().width ?? 0) +
+        (parseFloat(getComputedStyle(probes.children[1]!).columnGap) || 0);
+      const nextProgress = allRequired <= available;
       const next = navigationLayout({
         width,
         height: window.visualViewport?.height ?? innerHeight,
         available,
-        required: (sizes[0] ?? 0) + (sizes[1] ?? 0) + (sizes[2] ?? 0) + 48,
+        required: nextProgress ? allRequired : allRequired - progressWidth,
         labelWidth: sizes[3] ?? 0,
       });
-      if (next !== layoutRef.current) {
+      if (next !== layoutRef.current || nextProgress !== progressRef.current) {
         const focused = document.activeElement;
         if (
           focused instanceof HTMLElement &&
@@ -99,6 +109,8 @@ export function AppHeader() {
             focused.closest<HTMLElement>('[data-nav-destination]')?.dataset
               .navDestination ?? 'trigger';
         layoutRef.current = next;
+        progressRef.current = nextProgress;
+        setWideProgress(nextProgress);
         setLayout(next);
       }
       publish();
@@ -149,13 +161,15 @@ export function AppHeader() {
       header.current?.querySelector<HTMLElement>('[data-nav-trigger]');
     focusNavigationControl(target);
     pendingFocus.current = null;
-  }, [layout]);
+  }, [layout, wideProgress]);
 
   const progress = SECONDARY[0]!;
   const settings = SECONDARY[1]!;
   const wide = layout === 'wide';
   const items = SECONDARY.filter(
-    (item) => !wide || (item.to !== progress.to && item.to !== settings.to)
+    (item) =>
+      !wide ||
+      (item.to !== settings.to && (item.to !== progress.to || !wideProgress))
   );
   return (
     <>
@@ -174,7 +188,7 @@ export function AppHeader() {
               className="app-nav-primary"
               aria-label={ru ? 'Основная навигация' : 'Main navigation'}
             >
-              {[...PRIMARY, progress].map((item) => (
+              {(wideProgress ? [...PRIMARY, progress] : PRIMARY).map((item) => (
                 <NavigationLink
                   key={item.to}
                   item={item}
@@ -205,6 +219,7 @@ export function AppHeader() {
               current={current}
               ru={ru}
             />
+            <OnboardingHelp />
           </div>
         </div>
       </header>
@@ -244,6 +259,7 @@ export function AppHeader() {
             <AppIcon name="more" />
             <span>{ru ? 'Ещё' : 'More'}</span>
           </span>
+          <OnboardingHelp probe />
         </div>
         <span className="app-nav-label-probe">
           {PRIMARY.map((item) => (

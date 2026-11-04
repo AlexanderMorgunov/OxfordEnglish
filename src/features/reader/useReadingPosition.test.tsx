@@ -2,6 +2,7 @@ import { act, fireEvent, renderHook } from '@testing-library/react';
 import { afterEach, beforeEach, expect, test, vi } from 'vitest';
 import { invalidateDataScope } from '@/features/account/dataScope';
 import { useReadingPosition } from './useReadingPosition';
+import { suspendReading } from '@/shared/lib/reading-suspension';
 
 let y: number;
 let wordTop: number;
@@ -85,6 +86,34 @@ test('a bookmark jump owns scroll instead of saved position or late fonts', asyn
 test('pagehide flushes the current position without waiting for a scheduled write', () => {
   semantic(); view(); runFrames(); y = 1205; fireEvent.scroll(window); fireEvent.pageHide(window);
   expect(JSON.parse(localStorage.getItem('qa-reading-pos')!)).toMatchObject({ word: '0:1:7', scrollY: 1205 });
+});
+
+test('tour movement and layout do not replace the saved place, then reading resumes at the restored scroll', () => {
+  semantic(); const { hook } = view(); runFrames();
+  y = 1205; fireEvent.scroll(window); runFrames();
+  const before = localStorage.getItem('qa-reading-pos');
+  const resume = suspendReading();
+  try {
+    y = 8000; fireEvent.scroll(window); fireEvent.keyDown(window, { key: 'ArrowRight' });
+    act(() => layoutChanged()); runFrames(); fireEvent.pageHide(window);
+    expect(localStorage.getItem('qa-reading-pos')).toBe(before);
+    y = 1205;
+  } finally { resume(); }
+  runFrames(); expect(y).toBe(1205);
+  y = 1210; fireEvent.scroll(window); runFrames(); hook.unmount();
+  expect(JSON.parse(localStorage.getItem('qa-reading-pos')!)).toMatchObject({ scrollY: 1210 });
+});
+
+test('a viewport reflow during help returns to the held word and line instead of the old pixel offset', () => {
+  semantic(); const { hook } = view(); runFrames();
+  y = 1205; fireEvent.scroll(window); runFrames();
+  const resume = suspendReading();
+  try {
+    wordTop = 2200; y = 8000; act(() => layoutChanged()); runFrames();
+    y = 1205;
+  } finally { resume(); }
+  runFrames(); expect(y).toBe(2205); hook.unmount();
+  expect(JSON.parse(localStorage.getItem('qa-reading-pos')!)).toMatchObject({ word: '0:1:7', scrollY: 2205 });
 });
 
 test('late bookmark header layout preserves the initial semantic position', () => {

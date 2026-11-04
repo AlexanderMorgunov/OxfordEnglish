@@ -22,8 +22,6 @@ const { name: OWNER, inn: INN, email: EMAIL, site: SITE } = SELLER;
 const BLOB_PER_BOOK_MB = Math.round(BLOB_MAX_BYTES / (1024 * 1024));
 const BLOB_TOTAL_MB = Math.round(BLOB_ACCOUNT_MAX_BYTES / (1024 * 1024));
 
-const PRICE_RUB = 199;
-const PERIOD_DAYS = 30;
 const PRO_AI_UNITS = 10_000;
 const TRIAL_DAYS = 14;
 const TRIAL_AI_UNITS = 1_000;
@@ -189,8 +187,8 @@ function Service({ ru }: { ru: boolean }) {
       </p>
       <p>
         {ru
-          ? `Стоимость: ${PRICE_RUB} ₽ за расчётный период в ${PERIOD_DAYS} дней. В период включено ${PRO_AI_UNITS.toLocaleString('ru-RU')} единиц ИИ-запросов; одна единица — это один короткий запрос, задачи с большим объёмом текста расходуют несколько единиц. Остаток отображается в настройках аккаунта.`
-          : `Price: ${PRICE_RUB} ₽ per ${PERIOD_DAYS}-day period, including ${PRO_AI_UNITS.toLocaleString('en-GB')} AI request units. One unit is one short request; tasks that carry a lot of text cost several. The balance is shown in account settings.`}
+          ? `Стандартная стоимость: 199 ₽ за 30 дней, 499 ₽ за 90 дней или 1499 ₽ за 365 дней. Во время акции применяются цены, указанные на странице Pro; итоговая сумма и срок показываются перед оплатой. Бюджет ИИ — ${PRO_AI_UNITS.toLocaleString('ru-RU')} единиц за каждые 30 дней активного Pro; одна единица — это один короткий запрос, задачи с большим объёмом текста расходуют несколько единиц. Остаток отображается в настройках аккаунта.`
+          : `Standard prices: 199 ₽ for 30 days, 499 ₽ for 90 days or 1499 ₽ for 365 days. During a sale, prices on the Pro page apply; the total and period are shown before payment. The AI budget is ${PRO_AI_UNITS.toLocaleString('en-GB')} units per 30 days of active Pro. One unit is one short request; larger tasks cost several. The balance is shown in account settings.`}
       </p>
       <p>
         {ru
@@ -246,18 +244,18 @@ function Order({ ru }: { ru: boolean }) {
         items={
           ru
             ? [
-                'Создайте аккаунт в приложении: «Настройки» → «Аккаунт». Аккаунт создаётся по ключу восстановления, без e-mail и телефона.',
-                'Откройте страницу «Pro» и нажмите «Оформить подписку».',
-                `Оплатите ${PRICE_RUB} ₽ на стороне платёжного сервиса Robokassa — банковской картой или через СБП.`,
+                'Создайте аккаунт в приложении или войдите в существующий аккаунт.',
+                'Откройте страницу «Pro», выберите срок и проверьте полную сумму.',
+                'Перейдите к оплате на стороне платёжного сервиса Robokassa — банковской картой или через СБП.',
                 'Доступ к платным функциям открывается автоматически сразу после подтверждения оплаты платёжным сервисом — обычно в течение минуты, но не позднее одного рабочего дня.',
-                `Оплаченный период — ${PERIOD_DAYS} дней с момента открытия доступа. Срок окончания показан в «Настройках» → «Подписка».`,
+                'Оплаченный период — 30, 90 или 365 дней. При продлении активного Pro дни добавляются к текущему сроку; остаток пробного периода не прибавляется. Срок окончания показан в «Настройках» → «Подписка».',
               ]
             : [
-                'Create an account in the app: Settings → Account. An account is created from a recovery key, with no e-mail and no phone number.',
-                'Open the Pro page and press the subscribe button.',
-                `Pay ${PRICE_RUB} ₽ on the Robokassa payment service — by bank card or via SBP.`,
+                'Create an account in the app or sign in to your existing account.',
+                'Open the Pro page, choose a period and review the full total.',
+                'Continue to Robokassa checkout and pay by bank card or SBP.',
                 'The paid features switch on automatically as soon as the payment service confirms the payment — usually within a minute, and no later than one working day.',
-                `The paid period is ${PERIOD_DAYS} days from the moment access opens. The end date is shown in Settings → Subscription.`,
+                'The paid period is 30, 90 or 365 days. When renewing active Pro, days are added to the current period; remaining trial days are not added. The end date is shown in Settings → Subscription.',
               ]
         }
       />
@@ -334,8 +332,8 @@ export function TermsPage() {
       </h1>
       <p className="mt-3 text-sm leading-relaxed text-pretty text-muted">
         {ru
-          ? `Коротко: приложение бесплатное. Платная подписка DayEnglish Pro стоит ${PRICE_RUB} ₽ за ${PERIOD_DAYS} дней, открывает ИИ-функции, не продлевается сама и возвращается за неиспользованный период.`
-          : `In short: the app is free. The optional DayEnglish Pro subscription costs ${PRICE_RUB} ₽ for ${PERIOD_DAYS} days, unlocks the AI features, never renews by itself, and is refundable for the unused period.`}
+          ? `Коротко: приложение бесплатное. Платная подписка DayEnglish Pro стоит 199 ₽ за 30 дней, 499 ₽ за 90 дней или 1499 ₽ за 365 дней, открывает ИИ-функции, не продлевается сама и возвращается за неиспользованный период.`
+          : `In short: the app is free. The optional DayEnglish Pro subscription costs 199 ₽ for 30 days, 499 ₽ for 90 days or 1499 ₽ for 365 days, unlocks the AI features, never renews by itself, and is refundable for the unused period.`}
       </p>
 
       <Service ru={ru} />

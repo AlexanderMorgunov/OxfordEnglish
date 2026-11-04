@@ -61,8 +61,9 @@ export function Popover({ trigger, children, label, showClose, closeLabel = 'Clo
     const panel = panelRef.current;
     if (!anchor || !panel) return;
     const a = anchor.getBoundingClientRect();
-    const vw = window.visualViewport?.width ?? window.innerWidth;
+    const vw = Math.min(window.visualViewport?.width ?? window.innerWidth, document.documentElement.offsetWidth || document.documentElement.clientWidth || window.innerWidth);
     const vh = window.visualViewport?.height ?? window.innerHeight;
+    panel.style.setProperty('--popover-available-width', `${Math.max(0, vw - MARGIN * 2)}px`);
     const pw = panel.offsetWidth;
     const ph = panel.offsetHeight;
     let left = Math.min(a.left, vw - pw - MARGIN);
@@ -101,7 +102,7 @@ export function Popover({ trigger, children, label, showClose, closeLabel = 'Clo
       if (!rootRef.current?.contains(t) && !panelRef.current?.contains(t)) close(false);
     };
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') close();
+      if (e.key === 'Escape' && !(e.target instanceof Element && e.target.closest('dialog[open]'))) close();
     };
     document.addEventListener('pointerdown', onPointerDown);
     document.addEventListener('keydown', onKeyDown);

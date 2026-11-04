@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
+import { useLocation } from 'react-router-dom';
 import type { Section } from '@/content/schema';
 import { packMediaUrl } from '@/content/loader';
-import { PixelImage, SegmentedToggle } from '@/shared/ui';
+import { PixelImage, PopoverGroup, SegmentedToggle } from '@/shared/ui';
 import { useVocabStore } from '@/features/vocab/vocabStore';
 import { resumeExclusive, speakWord } from '@/shared/lib/audio';
 import { useSpeechAvailable } from '@/shared/lib/useSpeechAvailable';
@@ -10,6 +11,9 @@ import { addWordCard, addPhraseCard } from '@/features/srs/service';
 import { WordToken, type Gloss } from '@/features/reader/reading-text';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { exLabels } from '@/features/i18n/ui-strings';
+import { getDataScopeRevision, subscribeDataScope } from '@/features/account/dataScope';
+import { consumeLessonWordReturn, currentWordReturn, discardWordReturn, lessonWordKey, useWordReturn } from '@/features/reader/word-return';
+import { toSentences } from '@/features/reader/parse/text';
 
 type ReadingSection = Extract<Section, { type: 'reading' }>;
 
@@ -57,6 +61,8 @@ function ReadingBlock({
   imageAlt,
   rate,
   glossary,
+  sectionId,
+  blockId,
 }: {
   en: string;
   ru?: string;
@@ -65,10 +71,15 @@ function ReadingBlock({
   imageAlt?: string;
   rate: number;
   glossary: Map<string, Gloss>;
+  sectionId: string;
+  blockId: string;
 }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [showRu, setShowRu] = useState(false);
-  const tokens = useMemo(() => en.split(/(\b[a-zA-Z']+\b)/), [en]);
+  const tokens = useMemo(() => toSentences(en).flatMap((sentence, index) => [
+    ...(index ? [{ text: ' ', sentence }] : []),
+    ...sentence.split(/(\b[a-zA-Z']+\b)/).map(text => ({ text, sentence })),
+  ]), [en]);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   useEffect(() => {
@@ -119,14 +130,16 @@ function ReadingBlock({
             {playing ? '❚❚' : '▶'}
           </button>
         )}
-        {tokens.map((tok, i) => {
+        {tokens.map(({ text: tok, sentence }, i) => {
           if (!/^[a-zA-Z']+$/.test(tok)) return <span key={i}>{tok}</span>;
           return (
             <WordToken
               key={i}
               word={tok}
               gloss={glossary.get(tok.toLowerCase())}
-              sentence={en}
+              sentence={sentence}
+              enableContextFetch
+              lessonTarget={{ sectionId, blockId, tokenIndex: i }}
             />
           );
         })}
@@ -154,16 +167,38 @@ const READING_RATES = { '0.75': 0.75, '1': 1, '1.25': 1.25 } as const;
 type ReadingRateKey = keyof typeof READING_RATES;
 
 export function ReadingSectionView({ section }: { section: ReadingSection }) {
+  const revision = useSyncExternalStore(subscribeDataScope, getDataScopeRevision);
+  return <PopoverGroup key={`${section.id}:${revision}`}><ReadingSession section={section} /></PopoverGroup>;
+}
+
+function ReadingSession({ section }: { section: ReadingSection }) {
   const canSpeak = useSpeechAvailable();
   const load = useVocabStore((s) => s.load);
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [rateKey, setRateKey] = useState<ReadingRateKey>('0.75');
   const textRef = useRef<HTMLDivElement>(null);
+  const { pathname } = useLocation();
+  const wordReturn = useWordReturn(s => s.entry);
   const [phrase, setPhrase] = useState<string | null>(null);
   const [phraseSaved, setPhraseSaved] = useState(false);
   useEffect(() => {
     void load();
   }, [load]);
+  useEffect(() => {
+    const entry = currentWordReturn();
+    if (entry?.kind !== 'lesson' || entry.phase !== 'ready' || entry.pathname !== pathname || entry.sectionId !== section.id) return;
+    const frame = requestAnimationFrame(() => {
+      if (currentWordReturn()?.id !== entry.id) return;
+      const token = [...(textRef.current?.querySelectorAll<HTMLButtonElement>('[data-lesson-word]') ?? [])]
+        .find(el => el.dataset.lessonWord === lessonWordKey(entry) && el.textContent === entry.word);
+      if (!token) { discardWordReturn(); return; }
+      token.scrollIntoView({ block: 'center' });
+      if (token.getAttribute('aria-expanded') === 'true') consumeLessonWordReturn(entry, entry.word);
+      else token.click();
+      document.getElementById(token.getAttribute('aria-controls') ?? '')?.focus({ preventScroll: true });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [wordReturn, pathname, section.id]);
 
   const rate = READING_RATES[rateKey];
 
@@ -245,6 +280,8 @@ export function ReadingSectionView({ section }: { section: ReadingSection }) {
         {section.blocks.map((block) => (
           <ReadingBlock
             key={block.id}
+            sectionId={section.id}
+            blockId={block.id}
             en={block.en}
             ru={block.ru}
             audioUrl={block.audio ? packMediaUrl(block.audio.src) : undefined}

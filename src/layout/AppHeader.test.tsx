@@ -19,7 +19,7 @@ afterEach(() => {
   document.documentElement.style.removeProperty('--app-nav-top');
   document.documentElement.style.removeProperty('--app-nav-bottom');
 });
-function geometry(initialWidth: number) {
+function geometry(initialWidth: number, utilityWidth = 180) {
   let width = initialWidth,
     label = 60;
   vi.stubGlobal('innerWidth', width);
@@ -38,7 +38,7 @@ function geometry(initialWidth: number) {
         : this.classList.contains('app-nav-primary')
           ? 600
           : this.classList.contains('app-nav-utilities')
-            ? 180
+            ? utilityWidth
             : this.classList.contains('app-nav-label-probe')
               ? label
               : 44;
@@ -106,6 +106,16 @@ test('compact has five labelled bottom destinations and keeps the current second
   await userEvent.keyboard('{Escape}');
   expect(more).toHaveFocus();
   expect(more).toHaveTextContent('Settings');
+});
+
+test('wider help utilities move only Progress into More while keeping desktop primary navigation', async () => {
+  geometry(1440, 330);
+  renderHeader();
+  const primary = screen.getByRole('navigation', { name: 'Main navigation' });
+  expect(primary).toHaveClass('app-nav-primary');
+  expect(within(primary).getAllByRole('link')).toHaveLength(5);
+  await userEvent.click(screen.getByRole('button', { name: 'More' }));
+  expect(screen.getByRole('link', { name: 'Progress' })).toBeVisible();
 });
 
 test('large labels use a complete Sections disclosure instead of clipping the bottom bar', async () => {

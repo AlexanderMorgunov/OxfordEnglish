@@ -11,6 +11,10 @@ import {
 } from './reading-position';
 import type { ReadingPosition } from './reading-position';
 import { NAVIGATION_INSETS_EVENT } from '@/shared/lib/navigation-insets';
+import {
+  readingSuspended,
+  subscribeReadingSuspension,
+} from '@/shared/lib/reading-suspension';
 
 export function useReadingPosition({
   rootRef,
@@ -52,10 +56,12 @@ export function useReadingPosition({
       }
     };
     const capture = () => {
-      if (restored && valid()) latest = captureReadingPosition(root, pageId);
+      if (restored && valid() && !readingSuspended())
+        latest = captureReadingPosition(root, pageId);
     };
     const restore = () => {
       restoreFrame = 0;
+      if (readingSuspended()) return;
       if (jumpingRef.current) interrupt();
       if (!valid() || interrupted) return;
       restoreReadingPosition(root, saved ?? { version: 1, pageId, scrollY: 0 });
@@ -70,12 +76,14 @@ export function useReadingPosition({
       restoreFrame = requestAnimationFrame(restore);
     };
     const onScroll = () => {
+      if (readingSuspended()) return;
       capture();
       if (!valid() || !restored) return;
       cancelAnimationFrame(writeFrame);
       writeFrame = requestAnimationFrame(write);
     };
     const interrupt = () => {
+      if (readingSuspended()) return;
       interrupted = true;
       restored = true;
       cancelAnimationFrame(restoreFrame);
@@ -105,6 +113,27 @@ export function useReadingPosition({
       cancelAnimationFrame(writeFrame);
       observer?.disconnect();
     });
+    let suspended = readingSuspended();
+    let heldPosition = suspended ? saved : null;
+    const unsubscribeSuspension = subscribeReadingSuspension(() => {
+      const next = readingSuspended();
+      if (next === suspended) return;
+      suspended = next;
+      if (suspended) {
+        heldPosition =
+          restored && valid() ? captureReadingPosition(root, pageId) : saved;
+        cancelAnimationFrame(restoreFrame);
+        cancelAnimationFrame(writeFrame);
+      } else {
+        if (heldPosition && valid()) {
+          restoreReadingPosition(root, heldPosition);
+          restored = true;
+        }
+        heldPosition = null;
+        if (!restored) scheduleRestore();
+        else onScroll();
+      }
+    });
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('wheel', interrupt, { passive: true });
     window.addEventListener('touchstart', interrupt, { passive: true });
@@ -124,6 +153,7 @@ export function useReadingPosition({
       cancelAnimationFrame(writeFrame);
       observer?.disconnect();
       unsubscribe();
+      unsubscribeSuspension();
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('wheel', interrupt);
       window.removeEventListener('touchstart', interrupt);

@@ -196,6 +196,7 @@ export function VocabularyList({
         </div>
         <Button
           className="vc-add-button"
+          data-onboarding="vocabulary-add"
           aria-label={ru ? 'Добавить слово' : 'Add a word or phrase'}
           disabled={resource.status !== 'ready'}
           onClick={onAdd}

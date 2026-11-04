@@ -12,10 +12,11 @@ import {
 } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import { Popover } from '@/shared/ui';
+import { Popover, usePopoverClose } from '@/shared/ui';
 import { PopoverCloseContext } from '@/shared/ui/popover-close';
 import { PopoverGroupContext } from '@/shared/ui/popover-group';
 import { useUiLang } from '@/features/i18n/uiLang';
+import { NAVIGATION_INSETS_EVENT } from '@/shared/lib/navigation-insets';
 import './reader-help.css';
 
 type HelpTrigger = ReactElement<{
@@ -31,6 +32,8 @@ type HelpProps = {
   trigger: HelpTrigger;
   label: string;
   children: ReactNode;
+  variant?: 'default' | 'word';
+  footer?: ReactNode;
   className?: string;
   anchorClassName?: string;
   closeLabel?: string;
@@ -64,6 +67,32 @@ export function ReaderHelpEnvironment({
     media?.addEventListener('change', change);
     return () => media?.removeEventListener('change', change);
   }, [targetId]);
+  useLayoutEffect(() => {
+    if (!target || !wide) return;
+    let frame = 0;
+    const update = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const dock = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reader-dock-height')) || 100;
+        const top = target.getBoundingClientRect().top + parseFloat(getComputedStyle(target).paddingTop);
+        target.style.setProperty('--reader-help-height', `${Math.max(100, window.innerHeight - top - dock - 16)}px`);
+      });
+    };
+    update();
+    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(update);
+    observer?.observe(target);
+    window.addEventListener('resize', update);
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener(NAVIGATION_INSETS_EVENT, update);
+    return () => {
+      cancelAnimationFrame(frame);
+      observer?.disconnect();
+      window.removeEventListener('resize', update);
+      window.removeEventListener('scroll', update);
+      window.removeEventListener(NAVIGATION_INSETS_EVENT, update);
+      target.style.removeProperty('--reader-help-height');
+    };
+  }, [target, wide]);
   const value = useMemo(() => ({ wide, target }), [wide, target]);
   return <HelpEnvironment value={value}>{children}</HelpEnvironment>;
 }
@@ -72,20 +101,33 @@ export function ReaderHelp(props: HelpProps) {
   return props.targetId ? (
     <BookHelp {...props} targetId={props.targetId} />
   ) : (
-    <Popover {...props} />
+    props.variant === 'word' ? <Popover {...props} showClose={false} className="rdh-anchored"><HelpContent footer={props.footer}>{props.children}</HelpContent></Popover>
+      : <Popover {...props}>{props.children}{props.footer}</Popover>
   );
+}
+
+function HelpContent({ children, footer }: Pick<HelpProps, 'children' | 'footer'>) {
+  const ru = useUiLang(s => s.lang) === 'ru';
+  const close = usePopoverClose();
+  const body = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => { body.current?.focus({ preventScroll: true }); }, []);
+  return <>
+    <div className="rdh-topline"><span>{ru ? 'Помощь с чтением' : 'Reading help'}</span><button type="button" className="rdh-close" aria-label={ru ? 'Закрыть' : 'Close'} onClick={close}>×</button></div>
+    <div ref={body} tabIndex={-1} className="rdh-body outline-none">{children}</div>
+    {footer && <footer className="rdh-footer">{footer}</footer>}
+  </>;
 }
 
 function BookHelp({
   trigger,
   label,
   children,
+  footer,
   anchorClassName,
   initiallyOpen,
   onDismiss,
   returnFocus,
 }: HelpProps) {
-  const ru = useUiLang((s) => s.lang) === 'ru';
   const [open, setOpen] = useState(Boolean(initiallyOpen));
   const { wide, target } = use(HelpEnvironment);
   const anchor = useRef<HTMLSpanElement>(null);
@@ -127,6 +169,7 @@ function BookHelp({
     if (!open || !wide || !target) return;
     const key = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
+        if (event.target instanceof Element && event.target.closest('dialog[open]')) return;
         event.preventDefault();
         close();
       }
@@ -148,18 +191,7 @@ function BookHelp({
 
   const content = (
     <PopoverCloseContext value={() => close()}>
-      <div className="rdh-topline">
-        <span>{ru ? 'Помощь с чтением' : 'Reading help'}</span>
-        <button
-          type="button"
-          className="rdh-close"
-          aria-label={ru ? 'Закрыть' : 'Close'}
-          onClick={() => close()}
-        >
-          ×
-        </button>
-      </div>
-      <div className="rdh-body">{children}</div>
+      <HelpContent footer={footer}>{children}</HelpContent>
     </PopoverCloseContext>
   );
   return (

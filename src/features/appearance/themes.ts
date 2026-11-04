@@ -134,6 +134,11 @@ export const useTheme = create<AppearanceTheme>((set, get) => ({
   },
 }));
 
+export function acceptTheme(theme: ThemeId, dismissed: boolean): void {
+  paint(theme);
+  useTheme.setState({ theme, dismissed, draft: null, error: false });
+}
+
 const storageChanged = (event: StorageEvent) => {
   if (event.key !== APPEARANCE_KEY && event.key !== null) return;
   const next = load();

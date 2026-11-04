@@ -7,6 +7,10 @@ This is a separate Hono/Node npm package, not NestJS. Root `AGENTS.md` also appl
 - Wire schemas in `src/contract.ts` mirror frontend
   `../src/features/account/contract.ts`. Sync resolution in `src/sync.ts` mirrors
   frontend `../src/features/sync/resolve.ts`. Update and check both sides.
+- `accessContract.ts` and `accessPolicy.ts` likewise mirror frontend account-access
+  files. Account mutations join an ambient YDB serializable transaction; nested
+  stores must not commit it early. Generation checks cover legacy JWT/refresh/link
+  issuance too. Account-access migration and deployment remain separate operations.
 - Preserve serialized/transactional entitlement mutations, callback and grant
   idempotency, paginated sync snapshots, and credential-reuse detection.
 - Admin routes mount only with a sufficiently long `ADMIN_TOKEN`; rate limiting

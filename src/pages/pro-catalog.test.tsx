@@ -46,7 +46,7 @@ test('a failed lookup can recover without presenting a server outage as unavaila
 test('a server-disabled checkout still explains the managed free trial', async () => {
   plans.mockResolvedValue({ ...catalog, available: false });
   open();
-  expect(await screen.findByText('Оплата пока недоступна.')).toBeVisible();
+  expect(await screen.findByText('Оплата временно недоступна.')).toBeVisible();
   expect(screen.getByText('14 дней бесплатно')).toBeVisible();
   expect(screen.getByRole('button', { name: 'Попробовать 14 дней' })).toBeEnabled();
   expect(screen.queryByText(/199.*30 дней/)).toBeNull();
@@ -58,12 +58,12 @@ test('the Pro card follows trial expiry, purchase and paid expiry without offeri
   const trial = { plan: 'trial' as const, active: true, trialEndsAt: Date.now() + 86400000, ai: { used: 0, limit: 100 } };
   useEntitlement.setState({ entitlement: trial });
   open();
-  expect(await screen.findByRole('button', { name: /Оформить Pro.*199/ })).toBeEnabled();
+  expect(await screen.findByRole('button', { name: /Перейти к оплате.*199/ })).toBeEnabled();
   expect(screen.getByRole('link', { name: 'Моя подписка ↓' })).toHaveAttribute('href', '#pro-access');
   act(() => useEntitlement.setState({ entitlement: { ...trial, trialEndsAt: Date.now() - 1 } }));
   expect(screen.getByRole('heading', { name: /Пробный период закончился/ })).toBeVisible();
   expect(screen.getByRole('link', { name: 'Оформить Pro ↓' })).toHaveAttribute('href', '#pro-access');
-  expect(screen.getByRole('button', { name: /Оформить Pro.*199/ })).toBeEnabled();
+  expect(screen.getByRole('button', { name: /Перейти к оплате.*199/ })).toBeEnabled();
   expect(screen.queryByRole('button', { name: /Попробовать 14 дней/ })).toBeNull();
   const paid = { ...trial, plan: 'pro' as const, paidUntil: Date.now() + 86400000 };
   act(() => useEntitlement.setState({ entitlement: paid }));

@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 @import './features/appearance/palettes.css';
+@import './features/welcome/welcome.css';
+@import './features/sale/sale.css';
 
 /* ================================================================
    Design tokens — DESIGN_DOC §8.2. Semantic names (--color-ink, not

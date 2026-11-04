@@ -25,8 +25,15 @@ import { YdbAiCacheStore } from './stores/ydbAiCache.js';
 import { YdbTotpStore } from './stores/ydbTotp.js';
 import { YdbRecoveryNameStore } from './stores/ydbRecoveryName.js';
 import type { Completer } from './aiProvider.js';
-import { jwks } from './tokens.js';
+import { jwks, bindAccessValidator } from './tokens.js';
 import { ErrorCode } from './contract.js';
+import { InMemoryAccessStore, type AccessStore, type CheckpointStore } from './accessStore.js';
+import { YdbAccessStore } from './stores/ydbAccess.js';
+import { AccessSecurity } from './accessSecurity.js';
+import { AccountAccess } from './accountAccess.js';
+import { accountAccessRoutes } from './routes/access.js';
+import { InMemoryBillingCatalogStore, type BillingCatalogStore } from './billingCatalog.js';
+import { YdbBillingCatalogStore } from './stores/ydbBillingCatalog.js';
 
 /** Build the API app. Storage is injectable (tests pass explicit stores); otherwise it picks the YDB +
  *  Object Storage impls when a real backend is configured (YDB_DATABASE set), else the in-memory skeleton
@@ -39,7 +46,9 @@ export function createApp(
   aiCache?: AiCacheStore,
   completer?: Completer,
   totp?: TotpStore,
-  names?: RecoveryNameStore
+  names?: RecoveryNameStore,
+  access?: AccessStore,
+  catalog?: BillingCatalogStore
 ): Hono {
   const real = ydbConfigured();
   // Without a real database there is no Lockbox either; a per-process key keeps dev and the in-process
@@ -53,6 +62,14 @@ export function createApp(
   const aiCacheStore = aiCache ?? (real ? new YdbAiCacheStore() : new InMemoryAiCacheStore());
   const totpStore = totp ?? (real ? new YdbTotpStore() : new InMemoryTotpStore());
   const nameStore = names ?? (real ? new YdbRecoveryNameStore() : new InMemoryRecoveryNameStore());
+  const catalogStore = catalog ?? (real ? new YdbBillingCatalogStore() : new InMemoryBillingCatalogStore());
+  const participants: CheckpointStore[] = [];
+  for (const participant of [authStore, totpStore, nameStore]) {
+    if ('checkpoint' in participant && typeof participant.checkpoint === 'function') participants.push(participant as CheckpointStore);
+  }
+  const accessStore = access ?? (real ? new YdbAccessStore() : new InMemoryAccessStore(participants));
+  const accessSecurity = new AccessSecurity(accessStore, authStore);
+  const accessService = new AccountAccess(accessSecurity, totpStore, nameStore);
   const app = new Hono();
 
   const origins = (process.env.CORS_ORIGINS ?? 'https://dayenglish.ru,https://www.dayenglish.ru')
@@ -97,6 +114,7 @@ export function createApp(
    */
   const MAX_BODY_BYTES = 1024 * 1024;
   app.use('/v1/*', async (c, next) => {
+    bindAccessValidator(c.req, (claims) => accessSecurity.validAccess(claims));
     const declared = Number(c.req.header('content-length') ?? '0');
     if (Number.isFinite(declared) && declared > MAX_BODY_BYTES) {
       return c.json({ error: { code: ErrorCode.InputTooLarge } }, 413);
@@ -112,14 +130,15 @@ export function createApp(
 
   app.get('/health', (c) => c.text('ok'));
   app.get('/v1/.well-known/jwks.json', async (c) => c.json(await jwks()));
-  app.route('/', authRoutes(authStore));
+  app.route('/', authRoutes(authStore, accessSecurity));
+  app.route('/', accountAccessRoutes(accessService));
   app.route('/', syncRoutes(syncStore, entStore));
   app.route('/', blobRoutes(blobStore, entStore));
-  app.route('/', accountRoutes(authStore, syncStore, blobStore, entStore, totpStore, nameStore));
+  app.route('/', accountRoutes(authStore, syncStore, blobStore, entStore, totpStore, nameStore, accessStore));
   app.route('/', entitlementRoutes(entStore));
-  app.route('/', billingRoutes(entStore));
+  app.route('/', billingRoutes(entStore, catalogStore));
   app.route('/', aiRoutes(entStore, aiCacheStore, completer));
-  app.route('/', totpRoutes(authStore, totpStore, nameStore));
+  app.route('/', totpRoutes(authStore, totpStore, nameStore, accessSecurity));
 
   // Read here, not at module scope: an import-time read would make "no token → 404" depend on import
   // order and pass or fail by accident. Below the minimum length the surface is NOT mounted — warning
@@ -128,7 +147,7 @@ export function createApp(
   if (adminToken && adminToken.length < ADMIN_TOKEN_MIN) {
     console.warn(`[admin] ADMIN_TOKEN shorter than ${ADMIN_TOKEN_MIN} characters — admin routes not mounted`);
   } else if (adminToken) {
-    app.route('/', adminRoutes(new Hono(), adminToken, authStore, entStore));
+    app.route('/', adminRoutes(new Hono(), adminToken, authStore, entStore, catalogStore));
     app.get('/admin', (c) => c.html(adminPage()));
     console.log('[admin] admin routes mounted (ADMIN_TOKEN is set)');
   }

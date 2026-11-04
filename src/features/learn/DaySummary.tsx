@@ -6,6 +6,7 @@ import { dayExercises } from '@/features/progress/completion';
 import { track } from '@/features/analytics/analytics';
 import { useUiLang, tr } from '@/features/i18n/uiLang';
 import { Card, PixelImage, ProgressBar } from '@/shared/ui';
+import { queueSaleAfterLesson } from '@/features/sale/memory';
 
 export type NextDay = { unitId: string; dayId: string; title: LocalizedText };
 
@@ -40,6 +41,7 @@ export function DaySummary({ day, next, checkpointUnitId, levelExitId, onRedo }:
   useEffect(() => {
     if (done && !tracked.has(day.id)) {
       tracked.add(day.id);
+      queueSaleAfterLesson();
       void track('day_complete', { dayId: day.id, firstTry, total });
     }
   }, [done, day.id, firstTry, total]);

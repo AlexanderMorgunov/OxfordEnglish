@@ -94,6 +94,38 @@ test('selects an exact Russian alternative instead of a fuzzy primary term segme
   expect(await db.translations.get('bank')).toMatchObject({ ru: 'банк', source: 'mymemory' });
 });
 
+test('accepts the observed exact regional fiction match at 0.99 and caches it for offline use', async () => {
+  const fetcher = vi.fn(async () => new Response(JSON.stringify({
+    responseData: { translatedText: 'чтиво', match: 0.99 },
+    matches: [
+      { segment: 'fiction', translation: 'чтиво', match: 0.99, source: 'en-GB', target: 'ru-RU' },
+      { segment: 'fiction', translation: 'фантастика', match: 0.99, source: 'en-US', target: 'ru-RU' },
+      { segment: 'Fiction', translation: 'Разработано:', match: 0.98, source: 'en-GB', target: 'ru-RU' },
+    ],
+  })));
+  vi.stubGlobal('fetch', fetcher);
+  expect(await translateWord('Fiction')).toBe('чтиво');
+  expect(await db.translations.get('fiction')).toMatchObject({ ru: 'чтиво', source: 'mymemory' });
+  fetcher.mockRejectedValue(new TypeError('offline'));
+  expect(await translateWord('fiction')).toBe('чтиво');
+  expect(fetcher).toHaveBeenCalledOnce();
+});
+
+test.each([
+  { segment: 'science fiction', translation: 'научная фантастика', match: 0.99, source: 'en-GB', target: 'ru-RU' },
+  { segment: 'fiction', translation: 'фантастика', match: 0.98, source: 'en-GB', target: 'ru-RU' },
+  { segment: 'fiction', translation: 'фантастика', match: 0.99, source: 'fr', target: 'ru-RU' },
+  { segment: 'fiction', translation: 'фантастика', match: 0.99, source: 'en-GB', target: 'uk' },
+  { segment: 'fiction', translation: 'и др.', match: 0.99, source: 'en-GB', target: 'ru-RU' },
+])('rejects an unusable near-perfect standalone match: %j', async (candidate) => {
+  vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({
+    responseData: { translatedText: 'неподтверждённый ответ', match: 0.99 },
+    matches: [candidate],
+  }))));
+  expect(await translateWord('fiction')).toBeNull();
+  expect(await db.translations.get('fiction')).toBeUndefined();
+});
+
 test('preserves exact automatic glosses offline and never rejects a manual abbreviation', async () => {
   await db.translations.bulkPut([
     { word: 'shelter', ru: 'укрытие', source: 'mymemory' },

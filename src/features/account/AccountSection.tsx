@@ -18,6 +18,9 @@ import { sessionRejectionReason } from './session-diagnostics';
 import { useBookFileSync } from '@/features/reader/blobSync';
 import { useSyncStatus } from '@/features/sync/status';
 import type { Device, DeviceStartResponse } from './contract';
+import { AccessFlow } from './AccessFlow';
+import { accessCapabilities } from './access-api';
+import { SaveRecoveryKey } from './SaveRecoveryKey';
 
 const mb = (bytes: number): string => (bytes / (1024 * 1024)).toFixed(bytes < 10 * 1024 * 1024 ? 1 : 0);
 
@@ -31,12 +34,49 @@ function ago(ts: number, ru: boolean): string {
   return ru ? `${Math.round(h / 24)} дн назад` : `${Math.round(h / 24)} d ago`;
 }
 
-/** Settings → Account. Absent entirely when no backend is configured (`accountsEnabled()` false), so
- *  prod/staging without an API is clean. Slice 1: create / save recovery key / link by key / link a
- *  second device by approval / per-device revoke / status / logout. TOTP recovery arrives later. */
+/** Keep the legacy account surface until the server advertises the new access protocol. */
 export function AccountSection() {
   if (!accountsEnabled()) return null;
-  return <AccountSectionBody />;
+  return <AccountAccessEntry />;
+}
+
+function AccountAccessEntry() {
+  const ru = useUiLang(s => s.lang) === 'ru';
+  const status = useAccount(s => s.status);
+  const session = useAccount(s => s.sessionRevision);
+  const deviceId = useAccount(s => s.deviceId);
+  const pendingKey = useAccount(s => s.pendingRecoveryKey);
+  const accountId = useAccount(s => s.accountId);
+  const [ready, setReady] = useState<'loading' | 'new' | 'legacy' | 'error'>('loading');
+  const [attempt, setAttempt] = useState(0);
+  const [confirmLogout, setConfirmLogout] = useState(false);
+  const [linkDevice, setLinkDevice] = useState(false);
+  useEffect(() => {
+    const abort = new AbortController();
+    setReady('loading');
+    void accessCapabilities(abort.signal).then(value => { if (!abort.signal.aborted) setReady(value.enabled ? 'new' : 'legacy'); })
+      .catch(error => { if (!abort.signal.aborted) setReady(error instanceof ApiFailure && error.status === 404 ? 'legacy' : 'error'); });
+    return () => abort.abort();
+  }, [attempt]);
+  useEffect(() => { setConfirmLogout(false); setLinkDevice(false); }, [session]);
+  if (ready === 'legacy') return <AccountSectionBody />;
+  if (ready !== 'new') return <div><p role="status" className="text-sm text-muted">{ready === 'loading' ? ru ? 'Проверяем доступ…' : 'Checking access…' : ru ? 'Не удалось связаться с сервером.' : 'Could not reach the server.'}</p>{ready === 'error' && <Button onClick={() => setAttempt(v => v + 1)}>{ru ? 'Повторить' : 'Retry'}</Button>}</div>;
+  return <div className="settings-account-content">
+    {status === 'authenticated' ? <>
+      {pendingKey ? <SaveRecoveryKey recoveryKey={pendingKey} accountId={accountId} continueLabel={ru ? 'Готово' : 'Done'} onContinue={() => useAccount.getState().confirmRecoveryKey()} /> : <AccessFlow key={session} initial="manage" />}
+      <QuotaNotice /><PlanSection ru={ru} />
+      <div className="mt-5"><DeviceManager ru={ru} thisDeviceId={deviceId} /></div>
+      <Button className="mt-5" variant="ghost" onClick={() => setConfirmLogout(true)}>{ru ? 'Выйти на этом устройстве' : 'Sign out on this device'}</Button>
+      {confirmLogout && <div className="settings-confirm mt-3"><p className="text-sm">{ru ? 'Книги, слова и прогресс останутся здесь. Для повторного входа понадобятся логин и пароль, прежний ключ или другое подключённое устройство.' : 'Books, words and progress stay here. Sign in again with your username and password, legacy key or another linked device.'}</p><div className="mt-3 flex flex-wrap gap-2"><Button variant="ghost" onClick={() => setConfirmLogout(false)}>{ru ? 'Отмена' : 'Cancel'}</Button><Button onClick={() => void useAccount.getState().logout()}>{ru ? 'Выйти' : 'Sign out'}</Button></div></div>}
+      <DangerZone ru={ru} />
+    </> : <>
+      {sessionRejectionReason() && <p role="status" className="access-notice">{ru ? 'Нужно снова войти. Локальные книги и прогресс сохранены.' : 'Sign in again. Local books and progress are kept.'}</p>}
+      <p className="text-sm text-muted">{ru ? 'Заниматься можно без аккаунта. Войдите, чтобы подключить Pro и синхронизацию.' : 'You can learn without an account. Sign in to connect Pro and sync.'}</p>
+      <div className="mt-4 flex flex-wrap gap-3"><Link className="inline-flex min-h-12 items-center justify-center rounded-sm bg-action px-4 py-2 text-sm font-semibold text-on-action" to="/account/register">{ru ? 'Создать аккаунт' : 'Create account'}</Link><Link className="inline-flex min-h-12 items-center justify-center rounded-sm border border-line px-4 py-2 text-sm text-content" to="/account/login">{ru ? 'Войти' : 'Sign in'}</Link></div>
+      <button type="button" className="access-text-button" onClick={() => setLinkDevice(v => !v)}>{ru ? 'Уже вошли на другом устройстве?' : 'Already signed in elsewhere?'}</button>
+      {linkDevice && <DeviceLinkNew ru={ru} />}
+    </>}
+  </div>;
 }
 
 function AccountSectionBody() {

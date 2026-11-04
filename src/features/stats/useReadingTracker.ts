@@ -2,6 +2,10 @@ import { useEffect, useRef } from 'react';
 import { countWords } from '@/features/reader/position';
 import { isSpeaking } from '@/shared/lib/audio';
 import {
+  readingSuspended,
+  subscribeReadingSuspension,
+} from '@/shared/lib/reading-suspension';
+import {
   FLUSH_MS,
   POLL_MS,
   dwellNeededMs,
@@ -104,6 +108,7 @@ export function useReadingTracker({
     let pendingWords = 0;
 
     const reading = (now: number) =>
+      !readingSuspended() &&
       isReading({
         visible: document.visibilityState === 'visible',
         focused: document.hasFocus(),
@@ -162,8 +167,13 @@ export function useReadingTracker({
     };
 
     const onInput = () => {
+      if (readingSuspended()) return;
       lastInput = Date.now();
     };
+    const unsubscribeSuspension = subscribeReadingSuspension(() => {
+      lastPoll = Date.now();
+      if (!readingSuspended()) lastInput = Date.now();
+    });
     const onVisibility = () => {
       if (document.visibilityState === 'visible') lastPoll = Date.now();
       else stash();
@@ -181,6 +191,7 @@ export function useReadingTracker({
     window.addEventListener('pagehide', onPageHide);
     return () => {
       window.clearInterval(timer);
+      unsubscribeSuspension();
       window.removeEventListener('scroll', onInput);
       window.removeEventListener('pointerdown', onInput);
       window.removeEventListener('keydown', onInput);

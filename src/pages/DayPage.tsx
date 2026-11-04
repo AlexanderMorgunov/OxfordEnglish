@@ -116,7 +116,7 @@ export function DayPage() {
 
       <div className="flex flex-col gap-12">
         {day.sections.map((section) => (
-          <section key={`${section.id}.${runKey}`} aria-label={tr(section.title, lang)}>
+          <section key={`${section.id}.${runKey}`} aria-label={tr(section.title, lang)} data-onboarding={`lesson-${section.type}`}>
             <div className="mb-4 flex flex-wrap items-center gap-x-2.5 gap-y-1 border-b border-line pb-2">
               <div className="flex max-w-full items-center gap-2.5">
                 <PixelImage

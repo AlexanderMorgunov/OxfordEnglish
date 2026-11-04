@@ -43,6 +43,7 @@ import {
 } from './bookmarks';
 import type { Bookmark } from './bookmarks';
 import { currentReadingLocation } from './reader-location';
+import { consumeWordReturn, currentWordReturn, discardWordReturn, useWordReturn } from './word-return';
 import './reader.css';
 
 type BookViewProps = {
@@ -126,6 +127,7 @@ function BookSession({
     chapterWrite = useRef(0);
   const writeQueue = useRef(Promise.resolve());
   const helpTargetId = useId();
+  const wordReturn = useWordReturn(s => s.entry);
   const ch = chapters[chapter]!;
   const source = useMemo(
     () => ({ bookKey: idPrefix, chapterId: ch.id }),
@@ -202,6 +204,29 @@ function BookSession({
     setPanel(null);
     persistChapter(next);
   };
+  useEffect(() => {
+    const entry = currentWordReturn();
+    if (!entry || entry.kind !== 'book' || entry.phase !== 'ready' || entry.pathname !== pathname || entry.bookKey !== idPrefix) return;
+    const index = chapters.findIndex(item => item.id === entry.chapterId);
+    if (index < 0) { discardWordReturn(); return; }
+    if (index !== chapter) {
+      setChapter(index);
+      persistChapter(index);
+      return;
+    }
+    const frame = requestAnimationFrame(() => {
+      if (currentWordReturn()?.id !== entry.id) return;
+      const token = [...(rootRef.current?.querySelectorAll<HTMLButtonElement>('[data-reader-text] [data-widx]') ?? [])]
+        .find(el => el.dataset.widx === entry.tokenId && el.textContent === entry.word);
+      if (!token) { discardWordReturn(); return; }
+      cancelRestore();
+      token.scrollIntoView({ block: 'center' });
+      if (token.getAttribute('aria-expanded') === 'true') consumeWordReturn(idPrefix, entry.chapterId, entry.tokenId, entry.word);
+      else token.click();
+      document.getElementById(token.getAttribute('aria-controls') ?? '')?.focus({ preventScroll: true });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [wordReturn, pathname, idPrefix, chapters, chapter, persistChapter, cancelRestore]);
   useEffect(() => {
     setBookProgress(positionOf(bookIndex, chapter, 0));
   }, [bookIndex, chapter]);

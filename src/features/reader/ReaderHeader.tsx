@@ -4,6 +4,7 @@ import { useUiLang } from '@/features/i18n/uiLang';
 import { NAVIGATION_INSETS_EVENT } from '@/shared/lib/navigation-insets';
 import mark from '@/assets/brand/dayenglish-mark.svg';
 import { ReaderIcon } from './ReaderIcon';
+import { OnboardingHelp } from '@/features/onboarding/OnboardingHelp';
 import type { ReaderIconName } from './ReaderIcon';
 
 export function ReaderHeader({
@@ -109,6 +110,7 @@ export function ReaderHeader({
               title={tool.label}
               aria-label={tool.label}
               aria-haspopup="dialog"
+              data-onboarding={tool.icon === 'type' ? 'reader-appearance' : undefined}
               onClick={tool.action}
             >
               <ReaderIcon name={tool.icon} />
@@ -116,6 +118,7 @@ export function ReaderHeader({
               {tool.count != null && <b>{tool.count}</b>}
             </button>
           ))}
+          <OnboardingHelp reader />
         </nav>
       </div>
     </header>

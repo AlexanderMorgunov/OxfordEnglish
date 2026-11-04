@@ -12,8 +12,17 @@ import { BackToTop } from './BackToTop';
 import '@/features/appearance/store';
 import '@/features/appearance/themes';
 import { ProActivationDialog } from '@/features/account/ProActivationDialog';
+import { AccountAccessNotice } from '@/features/account/AccountAccessNotice';
+import { ContextualOnboarding } from '@/features/onboarding/ContextualOnboarding';
+import { FirstEntryWelcome } from '@/features/welcome/FirstEntryWelcome';
+import { SalePromotion } from '@/features/sale/SalePromotion';
+import { RecoveryNavigationGuard } from '@/features/account/RecoveryNavigationGuard';
 
 export function AppLayout() {
+  return <RecoveryNavigationGuard><AppLayoutContent /></RecoveryNavigationGuard>;
+}
+
+function AppLayoutContent() {
   const lang = useUiLang((s) => s.lang);
   const ru = lang === 'ru';
   const location = useLocation();
@@ -47,6 +56,7 @@ export function AppLayout() {
         tabIndex={-1}
         className="app-main app-container py-8 pb-20 [overflow-wrap:break-word]"
       >
+        <SalePromotion />
         <ErrorBoundary resetKey={location.pathname}>
           <Suspense fallback={<p className="font-mono text-sm text-muted">{ru ? 'загрузка…' : 'loading…'}</p>}>
             <Outlet />
@@ -55,6 +65,9 @@ export function AppLayout() {
       </main>
       <SiteFooter ru={ru} />
       <ProActivationDialog />
+      <AccountAccessNotice />
+      <FirstEntryWelcome />
+      <ContextualOnboarding />
       <BackToTop key={location.pathname} pathname={location.pathname} mainRef={mainRef} />
       {/* New paths open at the top; returning to a seen path restores its scroll. */}
       <ScrollRestoration getKey={(location) => location.pathname === '/' || location.pathname === '/syllabus' ? location.pathname + location.search : location.pathname.startsWith('/grammar') || location.pathname === '/progress' || location.pathname === '/about' ? location.key : location.pathname} />

@@ -13,7 +13,9 @@ export function NavigationFocus() {
       if (
         !(element instanceof HTMLElement) ||
         !element.closest('.app-main') ||
-        element.closest('dialog,[role="dialog"],[popover]')
+        element.closest(
+          'dialog,[role="dialog"],[popover],.rd-reader-header,.rdc-dock'
+        )
       )
         return;
       const bounds = element.getBoundingClientRect(),

@@ -13,6 +13,7 @@
 import { createHash } from 'node:crypto';
 import { createApp } from './app.js';
 import { InMemoryEntitlementStore } from './entitlements.js';
+import { InMemoryBillingCatalogStore } from './billingCatalog.js';
 import {
   PLANS,
   buildReceipt,
@@ -37,7 +38,7 @@ delete process.env.ROBOKASSA_ALGO;
 delete process.env.ROBOKASSA_IS_TEST;
 
 const ent = new InMemoryEntitlementStore();
-const app = createApp(undefined, undefined, undefined, ent);
+const app = createApp(undefined, undefined, undefined, ent, undefined, undefined, undefined, undefined, undefined, new InMemoryBillingCatalogStore({ revision: 0, campaign: null }));
 let failures = 0;
 const check = (name: string, cond: boolean) => {
   console.log(`${cond ? '✓' : '✗'} ${name}`);
