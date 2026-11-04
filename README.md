@@ -591,6 +591,9 @@ these are config, not secrets. Set them in a gitignored `.env` (see `.env.exampl
   Select AI for sentence/phrase translation; free translation remains available. Course recordings,
   authored translations and glossary are preserved. Phrase selection stays within its reading block;
   manual edits are protected and a card is created only by an explicit save.
+  Mobile book help closes with a downward pull from its header or from content already at the top.
+  Native scrolling, nested quotes and text editing keep priority for their entire gesture; a first-use
+  grip hint respects reduced motion. The close button and keyboard dismissal remain available.
 - **Translate text** (`/vocabulary/text`): type or paste an English passage of up to 2000 characters,
   translate immediately or separately read with word/phrase saving and read-aloud.
   Free translation and optional trial/Pro/BYOK AI keep paragraphs and offer cancellation. Translation
