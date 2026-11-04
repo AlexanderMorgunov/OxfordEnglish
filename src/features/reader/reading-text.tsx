@@ -1,4 +1,4 @@
-import { createContext, memo, use, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
+import { createContext, memo, use, useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Button, PopoverGroup, usePopoverClose } from '@/shared/ui';
 import { ReaderHelp, ReaderHelpEnvironment, ReaderHelpIdle } from './ReaderHelp';
@@ -67,11 +67,13 @@ import type { SrsCard } from '@/db/db';
 import { readSavedWord, savedWordMeaning, useSavedWordCards } from './saved-word-meanings';
 import { ReaderWordOffer } from './ReaderWordOffer';
 import { consumeLessonWordReturn, consumeWordReturn, lessonWordKey, type LessonWordTarget } from './word-return';
+import type { ReactNode } from 'react';
 
 /** Reference line for auditioning a read-aloud voice — natural prose so prosody is audible. */
 const VOICE_SAMPLE = 'The morning light spilled across the quiet room as she opened the book.';
 
 export type Gloss = { ru?: string; ipa?: string };
+type LessonReadingSource = { sectionId: string; blockIds: readonly string[]; recording?: ReactNode };
 
 /** Chapter-level, stable-per-render coloring inputs. Kept in context so a single word's status
  *  change re-renders only that token, not the whole chapter (thousands of WordTokens). */
@@ -83,6 +85,8 @@ type ReaderCtx = {
   ownerRevision?: number;
   wordCards?: ReadonlyMap<string, SrsCard>;
   helpTargetId?: string;
+  lesson?: LessonReadingSource;
+  selectionRoot?: string;
 };
 const ReaderContext = createContext<ReaderCtx>({ freq: null, rankThreshold: Infinity, coloring: false });
 
@@ -195,11 +199,12 @@ function SelectPhraseButton({ tokenId, modern = false }: { tokenId: string; mode
   const ru = useUiLang((s) => s.lang) === 'ru';
   const begin = usePhraseSelect((s) => s.begin);
   const close = usePopoverClose();
+  const { selectionRoot } = use(ReaderContext);
   return (
     <button
       type="button"
       onClick={() => {
-        begin(parsePos(tokenId));
+        begin(parsePos(tokenId), selectionRoot);
         close();
       }}
       className="font-mono text-2xs text-violet hover:underline"
@@ -239,14 +244,14 @@ export const WordToken = memo(function WordToken({
 }) {
   const canSpeak = useSpeechAvailable();
   const lookup = lookupWord ?? word;
+  const { freq, rankThreshold, coloring, source, wordCards, helpTargetId, selectionRoot } = use(ReaderContext);
   const status = useVocabStore((s) => s.statuses.get(lookup.toLowerCase()));
   const pos = tokenId ? parsePos(tokenId) : null;
   const selected = usePhraseSelect((s) =>
-    pos ? inPhraseRange(pos, s.anchor, s.end) : false
+    pos && (s.owner === null || s.owner === selectionRoot) ? inPhraseRange(pos, s.anchor, s.end) : false
   );
   const setStatus = useVocabStore((s) => s.setStatus);
   const lang = useUiLang((s) => s.lang);
-  const { freq, rankThreshold, coloring, source, wordCards, helpTargetId } = use(ReaderContext);
   const [meaningDraft, setMeaningDraft] = useState<string | null>(null);
   const modern = Boolean(helpTargetId || lessonTarget);
   const savingWord = useRef(false);
@@ -577,7 +582,7 @@ const Paragraph = memo(function Paragraph({
 }) {
   // Hoisted: the sentence play button below reads it from inside `sentences.map`, where a hook
   // cannot go.
-  const canSpeak = useSpeechAvailable();
+  const speechAvailable = useSpeechAvailable();
   const sentences = useMemo(() => toSentences(text), [text]);
   // Per-sentence token indices inside a saved phrase; recomputed only when the text or the saved
   // set changes (not on unrelated re-renders like a sibling word's status flip).
@@ -585,7 +590,12 @@ const Paragraph = memo(function Paragraph({
     () => sentences.map((s) => phraseMarkedTokens(s, savedPhrases)),
     [sentences, savedPhrases]
   );
-  const { freq, helpTargetId } = use(ReaderContext);
+  const { freq, helpTargetId, lesson } = use(ReaderContext);
+  const canSpeak = speechAvailable && !lesson;
+  const lessonOffsets = useMemo(() => {
+    let offset = 0;
+    return sentences.map(sentence => { const start = offset; offset += sentence.split(WORD_SPLIT_RE).length + 1; return start; });
+  }, [sentences]);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const pendingLens = useRef<AbortController | null>(null);
   const [out, setOut] = useState<Record<number, LensCell>>({});
@@ -805,11 +815,12 @@ const Paragraph = memo(function Paragraph({
               sentence={sentence}
               enableContextFetch
               tokenId={`${index}:${si}:${i}`}
+              lessonTarget={lesson && lesson.blockIds[index] ? { sectionId: lesson.sectionId, blockId: lesson.blockIds[index]!, tokenIndex: lessonOffsets[si]! + i } : undefined}
               phrase={marks.has(i)}
             />
           );
         };
-        const playButton = canSpeak && !helpTargetId ? (
+        const playButton = lesson ? si === 0 ? lesson.recording : null : canSpeak && !helpTargetId ? (
           <button
             key="play"
             type="button"
@@ -848,8 +859,9 @@ const Paragraph = memo(function Paragraph({
                 {toks.slice(firstWordAt + 1).map((tok, j) => renderTok(tok, firstWordAt + 1 + j))}
               </>
             )}
-            {helpTargetId ? <ReaderHelp
+            {helpTargetId || lesson ? <ReaderHelp
               targetId={helpTargetId}
+              variant="word"
               label={lang === 'ru' ? 'Разобрать предложение' : 'Sentence help'}
               trigger={<button type="button" className="rdh-sentence-trigger" aria-label={lang === 'ru' ? 'Действия с предложением' : 'Sentence actions'}><ReaderIcon name="sentence" /></button>}
             >
@@ -971,20 +983,25 @@ export function ReadingText({
   source,
   helpTargetId,
   onAudioControlsChange,
+  lesson,
 }: {
   paragraphs: string[];
   glossary?: Map<string, Gloss>;
   source?: BookSource;
   helpTargetId?: string;
   onAudioControlsChange?: (controls: ReaderAudioControls | null) => void;
+  lesson?: LessonReadingSource;
   /** Book reader only: keys `${para}:${sentence}` bookmarked on this page, and a sentence-level toggle
    *  (invoked from the per-sentence lens menu's "заложить" item). */
   bookmarkedSentences?: Set<string>;
   onBookmarkSentence?: (paraIndex: number, sentenceIndex: number, sentence: string) => void;
 }) {
-  const canSpeak = useSpeechAvailable();
+  const speechAvailable = useSpeechAvailable();
+  const canSpeak = speechAvailable && !lesson;
   const lang = useUiLang((s) => s.lang);
   const ownerRevision = useSyncExternalStore(subscribeDataScope, getDataScopeRevision);
+  const selectionRoot = useId();
+  const lessonReading = Boolean(lesson);
   const wordCards = useSavedWordCards(paragraphs, ownerRevision);
   const ru = lang === 'ru';
   const level = useLearner((s) => s.level);
@@ -1032,7 +1049,7 @@ export function ReadingText({
     previewVoice(uri, VOICE_SAMPLE);
   };
   const effectiveFontStep = effectiveReaderFontStep(fontStep, fontStepExplicit, Boolean(helpTargetId));
-  const typoClass = `${FONT_CLASSES[effectiveFontStep] ?? FONT_CLASSES[DEFAULT_FONT_STEP]} ${LEADING_CLASSES[lineStep] ?? LEADING_CLASSES[0]}`;
+  const typoClass = lesson ? 'text-lg leading-relaxed' : `${FONT_CLASSES[effectiveFontStep] ?? FONT_CLASSES[DEFAULT_FONT_STEP]} ${LEADING_CLASSES[lineStep] ?? LEADING_CLASSES[0]}`;
   const [freq, setFreq] = useState<FreqIndex | null>(null);
   const [speakingIdx, setSpeakingIdx] = useState(-1);
   // `speakingActive` = an utterance is in flight (drives the ❚❚ glyph); `playingRef` = a read
@@ -1085,8 +1102,11 @@ export function ReadingText({
     },
     []
   );
-  const pickAnchor = usePhraseSelect((s) => s.anchor);
-  const clearPick = usePhraseSelect((s) => s.clear);
+  const pickAnchor = usePhraseSelect((s) => s.owner === null || s.owner === selectionRoot ? s.anchor : null);
+  const clearPick = useCallback(() => {
+    const state = usePhraseSelect.getState();
+    if (state.owner === null || state.owner === selectionRoot) state.clear();
+  }, [selectionRoot]);
   const savedPhrases = useSavedPhrases((s) => s.phrases);
   useEffect(() => subscribeDataScope(() => {
     phraseRequest.current?.controller.abort();
@@ -1100,12 +1120,14 @@ export function ReadingText({
   }), [clearPick]);
 
   useEffect(() => {
-    void loadVocab();
-    void loadFreq().then(setFreq);
+    if (!lessonReading) {
+      void loadVocab();
+      void loadFreq().then(setFreq);
+    }
     void useSavedPhrases.getState().load();
-    usePhraseSelect.getState().clear();
-    return () => usePhraseSelect.getState().clear();
-  }, [loadVocab]);
+    clearPick();
+    return clearPick;
+  }, [loadVocab, clearPick, lessonReading]);
   useEffect(
     () => () => {
       playingRef.current = false;
@@ -1144,7 +1166,7 @@ export function ReadingText({
     // ружья", not a literal "кусочки"); the free path ignores the context.
     let fromSaved = false;
     void (async (): Promise<ReaderTranslation | null> => {
-      if (helpTargetId && ai === undefined) {
+      if ((helpTargetId || lesson) && ai === undefined) {
         const card = await db.srsCards.get(`phrase:${text.toLowerCase()}`).catch(() => undefined);
         if (!request.current() || request.controller.signal.aborted) return null;
         if (card?.kind === 'phrase' && !card.fromError && !isDeleted(card)) {
@@ -1217,7 +1239,7 @@ export function ReadingText({
     // endpoint isn't a word token.
     const a = tokenPosAt(sel.anchorNode);
     const b = tokenPosAt(sel.focusNode);
-    if (helpTargetId) {
+    if (helpTargetId || lesson) {
       const sentenceAt = (node: Node | null) => (node?.nodeType === Node.TEXT_NODE ? node.parentElement : node as HTMLElement | null)?.closest('[data-sent]');
       const anchorSentence = sentenceAt(sel.anchorNode);
       if (!anchorSentence || anchorSentence !== sentenceAt(sel.focusNode)) {
@@ -1251,6 +1273,7 @@ export function ReadingText({
   const onPickTap = (e: React.MouseEvent) => {
     const st = usePhraseSelect.getState();
     if (!st.anchor) return;
+    if (st.owner !== null && st.owner !== selectionRoot) { st.clear(); return; }
     const el = (e.target as HTMLElement).closest('[data-widx]') as HTMLElement | null;
     if (!el?.dataset.widx) return;
     e.stopPropagation();
@@ -1275,7 +1298,7 @@ export function ReadingText({
     request.linking = true;
     setPhraseSaving(true);
     setPhraseError(false);
-    const manual = Boolean(helpTargetId) && phraseDraft !== null;
+    const manual = Boolean(helpTargetId || lesson) && phraseDraft !== null;
     const back = manual ? phraseDraft.trim() || phrase : phraseRu ?? phrase;
     request.backAtSave = back;
     if (manual) request.saved = null;
@@ -1325,8 +1348,8 @@ export function ReadingText({
 
   const rankThreshold = rankThresholdFor(level);
   const readerCtx = useMemo<ReaderCtx>(
-    () => ({ freq, rankThreshold, coloring, source, ownerRevision, wordCards, helpTargetId }),
-    [freq, rankThreshold, coloring, source, ownerRevision, wordCards, helpTargetId]
+    () => ({ freq, rankThreshold, coloring: coloring && !lessonReading, source, ownerRevision, wordCards, helpTargetId, lesson, selectionRoot }),
+    [freq, rankThreshold, coloring, source, ownerRevision, wordCards, helpTargetId, lesson, selectionRoot, lessonReading]
   );
 
   // Continuous read-aloud: after each paragraph ends, advance to the next and scroll it into
@@ -1519,7 +1542,7 @@ export function ReadingText({
   return (
     <ReaderHelpEnvironment targetId={helpTargetId}><div className="flex flex-col gap-4">
       {helpTargetId && <ReaderHelpIdle />}
-      {!helpTargetId && <details className="group">
+      {!helpTargetId && !lesson && <details className="group">
         <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-semibold text-teal [overflow-wrap:anywhere] [&::-webkit-details-marker]:hidden">
           <span aria-hidden="true" className="transition-transform group-open:rotate-90">▸</span>
           {ru ? 'Настройки чтения' : 'Reader settings'}
@@ -1653,7 +1676,7 @@ export function ReadingText({
           </button>
         </div>
       )}
-      {phrase && helpTargetId && <ReaderHelp key={phrase} targetId={helpTargetId} initiallyOpen onDismiss={cancelPick} returnFocus={phraseFocus.current} label={phrase} trigger={<button type="button" hidden>{phrase}</button>}>
+      {phrase && (helpTargetId || lesson) && <ReaderHelp key={phrase} targetId={helpTargetId} variant="word" initiallyOpen onDismiss={cancelPick} returnFocus={phraseFocus.current} label={phrase} trigger={<button type="button" hidden>{phrase}</button>}>
         <div className="flex flex-wrap items-center gap-2"><h2 lang="en">{phrase}</h2>{canSpeak && <button type="button" aria-label={ru ? `Произнести ${phrase}` : `Pronounce ${phrase}`} onClick={() => speakWord(phrase)}><ReaderIcon name="volume" /></button>}</div>
         <blockquote className="rdh-quote" lang="en">{phraseSentence ?? phrase}</blockquote>
         <p className="rdh-note">{ru ? 'Исходный фрагмент' : 'Original passage'}</p>
@@ -1667,7 +1690,7 @@ export function ReadingText({
         {phraseError && <p role="alert" className="rdh-status">{ru ? 'Не удалось сохранить. Черновик сохранён, попробуйте ещё раз.' : 'Could not save. Your draft is kept; try again.'}</p>}
         <p className="rdh-note">{ru ? 'Просмотр ничего не сохраняет. Сохранение не оценивает повторение.' : 'Lookup saves nothing. Saving does not grade a review.'}</p>
       </ReaderHelp>}
-      {phrase && !helpTargetId && (
+      {phrase && !helpTargetId && !lesson && (
         <div className="sticky top-2 z-10 flex flex-wrap items-center gap-2 rounded-sm border border-teal-dim bg-surface-2 py-2 pl-3 pr-11 text-sm shadow-md">
           <span className="font-mono text-teal">{phrase}</span>
           {phraseError && (
@@ -1727,7 +1750,7 @@ export function ReadingText({
             ref={textRef}
             data-reader-text
             className="flex flex-col gap-4 [@media(pointer:coarse)]:select-none [@media(pointer:coarse)]:[-webkit-touch-callout:none]"
-            style={{ fontFamily: READER_FONT_FAMILIES[fontFamily ?? (helpTargetId ? 'serif' : 'sans')] }}
+            style={{ fontFamily: READER_FONT_FAMILIES[lesson ? 'sans' : fontFamily ?? (helpTargetId ? 'serif' : 'sans')] }}
             onMouseUp={onSelect}
             onTouchEnd={onSelect}
             onClickCapture={onPickTap}

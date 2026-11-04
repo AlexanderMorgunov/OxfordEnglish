@@ -6,20 +6,20 @@ export type WordPos = { p: number; s: number; t: number };
 type PhraseSelectState = {
   anchor: WordPos | null;
   end: WordPos | null;
-  begin: (pos: WordPos) => void;
+  owner: string | null;
+  begin: (pos: WordPos, owner?: string) => void;
   extend: (pos: WordPos) => void;
   clear: () => void;
 };
 
-/** Touch phrase-picking state for the book reader: tap a word's "select phrase" action to set the
- *  anchor, then tap the last word to set the end. Module-level is safe — the book reader and the
- *  learn reading view never co-mount; the reader clears this on mount to drop any stale range. */
+/** Scope tap endpoints to their reading instance; a lesson may contain several reading blocks. */
 export const usePhraseSelect = create<PhraseSelectState>((set) => ({
   anchor: null,
   end: null,
-  begin: (pos) => set({ anchor: pos, end: null }),
+  owner: null,
+  begin: (pos, owner) => set({ anchor: pos, end: null, owner: owner ?? null }),
   extend: (pos) => set({ end: pos }),
-  clear: () => set({ anchor: null, end: null }),
+  clear: () => set({ anchor: null, end: null, owner: null }),
 }));
 
 export const parsePos = (id: string): WordPos => {

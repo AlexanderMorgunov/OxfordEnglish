@@ -15,11 +15,15 @@ import { useProActivation } from '@/features/account/proActivation';
 import * as api from '@/features/account/api';
 import { useAiStore } from '@/features/ai/store';
 import { currentWordReturn } from '@/features/reader/word-return';
+import { useReaderSettings } from '@/features/reader/settings';
+import { usePhraseSelect } from '@/features/reader/phrase-select';
+import * as provider from '@/features/ai/provider';
 import { ReadingSectionView } from './ReadingSectionView';
 
-const mocks = vi.hoisted(() => ({ translate: vi.fn() }));
+const mocks = vi.hoisted(() => ({ translate: vi.fn(), passage: vi.fn(), byok: vi.fn() }));
 vi.mock('@/features/account/config', () => ({ accountsEnabled: () => true, API_BASE: 'https://fixture.invalid' }));
-vi.mock('@/features/vocab/translate', async original => ({ ...await original<object>(), translateWord: mocks.translate }));
+vi.mock('@/features/vocab/translate', async original => ({ ...await original<object>(), translateWord: mocks.translate, translateText: mocks.passage }));
+vi.mock('@/features/ai/provider', async original => ({ ...await original<object>(), complete: mocks.byok }));
 vi.mock('@/shared/lib/useSpeechAvailable', () => ({ useSpeechAvailable: () => false }));
 vi.mock('@/features/vocab/lemma', async original => ({ ...await original<object>(), useLemma: () => ({ byForm: new Map(), lemmas: new Set() }) }));
 vi.mock('@/features/vocab/cefr', async original => ({ ...await original<object>(), useCefr: () => new Map() }));
@@ -38,7 +42,11 @@ beforeEach(async () => {
   useProActivation.setState({ entry: null });
   useEntitlement.setState({ entitlement: free, loading: false, error: null });
   useAiStore.setState({ config: null });
+  useReaderSettings.setState({ aiTranslation: false });
+  usePhraseSelect.getState().clear();
   mocks.translate.mockReset().mockResolvedValue(null);
+  mocks.passage.mockReset().mockResolvedValue('бесплатный перевод');
+  mocks.byok.mockReset().mockResolvedValue('перевод собственного ключа');
   vi.spyOn(api, 'billingPlans').mockResolvedValue({ available: true, plans: [{ code: 'pro_month', title: 'Month', days: 30, priceKopecks: 19900 }] });
   vi.spyOn(api, 'getEntitlement').mockResolvedValue(free);
   vi.spyOn(api, 'claimTrial').mockResolvedValue(trial);
@@ -47,8 +55,11 @@ beforeEach(async () => {
   user = userEvent.setup({ delay: null });
 });
 afterEach(() => { cleanup(); vi.restoreAllMocks(); });
-async function open() {
+function showLesson() {
   render(<MemoryRouter initialEntries={['/course/u01/day/u01.d02']}><ReadingSectionView section={section!} /><ProActivationDialog /></MemoryRouter>);
+}
+async function open() {
+  showLesson();
   await user.click(screen.getByRole('button', { name: 'short' }));
 }
 
@@ -102,4 +113,51 @@ test('guest account adoption keeps the same lesson word/draft; owner handover cl
   act(() => { invalidateDataScope(); useAccount.setState({ accountId: 'other-owner' }); });
   expect(screen.queryByRole('dialog')).toBeNull();
   expect(api.claimTrial).not.toHaveBeenCalled(); expect(api.aiComplete).not.toHaveBeenCalled();
+});
+
+function access(mode: 'byok' | 'trial' | 'pro') {
+  useEntitlement.setState({ entitlement: mode === 'byok' ? free : { ...trial, plan: mode } });
+  if (mode === 'byok') useAiStore.setState({ config: { provider: 'deepseek', apiKey: 'fixture-only-key', model: provider.PROVIDERS.deepseek.model } });
+}
+
+test.each(['byok', 'trial', 'pro'] as const)('%s lesson sentence translation uses the chosen AI route without requiring another plan', async mode => {
+  access(mode); showLesson();
+  const origin = screen.getByRole('button', { name: 'short' }).closest('[data-sent]')!;
+  await user.click(within(origin as HTMLElement).getByRole('button', { name: 'Sentence actions' }));
+  const help = screen.getByRole('dialog', { name: 'Sentence help' });
+  await user.click(within(help).getByRole('button', { name: 'Translation: free' }));
+  await user.click(within(help).getByRole('button', { name: 'Translate' }));
+  await within(help).findByText(mode === 'byok' ? 'перевод собственного ключа' : 'короткие Ещё: краткий');
+  expect(within(help).queryByText(/Get Pro|Try 14/)).toBeNull();
+  if (mode === 'byok') {
+    expect(mocks.byok).toHaveBeenCalledOnce(); expect(api.aiComplete).not.toHaveBeenCalled();
+  } else expect(api.aiComplete).toHaveBeenCalledWith('fixture-token', { task: 'translate', text: sentence, sentence: undefined }, expect.any(AbortSignal));
+  expect(await db.srsCards.count()).toBe(0);
+});
+
+test.each(['byok', 'trial', 'pro'] as const)('%s lesson phrase AI retains manual text and saves only after confirmation', async mode => {
+  access(mode); await open();
+  await user.click(within(panel()).getByRole('button', { name: 'Select a phrase from this word' }));
+  await user.click(screen.getByRole('button', { name: 'hair' }));
+  const help = await screen.findByRole('dialog', { name: 'short hair' });
+  await waitFor(() => expect(within(help).getByLabelText('Your meaning to save')).toHaveValue('бесплатный перевод'));
+  await user.clear(within(help).getByLabelText('Your meaning to save'));
+  await user.type(within(help).getByLabelText('Your meaning to save'), 'мой вариант');
+  await user.click(within(help).getByRole('button', { name: 'AI' }));
+  await within(help).findByText(mode === 'byok' ? 'your AI key' : 'DayEnglish AI');
+  expect(within(help).getByLabelText('Your meaning to save')).toHaveValue('мой вариант');
+  expect(await db.srsCards.count()).toBe(0);
+  await user.click(within(help).getByRole('button', { name: 'Learn · save' }));
+  await waitFor(async () => expect(await db.srsCards.get('phrase:short hair')).toMatchObject({ back: 'мой вариант', contextSentence: sentence, contextGloss: 'мой вариант' }));
+  if (mode === 'byok') { expect(mocks.byok).toHaveBeenCalledOnce(); expect(api.aiComplete).not.toHaveBeenCalled(); }
+  else expect(vi.mocked(api.aiComplete).mock.calls.some(call => call[1].task === 'translate' && call[1].text === 'short hair' && call[1].sentence === sentence)).toBe(true);
+});
+
+test('phrase endpoints from different lesson blocks cannot reuse coincident token coordinates', async () => {
+  await open();
+  await user.click(within(panel()).getByRole('button', { name: 'Select a phrase from this word' }));
+  await user.click(screen.getByRole('button', { name: 'colleague' }));
+  expect(usePhraseSelect.getState().anchor).toBeNull();
+  expect(screen.getByRole('dialog', { name: 'colleague' })).toBeInTheDocument();
+  expect(screen.queryByRole('dialog', { name: 'a new colleague' })).toBeNull();
 });

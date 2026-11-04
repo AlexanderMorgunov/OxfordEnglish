@@ -585,6 +585,12 @@ these are config, not secrets. Set them in a gitignored `.env` (see `.env.exampl
   optional offline matching rounds. Matching does not grade SRS or change review history; legacy
   cards need an explicit save from the chapter to gain a source association.
   Books live in OPFS; optional account-wide book-file sync uploads them to Object Storage.
+- **Reading help in lessons and books:** contextual word meanings, sentence AI translation,
+  simplification/grammar, and phrase translation share the same engine. Confirmed Trial/Pro
+  words resolve automatically; BYOK offers an explicit word action without requiring a plan.
+  Select AI for sentence/phrase translation; free translation remains available. Course recordings,
+  authored translations and glossary are preserved. Phrase selection stays within its reading block;
+  manual edits are protected and a card is created only by an explicit save.
 - **Translate text** (`/vocabulary/text`): type or paste an English passage of up to 2000 characters,
   translate immediately or separately read with word/phrase saving and read-aloud.
   Free translation and optional trial/Pro/BYOK AI keep paragraphs and offer cancellation. Translation
