@@ -12,6 +12,8 @@ const config: CapacitorConfig = {
     webContentsDebuggingEnabled: false,
   },
   plugins: {
+    // Link handling must preserve the shell's existing system Back behavior.
+    App: { disableBackButtonHandler: true },
     SystemBars: { style: 'DARK' },
   },
 };

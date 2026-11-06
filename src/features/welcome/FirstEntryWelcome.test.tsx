@@ -7,7 +7,7 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { Link, MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, expect, test, vi } from 'vitest';
 import { db } from '@/db/db';
 import {
@@ -112,6 +112,30 @@ test('an interrupted first welcome is shown again after remount until explicitly
   await screen.findByRole('dialog');
   act(() => fireEvent.click(screen.getByRole('button', { name: 'Start now' })));
   expect(localStorage.getItem(WELCOME_KEY)).toBe('seen');
+});
+
+test('phrase capture and its vocabulary destination defer the first welcome', async () => {
+  render(<MemoryRouter initialEntries={['/capture?v=1&en=Hello&ru=Привет']}>
+    <Link to="/vocabulary/entry/hello" state={{ fromCapture: true }}>Open captured entry</Link>
+    <FirstEntryWelcome />
+  </MemoryRouter>);
+  await waitFor(() => expect(document.querySelector('[data-welcome-pending]')).toBeNull());
+  expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  fireEvent.click(screen.getByText('Open captured entry'));
+  await act(async () => { await new Promise(resolve => setTimeout(resolve, 200)); });
+  expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  expect(localStorage.getItem(WELCOME_KEY)).toBeNull();
+});
+
+test('an incoming phrase closes the open welcome without marking it seen', async () => {
+  render(<MemoryRouter>
+    <Link to="/capture?v=1&en=Hello&ru=Привет">Incoming phrase</Link>
+    <FirstEntryWelcome />
+  </MemoryRouter>);
+  await screen.findByRole('dialog');
+  fireEvent.click(screen.getByText('Incoming phrase'));
+  await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+  expect(localStorage.getItem(WELCOME_KEY)).toBeNull();
 });
 
 const themeSettings = (welcome = true) => (

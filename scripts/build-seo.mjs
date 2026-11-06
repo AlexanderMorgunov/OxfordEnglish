@@ -133,6 +133,8 @@ const ROUTES = [
   { key: 'progress', index: false, title: 'Мой прогресс | DayEnglish' },
   { key: 'syllabus', index: false, title: 'Весь курс английского A1–B2 | DayEnglish' },
   { key: 'vocabulary', index: false, title: 'Мой словарь | DayEnglish' },
+  { key: 'capture', index: false, title: 'Сохранить фразу | DayEnglish' },
+  { key: 'capture-web', index: false, title: 'Сохранить фразу | DayEnglish' },
   { key: 'vocabulary/text', index: false, title: 'Перевод текста | DayEnglish' },
   { key: 'settings', index: false, title: 'Настройки | DayEnglish' },
   ...['interface', 'learning', 'ai', 'account', 'data', 'privacy'].map(section => ({ key: `settings/${section}`, index: false, title: 'Настройки | DayEnglish' })),

@@ -200,6 +200,26 @@ export async function putWordStatus(row: WordStatus, current = captureDataScope(
   if (syncing && current()) nudgeSync();
 }
 
+export async function restoreSrsCard(id: string, current = captureDataScope()): Promise<SrsCard | undefined> {
+  const writer = await installId(), syncing = syncActive();
+  const saved = await db.transaction('rw', [db.srsCards, db.pending], async () => {
+    requireDataScope(current);
+    const previous = await db.srsCards.get(id);
+    if (!previous || !isDeleted(previous)) return;
+    const row: SrsCard = {
+      ...previous, deletedAt: undefined,
+      updatedAt: Math.max(Date.now(), (previous.updatedAt ?? 0) + 1, (previous.deletedAt ?? 0) + 1),
+      updatedBy: writer,
+    };
+    await db.srsCards.put(row);
+    if (syncing) await markDirty('srsCards', { ...row });
+    requireDataScope(current);
+    return row;
+  });
+  if (saved && syncing && current()) nudgeSync();
+  return saved;
+}
+
 export async function addBook(record: BookRecord, current = captureDataScope()): Promise<void> {
   const row: BookRecord = { ...record, updatedAt: Date.now(), updatedBy: await installId() };
   const syncing = syncActive();
