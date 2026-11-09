@@ -17,6 +17,7 @@ import { ContextualOnboarding } from '@/features/onboarding/ContextualOnboarding
 import { FirstEntryWelcome } from '@/features/welcome/FirstEntryWelcome';
 import { SalePromotion } from '@/features/sale/SalePromotion';
 import { RecoveryNavigationGuard } from '@/features/account/RecoveryNavigationGuard';
+import { isCapturePath } from '@/features/capture/links';
 
 export function AppLayout() {
   return <RecoveryNavigationGuard><AppLayoutContent /></RecoveryNavigationGuard>;
@@ -48,7 +49,7 @@ function AppLayoutContent() {
       <NavigationFocus />
 
       <MigrationNotice />
-      <InstallPrompt />
+      {!isCapturePath(location.pathname) && <InstallPrompt />}
 
       <main
         id="app-main"

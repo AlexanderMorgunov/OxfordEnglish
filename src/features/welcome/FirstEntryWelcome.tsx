@@ -40,7 +40,11 @@ import { WelcomeSetup } from './WelcomeSetup';
 type Step = 'intro' | 'setup' | 'auth' | 'trial';
 export function FirstEntryWelcome() {
   const ru = useUiLang((s) => s.lang) === 'ru';
-  const { pathname, search } = useLocation();
+  const { pathname, search, state: navigationState } = useLocation();
+  const entryAllowed = welcomeEntry(pathname) && !(
+    navigationState && typeof navigationState === 'object' &&
+    Reflect.get(navigationState, 'fromCapture') === true
+  );
   const accountId = useAccount((s) => s.accountId);
   const status = useAccount((s) => s.status);
   const revision = useAccount((s) => s.sessionRevision);
@@ -133,7 +137,7 @@ export function FirstEntryWelcome() {
     };
   }, []);
   useEffect(() => {
-    if (!needsWelcome || !welcomeEntry(pathname) || step) return;
+    if (!needsWelcome || !entryAllowed || step) return;
     const attempt = () => {
       if (current.current) return;
       if (welcomeSeen() !== false) {
@@ -175,7 +179,7 @@ export function FirstEntryWelcome() {
       document.removeEventListener('focusout', attempt);
       document.removeEventListener('visibilitychange', attempt);
     };
-  }, [needsWelcome, pathname, step]);
+  }, [needsWelcome, pathname, entryAllowed, step]);
   useEffect(() => {
     if (!openNow || status !== 'authenticated') return;
     let alive = true;
@@ -392,7 +396,7 @@ export function FirstEntryWelcome() {
 
   return (
     <>
-      {(checking || (needsWelcome && welcomeEntry(pathname))) && (
+      {(checking || (needsWelcome && entryAllowed)) && (
         <span data-welcome-pending="true" hidden />
       )}
       {notice && (

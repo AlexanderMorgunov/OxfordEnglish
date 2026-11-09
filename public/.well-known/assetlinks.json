@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "ru.dayenglish.app",
+      "sha256_cert_fingerprints": [
+        "54:0D:DF:22:44:77:B0:1B:8A:9F:BB:7B:63:34:CF:BA:01:E1:87:76:DC:DA:FD:91:45:99:69:ED:CC:D7:AA:77"
+      ]
+    }
+  }
+]

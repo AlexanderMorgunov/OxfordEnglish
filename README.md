@@ -274,6 +274,22 @@ phrases are not assigned an invented rarity. Search, filters, order, visible lim
 and the originating row's focus survive detail/Back navigation. Detail URLs use
 opaque device-local identifiers, keeping saved terms out of page URLs.
 
+Public phrase links use `/capture?v=1&en=...&ru=...&ctx=...&src=tg` (or `src=vk`).
+Their phrase, translation and optional example are visible in the URL; do not use
+them for private text. Opening a link never writes vocabulary. The capture page
+supports editing, explicit save with optional review, duplicate detection and
+restoring an old card without resetting its history. It is free and works locally.
+Its preview does not count as an SRS review. Dictionary-only examples remain local;
+examples on review cards use the existing card sync contract.
+
+Android claims only the HTTPS `/capture` path and the `dayenglish://capture`
+scheme. `/capture-web` is a browser-only fallback to avoid app/browser loops.
+Verified HTTPS opening requires deploying `public/.well-known/assetlinks.json`
+over HTTPS with the certificate used to sign the installed APK. The Yandex deploy
+script publishes it and both capture route aliases; source integration alone
+does not verify the live domain. Reopen the phrase link after installation and
+confirm its save there; installation does not automatically transfer browser data.
+
 Details keep the original example, contextual gloss and word forms separate from
 the dictionary answer. Known status and a review card are independent; hiding a
 word excludes it from All and review. Removing a card requires confirmation:
