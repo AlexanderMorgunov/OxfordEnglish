@@ -15,6 +15,7 @@ const ReviewPage = lazyPage(() => import('@/pages/ReviewPage').then((m) => ({ de
 const CheckpointPage = lazyPage(() => import('@/pages/CheckpointPage').then((m) => ({ default: m.CheckpointPage })));
 const ProgressPage = lazyPage(() => import('@/pages/ProgressPage').then((m) => ({ default: m.ProgressPage })));
 const VocabularyPage = lazyPage(() => import('@/pages/VocabularyPage').then((m) => ({ default: m.VocabularyPage })));
+const CapturePage = lazyPage(() => import('@/pages/CapturePage').then(m => ({ default: m.CapturePage })));
 const TextWorkbenchPage = lazyPage(() => import('@/pages/TextWorkbenchPage').then((m) => ({ default: m.TextWorkbenchPage })));
 const SettingsPage = lazyPage(() => import('@/pages/SettingsPage').then((m) => ({ default: m.SettingsPage })));
 const AccountAccessPage = lazyPage(() => import('@/pages/AccountAccessPage').then((m) => ({ default: m.AccountAccessPage })));
@@ -26,6 +27,7 @@ const LibraryPage = lazyPage(() => import('@/pages/LibraryPage').then((m) => ({ 
 const BookReaderPage = lazyPage(() => import('@/pages/BookReaderPage').then((m) => ({ default: m.BookReaderPage })));
 const CatalogReaderPage = lazyPage(() => import('@/pages/CatalogReaderPage').then((m) => ({ default: m.CatalogReaderPage })));
 const AboutPage = lazyPage(() => import('@/pages/AboutPage').then((m) => ({ default: m.AboutPage })));
+const AndroidAppPage = lazyPage(() => import('@/pages/AndroidAppPage').then((m) => ({ default: m.AndroidAppPage })));
 const TermsPage = lazyPage(() => import('@/pages/TermsPage').then((m) => ({ default: m.TermsPage })));
 const ProPage = lazyPage(() => import('@/pages/ProPage').then((m) => ({ default: m.ProPage })));
 const BillingSuccessPage = lazyPage(() => import('@/pages/BillingReturnPage').then((m) => ({ default: m.BillingSuccessPage })));
@@ -37,6 +39,7 @@ const routes: RouteObject[] = [
   { path: '/', element: <DashboardPage /> },
   { path: '/syllabus', element: <CourseOverviewPage /> },
   { path: '/about', element: <AboutPage /> },
+  { path: '/android', element: <AndroidAppPage /> },
   { path: '/placement', element: <PlacementPage /> },
   { path: '/course/:unitId/day/:dayId', element: <DayPage /> },
   { path: '/grammar', element: <GrammarIndexPage /> },
@@ -47,6 +50,8 @@ const routes: RouteObject[] = [
   { path: '/checkpoint/:unitId', element: <CheckpointPage /> },
   { path: '/progress', element: <ProgressPage /> },
   { path: '/vocabulary', element: <VocabularyPage /> },
+  { path: '/capture', element: <CapturePage /> },
+  { path: '/capture-web', element: <CapturePage /> },
   { path: '/vocabulary/entry/:entryId', element: <VocabularyPage /> },
   { path: '/vocabulary/text', element: <TextWorkbenchPage /> },
   { path: '/account/:mode?', element: <AccountAccessPage /> },

@@ -48,6 +48,7 @@ export interface WordTranslation {
    *  Non-indexed → no version bump. Translate consumers gate on `hasCyrillic(ru)` and skip these rows. */
   en?: string;
   source: string;
+  context?: string;
 }
 
 export interface SrsCard extends SyncMetaFields {

@@ -12,6 +12,11 @@ import feedback from '@/assets/brand/icons/feedback.svg?raw';
 import support from '@/assets/brand/icons/support.svg?raw';
 import about from '@/assets/brand/icons/about.svg?raw';
 import close from '@/assets/brand/icons/close.svg?raw';
+import telegram from '@/assets/brand/icons/telegram.svg?raw';
+import vk from '@/assets/brand/icons/vk.svg?raw';
+import external from '@/assets/brand/icons/external.svg?raw';
+import copy from '@/assets/brand/icons/copy.svg?raw';
+import phone from '@/assets/brand/icons/phone.svg?raw';
 
 const ICONS = {
   today,
@@ -28,6 +33,11 @@ const ICONS = {
   support,
   about,
   close,
+  telegram,
+  vk,
+  external,
+  copy,
+  phone,
 };
 export type AppIconName = keyof typeof ICONS;
 

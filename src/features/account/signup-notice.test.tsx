@@ -1,5 +1,5 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { beforeEach, expect, test, vi } from 'vitest';
+import { afterEach, beforeEach, expect, test, vi } from 'vitest';
 let owned = true;
 vi.mock('./store', () => ({
   captureAccountSessionOwner: () => () => owned,
@@ -9,8 +9,13 @@ vi.mock('./store', () => ({
 import { AccountAccessNotice } from './AccountAccessNotice';
 import { showAccountAccessNotice, useSignupNotice } from './signupNotice';
 beforeEach(() => {
+  vi.useFakeTimers({ toFake: ['Date'] });
+  vi.setSystemTime(Date.UTC(2026, 10, 1, 12));
   owned = true;
   useSignupNotice.getState().close();
+});
+afterEach(() => {
+  vi.useRealTimers();
 });
 test('confirmation uses the actual expiry and can be dismissed', () => {
   showAccountAccessNotice({

@@ -2,6 +2,7 @@ import 'fake-indexeddb/auto';
 import {
   act,
   cleanup,
+  fireEvent,
   render,
   screen,
   waitFor,
@@ -198,6 +199,26 @@ test('native mobile sheet closes with Escape and restores its word focus', async
   expect(close).toHaveBeenCalledOnce();
   expect(screen.queryByRole('dialog')).toBeNull();
   expect(alpha).toHaveFocus();
+});
+
+test('swiping mobile word help aborts an unsaved AI request and restores word focus', async () => {
+  media(false);
+  const pending = deferred<string>(); mocks.context.mockReturnValue(pending.promise);
+  reader();
+  const alpha = screen.getByRole('button', { name: 'Alpha' });
+  await user.click(alpha);
+  const panel = screen.getByRole('dialog', { name: 'Alpha' });
+  await user.click(within(panel).getByRole('button', { name: 'Refine meaning' }));
+  await waitFor(() => expect(mocks.context).toHaveBeenCalledOnce());
+  const body = panel.querySelector('.rdh-body')!;
+  const start = { identifier: 1, clientX: 100, clientY: 100 }, end = { ...start, clientY: 300 };
+  fireEvent.touchStart(body, { touches: [start] });
+  fireEvent.touchMove(body, { touches: [end] });
+  fireEvent.touchEnd(body, { touches: [], changedTouches: [end] });
+  expect(screen.queryByRole('dialog')).toBeNull(); expect(alpha).toHaveFocus();
+  expect(mocks.context.mock.calls[0]![3].aborted).toBe(true);
+  await act(async () => { pending.resolve('поздний ответ'); });
+  expect(screen.queryByRole('dialog')).toBeNull(); expect(await db.srsCards.count()).toBe(0);
 });
 
 test('book phrase manual edits survive late translation and can be explicitly edited again without resetting FSRS', async () => {

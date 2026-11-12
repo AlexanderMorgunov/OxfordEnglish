@@ -57,6 +57,7 @@ syncfull "onboarding/*.json" "application/json" "$NOCACHE"
 "${S3[@]}" sync "$DIST/reader" "s3://$YC_BUCKET/reader" --size-only --cache-control "$PACK" --no-progress 2>/dev/null || true
 
 echo "3/3 entry files LAST (no-cache, explicit type)…"
+put ".well-known/assetlinks.json" "application/json"
 put "index.html"          "text/html; charset=utf-8"
 put "sw.js"               "text/javascript; charset=utf-8"
 put "registerSW.js"       "text/javascript; charset=utf-8"
@@ -77,7 +78,7 @@ put "rustore-probe.html" "text/html; charset=utf-8"
 echo "3b/3 SPA route aliases (200, per-route canonical/title, not soft-404)…"
 # billing/* are nested keys (same shape as grammar/<id> below): the acquirer's SuccessURL/FailURL must
 # answer 200, not the soft-404 a missing key produces — nobody should meet a 404 right after paying.
-for route in about privacy terms pro grammar library support credits feedback review progress syllabus vocabulary vocabulary/text settings settings/interface settings/learning settings/ai settings/account settings/data settings/privacy billing/success billing/fail; do
+for route in about android privacy terms pro grammar library support credits feedback review progress syllabus vocabulary capture capture-web vocabulary/text settings settings/interface settings/learning settings/ai settings/account settings/data settings/privacy billing/success billing/fail; do
   src="$DIST/$route.html"
   [ -f "$src" ] || src="$DIST/index.html" # fall back to the shell if build-seo didn't run
   "${S3[@]}" cp "$src" "s3://$YC_BUCKET/$route" \

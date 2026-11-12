@@ -1,6 +1,7 @@
 import { useState, useSyncExternalStore } from 'react';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { Button } from '@/shared/ui';
+import { installEnvironment } from '@/features/android-install/environment';
 import {
   canInstall,
   isIOS,
@@ -28,7 +29,8 @@ export function InstallPrompt() {
   const installable = useCanInstall();
   const [dismissed, setDismissed] = useState(wasDismissed);
 
-  if (dismissed || isStandalone()) return null;
+  const environment = installEnvironment();
+  if (dismissed || isStandalone() || environment === 'native' || environment === 'android') return null;
 
   const ios = isIOS();
   if (!installable && !ios) return null;

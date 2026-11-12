@@ -4,9 +4,11 @@ import { Link, useLocation } from 'react-router-dom';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { track } from '@/features/analytics/analytics';
 import { AboutDemo } from '@/features/landing/AboutDemo';
+import { CommunitySection } from '@/features/community/CommunitySection';
 import { AppIcon } from '@/shared/ui/AppIcon';
 import type { AppIconName } from '@/shared/ui/AppIcon';
 import '@/features/landing/about.css';
+import '@/features/android-install/android-install.css';
 
 function Cta({
   to,
@@ -139,6 +141,7 @@ export function AboutPage() {
           <Link to="#features">{t('Возможности', 'Features')}</Link>
           <Link to="#access">{t('Бесплатно и Pro', 'Free and Pro')}</Link>
           <Link to="#faq">{t('Вопросы', 'Questions')}</Link>
+          <Link to="#community">{t('Соцсети', 'Community')}</Link>
         </nav>
       </div>
       <section className="ab-hero" aria-labelledby="about-hero-title">
@@ -455,6 +458,12 @@ export function AboutPage() {
           ))}
         </div>
       </section>
+      <aside className="android-about-link">
+        <AppIcon name="phone" />
+        <p>{t('DayEnglish есть и для Android.', 'DayEnglish is also available for Android.')}</p>
+        <Link to="/android">{t('Об установке из RuStore', 'Installing from RuStore')} →</Link>
+      </aside>
+      <CommunitySection key={location.key} />
       <section
         className="ab-project-section ab-section-space"
         aria-labelledby="about-project-title"

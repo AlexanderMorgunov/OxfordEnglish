@@ -6,6 +6,7 @@ import { tr } from '@/features/i18n/uiLang';
 import { BackToReader } from '@/features/reader/BackToReader';
 import { ExpiryNotice } from '@/features/account/ExpiryNotice';
 import { AppearanceThemes } from '@/features/appearance/ThemePicker';
+import { AndroidInstallOffer } from '@/features/android-install/AndroidInstallOffer';
 import { CourseResume } from './CourseResume';
 import { CourseDialog } from './CourseDialog';
 import { DayPreview } from './DayPreview';
@@ -133,6 +134,7 @@ export function CourseToday() {
               progressKnown={progressKnown}
               viewedUnitId={unit?.id}
             />
+            <AndroidInstallOffer ready={ready} />
             {!unit ? (
               <p className="course-notice">
                 {ru

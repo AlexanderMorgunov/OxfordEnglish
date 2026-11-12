@@ -7,10 +7,15 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { Link, MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, expect, test, vi } from 'vitest';
 import { db } from '@/db/db';
-import { acceptTheme } from '@/features/appearance/themes';
+import {
+  acceptTheme,
+  APPEARANCE_KEY,
+  useTheme,
+} from '@/features/appearance/themes';
+import { AppearanceThemes } from '@/features/appearance/ThemePicker';
 import { acceptUiTextSize } from '@/features/appearance/store';
 import { FirstEntryWelcome } from './FirstEntryWelcome';
 import { WELCOME_KEY } from './memory';
@@ -107,4 +112,99 @@ test('an interrupted first welcome is shown again after remount until explicitly
   await screen.findByRole('dialog');
   act(() => fireEvent.click(screen.getByRole('button', { name: 'Start now' })));
   expect(localStorage.getItem(WELCOME_KEY)).toBe('seen');
+});
+
+test('phrase capture and its vocabulary destination defer the first welcome', async () => {
+  render(<MemoryRouter initialEntries={['/capture?v=1&en=Hello&ru=Привет']}>
+    <Link to="/vocabulary/entry/hello" state={{ fromCapture: true }}>Open captured entry</Link>
+    <FirstEntryWelcome />
+  </MemoryRouter>);
+  await waitFor(() => expect(document.querySelector('[data-welcome-pending]')).toBeNull());
+  expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  fireEvent.click(screen.getByText('Open captured entry'));
+  await act(async () => { await new Promise(resolve => setTimeout(resolve, 200)); });
+  expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  expect(localStorage.getItem(WELCOME_KEY)).toBeNull();
+});
+
+test('an incoming phrase closes the open welcome without marking it seen', async () => {
+  render(<MemoryRouter>
+    <Link to="/capture?v=1&en=Hello&ru=Привет">Incoming phrase</Link>
+    <FirstEntryWelcome />
+  </MemoryRouter>);
+  await screen.findByRole('dialog');
+  fireEvent.click(screen.getByText('Incoming phrase'));
+  await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+  expect(localStorage.getItem(WELCOME_KEY)).toBeNull();
+});
+
+const themeSettings = (welcome = true) => (
+  <MemoryRouter initialEntries={['/settings/interface']}>
+    <main tabIndex={-1}>
+      <AppearanceThemes placement="settings" />
+    </main>
+    {welcome && <FirstEntryWelcome />}
+  </MemoryRouter>
+);
+
+async function openThemeSettings() {
+  localStorage.setItem(WELCOME_KEY, 'seen');
+  localStorage.setItem(
+    APPEARANCE_KEY,
+    JSON.stringify({ theme: 'bloom', dismissed: true })
+  );
+  acceptTheme('bloom', true);
+  const view = render(themeSettings());
+  await waitFor(() =>
+    expect(document.querySelector('[data-welcome-pending]')).toBeNull()
+  );
+  return view;
+}
+
+test('a closed welcome preserves the swatch choice until Apply saves it', async () => {
+  await openThemeSettings();
+  fireEvent.click(screen.getByRole('button', { name: 'Try theme Daylight' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Apply' }));
+  expect(useTheme.getState().theme).toBe('paper');
+  expect(document.documentElement.dataset.theme).toBe('paper');
+  expect(JSON.parse(localStorage.getItem(APPEARANCE_KEY)!)).toEqual({
+    theme: 'paper',
+    dismissed: true,
+  });
+});
+
+test('a closed welcome leaves another dialog preview intact on pagehide', async () => {
+  await openThemeSettings();
+  fireEvent.click(screen.getByRole('button', { name: 'Change theme' }));
+  fireEvent.click(screen.getByRole('radio', { name: /^Daylight/ }));
+  fireEvent(window, new Event('pagehide'));
+  expect(useTheme.getState().draft).toBe('paper');
+  expect(document.documentElement.dataset.theme).toBe('paper');
+  fireEvent.click(screen.getByRole('button', { name: 'Cancel' }));
+  expect(useTheme.getState().theme).toBe('bloom');
+  expect(document.documentElement.dataset.theme).toBe('bloom');
+});
+
+test('unmounting a closed welcome does not cancel another dialog preview', async () => {
+  const view = await openThemeSettings();
+  fireEvent.click(screen.getByRole('button', { name: 'Change theme' }));
+  fireEvent.click(screen.getByRole('radio', { name: /^Daylight/ }));
+  view.rerender(themeSettings(false));
+  expect(useTheme.getState().draft).toBe('paper');
+  expect(document.documentElement.dataset.theme).toBe('paper');
+});
+
+test('unmounting an open welcome still restores its unsaved theme preview', async () => {
+  acceptTheme('bloom', true);
+  localStorage.setItem(
+    APPEARANCE_KEY,
+    JSON.stringify({ theme: 'bloom', dismissed: true })
+  );
+  const view = show();
+  await screen.findByRole('dialog');
+  act(() => useTheme.getState().preview('paper'));
+  expect(document.documentElement.dataset.theme).toBe('paper');
+  view.unmount();
+  expect(useTheme.getState().draft).toBeNull();
+  expect(document.documentElement.dataset.theme).toBe('bloom');
 });

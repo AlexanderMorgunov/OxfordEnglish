@@ -62,6 +62,7 @@ export function navigationContext(
       : '/';
   if (pathname.startsWith('/billing/')) return '/pro';
   if (pathname === '/credits') return '/about';
+  if (pathname === '/android') return '/android';
   return (
     [...PRIMARY, ...SECONDARY].find(
       (item) =>

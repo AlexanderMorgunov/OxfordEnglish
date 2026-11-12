@@ -20,7 +20,11 @@ import { initAppUpdate } from '@/features/pwa/update';
 import { initFeedback } from '@/features/feedback/service';
 import { initSync } from '@/features/sync/run';
 import { isMirrorHost, migrateThenRedirect } from '@/features/migration/sender';
-import { isReceiverPath, receiveMigration } from '@/features/migration/receiver';
+import {
+  isReceiverPath,
+  receiveMigration,
+} from '@/features/migration/receiver';
+import { connectCaptureLinks } from '@/features/capture/native';
 
 // Migration hooks run BEFORE the app boots, so neither the .online sender nor the .ru receiver
 // registers a service worker or logs analytics for what is only a data-handoff hop.
@@ -45,9 +49,13 @@ if (isMirrorHost() && !stayOnMirror) {
   initFeedback();
   initSync();
 
-  createRoot(rootEl).render(
-    <StrictMode>
-      <RouterProvider router={router} />
-    </StrictMode>
-  );
+  const render = () =>
+    createRoot(rootEl).render(
+      <StrictMode>
+        <RouterProvider router={router} />
+      </StrictMode>
+    );
+  void connectCaptureLinks((path) => router.navigate(path))
+    .catch(() => {})
+    .finally(render);
 }

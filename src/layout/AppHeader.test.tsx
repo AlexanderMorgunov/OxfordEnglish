@@ -158,7 +158,7 @@ test('resize transfers focused primary and secondary destinations without leavin
   expect(screen.getByRole('button', { name: 'More' })).toHaveFocus();
 });
 
-test('Tab exits the disclosure without a focus trap or trigger refocus', async () => {
+test('Tab reaches the social links and exits without a focus trap or trigger refocus', async () => {
   geometry(1440);
   render(
     <MemoryRouter>
@@ -168,6 +168,14 @@ test('Tab exits the disclosure without a focus trap or trigger refocus', async (
   );
   await userEvent.click(screen.getByRole('button', { name: 'More' }));
   act(() => screen.getByRole('link', { name: 'UI kit' }).focus());
+  await userEvent.tab();
+  expect(screen.getByRole('link', { name: 'Android app' })).toHaveFocus();
+  await userEvent.tab();
+  expect(screen.getByRole('link', { name: /^Telegram / })).toHaveFocus();
+  await userEvent.tab();
+  expect(screen.getByRole('link', { name: /^VK / })).toHaveFocus();
+  await userEvent.tab();
+  expect(screen.getByRole('link', { name: 'What we share' })).toHaveFocus();
   await userEvent.tab();
   expect(screen.getByRole('button', { name: 'After header' })).toHaveFocus();
   expect(screen.getByRole('button', { name: 'More' })).toHaveAttribute(

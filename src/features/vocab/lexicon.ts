@@ -38,6 +38,7 @@ export function buildLexicon(input: {
   translations: WordTranslation[];
 }): LexiconEntry[] {
   const tr = new Map(input.translations.map((t) => [t.word, t.ru]));
+  const contexts = new Map(input.translations.map(t => [t.word, t.context]));
   const byKey = new Map<string, LexiconEntry>();
 
   for (const c of input.cards) {
@@ -78,6 +79,7 @@ export function buildLexicon(input: {
         status: s.status,
         hasCard: false,
         translation: tr.get(key) || undefined,
+        context: contexts.get(key),
         sortAt: s.firstSeenAt || 0,
       });
     }
