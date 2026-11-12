@@ -3,6 +3,7 @@ import { liveQuery } from 'dexie';
 import { Capacitor } from '@capacitor/core';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useUiLang } from '@/features/i18n/uiLang';
+import { hideAndroidInstall, RUSTORE_URL } from '@/features/android-install/memory';
 import {
   captureDataScope,
   subscribeDataScope,
@@ -699,9 +700,10 @@ function CaptureContent({
                     )}
                   </Button>
                   <a
-                    href="https://www.rustore.ru/catalog/app/ru.dayenglish.app"
+                    href={RUSTORE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => hideAndroidInstall('store')}
                   >
                     {t(
                       'Android-приложение в RuStore',

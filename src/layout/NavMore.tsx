@@ -1,6 +1,8 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AppIcon } from '@/shared/ui/AppIcon';
+import { SOCIAL_CHANNELS } from '@/features/community/channels';
+import { SocialLink } from '@/features/community/SocialLink';
 import { NavigationLink } from './NavigationLink';
 import { focusNavigationControl } from './navigation-focus';
 import type { NavDestination, NavigationLayout } from './navigation';
@@ -24,7 +26,10 @@ export function NavMore({
     panel = useRef<HTMLDivElement>(null);
   const panelId = useId();
   const location = useLocation();
-  const active = [...primary, ...items].find((item) => item.to === current);
+  const active =
+    current === '/android'
+      ? { ru: 'Android', en: 'Android' }
+      : [...primary, ...items].find((item) => item.to === current);
   const label =
     layout === 'stacked' ? (ru ? 'Разделы' : 'Sections') : ru ? 'Ещё' : 'More';
   const subtitle = active ? (ru ? active.ru : active.en) : '';
@@ -189,6 +194,40 @@ export function NavMore({
                 onClick={() => close()}
               />
             ))}
+          </nav>
+          <nav
+            className="app-nav-panel-links"
+            aria-label={ru ? 'Приложение' : 'App'}
+          >
+            <Link
+              to="/android"
+              onClick={() => close()}
+              aria-current={
+                location.pathname === '/android' ? 'page' : undefined
+              }
+            >
+              <AppIcon name="phone" />
+              <span>{ru ? 'Приложение для Android' : 'Android app'}</span>
+            </Link>
+          </nav>
+          <nav
+            className="app-nav-panel-links app-nav-social"
+            aria-label={
+              ru ? 'DayEnglish в соцсетях' : 'DayEnglish on social media'
+            }
+          >
+            <p>{ru ? 'DayEnglish в соцсетях' : 'DayEnglish on social media'}</p>
+            {SOCIAL_CHANNELS.map((channel) => (
+              <SocialLink
+                key={channel.id}
+                channel={channel}
+                onClick={() => close(true)}
+              />
+            ))}
+            <Link to="/about#community" onClick={() => close()}>
+              <span>{ru ? 'Что публикуем' : 'What we share'}</span>
+              <span aria-hidden="true">→</span>
+            </Link>
           </nav>
           <p className="app-nav-panel-note">
             {ru

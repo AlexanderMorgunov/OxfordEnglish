@@ -128,6 +128,7 @@ const ROUTES = [
   },
   { key: 'support', index: false, title: 'Поддержать проект | DayEnglish' },
   { key: 'credits', index: false, title: 'Благодарности и источники | DayEnglish' },
+  { key: 'android', index: false, title: 'Приложение для Android в RuStore | DayEnglish' },
   { key: 'feedback', index: false, title: 'Обратная связь | DayEnglish' },
   { key: 'review', index: false, title: 'Повторение слов | DayEnglish' },
   { key: 'progress', index: false, title: 'Мой прогресс | DayEnglish' },
