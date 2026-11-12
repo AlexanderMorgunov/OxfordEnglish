@@ -135,6 +135,15 @@ export function PrivacySettings() {
         )}
       </div>
       <div className="settings-group">
+        <div className="settings-row">
+          <div>
+            <h3>{ru ? 'DayEnglish в соцсетях' : 'DayEnglish on social media'}</h3>
+            <p>{ru ? 'Полезные фразы, задания и новости проекта.' : 'Useful phrases, activities and project news.'}</p>
+            <Link className="settings-text-link" to="/about#community">
+              {ru ? 'Выбрать Telegram или ВКонтакте' : 'Choose Telegram or VK'} →
+            </Link>
+          </div>
+        </div>
         {(
           [
             ['/privacy', ru ? 'Политика конфиденциальности' : 'Privacy policy'],

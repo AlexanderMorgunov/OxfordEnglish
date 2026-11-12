@@ -69,8 +69,13 @@ test('explains the product with real internal destinations and no fixed commerci
       /in 3 days|never sent anywhere|right before you would forget/i
     )
   ).toBeNull();
-  for (const link of screen.getAllByRole('link'))
-    expect(link).not.toHaveAttribute('target', '_blank');
+  const channels = new Set(['https://t.me/dayenglishru', 'https://vk.ru/club242958850']);
+  for (const link of screen.getAllByRole('link')) {
+    if (channels.has(link.getAttribute('href') ?? '')) {
+      expect(link).toHaveAttribute('target', '_blank');
+      expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    } else expect(link).not.toHaveAttribute('target', '_blank');
+  }
 });
 test('looking up a word does not save it; deliberate saving creates one demo entry', async () => {
   renderPage();

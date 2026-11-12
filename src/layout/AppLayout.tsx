@@ -18,6 +18,9 @@ import { FirstEntryWelcome } from '@/features/welcome/FirstEntryWelcome';
 import { SalePromotion } from '@/features/sale/SalePromotion';
 import { RecoveryNavigationGuard } from '@/features/account/RecoveryNavigationGuard';
 import { isCapturePath } from '@/features/capture/links';
+import { SOCIAL_CHANNELS } from '@/features/community/channels';
+import { SocialLink } from '@/features/community/SocialLink';
+import './site-footer.css';
 
 export function AppLayout() {
   return <RecoveryNavigationGuard><AppLayoutContent /></RecoveryNavigationGuard>;
@@ -89,11 +92,22 @@ function SiteFooter({ ru }: { ru: boolean }) {
     { to: '/privacy', ru: 'Конфиденциальность', en: 'Privacy' },
     { to: '/pro', ru: 'Подписка и цена', en: 'Subscription and price' },
     { to: '/support', ru: 'Поддержка', en: 'Support' },
+    { to: '/android', ru: 'Приложение для Android', en: 'Android app' },
   ];
   return (
     <footer data-app-footer className="mt-4 border-t border-line">
       <div className="app-container py-4 text-xs leading-relaxed text-muted [overflow-wrap:anywhere]">
-        <nav className="mb-2 flex flex-wrap gap-x-4 gap-y-1">
+        <div className="app-footer-top">
+          <div className="app-footer-product">
+            <NavLink to="/" className="app-footer-brand">DayEnglish</NavLink>
+            <p>{ru ? 'Английский день за днём.' : 'English, day by day.'}</p>
+          </div>
+          <nav className="app-footer-social" aria-label={ru ? 'DayEnglish в соцсетях' : 'DayEnglish on social media'}>
+            <span>{ru ? 'Мы в соцсетях' : 'Follow us'}</span>
+            {SOCIAL_CHANNELS.map((channel) => <SocialLink key={channel.id} channel={channel} />)}
+          </nav>
+        </div>
+        <nav className="app-footer-legal mb-2 flex flex-wrap gap-x-4 gap-y-1" aria-label={ru ? 'Документы и поддержка' : 'Documents and support'}>
           {links.map((l) => (
             <NavLink key={l.to} to={l.to} className="hover:text-teal hover:underline">
               {ru ? l.ru : l.en}

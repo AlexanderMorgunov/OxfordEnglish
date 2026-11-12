@@ -27,6 +27,7 @@ import {
 } from './review-session';
 import { ReviewOverview } from './ReviewOverview';
 import { ReviewIcon } from './ReviewIcon';
+import { queueAndroidInstall } from '@/features/android-install/memory';
 
 const RATING_LABELS = {
   ru: ['Снова', 'Трудно', 'Хорошо', 'Легко'],
@@ -106,6 +107,7 @@ export function ReviewScreen() {
       navigate(path('/review/summary'), { replace: true });
     if (remaining.length === 0 && reviewed > 0 && !session.tracked) {
       updateReviewSession((previous) => ({ ...previous, tracked: true }));
+      queueAndroidInstall();
       void track('review_session_completed');
     }
   });

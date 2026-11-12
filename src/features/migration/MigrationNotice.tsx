@@ -38,6 +38,7 @@ export function MigrationNotice() {
 
   return (
     <div
+      data-install-blocker
       role="status"
       className="app-container flex flex-wrap items-center justify-between gap-3 py-2.5"
     >
