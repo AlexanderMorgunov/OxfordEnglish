@@ -11,9 +11,11 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter, useNavigate } from 'react-router-dom';
 import { afterEach, expect, test, vi } from 'vitest';
 import { AppHeader } from './AppHeader';
+import { useGameAvailability } from '@/features/games/availability';
 
 afterEach(() => {
   cleanup();
+  useGameAvailability.setState({ access: 'loading', epoch: 0 });
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
   document.documentElement.style.removeProperty('--app-nav-top');
@@ -77,7 +79,16 @@ test('wide navigation exposes one copy of every primary section and keeps Pro an
     'page'
   );
   expect(screen.getByRole('link', { name: 'Settings' })).toBeInTheDocument();
+  expect(screen.queryByRole('link', { name: 'Games' })).not.toBeInTheDocument();
   await userEvent.click(screen.getByRole('button', { name: 'More' }));
+  expect(screen.queryByRole('link', { name: 'Games' })).not.toBeInTheDocument();
+  act(() => useGameAvailability.setState({ access: 'allowed' }));
+  const games = screen.getByRole('link', { name: 'Games' });
+  expect(games).toHaveAttribute('href', '/games');
+  games.focus();
+  act(() => useGameAvailability.setState({ access: 'denied' }));
+  expect(screen.queryByRole('link', { name: 'Games' })).not.toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'More' })).toHaveFocus();
   expect(
     screen.getByRole('link', { name: 'DayEnglish Pro' })
   ).toBeInTheDocument();

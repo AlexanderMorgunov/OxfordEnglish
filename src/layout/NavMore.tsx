@@ -24,6 +24,7 @@ export function NavMore({
   const root = useRef<HTMLDivElement>(null),
     button = useRef<HTMLButtonElement>(null),
     panel = useRef<HTMLDivElement>(null);
+  const focusedPanelItem = useRef<HTMLElement | null>(null);
   const panelId = useId();
   const location = useLocation();
   const active =
@@ -42,6 +43,13 @@ export function NavMore({
       focusNavigationControl(button.current);
     setOpen(false);
   }, [location.key]);
+  useLayoutEffect(() => {
+    if (open && focusedPanelItem.current && !focusedPanelItem.current.isConnected &&
+        document.activeElement === document.body) {
+      focusedPanelItem.current = null;
+      focusNavigationControl(button.current);
+    }
+  }, [items, open]);
   useLayoutEffect(() => {
     if (!open) return;
     const trigger = button.current,
@@ -146,7 +154,8 @@ export function NavMore({
         {active && <i className="app-nav-context-dot" aria-hidden="true" />}
       </button>
       {open && (
-        <div ref={panel} id={panelId} className="app-nav-panel">
+        <div ref={panel} id={panelId} className="app-nav-panel"
+          onFocusCapture={(event) => { focusedPanelItem.current = event.target; }}>
           <div className="app-nav-panel-head">
             <h2>
               {layout === 'stacked'

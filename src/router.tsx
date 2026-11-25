@@ -34,6 +34,7 @@ const BillingSuccessPage = lazyPage(() => import('@/pages/BillingReturnPage').th
 const BillingFailPage = lazyPage(() => import('@/pages/BillingReturnPage').then((m) => ({ default: m.BillingFailPage })));
 const NotFoundPage = lazyPage(() => import('@/pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })));
 const KitchenSinkPage = lazyPage(() => import('@/pages/KitchenSinkPage').then((m) => ({ default: m.KitchenSinkPage })));
+const GamesPage = lazyPage(() => import('@/pages/GamesPage').then(m => ({ default: m.GamesPage })));
 
 const routes: RouteObject[] = [
   { path: '/', element: <DashboardPage /> },
@@ -49,6 +50,10 @@ const routes: RouteObject[] = [
   { path: '/review/summary', element: <ReviewPage /> },
   { path: '/checkpoint/:unitId', element: <CheckpointPage /> },
   { path: '/progress', element: <ProgressPage /> },
+  { path: '/games', element: <GamesPage /> },
+  { path: '/games/:gameId', element: <GamesPage /> },
+  { path: '/games/:gameId/about', element: <GamesPage /> },
+  { path: '/games/submit', element: <GamesPage /> },
   { path: '/vocabulary', element: <VocabularyPage /> },
   { path: '/capture', element: <CapturePage /> },
   { path: '/capture-web', element: <CapturePage /> },

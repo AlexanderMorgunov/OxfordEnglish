@@ -8,6 +8,8 @@ test.each([
   ['/course/u02/day/u02.d90', '/'],
   ['/grammar/present-simple', '/grammar'],
   ['/vocabulary/text', '/vocabulary'],
+  ['/games/lumi-road-of-lights/about', '/games'],
+  ['/games/submit', '/games'],
   ['/library/catalog/alice', '/library'],
   ['/library/local-book', '/library'],
   ['/settings/interface', '/settings'],

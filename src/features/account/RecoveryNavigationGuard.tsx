@@ -6,11 +6,25 @@ import { Dialog } from '@/shared/ui/Dialog';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { RecoveryDraftContext } from './recovery-draft';
 import { CaptureDraftContext } from '@/features/capture/draft';
+import {
+  ActivityNavigationContext,
+  idleNavigationBlocker,
+} from '@/shared/lib/activity-navigation';
 
 export function RecoveryNavigationGuard({ children }: { children: ReactNode }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const [drafts, setDrafts] = useState<Set<string>>(() => new Set());
   const [captures, setCaptures] = useState<Set<string>>(() => new Set());
+  const [activities, setActivities] = useState<Set<string>>(() => new Set());
+  const registerActivity = useCallback((id: string, active: boolean) => {
+    setActivities((previous) => {
+      if (previous.has(id) === active) return previous;
+      const next = new Set(previous);
+      if (active) next.add(id);
+      else next.delete(id);
+      return next;
+    });
+  }, []);
   const updateCapture = useCallback((id: string, unsaved: boolean) => {
     setCaptures((previous) => {
       if (previous.has(id) === unsaved) return previous;
@@ -29,56 +43,72 @@ export function RecoveryNavigationGuard({ children }: { children: ReactNode }) {
       return next;
     });
   }, []);
-  const blocker = useBlocker(drafts.size > 0 || captures.size > 0);
+  const blocker = useBlocker(
+    drafts.size > 0 || captures.size > 0 || activities.size > 0
+  );
   useEffect(() => {
-    if (!drafts.size && !captures.size && blocker.state === 'blocked')
+    if (
+      !drafts.size &&
+      !captures.size &&
+      !activities.size &&
+      blocker.state === 'blocked'
+    )
       blocker.reset();
-  }, [drafts.size, captures.size, blocker]);
+  }, [drafts.size, captures.size, activities.size, blocker]);
   const stay = () => {
     if (blocker.state === 'blocked') blocker.reset();
   };
   return (
     <RecoveryDraftContext value={update}>
       <CaptureDraftContext value={updateCapture}>
-        {children}
-        {blocker.state === 'blocked' && (
-          <Dialog
-            title={
-              drafts.size
-                ? ru
-                  ? 'Сохраните резервные коды'
-                  : 'Save your backup codes'
-                : ru
-                  ? 'Уйти без сохранения фразы?'
-                  : 'Leave without saving the phrase?'
-            }
-            onClose={stay}
-          >
-            <p>
-              {!drafts.size
-                ? ru
-                  ? 'Изменённый текст не сохранится. Можно остаться и добавить фразу в словарь.'
-                  : 'Your edits have not been saved. Stay to add the phrase to your vocabulary.'
-                : ru
-                  ? 'Вы ещё не подтвердили сохранение кодов. После ухода они больше не будут показаны. Новый набор можно выпустить в аккаунте.'
-                  : 'You have not confirmed saving these codes. They will not be shown after you leave. You can issue a new set in your account.'}
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Button onClick={stay}>
-                {drafts.size
+        <ActivityNavigationContext
+          value={{
+            register: registerActivity,
+            blocker:
+              drafts.size || captures.size ? idleNavigationBlocker : blocker,
+          }}
+        >
+          {children}
+        </ActivityNavigationContext>
+        {blocker.state === 'blocked' &&
+          (drafts.size > 0 || captures.size > 0) && (
+            <Dialog
+              title={
+                drafts.size
                   ? ru
-                    ? 'Остаться и сохранить'
-                    : 'Stay and save'
+                    ? 'Сохраните резервные коды'
+                    : 'Save your backup codes'
                   : ru
-                    ? 'Продолжить редактирование'
-                    : 'Keep editing'}
-              </Button>
-              <Button variant="ghost" onClick={() => blocker.proceed()}>
-                {ru ? 'Уйти без сохранения' : 'Leave without saving'}
-              </Button>
-            </div>
-          </Dialog>
-        )}
+                    ? 'Уйти без сохранения фразы?'
+                    : 'Leave without saving the phrase?'
+              }
+              onClose={stay}
+            >
+              <p>
+                {!drafts.size
+                  ? ru
+                    ? 'Изменённый текст не сохранится. Можно остаться и добавить фразу в словарь.'
+                    : 'Your edits have not been saved. Stay to add the phrase to your vocabulary.'
+                  : ru
+                    ? 'Вы ещё не подтвердили сохранение кодов. После ухода они больше не будут показаны. Новый набор можно выпустить в аккаунте.'
+                    : 'You have not confirmed saving these codes. They will not be shown after you leave. You can issue a new set in your account.'}
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <Button onClick={stay}>
+                  {drafts.size
+                    ? ru
+                      ? 'Остаться и сохранить'
+                      : 'Stay and save'
+                    : ru
+                      ? 'Продолжить редактирование'
+                      : 'Keep editing'}
+                </Button>
+                <Button variant="ghost" onClick={() => blocker.proceed()}>
+                  {ru ? 'Уйти без сохранения' : 'Leave without saving'}
+                </Button>
+              </div>
+            </Dialog>
+          )}
       </CaptureDraftContext>
     </RecoveryDraftContext>
   );

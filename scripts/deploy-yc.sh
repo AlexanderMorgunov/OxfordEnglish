@@ -112,5 +112,16 @@ if [ -d "$DIST/library/catalog" ]; then
   done
 fi
 
+if [ -f "$DIST/games.html" ]; then
+  "${S3[@]}" cp "$DIST/games.html" "s3://$YC_BUCKET/games" \
+    --content-type "text/html; charset=utf-8" --cache-control "$NOCACHE" --no-progress
+  while IFS= read -r -d '' f; do
+    route="${f#"$DIST/"}"
+    route="${route%.html}"
+    "${S3[@]}" cp "$f" "s3://$YC_BUCKET/$route" \
+      --content-type "text/html; charset=utf-8" --cache-control "$NOCACHE" --no-progress
+  done < <(find "$DIST/games" -type f -name '*.html' -print0)
+fi
+
 echo "Done. NOTE: CDN must honor origin Cache-Control (or force-revalidate sw.js/index.html/manifest),"
 echo "otherwise the edge serves a stale sw.js and PWA updates stall. No --delete (orphans pruned separately)."

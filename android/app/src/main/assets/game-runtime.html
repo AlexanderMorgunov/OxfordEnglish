@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; frame-src https://lumi.games.dayenglish.ru; style-src 'unsafe-inline'; script-src 'nonce-dayenglish-shell'; base-uri 'none'; form-action 'none'">
+<title>DayEnglish</title>
+<style>
+  :root { color-scheme: dark; background: #12141c; color: #ece8dd; }
+  body { margin: 0; min-height: 100vh; height: 100dvh; display: flex; flex-direction: column; font: 16px system-ui; }
+  button { align-self: flex-start; margin: 4px 8px; min-height: 44px; border: 0; border-radius: 8px; background: #252a3a; color: inherit; padding: 0 14px; font: inherit; }
+  button:focus-visible { outline: 2px solid #57c9bd; }
+  iframe { display: block; width: 100%; flex: 1 1 0; min-height: 0; border: 0; }
+</style>
+<body>
+<button id="back" type="button"></button>
+<script nonce="dayenglish-shell">
+  const origin = __ORIGIN__;
+  const relay = (data) => window.DayEnglishRelay.postMessage(JSON.stringify(data));
+  const back = document.getElementById('back');
+  back.textContent = '← ' + __BACK__;
+  back.onclick = () => relay({ kind: 'back' });
+  const frame = document.createElement('iframe');
+  frame.title = 'DayEnglish';
+  frame.sandbox = 'allow-scripts allow-same-origin';
+  frame.referrerPolicy = 'no-referrer';
+  frame.allow = "camera 'none'; microphone 'none'; geolocation 'none'; payment 'none'";
+  frame.addEventListener('load', () => relay({ kind: 'loaded' }));
+  addEventListener('message', event => {
+    if (event.origin === origin && event.source === frame.contentWindow && event.data?.channel === 'dayenglish.game')
+      relay({ kind: 'message', payload: event.data });
+  });
+  window.deliverToGame = (payload) => frame.contentWindow.postMessage(JSON.parse(payload), origin);
+  frame.src = __ENTRY__;
+  document.body.append(frame);
+</script>
+</body>
+</html>

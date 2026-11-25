@@ -34,6 +34,12 @@ import { AccountAccess } from './accountAccess.js';
 import { accountAccessRoutes } from './routes/access.js';
 import { InMemoryBillingCatalogStore, type BillingCatalogStore } from './billingCatalog.js';
 import { YdbBillingCatalogStore } from './stores/ydbBillingCatalog.js';
+import { gameCatalog, InMemoryGameStore, type GameStore } from './games.js';
+import { YdbGameStore } from './stores/ydbGames.js';
+import { gameRoutes } from './routes/games.js';
+import { InMemoryFeatureSettingsStore, type FeatureSettingsStore } from './featureSettings.js';
+import { YdbFeatureSettingsStore } from './stores/ydbFeatureSettings.js';
+import { featureRoutes, privateResponse } from './routes/features.js';
 
 /** Build the API app. Storage is injectable (tests pass explicit stores); otherwise it picks the YDB +
  *  Object Storage impls when a real backend is configured (YDB_DATABASE set), else the in-memory skeleton
@@ -48,7 +54,9 @@ export function createApp(
   totp?: TotpStore,
   names?: RecoveryNameStore,
   access?: AccessStore,
-  catalog?: BillingCatalogStore
+  catalog?: BillingCatalogStore,
+  games?: GameStore,
+  features?: FeatureSettingsStore,
 ): Hono {
   const real = ydbConfigured();
   // Without a real database there is no Lockbox either; a per-process key keeps dev and the in-process
@@ -63,8 +71,13 @@ export function createApp(
   const totpStore = totp ?? (real ? new YdbTotpStore() : new InMemoryTotpStore());
   const nameStore = names ?? (real ? new YdbRecoveryNameStore() : new InMemoryRecoveryNameStore());
   const catalogStore = catalog ?? (real ? new YdbBillingCatalogStore() : new InMemoryBillingCatalogStore());
+  const gamesEnabled = process.env.GAMES_ENABLED === 'true' || games !== undefined;
+  const gamesStore = games ?? (real ? new YdbGameStore() : new InMemoryGameStore());
+  const featureStore = features ?? (real ? new YdbFeatureSettingsStore() : new InMemoryFeatureSettingsStore());
+  const gameRegistry = gamesEnabled ? gameCatalog() : [];
+  const rollout = { ready: gamesEnabled && gameRegistry.length > 0, store: featureStore };
   const participants: CheckpointStore[] = [];
-  for (const participant of [authStore, totpStore, nameStore]) {
+  for (const participant of [authStore, totpStore, nameStore, featureStore]) {
     if ('checkpoint' in participant && typeof participant.checkpoint === 'function') participants.push(participant as CheckpointStore);
   }
   const accessStore = access ?? (real ? new YdbAccessStore() : new InMemoryAccessStore(participants));
@@ -114,6 +127,8 @@ export function createApp(
    */
   const MAX_BODY_BYTES = 1024 * 1024;
   app.use('/v1/*', async (c, next) => {
+    if (c.req.path === '/v1/features' || c.req.path.startsWith('/v1/games/') ||
+        c.req.path.startsWith('/v1/admin/features')) privateResponse(c);
     bindAccessValidator(c.req, (claims) => accessSecurity.validAccess(claims));
     const declared = Number(c.req.header('content-length') ?? '0');
     if (Number.isFinite(declared) && declared > MAX_BODY_BYTES) {
@@ -134,7 +149,9 @@ export function createApp(
   app.route('/', accountAccessRoutes(accessService));
   app.route('/', syncRoutes(syncStore, entStore));
   app.route('/', blobRoutes(blobStore, entStore));
-  app.route('/', accountRoutes(authStore, syncStore, blobStore, entStore, totpStore, nameStore, accessStore));
+  app.route('/', accountRoutes(authStore, syncStore, blobStore, entStore, totpStore, nameStore, accessStore, gamesStore, featureStore));
+  app.route('/', featureRoutes(rollout));
+  if (gamesEnabled) app.route('/', gameRoutes(gamesStore, entStore, gameRegistry, rollout));
   app.route('/', entitlementRoutes(entStore));
   app.route('/', billingRoutes(entStore, catalogStore));
   app.route('/', aiRoutes(entStore, aiCacheStore, completer));
@@ -147,7 +164,7 @@ export function createApp(
   if (adminToken && adminToken.length < ADMIN_TOKEN_MIN) {
     console.warn(`[admin] ADMIN_TOKEN shorter than ${ADMIN_TOKEN_MIN} characters — admin routes not mounted`);
   } else if (adminToken) {
-    app.route('/', adminRoutes(new Hono(), adminToken, authStore, entStore, catalogStore));
+    app.route('/', adminRoutes(new Hono(), adminToken, authStore, entStore, catalogStore, rollout, accessStore));
     app.get('/admin', (c) => c.html(adminPage()));
     console.log('[admin] admin routes mounted (ADMIN_TOKEN is set)');
   }

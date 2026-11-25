@@ -20,6 +20,7 @@ import { RecoveryNavigationGuard } from '@/features/account/RecoveryNavigationGu
 import { isCapturePath } from '@/features/capture/links';
 import { SOCIAL_CHANNELS } from '@/features/community/channels';
 import { SocialLink } from '@/features/community/SocialLink';
+import { connectGameAvailability } from '@/features/games/availability';
 import './site-footer.css';
 
 export function AppLayout() {
@@ -31,6 +32,7 @@ function AppLayoutContent() {
   const ru = lang === 'ru';
   const location = useLocation();
   const mainRef = useRef<HTMLElement>(null);
+  useEffect(connectGameAvailability, []);
   useEffect(() => { document.documentElement.lang = lang; }, [lang]);
   useEffect(() => {
     metricaHit(location.pathname);

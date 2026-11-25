@@ -34,6 +34,10 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const DIST = join(HERE, '..', 'dist');
 const ORIGIN = 'https://dayenglish.ru';
 const GRAMMAR_JSON = join(HERE, '..', 'public', 'packs', 'dev-english-a2', 'grammar.json');
+const gameRouteIds = JSON.parse(readFileSync(join(HERE, '..', 'public', 'game-routes.json'), 'utf8'));
+if (!Array.isArray(gameRouteIds) || gameRouteIds.some(id => typeof id !== 'string' || !/^[a-zA-Z0-9][a-zA-Z0-9._-]{0,79}$/.test(id) || id.toLowerCase() === 'submit') || new Set(gameRouteIds).size !== gameRouteIds.length) {
+  throw new Error('build-seo: invalid public game route IDs');
+}
 
 const esc = (s) =>
   String(s ?? '')
@@ -136,6 +140,12 @@ const ROUTES = [
   { key: 'vocabulary', index: false, title: 'Мой словарь | DayEnglish' },
   { key: 'capture', index: false, title: 'Сохранить фразу | DayEnglish' },
   { key: 'capture-web', index: false, title: 'Сохранить фразу | DayEnglish' },
+  { key: 'games', index: false, title: 'Игры с английским | DayEnglish' },
+  { key: 'games/submit', index: false, title: 'Предложить игру | DayEnglish' },
+  ...gameRouteIds.flatMap(id => [
+    { key: `games/${id}`, index: false, title: 'Игра | DayEnglish' },
+    { key: `games/${id}/about`, index: false, title: 'Об игре | DayEnglish' },
+  ]),
   { key: 'vocabulary/text', index: false, title: 'Перевод текста | DayEnglish' },
   { key: 'settings', index: false, title: 'Настройки | DayEnglish' },
   ...['interface', 'learning', 'ai', 'account', 'data', 'privacy'].map(section => ({ key: `settings/${section}`, index: false, title: 'Настройки | DayEnglish' })),
