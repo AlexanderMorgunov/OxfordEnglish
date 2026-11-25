@@ -372,7 +372,7 @@ async function dropCachedText(): Promise<void> {
 
 export async function releasePreviousAccountData(): Promise<void> {
   invalidateDataScope();
-  await Promise.all([db.activity.clear(), db.reviewLog.clear(), db.feedbackOutbox.clear(), dropCachedText()]);
+  await Promise.all([db.activity.clear(), db.reviewLog.clear(), db.gameRecords.clear(), db.feedbackOutbox.clear(), dropCachedText()]);
   // Account-scoped settings belong to the same boundary, and ONLY to it. Resetting them from
   // `wipeSyncedData` looked equivalent — the wipe clears `db.settings` too — and silently was not: the
   // wipe also runs on an ordinary logout, `hydrateSettings` skips any row this install wrote, and the

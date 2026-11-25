@@ -4,6 +4,7 @@
   "version": "1.0.7",
   "type": "module",
   "scripts": {
+    "games:demo": "node examples/game-integration/server.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build && node scripts/build-seo.mjs",
     "preview": "vite preview",

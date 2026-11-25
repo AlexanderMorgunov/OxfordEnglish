@@ -29,7 +29,8 @@ test('v6 → v7 (stats) → v8 (sync) keeps old data and creates both new table 
   v6.close();
 
   await db.open();
-  expect(db.verno).toBe(8);
+  expect(db.verno).toBe(9);
+  expect(await db.gameRecords.count()).toBe(0);
 
   // v6 rows survive both upgrades.
   expect((await db.wordStatus.get('hello'))?.status).toBe('known');

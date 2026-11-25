@@ -17,6 +17,7 @@ import vk from '@/assets/brand/icons/vk.svg?raw';
 import external from '@/assets/brand/icons/external.svg?raw';
 import copy from '@/assets/brand/icons/copy.svg?raw';
 import phone from '@/assets/brand/icons/phone.svg?raw';
+import games from '@/assets/brand/icons/games.svg?raw';
 
 const ICONS = {
   today,
@@ -38,6 +39,7 @@ const ICONS = {
   external,
   copy,
   phone,
+  games,
 };
 export type AppIconName = keyof typeof ICONS;
 

@@ -5,6 +5,7 @@ import { AppIcon } from '@/shared/ui/AppIcon';
 import { OnboardingHelp } from '@/features/onboarding/OnboardingHelp';
 import mark from '@/assets/brand/dayenglish-mark.svg';
 import { NAVIGATION_INSETS_EVENT } from '@/shared/lib/navigation-insets';
+import { useGameAvailability } from '@/features/games/availability';
 import { NavMore } from './NavMore';
 import { NavigationLink } from './NavigationLink';
 import { focusNavigationControl } from './navigation-focus';
@@ -31,6 +32,7 @@ function Brand() {
 }
 
 export function AppHeader() {
+  const gamesAllowed = useGameAvailability((state) => state.access === 'allowed');
   const ru = useUiLang((s) => s.lang) === 'ru';
   const location = useLocation();
   const current = navigationContext(location.pathname, location.search);
@@ -163,13 +165,13 @@ export function AppHeader() {
     pendingFocus.current = null;
   }, [layout, wideProgress]);
 
-  const progress = SECONDARY[0]!;
-  const settings = SECONDARY[1]!;
+  const progress = SECONDARY.find((item) => item.to === '/progress')!;
+  const settings = SECONDARY.find((item) => item.to === '/settings')!;
   const wide = layout === 'wide';
   const items = SECONDARY.filter(
     (item) =>
-      !wide ||
-      (item.to !== settings.to && (item.to !== progress.to || !wideProgress))
+      (item.to !== '/games' || gamesAllowed) &&
+      (!wide || (item.to !== settings.to && (item.to !== progress.to || !wideProgress)))
   );
   return (
     <>

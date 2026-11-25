@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>DayEnglish integration fixture</title>
+<style>body{font:17px system-ui;background:#f5f1e8;color:#193d35;margin:0;padding:16px;box-sizing:border-box}button{font:inherit;border:1px solid #486959;border-radius:10px;padding:12px;background:white;color:inherit;cursor:pointer}button:disabled{opacity:.5}.actions{display:flex;flex-wrap:wrap;gap:10px}pre{white-space:pre-wrap;overflow-wrap:anywhere}h1{font-size:24px}</style>
+<h1>Game integration fixture</h1><p>This is a developer test scene, not a released game. No AI request runs automatically.</p>
+<div class="actions"><button data-action="load">Load save</button><button data-action="save">Save next step</button><button data-action="phrase">Add phrase</button><button data-action="translate">Translate</button><button data-action="learn">Report exercise</button><button data-action="access">Check Pro chapter</button><button data-action="push">Cloud push</button><button data-action="pull">Cloud pull</button></div>
+<button data-action="resolve">Resolve cloud conflict</button>
+<pre role="status" id="output">Connecting…</pre>
+<script type="module">
+import {connectDayEnglish} from '/sdk.js';
+const output=document.querySelector('#output');
+const buttons=[...document.querySelectorAll('button')];
+buttons.forEach(b=>b.disabled=true);
+let revision=0, step=0, sdk;
+try {
+  const hostOrigin=new URLSearchParams(location.search).get('host') ?? 'http://localhost:5173';
+  if(!/^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(hostOrigin))throw new Error('Fixture accepts local development hosts only');
+  sdk=connectDayEnglish({hostOrigin,gameId:'integration-demo',releaseId:'1.0.0'});
+  const context=await sdk.ready;
+  output.textContent=JSON.stringify(context,null,2);
+  buttons.forEach(b=>b.disabled=false);
+  sdk.onEvent(e=>{if(e.type!=='view.changed')buttons.forEach(b=>b.disabled=e.type!=='resumed');});
+  async function load(){const save=await sdk.request('save.load',{slotId:'0'});revision=save?.revision??0;step=save?.payload?.step??0;return save;}
+  for(const b of buttons)b.addEventListener('click',async()=>{
+    try {
+      let result;
+      switch(b.dataset.action){
+        case 'load':result=await load();break;
+        case 'save':result=await sdk.request('save.write',{slotId:'0',baseRevision:revision,operationId:crypto.randomUUID(),schemaVersion:1,payload:{step:step+1}});revision=result.revision;step++;break;
+        case 'phrase':result=await sdk.request('vocabulary.capture',{term:'It depends',translation:'Зависит от ситуации',context:'It depends on the weather.'});break;
+        case 'translate':result=await sdk.request('translation.open',{text:'It depends on the weather.'});break;
+        case 'learn':result=await sdk.request('learning.report',{eventId:crypto.randomUUID(),activityId:'past-scene-1',itemVersion:'1',runId:crypto.randomUUID(),attemptNumber:1,skills:['grammar.past-vs-continuous'],correct:true,usedHint:false,usedAI:false});break;
+        case 'access':result=await sdk.request('content.access',{resourceId:'chapter-2'});break;
+        case 'push':case 'pull':result=await sdk.request('save.cloud',{slotId:'0',direction:b.dataset.action});await load();break;
+        case 'resolve':result=await sdk.request('save.resolve',{slotId:'0'});await load();break;
+      }
+      output.textContent=JSON.stringify(result,null,2);
+    }catch(e){output.textContent='Error: '+(e.code??e.message);}
+  });
+}catch(e){output.textContent='Open this fixture inside DayEnglish. '+(e.code??e.message);}
+</script></html>

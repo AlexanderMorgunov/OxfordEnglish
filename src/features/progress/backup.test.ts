@@ -21,11 +21,11 @@ beforeEach(async () => {
   await db.reviewLog.clear();
 });
 
-test('export carries activity and the review log (payload v4)', async () => {
+test('export carries activity and the review log (payload v5)', async () => {
   await db.activity.put(day({ readSec: 30 }));
   await db.reviewLog.add({ id: 'r1', cardId: 'word:go', rating: 3, ts: 1 });
   const json = JSON.parse(await exportData()) as { version: number; activity: unknown[]; reviewLog: unknown[] };
-  expect(json.version).toBe(4);
+  expect(json.version).toBe(5);
   expect(json.activity).toHaveLength(1);
   expect(json.reviewLog).toHaveLength(1);
 });
