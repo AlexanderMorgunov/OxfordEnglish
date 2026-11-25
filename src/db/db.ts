@@ -205,7 +205,16 @@ export interface PendingChange {
   syncId?: string;
 }
 
+export interface GameRecord {
+  id: string;
+  owner: string;
+  gameId: string;
+  kind: 'save' | 'learning' | 'time';
+  value: unknown;
+}
+
 const db = new Dexie('oxford-english') as Dexie & {
+  gameRecords: EntityTable<GameRecord, 'id'>;
   attempts: EntityTable<ExerciseAttempt, 'id'>;
   wordStatus: EntityTable<WordStatus, 'word'>;
   srsCards: EntityTable<SrsCard, 'id'>;
@@ -307,5 +316,7 @@ db.version(8)
     });
   });
 
+
+db.version(9).stores({ gameRecords: 'id, owner, [owner+gameId], kind' });
 
 export { db };

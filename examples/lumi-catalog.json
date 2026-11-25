@@ -1,0 +1,26 @@
+[
+  {
+    "gameId": "lumi-road-of-lights",
+    "releaseId": "1.0.0",
+    "title": "Люми и дорога огней",
+    "entryUrl": "https://games.example.invalid/lumi/releases/1.0.0/index.html",
+    "skills": [],
+    "resources": [{ "id": "chapter-1", "access": "public" }, { "id": "chapter-2", "access": "public" }],
+    "presentation": {
+      "description": "Зажгите дорогу, собирая сообщения. Артикли и to be — в историях и головоломках.",
+      "subtitle": "История · головоломка",
+      "category": "grammar",
+      "topics": ["a / an / the", "am / is / are", "С основ"],
+      "artwork": "lumi",
+      "original": true,
+      "story": "После бури письма перестали находить адресатов. Вместе с Люми вы восстановите таблички и сообщения, познакомитесь с жителями долины и поможете им понять друг друга.\n\nВ каждой ситуации сначала знакомитесь с правилом, затем применяете его: двигаете таблички со словами и собираете подходящее сообщение. Русские пояснения помогают разобраться.",
+      "chapters": [
+        { "title": "Мастерская у леса", "description": "Артикли a/an/the, знакомые предметы и множественное число." },
+        { "title": "Станция встреч", "description": "Основы to be: кто говорит, к кому обращается и о ком идёт речь." }
+      ],
+      "controls": ["keyboard", "touch"],
+      "saving": "session",
+      "availability": "available"
+    }
+  }
+]

@@ -9,6 +9,8 @@ import { captureDataScope, requireDataScope } from '@/features/account/dataScope
 import { markDirty } from '@/features/sync/engine';
 import { resolveLww, type SyncMeta } from '@/features/sync/resolve';
 import { validateActivity, validateAttempts } from './validation';
+import { exportGameRecords, parseGameRecords } from '@/features/games/backup';
+import { gameScope } from '@/features/games/storage';
 
 export { reviveCard };
 
@@ -29,10 +31,11 @@ export async function exportData(): Promise<string> {
       db.settings.where('key').startsWith(READER_TERM_PREFIX).toArray(),
     ]);
   const readerTerms = await validatedReaderTermRows(sourceRows);
+  const gameRecords = await exportGameRecords(gameScope());
   requireDataScope(current);
   return JSON.stringify(
     {
-      version: 4,
+      version: 5,
       exportedAt: Date.now(),
       attempts,
       wordStatus,
@@ -49,6 +52,7 @@ export async function exportData(): Promise<string> {
       activity,
       reviewLog,
       readerTerms,
+      gameRecords,
     },
     null,
     2
@@ -67,6 +71,7 @@ type Backup = {
   activity?: ActivityDay[];
   reviewLog?: ReviewLogEntry[];
   readerTerms?: unknown[];
+  gameRecords?: unknown[];
 };
 
 /** Drop the autoincrement primary key so imported rows append instead of overwriting the target
@@ -80,6 +85,7 @@ export function stripId(rows: unknown[]): unknown[] {
 
 export async function importData(json: string): Promise<void> {
   const current = captureDataScope();
+  const gamesOwner = gameScope();
   const data = JSON.parse(json) as Backup;
   if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Invalid backup');
   const tables = ['attempts', 'wordStatus', 'srsCards', 'checkpoints', 'translations', 'catalogCache', 'bookmarks', 'activity', 'reviewLog', 'readerTerms'] as const;
@@ -89,6 +95,7 @@ export async function importData(json: string): Promise<void> {
   const attempts = validateAttempts(data.attempts);
   const activity = validateActivity(data.activity);
   const readerTerms = await validatedReaderTermRows(Array.isArray(data.readerTerms) ? data.readerTerms : []);
+  const gameRecords = parseGameRecords(data.gameRecords, gamesOwner.owner);
   const iid = await currentInstallId(); // fetched before the tx (syncState is out of its table scope)
   const syncing = isSyncing();
   requireDataScope(current);
@@ -106,9 +113,14 @@ export async function importData(json: string): Promise<void> {
       db.reviewLog,
       db.settings,
       db.pending,
+      db.gameRecords,
     ],
     async () => {
       requireDataScope(current);
+      gamesOwner.check();
+      for (const record of gameRecords) {
+        if (!(await db.gameRecords.get(record.id))) await db.gameRecords.add(record);
+      }
       // `++id` stores: append (a merge across devices), never bulkPut-by-id (which would clobber). Stamped
       // with a global syncId + meta so a later sync/reconcile treats them as distinct, sync-able rows.
       if (attempts.length) await db.attempts.bulkAdd(stampImported('attempts', stripId(attempts) as object[], iid) as never);

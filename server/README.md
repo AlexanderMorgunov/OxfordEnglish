@@ -32,6 +32,46 @@ smokes plus `src/smoke.ts`. Root Vitest does not cover them. Store smokes under
 `src/stores/` require configured infrastructure and may mutate data; run them only
 for an explicitly scoped integration test. `npm run migrate` also mutates storage.
 
+## Independent game API (disabled by default)
+
+`GAMES_ENABLED=true` mounts `/v1/games`. `GAMES_CATALOG_JSON` is the approved
+game/resource registry. Run the additive `game_saves` and `feature_settings`
+migrations before deploying this API revision. The frontend build does not run
+server migrations.
+
+The catalogue defaults to off, including when the module is mounted. Open
+`/admin`, enter the existing admin token, and set the mode in **Функции · Каталог игр**.
+Use **Тестирование** and add the account IDs allowed to preview it. **Открыта всем**
+includes guests. Switching back to **Выключена** closes the rollout while keeping
+checkpoints. Leave **Также открыть в приложении Android** unchecked to release
+on the website first. Check it to include the Android app in the same audience.
+Android is off by default even for a public web rollout. A nonempty registry and
+mounted module are required for access.
+Clients obtain the effective decision from `/v1/features` and recheck while in
+the foreground. Keep `/v1/features` and `/v1/games/*` out of shared caches.
+
+The rollout controls access through DayEnglish. Public files on the game CDN
+are still public. Trial/Pro requirements for private assets and cloud writes
+apply to testers too. Owners can read existing cloud saves after expiry or
+when the rollout is off. Account deletion clears saves and tester membership.
+In-process rollout coverage: `npx tsx src/featureSettings.smoke.ts`.
+
+Private chapter downloads additionally require `GAMES_S3_BUCKET`, existing S3
+credentials and origin-specific bucket CORS. See the [SDK integration guide](../packages/game-sdk/README.md)
+for the registry schema, signed URL constraints, deployment prerequisites and
+current browser-only boundaries. In-process coverage: `npx tsx src/games.smoke.ts`.
+
+Registry `presentation` is optional and returned by the public catalogue. It
+contains bounded editorial text, topics, chapter descriptions, controls,
+`saving` (`session` or `checkpoints`) and `availability` (`available` or
+`maintenance`). `artwork: "lumi"` selects reviewed bundled artwork; arbitrary
+remote image URLs are not accepted. Never put credentials or private asset keys
+in presentation fields. The client and server schemas are checked for parity.
+`examples/lumi-catalog.json` in the root is an undeployed template. Replace its
+invalid entry origin with a reviewed isolated release URL and verify access
+boundaries against the actual game before registering it. Route IDs must also
+be listed in `public/game-routes.json` for static web deep links.
+
 ## Layout and boundaries
 
 - `src/app.ts`: builds the app, CORS/limits, routes, and injectable stores; chooses

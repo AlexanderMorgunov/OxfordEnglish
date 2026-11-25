@@ -17,6 +17,10 @@ import { constantTimeEqual } from '../secrets.js';
 import { ErrorCode, IP_BUCKET_CAPACITY, IP_BUCKET_REFILL_PER_SEC } from '../contract.js';
 import { ipBucketLimiter } from '../rateLimit.js';
 import { CatalogSettingsSchema, catalogAt, type BillingCatalogStore } from '../billingCatalog.js';
+import { FeatureEditSchema, FeatureKeySchema, TesterIdSchema } from '../featureSettings.js';
+import type { GameRollout } from './features.js';
+import type { AccessStore } from '../accessStore.js';
+import { featureForm, featureFormScript, featureFormStyles } from '../adminFeaturesPage.js';
 
 /** Long enough that a shell-history token is not the only thing between the internet and a free plan. */
 export const ADMIN_TOKEN_MIN = 24;
@@ -25,7 +29,7 @@ export const ADMIN_TOKEN_MIN = 24;
  *  is no undo — `applyPayment` can only extend — which is the real reason to keep it small. */
 const MAX_GRANT_DAYS = 400;
 
-export function adminRoutes(app: Hono, token: string, auth: AuthStore, ent: EntitlementStore, catalog: BillingCatalogStore): Hono {
+export function adminRoutes(app: Hono, token: string, auth: AuthStore, ent: EntitlementStore, catalog: BillingCatalogStore, rollout: GameRollout, access: AccessStore): Hono {
   const err = (code: ErrorCode, status: 400 | 401 | 404) => Response.json({ error: code }, { status });
 
   // In FRONT of the token check, so a rejected guess still costs a token — behind it the limiter would
@@ -66,6 +70,49 @@ export function adminRoutes(app: Hono, token: string, auth: AuthStore, ent: Enti
     if (!(await auth.getAccount(id))) return err(ErrorCode.NoSuchAccount, 404);
     const row = await ent.get(id);
     return c.json({ accountId: id, entitlement: evaluate(row, Date.now()) });
+  });
+
+  app.get('/v1/admin/features', async (c) => {
+    try {
+      const features = await Promise.all(FeatureKeySchema.options.map(async (key) => ({
+        key, ready: rollout.ready, settings: await rollout.store.get(key),
+      })));
+      return c.json({ features });
+    } catch {
+      return c.json({ error: 'feature_settings_unavailable' }, 503);
+    }
+  });
+  app.post('/v1/admin/features/:key/check-account', async (c) => {
+    if (!FeatureKeySchema.safeParse(c.req.param('key')).success)
+      return c.json({ error: 'not_found' }, 404);
+    const body = await c.req.json().catch(() => null);
+    const id = TesterIdSchema.safeParse(body?.accountId);
+    if (!id.success) return c.json({ error: 'bad_request' }, 400);
+    return (await auth.getAccount(id.data))
+      ? c.json({ exists: true })
+      : c.json({ error: 'no_such_account' }, 404);
+  });
+  app.post('/v1/admin/features/:key', async (c) => {
+    const key = FeatureKeySchema.safeParse(c.req.param('key'));
+    if (!key.success) return c.json({ error: 'not_found' }, 404);
+    const edit = FeatureEditSchema.safeParse(await c.req.json().catch(() => null));
+    if (!edit.success) return c.json({ error: 'bad_request' }, 400);
+    try {
+      const result = await access.atomic(async () => {
+        const current = await rollout.store.get(key.data);
+        if (current.revision !== edit.data.expectedRevision) return { kind: 'conflict' } as const;
+        for (const id of edit.data.testAccountIds) {
+          if (!(await auth.getAccount(id))) return { kind: 'missing', id } as const;
+        }
+        const settings = await rollout.store.replace(key.data, edit.data);
+        return settings ? { kind: 'saved', settings } as const : { kind: 'conflict' } as const;
+      });
+      if (result.kind === 'missing') return c.json({ error: 'no_such_account', accountId: result.id }, 400);
+      if (result.kind === 'conflict') return c.json({ error: 'feature_conflict' }, 409);
+      return c.json({ key: key.data, ready: rollout.ready, settings: result.settings });
+    } catch {
+      return c.json({ error: 'feature_settings_unavailable' }, 503);
+    }
   });
 
   app.post('/v1/admin/grant', async (c) => {
@@ -125,6 +172,7 @@ export function adminPage(): string {
   .bad { color: #e8706a; }
   .ok { color: #57c9bd; }
   pre { white-space: pre-wrap; word-break: break-all; margin: 10px 0 0; }
+  ${featureFormStyles}
 </style></head><body>
 <h1>DayEnglish · admin</h1>
 
@@ -167,6 +215,8 @@ export function adminPage(): string {
     Изменения касаются новых заказов; ранее созданные сохраняют свою сумму.</p>
 </fieldset>
 
+${featureForm}
+
 <script>
   // sessionStorage, not localStorage: an owner token outliving a closed tab on a shared machine is the
   // thing this is meant to make harder.
@@ -187,7 +237,16 @@ export function adminPage(): string {
       .map(([k, v]) => '<tr><td>' + k + '</td><td>' + v + '</td></tr>').join('') + '</table>';
   }
 
-  $('save').onclick = () => { sessionStorage.setItem(KEY, $('tok').value.trim()); $('tok').value = ''; stats(); loadSale(); };
+  $('save').onclick = () => {
+    if (featureHasDraft() && !confirm('Сменить токен и сбросить черновик настроек функций?')) return;
+    sessionStorage.setItem(KEY, $('tok').value.trim());
+    $('tok').value = '';
+    resetFeatureAuth();
+    featureStatus('');
+    if (tok()) loadFeatures();
+    stats();
+    loadSale();
+  };
   $('grant').onclick = async () => {
     const body = JSON.stringify({ accountId: $('gid').value.trim(), days: Number($('gdays').value) });
     const r = await api('/v1/admin/grant', { method: 'POST', body });
@@ -244,6 +303,7 @@ export function adminPage(): string {
   };
   stats();
   loadSale();
+  ${featureFormScript}
 </script>
 </body></html>`;
 }

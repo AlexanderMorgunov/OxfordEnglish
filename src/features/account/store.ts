@@ -4,6 +4,7 @@ import { deriveCredentials, deriveVerifier, formatCompositeKey, generateRecovery
 import * as api from './api';
 import { ApiFailure } from './api';
 import { db } from '@/db/db';
+import { adoptGuestGameRecords } from '@/db/game-records';
 
 import { releasePreviousAccountData, wipeSyncedData } from '@/features/sync/engine';
 import { discardAllBookFiles } from '@/features/reader/storage';
@@ -127,6 +128,11 @@ function load(): Persisted | null {
   }
 }
 
+export function localDataOwner(): string {
+  const p = load();
+  return p?.accountId || p?.dataOwner || p?.lastAccountId || 'guest';
+}
+
 function save(p: Persisted | null): void {
   try {
     if (p) localStorage.setItem(KEY, JSON.stringify(p));
@@ -157,6 +163,14 @@ export function captureAccountSessionOwner(): () => boolean {
   const generation = authGeneration;
   const session = load();
   return () => generation === authGeneration && sameLogicalSession(session, load());
+}
+
+export function subscribeAccountSessionStorage(check: () => void): () => void {
+  const changed = (event: StorageEvent) => {
+    if (event.storageArea === localStorage && (event.key === KEY || event.key === null)) check();
+  };
+  window.addEventListener('storage', changed);
+  return () => window.removeEventListener('storage', changed);
 }
 
 function withSessionOwnership<T>(run: () => Promise<T> | T): Promise<T> {
@@ -349,6 +363,7 @@ export const useAccount = create<AccountState>((set, get) => {
     await maybeSwitchWipe(s.accountId);
     if (ownsOperation && !ownsOperation()) throw new DOMException('Account changed', 'AbortError');
     applySession(s, false, adoptAnonymous);
+    if (adoptAnonymous) await adoptGuestGameRecords(s.accountId, captureAccountSessionOwner()).catch(() => undefined);
     return captureAccountSessionOwner();
   });
 

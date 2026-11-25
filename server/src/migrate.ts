@@ -30,6 +30,21 @@ type Table = { name: string; describe: () => InstanceType<typeof TableDescriptio
 
 const TABLES: Table[] = [
   {
+    name: 'feature_settings',
+    describe: () => new TableDescription()
+      .withColumn(new Column('feature_key', utf8()))
+      .withColumn(new Column('payload', utf8()))
+      .withPrimaryKeys('feature_key'),
+  },
+  {
+    name: 'game_saves',
+    describe: () => new TableDescription()
+      .withColumn(new Column('account_id', utf8()))
+      .withColumn(new Column('save_key', utf8()))
+      .withColumn(new Column('payload', utf8()))
+      .withPrimaryKeys('account_id', 'save_key'),
+  },
+  {
     name: 'billing_catalog',
     describe: () => new TableDescription()
       .withColumn(new Column('catalog_key', utf8()))

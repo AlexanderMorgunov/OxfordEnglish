@@ -63,8 +63,9 @@ async function seedV7() {
 test('v7 → v8 keeps the stats a real install already has, and backfills sync-meta', async () => {
   await seedV7();
 
-  await db.open(); // only v8's upgrade runs from here
-  expect(db.verno).toBe(8);
+  await db.open();
+  expect(db.verno).toBe(9);
+  expect(await db.gameRecords.count()).toBe(0);
 
   // The whole point: v8 never names these tables, so they survive only by Dexie inheriting them.
   expect(await db.activity.count()).toBe(2);

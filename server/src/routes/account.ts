@@ -8,6 +8,8 @@ import type { EntitlementStore } from '../entitlements.js';
 import type { TotpStore } from '../totp.js';
 import type { RecoveryNameStore } from '../recoveryName.js';
 import type { AccessStore } from '../accessStore.js';
+import type { GameStore } from '../games.js';
+import { FeatureKeySchema, type FeatureSettingsStore } from '../featureSettings.js';
 
 const err = (code: string, status: 401) => Response.json({ error: { code } }, { status });
 
@@ -19,7 +21,9 @@ export function accountRoutes(
   ent: EntitlementStore,
   totp: TotpStore,
   names: RecoveryNameStore,
-  access?: AccessStore
+  access?: AccessStore,
+  games?: GameStore,
+  features?: FeatureSettingsStore,
 ): Hono {
   const app = new Hono();
 
@@ -27,9 +31,28 @@ export function accountRoutes(
     const claims = await bearerClaims(c);
     if (!claims) return err(ErrorCode.Unauthorized, 401);
     const userId = claims.sub;
+    const featureStore = features && await features.exists() ? features : undefined;
+    if (games) await games.purge(userId);
     await blobs.gcOrphans(userId, []); // no known books → removes every blob (S3 objects + book_blobs rows)
     await sync.purge(userId); // changelog + current_state + seq_counter + idempotency
-    await auth.deleteAccount(userId); // account + refresh tokens + devices + link requests
+    if (access && featureStore) {
+      await access.atomic(async () => {
+        await auth.deleteAccount(userId);
+        for (const key of FeatureKeySchema.options) {
+          const settings = await featureStore.get(key);
+          if (!settings.testAccountIds.includes(userId)) continue;
+          const replaced = await featureStore.replace(key, {
+            expectedRevision: settings.revision,
+            mode: settings.mode,
+            androidEnabled: settings.androidEnabled,
+            testAccountIds: settings.testAccountIds.filter((id) => id !== userId),
+          });
+          if (!replaced) throw new Error('Feature settings changed during account removal');
+        }
+      });
+    } else {
+      await auth.deleteAccount(userId);
+    }
     // Entitlement goes too; the trial-claim marker deliberately does NOT — it is what stops a fresh
     // account on the same install from drawing a second trial.
     await ent.purge(userId);

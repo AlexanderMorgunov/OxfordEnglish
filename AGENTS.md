@@ -44,7 +44,7 @@ in Russian. Code identifiers, comments, and commit subjects are English.
   context. Prefer composition to multiplying mode booleans. Check the installed
   React version before adopting APIs from newer React releases.
 - Follow the existing hand-written localStorage persistence in Zustand stores.
-  Dexie database `oxford-english` is currently v8 (`src/db/db.ts`). Optional
+  Dexie database `oxford-english` is currently v9 (`src/db/db.ts`). Optional
   non-indexed fields alone do not require a schema version bump.
 - Use design tokens and existing components in `src/shared/ui/`. Tailwind v4 has
   no `tailwind.config.js` or PostCSS configuration. Fonts are self-hosted.

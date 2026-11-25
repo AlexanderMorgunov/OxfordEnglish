@@ -88,6 +88,42 @@ only when requested. Its manifest records synthetic-fixture provenance and hashe
 Tours suspend reading statistics and position writes, restore the reading place
 and focus, and never submit exercises, save words or make paid AI requests.
 
+### Independent games (development foundation)
+
+Games use the separately installable [Game SDK](packages/game-sdk/README.md),
+with a [standalone integration fixture](examples/game-integration/README.md).
+Run `npm run games:demo` alongside Vite and open `/games/integration-demo`.
+The browser host exposes confirmed vocabulary capture, translation, local
+checkpoints, optional server cloud-save/Pro checks and local learning progress.
+Game API enablement/migration is separate; no production game is registered.
+Android game embedding and cross-device game analytics are not enabled yet.
+Dexie v9 adds an isolated game-record table; existing course/SRS tables retain
+their semantics.
+
+The catalogue is available from **More → Games** (`/games`), with per-game details
+at `/games/:gameId/about` and an isolated player at `/games/:gameId`. Optional
+`presentation` metadata controls the artwork, description, topics, controls,
+chapter overview and maintenance state. The
+[Lumi registry example](examples/lumi-catalog.json) uses an intentionally invalid
+deployment URL; it is a template, not a registered production release. Legacy
+records without presentation metadata still render. Only confirmed local
+checkpoints enable “Continue”; no chapter progress is inferred from opaque saves.
+The save panel supports cloud upload/download, conflict resolution and switching
+to a backup while keeping the previous main checkpoint.
+
+`/games/submit` submits an author's proposal through the existing feedback outbox
+after explicit review. Queued delivery is distinguished from successful sending.
+No submitted game URL is executed or automatically added to the registry.
+
+For static hosting, add approved game IDs to `public/game-routes.json` before the
+web release. Build and deployment generate/upload the corresponding deep-link
+aliases, including `/about`. Chapter/release updates keep the same game ID and
+do not require additional page aliases. `submit` is a reserved game ID.
+The current Lumi game must implement SDK checkpoint load/write before promising
+persistent continuation; removing the temporary catalogue notice does not complete
+that integration or make the game ready for release.
+Android currently offers a website handoff; isolated native embedding is pending.
+
 ## Quick start
 
 ```bash

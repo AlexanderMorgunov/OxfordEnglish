@@ -1,0 +1,9 @@
+{
+  "name": "@dayenglish/game-sdk",
+  "version": "0.2.0",
+  "description": "Engine-independent browser bridge for DayEnglish games",
+  "type": "module",
+  "exports": { ".": { "types": "./index.d.ts", "default": "./index.js" } },
+  "files": ["index.js", "index.d.ts", "README.md"],
+  "engines": { "node": ">=22" }
+}

@@ -28,6 +28,7 @@ export const PRIMARY: NavDestination[] = [
   },
 ];
 export const SECONDARY: NavDestination[] = [
+  { to: '/games', ru: 'Игры', en: 'Games', icon: 'games' },
   { to: '/progress', ru: 'Прогресс', en: 'Progress', icon: 'progress' },
   { to: '/settings', ru: 'Настройки', en: 'Settings', icon: 'settings' },
   { to: '/pro', ru: 'DayEnglish Pro', en: 'DayEnglish Pro', icon: 'pro' },
