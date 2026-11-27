@@ -1,0 +1,116 @@
+.release-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+  margin-bottom: 1.75rem;
+  border: 1px solid
+    color-mix(in srgb, var(--color-action) 32%, var(--color-line));
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--color-action) 9%, var(--color-surface));
+}
+.release-card:has(.release-art) {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+}
+.release-art {
+  position: relative;
+  min-height: 8rem;
+  overflow: clip;
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+.release-art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% 52%;
+}
+.release-copy {
+  min-width: 0;
+  align-self: center;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  padding-inline-end: max(3.75rem, 12%);
+}
+.release-copy h2,
+.release-history h2 {
+  margin-top: 0.25rem;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.release-copy p:not(.release-label),
+.release-history p {
+  margin-top: 0.4rem;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+.release-label {
+  color: var(--color-content);
+  font-size: var(--text-2xs);
+  font-weight: 650;
+}
+.release-action,
+.release-dismiss {
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  color: var(--color-content);
+}
+.release-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  max-width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.8rem;
+  border-color: color-mix(in srgb, var(--color-action) 65%, var(--color-line));
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 650;
+  text-decoration: none;
+}
+.release-action:hover,
+.release-dismiss:hover {
+  background: var(--color-surface-2);
+}
+.release-dismiss {
+  position: absolute;
+  inset-block-start: 0.4rem;
+  inset-inline-end: 0.4rem;
+  display: grid;
+  place-items: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.release-history {
+  max-width: 46rem;
+}
+.release-history h1 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+}
+.release-history ul {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+.release-history article {
+  padding: 1rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+@media (max-width: 42rem) {
+  .release-card:has(.release-art) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .release-art {
+    min-height: clamp(4.5rem, 18vw, 7rem);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  .release-card:has(.release-art) .release-copy {
+    padding-inline-end: clamp(1rem, 3vw, 1.5rem);
+  }
+}

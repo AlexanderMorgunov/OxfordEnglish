@@ -6,6 +6,7 @@ import { OnboardingHelp } from '@/features/onboarding/OnboardingHelp';
 import mark from '@/assets/brand/dayenglish-mark.svg';
 import { NAVIGATION_INSETS_EVENT } from '@/shared/lib/navigation-insets';
 import { useGameAvailability } from '@/features/games/availability';
+import { useAnnouncements } from '@/features/announcements/model';
 import { NavMore } from './NavMore';
 import { NavigationLink } from './NavigationLink';
 import { focusNavigationControl } from './navigation-focus';
@@ -33,6 +34,7 @@ function Brand() {
 
 export function AppHeader() {
   const gamesAllowed = useGameAvailability((state) => state.access === 'allowed');
+  const hasAnnouncements = useAnnouncements().length > 0;
   const ru = useUiLang((s) => s.lang) === 'ru';
   const location = useLocation();
   const current = navigationContext(location.pathname, location.search);
@@ -171,6 +173,7 @@ export function AppHeader() {
   const items = SECONDARY.filter(
     (item) =>
       (item.to !== '/games' || gamesAllowed) &&
+      (item.to !== '/updates' || hasAnnouncements) &&
       (!wide || (item.to !== settings.to && (item.to !== progress.to || !wideProgress)))
   );
   return (

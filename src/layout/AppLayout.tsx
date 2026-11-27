@@ -21,10 +21,17 @@ import { isCapturePath } from '@/features/capture/links';
 import { SOCIAL_CHANNELS } from '@/features/community/channels';
 import { SocialLink } from '@/features/community/SocialLink';
 import { connectGameAvailability } from '@/features/games/availability';
+import { ProductAnnouncements } from '@/features/announcements/ProductAnnouncements';
 import './site-footer.css';
 
 export function AppLayout() {
-  return <RecoveryNavigationGuard><AppLayoutContent /></RecoveryNavigationGuard>;
+  return (
+    <RecoveryNavigationGuard>
+      <ProductAnnouncements>
+        <AppLayoutContent />
+      </ProductAnnouncements>
+    </RecoveryNavigationGuard>
+  );
 }
 
 function AppLayoutContent() {
