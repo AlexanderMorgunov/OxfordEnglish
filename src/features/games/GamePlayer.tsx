@@ -39,11 +39,17 @@ import { gameAccessAllowed, refreshGameAvailability } from './availability';
 import { nativeGameSupported, nativeGameTransport } from './nativeRuntime';
 import './games.css';
 
+function exitGameFullscreen(player: HTMLElement) {
+  if (document.fullscreenElement === player)
+    void document.exitFullscreen().catch(() => {});
+}
+
 export function GamePlayer({ game, rollout }: { game: GameManifest; rollout?: 'allowed' | 'suspended' }) {
   const ru = useUiLang((s) => s.lang) === 'ru';
   const frame = useRef<HTMLIFrameElement>(null);
   const player = useRef<HTMLDivElement>(null);
   const [expandedHeight, setExpandedHeight] = useState(0);
+  const expansionRequested = useRef(false);
   const [attempt, setAttempt] = useState(0);
   const [state, setState] = useState<'loading' | 'ready' | 'closed'>('loading');
   const [prompt, setPrompt] = useState<GamePrompt | null>(null);
@@ -82,14 +88,15 @@ export function GamePlayer({ game, rollout }: { game: GameManifest; rollout?: 'a
     !native &&
     !maintenance &&
     allowed;
-  useEffect(() => {
-    if (!expanded || !player.current) return;
+  useLayoutEffect(() => {
+    const container = player.current;
+    if (!expanded || !container) return;
     const unlock = lockBodyScroll();
     const gutter = document.documentElement.style.scrollbarGutter;
     document.documentElement.style.scrollbarGutter = 'auto';
     const siblings: { element: HTMLElement; inert: boolean }[] = [];
     // Keep the existing iframe mounted; moving it into a portal reloads the game.
-    let branch: HTMLElement = player.current;
+    let branch: HTMLElement = container;
     while (branch.parentElement && branch !== document.body) {
       for (const sibling of branch.parentElement.children) {
         if (
@@ -103,15 +110,27 @@ export function GamePlayer({ game, rollout }: { game: GameManifest; rollout?: 'a
       }
       branch = branch.parentElement;
     }
+    const collapse = () => {
+      expansionRequested.current = false;
+      setExpandedHeight(0);
+    };
+    const fullscreenChange = (event: Event) => {
+      if (event.target === container && document.fullscreenElement !== container)
+        collapse();
+    };
     const escape = (event: KeyboardEvent) => {
       if (event.key !== 'Escape' || document.querySelector('dialog[open]'))
         return;
-      setExpandedHeight(0);
+      collapse();
       frame.current?.focus({ preventScroll: true });
     };
     document.addEventListener('keydown', escape);
+    document.addEventListener('fullscreenchange', fullscreenChange);
     return () => {
       document.removeEventListener('keydown', escape);
+      document.removeEventListener('fullscreenchange', fullscreenChange);
+      expansionRequested.current = false;
+      exitGameFullscreen(container);
       for (const { element, inert } of siblings) element.inert = inert;
       document.documentElement.style.scrollbarGutter = gutter;
       unlock();
@@ -186,12 +205,20 @@ export function GamePlayer({ game, rollout }: { game: GameManifest; rollout?: 'a
           if (leaving.current || promptRef.current)
             throw new GameFailure('busy');
           const { expanded: next } = WindowSchema.parse(payload);
-          setExpandedHeight((previous) =>
-            next
-              ? previous || player.current?.getBoundingClientRect().height || 1
-              : 0
-          );
-          return { expanded: next };
+          const container = player.current;
+          const height = next ? container?.getBoundingClientRect().height || 1 : 0;
+          expansionRequested.current = next;
+          setExpandedHeight((previous) => next ? previous || height : 0);
+          if (
+            next && document.fullscreenEnabled && !document.fullscreenElement &&
+            container?.requestFullscreen
+          ) {
+            // The iframe tap activates the host briefly. Request fullscreen before awaiting anything.
+            await container.requestFullscreen({ navigationUI: 'hide' }).catch(() => {});
+            if (!expansionRequested.current || signal.aborted || !container.isConnected)
+              exitGameFullscreen(container);
+          }
+          return { expanded: expansionRequested.current };
         }
         case 'save.load': {
           const save = await loadSave(

@@ -95,6 +95,77 @@ it('handles game-owned window controls without reconnecting and restores the sur
   view.unmount();
 });
 
+it('uses browser fullscreen for the expanded game and restores the layout on exit', async () => {
+  const game = GameManifestSchema.parse(lumi[0]);
+  const router = createMemoryRouter([
+    {
+      path: '/',
+      element: (
+        <RecoveryNavigationGuard>
+          <GamePlayer game={game} />
+        </RecoveryNavigationGuard>
+      ),
+    },
+  ]);
+  await act(async () => { render(<RouterProvider router={router} />); });
+  const iframe = screen.getByTitle(game.title);
+  const player = iframe.parentElement!;
+  const connection = vi.mocked(attachGameBridge).mock.results.at(-1)!;
+  const bridge = vi.mocked(attachGameBridge).mock.calls.at(-1)![0];
+  const signal = new AbortController().signal;
+  const setView = (expanded: boolean) => bridge.handle({
+    channel: 'dayenglish.game',
+    version: 1,
+    type: 'request',
+    launchId: crypto.randomUUID(),
+    requestId: crypto.randomUUID(),
+    method: 'view.set',
+    payload: { expanded },
+  }, signal);
+  let fullscreenElement: Element | null = null;
+  const leaveFullscreen = () => {
+    fullscreenElement = null;
+    player.dispatchEvent(new Event('fullscreenchange', { bubbles: true }));
+  };
+  const exitFullscreen = vi.fn(async () => leaveFullscreen());
+  const requestFullscreen = vi.fn(async () => {
+    fullscreenElement = player;
+  });
+  player.requestFullscreen = requestFullscreen;
+  Object.defineProperties(document, {
+    fullscreenEnabled: { configurable: true, value: true },
+    fullscreenElement: { configurable: true, get: () => fullscreenElement },
+    exitFullscreen: { configurable: true, value: exitFullscreen },
+  });
+  try {
+    await act(async () => {
+      expect(await setView(true)).toEqual({ expanded: true });
+    });
+    expect(requestFullscreen).toHaveBeenCalledWith({ navigationUI: 'hide' });
+    expect(player).toHaveClass('game-player--expanded');
+
+    await act(async () => { leaveFullscreen(); });
+    expect(player).not.toHaveClass('game-player--expanded');
+    expect(connection.value.viewChanged).toHaveBeenLastCalledWith(false);
+    expect(exitFullscreen).not.toHaveBeenCalled();
+
+    await act(async () => { await setView(true); });
+    await act(async () => { await setView(false); });
+    expect(exitFullscreen).toHaveBeenCalledTimes(1);
+    expect(player).not.toHaveClass('game-player--expanded');
+    expect(screen.getByTitle(game.title)).toBe(iframe);
+
+    await act(async () => { await setView(true); });
+    await act(async () => { bridge.onClose(); });
+    expect(exitFullscreen).toHaveBeenCalledTimes(2);
+    expect(document.fullscreenElement).toBeNull();
+  } finally {
+    Reflect.deleteProperty(document, 'fullscreenEnabled');
+    Reflect.deleteProperty(document, 'fullscreenElement');
+    Reflect.deleteProperty(document, 'exitFullscreen');
+  }
+});
+
 it('gives unsaved account recovery codes priority over the game exit guard', async () => {
   const warning = vi.spyOn(console, 'warn').mockImplementation(() => {});
   HTMLDialogElement.prototype.showModal = function () {
