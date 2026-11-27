@@ -9,9 +9,10 @@ or `{ expanded: false }` to return to the embedded layout. Use the returned stat
 and `view.changed` events (`event.expanded`) to update the icon. Handle request errors
 without changing the game session; hide this control on older hosts without the capability.
 
-The host resizes the existing iframe, without reloading or recreating it. This is
-full-window layout, not the browser Fullscreen API. Authentication, AI and save
-dialogs remain available above the game. View changes must not resume a paused game:
+The host resizes the existing iframe without reloading it. For requests sent on a
+user gesture, the web host can also enter browser fullscreen. If fullscreen is
+unavailable, the host fills the browser window. Authentication, AI and save dialogs
+remain available above the game. View changes must not resume a paused game:
 handle `paused`, `resumed`, `closed` and `view.changed` separately. No API deployment
 or backend permission is needed for window controls. Standalone games may use their
 own browser fullscreen control instead.
