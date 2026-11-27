@@ -7,6 +7,8 @@ import { BackToReader } from '@/features/reader/BackToReader';
 import { ExpiryNotice } from '@/features/account/ExpiryNotice';
 import { AppearanceThemes } from '@/features/appearance/ThemePicker';
 import { AndroidInstallOffer } from '@/features/android-install/AndroidInstallOffer';
+import { AnnouncementSlot } from '@/features/announcements/AnnouncementSlot';
+import { focusNavigationControl } from '@/layout/navigation-focus';
 import { CourseResume } from './CourseResume';
 import { CourseDialog } from './CourseDialog';
 import { DayPreview } from './DayPreview';
@@ -133,6 +135,15 @@ export function CourseToday() {
               lang={lang}
               progressKnown={progressKnown}
               viewedUnitId={unit?.id}
+            />
+            <AnnouncementSlot
+              placement="today"
+              onDismiss={() =>
+                focusNavigationControl(
+                  root.current?.querySelector<HTMLElement>('.course-resume .course-button') ??
+                    root.current?.querySelector('h1')
+                )
+              }
             />
             <AndroidInstallOffer ready={ready} />
             {!unit ? (

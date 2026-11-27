@@ -141,6 +141,7 @@ const ROUTES = [
   { key: 'capture', index: false, title: 'Сохранить фразу | DayEnglish' },
   { key: 'capture-web', index: false, title: 'Сохранить фразу | DayEnglish' },
   { key: 'games', index: false, title: 'Игры с английским | DayEnglish' },
+  { key: 'updates', index: false, title: 'Что нового | DayEnglish' },
   { key: 'games/submit', index: false, title: 'Предложить игру | DayEnglish' },
   ...gameRouteIds.flatMap(id => [
     { key: `games/${id}`, index: false, title: 'Игра | DayEnglish' },
