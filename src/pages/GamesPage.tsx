@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useUiLang } from '@/features/i18n/uiLang';
 import { loadCatalog } from '@/features/games/api';
@@ -7,6 +7,8 @@ import { GamePlayer } from '@/features/games/GamePlayer';
 import { GameCard, GameDetails } from '@/features/games/GameCatalog';
 import { GameSubmission } from '@/features/games/GameSubmission';
 import type { GameManifest } from '@/features/games/contract';
+import { isLumiAvailable, lumiAnnouncement } from '@/features/announcements/lumi';
+import { useCompleteAnnouncementVisit } from '@/features/announcements/model';
 import { Button } from '@/shared/ui/Button';
 import { AppIcon } from '@/shared/ui/AppIcon';
 import '@/features/games/games.css';
@@ -92,9 +94,17 @@ function GamesContent({ developer, suspended }: { developer: boolean; suspended:
   }, [developer, key, needsCatalog]);
   const game = catalog?.key === key ? catalog.games.find((item) => item.gameId === gameId) : undefined;
   const playing = game && !pathname.endsWith('/about');
+  const games = catalog?.key === key ? catalog.games : null;
+  const fromAnnouncement = useCompleteAnnouncementVisit(
+    lumiAnnouncement,
+    !developer && !suspended && games?.some(isLumiAvailable) === true
+  );
+  const heading = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (fromAnnouncement) heading.current?.focus({ preventScroll: true });
+  }, [fromAnnouncement]);
   if (suspended && !playing) return <GameAvailabilityNotice />;
   if (submit) return <GameSubmission />;
-  const games = catalog?.key === key ? catalog.games : null;
   const failed = error === key;
   const categories = [
     ...new Set(
@@ -120,7 +130,7 @@ function GamesContent({ developer, suspended }: { developer: boolean; suspended:
             <p className="games-eyebrow">
               {t('Ещё один способ учиться', 'Another way to learn')}
             </p>
-            <h1>{t('Игры с английским.', 'Play with English.')}</h1>
+            <h1 ref={heading} tabIndex={-1}>{t('Игры с английским.', 'Play with English.')}</h1>
             <p>
               {t(
                 'Разбирайтесь в правилах, исследуя новые миры.',
